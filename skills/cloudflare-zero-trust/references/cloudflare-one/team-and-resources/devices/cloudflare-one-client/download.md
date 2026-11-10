@@ -60,7 +60,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (16)
+Previous version history (17)
 
 </summary>
 
@@ -332,6 +332,24 @@ This release introduces multiple features from our previous beta release into st
 - Windows ARM may prompt the user to close running applications while trying to install this version. Simply click "Ok" with the default highlighted option.
 
 </details>
+
+<details>
+
+<summary>
+
+Windows 2026.4.1391.0
+
+</summary>
+
+**Version:** Windows 2026.4.1391.0**Date:** 2026-11-10**Size:** 52.2 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1391.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 
@@ -616,7 +634,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (14)
+Previous version history (15)
 
 </summary>
 
@@ -846,6 +864,24 @@ This release introduces multiple features from our previous beta release into st
 
 <summary>
 
+macOS 2026.4.1391.0
+
+</summary>
+
+**Version:** macOS 2026.4.1391.0**Date:** 2026-11-10**Size:** 129 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1391.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
+
+<details>
+
+<summary>
+
 macOS 2026.4.1390.0
 
 </summary>
@@ -1057,7 +1093,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (15)
+Previous version history (16)
 
 </summary>
 
@@ -1326,6 +1362,26 @@ For RHEL deployments, this release introduces a dependency on the <a href="https
 - Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 
 </details>
+
+<details>
+
+<summary>
+
+Linux 2026.4.1391.0
+
+</summary>
+
+**Version:** Linux 2026.4.1391.0**Date:** 2026-11-10**Size:** 68.3 MB
+
+AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
+
+<a href="https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.4.1391.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 

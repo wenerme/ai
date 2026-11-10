@@ -33,7 +33,7 @@ context window is short term memory. There is a limited amount of information
 that can be stored in someone's short term memory, and the same is true for
 generative models.
 
-In Gemini 4 (`gemini-4-argon`), the 1M-token context window is **shared across input, thinking, and output tokens**, and the model can generate up to 1M output tokens using [long decode](/docs/long-decode). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens). Earlier Gemini 3 and 2.5 models use separate 1M input and 64K output budgets.
+In Gemini 4 (`gemini-4-carbon` and `gemini-4-argon`), the 1M-token context window is **shared across input, thinking, and output tokens**, and the model can generate up to 1M output tokens using [long decode](/docs/long-decode). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens). Earlier Gemini 3 and 2.5 models use separate 1M input and 64K output budgets.
 
 You can read more about how models work in our [generative models
 guide](/docs/prompting-strategies).

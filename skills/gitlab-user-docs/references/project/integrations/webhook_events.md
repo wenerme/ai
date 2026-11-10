@@ -1872,6 +1872,11 @@ The `commit.id` in the payload is the ID of the pipeline, not the ID of the comm
 
 Job events triggered by blocked users are not processed.
 
+When the `sidekiq_concurrency_limit_use_free_slots_Ci::ExecuteBuildHooksWorker` feature flag is enabled, events might arrive out of order.
+The flag is disabled by default.
+Under high load, an event for a later status can arrive before an event for an earlier status of the same job.
+The `build_status` field describes the job's status when the event occurred, not necessarily its current status.
+
 Request header:
 
 ```plaintext

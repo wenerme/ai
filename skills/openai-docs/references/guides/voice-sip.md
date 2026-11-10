@@ -6,39 +6,61 @@ Choose your API to see its connection steps and session events.
 
 
 
-## Choose a telephony connection
+Connect incoming and outgoing phone calls to GPT-Live through a SIP trunk. Your provider exchanges call audio with OpenAI, while your backend handles session configuration, call controls, and business logic. SIP signaling uses TLS, and GPT-Live requires SRTP for call audio.
 
-A phone call can reach GPT-Live through a SIP trunk or through an application that relays audio. Choose the path that fits your existing phone system and where your application needs to process audio.
-
-| Connection          | Audio and application responsibilities                                                                                                                             |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Direct SIP          | The provider exchanges call audio with OpenAI. Your application handles webhooks, session configuration, call decisions, and business logic.                       |
-| Server audio bridge | Your application relays provider or room audio to GPT-Live over WebRTC or WebSocket. It manages both connections, event translation, playback, and call lifecycle. |
-
-A provider's connection to your application and your application's connection to OpenAI are separate. For example, a caller can join a room through SIP while an agent in that room connects to GPT-Live over WebRTC.
-
-Using Twilio, Telnyx, Bandwidth, LiveKit, or Daily/Pipecat? See [GPT-Live partner integrations](https://developers.openai.com/api/docs/guides/live-partner-integrations) for provider-specific guides.
-
-### Direct SIP
-
-Direct SIP keeps call audio on the provider-to-OpenAI media path. SIP signaling uses TLS, and GPT-Live requires SRTP for call audio. Your backend still owns the incoming-call decision, session configuration, authorization, and business logic.
+- [Handle an inbound call](#handle-an-inbound-call): receive an incoming-call webhook, then accept or reject the call.
+- [Place an outbound call](#place-an-outbound-call): create a session to dial a phone number through your provider. No incoming-call webhook or accept request is needed.
 
 Use a [sideband connection](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live) when your backend needs to receive session events or send commands. It attaches to the existing conversation while SIP carries the audio. Assign one handler to each action so that duplicate webhook deliveries or events observed on multiple connections don't execute tools twice.
 
-### Handle an inbound call
+## Handle an inbound call
+
+Route incoming phone calls from your SIP provider to your OpenAI project. Your backend receives a webhook and decides whether to accept each call.
+
+### Configure your phone number and trunk
+
+Use a SIP trunking provider, such as Twilio, to connect a phone number to GPT-Live. After purchasing a number from your provider:
+
+1. Open your project in [OpenAI settings](https://platform.openai.com/settings). Under **Webhooks**, create a [webhook endpoint](https://developers.openai.com/api/docs/guides/webhooks) subscribed to `live.transport.incoming`.
+2. Find your project ID under **General**. It starts with `proj_`; use the same project that owns the webhook.
+3. Point your provider's SIP trunk at the global SIP URI, `sip:$PROJECT_ID@sip.api.openai.com;transport=tls`, or use one of these regional endpoints:
+   - For European data residency, use `sip:$PROJECT_ID@sip-eu.api.openai.com;transport=tls`.
+   - For SIP hosts physically located in India, use `sip:$PROJECT_ID@sip-in.api.openai.com;transport=tls`.
 
 Confirm that GPT-Live SIP support is enabled for your project and that your
   provider's SIP trunk is routed to that project before using this flow.
 
-#### Receive the incoming call
+### Receive the incoming call
 
-Configure your project's [webhook endpoint](https://developers.openai.com/api/docs/guides/webhooks) for `live.transport.incoming`. Verify the webhook signature and deduplicate deliveries, then accept or reject the call.
+When OpenAI receives a call for your project, it sends a `live.transport.incoming` event to your webhook endpoint. Verify the webhook signature and deduplicate deliveries, then accept or reject the call.
 
 The webhook identifies a SIP call with `data.type: "sip"` and provides `data.session_id`. Use that session ID unchanged for every Live call action. Treat `data.sip_headers` as untrusted caller metadata, not authorization.
 
+For example, the webhook body contains:
+
+```json
+{
+  "object": "event",
+  "id": "evt_abc123",
+  "type": "live.transport.incoming",
+  "created_at": 1750287018,
+  "data": {
+    "type": "sip",
+    "session_id": "live_123",
+    "sip_headers": [
+      { "name": "From", "value": "sip:+14155550123@sip.example.com" },
+      { "name": "To", "value": "sip:+18005550100@sip.example.com" },
+      { "name": "Call-ID", "value": "call-123@example.com" }
+    ]
+  }
+}
+```
+
+The `created_at` field is a Unix timestamp in seconds. Delivery headers include `webhook-id` for deduplication, `webhook-timestamp` for the delivery attempt, and `webhook-signature` for signature verification. See [webhook verification examples](https://developers.openai.com/api/docs/guides/webhooks#verifying-webhook-signatures) for server-side handlers.
+
 Existing integrations may still receive the deprecated `live.call.incoming` event, which has no `data.type`. During migration, handle both names and retain the old subscription until legacy deliveries and retries have drained. The same pending call can also emit a Realtime webhook; assign one handler to the accept/reject decision rather than accepting through both APIs.
 
-#### Accept or reject the call
+### Accept or reject the call
 
 Apply your application's authorization and routing rules. To [accept the call](https://developers.openai.com/api/reference/resources/live/subresources/sessions/methods/accept), send an authenticated `POST /v1/live/sessions/{session_id}/accept` request with a top-level `session` object:
 
@@ -60,38 +82,24 @@ A successful acceptance returns `200 OK` with an empty body after session initia
 
 To [reject the call](https://developers.openai.com/api/reference/resources/live/subresources/sessions/methods/reject), send `POST /v1/live/sessions/{session_id}/reject` with a SIP status, such as `{ "status_code": 486 }` for busy. The status must be an integer from 300 through 699. The first accept or reject decision wins; a later competing decision returns `decision_already_made`.
 
-#### Attach your backend
+### Attach your backend
 
 After acceptance, connect a [sideband WebSocket](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live) at `wss://api.openai.com/v1/live/sessions/{session_id}/attach`. Use the accepted session ID and the same project authentication and connection headers. Do not send `session.start` again.
 
 SIP carries the call audio. Use the sideband for transcripts, delegation, tools, commands, and reflected audio. Choose one owner for each side effect, even if multiple connections observe an event.
 
+Once connected, use the [active call controls](#manage-an-active-call) to send keypad tones, transfer the call, or hang up.
 
-
-
-
-#### Send and receive keypad events
-
-The sideband receives [`transport.dtmf.received`](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.received) when the caller presses a key. To send a DTMF tone to the SIP trunk, send a [`transport.dtmf.send` client event](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.send) over the sideband WebSocket. After the tone is successfully sent, the sideband receives [`transport.dtmf.sent`](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.sent).
-
-If you supply an `event_id`, the notification includes it as `client_event_id`; failures return an `error` event with `error.client_event_id`.
-
-#### Transfer or end the call
-
-To [transfer the call](https://developers.openai.com/api/reference/resources/live/subresources/sessions/methods/refer), send `POST /v1/live/sessions/{session_id}/refer` with `{ "target_uri": "sip:agent@example.com" }` for your destination. To [hang up](https://developers.openai.com/api/reference/resources/live/subresources/sessions/methods/hangup), send `POST /v1/live/sessions/{session_id}/hangup` with no request body. Both return `200 OK` with an empty body on success.
-
-Keep the sideband open until `session.closed` supplies final usage, then release application resources. If the connection drops first, record finalization as incomplete. See [Usage and graceful close](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close) for finalization and close reasons.
-
-### Place an outbound call
+## Place an outbound call
 
 Call a phone number through your SIP provider with [Create session](https://developers.openai.com/api/reference/resources/live/methods/create). Your provider handles the phone network connection while GPT-Live carries the conversation.
 
 Outbound SIP calling is available to all organizations through the Live API,
   not the Realtime API call-creation endpoint.
 
-#### Configure your trunk
+### Configure your trunk
 
-Use a trunk that supports TLS signaling, Opus audio, and SDES-SRTP media. Enable Opus and SRTP in your provider's settings before placing a call.
+Use a trunk that supports TLS signaling and SDES-SRTP media. Enable SRTP in your provider's settings before placing a call.
 
 Supply the trunk configuration with each request:
 
@@ -106,7 +114,7 @@ Supply the trunk configuration with each request:
 
 The provider endpoint must use `sips:` for TLS signaling. Don't include credentials, paths, URI headers, or other URI parameters in the URL. Local hostnames and literal private or local IP addresses are rejected. Keep your OpenAI API key and SIP credentials on your server.
 
-#### Create the session
+### Create the session
 
 Send `POST /v1/live/sessions` with your session configuration and `transport.type: "sip"`. Choose the voice and delegation mode when creating the session. Omit `audio.format` because SIP negotiates the audio format.
 
@@ -153,7 +161,7 @@ The request returns `200 OK` after the session initializes:
 
 This response doesn't mean the call has been answered. It contains no SDP or trunk credentials. Preserve `session.id` unchanged for the sideband connection and call controls. You don't need an incoming-call webhook or an accept request for an outbound call.
 
-#### Monitor and end the call
+### Monitor and end the call
 
 Attach your backend to `wss://api.openai.com/v1/live/sessions/{session_id}/attach` using your OpenAI API key. Don't send `session.start` again. The [sideband connection](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live) carries conversation events, delegated work, and call progress while SIP carries the audio.
 
@@ -165,35 +173,56 @@ Attach your backend to `wss://api.openai.com/v1/live/sessions/{session_id}/attac
 
 Each call-progress event includes `event_id` and `session_id`. Attach immediately after creation: the sideband only replays events from the preceding 3 seconds, so a later attachment can miss earlier call progress. Replayed events retain their original event IDs. Deduplicate events by `event_id`.
 
-Use the same [transfer](#transfer-or-end-the-call) and [hangup](https://developers.openai.com/api/reference/resources/live/subresources/sessions/methods/hangup) actions as for inbound calls. Keep the sideband open for `session.closed` and final usage as described in [Usage and graceful close](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close).
+Once connected, use the [active call controls](#manage-an-active-call) to send keypad tones, transfer the call, or hang up. Keep the sideband open for `session.closed` and final usage as described in [Usage and graceful close](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close).
 
-#### Handle limits and errors
+### Handle limits and errors
 
-Outbound SIP requests have a 1 MiB body limit. Ringing is limited to 3 minutes, and a connected call is limited to 2 hours. These limits aren't configurable in the creation request.
+Ringing is limited to 3 minutes, and a connected call is limited to 2 hours. These limits aren't configurable in the creation request.
 
 Invalid session configuration is returned on the creation request. Transport setup failures can return `502`, and initialization timeouts return `504`. After creation succeeds, monitor `transport.failed` for asynchronous setup failures.
 
-Each creation request places a new call. `X-Client-Request-Id` doesn't
-  deduplicate requests. Don't automatically retry after an ambiguous timeout or
-  connection failure: a retry can place another call.
+## Manage an active call
 
-### Server audio bridges
+These controls apply to both inbound and outbound SIP calls.
 
-We recommend [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live) for the connection from your audio bridge to GPT-Live. [WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live) are also supported. Your application authenticates both connections, handles their events, and relays audio in both directions.
 
-GPT-Live supports raw G.711 μ-law and A-law audio at 8 kHz over WebSocket. When the provider stream uses the same codec, sample rate, and channel count, your application can forward the raw audio bytes without converting them to PCM. Preserve audio order and wrap the audio bytes in the message format required by each connection.
 
-Have your bridge manage queued audio, interruptions, and call termination. Account for audio buffered by the provider when handling playback. See [Managing sessions](https://developers.openai.com/api/docs/guides/live-conversations) for the Live session lifecycle and [Migrate to GPT-Live](https://developers.openai.com/api/docs/guides/live-migration) for changes to turn-taking and playback control.
 
-Keep the provider's call or room identifier alongside the OpenAI session ID so you can trace a conversation across both systems.
+
+### Send and receive keypad events
+
+The sideband receives [`transport.dtmf.received`](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.received) when the caller presses a key. To send a DTMF tone to the SIP trunk, send a [`transport.dtmf.send` client event](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.send) over the sideband WebSocket. After the tone is successfully sent, the sideband receives [`transport.dtmf.sent`](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.sent).
+
+If you supply an `event_id`, the notification includes it as `client_event_id`; failures return an `error` event with `error.client_event_id`.
+
+### Transfer or end the call
+
+To [transfer the call](https://developers.openai.com/api/reference/resources/live/subresources/sessions/methods/refer), send `POST /v1/live/sessions/{session_id}/refer` with `{ "target_uri": "sip:agent@example.com" }` for your destination. To [hang up](https://developers.openai.com/api/reference/resources/live/subresources/sessions/methods/hangup), send `POST /v1/live/sessions/{session_id}/hangup` with no request body. Both return `200 OK` with an empty body on success.
+
+The transfer target becomes the SIP `Refer-To` header and can be a telephone URI such as `tel:+14155550123` or a SIP URI such as `sip:agent@example.com`. Your provider handles the remaining transfer flow.
+
+Keep the sideband open until `session.closed` supplies final usage. See [Usage and graceful close](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close) for usage reporting and close reasons.
+
+## SIP network requirements
+
+GPT-Live SIP calls use separate network paths for signaling and media. Configure your network to allow both:
+
+- **SIP signaling:** `sip.api.openai.com` and `sip-eu.api.openai.com` are GeoIP-routed endpoints. The India endpoint, `sip-in.api.openai.com`, routes to SIP hosts in India. Allow outbound TCP/TLS traffic to the addresses returned by DNS for your chosen endpoint on port `5061`.
+- **SRTP media:** The API specifies a separate media IP address and UDP port in the negotiated SDP. Allow bidirectional SRTP traffic over UDP to and from the following CIDRs:
+  - `13.79.45.80/28`
+  - `20.204.17.112/28`
+  - `23.98.140.64/28`
+  - `40.67.149.176/28`
+  - `40.83.204.240/28`
 
 ## Next steps with GPT-Live
 
-- [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live): use the recommended audio connection to GPT-Live.
-- [WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live): stream audio over a supported alternative.
+- [Prompting guide](https://developers.openai.com/api/docs/guides/voice-prompting?api=live): write instructions for your voice agent.
 - [Webhooks and server-side controls](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live): manage a session from your backend.
 - [Delegation and tools](https://developers.openai.com/api/docs/guides/live-delegation): connect speech to your reasoning and tool backend.
 - [Managing sessions](https://developers.openai.com/api/docs/guides/live-conversations): handle transcripts, session state, and close.
+- [Latency and cost](https://developers.openai.com/api/docs/guides/voice-latency-cost?api=live): understand latency and usage.
+- [GPT-Live partner integrations](https://developers.openai.com/api/docs/guides/live-partner-integrations): find provider-specific setup guides and examples.
 
 
 
@@ -212,9 +241,12 @@ to IP traffic. After you purchase a phone number from your SIP trunking
 provider, follow the instructions below.
 
 Start by creating a [webhook](https://developers.openai.com/api/docs/guides/webhooks) for incoming calls, through your **platform.openai.com** [settings](https://platform.openai.com/settings) > Project > **Webhooks**.
-Then, point your SIP trunk at the OpenAI SIP endpoint, using the project ID
-for which you configured the webhook, e.g., `sip:$PROJECT_ID@sip.api.openai.com;transport=tls`.
-For European data residency, use `sip:$PROJECT_ID@sip-eu.api.openai.com;transport=tls` instead.
+Then, point your SIP trunk at the global OpenAI SIP URI, `sip:$PROJECT_ID@sip.api.openai.com;transport=tls`,
+using the project ID for which you configured the webhook. For regional routing, use one of these endpoints:
+
+- For European data residency, use `sip:$PROJECT_ID@sip-eu.api.openai.com;transport=tls`.
+- For SIP hosts physically located in India, use `sip:$PROJECT_ID@sip-in.api.openai.com;transport=tls`.
+
 To find your `$PROJECT_ID`, visit [settings](https://platform.openai.com/settings) > Project > **General**. That page will display the project ID, which
 will have a `proj_` prefix.
 
@@ -388,8 +420,9 @@ configure your network to allow signaling and media traffic as described below.
 
 ### SIP signaling
 
-`sip.api.openai.com` and `sip-eu.api.openai.com` are GeoIP-routed endpoints. Your network must allow
-outbound TCP/TLS traffic to the addresses returned by DNS on port `5061`.
+`sip.api.openai.com` and `sip-eu.api.openai.com` are GeoIP-routed endpoints. The India endpoint,
+`sip-in.api.openai.com`, routes to SIP hosts in India. Your network must allow outbound TCP/TLS
+traffic to the addresses returned by DNS for your chosen endpoint on port `5061`.
 
 ### SRTP media
 
@@ -397,6 +430,7 @@ The API specifies a separate media IP address and UDP port in the negotiated SDP
 allow bidirectional SRTP traffic over UDP to and from the following CIDRs:
 
 - `13.79.45.80/28`
+- `20.204.17.112/28`
 - `23.98.140.64/28`
 - `40.67.149.176/28`
 - `40.83.204.240/28`

@@ -536,6 +536,8 @@ Example response:
 
 ## Remove a billable group member
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269434) in GitLab 19.7.
+
 Removes a specified billable member from a group and its subgroups and projects.
 
 The user does not need to be a group member to qualify for removal.
@@ -544,6 +546,12 @@ still use this API endpoint to remove them.
 
 > [!note]
 > Member removal is handled asynchronously, so the changes complete in a few minutes.
+
+This endpoint is [rate limited](../rate_limits/api/groups.md#configure-rate-limits-on-deleting-group-members).
+By default, each user can make 60 requests every minute for each group.
+Requests over the limit return `429 Too Many Requests`, and the user is not scheduled for removal.
+To remove the remaining users, wait for the time in the `Retry-After` header,
+then retry only the requests that returned `429`.
 
 ```plaintext
 DELETE /groups/:id/billable_members/:user_id

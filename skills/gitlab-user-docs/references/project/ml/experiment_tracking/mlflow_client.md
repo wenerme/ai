@@ -235,7 +235,6 @@ model = client.create_registered_model(model_name, description=description)
 
 **Notes**
 
-- `create_registered_model` argument `tags` is ignored.
 - `name` must be unique within the project.
 - `name` cannot be the name of an existing experiment.
 
@@ -505,6 +504,33 @@ Other MLflowClient methods:
 | `update_model_version`    | Yes              | 16.8          |                                                  |
 | `create_registered_model` | Yes              | 16.8          |                                                  |
 | `create_registered_model` | Yes              | 16.8          |                                                  |
+
+## Request limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263921) in GitLab 19.6.
+
+GitLab limits the number of items in some MLflow requests.
+When a request has more items than a limit, GitLab rejects the full request.
+The response is `400 Bad Request` with the `INVALID_PARAMETER_VALUE` error code.
+Endpoint paths are relative to `<MLFLOW_TRACKING_URI>/api/2.0/mlflow/`.
+
+| Endpoint                   | Client method             | Limit                                                              |
+|----------------------------|---------------------------|--------------------------------------------------------------------|
+| `runs/log-batch`           | `log_batch`               | 1,000 metrics, 100 parameters, 100 tags, and 1,000 items in total. |
+| `runs/create`              | `create_run`, `start_run` | 1,000 tags.                                                        |
+| `experiments/create`       | `create_experiment`       | 1,000 tags.                                                        |
+| `registered-models/create` | `create_registered_model` | 100 tags.                                                          |
+| `model-versions/create`    | `create_model_version`    | 100 tags.                                                          |
+
+The `runs/log-batch` limits are the same as the limits of the MLflow tracking server.
+The MLflow Python client splits `log_batch`, `log_metrics`, `log_params`, and `set_tags` calls
+into requests that stay in these limits, so you do not have to split them.
+Only direct calls to the REST API can go over the `runs/log-batch` limits.
+
+MLflow does not limit the tags in create requests, so the create limits apply only to GitLab.
+You can add tags to a registered model or a model version only when you create it,
+so each one has at most 100 tags.
+To add more tags to a run or an experiment later, use `set_tag`, `log_batch`, or `set_experiment_tag`.
 
 ## Known issues
 

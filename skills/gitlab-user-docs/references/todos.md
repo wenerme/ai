@@ -44,10 +44,7 @@ To sort the To-Do List:
 ### Group the To-Do List
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261843) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_grouped_view`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/634772) in GitLab 19.6. Feature flag `todos_grouped_view` removed.
 
 You can group to-do items by the issue, merge request, or other item they relate to.
 Each group lists its to-do items and shows how many there are.

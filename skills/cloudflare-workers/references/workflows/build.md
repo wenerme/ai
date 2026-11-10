@@ -19,6 +19,7 @@ Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/)
 - [Step context](https://developers.cloudflare.com/workflows/build/step-context/)
 - [Events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/)
+- [Concurrency limits](https://developers.cloudflare.com/workflows/build/concurrency-limits/)
 - [Subscribe to instance events](https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/)
 - [Local Development](https://developers.cloudflare.com/workflows/build/local-development/)
 - [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/)

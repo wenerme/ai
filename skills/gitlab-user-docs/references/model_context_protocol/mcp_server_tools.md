@@ -1420,13 +1420,9 @@ Examples:
 
 ## `get_pages_content`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617718) in GitLab 19.6 [with a flag](../../administration/feature_flags/_index.md) named `mcp_get_pages_content`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617718) in GitLab 19.6.
 
 This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
 
 Reads the content published at a GitLab Pages URL as text. The tool resolves the URL against the
 Pages sites of your GitLab instance and reads the file from the current deployment, so you get what

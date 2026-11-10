@@ -46,6 +46,7 @@ The following templates are available:
 | CSA CCM v4 | Cloud Security Alliance Cloud Controls Matrix v4 framework for cloud security assurance. |
 | Cyber Essentials | UK government-backed Cyber Essentials scheme covering five key technical controls. |
 | DORA | Digital Operational Resilience Act framework for financial sector ICT risk management. |
+| EU AI Act | EU Artificial Intelligence Act framework covering data governance, record-keeping, human oversight, and robustness requirements for AI systems. |
 | FedRAMP High | Federal Risk and Authorization Management Program High baseline for US federal cloud services. |
 | FedRAMP Low | Federal Risk and Authorization Management Program Low baseline for US federal cloud services. |
 | FedRAMP Moderate | Federal Risk and Authorization Management Program Moderate baseline for US federal cloud services. |

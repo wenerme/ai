@@ -177,6 +177,9 @@ GitLab Duo in Slack works in the following places:
 - Group direct messages that include the agent. Mention `@GitLab` to start.
 - One-to-one direct messages with the agent, including when you open the agent from the Slack top bar.
 
+GitLab Duo does not run in channels or direct messages shared with external organizations through Slack Connect.
+An answer in these conversations could show people outside your organization content that only you can access.
+
 In direct messages, GitLab Duo uses the earlier messages in the conversation as context.
 
 Direct messages require the `assistant:write`, `im:history`, and

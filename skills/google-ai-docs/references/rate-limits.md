@@ -161,6 +161,11 @@ limits, separate from the non-batch API calls.
 
   ---
 
+  * Gemini 4 Carbon
+  * 5,000,000
+
+  ---
+
   * Gemini 4 Argon
   * 5,000,000
 
@@ -279,6 +284,11 @@ limits, separate from the non-batch API calls.
 
   ---
 
+  * Gemini 4 Carbon
+  * 500,000,000
+
+  ---
+
   * Gemini 4 Argon
   * 500,000,000
 
@@ -394,6 +404,11 @@ limits, separate from the non-batch API calls.
   {% table %}
   * Model
   * Batch enqueued tokens
+
+  ---
+
+  * Gemini 4 Carbon
+  * 1,000,000,000
 
   ---
 

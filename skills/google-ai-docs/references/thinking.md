@@ -641,6 +641,7 @@ control this behavior using the `thinking_level` parameter.
 
 | Model | Default Thinking | Levels Supported |
 | --- | --- | --- |
+| gemini-4-carbon | On (medium) | low, medium, high |
 | gemini-4-argon | On (medium) | low, medium, high |
 | gemini-3.8-flash | On (medium) | low, medium, high |
 | gemini-3.6-flash | On (medium) | minimal, low, medium, high |
@@ -816,7 +817,7 @@ any thinking tokens generated). To reduce cost or latency without truncating
 responses, lower `thinking_level` (`low` or `medium`) instead of setting a
 small `max_output_tokens`.
 
-For Gemini 4 models (`gemini-4-argon`), keep the following context and output limits in mind:
+For Gemini 4 models (`gemini-4-carbon` and `gemini-4-argon`), keep the following context and output limits in mind:
 
 * **Shared 1M context window:** Input, thinking, and output tokens share a single 1M-token context window (`1,048,576` tokens). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens).
 * **Default synchronous output cap (64K):** When `background=False`, the default `max_output_tokens` cap is 65,536 tokens (a single foreground hop is capped at 65,536 tokens for streaming and 32,768 tokens for non-streaming).

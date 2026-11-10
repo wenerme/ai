@@ -23,12 +23,12 @@ Reference architecture documents and diagrams are designed to provide a foundati
 - [Cloudflare Security Architecture](https://developers.cloudflare.com/reference-architecture/architectures/security/)
 - [Content Delivery Network (CDN) Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/cdn/)
 - [CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/)
-- [Enhancing security posture with SentinelOne and Cloudflare One](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/)
 - [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
 - [Load Balancing Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/)
 - [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
 - [Multi-vendor Application Security and Performance Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/multi-vendor/)
 - [Reference Architecture using Cloudflare SASE with Microsoft](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-microsoft/)
+- [SentinelOne and Cloudflare — An AI-driven security ecosystem for autonomous, risk-based protection](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/)
 - [AI Security for Apps Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/)
 - [Understanding Email Security Deployments](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/)
 

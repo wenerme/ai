@@ -485,6 +485,7 @@ The Security Policy Bot has the following characteristics:
 - Created automatically in every project where a security policy is enforced.
 - Runs with Guest role permissions in projects, with specific additional permissions.
 - Does not count toward license limits as it is marked as an internal user.
+- Is an [external user](../../../administration/external_users.md), so it can access internal projects only where it is a member.
 - Each project gets its own Security Policy Bot instance when policies are applied.
 
 ### Permissions and access
@@ -494,7 +495,31 @@ The Security Policy Bot operates with minimal but essential permissions:
 - Repository access: Read-only access to the repository content required for policy execution.
 - Pipeline creation: Ability to create and trigger pipelines for policy enforcement.
 - CI/CD variables: Access to project and group variables according to the variable precedence rules.
-- Registry access: Can authenticate to container registries when configured with appropriate credentials.
+- Registry access: Can pull images from the container registry of its own project. To pull images
+  from another project's container registry, see
+  [pull images from another project's container registry](#pull-images-from-another-projects-container-registry).
+
+### Pull images from another project's container registry
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257932) in GitLab 19.4.2.
+
+Jobs that the Security Policy Bot runs can use images from another project's container registry,
+for example a central project for scanner images. The Security Policy Bot is not a member
+of that project. The bot is an external user, so the project's internal visibility
+does not give it access either.
+
+The bot can pull images from a private or internal project when:
+
+- The project that runs the policy job, or one of its parent groups, is on the
+  [CI/CD job token allowlist](../../../ci/jobs/ci_job_token.md#add-a-group-or-project-to-the-job-token-allowlist).
+- The project that hosts the images has its job token allowlist enabled. It must not
+  [allow access from any project](../../../ci/jobs/ci_job_token.md#allow-any-project-to-access-your-project).
+- The project that hosts the images has its
+  [container registry visibility](../../packages/container_registry/_index.md#change-visibility-of-the-container-registry)
+  set to .
+
+If the project is public and its container registry visibility is set to ,
+the bot can pull images regardless of the job token allowlist settings.
 
 ### Limitations and restrictions
 
@@ -533,6 +558,8 @@ If the policy jobs are failing:
 
 - Verify the bot has access to required CI/CD variables.
 - Check that referenced CI/CD configuration files exist and are accessible.
+- If a job fails with `pull access denied` and `insufficient_scope: authorization failed`, check that
+  the bot can [pull images from another project's container registry](#pull-images-from-another-projects-container-registry).
 - Review pipeline logs for specific error messages.
 
 #### Container scanning not triggering

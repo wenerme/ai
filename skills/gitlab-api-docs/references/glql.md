@@ -680,6 +680,31 @@ When rate limited, the API returns a `429 Too Many Requests` status code with an
 }
 ```
 
+### Database time limits
+
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267232) as an [experiment](../policy/development_stages_support.md#experiment) in GitLab 19.6. Requests over these limits are rejected only [with a feature flag](../administration/feature_flags/_index.md) named `enforce_glql_db_time_budgets`. Disabled by default.
+
+Administrators can also limit the database time, across all databases, that GLQL queries use every 15 minutes,
+for each query, each user, and each unauthenticated IP address. For the settings, see
+the `glql_db_seconds_*` attributes in the [application settings API](settings.md#available-settings).
+GitLab Duo Agent Platform flows have their own limit for each user, set by `glql_duo_db_seconds_per_user_limit`.
+Requests over these limits are rejected only when the `enforce_glql_db_time_budgets`
+[feature flag](../administration/feature_flags/_index.md) is enabled.
+These limits are an experiment and might be replaced by a central cost-based rate limit.
+
+A rejected request returns a `429 Too Many Requests` status code, a `Retry-After` header,
+and an error message:
+
+```json
+{
+  "error": "This endpoint has been requested too many times. Try again later."
+}
+```
+
+The `Retry-After` header is the full 15-minute window, so a limit can reset before then.
+
 ## Error handling
 
 The API returns the following HTTP status codes:

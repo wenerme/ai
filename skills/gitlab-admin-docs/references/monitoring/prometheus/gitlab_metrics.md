@@ -468,7 +468,9 @@ The Apdex target for these metrics is `APDEX_THRESHOLD_S` in
 | `gitlab_sli_search_zoekt_tasks_error_total` | Counter | 18.10 | `zoekt_node`, `task_type` | Total number of Zoekt indexing task errors |
 | `gitlab_sli_search_zoekt_tasks_total` | Counter | 18.10 | `zoekt_node`, `task_type` | Total number of Zoekt indexing task error-rate measurements. Divide `gitlab_sli_search_zoekt_tasks_error_total` by `gitlab_sli_search_zoekt_tasks_total` to get an error ratio |
 | `gitlab_sli_search_zoekt_tasks_requests_total` | Counter | 18.10 | `zoekt_node`, `task_type` | Total number of Zoekt tasks added to the queue |
-| `gitlab_search_zoekt_task_duration_seconds` | Histogram | 19.5 | `zoekt_node`, `task_type` | Seconds between a Zoekt indexing task's scheduled time and its completion |
+| `gitlab_search_zoekt_task_duration_seconds` | Histogram | 19.5 | `zoekt_node`, `task_type` | Seconds between a Zoekt indexing task's scheduled time and its completion. A retry reschedules the task, so a callback can arrive before the new scheduled time. Those negative durations are recorded as 0. |
+| `gitlab_search_zoekt_task_queue_duration_seconds` | Histogram | 19.6 | `zoekt_node`, `task_type` | Seconds a due Zoekt indexing task waited before a node claimed it. |
+| `gitlab_search_zoekt_task_processing_duration_seconds` | Histogram | 19.6 | `zoekt_node`, `task_type` | Seconds between a Zoekt indexing task's claim and its completion callback. |
 
 ### Audit event streaming SLI metrics
 

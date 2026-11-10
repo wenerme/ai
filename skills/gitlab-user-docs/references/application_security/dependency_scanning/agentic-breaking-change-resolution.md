@@ -39,7 +39,7 @@ Results are based on AI analysis and should be reviewed by a developer before me
   [GitLab-hosted runners](../../../ci/runners/hosted_runners/_index.md) for your project.
 - [A default GitLab Duo namespace set](../../profile/preferences.md#set-a-default-gitlab-duo-namespace)
   in your user preferences.
-- [Dependency scanning auto-remediation](../remediate/auto_remediation.md) is turned on for the project.
+- [Dependency scanning auto-remediation](../remediate/dependency_scanning_auto_remediation.md) is turned on for the project.
   Agentic breaking change resolution acts on the dependency bump merge requests
   that auto-remediation creates.
 
@@ -77,5 +77,5 @@ Share your feedback in the [feedback issue](https://gitlab.com/gitlab-org/gitlab
 
 ## Related topics
 
-- [Dependency scanning auto-remediation](../remediate/auto_remediation.md)
+- [Dependency scanning auto-remediation](../remediate/dependency_scanning_auto_remediation.md)
 - [Dependency scanning](_index.md)

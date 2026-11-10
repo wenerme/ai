@@ -12,18 +12,17 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/user-groups
 
 # User Groups
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 User Groups are a collection of [account members](https://developers.cloudflare.com/fundamentals/manage-members/) that are treated equally from an access control perspective. User Groups can be assigned permission policies, with individual members in the group receiving all permissions of the roles assigned to the User Group. If users also have individually assigned permissions, then their effective permissions are the union of all of their individual permissions, plus the permissions for all of the User Groups they are a member of.
 
 Note
 
-User Group permissions are inherited by each member of the group but are not currently reflected in the role field on the **Members** page. To view a member’s full set of permissions, check both:
+User Group permissions are inherited by each member of the group.
 
-- The **Members** page for any directly assigned policies
-- The **Groups** tab to identify which groups the member belongs to, and the policies applied to those groups
+To view a member's effective permissions, open that member's details from the **Members** page. The member details view shows both directly assigned policies and policies inherited from User Groups.
 
-Cloudflare is actively working on improving this experience to make inherited and direct permissions easier to view.
+Use the **Groups** tab when you need to review or change the policies assigned to the group itself.
 
 ## Create a User Group manually
 
@@ -299,5 +298,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/#page","headline":"User Groups","description":"Create and manage Cloudflare User Groups to assign shared permission policies to multiple account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/og.png?v=40be4324a294dbcc","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/#page","headline":"User Groups","description":"Create and manage Cloudflare User Groups to assign shared permission policies to multiple account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/og.png?v=40be4324a294dbcc","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

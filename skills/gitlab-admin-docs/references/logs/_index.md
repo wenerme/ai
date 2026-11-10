@@ -986,14 +986,14 @@ If you search for the `correlation_id` of a blocked request, you find a `Rate_Li
 > For more information, see the history.
 
 Each Puma worker counts the requests that the LabKit rate limiter blocks, by endpoint and rule.
-About every five minutes, the worker logs one `rate_limit_block_summary` message to `auth_json.log`
+About every 15 minutes, the worker logs one `rate_limit_block_summary` message to `auth_json.log`
 for each endpoint and rule that it blocked requests for.
 When a worker stops gracefully, it logs the counts it has left.
 
 Each message has the counts of one worker only.
 To get the number of blocked requests for an endpoint, add the `block_count` values of all messages in the time period.
 
-Each worker counts up to 10 endpoint and rule pairs in each period.
+Each worker counts up to five endpoint and rule pairs in each period.
 The worker counts the blocks for any other pair in one message, with `endpoint_id` and `rate_limit_rule` set to `other`.
 
 For example:
@@ -1016,8 +1016,8 @@ The message has these fields:
 | `severity`        | Always `INFO`. |
 | `time`            | Time that GitLab logged the message, in UTC. |
 | `message`         | Always `rate_limit_block_summary`. |
-| `endpoint_id`     | Endpoint that the blocked requests were for. `unknown` when GitLab cannot find the endpoint without a database lookup, such as for project and group pages, and for an API path with no endpoint. `other` for the blocks of pairs over the limit of 10. |
-| `rate_limit_rule` | Name of the LabKit rule that blocked the requests. The same value as the `rule` field of a `Rate_Limit_Block` message. `other` for the blocks of pairs over the limit of 10. |
+| `endpoint_id`     | Endpoint that the blocked requests were for. `unknown` when GitLab cannot find the endpoint without a database lookup, such as for project and group pages, and for an API path with no endpoint. `other` for the blocks of pairs over the limit of five. |
+| `rate_limit_rule` | Name of the LabKit rule that blocked the requests. The same value as the `rule` field of a `Rate_Limit_Block` message. `other` for the blocks of pairs over the limit of five. |
 | `block_count`     | Number of requests that the rule blocked for this endpoint on this worker since the worker's previous message. |
 
 ## `graphql_json.log`
@@ -1356,7 +1356,7 @@ The log file is located at:
 - Logging of GitLab Duo session creation over MCP [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/630113) in GitLab 19.5.
 
 The `mcp.log` file logs information related to the
-[GitLab MCP server](../../user/gitlab_duo/model_context_protocol/mcp_server.md). Logging includes
+[GitLab MCP server](../../user/model_context_protocol/mcp_server.md). Logging includes
 MCP server availability denials, with a `denial_reason` field that explains why a request was
 refused.
 

@@ -95,6 +95,49 @@ The following scopes are available for advanced search:
     The `backfill_groups_to_elasticsearch` advanced search migration must be complete before
     this scope returns results.
 
+## Filter merge request search results
+
+- Filtering by assignee, creation date, and update date [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254033) in GitLab 19.6.
+
+When you search merge requests, you can filter the results with URL parameters.
+For example, to return only merge requests that are assigned to the users with IDs `5` and `7`:
+
+```plaintext
+https://gitlab.example.com/search?scope=merge_requests&search=cache&assignee_ids[]=5&assignee_ids[]=7
+```
+
+The following parameters are available:
+
+| Parameter         | Description |
+|-------------------|-------------|
+| `assignee_ids[]`  | Filter by assignee ID. When you specify more than one ID, only merge requests assigned to all of those users are returned. You can specify a maximum of 20 IDs. |
+| `author_username` | Filter by the username of the merge request author. |
+| `created_after`   | Filter by merge requests created on or after the given date and time. |
+| `created_before`  | Filter by merge requests created on or before the given date and time. |
+| `source_branch`   | Filter by source branch name. |
+| `target_branch`   | Filter by target branch name. |
+| `updated_after`   | Filter by merge requests updated on or after the given date and time. |
+| `updated_before`  | Filter by merge requests updated on or before the given date and time. |
+
+Dates must be one of these formats:
+
+- A date only, for example `2026-01-31`. A date-only value is treated as the
+  start of that day (`00:00`), so `created_before=2026-01-31` excludes merge
+  requests created later that same day.
+- A full ISO 8601 datetime with seconds, for example `2026-01-31T09:00:00Z`.
+
+When advanced search is not available, only `created_after` and `created_before`
+are applied. The other parameters are ignored.
+
+To exclude results instead, use the `not[]` form of a parameter.
+The following parameters support exclusion: `assignee_ids`, `author_username`,
+`source_branch`, and `target_branch`.
+For example, to return merge requests that are not authored by `alice`:
+
+```plaintext
+https://gitlab.example.com/search?scope=merge_requests&search=cache&not[author_username]=alice
+```
+
 ## Syntax
 
 Advanced search uses [`simple_query_string`](https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query),

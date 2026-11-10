@@ -37,10 +37,11 @@ See the [container registry visibility permissions](../user/packages/container_r
 for more details about the permissions that this setting grants to users.
 
 ```shell
-curl --request PUT "https://gitlab.example.com/api/v4/projects/5/" \
+curl --request PUT \
   --header 'PRIVATE-TOKEN: <your_access_token>' \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
+  --url "https://gitlab.example.com/api/v4/projects/5/" \
   --data-raw '{
       "container_registry_access_level": "private"
   }'

@@ -2056,6 +2056,26 @@ Maximum number of steps a single Workflow instance may run.
 
 <details>
 
+<summary>concurrency: { limit: 10 }, (concurrency, limit reference)</summary>
+
+
+
+<code>concurrency</code>Optional<a href="#config-exports-exports-workflow-default-concurrency">Link to concurrency</a>
+
+<code>concurrency?: { /** Maximum number of Workflow instances that can run concurrently. */ limit?: number; }</code>
+
+The type definition does not include a description.
+
+<code>limit</code>Optional<a href="#config-exports-exports-workflow-default-concurrency">Link to limit</a>
+
+<code>limit?: number</code>
+
+Maximum number of Workflow instances that can run concurrently.
+
+</details>
+
+<details>
+
 <summary>defaultRetention: { (defaultRetention reference)</summary>
 
 
@@ -2108,7 +2128,7 @@ How long to retain errored instances.
 
 The builders describe exported code. They do not create JavaScript exports. The entrypoint must still export `Admin`, `Counter`, and `OrderWorkflow`.
 
-`exports.workflow()` requires a `name`, which must be unique within the account. It also accepts `limits.steps`, `concurrency.limit`, `schedules` for cron schedules that start instances, `defaultRetention`, and `jurisdiction`. Retention values accept milliseconds or a duration string, such as `"3 days"`. `jurisdiction` restricts where the instances of the Workflow run and store data, and cannot be changed after the Workflow is created. Refer to [Data location](https://developers.cloudflare.com/workflows/reference/data-location/).
+`exports.workflow()` requires a `name`, which must be unique within the account. It also accepts `limits.steps`, `concurrency.limit` to cap how many instances of the Workflow run at the same time (refer to [Concurrency limits](https://developers.cloudflare.com/workflows/build/concurrency-limits/#per-workflow-concurrency-limits)), `schedules` for cron schedules that start instances, `defaultRetention`, and `jurisdiction`. Retention values accept milliseconds or a duration string, such as `"3 days"`. `jurisdiction` restricts where the instances of the Workflow run and store data, and cannot be changed after the Workflow is created. Refer to [Data location](https://developers.cloudflare.com/workflows/reference/data-location/).
 
 To bind to a Workflow, from the same Worker or another one, use `bindings.workflow()`. It requires the Workflow's `name`, the `worker` that defines it (a Worker name or a Worker definition), and the `exportName` of its class, such as `bindings.workflow({ name: "order-workflow", worker: "example-worker", exportName: "OrderWorkflow" })`.
 

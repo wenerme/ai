@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels
 
 # Configuration file
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -48,7 +48,9 @@ In `cloudflared` version `2026.10.0` and later, you can normalize URLs before ma
 
 Normalization removes dot segments (`.` and `..`) according to [RFC 3986 ↗︎](https://www.rfc-editor.org/rfc/rfc3986#section-5.2.4). It also converts backslashes to forward slashes and merges repeated slashes.
 
-Normalization is off by default in version `2026.10.0`. To turn it on, set [`--disable-path-normalization=false`](https://developers.cloudflare.com/tunnel/reference/run-parameters/#disable-path-normalization) before `run`.
+Version `2026.11.0` and later also removes semicolon-delimited path parameters for ingress matching. Test rules that match paths containing semicolons, as normalization may change which rule matches.
+
+Normalization is off by default in versions `2026.10.0` and `2026.11.0`. To turn it on, set [`--disable-path-normalization=false`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#disable-path-normalization) before `run`.
 
 Test your path-based routing before the [planned default change](https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflared-path-normalization/). Configurations without rules requiring Access validation are unaffected.
 
@@ -195,5 +197,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/#page","headline":"Configuration file","description":"Configure locally-managed tunnels with a YAML configuration file.","url":"https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/og.png?v=c8817e9723a6d5f8","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["YAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/#page","headline":"Configuration file","description":"Configure locally-managed tunnels with a YAML configuration file.","url":"https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/og.png?v=c8817e9723a6d5f8","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["YAML"]}
 ```

@@ -3359,8 +3359,20 @@ Example response:
 
 ## Rebase a merge request
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267972) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_rebase_rate_limit`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Automatically rebase the `source_branch` of the merge request against its
 `target_branch`.
+
+This endpoint is rate limited for each user. The default is 30 requests
+every minute, configurable with the `merge_requests_rebase_limit`
+[application setting](settings.md). Rebases from the UI and the `/rebase` quick action
+count toward the same limit. Set the limit to `0` to turn it off.
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 PUT /projects/:id/merge_requests/:merge_request_iid/rebase
@@ -3387,6 +3399,7 @@ This API returns specific HTTP status codes:
 | `403`       | `Source branch does not exist` | You don't have permission to push to the merge request's source branch. |
 | `403`       | `Source branch is protected from force push` | You don't have permission to push to the merge request's source branch. |
 | `409`       | `Failed to enqueue the rebase operation` | A long-lived transaction might have blocked your request. |
+| `429`       | `This endpoint has been requested too many times. Try again later.` | You exceeded the rate limit for rebases. |
 
 If the request is added to the queue successfully, the response contains:
 

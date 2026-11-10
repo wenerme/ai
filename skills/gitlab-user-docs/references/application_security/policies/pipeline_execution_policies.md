@@ -1611,3 +1611,61 @@ container_scanning: # override component with additional configuration
   before_script:
   - echo $CS_IMAGE # optionally add a before_script for additional debugging
 ```
+
+## Troubleshooting
+
+When working with pipeline execution policies, you might encounter the following issues.
+
+### Error: `Project ... not found or access denied!`
+
+When a pipeline is created in a project with an enforced pipeline execution policy,
+you might get an error that states:
+
+```plaintext
+Pipeline execution policy error: Project `my-group/my-ci-templates` not found or access denied! Make sure any includes in the pipeline configuration are correctly defined.
+```
+
+This error occurs when the policy CI/CD configuration, or any file it includes, uses `include:project`
+to reference a project the pipeline user cannot read. GitLab checks this access when the
+pipeline is created before any job runs.
+
+The pipeline user depends on how the pipeline was created:
+
+- For pipelines created by a push, the UI, or the API, it's the user who created the pipeline.
+- For pipelines created with a [pipeline trigger token](../../../ci/triggers/_index.md), it's the
+  user who owns the trigger token, not the caller.
+- For pipelines triggered with `CI_JOB_TOKEN`, it's the user who ran the upstream job.
+  A private included project must also have the upstream project in its
+  [job token allowlist](../../../ci/jobs/ci_job_token.md).
+- For scheduled pipeline execution policies, it's the
+  [Security Policy Bot](scheduled_pipeline_execution_policies.md#security-policy-bot-user).
+
+GitLab allows access to an included project if any of the following conditions are true:
+
+- The pipeline user can read the repository of the included project.
+  For example, the project is public, or the pipeline user has
+  the Reporter, Security Manager, Developer, Maintainer, or Owner role for the project.
+- The included project is the security policy project linked to the enforced project,
+  and its  setting is turned on.
+  For more information, see [grant access automatically](#grant-access-automatically).
+- The included project has the
+  setting turned on, an allowed file pattern matches the `include:file` value,
+  and the enforced project is in the allowed group.
+  For more information, see [allow access to private or internal projects](#allow-access-to-private-or-internal-projects).
+
+To resolve this issue, do one of the following:
+
+- Add the pipeline user to the included project with
+  the Reporter, Security Manager, Developer, Maintainer, or Owner role.
+  For trigger tokens, add the user who owns the token.
+- For pipelines triggered with `CI_JOB_TOKEN`, add the upstream project to the
+  [job token allowlist](../../../ci/jobs/ci_job_token.md#add-a-group-or-project-to-the-job-token-allowlist)
+  of the included project.
+- Turn on the  setting in the included project.
+  The allowed group must be in the same top-level group as the included project.
+- Move the CI/CD configuration file to the security policy project and turn on the
+   setting.
+
+Allowed file patterns do not match across directories with a single `*`.
+For example, `*.yml` matches `policy-ci.yml` but not `ci/policy-ci.yml`.
+Use `ci/*.yml` or `ci/**/*.yml` instead.

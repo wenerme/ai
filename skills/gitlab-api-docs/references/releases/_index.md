@@ -450,6 +450,8 @@ By default, GitLab fetches the release using `released_at` time. The use of the 
 ## Create a release
 
 Creates a release. Developer level access to the project is required to create a release.
+Each request counts toward per-user and per-project
+[rate limits](../../rate_limits/api/releases.md).
 
 ```plaintext
 POST /projects/:id/releases
@@ -626,6 +628,8 @@ Example response:
 ## Update a release
 
 Updates a release. Developer level access to the project is required to update a release.
+Each request counts toward per-user and per-project
+[rate limits](../../rate_limits/api/releases.md).
 
 ```plaintext
 PUT /projects/:id/releases/:tag_name

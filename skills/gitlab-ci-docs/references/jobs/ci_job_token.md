@@ -200,10 +200,14 @@ To disable the job token allowlist:
 1. In the left sidebar, select **Settings** > **CI/CD**.
 1. Expand **Job token permissions**.
 1. Select **All groups and projects**.
-1. Recommended. When finished testing, select **This project and any groups and projects in the allowlist** to re-enable the job token allowlist.
+1. Recommended. When finished testing, select **Only this project and any groups and projects in the allowlist** to re-enable the job token allowlist.
 
 You can also modify this setting with the [GraphQL](../../api/graphql/reference/mutations.md#projectcicdsettingsupdate)
 (`inboundJobTokenScopeEnabled`) or [REST](../../api/project_job_token_scopes.md#update-the-cicd-job-token-access-settings-for-a-project) API.
+
+> [!note]
+> The GitLab Security Policy Bot cannot [pull images from another project's container registry](../../user/application_security/policies/_index.md#pull-images-from-another-projects-container-registry)
+> if that project is private or internal and its allowlist is disabled.
 
 ### Allow Git push requests to your project repository
 

@@ -523,7 +523,7 @@ export CLAUDE_CODE_ENABLE_TELEMETRY=1
 export OTEL_METRICS_EXPORTER=otlp
 export OTEL_LOGS_EXPORTER=otlp
 export OTEL_EXPORTER_OTLP_METRICS_PROTOCOL=http/protobuf
-export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://metrics.example.com:4318
+export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://metrics.example.com:4318/v1/metrics
 export OTEL_EXPORTER_OTLP_LOGS_PROTOCOL=grpc
 export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=http://logs.example.com:4317
 ```
@@ -1786,7 +1786,7 @@ For a comprehensive guide on measuring return on investment for Claude Code, inc
 ## Security and privacy
 
 * OpenTelemetry export to your backend is opt-in and requires explicit configuration. For Anthropic's separate operational telemetry and how to disable it, see [Data usage](https://code.claude.com/docs/en/data-usage.md#telemetry-services)
-* Raw file contents and code snippets are not included in metrics or events. Trace spans are a separate data path: see the `OTEL_LOG_TOOL_CONTENT` bullet below
+* By default, raw file contents and code snippets aren't included in metrics or events. If you set a variable such as `OTEL_LOG_TOOL_DETAILS` or `OTEL_LOG_RAW_API_BODIES`, events can include them. Trace spans are a separate data path: see the `OTEL_LOG_TOOL_CONTENT` bullet below
 * When authenticated via OAuth, `user.email` is included in telemetry attributes, sent only to the OTel endpoint you configure, never to Anthropic. If this is a concern for your organization, work with your telemetry backend to filter or redact this field
 * User prompt content is not collected by default. Only prompt length is recorded. To include prompt content, set `OTEL_LOG_USER_PROMPTS=1`. When enabled:
   * `user_prompt` events carry the prompt text in two attributes, `prompt` and [`prompt_text`](#user-prompt-event). If you drop or mask the event's prompt text by attribute name in your collector, name both attributes in the rule

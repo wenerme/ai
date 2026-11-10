@@ -5706,8 +5706,7 @@ Content type: `application/json`
 
 - `instructions: optional string or null`
 
-  A system (or developer) message inserted into the model's context.
-  When used along with `previous_response_id`, the instructions from a previous response will not be carried over to the next response. This makes it simple to swap out system (or developer) messages in new responses.
+  Custom instructions for compaction. On models 6.2 and later, replaying a compaction created with custom instructions can cause Responses to drop subsequent reasoning items.
 
 - `previous_response_id: optional string or null`
 

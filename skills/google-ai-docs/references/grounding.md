@@ -500,6 +500,7 @@ overview](https://ai.google.dev/docs/models) page.
 
 | Model | Grounding with Google Search |
 | --- | :---: |
+| Gemini 4 Carbon | ✔️ |
 | Gemini 4 Argon | ✔️ |
 | Gemini 3.8 Flash | ✔️ |
 | Gemini 3.6 Flash | ✔️ |
@@ -525,7 +526,7 @@ You can use Grounding with Google Search with other tools like
 [code execution](/docs/code-execution),
 [URL context](/docs/url-context), and
 [Grounding with Google Maps](/docs/maps-grounding) (supported on Gemini 3.5
-Flash and later models) to power more complex use cases. Gemini 3 models also
+Flash and later models) to power more complex use cases. Gemini 4 and Gemini 3 models also
 support combining these built-in tools with custom tools (function calling).
 Learn more on the [tool combinations](/docs/tool-combination) page.
 

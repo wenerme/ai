@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/features/guardrails/og.png?
 
 # Guardrails
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/guardrails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/guardrails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Guardrails limit a Browser Run session's HTTP and HTTPS requests to permitted hostnames.
 
@@ -23,6 +23,8 @@ This allows you to:
 - **Run self-contained pages** — Prevent external HTTP and HTTPS requests.
 
 Session guardrails apply to browser sessions created with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/). They are unavailable for [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/).
+
+Guardrails do not apply to `http://` requests for hostnames that you route to an [outbound Worker](https://developers.cloudflare.com/browser-run/features/outbound-workers/) with `outboundByHost`. Those requests go to your Worker instead of the network, and your Worker decides what to fetch and return.
 
 ## Set up guardrails
 
@@ -294,5 +296,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/guardrails/#page","headline":"Guardrails","description":"Restrict HTTP and HTTPS requests by destination hostname.","url":"https://developers.cloudflare.com/browser-run/features/guardrails/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/features/guardrails/og.png?v=b378a2df794d8e3f","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/guardrails/#page","headline":"Guardrails","description":"Restrict HTTP and HTTPS requests by destination hostname.","url":"https://developers.cloudflare.com/browser-run/features/guardrails/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/features/guardrails/og.png?v=b378a2df794d8e3f","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

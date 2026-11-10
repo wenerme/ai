@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/build/trigger-workflows/og.pn
 
 # Trigger Workflows
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can trigger Workflows both programmatically and via the Workflows APIs, including:
 
@@ -46,7 +46,7 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-11-10",
 	"workflows": [
 		{
 			// The name of the Workflow
@@ -68,7 +68,7 @@ name = "workflows-tutorial"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-10"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -89,7 +89,7 @@ If you want to create Workflow instances on a recurring interval, add a `schedul
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-11-10",
 	"workflows": [
 		{
 			"name": "workflows-tutorial",
@@ -107,7 +107,7 @@ name = "workflows-tutorial"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-10"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -132,6 +132,8 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 ```
 
 On [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers), Workflow instances created by `schedules` can run for up to one hour per cron firing without consuming a Workflow concurrency slot. If the instance pauses or sleeps after that window, the instance yields and enters the normal concurrency queue upon resume. It resumes when a concurrency slot is available.
+
+This also applies to a Workflow with a [concurrency limit](https://developers.cloudflare.com/workflows/build/concurrency-limits/#per-workflow-concurrency-limits): instances created by `schedules` are not held back by the limit during the one-hour window. After the window, the instance yields and is queued until both your account and the Workflow have a free slot.
 
 Use the latest Wrangler release when configuring Workflow schedules. If your local Wrangler schema does not recognize `schedules` yet, update Wrangler before deploying.
 
@@ -238,7 +240,7 @@ Calling `resume` on an instance that is not currently paused will have no effect
 
 Caution
 
-If you have reached the maximum concurrent instances for your Workflow, resuming an instance may not restart it immediately. The instance will be queued until a concurrency slot becomes available.
+If you have reached the maximum concurrent instances for your account, or the [concurrency limit](https://developers.cloudflare.com/workflows/build/concurrency-limits/#per-workflow-concurrency-limits) set on your Workflow, resuming an instance may not restart it immediately. The instance will be queued until a concurrency slot becomes available.
 
 ### Stop a Workflow
 
@@ -554,5 +556,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/trigger-workflows/og.png?v=48434d0a23d3b226","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/trigger-workflows/og.png?v=48434d0a23d3b226","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

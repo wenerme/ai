@@ -199,9 +199,9 @@ URL normalization
 
 In `cloudflared` version `2026.10.0` and later, URL normalization before ingress matching improves security for rules requiring Access validation. The URL path sent to your origin stays the same.
 
-Normalization removes dot segments (`.` and `..`) according to [RFC 3986 ↗︎](https://www.rfc-editor.org/rfc/rfc3986#section-5.2.4). It also converts backslashes to forward slashes and merges repeated slashes.
+Normalization removes dot segments (`.` and `..`) according to [RFC 3986 ↗︎](https://www.rfc-editor.org/rfc/rfc3986#section-5.2.4). It also converts backslashes to forward slashes and merges repeated slashes. Version `2026.11.0` and later also removes semicolon-delimited path parameters for ingress matching.
 
-Normalization is off by default in version `2026.10.0`. Refer to the [URL normalization changelog](https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflared-path-normalization/) for instructions and the planned default change.
+Normalization is off by default in versions `2026.10.0` and `2026.11.0`. For the planned default change, refer to the [URL normalization changelog](https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflared-path-normalization/).
 
 To enable this security control in a [configuration file](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/), [get the AUD tag](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#get-your-aud-tag) for your Access application and add the following rule to `originRequest`:
 

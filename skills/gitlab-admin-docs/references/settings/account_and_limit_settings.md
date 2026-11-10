@@ -189,6 +189,18 @@ When the session duration is met, the session ends and the user is signed out ev
 
 After a session ends, a window prompts the user to sign in again.
 
+### Sign-in prompt on SAML instances
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257368) in GitLab 19.6 [with a flag](../feature_flags/_index.md) named `session_expire_modal_on_saml_instances`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+On instances with SAML configured, users are prompted to sign in again after their session
+expires from inactivity. Without the prompt, pages can show stale data or stop responding,
+with no error.
+
 ### Configure the Remember me option
 
 Users can select the **Remember me** checkbox on sign-in. Their session remains active for an indefinite

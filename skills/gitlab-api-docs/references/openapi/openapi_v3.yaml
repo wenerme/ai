@@ -54,11 +54,6 @@ tags:
 
     These endpoints require administrator access to the instance.
   x-displayName: Active context
-- name: Add on purchases
-  description: |-
-    Use this API to retrieve, create, and update the
-    [subscription add-on](https://docs.gitlab.com/subscriptions/subscription-add-ons/) purchases of a namespace.
-  x-displayName: Add-on purchases
 - name: Advanced search rollout
   description: |-
     Use this API to control what percentage of namespaces are indexed for
@@ -257,16 +252,6 @@ tags:
   x-displayName: CI lint
   externalDocs:
     url: https://docs.gitlab.com/api/lint/
-- name: CI minutes
-  description: |-
-    > [!warning]
-    > These endpoints are [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/515371) and were used
-    > only by the GitLab subscription portal.
-
-    Use this API to record a purchase of
-    [compute minutes](https://docs.gitlab.com/ci/pipelines/compute_minutes/) for a namespace, and to
-    transfer purchased packs to another namespace.
-  x-displayName: CI minutes
 - name: CI resource groups
   description: Use this API to interact with [resource groups](https://docs.gitlab.com/ci/resource_groups/).
   x-displayName: CI resource groups
@@ -633,11 +618,6 @@ tags:
   x-displayName: GitLab Pages
   externalDocs:
     url: https://docs.gitlab.com/api/pages_domains/
-- name: GitLab subscriptions
-  description: |-
-    Use this API to create and update the [subscription](https://docs.gitlab.com/subscriptions/) attached
-    to a namespace.
-  x-displayName: GitLab subscriptions
 - name: Group credentials inventory
   description: |-
     Use this API to manage the credentials that members of a top-level group hold, including their
@@ -1003,8 +983,6 @@ tags:
     url: https://docs.gitlab.com/api/milestones/
 - name: Mobile push subscriptions
   description: Operations related to mobile push subscriptions.
-- name: Namespace projects
-  description: Operations related to namespace projects.
 - name: Namespaces
   description: |-
     Use this API to interact with namespaces, a special resource category used to organize users and groups. For more information, see [namespaces](https://docs.gitlab.com/user/namespace/).
@@ -1040,12 +1018,6 @@ tags:
   x-displayName: Notification settings
   externalDocs:
     url: https://docs.gitlab.com/api/notification_settings/
-- name: OAuth applications
-  description: |-
-    Use this API to retrieve the server configuration that the workspaces agent requires.
-
-    This endpoint is internal and used by GitLab components.
-  x-displayName: OAuth applications
 - name: Offline transfers
   description: |-
     Use this API to start and track offline transfer exports and imports, which migrate data between
@@ -1813,13 +1785,6 @@ tags:
   x-displayName: Work items
   externalDocs:
     url: https://docs.gitlab.com/user/work_items/
-- name: Workspaces
-  description: |-
-    Use this API to retrieve agent information and authorize user access for the agent that runs
-    [workspaces](https://docs.gitlab.com/user/workspace/).
-
-    These endpoints are internal and used by GitLab components.
-  x-displayName: Workspaces
 servers:
 - url: https://{hostname}
   description: GitLab REST API
@@ -1828,328 +1793,6 @@ servers:
       default: gitlab.com
       description: Your GitLab instance hostname
 paths:
-  "/api/v4/namespaces/{id}/gitlab_subscription":
-    post:
-      operationId: postApiV4NamespacesIdGitlabSubscription
-      summary: Create a subscription for the namespace
-      description: Deprecated in GitLab 17.7
-      tags:
-      - GitLab subscriptions
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesGitlabSubscription"
-        '404':
-          description: Not Found
-        '400':
-          description: Bad Request
-      deprecated: true
-      parameters:
-      - name: id
-        required: true
-        description: ID or URL-encoded path of the namespace.
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/postApiV4NamespacesIdGitlabSubscriptionRequest"
-    put:
-      operationId: putApiV4NamespacesIdGitlabSubscription
-      summary: Update the subscription for the namespace
-      description: Deprecated in GitLab 17.7
-      tags:
-      - GitLab subscriptions
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesGitlabSubscription"
-        '404':
-          description: Not Found
-        '400':
-          description: Bad Request
-      deprecated: true
-      parameters:
-      - name: id
-        required: true
-        description: ID or URL-encoded path of the namespace.
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/putApiV4NamespacesIdGitlabSubscriptionRequest"
-    get:
-      operationId: getApiV4NamespacesIdGitlabSubscription
-      summary: Retrieve namespace subscription
-      description: Retrieves GitLab subscription details for a specified namespace.
-      tags:
-      - Namespaces
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesGitlabSubscription"
-        '404':
-          description: Not Found
-      parameters:
-      - name: id
-        required: true
-        description: ID or URL-encoded path of the namespace.
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-  "/api/v4/namespaces/{id}/minutes":
-    post:
-      operationId: postApiV4NamespacesIdMinutes
-      summary: Create a compute minutes purchase record for the namespace
-      description: Deprecated in GitLab 17.7
-      tags:
-      - CI minutes
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/APIEntitiesCiMinutesAdditionalPack"
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-      deprecated: true
-      parameters:
-      - name: id
-        required: true
-        description: ID of the namespace.
-        schema:
-          type: string
-        in: path
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/postApiV4NamespacesIdMinutesRequest"
-  "/api/v4/namespaces/{id}/minutes/move/{target_id}":
-    patch:
-      operationId: patchApiV4NamespacesIdMinutesMoveTargetId
-      summary: Transfer purchased compute minutes packs to another namespace
-      description: Deprecated in GitLab 17.7
-      tags:
-      - CI minutes
-      responses:
-        '202':
-          description: Accepted
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-      deprecated: true
-      parameters:
-      - name: id
-        required: true
-        description: ID of the namespace to transfer from.
-        schema:
-          type: string
-        in: path
-      - name: target_id
-        required: true
-        description: ID of the namespace for the packs to transfer to.
-        schema:
-          type: string
-        in: path
-  "/api/v4/namespaces/{id}/subscription_add_on_purchase/{add_on_name}":
-    post:
-      operationId: postApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnName
-      summary: Create an add-on purchase for the namespace
-      description: Deprecated in GitLab 17.7
-      tags:
-      - Add on purchases
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesGitlabSubscriptionsAddOnPurchase"
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-      deprecated: true
-      parameters:
-      - name: id
-        required: true
-        description: ID or URL-encoded path of the namespace.
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-      - name: add_on_name
-        required: true
-        description: Name of the add-on.
-        schema:
-          type: string
-        in: path
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/postApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnNameRequest"
-    get:
-      operationId: getApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnName
-      summary: Returns an add-on purchase for the namespace
-      description: Deprecated in GitLab 17.7
-      tags:
-      - Add on purchases
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesGitlabSubscriptionsAddOnPurchase"
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-      deprecated: true
-      parameters:
-      - name: id
-        required: true
-        description: ID or URL-encoded path of the namespace.
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-      - name: add_on_name
-        required: true
-        description: Name of the add-on.
-        schema:
-          type: string
-        in: path
-    put:
-      operationId: putApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnName
-      summary: Update the add-on purchase for the namespace
-      description: Deprecated in GitLab 17.7
-      tags:
-      - Add on purchases
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesGitlabSubscriptionsAddOnPurchase"
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-      deprecated: true
-      parameters:
-      - name: id
-        required: true
-        description: ID or URL-encoded path of the namespace.
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-      - name: add_on_name
-        required: true
-        description: Name of the add-on.
-        schema:
-          type: string
-        in: path
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/putApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnNameRequest"
-  "/api/v4/internal/gitlab_subscriptions/namespaces/{id}/projects":
-    get:
-      operationId: getApiV4InternalGitlabSubscriptionsNamespacesIdProjects
-      summary: Returns the projects of a namespace (including subgroups), with license
-        data included
-      description: Used by CustomersDot to check OSS program compliance for a namespace,
-        avoiding one API call per project to fetch license data.
-      tags:
-      - Namespace projects
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/GitlabSubscriptionsAPIEntitiesInternalProjectWithLicense"
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-        '400':
-          description: Bad Request
-      parameters:
-      - name: id
-        required: true
-        description: The ID or URL-encoded path of the namespace
-        schema:
-          oneOf:
-          - type: string
-          - type: integer
-        in: path
-      - name: page
-        required: false
-        description: Page number of results to retrieve.
-        schema:
-          type: integer
-          default: 1
-        in: query
-        example: 1
-      - name: per_page
-        required: false
-        description: Number of items to list per page.
-        schema:
-          type: integer
-          default: 20
-        in: query
-        example: 20
   "/api/v4/rollouts/{id}":
     post:
       operationId: postApiV4RolloutsId
@@ -2635,12 +2278,18 @@ paths:
       description: Issues a short-lived RS256 JWT scoped to one modular-service audience
         (such as the Artifact Registry). Claims include the requesting user id (sub),
         organization id, and deployment realm (saas / self-managed). Presented to
-        the corresponding backend and verified against the instance JWKS.
+        the corresponding backend and verified against the instance JWKS. The response
+        uses the RFC 8693 names. token and access_token have the same value, with
+        access_token preferred where possible.
       tags:
       - Token exchange
       responses:
         '201':
           description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesAuthnTokenExchange"
         '400':
           description: Bad Request
         '401':
@@ -9879,60 +9528,6 @@ paths:
           type: string
         in: path
       x-gitlab-tier: premium
-  "/api/v4/internal/agents/agentw/agent_info":
-    get:
-      operationId: getApiV4InternalAgentsAgentwAgentInfo
-      summary: Gets agentw info
-      description: Retrieves agent info for agentw for the given workspace token
-      tags:
-      - Workspaces
-      - Internal operations
-      responses:
-        '200':
-          description: Agentw info retrieved successfully
-        '401':
-          description: Unauthorized
-  "/api/v4/internal/agents/agentw/authorize_user_access":
-    get:
-      operationId: getApiV4InternalAgentsAgentwAuthorizeUserAccess
-      summary: authorize_user_access
-      description: Returns whether the user is authorized to access the workspace.
-      tags:
-      - Workspaces
-      - Internal operations
-      responses:
-        '200':
-          description: User access authorization info retrieved successfully
-        '400':
-          description: Bad Request
-      parameters:
-      - name: workspace_host
-        required: true
-        description: Host of the workspace being accessed.
-        schema:
-          type: string
-          nullable: true
-        in: query
-      - name: user_id
-        required: true
-        description: ID of the user accessing the workspace.
-        schema:
-          type: integer
-          nullable: true
-        in: query
-  "/api/v4/internal/agents/agentw/server_config":
-    get:
-      operationId: getApiV4InternalAgentsAgentwServerConfig
-      summary: server_config
-      description: Returns configuration for Workspaces HTTP Server.
-      tags:
-      - OAuth applications
-      - Internal operations
-      responses:
-        '200':
-          description: Server config retrieved successfully
-        '401':
-          description: Unauthorized
   "/api/v4/projects/{id}/push_rule":
     get:
       operationId: getApiV4ProjectsIdPushRule
@@ -15592,7 +15187,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBoard"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBoard"
         '404':
           description: Not Found
         '400':
@@ -15718,172 +15315,6 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/putApiV4GroupsIdBoardsBoardIdRequest"
-  "/api/v4/internal/org_mover/maintenance_state":
-    get:
-      operationId: getApiV4InternalOrgMoverMaintenanceState
-      summary: Report an organization's current lifecycle state
-      description: Returns the organization's current maintenance lifecycle state.
-      tags:
-      - Organizations
-      responses:
-        '200':
-          description: OK
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-        '400':
-          description: Bad Request
-      parameters:
-      - name: organization_id
-        required: true
-        description: The ID of the organization
-        schema:
-          type: integer
-          nullable: true
-        in: query
-  "/api/v4/internal/org_mover/maintenance_readiness":
-    get:
-      operationId: getApiV4InternalOrgMoverMaintenanceReadiness
-      summary: Report cutover readiness for an organization
-      description: Reports whether an organization is drained and safe to enter maintenance,
-        and what is blocking it when not.
-      tags:
-      - Organizations
-      responses:
-        '200':
-          description: OK
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-        '400':
-          description: Bad Request
-      parameters:
-      - name: organization_id
-        required: true
-        description: The ID of the organization
-        schema:
-          type: integer
-          nullable: true
-        in: query
-  "/api/v4/internal/org_mover/start_maintenance":
-    post:
-      operationId: postApiV4InternalOrgMoverStartMaintenance
-      summary: Start maintenance on an organization (active -> maintenance_initialization)
-      description: Begins the maintenance transition for an organization.
-      tags:
-      - Organizations
-      responses:
-        '204':
-          description: No Content
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-        '422':
-          description: Unprocessable entity
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/postApiV4InternalOrgMoverStartMaintenanceRequest"
-  "/api/v4/internal/org_mover/confirm_maintenance":
-    post:
-      operationId: postApiV4InternalOrgMoverConfirmMaintenance
-      summary: Confirm maintenance on an organization (maintenance_initialization
-        -> maintenance)
-      description: Completes the maintenance transition once the organization is drained.
-      tags:
-      - Organizations
-      responses:
-        '204':
-          description: No Content
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-        '409':
-          description: Conflict
-        '422':
-          description: Unprocessable entity
-        '400':
-          description: Bad Request
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/postApiV4InternalOrgMoverConfirmMaintenanceRequest"
-  "/api/v4/internal/org_mover/cancel_maintenance":
-    post:
-      operationId: postApiV4InternalOrgMoverCancelMaintenance
-      summary: Cancel maintenance on an organization (maintenance_initialization ->
-        active)
-      description: Aborts maintenance initialization before the organization reaches
-        the maintenance state, returning it to active.
-      tags:
-      - Organizations
-      responses:
-        '204':
-          description: No Content
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-        '422':
-          description: Unprocessable entity
-        '400':
-          description: Bad Request
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/postApiV4InternalOrgMoverCancelMaintenanceRequest"
-  "/api/v4/internal/org_mover/exit_maintenance":
-    post:
-      operationId: postApiV4InternalOrgMoverExitMaintenance
-      summary: Exit maintenance on an organization (maintenance -> active)
-      description: Returns an organization from maintenance to active.
-      tags:
-      - Organizations
-      responses:
-        '204':
-          description: No Content
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
-        '422':
-          description: Unprocessable entity
-        '400':
-          description: Bad Request
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/postApiV4InternalOrgMoverExitMaintenanceRequest"
-  "/api/v4/internal/org_mover/manifest":
-    get:
-      operationId: getApiV4InternalOrgMoverManifest
-      summary: Describe this cell's Org Mover manifest
-      description: Returns the manifest of databases, tables and asset sources that
-        moving an organization off this cell must carry, generated for the running
-        GitLab version.
-      tags:
-      - Organizations
-      responses:
-        '200':
-          description: OK
-        '401':
-          description: Unauthorized
-        '404':
-          description: Not found
   "/api/v4/projects/{id}/ml/mlflow/api/2.0/mlflow-artifacts/artifacts":
     get:
       operationId: getApiV4ProjectsIdMlMlflowApi20MlflowArtifactsArtifacts
@@ -16135,7 +15566,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMlMlflowRegisteredModel"
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowListRegisteredModels"
         '404':
           description: Not Found
         '400':
@@ -17129,7 +16560,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeSettingReference"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeSettingReference"
         '400':
           description: 400 bad request
         '401':
@@ -17200,7 +16633,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeSettingReference"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeSettingReference"
         '400':
           description: 400 bad request
         '401':
@@ -17321,7 +16756,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         '404':
           description: Not Found
         '400':
@@ -19833,7 +19270,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesTodo"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesTodo"
         '400':
           description: Bad Request
       parameters:
@@ -20858,7 +20297,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesServiceAccount"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesServiceAccount"
         '400':
           description: 400 Bad request
         '401':
@@ -20950,7 +20391,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
         '404':
           description: Not Found
         '400':
@@ -21034,7 +20477,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
         '404':
           description: Not Found
         '400':
@@ -21118,7 +20563,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesResourceStateEvent"
         '404':
           description: Not Found
         '400':
@@ -21204,7 +20651,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
         '404':
           description: Not Found
         '400':
@@ -21292,7 +20741,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
         '404':
           description: Not Found
         '400':
@@ -21380,7 +20831,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesResourceLabelEvent"
         '404':
           description: Not Found
         '400':
@@ -21507,7 +20960,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesServiceAccount"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesServiceAccount"
         '400':
           description: 400 Bad request
         '401':
@@ -21697,7 +21152,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPersonalAccessToken"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPersonalAccessToken"
         '400':
           description: Bad Request
         '401':
@@ -22160,7 +21617,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMilestone"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMilestone"
         '404':
           description: Not Found
         '400':
@@ -22458,7 +21917,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIssueBasic"
         '404':
           description: Not Found
         '400':
@@ -22507,7 +21968,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
         '404':
           description: Not Found
         '400':
@@ -22774,7 +22237,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNote"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -23003,7 +22468,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNote"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -23232,7 +22699,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNote"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -23461,7 +22930,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNote"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -23690,7 +23161,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNote"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -23924,7 +23397,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNote"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -24158,7 +23633,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNote"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -24468,7 +23945,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesServiceAccount"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesServiceAccount"
         '400':
           description: 400 Bad request
         '401':
@@ -24658,7 +24137,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPersonalAccessToken"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPersonalAccessToken"
         '400':
           description: Bad Request
         '401':
@@ -24933,7 +24414,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMilestone"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMilestone"
         '404':
           description: Not Found
         '400':
@@ -25227,7 +24710,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIssueBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIssueBasic"
         '404':
           description: Not Found
         '400':
@@ -25274,7 +24759,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
         '404':
           description: Not Found
         '400':
@@ -25350,7 +24837,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesProjectLabel"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesProjectLabel"
         '404':
           description: Not Found
         '400':
@@ -25714,7 +25203,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesGroupLabel"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesGroupLabel"
         '404':
           description: Not Found
         '400':
@@ -26015,7 +25506,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesList"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesList"
         '404':
           description: Not Found
         '400':
@@ -26215,7 +25708,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDiscussion"
         '404':
           description: Not Found
         '400':
@@ -26378,7 +25873,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -26591,7 +26088,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDiscussion"
         '404':
           description: Not Found
         '400':
@@ -26712,7 +26211,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -26925,7 +26426,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDiscussion"
         '404':
           description: Not Found
         '400':
@@ -27088,7 +26591,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -27301,7 +26806,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDiscussion"
         '404':
           description: Not Found
         '400':
@@ -27422,7 +26929,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -27635,7 +27144,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDiscussion"
         '404':
           description: Not Found
         '400':
@@ -27798,7 +27309,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDiscussion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNote"
         '404':
           description: Not Found
         '400':
@@ -28011,7 +27524,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBoard"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBoard"
         '404':
           description: Not Found
         '400':
@@ -28190,7 +27705,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesList"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesList"
         '404':
           description: Not Found
         '400':
@@ -29535,7 +29052,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesProjectsTopic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesProjectsTopic"
         '400':
           description: Bad Request
       parameters:
@@ -31136,7 +30655,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesSupplyChainAttestation"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSupplyChainAttestation"
         '404':
           description: Artifact SHA-256 not found
         '400':
@@ -34919,7 +34440,11 @@ paths:
       operationId: postApiV4ProjectsIdReleases
       summary: Create a release
       description: Creates a release. Developer level access to the project is required
-        to create a release.
+        to create a release. Release creates and updates are rate limited per project
+        (`release_writes_limit_per_project` application setting) and per user (`release_writes_limit_per_user`
+        application setting). Requests over a limit are blocked when its feature flag
+        (`rate_limit_release_writes_per_project` or `rate_limit_release_writes_per_user`)
+        is enabled, and only logged otherwise.
       tags:
       - Releases
       responses:
@@ -34941,6 +34466,8 @@ paths:
           description: Conflict
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -35003,7 +34530,11 @@ paths:
       operationId: putApiV4ProjectsIdReleasesTagName
       summary: Update a release
       description: Updates a release. Developer level access to the project is required
-        to update a release.
+        to update a release. Release creates and updates are rate limited per project
+        (`release_writes_limit_per_project` application setting) and per user (`release_writes_limit_per_user`
+        application setting). Requests over a limit are blocked when its feature flag
+        (`rate_limit_release_writes_per_project` or `rate_limit_release_writes_per_user`)
+        is enabled, and only logged otherwise.
       tags:
       - Releases
       responses:
@@ -35021,6 +34552,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -36610,7 +36143,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         '404':
           description: Not Found
         '400':
@@ -37162,7 +36697,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPublicGroupDetails"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPublicGroupDetails"
         '404':
           description: Not Found
         '400':
@@ -39482,7 +39019,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
         '401':
           description: Unauthorized
         '403':
@@ -39610,7 +39149,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
         '401':
           description: Unauthorized
         '403':
@@ -39696,7 +39237,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
         '401':
           description: Unauthorized
         '403':
@@ -40047,7 +39590,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesProjectImportStatus"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesRelationImportTracker"
         '401':
           description: Unauthorized
         '403':
@@ -40948,7 +40493,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesEvent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesEvent"
         '404':
           description: Not Found
         '400':
@@ -41077,7 +40624,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPackagesDebianDistribution"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPackagesDebianDistribution"
         '401':
           description: Unauthorized
         '403':
@@ -42627,7 +42176,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPagesDomainBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPagesDomainBasic"
         '400':
           description: Bad Request
       parameters:
@@ -43255,6 +42806,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesImportOfflineExport"
         '400':
           description: Bad Request
       parameters:
@@ -45009,6 +44566,31 @@ paths:
           description: Not found
         '400':
           description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the namespace.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+  "/api/v4/namespaces/{id}/gitlab_subscription":
+    get:
+      operationId: getApiV4NamespacesIdGitlabSubscription
+      summary: Retrieve namespace subscription
+      description: Retrieves GitLab subscription details for a specified namespace.
+      tags:
+      - Namespaces
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesGitlabSubscription"
+        '404':
+          description: Not Found
       parameters:
       - name: id
         required: true
@@ -48499,6 +48081,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -50962,7 +50546,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIssue"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIssue"
         '400':
           description: Bad Request
       parameters:
@@ -51451,7 +51037,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIssue"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIssue"
         '404':
           description: Not Found
         '400':
@@ -52466,7 +52054,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIssue"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIssue"
         '404':
           description: Not Found
         '400':
@@ -53559,7 +53149,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
         '404':
           description: Not Found
         '400':
@@ -53595,7 +53187,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMergeRequestBasic"
         '404':
           description: Not Found
         '400':
@@ -53631,7 +53225,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesUserBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesUserBasic"
         '404':
           description: Not Found
         '400':
@@ -61468,7 +61064,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiVariable"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Not Found
         '400':
@@ -62125,7 +61723,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesPackagesDebianDistribution"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPackagesDebianDistribution"
         '401':
           description: Unauthorized
         '403':
@@ -72162,7 +71762,8 @@ paths:
         in: query
       - name: order_by
         required: false
-        description: Sort results by the specified field.
+        description: Sort results by the specified field. With `pipeline_id`, statuses
+          of the same pipeline are also sorted by `id` in the `sort` direction.
         schema:
           type: string
           enum:
@@ -73201,7 +72802,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesClustersAgent"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesClustersAgent"
         '404':
           description: Not Found
         '400':
@@ -73341,7 +72944,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesClustersAgentTokenBasic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesClustersAgentTokenBasic"
         '404':
           description: Not Found
         '400':
@@ -73535,7 +73140,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiVariable"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '404':
           description: Not Found
         '400':
@@ -75642,7 +75249,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiSecureFile"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiSecureFile"
         '404':
           description: Not Found
         '400':
@@ -75813,7 +75422,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '401':
@@ -75971,7 +75582,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '401':
@@ -76176,7 +75789,10 @@ paths:
     get:
       operationId: getApiV4RunnersIdManagers
       summary: List all managers for a runner
-      description: List all managers for a specified runner.
+      description: List all managers for a specified runner. Each request counts the
+        runner's managers toward a per-user rate limit (`runner_manager_list_limit_per_user`
+        application setting). Until the `ci_rate_limit_rest_runner_manager_list` feature
+        flag is enabled, requests over this limit are logged but not blocked.
       tags:
       - Runners
       responses:
@@ -76185,9 +75801,13 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunnerManager"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiRunnerManager"
         '403':
           description: Forbidden
+        '429':
+          description: Too many requests
         '404':
           description: Not Found
         '400':
@@ -76214,7 +75834,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
         '401':
           description: Unauthorized
         '403':
@@ -76272,7 +75894,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiJobBasicWithProject"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiJobBasicWithProject"
         '401':
           description: Unauthorized
         '403':
@@ -76405,7 +76029,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '403':
@@ -76604,7 +76230,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '403':
@@ -77782,7 +77410,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         '404':
           description: Not Found
         '400':
@@ -80727,7 +80357,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBulkImportsEntityFailure"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBulkImportsEntityFailure"
         '401':
           description: Unauthorized
         '404':
@@ -83718,7 +83350,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiVariable"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesCiVariable"
         '400':
           description: Bad Request
       parameters:
@@ -83855,7 +83489,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesSystemBroadcastMessage"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSystemBroadcastMessage"
         '400':
           description: Bad Request
       parameters:
@@ -84317,7 +83953,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesAccessRequester"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesAccessRequester"
         '404':
           description: Not Found
         '400':
@@ -84460,7 +84098,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesAccessRequester"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesAccessRequester"
         '404':
           description: Not Found
         '400':
@@ -84669,132 +84309,6 @@ components:
       name: PRIVATE-TOKEN
       in: header
   schemas:
-    APIEntitiesGitlabSubscription:
-      type: object
-      properties:
-        plan:
-          type: object
-          properties:
-            code:
-              type: string
-            name:
-              type: string
-            trial:
-              type: boolean
-            auto_renew:
-              type: boolean
-            upgradable:
-              type: boolean
-            exclude_guests:
-              type: boolean
-        usage:
-          type: object
-          properties:
-            seats_in_subscription:
-              type: integer
-            seats_in_use:
-              type: integer
-            max_seats_used:
-              type: integer
-            seats_owed:
-              type: integer
-        billing:
-          type: object
-          properties:
-            subscription_start_date:
-              type: string
-              format: date
-            subscription_end_date:
-              type: string
-              format: date
-            trial_ends_on:
-              type: string
-              format: date
-    APIEntitiesCiMinutesAdditionalPack:
-      type: object
-      properties:
-        namespace_id:
-          type: integer
-          format: int64
-          example: 123
-        expires_at:
-          type: string
-          format: date
-          example: '2012-05-28'
-        number_of_minutes:
-          type: integer
-          example: 10000
-        purchase_xid:
-          type: string
-          example: 46952fe69bebc1a4de10b2b4ff439d0c
-    APIEntitiesGitlabSubscriptionsAddOnPurchase:
-      type: object
-      properties:
-        namespace_id:
-          type: integer
-          format: int64
-          example: 123
-        namespace_name:
-          type: string
-          example: GitLab
-        add_on:
-          type: string
-          example: Code Suggestions
-        quantity:
-          type: integer
-          example: 10
-        started_on:
-          type: string
-          format: date
-          example: '2023-05-30'
-        expires_on:
-          type: string
-          format: date
-          example: '2023-05-30'
-        purchase_xid:
-          type: string
-          example: A-S00000001
-        trial:
-          type: boolean
-          example: false
-    APIEntitiesLicenseBasic:
-      type: object
-      properties:
-        key:
-          type: string
-          example: gpl-3.0
-        name:
-          type: string
-          example: GNU General Public License v3.0
-        nickname:
-          type: string
-          example: GNU GPLv3
-        html_url:
-          type: string
-          example: http://choosealicense.com/licenses/gpl-3.0
-        source_url:
-          type: string
-    GitlabSubscriptionsAPIEntitiesInternalProjectWithLicense:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        path_with_namespace:
-          type: string
-          example: namespace1/project1
-        web_url:
-          type: string
-          example: https://gitlab.example.com/namespace1/project1
-        visibility:
-          type: string
-          example: public
-        empty_repo:
-          type: boolean
-        wiki_enabled:
-          type: boolean
-        license:
-          "$ref": "#/components/schemas/APIEntitiesLicenseBasic"
     APIEntitiesCdRollout:
       type: object
       properties:
@@ -84953,6 +84467,26 @@ components:
           type: integer
         advisory_db_state:
           type: string
+    APIEntitiesAuthnTokenExchange:
+      type: object
+      properties:
+        access_token:
+          type: string
+          example: eyJhbGciOiJSUzI1NiJ9...
+        issued_token_type:
+          type: string
+          example: urn:ietf:params:oauth:token-type:jwt
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          example: 300
+        token:
+          type: string
+          description: Same value as access_token, for clients that read token, such
+            as Docker's registry token auth flow.
+          example: eyJhbGciOiJSUzI1NiJ9...
     APIEntitiesAiSemanticCodeSnippetRange:
       type: object
       properties:
@@ -85296,7 +84830,9 @@ components:
           format: date-time
           example: '2015-09-03T07:24:01.670Z'
         identities:
-          "$ref": "#/components/schemas/APIEntitiesIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesIdentity"
         can_create_group:
           type: boolean
           example: true
@@ -85929,7 +85465,9 @@ components:
         max_artifacts_size:
           type: integer
         custom_attributes:
-          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         statistics:
           type: object
           properties:
@@ -86172,7 +85710,9 @@ components:
         milestone:
           "$ref": "#/components/schemas/APIEntitiesMilestone"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         author:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         type:
@@ -86367,7 +85907,9 @@ components:
         milestone:
           "$ref": "#/components/schemas/APIEntitiesMilestone"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         author:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         type:
@@ -87040,11 +86582,15 @@ components:
         author:
           "$ref": "#/components/schemas/APIEntitiesMergeRequestAuthor"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         assignee:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         reviewers:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         source_project_id:
           type: integer
           format: int64
@@ -90930,7 +90476,9 @@ components:
         milestone:
           "$ref": "#/components/schemas/APIEntitiesMilestone"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         author:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         type:
@@ -91381,11 +90929,15 @@ components:
         author:
           "$ref": "#/components/schemas/APIEntitiesMergeRequestAuthor"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         assignee:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         reviewers:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         source_project_id:
           type: integer
           format: int64
@@ -91975,6 +91527,23 @@ components:
         updated_at:
           type: string
           example: '2023-01-01T00:00:00.000Z'
+    APIEntitiesLicenseBasic:
+      type: object
+      properties:
+        key:
+          type: string
+          example: gpl-3.0
+        name:
+          type: string
+          example: GNU General Public License v3.0
+        nickname:
+          type: string
+          example: GNU GPLv3
+        html_url:
+          type: string
+          example: http://choosealicense.com/licenses/gpl-3.0
+        source_url:
+          type: string
     APIEntitiesBasicProjectDetails:
       type: object
       properties:
@@ -92244,6 +91813,15 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/APIEntitiesMlMlflowModelVersion"
+    APIEntitiesMlMlflowListRegisteredModels:
+      type: object
+      properties:
+        registered_models:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesMlMlflowRegisteredModel"
+        next_page_token:
+          type: string
     APIEntitiesMlMlflowRunInfo:
       type: object
       properties:
@@ -92653,7 +92231,9 @@ components:
           format: date-time
           example: '2015-09-03T07:24:01.670Z'
         identities:
-          "$ref": "#/components/schemas/APIEntitiesIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesIdentity"
         can_create_group:
           type: boolean
           example: true
@@ -92734,9 +92314,13 @@ components:
           type: string
           example: Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU
         projects_with_write_access:
-          "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
         projects_with_readonly_access:
-          "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
     APIEntitiesSSHKey:
       type: object
       properties:
@@ -92958,6 +92542,28 @@ components:
           type: string
         emoji_skin_tone:
           type: string
+        mobile_push_working_hours_enabled:
+          type: boolean
+          example: true
+        mobile_push_working_hours_start:
+          type: integer
+          example: 540
+        mobile_push_working_hours_end:
+          type: integer
+          example: 1020
+        mobile_push_working_days:
+          type: array
+          example:
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          items:
+            type: string
+        mobile_push_working_hours_time_zone:
+          type: string
+          example: Europe/Berlin
     APIEntitiesUserActivity:
       type: object
       properties:
@@ -93187,7 +92793,9 @@ components:
         milestone:
           "$ref": "#/components/schemas/APIEntitiesMilestone"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         author:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         type:
@@ -94090,11 +93698,17 @@ components:
           type: string
         merge_requests_create_limit:
           type: string
+        merge_requests_rebase_limit:
+          type: string
         members_delete_limit:
           type: string
         raw_blob_request_limit:
           type: string
         raw_blob_request_limit_unauthenticated:
+          type: string
+        release_writes_limit_per_project:
+          type: string
+        release_writes_limit_per_user:
           type: string
         project_import_limit:
           type: string
@@ -94224,6 +93838,14 @@ components:
           type: string
         projects_api_rate_limit_unauthenticated:
           type: string
+        glql_db_seconds_per_ip_limit:
+          type: string
+        glql_db_seconds_per_query_limit:
+          type: string
+        glql_db_seconds_per_user_limit:
+          type: string
+        glql_duo_db_seconds_per_user_limit:
+          type: string
         group_api_limit:
           type: string
         group_archive_unarchive_api_limit:
@@ -94238,8 +93860,6 @@ components:
           type: string
         issuable_csv_import_limit:
           type: string
-        work_item_move_limit:
-          type: string
         label_delete_limit:
           type: string
         pages_deployments_api_limit:
@@ -94253,6 +93873,8 @@ components:
         project_repositories_blame_unauthenticated_limit:
           type: string
         project_repositories_blobs_batch_limit:
+          type: string
+        project_repository_commits_api_limit:
           type: string
         projects_api_limit:
           type: string
@@ -94298,6 +93920,10 @@ components:
           type: string
         work_item_hierarchy_add_children_limit:
           type: string
+        work_item_move_limit:
+          type: string
+        work_item_update_limit:
+          type: string
         github_gists_import_limit:
           type: string
         gitlab_dedicated_instance:
@@ -94339,6 +93965,8 @@ components:
         runner_job_list_completed_statuses_limit_per_user:
           type: string
         runner_job_list_project_filtered_limit_per_user:
+          type: string
+        runner_manager_list_limit_per_user:
           type: string
         job_retry_limit_per_user_project:
           type: string
@@ -94675,6 +94303,8 @@ components:
         orbit_auto_index_root_namespace:
           type: string
         orbit_dap_enabled_by_default:
+          type: string
+        epic_move_list_limit:
           type: string
         insights_query_limit:
           type: string
@@ -95171,7 +94801,9 @@ components:
           format: date-time
           example: '2022-01-31T15:10:44.988Z'
         suggestions:
-          "$ref": "#/components/schemas/APIEntitiesSuggestion"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesSuggestion"
         confidential:
           type: boolean
           example: false
@@ -95203,7 +94835,9 @@ components:
         resolved:
           type: boolean
         notes:
-          "$ref": "#/components/schemas/APIEntitiesNote"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesNote"
     APIEntitiesSidekiqConcurrencyLimit:
       type: object
       properties:
@@ -96470,7 +96104,9 @@ components:
         commit:
           "$ref": "#/components/schemas/APIEntitiesCommit"
         milestones:
-          "$ref": "#/components/schemas/APIEntitiesMilestoneWithStats"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesMilestoneWithStats"
         commit_path:
           type: string
           example: "/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a"
@@ -96484,11 +96120,17 @@ components:
               type: integer
               example: 2
             sources:
-              "$ref": "#/components/schemas/APIEntitiesReleasesSource"
+              type: array
+              items:
+                "$ref": "#/components/schemas/APIEntitiesReleasesSource"
             links:
-              "$ref": "#/components/schemas/APIEntitiesReleasesLink"
+              type: array
+              items:
+                "$ref": "#/components/schemas/APIEntitiesReleasesLink"
         evidences:
-          "$ref": "#/components/schemas/APIEntitiesReleasesEvidence"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesReleasesEvidence"
         _links:
           type: object
           properties:
@@ -98210,9 +97852,13 @@ components:
         pipeline:
           "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
         pipelines:
-          "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
         versions:
-          "$ref": "#/components/schemas/APIEntitiesPackageVersion"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPackageVersion"
     APIEntitiesProjectJobTokenScope:
       type: object
       properties:
@@ -98533,7 +98179,9 @@ components:
           type: integer
           example: 100
         batches:
-          "$ref": "#/components/schemas/APIEntitiesBulkImportsExportBatchStatus"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesBulkImportsExportBatchStatus"
     APIEntitiesPushEventPayload:
       type: object
       properties:
@@ -98736,7 +98384,9 @@ components:
           type: integer
           example: 3
         tags:
-          "$ref": "#/components/schemas/APIEntitiesContainerRegistryTag"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesContainerRegistryTag"
         delete_api_path:
           type: string
           example: delete/api/path
@@ -98955,7 +98605,9 @@ components:
           type: string
           example: a903393463d3915d7e22219f52740056dfd26cbfeff321b
         pipelines:
-          "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPackagePipeline"
     APIEntitiesOrganizationsOrganization:
       type: object
       properties:
@@ -98992,6 +98644,41 @@ components:
         avatar_url:
           type: string
           example: https://example.com/uploads/-/system/organizations/organization_detail/avatar/1/avatar.png
+    APIEntitiesImportOfflineExport:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        status:
+          type: string
+          enum:
+          - created
+          - started
+          - finished
+          - failed
+          example: finished
+        source_hostname:
+          type: string
+          example: https://source.example.com/
+        created_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T04:42:42-07:00'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T04:42:42-07:00'
+        has_failures:
+          type: boolean
+          example: false
+        bucket:
+          type: string
+          example: gitlab-exports
+        export_prefix:
+          type: string
+          example: 2012-05-28_04-42-42_export_ab12cd34
     APIEntitiesBulkImport:
       type: object
       properties:
@@ -99186,7 +98873,9 @@ components:
           type: string
           example: 1.3.0.17
         versions:
-          "$ref": "#/components/schemas/APIEntitiesNugetSearchResultVersion"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesNugetSearchResultVersion"
         tags:
           type: string
           example: tag#1 tag#2
@@ -99344,6 +99033,47 @@ components:
           example: '2022-06-18'
         trial:
           type: boolean
+    APIEntitiesGitlabSubscription:
+      type: object
+      properties:
+        plan:
+          type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+            trial:
+              type: boolean
+            auto_renew:
+              type: boolean
+            upgradable:
+              type: boolean
+            exclude_guests:
+              type: boolean
+        usage:
+          type: object
+          properties:
+            seats_in_subscription:
+              type: integer
+            seats_in_use:
+              type: integer
+            max_seats_used:
+              type: integer
+            seats_owed:
+              type: integer
+        billing:
+          type: object
+          properties:
+            subscription_start_date:
+              type: string
+              format: date
+            subscription_end_date:
+              type: string
+              format: date
+            trial_ends_on:
+              type: string
+              format: date
     APIEntitiesNamespacesStorageLimitExclusion:
       type: object
       properties:
@@ -99909,11 +99639,15 @@ components:
         author:
           "$ref": "#/components/schemas/APIEntitiesMergeRequestAuthor"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         assignee:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         reviewers:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         source_project_id:
           type: integer
           format: int64
@@ -100357,7 +100091,9 @@ components:
         milestone:
           "$ref": "#/components/schemas/APIEntitiesMilestone"
         assignees:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         author:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         type:
@@ -100941,7 +100677,9 @@ components:
           type: string
           example: 'off'
         gates:
-          "$ref": "#/components/schemas/APIEntitiesFeatureGate"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesFeatureGate"
         definition:
           "$ref": "#/components/schemas/APIEntitiesFeatureDefinition"
     APIEntitiesFeatureFlagUserList:
@@ -101016,7 +100754,9 @@ components:
           type: string
           example: '{"userIds": "user1"}'
         scopes:
-          "$ref": "#/components/schemas/APIEntitiesFeatureFlagScope"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesFeatureFlagScope"
         user_list:
           "$ref": "#/components/schemas/APIEntitiesFeatureFlagBasicUserList"
     APIEntitiesFeatureFlag:
@@ -101044,7 +100784,9 @@ components:
         scopes:
           type: array
         strategies:
-          "$ref": "#/components/schemas/APIEntitiesFeatureFlagStrategy"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesFeatureFlagStrategy"
     APIEntitiesFeatureFlagSettings:
       type: object
       properties:
@@ -101678,9 +101420,13 @@ components:
           type: string
           example: Jrs3LD1Ji30xNLtTVf9NDCj7kkBgPBb2pjvTZ3HfIgU
         projects_with_write_access:
-          "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
         projects_with_readonly_access:
-          "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
         can_push:
           type: boolean
     APIEntitiesDictionaryTable:
@@ -102109,7 +101855,9 @@ components:
         owner:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         inputs:
-          "$ref": "#/components/schemas/APIEntitiesCiInput"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiInput"
     APIEntitiesCiPipelineScheduleDetails:
       type: object
       properties:
@@ -102147,11 +101895,15 @@ components:
         owner:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         inputs:
-          "$ref": "#/components/schemas/APIEntitiesCiInput"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiInput"
         last_pipeline:
           "$ref": "#/components/schemas/APIEntitiesCiPipelineBasic"
         variables:
-          "$ref": "#/components/schemas/APIEntitiesCiVariable"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiVariable"
     APIEntitiesCiPipelineWithMetadata:
       type: object
       properties:
@@ -102610,9 +102362,13 @@ components:
         maintenance_note:
           type: string
         projects:
-          "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
         groups:
-          "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesBasicGroupDetails"
     APIEntitiesCiJobBasicWithProject:
       type: object
       properties:
@@ -102810,7 +102566,9 @@ components:
         entrypoint:
           type: string
         ports:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestPort"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestPort"
         executor_opts:
           type: string
         pull_policy:
@@ -102823,7 +102581,9 @@ components:
         entrypoint:
           type: string
         ports:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestPort"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestPort"
         executor_opts:
           type: string
         pull_policy:
@@ -102907,19 +102667,31 @@ components:
         variables:
           type: string
         steps:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestStep"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestStep"
         hooks:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestHook"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestHook"
         image:
           "$ref": "#/components/schemas/APIEntitiesCiJobRequestImage"
         services:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestService"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestService"
         artifacts:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestArtifacts"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestArtifacts"
         cache:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestCache"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestCache"
         credentials:
-          "$ref": "#/components/schemas/APIEntitiesCiJobRequestCredentials"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCiJobRequestCredentials"
         features:
           type: string
         dependencies:
@@ -103156,7 +102928,9 @@ components:
         max_artifacts_size:
           type: integer
         custom_attributes:
-          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         statistics:
           type: object
           properties:
@@ -103243,9 +103017,13 @@ components:
           type: string
           description: OAuth provider required for step-up authentication.
         projects:
-          "$ref": "#/components/schemas/APIEntitiesProject"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProject"
         shared_projects:
-          "$ref": "#/components/schemas/APIEntitiesProject"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProject"
         shared_runners_minutes_limit:
           type: string
         extra_shared_runners_minutes_limit:
@@ -103875,193 +103653,6 @@ components:
           example: https://gitlab.example.com/root
         requested_at:
           type: string
-    postApiV4NamespacesIdGitlabSubscriptionRequest:
-      type: object
-      properties:
-        start_date:
-          type: string
-          format: date
-          description: Start date of the subscription.
-          nullable: true
-        end_date:
-          type: string
-          format: date
-          description: End date of the subscription.
-          nullable: true
-        plan_code:
-          type: string
-          description: Subscription tier code.
-          nullable: true
-        seats:
-          type: integer
-          description: Number of seats in the subscription.
-          nullable: true
-        max_seats_used:
-          type: integer
-          description: Highest number of active users in the last month.
-          nullable: true
-        auto_renew:
-          type: boolean
-          description: If `true`, the subscription automatically renews on its end
-            date.
-          nullable: true
-        trial:
-          type: boolean
-          description: If `true`, the subscription is a trial.
-          nullable: true
-        trial_ends_on:
-          type: string
-          format: date
-          description: End date of the trial.
-          nullable: true
-        trial_starts_on:
-          type: string
-          format: date
-          description: Start date of the trial.
-          nullable: true
-        trial_extension_type:
-          type: integer
-          description: Type of trial extension. `1` means the trial was extended,
-            and `2` means it was reactivated.
-          nullable: true
-      required:
-      - start_date
-    putApiV4NamespacesIdGitlabSubscriptionRequest:
-      type: object
-      properties:
-        start_date:
-          type: string
-          format: date
-          description: Start date of the subscription.
-          nullable: true
-        end_date:
-          type: string
-          format: date
-          description: End date of the subscription.
-          nullable: true
-        plan_code:
-          type: string
-          description: Subscription tier code.
-          nullable: true
-        seats:
-          type: integer
-          description: Number of seats in the subscription.
-          nullable: true
-        max_seats_used:
-          type: integer
-          description: Highest number of active users in the last month.
-          nullable: true
-        auto_renew:
-          type: boolean
-          description: If `true`, the subscription automatically renews on its end
-            date.
-          nullable: true
-        trial:
-          type: boolean
-          description: If `true`, the subscription is a trial.
-          nullable: true
-        trial_ends_on:
-          type: string
-          format: date
-          description: End date of the trial.
-          nullable: true
-        trial_starts_on:
-          type: string
-          format: date
-          description: Start date of the trial.
-          nullable: true
-        trial_extension_type:
-          type: integer
-          description: Type of trial extension. `1` means the trial was extended,
-            and `2` means it was reactivated.
-          nullable: true
-    postApiV4NamespacesIdMinutesRequest:
-      type: object
-      properties:
-        packs:
-          type: array
-          description: Array of additional purchased minute packs.
-          items:
-            type: object
-            properties:
-              number_of_minutes:
-                type: integer
-                description: Number of additional minutes purchased.
-                nullable: true
-              expires_at:
-                type: string
-                format: date
-                description: Date when the purchase expires.
-                nullable: true
-              purchase_xid:
-                type: string
-                description: Purchase ID for the additional minutes.
-                nullable: true
-            required:
-            - number_of_minutes
-            - expires_at
-            - purchase_xid
-          nullable: true
-      required:
-      - packs
-    postApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnNameRequest:
-      type: object
-      properties:
-        quantity:
-          type: integer
-          description: Quantity of the purchase.
-          nullable: true
-        started_on:
-          type: string
-          format: date
-          description: Date when the purchase takes effect.
-          nullable: true
-        expires_on:
-          type: string
-          format: date
-          description: Date when the purchase expires.
-          nullable: true
-        purchase_xid:
-          type: string
-          description: Identifier of the purchase, for example the subscription name.
-          nullable: true
-        trial:
-          type: boolean
-          description: If `true`, the add-on purchase is a trial.
-          default: false
-      required:
-      - quantity
-      - started_on
-      - expires_on
-      - purchase_xid
-    putApiV4NamespacesIdSubscriptionAddOnPurchaseAddOnNameRequest:
-      type: object
-      properties:
-        started_on:
-          type: string
-          format: date
-          description: Date when the purchase takes effect.
-          nullable: true
-        expires_on:
-          type: string
-          format: date
-          description: Date when the purchase expires.
-          nullable: true
-        quantity:
-          type: integer
-          description: Quantity of the purchase.
-          nullable: true
-        purchase_xid:
-          type: string
-          description: Identifier of the purchase, for example the subscription name.
-          nullable: true
-        trial:
-          type: boolean
-          description: If `true`, the add-on purchase is a trial.
-          nullable: true
-      required:
-      - started_on
-      - expires_on
     postApiV4RolloutsIdRequest:
       type: object
       properties:
@@ -104431,7 +104022,7 @@ components:
           maximum: 43200
           description: Requested token lifetime in seconds. The granted lifetime may
             be shorter than requested depending on the authentication method used
-            to call this endpoint.
+            to call this endpoint or the audience.
           default: 300
       required:
       - audience
@@ -110037,53 +109628,6 @@ components:
           type: integer
           description: The weight of the board
           nullable: true
-    postApiV4InternalOrgMoverStartMaintenanceRequest:
-      type: object
-      properties:
-        organization_id:
-          type: integer
-          description: The ID of the organization
-          nullable: true
-        maintenance_reason:
-          type: string
-          enum:
-          - migration
-          - isolation
-          - incident
-          - billing
-          - legal
-          description: The reason for entering maintenance
-          minLength: 1
-      required:
-      - organization_id
-      - maintenance_reason
-    postApiV4InternalOrgMoverConfirmMaintenanceRequest:
-      type: object
-      properties:
-        organization_id:
-          type: integer
-          description: The ID of the organization
-          nullable: true
-      required:
-      - organization_id
-    postApiV4InternalOrgMoverCancelMaintenanceRequest:
-      type: object
-      properties:
-        organization_id:
-          type: integer
-          description: The ID of the organization
-          nullable: true
-      required:
-      - organization_id
-    postApiV4InternalOrgMoverExitMaintenanceRequest:
-      type: object
-      properties:
-        organization_id:
-          type: integer
-          description: The ID of the organization
-          nullable: true
-      required:
-      - organization_id
     postApiV4ProjectsIdMlMlflowApi20MlflowRegisteredModelsCreateRequest:
       type: object
       properties:
@@ -111065,13 +110609,17 @@ components:
           type: boolean
           description: If `true`, the user sees only one file diff per page. At least
             one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`, `pass_user_identities_to_ci_jwt`,
-            `policy_advanced_editor`, `emoji_skin_tone` must be provided.
+            `policy_advanced_editor`, `emoji_skin_tone`, `mobile_push_working_hours_enabled`,
+            `mobile_push_working_hours_start`, `mobile_push_working_hours_end`, `mobile_push_working_days`,
+            `mobile_push_working_hours_time_zone` must be provided.
           nullable: true
         show_whitespace_in_diffs:
           type: boolean
           description: If `true`, the user sees whitespace changes in diffs. At least
             one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`, `pass_user_identities_to_ci_jwt`,
-            `policy_advanced_editor`, `emoji_skin_tone` must be provided.
+            `policy_advanced_editor`, `emoji_skin_tone`, `mobile_push_working_hours_enabled`,
+            `mobile_push_working_hours_start`, `mobile_push_working_hours_end`, `mobile_push_working_days`,
+            `mobile_push_working_hours_time_zone` must be provided.
           nullable: true
         pass_user_identities_to_ci_jwt:
           type: boolean
@@ -111080,14 +110628,18 @@ components:
             must not be passed to third-party services. For more information, see
             [Token Payload](https://docs.gitlab.com/ci/secrets/id_token_authentication/#token-payload).
             At least one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`,
-            `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`, `emoji_skin_tone`
+            `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`, `emoji_skin_tone`,
+            `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`,
+            `mobile_push_working_hours_end`, `mobile_push_working_days`, `mobile_push_working_hours_time_zone`
             must be provided.
           nullable: true
         policy_advanced_editor:
           type: boolean
           description: If `true`, enables the advanced editor. At least one of `view_diffs_file_by_file`,
             `show_whitespace_in_diffs`, `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`,
-            `emoji_skin_tone` must be provided.
+            `emoji_skin_tone`, `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`,
+            `mobile_push_working_hours_end`, `mobile_push_working_days`, `mobile_push_working_hours_time_zone`
+            must be provided.
           nullable: true
         emoji_skin_tone:
           type: string
@@ -111101,9 +110653,75 @@ components:
           description: Default skin tone for emoji that have skin tone variants. One
             of `default`, `light`, `medium_light`, `medium`, `medium_dark`, or `dark`.
             At least one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`,
-            `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`, `emoji_skin_tone`
+            `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`, `emoji_skin_tone`,
+            `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`,
+            `mobile_push_working_hours_end`, `mobile_push_working_days`, `mobile_push_working_hours_time_zone`
             must be provided.
           nullable: true
+        mobile_push_working_hours_enabled:
+          type: boolean
+          description: If `true`, mobile push notifications are sent only during the
+            working hours below. To-dos created outside them are summarized in one
+            notification when the working hours begin. Setting this to `true` requires
+            a start time, an end time that differs from it, a time zone, and at least
+            one working day. Send them in the same request or set them first. At least
+            one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`, `pass_user_identities_to_ci_jwt`,
+            `policy_advanced_editor`, `emoji_skin_tone`, `mobile_push_working_hours_enabled`,
+            `mobile_push_working_hours_start`, `mobile_push_working_hours_end`, `mobile_push_working_days`,
+            `mobile_push_working_hours_time_zone` must be provided.
+          nullable: true
+        mobile_push_working_hours_start:
+          type: integer
+          minimum: 0
+          maximum: 1439
+          description: Start of the working hours as minutes after midnight, for example
+            `540` for 09:00. At least one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`,
+            `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`, `emoji_skin_tone`,
+            `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`,
+            `mobile_push_working_hours_end`, `mobile_push_working_days`, `mobile_push_working_hours_time_zone`
+            must be provided.
+          nullable: true
+        mobile_push_working_hours_end:
+          type: integer
+          minimum: 0
+          maximum: 1439
+          description: End of the working hours as minutes after midnight. A value
+            before the start means the window crosses midnight. At least one of `view_diffs_file_by_file`,
+            `show_whitespace_in_diffs`, `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`,
+            `emoji_skin_tone`, `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`,
+            `mobile_push_working_hours_end`, `mobile_push_working_days`, `mobile_push_working_hours_time_zone`
+            must be provided.
+          nullable: true
+        mobile_push_working_days:
+          type: array
+          items:
+            type: string
+            enum:
+            - monday
+            - tuesday
+            - wednesday
+            - thursday
+            - friday
+            - saturday
+            - sunday
+          description: Weekdays with working hours, for example `["monday", "tuesday"]`.
+            Defaults to Monday through Friday. The array you send replaces the whole
+            set. At least one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`,
+            `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`, `emoji_skin_tone`,
+            `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`,
+            `mobile_push_working_hours_end`, `mobile_push_working_days`, `mobile_push_working_hours_time_zone`
+            must be provided.
+          nullable: true
+        mobile_push_working_hours_time_zone:
+          type: string
+          description: IANA time zone the working hours are defined in, for example
+            `Europe/Berlin`. At least one of `view_diffs_file_by_file`, `show_whitespace_in_diffs`,
+            `pass_user_identities_to_ci_jwt`, `policy_advanced_editor`, `emoji_skin_tone`,
+            `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`,
+            `mobile_push_working_hours_end`, `mobile_push_working_days`, `mobile_push_working_hours_time_zone`
+            must be provided.
+          nullable: true
+          maxLength: 64
     putApiV4UserStatusRequest:
       type: object
       properties:
@@ -111815,6 +111433,12 @@ components:
             Default: `150`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606714)
             in GitLab 19.6.'
           nullable: true
+        merge_requests_rebase_limit:
+          type: integer
+          description: 'Maximum number of merge request rebases per minute for each
+            user. Default: `30`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606716)
+            in GitLab 19.6.'
+          nullable: true
         metrics_method_call_threshold:
           type: integer
           description: Method call is only tracked if it takes longer than this threshold,
@@ -112092,6 +111716,16 @@ components:
           type: integer
           description: Maximum number of unauthenticated requests per minute across
             all raw paths in a project (default is `800`). Set to `0` to disable throttling.
+          nullable: true
+        release_writes_limit_per_project:
+          type: integer
+          description: Maximum number of release create and update requests per minute
+            for each project. Set to `0` to disable the limit.
+          nullable: true
+        release_writes_limit_per_user:
+          type: integer
+          description: Maximum number of release create and update requests a user
+            can make per minute. Set to `0` to disable the limit.
           nullable: true
         wiki_page_max_content_bytes:
           type: integer
@@ -112409,6 +112043,10 @@ components:
           type: integer
           description: Maximum number of runner job list requests filtered to the
             user's projects allowed per minute for a given user.
+          nullable: true
+        runner_manager_list_limit_per_user:
+          type: integer
+          description: Maximum number of runner managers a user can list per minute.
           nullable: true
         job_retry_limit_per_user_project:
           type: integer
@@ -114424,6 +114062,18 @@ components:
         deactivation_email_additional_text:
           type: string
           nullable: true
+        glql_db_seconds_per_ip_limit:
+          type: string
+          nullable: true
+        glql_db_seconds_per_query_limit:
+          type: string
+          nullable: true
+        glql_db_seconds_per_user_limit:
+          type: string
+          nullable: true
+        glql_duo_db_seconds_per_user_limit:
+          type: string
+          nullable: true
         group_api_limit:
           type: string
           nullable: true
@@ -114445,9 +114095,6 @@ components:
         issuable_csv_import_limit:
           type: string
           nullable: true
-        work_item_move_limit:
-          type: string
-          nullable: true
         label_delete_limit:
           type: string
           nullable: true
@@ -114467,6 +114114,9 @@ components:
           type: string
           nullable: true
         project_repositories_blobs_batch_limit:
+          type: string
+          nullable: true
+        project_repository_commits_api_limit:
           type: string
           nullable: true
         projects_api_limit:
@@ -114503,6 +114153,12 @@ components:
           type: string
           nullable: true
         work_item_hierarchy_add_children_limit:
+          type: string
+          nullable: true
+        work_item_move_limit:
+          type: string
+          nullable: true
+        work_item_update_limit:
           type: string
           nullable: true
         observability_backend_ssl_verification_enabled:
@@ -114779,6 +114435,9 @@ components:
           type: string
           nullable: true
         orbit_dap_enabled_by_default:
+          type: string
+          nullable: true
+        epic_move_list_limit:
           type: string
           nullable: true
         duo_workflow_oauth_application_id:

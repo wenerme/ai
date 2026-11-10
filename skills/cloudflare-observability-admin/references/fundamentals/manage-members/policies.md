@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/policies/og
 
 # Policies
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Policies define what access a given user has to your account or domains, and are constructed out of three parts:
 
@@ -41,12 +41,11 @@ Cloudflare supports assigning permissions to members both directly and through [
 
 Note
 
-To understand a member’s full access, check both the **Members** and **User Groups** views:
+To understand a member's full access, open that member's details from the **Members** page.
 
-- The **Members** view shows only the permissions explicitly assigned to the user.
-- Permissions inherited through [User Groups](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/) are not shown on the Members page. To see these, go to the Groups tab, find the groups the user belongs to, and review the policies assigned to each group.
+The member details view shows all permission policies associated with the member, including policies inherited through [User Groups](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/).
 
-Cloudflare is actively working on improvements to consolidate this view in a future update.
+Use the **Groups** tab when you need to review or change the policies assigned to a group itself.
 
 Was this helpful?
 
@@ -57,5 +56,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/policies/#page","headline":"Policies","description":"Understand how Cloudflare account member policies combine actors, roles, and scopes to define access permissions.","url":"https://developers.cloudflare.com/fundamentals/manage-members/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/policies/og.png?v=74e1a77aa43578d5","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/policies/#page","headline":"Policies","description":"Understand how Cloudflare account member policies combine actors, roles, and scopes to define access permissions.","url":"https://developers.cloudflare.com/fundamentals/manage-members/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/policies/og.png?v=74e1a77aa43578d5","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

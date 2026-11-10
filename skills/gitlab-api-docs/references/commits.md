@@ -29,8 +29,20 @@ For more information, see [issue 389582](https://gitlab.com/gitlab-org/gitlab/-/
 ## List repository commits
 
 - `follow` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225733) in GitLab 18.10.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267664) in GitLab 19.6 [with a flag](../administration/feature_flags/_index.md) named `rate_limit_project_repository_commits_api`. Disabled by default.
 
 Get a list of repository commits in a project.
+
+When the `rate_limit_project_repository_commits_api` feature flag is enabled,
+requests that use the `with_stats` or `all` parameter are rate limited.
+A request with `with_stats` counts as the number of commits returned, and a request that
+uses the `all` parameter counts as `3` more.
+The default limit is 5,000 every minute
+for each user, or for each IP address for unauthenticated requests.
+To change the limit, use the `project_repository_commits_api_limit`
+[application setting](settings.md#available-settings).
+Set the limit to `0` to disable it.
+Requests over the limit return `429 Too Many Requests`.
 
 ```plaintext
 GET /projects/:id/repository/commits
@@ -913,6 +925,7 @@ The commit status API for use with GitLab.
 ### List commit statuses
 
 - `pipeline_id`, `order_by`, and `sort` fields [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/176142) in GitLab 17.9.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268959) in GitLab 19.6 to sort statuses of the same pipeline by `id` in the `sort` direction when `order_by` is `pipeline_id`.
 
 List the statuses of a commit in a project.
 The pagination parameters `page` and `per_page` can be used to restrict the list of references.
@@ -927,7 +940,7 @@ GET /projects/:id/repository/commits/:sha/statuses
 | `sha`         | string            | Yes      | Hash of the commit. |
 | `all`         | boolean           | No       | If `true`, include all statuses instead of latest only. Default is `false`. |
 | `name`        | string            | No       | Filter statuses by [job name](../ci/yaml/_index.md#job-keywords). For example, `bundler:audit`. |
-| `order_by`    | string            | No       | Values for sorting statuses. Valid values are `id` and `pipeline_id`. Default is `id`. |
+| `order_by`    | string            | No       | Values for sorting statuses. Valid values are `id` and `pipeline_id`. Default is `id`. With `pipeline_id`, statuses of the same pipeline are also sorted by `id` in the `sort` direction. |
 | `pipeline_id` | integer           | No       | Filter statuses by pipeline ID. For example, `1234`. |
 | `ref`         | string            | No       | Name of the branch or tag. Default is the default branch. |
 | `sort`        | string            | No       | Sort statuses in ascending or descending order. Valid values are `asc` and `desc`. Default is `asc`. |

@@ -11582,6 +11582,8 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 ## `releaseCreate`
 
+Creates a release. Release creates and updates are rate limited per project (`release_writes_limit_per_project` application setting) and per user (`release_writes_limit_per_user` application setting). Requests over a limit are blocked when its feature flag (`rate_limit_release_writes_per_project` or `rate_limit_release_writes_per_user`) is enabled, and only logged otherwise.
+
 **Input type:** `ReleaseCreateInput`
 
 ### `releaseCreate` arguments {.no_toc}
@@ -11624,6 +11626,8 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `release` | [`Release`](objects.md#release) | Deleted release. |
 
 ## `releaseUpdate`
+
+Updates a release. Release creates and updates are rate limited per project (`release_writes_limit_per_project` application setting) and per user (`release_writes_limit_per_user` application setting). Requests over a limit are blocked when its feature flag (`rate_limit_release_writes_per_project` or `rate_limit_release_writes_per_user`) is enabled, and only logged otherwise.
 
 **Input type:** `ReleaseUpdateInput`
 

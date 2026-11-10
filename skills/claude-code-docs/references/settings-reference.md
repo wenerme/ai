@@ -3193,7 +3193,7 @@ See [Subagent status lines](https://code.claude.com/docs/en/statusline.md#subage
 
 ### `syntaxHighlightingDisabled`
 
-Claude Code colors code by language in the diffs, code blocks, and file previews it shows in the terminal, with its built-in highlighter; no plugin or language server is involved. Set this key to `true` to show them as plain text instead, for example if the colors clash with your terminal theme or slow a screen reader.
+Claude Code colors code by language in the diffs, code blocks, and file previews it shows in the terminal, with its built-in highlighter. Set this key to `true` to show them as plain text instead, for example if the colors clash with your terminal theme or slow a screen reader.
 
 * **Scope**: [`Any file`](#scopes)
 * **Type**: Boolean

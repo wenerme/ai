@@ -349,6 +349,12 @@ weeklyBugsBySeverity:
 
 ###### `query.group_by`
 
+- 180-day limit for charts without `query.group_by` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267465) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `insights_query_limits`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 Use `query.group_by` to define the X-axis of the chart.
 
 **Supported values**:
@@ -357,7 +363,16 @@ Use `query.group_by` to define the X-axis of the chart.
 - `week`: Group data per week.
 - `month`: Group data per month.
 
+Charts without `query.group_by` include only issuables created in the last 180 days.
+This limit applies to every `query.params.issuable_state`, including `closed` and `merged`.
+
 ###### `query.period_limit`
+
+- Maximum values [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267465) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `insights_query_limits`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 Use `query.period_limit` to define how far back in time to query issuables (using the `query.period_field`).
 
@@ -366,12 +381,14 @@ defined `query.group_by: 'day'`, and `query.period_limit: 365`, the chart displa
 
 By default, default values are applied depending on the `query.group_by`
 you defined.
+The maximum value is three years.
+If `query.period_limit` is greater than the maximum, the chart displays an error.
 
-| `query.group_by` | Default value |
-| ---------------- | ------------- |
-| `day`            | 30            |
-| `week`           | 4             |
-| `month`          | 12            |
+| `query.group_by` | Default value | Maximum value |
+| ---------------- | ------------- | ------------- |
+| `day`            | 30            | 1095          |
+| `week`           | 12            | 156           |
+| `month`          | 12            | 36            |
 
 ##### `query.period_field`
 
@@ -472,8 +489,16 @@ Use `projects` to limit where issuables are queried from:
 
 ##### `projects.only`
 
+- Limit of 100 projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267465) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `insights_query_limits`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 Use `projects.only` to specify the projects from which issuables
 are queried.
+You can specify up to 100 projects.
+If you specify more, the chart displays an error.
 
 Projects listed in this parameter are ignored when:
 

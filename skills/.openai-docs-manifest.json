@@ -1666,10 +1666,10 @@
   "openai-docs/guides/voice-sip.md": {
     "url": "https://developers.openai.com/api/docs/guides/voice-sip.md",
     "skill": "openai-docs",
-    "etag": "W/\"ec7ea62ea576915c59a9cc164a12f2bb\"",
-    "lastModified": "Wed, 04 Nov 2026 06:02:35 GMT",
-    "size": 31278,
-    "updatedAt": "2026-11-04T06:04:30.122Z"
+    "etag": "W/\"fa94a573c349db0b266b26a97f429c0c\"",
+    "lastModified": "Tue, 10 Nov 2026 17:46:58 GMT",
+    "size": 31832,
+    "updatedAt": "2026-11-10T17:46:58.335Z"
   },
   "openai-docs/guides/voice-websockets.md": {
     "url": "https://developers.openai.com/api/docs/guides/voice-websockets.md",
@@ -3484,10 +3484,10 @@
   "openai-api/beta.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/index.md",
     "skill": "openai-api",
-    "etag": "W/\"deed631a9e51d7ad9fc1e0776b18cd12\"",
-    "lastModified": "Mon, 09 Nov 2026 06:02:39 GMT",
-    "size": 9193244,
-    "updatedAt": "2026-11-09T06:02:39.516Z"
+    "etag": "W/\"4d4fcd3d36143bb08694eb29be675ae9\"",
+    "lastModified": "Tue, 10 Nov 2026 17:47:49 GMT",
+    "size": 9193132,
+    "updatedAt": "2026-11-10T17:47:49.499Z"
   },
   "openai-api/beta/agents.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/index.md",
@@ -4220,10 +4220,10 @@
   "openai-api/beta/responses.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/responses/index.md",
     "skill": "openai-api",
-    "etag": "W/\"67e1f092dfb4c6610a0773fca1c961b5\"",
-    "lastModified": "Mon, 09 Nov 2026 06:03:02 GMT",
-    "size": 6970879,
-    "updatedAt": "2026-11-09T06:03:02.658Z"
+    "etag": "W/\"7f91b1359d64d13c15d654960f26c4ad\"",
+    "lastModified": "Tue, 10 Nov 2026 17:48:10 GMT",
+    "size": 6970767,
+    "updatedAt": "2026-11-10T17:48:10.781Z"
   },
   "openai-api/beta/responses/cancel.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/responses/methods/cancel/index.md",
@@ -4236,10 +4236,10 @@
   "openai-api/beta/responses/compact.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/responses/methods/compact/index.md",
     "skill": "openai-api",
-    "etag": "W/\"31e7bcdff8bcf140a2540b30e967e6e7\"",
-    "lastModified": "Mon, 09 Nov 2026 05:51:15 GMT",
-    "size": 323838,
-    "updatedAt": "2026-11-09T06:03:03.143Z"
+    "etag": "W/\"c580c7a04a42fdcb4457f09b9f8ffa5d\"",
+    "lastModified": "Tue, 10 Nov 2026 17:48:11 GMT",
+    "size": 323726,
+    "updatedAt": "2026-11-10T17:48:11.276Z"
   },
   "openai-api/beta/responses/connect.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/responses/methods/connect/index.md",
@@ -5500,10 +5500,10 @@
   "openai-api/responses.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/index.md",
     "skill": "openai-api",
-    "etag": "W/\"536e927550005431c1771eb7216e7009\"",
-    "lastModified": "Mon, 09 Nov 2026 05:19:53 GMT",
-    "size": 5714119,
-    "updatedAt": "2026-11-09T06:03:48.004Z"
+    "etag": "W/\"c14ff90ef0c93e8e9cbe1c39b559758b\"",
+    "lastModified": "Tue, 10 Nov 2026 17:48:49 GMT",
+    "size": 5714007,
+    "updatedAt": "2026-11-10T17:48:50.057Z"
   },
   "openai-api/responses/cancel.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/methods/cancel/index.md",
@@ -5516,10 +5516,10 @@
   "openai-api/responses/compact.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/methods/compact/index.md",
     "skill": "openai-api",
-    "etag": "W/\"9f6f8db9d8efd19b56133f6145760d89\"",
-    "lastModified": "Mon, 09 Nov 2026 05:19:53 GMT",
-    "size": 291815,
-    "updatedAt": "2026-11-09T06:03:48.482Z"
+    "etag": "W/\"40e96effb3c2f6606a352cc493c84cd0\"",
+    "lastModified": "Tue, 10 Nov 2026 17:48:50 GMT",
+    "size": 291703,
+    "updatedAt": "2026-11-10T17:48:50.579Z"
   },
   "openai-api/responses/connect.md": {
     "url": "https://developers.openai.com/api/reference/resources/responses/methods/connect/index.md",

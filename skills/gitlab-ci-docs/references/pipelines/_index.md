@@ -576,7 +576,7 @@ the deletion does not occur for seven days. During this period, any pipeline sub
 continue to run with the user's original permissions. To prevent unauthorized pipeline executions,
 immediately update pipeline subscription settings for the deleted user.
 
-### Pre-filled variables do not show up in New Pipeline page
+### Pre-filled variables do not show up in the New pipeline page
 
 If the predefined variables for a pipeline are [defined in a separate file](../yaml/includes.md),
 they might not display in the  page. You must have permission to

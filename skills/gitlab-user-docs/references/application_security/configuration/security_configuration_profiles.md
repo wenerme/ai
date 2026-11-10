@@ -268,10 +268,10 @@ Prerequisites:
 
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634364) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `skillguard_analyzer`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634364) in GitLab 19.6 [with feature flags](../../../administration/feature_flags/_index.md) named `skillguard_analyzer` and `skillguard_scan_flow`. Disabled by default.
 
 > [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the
+> The availability of this feature is controlled by feature flags. For more information, see the
 > history.
 
 The SkillGuard profile uses an AI agent to find security risks in the AI agent skill files in your
@@ -279,11 +279,16 @@ repository, such as `SKILL.md`, `CLAUDE.md`, and `AGENTS.md`. It reports risks l
 credential exfiltration, and unsafe command execution. When you apply the profile to a project, the
 scan turns on for that project.
 
-The scan runs when a merge request's head pipeline succeeds. It does not run on default branch
-pipelines. If the project has no CI/CD pipelines, no merge request scans run.
+The scan runs when a default branch pipeline succeeds.
+If the project has no CI/CD pipelines, no scans run.
 
 SkillGuard publishes its findings as a SAST report, so they appear in the vulnerability report
 alongside other scanners' findings.
+
+Prerequisites:
+
+- Turn on **Allow flow execution**, **Allow foundational flows**, and the **SkillGuard Security Scan** flow
+  [for the top-level group](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
 
 ## Custom profiles
 

@@ -468,6 +468,10 @@ window, whichever comes first.
 GitLab administrators can
 [change this default](../../administration/settings/account_and_limit_settings.md#customize-the-default-session-duration).
 
+On GitLab Self-Managed and GitLab Dedicated, you might be prompted to sign in again after your
+session expires. For more information, see
+[session duration](../../administration/settings/account_and_limit_settings.md#session-duration).
+
 ### Stay signed in indefinitely
 
 To remain signed in indefinitely, select the **Remember me** checkbox on the GitLab sign-in page.
