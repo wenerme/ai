@@ -48,7 +48,7 @@ returned.
 
   - `gte: optional string`
 
-    Return only Artifacts updated at or after this time (RFC 3339 format). Time filters match an eventually-consistent index and Artifacts published before this field was recorded never match — omit the time filter for compliance-complete enumeration. For incremental export, apply a generous overlap margin between windows and dedupe by `id`: adjacent tiling silently misses items whose index update lagged their publish.
+    Return only Artifacts updated at or after this time (RFC 3339 format). Time filters match an eventually-consistent index and Artifacts published before this field was recorded never match — omit the time filter for compliance-complete enumeration. For incremental export, apply a generous overlap margin between windows and dedupe by `id`: adjacent tiling silently misses items whose index update lagged their publish. Folder changes, such as sharing or unsharing a folder or moving an Artifact or folder, can change `read_mode` without changing `updated_at`, so time filters do not pick up those changes. To see an Artifact's current `read_mode`, omit the time filter.
 
     format: date-time
 
@@ -195,12 +195,12 @@ curl https://api.anthropic.com/v1/compliance/apps/code/artifacts \
       "id": "cart_01Tu9VwXyZaBcDeFgHiJkLmN",
       "artifact_type": "code",
       "organization_uuid": "a1b2c3d4-e5f6-4789-a012-3456789abcde",
-      "owner_user_id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+      "owner_user_id": "user_01WxYzAbCdEfGhJkMnPqRsTu",
       "published_version_id": "1741803761-9f3a",
       "read_mode": "org",
       "updated_at": "2025-03-14T09:05:17.456789Z",
       "user": {
-        "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+        "id": "user_01WxYzAbCdEfGhJkMnPqRsTu",
         "email_address": "jane.doe@example.com"
       },
       "versions": [

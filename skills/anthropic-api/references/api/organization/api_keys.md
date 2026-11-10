@@ -204,7 +204,7 @@ curl https://api.anthropic.com/v1/organizations/api_keys \
       "id": "apikey_01Rj2N8SVvo6BePZj99NhmiT",
       "created_at": "2024-10-30T23:58:27.427722Z",
       "created_by": {
-        "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+        "id": "user_01WxYzAbCdEfGhJkMnPqRsTu",
         "type": "user"
       },
       "expires_at": "2024-10-30T23:58:27.427722Z",
@@ -212,7 +212,7 @@ curl https://api.anthropic.com/v1/organizations/api_keys \
       "partial_key_hint": "sk-ant-api03-R2D...igAA",
       "principal": {
         "type": "user_actor",
-        "user_id": "user_01WCz1FkmYMm4gnmykNKUu3Q"
+        "user_id": "user_01WxYzAbCdEfGhJkMnPqRsTu"
       },
       "scope": {
         "type": "workspace",
@@ -381,7 +381,7 @@ curl https://api.anthropic.com/v1/organizations/api_keys/$API_KEY_ID \
   "id": "apikey_01Rj2N8SVvo6BePZj99NhmiT",
   "created_at": "2024-10-30T23:58:27.427722Z",
   "created_by": {
-    "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+    "id": "user_01WxYzAbCdEfGhJkMnPqRsTu",
     "type": "user"
   },
   "expires_at": "2024-10-30T23:58:27.427722Z",
@@ -389,7 +389,7 @@ curl https://api.anthropic.com/v1/organizations/api_keys/$API_KEY_ID \
   "partial_key_hint": "sk-ant-api03-R2D...igAA",
   "principal": {
     "type": "user_actor",
-    "user_id": "user_01WCz1FkmYMm4gnmykNKUu3Q"
+    "user_id": "user_01WxYzAbCdEfGhJkMnPqRsTu"
   },
   "scope": {
     "type": "workspace",
@@ -573,7 +573,7 @@ curl https://api.anthropic.com/v1/organizations/api_keys/$API_KEY_ID \
   "id": "apikey_01Rj2N8SVvo6BePZj99NhmiT",
   "created_at": "2024-10-30T23:58:27.427722Z",
   "created_by": {
-    "id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+    "id": "user_01WxYzAbCdEfGhJkMnPqRsTu",
     "type": "user"
   },
   "expires_at": "2024-10-30T23:58:27.427722Z",
@@ -581,7 +581,7 @@ curl https://api.anthropic.com/v1/organizations/api_keys/$API_KEY_ID \
   "partial_key_hint": "sk-ant-api03-R2D...igAA",
   "principal": {
     "type": "user_actor",
-    "user_id": "user_01WCz1FkmYMm4gnmykNKUu3Q"
+    "user_id": "user_01WxYzAbCdEfGhJkMnPqRsTu"
   },
   "scope": {
     "type": "workspace",
@@ -779,3 +779,19 @@ curl https://api.anthropic.com/v1/organizations/api_keys/$API_KEY_ID \
   - `workspace_id: string`
 
     ID of the Workspace the API key belongs to, including when it is the organization's default Workspace.
+
+### Org API Key Limit Exceeded Error Details
+
+- `OrgAPIKeyLimitExceededErrorDetails object`
+
+  The organization has reached its limit of active API keys.
+
+  - `error_code: "org_api_key_limit_exceeded"`
+
+### Workspace API Key Limit Exceeded Error Details
+
+- `WorkspaceAPIKeyLimitExceededErrorDetails object`
+
+  The workspace has reached its limit of active API keys.
+
+  - `error_code: "workspace_api_key_limit_exceeded"`

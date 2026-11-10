@@ -1,7 +1,7 @@
 ---
 description: Explore an experimental harness that edits TypeScript in a durable Workspace and runs activated revisions in Dynamic Workers.
-title: Self-modifying harness
-image: https://developers.cloudflare.com/agents/harnesses/self-modifying/og.png?v=bebd9e4ff082fc1b
+title: Self-modifying
+image: https://developers.cloudflare.com/agents/harnesses/self-modifying/og.png?v=e9345597849fc1cb
 ---
 
 [Skip to content](#main-content)
@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/agents/harnesses/self-modifying/og.png?
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Self-modifying harness
+# Self-modifying
 
 Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/self-modifying/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
@@ -116,5 +116,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/self-modifying/#page","headline":"Self-modifying harness","description":"Explore an experimental harness that edits TypeScript in a durable Workspace and runs activated revisions in Dynamic Workers.","url":"https://developers.cloudflare.com/agents/harnesses/self-modifying/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/self-modifying/og.png?v=bebd9e4ff082fc1b","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/self-modifying/#page","headline":"Self-modifying","description":"Explore an experimental harness that edits TypeScript in a durable Workspace and runs activated revisions in Dynamic Workers.","url":"https://developers.cloudflare.com/agents/harnesses/self-modifying/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/self-modifying/og.png?v=e9345597849fc1cb","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

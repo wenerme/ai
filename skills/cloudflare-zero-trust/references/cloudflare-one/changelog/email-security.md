@@ -16,6 +16,19 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml)
 
+## 2026-11-09
+
+
+**Improved investigation search for Email security**
+
+Email security now has a unified search bar for investigations. It replaces the Email Screener side modal and makes searches easier to refine.
+
+Search with keywords or `field:value` filters. Autocomplete suggests filters and values as you type. Add terms and press Enter to refine results, or select **From**, **To**, **Disposition**, **Status**, or **Threat type** values in results. Narrow results with a date preset or custom range.
+
+![The Email Security investigation search bar displays suggestions for disposition, status, threat type, sender, recipient, and other filters](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1566,height=908,format=webp/_astro/new_email_search_investigation.BHYt43bU.png)
+
+This feature is available to all Email security customers.
+
 ## 2026-11-05
 
 

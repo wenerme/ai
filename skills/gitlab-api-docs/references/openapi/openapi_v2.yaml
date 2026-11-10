@@ -50230,6 +50230,10 @@ definitions:
         type: boolean
       admin_web_hook:
         type: boolean
+      pull_container_image:
+        type: boolean
+      push_container_image:
+        type: boolean
       read_agent_artifacts:
         type: boolean
       read_compliance_dashboard:
@@ -50295,6 +50299,8 @@ definitions:
     - admin_terraform_state
     - admin_vulnerability
     - admin_web_hook
+    - pull_container_image
+    - push_container_image
     - read_agent_artifacts
     - read_compliance_dashboard
     - read_security_scan_profiles

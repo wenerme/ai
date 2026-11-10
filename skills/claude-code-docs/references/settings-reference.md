@@ -147,6 +147,7 @@ Every key below links to its entry. Scope lists the [files](https://code.claude.
 | [`permissions.blockWritesOutsideWorkingDirectories`](#permissions-blockwritesoutsideworkingdirectories) | Make the `Write`, `Edit`, and `NotebookEdit` tools refuse paths outside the [working directories](https://code.claude.com/docs/en/permissions.md#working-directories) in every permission mode, apart from [some of Claude Code's own files](#what-the-write-block-refuses-and-what-stays-writable) | Permission settings | Any file |
 | [`permissions.defaultMode`](#permissions-defaultmode) | Set the default [permission mode](https://code.claude.com/docs/en/permission-modes.md#which-mode-a-session-starts-in) for new sessions | Permission settings | Any file |
 | [`permissions.deny`](#permissions-deny) | Block listed [tool uses](https://code.claude.com/docs/en/permissions.md#permission-rule-syntax), including reads of files that hold secrets | Permission settings | Any file |
+| [`permissions.denyInsteadOfPrompting`](#permissions-denyinsteadofprompting) | Deny tool calls that would wait on a [permission prompt](https://code.claude.com/docs/en/permissions.md#permission-system), so a session nobody is watching keeps working | Permission settings | User or managed |
 | [`permissions.disableBypassPermissionsMode`](#permissions-disablebypasspermissionsmode) | Prevent anyone from entering [bypassPermissions mode](https://code.claude.com/docs/en/permission-modes.md#skip-all-checks-with-bypasspermissions-mode) | Permission settings | Any file |
 | [`plansDirectory`](#plansdirectory) | Choose where [plan mode](https://code.claude.com/docs/en/permission-modes.md#analyze-before-you-edit-with-plan-mode) writes plan files | Memory and context | Any file |
 | [`pluginConfigs`](#pluginconfigs) | Store the answers you gave a [plugin](https://code.claude.com/docs/en/plugins/overview.md)'s configuration dialog | Plugins and skills | User or managed |
@@ -904,7 +905,7 @@ Remove [auto mode](https://code.claude.com/docs/en/permission-modes.md#eliminate
 Control which tools Claude can use without asking, which ones prompt, and which ones are blocked. Also set the default [permission mode](https://code.claude.com/docs/en/permission-modes.md) for new sessions. Every `permissions.*` key below nests under this object.
 
 * **Scope**: [`Any file`](#scopes)
-* **Type**: object with `allow`, `ask`, `deny`, `additionalDirectories`, `blockReadsOutsideWorkingDirectories`, `blockWritesOutsideWorkingDirectories`, `defaultMode`, `disableBypassPermissionsMode`, and `disableAutoMode`
+* **Type**: object with `allow`, `ask`, `deny`, `additionalDirectories`, `blockReadsOutsideWorkingDirectories`, `blockWritesOutsideWorkingDirectories`, `defaultMode`, `denyInsteadOfPrompting`, `disableBypassPermissionsMode`, and `disableAutoMode`
 * **Default**: unset
 
 This example approves `npm run` commands without asking, prompts before `git push`, blocks reads of `.env`, and starts sessions in `acceptEdits`:
@@ -1162,6 +1163,66 @@ Set the default [permission mode](https://code.claude.com/docs/en/permission-mod
 ```
 
 Permission rules layer on top of every mode: `deny` rules block in every mode, including `bypassPermissions`. See [Permission modes](https://code.claude.com/docs/en/permission-modes.md). In cloud sessions, Claude Code honors only `acceptEdits`, `plan`, `default`, and `auto` from this key. For conversations the VS Code extension starts, see [which setting the extension reads for the starting permission mode](https://code.claude.com/docs/en/permission-modes.md#switch-permission-modes).
+
+### `permissions.denyInsteadOfPrompting`
+
+Set this to `true` to keep a session running when nobody is there to answer a permission prompt. Claude Code denies a tool call that would otherwise wait on a prompt, and the turn continues. Requires Claude Code v2.1.319 or later.
+
+A call goes ahead if an allow rule, your [permission mode](https://code.claude.com/docs/en/permission-modes.md), or auto mode's classifier approves it. To allow most calls that would otherwise prompt, answer from a [`PermissionRequest` hook](https://code.claude.com/docs/en/hooks#permissionrequest).
+
+* **Scope**: [`User or managed`](#scopes), and `--settings`. A repository can't set it for you.
+* **Type**: Boolean
+  * `true`: Claude Code denies calls that would otherwise prompt
+  * `false`: the same as unset; calls are still denied if another of these sources sets `true`
+* **Default**: unset, so a call that needs approval prompts you
+
+In `~/.claude/settings.json`, this example starts sessions in auto mode and denies whatever would still fall back to a prompt:
+
+```json settings.json theme={null}
+{
+  "permissions": {
+    "defaultMode": "auto",
+    "denyInsteadOfPrompting": true
+  }
+}
+```
+
+The key applies in `-p` runs, interactive terminal sessions, the [VS Code extension](https://code.claude.com/docs/en/vs-code.md), local sessions in the [Desktop app](https://code.claude.com/docs/en/desktop.md), [subagents](https://code.claude.com/docs/en/sub-agents.md), and [agent teams](https://code.claude.com/docs/en/agent-teams.md). To deny what would prompt in a single [non-interactive](https://code.claude.com/docs/en/headless.md) run instead, pass [`--permission-prompts none`](https://code.claude.com/docs/en/headless#turn-off-permission-prompts-in-unattended-runs) with `-p`.
+
+#### What else `denyInsteadOfPrompting` stops
+
+With the setting on, Claude Code also stops these requests for an answer:
+
+* **Question and plan tools**: Claude Code leaves out [`AskUserQuestion`](https://code.claude.com/docs/en/tools-reference#askuserquestion-tool-behavior), `EnterPlanMode`, and `ExitPlanMode`, so a session in plan mode can't leave it on its own. A teammate in an agent team keeps `EnterPlanMode` and `ExitPlanMode`
+* **MCP elicitation**: Claude Code cancels an [elicitation request](https://code.claude.com/docs/en/mcp.md#respond-to-mcp-elicitation-requests) unless an [`Elicitation` hook](https://code.claude.com/docs/en/hooks#elicitation) answers it
+* **Permission hosts**: Claude Code doesn't ask your [`canUseTool` callback](https://code.claude.com/docs/en/agent-sdk/user-input) or [`--permission-prompt-tool`](https://code.claude.com/docs/en/cli-reference#cli-flags). To approve calls from code, answer from a `PermissionRequest` hook. Some calls are denied before any hook is asked, such as a [critical-path removal](https://code.claude.com/docs/en/permission-modes.md#critical-path-removals-in-each-permission-mode) in `auto` mode that no ask rule covers.
+* **Classifier billing notice**: where the [notice about billed classifier requests](https://code.claude.com/docs/en/auto-mode-classifier-billing.md#actions-denied-in-place-of-the-notice) would open a dialog, Claude Code doesn't show it and denies the actions that need those requests
+
+A session can still wait on the [workspace trust dialog](https://code.claude.com/docs/en/permissions.md#project-allow-rules-and-workspace-trust) and on [project MCP server approval](https://code.claude.com/docs/en/mcp.md#project-server-approvals-and-workspace-trust). Answer both before you leave the session running.
+
+#### Messages from `denyInsteadOfPrompting`
+
+These messages report refused calls. They aren't prompts, so nothing waits for your answer.
+
+The denial Claude reads can open with this text:
+
+```text theme={null}
+Permission for this tool use was denied. It requires approval, and this session has no approval surface
+```
+
+In `stream-json` output, [the runs that emit a `permission_denied` message](https://code.claude.com/docs/en/agent-sdk/typescript#sdkpermissiondeniedmessage) report this `decision_reason`:
+
+```text theme={null}
+no approval surface in this session; permission request denied automatically
+```
+
+In auto mode with the setting on, the turn ends after 20 calls in a row that the classifier blocked or a [safety check refused](https://code.claude.com/docs/en/errors.md#auto-mode-cannot-determine-the-safety-of-an-action), and you see this message:
+
+```text theme={null}
+20 actions were refused and no work went ahead in between, so Claude stopped.
+```
+
+A `-p` run reports that turn as `error_during_execution`.
 
 ### `permissions.disableBypassPermissionsMode`
 
@@ -4216,17 +4277,15 @@ This example enables two plugins from the `team-tools` marketplace and disables 
 Each scope serves a different purpose:
 
 * **User settings**: your personal plugin preferences
-* **Project settings**: plugins shared with everyone in the repository
+* **Project settings**: plugins turned on for everyone in the repository. This doesn't install them, so each user [installs them](https://code.claude.com/docs/en/plugins/org.md#require-plugins-per-repository).
 * **Local settings**: per-machine overrides, gitignored when Claude Code saves a setting there
 * **Managed settings**: organization-wide policy. A plugin set to `false` here is blocked from installation at every scope and hidden from the marketplace
 
 Project settings take precedence over user settings, so setting a plugin to `false` in `~/.claude/settings.json` doesn't disable a plugin that the project's `.claude/settings.json` enables. To opt out of a project-enabled plugin on your machine, set it to `false` in `.claude/settings.local.json` instead. Plugins force-enabled by managed settings can't be disabled this way, since managed settings override local settings.
 
-Enabling a plugin from an external source such as a GitHub repository or npm package in a project's `.claude/settings.json` doesn't install it for other people. On every path that loads plugins, Claude Code reports the plugin as not installed until each user [installs it themselves](https://code.claude.com/docs/en/plugins/org.md#require-plugins-per-repository).
-
 ### `extraKnownMarketplaces`
 
-Register additional plugin marketplaces by name, so that people who open the repository, or everyone your managed settings reach, get the marketplace without adding it themselves. Claude Code registers each marketplace it doesn't already know. Whether a plugin that [`enabledPlugins`](#enabledplugins) names from it installs depends on the plugin's source and which file enables it; that entry has the rules.
+Register additional plugin marketplaces by name, so that people who open the repository, or everyone your managed settings reach, get the marketplace without adding it themselves. Claude Code registers each marketplace it doesn't already know. Whether a plugin that [`enabledPlugins`](#enabledplugins) names from it installs depends on the plugin's source and which file enables it; [Enabled in project settings but not installed](https://code.claude.com/docs/en/plugins/loading.md#enabled-in-project-settings-but-not-installed) has the rules.
 
 * **Scope**: [`Any file`](#scopes). Claude Code honors entries in a repository's `.claude/settings.json` or `.claude/settings.local.json` only after you accept the workspace trust dialog for that folder; in a folder you haven't trusted, including a `-p` run there, it ignores them without a message.
 * **Type**: object mapping a marketplace name to an object with a `source` object and an optional `autoUpdate` Boolean
@@ -4354,7 +4413,7 @@ Claude Code ignores project and local entries because it substitutes these value
 
 List the managed plugins whose [mods](https://code.claude.com/docs/en/plugins/mods/overview.md) run before every mod a user installs, in the listed order. When you set this key in managed settings, name `sec-default@builtin` in the list to keep the built-in guard. In managed settings, Claude Code skips an id whose plugin doesn't count as your organization's. See [Install your organization's mods and set the order](https://code.claude.com/docs/en/plugins/mods/admin.md#install-your-organizations-mods) for those conditions and for how the two ordering keys work together.
 
-* **Scope**: [`User or managed`](#scopes). Claude Code reads the key from managed settings. It reads the key from user settings only on a machine with no managed settings, in a session whose credential isn't a Team or Enterprise `/login`. It ignores the key in project and local settings and in a `--settings` file.
+* **Scope**: [`User or managed`](#scopes). Claude Code reads the key from managed settings. It reads the key from user settings only on a machine with no managed settings or `managed-mcp.json` file, in a session whose credential isn't a Team or Enterprise `/login`. It ignores the key in project and local settings and in a `--settings` file.
 * **Type**: array of `plugin-name@marketplace-name` strings
 * **Default**: unset
 
@@ -4374,7 +4433,7 @@ List the managed plugins whose [mods](https://code.claude.com/docs/en/plugins/mo
 
 List the managed plugins whose [mods](https://code.claude.com/docs/en/plugins/mods/overview.md) run after every mod a user installs, in the listed order. An id listed in both `prependPlugins` and `appendPlugins` is prepended. In managed settings, Claude Code skips an id whose plugin doesn't [count as your organization's](https://code.claude.com/docs/en/plugins/mods/admin.md#install-your-organizations-mods).
 
-* **Scope**: [`User or managed`](#scopes). Claude Code reads the key from managed settings. It reads the key from user settings only on a machine with no managed settings, in a session whose credential isn't a Team or Enterprise `/login`. It ignores the key in project and local settings and in a `--settings` file.
+* **Scope**: [`User or managed`](#scopes). Claude Code reads the key from managed settings. It reads the key from user settings only on a machine with no managed settings or `managed-mcp.json` file, in a session whose credential isn't a Team or Enterprise `/login`. It ignores the key in project and local settings and in a `--settings` file.
 * **Type**: array of `plugin-name@marketplace-name` strings
 * **Default**: unset
 
@@ -4612,7 +4671,7 @@ A plugin's own `settings.json` can also supply this key; see [Ship default setti
 
 ### `crossSessionInbound`
 
-Choose what this session does with [messages arriving from your other Claude Code sessions](https://code.claude.com/docs/en/cross-session-messaging.md#control-inbound-messages). When no value applies, Claude Code decides per message from the two sessions' permission-mode classes. Requires Claude Code v2.1.224 or later.
+Choose what this session does with [messages arriving from your other Claude Code sessions](https://code.claude.com/docs/en/cross-session-messaging.md#control-inbound-messages). When no value applies, Claude Code decides per message from the two sessions' permission-mode classes.
 
 * **Scope**: [`Any file`](#scopes). A project or local value applies only when it's stricter than the value managed settings, the `--settings` flag, or user settings give.
 * **Type**: string, one of:

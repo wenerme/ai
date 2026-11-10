@@ -9,10 +9,7 @@ Use this API to interact with [to-do items](../user/todos.md).
 
 ## List all to-do items
 
-- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_list_api_rate_limit`. Disabled by default.
-
-> [!flag]
-> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) in GitLab 19.6.
 
 Lists all to-do items. When no filter is applied, it
 returns all pending to-do items for the current user. Different filters allow the

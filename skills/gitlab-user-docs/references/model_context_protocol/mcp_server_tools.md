@@ -1835,6 +1835,7 @@ Examples:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605852) in GitLab 19.4.
 - `labels`, `add_labels`, `remove_labels`, `milestone_id`, and `milestone` parameters [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/622711) in GitLab 19.4.
+- `description_edits` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635910) in GitLab 19.6.
 
 This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1852,6 +1853,7 @@ one. Send only the fields you intend to set, and omit the rest. The tool names
 | `title`            | string            | No       | Title of the work item. Required when creating a work item. |
 | `type_name`        | string            | No       | Work item type name, for example `Issue`, `Task`, or `Epic`. Required when creating a work item. Valid types depend on the namespace and license. |
 | `description`      | string            | No       | Description in GitLab Flavored Markdown. Maximum 1,048,576 characters. |
+| `description_edits`   | array of objects | No       | Update only. Replacements applied to the current description in order, each with `old_str` and `new_str`. Each `old_str` must match exactly once. Cannot be used with `description`. Maximum 100 items. |
 | `assignee_ids`     | array of integers | No       | User IDs to assign to the work item. Maximum 100 items. |
 | `label_ids`        | array of strings  | No       | Label IDs or global IDs. Create only; on update use `add_label_ids` or `remove_label_ids`. Maximum 100 items. |
 | `labels`           | array of strings  | No       | Names of the labels to set, resolved in the project or group and its ancestor groups. Create only; on update use `add_labels` or `remove_labels`. Maximum 100 items. |

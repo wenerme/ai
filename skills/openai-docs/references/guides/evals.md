@@ -749,7 +749,8 @@ run = client.evals.runs.create(
         }
       ]
     },
-    model: "gpt-6-astra"
+    model: "gpt-6-astra",
+    sampling_params: { reasoning_effort: :low }
   }
 )
 puts(run.id)

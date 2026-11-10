@@ -1811,10 +1811,7 @@ When you receive `shell_call` output items:
 Local shell executor example
 
 ```javascript
-import { exec as execCallback } from "node:child_process";
-import { promisify } from "node:util";
-
-const exec = promisify(execCallback);
+import { spawn } from "node:child_process";
 
 class ShellExecutor {
   constructor(defaultTimeoutMs = 60_000) {
@@ -1822,26 +1819,72 @@ class ShellExecutor {
   }
 
   async run(cmd, timeoutMs) {
-    const timeout = timeoutMs ?? this.defaultTimeoutMs;
-
-    try {
-      const { stdout, stderr } = await exec(cmd, { timeout });
-      return { stdout, stderr, exitCode: 0, timedOut: false };
-    } catch (error) {
-      const timedOut = Boolean(error?.killed) && error?.signal === "SIGTERM";
-      const exitCode = timedOut ? null : (error?.code ?? null);
-      return {
-        stdout: error?.stdout ?? "",
-        stderr: error?.stderr ?? String(error),
-        exitCode,
-        timedOut,
+    return new Promise((resolve, reject) => {
+      const child = spawn("sh", ["-c", cmd], {
+        detached: true,
+        stdio: ["ignore", "pipe", "pipe"],
+      });
+      let stdout = "";
+      let stderr = "";
+      let timedOut = false;
+      let outputLimited = false;
+      const stop = () => {
+        try {
+          process.kill(-child.pid, "SIGKILL");
+        } catch (error) {
+          if (error.code !== "ESRCH") reject(error);
+        }
       };
-    }
+      const timer = setTimeout(() => {
+        timedOut = true;
+        stop();
+      }, timeoutMs ?? this.defaultTimeoutMs);
+      const collect = (stream, append) => {
+        let bytes = 0;
+        stream.setEncoding("utf8");
+        stream.on("data", (chunk) => {
+          bytes += Buffer.byteLength(chunk);
+          if (bytes > 1024 * 1024) {
+            outputLimited = true;
+            clearTimeout(timer);
+            stop();
+          } else {
+            append(chunk);
+          }
+        });
+      };
+      collect(child.stdout, (chunk) => {
+        stdout += chunk;
+      });
+      collect(child.stderr, (chunk) => {
+        stderr += chunk;
+      });
+      child.on("error", (error) => {
+        clearTimeout(timer);
+        reject(error);
+      });
+      child.on("close", (code) => {
+        clearTimeout(timer);
+        resolve({
+          stdout,
+          stderr,
+          exitCode: outputLimited ? 1 : code,
+          timedOut,
+        });
+      });
+    });
   }
 }
 ```
 
 ```python
+from contextlib import suppress
+from dataclasses import dataclass
+import os
+import signal
+import subprocess
+
+
 @dataclass
 class CmdResult:
     stdout: str
@@ -1855,39 +1898,39 @@ class ShellExecutor:
         self.default_timeout = default_timeout
 
     def run(self, cmd: str, timeout: float | None = None) -> CmdResult:
-        t = timeout or self.default_timeout
+        t = self.default_timeout if timeout is None else timeout
         p = subprocess.Popen(
             cmd,
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            start_new_session=True,
         )
         try:
             out, err = p.communicate(timeout=t)
             return CmdResult(out, err, p.returncode, False)
         except subprocess.TimeoutExpired:
-            p.kill()
+            # Stop the shell and its children before draining their output pipes.
+            with suppress(ProcessLookupError):
+                os.killpg(p.pid, signal.SIGKILL)
             out, err = p.communicate()
             return CmdResult(out, err, p.returncode, True)
 ```
 
 ```go
-package main
-
 import (
 	"bytes"
-	"context"
-	"fmt"
 	"os/exec"
+	"syscall"
 	"time"
 )
 
 type shellResult struct {
-	Stdout   string
-	Stderr   string
-	ExitCode int
-	TimedOut bool
+	Stdout   string `json:"stdout"`
+	Stderr   string `json:"stderr"`
+	ExitCode int    `json:"exit_code"`
+	TimedOut bool   `json:"timed_out"`
 }
 
 type shellExecutor struct {
@@ -1898,15 +1941,26 @@ func (e shellExecutor) run(command string, timeout time.Duration) shellResult {
 	if timeout == 0 {
 		timeout = e.DefaultTimeout
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
-	defer cancel()
-	cmd := exec.CommandContext(ctx, "sh", "-c", command)
+	cmd := exec.Command("sh", "-c", command)
+	// Own a process group so cancellation also stops the shell's children.
+	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
-	err := cmd.Run()
+	if err := cmd.Start(); err != nil {
+		return shellResult{Stderr: err.Error(), ExitCode: -1}
+	}
+	// Keep the deadline active until output pipes close, even if the shell
+	// exits before a background child does.
+	expired := make(chan struct{})
+	timer := time.AfterFunc(timeout, func() {
+		_ = syscall.Kill(-cmd.Process.Pid, syscall.SIGKILL)
+		close(expired)
+	})
+	err := cmd.Wait()
 	result := shellResult{Stdout: stdout.String(), Stderr: stderr.String()}
-	if ctx.Err() == context.DeadlineExceeded {
+	if !timer.Stop() {
+		<-expired
 		result.TimedOut = true
 		result.ExitCode = -1
 		return result
@@ -1922,11 +1976,6 @@ func (e shellExecutor) run(command string, timeout time.Duration) shellResult {
 		result.ExitCode = -1
 	}
 	return result
-}
-
-func main() {
-	executor := shellExecutor{DefaultTimeout: time.Minute}
-	fmt.Println(executor.run("printf shell-executor-ready", 0))
 }
 ```
 
@@ -1945,14 +1994,18 @@ class ShellExecutor
       stdin.close
       stdout_reader = Thread.new { stdout.read }
       stderr_reader = Thread.new { stderr.read }
-      finished = wait_thread.join(timeout)
+      deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + timeout
+      finished = [wait_thread, stdout_reader, stderr_reader].all? do |thread|
+        remaining = [deadline - Process.clock_gettime(Process::CLOCK_MONOTONIC), 0].max
+        thread.join(remaining)
+      end
       terminate_process_group(wait_thread) unless finished
 
       Result.new(
         stdout: stdout_reader.value,
         stderr: stderr_reader.value,
         exit_code: wait_thread.value.exitstatus || -1,
-        timed_out: finished.nil?
+        timed_out: !finished
       )
     end
   end
@@ -1969,10 +2022,10 @@ class ShellExecutor
     wait_thread.join
   end
 end
-
-puts(ShellExecutor.new.run("printf shell-executor-ready"))
 ```
 
+
+These examples require Linux or macOS and stop the command's process group when its time limit expires.
 
 Example shell_call_output payload
 

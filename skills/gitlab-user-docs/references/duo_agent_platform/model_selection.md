@@ -57,6 +57,7 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Mythos 5.1 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7628) as a supported model for Business Logic Security Scan on October 23, 2026.
 - GPT-6.1 Terra [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7672) as a supported model for GitLab Duo Agentic Chat and all other agents on October 26, 2026.
 - Kimi K3.1 Pro [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7879) as a supported model for GitLab Duo Agentic Chat and all other agents on November 6, 2026.
+- Claude Fable 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7916) as a supported model for GitLab Duo Agentic Chat and all other agents on November 9, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -69,6 +70,7 @@ For information about model availability during trials, see
 |-----------------------------|-------------------------|------------------|----------------------|------------------------------|--------------------------|------------------|
 | Claude Fable 5[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Fable 5.1[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
+| Claude Fable 5.2[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Mythos 5.1[^model-subject-limited], [^mythos-availability] | No              | No       | No           | Yes                  | No               | No       |
 | Claude Sonnet 4.5           | Yes             | No      | Yes          | No                   | No               | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes                  | No               | Yes      |

@@ -131,6 +131,7 @@ To start a scan:
 1. Open [GitLab Duo Chat](../../gitlab_duo_chat/agentic_chat.md#use-gitlab-duo-chat-in-the-gitlab-ui)
    and ensure the **Agentic** toggle is turned on.
 1. In the chat text box, type `/flow:` and select **Business Logic Security Scan**.
+   If the flow is not listed, reload the page.
 1. Send the command without any other text.
 1. Follow the scan in the agent session. When the session finishes, the results appear in the
    vulnerability report.
@@ -196,11 +197,16 @@ the `*` environment scope.
 
 | CI/CD variable    | Description |
 |-------------------|-------------|
-| `BL_SCAN_EFFORT`  | The scan's effort tier: `low`, `standard`, or `high`. When unset, blank, or any other value, the tier is `low`. A higher tier scans more deeply and uses more GitLab Duo Agent Platform usage. |
+| `BL_SCAN_EFFORT`  | The scan's effort tier: `low`, `standard`, or `high`. When unset, blank, or any other value, the tier is `low`. A higher tier scans more deeply and uses more GitLab Duo Agent Platform usage. The tier sets how many [file groups](#known-issues) the scan reviews: 62 for `low`, 150 for `standard`, and 400 for `high`. |
 | `BL_TARGET_FILES` | A newline- or comma-separated list of file paths to scan. Applies to scans on any branch other than the default branch, and replaces the files the merge request changes. Ignored on the default branch, so scans of the default branch check the whole repository. |
 
 The scan reads these variables from the project's CI/CD settings when it starts. Variables set in
 `.gitlab-ci.yml` or when you run a pipeline do not apply.
+
+On GitLab.com, the scan uses the model set for **Business Logic Security Scan** in the top-level group.
+To change it, [select a model for a feature](../../duo_agent_platform/model_selection.md#select-a-model-for-a-feature).
+On GitLab Self-Managed and GitLab Dedicated, the scan uses the model set for the instance.
+To change it, [select a model for the instance](../../../administration/gitlab_duo/model_selection.md#select-a-model-for-the-instance).
 
 ## Known issues
 
@@ -209,9 +215,15 @@ Business logic scanning has the following known issues:
 - When a merge request changes more than 400 files, or its diff is too large to collect, the scan
   does not limit itself to the changed files. It runs a full scan of the repository instead, and
   the result is not a partial scan.
-- A scan analyzes up to a fixed amount of code. A scan that reaches this limit still counts as a
-  full scan. Vulnerabilities in code that the scan skipped can be marked as no longer detected,
-  and reappear in a later scan.
+- A scan reviews up to a fixed number of file groups, set by `BL_SCAN_EFFORT`: 62 for `low`
+  (the default), 150 for `standard`, and 400 for `high`. A file group is up to eight related files
+  that the scan reviews together, such as a request handler and the files near it. Each entry point
+  also gets its own group, so a repository with many entry points reaches the limit sooner.
+  When a scan reaches the limit, the `gl-sast-report.json` job artifact includes the message
+  `The scan limit was reached` in `scan.messages`. To review more, set a higher
+  [`BL_SCAN_EFFORT`](#configure-a-scan).
+  A scan that reaches this limit still counts as a full scan. Vulnerabilities in code that the
+  scan skipped can be marked as no longer detected, and reappear in a later scan.
 - Automatic scans run only for the users described in
   [automatic merge request scans](#automatic-merge-request-scans).
 - Scheduled scans are not available yet. For details, see

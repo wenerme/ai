@@ -64,6 +64,10 @@ Background access
 : Runs on GitLab as a service account, without waiting for anyone.
   For example, flows started by a trigger or a mention, and code review.
 
+> [!note]
+> Local access modes apply only to calls to the GitLab MCP server. They don't apply
+> to the built-in tools of the IDE extensions or the GitLab Duo CLI, such as local file tools.
+
 ## Default governance matrix
 
 | Classification | Mode |
@@ -90,8 +94,10 @@ a mode for them the same way, as described in
 
 > [!note]
 > Tool governance applies when GitLab Duo agents call GitLab MCP server tools.
-> These rules do not govern third-party MCP clients that connect directly to the
+> It also applies to third-party MCP clients that connect directly to the
 > GitLab MCP server, such as Claude Desktop, Claude Code, or Cursor.
+> For these clients, the server enforces [Always Deny](#always-deny-enforcement),
+> and the client decides how to handle [Always Ask](#always-ask).
 > To limit the tools these clients receive, see
 > [select tool groups (toolsets)](../model_context_protocol/mcp_server.md#select-tool-groups-toolsets).
 
@@ -123,20 +129,34 @@ pre-approved. Write and delete MCP tools still prompt for approval.
 
 #### Always Deny enforcement
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258209) in GitLab 19.6 with [feature flags](../../administration/feature_flags/_index.md) named `duo_mcp_server_governance_rule_enforcement` and `duo_workflow_local_tool_governance`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258209) in GitLab 19.6 with a [feature flag](../../administration/feature_flags/_index.md) named `duo_mcp_server_governance_rule_enforcement`. Disabled by default.
 
 > [!flag]
-> The availability of this feature is controlled by feature flags.
+> The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
 **Always Deny** is enforced by the GitLab MCP server, not by the client
 that connects to it. A third-party client such as Claude Code or Cursor might
 call a denied tool. The server rejects the request before the tool runs, and
-returns a JSON-RPC error with code `-32002`. The server uses the mode set for
-[local access](#access-types), the same mode that applies to the IDE extensions.
+returns a JSON-RPC error with code `-32002`.
+
+The access type the server checks depends on who calls the tool:
+
+- For third-party clients, the GitLab Duo CLI, and external agents started by a flow
+  trigger, the server uses the mode set for [local access](#access-types), the same
+  mode that applies to the IDE extensions.
+- For GitLab Duo Agentic Chat and other flows, the server uses the access type that
+  the session uses for its own tools. For example, a call from Agentic Chat in the
+  GitLab UI uses the mode set for cloud access.
+
+If the session's workflow was deleted, or you no longer have access to it, the server
+refuses calls to tools in governed groups and projects, and leaves those tools out
+of the tool list.
 
 The check happens on the server, so client configuration can't bypass the mode,
 and calling a denied tool directly still fails.
+When [audit events for the GitLab MCP server](ai-audit-events.md#audit-events-for-the-gitlab-mcp-server)
+are turned on, GitLab records denied calls as AI audit events.
 
 Rules are enforced against the group or project the call names in its
 arguments, so the tool must identify one. A tool that does not act on a project or

@@ -572,7 +572,7 @@ To view the security training for a vulnerability:
 ## View the location of a vulnerability in transitive dependencies
 
 - View dependency paths option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519965) in GitLab 17.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `dependency_paths`. Disabled by default.
-- View dependency paths option [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197224) in GitLab 18.2. Feature flag `dependency_paths` enabled by default.
+- View dependency paths option [enabled by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/520269) in GitLab 18.2.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

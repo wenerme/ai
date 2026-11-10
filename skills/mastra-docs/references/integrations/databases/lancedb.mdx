@@ -114,15 +114,15 @@ const thread = await memoryStore?.getThreadById({ threadId: '...' })
 LanceDB storage can be configured for different deployment scenarios:
 
 - **Local Development**: Use a local file path for development and testing
-  ```
+  ```text
   /path/to/db
   ```
 - **Cloud Deployment**: Connect to a hosted LanceDB instance
-  ```
+  ```text
   db://host:port
   ```
 - **S3 Storage**: Use Amazon S3 for high-capacity cloud storage
-  ```
+  ```text
   s3://bucket/db
   ```
 
