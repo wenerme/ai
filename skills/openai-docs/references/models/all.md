@@ -23,7 +23,6 @@ Models for image generation and editing.
 - [GPT-Image-2.6 Flare](/api/docs/models/gpt-image-2.6-flare.md): Image generation and editing for fast iteration
 - [GPT-Image-2.5 Sunburst](/api/docs/models/gpt-image-2.5-sunburst.md): Our most capable model for image generation and editing
 - [GPT-Image-2.5 Flare](/api/docs/models/gpt-image-2.5-flare.md): Fast, high-quality everyday image generation
-- [GPT-Image-2](/api/docs/models/gpt-image-2.md): State-of-the-art image generation model
 
 ## Realtime & audio
 
@@ -95,6 +94,7 @@ Models used in ChatGPT, not recommended for API use.
 
 Includes models that have already shut down.
 
+- [GPT-Image-2](/api/docs/models/gpt-image-2.md): Deprecated. State-of-the-art image generation model
 - [GPT-Image-1.5](/api/docs/models/gpt-image-1.5.md): Deprecated. Our previous image generation model
 - [chatgpt-image-latest](/api/docs/models/chatgpt-image-latest.md): Deprecated. Previous image model used in ChatGPT.
 - [GPT-Image-1](/api/docs/models/gpt-image-1.md): Shut down. Retired image generation model

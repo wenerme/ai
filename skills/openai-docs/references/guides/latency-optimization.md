@@ -270,12 +270,14 @@ In this case, since the check for retrieval requires the contextualized query, l
 ```
 
 ```ruby
+require "json"
+
 combined_query = {
   query: "[contextualized query]",
   retrieval: "[true/false - whether retrieval is required]"
 }
 
-puts(combined_query)
+puts(JSON.generate(combined_query))
 ```
 
 
@@ -344,6 +346,8 @@ However, let's pretend we have run some tests and discovered that splitting the 
 ```
 
 ```ruby
+require "json"
+
 assistant_response = {
   message_is_conversation_continuation: "True", # <-
   number_of_messages_in_conversation_so_far: "1", # <-
@@ -356,7 +360,7 @@ assistant_response = {
   response: "..." # X -- benefits from GPT-4
 }
 
-puts(assistant_response)
+puts(JSON.generate(assistant_response))
 ```
 
 
@@ -478,6 +482,8 @@ Taking a closer look at the reasoning JSON you may notice the field names themse
 ```
 
 ```ruby
+require "json"
+
 reasoning = {
   message_is_conversation_continuation: "True", # <-
   number_of_messages_in_conversation_so_far: "1", # <-
@@ -488,7 +494,7 @@ reasoning = {
   user_requesting_to_talk_to_human: "False" # <-
 }
 
-puts(reasoning)
+puts(JSON.generate(reasoning))
 ```
 
 
@@ -507,6 +513,8 @@ By making them shorter and moving explanations to the comments we can [generate 
 ```
 
 ```ruby
+require "json"
+
 reasoning = {
   cont: "True", # whether last message is a continuation
   n_msg: "1", # number of messages in the continued conversation
@@ -517,7 +525,7 @@ reasoning = {
   human: "False" # whether user wants to talk to a human
 }
 
-puts(reasoning)
+puts(JSON.generate(reasoning))
 ```
 
 

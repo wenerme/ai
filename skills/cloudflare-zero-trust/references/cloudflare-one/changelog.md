@@ -49,6 +49,21 @@ A new GA release for the macOS Cloudflare One Client is now available on the [st
 
 This hotfix addresses an issue building trusted certificate chains.
 
+## 2026-11-09
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Improved investigation search for Email security**
+
+Email security now has a unified search bar for investigations. It replaces the Email Screener side modal and makes searches easier to refine.
+
+Search with keywords or `field:value` filters. Autocomplete suggests filters and values as you type. Add terms and press Enter to refine results, or select **From**, **To**, **Disposition**, **Status**, or **Threat type** values in results. Narrow results with a date preset or custom range.
+
+![The Email Security investigation search bar displays suggestions for disposition, status, threat type, sender, recipient, and other filters](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1566,height=908,format=webp/_astro/new_email_search_investigation.BHYt43bU.png)
+
+This feature is available to all Email security customers.
+
 ## 2026-11-06
 
 [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)

@@ -775,9 +775,10 @@ GitLab accepts PKCE parameters for pre-registered applications, but does not req
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/629883) in GitLab 19.5 [with feature flags](../../administration/feature_flags/_index.md) named `rate_limiter_mcp_limits_free_info`, `rate_limiter_mcp_limits_free_enforce`, `rate_limiter_mcp_limits_premium_info`, `rate_limiter_mcp_limits_premium_enforce`, `rate_limiter_mcp_limits_ultimate_info`, and `rate_limiter_mcp_limits_ultimate_enforce`. Disabled by default.
 - Hourly limits [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264022) in GitLab 19.6 [with feature flags](../../administration/feature_flags/_index.md) named `rate_limiter_mcp_sustained_limits_free_info`, `rate_limiter_mcp_sustained_limits_free_enforce`, `rate_limiter_mcp_sustained_limits_premium_info`, `rate_limiter_mcp_sustained_limits_premium_enforce`, `rate_limiter_mcp_sustained_limits_ultimate_info`, and `rate_limiter_mcp_sustained_limits_ultimate_enforce`. Disabled by default.
+- Limits each minute [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/633216) in GitLab 19.6. Feature flags `rate_limiter_mcp_limits_free_info`, `rate_limiter_mcp_limits_free_enforce`, `rate_limiter_mcp_limits_premium_info`, `rate_limiter_mcp_limits_premium_enforce`, `rate_limiter_mcp_limits_ultimate_info`, and `rate_limiter_mcp_limits_ultimate_enforce` removed.
 
 > [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+> The availability of the limits each hour is controlled by feature flags. For more information, see the history.
 
 Requests to the MCP server endpoint, `POST /api/v4/mcp`, are limited for each user by the plan of
 their namespace:
@@ -827,6 +828,12 @@ GitLab continues to support a protocol version after the MCP specification depre
 The removal of a protocol version is a breaking change.
 GitLab announces the removal in the [deprecations and removals](../../update/deprecations.md) page
 before the version is removed.
+
+## Audit events
+
+GitLab can record an AI audit event for each tool call that a client makes to the GitLab MCP server.
+For more information, see
+[audit events for the GitLab MCP server](../ai-governance/ai-audit-events.md#audit-events-for-the-gitlab-mcp-server).
 
 ## Related topics
 

@@ -42,27 +42,24 @@ client = OpenAI(
 ```
 
 ```go
-package main
-
 import (
+	"context"
+	"fmt"
 	"os"
 
 	"github.com/openai/openai-go/v3"
 	"github.com/openai/openai-go/v3/option"
 )
 
-func main() {
-	client := openai.NewClient(
-		option.WithAdminAPIKey(os.Getenv("OPENAI_ADMIN_KEY")),
-	)
-
-	_ = client
-}
+client := openai.NewClient(
+	option.WithAdminAPIKey(os.Getenv("OPENAI_ADMIN_KEY")),
+)
 ```
 
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.admin.organization.auditlogs.AuditLogListParams;
 
 OpenAIClient client =
     OpenAIOkHttpClient.builder().adminApiKey(System.getenv("OPENAI_ADMIN_KEY")).build();
@@ -450,8 +447,6 @@ for _, auditLog := range auditLogs.Data {
 ```
 
 ```java
-import com.openai.models.admin.organization.auditlogs.AuditLogListParams;
-
 var page =
     client
         .admin()

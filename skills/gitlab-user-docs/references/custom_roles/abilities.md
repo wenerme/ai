@@ -38,6 +38,13 @@ You can create a [custom role](_index.md) by adding one or more custom permissio
 | Read agent artifacts | Read GitLab Duo Agent Platform artifacts, including audit events and session metadata, that are exposed through the agent artifacts dashboard. | [`read_agent_artifacts`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237989) | Group, Project | GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/issues/601058) |
 | Read compliance dashboard | Read compliance capabilities including adherence, violations, and frameworks for groups and projects. | [`read_compliance_dashboard`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/175066) | Group, Project | GitLab [17.7](https://gitlab.com/gitlab-org/gitlab/-/issues/465324) |
 
+## Container registry
+
+| Permission | Description | API Attribute | Scope | Introduced |
+|:-----------|:------------|:--------------|:------|:-----------|
+| Pull Container Image | Grants the ability to pull images from the container registry | [`pull_container_image`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245417) | Group, Project | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/391760) |
+| Push Container Image | Grants the ability to push images to the container registry | [`push_container_image`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245417) | Project | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/391760) |
+
 ## Continuous delivery
 
 | Permission | Description | API Attribute | Scope | Introduced |

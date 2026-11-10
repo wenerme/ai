@@ -251,7 +251,7 @@ Server routes appear as APM traces and LLM calls appear as LLM Observability spa
 
 If you see errors like:
 
-```
+```text
 Error: No native build was found for runtime=node abi=137 platform=linuxglibc arch=x64
 ```
 
@@ -426,7 +426,7 @@ new DatadogBridge({
 
 With the `DatadogBridge`, your traces maintain proper hierarchy across `dd-trace` and Mastra boundaries. Service calls made by tools and processors appear under the correct Mastra span:
 
-```
+```text
 HTTP POST /api/chat (from web framework instrumentation)
 └── agent.orchestrator (from Mastra via DatadogBridge)
     ├── chat gpt-5.4 (LLM call)

@@ -5,7 +5,7 @@ description: "Browse OpenCode model IDs, capabilities, context windows, and pric
 
 # [OpenCode logo]OpenCode
 
-Access 136 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 137 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode documentation](https://opencode.ai/v2/docs/console/models/).
 
@@ -86,6 +86,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 10,
     "outputCost": 50
+  },
+  {
+    "model": "opencode/claude-fable-5-2",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 8,
+    "outputCost": 40
   },
   {
     "model": "opencode/claude-haiku-4-5",
@@ -232,18 +244,6 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
-    "model": "opencode/crouton-alpha-free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 270000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "opencode/deepseek-v4-pro",
     "imageInput": false,
     "audioInput": false,
@@ -348,8 +348,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 0.75,
+    "outputCost": 3.75
   },
   {
     "model": "opencode/gemini-3.7-flash",
@@ -360,8 +360,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 0.75,
+    "outputCost": 3.75
   },
   {
     "model": "opencode/gemini-3.8-flash",
@@ -372,8 +372,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 0.75,
+    "outputCost": 3.75
   },
   {
     "model": "opencode/gemini-4-argon",
@@ -926,6 +926,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "opencode/minimax-m3.1-flash-free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 512000,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "opencode/mistral-large-4",

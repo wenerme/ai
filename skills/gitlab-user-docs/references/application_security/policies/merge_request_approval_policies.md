@@ -251,6 +251,8 @@ When a scanner is specified as an object instead of a string, each scanner type 
 | `vulnerabilities_allowed`  | `integer`           | false    | Greater than or equal to zero                                                     | Overrides the rule-level `vulnerabilities_allowed` for this scanner. |
 | `vulnerability_attributes` | `object`            | false    | [`vulnerability_attributes`](#vulnerability_attributes-object) object              | Overrides the rule-level `vulnerability_attributes` for this scanner. |
 | `is_malicious`             | `boolean`           | false    | `true`, `false`                                                                   | When `true`, findings from this scanner that are identified as malicious packages are treated as violations, regardless of the `severity_levels` and `vulnerability_states` filters, and even when a finding is dismissed. Valid only for `dependency_scanning`. For more information, see [block malicious packages with the malware rule](#block-malicious-packages-with-the-malware-rule). |
+| `dependency_change`        | `string`            | false    | `introduced`, `unchanged`, `any`                                                  | Filters findings by whether the merge request introduced or changed the vulnerable component. Defaults to `any`. Valid only for `dependency_scanning`. For more information, see [filter dependency scanning findings by dependency change](#filter-dependency-scanning-findings-by-dependency-change). |
+| `dependency_type`          | `string`            | false    | `direct`, `transitive`, `any`                                                     | Filters findings by whether the vulnerable component is a direct or transitive dependency. Defaults to `any`. Valid only for `dependency_scanning`. For more information, see [filter dependency scanning findings by dependency change](#filter-dependency-scanning-findings-by-dependency-change). |
 
 Example using per-scanner criteria:
 
@@ -340,6 +342,73 @@ Malicious findings appear in the merge request policy bot comment as violations,
 other scan finding violations.
 
 The interaction between the malware rule and [warn mode](#warn-mode) is proposed in [epic 19465](https://gitlab.com/groups/gitlab-org/-/epics/19465).
+
+### Filter dependency scanning findings by dependency change
+
+- Tier: Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264451) in GitLab 19.6 as a [beta](../../../policy/development_stages_support.md#beta) [with a feature flag](../../../administration/feature_flags/_index.md) named `approval_policy_dependency_scanning_filters`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+A new advisory for an existing dependency can make a merge request require approval,
+even when the merge request did not change that dependency.
+Use the `dependency_change` and `dependency_type` scanner attributes to require approval only for
+the dependencies a merge request changes.
+
+- `dependency_change` compares the vulnerable component with the target branch:
+  - `introduced`: The merge request added the component, or changed its version.
+  - `unchanged`: The same component and version are in the same dependency file on the target branch.
+  - `any` (default): No filter.
+- `dependency_type` filters by the position of the component in the dependency graph:
+  - `direct`: The project declares the component directly.
+  - `transitive`: The component is a dependency of another dependency.
+  - `any` (default): No filter.
+
+A component is identified by its dependency file path, package name, and version. GitLab compares
+it with the CycloneDX SBOM of the target branch pipeline that the merge request is compared with.
+If that pipeline has no SBOM, all findings are treated as `introduced`.
+Without a dependency graph in the merge request pipeline SBOM, the dependency type is unknown.
+The finding then matches both `direct` and `transitive`.
+
+For example, the following rule requires approval only when the merge request introduces a direct
+dependency with a new critical or high vulnerability:
+
+```yaml
+rules:
+  - type: scan_finding
+    branches: []
+    scanners:
+      - type: dependency_scanning
+        dependency_change: introduced
+        dependency_type: direct
+    vulnerabilities_allowed: 0
+    severity_levels:
+      - critical
+      - high
+    vulnerability_states:
+      - new_needs_triage
+```
+
+To be notified about new advisories for dependencies that merge requests do not change, use
+`dependency_change: unchanged` in a policy with [warn mode](#warn-mode).
+
+These attributes have the following limitations:
+
+- They apply only to rules whose `vulnerability_states` are empty or include `new_needs_triage` or
+  `new_dismissed`. Rules with only previously existing states ignore them.
+  For more information, see [issue 635632](https://gitlab.com/gitlab-org/gitlab/-/work_items/635632).
+- In rules that also include previously existing states, a scanner with these attributes counts
+  only findings from the merge request pipeline, not findings that exist only on the target branch.
+- Malicious package findings from a scanner with `is_malicious: true` are not filtered.
+- You can set these attributes only in YAML mode of the policy editor.
+- Dependency scanning findings are identified without the component version. If a merge request
+  changes the version of a component but the new version has the same vulnerability, the finding
+  is not newly detected, even though `dependency_change` treats it as `introduced`.
 
 ## `license_finding` rule type
 
@@ -1154,6 +1223,9 @@ end
 ### Newly detected CVEs
 
 When using `new_needs_triage` and `new_dismissed`, some findings may require approval when they are not introduced by the merge request (such as a new CVE on a related dependency). These findings will not be present within the merge request security scan report, but will be highlighted in the policy bot comment and pipeline report.
+
+To require approval only for dependencies the merge request changes, see
+[filter dependency scanning findings by dependency change](#filter-dependency-scanning-findings-by-dependency-change).
 
 ### Policies still have effect after `policy.yml` was manually invalidated
 

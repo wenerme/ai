@@ -76258,6 +76258,11 @@ paths:
         application setting), and statuses a runner's jobs cannot have, such as `pending`,
         match no jobs. Until the `ci_enforce_runner_job_list_completed_statuses_limit`
         feature flag is enabled, requests over this limit are logged but not blocked.
+        Requests that list only jobs from the user's projects, which is every user
+        except administrators in Admin Mode and auditors, are rate limited per user
+        (`runner_job_list_project_filtered_limit_per_user` application setting). Until
+        the `ci_rate_limit_rest_runner_job_list_project_filtered` feature flag is
+        enabled, requests over this limit are logged but not blocked.
       tags:
       - Runners
       - Jobs
@@ -87388,6 +87393,12 @@ components:
         admin_web_hook:
           type: boolean
           default: false
+        pull_container_image:
+          type: boolean
+          default: false
+        push_container_image:
+          type: boolean
+          default: false
         read_agent_artifacts:
           type: boolean
           default: false
@@ -94227,6 +94238,8 @@ components:
           type: string
         issuable_csv_import_limit:
           type: string
+        work_item_move_limit:
+          type: string
         label_delete_limit:
           type: string
         pages_deployments_api_limit:
@@ -94324,6 +94337,8 @@ components:
         pipeline_retry_limit_per_user_project:
           type: string
         runner_job_list_completed_statuses_limit_per_user:
+          type: string
+        runner_job_list_project_filtered_limit_per_user:
           type: string
         job_retry_limit_per_user_project:
           type: string
@@ -107403,6 +107418,14 @@ components:
           type: boolean
           description: Manage webhooks
           default: false
+        pull_container_image:
+          type: boolean
+          description: Grants the ability to pull images from the container registry
+          default: false
+        push_container_image:
+          type: boolean
+          description: Grants the ability to push images to the container registry
+          default: false
         read_agent_artifacts:
           type: boolean
           description: Read GitLab Duo Agent Platform artifacts, including audit events
@@ -107651,6 +107674,14 @@ components:
         admin_web_hook:
           type: boolean
           description: Manage webhooks
+          default: false
+        pull_container_image:
+          type: boolean
+          description: Grants the ability to pull images from the container registry
+          default: false
+        push_container_image:
+          type: boolean
+          description: Grants the ability to push images to the container registry
           default: false
         read_agent_artifacts:
           type: boolean
@@ -112374,6 +112405,11 @@ components:
           description: Maximum number of runner job list requests filtered by a completed
             status allowed per minute for a given user.
           nullable: true
+        runner_job_list_project_filtered_limit_per_user:
+          type: integer
+          description: Maximum number of runner job list requests filtered to the
+            user's projects allowed per minute for a given user.
+          nullable: true
         job_retry_limit_per_user_project:
           type: integer
           description: Maximum number of job retries allowed per minute for a given
@@ -114407,6 +114443,9 @@ components:
           type: string
           nullable: true
         issuable_csv_import_limit:
+          type: string
+          nullable: true
+        work_item_move_limit:
           type: string
           nullable: true
         label_delete_limit:

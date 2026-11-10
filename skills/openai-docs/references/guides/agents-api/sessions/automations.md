@@ -209,7 +209,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "periodic",
     name: "Daily session",
     expression: "0 10 * * *",
@@ -232,7 +232,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -773,7 +773,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "periodic",
     name: "Check restaurant reservations",
     expression: "0 */2 * * *",
@@ -785,7 +785,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -987,7 +987,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "periodic",
     name: "Monthly spending review",
     expression: "0 9 1 * *",
@@ -1010,7 +1010,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -1225,7 +1225,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "periodic",
     name: "Daily suggestions",
     expression: "0 10 * * *",
@@ -1248,7 +1248,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -1501,7 +1501,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "periodic",
     name: "Daily suggestions",
     expression: "0 10 * * *",
@@ -1524,7 +1524,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -1748,7 +1748,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "periodic",
     name: "Monthly spending review",
     expression: "0 9 1 * *",
@@ -1771,7 +1771,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -1963,7 +1963,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "periodic",
     name: "Check restaurant reservations",
     expression: "0 */2 * * *",
@@ -1975,7 +1975,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -2136,7 +2136,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "once",
     name: "Check restaurant reply",
     run_at: 1798794000,
@@ -2147,7 +2147,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -2505,7 +2505,7 @@ require "openai"
 
 client = OpenAI::Client.new
 automation = client.beta.agents.automations.create(
-  body: {
+  create_automation_params: {
     type: "once",
     name: "Onboarding follow-up",
     run_at: Time.now.to_i + 48 * 60 * 60,
@@ -2516,7 +2516,7 @@ automation = client.beta.agents.automations.create(
     }
   }
 )
-puts automation
+puts automation.id
 ```
 
 ```bash
@@ -2750,7 +2750,7 @@ automation = client.beta.agents.automations.update(
   "auto_123",
   expression: "0 11 * * *"
 )
-puts automation
+puts automation.id
 ```
 
 ```bash

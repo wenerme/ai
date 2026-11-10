@@ -1431,10 +1431,21 @@ curl --request PUT \
 
 ## Move an issue
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268181) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_move_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Moves a specified issue to a different project. If the target project is the source project or the user has insufficient permissions, an error message with status code `400` is returned.
 
 If a given label or milestone with the same name also exists in the target
 project, it's then assigned to the issue being moved.
+
+By default, this endpoint is rate limited to 30 requests every minute for each user.
+The limit is shared with cloning issues and with moving and cloning issues in the UI and GraphQL.
+Administrators can change the limit with the `work_item_move_limit` [application setting](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 POST /projects/:id/issues/:issue_iid/move
@@ -1583,9 +1594,20 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 
 ## Clone an issue
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268181) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_move_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Clones a specified issue to a given project. Copies as much data as possible as long as the target project contains equivalent criteria, such as labels or milestones.
 
 If you have insufficient permissions, an error message with status code `400` is returned.
+
+By default, this endpoint is rate limited to 30 requests every minute for each user.
+The limit is shared with moving issues and with moving and cloning issues in the UI and GraphQL.
+Administrators can change the limit with the `work_item_move_limit` [application setting](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 POST /projects/:id/issues/:issue_iid/clone

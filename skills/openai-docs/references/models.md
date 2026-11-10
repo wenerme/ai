@@ -40,7 +40,6 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [GPT-6.1 Sol](/api/docs/models/gpt-6.1-sol.md): Near-Astra performance for complex work at a lower cost.
 - [GPT-6.1 Terra](/api/docs/models/gpt-6.1-terra.md): A fast, efficient model for visual reasoning, precise computer use, and clear, natural writing.
 - [GPT-Audio-1.5](/api/docs/models/gpt-audio-1.5.md): The best voice model for audio in, audio out with Chat Completions.
-- [GPT-Image-2](/api/docs/models/gpt-image-2.md): State-of-the-art image generation model
 - [GPT-Image-2.5 Flare](/api/docs/models/gpt-image-2.5-flare.md): Fast, high-quality everyday image generation
 - [GPT-Image-2.5 Sunburst](/api/docs/models/gpt-image-2.5-sunburst.md): Our most capable model for image generation and editing
 - [GPT-Image-2.6 Flare](/api/docs/models/gpt-image-2.6-flare.md): Image generation and editing for fast iteration
