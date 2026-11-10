@@ -73,6 +73,25 @@ to create a compliance framework for this standard.
 | Article 9 Protection and prevention         | 4. As part of the ICT risk management framework, financial entities shall implement documented policies, procedures and controls for ICT change management. These changes include software, hardware, firmware, systems or security parameters, and must be based on a risk assessment approach as part of the overall change management process.                                                               | <ul><li>Default branch protected</li><li>At least two approvals</li><li>Author approved merge request is forbidden</li><li>Committers approved merge request is forbidden</li><li>Merge requests approval rules prevent editing</li></ul> |
 | Article 25 Testing of ICT tools and systems | 1. Digital operational resilience testing programs shall include vulnerability assessments, scans, open source analyses, network security assessments, gap analyses, source code reviews, scenario-based tests, compatibility testing, performance testing, and penetration testing. Testing is required before deployment of applications and infrastructure supporting critical functions.                    | <ul><li>Dependency scanning running</li><li>Container scanning running</li><li>SAST running</li><li>DAST running</li><li>API security running</li></ul> |
 
+## EU AI Act compliance requirements
+
+The EU Artificial Intelligence Act (EU AI Act) is a European Union regulation that sets obligations for
+providers and deployers of AI systems. The most extensive requirements apply to high-risk AI systems.
+
+The following table lists the requirements supported by GitLab for the EU AI Act and the controls for the requirements.
+You can use the EU AI Act [framework template](_index.md#create-a-compliance-framework-from-a-template)
+to create a compliance framework for this standard.
+
+The template covers a subset of the EU AI Act obligations. Passing these controls helps you gather evidence
+for your assessment, but does not on its own demonstrate compliance with the regulation.
+
+| EU AI Act requirement                              | Description                                                                                                                                                                                                                                    | Supported controls |
+|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------|
+| Article 10 Data and data governance                | 2. Training, validation and testing data sets shall be subject to data governance and management practices appropriate for the intended purpose of the high-risk AI system.                                                                     | <ul><li>Model experiments access level configured</li></ul> |
+| Article 12 Record-keeping                          | 1. High-risk AI systems shall technically allow for the automatic recording of events (logs) over the lifetime of the system.                                                                                                                  | <ul><li>Duo Agentic Flow audit events streaming</li></ul> |
+| Article 14 Human oversight                         | 1. High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use.             | <ul><li>Duo agentic flow governance oversight configured</li></ul> |
+| Article 15 Accuracy, robustness and cybersecurity  | 5. High-risk AI systems shall be resilient against attempts by unauthorised third parties to alter their use, outputs or performance by exploiting system vulnerabilities.                                                                      | <ul><li>Model registry access level configured</li></ul> |
+
 ## FedRAMP compliance requirements
 
 FedRAMP (Federal Risk and Authorization Management Program) categorizes cloud services into three impact levels:

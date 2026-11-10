@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/reference/limits/og.png?v=4b8
 
 # Limits
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Limits that apply to authoring, deploying, and running Workflows are detailed below.
 
@@ -35,11 +35,12 @@ Workflows cannot be deployed to Workers for Platforms namespaces, as Workflows d
 | Maximum steps per Workflow <sup>[4](#user-content-fn-5)</sup> | 1,024 | 10,000 (default) / configurable up to 25,000 |
 | Maximum Workflow executions | 100,000 per day [shared with Workers daily limit](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) | Unlimited |
 | Concurrent Workflow instances (executions) per account <sup>[5](#user-content-fn-7)</sup> | 100 | 50,000 |
-| Maximum Workflow instance creation rate <sup>[6](#user-content-fn-8)</sup> | 100 per second <sup>[7](#user-content-fn-6)</sup> | 300 per second per account <sup>[7](#user-content-fn-6)</sup>, 100 per second per workflow |
+| Concurrent Workflow instances (executions) per Workflow <sup>[6](#user-content-fn-11)</sup> | No limit by default; configurable up to the account limit | No limit by default; configurable up to the account limit |
+| Maximum Workflow instance creation rate <sup>[7](#user-content-fn-8)</sup> | 100 per second <sup>[8](#user-content-fn-6)</sup> | 300 per second per account <sup>[8](#user-content-fn-6)</sup>, 100 per second per workflow |
 | Maximum number of [queued instances](https://developers.cloudflare.com/workflows/observability/metrics-analytics/#event-types) | 100,000 | 2,000,000 |
-| Retention limit for completed Workflow instance state | 3 days | 7 days (default) / configurable up to 30 days <sup>[8](#user-content-fn-2)</sup> |
-| Maximum length of a Workflow name <sup>[9](#user-content-fn-4)</sup> | 64 characters | 64 characters |
-| Maximum length of a Workflow instance ID <sup>[9](#user-content-fn-4)</sup> | 100 characters | 100 characters |
+| Retention limit for completed Workflow instance state | 3 days | 7 days (default) / configurable up to 30 days <sup>[9](#user-content-fn-2)</sup> |
+| Maximum length of a Workflow name <sup>[10](#user-content-fn-4)</sup> | 64 characters | 64 characters |
+| Maximum length of a Workflow instance ID <sup>[10](#user-content-fn-4)</sup> | 100 characters | 100 characters |
 | Maximum number of subrequests per Workflow instance | 50/request | 10,000/request (default) / configurable up to 10 million |
 | Maximum number of retries per step | 10,000 | 10,000 |
 
@@ -51,7 +52,7 @@ In JavaScript Workflows, if you need to persist large binary output from a step,
 
 ### `waiting` instances do not count towards instance concurrency limits
 
-Instances that are in a `waiting` state — either sleeping via `step.sleep`, waiting for a retry, or waiting for an event via `step.waitForEvent` — do **not** count towards concurrency limits. This means you can have millions of Workflow instances sleeping or waiting for events simultaneously, as only actively `running` instances count toward the 10,000 concurrent instance limit. However, if there are 10,000 concurrent instances actively running, an instance that has been in a `waiting` state will be queued instead of resuming immediately. When an instance transitions from `running` to `waiting`, other `queued` instances will be scheduled (usually the oldest queued instance, on a best-effort basis). This state transition may not occur if the wait duration is very short.
+Instances that are in a `waiting` state — either sleeping via `step.sleep`, waiting for a retry, or waiting for an event via `step.waitForEvent` — do **not** count towards concurrency limits. This means you can have millions of Workflow instances sleeping or waiting for events simultaneously, as instances in the `waiting` state do not count toward your account's concurrent instance limit, or toward any [concurrency limit](https://developers.cloudflare.com/workflows/build/concurrency-limits/#per-workflow-concurrency-limits) set on the Workflow. However, if your account or the Workflow is already at its concurrency limit, an instance that has been in a `waiting` state will be queued instead of resuming immediately. When an instance transitions from `running` to `waiting`, other `queued` instances will be scheduled (usually the oldest queued instance, on a best-effort basis). This state transition may not occur if the wait duration is very short.
 
 For example, consider a Workflow that does some work, waits for 30 days, and then continues with more work:
 
@@ -103,7 +104,7 @@ While a given Workflow instance is waiting for 30 days, it will transition to th
 
 On [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers), Workflow instances created by `schedules` can run for up to one hour per cron firing without consuming a Workflow concurrency slot.
 
-After that budget is used, the instance yields and enters the normal concurrency queue. It resumes when a concurrency slot is available. The instance does not fail, time out, or terminate because it used this cron concurrency budget.
+After that budget is used, the instance yields and enters the normal concurrency queue. It resumes when a concurrency slot is available. The instance does not fail, time out, or terminate because it used this cron concurrency budget. During the budget, the instance is also not held back by a [Workflow's concurrency limit](https://developers.cloudflare.com/workflows/build/concurrency-limits/#per-workflow-concurrency-limits).
 
 The following limits apply to Workflow `schedules`:
 
@@ -201,11 +202,12 @@ The following table summarizes the wall time limits for different types of Worke
 2. Applies to non-stream `step.do()` return values. In JavaScript Workflows, `ReadableStream<Uint8Array>` is also a supported serializable return type for larger binary output. [↩](#user-content-fnref-9)
 3. This total includes persisted bytes from streamed step outputs returned from JavaScript `step.do()` calls. [↩](#user-content-fnref-10)
 4. `step.sleep` does not count towards the maximum steps limit [↩](#user-content-fnref-5)
-5. Only instances with a `running` state count towards the concurrency limits. Instances in the `waiting` state are excluded from these limits. Workers Paid cron-triggered Workflow instances have a separate one-hour cron concurrency budget per firing. [↩](#user-content-fnref-7)
-6. Each instance created or restarted counts towards this limit [↩](#user-content-fnref-8)
-7. Workflows will return a HTTP 429 rate limited error if you exceed the rate of new Workflow instance creation. [↩](#user-content-fnref-6) [↩<sup>2</sup>](#user-content-fnref-6-2)
-8. On the Workers Free plan, Workflow instance state and logs are retained for 3 days. On the Workers Paid plan, instance state and logs are retained for 7 days by default, and you can configure retention up to 30 days. Workflows created before the [Workers Paid default changed](https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/) keep their existing 30-day default. You can change the retention period by setting [`default_retention`](https://developers.cloudflare.com/workflows/build/workers-api/#default-instance-retention) on the Workflow binding, or [`retention`](https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstancecreateoptions) on an individual instance. [↩](#user-content-fnref-2)
-9. Match pattern: \_`^[a-zA-Z0-9_][a-zA-Z0-9-_]\*$`\_ [↩](#user-content-fnref-4) [↩<sup>2</sup>](#user-content-fnref-4-2)
+5. Instances in the `waiting` or `paused` state do not count towards the concurrency limits. Workers Paid cron-triggered Workflow instances have a separate one-hour cron concurrency budget per firing. [↩](#user-content-fnref-7)
+6. By default, each Workflow can use all of your account's concurrency. To cap the number of instances of a single Workflow that run at once, set a [concurrency limit](https://developers.cloudflare.com/workflows/build/concurrency-limits/#per-workflow-concurrency-limits). Instances above the limit are queued. [↩](#user-content-fnref-11)
+7. Each instance created or restarted counts towards this limit [↩](#user-content-fnref-8)
+8. Workflows will return a HTTP 429 rate limited error if you exceed the rate of new Workflow instance creation. [↩](#user-content-fnref-6) [↩<sup>2</sup>](#user-content-fnref-6-2)
+9. On the Workers Free plan, Workflow instance state and logs are retained for 3 days. On the Workers Paid plan, instance state and logs are retained for 7 days by default, and you can configure retention up to 30 days. Workflows created before the [Workers Paid default changed](https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/) keep their existing 30-day default. You can change the retention period by setting [`default_retention`](https://developers.cloudflare.com/workflows/build/workers-api/#default-instance-retention) on the Workflow binding, or [`retention`](https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstancecreateoptions) on an individual instance. [↩](#user-content-fnref-2)
+10. Match pattern: \_`^[a-zA-Z0-9_][a-zA-Z0-9-_]\*$`\_ [↩](#user-content-fnref-4) [↩<sup>2</sup>](#user-content-fnref-4-2)
 
 Was this helpful?
 
@@ -216,5 +218,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/limits/#page","headline":"Limits","description":"Limits for Cloudflare Workflows, including maximum steps, payload sizes, and instance concurrency.","url":"https://developers.cloudflare.com/workflows/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/reference/limits/og.png?v=4b832dd62c6be7cf","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/reference/limits/#page","headline":"Limits","description":"Limits for Cloudflare Workflows, including maximum steps, payload sizes, and instance concurrency.","url":"https://developers.cloudflare.com/workflows/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/reference/limits/og.png?v=4b832dd62c6be7cf","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

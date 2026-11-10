@@ -67,6 +67,7 @@ Available template IDs:
 | `csa_ccm_v4` | CSA CCM v4 |
 | `cyber_essentials` | Cyber Essentials |
 | `dora` | DORA |
+| `eu_ai_act` | EU AI Act |
 | `fedramp_high_r5` | FedRAMP High |
 | `fedramp_low_r5` | FedRAMP Low |
 | `fedramp_moderate_r5` | FedRAMP Moderate |

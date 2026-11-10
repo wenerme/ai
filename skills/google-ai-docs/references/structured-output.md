@@ -1290,11 +1290,12 @@ strings that can be concatenated to form the final JSON object.
 ## Structured outputs with tools  {% id="tools" %}
 
 {% callout type="note" %}
-  Preview: This feature is available only to Gemini 3 series models.
+  Preview: This feature is available only to Gemini 4 and Gemini 3 series models,
+  such as `gemini-4-carbon`, `gemini-4-argon`, and `gemini-3.8-flash`.
 
 {% /callout %}
 
-Gemini 3 lets you combine Structured Outputs with built-in tools, including
+Gemini 4 and Gemini 3 let you combine Structured Outputs with built-in tools, including
 [Grounding with Google Search](/docs/google-search),
 [URL Context](/docs/url-context),
 [Code Execution](/docs/code-execution),
@@ -1316,7 +1317,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-4-argon",
+      model="gemini-4-carbon",
       input="Search for all details for the latest Euro.",
       tools=[{"type": "google_search"}, {"type": "url_context"}],
       response_format={
@@ -1352,7 +1353,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
   const client = new GoogleGenAI({});
   
   const interaction = await client.interactions.create({
-    model: "gemini-4-argon",
+    model: "gemini-4-carbon",
     input: "Search for all details for the latest Euro.",
     tools: [{type: "google_search"}, {type: "url_context"}],
     response_format: {
@@ -1422,7 +1423,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-4-argon"))
+          .model(Model.of("gemini-4-carbon"))
           .input(InteractionsInput.of("Search for all details for the latest Euro."))
           .tools(Arrays.asList(GoogleSearch.builder().build(), URLContext.builder().build()))
           .responseFormat(format)
@@ -1489,7 +1490,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
       resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(
               interactions.CreateModelInteraction{
-                  Model: interactions.Model("gemini-4-argon"),
+                  Model: interactions.Model("gemini-4-carbon"),
                   Input: interactions.NewInteractionsInput("Search for all details for the latest Euro."),
                   Tools: []interactions.Tool{
                       interactions.NewTool(interactions.GoogleSearch{}),
@@ -1516,7 +1517,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-4-argon",
+      "model": "gemini-4-carbon",
       "input": "Search for all details for the latest Euro.",
       "tools": [{"type": "google_search"}, {"type": "url_context"}],
       "response_format": {

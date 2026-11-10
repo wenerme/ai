@@ -161,8 +161,15 @@ For example:
 - Pull an image in a `.gitlab-ci.yml` file:
 
   ```yaml
-  image: gitlab.example.com/virtual_registries/container/1/library/alpine:latest
+  image: ${CI_DEPENDENCY_PROXY_SERVER}/virtual_registries/container/1/library/alpine:latest
   ```
+
+  For GitLab Runner to authenticate with the CI/CD job token, the image path must include
+  the GitLab server port.
+  The `CI_DEPENDENCY_PROXY_SERVER` [predefined variable](../../../../ci/variables/predefined_variables.md)
+  includes the port.
+  You can also include the port explicitly, for example
+  `gitlab.example.com:443/virtual_registries/container/1/library/alpine:latest`.
 
 When you pull an image, the virtual registry:
 
@@ -228,6 +235,34 @@ Authenticating with credentials from job payload (GitLab Registry)
 ```
 
 Make sure you are using the expected authentication mechanism.
+
+### Error: `denied: access forbidden` when pulling an image in CI/CD
+
+When you use a virtual registry image in `image:`, the job might fail with an error like:
+
+```plaintext
+ERROR: Job failed: failed to pull image "gitlab.example.com/virtual_registries/container/1/library/alpine:latest" with specified policies [always]:
+Error response from daemon: Head "https://gitlab.example.com/v2/virtual_registries/container/1/library/alpine/manifests/latest": denied: access forbidden
+```
+
+This error occurs when the image path does not include the GitLab server port.
+GitLab Runner uses the CI/CD job token only for images on the same `host:port` as the job token
+credentials, and these credentials include the port.
+Without the port, the runner pulls the image without authentication,
+and the job log does not contain an `Authenticating with credentials from` line.
+
+To resolve this error, include the port in the image path.
+Use the `CI_DEPENDENCY_PROXY_SERVER` predefined variable:
+
+```yaml
+image: ${CI_DEPENDENCY_PROXY_SERVER}/virtual_registries/container/1/library/alpine:latest
+```
+
+Or add the port explicitly:
+
+```yaml
+image: gitlab.example.com:443/virtual_registries/container/1/library/alpine:latest
+```
 
 ### `Not Found` or `404` error when pulling image
 

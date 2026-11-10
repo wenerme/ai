@@ -2488,7 +2488,7 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
 ## Multi-tool use  {% id="native-tools" %}
 
 You can enable multiple tools, combining built-in tools with function calling in
-the same request. Gemini 3 models can combine built-in tools with function
+the same request. Gemini 4 and Gemini 3 models can combine built-in tools with function
 calling out-of-the-box in Interactions. Passing `previous_interaction_id`
 automatically circulates the built-in tool context.
 

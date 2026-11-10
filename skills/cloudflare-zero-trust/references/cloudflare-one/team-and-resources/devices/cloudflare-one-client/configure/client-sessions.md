@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Client sessions
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Client sessions control how often users must re-authenticate with your identity provider (IdP) while using the Cloudflare One Client (formerly WARP). Unlike legacy VPNs, which enforce a single global session timeout, Cloudflare One allows you to set session timeouts per application or per policy. You can configure session timeouts for your [Access applications](#configure-warp-sessions-in-access) or as part of your [Gateway policies](#configure-warp-sessions-in-gateway).
 
@@ -93,6 +93,133 @@ This timeout value does not apply to [device client session checks in Gateway po
 
 Users can now authenticate once with the Cloudflare One Client and have access to your Access applications for the configured period of time. The session timer resets when the user re-authenticates with the IdP used to enroll in the Cloudflare One Client.
 
+## Reauthenticate silently with Entra ID Beta
+
+<details>
+
+<summary>
+
+Feature availability
+
+</summary>
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.9.2663.1 |
+| macOS | ✅ | 2026.9.2663.1 |
+| Linux | ❌ | |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
+
+With Device Credential Authentication, the Cloudflare One Client can renew a client session without opening a browser. When a session expires, the client asks the operating system for an Entra ID token for the signed-in user. Cloudflare verifies the token and re-evaluates your Access policies. If both checks pass, the session renews and the user does not see a reauthentication prompt.
+
+If silent reauthentication fails, the client falls back to the [browser-based reauthentication flow](#manually-reauthenticate).
+
+### Requirements
+
+- Users enrolled the device in the Cloudflare One Client with your [Entra ID identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/).
+- Windows devices are Microsoft Entra joined or Microsoft Entra hybrid joined.
+- macOS devices have the [Microsoft Enterprise SSO plug-in ↗︎](https://learn.microsoft.com/entra/identity-platform/apple-sso-plugin) configured, for example through Intune Company Portal.
+- The user is signed in to one Entra account from your tenant on the device.
+
+### 1. Add redirect URIs in Entra ID
+
+The client requests tokens with the same Entra application that you use for your Entra ID identity provider. Add the client's redirect URIs to that application:
+
+1. In the [Microsoft Entra admin center ↗︎](https://entra.microsoft.com/), go to **Applications** > **App registrations** > **All applications** and select the application used by your Entra ID identity provider.
+2. Go to **Authentication**, then select **Add a platform**.
+3. Select **Mobile and desktop applications**.
+4. Under **Custom redirect URIs**, enter the redirect URI for each operating system you deploy:
+
+   | System | Redirect URI |
+   | --- | --- |
+   | Windows | `ms-appx-web://microsoft.aad.brokerplugin/<client-id>` |
+   | macOS | `msauth.com.cloudflare.1dot1dot1dot1.macos://auth` |
+
+   Replace `<client-id>` with the **Application (client) ID** of the application.
+5. Select **Configure**.
+
+### 2. Turn on Device Credential Authentication
+
+Device Credential Authentication is a [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) setting. It is off by default.
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+2. Locate the device profile you would like to update and select **Configure**.
+3. Turn on **Device Credential Authentication**.
+4. Select **Save profile**.
+
+To change device profiles, you need an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Zero Trust Write` permissions.
+
+To turn on Device Credential Authentication for a custom device profile, send a `PATCH` request to the [Devices API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/custom/methods/edit/):
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Update a device settings profilebash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy/$POLICY_ID" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"enable_device_credential_authentication": true
+	}'
+```
+
+To turn on Device Credential Authentication for the default device profile, send a `PATCH` request to the [Devices API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/policies/subresources/default/methods/edit/):
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Update the default device settings profilebash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"enable_device_credential_authentication": true
+	}'
+```
+
+It may take up to 10 minutes for newly updated settings to propagate to devices.
+
+### Fallback to browser reauthentication
+
+The Cloudflare One Client opens the browser-based reauthentication flow when silent reauthentication does not complete. This happens when:
+
+- Entra ID requires user interaction to issue a token. For example, a Conditional Access policy requires multifactor authentication (MFA).
+- The device has no Entra account from your tenant, or has more than one.
+- The Entra account does not match the user registered to the device.
+- An Access policy denies the user or requires an interactive step.
+- The device session was revoked.
+- The client cannot get a token from Entra ID within 90 seconds. The Cloudflare One Client enforces this limit, and it is not configurable.
+
 ## Force user interaction with IdP
 
 If the user has an active browser session with the IdP, the Cloudflare One Client will use the existing browser cookies to re-authenticate and the user will not be prompted to re-enter their credentials. You can override this behavior to require explicit user interaction in the IdP.
@@ -128,5 +255,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#page","headline":"Client sessions","description":"Client sessions in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/og.png?v=87c41abaadbbf5fd","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#page","headline":"Client sessions","description":"Client sessions in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/og.png?v=87c41abaadbbf5fd","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID"]}
 ```

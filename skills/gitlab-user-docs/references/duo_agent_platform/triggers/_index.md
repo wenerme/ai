@@ -286,6 +286,7 @@ A trigger with the **Work item** event type and the **Created** action also does
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594180) in GitLab 19.4 as a [beta](../../../policy/development_stages_support.md#beta) [with flags](../../../administration/feature_flags/_index.md) named `ai_flow_schedules` and `autonomous_service_account_execution`. Disabled by default.
 - Setting to turn off scheduled automations [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
+- Requirement for experiment and beta features [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/634138) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by feature flags.
@@ -315,7 +316,8 @@ GitLab does not assign the Owner role to the account, and a run fails if the acc
 
 A scheduled run does not use [composite identity](../composite_identity.md), so the role of
 the service account is the only limit on what the flow can do.
-The flow can also access other projects that the service account is a member of.
+GitLab adds the service account to the project where you create the automation.
+A scheduled run can access another project only if someone adds the service account to that project as well.
 For more information, see [security threats in GitLab Duo Agent Platform](../security_threats.md).
 
 The role of the account follows the role of the service account of the flow:
@@ -323,7 +325,7 @@ The role of the account follows the role of the service account of the flow:
 - Before each run, if the flow account has a lower role, GitLab lowers the role of the
   trigger account to match. If GitLab cannot lower the role, the run fails.
 - If the flow account has a higher role, GitLab raises the role of the trigger account only
-  when someone edits the trigger. GitLab does not raise the role above what the editor can assign.
+  when someone who can assign that role edits the trigger.
 
 ### Create a scheduled automation
 
@@ -398,6 +400,7 @@ A successful run resets the count.
 GitLab skips a scheduled run, and does not count a failure, when:
 
 - The trigger is turned off.
+- Experiment and beta features are turned off for the group or instance.
 - Scheduled automations are turned off for the project, group, or instance.
 - Flow execution is turned off.
 - The namespace has no GitLab Credits left.

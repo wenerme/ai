@@ -33,6 +33,33 @@ The project toolchain does not affect how development information is synced betw
 
 For Jira Data Center or Jira Server, use the [Jira DVCS connector](../../integration/jira/dvcs/_index.md) developed and maintained by Atlassian.
 
+## Connectivity requirements
+
+Both installation methods need your instance to reach Jira Cloud.
+Instances in an offline environment cannot use the app.
+For the HTTPS and certificate requirements, see the prerequisites for each installation method.
+
+The following table lists every connection the app uses.
+The **Method** column shows whether a connection applies to the
+[Atlassian Marketplace listing](#install-the-gitlab-for-jira-cloud-app-from-the-atlassian-marketplace),
+the [manual installation](#install-the-gitlab-for-jira-cloud-app-manually) (private Forge app), or both.
+
+| From | To | Method | Purpose |
+|------|----|--------|---------|
+| Your instance | Your Jira site (`*.atlassian.net`) | Both | Send development data to the Jira development panel. |
+| Your instance | `connect-install-keys.atlassian.com` | Manual | Fetch the Atlassian public key that verifies an install or uninstall event. |
+| Jira Cloud ([Atlassian IP addresses](https://support.atlassian.com/organization-administration/docs/ip-addresses-and-domains-for-atlassian-cloud-products/#Outgoing-Connections)) | `<instance_url>/-/jira_connect/*` | Manual | Install and uninstall events, workspace and repository search, and repository association. |
+| GitLab.com ([GitLab.com IP addresses](../../user/gitlab_com/_index.md#ip-range)) | `<instance_url>/-/jira_connect/*` | Marketplace | Forward install and uninstall events from Jira to your instance. |
+| Your instance | GitLab.com | Marketplace | Fetch the GitLab.com public key that verifies a forwarded event. |
+| Jira users | Your instance | Both | Sign in to configure the app, create branches, and open links from the Jira development panel. |
+
+With the Marketplace listing, Jira Cloud does not connect to your instance directly.
+GitLab.com receives the requests from Jira and either forwards or redirects them to your instance.
+For more information, see [GitLab.com handling of app lifecycle events](#gitlabcom-handling-of-app-lifecycle-events).
+
+If your instance is behind a firewall, put an internet-facing [reverse proxy](#using-a-reverse-proxy) in front of it.
+On the proxy, allow only the inbound sources from the table.
+
 ## Set up OAuth authentication
 
 Whether you want to install the GitLab for Jira Cloud app [from the Atlassian Marketplace](#install-the-gitlab-for-jira-cloud-app-from-the-atlassian-marketplace) or [manually](#install-the-gitlab-for-jira-cloud-app-manually), you must create an OAuth application.
@@ -106,13 +133,7 @@ Alternatively, you might want to [install the GitLab for Jira Cloud app manually
 - The instance must be on GitLab version 15.7 or later.
 - You must set up [OAuth authentication](#set-up-oauth-authentication).
 - Your GitLab instance must use HTTPS and your GitLab certificate must be publicly trusted or contain the full chain certificate.
-- Your network configuration must allow:
-  - Outbound connections from your GitLab Self-Managed instance to Jira Cloud ([Atlassian IP addresses](https://support.atlassian.com/organization-administration/docs/ip-addresses-and-domains-for-atlassian-cloud-products/#Outgoing-Connections))
-  - Inbound and outbound connections between your GitLab Self-Managed instance and GitLab.com ([GitLab.com IP addresses](../../user/gitlab_com/_index.md#ip-range))
-  - For instances behind a firewall:
-    1. Set up an internet-facing [reverse proxy](#using-a-reverse-proxy) in front of your GitLab Self-Managed instance.
-    1. Configure the reverse proxy to allow inbound connections from GitLab.com ([GitLab.com IP addresses](../../user/gitlab_com/_index.md#ip-range))
-    1. Ensure your GitLab Self-Managed instance can still make the outbound connections described previously.
+- Your network must allow the Marketplace connections listed in [connectivity requirements](#connectivity-requirements).
 - The Jira user that installs and configures the app must meet certain [requirements](#jira-user-requirements).
 
 ### Set up your instance for Atlassian Marketplace installation
@@ -185,16 +206,10 @@ under your own Atlassian developer account, pointed at your GitLab Self-Managed 
 
 ### Prerequisites
 
-- The instance must be publicly available over HTTPS, with a publicly trusted certificate.
+- The instance must be publicly available.
+- Your GitLab instance must use HTTPS and your GitLab certificate must be publicly trusted or contain the full chain certificate.
 - You must set up [OAuth authentication](#set-up-oauth-authentication).
-- Your network configuration must allow:
-  - Inbound HTTPS connections from Jira Cloud to `<instance_url>/-/jira_connect` ([Atlassian IP addresses](https://support.atlassian.com/organization-administration/docs/ip-addresses-and-domains-for-atlassian-cloud-products/#Outgoing-Connections)).
-  - Outbound HTTPS connections from your GitLab instance to `*.atlassian.net` to push development data to Jira.
-  - For instances behind a firewall:
-    1. Set up an internet-facing [reverse proxy](#using-a-reverse-proxy) in front of your GitLab Self-Managed instance.
-    1. Configure the reverse proxy to allow inbound connections from Jira Cloud.
-    1. Ensure your GitLab Self-Managed instance can still make the outbound connections described previously.
-- Instances in an offline environment cannot use the integration. The outbound path to `*.atlassian.net` is required for the development panel and other Jira-side surfaces.
+- Your network must allow the manual installation connections listed in [connectivity requirements](#connectivity-requirements).
 - The Jira user that installs and configures the app must meet certain [requirements](#jira-user-requirements).
 - An Atlassian developer account and an [Atlassian API token](https://id.atlassian.com/manage-profile/security/api-tokens) for the Forge CLI.
 - A machine with [Node.js 22 LTS](https://nodejs.org/), the [Forge CLI](https://developer.atlassian.com/platform/forge/getting-started/), `envsubst`, `git`, and `curl`.
@@ -577,6 +592,29 @@ However, the GitLab for Jira Cloud app only uses this access to:
 
 Access through OAuth is only needed for the time a user configures the GitLab for Jira Cloud app. For more information, see [Access token expiration](../../integration/oauth_provider.md#access-token-expiration).
 
+### Private Forge app hosting
+
+When you [install the app manually](#install-the-gitlab-for-jira-cloud-app-manually),
+you publish a private copy of the [GitLab for Jira Cloud Forge app](https://gitlab.com/gitlab-org/gitlab-jira-forge)
+under your own Atlassian developer account.
+
+- Atlassian hosts only the app manifest on the Forge platform.
+  The app does not run code on the Forge platform.
+  The manifest declares Connect modules that point at your instance,
+  so Jira sends requests to your instance and your instance sends development data to Jira.
+- GitLab.com is not involved and does not know that your instance has installed the app.
+- Your Atlassian developer account owns the app registration.
+  The install script stores the app ID in `.env.self-managed`.
+  You need the app ID to update the app.
+  Back up `.env.self-managed` as described in [Publish a private Forge app](#publish-a-private-forge-app).
+  If you lose the developer account, you must register a new app,
+  and every Jira site must install the new app.
+  A new app starts with no group links and no synced data.
+  Protect the developer account and the Atlassian API token as you would protect other credentials.
+- You control updates.
+  GitLab publishes changes to the Forge app repository,
+  and you decide when to [update the manually installed app](#update-the-manually-installed-app).
+
 ## Using a reverse proxy
 
 You should avoid using a reverse proxy in front of your GitLab Self-Managed instance if possible.
@@ -600,6 +638,9 @@ that cannot be accessed directly from the internet, keep the following in mind:
 - If you use a `rewrite` or `sub_filter` directive with your proxy, ensure the proxy
   does not rewrite or replace the `gitlab-jira-connect-${host}` app key.
   Otherwise, you might get a [`Failed to link group`](jira_cloud_app_troubleshooting.md#error-failed-to-link-group) error.
+- The reverse proxy must forward the `/-/jira_connect/*` path unchanged.
+  Each JWT from Jira includes a query string hash (`qsh`) of the request method, path, and query string.
+  If the proxy changes any of these, GitLab rejects the request with a `401` or `403` error.
 - When you select [**Create branch**](https://support.atlassian.com/jira-software-cloud/docs/view-development-information-for-an-issue/#Create-feature-branches) in the Jira development panel,
   you are redirected to the reverse proxy FQDN rather than the internal GitLab FQDN.
 

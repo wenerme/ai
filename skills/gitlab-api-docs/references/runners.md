@@ -597,7 +597,11 @@ Example response:
 
 ## List all runner's managers
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269229) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `ci_rate_limit_rest_runner_manager_list`. Disabled by default.
+
 Lists all the managers of a runner.
+The managers listed count toward a per-user
+[rate limit](../administration/cicd/limits.md#runner-manager-list-rate-limits).
 
 ```plaintext
 GET /runners/:id/managers

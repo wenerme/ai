@@ -950,6 +950,7 @@ Example response:
 ## Retrieve your user preferences
 
 - `emoji_skin_tone` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/633107) in GitLab 19.6.
+- `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`, `mobile_push_working_hours_end`, `mobile_push_working_days`, and `mobile_push_working_hours_time_zone` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262623) in GitLab 19.6.
 
 Retrieves your user preferences.
 
@@ -970,15 +971,22 @@ Example response:
   "view_diffs_file_by_file": true,
   "show_whitespace_in_diffs": false,
   "pass_user_identities_to_ci_jwt": false,
-  "emoji_skin_tone": "default"
+  "policy_advanced_editor": false,
+  "emoji_skin_tone": "default",
+  "mobile_push_working_hours_enabled": true,
+  "mobile_push_working_hours_start": 540,
+  "mobile_push_working_hours_end": 1020,
+  "mobile_push_working_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+  "mobile_push_working_hours_time_zone": "Europe/Berlin"
 }
 ```
 
 ## Update your user preferences
 
 - `emoji_skin_tone` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/633107) in GitLab 19.6.
+- `mobile_push_working_hours_enabled`, `mobile_push_working_hours_start`, `mobile_push_working_hours_end`, `mobile_push_working_days`, and `mobile_push_working_hours_time_zone` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262623) in GitLab 19.6.
 
-Updates your user preferences.
+Updates your user preferences. At least one attribute is required.
 
 Prerequisites:
 
@@ -995,18 +1003,30 @@ PUT /user/preferences
   "view_diffs_file_by_file": true,
   "show_whitespace_in_diffs": false,
   "pass_user_identities_to_ci_jwt": false,
-  "emoji_skin_tone": "default"
+  "policy_advanced_editor": false,
+  "emoji_skin_tone": "default",
+  "mobile_push_working_hours_enabled": true,
+  "mobile_push_working_hours_start": 540,
+  "mobile_push_working_hours_end": 1020,
+  "mobile_push_working_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+  "mobile_push_working_hours_time_zone": "Europe/Berlin"
 }
 ```
 
 Supported attributes:
 
-| Attribute                        | Required | Description |
-|:---------------------------------|:---------|:------------|
-| `view_diffs_file_by_file`        | Yes      | Flag indicating the user sees only one file diff per page. |
-| `show_whitespace_in_diffs`       | Yes      | Flag indicating the user sees whitespace changes in diffs. |
-| `pass_user_identities_to_ci_jwt` | Yes      | Flag indicating the user passes their external identities as CI information. This attribute does not contain enough information to identify or authorize the user in an external system. The attribute is internal to GitLab, and must not be passed to third-party services. For more information and examples, see [Token Payload](../ci/secrets/id_token_authentication.md#token-payload). |
-| `emoji_skin_tone`                | No       | Default skin tone for emoji that have skin tone variants. One of `default`, `light`, `medium_light`, `medium`, `medium_dark`, or `dark`. |
+| Attribute                             | Required    | Description |
+|:--------------------------------------|:------------|:------------|
+| `emoji_skin_tone`                     | Conditional | Default skin tone for emoji that have skin tone variants. One of `default`, `light`, `medium_light`, `medium`, `medium_dark`, or `dark`. Required if no other attribute is provided. |
+| `mobile_push_working_days`            | Conditional | Weekdays with working hours, for example `["monday", "friday"]`. Defaults to Monday through Friday. The array you send replaces the whole set instead of adding to it. Required if no other attribute is provided. |
+| `mobile_push_working_hours_enabled`   | Conditional | Send mobile push notifications only during the configured working hours. To-dos created outside them are summarized in one notification when the working hours begin. Setting this to `true` requires a start time, an end time that differs from it, a time zone, and at least one working day. Send them in the same request or set them first. Required if no other attribute is provided. |
+| `mobile_push_working_hours_end`       | Conditional | End of the working hours, in minutes after midnight. A value before the start means the window crosses midnight. Required if no other attribute is provided. |
+| `mobile_push_working_hours_start`     | Conditional | Start of the working hours, in minutes after midnight (`540` is 09:00). Required if no other attribute is provided. |
+| `mobile_push_working_hours_time_zone` | Conditional | IANA time zone the working hours are defined in, for example `Europe/Berlin`. Required if no other attribute is provided. |
+| `pass_user_identities_to_ci_jwt`      | Conditional | Flag indicating the user passes their external identities as CI information. This attribute does not contain enough information to identify or authorize the user in an external system. The attribute is internal to GitLab, and must not be passed to third-party services. For more information and examples, see [Token Payload](../ci/secrets/id_token_authentication.md#token-payload). Required if no other attribute is provided. |
+| `policy_advanced_editor`              | Conditional | Flag indicating the user uses the advanced policy editor. Required if no other attribute is provided. |
+| `show_whitespace_in_diffs`            | Conditional | Flag indicating the user sees whitespace changes in diffs. Required if no other attribute is provided. |
+| `view_diffs_file_by_file`             | Conditional | Flag indicating the user sees only one file diff per page. Required if no other attribute is provided. |
 
 ## Upload an avatar for yourself
 
@@ -1154,7 +1174,7 @@ The activities that update the user event timestamps (`last_activity_on` and `cu
 
 - Git HTTP/SSH activities (such as clone, push)
 - User logging in to GitLab
-- User visiting pages related to dashboards, projects, issues, and merge requests
+- User visiting pages related to dashboards, groups, projects, issues, and merge requests
 - User using the API
 - User using the GraphQL API
 

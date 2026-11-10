@@ -138,6 +138,35 @@ Depending on how you installed the app, you might want to check the following:
     instance.
   - [Reinstall the app](jira_cloud_app.md#install-the-gitlab-for-jira-cloud-app-manually). This method might remove all [synced data](../../integration/jira/connect-app.md#gitlab-data-synced-to-jira) from the [Jira development panel](../../integration/jira/development_panel.md).
 
+## Development panel stays empty and outbound requests fail
+
+If the Jira development panel stays empty after you link a group,
+your instance might fail to send development data to Jira.
+Inbound requests from Jira can still succeed, because they do not depend on the outbound path.
+
+To check the outbound path, run the following in a [Rails console](../operations/rails_console.md#starting-a-rails-console-session):
+
+```ruby
+installation = JiraConnectInstallation.find_by_base_url("https://customer_name.atlassian.net")
+client = Atlassian::JiraConnect::Client.new(installation.base_url, installation.shared_secret)
+response = client.send(:get, '/rest/api/3/user', { accountId: 'placeholder-account-id' })
+puts "status=#{response.code} content_type=#{response.headers['content-type']}"
+```
+
+Because the account ID is a placeholder, Jira usually returns a `404` status with the message
+`Specified user does not exist or you do not have required permissions`.
+
+- A `200`, `400`, or `404` status with an `application/json` content type means Jira answered.
+  The outbound path and the authentication work.
+- A `401` status means Jira rejected the app key.
+  The app key that your instance signs requests with does not match the key the app was registered with.
+  For more information, see [app keys and group links](jira_cloud_app.md#app-keys-and-group-links) and, for a manual installation,
+  [when the Forge URL and `external_url` hosts differ](https://gitlab.com/gitlab-org/gitlab-jira-forge/-/blob/main/docs/self-managed-install.md#when-the-forge-url-and-external_url-hosts-differ).
+- A `403` status with a response that does not come from Jira means an outbound HTTP proxy or firewall blocks the connection to `*.atlassian.net`.
+  For example, the response is an HTML page from the proxy.
+  Allow outbound HTTPS connections to `*.atlassian.net` from your instance.
+  For more information, see [connectivity requirements](jira_cloud_app.md#connectivity-requirements).
+
 ## Error: `Failed to update the GitLab instance`
 
 When you set up the GitLab for Jira Cloud app, you might get a `Failed to update the GitLab instance` error after you enter your GitLab Self-Managed instance URL.

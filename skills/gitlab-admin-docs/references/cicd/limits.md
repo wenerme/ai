@@ -670,6 +670,37 @@ To configure the limit:
 1. Set a value for **Maximum runner job lists filtered to user projects per user**.
 1. Select **Save changes**.
 
+## Runner manager list rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269229) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `ci_rate_limit_rest_runner_manager_list`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
+
+Repeated requests that list a runner's managers can put significant load on your instance.
+To protect against this, you can limit how many runner managers each user can list.
+
+This rate limit applies to the [list all runner's managers](../../api/runners.md#list-all-runners-managers)
+REST API endpoint.
+Each request counts the runner's managers toward the limit.
+A request for a runner with more managers than the remaining limit is refused,
+and refused requests also count toward the limit.
+
+GitLab enforces the following limit:
+
+- Per user: Configurable, with a default of `300000` runner managers each minute.
+
+Set the limit to `0` to disable it.
+If the limit is exceeded, the REST API returns `429 Too Many Requests`.
+
+To configure the limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Set a value for **Maximum runner managers listed per user**.
+1. Select **Save changes**.
+
 ## Maximum artifacts size
 
 Set size limits for job artifacts to control storage use.

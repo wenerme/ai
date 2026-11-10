@@ -321,7 +321,7 @@ Represents signing information for a commit.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `currentUserTodos` | [`TodoConnection!`](objects.md#todoconnection) | To-do items for the current user. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `currentUserTodos`:</strong> <dl><dt>`state` ([`TodoStateEnum`](enums.md#todostateenum))</dt><dd>State of the to-do items.</dd></dl> |
+| `currentUserTodos` | [`TodoConnection!`](objects.md#todoconnection) | To-do items for the current user. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `currentUserTodos`:</strong> <dl><dt>`noteId` ([`NoteID`](scalars.md#noteid))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Global ID of a comment. Returns only the to-do items for the comment.</dd><dt>`state` ([`TodoStateEnum`](enums.md#todostateenum))</dt><dd>State of the to-do items.</dd></dl> |
 
 ## `CustomDashboardInterface`
 

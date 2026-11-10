@@ -366,7 +366,18 @@ Example response:
 
 ## Update an epic
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268180) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_update_rate_limit`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Updates a specified epic for a group.
+
+By default, this endpoint is rate limited to 600 requests every minute for each user.
+The limit is shared with other issue, epic, and work item updates in the UI, the REST API, and GraphQL.
+Administrators can change the limit with the `work_item_update_limit` [application setting](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 PUT /groups/:id/epics/:epic_iid

@@ -17,6 +17,12 @@ Registering a device does not deliver notifications by itself: delivery is
 enabled separately for the instance with the `mobile_push_notifications_dispatch`
 feature flag.
 
+Delivery can be limited to working hours through the
+[user preferences API](users.md#update-your-user-preferences)
+(`mobile_push_working_hours_*`). To-dos created outside the working hours are
+not sent individually; one summary notification is sent to every registered
+device when the working hours begin.
+
 Every notification carries the user's pending to-do count as the app badge.
 When the `mobile_push_badge_sync` feature flag is also enabled, a change to
 that count that creates no to-do item (marking to-do items as done or

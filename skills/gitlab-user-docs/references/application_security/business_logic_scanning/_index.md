@@ -3,12 +3,13 @@
 Business logic scanning uses an AI agent, the Business Logic Security Analyzer (BLSA), to find authorization and access control vulnerabilities in how your application enforces its own rules.
 
 - Tier: Ultimate
-- Offering: GitLab.com, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment) [with a feature flag](../../../administration/feature_flags/_index.md) named `bl_security_analyzer`. Disabled by default.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264192) from experiment to beta in GitLab 19.6.
 - [Available on GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262270) in GitLab 19.6.
+- [Available on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269040) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -68,10 +69,27 @@ A scan starts in one of these ways:
 Prerequisites:
 
 - A GitLab Ultimate subscription.
-- [GitLab Duo Agent Platform turned on](../../duo_agent_platform/turn_on_off.md) for the
-  top-level group.
-- [Experiment and beta features turned on](../../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features)
-  in the GitLab Duo settings of the top-level group.
+- On GitLab.com:
+  - [GitLab Duo Agent Platform turned on](../../duo_agent_platform/turn_on_off.md) for the
+    top-level group.
+  - [Experiment and beta features turned on](../../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features)
+    in the GitLab Duo settings of the top-level group.
+- On GitLab Self-Managed and GitLab Dedicated:
+  - Experiment and beta features turned on for the instance.
+  - GitLab must turn on business logic scanning for your instance. Contact your account team.
+- On GitLab Self-Managed:
+  - GitLab Duo Agent Platform turned on for the instance.
+  - An administrator must enable the `bl_security_analyzer` and `agentic_analyzer_security_ingestion`
+    feature flags for the instance.
+  - An instance runner, or a group runner assigned to the top-level group,
+    [configured to execute flows](../../duo_agent_platform/flows/execution/_index.md#configure-runners-to-execute-flows).
+    The runner must use an executor that supports Docker images and have the `gitlab--duo` tag.
+  - The runner must have [network access to `gitlab.com` and `registry.gitlab.com`](../../../administration/gitlab_duo/configure/_index.md#allow-connections-from-the-runner).
+    Offline environments and custom image registries are not supported.
+  - GitLab-managed models for GitLab Duo.
+    Business logic scanning uses the default model.
+    Self-hosted models are not supported.
+    Running your own GitLab Duo Workflow Service (GitLab Duo Self-Hosted) is not supported.
 
 To turn on business logic scanning:
 

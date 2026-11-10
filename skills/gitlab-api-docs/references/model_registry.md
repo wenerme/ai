@@ -75,6 +75,7 @@ curl --request PUT \
 ### Send the file
 
 Uploads the file to a machine learning model package.
+If the package already has a file with the same path and filename, the uploaded file replaces it.
 
 ```plaintext
 PUT /api/v4/projects/:id/packages/ml_models/:model_version_id/files/(*path/):file_name

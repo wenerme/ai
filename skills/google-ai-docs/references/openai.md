@@ -108,7 +108,7 @@ control over how much the model will think.
 Different Gemini models have different reasoning configurations, you can see how
 they map to OpenAI's reasoning efforts as follows:
 
-| reasoning_effort (OpenAI) | thinking_level (Gemini 4 Argon) | thinking_level (Gemini 3.1 Flash-Lite) | thinking_level (Gemini 3 Flash) | thinking_budget (Gemini 2.5) |
+| reasoning_effort (OpenAI) | thinking_level (Gemini 4) | thinking_level (Gemini 3.1 Flash-Lite) | thinking_level (Gemini 3 Flash) | thinking_budget (Gemini 2.5) |
 | :--- | :--- | :--- | :--- | :--- |
 | `minimal` | `low` | `minimal` | `minimal` | `1,024` |
 | `low` | `low` | `low` | `low` | `1,024` |
@@ -119,7 +119,7 @@ If no `reasoning_effort` is specified, Gemini uses the model's
 default [level or budget](/docs/thinking#thinking-levels).
 
 If you want to disable thinking, you can set `reasoning_effort` to `"none"` for
-2.5 models. Reasoning cannot be turned off for Gemini 2.5 Pro or 3 models.
+2.5 models. Reasoning cannot be turned off for Gemini 2.5 Pro, Gemini 3, or Gemini 4 models.
 
 {% tabs %}
   {% tab filename="sample.py" label="Python" %}
@@ -739,11 +739,11 @@ Generate an image using `gemini-2.5-flash-image` or `gemini-3-pro-image-preview`
    Veo 3.1 Preview (`veo-3.1-generate-preview`,
   `veo-3.1-fast-generate-preview`, and `veo-3.1-lite-generate-preview`) in the
   Gemini API was [shut down](/docs/deprecations) on **October 22, 2026**. Migrate
-  to [Gemini Omni Flash](/docs/omni) (`gemini-omni-1.1-flash`) using the native
+  to [Gemini Omni Flash](/docs/omni) (`gemini-omni-1.2-flash`) using the native
   Google GenAI SDK ([Interactions API](/docs/interactions-overview)) or the GA
   models available through the
   [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate)
-  to avoid service interruptions. Video generation with `gemini-omni-1.1-flash` is
+  to avoid service interruptions. Video generation with `gemini-omni-1.2-flash` is
   not supported on the OpenAI-compatible `/v1/videos` endpoint. 
 
 {% /callout %}

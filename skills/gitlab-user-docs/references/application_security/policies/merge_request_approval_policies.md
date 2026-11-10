@@ -47,10 +47,7 @@ The following video gives you an overview of GitLab merge request approval polic
   [with a feature flag](../../../administration/feature_flags/_index.md) named
   `approval_policies_block_on_failed_scan_job`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253104) in GitLab 19.4.
-
-> [!flag]
-> The availability of the failed-scan-job blocking behavior is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269225) in GitLab 19.6. Feature flag `approval_policies_block_on_failed_scan_job` removed.
 
 A merge request approval policy is enforced according to the outcome of the pipeline. Consider the
 following when implementing a merge request approval policy:
@@ -1341,9 +1338,7 @@ Common failure reasons:
   The bot message reads:
   `Policy <name> could not be evaluated because the following security scans did not complete
   successfully: <scanners>. Ensure security scan jobs are not canceled or failing.`
-  Introduced in GitLab 19.3 by [merge request 243540](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243540)
-  behind the feature flag `approval_policies_block_on_failed_scan_job`, enabled by default since
-  GitLab 19.4.
+  Introduced in GitLab 19.3 by [merge request 243540](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243540).
   For the Dependency Scanning v2 limitation, see [Pipeline requirements](#pipeline-requirements).
 
 ### Inconsistent approvals from merge request approval policies

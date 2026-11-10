@@ -16,7 +16,7 @@ Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Note
 
-**Important Update:** Cloudflare now supports native User Groups for enhanced access control. This new feature replaces the previous method of directly assigning Cloudflare roles based on IdP group mappings (identified by the pattern `CF-<accountID> - <Role Name>`), which is deprecated as of June 2nd, 2025. SCIM Virtual Groups will reach end-of-life on December 2, 2025. Update your SCIM configurations using the instructions below to utilize User Groups for seamless provisioning.
+**Important Update:** Cloudflare User Groups replace the older Virtual Groups model that mapped IdP groups directly to Cloudflare roles (identified by the pattern `CF-<accountID> - <Role Name>`). Virtual Groups are deprecated. Migrate to SCIM User Groups to keep group-based provisioning support in the Cloudflare dashboard. For migration steps, refer to [SCIM v1 to v2 Migration](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/).
 
 Once you have [gathered the required data](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/#gather-the-required-data), the following steps will be required to finish the provisioning with Authentik.
 

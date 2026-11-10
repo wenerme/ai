@@ -36,6 +36,8 @@ To view members using the dashboard:
 
 In the Cloudflare dashboard, go to the **Members** page.
 
+The Members overview page shows each member's invitation status, Super Administrator status, API access setting, and whether they have 2FA enabled, including email 2FA.
+
 [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 
 To view members using the API, send a [`GET` request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/list/).

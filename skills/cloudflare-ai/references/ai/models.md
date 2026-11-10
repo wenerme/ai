@@ -1344,21 +1344,21 @@ Compare
 
 Compare
 
-[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>aura-1</h3>DeepgramText-to-Speech Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-1/)
+[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DQ57H7UQ.svg)<h3>aura-1</h3>DeepgramText-to-Speech Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-1/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>aura-2-en</h3>DeepgramText-to-Speech Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-en/)
+[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DQ57H7UQ.svg)<h3>aura-2-en</h3>DeepgramText-to-Speech Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-en/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>aura-2-es</h3>DeepgramText-to-Speech Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-es/)
+[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DQ57H7UQ.svg)<h3>aura-2-es</h3>DeepgramText-to-Speech Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.](https://developers.cloudflare.com/ai/models/@cf/deepgram/aura-2-es/)
 
 - Cloudflare-hosted
 - +4
@@ -1484,7 +1484,7 @@ Compare
 
 Compare
 
-[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>flux</h3>DeepgramAutomatic Speech Recognition Flux is the first conversational speech recognition model built specifically for voice agents.](https://developers.cloudflare.com/ai/models/@cf/deepgram/flux/)
+[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DQ57H7UQ.svg)<h3>flux</h3>DeepgramAutomatic Speech Recognition Flux is the first conversational speech recognition model built specifically for voice agents.](https://developers.cloudflare.com/ai/models/@cf/deepgram/flux/)
 
 - Cloudflare-hosted
 - +3
@@ -1547,28 +1547,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +5
@@ -1729,7 +1729,7 @@ Compare
 
 Compare
 
-[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>nova-3</h3>DeepgramAutomatic Speech Recognition Transcribe audio using Deepgram’s speech-to-text model](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/)
+[![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DQ57H7UQ.svg)<h3>nova-3</h3>DeepgramAutomatic Speech Recognition Transcribe audio using Deepgram’s speech-to-text model](https://developers.cloudflare.com/ai/models/@cf/deepgram/nova-3/)
 
 - Cloudflare-hosted
 - +4

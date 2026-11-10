@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/deploy
 
 # Deployment management
 
-Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, a new version is created and immediately deployed to 100% of traffic when you use any of the following:
 
@@ -94,6 +94,16 @@ You can also set the traffic percentage to less than 100% to start a [gradual de
 
 You can also create versions and deployments directly with the API, library SDKs, and Terraform. Refer to [Infrastructure as Code](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/) for examples.
 
+## In-flight requests
+
+A deployment changes which versions receive new requests. Requests already executing can continue running the version that accepted them. Deploying new code does not update code in an invocation that has already started.
+
+A successful deployment does not confirm that earlier invocations or their external operations have completed. If a release requires earlier work to finish, coordinate that in your application before making incompatible data or configuration changes.
+
+Existing requests remain subject to the [invocation duration rules](https://developers.cloudflare.com/workers/platform/limits/#duration) and [`ctx.waitUntil()` limits](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). The grace period for [Workers runtime updates](https://developers.cloudflare.com/workers/platform/limits/#runtime-updates) applies when Cloudflare updates the runtime, rather than when you deploy your code.
+
+Durable Objects have separate [code update behavior](https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/).
+
 ## Limits
 
 ### Deployments limit
@@ -123,5 +133,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#page","headline":"Deployment management","description":"Upload versions independently and control when and how they are deployed to your Worker's traffic.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/og.png?v=45414a68701c50de","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#page","headline":"Deployment management","description":"Upload versions independently and control when and how they are deployed to your Worker's traffic.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/og.png?v=45414a68701c50de","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

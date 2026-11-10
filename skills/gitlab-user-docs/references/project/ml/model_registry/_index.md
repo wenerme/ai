@@ -121,6 +121,8 @@ To add artifacts to a model version:
 
 Alternatively, you can drag and drop files in the drop area. The artifacts are automatically uploaded.
 
+If you upload a file with the same path and name as an existing artifact, the new file replaces the existing artifact.
+
 Because each file has a size limit of 5 GB, you must partition larger models.
 
 ### Delete artifacts from a model version

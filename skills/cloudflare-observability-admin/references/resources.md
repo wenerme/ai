@@ -14,9 +14,13 @@ Products
 
 1.1.1.1AccessAgentsAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBasin CatalogBasin PipelinesBasin SQLBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsDynamic WorkersEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPulumiQueuesR2Rate limitingRealtimeReference ArchitectureRulesSandboxesSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
 
+[**Set up and use a Prisma Postgres database** This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)
+
 [**Migrate from Vercel to Cloudflare Workers** Migrate a Vercel application to Cloudflare Workers. Includes tested guides for Next.js, TanStack Start, React Router, SvelteKit, Nuxt, and Astro.](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
 
 [**Designing a distributed web performance architecture** A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/)
+
+[**SentinelOne and Cloudflare — An AI-driven security ecosystem for autonomous, risk-based protection** This reference architecture outlines how Cloudflare and SentinelOne integrate to create an AI-driven security ecosystem combining autonomous endpoint protection with Zero Trust network access, shared risk intelligence, and automated remediation and recovery workflows.](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/)
 
 [**Build a coding agent runner** Build a Worker that clones a GitHub repository into a Linux sandbox, runs Claude Code on a task in the background, and returns its changes as a diff.](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/)
 
@@ -88,8 +92,6 @@ Products
 
 [**Create and secure an AI agent wrapper using AI Gateway and Zero Trust** This tutorial explains how to use Cloudflare AI Gateway and Zero Trust to create a functional and secure website wrapper for an AI agent.](https://developers.cloudflare.com/cloudflare-one/tutorials/ai-wrapper-tenant-control/)
 
-[**Enhancing security posture with SentinelOne and Cloudflare One** The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/)
-
 [**Point to Pages with a custom domain** This tutorial will instruct you how to configure an origin rule and a DNS record to point to a Pages deployment with a custom domain.](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/)
 
 [**Point to R2 bucket with a custom domain** This tutorial will instruct you how to configure an origin rule and a DNS record to point to an R2 bucket configured with a custom domain.](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/)
@@ -111,8 +113,6 @@ Products
 [**Programmable Platforms** Workers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/)
 
 [**Change URI path and Host header** This tutorial shows you how to modify both the URI path and the Host header of incoming requests using Transform Rules and Origin Rules.](https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/)
-
-[**Set up and use a Prisma Postgres database** This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)
 
 [**FIPS 140 level 3 compliance with Cloudflare Application Services** This document outlines a reference architecture for achieving Federal Information Processing Standard (FIPS) 140 Level 3 compliance using Cloudflare's Application Services.](https://developers.cloudflare.com/reference-architecture/diagrams/security/fips-140-3/)
 

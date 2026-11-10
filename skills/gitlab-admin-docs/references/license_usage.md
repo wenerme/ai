@@ -96,3 +96,19 @@ To export a usage report:
    select the term to export. Export the previous term if you did not upload its last month.
 1. Review the report contents, then select **Export JSON**.
 1. Upload the downloaded file to the Customers Portal.
+
+## Upload a usage report
+
+Prerequisites:
+
+- The billing account manager role.
+
+To upload a usage report:
+
+1. Sign in to the [Customers Portal](https://customers.gitlab.com/customers/sign_in).
+1. By the relevant subscription, select **Upload usage report**.
+1. Add the license usage CSV file or the usage report JSON file.
+1. Select **Submit report**.
+
+After you upload a usage report, the **Usage reported** table shows the summary on monthly splits,
+even though the uploaded file covers multiple or partial months.

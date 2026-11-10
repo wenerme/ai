@@ -64,7 +64,7 @@ A new artifact that Claude publishes in response to a prompt you type goes throu
 | :- | :- |
 | The session is in [plan mode](https://code.claude.com/docs/en/permission-modes.md#analyze-before-you-edit-with-plan-mode) | Asks before the first publish of each artifact |
 | The publish declares runtime capabilities for the page, such as [connector calls](#pull-live-data-with-mcp-connectors) or [file downloads](#offer-a-file-download) | Asks before that publish |
-| You shared the artifact publicly | Asks once per conversation before changing it |
+| You shared the artifact publicly | Asks once per conversation before changing it, and before each reply to a comment on it |
 | Claude publishes in a turn that a [session-scoped scheduled task](https://code.claude.com/docs/en/scheduled-tasks.md) firing in your session started, rather than a prompt you typed | Asks before the first publish of each artifact |
 | Claude can't read the file without your approval | Asks before publishing it. An allow rule for the `Artifact` tool doesn't skip this prompt |
 | In [Manual](https://code.claude.com/docs/en/permission-modes.md) or `acceptEdits` mode, Claude makes a small change to an artifact's file it can't edit without your approval, such as a project file in Manual mode | Asks before publishing the change. You're asked even if an allow rule covers the `Artifact` tool, because the edit to the file needs your approval |
@@ -111,6 +111,7 @@ Viewers in your organization can see who published the page: on an artifact shar
 Who you can share with depends on your plan:
 
 * **Within your organization**: on Team and Enterprise plans, grant access to specific people in your organization, or to everyone in it. Viewers sign in to claude.ai as members of your organization to see the page.
+* **People with access to a shared folder**: on Team and Enterprise plans, move the artifact to a folder that you own or are an editor of. Move it from the [Artifacts page](https://claude.ai/artifacts), which is available if you can use claude.ai chat. Everyone with access to the folder can then open it, and the folder's owner and editors can change it.
 * **Publicly**: share a link that anyone on the internet can open, with no claude.ai sign-in required. On Team and Enterprise plans, public sharing is off until an Owner [enables it for the organization](#control-public-sharing).
 
 ### Link to a specific view
@@ -178,7 +179,7 @@ You need Claude Code v2.1.228 or later. If you turned [feature-flag fetching](ht
 Your [permission mode](https://code.claude.com/docs/en/permission-modes.md) decides what Claude does when a sent comment arrives:
 
 * **Claude replies on its own**: if you're in a permission mode that lets Claude post the reply without asking you, Claude reads the thread and replies. You see `Auto-replied to comment thread on Artifact: <name>`.
-* **Claude waits for you**: outside plan mode, when posting the reply would need your approval, you see `Comments are waiting on Artifact: <name>`. Claude then asks you for approval to read the thread, and again to post the reply.
+* **Claude waits for you**: outside plan mode, when posting the reply [would need your approval](#when-claude-code-asks-before-publishing), you see `Comments are waiting on Artifact: <name>`. Claude then asks you for approval to read the thread, and again to post the reply.
 * **Claude pauses in plan mode**: you see `Comments are waiting on Artifact: <name>`, and Claude doesn't reply until you leave plan mode and ask it to read and reply.
 
 Claude also stops replying on its own to an artifact after it handles 60 sent comments or thread activations on that artifact within an hour. You see `Comments are waiting on Artifact: <name>` once, and Claude picks up again as that hour's comments age out.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/turnstile/get-started/server-side-valid
 
 # Validate the token
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to securely validate Turnstile tokens on your server using the Siteverify API.
 
@@ -24,7 +24,7 @@ Server-side validation is required because:
 
 - **Tokens can be forged.** An attacker can submit any string to your form endpoint without completing a challenge.
 - **Tokens expire.** Each token is valid for 300 seconds (5 minutes) after generation.
-- **Tokens are single-use.** Each token can only be validated once. A replayed token will be rejected with the `timeout-or-duplicate` error code.
+- **Tokens are intended for single use.** A replayed token is rejected with the `timeout-or-duplicate` error code after the earlier redemption becomes visible. Refer to [Token reuse and network convergence](#token-reuse-and-network-convergence).
 
 ## Process
 
@@ -59,12 +59,20 @@ The API accepts both `application/x-www-form-urlencoded` and `application/json` 
 
 - Maximum length: 2048 characters
 - Validity period: 300 seconds (5 minutes) from generation
-- Single use: Each token can only be validated once
+- Single use: Tokens are intended for one validation, subject to [network convergence](#token-reuse-and-network-convergence)
 - Automatic expiry: Tokens automatically expire and cannot be reused
 
 The validation token issued by Turnstile is valid for five minutes. If a user submits the form after this period, the token is considered expired. In this scenario, the server-side verification API will return a failure, and the `error-codes` field in the response will include `timeout-or-duplicate`.
 
 To ensure a successful validation, the visitor must initiate the request and submit the token to your backend within the five-minute window. Otherwise, the Turnstile widget needs to be refreshed to generate a new token. This can be done using the `turnstile.reset` function.
+
+### Token reuse and network convergence
+
+Turnstile tokens are intended for single use, but token-reuse detection is eventually consistent. Redemption state takes time to propagate across Cloudflare's global network.
+
+The service-level objective is to reject at least **99% of repeat validation requests received five seconds or more after the first successful validation**. Intentional retries using the same `idempotency_key` are excluded.
+
+Multiple validations submitted close together may succeed before redemption state propagates across the network. This includes both concurrent requests and closely spaced sequential requests.
 
 ---
 
@@ -572,7 +580,7 @@ if (result.valid) {
 | `missing-input-response` | Response parameter was not provided | Ensure token is included |
 | `invalid-input-response` | Token is invalid, malformed, or expired | User should retry the challenge |
 | `bad-request` | Request is malformed | Check request format and parameters |
-| `timeout-or-duplicate` | Token has already been validated | Each token can only be used once |
+| `timeout-or-duplicate` | Token has expired or has already been validated | Generate a new token for a new validation request |
 | `internal-error` | Internal error occurred | Retry the request |
 
 ---
@@ -727,5 +735,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/#page","headline":"Validate the token","description":"Validate Turnstile tokens on your server with the siteverify API.","url":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/og.png?v=58220cfac6c19059","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/#page","headline":"Validate the token","description":"Validate Turnstile tokens on your server with the siteverify API.","url":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/og.png?v=58220cfac6c19059","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/load-balancing/troubleshooting/common-e
 
 # Common error codes
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Load Balancing API adds global health to each pool and endpoint. It also gives you a view into what our network sees at a wider level. Cloudflare uses a quorum system to determine pool and endpoint health status. The quorum is taken from PoPs responsible for running health monitor requests in a region, and the majority result is used.
 
@@ -217,11 +217,16 @@ Ensure the endpoint responds to requests and that no applications have crashed o
 
 ### Cause
 
-The endpoint hostname does not exist.
+The endpoint hostname does not exist, or the monitor's DNS resolver could not obtain a usable response for the hostname.
+
+A common cause of the second scenario is a DNS answer that exceeds 512 bytes over UDP — for example, a hostname that resolves to a large number of A records (typically 20 or more). The load balancer monitor performs an uncached DNS lookup on every health check using UDP by default. If the DNS response is too large and the resolver does not fall back to TCP, the lookup fails and the monitor reports `DNS Unknown Host` — even though the hostname resolves correctly for clients.
 
 ### Solution
 
-Confirm the endpoint resolves to an IP address.
+- **Confirm the hostname exists:** verify it resolves to at least one IP address using `dig` or `nslookup`.
+- **If the hostname resolves correctly for clients but the monitor still reports this error:** use an individual IP address as the pool endpoint instead of a hostname. This eliminates the DNS lookup from the health check path entirely. If you cannot use a bare IP address, use a hostname for which Cloudflare is authoritative (primary or secondary DNS).
+
+For more information on DNS lookup failures with FQDN endpoints, refer to [What happens when a pool or endpoint becomes unhealthy?](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#what-happens-when-a-pool-or-endpoint-becomes-unhealthy)
 
 ---
 
@@ -318,5 +323,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/#page","headline":"Common error codes","description":"Common Load Balancing error codes and resolutions.","url":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/og.png?v=845974cbcf81784a","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/#page","headline":"Common error codes","description":"Common Load Balancing error codes and resolutions.","url":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/og.png?v=845974cbcf81784a","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

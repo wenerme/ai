@@ -226,6 +226,10 @@ To navigate the dashboard using the outline, follow these steps:
 
 To edit a dashboard, follow these steps:
 
+{{< admonition type="note" >}}
+Editing a dashboard, including building one with Grafana Assistant, isn't available on small screens
+{{< /admonition >}}
+
 1. Navigate to the dashboard you want to update.
 1. Select **Editing** in the dashboard mode drop-down list.
 1. Do one of the following:

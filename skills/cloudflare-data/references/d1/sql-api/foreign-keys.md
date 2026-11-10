@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/d1/sql-api/foreign-keys/og.png?v=5be40d
 
 # Define foreign keys
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/foreign-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/foreign-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 supports defining and enforcing foreign key constraints across tables in a database.
 
@@ -30,7 +30,7 @@ D1's foreign key enforcement is equivalent to SQLite's `PRAGMA foreign_keys = on
 
 Instead, D1 allows you to call `PRAGMA defer_foreign_keys = on` or `off`, which allows you to violate foreign key constraints temporarily (until the end of the current transaction).
 
-Calling `PRAGMA defer_foreign_keys = off` does not disable foreign key enforcement outside of the current transaction. If you have not resolved outstanding foreign key violations at the end of your transaction, it will fail with a `FOREIGN KEY constraint failed` error.
+Calling `PRAGMA defer_foreign_keys = on` does not disable foreign key enforcement outside of the current transaction. If you have not resolved outstanding foreign key violations at the end of your transaction, it will fail with a `FOREIGN KEY constraint failed` error.
 
 To defer foreign key enforcement, set `PRAGMA defer_foreign_keys = on` at the start of your transaction, or ahead of changes that would violate constraints:
 
@@ -41,11 +41,10 @@ PRAGMA defer_foreign_keys = on
 -- Run your CREATE TABLE or ALTER TABLE / COLUMN statements
 ALTER TABLE users ...
 
--- This is implicit if not set by the end of the transaction.
-PRAGMA defer_foreign_keys = off
+-- Outstanding foreign key violations are checked when the transaction ends.
 ```
 
-You can also explicitly set `PRAGMA defer_foreign_keys = off` immediately after you have resolved outstanding foreign key constraints. If there are still outstanding foreign key constraints, you will receive a `FOREIGN KEY constraint failed` error and will need to resolve the violation.
+Do not set `PRAGMA defer_foreign_keys = off` to check that you have resolved outstanding foreign key violations. As in SQLite, setting it to `off` discards any outstanding violations instead of reporting them, so the transaction commits even if rows still violate a constraint. To find violations before the transaction ends, run [`PRAGMA foreign_key_check`](https://developers.cloudflare.com/d1/sql-api/sql-statements/#pragma-foreign_key_check).
 
 ## Define a foreign key relationship
 
@@ -129,5 +128,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/#page","headline":"Define foreign keys","description":"Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.","url":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/og.png?v=5be40dbf13d7aade","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/#page","headline":"Define foreign keys","description":"Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.","url":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/sql-api/foreign-keys/og.png?v=5be40dbf13d7aade","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
