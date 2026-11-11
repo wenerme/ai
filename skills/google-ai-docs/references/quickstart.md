@@ -2675,7 +2675,7 @@ and file management. Pass an `agent` instead of a `model` and set
   ```python
   from google import genai
   
-  client = genai.Client()
+  client = genai.Client(http_options={"api_version": "v1beta"})
   
   interaction = client.interactions.create(
       agent="antigravity-preview-09-2026",
@@ -2692,7 +2692,7 @@ and file management. Pass an `agent` instead of a `model` and set
   ```javascript
   import { GoogleGenAI } from "@google/genai";
   
-  const ai = new GoogleGenAI({});
+  const ai = new GoogleGenAI({ httpOptions: { apiVersion: "v1beta" } });
   
   const interaction = await ai.interactions.create({
     agent: "antigravity-preview-09-2026",
@@ -2708,13 +2708,14 @@ and file management. Pass an `agent` instead of a `model` and set
   {% tab label="Java" %}
   ```java
   import com.google.genai.Client;
+  import com.google.genai.types.HttpOptions;
   import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
   import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
   import com.google.genai.gaos.models.interactions.Interaction;
   import com.google.genai.gaos.models.interactions.InteractionsInput;
   import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
   
-  Client client = new Client();
+  Client client = Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
   
   CreateAgentInteraction params =
       CreateAgentInteraction.builder()
@@ -2947,7 +2948,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
   
   func main() {
       ctx := context.Background()
-      client, err := genai.NewClient(ctx, nil)
+      client, err := genai.NewClient(ctx, &genai.ClientConfig{HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"}})
       if err != nil {
           log.Fatal(err)
       }

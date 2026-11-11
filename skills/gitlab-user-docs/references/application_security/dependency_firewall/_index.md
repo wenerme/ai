@@ -8,9 +8,7 @@ Block packages with disallowed licenses, high vulnerability risk, or malicious c
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/22189) in GitLab 19.0 as an
   [experiment](../../../policy/development_stages_support.md).
-- Changed to [beta](../../../policy/development_stages_support.md) in GitLab
-  19.5. Available in Premium and Ultimate on GitLab.com and GitLab Self-Managed.
-  GitLab Dedicated support is planned for general availability.
+- Changed to [beta](../../../policy/development_stages_support.md) in GitLab 19.5.
 
 > [!note]
 > The dependency firewall is in [beta](../../../policy/development_stages_support.md#beta).
@@ -171,7 +169,9 @@ when a merge request is merged. For more information, see
 A security policy project can have a maximum of five dependency firewall policies. This limit is
 controlled by the `dependency_firewall_policies_per_configuration_limit` application setting.
 
-Creating policies at the group level means the policy applies to every project in the group, as well as its subgroups. Creating a policy at the project level, means the policy applies only to that project.
+Creating a policy in a group means the policy applies to every project in the group and its
+subgroups.
+Creating a policy in a project means the policy applies only to that project.
 
 Prerequisites:
 
@@ -366,7 +366,7 @@ projects from a broader rollout.
 `policy_scope` accepts two keys, `groups` and `projects`. Each key takes an `including` list, an
 `excluding` list, or both.
 
-In all cases, each entry is an object with an `id`.
+Each entry is an object with an `id`, except `projects.excluding` entries that use a `type`.
 
 | Field                | Type  | Description |
 |----------------------|-------|-------------|
@@ -401,11 +401,10 @@ project's enforcement target.
 
 The following policy:
 
-- blocks copyleft licenses
-- blocks packages that carry critical
-- vulnerabilities or more than two high vulnerabilities
-- blocks malicious packages
-- and exempts an internal library and a known false-positive CVE.
+- Blocks copyleft licenses
+- Blocks packages that carry a critical vulnerability or more than two high vulnerabilities
+- Blocks malicious packages
+- Exempts an internal library from the license rule and a known false-positive CVE from the risk severity rule
 
 ```yaml
 ---

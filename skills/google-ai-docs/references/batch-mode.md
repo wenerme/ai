@@ -25,14 +25,14 @@ required.
 You have two ways to submit your requests in Batch API:
 
 *   **[Inline requests](/docs/batch-api#inline-requests):** A list of
-  [`GenerateContentRequest`](https://ai.google.dev/api/batch-mode#GenerateContentRequest) objects
+  [`GenerateContentRequest`](/api-reference/batch-api/batch-generate-content#request-body) objects
   directly included in your batch creation request. This is suitable for
   smaller batches that keep the total request size under 20MB. The **output**
   returned from the model is a list of `inlineResponse` objects.
 
 *   **[Input file](/docs/batch-api#input-file):** A [JSON Lines (JSONL)](https://jsonlines.org/)
   file where each line contains a complete
-  [`GenerateContentRequest`](https://ai.google.dev/api/batch-mode#GenerateContentRequest) object.
+  [`GenerateContentRequest`](/api-reference/batch-api/batch-generate-content#request-body) object.
   This method is recommended for larger requests. The **output**
   returned from the model is a JSONL file where each line is either a
   `GenerateContentResponse` or a status object.
@@ -41,10 +41,10 @@ You have two ways to submit your requests in Batch API:
 ### Inline requests  {% id="inline-requests" %}
 
 For a small number of requests, you can directly embed the
-[`GenerateContentRequest`](https://ai.google.dev/api/batch-mode#GenerateContentRequest) objects
-within your [`BatchGenerateContentRequest`](https://ai.google.dev/api/batch-mode#request-body). The
+[`GenerateContentRequest`](/api-reference/batch-api/batch-generate-content#request-body) objects
+within your [`BatchGenerateContentRequest`](/api-reference/batch-api/batch-generate-content#request-body). The
 following example calls the
-[`BatchGenerateContent`](https://ai.google.dev/api/batch-mode#google.ai.generativelanguage.v1beta.BatchService.BatchGenerateContent)
+[`BatchGenerateContent`](/api-reference/batch-api/batch-generate-content)
 method with inline requests:
 
 {% tabs %}
@@ -205,7 +205,7 @@ method with inline requests:
 For larger sets of requests, prepare a JSON Lines (JSONL) file. Each line in
 this file must be a JSON object containing a user-defined key and a request
 object, where the request is a valid
-[`GenerateContentRequest`](https://ai.google.dev/api/batch-mode#GenerateContentRequest) object. The
+[`GenerateContentRequest`](/api-reference/batch-api/batch-generate-content#request-body) object. The
 user-defined key is used in the response to indicate which output is the result
 of which request. For example, the request with the key defined as `request-1`
 will have its response annotated with the same key name.
@@ -386,7 +386,7 @@ within your JSONL file.
 {% /tabs %}
 
 The following example calls the
-[`BatchGenerateContent`](https://ai.google.dev/api/batch-mode#google.ai.generativelanguage.v1beta.BatchService.BatchGenerateContent)
+[`BatchGenerateContent`](/api-reference/batch-api/batch-generate-content)
 method with the input file uploaded using File API:
 
 {% tabs %}
@@ -1210,7 +1210,7 @@ complete.
   ```python
   from google import genai
   
-  client = genai.Client()
+  client = genai.Client(http_options={"api_version": "v1beta"})
   
   webhook = client.webhooks.create(
       name="MyBatchWebhook",
@@ -1227,7 +1227,7 @@ complete.
   ```javascript
   import { GoogleGenAI } from "@google/genai";
   
-  const client = new GoogleGenAI();
+  const client = new GoogleGenAI({ httpOptions: { apiVersion: "v1beta" } });
   
   async function createWebhook() {
     const webhook = await client.webhooks.create({
@@ -1248,12 +1248,13 @@ complete.
   ```java
   import java.util.Arrays;
   import com.google.genai.Client;
+  import com.google.genai.types.HttpOptions;
   import com.google.genai.gaos.models.webhooks.Webhook;
   import com.google.genai.gaos.models.webhooks.WebhookInput;
   import com.google.genai.gaos.models.webhooks.WebhookSubscribedEvent;
   import java.util.List;
   
-  Client client = new Client();
+  Client client = Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
   
   WebhookInput input =
       WebhookInput.builder()
@@ -1274,7 +1275,7 @@ complete.
   {% tab label="REST" %}
   ```shell
   curl -X POST \
-    "https://generativelanguage.googleapis.com/v1/webhooks?webhook_id=my-example-webhook-123" \
+    "https://generativelanguage.googleapis.com/v1beta/webhooks?webhook_id=my-example-webhook-123" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GOOGLE_API_KEY" \
     -d '{
@@ -1700,7 +1701,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   from google.genai import types
   from PIL import Image
   
-  client = genai.Client()
+  client = genai.Client(http_options={"api_version": "v1beta"})
   
   # 1. Create batch job with inline requests
   inline_requests = [
@@ -1768,7 +1769,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   ```javascript
   import {GoogleGenAI} from '@google/genai';
   
-  const ai = new GoogleGenAI({});
+  const ai = new GoogleGenAI({ httpOptions: { apiVersion: "v1beta" } });
   
   async function run() {
       // 1. Create batch job with inline requests
@@ -1853,6 +1854,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   import java.util.Arrays;
   import java.util.Collections;
   import com.google.genai.Client;
+  import com.google.genai.types.HttpOptions;
   import com.google.genai.types.BatchJob;
   import com.google.genai.types.BatchJobSource;
   import com.google.genai.types.Content;
@@ -1867,7 +1869,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   import java.util.List;
   import java.util.Set;
   
-  Client client = new Client();
+  Client client = Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
   
   // 1. Create batch job with inline requests
   GenerateContentConfig imageConfig =
@@ -2019,7 +2021,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   from google.genai import types
   from PIL import Image
   
-  client = genai.Client()
+  client = genai.Client(http_options={"api_version": "v1beta"})
   
   # 1. Create and upload file
   file_name = "my-batch-image-requests.jsonl"
@@ -2098,7 +2100,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   import * as fs from "fs";
   import * as path from "path";
   
-  const ai = new GoogleGenAI({});
+  const ai = new GoogleGenAI({ httpOptions: { apiVersion: "v1beta" } });
   
   async function run() {
       // 1. Create and upload file
@@ -2202,6 +2204,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   import com.google.genai.types.BatchJobSource;
   import com.google.genai.types.CreateBatchJobConfig;
   import com.google.genai.types.File;
+  import com.google.genai.types.HttpOptions;
   import com.google.genai.types.JobState;
   import com.google.genai.types.UploadFileConfig;
   import java.nio.file.Files;
@@ -2209,7 +2212,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   import java.util.List;
   import java.util.Set;
   
-  Client client = new Client();
+  Client client = Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
   
   // 1. Create and upload file
   String fileName = "my-batch-image-requests.jsonl";
@@ -2280,7 +2283,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
   echo '{"key": "request-1", "request": {"contents": [{"parts": [{"text": "A big letter A surrounded by animals starting with the A letter"}]}], "generation_config": {"responseModalities": ["TEXT", "IMAGE"]}}}' > my-batch-image-requests.jsonl
   echo '{"key": "request-2", "request": {"contents": [{"parts": [{"text": "A big letter B surrounded by animals starting with the B letter"}]}], "generation_config": {"responseModalities": ["TEXT", "IMAGE"]}}}' >> my-batch-image-requests.jsonl
   
-  # Follow File API guide to upload: https://ai.google.dev/docs/files#upload_a_file
+  # Follow File API guide to upload: https://aistudio.google.com/docs/files
   # This example assumes you have uploaded the file and set BATCH_INPUT_FILE to its name (e.g., files/abcdef123)
   BATCH_INPUT_FILE="files/your-uploaded-file-name"
   
@@ -2351,7 +2354,7 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
 *   **Use input files for large requests:** For a large number of requests,
   always use the file input
   method for better manageability and to avoid hitting request size limits for
-  the [`BatchGenerateContent`](https://ai.google.dev/api/batch-mode#google.ai.generativelanguage.v1beta.BatchService.BatchGenerateContent)
+  the [`BatchGenerateContent`](/api-reference/batch-api/batch-generate-content)
   call itself. Note that there's a 2GB file size limit per input file.
 
 *   **Error handling:** Check the `batchStats` for `failedRequestCount` after a

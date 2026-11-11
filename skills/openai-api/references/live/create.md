@@ -1210,6 +1210,12 @@ Content type: `application/json`
 
     Frontend instructions for voice, conversation, interruptions, and when to delegate. Start with the [Live prompting guide](/api/docs/guides/live-prompting); put business rules and tool workflows in a separate [backend prompt](/api/docs/guides/live-delegation#start-with-your-existing-backend-prompt). Limited to 16,384 client-supplied tokens. Omitted or blank instructions use server defaults. Immutable after startup.
 
+  - `safety_identifier: optional string or null`
+
+    A stable identifier for your end user, used for safety monitoring and abuse detection.
+
+    `maxLength: 128`
+
   - `store: optional boolean`
 
     Whether to store the session for later forking and recording download. Defaults to false for new sessions.

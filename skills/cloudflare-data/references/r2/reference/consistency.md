@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/reference/consistency/og.png?v=024d7
 
 # Consistency model
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/consistency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/consistency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page details R2's consistency model, including where R2 is strongly, globally consistent and which operations this applies to.
 
@@ -49,15 +49,17 @@ Additional notes:
 R2 evaluates conditional write headers (for example `If-Match` and `If-None-Match` on `PutObject`) atomically, as part of the same write that commits the object:
 
 - The condition is always evaluated against the committed state of the bucket at the moment the write commits, never against an older snapshot.
-- Competing conditional writes to the same key are serialized. When two or more clients concurrently issue `PutObject` with `If-None-Match: *` for a previously absent key, at most one request succeeds and every other request fails with a `412 PreconditionFailed` error. It is therefore safe to rely on `If-None-Match: *` for "create-once" semantics: two concurrent conditional writes can never both observe success.
+- Competing conditional writes to the same key are serialized. When two or more clients concurrently issue `PutObject` with `If-None-Match: *` for a previously absent key, at most one request succeeds while its object exists, and every other request that is evaluated while that object exists fails with a `412 PreconditionFailed` error. It is therefore safe to rely on `If-None-Match: *` for "create-once" semantics: two concurrent conditional writes cannot both observe success unless the first object is deleted before the second write commits.
 
-For S3 API usage, refer to [Conditional operations in `PutObject`](https://developers.cloudflare.com/r2/api/s3/extensions/#conditional-operations-in-putobject).
+The same guarantees apply to conditional headers on `CompleteMultipartUpload`. When two clients complete separate multipart uploads for the same absent key with `If-None-Match: *`, at most one completion succeeds while its object exists. A condition failure aborts the multipart upload. Conditional headers on `CreateMultipartUpload` are not re-evaluated at completion.
+
+For S3 API usage, refer to [Conditional operations](https://developers.cloudflare.com/r2/api/s3/conditional-operations/).
 
 ## Negative reads and in-flight writes
 
 A strongly consistent read (`HeadObject` or `GetObject`) that returns `NoSuchKey` (404) tells you that the object did not exist at the moment the read was processed. This absence is **not** final with respect to an earlier `PutObject` whose outcome is still unknown: a request that was still in flight — for example, a client that lost its connection before receiving the response — may still commit after the negative read has returned. Reads are never stale, but they do not wait for or cancel earlier writes.
 
-If you need to treat a negative read as proof that a write failed, first make sure the original write has definitively completed (either succeeded or returned a definitive error) before trusting the read. Alternatively, retry the write with `If-None-Match: *`: it fails with `412 PreconditionFailed` if the ambiguous write did in fact commit.
+If you need to treat a negative read as proof that a write failed, first make sure the original write has definitively completed (either succeeded or returned a definitive error) before trusting the read. Alternatively, retry the write with `If-None-Match: *`: it fails with `412 PreconditionFailed` if the ambiguous write did in fact commit. For an ambiguous `CompleteMultipartUpload`, refer to [Reconcile an ambiguous completion](https://developers.cloudflare.com/r2/api/s3/conditional-operations/#reconcile-an-ambiguous-completion).
 
 ## Caching
 
@@ -84,5 +86,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/consistency/#page","headline":"Consistency model","description":"R2 provides strong global consistency for reads, writes, deletes, and list operations.","url":"https://developers.cloudflare.com/r2/reference/consistency/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/reference/consistency/og.png?v=024d731e0f576d8a","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/consistency/#page","headline":"Consistency model","description":"R2 provides strong global consistency for reads, writes, deletes, and list operations.","url":"https://developers.cloudflare.com/r2/reference/consistency/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/reference/consistency/og.png?v=024d731e0f576d8a","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -89,6 +89,22 @@ To update an artifact from a different session, give Claude its URL, or attach i
 Update https://claude.ai/code/artifact/5fbea6f3-... with today's numbers.
 ```
 
+### Turn off one-step artifact updates
+
+A one-step update is a small change Claude makes to an artifact's file as part of a publish, instead of through an `Edit` or `Write` call.
+
+To turn one-step updates off, set [`CLAUDE_CODE_ARTIFACT_PUBLISH_EDITS`](https://code.claude.com/docs/en/env-vars) to `0`. This example adds the variable to the `env` block in `~/.claude/settings.json`:
+
+```json theme={null}
+{
+  "env": {
+    "CLAUDE_CODE_ARTIFACT_PUBLISH_EDITS": "0"
+  }
+}
+```
+
+Then quit and relaunch Claude Code, because a running session doesn't reread the variable.
+
 ## Find an artifact again
 
 Run `/artifacts` in Claude Code to list the artifacts you own and the ones shared with you. The current session's artifacts come first, under **This session**.

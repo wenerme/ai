@@ -198,7 +198,7 @@ Cached content can be only used with model it was created for.
 
   **response**: {% mark %}required{% /mark %} `object`
 
-  The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See /docs/function-calling#multimodal.
+  The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` or `file_data.display_name` of a `FunctionResponsePart` holding the multimedia. See [Multimodal function responses](/docs/function-calling#multimodal).
 
   **id**: `string`
 
@@ -245,7 +245,7 @@ Cached content can be only used with model it was created for.
 
   **displayName**: `string`
 
-  Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
+  Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs, and to reference the blob from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
 
   {% /details %}
 
@@ -263,11 +263,11 @@ Cached content can be only used with model it was created for.
 
   **mimeType**: `string`
 
-  The IANA standard MIME type of the source data.
+  The IANA standard MIME type of the source data. If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Multimodal function responses](/docs/function-calling#multimodal) and [Supported file formats](/docs/file-input-methods#supported-content-types).
 
   **displayName**: `string`
 
-  Optional. Display name of the file. Used to provide a label or filename to distinguish file data.
+  Optional. Display name of the file. Used to provide a label or filename to distinguish file data, and to reference the file from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
 
   {% /details %}
 
@@ -748,7 +748,7 @@ Cached content can be only used with model it was created for.
 
   **response**: {% mark %}required{% /mark %} `object`
 
-  The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See /docs/function-calling#multimodal.
+  The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` or `file_data.display_name` of a `FunctionResponsePart` holding the multimedia. See [Multimodal function responses](/docs/function-calling#multimodal).
 
   **id**: `string`
 
@@ -795,7 +795,7 @@ Cached content can be only used with model it was created for.
 
   **displayName**: `string`
 
-  Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
+  Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs, and to reference the blob from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
 
   {% /details %}
 
@@ -813,11 +813,11 @@ Cached content can be only used with model it was created for.
 
   **mimeType**: `string`
 
-  The IANA standard MIME type of the source data.
+  The IANA standard MIME type of the source data. If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Multimodal function responses](/docs/function-calling#multimodal) and [Supported file formats](/docs/file-input-methods#supported-content-types).
 
   **displayName**: `string`
 
-  Optional. Display name of the file. Used to provide a label or filename to distinguish file data.
+  Optional. Display name of the file. Used to provide a label or filename to distinguish file data, and to reference the file from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
 
   {% /details %}
 

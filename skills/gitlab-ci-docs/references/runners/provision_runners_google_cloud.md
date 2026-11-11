@@ -31,26 +31,26 @@ Prerequisites:
 
 To create a group or project runner and provision it on Google Cloud:
 
-1. In the top bar, select **Search or go to** and find your group.
+1. In the top bar, select  and find your group or project.
 1. Create a new runner.
-   - To create a new group runner, select **Build** > **Runners** > **New group runner**.
-   - To create a new project runner, select **Settings** > **CI/CD** > **Runners** > **New project runner**.
-1. In the **Tags** section, in the **Tags** field, enter the job tags to specify jobs the runner can run.
-   To use the runner for jobs without tags in addition to the tagged jobs, select **Run untagged**.
-1. Optional. In the **Configuration** section, add runner description and additional configurations.
-1. Select **Create runner**.
-1. In the **Platform** section, select **Google Cloud**.
-1. In **Environment**, enter the following details of the Google Cloud environment:
+   - To create a new group runner, select  >  > .
+   - To create a new project runner, select  >  >  > .
+1. In the  section, in the  field, enter the job tags to specify jobs the runner can run.
+   To use the runner for jobs without tags in addition to the tagged jobs, select .
+1. Optional. In the  section, add runner description and additional configurations.
+1. Select .
+1. In the  section, select **Google Cloud**.
+1. In , enter the following details of the Google Cloud environment:
 
-   - **Google Cloud project ID**
-   - **Region**
-   - **Zone**
-   - **Machine type**
+   -
+   -
+   -
+   -
 
-1. In **Set up GitLab Runner**, select **Setup instructions**. In the dialog:
+1. In , select . In the dialog:
 
-   1. To enable the required services, service account, and permissions, in **Configure Google Cloud project** run the Bash script once for each Google Cloud project.
-   1. Create a `main.tf` file with the configuration from **Install and register GitLab Runner**.
+   1. To enable the required services, service account, and permissions, in  run the Bash script once for each Google Cloud project.
+   1. Create a `main.tf` file with the configuration from .
       The script uses the [GitLab Runner Infrastructure Toolkit](https://gitlab.com/gitlab-org/ci-cd/runner-tools/grit/-/blob/main/docs/scenarios/google/linux/docker-autoscaler-default/index.md)
       (GRIT) to provision the infrastructure on the Google Cloud project to execute your runner manager.
 

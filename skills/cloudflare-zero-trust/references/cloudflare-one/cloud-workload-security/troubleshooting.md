@@ -12,13 +12,9 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Troubleshooting
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Diagnose Cloud Workload Security (CWS) proxy, client, and policy issues. This guide covers the proxy setup in [Get started](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/).
-
-Note
-
-For questions about the Open Beta, contact [cloud-workload-security-open-beta@cloudflare.com](mailto:cloud-workload-security-open-beta@cloudflare.com).
 
 Use the sections to identify your symptom and verify the fix. Read the logs from the terminal or service running the proxy. For the relevant fields, refer to [Read proxy logs](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#read-proxy-logs).
 
@@ -108,7 +104,7 @@ If your network inspects Transport Layer Security (TLS), configure its approved 
 
 #### Deployment configuration cannot be parsed or prepared
 
-Local configuration validation does not validate the downloaded deployment bundle. If the API returns successfully but the proxy cannot parse or compile the configuration, [contact the Open Beta team](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#contact-the-open-beta-team) with the proxy version and sanitized error.
+Local configuration validation does not validate the downloaded deployment bundle. If the API returns successfully but the proxy cannot parse or compile the configuration, [contact Cloudflare Support](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#how-do-i-contact-support) with the proxy version and sanitized error.
 
 ### Verify the fix
 
@@ -233,7 +229,7 @@ An ACL allow decision permits the connection. It does not bypass request policie
 
 If no policy matches, inspect the deployment **Default mode** and intended request scope. If an evaluation error occurs, inspect the error and deployment **On error action**. Correct the underlying configuration or policy using [Configure policies](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/configure-policies/).
 
-If application classification fails before policy evaluation, the logs may report that failure instead of a normal policy decision. Include that error when [contacting the Open Beta team](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#contact-the-open-beta-team).
+If application classification fails before policy evaluation, the logs may report that failure instead of a normal policy decision. Include that error when [contacting Cloudflare Support](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#how-do-i-contact-support).
 
 #### Cloud provider rejects an allowed request
 
@@ -263,7 +259,7 @@ Look for `polling_remote_config` and any fetch or prepare failure. `remote_confi
 
 `remote_config_fetch_failed_keeping_current` and `remote_config_prepare_failed_keeping_current` mean the refresh failed. The running proxy retains its previous valid deployment configuration.
 
-For fetch failures, check [API access and connectivity](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#proxy-cannot-load-the-deployment). For prepare failures, review the reported configuration error and [contact the Open Beta team](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#contact-the-open-beta-team) if it persists. A saved dashboard change alone does not prove that the proxy applied it.
+For fetch failures, check [API access and connectivity](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#proxy-cannot-load-the-deployment). For prepare failures, review the reported configuration error and [contact Cloudflare Support](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#how-do-i-contact-support) if it persists. A saved dashboard change alone does not prove that the proxy applied it.
 
 #### Local configuration or process environment changed
 
@@ -287,7 +283,7 @@ Action Mapper classifies API requests for policy evaluation. The proxy rejects i
 
 Look for `initial_action_mapper_fetch_failed`, `initial_action_mapper_load_failed`, or `initial_action_mapper_incomplete` during startup. During operation, check `action_mapper_application_pending`, `action_mapper_poll_failed_keeping_current`, and any `action_mapper_degraded_denied_connect` or `action_mapper_degraded_denied_request` events.
 
-Use the reported error to check API connectivity and authentication. The proxy retries application-data loading. If validation failures persist, [contact the Open Beta team](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#contact-the-open-beta-team) with sanitized log excerpts.
+Use the reported error to check API connectivity and authentication. The proxy retries application-data loading. If validation failures persist, [contact Cloudflare Support](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#how-do-i-contact-support) with sanitized log excerpts.
 
 ### Verify the fix
 
@@ -331,7 +327,7 @@ Correct the displayed field errors. Filters must use supported Wirefilter fields
 
 For dashboard policies, declare a package under `policy.` and a Boolean `valid` rule. Check the syntax and imported library or metadata paths. Refer to [Configure policies](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/configure-policies/) and [Manage policy reference resources](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/policy-reference/).
 
-If the operation still fails, [contact the Open Beta team](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#contact-the-open-beta-team) with the sanitized API error code and message, when available. Do not treat a failed save as an applied configuration change.
+If the operation still fails, [contact Cloudflare Support](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#how-do-i-contact-support) with the sanitized API error code and message, when available. Do not treat a failed save as an applied configuration change.
 
 ### Verify the fix
 
@@ -356,16 +352,31 @@ For evaluated HTTP requests, inspect these events and fields:
 
 JSON-encoded log values can be truncated. A truncated audit is not a complete policy list. CONNECT denials and failures before policy evaluation can have their own events. The absence of a normal request record does not, by itself, prove that the client bypassed the proxy.
 
-## Contact the Open Beta team
+## How do I contact support?
 
-If the issue persists, contact [the Open Beta team](mailto:cloud-workload-security-open-beta@cloudflare.com) with:
+For the fastest possible troubleshooting, ensure your support ticket includes comprehensive details. The more context you provide, the faster your issue can be identified and resolved.
 
-- The failure timestamp and timezone.
-- The proxy version, operating system, and CPU architecture.
-- The client name, version, and error message.
-- The account, deployment, and relevant policy or policy-set IDs.
-- The target API operation and expected versus actual result.
-- Short, sanitized log excerpts, `cws.request_id`, and any response reference, when available.
+To ensure efficient resolution when [contacting support](https://developers.cloudflare.com/support/contacting-cloudflare-support/), include as much relevant detail as possible in your ticket:
+
+- Context: Briefly describe the scenario or use case (for example, what the client was doing and which API operation it called).
+- Reproduction steps: Describe the steps you took to reproduce the issue.
+- Timestamps: Be specific and include the exact time and time zone when the issue occurred.
+- Troubleshooting attempts: Outline any troubleshooting steps or configuration changes already attempted.
+- Account ID, deployment ID, and the IDs of any relevant policy or policy set.
+- Proxy version (run `cws-proxy --version`), operating system, and CPU architecture.
+- Client name, client version, and the exact error message.
+- The target API operation, what you expected, and what happened.
+- Proxy logs: Include short excerpts from the proxy log, with `cws.request_id` when present.
+- For dashboard or API errors: the error code, message, and `source.pointer` when available.
+- Confirmation that the account has a Zero Trust subscription.
+
+Write a detailed ticket to resolve your issue faster
+
+Avoid vague descriptions and include the scenario, timestamps, and steps taken to troubleshoot the issue. Refer to the following example:
+
+Acme Corp started receiving 403 responses from its automation on October 30, 2025, at approximately 3:45 PM UTC, after saving a policy change. The proxy log shows `request.outcome` denied and lists the evaluated policy set in `request.policy_sets`. The proxy version, the deployment ID, and a log excerpt with `cws.request_id` are attached.
+
+### Collect proxy details
 
 To collect the proxy version, run:
 
@@ -384,5 +395,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose Cloud Workload Security proxy startup, client connections, configuration refresh, and unexpected policy decisions.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/og.png?v=c6fad8bb279af90e","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose Cloud Workload Security proxy startup, client connections, configuration refresh, and unexpected policy decisions.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/og.png?v=c6fad8bb279af90e","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

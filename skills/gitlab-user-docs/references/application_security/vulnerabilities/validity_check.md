@@ -106,13 +106,17 @@ Validity checks support the following secret types:
 - GitHub personal access tokens (classic)
 - GoCardless API tokens
 - Google Cloud API keys
+- Grafana Cloud access policy tokens
 - HashiCorp Terraform user and organization API tokens
 - Heroku API keys
 - Highnote live secret keys
 - Highnote test secret keys
 - HubSpot private app access tokens and service keys
 - Hugging Face user access tokens
+- Intercom access tokens
 - Ionic personal access tokens
+- Linear personal API keys
+- Mailgun private API keys
 - MessageBird access keys
 - npm access tokens
 - OpenAI admin API keys
@@ -149,6 +153,9 @@ and the token shows as possibly active until the quota resets.
 HashiCorp Terraform tokens are verified against [HCP Terraform](https://app.terraform.io) only.
 A token that HCP Terraform rejects shows as possibly active, because it might belong to a self-hosted Terraform Enterprise instance.
 
+Mailgun private API keys are verified from GitLab IP addresses. If your Mailgun account restricts
+API access with an IP allowlist, a live key might show as inactive because Mailgun rejects the request.
+
 ### Configure outbound network access
 
 Validity checks are not supported in offline environments. This feature requires outbound
@@ -173,7 +180,10 @@ The supported URLs are:
 - `https://api.goshippo.com/addresses/`
 - `https://api.heroku.com/account`
 - `https://api.hubapi.com/account-info/v3/details`
+- `https://api.intercom.io/me`
 - `https://api.ionicjs.com/users/self`
+- `https://api.linear.app/graphql`
+- `https://api.mailgun.net/v4/domains`
 - `https://api.notification.canada.ca/v2/notifications`
 - `https://api.openai.com/v1/models`
 - `https://api.openai.com/v1/organization/admin_api_keys`
@@ -187,6 +197,7 @@ The supported URLs are:
 - `https://api.us.test.highnote.com/graphql`
 - `https://app.asana.com/api/1.0/users/me`
 - `https://app.terraform.io/api/v2/account/details`
+- `https://grafana.com/api/stack-regions`
 - `https://huggingface.co/api/whoami-v2`
 - `https://io.adafruit.com/api/v2/user`
 - `https://registry.npmjs.org/-/whoami`

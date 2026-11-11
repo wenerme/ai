@@ -897,7 +897,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 {% /tabs %}
 
 You can verify the API successfully stored the uploaded file and get its
-metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/get). Only the `name`
+metadata by calling [`files.get`](/api-reference/files/get-file). Only the `name`
 (and by extension, the `uri`) are unique.
 
 {% tabs %}

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Generic OIDC
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you integrate IdPs not already set in Access.
 
@@ -26,14 +26,11 @@ Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you inte
    ```
 
    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
-3. Copy the content of these fields:
-   - Client ID
-   - Client secret
-   - Auth URL: The `authorization_endpoint` URL of your IdP
-   - Token URL: The `token_endpoint` URL of your IdP
-   - Certificate URL: The `jwks_uri` endpoint of your IdP to allow the IdP keys to sign the tokens
-
-   You can find these values on your identity provider's **OIDC discovery endpoint**. Some providers call this the "well-known URL".
+3. Copy the **Client ID** and **Client secret** from the application's settings in your identity provider.
+4. Open your identity provider's **OIDC discovery endpoint**, sometimes called the "well-known URL". Copy these endpoint URLs:
+   - Auth URL: The `authorization_endpoint` URL.
+   - Token URL: The `token_endpoint` URL.
+   - Certificate URL: The `jwks_uri` URL. Access retrieves the IdP's public keys from this endpoint to verify token signatures.
 
 ## 2. Add an OIDC provider to Cloudflare One
 
@@ -41,9 +38,9 @@ Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you inte
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Choose **OpenID Connect**.
 4. Name your identity provider and fill in the required fields with the information obtained from your identity provider.
-5. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
+5. (Optional) Enable [Proof Key for Code Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 6. (Optional) To enable SCIM, refer to [Synchronize users and groups](#synchronize-users-and-groups).
-7. (Optional) Under **Optional configurations**, enter [custom OIDC claims](#oidc-claims) that you wish to add to users' identity. This information will be available in the [user identity endpoint](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity).
+7. (Optional) Under **Optional configurations**, enter [custom OIDC claims](#custom-oidc-claims) that you wish to add to users' identity. This information will be available in the [user identity endpoint](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity).
 8. Select **Save**.
 
 Make a `POST` request to the [Identity Providers](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/create/) endpoint:
@@ -200,9 +197,9 @@ You can specify a custom **Email claim** name that Access will use to identify u
 
 #### Multi-record OIDC claims
 
-Cloudflare Access extends support for multi-record OIDC claims. These claims are parsed out and can be individually referenced in policies. This feature enables granular access control and precise user authorization in applications.
+Access supports OIDC claims with multiple values. Policies can match individual values, but cannot match part of a value.
 
-Cloudflare Access does not support partial OIDC claim value references or OIDC scopes.
+OAuth scopes are separate from claim matching. For a generic OIDC provider, use `config.scopes` in the [Identity Providers API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/create/) to request additional scopes from your IdP. Requesting a scope does not create an Access policy rule.
 
 ## Supported algorithms for generic OIDC tokens
 
@@ -224,5 +221,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#page","headline":"Generic OIDC","description":"Generic OIDC in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/og.png?v=d92fd754c60f23ec","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#page","headline":"Generic OIDC","description":"Generic OIDC in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/og.png?v=d92fd754c60f23ec","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 ```

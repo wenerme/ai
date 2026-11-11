@@ -33,6 +33,12 @@ If your backend streams audio over the primary [WebSocket connection](https://de
 
 Use the session ID unchanged, including its prefix, and verify that your application has authorized access to that session.
 
+### Replay on attachment
+
+Each time you attach, the sideband first replays events from the preceding 3 seconds, then continues with new events. This window applies to conversation events, call-progress events, and reflected input and output audio. Events older than 3 seconds are not replayed, so attach promptly and keep any earlier history your application needs.
+
+Replayed events retain their original `event_id` when present. Deduplicate those events by `event_id`, especially after reconnecting, to avoid repeating tool execution or other actions. Reflected audio events do not have an `event_id`; see [Receive reflected audio](#receive-reflected-audio) for their timing fields.
+
 ### Observe events and send commands
 
 | Task                         | Events or commands                                                                                                                                                     |
@@ -50,7 +56,7 @@ For browser sessions, keep microphone input and speaker output on the negotiated
 
 ### Receive reflected audio
 
-A sideband also receives copies of subsequent input and output audio while the primary connection carries the live media:
+A sideband receives copies of input and output audio, including audio in the replay window, while the primary connection carries the live media:
 
 | Event                        | Audio field | Timing                                                                       |
 | ---------------------------- | ----------- | ---------------------------------------------------------------------------- |

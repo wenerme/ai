@@ -14,6 +14,20 @@ Individual users and groups cannot be specified.
 > [!warning]
 > Protected branch settings for groups are restricted to top-level groups only.
 
+## Rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267714) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `protected_branch_write_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+By default, each user can protect or unprotect branches 5,000 times every hour in each top-level group.
+Protect and unprotect requests share this limit.
+Requests to update a protected branch do not count against it.
+Administrators can change the limit with the `protected_branch_write_limit` [application setting](settings.md#available-settings).
+After you reach the limit, you receive [`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
+
 ## Valid access levels
 
 The access levels are defined in the `ProtectedRefAccess.allowed_access_levels` method.

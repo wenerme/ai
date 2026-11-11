@@ -16,7 +16,7 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
 Content type: `application/json`
 
-- `session: object { model, type, audio, 5 more }`
+- `session: object { model, type, audio, 6 more }`
 
   Model and startup configuration for the Live session that answers the incoming SIP call.
 
@@ -1165,6 +1165,12 @@ Content type: `application/json`
   - `instructions: optional string or null`
 
     Frontend instructions for voice, conversation, interruptions, and when to delegate. Start with the [Live prompting guide](/api/docs/guides/live-prompting); put business rules and tool workflows in a separate [backend prompt](/api/docs/guides/live-delegation#start-with-your-existing-backend-prompt). Limited to 16,384 client-supplied tokens. Omitted or blank instructions use server defaults. Immutable after startup.
+
+  - `safety_identifier: optional string or null`
+
+    A stable identifier for your end user, used for safety monitoring and abuse detection.
+
+    `maxLength: 128`
 
   - `store: optional boolean`
 

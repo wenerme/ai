@@ -171,7 +171,7 @@ Attach your backend to `wss://api.openai.com/v1/live/sessions/{session_id}/attac
 | `transport.answered` | The call has been answered and media is established.                                      |
 | `transport.failed`   | Call setup failed after session initialization. Inspect `error.code` and `error.message`. |
 
-Each call-progress event includes `event_id` and `session_id`. Attach immediately after creation: the sideband only replays events from the preceding 3 seconds, so a later attachment can miss earlier call progress. Replayed events retain their original event IDs. Deduplicate events by `event_id`.
+Each call-progress event includes `event_id` and `session_id`. Attach immediately after creation: the sideband first replays events from the preceding 3 seconds, then continues with new events, so a later attachment can miss earlier call progress. This replay window also applies to conversation events and reflected audio. Replayed call-progress events retain their original event IDs. Deduplicate them by `event_id`. See [Replay on attachment](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live#replay-on-attachment) for details.
 
 Once connected, use the [active call controls](#manage-an-active-call) to send keypad tones, transfer the call, or hang up. Keep the sideband open for `session.closed` and final usage as described in [Usage and graceful close](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close).
 

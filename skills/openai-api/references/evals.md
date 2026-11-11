@@ -5785,7 +5785,7 @@ Cancel an ongoing evaluation run.
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
             `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-            `gpt-image-2`.
+            `gpt-image-2.6-sunburst`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
             `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -5800,7 +5800,7 @@ Cancel an ongoing evaluation run.
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -8367,7 +8367,7 @@ Content type: `application/json`
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
             `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-            `gpt-image-2`.
+            `gpt-image-2.6-sunburst`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
             `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -8382,7 +8382,7 @@ Content type: `application/json`
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -10619,7 +10619,7 @@ Content type: `application/json`
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
             `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-            `gpt-image-2`.
+            `gpt-image-2.6-sunburst`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
             `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -10634,7 +10634,7 @@ Content type: `application/json`
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -13238,7 +13238,7 @@ Get a list of runs for an evaluation.
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -13253,7 +13253,7 @@ Get a list of runs for an evaluation.
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
                 `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-                `gpt-image-2`.
+                `gpt-image-2.6-sunburst`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
                 `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -15791,7 +15791,7 @@ Get an evaluation run by ID.
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
             `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-            `gpt-image-2`.
+            `gpt-image-2.6-sunburst`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
             `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -15806,7 +15806,7 @@ Get an evaluation run by ID.
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -19026,7 +19026,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -19041,7 +19041,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
                 `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-                `gpt-image-2`.
+                `gpt-image-2.6-sunburst`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
                 `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -21382,7 +21382,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -21397,7 +21397,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
                 `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-                `gpt-image-2`.
+                `gpt-image-2.6-sunburst`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
                 `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -23748,7 +23748,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -23763,7 +23763,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
                 `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-                `gpt-image-2`.
+                `gpt-image-2.6-sunburst`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
                 `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -26104,7 +26104,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -26119,7 +26119,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
                 `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-                `gpt-image-2`.
+                `gpt-image-2.6-sunburst`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
                 `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.

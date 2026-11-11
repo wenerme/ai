@@ -300,51 +300,6 @@ multi-step agents, and long-decode generation up to 1M tokens.
 
   {% /tab %}
 
-  {% tab title="Contributor" %}
-  {% callout type="note" %}
-  The Gemini API Contributor Tier is offered as a private preview on an
-      invite-only basis. Speed and reliability are equivalent to
-      [Standard Tier inference](/docs/optimization). Eligible users will be invited by
-      email and see a callout in AI Studio.
-
-  {% /callout %}
-
-  {% table %}
-  * Feature
-  * Free Tier
-  * Paid Tier, per 1M tokens in USD{% sup %}*{% /sup %}
-
-  ---
-
-  * Input price
-  * Not available
-  * $1.00
-
-  ---
-
-  * Output price (including thinking tokens)
-  * Not available
-  * $5.00
-
-  ---
-
-  * Context caching price
-  * Not available
-  * $0.05   
-  Implicit caching only (explicit caching is not supported).
-
-  ---
-
-  * Used to improve our products
-  * Not available
-  * [Yes](/docs/logs-policy#contributor-tier)
-  {% /table %}
-
-  {% sup %}*{% /sup %} Discounts and model availability are subject to change.
-    
-
-  {% /tab %}
-
 {% /tabs %}
 
 ## Gemini 4 Argon  {% id="gemini-4-argon" %}

@@ -44,6 +44,8 @@ Sessions in folders without such a remote are not sent.
 - GitLab Premium or Ultimate with GitLab Duo Agent Platform for the top-level group.
 - [`glab`](../../editor_extensions/gitlab_cli/_index.md) 1.122.0 or later, signed in to your GitLab instance.
   For OpenCode, `glab` 1.125.0 or later and OpenCode 1.4 or later.
+  In `glab` versions earlier than 1.129.0, the commands on this page are under `glab govern`
+  instead of `glab minder`, for example `glab govern setup`.
 - At least the Developer role for the project.
 - **Allow external agents** turned on for the top-level group. It is on by default.
   The setting belongs to the AI Catalog
@@ -97,16 +99,16 @@ To stop subgroup Owners from turning it off, also set `lock_ai_governance_enable
 
 Set up session capture once for each user account on each computer that runs an agent.
 The commands in this section are documented in the
-[`glab govern` reference](https://docs.gitlab.com/cli/govern/).
+[`glab minder` reference](https://docs.gitlab.com/cli/minder/).
 
 Choose the agents to capture with `--agents`.
-Without it, `glab govern setup` sets up the agents from earlier runs, or Claude Code if there are none.
+Without it, `glab minder setup` sets up the agents from earlier runs, or Claude Code if there are none.
 `glab` asks for confirmation. If calling `glab` in a script, pass `--yes`.
 
 Each run adds to the agents that earlier runs set up.
-For example, if you capture Cursor and Codex sessions, run `glab govern setup --agents opencode`.
+For example, if you capture Cursor and Codex sessions, run `glab minder setup --agents opencode`.
 OpenCode is added to them.
-To stop capturing an agent, run `glab govern setup --uninstall`, then set up the agents you want again.
+To stop capturing an agent, run `glab minder setup --uninstall`, then set up the agents you want again.
 
 ### Capture Claude Code sessions
 
@@ -116,7 +118,7 @@ The background job sends anything the hooks missed.
 To capture Claude Code sessions, run:
 
 ```shell
-glab govern setup --agents claude-code
+glab minder setup --agents claude-code
 ```
 
 This command installs:
@@ -137,7 +139,7 @@ finishes a reply. The background job sends anything the plugin missed.
 To capture OpenCode sessions, run:
 
 ```shell
-glab govern setup --agents opencode
+glab minder setup --agents opencode
 ```
 
 This command installs:
@@ -149,7 +151,7 @@ This command installs:
   without changing anything. Remove or rename the file, then run the command again.
 
 OpenCode loads the plugin for all your sessions, in every project.
-Run `glab govern setup` again to keep the plugin up to date.
+Run `glab minder setup` again to keep the plugin up to date.
 
 Sessions that ended before you ran the command are not sent.
 OpenCode sessions are marked completed after 24 hours without activity.
@@ -163,7 +165,7 @@ every 30 minutes.
 To capture Cursor and Codex sessions, run:
 
 ```shell
-glab govern setup --agents codex,cursor
+glab minder setup --agents codex,cursor
 ```
 
 The job also sends sessions from before you ran the command, if they were active in the last 89 days
@@ -171,14 +173,14 @@ and belong to a project on a GitLab instance that `glab` is signed in to.
 A session is marked completed after 24 hours without activity.
 Codex sessions stored in a custom `CODEX_HOME` folder are not found.
 
-To stop capturing Cursor and Codex sessions, run `glab govern setup --uninstall`, then set up the agents you want again.
+To stop capturing Cursor and Codex sessions, run `glab minder setup --uninstall`, then set up the agents you want again.
 
 ### Verify the setup
 
 To check that session capture is configured correctly, run:
 
 ```shell
-glab govern doctor
+glab minder doctor
 ```
 
 The command:
@@ -202,7 +204,7 @@ Claude Code sessions while the global Stop hook is missing.
 To send sessions now instead of waiting for the background job, run:
 
 ```shell
-glab govern audit sync --all
+glab minder audit sync --all
 ```
 
 ## Data that is sent
@@ -256,7 +258,7 @@ The sessions and their events are also listed in the AI audit event report:
 To stop capturing sessions, run:
 
 ```shell
-glab govern setup --uninstall
+glab minder setup --uninstall
 ```
 
 This command removes the background job and the OpenCode plugin, and stops capturing Cursor and Codex sessions.
@@ -274,13 +276,13 @@ Sessions already sent to GitLab stay on the dashboard.
 
 | Problem | Cause | Resolution |
 |---------|-------|------------|
-| `glab govern doctor` reports a failed check. | The setup on this computer is incomplete. | Follow the fix that the check prints. |
-| The last-run line of `glab govern doctor` says governance is not enabled for a project. | [AI Governance](#turn-on-ai-governance) is not turned on for the group or project, or the project is in a personal namespace on GitLab.com. GitLab reports this only when the `ai_governance_session_gate` feature flag is enabled. | Ask a group Owner or, on GitLab Self-Managed and GitLab Dedicated, an administrator to turn it on. Projects in a personal namespace on GitLab.com are not supported. |
-| `glab govern audit sync --all` prints a `403 Forbidden` warning, or `glab govern doctor` shows it as the last run's error. | Your role on the project is below Developer, the group does not have GitLab Duo Agent Platform, **Allow external agents** is turned off for the top-level group or the project is in a personal namespace on GitLab.com (both when the `ai_governance_session_gate` feature flag is disabled), or a group Owner revoked this computer's agent identity. For Claude Code and OpenCode in a fork checkout, the session went to the upstream project. | Check the role and the settings with a group Owner or, on GitLab Self-Managed and GitLab Dedicated, an administrator. In a fork checkout, run `glab repo set-default` and choose the project the sessions should go to. |
+| `glab minder doctor` reports a failed check. | The setup on this computer is incomplete. | Follow the fix that the check prints. |
+| The last-run line of `glab minder doctor` says governance is not enabled for a project. | [AI Governance](#turn-on-ai-governance) is not turned on for the group or project, or the project is in a personal namespace on GitLab.com. GitLab reports this only when the `ai_governance_session_gate` feature flag is enabled. | Ask a group Owner or, on GitLab Self-Managed and GitLab Dedicated, an administrator to turn it on. Projects in a personal namespace on GitLab.com are not supported. |
+| `glab minder audit sync --all` prints a `403 Forbidden` warning, or `glab minder doctor` shows it as the last run's error. | Your role on the project is below Developer, the group does not have GitLab Duo Agent Platform, **Allow external agents** is turned off for the top-level group or the project is in a personal namespace on GitLab.com (both when the `ai_governance_session_gate` feature flag is disabled), or a group Owner revoked this computer's agent identity. For Claude Code and OpenCode in a fork checkout, the session went to the upstream project. | Check the role and the settings with a group Owner or, on GitLab Self-Managed and GitLab Dedicated, an administrator. In a fork checkout, run `glab repo set-default` and choose the project the sessions should go to. |
 | A session appears, but has no events or tool calls. | **Store AI audit events** is turned off for the group or project. | Turn the setting on. You need the Owner or Security Manager role. Events from before the change are not recorded. |
 | A session was sent, but is not on the dashboard. | The dashboard reads data that is processed in the background, or the filters exclude the session. | Set **Show** to **All agents** or **Connected**, check the date range, then wait a few minutes and reload the page. |
-| A Cursor session is never sent. | `glab` could not confirm which folder the session ran in. This happens when the folder moved, when another folder's path differs only in punctuation (for example `code/cli-docs` and `code/cli/docs`), or when every file the session touched is outside the folder. It also happens when the folder has no `origin` remote. | Run `glab govern doctor` and read the "not synced" reason. Keep the folder where it was when the session ran, rename folders whose paths differ only in punctuation, and make sure the folder has an `origin` remote. |
-| `glab govern doctor` says an agent type is not supported by GitLab yet. | GitLab did not accept that agent type when `glab` first found the session. Such sessions are never sent. | Sessions that `glab` finds after GitLab accepts the agent type are sent. If the message persists, contact GitLab Support. |
+| A Cursor session is never sent. | `glab` could not confirm which folder the session ran in. This happens when the folder moved, when another folder's path differs only in punctuation (for example `code/cli-docs` and `code/cli/docs`), or when every file the session touched is outside the folder. It also happens when the folder has no `origin` remote. | Run `glab minder doctor` and read the "not synced" reason. Keep the folder where it was when the session ran, rename folders whose paths differ only in punctuation, and make sure the folder has an `origin` remote. |
+| `glab minder doctor` says an agent type is not supported by GitLab yet. | GitLab did not accept that agent type when `glab` first found the session. Such sessions are never sent. | Sessions that `glab` finds after GitLab accepts the agent type are sent. If the message persists, contact GitLab Support. |
 
 ## Related topics
 

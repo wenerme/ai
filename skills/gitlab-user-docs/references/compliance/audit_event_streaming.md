@@ -17,6 +17,8 @@ Each streaming destination:
 - Can have up to 20 custom HTTP headers included with each streamed event.
 - For GitLab.com, must allow traffic from the [GitLab.com IP address range](../gitlab_com/_index.md#ip-range).
 
+For the maximum number of destinations and the rate limit on creating and updating them, see [audit events streaming destination limits](../../administration/instance_limits.md#audit-events-streaming-destination-limits).
+
 GitLab can stream a single event more than once to the same destination. Use the `id` key in the payload to deduplicate
 incoming data.
 

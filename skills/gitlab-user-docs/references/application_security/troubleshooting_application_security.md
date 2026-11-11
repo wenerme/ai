@@ -218,3 +218,16 @@ These security pages can be populated by running the jobs from the manual step o
 There is [an issue open to handle this scenario](https://gitlab.com/gitlab-org/gitlab/-/issues/346843).
 You can upvote the issue to help with prioritization, and
 [contributions are welcomed](https://about.gitlab.com/community/contribute/).
+
+## Error: `manifest unknown` when pulling a digest-pinned analyzer image
+
+If you pin a GitLab analyzer image by digest, the job can fail with `manifest unknown`.
+
+GitLab rebuilds the analyzer images daily under `registry.gitlab.com/security-products/*`.
+Each rebuild overwrites the version tags and leaves the previous manifest untagged.
+[Online garbage collection](../packages/container_registry/delete_container_registry_images.md#garbage-collection)
+can delete untagged manifests after 24 hours, so the digest you pinned no longer exists.
+
+To fix this issue, copy the analyzer image to a container registry you control, protect the copy
+using one of the available protection methods, and pin the digest from your copy.
+For more information, see [Docker images](../../ci/pipeline_security/_index.md#docker-images).

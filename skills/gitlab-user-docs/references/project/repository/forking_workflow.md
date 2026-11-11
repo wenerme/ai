@@ -150,12 +150,14 @@ To update your fork from the command line, follow the instructions in
 A fork can be configured as a mirror of the upstream project if all these conditions are met:
 
 1. Your subscription is GitLab Premium or GitLab Ultimate.
-1. You create all changes in branches (not `main`).
+1. You commit only to branches that do not exist in the upstream project.
+   If you commit to a branch that also exists upstream, like the default branch,
+   GitLab stops updating that branch in your fork.
 1. You do not work on [merge requests for confidential issues](../merge_requests/confidential.md),
-   which requires changes to `main`.
+   which target the default branch of your fork.
 
-[Repository mirroring](mirror/_index.md) keeps your fork synced with the original project.
-This method updates your fork once per hour, with no manual `git pull` required.
+[Repository mirroring](mirror/_index.md) keeps your fork synced with the original project,
+with no manual `git pull` required.
 For instructions, see [configure pull mirroring](mirror/pull.md#configure-pull-mirroring).
 
 > [!warning]

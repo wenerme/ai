@@ -40,9 +40,9 @@ To ensure these models are used responsibly, you may need to complete the [API
   console](https://platform.openai.com/settings/organization/general) before
   using GPT Image models.
 
-### GPT Image 2.6
+### GPT-Image-2.6
 
-GPT Image 2.6 includes [Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst) for detailed visual work and [Flare](https://developers.openai.com/api/docs/models/gpt-image-2.6-flare) for fast iteration. Both models support complexity control, markup-guided edits, SVG output, and animated GIF output through the Image API. The existing examples below use GPT Image 2.5.
+GPT-Image-2.6 includes [Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst) for detailed visual work and [Flare](https://developers.openai.com/api/docs/models/gpt-image-2.6-flare) for fast iteration. Both models support complexity control, markup-guided edits, SVG output, and animated GIF output through the Image API. The existing examples below use GPT-Image-2.5.
 
 #### Set image complexity
 
@@ -2559,7 +2559,7 @@ openai images edit \
 
 ### Guide an edit with markup
 
-Use the Image API’s `POST /v1/images/edits` endpoint for markup-guided edits with supported GPT Image 2.5 and 2.6 models. For regional edits with the Responses API, use a [mask](#edit-an-image-using-a-mask). Use an annotation layer to show where a change should happen and describe the change in `prompt`.
+Use the Image API’s `POST /v1/images/edits` endpoint for markup-guided edits with supported GPT-Image-2.5 and GPT-Image-2.6 models. For regional edits with the Responses API, use a [mask](#edit-an-image-using-a-mask). Use an annotation layer to show where a change should happen and describe the change in `prompt`.
 
 For example, download the [kitchen photo](https://developers.openai.com/images/platform/guides/image-prompting/kitchen.webp) and [transparent overlay](https://developers.openai.com/images/platform/guides/image-prompting/markup-vase-overlay-gpt-image-2-6.png) into the same directory. The overlay circles the vase to recolor.
 
@@ -3307,7 +3307,7 @@ Flare and Sunburst generated these SVG logos from the same prompt for a Field & 
 
   <figure className="m-0 min-w-0 [&_[data-codex-screenshot-overlay]_img]:bg-surface">
     <figcaption className="mb-2 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
@@ -3317,7 +3317,7 @@ Flare and Sunburst generated these SVG logos from the same prompt for a Field & 
   </figure>
   <figure className="m-0 min-w-0 [&_img]:bg-white">
     <figcaption className="mb-2 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
@@ -3623,7 +3623,7 @@ When using image generation in the Responses API, `gpt-5` and newer models shoul
 
 ## Cost and latency
 
-### GPT Image 2.6 costs
+### GPT-Image-2.6 costs
 
 Image output costs $30 per million billable tokens. Use the [calculator](#calculating-costs) to estimate the output cost for one image.
 
@@ -3631,17 +3631,17 @@ See [image generation pricing](https://developers.openai.com/api/docs/pricing#im
 
 Markup-guided edits use the same token rates as other edits, with no extra fee. For SVG output, you pay the image model’s rate for the reference image and the authoring model’s rate for the tokens it uses to produce the SVG. The total depends on how many tokens each model uses.
 
-### GPT Image 2.5 costs
+### GPT-Image-2.5 costs
 
 Responses API requests include the mainline model's token usage in addition to image generation costs.
 
-Both GPT Image 2.5 models use the same token rates: $8 per million image input tokens, $2 per million cached image input tokens, $30 per million image output tokens, $5 per million text input tokens, and $1.25 per million cached text input tokens. See [pricing](https://developers.openai.com/api/docs/pricing#image-generation).
+Both GPT-Image-2.5 models use the same token rates: $8 per million image input tokens, $2 per million cached image input tokens, $30 per million image output tokens, $5 per million text input tokens, and $1.25 per million cached text input tokens. See [pricing](https://developers.openai.com/api/docs/pricing#image-generation).
 
 Use the response's `usage` to measure token consumption for your prompts, sizes, and quality settings. Equal token rates don't mean equal cost per image: token consumption can differ by model and quality setting. For older-model pricing examples, see [Earlier GPT Image models](#earlier-gpt-image-models).
 
 ### Cached input pricing
 
-For GPT Image 2 and GPT Image 2.5, cached input pricing applies only to the image generation tool in the Responses API. It doesn't apply to direct Images API requests, including `/v1/images/edits`.
+For GPT-Image-2 and GPT-Image-2.5, cached input pricing applies only to the image generation tool in the Responses API. It doesn't apply to direct Images API requests, including `/v1/images/edits`.
 
 Cached image generation inputs are reflected in billing, but their cached token counts aren't included in the Responses API output. The response's `usage` can't verify these cache hits.
 
@@ -3654,7 +3654,7 @@ Cached image generation inputs are reflected in billing, but their cached token 
 ### Calculating costs
 
 Select a model, quality, and size to estimate output tokens and image output cost.
-For GPT Image 2.6 and 2.5 Sunburst and Flare, the quality options are `low`, `medium`, `high`, `xhigh`, and `max`.
+For the Sunburst and Flare models in both GPT-Image-2.6 and GPT-Image-2.5, the quality options are `low`, `medium`, `high`, `xhigh`, and `max`.
 For `gpt-image-2`, the options are `low`, `medium`, and `high`.
 The models can use different token counts for the same quality setting and share the same price per image output token.
 Use explicit quality and size values for this estimate; `auto` depends on the generated image.
@@ -3674,10 +3674,10 @@ If you want to [stream image generation](#streaming) using the `partial_images` 
 
 ## Earlier GPT Image models
 
-The details below apply to earlier models, not Sunburst or Flare. For new integrations, use one of the GPT Image 2.5 models described above.
+The details below apply to earlier models, not Sunburst or Flare. For new integrations, use [GPT-Image-2.6 Sunburst or Flare](#gpt-image-26).
 
 <details>
-<summary>GPT Image 2 settings and input fidelity</summary>
+<summary>GPT-Image-2 settings and input fidelity</summary>
 
 `gpt-image-2` accepts any resolution in the `size` parameter when it satisfies the constraints below. Square images are typically fastest to generate.
 
@@ -3800,8 +3800,8 @@ The final cost is the sum of:
 ### Historical output costs
 
 `gpt-image-2` supports thousands of valid resolutions; the table below lists the
-same sizes used for previous GPT Image models for comparison. For GPT Image 1.5,
-GPT Image 1, and GPT Image 1 Mini, the legacy per-image output pricing table is
+same sizes used for previous GPT Image models for comparison. For GPT-Image-1.5,
+GPT-Image-1, and GPT-Image-1 Mini, the legacy per-image output pricing table is
 also listed below. You should still account for text and image input tokens when
 estimating the total cost of a request.
 
@@ -3829,7 +3829,7 @@ A larger non-square resolution can sometimes produce fewer output tokens than
   <tbody>
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT Image 2
+        GPT-Image-2
         
 
         
@@ -3856,7 +3856,7 @@ Additional sizes available
 
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT Image 1.5
+        GPT-Image-1.5
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.009</td>
@@ -3878,7 +3878,7 @@ Additional sizes available
 
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT Image 1
+        GPT-Image-1
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.011</td>
@@ -3900,7 +3900,7 @@ Additional sizes available
 
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT Image 1 Mini
+        GPT-Image-1 Mini
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.005</td>

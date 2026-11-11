@@ -25,7 +25,7 @@ such as access tokens, database credentials, or private keys.
 Unlike CI/CD variables, which are always available to jobs by default,
 secrets must be explicitly requested by a job.
 
-You can [use secrets in CI/CD jobs](#use-secrets-in-job-scripts) or [outside of CI/CD for runtime workloads](non_cicd_access.md), such as Kubernetes, Terraform, or through the API.
+You can use secrets in [CI/CD jobs](#use-secrets-in-job-scripts) or [with external tools](external-tools.md) like Kubernetes and Terraform.
 
 GitLab Secrets Manager [consumes GitLab Credits](credit_usage.md).
 
@@ -250,10 +250,10 @@ which you can use like any other environment variable.
 
 Users with the Owner role in the project receive an email notification to rotate a secret on the day specified in a secret's configuration.
 
-## Access secrets from non-CI/CD workloads
+## Access secrets from external tools
 
-Workloads that do not run as GitLab CI/CD jobs can read secrets through the Secrets Manager API.
-For more information, see [Access secrets from non-CI/CD workloads](non_cicd_access.md).
+Applications and tools can read secrets through the Secrets Manager API.
+For more information, see [access secrets from external tools](external-tools.md).
 
 ## Manage secrets permissions
 

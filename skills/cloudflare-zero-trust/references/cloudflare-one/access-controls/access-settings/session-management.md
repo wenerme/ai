@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-s
 
 # Session management
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A user session determines how long a user can access an Access application without re-authenticating.
 
@@ -195,6 +195,18 @@ This action [revokes the user's session](#per-user) across all applications. Acc
 
 You can use these URLs to create custom logout buttons or links directly within your application.
 
+Redirect after logout
+
+To redirect users after logout, append the `returnTo` query parameter to either logout URL. For example, to redirect to `https://app.example.com/signed-out`:
+
+```txt
+https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/logout?returnTo=https%3A%2F%2Fapp.example.com%2Fsigned-out
+```
+
+Use your team domain or an application domain in the same Access account as the destination. Access validates the destination and rejects unrelated domains, such as `?returnTo=google.com`, with a `400` response (`Invalid redirect URL`).
+
+URL-encode the destination, especially if it contains query parameters. If you omit the scheme, Access uses `https://`.
+
 Note
 
 At this time, end users cannot log themselves out on a per-application basis.
@@ -218,5 +230,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#page","headline":"Session management","description":"Session management in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/og.png?v=798372700edbbe03","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#page","headline":"Session management","description":"Session management in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/og.png?v=798372700edbbe03","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 ```

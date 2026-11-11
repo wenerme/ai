@@ -12,7 +12,7 @@ Generic PostgreSQL backend
 * Disabled data: Yes
 * Comments: Yes
 * Search: Yes
-* Views: No
+* Views: Yes (requires the ``networks`` and ``views`` tables, detected automatically)
 * API: Read-Write
 * :ref:`Multiple instances <setting-launch>`: Yes
 * Zone caching: Yes
@@ -111,7 +111,8 @@ Default: yes.
 Default schema
 --------------
 
-This is the 4.7 schema.
+This is the 4.7 schema, plus the ``networks`` and ``views`` tables used by
+:doc:`Views <../views>` support.
 
 .. Expanded literalinclude: ../../modules/gpgsqlbackend/schema.pgsql.sql
 
@@ -215,6 +216,21 @@ This is the 4.7 schema.
   );
 
   CREATE UNIQUE INDEX namealgoindex ON tsigkeys(name, algorithm);
+
+
+  CREATE TABLE networks (
+    network               CIDR NOT NULL,
+    view                  VARCHAR(255) NOT NULL,
+    PRIMARY KEY(network)
+  );
+
+
+  CREATE TABLE views (
+    view                  VARCHAR(255) NOT NULL,
+    zone                  VARCHAR(255) NOT NULL,
+    variant               VARCHAR(255) NOT NULL,
+    PRIMARY KEY(view, zone)
+  );
 
 CockroachDB
 -----------

@@ -9,7 +9,7 @@ Gemini models are accessible using the OpenAI libraries (Python and TypeScript /
 Javascript) along with the REST API, by updating three lines of code
 and using your [Gemini API key](https://aistudio.google.com/apikey). If you
 aren't already using the OpenAI libraries, we recommend that you call the
-[Gemini API directly](https://ai.google.dev/docs/get-started).
+[Gemini API directly](/docs/get-started).
 
 {% tabs %}
   {% tab filename="sample.py" label="Python" %}

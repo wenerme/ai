@@ -1116,7 +1116,7 @@ the message turn.
 
   **response**: {% mark %}required{% /mark %} `object`
 
-  The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` of a `FunctionResponsePart` holding the multimedia. See /docs/function-calling#multimodal.
+  The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model. Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inline_data.display_name` or `file_data.display_name` of a `FunctionResponsePart` holding the multimedia. See [Multimodal function responses](/docs/function-calling#multimodal).
 
   **id**: `string`
 
@@ -1163,7 +1163,7 @@ the message turn.
 
   **displayName**: `string`
 
-  Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs.
+  Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs, and to reference the blob from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
 
   {% /details %}
 
@@ -1181,11 +1181,11 @@ the message turn.
 
   **mimeType**: `string`
 
-  The IANA standard MIME type of the source data.
+  The IANA standard MIME type of the source data. If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Multimodal function responses](/docs/function-calling#multimodal) and [Supported file formats](/docs/file-input-methods#supported-content-types).
 
   **displayName**: `string`
 
-  Optional. Display name of the file. Used to provide a label or filename to distinguish file data.
+  Optional. Display name of the file. Used to provide a label or filename to distinguish file data, and to reference the file from `FunctionResponse.response` (for example, via `{"$ref": "DISPLAY_NAME"}`).
 
   {% /details %}
 
@@ -1751,6 +1751,36 @@ An execution environment for an agent.
   **sizeBytes**: `string`
 
   Output only. The total size of the environment files in bytes, output only.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **mode**: `string enum`
+
+  Output only. The compute lifecycle mode for this environment.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `ENVIRONMENT_MODE_UNSPECIFIED`: Output only. The compute lifecycle mode for this environment.
+  - `ON_DEMAND`: Output only. The compute lifecycle mode for this environment.
+  - `SELF_HOSTED`: Output only. The compute lifecycle mode for this environment.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **customConfig**: `object`
+
+  Output only. Arbitrary customer-defined JSON configuration passed through to the self-hosted environment poller. Only populated for `self_hosted` environments when configured.
+
+  {% hr /%}
+
+  **environmentKey**: `string`
+
+  Output only. Secret token generated upon environment creation for self_hosted environments. Used by the self-hosted sandbox daemon to authenticate polling and streaming requests. Only returned in the CreateEnvironment response; omitted from subsequent GetEnvironment and ListEnvironments calls.
 
 {% /section %}
 
@@ -3091,6 +3121,10 @@ A request to create an ephemeral authentication token.
   **proactiveAudio**: `boolean`
 
   Optional. If enabled, the model can reject responding to the last prompt. For example, this allows the model to ignore out of context speech or to stay silent if the user did not make a request, yet.
+
+  **proactiveVideo**: `boolean`
+
+  Optional. If enabled, the system might trigger a generation on each received image. This requires that `proactive_audio` is enabled. The rate of generation depends on the rate of incoming images and can cause a significant increase in cost.
 
   {% /details %}
 

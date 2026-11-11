@@ -268,7 +268,7 @@ Group permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_in
 
 [^com-top-level]: On GitLab.com, only a top-level group Owner can enable Secrets Manager for subgroups and projects. On GitLab Self-Managed, an administrator must enable it for the instance.
 [^owners-grant-action]: Owners can grant these actions to other roles, specific users, or custom roles. See [Manage secrets permissions](../ci/secrets/secrets_manager/_index.md#manage-secrets-permissions).
-[^secret-values]: No role can read a secret's value. CI/CD jobs read values through job authentication. Other workloads read values through the [Secrets Manager API](../ci/secrets/secrets_manager/non_cicd_access.md), and only if they have been granted the read value permission for that secret.
+[^secret-values]: No role can read a secret's value. CI/CD jobs read values through job authentication. [External applications and tools](../ci/secrets/secrets_manager/external-tools.md) read values through the Secrets Manager API, and only if they have been granted the read value permission for that secret.
 
 ### Group user management
 
@@ -841,7 +841,7 @@ Project permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_
 [^users-owner-role]: Users with the Owner role can grant these actions to other roles, specific users, or custom roles. See [Manage secrets permissions](../ci/secrets/secrets_manager/_index.md#manage-secrets-permissions).
 [^users-maintainer-role]: Users with the Maintainer role have this permission by default for secrets managers enabled in GitLab 19.4 and later. Users with the Owner role can remove or change the default permissions for the Maintainer role.
 [^users-developer-role]: Users with the Developer role have this permission by default for secrets managers enabled in GitLab 19.5 and later. Users with the Owner role can remove or change the default permissions for the Developer role.
-[^project-secrets-secret-values]: No role can read a secret's value. CI/CD jobs read values through job authentication. Other workloads read values through the [Secrets Manager API](../ci/secrets/secrets_manager/non_cicd_access.md), and only if they have been granted the read value permission for that secret.
+[^project-secrets-secret-values]: No role can read a secret's value. CI/CD jobs read values through job authentication. [External applications and tools](../ci/secrets/secrets_manager/external-tools.md) read values through the Secrets Manager API, and only if they have been granted the read value permission for that secret.
 
 ### Project user management
 

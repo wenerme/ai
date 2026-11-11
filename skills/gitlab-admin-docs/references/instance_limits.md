@@ -1006,17 +1006,17 @@ add more.
 
 ## Audit events streaming destination limits
 
-### Custom HTTP Endpoint
+- Total destination limit and rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267270) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `enforce_audit_streaming_destination_limits`. Disabled by default.
 
-- Each top-level group can have a maximum of 5 custom HTTP streaming destinations.
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
-### Google Cloud Logging
+Each top-level group can have a maximum of 5 active streaming destinations in total. This limit counts HTTP, Google Cloud Logging, and Amazon S3 destinations together.
 
-- Each top-level group can have a maximum of 5 Google Cloud Logging streaming destinations.
+Each top-level group can also have a maximum of 50 streaming destinations in total, including inactive ones. This limit is checked only when you create a destination. Groups that are already over it can still update, deactivate, and delete destinations.
 
-### Amazon S3
-
-- Each top-level group can have a maximum of 5 Amazon S3 streaming destinations.
+The GraphQL mutations that create and update group streaming destinations share a limit of 10 calls per user per minute. This includes `groupAuditEventStreamingDestinationsCreate`, `groupAuditEventStreamingDestinationsUpdate`, and the deprecated `externalAuditEventDestinationCreate`, `externalAuditEventDestinationUpdate`, `googleCloudLoggingConfigurationCreate`, `googleCloudLoggingConfigurationUpdate`, `auditEventsAmazonS3ConfigurationCreate`, and `auditEventsAmazonS3ConfigurationUpdate` mutations.
 
 ## Dependency scanning using SBOM limits
 

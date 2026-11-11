@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 273 modelsClear filters
+We found 274 modelsClear filters
 
 ## Compare models
 
@@ -590,6 +590,12 @@ Compare
 Compare
 
 [![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v4</h3>Kling AIText-to-Video Kling 4.0 is Kling AI's video generation model for text-to-video and multi-keyframe image-to-video, producing up to 30 seconds of 720p or 1080p video from prompts of up to 26,000 characters and up to 10 keyframes.](https://developers.cloudflare.com/ai/models/klingai/kling-v4/)
+
+- Third-party
+
+Compare
+
+[![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v4-flash</h3>Kling AIText-to-Video Kling 4.0 Flash is Kling AI's fast text-to-video model, producing 3 to 20 seconds of 720p video from prompts of up to 26,000 characters.](https://developers.cloudflare.com/ai/models/klingai/kling-v4-flash/)
 
 - Third-party
 
@@ -1547,28 +1553,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +5

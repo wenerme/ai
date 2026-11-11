@@ -131,6 +131,7 @@ cannot be changed at the project level.
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260242) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `mcp_session_audit_events`. Disabled by default.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269526) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

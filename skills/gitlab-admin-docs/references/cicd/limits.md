@@ -481,6 +481,36 @@ To configure the per user and project limit:
 1. Set a value for **Maximum pipeline retries per project**.
 1. Select **Save changes**.
 
+## Pipeline schedule management rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636908) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `rate_limit_pipeline_schedule_management`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
+
+Creating, updating, or deleting a pipeline schedule, or taking ownership of one, writes to the
+project and recalculates when the schedule next runs. Repeated changes from one user can add up to
+excessive load on your instance. You can limit how often a user can change pipeline schedules to
+protect against this.
+
+This rate limit applies to changes made with the
+[pipeline schedules REST API](../../api/pipeline_schedules.md), the `pipelineScheduleCreate`,
+`pipelineScheduleUpdate`, `pipelineScheduleDelete`, and `pipelineScheduleTakeOwnership`
+GraphQL mutations, or the GitLab UI. All four actions count toward the same limit.
+Running a schedule manually is [limited separately](../../ci/pipelines/schedules.md#run-manually).
+
+GitLab limits each user to a configurable number of changes each minute across all projects,
+with a default of `300`. Set the limit to `0` to disable rate limiting for these changes.
+When a user exceeds the limit, GitLab blocks the change.
+
+To configure the limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Set a value for **Maximum pipeline schedule changes per user**.
+1. Select **Save changes**.
+
 ## Job retry and manual job run rate limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627273) in GitLab 19.5 [with feature flags](../feature_flags/_index.md) named `rate_limit_job_retry` and `rate_limit_job_play`. Disabled by default.

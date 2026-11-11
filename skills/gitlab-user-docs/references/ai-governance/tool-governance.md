@@ -137,8 +137,9 @@ pre-approved. Write and delete MCP tools still prompt for approval.
 
 **Always Deny** is enforced by the GitLab MCP server, not by the client
 that connects to it. A third-party client such as Claude Code or Cursor might
-call a denied tool. The server rejects the request before the tool runs, and
-returns a JSON-RPC error with code `-32002`.
+call a denied tool. The server refuses the call before the tool runs, and
+answers with a tool execution error (`isError: true`) that names the denied tool.
+The error also names the group or project that denied the call if you can read it.
 
 The access type the server checks depends on who calls the tool:
 
@@ -270,6 +271,25 @@ uses the default governance matrix value.
 The fail-closed principle applies. If the governance service encounters
 a persistent error when resolving rules, the agent receives no tools rather
 than silently allowing execution.
+
+## Auto mode in the GitLab Duo CLI
+
+- Tool governance for local access [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249463) in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_local_tool_governance`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+If tool governance for local access is turned on for your top-level group, your rules still
+apply in [auto mode](../gitlab_duo_cli/use.md#auto-mode):
+
+- Tools set to **Always ask** still prompt for approval.
+- Tools set to **Always deny** do not run.
+
+If tool governance for local access is not turned on for your top-level group, auto mode runs
+tools without approval.
+In GitLab Duo CLI 9.33.0 and later, the modes you set for
+[GitLab Duo CLI tools](#gitlab-duo-cli-tools) still apply.
 
 ## Configure tool governance for a group
 

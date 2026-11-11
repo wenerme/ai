@@ -40,6 +40,8 @@ Tier availability varies by agent. For details, see each agent's page.
 
 ## Duplicate an agent
 
+- Offering: GitLab.com
+
 To make changes to a foundational agent, create a copy of it.
 
 Prerequisites:

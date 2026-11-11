@@ -670,3 +670,27 @@ Event types cannot combine autonomous event types (scheduled) with other event t
 A trigger with a schedule cannot have event conditions, and you cannot save the trigger until
 you remove one of them.
 To resolve this error, remove the event and create a separate trigger for it.
+
+### Warning: `Flow enabled without a trigger`
+
+When you enable a flow and add a schedule at the same time, GitLab might enable the flow
+without the automation and show this warning:
+
+```plaintext
+The scheduled trigger was not created. <reason>
+```
+
+This warning occurs when GitLab cannot create a service account for the scheduled automation.
+The flow is still turned on, but without a schedule.
+
+The `<reason>` in the warning message explains the cause.
+
+Common causes are:
+
+- You do not have permission to create a service account in the project, or to add members to the project.
+- The project's group [prevents adding members to projects](../../group/access_and_permissions.md#prevent-members-from-being-added-to-projects-in-a-group).
+- The service account of the flow has the Owner role, or a role higher than you can assign.
+
+To resolve this warning, address the cause noted in the warning message and create a scheduled automation for the flow again.
+
+For the full list of requirements, see the prerequisites for [creating a scheduled automation](#create-a-scheduled-automation).

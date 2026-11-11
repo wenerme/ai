@@ -94,7 +94,7 @@ The API token field appears blank after you save the identity provider configura
     1. In Okta, create a [custom authorization server ↗︎](https://developer.okta.com/docs/guides/customize-authz-server/main/) and ensure that the `groups` scope is enabled.
     2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.
     3. Under **Optional configurations**, enter the claims that you wish to add to your users' identity.
-16. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
+16. (Optional) Enable [Proof Key for Code Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
 17. Select **Save**.
 
 To [test](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#test-idps-in-cloudflare-one) that your connection is working, select **Test**.

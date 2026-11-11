@@ -10,6 +10,7 @@ Use this API to interact with [to-do items](../user/todos.md).
 ## List all to-do items
 
 - Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) in GitLab 19.6.
+- `review_approved` and `review_changes_requested` values for `action` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265564) in GitLab 19.6 [with a flag](../administration/feature_flags/_index.md) named `review_decision_todo_actions`. Disabled by default.
 
 Lists all to-do items. When no filter is applied, it
 returns all pending to-do items for the current user. Different filters allow the
@@ -37,7 +38,7 @@ Parameters:
 | `type` | string | no | The type of to-do item.[^to-do-item-type] |
 {.sortable}
 
-[^action-values]: Values can be one of `assigned`, `mentioned`, `build_failed`, `marked`, `approval_required`, `unmergeable`, `directly_addressed`, `merge_train_removed`, `review_requested`, `member_access_requested`, `review_submitted`, `okr_checkin_requested`, `added_approver`, `ssh_key_expired`, `ssh_key_expiring_soon`, `duo_pro_access_granted`, `duo_enterprise_access_granted`, `duo_core_access_granted`, `duo_workflow_input_required`, `transfer_failed`, or `orbit_access_granted`.
+[^action-values]: Values can be one of `assigned`, `mentioned`, `build_failed`, `marked`, `approval_required`, `unmergeable`, `directly_addressed`, `merge_train_removed`, `review_requested`, `member_access_requested`, `review_submitted`, `review_approved`, `review_changes_requested`, `okr_checkin_requested`, `added_approver`, `ssh_key_expired`, `ssh_key_expiring_soon`, `duo_pro_access_granted`, `duo_enterprise_access_granted`, `duo_core_access_granted`, `duo_workflow_input_required`, `transfer_failed`, or `orbit_access_granted`.
 [^to-do-item-type]: Values can be one of `Issue`, `MergeRequest`, `Commit`, `Epic`, `DesignManagement::Design`, `AlertManagement::Alert`, `Project`, `Namespace`, `Vulnerability`, `WikiPage::Meta`, `WorkItem`, `Key`, `User`, `ComplianceManagement::Projects::ComplianceViolation`, or `Ai::DuoWorkflows::Workflow`.
 
 ```shell

@@ -961,9 +961,11 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The action type. Retrieve the session for action details.
 
-      - `type: "computer_use_approval_request" or "function_call" or "environment_connection"`
+      - `type: "computer_use_approval_request" or "mcp_approval_request" or "function_call" or "environment_connection"`
 
         - `"computer_use_approval_request"`
+
+        - `"mcp_approval_request"`
 
         - `"function_call"`
 
@@ -2284,9 +2286,11 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
         The action type. Retrieve the session for action details.
 
-        - `type: "computer_use_approval_request" or "function_call" or "environment_connection"`
+        - `type: "computer_use_approval_request" or "mcp_approval_request" or "function_call" or "environment_connection"`
 
           - `"computer_use_approval_request"`
+
+          - `"mcp_approval_request"`
 
           - `"function_call"`
 

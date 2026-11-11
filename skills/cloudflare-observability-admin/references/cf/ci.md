@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15
 
 # Use cf in CI
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/ci/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/ci/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beta
 
@@ -213,7 +213,23 @@ yarn cf previews deploy
 pnpm cf previews deploy
 ```
 
-The preview name defaults to the current branch. In GitHub Actions, `cf` reads `GITHUB_HEAD_REF` or `GITHUB_REF_NAME`. In GitLab CI/CD, it reads `CI_COMMIT_REF_NAME`. Otherwise, it uses the current Git branch. On a detached checkout without these variables, pass the preview name as an argument. For the output and options, refer to [Deploy a preview](https://developers.cloudflare.com/cf/projects/#deploy-a-preview).
+The preview name defaults to the current branch. In GitHub Actions, `cf` reads `GITHUB_HEAD_REF` or `GITHUB_REF_NAME`. In GitLab CI/CD, it reads `CI_COMMIT_REF_NAME`. Otherwise, it uses the current Git branch. On a detached checkout without these variables, pass `--preview-name`:
+
+npmyarnpnpm
+
+```
+npx cf previews deploy --preview-name my-feature
+```
+
+```
+yarn cf previews deploy --preview-name my-feature
+```
+
+```
+pnpm cf previews deploy --preview-name my-feature
+```
+
+You can also use `--preview-name` to override the detected branch name. For the output and options, refer to [Deploy a preview](https://developers.cloudflare.com/cf/projects/#deploy-a-preview).
 
 ## Turn off telemetry
 
@@ -233,5 +249,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/ci/#page","headline":"Use cf in CI","description":"Run the Cloudflare CLI in continuous integration with an API token, predictable non-interactive behavior, and a build that you deploy once.","url":"https://developers.cloudflare.com/cf/ci/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/ci/#page","headline":"Use cf in CI","description":"Run the Cloudflare CLI in continuous integration with an API token, predictable non-interactive behavior, and a build that you deploy once.","url":"https://developers.cloudflare.com/cf/ci/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

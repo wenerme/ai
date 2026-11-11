@@ -2339,6 +2339,17 @@ Values for sorting daily usage entries.
 | `DATE_ASC` | Date by ascending order. |
 | `DATE_DESC` | Date by descending order. |
 
+## `DapFactorySyncStatus`
+
+Outcome of a Sync of a DAP Software Factory configuration.
+
+| Value | Description |
+| ----- | ----------- |
+| `FAILED` | Sync stopped before applying the file. |
+| `INVALID` | Nothing was applied because the file is not valid. |
+| `PARTIAL` | Some stages could not be applied. |
+| `SYNCED` | Every stage was applied. |
+
 ## `DastPreScanVerificationCheckType`
 
 Check type of the pre scan verification step.
@@ -5941,6 +5952,8 @@ Values for sorting timelogs.
 | `merge_train_removed` | Todo action name for merge_train_removed. |
 | `okr_checkin_requested` | Todo action name for okr_checkin_requested. |
 | `orbit_access_granted` | Todo action name for orbit_access_granted. |
+| `review_approved` | Todo action name for review_approved. |
+| `review_changes_requested` | Todo action name for review_changes_requested. |
 | `review_requested` | Todo action name for review_requested. |
 | `review_submitted` | Todo action name for review_submitted. |
 | `ssh_key_expired` | Todo action name for ssh_key_expired. |

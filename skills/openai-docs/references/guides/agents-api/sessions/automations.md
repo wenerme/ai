@@ -174,36 +174,6 @@ var automation =
 System.out.println(automation);
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Periodic,
-        Name = "Daily session",
-        Expression = "0 10 * * *",
-        Timezone = "America/New_York",
-        Target = new NewSessionAutomationTarget
-        {
-            AgentId = "agt_123",
-            Environment = new EnvironmentParamOpenaiHosted(),
-            Input =
-            [
-                new InputMessageParam(
-                    [new InputContentParamInputText("Summarize the current status and next steps.")]
-                ),
-            ],
-        },
-    }
-);
-Console.WriteLine(automation.Id);
-```
-
 ```ruby
 require "openai"
 
@@ -381,35 +351,6 @@ var session =
 System.out.println(session.id());
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentSession session = await client.CreateAgentSessionAsync(
-    new AgentSessionCreationOptions
-    {
-        Agent = new SessionAgentConfigParam
-        {
-            Model = "gpt-6-astra",
-            Instructions = "Use automations to schedule tasks requested by the user. Delegate each scheduled task to a subagent and ask for a concise result. Keep the goal, schedule, and useful summaries in the main session. Adjust or stop schedules when the user asks.",
-            MultiAgent = new MultiAgentConfigParam { Enabled = true },
-            Tools = [new AgentToolConfigParamAutomations()],
-        },
-        Environment = new EnvironmentParamOpenaiHosted(),
-        Input =
-        [
-            new InputMessageParam(
-                [new InputContentParamInputText("Every day at 10 AM in America/New_York, review the goals we discuss here and suggest the next actions I could take.")]
-            ),
-        ],
-    }
-);
-Console.WriteLine(session.Id);
-```
-
 ```ruby
 require "openai"
 
@@ -509,19 +450,6 @@ var invocations =
 for (var invocation : invocations.autoPager()) {
   System.out.println(
       invocation.id() + " " + invocation.status() + " " + invocation.sessionId());
-}
-```
-
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-await foreach (AgentAutomationInvocation invocation in client.GetAutomationInvocationsAsync("auto_123"))
-{
-    Console.WriteLine($"{invocation.Id} {invocation.Status} {invocation.SessionId}");
 }
 ```
 
@@ -744,30 +672,6 @@ var automation =
 System.out.println(automation);
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Periodic,
-        Name = "Check restaurant reservations",
-        Expression = "0 */2 * * *",
-        Timezone = "America/New_York",
-        Target = new ExistingSessionAutomationTarget
-        {
-            SessionId = "sess_123",
-            Instructions = "Check restaurant availability for our dinner plans. Compare with earlier checks and report newly available tables.",
-        },
-    }
-);
-Console.WriteLine(automation.Id);
-```
-
 ```ruby
 require "openai"
 
@@ -950,36 +854,6 @@ var automation =
                         .build())
                 .build());
 System.out.println(automation);
-```
-
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Periodic,
-        Name = "Monthly spending review",
-        Expression = "0 9 1 * *",
-        Timezone = "America/New_York",
-        Target = new NewSessionAutomationTarget
-        {
-            AgentId = "agt_123",
-            Environment = new EnvironmentParamOpenaiHosted(),
-            Input =
-            [
-                new InputMessageParam(
-                    [new InputContentParamInputText("Review my spending for the previous month. Flag unused subscriptions, price increases, and other potential savings for me to review.")]
-                ),
-            ],
-        },
-    }
-);
-Console.WriteLine(automation.Id);
 ```
 
 ```ruby
@@ -1188,36 +1062,6 @@ var automation =
                         .build())
                 .build());
 System.out.println(automation);
-```
-
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Periodic,
-        Name = "Daily suggestions",
-        Expression = "0 10 * * *",
-        Timezone = "America/New_York",
-        Target = new NewSessionAutomationTarget
-        {
-            AgentId = "agt_123",
-            Environment = new EnvironmentParamOpenaiHosted(),
-            Input =
-            [
-                new InputMessageParam(
-                    [new InputContentParamInputText("Review my calendar, tasks, and recent messages for today. Suggest the most useful actions I could take today, with a short reason for each.")]
-                ),
-            ],
-        },
-    }
-);
-Console.WriteLine(automation.Id);
 ```
 
 ```ruby
@@ -1466,36 +1310,6 @@ var automation =
 System.out.println(automation);
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Periodic,
-        Name = "Daily suggestions",
-        Expression = "0 10 * * *",
-        Timezone = "America/New_York",
-        Target = new NewSessionAutomationTarget
-        {
-            AgentId = "agt_123",
-            Environment = new EnvironmentParamOpenaiHosted(),
-            Input =
-            [
-                new InputMessageParam(
-                    [new InputContentParamInputText("Review my calendar, tasks, and recent messages for today. Suggest the most useful actions I could take today, with a short reason for each.")]
-                ),
-            ],
-        },
-    }
-);
-Console.WriteLine(automation.Id);
-```
-
 ```ruby
 require "openai"
 
@@ -1713,36 +1527,6 @@ var automation =
 System.out.println(automation);
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Periodic,
-        Name = "Monthly spending review",
-        Expression = "0 9 1 * *",
-        Timezone = "America/New_York",
-        Target = new NewSessionAutomationTarget
-        {
-            AgentId = "agt_123",
-            Environment = new EnvironmentParamOpenaiHosted(),
-            Input =
-            [
-                new InputMessageParam(
-                    [new InputContentParamInputText("Review my spending for the previous month. Flag unused subscriptions, price increases, and other potential savings for me to review.")]
-                ),
-            ],
-        },
-    }
-);
-Console.WriteLine(automation.Id);
-```
-
 ```ruby
 require "openai"
 
@@ -1934,30 +1718,6 @@ var automation =
 System.out.println(automation);
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Periodic,
-        Name = "Check restaurant reservations",
-        Expression = "0 */2 * * *",
-        Timezone = "America/New_York",
-        Target = new ExistingSessionAutomationTarget
-        {
-            SessionId = "sess_123",
-            Instructions = "Check restaurant availability for our dinner plans. Compare with earlier checks and report newly available tables.",
-        },
-    }
-);
-Console.WriteLine(automation.Id);
-```
-
 ```ruby
 require "openai"
 
@@ -2106,29 +1866,6 @@ var automation =
                         .build())
                 .build());
 System.out.println(automation);
-```
-
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Once,
-        Name = "Check restaurant reply",
-        RunAt = 1798794000,
-        Target = new ExistingSessionAutomationTarget
-        {
-            SessionId = "sess_123",
-            Instructions = "Check whether the restaurant replied about our booking. Summarize any changes to the dinner plans.",
-        },
-    }
-);
-Console.WriteLine(automation.Id);
 ```
 
 ```ruby
@@ -2283,35 +2020,6 @@ var session =
                     "Every day at 10 AM in America/New_York, review the goals we discuss here and suggest the next actions I could take.")
                 .build());
 System.out.println(session.id());
-```
-
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentSession session = await client.CreateAgentSessionAsync(
-    new AgentSessionCreationOptions
-    {
-        Agent = new SessionAgentConfigParam
-        {
-            Model = "gpt-6-astra",
-            Instructions = "Use automations to schedule tasks requested by the user. Delegate each scheduled task to a subagent and ask for a concise result. Keep the goal, schedule, and useful summaries in the main session. Adjust or stop schedules when the user asks.",
-            MultiAgent = new MultiAgentConfigParam { Enabled = true },
-            Tools = [new AgentToolConfigParamAutomations()],
-        },
-        Environment = new EnvironmentParamOpenaiHosted(),
-        Input =
-        [
-            new InputMessageParam(
-                [new InputContentParamInputText("Every day at 10 AM in America/New_York, review the goals we discuss here and suggest the next actions I could take.")]
-            ),
-        ],
-    }
-);
-Console.WriteLine(session.Id);
 ```
 
 ```ruby
@@ -2477,29 +2185,6 @@ var automation =
 System.out.println(automation);
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.CreateAutomationAsync(
-    new AgentAutomationCreationOptions
-    {
-        Type = AgentAutomationType.Once,
-        Name = "Onboarding follow-up",
-        RunAt = DateTimeOffset.UtcNow.AddHours(48).ToUnixTimeSeconds(),
-        Target = new ExistingSessionAutomationTarget
-        {
-            SessionId = "sess_123",
-            Instructions = "Review onboarding progress and send the next onboarding message if the user has not completed onboarding.",
-        },
-    }
-);
-Console.WriteLine(automation.Id);
-```
-
 ```ruby
 require "openai"
 
@@ -2615,19 +2300,6 @@ for (var invocation : invocations.autoPager()) {
 }
 ```
 
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-await foreach (AgentAutomationInvocation invocation in client.GetAutomationInvocationsAsync("auto_123"))
-{
-    Console.WriteLine($"{invocation.Id} {invocation.Status} {invocation.SessionId}");
-}
-```
-
 ```ruby
 require "openai"
 
@@ -2726,20 +2398,6 @@ var automation =
                 .expression("0 11 * * *")
                 .build());
 System.out.println(automation);
-```
-
-```csharp
-using OpenAI;
-using OpenAI.Agents;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AgentClient client = new OpenAIClient(key).GetAgentClient();
-AgentAutomation automation = await client.UpdateAutomationAsync(
-    "auto_123",
-    new AgentAutomationUpdateOptions { Expression = "0 11 * * *" }
-);
-Console.WriteLine(automation.Id);
 ```
 
 ```ruby

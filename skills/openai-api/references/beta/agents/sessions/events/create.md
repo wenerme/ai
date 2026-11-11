@@ -28,6 +28,42 @@ Content type: `application/json`
 
   `minItems: 0`, `maxItems: 16384`
 
+  - `AgentSessionInputMcpApprovalRequestResult object { request_id, response, type }`
+
+    Responds to a pending MCP tool-call approval request.
+
+    - `request_id: string`
+
+      The opaque approval ID from the required action.
+
+      `minLength: 0`, `maxLength: 1048576`
+
+    - `response: object { decision, type }`
+
+      The user's decision for a pending MCP tool call.
+
+      - `decision: "approve" or "deny" or "cancel"`
+
+        Cancel dismisses this request without cancelling the session or turn.
+
+        - `"approve"`
+
+        - `"deny"`
+
+        - `"cancel"`
+
+      - `type: "mcp_tool_call" (default: "mcp_tool_call")`
+
+        The type of the object. Always `mcp_tool_call`.
+
+        - `"mcp_tool_call"`
+
+    - `type: "agent.session.input.mcp_approval_request_result" (default: "agent.session.input.mcp_approval_request_result")`
+
+      The type of the object. Always `agent.session.input.mcp_approval_request_result`.
+
+      - `"agent.session.input.mcp_approval_request_result"`
+
   - `AgentSessionInputComputerUseApprovalRequestResult object { request_id, response, type }`
 
     Responds to a pending Computer Use approval request.
@@ -254,16 +290,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/events \
             {
               "request_id": "request_id",
               "response": {
-                "action": "submit",
-                "fields": [
-                  {
-                    "field_id": "field_id",
-                    "value": "value"
-                  }
-                ],
-                "type": "browser_authentication"
+                "decision": "approve",
+                "type": "mcp_tool_call"
               },
-              "type": "agent.session.input.computer_use_approval_request_result"
+              "type": "agent.session.input.mcp_approval_request_result"
             }
           ]
         }'

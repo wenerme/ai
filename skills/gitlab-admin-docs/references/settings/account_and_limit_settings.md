@@ -201,6 +201,13 @@ On instances with SAML configured, users are prompted to sign in again after the
 expires from inactivity. Without the prompt, pages can show stale data or stop responding,
 with no error.
 
+If a user selects [**Remember me**](#configure-the-remember-me-option) when signing in, they can
+keep their session alive without a prompt by keeping GitLab open in their browser.
+
+Users are prompted again after their remember me session expires, or after you turn off
+**Allow users to extend their session**. Users must reload open pages to pick up changes to this
+setting.
+
 ### Configure the Remember me option
 
 Users can select the **Remember me** checkbox on sign-in. Their session remains active for an indefinite
