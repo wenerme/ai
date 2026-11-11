@@ -78,7 +78,7 @@ The key security principles of ensuring pipeline integrity include:
 
 ### Docker images
 
-Always use SHA digests for Docker images to ensure client-side integrity verification.
+Use SHA digests for Docker images whenever possible to ensure client-side integrity verification.
 For example:
 
 - Node:
@@ -95,17 +95,6 @@ docker pull node:18.17.1
 docker images --digests node:18.17.1
 ```
 
-A digest-pinned image is available only while the container registry retains its manifest.
-GitLab [rebuilds security analyzer images daily](../../development/sec/analyzer_development_guide.md#daily-rebuild-of-container-images)
-under `registry.gitlab.com/security-products/*`. Each rebuild overwrites the version tags
-and leaves the previous manifest untagged.
-[Online garbage collection](../../user/packages/container_registry/delete_container_registry_images.md#garbage-collection)
-can delete untagged manifests after 24 hours, so a pinned digest can fail with
-`manifest unknown`.
-
-To pin these images by digest, copy the analyzer image into a container registry you control,
-protect the copy with immutable tags, and pin the digest from that registry.
-
 Prefer to pull from container registries that protect image integrity:
 
 - Use [protected container repositories](../../user/packages/container_registry/container_repository_protection_rules.md)
@@ -113,7 +102,7 @@ Prefer to pull from container registries that protect image integrity:
 - Use [protected tags](../../user/packages/container_registry/protected_container_tags.md)
   to control who can push and delete container tags.
 - Use [immutable tags](../../user/packages/container_registry/immutable_container_tags.md)
-  to prevent container tags from being updated or deleted.
+  to prevent container tags from being updated or deleted. Ultimate only.
 
 When possible, avoid using variables in container references as they can be modified to point to malicious images.
 For example:
@@ -123,6 +112,21 @@ For example:
 - Instead of:
   - `image: ${CUSTOM_REGISTRY}/node:latest`
   - `image: node:${VERSION}`
+
+If a project rebuilds an image with the same tag, the tag points to a new digest.
+The registry can later delete the old manifest, and jobs that pin the old digest then fail to fetch the image.
+To pin these images by digest, you can:
+
+1. Copy the image into a container registry you control.
+1. Protect the copy using one of the available protection methods.
+1. Pin the digest from that copy in your registry.
+
+You must manually update your stored copy when the original image changes and you want the new version.
+
+If a project rebuilds images too frequently, it might be impractical to keep up with the changes.
+For example, [official GitLab security scanners](../../user/application_security/secure_your_application.md)
+rebuild every day to ensure the base images have the latest patches. If you choose to
+fetch a tagged version instead of a SHA digest, ensure the container registry is trusted.
 
 ### Package dependencies
 

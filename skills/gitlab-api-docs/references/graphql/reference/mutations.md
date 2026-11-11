@@ -10938,6 +10938,7 @@ Rotates the personal access token leaked in a specified secret detection vulnera
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `projectSecret` | [`ProjectSecret`](objects.md#projectsecret) | Project secret created to store the rotated token. |
+| `reason` | [`SecretsManagerWriteDenialReason`](enums.md#secretsmanagerwritedenialreason) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Reason the write was denied due to entitlement; null when not denied for that reason. |
 
 ## `projectSecretDelete`
 

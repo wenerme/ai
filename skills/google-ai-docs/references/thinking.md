@@ -17,10 +17,23 @@ outputs in the `steps` array.
 
 Every thought step contains two fields:
 
-| Field | Required | Description |
-| --- | --- | --- |
-| `signature` | ✅ Yes | An encrypted representation of the model's internal reasoning state. Always present, even when the model performs minimal reasoning. |
-| `summary` | ❌ No | An array of content (text and/or images) summarizing the reasoning. May be empty depending on the [`thinking_summaries`](https://ai.google.dev/api/interactions-api) config, whether the model performed enough reasoning, or the content type (for example, image latents may not have text summaries). |
+{% table %}
+  * Field
+  * Required
+  * Description
+
+  ---
+
+  * `signature`
+  * ✅ Yes
+  * An encrypted representation of the model's internal reasoning state. Always present, even when the model performs minimal reasoning.
+
+  ---
+
+  * `summary`
+  * ❌ No
+  * An array of content (text and/or images) summarizing the reasoning. May be empty depending on the [`thinking_summaries`](/api-reference/interactions-api) config, whether the model performed enough reasoning, or the content type (for example, image latents may not have text summaries).
+{% /table %}
 
 {% callout type="note" %}
   The Interactions API handles thoughts and signatures differently than the
@@ -803,7 +816,7 @@ control this behavior using the `thinking_level` parameter.
 ### Token limits and `max_output_tokens` {% id="token-limits" %}
 
 The
-[`max_output_tokens`](https://ai.google.dev/api/interactions-api#request-body)
+[`max_output_tokens`](/api-reference/interactions-api/create-interaction#request-body)
 generation parameter sets the maximum number of tokens a response can generate,
 including thought tokens.
 

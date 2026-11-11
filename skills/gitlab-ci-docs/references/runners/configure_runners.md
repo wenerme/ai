@@ -36,11 +36,11 @@ On GitLab.com, you cannot override the job timeout for GitLab hosted instance ru
 
 To set the maximum job timeout:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **CI/CD** > **Runners**.
-1. To the right of the runner, you want to edit, select **Edit** ().
-1. In the **Maximum job timeout** field, enter a value in seconds. The minimum value is 600 seconds (10 minutes).
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. To the right of the runner you want to edit, select  ().
+1. In the  field, enter a value in seconds. The minimum value is 600 seconds (10 minutes).
+1. Select .
 
 ### For a group runner
 
@@ -50,11 +50,11 @@ Prerequisites:
 
 To set the maximum job timeout:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Build** > **Runners**.
-1. To the right of the runner you want to edit, select **Edit** ().
-1. In the **Maximum job timeout** field, enter a value in seconds. The minimum value is 600 seconds (10 minutes).
-1. Select **Save changes**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. To the right of the runner you want to edit, select  ().
+1. In the  field, enter a value in seconds. The minimum value is 600 seconds (10 minutes).
+1. Select .
 
 ### For a project runner
 
@@ -64,12 +64,12 @@ Prerequisites:
 
 To set the maximum job timeout:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Runners**.
-1. To the right of the runner you want to edit, select **Edit** ().
-1. In the **Maximum job timeout** field, enter a value in seconds. The minimum value is 600 seconds (10 minutes). If not defined, the [job timeout for the project](../pipelines/settings.md#set-a-limit-for-how-long-jobs-can-run) is used instead.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. To the right of the runner you want to edit, select  ().
+1. In the  field, enter a value in seconds. The minimum value is 600 seconds (10 minutes). If not defined, the [job timeout for the project](../pipelines/settings.md#set-a-limit-for-how-long-jobs-can-run) is used instead.
+1. Select .
 
 ## Set `script` and `after_script` timeouts
 
@@ -177,12 +177,12 @@ That new runner may then be used to obtain the values of secret variables or to 
 
 To reset the registration token:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Runners**.
-1. To the right of **New project runner**, select the vertical ellipsis ().
-1. Select **Reset registration token**.
-1. Select **Reset token**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. To the right of , select the vertical ellipsis ().
+1. Select .
+1. Select .
 
 After you reset the registration token, it is no longer valid and does not register
 any new runners to the project. You should also update the registration token in tools
@@ -233,11 +233,11 @@ Prerequisites:
 
 To automatically rotate runner authentication tokens:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. Set a **Runners expiration** time for runners, leave empty for no expiration.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set the , , or  time. Leave a field empty for no expiration.
+1. Select .
 
 Before the interval expires, runners automatically request a new runner authentication token.
 For more information about token rotation, see
@@ -257,11 +257,11 @@ Prerequisites:
 
 - You must be an administrator.
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **CI/CD** > **Runners**.
-1. To the right of the runner you want to protect, select **Edit** ().
-1. Select the **Protected** checkbox.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. To the right of the runner you want to protect, select  ().
+1. Select the  checkbox.
+1. Select .
 
 ### For a group runner
 
@@ -269,11 +269,11 @@ Prerequisites:
 
 - You must have the Owner role for the group.
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Build** > **Runners**.
-1. To the right of the runner you want to protect, select **Edit** ().
-1. Select the **Protected** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. To the right of the runner you want to protect, select  ().
+1. Select the  checkbox.
+1. Select .
 
 ### For a project runner
 
@@ -281,12 +281,12 @@ Prerequisites:
 
 - You must have the Owner role for the project.
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Runners**.
-1. To the right of the runner you want to protect, select **Edit** ().
-1. Select the **Protected** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. To the right of the runner you want to protect, select  ().
+1. Select the  checkbox.
+1. Select .
 
 ## Control jobs that a runner can run
 
@@ -305,13 +305,13 @@ Prerequisites:
 
 To control the jobs that an instance runner can run:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **CI/CD** > **Runners**.
-1. To the right of the runner you want to edit, select **Edit** ().
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. To the right of the runner you want to edit, select  ().
 1. Set the runner to run tagged or untagged jobs:
-   - To run tagged jobs, in the **Tags** field, enter the job tags separated with a comma. For example, `macos`, `rails`.
-   - To run untagged jobs, select the **Run untagged jobs** checkbox.
-1. Select **Save changes**.
+   - To run tagged jobs, in the  field, enter the job tags separated with a comma. For example, `macos`, `rails`.
+   - To run untagged jobs, select the  checkbox.
+1. Select .
 
 ### For a group runner
 
@@ -321,13 +321,13 @@ Prerequisites:
 
 To control the jobs that a group runner can run:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Build** > **Runners**.
-1. To the right of the runner you want to edit, select **Edit** ().
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. To the right of the runner you want to edit, select  ().
 1. Set the runner to run tagged or untagged jobs:
-   - To run tagged jobs, in the **Tags** field, enter the job tags separated with a comma. For example, `macos`, `ruby`.
-   - To run untagged jobs, select the **Run untagged jobs** checkbox.
-1. Select **Save changes**.
+   - To run tagged jobs, in the  field, enter the job tags separated with a comma. For example, `macos`, `ruby`.
+   - To run untagged jobs, select the  checkbox.
+1. Select .
 
 ### For a project runner
 
@@ -337,14 +337,14 @@ Prerequisites:
 
 To control the jobs that a project runner can run:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Runners**.
-1. To the right of the runner you want to edit, select **Edit** ().
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. To the right of the runner you want to edit, select  ().
 1. Set the runner to run tagged or untagged jobs:
-   - To run tagged jobs, in the **Tags** field, enter the job tags separated with a comma. For example, `macos`, `ruby`.
-   - To run untagged jobs, select the **Run untagged jobs** checkbox.
-1. Select **Save changes**.
+   - To run tagged jobs, in the  field, enter the job tags separated with a comma. For example, `macos`, `ruby`.
+   - To run untagged jobs, select the  checkbox.
+1. Select .
 
 ### How the runner uses tags
 

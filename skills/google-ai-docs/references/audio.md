@@ -1368,7 +1368,7 @@ Gemini supports the following audio format MIME types:
 * MULAW - `audio/mulaw`
 * WebM - `audio/webm`
 
-For the complete list of supported MIME types and parameter schemas, see the [Interactions API reference](https://ai.google.dev/api/interactions-api#Resource:Content).
+For the complete list of supported MIME types and parameter schemas, see the [Interactions API reference](/api-reference/interactions-api#Resource:Content).
 
 ## Technical details about audio  {% id="technical-details" %}
 

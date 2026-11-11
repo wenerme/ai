@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Active Directory (SAML)
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -126,7 +126,7 @@ To export the certificate:
 
 To ensure that AD FS signs the full response when communicating with Cloudflare, open your local **PowerShell** and enter the following command:
 
-```bash
+```powershell
 Set-ADFSRelyingPartyTrust -TargetName "Name of RPT Display Name" -SamlResponseSignature "MessageAndAssertion"
 ```
 
@@ -144,13 +144,14 @@ To enable Cloudflare One to accept the claims and assertions sent from AD FS, fo
    https://hostnameOfADFS/adfs/ls/
    ```
 
-   This is the default location. You can find your federation service identifier in AD FS.
-6. In the **IdP Entity ID or Issuer URL** field, enter your Cloudflare Zero Trust team domain and include this callback at the end of the path: `/cdn-cgi/access/callback`. For example:
+   This is the default AD FS sign-in endpoint. It is separate from the federation service identifier used in the next step.
+6. In **IdP Entity ID or Issuer URL**, enter your AD FS federation service identifier, not the Cloudflare callback URL. To retrieve the identifier, run the following command on the AD FS server:
 
-   ```txt
-   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
+   ```powershell
+   (Get-AdfsProperties).Identifier
    ```
 
+   Use the value exactly as configured in AD FS. It identifies your identity provider; the Cloudflare callback URL identifies the service provider endpoint.
 7. Under **Signing certificate**, paste the exported certificate.
 
    There can be no spaces or return characters in the text field.
@@ -179,7 +180,7 @@ To get your Cloudflare metadata file:
 ```json
 {
 	"config": {
-		"issuer_url": "https://<your-team-name>.cloudflareaccess.com/",
+		"issuer_url": "http://adfs.example.com/adfs/services/trust",
 		"sso_target_url": "https://adfs.example.com/adfs/ls/",
 		"attributes": ["email"],
 		"email_attribute_name": "",
@@ -200,5 +201,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/#page","headline":"Active Directory (SAML)","description":"Integrate Active Directory with Cloudflare One for secure identity management.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/og.png?v=520cf8a7b7fc6d73","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","SSO"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/#page","headline":"Active Directory (SAML)","description":"Integrate Active Directory with Cloudflare One for secure identity management.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/og.png?v=520cf8a7b7fc6d73","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","SSO"]}
 ```

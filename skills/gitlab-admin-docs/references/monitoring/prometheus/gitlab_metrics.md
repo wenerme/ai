@@ -472,6 +472,17 @@ The Apdex target for these metrics is `APDEX_THRESHOLD_S` in
 | `gitlab_search_zoekt_task_queue_duration_seconds` | Histogram | 19.6 | `zoekt_node`, `task_type` | Seconds a due Zoekt indexing task waited before a node claimed it. |
 | `gitlab_search_zoekt_task_processing_duration_seconds` | Histogram | 19.6 | `zoekt_node`, `task_type` | Seconds between a Zoekt indexing task's claim and its completion callback. |
 
+### Zoekt rollout metrics (from Sidekiq)
+
+Sidekiq emits this metric when `Search::Zoekt::RolloutWorker` cannot plan a
+replica for a namespace because the Zoekt fleet lacks capacity. Each Sidekiq
+process starts the series at `0` when it boots, so `increase()` detects a first
+failure that happens after the next scrape.
+
+| Metric | Type | Since | Labels | Description |
+|:-------|:-----|------:|:-------|:------------|
+| `search_zoekt_rollout_planning_failures_total` | Counter | 19.6 | **None** | Total number of namespaces that Zoekt rollout could not plan a replica for because the fleet lacks capacity, counted once per namespace in each rollout run. A namespace counts when it needs more indices than one replica allows, or when no node has room for a project or every node with room already holds an index for the namespace. Adding Zoekt nodes resolves both. |
+
 ### Audit event streaming SLI metrics
 
 These SLIs track the NATS audit event streaming pipeline.
@@ -1099,6 +1110,7 @@ configuration option in `gitlab.yml`. These metrics are served from the
 | `sidekiq_concurrency_limit_current_limit`                | Gauge     | 18.3  | `worker`, `feature_category`                                                              | Number of concurrent jobs currently allowed to run subject to throttling |
 | `sidekiq_concurrency_limit_max_concurrent_jobs`          | Gauge     | 17.3  | `worker`, `feature_category`                                                              | Max number of concurrent running Sidekiq jobs |
 | `sidekiq_concurrency_limit_queue_jobs`                   | Gauge     | 17.3  | `worker`, `feature_category`                                                              | Number of Sidekiq jobs waiting in the concurrency limit queue |
+| `sidekiq_concurrency_limit_sampler_duration_seconds`     | Histogram | 19.6  |                                                                                           | Time to report the concurrency limit metrics of every worker on a Sidekiq shard |
 | `sidekiq_concurrency`                                    | Gauge     | 12.5  |                                                                                           | Maximum number of Sidekiq jobs |
 | `sidekiq_elasticsearch_requests_duration_seconds`        | Histogram | 13.1  | `queue`, `boundary`, `external_dependencies`, `feature_category`, `job_status`, `urgency` | Duration in seconds that a Sidekiq job spent in requests to an Elasticsearch server |
 | `sidekiq_elasticsearch_requests_total`                   | Counter   | 13.1  | `queue`, `boundary`, `external_dependencies`, `feature_category`, `job_status`, `urgency` | Elasticsearch requests during a Sidekiq job execution |

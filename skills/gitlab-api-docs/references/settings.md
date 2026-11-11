@@ -414,6 +414,7 @@ Example response:
   "runner_job_list_completed_statuses_limit_per_user": 330,
   "runner_job_list_project_filtered_limit_per_user": 330,
   "runner_manager_list_limit_per_user": 300000,
+  "pipeline_schedule_management_limit_per_user": 300,
   "job_retry_limit_per_user_project": 320,
   "job_play_limit_per_user_project": 200,
   "pipeline_delete_limit_per_user_project": 400,
@@ -505,6 +506,7 @@ Example responses:
 - `runner_manager_list_limit_per_user` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269229) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `ci_rate_limit_rest_runner_manager_list`. Disabled by default.
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627273) in GitLab 19.5 [with feature flags](../administration/feature_flags/_index.md) named `rate_limit_job_retry` and `rate_limit_job_play`. Disabled by default.
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261718) in GitLab 19.6. Feature flags `rate_limit_job_retry` and `rate_limit_job_play` removed.
+- `pipeline_schedule_management_limit_per_user` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636908) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_schedule_management`. Disabled by default.
 - `pipeline_delete_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627268) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_delete`. Disabled by default.
 - `pipeline_delete_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179) in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` removed.
 - `job_erase_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_erase`. Disabled by default.
@@ -524,6 +526,7 @@ Example responses:
 - `work_item_hierarchy_add_children_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266141) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_hierarchy_add_children_limits`. Disabled by default.
 - `label_delete_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267374) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `label_delete_rate_limit`. Disabled by default.
 - `pages_deployments_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267669) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `pages_deployments_api_rate_limit`. Disabled by default. While the flag is disabled, requests over the limit are logged but not blocked. This attribute is in [beta](../policy/development_stages_support.md#beta).
+- `protected_branch_write_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267714) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `protected_branch_write_rate_limit_enforce`. Disabled by default.
 - `ci_lint_api_require_authentication` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267969) in GitLab 19.6.
 - `subscription_usage_per_minute_limit`, `subscription_usage_per_hour_limit`, `subscription_usage_per_day_limit`, `budget_cap_update_per_minute_limit`, `budget_cap_update_per_hour_limit`, and `budget_cap_update_per_day_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268308) in GitLab 19.6.
 - `glql_db_seconds_per_ip_limit`, `glql_db_seconds_per_query_limit`, `glql_db_seconds_per_user_limit`, and `glql_duo_db_seconds_per_user_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267232) as an [experiment](../policy/development_stages_support.md#experiment) in GitLab 19.6. Requests over these limits are rejected only [with a feature flag](../administration/feature_flags/_index.md) named `enforce_glql_db_time_budgets`. Disabled by default.
@@ -531,6 +534,7 @@ Example responses:
 - `gitlab_shell_operation_per_actor_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267274) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_gitlab_shell_operation_per_actor`. Disabled by default.
 - `work_item_update_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268180) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_update_rate_limit`. Disabled by default.
 - `merge_requests_rebase_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267972) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_rebase_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
+- `cross_reference_checks_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268220) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `enforce_cross_reference_limits`. Disabled by default.
 
 In general, all settings are optional. When enabling some settings, you might also need
 to configure other related settings. These requirements are in the `Required` column of the following table.
@@ -615,6 +619,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `container_registry_token_expire_delay`                   | integer | no                           | Container registry token duration in minutes. |
 | `package_registry_cleanup_policies_worker_capacity`       | integer | no                           | Number of workers assigned to the packages cleanup policies. |
 | `create_organization_api_limit`          | integer          | no                                   | Maximum number of requests every minute for each user to `POST /organizations`. Default: `10`. Set to `0` to disable the rate limit. See [Organizations API rate limits](../rate_limits/api/organizations.md). |
+| `cross_reference_checks_limit`           | integer          | no                                   | Maximum number of references that GitLab checks for "mentioned in" notes every minute for each user, when the user saves a description or comment. Commits do not count. Default: `800`. Set to `0` to disable the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. |
 | `updating_name_disabled_for_users`       | boolean          | no                                   | [Disable user profile name changes](../administration/settings/account_and_limit_settings.md#disable-user-profile-name-changes). |
 | `deactivate_dormant_users`               | boolean          | no                                   | Enable [automatic deactivation of dormant users](../administration/moderate_users.md#automatically-deactivate-dormant-users). |
 | `deactivate_dormant_users_period`        | integer          | no                                   | Length of time (in days) after which a user is considered dormant. |
@@ -862,6 +867,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `runner_job_list_completed_statuses_limit_per_user` | integer | no | [Runner job list rate limits](../administration/cicd/limits.md#runner-job-list-rate-limits), per user. Default: `330`. |
 | `runner_job_list_project_filtered_limit_per_user` | integer | no | [Runner job list rate limits for user projects](../administration/cicd/limits.md#runner-job-list-rate-limits-for-user-projects), per user. Default: `330`. |
 | `runner_manager_list_limit_per_user` | integer | no | [Runner manager list rate limits](../administration/cicd/limits.md#runner-manager-list-rate-limits), in runner managers listed each minute per user. Default: `300000`. |
+| `pipeline_schedule_management_limit_per_user` | integer | no | [Pipeline schedule management rate limits](../administration/cicd/limits.md#pipeline-schedule-management-rate-limits), per user. Default: `300`. |
 | `ci_lint_limit_per_user`                 | integer          | no                                   | Maximum number of CI Lint requests every minute for each user. Disabled by default. |
 | `gitpod_enabled`                         | boolean          | no                                   | (**If enabled, requires**: `gitpod_url`) Enable [Ona integration](../integration/gitpod.md). Default is `false`. |
 | `gitpod_url`                             | string           | required by: `gitpod_enabled`        | The Ona instance URL for integration. |
@@ -913,6 +919,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `project_secrets_limit`                           | integer          | no                                   | Maximum number of secrets allowed for each project in Secrets Manager. Default: 100. To disable the limit, set to `0`. Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219436) in GitLab 18.9. |
 | `group_secrets_limit`                             | integer          | no                                   | Maximum number of secrets allowed for each group in Secrets Manager. Default: 500. To disable the limit, set to `0`. Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219436) in GitLab 18.9. |
 | `prometheus_metrics_enabled`             | boolean          | no                                   | Enable Prometheus metrics. |
+| `protected_branch_write_limit`           | integer          | no                                   | Maximum number of protected branches a user can create and delete in each top-level group or personal namespace every hour. Applies to the REST API, the GraphQL API, and the UI. Default: `5000`. Set to `0` to disable the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. |
 | `protected_ci_variables`                 | boolean          | no                                   | CI/CD variables are protected by default. |
 | `disable_overriding_approvers_per_merge_request` | boolean  | no                                   | Prevent editing approval rules in projects and merge requests |
 | `prevent_merge_requests_author_approval`         | boolean  | no                                   | Prevent approval by merge request creator (author) |

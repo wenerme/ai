@@ -3636,7 +3636,7 @@ Use Bearer Auth (header Authorization).
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -3651,7 +3651,7 @@ Use Bearer Auth (header Authorization).
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
                 `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-                `gpt-image-2`.
+                `gpt-image-2.6-sunburst`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
                 `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -4823,7 +4823,7 @@ Use Bearer Auth (header Authorization).
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -4838,7 +4838,7 @@ Use Bearer Auth (header Authorization).
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
                 `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-                `gpt-image-2`.
+                `gpt-image-2.6-sunburst`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
                 `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -7818,6 +7818,12 @@ Use Bearer Auth (header Authorization).
       - `instructions: optional string or null`
 
         Frontend instructions for voice, conversation, interruptions, and when to delegate. Start with the [Live prompting guide](/api/docs/guides/live-prompting); put business rules and tool workflows in a separate [backend prompt](/api/docs/guides/live-delegation#start-with-your-existing-backend-prompt). Limited to 16,384 client-supplied tokens. Omitted or blank instructions use server defaults. Immutable after startup.
+
+      - `safety_identifier: optional string or null`
+
+        A stable identifier for your end user, used for safety monitoring and abuse detection.
+
+        `maxLength: 128`
 
       - `store: optional boolean`
 

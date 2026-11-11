@@ -9,85 +9,30 @@ latestModelInfo:
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-- [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra)
-
-  **Highest intelligence**
-
-  For the most demanding reasoning, coding, and professional work.
-
-- [GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
-
-  **Balanced speed, cost, and intelligence**
-
-  Near-Astra performance for complex work at a lower cost.
-
-- [GPT-6.1 Terra](https://developers.openai.com/api/docs/models/gpt-6.1-terra)
-
-  **Fast and efficient**
-
-  For visual reasoning, precise computer use, and clear, natural writing.
-
-- [GPT-6 Luna](https://developers.openai.com/api/docs/models/gpt-6-luna)
-
-  **Fastest and most cost-effective**
-
-  Strong performance for focused, high-volume tasks.
-
-
-
-To get started, set `model` in a [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) request. If you already use [`gpt-6-sol`](https://developers.openai.com/api/docs/models/gpt-6-sol), review the [migration guidance](#migration-quickstart) before switching to GPT-6.1 Sol.
-
-### GPT-6 Astra
-
-GPT-6 Astra is our most intelligent model yet, with state-of-the-art performance in computer use, browsing, software engineering, science, and professional work. It can carry out multi-step workflows across code, browsers, and professional software. In [several evaluations](https://openai.com/index/gpt-6-astra/), Astra achieved stronger results using substantially fewer output tokens. Its estimated API cost per task was lower than earlier models despite its higher per-token pricing.
-
-GPT-6 Astra is also our most aligned model yet. It excels at exercising care, respecting task boundaries, and communicating transparently. When instructions leave room for interpretation, it uses the context it has to fill in routine gaps and asks focused questions when the answer could change the outcome. It incorporates new requirements, changes course when asked, and answers side questions without losing track of the broader task.
-
-All GPT-6 Astra users also have access to [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) and the new [Ultrafast mode](https://developers.openai.com/api/docs/guides/ultrafast-mode) for our fastest API speeds.
-
+<a id="gpt-6-astra-gpt-6-astra"></a>
 <a id="gpt-61-sol"></a>
 <a id="gpt-6.1-sol"></a>
-
-### GPT-6.1 Sol
-
-GPT-6.1 Sol delivers near-Astra performance at a lower cost for complex coding,
-computer use, and professional work. It supports `low`, `medium` (default),
-`high`, `xhigh`, and `max` reasoning effort.
-
-See the [model page](https://developers.openai.com/api/docs/models/gpt-6.1-sol) for specifications and pricing.
-
+<a id="gpt-6-astra-gpt-61-sol"></a>
 <a id="gpt-61-terra"></a>
 <a id="gpt-6.1-terra"></a>
+<a id="gpt-6-astra-gpt-61-terra"></a>
 
-### GPT-6.1 Terra
-
-GPT-6.1 Terra is a fast, efficient model for visual reasoning, precise computer
-use, and clear, natural writing. Use it to match product photos to catalog
-entries, compare technical drawings, act on application screens, or draft and
-revise text.
-
-It supports `none`, `low`, `medium` (default), `high`, `xhigh`, and `max`
-reasoning effort. Start with `medium` and increase it if the improvement in
-quality is worth the added time and tokens.
-
-When migrating from GPT-5.6 Terra, compare both models on representative images
-and workflows using the same reasoning effort. If your application calls tools
-through Chat Completions, migrate those requests to the Responses API.
-
-See the [model page](https://developers.openai.com/api/docs/models/gpt-6.1-terra) for specifications and pricing,
-[image inputs](https://developers.openai.com/api/docs/guides/images-vision) for visual analysis, and
-[computer use](https://developers.openai.com/api/docs/guides/tools-computer-use) for acting on screens.
+Use GPT-6 Astra for the most demanding work, GPT-6.1 Sol for complex work at
+lower cost, GPT-6.1 Terra for visual reasoning and writing, or GPT-6 Luna for
+focused, high-volume tasks. See [Model selection](https://developers.openai.com/api/docs/guides/model-selection)
+for a comparison.
 
 <a id="gpt-6-astra-what-is-new" className="scroll-mt-[110px]"></a>
 
 ## What's new
 
-- **Async tool calling:** GPT-6 can continue reasoning, call other tools, or answer independent parts of a request while your application runs a tool. Set `async: true` on a function or custom tool and return its result when ready using the original `call_id`. Your application still executes the tool and manages pending work. See [Async tool calling](https://developers.openai.com/api/docs/guides/async-tool-calling) for basic usage and a developer-defined wait-tool pattern.
+- **Async tool calling:** Supported models can continue reasoning, call other tools, or answer independent parts of a request while your application runs a tool. Set `async: true` on a function or custom tool and return its result when ready using the original `call_id`. Your application executes the tool and manages pending work. See [Async tool calling](https://developers.openai.com/api/docs/guides/async-tool-calling) for compatibility and examples.
 - **Mid-turn steering:** Send additional user instructions while GPT-6 is working, such as a correction or a change in requirements. Over a WebSocket connection, the Responses API preserves completed work and includes the update in a continuation. See [Mid-turn steering](https://developers.openai.com/api/docs/guides/steering) for the event flow and tool-result handling.
 - **Change reasoning mid-conversation while preserving cache:** Add a `configuration_update` input item to increase reasoning effort for difficult work or reduce it for routine follow-ups without rewriting the original prompt prefix. The updated reasoning effort applies until another `configuration_update` input item overrides it. See [Change reasoning mid-conversation](https://developers.openai.com/api/docs/guides/reasoning#change-reasoning-mid-conversation) for examples and compatibility.
+- **Multi-agent and persisted reasoning on GPT-6.1 Sol:** Use the [Responses Multi-agent beta](https://developers.openai.com/api/docs/guides/responses-multi-agent) to delegate work to subagents. Set [`reasoning.context` to `all_turns`](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls) to reuse compatible reasoning from earlier turns.
 - **Misalignment monitoring:** As part of our [strengthened safeguards](https://openai.com/index/path-to-astra/) for GPT-6 Astra, our systems asynchronously monitor for misalignment and trigger alerts when necessary. See [Misalignment monitoring](https://developers.openai.com/api/docs/guides/safety-checks/misalignment-monitoring) for more information.
 
-GPT-6 also supports the existing API capabilities available with GPT-5.6, including [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use), [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [streaming](https://developers.openai.com/api/docs/guides/streaming-responses), [Programmatic Tool Calling](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling), [multi-agent orchestration](https://developers.openai.com/api/docs/guides/responses-multi-agent), [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching), [persisted reasoning](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls), [compaction](https://developers.openai.com/api/docs/guides/compaction), and [pro mode](https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode).
+GPT-6 also supports the existing API capabilities available with GPT-5.6, including [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use), [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [streaming](https://developers.openai.com/api/docs/guides/streaming-responses), [Programmatic Tool Calling](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling), [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching), [compaction](https://developers.openai.com/api/docs/guides/compaction), and [pro mode](https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode).
 
 ## Limitations
 
@@ -216,7 +161,14 @@ To use this skill in other coding agents, download it from the [Codex repository
 
 ### Update API and model parameters
 
-Set `model` to `gpt-6-astra`, `gpt-6.1-sol`, `gpt-6.1-terra`, or `gpt-6-luna`, then check the following:
+Set `model` to `gpt-6-astra`, `gpt-6.1-sol`, `gpt-6.1-terra`, or `gpt-6-luna`, then review the compatibility checks below.
+
+If you're switching from `gpt-6-sol` to `gpt-6.1-sol`, use `low` if your
+current reasoning effort is `none`. Move any Chat Completions requests that
+call functions to the Responses API.
+
+When moving from GPT-5.6 Terra to GPT-6.1 Terra, compare both models on
+representative images and workflows at the same reasoning effort.
 
 - **Reasoning effort:** Preserve your current effective [reasoning effort](https://developers.openai.com/api/docs/guides/reasoning#reasoning-effort) where supported. GPT-6 Astra and GPT-6.1 Sol do not support `none`; use `low` instead. GPT-6.1 Terra, GPT-6 Sol, and GPT-6 Luna support `none`. If your existing request uses `minimal`, start with `low` and compare results on representative tasks. Use `reasoning.effort` in Responses or `reasoning_effort` in Chat Completions.
 - **Tool calling:** Use the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses#migrating-from-chat-completions). GPT-6 Astra, GPT-6.1 Sol, and GPT-6.1 Terra support Chat Completions, but tool calling requires Responses. GPT-6 Sol and GPT-6 Luna support function calling in Chat Completions only with `reasoning_effort: "none"`. Use Responses for reasoning with tools.

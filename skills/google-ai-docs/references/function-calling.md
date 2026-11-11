@@ -3801,7 +3801,7 @@ Then the model will make two calls in the same step: the `update()` call that re
 
 ## Notes and limitations  {% id="limitations" %}
 
-* Only a [subset of the OpenAPI schema](https://ai.google.dev/api/rest/v1beta/cachedContents#FunctionDeclaration) is supported.
+* Only a [subset of the OpenAPI schema](/api-reference/generate-content#Resource:Tool) is supported.
 * For `any` mode, very large or deeply nested schemas may be rejected.
 * Supported parameter types in Python are limited.
 

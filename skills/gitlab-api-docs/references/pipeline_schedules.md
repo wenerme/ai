@@ -3,7 +3,13 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
+- Rate limit on creating, updating, deleting, and taking ownership of pipeline schedules [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636908) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_schedule_management`. Disabled by default.
+
 Use this API to interact with [pipeline schedules](../ci/pipelines/schedules.md).
+
+Creating, updating, and deleting pipeline schedules, and taking ownership of them, share a
+[rate limit](../administration/cicd/limits.md#pipeline-schedule-management-rate-limits).
+If you exceed it, these endpoints return a `429 Too Many Requests` status code with a `Retry-After` header.
 
 ## List all pipeline schedules
 

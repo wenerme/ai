@@ -1348,9 +1348,13 @@ List user actions and configuration changes within this organization.
 
       The tracking ID of the API key.
 
-    - `changes_requested: optional object { scopes }`
+    - `changes_requested: optional object { expires_in_seconds, scopes }`
 
       The payload used to update the API key.
+
+      - `expires_in_seconds: optional integer`
+
+        Number of seconds from the update request until the API key expires.
 
       - `scopes: optional array of string`
 
@@ -2369,6 +2373,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
       "api_key.updated": {
         "id": "id",
         "changes_requested": {
+          "expires_in_seconds": 0,
           "scopes": [
             "string"
           ]
@@ -3195,9 +3200,13 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
       The tracking ID of the API key.
 
-    - `changes_requested: optional object { scopes }`
+    - `changes_requested: optional object { expires_in_seconds, scopes }`
 
       The payload used to update the API key.
+
+      - `expires_in_seconds: optional integer`
+
+        Number of seconds from the update request until the API key expires.
 
       - `scopes: optional array of string`
 

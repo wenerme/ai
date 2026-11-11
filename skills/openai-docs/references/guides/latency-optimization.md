@@ -266,7 +266,7 @@ In this case, since the check for retrieval requires the contextualized query, l
 {
   query: "[contextualized query]",
   retrieval: "[true/false - whether retrieval is required]",
-}
+};
 ```
 
 ```ruby
@@ -342,7 +342,7 @@ However, let's pretend we have run some tests and discovered that splitting the 
   user_requesting_to_talk_to_human: "False", // <-
   enough_information_in_context: "True", // <-
   response: "...", // X -- benefits from GPT-4
-}
+};
 ```
 
 ```ruby
@@ -478,7 +478,7 @@ Taking a closer look at the reasoning JSON you may notice the field names themse
   response_tone: "Validating and solution-oriented", // <-
   response_requirements: "Propose options for repair or replacement.", // <-
   user_requesting_to_talk_to_human: "False", // <-
-}
+};
 ```
 
 ```ruby
@@ -509,7 +509,7 @@ By making them shorter and moving explanations to the comments we can [generate 
   tone_out: "Validating and solution-oriented", // desired tone for response
   reqs: "Propose options for repair or replacement.", // response requirements
   human: "False", // whether user is expressing want to talk to human
-}
+};
 ```
 
 ```ruby

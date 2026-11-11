@@ -251,6 +251,12 @@ For a quick overview, items that are exported include:
   - Issue resource state events
   - Issue resource milestone events
   - Issue resource iteration events
+
+  > [!note]
+  > Iterations and iteration cadences are not created on import. An issue keeps its iteration only if the
+  > destination group or one of its ancestors has an iteration cadence with the same title, and that cadence has an
+  > iteration with the same internal ID, start date, and due date. Otherwise, the issue is imported without the iteration.
+
 - Merge requests
   - Merge request diffs
   - Merge request comments

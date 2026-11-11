@@ -42,6 +42,88 @@ Latest release
 
 </summary>
 
+**Version:** Windows 2026.9.2663.1**Date:** 2026-11-10**Size:** 68.6 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.9.2663.1">Download</a>
+
+#### Release notes
+
+This release includes the following highlights:
+
+- Added automatic endpoint selection for Global Acceleration. When Global Acceleration is enabled for an organization, the client connects to the Global Acceleration endpoints while the device is in the acceleration region and to the standard anycast endpoints otherwise, and reconnects when a network change moves the device between them without requiring action from the user. The Connectivity page shows which tunnel and API endpoints are in use, and users who are allowed to override the selection can choose endpoints in Settings.
+- Added protection against unauthorized modification or uninstallation of the Cloudflare One Client. When enabled, the user will be asked to provide an administrator-generated code when trying to uninstall the client, which will otherwise be blocked. Users, including administrators, also can no longer stop the client service, and attempts to authorize an uninstall with a code or token, whether accepted or rejected, are reported to Cloudflare.
+- Added a Diagnostics page to the client that shows the connection status and health, live tunnel and device metrics, network details and the results of DEX tests in one place. Users can run a speed test from the page that compares performance inside and outside the tunnel while the client is connected. The Troubleshooting tools button collects a full warp-diag bundle, or runs a captive portal test that briefly reconnects Wi-Fi, and saves the result to the Desktop, so users no longer need to run warp-diag from a terminal.
+- The client now shows a banner when the network limits the tunnel MTU to a degraded or critically low value. The banner clears when the MTU recovers or the client disconnects.
+
+**Additional changes and improvements**
+
+- The client now applies tunnel MTUs between 1147 and 1199 bytes measured by Path MTU Discovery. Previously the client ignored these values and kept a larger MTU, which could drop larger packets on networks such as mobile hotspots while the client showed as connected.
+- When Path MTU Discovery is enabled, the client now accepts larger packets from Cloudflare instead of limiting them to the size it uses for its own outbound packets.
+- When Path MTU Discovery measures an IPv6 path MTU below 1280 bytes, the client now reconnects over IPv4 and keeps preferring IPv4 until the network changes. Previously the client could stay on a smaller tunnel MTU over IPv6 on networks where IPv4 supports larger packets.
+- Access reauthentication requests now trust certificates in the operating system's certificate store, so reauthentication works on networks that perform TLS inspection.
+- For Zero Trust deployments, the client now records a traceroute of the network path outside the tunnel when the tunnel degrades or fails to connect. warp-diag includes the same trace.
+- warp-diag now includes redacted copies of the deployed MDM files and the names, but not the values, of stored registration secrets. It reports a QUIC path MTU only when one was measured.
+- Added the MDM parameters mdm\_file\_debounce\_secs (1–60) and mdm\_file\_unavailable\_debounce\_secs (0–300), which set how long the client waits before applying a changed MDM file and before acting on a missing or unreadable one.
+- Added the MDM parameters managed\_network\_probe\_interval\_secs (30–300, default 30) and managed\_network\_probe\_count (0 disables probing, 1–10, or -1 to keep probing until a managed network is found; default 1). After a registration or network change finds no managed network, the client now rechecks, so a device doesn't stay on the default profile because of a transient connection failure. Set the count to 0 to keep the previous behavior.
+- Added the <code>multicast</code> network policy and MDM setting (<code>allow</code> or <code>drop</code>, default <code>drop</code>). When set to <code>allow</code>, the client sends traffic for multicast addresses through the tunnel instead of dropping it, for networks that use multicast ranges for other traffic.
+- In proxy mode for Zero Trust, the client now sends hostnames from HTTP/HTTPS and SOCKS5 requests to Cloudflare for resolution instead of resolving them on the device.
+- The Connectivity page now shows the IPv4 and IPv6 addresses assigned to the tunnel while the client is connected.
+- When the app cannot reach the client service, the home screen now says why (service not running, not accepting connections, not responding, or connection dropped and reconnecting). It shows an error code and a Learn more link instead of "IPC error".
+- The client now shows a notification when an administrator removes the user's selected virtual network, and shows a specific message when the user selects a virtual network that is no longer available.
+- The consumer client home screen now shows when the connection is post-quantum encrypted.
+- <code>warp-cli target list</code> now accepts <code>--hostname</code> to filter targets by one or more comma-separated hostnames.
+- DEX HTTP tests now send a default User-Agent that identifies the Cloudflare One Client when the test does not configure one.
+- Reduced CPU usage by the Windows Capability Access Manager service (camsvc) caused by the client's Wi-Fi queries.
+- Reduced the client UI's memory usage.
+- The client UI no longer starts WMIC or PowerShell processes to collect memory information for crash reports.
+- Fixed installs failing with error 1603 on devices with Windows App Control (WDAC) policies, because some files inside the installer's custom actions were not signed. All components of the installer are now signed.
+- Fixed the installer asking the user to close running applications during an upgrade, downgrade or uninstall because other programs loaded the client's Visual C++ runtime libraries through the system PATH. The client now loads these libraries from a private folder so that closing other applications is unnecessary.
+- Fixed reinstalling the same version of the client from its MSI removing the updater service, which stopped the client from updating.
+- Fixed the client window appearing blank or white after an upgrade, at sign-in, after waking from sleep, or after a display change.
+- Fixed the client UI freezing and no longer showing status updates after the device woke from sleep.
+- Fixed the client UI looking for one of its libraries in a directory that standard users can create before looking in the installation directory.
+- Fixed a local user being able to crash the client service by sending a crafted query to the local DNS resolver.
+- Fixed the client service restarting when a firewall update for captive portal detection stalled while the device was asleep.
+- Fixed the client service leaking handles to processes after they exited, which could leave those processes listed as running.
+- Fixed the client getting stuck in a disconnected state on Windows on Arm devices because leftover tunnel adapters were not removed.
+- Fixed Windows resetting the Wi-Fi adapter after sign-in or a Wi-Fi restart when the client's firewall rules in Exclude split tunnel mode blocked Windows network connectivity checks. The client now allows those checks.
+- Fixed the client missing some network configuration changes after the first change was detected.
+- Fixed the client being unable to connect after an upgrade, downgrade, and upgrade that switched between consumer and Zero Trust registrations. The client now clears the mismatched registration so the user can register again.
+- Fixed the client continuing to use the previous tunnel protocol after a key rotation for a protocol change failed. The client now retries the rotation the next time it connects.
+- Fixed service token enrollment failing when it ran shortly after the service token was created. The client now retries while the new token becomes available.
+- Fixed the client reconnecting repeatedly when Global Acceleration automatic endpoint selection was enabled on devices in the acceleration region, and fixed the client keeping its previous data center after the selected endpoints changed.
+- Fixed a hostname-based split tunnel entry not taking effect until the next reconnect after its firewall rule failed to apply.
+- Fixed the client service failing to start when a split tunnel address in mdm.xml had no prefix length. A bare IP address is now treated as a single host.
+- Fixed a single malformed element in mdm.xml causing the client to ignore the whole file. warp-diag now includes the file as written.
+- Fixed <code>warp-cli dns fallback add</code> accepting an empty domain, which sent all DNS queries to the local resolver instead of Gateway. Fallback domain and split tunnel entries are now normalized, so removing an entry matches regardless of case or a trailing dot.
+- Fixed the DNS proxy caching answers for longer than the TTL of a CNAME record in the chain.
+- Fixed <code>warp-cli registration license</code> reporting an error on slow networks even though the license was applied, which left the client registered to a WARP+ account it did not recognize.
+- Fixed <code>warp-cli debug network</code> showing an all-zero interface GUID.
+- Fixed Digital Experience Monitoring (DEX) results being reported with timestamps offset from the actual time after the system clock was corrected.
+
+**Known issues**
+
+- A Windows DNS client regression may cause connectivity check failures on systems containing large hosts files. While our client includes a mitigation for this issue, users may still experience reduced DNS performance and connectivity check failures.
+- After an administrator removes a virtual network from a device profile or changes its default network, the virtual network list in the client may continue to show the previous networks until the client is restarted. This is a display issue only: the device connects to the networks its profile allows, and selecting a removed network is rejected without changing the connection. The warp-cli vnet command shows the current list. This will be addressed prior to the next GA release.
+
+</details>
+
+<details>
+
+<summary>
+
+Previous version history (10)
+
+</summary>
+
+<details>
+
+<summary>
+
+Windows 2026.9.1555.1
+
+</summary>
+
 **Version:** Windows 2026.9.1555.1**Date:** 2026-10-22**Size:** 62.8 MB
 
 <a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.9.1555.1">Download</a>
@@ -85,14 +167,6 @@ A Windows DNS client regression may cause connectivity check failures on systems
 For Zero Trust documentation please see: <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/">https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/</a> For Consumer documentation please see: <a href="https://developers.cloudflare.com/warp-client/">https://developers.cloudflare.com/warp-client/</a>
 
 </details>
-
-<details>
-
-<summary>
-
-Previous version history (9)
-
-</summary>
 
 <details>
 
@@ -481,6 +555,77 @@ Latest release
 
 </summary>
 
+**Version:** macOS 2026.9.2663.1**Date:** 2026-11-10**Size:** 179 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.9.2663.1">Download</a>
+
+#### Release notes
+
+This release includes the following highlights:
+
+- macOS 15.0 is now the minimum supported version. This release does not run on macOS 14.
+- Added automatic endpoint selection for Global Acceleration. When Global Acceleration is enabled for an organization, the client connects to the Global Acceleration endpoints while the device is in the acceleration region and to the standard anycast endpoints otherwise, and reconnects when a network change moves the device between them without requiring action from the user. The Connectivity page shows which tunnel and API endpoints are in use, and users who are allowed to override the selection can choose endpoints in Settings.
+- Added a Diagnostics page to the client that shows the connection status and health, live tunnel and device metrics, network details and the results of DEX tests in one place. Users can run a speed test from the page that compares performance inside and outside the tunnel while the client is connected. The Troubleshooting tools button collects a full warp-diag bundle, or runs a captive portal test that briefly reconnects Wi-Fi, and saves the result to the Desktop, so users no longer need to run warp-diag from a terminal.
+- The client now shows a banner when the network limits the tunnel MTU to a degraded or critically low value. The banner clears when the MTU recovers or the client disconnects.
+
+**Additional changes and improvements**
+
+- The client now applies tunnel MTUs between 1147 and 1199 bytes measured by Path MTU Discovery. Previously the client ignored these values and kept a larger MTU, which could drop larger packets on networks such as mobile hotspots while the client showed as connected.
+- When Path MTU Discovery is enabled, the client now accepts larger packets from Cloudflare instead of limiting them to the size it uses for its own outbound packets.
+- When Path MTU Discovery measures an IPv6 path MTU below 1280 bytes, the client now reconnects over IPv4 and keeps preferring IPv4 until the network changes. Previously the client could stay on a smaller tunnel MTU over IPv6 on networks where IPv4 supports larger packets.
+- Access reauthentication requests now trust certificates in the operating system's certificate store, so reauthentication works on networks that perform TLS inspection.
+- For Zero Trust deployments, the client now records a traceroute of the network path outside the tunnel when the tunnel degrades or fails to connect. warp-diag includes the same trace.
+- warp-diag now includes redacted copies of the deployed MDM files and reports a QUIC path MTU only when one was measured.
+- Added the MDM parameters managed\_network\_probe\_interval\_secs (30–300, default 30) and managed\_network\_probe\_count (0 disables probing, 1–10, or -1 to keep probing until a managed network is found; default 1). After a registration or network change finds no managed network, the client now rechecks, so a device doesn't stay on the default profile because of a transient connection failure. Set the count to 0 to keep the previous behavior.
+- Added the <code>multicast</code> network policy and MDM setting (<code>allow</code> or <code>drop</code>, default <code>drop</code>). When set to <code>allow</code>, the client sends traffic for multicast addresses through the tunnel instead of dropping it, for networks that use multicast ranges for other traffic.
+- In proxy mode for Zero Trust, the client now sends hostnames from HTTP/HTTPS and SOCKS5 requests to Cloudflare for resolution, instead of resolving them on the device.
+- The Connectivity page now shows the IPv4 and IPv6 addresses assigned to the tunnel while the client is connected.
+- When the app cannot reach the client service, the home screen now says why (service not running, not accepting connections, not responding, or connection dropped and reconnecting). It shows an error code and a Learn more link instead of "IPC error".
+- The client now shows a notification when an administrator removes the user's selected virtual network, and shows a specific message when the user selects a virtual network that is no longer available.
+- The consumer client home screen now shows when the connection is post-quantum encrypted.
+- <code>warp-cli target list</code> now accepts <code>--hostname</code> to filter targets by one or more comma-separated hostnames.
+- DEX HTTP tests now send a default User-Agent that identifies the Cloudflare One Client when the test does not configure one.
+- The client's background services now start only when their binaries are signed by Cloudflare, so replacing the application bundle cannot run other code with the services' privileges.
+- Reduced the client UI's memory usage on the home screen.
+- Fixed a managed registration being removed when the MDM configuration file was briefly missing or unreadable. The client now keeps the last applied policy for 20 seconds after the file becomes unavailable. The new MDM parameters mdm\_file\_debounce\_secs (1–60) and mdm\_file\_unavailable\_debounce\_secs (0–300) change how long the client waits before applying a changed file and before acting on a missing one.
+- Fixed an upgrade sometimes leaving the client without a running service when the previous service was slow to stop. The installer now waits up to 10 seconds for the old service to be removed before starting the new one.
+- Fixed the client UI not showing onboarding on first launch while a notification permission request was pending.
+- Fixed the client UI crashing when the Mac woke from sleep or a display configuration changed.
+- Fixed the client UI freezing and no longer showing status updates after the Mac woke from sleep.
+- Fixed DNS queries failing for a short time after the Mac woke from sleep. The client now replaces stale connections to the DNS resolver during its wake connectivity check.
+- Fixed the client continuing to use the previous tunnel protocol after a key rotation for a protocol change failed. The client now retries the rotation the next time it connects.
+- Fixed service token enrollment failing when it ran shortly after the service token was created. The client now retries while the new token becomes available.
+- Fixed the client reconnecting repeatedly when Global Acceleration automatic endpoint selection was enabled on devices in the acceleration region, and fixed the client keeping its previous data center after the selected endpoints changed.
+- Fixed a hostname-based split tunnel entry not taking effect until the next reconnect after its firewall rule failed to apply.
+- Fixed split tunnel updates for hostname-based entries failing when the client tried to remove a route that macOS had not installed.
+- Fixed <code>warp-cli dns fallback add</code> accepting an empty domain, which sent all DNS queries to the local resolver instead of Gateway. Fallback domain and split tunnel entries are now normalized, so removing an entry matches regardless of case or a trailing dot.
+- Fixed the DNS proxy caching answers for longer than the TTL of a CNAME record in the chain.
+- Fixed <code>warp-cli registration license</code> reporting an error on slow networks even though the license was applied, which left the client registered to a WARP+ account it did not recognize.
+- Fixed Digital Experience Monitoring (DEX) results being reported with timestamps offset from the actual time after the system clock was corrected.
+- Fixed the OS version detail stored for a device keeping an outdated value, including the text "Usage: sw\_vers…" reported by client versions 2023.5.587.1 through 2024.12.760.0. The client now clears the value the next time it connects.
+
+**Known issues**
+
+- After an administrator removes a virtual network from a device profile or changes its default network, the virtual network list in the client may continue to show the previous networks until the client is restarted. This is a display issue only: the device connects to the networks its profile allows, and selecting a removed network is rejected without changing the connection. The warp-cli vnet command shows the current list. This will be addressed prior to the next GA release.
+
+</details>
+
+<details>
+
+<summary>
+
+Previous version history (10)
+
+</summary>
+
+<details>
+
+<summary>
+
+macOS 2026.9.1555.1
+
+</summary>
+
 **Version:** macOS 2026.9.1555.1**Date:** 2026-10-22**Size:** 171 MB
 
 <a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.9.1555.1">Download</a>
@@ -520,14 +665,6 @@ None.
 For Zero Trust documentation please see: <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/">https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/</a> For Consumer documentation please see: <a href="https://developers.cloudflare.com/warp-client/">https://developers.cloudflare.com/warp-client/</a>
 
 </details>
-
-<details>
-
-<summary>
-
-Previous version history (9)
-
-</summary>
 
 <details>
 

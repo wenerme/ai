@@ -2034,6 +2034,7 @@ ClickHouse-based analytics endpoints aggregating data across groups and projects
 | `contributions` | [`ContributionsAggregationScope`](#contributionsaggregationscope) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Aggregation engine for contribution analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `contributions`:</strong> <dl><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`authorIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many author Global IDs. Maximum is 100.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by contribution timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by contribution timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd></dl> |
 | `deployments` | [`DeploymentsAggregationScope`](#deploymentsaggregationscope) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Aggregation engine for deployment analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `deployments`:</strong> <dl><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`environmentId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many environment Global IDs.</dd><dt>`environmentIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many environment Global IDs. Maximum is 100.</dd><dt>`finishedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. Start of the range.</dd><dt>`finishedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. End of the range.</dd><dt>`ref` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment refs.</dd><dt>`refNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many deployment refs. Maximum is 100.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment statuses.</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many deployment statuses. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Deployments with no triggering user are excluded as well. Maximum is 100.</dd></dl> |
 | `duoCodeSuggestions` | [`DuoCodeSuggestionsAggregationScope`](#duocodesuggestionsaggregationscope) | Aggregation engine for GitLab Duo Code Suggestions usage.  <strong>Arguments for `duoCodeSuggestions`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`ideName` ([`[String!]`](scalars.md#string))</dt><dd>Filter by IDE name.</dd><dt>`ideNameNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many IDE names. Maximum is 100.</dd><dt>`language` ([`[String!]`](scalars.md#string))</dt><dd>Filter by suggestion language.</dd><dt>`languageNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many suggestion languages. Maximum is 100.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
+| `duoToolCalls` | [`DuoToolCallsAggregationScope`](#duotoolcallsaggregationscope) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Aggregation engine for GitLab Duo Chat tool calls.  <strong>Arguments for `duoToolCalls`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`event` ([`[String!]`](scalars.md#string))</dt><dd>Filter by tool call event.</dd><dt>`flowType` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many Duo Agent Platform flow types.</dd><dt>`flowTypeNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many Duo Agent Platform flow types. Calls that recorded no flow type are excluded as well. Maximum is 100.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including events from their descendants.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by call timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by call timestamp. End of the range.</dd><dt>`toolAccess` ([`[String!]`](scalars.md#string))</dt><dd>Filter by tool access type: `read` or `write`.</dd><dt>`toolAccessNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude a tool access type. Calls to tools outside the built-in tool catalog are excluded as well, because their access type is NULL. Maximum is 100.</dd><dt>`toolName` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many tool names.</dd><dt>`toolNameNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many tool names. Calls that recorded no tool name are excluded as well. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
 | `duoUsageEvents` | [`DuoUsageEventsAggregationScope`](#duousageeventsaggregationscope) | Aggregation engine for GitLab Duo AI usage events.  <strong>Arguments for `duoUsageEvents`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`event` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many events.</dd><dt>`eventNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many events. Maximum is 100.</dd><dt>`feature` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many features.</dd><dt>`featureNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many features. Events with no recognized feature are excluded as well. Maximum is 100.</dd><dt>`flowType` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many Duo Agent Platform flow types.</dd><dt>`flowTypeNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many Duo Agent Platform flow types. Returns only Duo Agent Platform events, because events from elsewhere have no flow type. Maximum is 100.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including events from their descendants.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
 | `duoWorkflows` | [`DuoWorkflowsAggregationScope`](#duoworkflowsaggregationscope) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Aggregation engine for GitLab Duo Agent Platform flows. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `duoWorkflows`:</strong> <dl><dt>`activeDaysFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. Start of the range.</dd><dt>`activeDaysTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. End of the range.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`dropReason` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many drop reasons (job_failed, no_status_reported, no_activity, workload_not_created, api_reported, preconditions_not_met, start_failed, token_rejected, tool_rules_unavailable).</dd><dt>`dropReasonNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many drop reasons. Flows with no recorded reason are excluded as well. Maximum is 100.</dd><dt>`flowTypesUsedFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. Start of the range.</dd><dt>`flowTypesUsedTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. End of the range.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including flows from their descendants.</dd><dt>`modelUsed` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many models.</dd><dt>`modelUsedNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many models. Flows with no attributed model are stored as an empty string, so pass one to exclude them. Maximum is 100.</dd><dt>`projectId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many project Global IDs.</dd><dt>`projectIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many project Global IDs. Flows created at namespace level are excluded as well. Maximum is 100.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow statuses (created, running, finished, failed, ...).</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow statuses (created, running, finished, failed, ...). Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd><dt>`workflowDefinition` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow types.</dd><dt>`workflowDefinitionNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow types. Maximum is 100.</dd></dl> |
 | `mergeRequests` | [`MergeRequestsAggregationScope`](#mergerequestsaggregationscope) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Aggregation engine for merge request analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `mergeRequests`:</strong> <dl><dt>`authorHuman` ([`[Boolean!]`](scalars.md#boolean))</dt><dd>Filter by whether the merge request author is a human user. Bots, service accounts, and other non-human user types are not human. Merge requests with no author count as not authored by a human.</dd><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`authorIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many author Global IDs. Merge requests with no author are excluded as well. Maximum is 100.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. End of the range.</dd><dt>`createdByDuo` ([`[Boolean!]`](scalars.md#boolean))</dt><dd>Filter by whether the merge request was created by a GitLab Duo Agent Platform session.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`metricMergedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. Start of the range.</dd><dt>`metricMergedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. End of the range.</dd><dt>`stateId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many states (opened, closed, merged, locked).</dd><dt>`stateIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many states (opened, closed, merged, locked). Maximum is 100.</dd><dt>`targetBranch` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many target branches.</dd><dt>`targetBranchNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many target branches. Maximum is 100.</dd></dl> |
@@ -7275,6 +7276,79 @@ Represents a vulnerability's CVSS score.
 | `vendor` | [`String!`](scalars.md#string) | Vendor who assigned the CVSS score. |
 | `version` | [`Float!`](scalars.md#float) | Version of the CVSS. |
 
+## `DapFactoryAutoReview`
+
+Duo Code Review settings that the Review stage of a DAP Software Factory depends on.
+
+### `DapFactoryAutoReview` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `available` | [`Boolean!`](scalars.md#boolean) | Whether Duo Code Review can run automatically in the project. |
+| `decisionsEnabled` | [`Boolean!`](scalars.md#boolean) | Whether GitLab Duo can approve and request changes. |
+| `enabled` | [`Boolean!`](scalars.md#boolean) | Whether GitLab Duo reviews new merge requests automatically. |
+| `locked` | [`Boolean!`](scalars.md#boolean) | Whether a group or the instance has locked the setting. |
+
+## `DapFactoryConfiguration`
+
+The DAP Software Factory configuration file on the default branch of a project.
+
+### `DapFactoryConfiguration` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `autoReview` | [`DapFactoryAutoReview!`](#dapfactoryautoreview) | Duo Code Review settings that the Review stage depends on. |
+| `content` | [`String`](scalars.md#string) | Content of the file. Null when the file does not exist, or when it is too large to edit safely. Check the errors for the reason. |
+| `defaultBranch` | [`String`](scalars.md#string) | Default branch the file is read from and synced on. |
+| `errors` | [`[DapFactoryValidationMessage!]!`](#dapfactoryvalidationmessage) | Problems that stop Sync from applying the file. |
+| `exists` | [`Boolean!`](scalars.md#boolean) | Whether the file exists on the default branch. |
+| `lastCommitId` | [`String`](scalars.md#string) | Last commit that changed the file on the default branch. Pass it back when committing, so a stale save fails. Null when the file does not exist. |
+| `lastSync` | [`DapFactorySyncResult`](#dapfactorysyncresult) | Outcome of the last Sync. Null when there is no recent Sync result. |
+| `path` | [`String!`](scalars.md#string) | Path of the configuration file in the repository. |
+| `warnings` | [`[DapFactoryValidationMessage!]!`](#dapfactoryvalidationmessage) | Problems that Sync ignores. |
+
+## `DapFactorySyncResult`
+
+Outcome of the last Sync of a DAP Software Factory configuration.
+
+### `DapFactorySyncResult` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `adoptedStages` | [`[String!]!`](scalars.md#string) | Stages whose existing triggers, with the description that Sync gives the stage, Sync now manages. |
+| `commitSha` | [`String`](scalars.md#string) | Commit of the default branch that was synced. |
+| `createdStages` | [`[String!]!`](scalars.md#string) | Stages whose triggers were created. |
+| `deletedStages` | [`[String!]!`](scalars.md#string) | Stages whose triggers were deleted. |
+| `errors` | [`[DapFactoryValidationMessage!]!`](#dapfactoryvalidationmessage) | Why the Sync did not apply the file, when its status is `INVALID` or `FAILED`. |
+| `failedStages` | [`[DapFactoryValidationMessage!]!`](#dapfactoryvalidationmessage) | Stages whose triggers could not be applied. |
+| `status` | [`DapFactorySyncStatus!`](enums.md#dapfactorysyncstatus) | Outcome of the Sync. |
+| `syncedAt` | [`Time`](scalars.md#time) | Timestamp of when the Sync ran. |
+| `updatedStages` | [`[String!]!`](scalars.md#string) | Stages whose triggers were updated. |
+
+## `DapFactoryValidationMessage`
+
+A problem found in a DAP Software Factory configuration file.
+
+### `DapFactoryValidationMessage` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `code` | [`String!`](scalars.md#string) | Machine-readable code for the problem. |
+| `message` | [`String!`](scalars.md#string) | Description of the problem. |
+| `path` | [`String`](scalars.md#string) | Dotted path to the setting, such as `stages.build.flow`. Null for the whole file. |
+
+## `DapFactoryValidationResult`
+
+Result of validating DAP Software Factory configuration content.
+
+### `DapFactoryValidationResult` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[DapFactoryValidationMessage!]!`](#dapfactoryvalidationmessage) | Problems that stop Sync from applying the content. |
+| `valid` | [`Boolean!`](scalars.md#boolean) | Whether Sync would apply the content. |
+| `warnings` | [`[DapFactoryValidationMessage!]!`](#dapfactoryvalidationmessage) | Problems that Sync ignores. |
+
 ## `DastPreScanVerification`
 
 Represents a DAST Pre Scan Verification.
@@ -8723,6 +8797,60 @@ GitLab Duo settings.
 | `selfHostedDuoAgentPlatformServiceSecure` | [`Boolean`](scalars.md#boolean) | Whether local Duo Agent Platform service uses secure transport (TLS). |
 | `updatedAt` | [`Time!`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.9.Timestamp of last GitLab Duo setting update. |
 
+## `DuoToolCallsAggregationResponse`
+
+Response for `DuoToolCalls` aggregation engine.
+
+### `DuoToolCallsAggregationResponse` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `dimensions` | [`DuoToolCallsAggregationResponseDimensions`](#duotoolcallsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
+| `readOnlySessionsCount` | [`Int`](scalars.md#int) | Number of chat sessions whose tool calls, within the applied filters, are all read tools. Sessions that called a tool outside the built-in tool catalog are not counted. |
+| `sessionsCount` | [`Int`](scalars.md#int) | Number of chat sessions with at least one tool call. |
+| `successRate` | [`Float`](scalars.md#float) | Tool calls that succeeded, divided by all tool calls. NULL when there are no calls. |
+| `totalCount` | [`Int`](scalars.md#int) | Number of tool calls. |
+| `usersCount` | [`Int`](scalars.md#int) | Number of unique users. |
+| `writeSessionsCount` | [`Int`](scalars.md#int) | Number of chat sessions with at least one write tool call. |
+
+## `DuoToolCallsAggregationResponseConnection`
+
+Paginated collection of [`DuoToolCallsAggregationResponse`](#duotoolcallsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
+### `DuoToolCallsAggregationResponseConnection` extra fields {.no_toc}
+
+This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `count` | [`Int!`](scalars.md#int) | Total number of aggregated rows. |
+
+## `DuoToolCallsAggregationResponseDimensions`
+
+Response dimensions for `DuoToolCalls` aggregation engine.
+
+### `DuoToolCallsAggregationResponseDimensions` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `event` | [`String`](scalars.md#string) | Tool call event: `tool_succeeded_duo_chat` or `tool_failed_duo_chat`. |
+| `flowType` | [`String`](scalars.md#string) | Duo Agent Platform flow type. |
+| `group` | [`Group`](#group) | Group at the requested depth of the hierarchy. NULL for events tracked above that depth. Events tracked in a project at that depth bucket by project namespace ID, which also resolves to NULL.  <strong>Arguments for `group`:</strong> <dl><dt>`depth` ([`Int`](scalars.md#int))</dt><dd>Depth in the group hierarchy, counted from the top-level group. Defaults to 1.</dd></dl> |
+| `timestamp` | [`Date`](scalars.md#date) | Call date.  <strong>Arguments for `timestamp`:</strong> <dl><dt>`granularity` ([`String`](scalars.md#string))</dt><dd>Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d).</dd><dt>`origin` ([`Time`](scalars.md#time))</dt><dd>Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity.</dd></dl> |
+| `toolAccess` | [`String`](scalars.md#string) | Whether the tool reads or writes, from the tool rules registry. NULL for tools outside its built-in tool catalog, such as MCP server tools. |
+| `toolName` | [`String`](scalars.md#string) | Name of the tool Duo Chat called. |
+| `user` | [`UserCore`](#usercore) | User who ran the chat. |
+
+## `DuoToolCallsAggregationScope`
+
+Aggregation scope for `DuoToolCalls`. Apply ordering and pagination on the aggregation.
+
+### `DuoToolCallsAggregationScope` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `aggregated` | [`DuoToolCallsAggregationResponseConnection`](#duotoolcallsaggregationresponseconnection) | Aggregated data. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aggregated`:</strong> <dl><dt>`orderBy` ([`[AggregationOrder!]`](input_objects.md#aggregationorder))</dt><dd>Sorting order list for the aggregated data.</dd></dl> |
+
 ## `DuoUsageEventsAggregationResponse`
 
 Response for `DuoUsageEvents` aggregation engine.
@@ -8796,7 +8924,7 @@ GitLab Duo Agent Platform session.
 | `auditEvents` | [`AiAuditEventConnection`](#aiauditeventconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Audit events recorded for the session. Requires `read_agent_artifacts` on the workflow's project or namespace. Returns no events when the `agent_artifacts_page` feature flag is disabled. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `createdAt` | [`Time!`](scalars.md#time) | Timestamp of when the session was created. |
 | `environment` | [`WorkflowEnvironment`](enums.md#workflowenvironment) | Environment, like IDE or web. |
-| `fileAttachmentsAllowed` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates file attachments are allowed for the session. Toggled by the `dap_web_chat_file_attachments` feature flag; returns `false` when it is disabled. |
+| `fileAttachmentsAllowed` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates file attachments are allowed for the session. Requires the `dap_web_chat_file_attachments` feature flag and, outside GitLab.com, the file attachments setting of the instance; returns `false` when either is disabled. |
 | `firstCheckpoint` | [`DuoWorkflowEvent`](#duoworkflowevent) | First checkpoint of the session.  <strong>Arguments for `firstCheckpoint`:</strong> <dl><dt>`checkpointNs` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.LangGraph checkpoint namespace to scope the lookup to. Omit (or pass an empty string) for the session's own top-level checkpoint lineage; used internally to resolve one nested subgraph invocation, e.g. a delegated subagent.</dd></dl> |
 | `flowMetadataId` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Identifier of the flow that was executed in the session. |
 | `flowMetadataSchemaVersion` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Schema version of the flow metadata for the session. |
@@ -8824,6 +8952,7 @@ GitLab Duo Agent Platform session.
 | `projectId` | [`ProjectID`](scalars.md#projectid) | ID of the project. |
 | `resourceIid` | [`Int`](scalars.md#int) | IID of the associated resource (issue or merge request). |
 | `resourceWebUrl` | [`String`](scalars.md#string) | Web URL of the associated resource (issue or merge request). |
+| `restartedAs` | [`DuoWorkflow`](#duoworkflow) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Newest session restarted from the session. Returns `null` when the session has not been restarted, or the current user cannot read its newest restart. |
 | `sourceLink` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.URL or deep link to the location where the session was triggered from. |
 | `sourceType` | [`DuoWorkflowSourceType`](enums.md#duoworkflowsourcetype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Type of source that initiated the session. |
 | `stalled` | [`Boolean`](scalars.md#boolean) | Workflow got created but has no checkpoints. |
@@ -10087,25 +10216,25 @@ Describes the usage of consumables under the subscription.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `budgetCaps` | [`GitlabSubscriptionBudgetCaps`](#gitlabsubscriptionbudgetcaps) | Budget cap controls for the subscription. |
-| `canAcceptOverageTerms` | [`Boolean!`](scalars.md#boolean) | Indicates whether the subscription is currently eligible to accept overage terms. |
+| `canAcceptOverageTerms` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.6. No longer supported. |
 | `creditsUsed` | [`Float`](scalars.md#float) | Total credits used for the subscription. |
 | `dailyAverage` | [`Float`](scalars.md#float) | Average daily credits used for the subscription. |
 | `dailyUsage` | [`[GitlabSubscriptionDailyUsage!]`](#gitlabsubscriptiondailyusage) | Daily usage for the subscription.  <strong>Arguments for `dailyUsage`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Maximum number of daily usage entries to return. Defaults to every day in the date range.</dd><dt>`sort` ([`DailyUsageSort`](enums.md#dailyusagesort))</dt><dd>Sort daily usage entries by the selected criteria.</dd></dl> |
-| `dapPromoEnabled` | [`Boolean!`](scalars.md#boolean) | Indicates whether the Duo AI promo (DAP) is enabled for the subscription. |
+| `dapPromoEnabled` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.6. No longer supported. |
 | `enabled` | [`Boolean!`](scalars.md#boolean) | Indicates if the Customer Portal GitLab Credits API is enabled. |
 | `endDate` | [`ISO8601Date`](scalars.md#iso8601date) | End date of the period covered by the usage data. |
 | `isOutdatedClient` | [`Boolean`](scalars.md#boolean) | Indicates if the GitLab instance has an outdated API contract with the Customer Portal. |
-| `lastEventTransactionAt` | [`ISO8601DateTime`](scalars.md#iso8601datetime) | Date and time when the last usage event resulted in a wallet transaction. |
-| `monthlyCommitment` | [`GitlabSubscriptionMonthlyCommitment`](#gitlabsubscriptionmonthlycommitment) | Monthly commitment usage for the subscription. |
-| `monthlyWaiver` | [`GitlabSubscriptionMonthlyWaiver`](#gitlabsubscriptionmonthlywaiver) | Monthly waiver usage for the subscription. |
+| `lastEventTransactionAt` | [`ISO8601DateTime`](scalars.md#iso8601datetime) | Deprecated in GitLab 19.6. No longer supported. |
+| `monthlyCommitment` | [`GitlabSubscriptionMonthlyCommitment`](#gitlabsubscriptionmonthlycommitment) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `creditsUsed` and `dailyUsage`. |
+| `monthlyWaiver` | [`GitlabSubscriptionMonthlyWaiver`](#gitlabsubscriptionmonthlywaiver) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `creditsUsed` and `dailyUsage`. |
 | `nonBillableUsage` | [`[GitlabSubscriptionUsageNonBillableUsage!]`](#gitlabsubscriptionusagenonbillableusage) | GitLab Credits usage that was not billed, grouped by product and skip reason. Not included in `creditsUsed` or `dailyUsage`. Null when the usage cannot be read. |
-| `overage` | [`GitlabSubscriptionOverage`](#gitlabsubscriptionoverage) | Overage statistics. |
-| `overageTermsAccepted` | [`Boolean!`](scalars.md#boolean) | Indicates whether overage terms have been accepted for the subscription. |
-| `paidTierTrial` | [`GitlabSubscriptionPaidTierTrial!`](#gitlabsubscriptionpaidtiertrial) | Paid tier trial data for the subscription. |
+| `overage` | [`GitlabSubscriptionOverage`](#gitlabsubscriptionoverage) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `creditsUsed` and `dailyUsage`. |
+| `overageTermsAccepted` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.6. No longer supported. |
+| `paidTierTrial` | [`GitlabSubscriptionPaidTierTrial!`](#gitlabsubscriptionpaidtiertrial) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `creditsUsed` and `dailyUsage`. |
 | `products` | [`[GitlabSubscriptionUsageProduct!]`](#gitlabsubscriptionusageproduct) | All supported products with their associated flow types. |
-| `purchaseCreditsPath` | [`String`](scalars.md#string) | URL to purchase GitLab Credits. |
+| `purchaseCreditsPath` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. No longer supported. |
 | `startDate` | [`ISO8601Date`](scalars.md#iso8601date) | Start date of the period covered by the usage data. |
-| `subscriptionPortalUsageDashboardUrl` | [`String`](scalars.md#string) | Full URL to the GitLab Credits usage dashboard in the Customer Portal. |
+| `subscriptionPortalUsageDashboardUrl` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. No longer supported. |
 | `usersUsage` | [`GitlabSubscriptionUsageUsersUsage`](#gitlabsubscriptionusageusersusage) | Consumption usage for users under the subscription. |
 
 ## `GitlabSubscriptionUsageBlockedStatus`
@@ -10219,13 +10348,13 @@ Describes the usage of consumables for a user under the subscription.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `creditsUsed` | [`Float`](scalars.md#float) | GitLab Credits used by the user. |
-| `monthlyCommitmentCreditsUsed` | [`Float`](scalars.md#float) | Monthly Commitment GitLab Credits used by the user. |
-| `monthlyWaiverCreditsUsed` | [`Float`](scalars.md#float) | Monthly Waiver GitLab Credits used by the user. |
+| `creditsUsed` | [`Float`](scalars.md#float) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `totalCreditsUsed`. |
+| `monthlyCommitmentCreditsUsed` | [`Float`](scalars.md#float) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `totalCreditsUsed`. |
+| `monthlyWaiverCreditsUsed` | [`Float`](scalars.md#float) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `totalCreditsUsed`. |
 | `nonBillableCreditsUsed` | [`Float`](scalars.md#float) | GitLab Credits used by the user that were not billed. Not included in `creditsUsed` or `totalCreditsUsed`. Null when the usage cannot be read. |
-| `overageCreditsUsed` | [`Float`](scalars.md#float) | Overage GitLab Credits used by the user. |
-| `paidTierTrialCreditsUsed` | [`Float`](scalars.md#float) | Paid Tier Trial GitLab Credits used by the user. |
-| `totalCredits` | [`Float`](scalars.md#float) | Total GitLab Credits available for the user. |
+| `overageCreditsUsed` | [`Float`](scalars.md#float) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `totalCreditsUsed`. |
+| `paidTierTrialCreditsUsed` | [`Float`](scalars.md#float) | Deprecated in GitLab 19.6. Usage is reported for the entire subscription, not broken down by wallet. Use `totalCreditsUsed`. |
+| `totalCredits` | [`Float`](scalars.md#float) | Deprecated in GitLab 19.6. No longer supported. |
 | `totalCreditsUsed` | [`Float`](scalars.md#float) | Total GitLab Credits used by the user across all wallets. |
 
 ## `GitlabSubscriptionUsageUsersUsage`
@@ -10236,12 +10365,12 @@ Describes the usage of consumables by users under the subscription.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `creditsUsed` | [`Float`](scalars.md#float) | GitLab Credits used by consumers of the subscription. |
-| `dailyUsage` | [`[GitlabSubscriptionDailyUsage!]`](#gitlabsubscriptiondailyusage) | Array of daily usage of GitLab Credits. |
+| `creditsUsed` | [`Float`](scalars.md#float) | Deprecated in GitLab 19.6. Use `creditsUsed` on `GitlabSubscriptionUsage`. |
+| `dailyUsage` | [`[GitlabSubscriptionDailyUsage!]`](#gitlabsubscriptiondailyusage) | Deprecated in GitLab 19.6. Use `dailyUsage` on `GitlabSubscriptionUsage`. |
 | `totalActiveUsers` | [`Int`](scalars.md#int) | Total number of users with usage in the subscription. |
-| `totalUsersUsingCredits` | [`Int`](scalars.md#int) | Total number of users consuming GitLab Credits from their included allocation. |
-| `totalUsersUsingMonthlyCommitment` | [`Int`](scalars.md#int) | Total number of users consuming GitLab Credits from the subscription monthly commitment. |
-| `totalUsersUsingOverage` | [`Int`](scalars.md#int) | Total number of users consuming overage. |
+| `totalUsersUsingCredits` | [`Int`](scalars.md#int) | Deprecated in GitLab 19.6. No longer supported. |
+| `totalUsersUsingMonthlyCommitment` | [`Int`](scalars.md#int) | Deprecated in GitLab 19.6. No longer supported. |
+| `totalUsersUsingOverage` | [`Int`](scalars.md#int) | Deprecated in GitLab 19.6. No longer supported. |
 | `users` | [`GitlabSubscriptionUsageUserConnection`](#gitlabsubscriptionusageuserconnection) | List of users with their usage data. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `users`:</strong> <dl><dt>`searchQuery` ([`String`](scalars.md#string))</dt><dd>Filter users with a matching name, username, or email. Ignored when username is provided or when sorting by total credits used.</dd><dt>`sort` ([`GitlabSubscriptionUsageUserSort`](enums.md#gitlabsubscriptionusageusersort))</dt><dd>Sort users by the criteria.</dd><dt>`username` ([`String`](scalars.md#string))</dt><dd>Username of the User.</dd></dl> |
 
 ## `GitlabSubscriptionUserCreditsUsage`
@@ -10261,7 +10390,7 @@ GitLab Credits usage for the current user.
 | `nonBillableUsage` | [`[GitlabSubscriptionUserCreditsUsageNonBillableUsage!]`](#gitlabsubscriptionusercreditsusagenonbillableusage) | GitLab Credits usage by the current user that was not billed, grouped by product and skip reason. Not included in `creditsUsed` or `dailyUsage`. Null when the usage cannot be read. |
 | `products` | [`[GitlabSubscriptionUserCreditsUsageProduct!]`](#gitlabsubscriptionusercreditsusageproduct) | All supported products with their associated flow types. |
 | `startDate` | [`ISO8601Date`](scalars.md#iso8601date) | Start date of the period covered by the usage data. |
-| `usedFlowTypes` | [`[GitlabSubscriptionUsageFlowTypeInfo!]`](#gitlabsubscriptionusageflowtypeinfo) | Flow types the current user consumed credits under during the period. |
+| `usedFlowTypes` | [`[GitlabSubscriptionUsageFlowTypeInfo!]`](#gitlabsubscriptionusageflowtypeinfo) | Deprecated in GitLab 19.6. No longer supported. |
 
 ## `GitlabSubscriptionUserCreditsUsageDailyUsage`
 
@@ -14554,9 +14683,11 @@ Property of a node kind in the Orbit schema.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `dataType` | [`String!`](scalars.md#string) | Data type of the property, for example `string` or `int64`. |
+| `defaultColumn` | [`Boolean`](scalars.md#boolean) | Indicates whether Orbit returns the property in neighbor and path results, and when a query selects no properties. Null when the Orbit server does not send it. |
 | `enumValues` | [`[String!]!`](scalars.md#string) | Allowed values of an enum property. Empty for other properties. |
 | `name` | [`String!`](scalars.md#string) | Name of the property. |
 | `nullable` | [`Boolean!`](scalars.md#boolean) | Indicates whether the property can be empty. |
+| `textSearchable` | [`Boolean`](scalars.md#boolean) | Indicates whether queries can filter the property with `CONTAINS`, `STARTS WITH`, or `ENDS WITH`. Null when the Orbit server does not send it. |
 
 ## `OrbitSchemaPropertyConnection`
 
@@ -16535,6 +16666,8 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the project. Only available to admins. |
 | `customizableDashboardVisualizations` | [`CustomizableDashboardVisualizationConnection`](#customizabledashboardvisualizationconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.1.Visualizations of the project or associated configuration project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `customizableDashboardVisualizations`:</strong> <dl><dt>`slug` ([`String`](scalars.md#string))</dt><dd>Slug of the visualization to return.</dd></dl> |
 | `customizableDashboards` | [`CustomizableDashboardConnection`](#customizabledashboardconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.6.Customizable dashboards for the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `customizableDashboards`:</strong> <dl><dt>`category` ([`CustomizableDashboardCategory`](enums.md#customizabledashboardcategory))</dt><dd>Find by dashboard type.</dd><dt>`slug` ([`String`](scalars.md#string))</dt><dd>Find by dashboard slug.</dd></dl> |
+| `dapFactoryConfiguration` | [`DapFactoryConfiguration`](#dapfactoryconfiguration) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.DAP Software Factory configuration file on the default branch. Null unless the `dap_software_factory` feature flag is enabled for the project or its top-level group. This field can only be resolved for one project in any single request. |
+| `dapFactoryConfigurationValidation` | [`DapFactoryValidationResult`](#dapfactoryvalidationresult) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Validates DAP Software Factory configuration content against the project, with the same rules Sync uses. Null unless the `dap_software_factory` feature flag is enabled for the project or its top-level group. This field can only be resolved for one project in any single request.  <strong>Arguments for `dapFactoryConfigurationValidation`:</strong> <dl><dt>`content` ([`String!`](scalars.md#string))</dt><dd>Content of a DAP Software Factory configuration file.</dd></dl> |
 | `dastProfile` | [`DastProfile`](#dastprofile) | DAST Profile associated with the project.  <strong>Arguments for `dastProfile`:</strong> <dl><dt>`hasDastProfileSchedule` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter DAST Profiles by whether or not they have a schedule.</dd><dt>`id` ([`DastProfileID!`](scalars.md#dastprofileid))</dt><dd>ID of the DAST Profile.</dd></dl> |
 | `dastProfiles` | [`DastProfileConnection`](#dastprofileconnection) | DAST Profiles associated with the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dastProfiles`:</strong> <dl><dt>`hasDastProfileSchedule` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter DAST Profiles by whether or not they have a schedule.</dd></dl> |
 | `dastScannerProfiles` | [`DastScannerProfileConnection`](#dastscannerprofileconnection) | DAST scanner profiles associated with the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -22368,6 +22501,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `count` | [`Int!`](scalars.md#int) | Total count of collection. Returns limit + 1 for counts greater than the limit.  <strong>Arguments for `count`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Limit applied to the count query, returns limit + 1. When not provided, returns the exact count.</dd></dl> |
+| `timeLimitedCount` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Total count of the collection, or `null` when the count exceeds the time limit.  <strong>Arguments for `timeLimitedCount`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Limit applied to the count query, returns limit + 1. When not provided, returns the exact count.</dd></dl> |
 
 ## `WorkItemDateFieldValue`
 

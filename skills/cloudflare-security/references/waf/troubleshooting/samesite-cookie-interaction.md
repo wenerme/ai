@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-int
 
 # SameSite cookie interaction with Cloudflare
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Google Chrome enforces SameSite cookie behavior ↗︎](https://www.chromium.org/updates/same-site) to protect against marketing cookies that track users and Cross-site Request Forgery (CSRF) that allows attackers to steal or manipulate your cookies.
 
@@ -26,7 +26,7 @@ The `SameSite` cookie attribute has three different modes:
 
 | Cloudflare cookie | SameSite setting | HTTPS Only | Partitioned (CHIPS) |
 | --- | --- | --- | --- |
-| `__cf_bm` | `SameSite=None; Secure` | Yes | No |
+| `__cf_bm` | `SameSite=None; Secure` | Yes | Yes |
 | `cf_clearance` | `SameSite=None; Secure` | Yes | Yes |
 | `__cflb` | `SameSite=Lax` | No | No |
 
@@ -77,13 +77,11 @@ To resolve the issue, move your website traffic to HTTPS. Cloudflare offers two 
 
 ---
 
-## Partitioned cookies (CHIPS) and `cf_clearance`
+## Partitioned cookies (CHIPS)
 
-Cloudflare sets the `Partitioned` attribute on the `cf_clearance` cookie (and on the internal `cf_chl_*` cookies used by the Challenge Platform) to comply with [Cookies Having Independent Partitioned State (CHIPS) ↗ ↗︎](https://developers.google.com/privacy-sandbox/cookies/chips).
+Cloudflare sets the `Partitioned` attribute on the `__cf_bm` and `cf_clearance` cookies (and on the internal `cf_chl_*` cookies used by the Challenge Platform) to comply with [Cookies Having Independent Partitioned State (CHIPS) ↗ ↗︎](https://developers.google.com/privacy-sandbox/cookies/chips).
 
-With CHIPS, a cookie set in a third-party context (for example, inside an iframe or from a cross-site subresource) is stored in a partition keyed to the top-level site, rather than being shared across all sites that embed the third party. On Chromium-based browsers that block third-party cookies, this preserves challenge state for cross-site embeds that would otherwise be broken. On browsers that do not implement CHIPS, the `Partitioned` attribute is ignored and behavior is unchanged.
-
-The `Partitioned` attribute is not applied to `__cf_bm`.
+With CHIPS, a cookie set in a third-party context (for example, inside an iframe or from a cross-site subresource) is stored in a partition keyed to the top-level site, rather than being shared across all sites that embed the third party. On Chromium-based browsers that block third-party cookies, this preserves Bot Management and challenge state for cross-site embeds that would otherwise be broken. On browsers that do not implement CHIPS, the `Partitioned` attribute is ignored and behavior is unchanged.
 
 ### Impact on embedded challenges
 
@@ -91,7 +89,7 @@ Because `cf_clearance` is partitioned, a clearance obtained in one top-level con
 
 ### `Partitioned` requires `SameSite=None; Secure`
 
-The `Partitioned` attribute only takes effect on cookies that are also set with `SameSite=None; Secure`. If your site does not serve all traffic over HTTPS, the `cf_clearance` cookie falls back to `SameSite=Lax` (refer to [Known issues with SameSite and `cf_clearance` cookies](#known-issues-with-samesite-and-cf_clearance-cookies)), and the `Partitioned` attribute has no effect.
+The `Partitioned` attribute only takes effect on cookies that are also set with `SameSite=None; Secure`. If your site does not serve all traffic over HTTPS, the `cf_clearance` cookie falls back to `SameSite=Lax` (refer to [Known issues with SameSite and `cf_clearance` cookies](#known-issues-with-samesite-and-cf_clearance-cookies)), and the `Partitioned` attribute has no effect. When your site serves a request over HTTP, the `__cf_bm` cookie is issued without `Partitioned`.
 
 ---
 
@@ -112,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#page","headline":"SameSite cookie interaction with Cloudflare","description":"How SameSite cookie attributes interact with Cloudflare challenges.","url":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/og.png?v=32d9afd5ac264592","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#page","headline":"SameSite cookie interaction with Cloudflare","description":"How SameSite cookie attributes interact with Cloudflare challenges.","url":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/og.png?v=32d9afd5ac264592","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","Debugging"]}
 ```

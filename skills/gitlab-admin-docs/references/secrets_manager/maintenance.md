@@ -225,7 +225,7 @@ After the reset, the GitLab Secrets Manager is provisioned again for each projec
 - Rake task [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/602549) in GitLab 19.3.
 
 Secrets managers provisioned in GitLab 19.2 and later support
-[secrets access from external services and tools](../../ci/secrets/secrets_manager/non_cicd_access.md).
+[secrets access from external services and tools](../../ci/secrets/secrets_manager/external-tools.md).
 If a secrets manager was provisioned for a project or group in GitLab 19.1 or earlier, this access
 is not supported.
 

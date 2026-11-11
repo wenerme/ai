@@ -539,7 +539,7 @@ You can also override default generation parameters, such as
 
 {% /tabs %}
 
-Refer to the [Interactions API reference](https://ai.google.dev/api/interactions-api)
+Refer to the [Interactions API reference](/api-reference/interactions-api)
 for a complete list of configurable parameters and their
 descriptions.
 

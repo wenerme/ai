@@ -8,7 +8,7 @@ REST API to mint short-lived access tokens for GitLab Secrets Manager.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/594090) in GitLab 19.2 [with a flag](../administration/feature_flags/_index.md) named `secrets_manager_api_access`. Disabled by default.
 
-Use this API to access [GitLab Secrets Manager](../ci/secrets/secrets_manager/_index.md) secrets from non-CI/CD workloads.
+Use this API to access [GitLab Secrets Manager](../ci/secrets/secrets_manager/_index.md) secrets from external services and tools.
 
 The API mints a short-lived JSON web token (JWT) for a project or group.
 A client presents this token to the OpenBao backend to read secrets directly,
@@ -22,7 +22,7 @@ It expires after five minutes.
 Reading a secret value also requires the principal to have the read value permission for that secret.
 
 To use the returned connection details to read a secret, see
-[Access secrets from non-CI/CD workloads](../ci/secrets/secrets_manager/non_cicd_access.md).
+[access secrets from external tools](../ci/secrets/secrets_manager/external-tools.md).
 
 ## Create a Secrets Manager access token for a project
 

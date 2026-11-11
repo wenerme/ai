@@ -99,8 +99,9 @@ The cleanup policy treats package assets as duplicates when both of these condit
 
 Assets with different filenames are never duplicates.
 For example, Maven snapshot files include a timestamp in each filename, so the policy does not
-treat them as duplicates. Files with a fixed name, like `maven-metadata.xml`, are duplicates,
-and the policy deletes the older copies.
+treat them as duplicates. To clean up older snapshot builds, see
+[Maven snapshot builds](#maven-snapshot-builds). Files with a fixed name, like `maven-metadata.xml`,
+are duplicates, and the policy deletes the older copies.
 
 For Conan packages, assets must also have the same file type, recipe revision, package revision,
 and package reference to be duplicates.
@@ -115,6 +116,50 @@ save the setting.
 
 To control whether you can publish the same package name and version again, see
 [allow or prevent duplicates](supported_functionality.md#allow-or-prevent-duplicates).
+
+#### Maven snapshot builds
+
+- Offering: GitLab.com, GitLab Self-Managed
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/375065) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `packages_cleanup_policy_maven_snapshot_builds`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+For Maven snapshot versions, the cleanup policy compares the same file across builds.
+A snapshot version ends in `-SNAPSHOT`, like `1.0-SNAPSHOT`. The suffix is case-sensitive.
+
+Each snapshot build adds files with a timestamp and build number in the filename, like
+`my-app-1.0-20240102.090000-11.jar`. The policy ignores the timestamp and build number when it
+compares filenames, so `my-app-1.0-20240102.090000-11.jar` and `my-app-1.0-20240101.100000-10.jar`
+are copies of `my-app-1.0.jar`. For each file, the policy keeps the copies from the newest builds,
+up to the number set in ,
+and deletes the older copies. The policy orders builds by the timestamp and build number in the
+filename, not by upload time.
+
+Files without a build in the filename, like `maven-metadata.xml`, follow the
+[duplicate asset rules](#duplicate-assets).
+
+For example, the setting is `1`, and a snapshot version has these builds:
+
+- Build `9` has a `.jar` and a `.pom` file.
+- Build `10` has a `.jar` and a `.pom` file.
+- Build `11` has only a `-linux.jar` classifier file.
+
+The policy deletes the `.jar` and `.pom` files of build `9`. It keeps the `.jar` and `.pom`
+files of build `10` and the `-linux.jar` file of build `11`, because each one is the newest
+copy of its file. It also keeps the newest copy of `maven-metadata.xml`.
+
+If the policy runs while a deploy is still uploading files, or after a deploy fails partway,
+the policy can keep the copies from that partial build and delete the copies that
+`maven-metadata.xml` lists. Requests for those files return a `404` error until the next
+successful deploy.
+
+> [!warning]
+> When this feature is enabled for a project, the next cleanup policy run deletes the older
+> copies of snapshot files. You cannot restore deleted files.
 
 ### Delete generic packages that are not downloaded
 

@@ -20,6 +20,16 @@ and `v1beta` versions of the Gemini API.
   changes as we refine them based on feedback, it lets you try new
   capabilities before they are promoted to stable.
 
+{% callout type="warning" %}
+  **The latest SDKs default to `v1`.** Starting with the November 2026 major
+  releases, the Google Gen AI SDKs call `v1` unless you set a version. Earlier
+  releases defaulted to `v1beta`. If you upgrade and use any `v1beta`-only feature in the
+  [table below](/api-reference/api-versions#feature-support), such as the Live API, explicit context
+  caching, or managed agents, those calls fail until you set the API version to
+  `v1beta`. See [Configure API version in an SDK](/api-reference/api-versions#configure-api-version).
+
+{% /callout %}
+
 ## Capability and feature support  {% id="feature-support" %}
 
 The following table details the availability of capabilities across `v1` (GA)
@@ -40,6 +50,7 @@ the Interactions API and `generateContent` unless specified otherwise:
 | [Thinking / Reasoning](/docs/thinking) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [System Instructions](/docs/text-generation) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Audio Output (Speech Config)](/docs/audio) |  | {% badge type="supported" /%} |
+| [Audio Transcription (Transcription Config)](/docs/transcribe) |  | {% badge type="supported" /%} |
 | [Service Tier (Priority / Flex)](/docs/priority-inference) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | **Tools** |  |  |
 | [Code Execution Tool](/docs/code-execution) | {% badge type="supported" /%} | {% badge type="supported" /%} |
@@ -59,26 +70,23 @@ the Interactions API and `generateContent` unless specified otherwise:
 | [File Search Stores Route](/docs/file-search) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Agents API](/docs/agents) |  | {% badge type="supported" /%} |
 | [Webhooks API](/docs/webhooks) |  | {% badge type="supported" /%} |
-| [Context Caching](/docs/caching) |  | {% badge type="supported" /%} |
+| [Explicit Context Caching](/docs/caching?generate-content=true) |  | {% badge type="supported" /%} |
 
 ## Configure API version in an SDK  {% id="configure-api-version" %}
 
-The Gemini API SDKs default to `v1beta`, but you can explicitly specify versions
-by setting the API version as shown in the following code sample:
-
-{% callout type="note" %}
-  The GenAI SDKs use `v1beta` by default to enable
-  access to preview features. You can configure the SDK to use the stable
-  `v1` version (as shown below) which also supports the Interactions API.
-
-{% /callout %}
+The latest Gemini API SDKs default to `v1`. Earlier SDK releases defaulted to
+`v1beta`. To use `v1beta`-only features, set the API version explicitly, as
+shown in the following code samples. You can also set the
+`GOOGLE_GENAI_API_VERSION` environment variable (for example,
+`GOOGLE_GENAI_API_VERSION=v1beta`). A version set in code takes precedence
+over the environment variable.
 
 {% tabs %}
   {% tab filename="api_version.py" label="Python" %}
   ```python
   from google import genai
   
-  client = genai.Client(http_options={"api_version": "v1"})
+  client = genai.Client(http_options={"api_version": "v1beta"})
   
   interaction = client.interactions.create(
       model="gemini-3.8-flash",
@@ -95,7 +103,7 @@ by setting the API version as shown in the following code sample:
   import { GoogleGenAI } from "@google/genai";
   
   const ai = new GoogleGenAI({
-    httpOptions: { apiVersion: "v1" },
+    httpOptions: { apiVersion: "v1beta" },
   });
   
   async function main() {
@@ -113,12 +121,12 @@ by setting the API version as shown in the following code sample:
 
   {% tab filename="api_version.sh" label="REST" %}
   ```bash
-  curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
       "model": "gemini-3.8-flash",
-      "input": "Explain how AI works",
+      "input": "Explain how AI works"
     }'
   ```
 
@@ -134,7 +142,7 @@ by setting the API version as shown in the following code sample:
   import com.google.genai.types.HttpOptions;
   
   Client client = Client.builder()
-      .httpOptions(HttpOptions.builder().apiVersion("v1").build())
+      .httpOptions(HttpOptions.builder().apiVersion("v1beta").build())
       .build();
   
   CreateModelInteraction req = CreateModelInteraction.builder()
@@ -165,7 +173,7 @@ by setting the API version as shown in the following code sample:
       ctx := context.Background()
       client, err := genai.NewClient(ctx, &genai.ClientConfig{
           HTTPOptions: genai.HTTPOptions{
-              APIVersion: "v1",
+              APIVersion: "v1beta",
           },
       })
       if err != nil {

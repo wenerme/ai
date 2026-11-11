@@ -873,6 +873,8 @@ After fixing the configuration, open **Connect storage** for the project and run
 
 To disconnect storage, open **Project Settings > Data retention**. Under **External storage**, select the trash icon beside the connection, then confirm with **Disconnect storage**.
 
+Before you delete a Google Cloud Storage bucket, disconnect it from every OpenAI project that uses it. After deletion, another Google Cloud project can claim the bucket name.
+
 If the project uses ZDR with PSP, disconnecting its last storage connection automatically resets its retention policy to your organization's default. If other connections remain, the policy stays unchanged. Models that require ZDR with PSP may become unavailable when the policy changes.
 
 Disconnecting storage doesn't delete your cloud storage or its contents. Continue to meet the retention requirements for existing records. Complete setup and validation for each new project and residency location.

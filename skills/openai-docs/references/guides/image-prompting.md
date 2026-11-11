@@ -13,7 +13,7 @@
           id="gpt-image-2.6-guide"
           className="m-0 text-3xl font-semibold text-default"
         >
-          {"GPT Image 2.6 prompting guide"}
+          {"GPT-Image-2.6 prompting guide"}
         </h2>
         
 
@@ -27,18 +27,18 @@
 
 Start with the image you need, then describe the subject, composition, style, and constraints. For edits, identify what should change and what must stay the same. Refine one thing at a time and inspect the result.
 
-GPT Image 2.6 Flare is the smaller model for workflows where speed matters most. GPT Image 2.6 Sunburst is the base model for workflows that need more detail or precise edits. Both support image generation, editing, and transparent backgrounds.
+GPT-Image-2.6 Flare is the smaller model for workflows where speed matters most. GPT-Image-2.6 Sunburst is the base model for workflows that need more detail or precise edits. Both support image generation, editing, and transparent backgrounds.
 
 For API setup and request examples, see the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation).
 
 ## Choose a model
 
-For a new workflow, start with **GPT Image 2.6 Flare** if response time matters most. Start with **GPT Image 2.6 Sunburst** if the image must meet demanding requirements for detail, layout, or edit accuracy.
+For a new workflow, start with **GPT-Image-2.6 Flare** if response time matters most. Start with **GPT-Image-2.6 Sunburst** if the image must meet demanding requirements for detail, layout, or edit accuracy.
 
 | Your current workflow                                                                               | Start by testing                                                                          |
 | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Your existing GPT Image 2 workflow meets your quality requirements, or you use GPT Image 2.5 Flare. | `gpt-image-2.6-flare`. Check quality and response time on the prompts you already use.    |
-| GPT Image 2 falls short on a complex task, or you use GPT Image 2.5 Sunburst.                       | `gpt-image-2.6-sunburst`. Check the details that determine whether you can use the image. |
+| Your existing GPT-Image-2 workflow meets your quality requirements, or you use GPT-Image-2.5 Flare. | `gpt-image-2.6-flare`. Check quality and response time on the prompts you already use.    |
+| GPT-Image-2 falls short on a complex task, or you use GPT-Image-2.5 Sunburst.                       | `gpt-image-2.6-sunburst`. Check the details that determine whether you can use the image. |
 
 If Sunburst meets your requirements, try Flare with the same prompts, reference images, dimensions, and quality setting. Compare the results and response times on your workload.
 
@@ -46,7 +46,7 @@ If Sunburst meets your requirements, try Flare with the same prompts, reference 
 
 Set these fields in the API request. Use the prompt to describe the image you want.
 
-| Parameter       | GPT Image 2.6 settings                                                                                                                                                      |
+| Parameter       | GPT-Image-2.6 settings                                                                                                                                                      |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`         | Use `gpt-image-2.6-flare` or `gpt-image-2.6-sunburst`.                                                                                                                      |
 | `quality`       | Controls how much visual detail the model can render, such as texture or small lettering. Choose `auto`, `low`, `medium`, `high`, `xhigh`, or `max`.                        |
@@ -60,18 +60,18 @@ For a complex layout, start with the default and check how the model placed labe
 
 For a custom `size`, use multiples of 16 for both dimensions and an aspect ratio from 1:3 to 3:1. The landscape slide example uses `1536x864`.
 
-Omit `input_fidelity` on image edits. GPT Image 2.6 does not support `reasoning.summary`.
+Omit `input_fidelity` on image edits. GPT-Image-2.6 does not support `reasoning.summary`.
 
 ## Migrate an existing workflow
 
 1. **Save a baseline.** Collect representative prompts, reference images, and outputs from your current model. Include difficult edits, exact text, product geometry, and transparent assets where relevant.
-2. **Test the corresponding model.** For a 2.5 Flare workflow, try 2.6 Flare first. For a 2.5 Sunburst workflow, try 2.6 Sunburst first. For a GPT Image 2 workflow, use the [model selection table](#choose-a-model).
+2. **Test the corresponding model.** For a 2.5 Flare workflow, try 2.6 Flare first. For a 2.5 Sunburst workflow, try 2.6 Sunburst first. For a GPT-Image-2 workflow, use the [model selection table](#choose-a-model).
 3. **Keep the first comparison consistent.** Use the same prompt, reference images, size, quality, and output format. Leave complexity at the model default.
 4. **Inspect the result.** Check text, layout, identity, and details that should survive an edit. For a sequence of edits, check the final image as well as each intermediate result.
 5. **Tune one setting at a time.** Change either quality or complexity. Repeat each request and compare how often the output meets your criteria and how long it takes.
 6. **Roll out by workflow.** Move a small share of traffic after the new model meets your criteria. Track response time, failures, retries, and cost per accepted image before you expand.
 
-When migrating from GPT Image 1 or 1.5, use its reference tab to check parameter differences and shutdown dates. If part of an image must remain pixel-identical, composite the approved edit into the original.
+When migrating from GPT-Image-1 or GPT-Image-1.5, use its reference tab to check parameter differences and shutdown dates. If part of an image must remain pixel-identical, composite the approved edit into the original.
 
 ## Prompting fundamentals
 
@@ -94,7 +94,7 @@ When a prompt leaves design decisions open, try `high` complexity to give the mo
 
 > A premium handcrafted layered paper-cut illustration of a football team celebrating a championship victory inside a packed stadium.
 
-GPT Image 2.6 Sunburst generated one image at each complexity level with the same prompt, `size="1024x1536"`, `quality="medium"`, and PNG output. Compare the trophy and where the word “CHAMPIONS” appears.
+GPT-Image-2.6 Sunburst generated one image at each complexity level with the same prompt, `size="1024x1536"`, `quality="medium"`, and PNG output. Compare the trophy and where the word “CHAMPIONS” appears.
 
 
 
@@ -146,7 +146,7 @@ Omit `stream`, `partial_images`, and `output_compression` from the SVG request. 
 
   <figure className="m-0 min-w-0 [&_[data-codex-screenshot-overlay]_img]:bg-surface">
     <figcaption className="mb-2 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
@@ -156,7 +156,7 @@ Omit `stream`, `partial_images`, and `output_compression` from the SVG request. 
   </figure>
   <figure className="m-0 min-w-0 [&_img]:bg-white">
     <figcaption className="mb-2 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
@@ -201,21 +201,21 @@ The image should feel honest and unposed, with real skin texture, worn materials
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Photorealistic portrait of a sailor repairing a net — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-6-flare.webp>)
+![Photorealistic portrait of a sailor repairing a net — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Photorealistic portrait of a sailor repairing a net — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-6-sunburst.webp>)
+![Photorealistic portrait of a sailor repairing a net — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -238,21 +238,21 @@ I'd like to understand technically and visually the flow.
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Diagram explaining an automatic coffee machine — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-6-flare.webp>)
+![Diagram explaining an automatic coffee machine — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Diagram explaining an automatic coffee machine — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-6-sunburst.webp>)
+![Diagram explaining an automatic coffee machine — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -278,21 +278,21 @@ No extra text, no watermarks, no unrelated logos.
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Thread streetwear campaign with the requested tagline — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-6-flare.webp>)
+![Thread streetwear campaign with the requested tagline — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Thread streetwear campaign with the requested tagline — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-6-sunburst.webp>)
+![Thread streetwear campaign with the requested tagline — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -318,7 +318,7 @@ Each model used `size="1024x1536"`, `quality="medium"`, and `n=1` for the prompt
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
@@ -328,7 +328,7 @@ Each model used `size="1024x1536"`, `quality="medium"`, and `n=1` for the prompt
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
@@ -354,21 +354,21 @@ Photorealistic, period-accurate clothing, staging, and environment.
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Crowd scene in Bethel, New York, in August 1969 — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-6-flare.webp>)
+![Crowd scene in Bethel, New York, in August 1969 — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Crowd scene in Bethel, New York, in August 1969 — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-6-sunburst.webp>)
+![Crowd scene in Bethel, New York, in August 1969 — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -393,21 +393,21 @@ Panel 4: The door opens. The pet is seated perfectly by the entrance, alert and 
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Four-panel comic about a pet at home — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-6-flare.webp>)
+![Four-panel comic about a pet at home — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Four-panel comic about a pet at home — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-6-sunburst.webp>)
+![Four-panel comic about a pet at home — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -432,21 +432,21 @@ Place the UI mockup in an iPhone frame.
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Farmers market mobile app mockup — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-6-flare.webp>)
+![Farmers market mobile app mockup — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Farmers market mobile app mockup — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-6-sunburst.webp>)
+![Farmers market mobile app mockup — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -475,21 +475,21 @@ Avoid tiny text, extra decoration, or anything that makes the diagram hard to un
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Classroom diagram of cellular respiration — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-6-flare.webp>)
+![Classroom diagram of cellular respiration — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Classroom diagram of cellular respiration — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-6-sunburst.webp>)
+![Classroom diagram of cellular respiration — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -530,21 +530,21 @@ Avoid clip art, stock photography, gradients, shadows, decorative elements, or a
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Market opportunity slide with sample market sizing figures — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-6-flare.webp>)
+![Market opportunity slide with sample market sizing figures — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Market opportunity slide with sample market sizing figures — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-6-sunburst.webp>)
+![Market opportunity slide with sample market sizing figures — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -579,7 +579,7 @@ Recolor the striped vase inside the red circle to solid cobalt blue ceramic. Kee
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
@@ -589,7 +589,7 @@ Recolor the striped vase inside the red circle to solid cobalt blue ceramic. Kee
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
@@ -616,21 +616,21 @@ Translate the text in the infographic to Spanish. Do not change any other aspect
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Coffee machine diagram translated into Spanish — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-6-flare.webp>)
+![Coffee machine diagram translated into Spanish — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Coffee machine diagram translated into Spanish — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-6-sunburst.webp>)
+![Coffee machine diagram translated into Spanish — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -659,21 +659,21 @@ Reference image
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Pixel-art motorcycle rider using the reference style — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-6-flare.webp>)
+![Pixel-art motorcycle rider using the reference style — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Pixel-art motorcycle rider using the reference style — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-6-sunburst.webp>)
+![Pixel-art motorcycle rider using the reference style — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -721,21 +721,21 @@ Reference images
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Woman wearing the supplied clothing items — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-6-flare.webp>)
+![Woman wearing the supplied clothing items — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Woman wearing the supplied clothing items — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-6-sunburst.webp>)
+![Woman wearing the supplied clothing items — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -773,21 +773,21 @@ Reference images
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Dog placed beside the woman in the street scene — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-6-flare.webp>)
+![Dog placed beside the woman in the street scene — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Dog placed beside the woman in the street scene — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-6-sunburst.webp>)
+![Dog placed beside the woman in the street scene — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -820,21 +820,21 @@ Reference image
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Isolated shampoo bottle on a transparent background — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-6-flare.webp>)
+![Isolated shampoo bottle on a transparent background — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Isolated shampoo bottle on a transparent background — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-6-sunburst.webp>)
+![Isolated shampoo bottle on a transparent background — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -866,21 +866,21 @@ Reference image
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Photorealistic river valley rendered from the drawing — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-6-flare.webp>)
+![Photorealistic river valley rendered from the drawing — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Photorealistic river valley rendered from the drawing — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-6-sunburst.webp>)
+![Photorealistic river valley rendered from the drawing — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -909,21 +909,21 @@ Reference image
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Same man after the flower has been removed — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-6-flare.webp>)
+![Same man after the flower has been removed — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Same man after the flower has been removed — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-6-sunburst.webp>)
+![Same man after the flower has been removed — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -948,21 +948,21 @@ The campsite is in Yosemite National Park, with believable natural details. The 
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Woman running from a bear in a campsite scene — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-6-flare.webp>)
+![Woman running from a bear in a campsite scene — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Woman running from a bear in a campsite scene — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-6-sunburst.webp>)
+![Woman running from a bear in a campsite scene — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1000,21 +1000,21 @@ Reference image
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Shampoo billboard at sunset — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-6-flare.webp>)
+![Shampoo billboard at sunset — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Shampoo billboard at sunset — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-6-sunburst.webp>)
+![Shampoo billboard at sunset — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1035,21 +1035,21 @@ Make it look like a winter evening with snowfall.
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Shampoo billboard in a snowy evening scene — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-6-flare.webp>)
+![Shampoo billboard in a snowy evening scene — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Shampoo billboard in a snowy evening scene — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-6-sunburst.webp>)
+![Shampoo billboard in a snowy evening scene — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1094,21 +1094,21 @@ Constraints:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Forest hero introducing a children&#x27;s book character — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-6-flare.webp>)
+![Forest hero introducing a children&#x27;s book character — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Forest hero introducing a children&#x27;s book character — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-6-sunburst.webp>)
+![Forest hero introducing a children&#x27;s book character — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1149,21 +1149,21 @@ Constraints:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Same forest hero helping a squirrel in a winter scene — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-6-flare.webp>)
+![Same forest hero helping a squirrel in a winter scene — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Same forest hero helping a squirrel in a winter scene — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-6-sunburst.webp>)
+![Same forest hero helping a squirrel in a winter scene — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1197,21 +1197,21 @@ Reference image
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Kitchen with replacement wooden chairs — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-6-flare.webp>)
+![Kitchen with replacement wooden chairs — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Kitchen with replacement wooden chairs — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-6-sunburst.webp>)
+![Kitchen with replacement wooden chairs — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1252,21 +1252,21 @@ Include ONLY this card text (verbatim):
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Holiday card showing a teddy bear by a window — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-6-flare.webp>)
+![Holiday card showing a teddy bear by a window — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Holiday card showing a teddy bear by a window — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-6-sunburst.webp>)
+![Holiday card showing a teddy bear by a window — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1306,21 +1306,21 @@ Include ONLY this packaging text (verbatim):
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Flare
+      GPT-Image-2.6 Flare
     </figcaption>
     
 
-![Collectible toy airplane in holiday packaging — GPT Image 2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-6-flare.webp>)
+![Collectible toy airplane in holiday packaging — GPT-Image-2.6 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-6-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.6 Sunburst
+      GPT-Image-2.6 Sunburst
     </figcaption>
     
 
-![Collectible toy airplane in holiday packaging — GPT Image 2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-6-sunburst.webp>)
+![Collectible toy airplane in holiday packaging — GPT-Image-2.6 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-6-sunburst.webp>)
 
 
   </figure>
@@ -1464,7 +1464,7 @@ Compare quality, latency, and cost on representative inputs when changing prompt
           id="gpt-image-2.5-guide"
           className="m-0 text-3xl font-semibold text-default"
         >
-          {"GPT Image 2.5 prompting guide"}
+          {"GPT-Image-2.5 prompting guide"}
         </h2>
         
 
@@ -1479,22 +1479,22 @@ Compare quality, latency, and cost on representative inputs when changing prompt
 
 Start with the image you need, then describe the subject, composition, style, and constraints. For edits, identify what should change and what must stay the same. Refine one thing at a time and inspect the result.
 
-GPT Image 2.5 includes two model choices. GPT Image 2.5 Flare is the small model, optimized for speed, with image quality comparable to GPT Image 2. GPT Image 2.5 Sunburst is the base model, optimized for quality, with higher image quality than GPT Image 2. Both models offer improvements in precise editing and subject preservation.
+GPT-Image-2.5 includes two model choices. GPT-Image-2.5 Flare is the small model, optimized for speed, with image quality comparable to GPT-Image-2. GPT-Image-2.5 Sunburst is the base model, optimized for quality, with higher image quality than GPT-Image-2. Both models offer improvements in precise editing and subject preservation.
 
 For API setup and request examples, see the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation).
 
 ## Choose a model
 
-For a new workflow, start with GPT Image 2.5 Flare when speed is the priority, or GPT Image 2.5 Sunburst when demanding quality requirements are the priority. Once the output meets your requirements, look for opportunities to reduce latency.
+For a new workflow, start with GPT-Image-2.5 Flare when speed is the priority, or GPT-Image-2.5 Sunburst when demanding quality requirements are the priority. Once the output meets your requirements, look for opportunities to reduce latency.
 
 For migrating from a current image model, use your current image quality as the starting point. Both models support image generation, editing, and transparent backgrounds.
 
 | Your current workflow                                                               | Start by testing                                                                             |
 | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| An existing, validated GPT Image 2 workflow already meets your quality requirements | GPT Image 2.5 Flare. Check whether you can retain acceptable quality while reducing latency. |
-| A complex use case where GPT Image 2 does not meet your quality requirements        | GPT Image 2.5 Sunburst. First establish that it delivers the quality you need.               |
+| An existing, validated GPT-Image-2 workflow already meets your quality requirements | GPT-Image-2.5 Flare. Check whether you can retain acceptable quality while reducing latency. |
+| A complex use case where GPT-Image-2 does not meet your quality requirements        | GPT-Image-2.5 Sunburst. First establish that it delivers the quality you need.               |
 
-If GPT Image 2.5 Sunburst meets your quality requirements, then test GPT Image 2.5 Flare with the same prompts and inputs. Switch to GPT Image 2.5 Flare if it also meets those requirements and improves latency. Keep GPT Image 2.5 Sunburst when its quality advantage is necessary for your workflow.
+If GPT-Image-2.5 Sunburst meets your quality requirements, then test GPT-Image-2.5 Flare with the same prompts and inputs. Switch to GPT-Image-2.5 Flare if it also meets those requirements and improves latency. Keep GPT-Image-2.5 Sunburst when its quality advantage is necessary for your workflow.
 
 Measure response time and quality on your own workload. Results depend on your prompts, reference images, output dimensions, and quality settings; a speed improvement on one workload doesn't establish a fixed improvement on another.
 
@@ -1502,7 +1502,7 @@ Measure response time and quality on your own workload. Results depend on your p
 
 Set API parameters separately from the prompt.
 
-| Parameter    | GPT Image 2.5 settings                                                                                                                                                                                                              |
+| Parameter    | GPT-Image-2.5 settings                                                                                                                                                                                                              |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`      | `gpt-image-2.5-flare` (small model) or `gpt-image-2.5-sunburst` (base model)                                                                                                                                                        |
 | `quality`    | `auto` (default), `low`, `medium`, `high`, `xhigh`, or `max`                                                                                                                                                                        |
@@ -1527,13 +1527,13 @@ For transparent assets, explicitly request `background="transparent"` and use PN
 ## Migrate an existing workflow
 
 1. **Save a baseline.** Collect representative production prompts and reference images, including difficult edits, exact text, faces, product geometry, and transparent assets. Record the current model, request settings, and results.
-2. **Choose the first candidate.** If GPT Image 2 already meets your quality requirements, start with GPT Image 2.5 Flare and test for a latency improvement. If GPT Image 2 falls short on a complex use case, start with GPT Image 2.5 Sunburst and first establish that it meets your quality requirements. Keep the prompt, references, dimensions, and output format unchanged for the first comparison.
+2. **Choose the first candidate.** If GPT-Image-2 already meets your quality requirements, start with GPT-Image-2.5 Flare and test for a latency improvement. If GPT-Image-2 falls short on a complex use case, start with GPT-Image-2.5 Sunburst and first establish that it meets your quality requirements. Keep the prompt, references, dimensions, and output format unchanged for the first comparison.
 3. **Check the complete result.** Compare instruction following, identity and product preservation, text accuracy, unwanted changes, and transparency. Repeat requests to measure consistency. For editing workflows, test the complete sequence of edits as well as individual steps.
-4. **Test for a latency gain after quality passes.** If you started with GPT Image 2.5 Sunburst and it meets your quality requirements, evaluate GPT Image 2.5 Flare against the same requirements. Switch only if the quality remains acceptable and latency improves; otherwise, keep GPT Image 2.5 Sunburst.
+4. **Test for a latency gain after quality passes.** If you started with GPT-Image-2.5 Sunburst and it meets your quality requirements, evaluate GPT-Image-2.5 Flare against the same requirements. Switch only if the quality remains acceptable and latency improves; otherwise, keep GPT-Image-2.5 Sunburst.
 5. **Tune one setting at a time.** Compare quality levels before rewriting the prompt. Measure typical and slow responses, failures, retries, and cost per accepted image. Confirm current pricing rather than assuming the faster model costs less.
 6. **Roll out by workflow.** Once the released model passes your acceptance criteria, move a small share of traffic, monitor the same measures, and expand gradually. Keep the previous model available for rollback while it remains supported.
 
-When migrating from GPT Image 1 or 1.5, use the reference tabs to check parameter differences and shutdown dates. Test the candidate model's supported request settings rather than copying older settings unchanged. For GPT Image 2, keep your existing resolution and transparency requirements in the comparison.
+When migrating from GPT-Image-1 or GPT-Image-1.5, use the reference tabs to check parameter differences and shutdown dates. Test the candidate model's supported request settings rather than copying older settings unchanged. For GPT-Image-2, keep your existing resolution and transparency requirements in the comparison.
 
 Repeated edits can still change details you intended to preserve. Restate those constraints and inspect each result. If a region must remain pixel-identical, composite the approved edit into the original image instead of relying on prompting alone.
 
@@ -1572,21 +1572,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Photorealistic portrait of a sailor repairing a net — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-5-flare.webp>)
+![Photorealistic portrait of a sailor repairing a net — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Photorealistic portrait of a sailor repairing a net — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-5-sunburst.webp>)
+![Photorealistic portrait of a sailor repairing a net — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/photorealism-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1611,21 +1611,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Diagram explaining an automatic coffee machine — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-5-flare.webp>)
+![Diagram explaining an automatic coffee machine — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Diagram explaining an automatic coffee machine — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-5-sunburst.webp>)
+![Diagram explaining an automatic coffee machine — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1653,21 +1653,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Thread streetwear campaign with the requested tagline — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-5-flare.webp>)
+![Thread streetwear campaign with the requested tagline — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Thread streetwear campaign with the requested tagline — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-5-sunburst.webp>)
+![Thread streetwear campaign with the requested tagline — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/thread-ad-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1695,46 +1695,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Field and Flour bakery logo, first variation — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-1-gpt-image-2-5-flare.webp>)
+![Field and Flour bakery logo, first variation — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-1-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Field and Flour bakery logo, first variation — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-1-gpt-image-2-5-sunburst.webp>)
-
-
-  </figure>
-
-
-
-
-
-  <figure className="m-0 min-w-0">
-    <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
-    </figcaption>
-    
-
-![Field and Flour bakery logo, second variation — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-2-gpt-image-2-5-flare.webp>)
-
-
-  </figure>
-  <figure className="m-0 min-w-0">
-    <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
-    </figcaption>
-    
-
-![Field and Flour bakery logo, second variation — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-2-gpt-image-2-5-sunburst.webp>)
+![Field and Flour bakery logo, first variation — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-1-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1745,21 +1720,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Field and Flour bakery logo, third variation — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-3-gpt-image-2-5-flare.webp>)
+![Field and Flour bakery logo, second variation — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-2-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Field and Flour bakery logo, third variation — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-3-gpt-image-2-5-sunburst.webp>)
+![Field and Flour bakery logo, second variation — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-2-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1770,21 +1745,46 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Field and Flour bakery logo, fourth variation — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-4-gpt-image-2-5-flare.webp>)
+![Field and Flour bakery logo, third variation — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-3-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Field and Flour bakery logo, fourth variation — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-4-gpt-image-2-5-sunburst.webp>)
+![Field and Flour bakery logo, third variation — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-3-gpt-image-2-5-sunburst.webp>)
+
+
+  </figure>
+
+
+
+
+
+  <figure className="m-0 min-w-0">
+    <figcaption className="mb-2 min-h-10 text-sm font-semibold">
+      GPT-Image-2.5 Flare
+    </figcaption>
+    
+
+![Field and Flour bakery logo, fourth variation — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-4-gpt-image-2-5-flare.webp>)
+
+
+  </figure>
+  <figure className="m-0 min-w-0">
+    <figcaption className="mb-2 min-h-10 text-sm font-semibold">
+      GPT-Image-2.5 Sunburst
+    </figcaption>
+    
+
+![Field and Flour bakery logo, fourth variation — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/logo-generation-4-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1808,21 +1808,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Crowd scene in Bethel, New York, in August 1969 — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-5-flare.webp>)
+![Crowd scene in Bethel, New York, in August 1969 — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Crowd scene in Bethel, New York, in August 1969 — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-5-sunburst.webp>)
+![Crowd scene in Bethel, New York, in August 1969 — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/world-knowledge-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1849,21 +1849,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Four-panel comic about a pet at home — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-5-flare.webp>)
+![Four-panel comic about a pet at home — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Four-panel comic about a pet at home — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-5-sunburst.webp>)
+![Four-panel comic about a pet at home — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/comic-reel-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1890,21 +1890,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Farmers market mobile app mockup — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-5-flare.webp>)
+![Farmers market mobile app mockup — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Farmers market mobile app mockup — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-5-sunburst.webp>)
+![Farmers market mobile app mockup — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/ui-farmers-market-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1935,21 +1935,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Classroom diagram of cellular respiration — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-5-flare.webp>)
+![Classroom diagram of cellular respiration — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Classroom diagram of cellular respiration — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-5-sunburst.webp>)
+![Classroom diagram of cellular respiration — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scientific-educational-cellular-respiration-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -1992,21 +1992,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Market opportunity slide with sample market sizing figures — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-5-flare.webp>)
+![Market opportunity slide with sample market sizing figures — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Market opportunity slide with sample market sizing figures — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-5-sunburst.webp>)
+![Market opportunity slide with sample market sizing figures — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/market-opportunity-slide-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2033,21 +2033,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Coffee machine diagram translated into Spanish — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-5-flare.webp>)
+![Coffee machine diagram translated into Spanish — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Coffee machine diagram translated into Spanish — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-5-sunburst.webp>)
+![Coffee machine diagram translated into Spanish — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/infographic-coffee-machine-sp-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2078,21 +2078,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Pixel-art motorcycle rider using the reference style — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-5-flare.webp>)
+![Pixel-art motorcycle rider using the reference style — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Pixel-art motorcycle rider using the reference style — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-5-sunburst.webp>)
+![Pixel-art motorcycle rider using the reference style — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/motorcycle-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2142,21 +2142,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Woman wearing the supplied clothing items — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-5-flare.webp>)
+![Woman wearing the supplied clothing items — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Woman wearing the supplied clothing items — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-5-sunburst.webp>)
+![Woman wearing the supplied clothing items — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/outfit-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2196,21 +2196,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Dog placed beside the woman in the street scene — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-5-flare.webp>)
+![Dog placed beside the woman in the street scene — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Dog placed beside the woman in the street scene — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-5-sunburst.webp>)
+![Dog placed beside the woman in the street scene — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/test-woman-with-dog-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2248,21 +2248,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Isolated shampoo bottle from the original example — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-5-flare.webp>)
+![Isolated shampoo bottle from the original example — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Isolated shampoo bottle from the original example — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-5-sunburst.webp>)
+![Isolated shampoo bottle from the original example — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/extract-product-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2296,21 +2296,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Photorealistic river valley rendered from the drawing — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-5-flare.webp>)
+![Photorealistic river valley rendered from the drawing — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Photorealistic river valley rendered from the drawing — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-5-sunburst.webp>)
+![Photorealistic river valley rendered from the drawing — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/realistic-valley-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2341,21 +2341,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Same man after the flower has been removed — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-5-flare.webp>)
+![Same man after the flower has been removed — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Same man after the flower has been removed — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-5-sunburst.webp>)
+![Same man after the flower has been removed — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/man-with-no-flower-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2382,21 +2382,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Woman running from a bear in a campsite scene — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-5-flare.webp>)
+![Woman running from a bear in a campsite scene — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Woman running from a bear in a campsite scene — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-5-sunburst.webp>)
+![Woman running from a bear in a campsite scene — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/scene-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2436,21 +2436,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Shampoo billboard at sunset — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-5-flare.webp>)
+![Shampoo billboard at sunset — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Shampoo billboard at sunset — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-5-sunburst.webp>)
+![Shampoo billboard at sunset — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2473,21 +2473,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Shampoo billboard in a snowy evening scene — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-5-flare.webp>)
+![Shampoo billboard in a snowy evening scene — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Shampoo billboard in a snowy evening scene — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-5-sunburst.webp>)
+![Shampoo billboard in a snowy evening scene — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/billboard-winter-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2534,21 +2534,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Forest hero introducing a children&#x27;s book character — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-5-flare.webp>)
+![Forest hero introducing a children&#x27;s book character — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Forest hero introducing a children&#x27;s book character — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-5-sunburst.webp>)
+![Forest hero introducing a children&#x27;s book character — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-1-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2591,21 +2591,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Same forest hero helping a squirrel in a winter scene — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-5-flare.webp>)
+![Same forest hero helping a squirrel in a winter scene — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Same forest hero helping a squirrel in a winter scene — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-5-sunburst.webp>)
+![Same forest hero helping a squirrel in a winter scene — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/childrens-book-illustration-2-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2641,21 +2641,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Kitchen with replacement wooden chairs — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-5-flare.webp>)
+![Kitchen with replacement wooden chairs — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Kitchen with replacement wooden chairs — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-5-sunburst.webp>)
+![Kitchen with replacement wooden chairs — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/kitchen-chairs-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2698,21 +2698,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Holiday card showing a teddy bear by a window — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-5-flare.webp>)
+![Holiday card showing a teddy bear by a window — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Holiday card showing a teddy bear by a window — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-5-sunburst.webp>)
+![Holiday card showing a teddy bear by a window — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-holiday-card-teddy-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2754,21 +2754,21 @@ Example outputs:
 
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Flare
+      GPT-Image-2.5 Flare
     </figcaption>
     
 
-![Collectible toy airplane in holiday packaging — GPT Image 2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-5-flare.webp>)
+![Collectible toy airplane in holiday packaging — GPT-Image-2.5 Flare](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-5-flare.webp>)
 
 
   </figure>
   <figure className="m-0 min-w-0">
     <figcaption className="mb-2 min-h-10 text-sm font-semibold">
-      GPT Image 2.5 Sunburst
+      GPT-Image-2.5 Sunburst
     </figcaption>
     
 
-![Collectible toy airplane in holiday packaging — GPT Image 2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-5-sunburst.webp>)
+![Collectible toy airplane in holiday packaging — GPT-Image-2.5 Sunburst](<https://developers.openai.com/images/platform/guides/image-prompting/christmas-collectible-toy-airplane-gpt-image-2-5-sunburst.webp>)
 
 
   </figure>
@@ -2895,11 +2895,11 @@ Compare quality, latency, and cost on representative inputs when changing prompt
           id="gpt-image-2-guide"
           className="m-0 text-3xl font-semibold text-default"
         >
-          {"GPT Image 2 reference"}
+          {"GPT-Image-2 reference"}
         </h2>
         
 
-          Overview and request settings for existing GPT Image 2 workflows.
+          Overview and request settings for existing GPT-Image-2 workflows.
         
 
       </header>
@@ -2907,13 +2907,13 @@ Compare quality, latency, and cost on representative inputs when changing prompt
 
 ## Overview
 
-GPT Image 2 supports image generation and editing, including text rendering, reference-based edits, and flexible output sizes. Use this reference to maintain existing integrations. The [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5) covers shared techniques for composition, text, reference images, and preserving details during edits. Its illustrated examples use GPT Image 2.5 Flare and GPT Image 2.5 Sunburst; outputs can differ across models. For migration, use the guide's [model selection](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5#choose-a-model) and [evaluation workflow](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5#migrate-an-existing-workflow).
+GPT-Image-2 supports image generation and editing, including text rendering, reference-based edits, and flexible output sizes. Use this reference to maintain existing integrations. The [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5) covers shared techniques for composition, text, reference images, and preserving details during edits. Its illustrated examples use GPT-Image-2.5 Flare and GPT-Image-2.5 Sunburst; outputs can differ across models. For migration, use the guide's [model selection](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5#choose-a-model) and [evaluation workflow](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5#migrate-an-existing-workflow).
 
 ## Model parameters
 
 Use `client.images.generate` for generation and `client.images.edit` for edits. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for API setup and request examples.
 
-| Parameter            | GPT Image 2                                                                                                          |
+| Parameter            | GPT-Image-2                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | `model`              | `gpt-image-2`                                                                                                        |
 | `quality`            | `low`, `medium`, `high`, or `auto`                                                                                   |
@@ -2925,7 +2925,7 @@ Use `client.images.generate` for generation and `client.images.edit` for edits. 
 
 Transparent backgrounds are available in preview for `gpt-image-2`.
 
-For the original prompts, inputs, and runnable workflows, see the pinned [GPT Image 2 notebook](https://github.com/openai/openai-cookbook/blob/d310dfa05d20fb653caa9c1c4b89ac1a4aeeeae4/examples/multimodal/image-gen-models-prompting-guide.ipynb).
+For the original prompts, inputs, and runnable workflows, see the pinned [GPT-Image-2 notebook](https://github.com/openai/openai-cookbook/blob/d310dfa05d20fb653caa9c1c4b89ac1a4aeeeae4/examples/multimodal/image-gen-models-prompting-guide.ipynb).
 
 
     
@@ -2937,11 +2937,11 @@ For the original prompts, inputs, and runnable workflows, see the pinned [GPT Im
           id="gpt-image-1.5-guide"
           className="m-0 text-3xl font-semibold text-default"
         >
-          {"GPT Image 1.5 reference"}
+          {"GPT-Image-1.5 reference"}
         </h2>
         
 
-          Overview and request settings for existing GPT Image 1.5 workflows.
+          Overview and request settings for existing GPT-Image-1.5 workflows.
         
 
       </header>
@@ -2954,13 +2954,13 @@ For the original prompts, inputs, and runnable workflows, see the pinned [GPT Im
   notice](https://developers.openai.com/api/docs/deprecations#2026-06-02-gpt-image-model-deprecations) and
   validate existing workflows with `gpt-image-2` before migrating.
 
-GPT Image 1.5 supports image generation and editing, including text rendering, photorealistic images, and reference-based edits. Use this reference to maintain existing integrations. The [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5) covers shared techniques for composition, text, reference images, and preserving details during edits. Test those techniques with your model and inputs; outputs can differ across models.
+GPT-Image-1.5 supports image generation and editing, including text rendering, photorealistic images, and reference-based edits. Use this reference to maintain existing integrations. The [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5) covers shared techniques for composition, text, reference images, and preserving details during edits. Test those techniques with your model and inputs; outputs can differ across models.
 
 ## Model parameters
 
 Use `client.images.generate` for generation and `client.images.edit` for edits. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for API setup and request examples.
 
-| Parameter            | GPT Image 1.5                                                                                                                                                                          |
+| Parameter            | GPT-Image-1.5                                                                                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`              | `gpt-image-1.5`                                                                                                                                                                        |
 | `quality`            | `low`, `medium`, `high`, or `auto`                                                                                                                                                     |
@@ -2968,7 +2968,7 @@ Use `client.images.generate` for generation and `client.images.edit` for edits. 
 | `output_format`      | `png`, `jpeg`, or `webp`                                                                                                                                                               |
 | `output_compression` | 0 to 100, for JPEG or WebP output only                                                                                                                                                 |
 | `background`         | Set `transparent` explicitly for transparent output; use PNG or WebP                                                                                                                   |
-| `input_fidelity`     | `low` or `high`; `high` preserves input details, while `quality` controls output generation. Omit this parameter when migrating to GPT Image 2, which always uses high input fidelity. |
+| `input_fidelity`     | `low` or `high`; `high` preserves input details, while `quality` controls output generation. Omit this parameter when migrating to GPT-Image-2, which always uses high input fidelity. |
 
 
     
@@ -2980,11 +2980,11 @@ Use `client.images.generate` for generation and `client.images.edit` for edits. 
           id="gpt-image-1-guide"
           className="m-0 text-3xl font-semibold text-default"
         >
-          {"GPT Image 1 reference"}
+          {"GPT-Image-1 reference"}
         </h2>
         
 
-          Legacy request settings for migrating GPT Image 1 workflows.
+          Legacy request settings for migrating GPT-Image-1 workflows.
         
 
       </header>
@@ -2998,13 +2998,13 @@ Use `client.images.generate` for generation and `client.images.edit` for edits. 
   notice](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) for
   migration details.
 
-GPT Image 1 supported image generation and editing with reference images and masks. Use this reference when migrating existing integrations. For shared techniques such as describing a scene, preserving details, and refining an edit, see the [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5).
+GPT-Image-1 supported image generation and editing with reference images and masks. Use this reference when migrating existing integrations. For shared techniques such as describing a scene, preserving details, and refining an edit, see the [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5).
 
 ## Model parameters
 
-These settings describe legacy GPT Image 1 requests. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for supported models, API setup, and current request examples.
+These settings describe legacy GPT-Image-1 requests. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for supported models, API setup, and current request examples.
 
-| Parameter            | GPT Image 1                                                                                                                                                                                                                              |
+| Parameter            | GPT-Image-1                                                                                                                                                                                                                              |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`              | `gpt-image-1`                                                                                                                                                                                                                            |
 | `quality`            | `low`, `medium`, `high`, or `auto`                                                                                                                                                                                                       |
@@ -3012,4 +3012,4 @@ These settings describe legacy GPT Image 1 requests. See the [image generation g
 | `output_format`      | `png`, `jpeg`, or `webp`                                                                                                                                                                                                                 |
 | `output_compression` | 0 to 100, for JPEG or WebP output only                                                                                                                                                                                                   |
 | `background`         | Set `transparent` explicitly for transparent output; use PNG or WebP                                                                                                                                                                     |
-| `input_fidelity`     | `low` or `high`; `high` preserves input details, while `quality` controls output generation. High input fidelity uses more image input tokens. Omit this parameter when migrating to GPT Image 2, which always uses high input fidelity. |
+| `input_fidelity`     | `low` or `high`; `high` preserves input details, while `quality` controls output generation. High input fidelity uses more image input tokens. Omit this parameter when migrating to GPT-Image-2, which always uses high input fidelity. |

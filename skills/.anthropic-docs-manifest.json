@@ -410,8 +410,8 @@
   "anthropic-docs/build-with-claude/compaction-threshold.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/compaction-threshold",
     "skill": "anthropic-docs",
-    "size": 130239,
-    "updatedAt": "2026-11-09T20:42:34.863Z"
+    "size": 130520,
+    "updatedAt": "2026-11-11T05:52:09.055Z"
   },
   "anthropic-docs/build-with-claude/files.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/files",
@@ -872,8 +872,8 @@
   "anthropic-docs/manage-claude/admin-api-keys.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/admin-api-keys",
     "skill": "anthropic-docs",
-    "size": 19530,
-    "updatedAt": "2026-10-30T00:42:53.714Z"
+    "size": 24120,
+    "updatedAt": "2026-11-11T05:52:37.560Z"
   },
   "anthropic-docs/manage-claude/app-attest.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/app-attest",
@@ -1124,20 +1124,20 @@
   "anthropic-docs/manage-claude/compliance-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api",
     "skill": "anthropic-docs",
-    "size": 10260,
-    "updatedAt": "2026-11-05T06:22:37.729Z"
+    "size": 10507,
+    "updatedAt": "2026-11-11T05:52:52.101Z"
   },
   "anthropic-docs/manage-claude/compliance-api-access.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access",
     "skill": "anthropic-docs",
-    "size": 18403,
-    "updatedAt": "2026-11-04T05:59:09.251Z"
+    "size": 19879,
+    "updatedAt": "2026-11-11T05:52:52.623Z"
   },
   "anthropic-docs/manage-claude/compliance-activity-feed.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed",
     "skill": "anthropic-docs",
-    "size": 18757,
-    "updatedAt": "2026-10-31T10:15:31.499Z"
+    "size": 18997,
+    "updatedAt": "2026-11-11T05:52:52.959Z"
   },
   "anthropic-docs/manage-claude/compliance-content-data.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-content-data",
@@ -1154,20 +1154,20 @@
   "anthropic-docs/manage-claude/compliance-org-data.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-org-data",
     "skill": "anthropic-docs",
-    "size": 26756,
-    "updatedAt": "2026-11-07T05:44:59.834Z"
+    "size": 26960,
+    "updatedAt": "2026-11-11T05:52:54.031Z"
   },
   "anthropic-docs/manage-claude/compliance-integration-patterns.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-integration-patterns",
     "skill": "anthropic-docs",
-    "size": 19639,
-    "updatedAt": "2026-11-06T06:16:24.247Z"
+    "size": 19879,
+    "updatedAt": "2026-11-11T05:52:54.358Z"
   },
   "anthropic-docs/manage-claude/compliance-errors.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-errors",
     "skill": "anthropic-docs",
-    "size": 56934,
-    "updatedAt": "2026-11-03T06:24:24.172Z"
+    "size": 61443,
+    "updatedAt": "2026-11-11T05:52:54.755Z"
   },
   "anthropic-docs/manage-claude/compliance-faq.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-faq",
@@ -1844,8 +1844,8 @@
   "anthropic-docs/release-notes/overview.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/overview",
     "skill": "anthropic-docs",
-    "size": 143335,
-    "updatedAt": "2026-11-09T20:44:10.610Z"
+    "size": 143983,
+    "updatedAt": "2026-11-11T05:53:34.214Z"
   },
   "anthropic-api/api/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/messages",
@@ -5338,6 +5338,48 @@
     "skill": "anthropic-docs",
     "size": 30899,
     "updatedAt": "2026-11-09T20:47:47.121Z"
+  },
+  "anthropic-docs/manage-claude/compliance-security-posture/check-events-against-results.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/check-events-against-results",
+    "skill": "anthropic-docs",
+    "size": 21820,
+    "updatedAt": "2026-11-11T05:56:41.611Z"
+  },
+  "anthropic-docs/manage-claude/compliance-security-posture/detect-changes.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/detect-changes",
+    "skill": "anthropic-docs",
+    "size": 6297,
+    "updatedAt": "2026-11-11T05:56:41.938Z"
+  },
+  "anthropic-docs/manage-claude/compliance-security-posture/events-reference.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/events-reference",
+    "skill": "anthropic-docs",
+    "size": 7219,
+    "updatedAt": "2026-11-11T05:56:42.246Z"
+  },
+  "anthropic-docs/manage-claude/compliance-security-posture/ocsf-mapping.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/ocsf-mapping",
+    "skill": "anthropic-docs",
+    "size": 10666,
+    "updatedAt": "2026-11-11T05:56:42.584Z"
+  },
+  "anthropic-docs/manage-claude/compliance-security-posture/overview.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/overview",
+    "skill": "anthropic-docs",
+    "size": 12882,
+    "updatedAt": "2026-11-11T05:56:42.931Z"
+  },
+  "anthropic-docs/manage-claude/compliance-security-posture/results-reference.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/results-reference",
+    "skill": "anthropic-docs",
+    "size": 33179,
+    "updatedAt": "2026-11-11T05:56:43.313Z"
+  },
+  "anthropic-docs/manage-claude/compliance-security-posture/send-events.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/send-events",
+    "skill": "anthropic-docs",
+    "size": 8394,
+    "updatedAt": "2026-11-11T05:56:43.653Z"
   },
   "anthropic-docs/models/fable-5-2/migration-guide.md": {
     "url": "https://platform.claude.com/docs/en/models/fable-5-2/migration-guide",

@@ -19308,6 +19308,8 @@ paths:
           - directly_addressed
           - member_access_requested
           - review_submitted
+          - review_approved
+          - review_changes_requested
           - ssh_key_expired
           - ssh_key_expiring_soon
           - transfer_failed
@@ -36858,6 +36860,8 @@ paths:
           description: Not found
         '409':
           description: Conflict
+        '422':
+          description: Unprocessable entity
         '400':
           description: Bad Request
       parameters:
@@ -73832,6 +73836,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too Many Requests
       parameters:
       - name: id
         required: true
@@ -73909,6 +73915,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too Many Requests
       parameters:
       - name: id
         required: true
@@ -73951,6 +73959,8 @@ paths:
           description: Not found
         '412':
           description: Precondition Failed
+        '429':
+          description: Too Many Requests
       parameters:
       - name: id
         required: true
@@ -74130,6 +74140,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too Many Requests
       parameters:
       - name: id
         required: true
@@ -93880,7 +93892,11 @@ components:
           type: string
         project_members_api_limit:
           type: string
+        protected_branch_write_limit:
+          type: string
         create_organization_api_limit:
+          type: string
+        cross_reference_checks_limit:
           type: string
         user_contributed_projects_api_limit:
           type: string
@@ -93967,6 +93983,8 @@ components:
         runner_job_list_project_filtered_limit_per_user:
           type: string
         runner_manager_list_limit_per_user:
+          type: string
+        pipeline_schedule_management_limit_per_user:
           type: string
         job_retry_limit_per_user_project:
           type: string
@@ -112048,6 +112066,11 @@ components:
           type: integer
           description: Maximum number of runner managers a user can list per minute.
           nullable: true
+        pipeline_schedule_management_limit_per_user:
+          type: integer
+          description: Maximum number of pipeline schedule changes (create, update,
+            delete, take ownership) allowed per minute for a given user.
+          nullable: true
         job_retry_limit_per_user_project:
           type: integer
           description: Maximum number of job retries allowed per minute for a given
@@ -114125,7 +114148,13 @@ components:
         project_members_api_limit:
           type: string
           nullable: true
+        protected_branch_write_limit:
+          type: string
+          nullable: true
         create_organization_api_limit:
+          type: string
+          nullable: true
+        cross_reference_checks_limit:
           type: string
           nullable: true
         user_contributed_projects_api_limit:

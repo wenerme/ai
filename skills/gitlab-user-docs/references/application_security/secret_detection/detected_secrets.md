@@ -239,7 +239,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | GitLab SCIM OAuth token                           | gitlab_scim_oauth_token                       | Yes | Yes | No | Yes | Both |
 | GoCardless API token                              | GoCardless API token                          | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Grafana Service Account Token                     | GrafanaServiceAccountToken                    | Yes | No | Yes | No | None |
-| Grafana Cloud Access Policy Token                 | GrafanaCloudAccessPolicyToken                 | Yes | No | Yes | No | None |
+| Grafana Cloud Access Policy Token                 | GrafanaCloudAccessPolicyToken                 | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | HashiCorp Terraform API token                     | Hashicorp Terraform user/org API token        | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | HashiCorp Vault batch token                       | Hashicorp Vault batch token                   | Yes | No | Yes | No | None |
 | HashiCorp Vault Service Token                     | HashicorpVaultServiceToken                     | Yes | No | Yes | No | None |
@@ -249,21 +249,21 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | HubSpot private app API token                     | Hubspot API token                             | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Hugging Face User Access Token                    | HuggingFaceUserAccessToken                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Instagram access token                            | Instagram access token                        | Yes | No | No | No | None |
-| Intercom API token                                | Intercom API token                            | Yes | No | No | No | None |
+| Intercom API token                                | Intercom API token                            | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Intercom App Access Token                         | IntercomAppAccessToken                        | Yes | No | Yes | No | None |
 | Intercom client secret or client ID               | Intercom client secret/ID                     | Yes | No | No | No | None |
 | Ionic personal access token                       | Ionic API token                               | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | JFrog Platform Access Tokens                      | JfrogPlatformAccessToken                      | Yes | No | No | No | None |
 | Kubernetes Service Account Token                  | KubernetesServiceAccToken                     | Yes | No | Yes | No | None |
 | LangChain API Key                                 | LangChainAPIKey                               | Yes | No | Yes | No | None |
-| Linear API token                                  | Linear API token                              | Yes | No | Yes | No | None |
+| Linear API token                                  | Linear API token                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Linear client secret or ID (OAuth 2.0)            | Linear client secret/ID                       | Yes | No | No | No | None |
 | LinkedIn client ID                                | Linkedin Client ID                            | Yes | No | No | No | None |
 | LinkedIn client secret                            | Linkedin Client secret                        | Yes | No | No | No | None |
 | Lob API key                                       | Lob API Key                                   | Yes | No | No | No | None |
 | Lob publishable API key                           | Lob Publishable API Key                       | Yes | No | No | No | None |
 | Mailchimp API key                                 | Mailchimp API key                             | Yes | No | Yes | No | None |
-| Mailgun private API token                         | Mailgun private API token                     | Yes | No | Yes | No | None |
+| Mailgun private API token                         | Mailgun private API token                     | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Mailgun public verification key                   | Mailgun public validation key                 | Yes | No | No | No | None |
 | Mailgun webhook signing key                       | Mailgun webhook signing key                   | Yes | No | Yes | No | None |
 | Mapbox API token                                  | Mapbox API token                              | Yes | No | No | No | None |

@@ -2275,7 +2275,7 @@ Content type: `application/json`
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
             `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-            `gpt-image-2`.
+            `gpt-image-2.6-sunburst`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
             `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -2290,7 +2290,7 @@ Content type: `application/json`
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -3551,7 +3551,7 @@ Content type: `application/json`
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
             `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-            `gpt-image-2`.
+            `gpt-image-2.6-sunburst`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
             `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -3566,7 +3566,7 @@ Content type: `application/json`
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
               `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-              `gpt-image-2`.
+              `gpt-image-2.6-sunburst`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
               `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -6422,7 +6422,7 @@ Content type: `application/json`
       `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
       `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
       `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-      `gpt-image-2`.
+      `gpt-image-2.6-sunburst`.
 
       `gpt-image-1` was shut down on October 23, 2026. Use
       `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -6437,7 +6437,7 @@ Content type: `application/json`
         `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
         `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
         `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
-        `gpt-image-2`.
+        `gpt-image-2.6-sunburst`.
 
         `gpt-image-1` was shut down on October 23, 2026. Use
         `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -6925,7 +6925,10 @@ Content type: `application/json`
 
 - `truncation: optional "auto" or "disabled"`
 
-  The truncation strategy to use for the model response. - `auto`: If the input to this Response exceeds the model's context window size, the model will truncate the response to fit the context window by dropping items from the beginning of the conversation. - `disabled` (default): If the input size will exceed the context window size for a model, the request will fail with a 400 error.
+  The truncation strategy to use for the model response.
+
+  - `auto`: If the input to this Response exceeds the model's context window size, the model will truncate the response to fit the context window by dropping items from the beginning of the conversation. On some models, trimming can begin earlier because the API subtracts the model's maximum output allowance from its input limit before counting tokens.
+  - `disabled` (default): If the input size will exceed the context window size for a model, the request will fail with a 400 error.
 
   - `"auto"`
 

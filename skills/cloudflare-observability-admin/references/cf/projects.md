@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952
 
 # Develop, build, and deploy
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `cf` develops, builds, and deploys Workers projects with the same CLI that manages the rest of your Cloudflare account. To create a project, follow [Deploy your first Worker](https://developers.cloudflare.com/cf/get-started/first-worker/).
 
@@ -354,10 +354,10 @@ cf previews deploy
 
 The command builds the project with `isPreview` set to `true`, so a function-form `cloudflare.config.ts` can return preview-specific settings. It then uploads the preview and prints the result as JSON. Previews in `cf` can change during the beta.
 
-The preview name defaults to the current branch. `cf` reads the branch from Workers Builds, GitHub Actions, or GitLab CI/CD, and then from Git. On a detached `HEAD` with no CI branch, pass a name:
+The preview name defaults to the current branch. `cf` reads the branch from Workers Builds, GitHub Actions, or GitLab CI/CD, and then from Git. To override the branch name, pass `--preview-name`. This flag is required on a detached `HEAD` with no CI branch:
 
 ```sh
-cf previews deploy my-feature
+cf previews deploy --preview-name my-feature
 ```
 
 The command accepts `--mode`, `--worker`, and `--prebuilt`. With `--prebuilt`, Build Output must come from a preview build, and the [mode rule](#deploy-a-prebuilt-build) applies. There is no `--dry-run`, and the command needs credentials.
@@ -488,7 +488,11 @@ The existing Build Output came from `cf previews deploy`. Run the suggested comm
 We couldn't determine a Preview name from CI or Git.
 ```
 
-`cf previews deploy` found no branch name, for example on a detached `HEAD`. Pass a name: `cf previews deploy <PREVIEW_NAME>`.
+`cf previews deploy` found no branch name, for example on a detached `HEAD`. Pass a name with `--preview-name`:
+
+```sh
+cf previews deploy --preview-name <PREVIEW_NAME>
+```
 
 ### A local command has no local equivalent
 
@@ -507,5 +511,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/projects/#page","headline":"Develop, build, and deploy","description":"Run, build, and deploy Workers projects with the Cloudflare CLI, including modes, prebuilt deploys, and previews.","url":"https://developers.cloudflare.com/cf/projects/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/projects/#page","headline":"Develop, build, and deploy","description":"Run, build, and deploy Workers projects with the Cloudflare CLI, including modes, prebuilt deploys, and previews.","url":"https://developers.cloudflare.com/cf/projects/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

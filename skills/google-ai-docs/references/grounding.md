@@ -496,7 +496,7 @@ page](/docs/pricing).
 ## Supported models  {% id="supported-models" %}
 
 You can find full capabilities on the [model
-overview](https://ai.google.dev/docs/models) page.
+overview](/docs/models) page.
 
 | Model | Grounding with Google Search |
 | --- | :---: |

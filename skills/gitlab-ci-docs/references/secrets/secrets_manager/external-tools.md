@@ -1,4 +1,4 @@
-# Access secrets from non-CI/CD workloads
+# Access secrets from external tools
 
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
@@ -6,9 +6,9 @@
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/594090) in GitLab 19.2 [with a flag](../../../administration/feature_flags/_index.md) named `secrets_manager_api_access`. Disabled by default.
 
-CI/CD jobs read [GitLab Secrets Manager](_index.md) secrets through the GitLab Runner.
-Other workloads read secrets through the [Secrets Manager API](../../../api/secrets_manager.md).
-Examples include Kubernetes applications and infrastructure as code tools.
+Use the [Secrets Manager API](../../../api/secrets_manager.md) to read [GitLab Secrets Manager](_index.md)
+secrets from external applications and tools, such as Kubernetes applications and infrastructure as code tools.
+To read secrets in CI/CD jobs, you can [use secrets in job scripts](_index.md#use-secrets-in-job-scripts).
 
 After a client mints an access token, it reads secrets directly from the OpenBao backend,
 not through the GitLab application.

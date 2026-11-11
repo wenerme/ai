@@ -9,6 +9,14 @@ connections to GitLab. This can be used as part of a mutual TLS authentication s
 when combined with reverse proxies (for example, NGINX) that validate client certificates
 to grant access to GitLab.
 
+> [!note]
+> When a client connects to Gitaly over TLS, only the server is authenticated. Gitaly does not
+> request or verify a client certificate, so a client certificate has no effect on access. The
+> [Gitaly token](configure_gitaly.md#about-the-gitaly-token) is the only client authentication.
+> If no Gitaly token is configured, or
+> [auth transitioning mode](configure_gitaly.md#enable-auth-transitioning-mode) is enabled,
+> Gitaly accepts requests without a valid token.
+
 You must supply your own certificates as these aren't provided automatically. The certificate
 corresponding to each Gitaly server must be installed on that Gitaly server.
 

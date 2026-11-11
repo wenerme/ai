@@ -247,7 +247,7 @@ Your options are:
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
-In auto mode, GitLab Duo uses tools without asking for approval.
+In auto mode, GitLab Duo can use tools without asking for approval.
 Where your settings allow it, GitLab Duo can perform the following actions:
 
 - Run any shell command, including commands that delete files or change your system.
@@ -256,7 +256,10 @@ Where your settings allow it, GitLab Duo can perform the following actions:
 - Run MCP tools and start flows.
 
 Auto mode does not override [agent tool governance](../ai-governance/tool-governance.md).
-Tools set to **Always Deny** stay blocked.
+If tool governance for local access is turned on for your top-level group, tools set to
+**Always deny** do not run, and tools set to **Always ask** still prompt for approval.
+For more information, see
+[auto mode in the GitLab Duo CLI](../ai-governance/tool-governance.md#auto-mode-in-the-gitlab-duo-cli).
 
 > [!warning]
 > GitLab Duo can make mistakes.

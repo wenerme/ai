@@ -27,9 +27,6 @@ guides on:
 -  [Prompting for image generation](/docs/image-generation#prompt-guide)
 -  [Prompting for video generation](/docs/veo#prompt-guide)
 
-You can find other sample prompts in the [prompt gallery](https://ai.google.dev/prompts)
-meant to interactively showcase many of the concepts shared in this guide.
-
 ## Clear and specific instructions  {% id="clear-and-specific-instructions" %}
 
 An effective and efficient way to customize model behavior is to provide it with

@@ -14,13 +14,13 @@ description: Retrieve, filter, and paginate your organization's Compliance API A
   Both Compliance Access Keys (`sk-ant-api01-...`) carrying this scope and Admin API keys (`sk-ant-admin01-...`) can call the Activity Feed. See [Set up the Compliance API](https://platform.claude.com/docs/en/manage-claude/compliance-api-access) for the conditions under which each key type carries the scope.
 </Check>
 
-The Activity Feed records authentication, chat, file, project, administrative, and platform activity across your organization and returns it in reverse chronological order. Activities are queryable within 1 minute of occurring and are retained for 6 years. Recording is not retroactive: it begins when the Compliance API is first enabled for your organization, and activity from before enablement is not backfilled. Access Transparency events are an exception. If your organization is enrolled in [Access Transparency](https://platform.claude.com/docs/en/manage-claude/access-transparency), these events are recorded even while the Compliance API is off. The feed can therefore include some from before the Compliance API was first enabled.
+The Activity Feed records authentication, chat, file, project, administrative, and platform activity across your organization and returns it in reverse chronological order. Activities are queryable within 1 minute of occurring and are retained for 6 years. Security posture activities can take longer than 1 minute to become queryable; see [Send Security posture events to your SIEM](https://platform.claude.com/docs/en/manage-claude/compliance-security-posture/send-events#run-it-on-a-schedule). Recording is not retroactive: it begins when the Compliance API is first enabled for your organization, and activity from before enablement is not backfilled. Access Transparency events are an exception. If your organization is enrolled in [Access Transparency](https://platform.claude.com/docs/en/manage-claude/access-transparency), these events are recorded even while the Compliance API is off. The feed can therefore include some from before the Compliance API was first enabled.
 
 ```bash cURL
 curl --fail-with-body -sS \
   "https://api.anthropic.com/v1/compliance/activities?limit=1" \
   -H "x-api-key: $ANTHROPIC_COMPLIANCE_ACCESS_KEY" \
-  -H "anthropic-version: 2023-06-01"
+  -H "anthropic-version: 2026-10-21"
 ```
 
 ```json Response
@@ -62,7 +62,7 @@ curl --fail-with-body -sS -G \
   --data-urlencode "activity_types[]=claude_chat_created" \
   --data-urlencode "created_at.gte=2026-04-01T00:00:00Z" \
   -H "x-api-key: $ANTHROPIC_COMPLIANCE_ACCESS_KEY" \
-  -H "anthropic-version: 2023-06-01"
+  -H "anthropic-version: 2026-10-21"
 ```
 
 The Activity Feed produces hundreds of distinct activity types. See [Query compliance activities](https://platform.claude.com/docs/en/api/compliance/activities/list) in the API reference for the full list of values that `activity_types[]` accepts.
@@ -103,13 +103,13 @@ The cursor parameter sets the page direction; the endpoint’s sort order sets t
 curl --fail-with-body -sS \
   "https://api.anthropic.com/v1/compliance/activities?limit=2" \
   -H "x-api-key: $ANTHROPIC_COMPLIANCE_ACCESS_KEY" \
-  -H "anthropic-version: 2023-06-01"
+  -H "anthropic-version: 2026-10-21"
 
 # LAST_ID is the last_id from the first response. Pass it back unchanged to fetch the next (older) page.
 curl --fail-with-body -sS -G \
   "https://api.anthropic.com/v1/compliance/activities" \
   -H "x-api-key: $ANTHROPIC_COMPLIANCE_ACCESS_KEY" \
-  -H "anthropic-version: 2023-06-01" \
+  -H "anthropic-version: 2026-10-21" \
   --data-urlencode "limit=2" \
   --data-urlencode "after_id=$LAST_ID"
 ```
