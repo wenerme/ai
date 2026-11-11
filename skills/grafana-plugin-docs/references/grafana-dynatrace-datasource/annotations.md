@@ -49,9 +49,9 @@ To create a problems annotation:
 2. Select **Problems** or **Problems V2** as the query type.
 3. Configure filters as needed:
 
-   - **Status**: Filter by problem status (OPEN, RESOLVED, CLOSED).
-   - **Impact**: Filter by impact level (APPLICATION, SERVICE, INFRASTRUCTURE).
-   - **Severity**: Filter by severity (AVAILABILITY, ERROR, PERFORMANCE, etc.).
+   - **Status**: Filter by problem status (OPEN or CLOSED).
+   - **Impact**: Filter by impact level (APPLICATION, ENVIRONMENT, INFRASTRUCTURE, or SERVICE).
+   - **Severity**: Filter by severity (AVAILABILITY, ERROR, PERFORMANCE, and others).
 4. Click **Save dashboard**.
 
 Problems appear as vertical markers on your graphs. Hover over a marker to see problem details.
@@ -67,6 +67,32 @@ To create an events annotation:
 3. Enter the API endpoint: `v2/events`
 4. Configure field extraction to display event details (for example, `eventType`, `title`, `startTime`).
 5. Click **Save dashboard**.
+
+## Example: Audit logs as annotations
+
+You can overlay administrative and configuration-change events on your graphs to correlate them with changes in performance.
+
+To create an audit logs annotation:
+
+1. Create a new annotation as described above.
+2. Select **Audit Logs** as the query type.
+3. *(Optional)* In the **Filter** field, narrow the results with criteria such as `eventType("CREATE","UPDATE")` or `category("CONFIG")`.
+4. Click **Save dashboard**.
+
+Audit log entries appear as markers showing when administrative or configuration changes occurred.
+
+## Example: Logs as annotations
+
+You can highlight specific log events, such as errors, directly on your time-series graphs.
+
+To create a logs annotation:
+
+1. Create a new annotation as described above.
+2. Select **Logs** as the query type.
+3. In the **Query** field, enter a log search query such as `loglevel="error"`.
+4. Click **Save dashboard**.
+
+Matching log events appear as markers on your graphs.
 
 ## Annotation display options
 

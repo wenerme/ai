@@ -3,7 +3,7 @@
 Analyze user retention and activity trends over time.
 
 - Tier: Free, Premium, Ultimate
-- Offering: GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 A cohort is a group of users created in the same month.
 User cohorts show how many users in each cohort continue to use GitLab in the
@@ -43,6 +43,8 @@ GitLab considers a user active if:
 ## View user cohorts
 
 ### For the instance
+
+- Offering: GitLab Self-Managed, GitLab Dedicated
 
 Prerequisites:
 

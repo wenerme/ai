@@ -17,20 +17,23 @@ The Dynatrace data source supports [Grafana Alerting](https://grafana.com/docs/g
 
 ## Supported query types for alerting
 
-The following Dynatrace query types work well with Grafana Alerting:
+The following Dynatrace query types are commonly used with Grafana Alerting:
 
 Expand table
 
-| Query type | Use case                                       | Notes                                                                        |
-|------------|------------------------------------------------|------------------------------------------------------------------------------|
-| Metrics    | Threshold-based alerts on numeric data         | Best suited for alerting; returns time-series data that Grafana can evaluate |
-| Problems   | Alert on problem counts or detect new problems | Use with count aggregations                                                  |
-| SLO        | Alert when SLO error budgets are at risk       | Monitor service level objectives                                             |
-| USQL       | Alert on user session metrics                  | Ensure query returns numeric data                                            |
+| Query type | Use case                                       | Notes                                                                                               |
+|------------|------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| Metrics    | Threshold-based alerts on numeric data         | Best suited for alerting; returns time-series data that Grafana can evaluate                        |
+| Problems   | Alert on problem counts or detect new problems | Has a known evaluation issue; refer to the following caution. Prefer a Metrics query where possible |
+| USQL       | Alert on user session metrics                  | Ensure the query returns exactly one numeric column, with any other columns as text                 |
 
 > Note
 >
-> Alert queries must return numeric data that Grafana can evaluate against a threshold. Queries that return only text or non-numeric data cannot be used directly for alerting.
+> Alert queries must return numeric data that Grafana can evaluate against a threshold. Queries that return only text or non-numeric data, such as Audit Logs and Logs, cannot be used directly for alerting.
+
+> Caution
+>
+> Alerting on Problems queries has a known issue. A Problems query returns a table of problem fields rather than a numeric time series, so Grafana alerting might fail to evaluate it. If you need to alert on problems, test the query in the Explore view first, and use a Metrics query where possible. For more information, refer to [Alerting issues](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#alerting-issues).
 
 ## Create an alert rule
 
@@ -72,19 +75,19 @@ This example creates an alert that fires when CPU usage exceeds 80%:
 4. Set evaluation to run every 1 minute with a 5-minute pending period.
 5. Save the rule.
 
-## Example: Problem count alert
+## Example: User session alert
 
-This example alerts when new problems are detected:
+This example alerts when the average user session duration exceeds a limit:
 
 1. Create a new alert rule.
 2. Configure the query:
 
-   - **Query type**: Problems or Problems V2
-   - **Status**: OPEN
+   - **Query type**: USQL
+   - **USQL Query**: `SELECT AVG(duration) FROM usersession`
 3. Add expressions:
 
-   - **Reduce**: Count (to get the number of open problems)
-   - **Threshold**: Is above 0
+   - **Reduce**: Mean (to reduce the returned series to a single value)
+   - **Threshold**: Is above 60000 (60 seconds, in milliseconds)
 4. Set evaluation to run every 5 minutes.
 5. Save the rule.
 

@@ -42,7 +42,7 @@ Use merge trains if your project has:
 ## Merge train workflow
 
 A merge train starts when there are no merge requests waiting to merge and you
-select [**Merge** or **Set to auto-merge**](#start-a-merge-train). GitLab starts a merge
+select [ or ](#start-a-merge-train). GitLab starts a merge
 train pipeline that verifies that the changes can merge into the default branch.
 This first pipeline is the same as a [merged results pipeline](merged_results_pipelines.md),
 which runs on the changes of the source and target branches combined together.
@@ -50,7 +50,7 @@ The author of the internal merged result commit is the user that initiated the
 merge.
 
 To queue a second merge request to merge immediately after the first pipeline
-completes, select [**Merge** or **Set to auto-merge**](#add-a-merge-request-to-a-merge-train)
+completes, select [ or ](#add-a-merge-request-to-a-merge-train)
 to add it to the train. This second merge train pipeline runs on the changes of
 _both_ merge requests combined with the target branch. Similarly, if you add a
 third merge request, that pipeline runs on the changes of all three merge
@@ -129,11 +129,11 @@ Prerequisites:
 
 To enable merge trains:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Merge requests**.
-1. In the **Merge options** section, ensure **Enable merged results pipelines** is enabled
-   and select **Enable merge trains**.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the  section, ensure  is enabled
+   and select .
+1. Select .
 
 ## Start a merge train
 
@@ -145,11 +145,11 @@ To start a merge train:
 
 1. Go to a merge request.
 1. Select:
-   - When no pipeline is running, **Merge**.
-   - When a pipeline is running, [**Set to auto-merge**](../../user/project/merge_requests/auto_merge.md).
+   - When no pipeline is running, .
+   - When a pipeline is running, [](../../user/project/merge_requests/auto_merge.md).
 
 The merge request's merge train status displays under the pipeline widget with a
-message similar to `A new merge train has started and this merge request is the first of the queue. View merge train details.`
+message similar to `A new merge train has started and this merge request is first in the queue. View merge train.`
 You can select the link to view the merge train.
 
 Other merge requests can now be added to the train.
@@ -163,15 +163,16 @@ The merge train details page shows active merge requests in the queue and merged
 
 To access the merge train details from the list of merge requests:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Code** > **Merge requests**.
-1. Above the list of merge requests, select **Merge trains**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Above the list of merge requests, select .
 1. Optional. Filter the merge trains by target branch.
 
-You also access this view by selecting **View merge train details** from:
+You can also access this view from:
 
-- The pipeline widget and system notes on a merge request added to a merge train.
-- The pipeline details page for a merge train pipeline.
+- The merge request widget, by selecting
+- The system note on a merge request added to a merge train, by selecting the **merge train** link.
+- The pipeline details page for a merge train pipeline, by selecting .
 
 You can also remove () a merge request from the merge train details view.
 
@@ -190,8 +191,8 @@ To add a merge request to a merge train:
 
 1. Visit a merge request.
 1. Select:
-   - When no pipeline is running, **Merge**.
-   - When a pipeline is running, [**Set to auto-merge**](../../user/project/merge_requests/auto_merge.md).
+   - When no pipeline is running, .
+   - When a pipeline is running, [](../../user/project/merge_requests/auto_merge.md).
 
 The merge request's merge train status displays under the pipeline widget with a
 message similar to `This merge request is 2 of 3 in queue.`
@@ -218,13 +219,13 @@ You can add the merge request to a merge train again later.
 
 To remove a merge request from a merge train:
 
-- From a merge request, select **Cancel auto-merge**.
+- From a merge request, select .
 - From the [merge train details](#view-a-merge-train), next to the merge request, select .
 
 ## Skip the merge train and merge immediately
 
 If you have a high-priority merge request, like a critical patch that must
-be merged urgently, you can select **Merge immediately**.
+be merged urgently, you can select .
 
 > [!warning]
 > Merging immediately can use a lot of CI/CD resources. Use this option
@@ -239,7 +240,7 @@ When you merge a merge request immediately:
   the commits added by the merge request that was merged immediately.
 
 > [!note]
-> The **merge immediately** option may not be available if your project uses the [fast-forward](../../user/project/merge_requests/methods/_index.md#fast-forward-merge)
+> The  option may not be available if your project uses the [fast-forward](../../user/project/merge_requests/methods/_index.md#fast-forward-merge)
 > merge method and the source branch is behind the target branch. See [issue 434070](https://gitlab.com/gitlab-org/gitlab/-/issues/434070) for more details.
 
 ### Merge immediately without restarting merge train pipelines
@@ -276,12 +277,12 @@ Prerequisites:
 
 To enable skipping the train without pipeline restarts:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Merge requests**.
-1. In the **Merge options** section, ensure the **Enable merged results pipelines**
-   and **Enable merge trains** options are enabled.
-1. Select **Merge immediately without restarting the merge train**.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the  section, ensure the
+   and  options are enabled.
+1. Select .
+1. Select .
 
 To merge a merge request by skipping the merge train, use the [merge requests merge API endpoint](../../api/merge_requests.md#merge-a-merge-request)
 to merge with the attribute `skip_merge_train` set to `true`.
@@ -298,11 +299,11 @@ reached, additional merge requests are queued until a pipeline slot is available
 
 To modify this limit for your project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Merge requests**.
-1. In the **Merge options** section, set a value for **Maximum parallel pipelines per merge train**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the  section, set a value for .
    The minimum value is `1`. A value of `1` processes merge requests sequentially with no parallelism.
-1. Select **Save changes**.
+1. Select .
 
 The project limit cannot exceed the [instance limit](../../administration/cicd/limits.md#merge-train-parallel-pipeline-limit).
 
@@ -319,17 +320,17 @@ requires every merge request to go through the train.
 
 When enforcement is enabled:
 
-- GitLab hides the **Merge immediately** options, including **Merge now and don't restart train**.
+- GitLab hides the  options, including .
 - The REST API and GraphQL API reject direct merges.
 - Auto-merge routes all merges to the train.
 
 Merge train enforcement has three levels:
 
-- **Allow bypass** (default): Users with permission to merge can bypass the merge train
+-  (default): Users with permission to merge can bypass the merge train
   through the UI or API.
-- **Enforce for all users**: All merge requests must go through the merge train.
+- : All merge requests must go through the merge train.
   No one can bypass the merge train, including Owners and administrators.
-- **Enforce with Owner override**: All merge requests must go through the merge train,
+- : All merge requests must go through the merge train,
   but Owners and administrators can bypass the merge train for individual merge requests.
 
 Prerequisites:
@@ -339,10 +340,10 @@ Prerequisites:
 
 To configure merge train enforcement:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Merge requests**.
-1. In the **Merge options** section, under **Merge train enforcement**, select an enforcement level.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the  section, under , select an enforcement level.
+1. Select .
 
 ## Troubleshooting
 
@@ -361,7 +362,7 @@ Common causes include:
 - The merge did not complete in time.
 - An unexpected error occurred.
 
-To find out why the merge request was dropped, check the **Activity** section in the **Overview** tab for a message similar to:
+To find out why the merge request was dropped, check the  section in the  tab for a message similar to:
 `User removed this merge request from the merge train because ...`
 
 | System note text | What it means | What to do |
@@ -394,16 +395,16 @@ You can:
 
 ### Cannot add a merge request to the merge train
 
-When [**Pipelines must succeed**](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
+When [](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
 is enabled, but the latest pipeline failed:
 
-- The **Set to auto-merge** or **Merge** options are not available.
+- The  or  options are not available.
 - The merge request displays `The pipeline for this merge request failed. Please retry the job or push a new commit to fix the failure.`
 
 Before you can re-add a merge request to a merge train, you can try to:
 
 - Retry the failed job. If it passes, and no other jobs failed, the pipeline is marked as successful.
-- Rerun the whole pipeline. On the **Pipelines** tab, select **Run pipeline**.
+- Rerun the whole pipeline. On the  tab, select .
 - Push a new commit that fixes the issue, which also triggers a new pipeline.
 
 For more information, see [issue 35135](https://gitlab.com/gitlab-org/gitlab/-/issues/35135).

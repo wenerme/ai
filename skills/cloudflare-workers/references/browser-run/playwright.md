@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6
 
 # Playwright
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Playwright ↗︎](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
-The Workers team forked a [version of Playwright ↗︎](https://github.com/cloudflare/playwright) that was modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Run](https://developers.cloudflare.com/browser-run/).
+The Workers team forked a [version of Playwright ↗︎](https://github.com/cloudflare/browser-run/tree/main/packages/playwright-cloudflare) that was modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Run](https://developers.cloudflare.com/browser-run/).
 
-Our version is open sourced and can be found in [Cloudflare's fork of Playwright ↗︎](https://github.com/cloudflare/playwright). The npm package can be installed from [npmjs ↗︎](https://www.npmjs.com/) as [@cloudflare/playwright ↗︎](https://www.npmjs.com/package/@cloudflare/playwright):
+Our version is open sourced and can be found in [Cloudflare's fork of Playwright ↗︎](https://github.com/cloudflare/browser-run/tree/main/packages/playwright-cloudflare). The npm package can be installed from [npmjs ↗︎](https://www.npmjs.com/) as [@cloudflare/playwright ↗︎](https://www.npmjs.com/package/@cloudflare/playwright):
 
 npmyarnpnpmbun
 
@@ -40,15 +40,15 @@ bun add -d @cloudflare/playwright
 
 Note
 
-Concurrent connections require [`@cloudflare/playwright` v1.3.0 ↗︎](https://github.com/cloudflare/playwright/releases/tag/v1.3.0) or later. Older versions use the legacy single-connection workflow.
+Concurrent connections require [`@cloudflare/playwright` v1.3.0 ↗︎](https://www.npmjs.com/package/@cloudflare/playwright/v/1.3.0) or later. Older versions use the legacy single-connection workflow.
 
 ## Use Playwright in a Worker
 
-In this [example ↗︎](https://github.com/cloudflare/playwright/tree/main/packages/playwright-cloudflare/examples/todomvc), you will run Playwright tests in a Cloudflare Worker using the [todomvc ↗︎](https://demo.playwright.dev/todomvc) application.
+In this [example ↗︎](https://github.com/cloudflare/browser-run/tree/main/packages/playwright-cloudflare/examples/todomvc), you will run Playwright tests in a Cloudflare Worker using the [todomvc ↗︎](https://demo.playwright.dev/todomvc) application.
 
 If you want to skip the steps and get started quickly, select **Deploy to Cloudflare** below.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/playwright/tree/main/packages/playwright-cloudflare/examples/todomvc)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/browser-run/tree/main/packages/playwright-cloudflare/examples/todomvc)
 
 Make sure you have the [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) configured in your Wrangler configuration file:
 
@@ -64,7 +64,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-10-15",
+	"compatibility_date": "2026-11-11",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -79,7 +79,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-15"
+compatibility_date = "2026-11-11"
 upload_source_maps = true
 
 [browser]
@@ -250,7 +250,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 	"upload_source_maps": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-10-15",
+	"compatibility_date": "2026-11-11",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -269,7 +269,7 @@ main = "src/index.ts"
 upload_source_maps = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-15"
+compatibility_date = "2026-11-11"
 
 [browser]
 binding = "MYBROWSER"
@@ -352,7 +352,7 @@ To specify a custom user agent in Playwright, set it in the options when creatin
 ```js
 const context = await browser.newContext({
 	userAgent:
-		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
 });
 ```
 
@@ -471,5 +471,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6a5521c13a","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6a5521c13a","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

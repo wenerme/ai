@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/concepts/deliverability/o
 
 Understand bounce handling and reputation management for optimal email delivery.
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/deliverability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/deliverability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you send an email, there is no guarantee it reaches the recipient's inbox. Inbox providers like Gmail, Yahoo, Outlook, and iCloud invest heavily in filtering out unwanted email. If you send poorly targeted emails, have high bounce rates, or trigger spam complaints, these providers may flag your domain as untrustworthy. Once that happens, even your legitimate emails can end up in spam or be blocked outright.
 
@@ -58,7 +58,7 @@ Cloudflare automatically manages:
 
 ### Best practices
 
-#### Content and list hygiene
+#### Content and recipient hygiene
 
 Avoid content that can trigger spam-detection or can be perceived as unwanted content:
 
@@ -66,10 +66,10 @@ Avoid content that can trigger spam-detection or can be perceived as unwanted co
 - Include both HTML and plain text versions
 - Use legitimate URLs and clear sender identification
 
-Ensure that your email lists are clean and contain intended recipients:
+Ensure that you send only to intended recipients:
 
 - Validate emails before sending
-- Implement double opt-in for subscriptions
+- Send only messages tied to a recipient's transaction
 - Remove hard bounced addresses immediately
 
 Ensure that your deliverability stays above key metrics to avoid affecting your email sending reputation:
@@ -83,10 +83,10 @@ Ensure that your deliverability stays above key metrics to avoid affecting your 
 Each domain builds its own deliverability reputation with inbox providers. Use separate domains or subdomains for different types of email so that one category does not affect the reputation of another. For example:
 
 - `notifications.yourdomain.com` for transactional emails (order confirmations, password resets)
-- `marketing.yourdomain.com` for marketing and promotional emails
+- `support.yourdomain.com` for replies to support requests
 - `yourdomain.com` for important account-related communications
 
-This way, if marketing emails generate higher complaint rates, your transactional email deliverability is not impacted. Each domain can be onboarded separately through [domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/).
+If notification replies receive more complaints, a separate domain helps protect support deliverability. Onboard each domain separately through [domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/).
 
 ### Build reputation for a new domain
 
@@ -111,5 +111,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/deliverability/#page","headline":"Email deliverability","description":"Understand bounce handling and reputation management for optimal email delivery with Email Service.","url":"https://developers.cloudflare.com/email-service/concepts/deliverability/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/concepts/deliverability/og.png?v=6445422fd87b5279","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/deliverability/#page","headline":"Email deliverability","description":"Understand bounce handling and reputation management for optimal email delivery with Email Service.","url":"https://developers.cloudflare.com/email-service/concepts/deliverability/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/concepts/deliverability/og.png?v=6445422fd87b5279","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

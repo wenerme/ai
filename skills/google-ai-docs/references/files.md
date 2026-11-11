@@ -227,6 +227,14 @@ The following code uploads a file and then uses the file in a call to
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/sample.mp3 --wait)
+  gemini-api generate "Describe this audio clip" -m gemini-3.8-flash -i "$FILE"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ## Get metadata for a file  {% id="get-metadata" %}
@@ -345,6 +353,14 @@ metadata by calling `files.get`.
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/sample.mp3)
+  gemini-api files get "$FILE"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ## List uploaded files  {% id="list-uploaded" %}
@@ -437,6 +453,13 @@ The following code gets a list of all the files uploaded:
   
   curl "https://generativelanguage.googleapis.com/v1beta/files" \
     -H "x-goog-api-key: $GEMINI_API_KEY"
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api files list --all --jq '.files[]?.name'
   ```
 
   {% /tab %}
@@ -539,6 +562,14 @@ uploaded file:
   ```shell
   curl --request "DELETE" https://generativelanguage.googleapis.com/v1beta/$name \
     -H "x-goog-api-key: $GEMINI_API_KEY"
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/sample.mp3)
+  gemini-api files delete "$FILE"
   ```
 
   {% /tab %}

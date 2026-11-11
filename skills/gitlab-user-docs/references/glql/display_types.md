@@ -122,6 +122,7 @@ query: type = Issue AND project = "gitlab-org/gitlab" AND assignee = currentUser
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241395) in GitLab 19.2.
 - `compact` display option [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23470) in GitLab 19.5.
 - Dynamic descriptions [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/255287) in GitLab 19.5.
+- Time bucket dimension [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633019) in GitLab 19.6.
 
 A single stat visualizes one aggregated metric from [analytics mode](_index.md#analytics-mode) as a
 large value. Use a single stat to highlight a key number, such as a total or a rate.
@@ -131,7 +132,14 @@ A single stat requires:
 - Analytics mode, set with `mode: analytics`.
 - One or more metrics, set with the `metrics` parameter. The stat displays the value of the first
   metric and ignores the rest, unless the description references them.
-- No `dimensions`.
+- No `dimensions`, or exactly one time bucket dimension, such as `created(granularity=30d)`.
+
+With a time bucket dimension, the stat displays the value of the latest bucket. The stat orders
+the buckets by date, so `sort` has no effect on which bucket is the latest. The bucket before it
+becomes the previous period, shown as a trend badge. Use this for a metric that compares periods,
+such as `churnedUsersCount`. Such a metric is computed against the bucket before each one, so the
+earliest bucket in the result is only its baseline: the stat shows the trend badge only when the
+result holds a bucket before the previous period too.
 
 Values format automatically based on the metric. For example, counts use thousands separators and
 rates display as percentages. To render numbers in compact notation
@@ -347,7 +355,8 @@ bar.
 Some metrics cannot drop their dimension. A metric that compares one time bucket against the
 previous one, such as `returningUsersCount`, requires the date dimension. To get one row per
 metric from a query that has one, set `metricRows: true` under `displayConfig`. Values come
-from the first row of the response, so sort the query to put the row you want first.
+from the first row of the response, so sort the query to put the row you want first. To show one
+such metric as a single number, use a [single stat](#single-stat) instead.
 
 With dimensions, the `maxRows` option under `displayConfig` sets how many rows each page shows.
 The default is six, and rows are ranked by value, highest first.

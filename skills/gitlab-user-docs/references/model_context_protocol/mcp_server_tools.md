@@ -1227,6 +1227,7 @@ List the most recent tags for the gitlab-org/gitlab project
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605853) in GitLab 19.3.
 - `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
+- Support for child pipeline IDs [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632987) in GitLab 19.6.
 
 This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1247,6 +1248,12 @@ triggered a downstream pipeline yet, and when you don't have access to that pipe
 
 Each downstream pipeline includes a `project_full_path`, because a downstream pipeline can belong to
 a different project. Use that value as the `id` of a follow-up call.
+
+To inspect a child pipeline, use the `id` of a pipeline in the `downstream_pipelines` facet, or the
+`downstream_pipeline.id` of a job in the `bridge_jobs` facet, as the `pipeline_id` of a follow-up
+call.
+For example, pass it with `include: ["jobs"]` and `job_status: "failed"` to find the failed jobs
+of a child pipeline.
 
 The `artifacts` facet returns a flat list of artifacts. Each artifact carries its `name`, `size`,
 `file_type`, expiry information, and the `job_id` and `job_name` of the job that produced it.

@@ -37,19 +37,19 @@ Grafana supports the following Dynatrace query types, depending on the kind of d
 
 ### Grail query type
 
-Grail is Dynatrace’s unified data lakehouse that stores all your observability data in one place. With Grail, you can query logs, metrics, events, spans, and business analytics data using **DQL (Dynatrace Query Language)**. Grail requires a Platform token to be configured.
+Grail is the Dynatrace data lakehouse that stores all your observability data in one place. With Grail, you can query logs, metrics, events, spans, and business analytics data using **DQL (Dynatrace Query Language)**. Grail requires a Platform token to be configured.
 
 DQL uses a pipe-based syntax that lets you chain operations together to fetch, filter, and transform data. Queries start with a `fetch` command to retrieve a data type, followed by additional commands separated by pipes (`|`).
 
 **What you can query:**
 
-- **logs** — Application and infrastructure log data
-- **metrics** — Time-series performance and monitoring data
-- **spans** — Distributed tracing data for analyzing request flows
-- **events** — System events, deployment events, and custom events
-- **bizevents** — Business events and user session analytics
+- **logs**: Application and infrastructure log data
+- **metrics**: Time-series performance and monitoring data
+- **spans**: Distributed tracing data for analyzing request flows
+- **events**: System events, deployment events, and custom events
+- **bizevents**: Business events and user session analytics
 
-DQL Query
+Grail Query
 
 Enter your DQL query to retrieve data from Grail. The query should start with a `fetch` command specifying the data type you want to query.
 
@@ -120,11 +120,11 @@ The following options are available when using Builder mode:
 
 Expand table
 
-| Variable     | Description             | Example value                                                   |
-|--------------|-------------------------|-----------------------------------------------------------------|
-| $name        | The metric ID           | builtin:apps.other.keyUserActions.reportedErrorCount.os         |
-| $aggregation | The applied aggregation | auto,value                                                      |
-| $displayName | The metric display name | Reported error count (by key user action, OS) \[mobile, custom] |
+| Variable       | Description             | Example value                                                   |
+|----------------|-------------------------|-----------------------------------------------------------------|
+| `$name`        | The metric ID           | builtin:apps.other.keyUserActions.reportedErrorCount.os         |
+| `$aggregation` | The applied aggregation | auto,value                                                      |
+| `$displayName` | The metric display name | Reported error count (by key user action, OS) \[mobile, custom] |
 
 Additional dynamic aliases based on dimensions (such as Host or Service) are available depending on the selected metric.
 
@@ -146,9 +146,9 @@ The following options are available when using Code mode:
 >
 > The Dynatrace Problems API (v1) is deprecated but remains functional for backward compatibility. For new implementations, consider using [Problems V2](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#problems-v2-query-type) instead.
 
-The Problems query type retrieves problem data from your Dynatrace environment using the Problems API v1. For additional information, refer to [Problems API - GET feed](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/problems/problems/get-feed/) in the Dynatrace documentation.
+The Problems query type retrieves problem data from your Dynatrace environment using the Problems API v1. It returns a chronological feed of problems detected over the selected time range. For additional information, refer to [Problems API - GET feed](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/problems/problems/get-feed/) in the Dynatrace documentation.
 
-**Problem Query Type** - Select the Problems API endpoint to use. Currently, only the **Feed** option is available, which returns a chronological feed of problems detected in your Dynatrace environment over the selected time range.
+**Problem Query Type** - Select the type of problem query. **Feed** is currently the only available option and returns a chronological feed of problems detected over the selected time range.
 
 **Status Filter** - Filter problems by their lifecycle status:
 
@@ -200,11 +200,11 @@ For additional information, refer to [Problems V2 API](https://docs.dynatrace.co
 
 Expand table
 
-| Field           | Description                                             |
-|-----------------|---------------------------------------------------------|
-| evidenceDetails | Includes detailed evidence information for each problem |
-| impactAnalysis  | Includes impact analysis data                           |
-| recentComments  | Includes recent comments added to problems              |
+| Field             | Description                                             |
+|-------------------|---------------------------------------------------------|
+| `evidenceDetails` | Includes detailed evidence information for each problem |
+| `impactAnalysis`  | Includes impact analysis data                           |
+| `recentComments`  | Includes recent comments added to problems              |
 
 **ProblemSelector** - *(Optional)* Define filters to narrow down which problems to retrieve using Dynatrace selector syntax. Separate multiple criteria with commas.
 
@@ -215,7 +215,7 @@ Example selectors:
 - `impactLevel("SERVICE")` - Return problems affecting services
 - `managementZoneIds("123456789")` - Return problems in a specific management zone
 
-For a complete list of selector options, refer to [problemSelector parameters](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-api/environment-api/problems-v2/problems/get-problems-list#parameters) in the Dynatrace documentation.
+For a complete list of selector options, refer to [`problemSelector` parameters](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-api/environment-api/problems-v2/problems/get-problems-list#parameters) in the Dynatrace documentation.
 
 **EntitySelector** - *(Optional)* Filter problems to those affecting specific entities using Dynatrace entity selector syntax.
 
@@ -257,13 +257,13 @@ Example queries:
 
 For complete USQL syntax, refer to [USQL reference](https://www.dynatrace.com/support/help/shortlink/usql-info) in the Dynatrace documentation.
 
-**Add deeplink fields** - Toggle on to include deeplink fields in the result set. These fields contain direct URLs to the corresponding data in Dynatrace, enabling you to:
+**Add deeplink fields** - Toggle on to include deep link fields in the result set. These fields contain direct URLs to the corresponding data in Dynatrace, enabling you to:
 
 - Create clickable links in table panels that navigate to Dynatrace
 - Add “View in Dynatrace” buttons to your dashboards
 - Quickly jump from Grafana visualizations to detailed Dynatrace views
 
-After enabling this option, use Grafana transformations to format and display the deeplink values as needed.
+After enabling this option, use Grafana transformations to format and display the deep link values as needed.
 
 ### Logs query type
 
@@ -303,12 +303,12 @@ For additional information, refer to [Audit logs API](https://www.dynatrace.com/
 
 Expand table
 
-| Criteria  | Description                             | Example                        |
-|-----------|-----------------------------------------|--------------------------------|
-| user      | Filter by user who performed the action | `user("john.doe@example.com")` |
-| eventType | Filter by event type                    | `eventType("CREATE","UPDATE")` |
-| category  | Filter by category                      | `category("CONFIG")`           |
-| entityId  | Filter by entity ID                     | `entityId("HOST-1234567890")`  |
+| Criteria    | Description                             | Example                        |
+|-------------|-----------------------------------------|--------------------------------|
+| `user`      | Filter by user who performed the action | `user("john.doe@example.com")` |
+| `eventType` | Filter by event type                    | `eventType("CREATE","UPDATE")` |
+| `category`  | Filter by category                      | `category("CONFIG")`           |
+| `entityId`  | Filter by entity ID                     | `entityId("HOST-1234567890")`  |
 
 Combine multiple filters by separating them with commas: `eventType("CREATE","UPDATE"),category("CONFIG")`
 
@@ -335,7 +335,7 @@ For more information about management zones, refer to [Management zones](https:/
 
 ### Direct API Access query type
 
-Use Direct API Access when you need to query Dynatrace API endpoints that are not covered by the standard query types. This mode gives you full access to Dynatrace’s REST APIs and allows you to parse the response using [JSONPath](https://goessner.net/articles/JsonPath/).
+Use Direct API Access when you need to query Dynatrace API endpoints that are not covered by the standard query types. This mode gives you full access to the Dynatrace REST APIs and allows you to parse the response using [`JSONPath`](https://goessner.net/articles/JsonPath/).
 
 **API Endpoint** - Enter the API path beginning with the version segment.
 
@@ -351,16 +351,16 @@ Expand table
 
 Expand table
 
-| Option                  | Description                                                                                                         |
-|-------------------------|---------------------------------------------------------------------------------------------------------------------|
-| Auto                    | Returns a single frame with headers as JSON paths using the default parser.                                         |
-| Parse Individual Fields | Allows you to extract specific fields using JSONPath expressions. Useful for large or deeply nested JSON responses. |
+| Option                  | Description                                                                                                           |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Auto                    | Returns a single frame with headers as JSON paths using the default parser.                                           |
+| Parse Individual Fields | Allows you to extract specific fields using `JSONPath` expressions. Useful for large or deeply nested JSON responses. |
 
 #### Parse Individual Fields options
 
 When **Parse Individual Fields** is selected, configure the following options for each field you want to extract:
 
-**Field** - Enter a [JSONPath](https://goessner.net/articles/JsonPath/) expression that identifies the value to extract from the API response.
+**Field** - Enter a [`JSONPath`](https://goessner.net/articles/JsonPath/) expression that identifies the value to extract from the API response.
 
 **Type** - Specify how the extracted value should be interpreted:
 
@@ -375,9 +375,9 @@ Expand table
 | Boolean | Treat value as true/false                                                                                                        |
 | JSON    | Treat value as a JSON object                                                                                                     |
 
-**Alias** - *(Optional)* Custom name for the extracted field. If left blank, the JSONPath expression becomes the column name.
+**Alias** - *(Optional)* Custom name for the extracted field. If left blank, the `JSONPath` expression becomes the column name.
 
-**Nullable** - Toggle on to allow null values when the JSONPath expression does not match anything in the API response. This helps avoid parsing errors if data is missing for some items.
+**Nullable** - Toggle on to allow null values when the `JSONPath` expression does not match anything in the API response. This helps avoid parsing errors if data is missing for some items.
 
 Click **+** to add more fields, or **-** to remove a field.
 
@@ -387,40 +387,48 @@ The SLO query type retrieves Service Level Objectives from Dynatrace. SLOs measu
 
 For additional information, refer to [SLO API](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-api/environment-api/service-level-objectives) in the Dynatrace documentation.
 
-**SloSelector** - *(Optional)* Filter which SLOs to retrieve using Dynatrace selector syntax.
+**SloSelector** - *(Optional)* Filter which SLOs to retrieve using Dynatrace selector syntax. Separate multiple criteria with commas to match all of them.
 
 Example selectors:
 
 - `name("my-slo-name")` - Filter by SLO name
 - `id("slo-id")` - Filter by SLO ID
-- `status("SUCCESS")` - Filter by status (SUCCESS, WARNING, or FAILURE)
+- `healthState("HEALTHY")` - Filter by health state, either `HEALTHY` or `UNHEALTHY`
+- `text("checkout")` - Filter by text in the name or description
 
-**Sort** - *(Optional)* Control the ordering of returned SLO results. You can sort by name (ascending or descending) or by status.
+**Sort** - *(Optional)* Select the ordering of returned SLOs. Choose `name` for ascending order or `-name` for descending order.
 
-**TimeFrame** - *(Optional)* Set the evaluation period for calculating SLO values. The default is `CURRENT`. You can use relative timeframes like `-1d` or `1h`.
+**TimeFrame** - *(Optional)* Select the time frame used to calculate SLO values:
 
-**Demo** - *(Optional)* Toggle to retrieve demo/example SLOs instead of production SLOs. Useful for testing and training. Default is FALSE (production SLOs).
+Expand table
 
-**Evaluate** - *(Optional)* Toggle to calculate and return current SLO values. When TRUE (default), SLOs include calculated metrics like error budget, status, and burn rate. Set to FALSE to return only SLO definitions.
+| Value     | Description                                                        |
+|-----------|--------------------------------------------------------------------|
+| `CURRENT` | Uses the time frame configured on each SLO. This is the default.   |
+| `GTF`     | Uses the dashboard time range from the `from` and `to` parameters. |
 
-**EnabledSlos** - *(Optional)* Filter SLOs by their enabled/disabled state:
+**Demo** - *(Optional)* Select `true` to return a set of demo SLOs, or `false` to return your own SLOs. Useful for testing and training.
+
+**Evaluate** - *(Optional)* Select `true` to return SLOs with calculated values, such as error budget, status, and burn rate, or `false` to return only SLO definitions.
+
+**EnabledSlos** - *(Optional)* Filter SLOs by their enabled or disabled state:
 
 Expand table
 
 | Value   | Description                          |
 |---------|--------------------------------------|
-| TRUE    | Returns only enabled SLOs            |
-| FALSE   | Returns only disabled SLOs           |
-| (empty) | Returns all SLOs regardless of state |
+| `true`  | Returns only enabled SLOs            |
+| `false` | Returns only disabled SLOs           |
+| `all`   | Returns all SLOs regardless of state |
 
-**ShowGlobalSlos** - *(Optional)* Control whether to include global SLOs (not assigned to any management zone):
+**ShowGlobalSlos** - *(Optional)* Select whether to include global SLOs that aren’t assigned to any management zone:
 
 Expand table
 
-| Value | Description                                                      |
-|-------|------------------------------------------------------------------|
-| TRUE  | Includes global SLOs visible to all users                        |
-| FALSE | Excludes global SLOs, showing only management zone-specific SLOs |
+| Value   | Description                                                        |
+|---------|--------------------------------------------------------------------|
+| `true`  | Includes global SLOs                                               |
+| `false` | Excludes global SLOs, returning only management zone-specific SLOs |
 
 ### Events query type
 
@@ -446,31 +454,24 @@ Example selectors:
 
 ### Synthetic query type
 
-The Synthetic query type retrieves synthetic monitoring data from Dynatrace. Use this query type to monitor simulated user interactions and API calls for availability and performance testing.
+The Synthetic query type retrieves the synthetic monitoring locations configured in your Dynatrace environment, using the synthetic locations API. Use this query type to view the public and private locations available for running synthetic monitors.
 
-For additional information, refer to [Synthetic API](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-api/environment-api/synthetic-v2) in the Dynatrace documentation.
+For additional information, refer to [GET all locations](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/synthetic-v2/synthetic-locations-v2/get-all-locations/) in the Dynatrace documentation.
 
 Common use cases:
 
-- Monitor synthetic test results and availability percentages
-- Track synthetic test execution times and response times
-- View synthetic monitor locations and configurations
+- List the available synthetic locations and their status
+- Audit which private locations are configured
 
-**MonitorSelector** - *(Optional)* Filter which synthetic monitors to retrieve.
+**CloudPlatform** - *(Optional)* Filter locations to those hosted on a specific cloud platform. Select one of `AWS`, `AZURE`, `ALIBABA`, `GOOGLE_CLOUD`, or `OTHER`.
 
-Example selectors:
-
-- `type("HTTP")` - Filter by monitor type
-- `name("Production Health Check")` - Filter by monitor name
-- `enabled(true)` - Filter by enabled state
-
-**EntitySelector** - *(Optional)* Filter synthetic data to specific entities or locations using Dynatrace entity selector syntax.
+**Type** - *(Optional)* Filter locations by type. Select `PUBLIC` for Dynatrace-hosted locations or `PRIVATE` for locations you host yourself.
 
 ### Tokens query type
 
 The Tokens query type retrieves information about API tokens configured in your Dynatrace environment. Use this query type for token auditing and management.
 
-For additional information, refer to [Access tokens API](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-api/environment-api/access-tokens-v2) in the Dynatrace documentation.
+For additional information, refer to [Access tokens API](https://docs.dynatrace.com/docs/dynatrace-api/environment-api/tokens-v2/api-tokens) in the Dynatrace documentation.
 
 > Note
 >
@@ -481,12 +482,16 @@ Common use cases:
 - Audit API token usage and permissions
 - Monitor token expiration dates
 - Track token creation and modification
-- Identify unused or overprivileged tokens
+- Identify unused or over-privileged tokens
 
-**TokenSelector** - *(Optional)* Filter which tokens to retrieve.
-
-Example selectors:
+**ApiTokenSelector** - *(Optional)* Filter which tokens to retrieve using Dynatrace selector syntax.
 
 - `owner("john.doe@example.com")` - Filter by token owner
-- `name("grafana-token")` - Filter by token name
-- `scopes("metrics.read")` - Filter by token scopes
+- `personalAccessToken(false)` - Return only API tokens, not personal access tokens
+- `scope("metrics.read")` - Filter by token scope
+
+For the complete selector syntax, refer to [List access tokens](https://docs.dynatrace.com/docs/dynatrace-api/environment-api/tokens-v2/api-tokens/get-all) in the Dynatrace documentation.
+
+**Fields** - *(Optional)* Specify which token fields to include in the response. Use `+` to add fields and `-` to remove them, for example `+expirationDate,+scopes`.
+
+**Sort** - *(Optional)* Specify the sort order of the returned tokens, for example `-lastUsedDate` to list the most recently used tokens first.

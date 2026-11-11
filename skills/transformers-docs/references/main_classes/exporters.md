@@ -2,7 +2,8 @@
 
 # Exporters
 
-New export backends can be added to Transformers by subclassing [`HfExporter`].
+New export backends can be added to Transformers by subclassing [`HfExporter`] and registering it with
+[`~exporters.register_backend`].
 
 Learn how to use the built-in exporters in the [Exporters](../exporters) guide.
 
@@ -14,9 +15,28 @@ Learn how to use the built-in exporters in the [Exporters](../exporters) guide.
 
 [[autodoc]] exporters.auto.AutoExportConfig
 
+## register_backend
+
+[[autodoc]] exporters.auto.register_backend
+
 ## HfExporter
 
 [[autodoc]] exporters.base.HfExporter
+
+## ExportedModel
+
+[[autodoc]] exporters.base.ExportedModel
+    - program
+    - save_pretrained
+    - from_pretrained
+
+## ExportedComponent
+
+[[autodoc]] exporters.base.ExportedComponent
+
+## ExportMetadata
+
+[[autodoc]] exporters.metadata.ExportMetadata
 
 ## DynamoExporter
 

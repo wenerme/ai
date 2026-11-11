@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/examples/email-sending/re
 
 Specify multiple recipients, CC and BCC, and named addresses when sending with Email Service.
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email Service lets you specify recipients in several ways — multiple recipients, CC and BCC, and named addresses — using the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/). The combined number of addresses across `to`, `cc`, and `bcc` must not exceed 50. See [Limits](https://developers.cloudflare.com/email-service/platform/limits/).
 
@@ -22,11 +22,11 @@ Email Service lets you specify recipients in several ways — multiple recipient
 
 ```ts
 const response = await env.EMAIL.send({
-	to: ["user1@example.com", "user2@example.com", "user3@example.com"],
-	from: { email: "newsletter@yourdomain.com", name: "Newsletter Team" },
-	subject: "Monthly Newsletter",
-	html: "<h1>This month's updates</h1>",
-	text: "This month's updates",
+	to: ["customer@example.com", "accounts@example.com"],
+	from: { email: "orders@yourdomain.com", name: "Orders" },
+	subject: "Order #12345 confirmed",
+	html: "<h1>Your order is confirmed</h1>",
+	text: "Your order is confirmed.",
 });
 ```
 
@@ -35,11 +35,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
   --header "Authorization: Bearer <API_TOKEN>" \
   --header "Content-Type: application/json" \
   --data '{
-    "to": ["user1@example.com", "user2@example.com"],
-    "from": { "address": "newsletter@yourdomain.com", "name": "Newsletter Team" },
-    "subject": "Monthly Newsletter",
-    "html": "<h1>This month'\''s updates</h1>",
-    "text": "This month'\''s updates"
+    "to": ["customer@example.com", "accounts@example.com"],
+    "from": { "address": "orders@yourdomain.com", "name": "Orders" },
+    "subject": "Order #12345 confirmed",
+    "html": "<h1>Your order is confirmed</h1>",
+    "text": "Your order is confirmed."
   }'
 ```
 
@@ -47,19 +47,19 @@ List every recipient in the `To` header and pass one `--mail-rcpt` flag per addr
 
 ```sh
 cat > mail.txt <<EOF
-From: Newsletter Team <newsletter@yourdomain.com>
-To: user1@example.com, user2@example.com
-Subject: Monthly Newsletter
+From: Orders <orders@yourdomain.com>
+To: customer@example.com, accounts@example.com
+Subject: Order #12345 confirmed
 
-This month's updates
+Your order is confirmed.
 EOF
 
 curl --ssl-reqd \
   --url "smtps://smtp.mx.cloudflare.net:465" \
   --user "api_token:<API_TOKEN>" \
-  --mail-from "newsletter@yourdomain.com" \
-  --mail-rcpt "user1@example.com" \
-  --mail-rcpt "user2@example.com" \
+  --mail-from "orders@yourdomain.com" \
+  --mail-rcpt "customer@example.com" \
+  --mail-rcpt "accounts@example.com" \
   --upload-file mail.txt
 ```
 
@@ -171,9 +171,9 @@ Combine plain addresses and named addresses in the same `to` field.
 const response = await env.EMAIL.send({
 	to: ["plain@example.com", { email: "jane@example.com", name: "Jane Doe" }],
 	from: "support@yourdomain.com",
-	subject: "Team update",
-	html: "<h1>Monthly update</h1>",
-	text: "Monthly update",
+	subject: "Support request #12345 updated",
+	html: "<h1>Your support request was updated</h1>",
+	text: "Your support request was updated.",
 });
 ```
 
@@ -187,9 +187,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
       { "address": "jane@example.com", "name": "Jane Doe" }
     ],
     "from": "support@yourdomain.com",
-    "subject": "Team update",
-    "html": "<h1>Monthly update</h1>",
-    "text": "Monthly update"
+    "subject": "Support request #12345 updated",
+    "html": "<h1>Your support request was updated</h1>",
+    "text": "Your support request was updated."
   }'
 ```
 
@@ -197,9 +197,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 cat > mail.txt <<EOF
 From: support@yourdomain.com
 To: plain@example.com, Jane Doe <jane@example.com>
-Subject: Team update
+Subject: Support request #12345 updated
 
-Monthly update
+Your support request was updated.
 EOF
 
 curl --ssl-reqd \
@@ -227,5 +227,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/#page","headline":"Specify recipients","description":"Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/og.png?v=350ae4cc036927b2","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/#page","headline":"Specify recipients","description":"Send to multiple recipients, CC and BCC, and named addresses using the Workers binding, REST API, or SMTP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-sending/recipients/og.png?v=350ae4cc036927b2","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

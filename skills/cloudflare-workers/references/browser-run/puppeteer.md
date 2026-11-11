@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9c
 
 # Puppeteer
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Puppeteer ↗︎](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
 
 Puppeteer typically connects to a local Chrome or Chromium browser using the DevTools port. Refer to the [Puppeteer API documentation on the `Puppeteer.connect()` method ↗︎](https://pptr.dev/api/puppeteer.puppeteer.connect) for more information.
 
-The Workers team forked a version of Puppeteer and patched it to connect to the Workers Browser Run API instead. After connecting, the developers can then use the full [Puppeteer API ↗︎](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md) as they would on a standard setup.
+The Workers team forked a version of Puppeteer and patched it to connect to the Workers Browser Run API instead. After connecting, the developers can then use the full [Puppeteer API ↗︎](https://pptr.dev/api) as they would on a standard setup.
 
-Our version is open sourced and can be found in [Cloudflare's fork of Puppeteer ↗︎](https://github.com/cloudflare/puppeteer). The npm can be installed from [npmjs ↗︎](https://www.npmjs.com/) as [@cloudflare/puppeteer ↗︎](https://www.npmjs.com/package/@cloudflare/puppeteer):
+Our version is open sourced and can be found in [Cloudflare's fork of Puppeteer ↗︎](https://github.com/cloudflare/browser-run/tree/main/packages/puppeteer-cloudflare). The npm can be installed from [npmjs ↗︎](https://www.npmjs.com/) as [@cloudflare/puppeteer ↗︎](https://www.npmjs.com/package/@cloudflare/puppeteer):
 
 npmyarnpnpmbun
 
@@ -42,7 +42,7 @@ bun add -d @cloudflare/puppeteer
 
 Note
 
-The current version is [`@cloudflare/puppeteer` v1.1.0 ↗︎](https://github.com/cloudflare/puppeteer/releases/tag/v1.1.0), based on [Puppeteer v22.13.1 ↗︎](https://pptr.dev/chromium-support).
+The current version is [`@cloudflare/puppeteer` v2.0.0 ↗︎](https://github.com/cloudflare/browser-run/releases/tag/cloudflare-puppeteer-v2.0.0), based on [Puppeteer v25.10.0 ↗︎](https://pptr.dev/chromium-support).
 
 ## Use Puppeteer in a Worker
 
@@ -104,7 +104,7 @@ To specify a custom user agent in Puppeteer, use the `page.setUserAgent()` metho
 
 ```js
 await page.setUserAgent(
-	"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+	"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
 );
 ```
 
@@ -222,7 +222,7 @@ You should also be able to access this information in the dashboard, albeit with
 
 ## Puppeteer API
 
-The full Puppeteer API can be found in the [Cloudflare's fork of Puppeteer ↗︎](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md).
+The full Puppeteer API can be found in the [Puppeteer API reference ↗︎](https://pptr.dev/api).
 
 Was this helpful?
 
@@ -233,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9cfe173f38","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9cfe173f38","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

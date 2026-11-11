@@ -108,7 +108,9 @@ For more information about SRT and how to install it on a custom image, see [rem
 
 If you use a custom Docker image, ensure that the following commands are available for the agent to function correctly:
 
-- `git`
+- `git` 2.31 or later. Flows authenticate Git operations with a credential helper
+  that is set through environment variables, which earlier versions of Git ignore. With an
+  earlier version, Git operations that need the flow's token, such as pushes, fail.
 - `curl`, which downloads the GitLab Duo CLI binary at flow startup.
 
 Most base images include these commands by default. However, minimal images (like `alpine` variants)
@@ -174,7 +176,7 @@ To configure flows for an offline environment:
    [GitLab package registry](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/packages):
 
    ```shell
-   curl --location "https://gitlab.com/api/v4/projects/46519181/packages/generic/duo-cli/10.0.0/duo-linux-x64" \
+   curl --location "https://gitlab.com/api/v4/projects/46519181/packages/generic/duo-cli/10.2.0/duo-linux-x64" \
      --output duo-linux-x64
    ```
 

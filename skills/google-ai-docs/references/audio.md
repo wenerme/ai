@@ -183,6 +183,14 @@ Gemini can analyze audio input and generate text responses.
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/sample.mp3 --wait)
+  gemini-api analyze "Describe this audio clip" -i "$FILE"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ## Overview  {% id="overview" %}
@@ -570,6 +578,35 @@ timestamps, speaker diarization, and emotion detection using
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  cat > transcribe.json <<'JSON'
+  {
+    "response_format": {
+      "type": "text",
+      "mime_type": "application/json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "summary": {"type": "string"},
+          "segments": {"type": "array", "items": {"type": "object", "properties": {
+            "speaker": {"type": "string"},
+            "timestamp": {"type": "string"},
+            "content": {"type": "string"},
+            "emotion": {"type": "string", "enum": ["happy", "sad", "angry", "neutral"]}
+          }}}
+        }
+      }
+    }
+  }
+  JSON
+  gemini-api generate "Transcribe with speaker diarization and emotion detection." \
+    -i "https://www.youtube.com/watch?v=ku-N-eS1lgM" \
+    --body @transcribe.json
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ![](https://www.gstatic.com/cloud-cms/33400c9cca6dbde2006c54e54d5e19a5.gif)
@@ -758,6 +795,14 @@ Use the [Files API](/docs/files) for files larger than 20 MB.
         }
       ]
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/sample.mp3 --wait)
+  gemini-api analyze "Describe this audio clip" -i "$FILE"
   ```
 
   {% /tab %}
@@ -954,6 +999,13 @@ For small audio files under 20MB total request size:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api analyze "Describe this audio clip" -i path/to/small-sample.mp3
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 Notes on inline audio data:
@@ -1104,6 +1156,14 @@ To get a transcript, ask for it in the prompt:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/sample.mp3 --wait)
+  gemini-api analyze "Generate a transcript of the speech." -i "$FILE"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ## Refer to timestamps  {% id="timestamps" %}
@@ -1240,6 +1300,14 @@ Use `MM:SS` format to reference specific sections:
           fmt.Println(*res.Interaction.OutputText)
       }
   }
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/sample.mp3 --wait)
+  gemini-api analyze "Provide a transcript from 02:30 to 03:29." -i "$FILE"
   ```
 
   {% /tab %}

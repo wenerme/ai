@@ -45,43 +45,11 @@ When targeting `/v1/moderations`, include an `input` field in every request body
 
 #### Moderation input examples
 
-Text-only request:
+This input file contains a text-only request followed by a request with text and image input:
 
 ```jsonl
-{
-  "custom_id": "moderation-text-1",
-  "method": "POST",
-  "url": "/v1/moderations",
-  "body": {
-    "model": "omni-moderation-latest",
-    "input": "This is a harmless test sentence."
-  }
-}
-```
-
-Request with text and image input:
-
-```jsonl
-{
-  "custom_id": "moderation-mm-1",
-  "method": "POST",
-  "url": "/v1/moderations",
-  "body": {
-    "model": "omni-moderation-latest",
-    "input": [
-      {
-        "type": "text",
-        "text": "Describe this image"
-      },
-      {
-        "type": "image_url",
-        "image_url": {
-          "url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg"
-        }
-      }
-    ]
-  }
-}
+{"custom_id": "moderation-text-1", "method": "POST", "url": "/v1/moderations", "body": {"model": "omni-moderation-latest", "input": "This is a harmless test sentence."}}
+{"custom_id": "moderation-mm-1", "method": "POST", "url": "/v1/moderations", "body": {"model": "omni-moderation-latest", "input": [{"type": "text", "text": "Describe this image"}, {"type": "image_url", "image_url": {"url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg"}}]}}
 ```
 
 Prefer referencing remote assets with `image_url` (instead of base64 blobs) to

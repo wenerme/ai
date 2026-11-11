@@ -61,6 +61,10 @@ Example response:
 ## Create a feature flag user list
 
 Creates a feature flag user list in a specified project.
+The size of `user_xids` counts toward a per-user
+[rate limit](../rate_limits/api/feature-flag-user-lists.md).
+If you exceed the rate limit, this endpoint returns
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 POST /projects/:id/feature_flags_user_lists
@@ -137,6 +141,10 @@ Example response:
 ## Update a feature flag user list
 
 Updates a specified feature flag user list.
+The size of `user_xids` counts toward a per-user
+[rate limit](../rate_limits/api/feature-flag-user-lists.md).
+If you exceed the rate limit, this endpoint returns
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 PUT /projects/:id/feature_flags_user_lists/:iid

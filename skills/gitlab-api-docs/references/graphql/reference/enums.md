@@ -313,6 +313,7 @@ Reason GitLab credits are unavailable.
 
 | Value | Description |
 | ----- | ----------- |
+| `NAMESPACE_MISSING` | No namespace to bill the usage to. On GitLab.com, the user must set a default GitLab Duo namespace. |
 | `USAGE_BILLING_FORBIDDEN` | Usage billing is not available for the account. |
 
 ## `AiDomainSettingAction`
@@ -5440,6 +5441,27 @@ Reason a Secrets Manager write was denied due to entitlement.
 | `SUBSCRIPTION_GRACE_PERIOD_EXPIRED` | Subscription is expired and the grace window has elapsed. |
 | `TRIAL_EXPIRED` | Trial period has ended. |
 | `TRIAL_REQUIRED` | A trial must be started before writes are allowed. |
+
+## `SecurityAiFlowFeedbackReason`
+
+Reasons for disagreeing with a security AI flow result.
+
+| Value | Description |
+| ----- | ----------- |
+| `CONFIDENCE_MISCALIBRATED` | Confidence score of the AI flow does not match the result. |
+| `EXPLANATION_INACCURATE` | Explanation of the AI flow is inaccurate. |
+| `IGNORED_DATA_FLOW` | AI flow ignored the data flow of the finding. |
+| `OTHER` | Other reason. |
+| `VERDICT_WRONG` | Verdict of the AI flow is wrong. |
+
+## `SecurityAiFlowFeedbackSentiment`
+
+Sentiment of feedback on a security AI flow result.
+
+| Value | Description |
+| ----- | ----------- |
+| `AGREE` | User agrees with the AI flow result. |
+| `DISAGREE` | User disagrees with the AI flow result. |
 
 ## `SecurityAttributeBulkUpdateMode`
 

@@ -138,6 +138,10 @@ keywords: Ultralytics, torch utils, model optimization, device selection, infere
 
 <hr>
 
+## ::: ultralytics.utils.torch_utils.interpolate_bilinear
+
+<hr>
+
 ## ::: ultralytics.utils.torch_utils.strip_optimizer
 
 <hr>

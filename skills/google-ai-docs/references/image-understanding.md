@@ -200,6 +200,14 @@ in the request:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload path/to/organ.jpg --wait)
+  gemini-api analyze "Caption this image." -i "$FILE"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ### Passing inline image data  {% id="inline-image" %}
@@ -383,6 +391,13 @@ You can provide image data as base64-encoded strings:
         }
       ]
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api analyze "Caption this image." -i path/to/small-sample.jpg
   ```
 
   {% /tab %}
@@ -757,6 +772,13 @@ objects in the `input` array:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api analyze "What is different between these two images?" -i image1.jpg -i image2.jpg
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ## Object detection  {% id="object-detection" %}
@@ -1054,6 +1076,19 @@ your original image size.
         }
       }
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate -i image.png "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000." \
+    --body '{"response_format": {"type": "text", "mime_type": "application/json", "schema": {
+      "type": "object", "required": ["boxes"], "properties": {"boxes": {"type": "array", "items": {
+        "type": "object", "required": ["box_2d", "mask", "label"], "properties": {
+          "box_2d": {"type": "array", "items": {"type": "integer"}},
+          "mask": {"type": "array", "items": {"type": "array", "items": {"type": "integer"}}},
+          "label": {"type": "string"}}}}}}}}'
   ```
 
   {% /tab %}

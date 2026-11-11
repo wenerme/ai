@@ -1,5 +1,5 @@
 ---
-description: Compare API Shield feature availability and endpoint limits across Cloudflare plans.
+description: Review API Shield add-on requirements and resource limits by Cloudflare plan.
 title: Plans
 image: https://developers.cloudflare.com/api-shield/plans/og.png?v=261ae43b8dc50384
 ---
@@ -12,13 +12,19 @@ image: https://developers.cloudflare.com/api-shield/plans/og.png?v=261ae43b8dc50
 
 # Plans
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/plans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/plans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed beta access does not imply future plan availability or pricing.
+Note
+
+Unless a feature page states otherwise, API Shield features require the paid API Shield add-on on an Enterprise plan.
+
+Customers with the API Security entitlement already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without the API Security entitlement. Interested customers can contact their account team to express interest. Closed beta access does not imply future plan availability or pricing.
 
 To subscribe to API Shield, upgrade to an Enterprise plan and contact your account team.
 
-Existing operation and uploaded schema limits remain based on your zone plan. These limits do not determine Application Profiles availability.
+## Resource limits by zone plan
+
+The following operation and uploaded schema limits are based on your zone plan. These limits do not determine availability for Application Profiles or other API Shield features.
 
 The uploaded schema allowance counts schemas enabled for validation. Cloudflare calculates schema size after processing an upload, so it may differ from the original file size.
 
@@ -39,5 +45,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/plans/#page","headline":"Plans","description":"Compare API Shield feature availability and endpoint limits across Cloudflare plans.","url":"https://developers.cloudflare.com/api-shield/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/plans/og.png?v=261ae43b8dc50384","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/plans/#page","headline":"Plans","description":"Review API Shield add-on requirements and resource limits by Cloudflare plan.","url":"https://developers.cloudflare.com/api-shield/plans/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/plans/og.png?v=261ae43b8dc50384","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

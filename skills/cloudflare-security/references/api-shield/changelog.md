@@ -16,6 +16,15 @@ Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/api-shield.xml)
 
+## 2026-11-11
+
+
+**Prioritize Web Assets operations with metric views**
+
+The **Web Assets** > **Operations** page now includes metric-focused views for traffic, errors, latency, response size, and security. Each view surfaces the relevant metrics and supports server-side sorting, making it easier to prioritize operations in large inventories.
+
+Refer to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/) for more information about managing and analyzing operations.
+
 ## 2026-10-12
 
 

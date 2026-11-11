@@ -78,7 +78,8 @@ send the payload body:
   ```shell
   curl --request POST \
     --header "Content-Type: application/json" \
-    --data '{"name":"<example-name>", "description":"<example-description>"}' "https://gitlab.example.com/api/v4/projects"
+    --data '{"name":"<example-name>", "description":"<example-description>"}' \
+    --url "https://gitlab.example.com/api/v4/projects"
   ```
 
 URL-encoded query strings have a length limitation. Requests that are too large
@@ -178,8 +179,8 @@ You can request the API with `array` and `hash` types parameters:
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  -d "import_sources[]=github" \
-  -d "import_sources[]=bitbucket" \
+  --data "import_sources[]=github" \
+  --data "import_sources[]=bitbucket" \
   --url "https://gitlab.example.com/api/v4/some_endpoint"
 ```
 

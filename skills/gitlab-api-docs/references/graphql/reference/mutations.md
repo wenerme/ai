@@ -9448,8 +9448,8 @@ Update attributes of a merge request.
 | ---- | ---- | ----------- |
 | `description` | [`String`](scalars.md#string) | Description of the merge request (Markdown rendered as HTML for caching). |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
-| `mergeAfter` | [`Time`](scalars.md#time) | Date and time after which the merge request can be merged. |
-| `mergeBefore` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Date and time before which the merge request can be merged. |
+| `mergeAfter` | [`Time`](scalars.md#time) | Date and time after which the merge request can be merged. To remove the merge schedule, set `mergeAfter` and `mergeBefore` to `null`. |
+| `mergeBefore` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Date and time before which the merge request can be merged. Set to `null` to remove the end time. |
 | `overrideRequestedChanges` | [`Boolean`](scalars.md#boolean) | Override all requested changes. Can only be set by users who have permissionto merge this merge request. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 | `removeSourceBranch` | [`Boolean`](scalars.md#boolean) | Indicates if the source branch of the merge request will be deleted after merge. |
@@ -12135,6 +12135,30 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `entitlement` | [`SecretsManagerEntitlement`](objects.md#secretsmanagerentitlement) | Secrets Manager entitlement state after starting the trial. Null when the post-trial state cannot be resolved; query the group entitlement directly instead. |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+
+## `securityAiFlowFeedbackCreate`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Submits feedback on the latest AI assessment of a vulnerability, such as a false positive detection. Emits an internal event and stores nothing.
+
+**Input type:** `SecurityAiFlowFeedbackCreateInput`
+
+### `securityAiFlowFeedbackCreate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `reasons` | [`[SecurityAiFlowFeedbackReason!]`](enums.md#securityaiflowfeedbackreason) | Reasons for the feedback. Only allowed when the sentiment is `DISAGREE`. Maximum 5 reasons. |
+| `sentiment` | [`SecurityAiFlowFeedbackSentiment!`](enums.md#securityaiflowfeedbacksentiment) | Sentiment of the feedback. |
+| `vulnerabilityId` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | Global ID of the vulnerability whose latest AI assessment the feedback is about. |
+
+### `securityAiFlowFeedbackCreate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
 ## `securityAttributeCreate`

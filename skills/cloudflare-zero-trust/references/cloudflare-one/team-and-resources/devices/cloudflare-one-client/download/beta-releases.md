@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Download Cloudflare One Client beta releases
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare tests new Cloudflare One Client features and improvements in an unstable beta release before adding them to the [stable release](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/). Beta releases are not recommended for production environments. To get early access to new features, download the latest beta client from the links below.
 
@@ -972,6 +972,81 @@ This release contains minor fixes and improvements.
 
 </details>
 
+## Linux
+
+| **OS version** | RHEL 9 <sup>[1](#user-content-fn-1)</sup>, RHEL 10, Debian 12, Debian 13, Fedora 43, Fedora 44, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS, Ubuntu 26.04 LTS |
+| --- | --- |
+| **Processor** | AMD64 / x86-64 or ARM64 / AArch64 |
+| **vCPU** | 3 minimum, 4 recommended |
+| **RAM without a desktop** | 1 GB minimum, 2 GB recommended (for example, Ubuntu Server) |
+| **RAM with a desktop** | 4 GB minimum, 8 GB recommended (for example, Ubuntu GNOME) |
+| **Disk space** | 250 MiB minimum, 500 MiB recommended |
+| **Network interface type** | Wi-Fi or LAN |
+| **MTU** | 1381 bytes recommended <sup>[2](#user-content-fn-2)</sup> |
+
+## Footnotes
+
+1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗︎](https://docs.fedoraproject.org/en-US/epel/) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. For the RHEL commands, refer to [Getting started with EPEL ↗︎](https://docs.fedoraproject.org/en-US/epel/getting-started/). [↩](#user-content-fnref-1)
+2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
+
+<details>
+
+<summary>
+
+Latest release
+
+</summary>
+
+**Version:** Linux 2026.9.2663.1**Date:** 2026-11-10**Size:** 84.2 MB
+
+cloudflare-warp cloudflare-mesh
+
+AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
+
+<a href="https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.9.2663.1">Download</a>
+
+#### Release notes
+
+This beta release includes the following highlights:
+
+- Added automatic endpoint selection for Global Acceleration. When Global Acceleration is enabled for an organization, the client connects to the Global Acceleration endpoints while the device is in the acceleration region and to the standard anycast endpoints otherwise, and reconnects when a network change moves the device between them without requiring action from the user. The Connectivity page shows which tunnel and API endpoints are in use, and users who are allowed to override the selection can choose endpoints in Settings.
+- Added a Diagnostics page to the client that shows the connection status and health, live tunnel and device metrics, network details and the results of DEX tests in one place. Users can run a speed test from the page that compares performance inside and outside the tunnel while the client is connected. The Troubleshooting tools button collects a full warp-diag bundle, or runs a captive portal test that briefly reconnects Wi-Fi, and saves the result to the Desktop, so users no longer need to run warp-diag from a terminal.
+- The client now shows a banner when the network limits the tunnel MTU to a degraded or critically low value. The banner clears when the MTU recovers or the client disconnects.
+
+**Additional changes and improvements**
+
+- The client now applies tunnel MTUs between 1147 and 1199 bytes measured by Path MTU Discovery. Previously the client ignored these values and kept a larger MTU, which could drop larger packets on networks such as mobile hotspots while the client showed as connected.
+- When Path MTU Discovery is enabled, the client now accepts larger packets from Cloudflare instead of limiting them to the size it uses for its own outbound packets.
+- When Path MTU Discovery measures an IPv6 path MTU below 1280 bytes, the client now reconnects over IPv4 and keeps preferring IPv4 until the network changes. Previously the client could stay on a smaller tunnel MTU over IPv6 on networks where IPv4 supports larger packets.
+- Access reauthentication requests now trust certificates in the operating system's certificate store, so reauthentication works on networks that perform TLS inspection.
+- For Zero Trust deployments, the client now records a traceroute of the network path outside the tunnel when the tunnel degrades or fails to connect. warp-diag includes the same trace.
+- Added the MDM parameters managed\_network\_probe\_interval\_secs (30–300, default 30) and managed\_network\_probe\_count (0 disables probing, 1–10, or -1 to keep probing until a managed network is found; default 1). After a registration or network change finds no managed network, the client now rechecks, so a device doesn't stay on the default profile because of a transient connection failure. Set the count to 0 to keep the previous behavior.
+- Added the <code>multicast</code> network policy and MDM setting (<code>allow</code> or <code>drop</code>, default <code>drop</code>). When set to <code>allow</code>, the client sends traffic for multicast addresses through the tunnel instead of dropping it, for networks that use multicast ranges for other traffic.
+- In proxy mode for Zero Trust, the client now sends hostnames from HTTP/HTTPS and SOCKS5 requests to Cloudflare for resolution, instead of resolving them on the device.
+- The Connectivity page now shows the IPv4 and IPv6 addresses assigned to the tunnel while the client is connected.
+- When the app cannot reach the client service, the home screen now says why (service not running, not accepting connections, not responding, or connection dropped and reconnecting). It shows an error code and a Learn more link instead of "IPC error".
+- The client now shows a notification when an administrator removes the user's selected virtual network, and shows a specific message when the user selects a virtual network that is no longer available.
+- The consumer client home screen now shows when the connection is post-quantum encrypted.
+- <code>warp-cli target list</code> now accepts <code>--hostname</code> to filter targets by one or more comma-separated hostnames.
+- DEX HTTP tests now send a default User-Agent that identifies the Cloudflare One Client when the test does not configure one.
+- Reduced the client UI's memory usage on the home screen.
+- Fixed the client continuing to use the previous tunnel protocol after a key rotation for a protocol change failed. The client now retries the rotation the next time it connects.
+- Fixed service token enrollment failing when it ran shortly after the service token was created. The client now retries while the new token becomes available.
+- Fixed the client reconnecting repeatedly when Global Acceleration automatic endpoint selection was enabled on devices in the acceleration region, and fixed the client keeping its previous data center after the selected endpoints changed.
+- Fixed a hostname-based split tunnel entry not taking effect until the next reconnect after its firewall rule failed to apply.
+- Fixed <code>warp-cli dns fallback add</code> accepting an empty domain, which sent all DNS queries to the local resolver instead of Gateway. Fallback domain and split tunnel entries are now normalized, so removing an entry matches regardless of case or a trailing dot.
+- Fixed the DNS proxy caching answers for longer than the TTL of a CNAME record in the chain.
+- Fixed <code>warp-cli registration license</code> reporting an error on slow networks even though the license was applied, which left the client registered to a WARP+ account it did not recognize.
+- Fixed Digital Experience Monitoring (DEX) results being reported with timestamps offset from the actual time after the system clock was corrected.
+
+**Known issues**
+
+- When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
+
+For Zero Trust documentation, see: <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/">https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/</a><br> For Consumer documentation, see: <a href="https://developers.cloudflare.com/warp-client/">https://developers.cloudflare.com/warp-client/</a>
+
+</details>
+
 Was this helpful?
 
 YesNo
@@ -981,5 +1056,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/#page","headline":"Download Cloudflare One Client beta releases","description":"Reference information for Download Cloudflare One Client beta releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/og.png?v=05cb0cdec47e868c","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/#page","headline":"Download Cloudflare One Client beta releases","description":"Reference information for Download Cloudflare One Client beta releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/og.png?v=05cb0cdec47e868c","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

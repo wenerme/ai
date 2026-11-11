@@ -56,6 +56,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`ai_catalog_flow_sub_agent_refused`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263003) | A session asked for an AI Catalog sub-agent and GitLab refused it. The user cannot read it, it is outside the group hierarchy of the flow, it is not visible to the flow, it has no released version, or custom agents are turned off | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628315) | Project |
 | [`ai_catalog_restricted_to_group_hierarchy_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/233902) | In a group, the AI Catalog restricted to group hierarchy setting is changed | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/594617) | Group |
 | [`create_ai_catalog_agent`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/212259) | A user creates an AI Catalog agent. | Yes | GitLab [18.6](https://gitlab.com/gitlab-org/gitlab/-/issues/566901) | Project |
 | [`create_ai_catalog_flow`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/212539) | A user creates an AI Catalog flow. | Yes | GitLab [18.6](https://gitlab.com/gitlab-org/gitlab/-/issues/566901) | Project |
@@ -365,7 +366,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
-| [`duo_scheduled_triggers_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264600) | GitLab Duo scheduled triggers enabled setting on group changed | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) | Group |
+| [`duo_scheduled_automations_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264600) | GitLab Duo scheduled automations enabled setting on group changed | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) | Group |
 | [`flow_trigger_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230069) | A flow trigger was created for a project | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/593020) | Project |
 | [`flow_trigger_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230069) | A flow trigger was deleted from a project or group | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/593020) | Group, Project |
 | [`flow_trigger_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230069) | A flow trigger was updated for a project or group | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/593020) | Group, Project |

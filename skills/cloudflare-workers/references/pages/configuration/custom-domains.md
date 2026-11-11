@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/configuration/custom-domains/og.p
 
 # Custom domains
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When deploying your Pages project, you may wish to point custom domains (or subdomains) to your site.
 
@@ -79,6 +79,22 @@ To disable access to your project's provided `*.pages.dev` subdomain:
 1. Use Cloudflare Access over your previews ( `*.{project}.pages.dev`). Refer to [Customize preview deployments access](https://developers.cloudflare.com/pages/configuration/preview-deployments/#customize-preview-deployments-access).
 2. Redirect the `*.pages.dev` URL associated with your production Pages project to a custom domain. You can use the account-level [Bulk Redirect](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) feature to redirect your `*.pages.dev` URL to a custom domain.
 
+## Zone settings
+
+When a [proxied CNAME record](https://developers.cloudflare.com/dns/proxy-status/) points your custom domain to Pages, requests pass through your zone before reaching your Pages project. Your configured Web Application Firewall (WAF), Redirect Rules, Transform Rules, Cache Rules, and Bot Management settings apply according to your plan and configuration.
+
+A block, redirect, or cached response in your zone can end a request before it reaches Pages. Requests that continue to Pages also use Cloudflare-managed Pages settings.
+
+Some settings are managed separately from your zone:
+
+| Setting | Pages behavior |
+| --- | --- |
+| Minimum Transport Layer Security (TLS) version and cipher suites | Pages manages these settings for the custom hostname. Your zone's [minimum TLS version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#availability) and [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/#limitations) settings do not apply. You cannot customize these settings for Pages hostnames. |
+| Browser Integrity Check | Pages can block a request even when you turn off or skip Browser Integrity Check in your zone. Refer to [Browser Integrity Check on Pages](https://developers.cloudflare.com/pages/platform/known-issues/#browser-integrity-check). |
+| Early Hints | Pages enables Early Hints independently of your zone's setting. Refer to [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/#disable-early-hints-on-pages). |
+
+With a DNS-only record or an external DNS provider, requests do not pass through your zone's HTTP settings. Pages-managed settings still apply.
+
 ## Caching
 
 For guidelines on caching, refer to [Caching and performance](https://developers.cloudflare.com/pages/configuration/serving-pages/#caching-and-performance).
@@ -121,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/custom-domains/#page","headline":"Custom domains","description":"Add custom domains and subdomains to your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/custom-domains/og.png?v=bfd8711470c042b9","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/custom-domains/#page","headline":"Custom domains","description":"Add custom domains and subdomains to your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/custom-domains/og.png?v=bfd8711470c042b9","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

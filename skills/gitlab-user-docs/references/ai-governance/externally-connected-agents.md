@@ -42,10 +42,11 @@ Sessions in folders without such a remote are not sent.
 ## Prerequisites
 
 - GitLab Premium or Ultimate with GitLab Duo Agent Platform for the top-level group.
-- [`glab`](../../editor_extensions/gitlab_cli/_index.md) 1.122.0 or later, signed in to your GitLab instance.
-  For OpenCode, `glab` 1.125.0 or later and OpenCode 1.4 or later.
-  In `glab` versions earlier than 1.129.0, the commands on this page are under `glab govern`
-  instead of `glab minder`, for example `glab govern setup`.
+- [`glab`](../../editor_extensions/gitlab_cli/_index.md), signed in to your GitLab instance.
+  The version you need depends on the agent and the command name:
+  - 1.122.0 or later for Claude Code, Cursor, and Codex.
+  - 1.125.0 or later for OpenCode, with OpenCode 1.4 or later.
+  - 1.129.0 or later for `glab minder` commands, which replaced `glab govern`.
 - At least the Developer role for the project.
 - **Allow external agents** turned on for the top-level group. It is on by default.
   The setting belongs to the AI Catalog

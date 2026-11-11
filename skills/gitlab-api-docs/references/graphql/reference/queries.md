@@ -1167,7 +1167,7 @@ Whether GitLab credits are available for the current user.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.
 
-Reason GitLab credits are unavailable. Returns "usage_billing_forbidden" when usage billing is not available for the account. Returns null when credits are available or the unavailability reason is not recognized.
+Reason GitLab credits are unavailable. Returns "usage_billing_forbidden" when usage billing is not available for the account, and "namespace_missing" when there is no namespace to bill the usage to. Returns null when credits are available or the unavailability reason is not recognized.
 
 **Returns:** [`AiCreditsDenialReason`](enums.md#aicreditsdenialreason)
 
