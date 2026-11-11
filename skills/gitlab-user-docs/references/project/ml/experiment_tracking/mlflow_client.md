@@ -167,13 +167,9 @@ model.predict(data=sample_input)
 
 ### Searching experiments, runs, and models
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268355) to accept `order_by` as a list in GitLab 19.6 [with a feature flag](../../../../administration/feature_flags/_index.md) named `mlflow_search_order_by_list`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268355) to accept `order_by` as a list in GitLab 19.6.
 
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-
-`search_runs`, `search_experiments`, and `search_registered_models` send `order_by` as a list.
+`search_runs` and `search_experiments` send `order_by` as a list.
 GitLab orders by the first entry only and breaks ties on the ID. Later entries are ignored.
 
 ```python
@@ -185,8 +181,9 @@ Accepted names, each optionally followed by `ASC` or `DESC`:
 - `search_runs`: `metrics.<name>`, `created_at` or `start_time`, `name` or `run_name`, and `id`. The `attributes.` prefix is accepted.
 - `search_experiments` and `search_registered_models`: `name`, `created_at`, `updated_at` or `last_updated_timestamp`, and `id`.
 
-An empty entry or a name that is not in this list returns `INVALID_PARAMETER_VALUE`.
-When the feature flag is disabled, a list returns `INVALID_PARAMETER_VALUE` and only a single string is accepted.
+For `search_runs` and `search_experiments`, an empty entry or a name that is not in this list returns `INVALID_PARAMETER_VALUE`.
+
+For `search_registered_models`, the MLflow client sends `order_by` as query parameters, and GitLab uses only the last entry. Pass one entry. GitLab orders by `created_at` when the name is not in this list.
 
 ### Associating a run to a CI/CD job
 

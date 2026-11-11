@@ -14,6 +14,7 @@ You can select a different model for a feature, which persists until you change 
 ## Default models
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/614057) model setting for GitLab Duo Code Review to **Non-Agentic Code Review** in GitLab 19.4.
+- Default LLM for GitLab Duo Code Review [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7896) to Claude Sonnet 4.5 Bedrock on November 11, 2026.
 
 The following table lists the default model for each GitLab Duo feature.
 
@@ -33,7 +34,7 @@ The following table lists the default model for each GitLab Duo feature.
 | Merge Commit Message Generation | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | Merge Request Summary | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | Code Review Summary | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
-| Non-Agentic Code Review | Claude Sonnet 4.5 Gemini Enterprise Agent Platform |
+| Non-Agentic Code Review | Claude Sonnet 4.5 Bedrock |
 | **Other GitLab Duo features** | |
 | Vulnerability Explanation | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | Vulnerability Resolution | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
@@ -43,6 +44,7 @@ The following table lists the default model for each GitLab Duo feature.
 ## Supported models
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/614057) model setting for GitLab Duo Code Review to **Non-Agentic Code Review** in GitLab 19.4.
+- Claude Sonnet 4.5 Bedrock [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7896) and Claude Sonnet 4.5 and Claude Sonnet 4.5 Gemini Enterprise Agent Platform [removed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7896) as supported models for GitLab Duo Code Review on November 11, 2026.
 
 The following tables list the models you can select for each feature.
 
@@ -71,8 +73,8 @@ The following tables list the models you can select for each feature.
 
 | Model | Merge Commit Message Generation | Merge Request Summary | Code Review Summary | Non-Agentic Code Review |
 |------------|--------------------------------|------------------------|---------------------|-------------|
-| Claude Sonnet 4.5 | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.5 Gemini Enterprise Agent Platform | No | No | No | Yes |
+| Claude Sonnet 4.5 | Yes | Yes | Yes | No |
+| Claude Sonnet 4.5 Bedrock | No | No | No | Yes |
 | Claude Sonnet 4.6 | No | No | No | Yes |
 | Claude Sonnet 4.6 Gemini Enterprise Agent Platform | No | No | No | Yes |
 

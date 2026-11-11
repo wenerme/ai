@@ -407,7 +407,7 @@ You can clear the cache in the GitLab UI:
 
 1. In the top bar, select  and find your project.
 1. In the left sidebar, select  > .
-1. In the upper-right corner, select .
+1. In the upper-right corner, select  () > .
 
 On the next commit, your CI/CD jobs use a new cache.
 

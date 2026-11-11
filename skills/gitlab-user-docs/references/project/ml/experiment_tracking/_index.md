@@ -77,3 +77,6 @@ To view logged metrics:
 1. Select the **Performance** tab.
 
 [A graph of an experiment's performance]
+
+The **Performance** tab shows only the 1,000 most recently logged metric values of a run, and an alert appears when a run has more.
+A metric with no values in this range does not appear in the table, but the run list of the experiment still shows its latest value.

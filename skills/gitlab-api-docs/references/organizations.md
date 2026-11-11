@@ -169,3 +169,200 @@ Example response:
   "user_ids": [5, 6]
 }
 ```
+
+## List organization users
+
+- Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+
+Lists the users of an organization.
+
+Prerequisites:
+
+- Instance or organization administrator access.
+
+```plaintext
+GET /organizations/:id/users
+```
+
+Supported attributes:
+
+| Attribute | Type    | Required | Description |
+|-----------|---------|----------|-------------|
+| `id`      | integer | Yes      | The ID of the organization. |
+| `cursor`  | string  | No       | Cursor for the next page of results. |
+| `order_by` | string | No       | Field to sort by. Only `id` is supported. Default is `id`. |
+| `per_page` | integer | No      | Number of items per page, from 1 to 100. Default is 20. |
+| `sort`    | string  | No       | Sort order, either `asc` or `desc`. Default is `asc`. |
+
+This endpoint supports only [keyset pagination](rest/_index.md#keyset-based-pagination).
+Keyset pagination is used by default, and the `page` parameter is not supported.
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
+response attributes:
+
+| Attribute      | Type    | Description |
+|----------------|---------|-------------|
+| `access_level` | string  | Access level of the user in the organization, either `default` or `owner`. Users with the `owner` access level are organization administrators. |
+| `bot`          | boolean | If `true`, the user is a bot. |
+| `id`           | integer | ID of the user. |
+| `username`     | string  | Username of the user. |
+
+Example request:
+
+```shell
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/organizations/42/users"
+```
+
+Example response:
+
+```json
+[
+  {
+    "id": 1001,
+    "username": "jsmith",
+    "bot": false,
+    "access_level": "default"
+  }
+]
+```
+
+## Add a user to an organization
+
+- Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+
+Adds a user to an organization.
+
+Prerequisites:
+
+- Instance or organization administrator access.
+
+```plaintext
+POST /organizations/:id/users
+```
+
+Supported attributes:
+
+| Attribute      | Type    | Required | Description |
+|----------------|---------|----------|-------------|
+| `id`           | integer | Yes      | The ID of the organization. |
+| `username`     | string  | Yes      | The username of the user to add. |
+| `access_level` | string  | No       | The access level of the user, either `default` or `owner`. Users with the `owner` access level are organization administrators. Default is `default`. |
+
+If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the
+attributes listed in [List organization users](#list-organization-users).
+
+If the user does not exist or is already a member, returns `400 Bad Request`.
+To change the access level of an existing member, use [Update an organization user](#update-an-organization-user).
+
+Example request:
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --data "username=jsmith" \
+  --data "access_level=owner" \
+  --url "https://gitlab.example.com/api/v4/organizations/42/users"
+```
+
+Example response:
+
+```json
+{
+  "id": 1001,
+  "username": "jsmith",
+  "bot": false,
+  "access_level": "owner"
+}
+```
+
+## Update an organization user
+
+- Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+
+Changes the access level of a user in an organization. For example, you can make a member an organization administrator.
+
+Prerequisites:
+
+- Instance or organization administrator access.
+
+```plaintext
+PUT /organizations/:id/users/:user_id
+```
+
+Supported attributes:
+
+| Attribute      | Type    | Required | Description |
+|----------------|---------|----------|-------------|
+| `id`           | integer | Yes      | The ID of the organization. |
+| `user_id`      | integer | Yes      | The ID of the user to update. |
+| `access_level` | string  | Yes      | The access level of the user, either `default` or `owner`. Users with the `owner` access level are organization administrators. |
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
+attributes listed in [List organization users](#list-organization-users).
+
+Returns `400 Bad Request` if the change would leave the organization without an active organization administrator.
+
+Returns `404 Not Found` if the user is not a member of the organization.
+
+Example request:
+
+```shell
+curl --request PUT \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --data "access_level=owner" \
+  --url "https://gitlab.example.com/api/v4/organizations/42/users/1001"
+```
+
+Example response:
+
+```json
+{
+  "id": 1001,
+  "username": "jsmith",
+  "bot": false,
+  "access_level": "owner"
+}
+```
+
+## Remove a user from an organization
+
+- Introduced as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+
+Removes a user from an organization. Removal from an organization
+also removes the user as a member from any groups or projects
+managed by the organization.
+
+Prerequisites:
+
+- Instance or organization administrator access, unless you are removing yourself.
+
+```plaintext
+DELETE /organizations/:id/users/:user_id
+```
+
+Supported attributes:
+
+| Attribute | Type    | Required | Description |
+|-----------|---------|----------|-------------|
+| `id`      | integer | Yes      | The ID of the organization. |
+| `user_id` | integer | Yes      | The ID of the user to remove. |
+
+If successful, returns [`204 No Content`](rest/troubleshooting.md#status-codes).
+
+Returns `400 Bad Request` if:
+
+- The user is the last active organization administrator.
+- The organization is the user's home organization, which is the organization that the user belongs to by default.
+- The user would no longer belong to any organization.
+
+Returns `403 Forbidden` if you do not have permission to remove the user.
+
+Example request:
+
+```shell
+curl --request DELETE \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/organizations/42/users/5"
+```

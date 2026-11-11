@@ -7,7 +7,7 @@ description: "Introduction to the Dynatrace data source in Grafana."
 
 # Dynatrace data source for Grafana
 
-The Dynatrace data source plugin allows you to query and visualize Dynatrace metrics, problems, audit logs, management zones, and logs. You can also use USQL to query user session data and Grail to query data from Dynatrace’s unified data lakehouse. The Logs query type is in beta because the underlying Dynatrace API is an early adopter release.
+The Dynatrace data source plugin allows you to query and visualize Dynatrace metrics, problems, audit logs, management zones, and logs. You can also use USQL to query user session data and Grail to query data from the Dynatrace data lakehouse. The Logs query type is in beta because the underlying Dynatrace API is an early adopter release.
 
 > Note
 >
@@ -17,8 +17,8 @@ The Dynatrace data source plugin allows you to query and visualize Dynatrace met
 
 The Dynatrace data source supports the following Dynatrace deployment types:
 
-- **SaaS** - Dynatrace’s cloud-hosted service where Dynatrace manages all infrastructure.
-- **Managed** - Self-hosted Dynatrace deployment that you run on your own infrastructure (on-premises or in your own cloud environment).
+- **SaaS** - A cloud-hosted service where Dynatrace manages all infrastructure.
+- **Managed** - A Dynatrace deployment that you run on your own infrastructure (on-premises or in your own cloud environment).
 - **Environment ActiveGate** - Connect through an ActiveGate for environments that require it.
 
 ## Get started
@@ -32,17 +32,17 @@ The following documents will help you get started with the Dynatrace data source
 
 ## Additional features
 
-Once you have configured the Dynatrace data source, you can:
+After you have configured the Dynatrace data source, you can:
 
 - Use [Grafana Assistant](https://grafana.com/docs/grafana/latest/ai/assistant/) to query your Dynatrace data with natural language.
 - Add [Annotations](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/annotations/) to overlay Dynatrace events on your graphs.
 - Configure and use [Templates and variables](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](https://grafana.com/docs/grafana/latest/panels/transformations/).
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
 - Set up [Alerting](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/alerting/) to monitor your Dynatrace data.
 
 ## Grafana Assistant
 
-You can use [Grafana Assistant](https://grafana.com/docs/grafana/latest/ai/assistant/) to explore and query your Dynatrace data using natural language. The Assistant discovers the metrics available in your Dynatrace environment, builds and runs queries—including Metrics, DQL (Grail), USQL, Logs, and Problems queries—and visualizes the results on a dashboard.
+You can use [Grafana Assistant](https://grafana.com/docs/grafana/latest/ai/assistant/) to explore and query your Dynatrace data using natural language. The Assistant discovers the metrics available in your Dynatrace environment, builds and runs queries, including Metrics, DQL (Grail), USQL, Logs, and Problems queries, and visualizes the results on a dashboard.
 
 To query Dynatrace, mention your Dynatrace data source with the `@` symbol in your prompt. For example:
 

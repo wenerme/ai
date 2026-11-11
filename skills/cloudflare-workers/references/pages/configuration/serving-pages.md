@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/configuration/serving-pages/og.pn
 
 # Serving Pages
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/serving-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/serving-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages includes a number of defaults for serving your Pages sites. This page details some of those decisions, so you can understand how Pages works, and how you might want to override some of the default behaviors.
 
@@ -34,7 +34,7 @@ If your project does not include a top-level `404.html` file, Pages assumes that
 
 In most situations, you should avoid setting up any custom caching on your site. Pages comes with built in caching defaults that are optimized for caching as much as possible, while providing the most up to date content. Every time you deploy an asset to Pages, the asset remains cached on the Cloudflare CDN until your next deployment.
 
-Therefore, if you add caching to your [custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/), it may lead to stale assets being served after a deployment.
+For a [proxied custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/#zone-settings), Cache Rules and legacy Page Rules can cache responses in your zone before requests reach Pages. This cache is separate from Pages' built-in caching and can serve stale content after a deployment.
 
 In addition, adding caching to your custom domain may cause issues with [Pages redirects](https://developers.cloudflare.com/pages/configuration/redirects/) or [Pages functions](https://developers.cloudflare.com/pages/functions/). These issues can occur because the cached response might get served to your end user before Pages can act on the request.
 
@@ -44,7 +44,7 @@ Note that when you use Cloudflare Pages, the static assets that you upload as pa
 
 Purging the cache
 
-If you notice stale assets being served after a new deployment, go to your zone and then **Caching** > **Configuration** > [**Purge Everything**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/) to ensure the latest deployment gets served.
+If a custom caching rule serves stale content after a deployment, remove or narrow the rule, then [purge the affected URLs](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/) in your custom domain's zone. Purging alone does not prevent stale content after future deployments. You can also [purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/) if you need to clear all cached content in that zone.
 
 ### Behavior
 
@@ -103,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/serving-pages/#page","headline":"Serving Pages","description":"Learn how Cloudflare Pages handles route matching, 404 behavior, SPA rendering, and caching.","url":"https://developers.cloudflare.com/pages/configuration/serving-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/serving-pages/og.png?v=207df164793a149f","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/serving-pages/#page","headline":"Serving Pages","description":"Learn how Cloudflare Pages handles route matching, 404 behavior, SPA rendering, and caching.","url":"https://developers.cloudflare.com/pages/configuration/serving-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/serving-pages/og.png?v=207df164793a149f","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

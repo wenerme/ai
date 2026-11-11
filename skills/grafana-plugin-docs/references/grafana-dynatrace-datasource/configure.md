@@ -15,17 +15,17 @@ The Dynatrace data source has the following requirements.
 
 Grafana requirements:
 
-- Grafana 10.4 or later
+- Grafana 11.6.7 or later
 - One of the following:
 
-  - [Grafana Cloud](https://grafana.com/products/cloud/) Free, Advanced, or Trial account.
+  - [Grafana Cloud](https://grafana.com/products/cloud/) Free, Pro, or Advanced account.
   - Grafana Enterprise with an [activated license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 - The `Organization administrator` role to add data sources.
 
 Dynatrace requirements:
 
 - A Dynatrace environment (SaaS, Managed, or Environment ActiveGate).
-- A Dynatrace API token with appropriate scopes (see [Get an API key from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace)).
+- A Dynatrace API token, a Platform token, or both, with appropriate scopes. Refer to [Get an API key from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) and [Get a Platform token from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-a-platform-token-from-dynatrace).
 - If using TLS/SSL: CA certificates, client certificates, or client keys as needed.
 
 ### Installation
@@ -65,7 +65,7 @@ Expand table
 
 ## Get a Platform token from Dynatrace
 
-To query data stored in Dynatrace Grail, you need a Platform token in addition to an API token. Platform tokens provide access to Grail’s unified data lakehouse for logs, metrics, traces, and events.
+To query data stored in Dynatrace Grail, you need a Platform token. Platform tokens provide access to the Grail data lakehouse for logs, metrics, traces, and events.
 
 To set up a Platform token, refer to [Dynatrace API - Tokens and authentication](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-api/basics/dynatrace-api-authentication).
 
@@ -83,6 +83,14 @@ Expand table
 | Logs            | `storage:logs:read`      |
 | Entities        | `storage:entities:read`  |
 | Business Events | `storage:bizevents:read` |
+
+> Note
+>
+> The beta Logs query type uses the API token and requires the `Read logs` scope. Querying logs through Grail uses the Platform token and requires the `storage:logs:read` scope. Make sure you grant the scope that matches the token for the path you use.
+
+> Note
+>
+> When a Platform token is configured, the connection test validates Grail by running a logs query, so the Platform token must have the `storage:logs:read` scope even if you only query Grail metrics or events. If you don’t query Grail, leave the Platform token empty so the connection test validates only the API token.
 
 ## Add the Dynatrace data source
 
@@ -111,11 +119,11 @@ Expand table
 
 Select the type of Dynatrace instance that you are connecting to:
 
-**SaaS Environment** - Dynatrace’s cloud-hosted service where Dynatrace manages all the infrastructure for you.
+**SaaS Environment** - A cloud-hosted service where Dynatrace manages all the infrastructure for you.
 
 - **Environment ID** - The environment ID from your instance URL. For example, in `yfc55578.live.dynatrace.com`, the Environment ID is `yfc55578`.
 
-**Managed Cluster** - A self-hosted Dynatrace deployment that you run on your own infrastructure (on-premises or in your own cloud environment).
+**Managed Cluster** - A Dynatrace deployment that you run on your own infrastructure (on-premises or in your own cloud environment).
 
 - **Environment ID** - The environment ID from your instance URL. For example, in `yd8888.managed-sprint.dynalabs.io/e/abc99984-3af2-55tt-72kl-0672983gc45`, the Environment ID is `abc99984-3af2-55tt-72kl-0672983gc45`.
 - **Domain** - The domain name of your Dynatrace server. For example: `yd8888.managed-sprint.dynalabs.io`
@@ -128,7 +136,7 @@ Select the type of Dynatrace instance that you are connecting to:
 
 The following settings apply to all API types:
 
-- **Dynatrace API token** - Enter your Dynatrace API token. At minimum, it must have `metrics.read` and `entities.read` permissions. Refer to [Get an API key from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) for instructions on creating the token and required scopes for each query type.
+- **Dynatrace API token** - Enter your Dynatrace API token. At minimum, it must have the `Read metrics` and `Read entities` scopes. Refer to [Get an API key from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) for instructions on creating the token and required scopes for each query type.
 - **Dynatrace Platform token** - *(Optional)* Enter your Dynatrace Platform token. This token is required for querying data stored in Dynatrace Grail. Refer to [Get a Platform token from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-a-platform-token-from-dynatrace) for instructions on creating the token and required scopes.
 - **Timeout** - The timeout, in seconds, for the HTTP client. The default is `30`.
 - **Add self-signed certificate** - Enable this option to provide your own CA certificate for TLS verification.
@@ -140,6 +148,11 @@ The following settings apply to all API types:
   - **Client Certificate** - Paste your client certificate content.
   - **Client Key** - Paste your client key content.
 - **Skip TLS certificate validation** - Enable this option to skip SSL/TLS certificate validation when connecting to the Dynatrace API endpoint. Use with caution.
+- **Secure Socks Proxy** - *(Optional)* Enable this option to route the data source connection through a secure Socks proxy, such as Grafana Cloud Private Data source Connect (PDC). This setting appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled. Use it only for a Dynatrace instance that is reachable over a private network. Leave it disabled for a SaaS environment. For more information, refer to [Configure a data source connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+
+> Note
+>
+> Provide at least one token. Configure the API token for the classic query types, such as Metrics, Problems, and USQL, and the Platform token for Grail queries. A configuration with only a Platform token is valid if you query Grail exclusively.
 
 ## Configure the data source with provisioning
 

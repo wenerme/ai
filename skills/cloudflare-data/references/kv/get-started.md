@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc2398
 
 Create a basic key-value store which stores the notification configuration of all users in an application, where each user may have `enabled` or `disabled` notifications.
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers KV provides low-latency, high-throughput global storage to your [Cloudflare Workers](https://developers.cloudflare.com/workers/) applications. Workers KV is ideal for storing user configuration data, routing data, A/B testing configurations and authentication tokens, and is well suited for read-heavy workloads.
 
@@ -123,6 +123,36 @@ Create a new Worker to read and write to your KV namespace.
 
 A [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) is a key-value database replicated to Cloudflare's global network.
 
+The following content appears twice: first for the Cloudflare CLI (`cf`), then for Wrangler. Use `cf` for new projects. In an existing project, use the CLI that the project already uses.
+
+Cloudflare CLI
+
+You can use the [Cloudflare CLI (`cf`)](https://developers.cloudflare.com/cf/) to create a new KV namespace. It also has commands to put, list, get, and delete keys within your KV namespace.
+
+Note
+
+KV operations are scoped to your account. If you have not used `cf` before, [install it and sign in](https://developers.cloudflare.com/cf/get-started/) first.
+
+To create a KV namespace via `cf`:
+
+1. Open your terminal and run the following command:
+
+   ```sh
+   cf kv namespaces create --title <NAMESPACE_TITLE>
+   ```
+
+   The `cf kv namespaces create` command creates a namespace with the title you pass to `--title`.
+
+   For this tutorial, use the title `USERS_NOTIFICATION_CONFIG`.
+
+   ```sh
+   cf kv namespaces create --title USERS_NOTIFICATION_CONFIG
+   ```
+
+2. `cf` prints the new namespace as JSON. Keep its `id` value. You need it to bind the namespace to your Worker in the next step.
+
+Wrangler
+
 You can use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to create a new KV namespace. You can also use it to perform operations such as put, list, get, and delete within your KV namespace.
 
 Note
@@ -172,6 +202,18 @@ Workers KV Instant is currently in private beta. To enroll, contact your Cloudfl
 
 Use Workers KV Instant for small, read-heavy application configurations values that update infrequently and are proactively propagated across Cloudflare's network.
 
+The following content appears twice: first for the Cloudflare CLI (`cf`), then for Wrangler. Use `cf` for new projects. In an existing project, use the CLI that the project already uses.
+
+Cloudflare CLI
+
+To optionally create a KV Instant namespace named `APP_CONFIG` with the [Cloudflare CLI (`cf`)](https://developers.cloudflare.com/cf/), pass `--namespace-mode instant`:
+
+```sh
+cf kv namespaces create --title APP_CONFIG --namespace-mode instant
+```
+
+Wrangler
+
 To optionally create a KV Instant namespace named `APP_CONFIG` with [Wrangler](https://developers.cloudflare.com/workers/wrangler/), pass `--experimental-mode instant`:
 
 npmyarnpnpm
@@ -186,12 +228,6 @@ yarn wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
 
 ```
 pnpm wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
-```
-
-To create the namespace with [Cloudflare CLI](https://developers.cloudflare.com/cf/), pass `--namespaceMode instant`:
-
-```sh
-cf kv namespaces create --title APP_CONFIG --namespaceMode instant
 ```
 
 Alternatively, create it through the API with `mode: "instant"`:
@@ -561,5 +597,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

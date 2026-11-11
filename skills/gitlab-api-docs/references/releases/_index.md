@@ -603,6 +603,7 @@ adding milestones for ancestor groups raises an error.
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Creates an evidence for an existing release.
+Each request counts toward a per-user [rate limit](../../rate_limits/api/releases.md).
 
 ```plaintext
 POST /projects/:id/releases/:tag_name/evidence

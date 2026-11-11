@@ -60,7 +60,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (17)
+Previous version history (16)
 
 </summary>
 
@@ -552,45 +552,6 @@ This release contains minor fixes, improvements, and new features. New features 
 
 </details>
 
-<details>
-
-<summary>
-
-Windows 2025.9.558.0
-
-</summary>
-
-**Version:** Windows 2025.9.558.0**Date:** 2025-11-11**Size:** 136 MB
-
-<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2025.9.558.0">Download</a>
-
-#### Release notes
-
-This release contains minor fixes, improvements, and new features including <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery">Path Maximum Transmission Unit Discovery (PMTUD)</a>. When PMTUD is enabled, the client will dynamically adjust packet sizing to optimize connection performance. There is also a new connection status message in the GUI to inform users that the local network connection may be unstable. This will make it easier to diagnose connectivity issues.
-
-**Changes and improvements**
-
-- Fixed an inconsistency with <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices">Global WARP override</a> settings in multi-user environments when switching between users.
-- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
-- Fixed an issue where deleting a registration was erroneously reported as having failed.
-- Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery">PMTUD documentation</a>.
-- Improvements for the <a href="https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/warp-client-checks/os-version/">OS version</a> WARP client check. Windows Updated Build Revision (UBR) numbers can now be checked by the client to ensure devices have required security patches and features installed.
-- The WARP client now supports Windows 11 ARM-based machines. For information on known limitations, refer to the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#cloudflare-one-client-disconnected-on-windows-arm">Known limitations page</a>.
-
-**Known issues**
-
-- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum <a href="https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd">Windows 11 24H2 KB5062553</a> or higher for resolution.
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server">Route traffic to fallback server</a>.
-- Devices with KB5055523 installed may receive a warning about <code>Win32/ClickFix.ABA</code> being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to <a href="https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0">version 1.429.19.0</a> or later.
-- DNS resolution may be broken when the following conditions are all true:
-  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  - A custom DNS server address is configured on the primary network adapter.
-  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
-
-  To work around this issue, reconnect the WARP client by toggling off and back on.
-
-</details>
-
 </details>
 
 ## macOS
@@ -634,7 +595,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (15)
+Previous version history (14)
 
 </summary>
 
@@ -1020,34 +981,6 @@ This release contains minor fixes, improvements, and new features, including the
 
 </details>
 
-<details>
-
-<summary>
-
-macOS 2025.9.558.0
-
-</summary>
-
-**Version:** macOS 2025.9.558.0**Date:** 2025-11-11**Size:** 111 MB
-
-<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2025.9.558.0">Download</a>
-
-#### Release notes
-
-This release contains minor fixes, improvements, and new features including <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery">Path Maximum Transmission Unit Discovery (PMTUD)</a>. When PMTUD is enabled, the client will dynamically adjust packet sizing to optimize connection performance. There is also a new connection status message in the GUI to inform users that the local network connection may be unstable. This will make it easier to diagnose connectivity issues.
-
-**Changes and improvements**
-
-- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
-- Fixed an issue where deleting a registration was erroneously reported as having failed.
-- Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery">PMTUD documentation</a>.
-
-**Known issues**
-
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server">Route traffic to fallback server</a>.
-
-</details>
-
 </details>
 
 ## Linux
@@ -1077,7 +1010,7 @@ Latest release
 
 </summary>
 
-**Version:** Linux 2026.8.2115.0**Date:** 2026-10-20**Size:** 74.7 MB
+**Version:** Linux 2026.8.2115.0**Date:** 2026-10-20**Size:** 79 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1093,7 +1026,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (16)
+Previous version history (15)
 
 </summary>
 
@@ -1105,7 +1038,7 @@ Linux 2026.8.2110.0
 
 </summary>
 
-**Version:** Linux 2026.8.2110.0**Date:** 2026-10-12**Size:** 74.7 MB
+**Version:** Linux 2026.8.2110.0**Date:** 2026-10-12**Size:** 79.1 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1125,7 +1058,7 @@ Linux 2026.8.2100.0
 
 </summary>
 
-**Version:** Linux 2026.8.2100.0**Date:** 2026-10-07**Size:** 77.2 MB
+**Version:** Linux 2026.8.2100.0**Date:** 2026-10-07**Size:** 79.1 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1172,7 +1105,7 @@ Linux 2026.7.1385.0
 
 </summary>
 
-**Version:** Linux 2026.7.1385.0**Date:** 2026-11-03**Size:** 75.8 MB
+**Version:** Linux 2026.7.1385.0**Date:** 2026-11-03**Size:** 80.5 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1192,7 +1125,7 @@ Linux 2026.7.1377.0
 
 </summary>
 
-**Version:** Linux 2026.7.1377.0**Date:** 2026-08-28**Size:** 75.2 MB
+**Version:** Linux 2026.7.1377.0**Date:** 2026-08-28**Size:** 77.1 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1212,7 +1145,7 @@ Linux 2026.7.1343.0
 
 </summary>
 
-**Version:** Linux 2026.7.1343.0**Date:** 2026-08-19**Size:** 75.3 MB
+**Version:** Linux 2026.7.1343.0**Date:** 2026-08-19**Size:** 77.1 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1248,7 +1181,7 @@ Linux 2026.6.906.0
 
 </summary>
 
-**Version:** Linux 2026.6.906.0**Date:** 2026-11-09**Size:** 74.2 MB
+**Version:** Linux 2026.6.906.0**Date:** 2026-11-09**Size:** 79.1 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1268,7 +1201,7 @@ Linux 2026.6.880.0
 
 </summary>
 
-**Version:** Linux 2026.6.880.0**Date:** 2026-07-21**Size:** 74.4 MB
+**Version:** Linux 2026.6.880.0**Date:** 2026-07-21**Size:** 76 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1288,7 +1221,7 @@ Linux 2026.6.836.0
 
 </summary>
 
-**Version:** Linux 2026.6.836.0**Date:** 2026-07-01**Size:** 74.4 MB
+**Version:** Linux 2026.6.836.0**Date:** 2026-07-01**Size:** 76 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1371,7 +1304,7 @@ Linux 2026.4.1391.0
 
 </summary>
 
-**Version:** Linux 2026.4.1391.0**Date:** 2026-11-10**Size:** 68.3 MB
+**Version:** Linux 2026.4.1391.0**Date:** 2026-11-10**Size:** 72.8 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
 
@@ -1391,7 +1324,7 @@ Linux 2026.4.1390.0
 
 </summary>
 
-**Version:** Linux 2026.4.1390.0**Date:** 2026-05-26**Size:** 79.9 MB
+**Version:** Linux 2026.4.1390.0**Date:** 2026-05-26**Size:** 78.9 MB
 
 CentOS / RHEL 8 (arm64) CentOS / RHEL 8 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 34 (arm64) Fedora 34 (x86-64) Fedora 35 (arm64) Fedora 35 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64)
 
@@ -1425,7 +1358,7 @@ Linux 2026.4.1350.0
 
 </summary>
 
-**Version:** Linux 2026.4.1350.0**Date:** 2026-05-11**Size:** 79.9 MB
+**Version:** Linux 2026.4.1350.0**Date:** 2026-05-11**Size:** 78.9 MB
 
 CentOS / RHEL 8 (arm64) CentOS / RHEL 8 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 34 (arm64) Fedora 34 (x86-64) Fedora 35 (arm64) Fedora 35 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64)
 
@@ -1458,7 +1391,7 @@ Linux 2026.3.846.0
 
 </summary>
 
-**Version:** Linux 2026.3.846.0**Date:** 2026-04-02**Size:** 57.2 MB
+**Version:** Linux 2026.3.846.0**Date:** 2026-04-02**Size:** 56.4 MB
 
 CentOS / RHEL 8 (arm64) CentOS / RHEL 8 (x86-64) Debian 11 (arm64) Debian 11 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 34 (arm64) Fedora 34 (x86-64) Fedora 35 (arm64) Fedora 35 (x86-64) Ubuntu 20.04 (arm64) Ubuntu 20.04 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64)
 
@@ -1491,7 +1424,7 @@ Linux 2026.1.150.0
 
 </summary>
 
-**Version:** Linux 2026.1.150.0**Date:** 2026-02-24**Size:** 55.1 MB
+**Version:** Linux 2026.1.150.0**Date:** 2026-02-24**Size:** 56.8 MB
 
 CentOS / RHEL 8 (arm64) CentOS / RHEL 8 (x86-64) Debian 11 (arm64) Debian 11 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 34 (arm64) Fedora 34 (x86-64) Fedora 35 (arm64) Fedora 35 (x86-64) Ubuntu 20.04 (arm64) Ubuntu 20.04 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64)
 
@@ -1520,7 +1453,7 @@ Linux 2025.10.186.0
 
 </summary>
 
-**Version:** Linux 2025.10.186.0**Date:** 2026-01-13**Size:** 52 MB
+**Version:** Linux 2025.10.186.0**Date:** 2026-01-13**Size:** 54.4 MB
 
 CentOS / RHEL 8 (arm64) CentOS / RHEL 8 (x86-64) Debian 11 (arm64) Debian 11 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 34 (arm64) Fedora 34 (x86-64) Fedora 35 (arm64) Fedora 35 (x86-64) Ubuntu 20.04 (arm64) Ubuntu 20.04 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64)
 
@@ -1539,34 +1472,6 @@ WARP client version 2025.8.779.0 introduced an updated public key for Linux pack
 - <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode">Proxy mode</a> now supports transparent HTTP proxying in addition to CONNECT-based proxying.
 - Fixed an issue where the GUI becomes unresponsive when the **Re-Authenticate in browser** button is clicked.
 - Added a new feature to manage WARP client connectivity for all devices using an <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect">external signal</a>. This feature allows administrators to send a global signal from an on-premises HTTPS endpoint that force disconnects or reconnects all WARP clients in an account based on configuration set on the endpoint.
-
-</details>
-
-<details>
-
-<summary>
-
-Linux 2025.9.558.0
-
-</summary>
-
-**Version:** Linux 2025.9.558.0**Date:** 2025-11-11**Size:** 54.7 MB
-
-CentOS / RHEL 8 (arm64) CentOS / RHEL 8 (x86-64) Debian 11 (arm64) Debian 11 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 34 (arm64) Fedora 34 (x86-64) Fedora 35 (arm64) Fedora 35 (x86-64) Ubuntu 20.04 (arm64) Ubuntu 20.04 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64)
-
-<a href="https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.9.558.0">Download</a>
-
-#### Release notes
-
-This release contains minor fixes, improvements, and new features including <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery">Path Maximum Transmission Unit Discovery (PMTUD)</a>. When PMTUD is enabled, the client will dynamically adjust packet sizing to optimize connection performance. There is also a new connection status message in the GUI to inform users that the local network connection may be unstable. This will make it easier to diagnose connectivity issues.
-
-WARP client version 2025.8.779.0 introduced an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at <a href="https://pkg.cloudflareclient.com/">pkg.cloudflareclient.com</a>.
-
-**Changes and improvements**
-
-- The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to diagnose connectivity issues.
-- Fixed an issue where deleting a registration was erroneously reported as having failed.
-- Path Maximum Transmission Unit Discovery (PMTUD) may now be used to discover the effective MTU of the connection. This allows the WARP client to improve connectivity optimized for each network. PMTUD is disabled by default. To enable it, refer to the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#enable-path-mtu-discovery">PMTUD documentation</a>.
 
 </details>
 

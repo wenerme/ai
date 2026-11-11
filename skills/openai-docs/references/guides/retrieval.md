@@ -1719,7 +1719,7 @@ For higher-throughput ingestion into a single vector store, we recommend batch c
 
 ### Attributes
 
-Each `vector_store.file` can have associated `attributes`, a dictionary of values that can be referenced when performing [semantic search](#semantic-search) with [attribute filtering](#attribute-filtering). The dictionary can have at most 16 keys, with a limit of 256 characters each.
+Each `vector_store.file` can have associated `attributes`, a dictionary of values that can be referenced when performing [semantic search](#semantic-search) with [attribute filtering](#attribute-filtering). The dictionary can have at most 16 keys. Keys can contain up to 64 characters, and string values can contain up to 512 characters.
 
 Create vector store file with attributes
 

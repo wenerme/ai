@@ -949,7 +949,7 @@ which is assigned to `tags` as an array.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/578504) in GitLab 19.6
   [with a feature flag](../../administration/feature_flags/_index.md) named `ci_interpolation_default_function`.
-  Disabled by default.
+  Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

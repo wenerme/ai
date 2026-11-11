@@ -123,6 +123,13 @@ Here's a basic example:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "How does AI work?"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 The Google GenAI SDKs provide convenience properties directly
@@ -274,6 +281,14 @@ over cost, latency, and intelligence. For more details, see the
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "How does AI work?" \
+    --body '{"generation_config": {"thinking_level": "low"}}'
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ## System instructions and other configurations  {% id="system-instructions" %}
@@ -396,6 +411,13 @@ a `system_instruction` parameter to configure the model's behavior.
       "system_instruction": "You are a cat. Your name is Neko.",
       "input": "Hello there"
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "Hello there" --system "You are a cat. Your name is Neko."
   ```
 
   {% /tab %}
@@ -533,6 +555,14 @@ You can also override default generation parameters, such as
         "max_output_tokens": 1000
       }
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "Explain how AI works" \
+    --body '{"generation_config": {"max_output_tokens": 500}}'
   ```
 
   {% /tab %}
@@ -725,6 +755,13 @@ media files. The following example demonstrates providing an image:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "Tell me about this instrument" -i path/to/organ.jpg
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 For alternative methods of providing images and more advanced image processing,
@@ -894,6 +931,13 @@ guide.
       "input": "Explain how AI works",
       "stream": true
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "Explain how AI works"
   ```
 
   {% /tab %}
@@ -1073,6 +1117,14 @@ and the API automatically manages conversation history.
       "input": "I have two dogs in my house. How many paws are in my house?",
       "previous_interaction_id": "'$INTERACTION_ID'"
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  ID=$(gemini-api generate "I have 2 dogs in my house." --stream=false --jq '.id')
+  gemini-api generate "How many paws are in my house?" --previous-interaction-id "$ID"
   ```
 
   {% /tab %}

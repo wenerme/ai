@@ -240,6 +240,42 @@ SCIM group synchronization works with SAML group links to manage group membershi
 
 SCIM is a one-directional protocol: changes flow from your identity provider to GitLab. If you make changes to SAML group links in GitLab (such as adding or removing them), your identity provider has no way to detect these changes through SCIM.
 
+### Rename a group
+
+GitLab does not rename SAML group links when your identity provider renames a group.
+The SAML group link name must match the group name in your identity provider, because GitLab uses it
+to match groups during SAML sign-in.
+
+If your identity provider sends a different group name, or a different `externalId`, GitLab rejects the
+request with a `400 Bad Request` error and does not change the group.
+Some identity providers, like Okta, then stop syncing members of that group until the names match again.
+
+After your identity provider provisions the group again with the new name, GitLab associates the SCIM group
+with the new SAML group link. Your identity provider then syncs the members again.
+If you remove the group from the GitLab application, your identity provider might deprovision users who are
+assigned to the application only through that group.
+For example, Microsoft Entra ID deactivates these users by default, and GitLab blocks them until they are
+provisioned again.
+
+To rename a group:
+
+1. In GitLab, [create a SAML group link](../../user/group/saml_sso/group_sync.md#configure-saml-group-links)
+   with the new name, for the same GitLab group and role. Keep the link with the old name for now.
+1. In your identity provider, rename the group.
+1. In your identity provider, provision the group again, so it sends the new name to GitLab:
+   - In Okta:
+
+     1. In the GitLab app, select the **Push Groups** tab.
+     1. Next to the group, select **Active** > **Unlink pushed group**.
+     1. Select **Leave the group in the target app**, then select **Unlink**.
+     1. Select **Push Groups** > **Find groups by name**, and push the group again.
+
+     For more information, see [Enable Group Push](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-enable-group-push.htm)
+     in the Okta documentation.
+
+   - In other identity providers, see their respective documentation.
+1. In GitLab, delete the SAML group link with the old name.
+
 ### SAML group link and SCIM group association
 
 When your identity provider first provisions a SCIM group (through `POST /Groups`), GitLab associates the SCIM group ID with all existing SAML group links that have a matching group name.

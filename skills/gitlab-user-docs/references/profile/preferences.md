@@ -409,7 +409,7 @@ Use the **AI assistance** tab to configure GitLab Duo and GitLab Orbit for your 
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/552081) in GitLab 18.3 with a [flag](../../administration/feature_flags/_index.md) named `ai_user_default_duo_namespace`. Disabled by default.
 - [Enabled](https://gitlab.com/gitlab-org/gitlab/-/issues/560319) in GitLab 18.4.
-- [Removed](https://gitlab.com/gitlab-org/gitlab/-/issues/569140) `ai_user_default_duo_namespace` feature flag in GitLab 18.7.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/569140) in GitLab 18.7. Feature flag `ai_user_default_duo_namespace` removed.
 
 Set a default GitLab Duo namespace to ensure GitLab Duo is available to use with your project.
 Your default GitLab Duo namespace determines your available [AI models](../gitlab_duo/model_selection.md)

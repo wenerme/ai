@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/o
 
 # Playwright MCP
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[`@cloudflare/playwright-mcp` ↗︎](https://github.com/cloudflare/playwright-mcp) is a [Playwright MCP ↗︎](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
+[`@cloudflare/playwright-mcp` ↗︎](https://github.com/cloudflare/browser-run/tree/main/packages/playwright-mcp-cloudflare) is a [Playwright MCP ↗︎](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
 
 This server enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models. Its key features are:
 
@@ -24,17 +24,17 @@ This server enables LLMs to interact with web pages through structured accessibi
 
 Note
 
-The current version of Cloudflare Playwright MCP [v1.1.1 ↗︎](https://github.com/cloudflare/playwright/releases/tag/v1.1.1) is in sync with upstream Playwright MCP [v0.0.30 ↗︎](https://github.com/microsoft/playwright-mcp/releases/tag/v0.0.30).
+The current version of Cloudflare Playwright MCP [v0.0.6 ↗︎](https://www.npmjs.com/package/@cloudflare/playwright-mcp/v/0.0.6) is in sync with upstream Playwright MCP [v0.0.30 ↗︎](https://github.com/microsoft/playwright-mcp/releases/tag/v0.0.30).
 
 ## Quick start
 
 If you are already familiar with Cloudflare Workers and you want to get started with Playwright MCP right away, select this button:
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/playwright-mcp/tree/main/cloudflare/example)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/browser-run/tree/main/examples/playwright-mcp-cloudflare)
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers. Use this option if you are familiar with Cloudflare Workers, and wish to skip the step-by-step guidance.
 
-Check our [GitHub page ↗︎](https://github.com/cloudflare/playwright-mcp) for more information on how to build and deploy Playwright MCP.
+Check our [GitHub page ↗︎](https://github.com/cloudflare/browser-run/tree/main/examples/playwright-mcp-cloudflare) for more information on how to build and deploy Playwright MCP.
 
 ## Deploying
 
@@ -73,7 +73,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-11",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "BROWSER",
@@ -101,7 +101,7 @@ name = "playwright-mcp-example"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-11"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -177,9 +177,9 @@ Try this sequence of instructions to see Playwright MCP in action:
 4. "And create another todo in Yoda style"
 5. "Take a screenshot"
 
-You can also use other MCP clients like [Claude Desktop ↗︎](https://github.com/cloudflare/playwright-mcp/blob/main/cloudflare/example/README.md#use-with-claude-desktop).
+You can also use other MCP clients like [Claude Desktop ↗︎](https://github.com/cloudflare/browser-run/blob/main/examples/playwright-mcp-cloudflare/README.md#use-with-claude-desktop).
 
-Check our [GitHub page ↗︎](https://github.com/cloudflare/playwright-mcp) for more examples and MCP client configuration options, and refer to the developer documentation on how to [build Agents on Cloudflare](https://developers.cloudflare.com/agents/).
+Check our [GitHub page ↗︎](https://github.com/cloudflare/browser-run/tree/main/examples/playwright-mcp-cloudflare) for more examples and MCP client configuration options, and refer to the developer documentation on how to [build Agents on Cloudflare](https://developers.cloudflare.com/agents/).
 
 Was this helpful?
 
@@ -190,5 +190,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/#page","headline":"Playwright MCP","description":"Deploy a Playwright MCP server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/og.png?v=1c6fd5f2e7e52a18","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/#page","headline":"Playwright MCP","description":"Deploy a Playwright MCP server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/og.png?v=1c6fd5f2e7e52a18","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

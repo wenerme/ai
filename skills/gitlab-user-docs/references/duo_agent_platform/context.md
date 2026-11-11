@@ -51,7 +51,7 @@ Agentic Chat also looks up the context it needs from SDLC data, GitLab Orbit, MC
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17124) in GitLab 18.2 [with a feature flag](../../administration/feature_flags/_index.md) named `use_duo_context_exclusion`. Disabled by default.
 - Changed to beta in GitLab 18.4.
 - Enabled by default in GitLab 18.5.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/589801) in GitLab 18.10.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/589801) in GitLab 18.10. Feature flag `use_duo_context_exclusion` removed.
 
 Use context exclusions to reduce the exposure of sensitive information, like password and configuration files.
 

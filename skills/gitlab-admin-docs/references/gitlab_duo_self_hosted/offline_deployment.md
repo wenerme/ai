@@ -374,7 +374,7 @@ If your GitLab version requests one of those tags, or if you need a different
 1. On a connected machine, download the `duo-cli` binary:
 
    ```shell
-   curl --location "https://gitlab.com/api/v4/projects/46519181/packages/generic/duo-cli/10.0.0/duo-linux-x64" \
+   curl --location "https://gitlab.com/api/v4/projects/46519181/packages/generic/duo-cli/10.2.0/duo-linux-x64" \
      --output duo-linux-x64
    ```
 

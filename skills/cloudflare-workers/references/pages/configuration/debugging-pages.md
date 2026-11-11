@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/configuration/debugging-pages/og.
 
 # Debugging Pages
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/debugging-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/debugging-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When setting up your Pages project, you may encounter various errors that prevent you from successfully deploying your site. This guide gives an overview of some common errors and solutions.
 
@@ -91,11 +91,13 @@ If you are not using Functions or have reviewed that your Functions configuratio
 
 ## Differences between `pages.dev` and custom domains
 
-If your custom domain is proxied ([orange-clouded](https://developers.cloudflare.com/dns/proxy-status/#benefits)) through Cloudflare, your zone's settings, like caching, will apply.
+If your custom domain is [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare, requests use both [your zone's settings and Pages-managed settings](https://developers.cloudflare.com/pages/configuration/custom-domains/#zone-settings). If behavior differs from your `pages.dev` domain, review the security, redirect, transform, and cache rules that match your custom hostname.
 
-If you are experiencing issues with new content not being shown, go to **Rules** > **Page Rules** in the Cloudflare dashboard and check for a Page Rule with **Cache Everything** enabled. If present, remove this rule as Pages handles its own cache.
+If new content does not appear after a deployment, check for Cache Rules or legacy Page Rules, such as **Cache Everything**, that cache responses on your custom domain. Refer to [Caching and performance](https://developers.cloudflare.com/pages/configuration/serving-pages/#caching-and-performance) for guidance on changing these rules and purging stale content.
 
-If you are experiencing errors on your custom domain but not on your `pages.dev` domain, go to **DNS** > **Records** in the Cloudflare dashboard and set the DNS record for your project to be **DNS Only** (grey cloud). If the error persists, review your zone's configuration.
+A DNS-only comparison bypasses your zone's HTTP settings, including security rules, but still uses Pages-managed settings. It does not isolate every custom domain issue. [Custom domains for branch aliases](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/) require proxied DNS records. Unproxied records route to the production branch instead.
+
+If a request returns [Error 1010](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/), check [Browser Integrity Check on Pages](https://developers.cloudflare.com/pages/platform/known-issues/#browser-integrity-check). Turning off or skipping this check in your zone does not turn it off in Pages.
 
 ## Domain stuck in verification
 
@@ -204,5 +206,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/debugging-pages/#page","headline":"Debugging Pages","description":"Troubleshoot common Cloudflare Pages build errors and deployment failures.","url":"https://developers.cloudflare.com/pages/configuration/debugging-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/debugging-pages/og.png?v=3dcf3ceebc859ecb","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/debugging-pages/#page","headline":"Debugging Pages","description":"Troubleshoot common Cloudflare Pages build errors and deployment failures.","url":"https://developers.cloudflare.com/pages/configuration/debugging-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/debugging-pages/og.png?v=3dcf3ceebc859ecb","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

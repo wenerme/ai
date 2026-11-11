@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/security/volumetric-abuse-de
 
 # Volumetric Abuse Detection
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Volumetric Abuse Detection generates adaptive, per-session rate limit recommendations for individual operations as traffic patterns change.
 
@@ -123,7 +123,7 @@ A configured session identifier alone does not guarantee a recommendation. Cloud
 
 ## Availability
 
-Volumetric Abuse Detection is only available for Enterprise customers. If you are an Enterprise customer interested in this product, contact your account team.
+Volumetric Abuse Detection requires the paid API Shield add-on on an Enterprise plan.
 
 Was this helpful?
 
@@ -134,5 +134,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#page","headline":"Volumetric Abuse Detection","description":"Set up adaptive, per-session rate limiting for API endpoints with Volumetric Abuse Detection.","url":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/og.png?v=894010f6b76bafbd","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#page","headline":"Volumetric Abuse Detection","description":"Set up adaptive, per-session rate limiting for API endpoints with Volumetric Abuse Detection.","url":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/og.png?v=894010f6b76bafbd","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -103,6 +103,22 @@ Forward the logged-in user’s OAuth token to Splunk for authentication. This en
 >
 > Forward OAuth Identity is not enabled by default. For Grafana Cloud, contact Grafana Support to enable this feature. For self-managed Grafana Enterprise, enable the `splunkEnableOAuthForwarding` feature toggle in your Grafana configuration.
 
+#### Exchange the token for a Splunk token
+
+Splunk Enterprise 10.2 and later accept tokens from an external OAuth 2.0 authorization server only after they are exchanged for a Splunk-issued token. To use this flow:
+
+1. In Splunk, [configure an external OAuth 2.0 authorization server](https://help.splunk.com/en/splunk-enterprise/administer/manage-users-and-security/10.2/configure-the-splunk-platform-with-external-authentication-and-authorization/configure-an-external-open-authorization-2.0-authorization-server) for the identity provider that Grafana uses for login:
+
+   - **Issuer URL** and **JSON Web Key Set URI** must use HTTPS, and the issuer must match the `iss` claim of the tokens.
+   - Splunk blocks private and loopback addresses for the **JSON Web Key Set URI** by default. If your identity provider runs on a private network, a Splunk administrator must allow it in the `[oauth2_restricted_endpoints]` stanza of `authentication.conf`.
+   - **Audience** must match the `aud` claim of the access token. If the tokens that your identity provider issues to Grafana have no `aud` claim, configure the identity provider to add one.
+   - **Client ID claim** identifies the Splunk user. Use a per-user claim such as `preferred_username` so that each Grafana user gets their own Splunk identity.
+   - **Group claim** is the claim that lists the user’s groups, for example `groups`.
+2. In Splunk, map identity provider groups to Splunk roles under **Role Mapping**.
+3. In the data source configuration, select **Forward OAuth Identity** and set **Splunk client ID claim** to the same claim as the Splunk **Client ID claim**.
+
+The data source then exchanges the forwarded token at the Splunk `/oauth2/v1/token` endpoint and uses the Splunk token for all requests. Splunk assigns roles based on the group mapping. If **Splunk client ID claim** is empty, the data source forwards the identity provider token unchanged.
+
 ### TLS configuration
 
 The following TLS options are available:
@@ -309,3 +325,11 @@ To improve performance, you can limit the number of returned results. When more 
 > Note
 >
 > Grafana Cloud does not support the `GF_PLUGIN_GRAFANA_SPLUNK_DATASOURCE_MAX_RESULT_LIMIT` environment variable. Use the **Results limit** setting in the data source configuration instead.
+
+## Final-result queries
+
+Backend clients can send `executionMode: "oneshot"` in a query target to request final results in one response, even when the datasource uses async or preview mode. The option disables polling, previews, and realtime execution for that target; ordinary targets keep the configured behavior.
+
+A positive `count` limits the final SPL results after aggregation and the frame rows produced by expanding multi-value fields. The effective limit cannot exceed the datasource result ceiling; omitting `count` uses that ceiling. Each returned frame exposes the effective limit in `meta.custom.resultLimit`. If the returned row count reaches this limit, additional results may have been omitted; the metadata does not confirm whether truncation occurred.
+
+The result limit bounds returned rows, not the amount of data Splunk scans or the search cost. Final results are not a guarantee of complete upstream evidence: the response does not expose every condition that can cause a partial Splunk search. Large searches remain subject to the configured query timeout. Cancellation, timeouts, and upstream errors are returned as query errors; one-shot queries do not poll or retry the whole search.

@@ -5,6 +5,7 @@
 
 - Introduced in GitLab 18.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_flow_triggers`. Enabled by default.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218840) in GitLab 18.8.
+- Feature flag `ai_flow_triggers` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/560138) in GitLab 19.1.
 - `$AI_FLOW_GOAL` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257218) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_goals`. Disabled by default.
 
 Use the following examples to create your external agent configuration.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Device IPs
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 <details>
 
@@ -118,7 +118,7 @@ Apply a device profile based on the user's email.
 
 #### User group emails
 
-Apply a device IP profile based on an [IdP group](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#idp-groups-in-gateway) email address of which the user is configured as a member in the IdP.
+Apply a device IP profile based on an [IdP group](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#idp-groups-in-gateway) email address of which the user is configured as a member in the IdP.
 
 | UI name | API example |
 | --- | --- |
@@ -126,7 +126,7 @@ Apply a device IP profile based on an [IdP group](https://developers.cloudflare.
 
 #### User group IDs
 
-Apply a device IP profile based on an [IdP group](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#idp-groups-in-gateway) ID of which the user is configured as a member in the IdP.
+Apply a device IP profile based on an [IdP group](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#idp-groups-in-gateway) ID of which the user is configured as a member in the IdP.
 
 | UI name | API example |
 | --- | --- |
@@ -134,7 +134,7 @@ Apply a device IP profile based on an [IdP group](https://developers.cloudflare.
 
 #### User group names
 
-Apply a device IP profile based on an [IdP group](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#idp-groups-in-gateway) name of which the user is configured as a member in the IdP.
+Apply a device IP profile based on an [IdP group](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#idp-groups-in-gateway) name of which the user is configured as a member in the IdP.
 
 | UI name | API example |
 | --- | --- |
@@ -148,7 +148,7 @@ Apply a device IP profile based on an [IdP group](https://developers.cloudflare.
 
 #### SAML attributes
 
-Apply a device IP profile based on an attribute name and value from a [SAML IdP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#generic-saml-idp).
+Apply a device IP profile based on an attribute name and value from a [SAML IdP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#generic-saml-idp).
 
 | UI name | API example |
 | --- | --- |
@@ -172,6 +172,8 @@ In the **Value** field, you can input a single value when using an equality comp
 ### Regular expressions
 
 Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗︎](https://rustexp.lpil.uk/).
+
+Gateway evaluates regular expressions with Unicode support turned off, so a pattern with non-ASCII characters, such as Cyrillic letters, returns an error. To turn Unicode on, add the `u` flag: `(?u)` at the start applies it to the whole expression, and `(?u:...)` applies it to part of it. Domain names with non-ASCII characters reach Gateway in their punycode form, which starts with `xn--`. To match such a domain, write the regular expression against its punycode form.
 
 If you want to match multiple values, you can use the pipe symbol (`|`) as an OR operator. You do not need to use an escape character (`\`) before the pipe symbol. For example, the following expression evaluates to true when the user's email domain matches either `@acme.com` or `@widgets.com`:
 
@@ -427,5 +429,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/#page","headline":"Device IPs","description":"Device IPs in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/og.png?v=4384a8de2da182fd","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/#page","headline":"Device IPs","description":"Device IPs in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/og.png?v=4384a8de2da182fd","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","REST API"]}
 ```

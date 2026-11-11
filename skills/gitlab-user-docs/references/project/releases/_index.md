@@ -79,7 +79,16 @@ By default, GitLab fetches the release using `released_at` time. The use of the 
 
 ### Track releases with an RSS feed
 
-GitLab provides an RSS feed of a project's releases. To view the feed:
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269594) in GitLab 19.6 to list only the newest 100 releases [with a feature flag](../../../administration/feature_flags/_index.md) named `project_releases_atom_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+GitLab provides an RSS feed of a project's releases. The feed lists the newest 100 releases.
+To list all releases of a project, use the [Releases API](../../../api/releases/_index.md#list-releases).
+
+To view the feed:
 
 1. For projects you are a member of:
    1. In the top bar, select **Search or go to** and find your project.

@@ -7,7 +7,7 @@ description: Reduce Claude's response latency by choosing a faster model such as
 Latency refers to the time it takes for the model to process a prompt and generate an output. Latency can be influenced by various factors, such as the size of the model, the complexity of the prompt, and the underlying infrastructure supporting the model and point of interaction.
 
 <Note>
-  It's always better to first engineer a prompt that works well without model or prompt constraints, and then try latency reduction strategies afterward. Trying to reduce latency prematurely might prevent you from discovering what top performance looks like.
+  It’s always better to first engineer a prompt that works well without model or prompt constraints, and then try latency reduction strategies afterward. Trying to reduce latency prematurely might prevent you from discovering what top performance looks like.
 </Note>
 
 ***
@@ -16,8 +16,8 @@ Latency refers to the time it takes for the model to process a prompt and genera
 
 When discussing latency, you might come across several terms and measurements:
 
-* **Baseline latency:** This is the time taken by the model to process the prompt and generate the response, without considering the input and output tokens per second. It provides a general idea of the model's speed.
-* **Time to first token (TTFT):** This metric measures the time it takes for the model to generate the first token of the response, from when the prompt was sent. It's particularly relevant when you're using streaming (more on that later) and want to provide a responsive experience to your users.
+* **Baseline latency:** This is the time taken by the model to process the prompt and generate the response, without considering the input and output tokens per second. It provides a general idea of the model’s speed.
+* **Time to first token (TTFT):** This metric measures the time it takes for the model to generate the first token of the response, from when the prompt was sent. It’s particularly relevant when you’re using streaming (more on that later) and want to provide a responsive experience to your users.
 
 For a more in-depth understanding of these terms, see the [glossary](https://platform.claude.com/docs/en/about-claude/glossary).
 
@@ -36,7 +36,7 @@ For speed-critical applications, **Claude Haiku 5.5** offers the fastest respons
   # For time-sensitive applications, use Claude Haiku 5.5 at low effort
   curl https://api.anthropic.com/v1/messages \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "content-type: application/json" \
     -d '{
       "model": "claude-haiku-5-5",
@@ -196,7 +196,7 @@ For speed-critical applications, **Claude Haiku 5.5** offers the fastest respons
   ```
 </CodeGroup>
 
-For more details about model metrics, see the [models overview](https://platform.claude.com/docs/en/models/overview) page.
+For more details about model metrics, see [Models overview](https://platform.claude.com/docs/en/models/overview).
 
 ### 2. Optimize prompt and output length
 
@@ -219,16 +219,16 @@ Here are some tips to help you optimize your prompts and outputs:
 
     `max_tokens`
 
-     tokens, the response will be cut off, perhaps mid-sentence or mid-word, so this is a blunt technique that might require post-processing and is usually most appropriate for multiple choice or short answer responses where the answer comes right at the beginning.
+     tokens, the API cuts it off, perhaps mid-sentence or mid-word. This is a blunt technique that might require post-processing. It’s usually most appropriate for multiple-choice or short-answer responses where the answer comes right at the beginning.
   </Note>
 
 Finding the right balance among prompt clarity, output quality, and token count might require some experimentation.
 
 ### 3. Stream responses
 
-Streaming is a feature that allows the model to start sending back its response before the full output is complete. This can significantly improve the perceived responsiveness of your application, as users can see the model's output in real time.
+Streaming is a feature that allows the model to start sending back its response before the full output is complete. This can significantly improve the perceived responsiveness of your application, as users can see the model’s output in real time.
 
-With streaming enabled, you can process the model's output as it arrives, updating your user interface or performing other tasks in parallel.
+With streaming enabled, you can process the model’s output as it arrives, updating your user interface or performing other tasks in parallel.
 
 Visit [Streaming messages](https://platform.claude.com/docs/en/build-with-claude/streaming) to learn about how you can implement streaming for your use case.
 
@@ -238,7 +238,7 @@ Visit [Streaming messages](https://platform.claude.com/docs/en/build-with-claude
 
 <CardGroup cols={2}>
   <Card title="Reduce hallucinations" icon="shield" href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">
-    Minimize hallucinations in Claude's outputs by allowing uncertainty, grounding responses in direct quotes, and verifying claims with citations.
+    Minimize hallucinations in Claude’s outputs by allowing uncertainty, grounding responses in direct quotes, and verifying claims with citations.
   </Card>
 
   <Card title="Streaming messages" icon="bolt" href="https://platform.claude.com/docs/en/build-with-claude/streaming">

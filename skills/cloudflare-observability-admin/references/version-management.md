@@ -133,6 +133,21 @@ Cloudflare API
 
 <summary>
 
+DDoS Protection
+
+</summary>
+
+- <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/">HTTP DDoS Attack Protection</a> (<code>ddos_l7</code>) and <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/">Network-layer DDoS Attack Protection</a> (<code>ddos_l4</code>) do not support Version Management.
+- These protections always use the configuration in **Version Zero**, regardless of the version deployed to an environment.
+- DDoS overrides configured in any other version have no effect.
+- To adjust HTTP DDoS managed ruleset behavior for the zone, configure overrides in **Version Zero**. Network-layer DDoS overrides are configured at the account level and are not versioned.
+
+</details>
+
+<details>
+
+<summary>
+
 Domain-scoped Roles
 
 </summary>

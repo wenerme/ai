@@ -14,12 +14,6 @@ Explore guides and tutorials to start building on Cloudflare's platform
 
 ## Powerful primitives, seamlessly integrated
 
-Select your preferred CLI
-
-WranglerCF
-
-Changes examples on this page to use the selected CLI.
-
 ComputeAIStorage & DatabasesMedia
 
 ### Deploy with one command
@@ -36,9 +30,9 @@ Build and deploy serverless functions and full-stack apps on Cloudflare's global
 
 Run AI inference globally with one API call, build agents, and search across your data — no GPUs to manage, no capacity planning.
 
-`npx wrangler ai models`
-
 `cf ai run @cf/meta/llama-3.1-8b-instruct --help`
+
+`npx wrangler ai models`
 
 [Browse available models](https://developers.cloudflare.com/workers-ai/models/)
 
@@ -48,9 +42,9 @@ Run AI inference globally with one API call, build agents, and search across you
 
 Serverless SQL, globally distributed key-value, and global database acceleration — query directly from Workers with no connection management.
 
-`npx wrangler d1 create my-database`
-
 `cf d1 --help`
+
+`npx wrangler d1 create my-database`
 
 [Get started with D1](https://developers.cloudflare.com/d1/get-started/)
 
@@ -82,7 +76,7 @@ The latest features and improvements shipping across Cloudflare.
 
 [View Changelog](https://developers.cloudflare.com/changelog/)
 
-[Nov 10, 2026Cloudflare One Client<h3>Cloudflare One Client for Windows (version 2026.9.2663.1)</h3>Cloudflare One Client for Windows (version 2026.9.2663.1)Read update](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-windows-beta/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for macOS (version 2026.9.2663.1)</h3>Cloudflare One Client for macOS (version 2026.9.2663.1)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-macos-beta/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for Windows (version 2026.4.1391.0)</h3>Cloudflare One Client for Windows (version 2026.4.1391.0)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-windows-ga/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for Linux (version 2026.4.1391.0)</h3>Cloudflare One Client for Linux (version 2026.4.1391.0)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-linux-ga/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for macOS (version 2026.4.1391.0)</h3>Cloudflare One Client for macOS (version 2026.4.1391.0)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-macos-ga/) [Nov 10Flagship<h3>Evaluate Flagship feature flags from Rust</h3>The Flagship Rust SDK provides an async OpenFeature provider with HTTP and local evaluation for Rust server applications.Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-rust-sdk/) [Nov 10Stream<h3>Faster MP4 downloads from Cloudflare Stream</h3>Generate downloadable video files faster without implementation changes.Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-faster-mp4-downloads/) [Nov 10Workers<h3>Workers Builds and Pages now list GitHub repositories based on your GitHub account</h3>When you connect a GitHub repository to Workers Builds or Pages, the accounts and repositories you can pick from are now based on your own GitHub account.Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-user-scoped-github-repositories/)
+[Nov 11, 2026API Shield<h3>Prioritize Web Assets operations with metric views</h3>Compare and sort operations by traffic, errors, latency, response size, and security metrics.Read update](https://developers.cloudflare.com/changelog/post/2026-11-11-web-assets-metric-views/) [Nov 11Hyperdrive<h3>Hyperdrive raises limits for connections and configurations</h3>Workers Paid customers can now create up to 100 Hyperdrive configurations and configure up to 1,500 origin connections per configuration.Read more](https://developers.cloudflare.com/changelog/post/2026-11-11-hyperdrive-raised-limits/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for Windows (version 2026.9.2663.1)</h3>Cloudflare One Client for Windows (version 2026.9.2663.1)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-windows-beta/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for macOS (version 2026.9.2663.1)</h3>Cloudflare One Client for macOS (version 2026.9.2663.1)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-macos-beta/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for Windows (version 2026.4.1391.0)</h3>Cloudflare One Client for Windows (version 2026.4.1391.0)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-windows-ga/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for Linux (version 2026.4.1391.0)</h3>Cloudflare One Client for Linux (version 2026.4.1391.0)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-linux-ga/) [Nov 10Cloudflare One Client<h3>Cloudflare One Client for macOS (version 2026.4.1391.0)</h3>Cloudflare One Client for macOS (version 2026.4.1391.0)Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-warp-macos-ga/) [Nov 10Flagship<h3>Evaluate Flagship feature flags from Rust</h3>The Flagship Rust SDK provides an async OpenFeature provider with HTTP and local evaluation for Rust server applications.Read more](https://developers.cloudflare.com/changelog/post/2026-11-10-rust-sdk/)
 
 ## Security that scales
 

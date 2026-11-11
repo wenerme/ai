@@ -18,11 +18,11 @@ Expand table
 | Variable type  | Description                                                                                                  |
 |----------------|--------------------------------------------------------------------------------------------------------------|
 | Query          | Dynamically fetches values from your Dynatrace environment. This is the primary variable type for Dynatrace. |
-| Ad-hoc filters | Automatically applies key-value filters to all metric queries on a dashboard.                                |
+| Ad hoc filters | Automatically applies key-value filters to all metric queries on a dashboard.                                |
 
 > Note
 >
-> You can also use Grafana’s built-in variable types (Custom, Text box, Constant, Interval) with Dynatrace queries. These variables are defined manually and are not populated from Dynatrace. For more information, refer to [Variable types](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#variable-types).
+> You can also use the Grafana built-in variable types (Custom, Text box, Constant, Interval) with Dynatrace queries. These variables are defined manually and are not populated from Dynatrace. For more information, refer to [Variable types](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#variable-types).
 
 ## Query variables
 
@@ -35,8 +35,8 @@ Expand table
 | Query type               | Description                                                                                                                                                                                                                                                                                                                     |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metric names             | Returns a list of all metric names.                                                                                                                                                                                                                                                                                             |
-| Filter keys              | Returns a list of all possible dimensions (for example, Hostname) that can be used to filter.                                                                                                                                                                                                                                   |
-| Filter values for key    | Returns a list of filtered values by a key name or a key name template variable.                                                                                                                                                                                                                                                |
+| Filter keys              | Returns a list of Dynatrace entity types, such as Host, Process, or Service, that you can filter on.                                                                                                                                                                                                                            |
+| Filter values for key    | Returns the entities for a given entity type. Specify the key by name, such as Host, or by a template variable that resolves to an entity type.                                                                                                                                                                                 |
 | Problem status options   | Returns a list of all problem statuses.                                                                                                                                                                                                                                                                                         |
 | Problem impact options   | Returns a list of all problem impacted areas.                                                                                                                                                                                                                                                                                   |
 | Problem severity options | Returns a list of all problem severity types.                                                                                                                                                                                                                                                                                   |
@@ -49,18 +49,18 @@ Expand table
 >
 > `Multi-value` and `Include All option` support varies by query type. Test your specific use case to verify compatibility.
 
-## Ad-hoc filters
+## Ad hoc filters
 
-Ad-hoc filters let users add filters to all metric queries on a dashboard without editing each panel. The Dynatrace plugin populates filter options from your Dynatrace entity types (such as Host, Process, or Service).
+Ad hoc filters let users add filters to all metric queries on a dashboard without editing each panel. The Dynatrace plugin populates filter options from your Dynatrace entity types (such as Host, Process, or Service).
 
-To create an ad-hoc filter variable:
+To create an ad hoc filter variable:
 
 1. Go to **Dashboard settings** &gt; **Variables** &gt; **New variable**.
 2. Select **Ad hoc filters** as the variable type.
 3. Select your Dynatrace data source.
 4. Click **Apply**.
 
-Once configured, a filter bar appears at the top of your dashboard. Users can add filters by selecting an entity type (key) and a specific entity (value). These filters automatically apply to all metric queries on the dashboard.
+After the variable is configured, a filter bar appears at the top of your dashboard. Users can add filters by selecting an entity type (key) and a specific entity (value). These filters automatically apply to all metric queries on the dashboard.
 
 ## Variable syntax
 
@@ -91,7 +91,7 @@ Expand table
 
 ## Chaining variables
 
-A common pattern is to chain “Filter keys” and “Filter values for key” variables together. This allows users to first select a dimension (like Host or Process), then select a specific value for that dimension.
+A common pattern is to chain “Filter keys” and “Filter values for key” variables together. This allows users to first select an entity type (like Host or Process), then select a specific entity of that type.
 
 To chain variables:
 

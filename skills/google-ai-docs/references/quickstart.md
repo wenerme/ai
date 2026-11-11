@@ -232,6 +232,14 @@ Install the SDK and generate text with a single API call.
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/google-gemini/gemini-api-cli/main/scripts/install.sh | bash
+  gemini-api generate "Explain how AI works in a few words"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 While the SDKs expose the full response, they also provide convenience
@@ -427,6 +435,13 @@ For more fluid interactions, stream the response as it's generated. Each
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "Explain how AI works"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 For a detailed look at handling streaming events and delta types, see the
@@ -604,6 +619,14 @@ The Interactions API supports multi-turn conversations with two approaches:
       "input": "How many paws are in my house?",
       "previous_interaction_id": "'$INTERACTION_ID'"
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  INTERACTION_ID=$(gemini-api generate "I have 2 dogs in my house." --stream=false --jq '.id')
+  gemini-api generate "How many paws are in my house?" --previous-interaction-id "$INTERACTION_ID"
   ```
 
   {% /tab %}
@@ -1115,6 +1138,16 @@ media alongside text in a single request.
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  curl -fsSLO https://storage.googleapis.com/generativeai-downloads/data/Apollo-11_Day-01-Highlights-10s.mp3
+  gemini-api generate "Compare this image and this audio file." \
+    -i sample.jpg \
+    -i Apollo-11_Day-01-Highlights-10s.mp3
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 Explore how to pass images, video, and audio files in the [image understanding
@@ -1326,6 +1359,15 @@ Banana](/docs/image-generation) image models.
     "object": "interaction",
     "model": "gemini-3.1-flash-image",
   }
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api image "Generate an image of a futuristic city skyline at sunset" \
+    -m gemini-3.1-flash-image \
+    --out generated_image.png
   ```
 
   {% /tab %}
@@ -1610,6 +1652,27 @@ output works with [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "Give me a recipe for banana bread" --body '{
+    "response_format": {
+      "type": "text",
+      "mime_type": "application/json",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "recipe_name": {"type": "string", "description": "Name of the recipe."},
+          "ingredients": {"type": "array", "items": {"type": "string"}, "description": "List of ingredients."},
+          "prep_time_minutes": {"type": "integer", "description": "Prep time in minutes."}
+        },
+        "required": ["recipe_name", "ingredients"]
+      }
+    }
+  }'
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 The output text block contains a valid JSON string conforming exactly to the
@@ -1844,6 +1907,13 @@ automatically searches, processes results, and returns citations.
     "object": "interaction",
     "model": "gemini-3.8-flash",
   }
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api generate "Who won the euro 2024?" --body '{"tools": [{"type": "google_search"}]}'
   ```
 
   {% /tab %}
@@ -2803,6 +2873,15 @@ and file management. Pass an `agent` instead of a `model` and set
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api agent run "Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents." \
+    --agent antigravity-preview-09-2026 \
+    --body '{"environment": "remote"}'
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 You can also define and save [custom agents](/docs/custom-agents) with your own
@@ -3061,6 +3140,17 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
     "object": "interaction",
     "model": "gemini-3.8-flash",
   }
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  INTERACTION_ID=$(gemini-api agent run "Write a detailed analysis of the impact of artificial intelligence on modern healthcare." \
+    -m gemini-3.8-flash --background --stream=false --jq '.id')
+  echo "Started background task: $INTERACTION_ID"
+  # Re-run until the status is "completed"
+  gemini-api agent status "$INTERACTION_ID"
   ```
 
   {% /tab %}

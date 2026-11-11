@@ -225,6 +225,13 @@ The following example shows you how to pass PDF data inline:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  gemini-api analyze -i path/to/document.pdf "Summarize this document"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 You can also upload a local PDF file for processing:
@@ -376,6 +383,14 @@ You can also upload a local PDF file for processing:
           fmt.Println(*res.Interaction.OutputText)
       }
   }
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload file.pdf --wait)
+  gemini-api analyze -i "$FILE" "Summarize this document"
   ```
 
   {% /tab %}
@@ -672,6 +687,15 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  curl -sL -o Gemini_paper.pdf "https://arxiv.org/pdf/2312.11805"
+  FILE=$(gemini-api files upload Gemini_paper.pdf --wait)
+  gemini-api analyze -i "$FILE" "Summarize this document"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ### Large PDFs stored locally  {% id="large-pdfs-local" %}
@@ -894,6 +918,14 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload large_file.pdf --wait)
+  gemini-api analyze -i "$FILE" "Summarize this document"
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 You can verify the API successfully stored the uploaded file and get its
@@ -993,6 +1025,14 @@ metadata by calling [`files.get`](/api-reference/files/get-file). Only the `name
   echo name=$name
   file_uri=$(jq -r ".uri" file_info.json)
   echo file_uri=$file_uri
+  ```
+
+  {% /tab %}
+
+  {% tab label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload example.pdf)
+  gemini-api files get "$FILE" -o json
   ```
 
   {% /tab %}
@@ -1351,6 +1391,18 @@ the text prompt stays within the model's context window.
 
   {% /tab %}
 
+  {% tab label="CLI" %}
+  ```bash
+  curl -sL -o Gemini_paper.pdf "https://arxiv.org/pdf/2312.11805"
+  curl -sL -o Gemini_1.5_paper.pdf "https://arxiv.org/pdf/2403.05530"
+  PDF_1=$(gemini-api files upload Gemini_paper.pdf --wait)
+  PDF_2=$(gemini-api files upload Gemini_1.5_paper.pdf --wait)
+  gemini-api analyze -i "$PDF_1" -i "$PDF_2" \
+    "What is the difference between each of the main benchmarks between these two papers? Output these in a table."
+  ```
+
+  {% /tab %}
+
 {% /tabs %}
 
 ## Office and OpenDocument files  {% id="office-documents" %}
@@ -1469,6 +1521,15 @@ asks the model to summarize it:
         {"type": "text", "text": "Summarize the key takeaways from each slide."}
       ]
     }'
+  ```
+
+  {% /tab %}
+
+  {% tab filename="sample.sh" label="CLI" %}
+  ```bash
+  FILE=$(gemini-api files upload quarterly_review.pptx --wait \
+    --mime-type application/vnd.openxmlformats-officedocument.presentationml.presentation)
+  gemini-api analyze -i "$FILE" "Summarize the key takeaways from each slide."
   ```
 
   {% /tab %}

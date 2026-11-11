@@ -17,7 +17,29 @@ Before investigating specific errors, verify that the data source health check p
 2. Click **Save &amp; test**.
 3. Confirm you see a “Success!” message.
 
-If the health check fails, start with the [Configuration errors](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#configuration-errors) or [Connection errors](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#connection-errors) sections.
+If the health check fails, start with the [Configuration errors](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#configuration-errors) or [Connection errors](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#connection-errors) sections. If the plugin fails to install or enable, refer to [Installation and licensing errors](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#installation-and-licensing-errors).
+
+## Installation and licensing errors
+
+Installation and licensing errors occur before the data source can connect, when the Dynatrace plugin can’t start because of an Enterprise license or entitlement problem. The Dynatrace data source is an Enterprise plugin, so it requires an active Grafana Enterprise or Grafana Cloud entitlement that includes Enterprise plugins.
+
+### Plugin health check failed
+
+**Symptoms:** The plugin doesn’t install or enable, or **Save &amp; test** reports `Plugin health check failed`, even though your license appears valid in the Grafana UI.
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                                                                                              | Solution                                                                                                                                                                                                                                                                                 |
+|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Your license doesn’t include Enterprise plugin access.                                             | Confirm that your Grafana Enterprise or Grafana Cloud entitlement covers Enterprise plugins. For installation requirements, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). |
+| Your license changed but the update isn’t applied on the backend.                                  | Restart your Grafana instance after any license change, then run **Save &amp; test** again.                                                                                                                                                                                              |
+| The license is valid in the UI but not on the backend, or there’s an entitlement provisioning gap. | Contact Grafana Support. Correcting backend licensing or entitlement provisioning requires Grafana Labs.                                                                                                                                                                                 |
+
+> Note
+>
+> Several of these issues are resolved on the Grafana Labs side rather than in your configuration. If your license appears valid but the plugin still fails to start, contact Grafana Support instead of changing your data source settings.
 
 ## Configuration errors
 
@@ -29,14 +51,13 @@ This error appears when required configuration fields are missing. Verify that y
 
 Expand table
 
-| Error message                                                                                                     | Solution                                                                                                                                                                                                                                                                                                         |
-|-------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Enter an environment ID. This can usually be taken from the account URL: \[environmentId].live.dynatrace.com.** | Provide your Dynatrace environment ID. For SaaS, extract it from your URL (e.g., `yfc55578` from `yfc55578.live.dynatrace.com`). For Managed, use the environment ID from the path (e.g., `abc99984-3af2-55tt-72kl-0672983gc45` from `yd8888.managed-sprint.dynalabs.io/e/abc99984-3af2-55tt-72kl-0672983gc45`). |
-| **Enter an API token.**                                                                                           | Provide a valid Dynatrace API token. Refer to the [Get an API key from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) section for instructions.                                                                                       |
-| **Enter a domain URL.**                                                                                           | When using **Managed Cluster** API type, you must provide the domain of your Dynatrace server (e.g., `dynatrace.yourcompany.com`).                                                                                                                                                                               |
-| **invalid API Token**                                                                                             | The API token field is empty or contains only whitespace. Enter a valid API token.                                                                                                                                                                                                                               |
-| **invalid TLS certificate**                                                                                       | You enabled **Add self-signed certificate** but did not provide a CA certificate. Either provide the certificate or disable the option.                                                                                                                                                                          |
-| **failed to parse TLS CA PEM certificate**                                                                        | The CA certificate you provided is not in valid PEM format. Ensure the certificate begins with `-----BEGIN CERTIFICATE-----` and ends with `-----END CERTIFICATE-----`.                                                                                                                                          |
+| Error message                                                                                                     | Solution                                                                                                                                                                                                                                                                                                                       |
+|-------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Enter an environment ID. This can usually be taken from the account URL: \[environmentId].live.dynatrace.com.** | Provide your Dynatrace environment ID. For SaaS, extract it from your URL (for example, `yfc55578` from `yfc55578.live.dynatrace.com`). For Managed, use the environment ID from the path (for example, `abc99984-3af2-55tt-72kl-0672983gc45` from `yd8888.managed-sprint.dynalabs.io/e/abc99984-3af2-55tt-72kl-0672983gc45`). |
+| **Enter an API token or Platform token.**                                                                         | Neither token is provided, or the value contains only whitespace. Enter a valid API token, a valid Platform token, or both. Refer to [Get an API key from Dynatrace](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace).                                           |
+| **Enter a domain URL.**                                                                                           | When using **Managed Cluster** API type, you must provide the domain of your Dynatrace server (for example, `dynatrace.yourcompany.com`).                                                                                                                                                                                      |
+| **invalid TLS certificate**                                                                                       | You enabled **Add self-signed certificate** but did not provide a CA certificate. Either provide the certificate or disable the option.                                                                                                                                                                                        |
+| **failed to parse TLS CA PEM certificate**                                                                        | The CA certificate you provided is not in valid PEM format. Ensure the certificate begins with `-----BEGIN CERTIFICATE-----` and ends with `-----END CERTIFICATE-----`.                                                                                                                                                        |
 
 ## Connection errors
 
@@ -108,7 +129,7 @@ This is a generic fallback error that appears when the connection fails for an u
 
 1. Verify network connectivity between Grafana and Dynatrace.
 2. Check firewall rules and proxy settings.
-3. If using a self-hosted Dynatrace instance, verify the server is running and accessible.
+3. If using a Dynatrace Managed instance, verify the server is running and accessible.
 4. Check the Grafana server logs for more detailed error information.
 
 ### Proxy configuration issues
@@ -121,6 +142,28 @@ If your Grafana instance connects to the internet through a proxy, you may exper
 2. Ensure the proxy allows connections to your Dynatrace environment URL.
 3. If using HTTPS inspection, add your Dynatrace domain to the proxy bypass list or configure the appropriate CA certificates.
 4. Verify the proxy does not modify or block API responses.
+
+### Private Data source Connect enabled for a SaaS environment
+
+**Symptoms:** Configuring or testing a SaaS Dynatrace data source returns a 400 error when Secure Socks Proxy (Private Data source Connect) is enabled.
+
+**Cause:** Private Data source Connect (PDC) routes traffic through a private network connection. A Dynatrace SaaS environment is reachable over the public internet, so routing it through PDC is unnecessary and can block the connection.
+
+**Solution:**
+
+1. For a SaaS-to-SaaS setup, such as Grafana Cloud to Dynatrace SaaS, disable Secure Socks Proxy for the data source.
+2. Enable Secure Socks Proxy only when connecting to a Dynatrace instance that is reachable only over a private network, such as a Managed cluster behind a firewall.
+
+### Health check fails when the Platform token lacks the Grail logs scope
+
+**Symptoms:** The connection test fails and references missing Grail or logs permissions, even though you only intend to query metrics.
+
+**Cause:** When a Platform token is configured, the health check validates Grail by running a `Fetch logs | limit 1` query. That query requires the `storage:logs:read` scope, so the connection test can fail if the Platform token lacks it, even when you only query metrics.
+
+**Solution:**
+
+1. Add the `storage:logs:read` scope to your Platform token.
+2. If you don’t query Grail, leave the Platform token empty. The health check then validates only the API token.
 
 ## TLS and certificate errors
 
@@ -174,11 +217,29 @@ Query errors occur when there are issues with the structure, syntax, or paramete
 2. Check that your API token has the `Read metrics` scope.
 3. Ensure the metric is available in your Dynatrace environment.
 
-### Unrecognized request type
+### No metric named \[name] found
 
-**Cause:** The query type specified is not supported by the plugin.
+**Error message:** `No metric named [name] found`
 
-**Solution:** Verify you are using a supported query type: `metric`, `problem`, `logs`, `auditlogs`, `usql`, `rawurl`, or `managementZones`.
+**Cause:** The specified metric does not exist or cannot be found. This error comes from the plugin when it resolves a metric name, such as in a template variable or filter.
+
+**Solution:**
+
+1. Verify the metric name in the Dynatrace web UI.
+2. Check for typos in the metric name.
+3. Ensure the metric is available in your environment.
+
+### No matching dimension found for key
+
+**Error message:** `No matching dimension found for key [key]`
+
+**Cause:** A filter key specified in your query does not match any available dimension for the selected metric.
+
+**Solution:**
+
+1. Verify the dimension name is correct.
+2. Check available dimensions for your metric in the Dynatrace web UI.
+3. Ensure template variables resolve to valid dimension names.
 
 ### HTML response received from Dynatrace API
 
@@ -226,7 +287,18 @@ Query errors occur when there are issues with the structure, syntax, or paramete
 1. Verify your USQL query syntax in the Dynatrace web UI under **User sessions**.
 2. Check that all field names are valid and correctly spelled.
 3. Ensure your API token has the `User sessions` scope.
-4. Refer to the [Dynatrace USQL documentation](https://docs.dynatrace.com/docs/platform/grail/dynatrace-query-language) for query syntax help.
+4. Refer to the [Dynatrace USQL documentation](https://www.dynatrace.com/support/help/shortlink/usql-info) for query syntax help.
+
+### Grail query fails with an invalid time range
+
+**Error message:** `400 INVALID_TIMEFRAME`
+
+**Cause:** The Grail query ran without a valid time range. Older plugin versions did not forward the dashboard time range to query variables, so Grail rejected the request.
+
+**Solution:**
+
+1. Update the plugin to version 3.26.3 or later. Refer to [Plugin updates](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/#plugin-updates).
+2. Confirm the dashboard or Explore view has a valid time range selected.
 
 ## No data returned
 
@@ -277,6 +349,63 @@ Timeout issues occur when requests to the Dynatrace API take too long to complet
 3. Use a shorter time range.
 4. Add filters to reduce the amount of data returned.
 
+## Performance and memory issues
+
+Performance and memory issues occur when dashboards return more data than the browser or server can handle, often on large Dynatrace environments.
+
+### High memory use or browser out-of-memory errors
+
+**Symptoms:** Dashboards that use the Dynatrace data source consume excessive memory, trigger browser out-of-memory errors, or destabilize the Grafana server.
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                                                                                                             | Solution                                                                                                                                |
+|-------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| A template variable uses the **All** option, which expands to every value and generates a large number of series. | Avoid selecting **All** on large environments. Limit the variable to specific values, or set a custom all value that narrows the query. |
+| Panels return more series or data points than the browser can render.                                             | Reduce the query scope with filters, narrow the time range, or split the query across multiple panels.                                  |
+
+### Metric list times out
+
+**Symptoms:** The metric drop-down fails to load, or metric queries time out, especially after a plugin update on a large environment.
+
+**Cause:** Fetching the full metric list from Dynatrace can exceed the data source timeout on large environments.
+
+**Solution:**
+
+1. Increase the **Timeout** setting in the data source configuration.
+2. Update the plugin to version 3.27.3 or later. Refer to [Plugin updates](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/#plugin-updates).
+3. Wait for the initial metric fetch to finish. On large environments it can take several minutes.
+
+## Template variable errors
+
+Template variable errors occur when a variable query fails or its drop-down does not populate.
+
+### Empty template variable drop-down
+
+**Symptoms:** A template variable drop-down shows no options, or shows preview rows in the variable editor but no selectable values. Metric-based variables might not populate automatically.
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                                                                                                       | Solution                                                                                                                                                       |
+|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The plugin version is outdated. Variable population issues were fixed in versions 3.26.6 and 3.26.7.        | Update the plugin to version 3.26.7 or later. Refer to [Plugin updates](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/#plugin-updates). |
+| The metric list is still loading. On large environments, the initial metric fetch can take several minutes. | Wait for the initial fetch to finish. The drop-down populates when the metric list is ready.                                                                   |
+| The query returns no data for the selected time range.                                                      | Confirm data exists for the selected time range, or widen the range.                                                                                           |
+
+### Query variable returns more than one column
+
+**Error message:** `more number of fields received. Expecting only one field`
+
+**Cause:** A **Query Editor** variable that uses a Direct API Access, USQL, or Grail query returns three or more columns. Only these query types return values for **Query Editor** variables. If the query returns exactly two columns that aren’t named `text` and `value`, the variable fails with `no fields found` instead.
+
+**Solution:**
+
+1. Return a single column, or return exactly two columns named `text` and `value`. For more information, refer to [Template variables](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/).
+
 ## Alerting issues
 
 Issues can occur when using Dynatrace data for Grafana alerts.
@@ -303,13 +432,44 @@ Issues can occur when using Dynatrace data for Grafana alerts.
 3. Verify the query works correctly in the Explore view before using it in an alert.
 4. Check Grafana server logs for detailed error messages.
 
+### Alert creation fails with a data read error
+
+**Error message:** `[sse.readDataError]`
+
+**Cause:** The alert query returns text-based data that Grafana alerting can’t reduce to a numeric value. Text-based query types, such as Audit Logs and Logs, are not compatible with alerting.
+
+**Solution:**
+
+1. Use a query type that returns numeric data, such as Metrics.
+2. For USQL queries, confirm the query returns exactly one numeric column, with any other columns as text.
+3. Verify the query returns numeric data in the Explore view before you use it in an alert.
+
+### Alerts on Problems queries fail to evaluate
+
+**Cause:** A Problems query returns a table of problem fields rather than a numeric time series, so Grafana alerting might fail to evaluate it. This is a known issue.
+
+**Solution:**
+
+1. Test the query in the Explore view to confirm the data it returns.
+2. Where possible, use a Metrics query to alert on the underlying condition instead.
+3. If the alert still fails, contact Grafana Support.
+
+### Alert fires later than expected
+
+**Cause:** Grafana alert rules include an evaluation interval and a pending period. The alert fires only after the condition stays true for the length of the pending period, which can delay notifications compared to Dynatrace.
+
+**Solution:**
+
+1. Open the alert rule and adjust the evaluation interval and pending period to match how quickly you need to be notified.
+2. To keep a default rule and customize its timing, duplicate the rule and edit the copy.
+
 ## Known limitations
 
 The following are known limitations when using the Dynatrace data source.
 
 ### Multi-value template variables
 
-Support for multi-value template variables varies by query type. Test your specific use case to verify compatibility.
+Support for multi-value template variables varies by query type. Test your specific use case to verify compatibility. Selecting **All** on a large environment can also cause high memory use. Refer to [Performance and memory issues](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#performance-and-memory-issues).
 
 ### Logs query type is in beta
 
@@ -324,30 +484,6 @@ Aggregate mode for Logs queries is not yet supported.
 Querying management zones requires the `Read configuration` scope, which is not included in the minimum required scopes.
 
 **Solution:** Add the `Read configuration` scope to your API token if you need to use management zone filters.
-
-## Other common errors
-
-The following errors may occur during normal usage.
-
-### No matching dimension found for key
-
-**Cause:** A filter key specified in your query does not match any available dimension for the selected metric.
-
-**Solution:**
-
-1. Verify the dimension name is correct.
-2. Check available dimensions for your metric in the Dynatrace web UI.
-3. Ensure template variables resolve to valid dimension names.
-
-### No metric named \[name] found
-
-**Cause:** The specified metric does not exist or cannot be found.
-
-**Solution:**
-
-1. Verify the metric name in the Dynatrace web UI.
-2. Check for typos in the metric name.
-3. Ensure the metric is available in your environment.
 
 ## Debugging tips
 
