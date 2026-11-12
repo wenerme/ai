@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/bui
 
 # Built-in storage
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance comes with built-in storage and a built-in vector index, powered by [R2](https://developers.cloudflare.com/r2/) and [Vectorize](https://developers.cloudflare.com/vectorize/). You can upload files directly to an instance without setting up either service yourself.
 
@@ -24,7 +24,7 @@ For supported file types, refer to [Supported file types](https://developers.clo
 
 ## Indexing
 
-Files uploaded to built-in storage are indexed immediately. External data sources like websites and R2 buckets are indexed on a [sync schedule](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/).
+Files uploaded to built-in storage are indexed immediately. External data sources like websites, R2 buckets, and D1 databases are indexed on a [sync schedule](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/).
 
 ## External data sources
 
@@ -32,12 +32,15 @@ An instance can use built-in storage alongside an external data source. The avai
 
 - [Website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/): crawl and index a website that you own
 - [R2 Bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/): index documents stored in a Cloudflare R2 bucket
+- [D1 database](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/): index rows returned by a SQL query against a Cloudflare D1 database
 
 For example, an instance can be backed by a website for shared documentation while also accepting file uploads through the Items API for additional content.
 
+Built-in storage also holds the Markdown content that AI Search extracts from each indexed file in a connected data source. This content counts toward [AI Search storage](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#how-storage-is-measured).
+
 ## Limits and pricing
 
-Storage, vector indexing, Browser Run crawling, and Workers AI embedding and reranking usage are included in AI Search billing. Other usage, such as generation through your AI Gateway, is billed separately. For full details, refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
+Storage, vector indexing, Browser Run crawling, and Workers AI embedding and reranking usage are included in AI Search billing. Storage is billed as AI Search storage rather than on your R2 bill. Other usage, such as generation through your AI Gateway, is billed separately. For full details, refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
 
 Was this helpful?
 
@@ -48,5 +51,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/#page","headline":"Built-in storage","description":"Upload files directly to an AI Search instance using built-in storage powered by R2 and Vectorize.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/og.png?v=8152804138aeb1b5","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/#page","headline":"Built-in storage","description":"Upload files directly to an AI Search instance using built-in storage powered by R2 and Vectorize.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/og.png?v=8152804138aeb1b5","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

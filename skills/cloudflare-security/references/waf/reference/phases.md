@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/waf/reference/phases/og.png?v=3bb798dea
 
 # WAF phases
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/reference/phases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/reference/phases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Web Application Firewall provides the following [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/) where you can create rulesets and rules:
+The Web Application Firewall provides the following request [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/) where you can create rulesets and rules:
 
 - `http_request_firewall_custom`
 - `http_ratelimit`
@@ -31,6 +31,10 @@ These phases exist both at the account level and at the zone level. Considering 
 | [Managed rulesets](https://developers.cloudflare.com/waf/account/managed-rulesets/) | Account | `http_request_firewall_managed` | `root` | [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf) > **Managed rulesets** tab |
 | [Managed rules](https://developers.cloudflare.com/waf/managed-rules/) | Zone | `http_request_firewall_managed` | `zone` | [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules) |
 
+For HTTP responses, you can create zone-level [response custom rules](https://developers.cloudflare.com/waf/response-firewall/). These rules run in the `http_response_firewall_custom` phase.
+
+This phase runs before Custom Errors and Response Header Transform Rules. For the execution order, refer to the [response phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#response-phases).
+
 To learn more about phases, refer to [Phases](https://developers.cloudflare.com/ruleset-engine/about/phases/) in the Ruleset Engine documentation.
 
 Was this helpful?
@@ -40,5 +44,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/phases/#page","headline":"WAF phases","description":"WAF rule execution phases and their order of evaluation.","url":"https://developers.cloudflare.com/waf/reference/phases/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/reference/phases/og.png?v=3bb798deab615a01","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/phases/#page","headline":"WAF phases","description":"WAF rule execution phases and their order of evaluation.","url":"https://developers.cloudflare.com/waf/reference/phases/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/reference/phases/og.png?v=3bb798deab615a01","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

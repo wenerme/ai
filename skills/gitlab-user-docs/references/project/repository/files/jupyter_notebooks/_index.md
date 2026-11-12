@@ -34,6 +34,7 @@ When commits include changes to Jupyter Notebook files, GitLab:
 Code Suggestions is not available on diffs and merge requests for `.ipynb` files.
 
 Cleaner notebook diffs are not generated when the notebook is too large.
+If the human-readable version of either the old or new notebook has more than 100,000 lines, GitLab shows the raw diff.
 
 ## Jupyter Git integration
 

@@ -50,7 +50,7 @@ The following example shows you how to pass PDF data inline:
       pdf_bytes = f.read()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {
               "type": "document",
@@ -79,7 +79,7 @@ The following example shows you how to pass PDF data inline:
       });
   
       const interaction = await ai.interactions.create({
-          model: "gemini-3.8-flash",
+          model: "gemini-4-hydrogen",
           input: [
               { type: "text", text: "Summarize this document" },
               {
@@ -131,7 +131,7 @@ The following example shows you how to pass PDF data inline:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -173,7 +173,7 @@ The following example shows you how to pass PDF data inline:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       Data:     genai.Ptr(base64Pdf),
@@ -211,7 +211,7 @@ The following example shows you how to pass PDF data inline:
   -H 'Content-Type: application/json' \
   -H "Api-Revision: 2026-05-20" \
   -d '{
-    "model": "gemini-3.8-flash",
+    "model": "gemini-4-hydrogen",
     "input": [
       {
         "type": "document",
@@ -246,7 +246,7 @@ You can also upload a local PDF file for processing:
   uploaded_file = client.files.upload(file="file.pdf")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "document", "uri": uploaded_file.uri, "mime_type": uploaded_file.mime_type},
           {"type": "text", "text": "Summarize this document"}
@@ -270,7 +270,7 @@ You can also upload a local PDF file for processing:
       });
   
       const interaction = await ai.interactions.create({
-          model: "gemini-3.8-flash",
+          model: "gemini-4-hydrogen",
           input: [
               { type: "text", text: "Summarize this document" },
               {
@@ -323,7 +323,7 @@ You can also upload a local PDF file for processing:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -364,7 +364,7 @@ You can also upload a local PDF file for processing:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(uploadedFile.URI),
@@ -435,7 +435,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
   prompt = "Summarize this document"
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "document", "uri": sample_doc.uri, "mime_type": sample_doc.mime_type},
           {"type": "text", "text": prompt}
@@ -481,7 +481,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       }
   
       const interaction = await ai.interactions.create({
-          model: 'gemini-3.8-flash',
+          model: 'gemini-4-hydrogen',
           input: [
               { type: "document", uri: file.uri, mime_type: file.mimeType },
               { type: "text", text: "Summarize this document" }
@@ -542,7 +542,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -599,7 +599,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(sampleDoc.URI),
@@ -661,7 +661,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
   
   cat << EOF > payload.json
   {
-  "model": "gemini-3.8-flash",
+  "model": "gemini-4-hydrogen",
   "input": [
     {"type": "text", "text": "${PROMPT}"},
     {"type": "document", "uri": "${file_uri}", "mime_type": "application/pdf"}
@@ -714,7 +714,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
   )
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "document", "uri": sample_file.uri, "mime_type": sample_file.mime_type},
           {"type": "text", "text": "Summarize this document"}
@@ -754,7 +754,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       }
   
       const interaction = await ai.interactions.create({
-          model: 'gemini-3.8-flash',
+          model: 'gemini-4-hydrogen',
           input: [
               { type: "document", uri: file.uri, mime_type: file.mimeType },
               { type: "text", text: "Summarize this document" }
@@ -805,7 +805,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -846,7 +846,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(sampleFile.URI),
@@ -903,7 +903,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     -H "Api-Revision: 2026-05-20" \
     -X POST \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "document", "uri": '$file_uri', "mime_type": "application/pdf"},
         {"type": "text", "text": "Can you add a few more lines to this poem?"}
@@ -1072,7 +1072,7 @@ the text prompt stays within the model's context window.
   prompt = "What is the difference between each of the main benchmarks between these two papers? Output these in a table."
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "document", "uri": sample_pdf_1.uri, "mime_type": sample_pdf_1.mime_type},
           {"type": "document", "uri": sample_pdf_2.uri, "mime_type": sample_pdf_2.mime_type},
@@ -1126,7 +1126,7 @@ the text prompt stays within the model's context window.
       const file2 = await uploadRemotePDF("https://arxiv.org/pdf/2403.05530", "PDF 2");
   
       const interaction = await ai.interactions.create({
-          model: 'gemini-3.8-flash',
+          model: 'gemini-4-hydrogen',
           input: [
               { type: "document", uri: file1.uri, mime_type: file1.mimeType },
               { type: "document", uri: file2.uri, mime_type: file2.mimeType },
@@ -1204,7 +1204,7 @@ the text prompt stays within the model's context window.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -1279,7 +1279,7 @@ the text prompt stays within the model's context window.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(samplePdf1.URI),
@@ -1363,7 +1363,7 @@ the text prompt stays within the model's context window.
   
   cat << EOF > payload_multi.json
   {
-  "model": "gemini-3.8-flash",
+  "model": "gemini-4-hydrogen",
   "input": [
     {"type": "document", "uri": "${file_uri_1}", "mime_type": "application/pdf"},
     {"type": "document", "uri": "${file_uri_2}", "mime_type": "application/pdf"},
@@ -1464,7 +1464,7 @@ asks the model to summarize it:
   )
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "document", "uri": deck.uri, "mime_type": deck.mime_type},
           {"type": "text", "text": "Summarize the key takeaways from each slide."},
@@ -1491,7 +1491,7 @@ asks the model to summarize it:
       });
   
       const interaction = await ai.interactions.create({
-          model: "gemini-3.8-flash",
+          model: "gemini-4-hydrogen",
           input: [
               { type: "document", uri: deck.uri, mime_type: deck.mimeType },
               { type: "text", text: "Summarize the key takeaways from each slide." }
@@ -1511,7 +1511,7 @@ asks the model to summarize it:
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {
           "type": "document",

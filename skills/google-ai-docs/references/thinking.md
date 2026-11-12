@@ -62,7 +62,7 @@ Initiating an interaction with a thinking model is similar to any other interact
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Explain the concept of Occam's Razor and provide a simple, everyday example."
   )
   print(interaction.output_text)
@@ -77,7 +77,7 @@ Initiating an interaction with a thinking model is similar to any other interact
   const client = new GoogleGenAI({});
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "Explain the concept of Occam's Razor and provide a simple, everyday example."
   });
   console.log(interaction.output_text);
@@ -98,7 +98,7 @@ Initiating an interaction with a thinking model is similar to any other interact
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(
               InteractionsInput.of(
                   "Explain the concept of Occam's Razor and provide a simple, everyday example."))
@@ -135,7 +135,7 @@ Initiating an interaction with a thinking model is similar to any other interact
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Explain the concept of Occam's Razor and provide a simple, everyday example."),
           }),
       })
@@ -158,7 +158,7 @@ Initiating an interaction with a thinking model is similar to any other interact
     -H "Api-Revision: 2026-05-20" \
     -H 'Content-Type: application/json' \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Explain the concept of Occam'\''s Razor and provide a simple example."
     }'
   ```
@@ -181,7 +181,7 @@ with `thinking_summaries`:
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="What is the sum of the first 50 prime numbers?",
       generation_config={
           "thinking_summaries": "auto"
@@ -213,7 +213,7 @@ with `thinking_summaries`:
   const client = new GoogleGenAI({});
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "What is the sum of the first 50 prime numbers?",
       generation_config: {
           thinking_summaries: "auto"
@@ -263,7 +263,7 @@ with `thinking_summaries`:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("What is the sum of the first 50 prime numbers?"))
           .generationConfig(
               GenerationConfig.builder().thinkingSummaries(ThinkingSummaries.AUTO).build())
@@ -318,7 +318,7 @@ with `thinking_summaries`:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("What is the sum of the first 50 prime numbers?"),
               GenerationConfig: &interactions.GenerationConfig{
                   ThinkingSummaries: interactions.ThinkingSummariesAuto.ToPointer(),
@@ -354,7 +354,7 @@ with `thinking_summaries`:
     -H "Api-Revision: 2026-05-20" \
     -H 'Content-Type: application/json' \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "What is the sum of the first 50 prime numbers?",
       "generation_config": {
         "thinking_summaries": "auto"
@@ -405,7 +405,7 @@ delta types:
   answer = ""
   
   stream = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=prompt,
       generation_config={
           "thinking_summaries": "auto"
@@ -446,7 +446,7 @@ delta types:
   let answer = "";
   
   const stream = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: prompt,
       generation_config: {
           thinking_summaries: "auto"
@@ -508,7 +508,7 @@ delta types:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of(prompt))
           .generationConfig(
               GenerationConfig.builder().thinkingSummaries(ThinkingSummaries.AUTO).build())
@@ -579,7 +579,7 @@ delta types:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(prompt),
               GenerationConfig: &interactions.GenerationConfig{
                   ThinkingSummaries: interactions.ThinkingSummariesAuto.ToPointer(),
@@ -622,7 +622,7 @@ delta types:
     -H 'Content-Type: application/json' \
     --no-buffer \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Alice, Bob, and Carol each live in a different house on the same street: red, green, and blue. Alice does not live in the red house. Bob does not live in the green house. Carol does not live in the red or green house. Which house does each person live in?",
       "generation_config": {
         "thinking_summaries": "auto"
@@ -640,7 +640,7 @@ and events, for example:
 
 ```none
 event: interaction.created
-data: {"interaction":{"id":"v1_xxx","status":"in_progress","object":"interaction","model":"gemini-3.8-flash"},"event_type":"interaction.created"}
+data: {"interaction":{"id":"v1_xxx","status":"in_progress","object":"interaction","model":"gemini-4-hydrogen"},"event_type":"interaction.created"}
 
 event: step.start
 data: {"index":0,"step":{"signature":"","summary":[{"text":"**Evaluating the clues**\n\nI'm considering...","type":"text"}],"type":"thought"},"event_type":"step.start"}
@@ -677,6 +677,7 @@ control this behavior using the `thinking_level` parameter.
 | --- | --- | --- |
 | gemini-4-carbon | On (medium) | low, medium, high |
 | gemini-4-argon | On (medium) | low, medium, high |
+| gemini-4-hydrogen | On (high) | low, medium, high, xhigh |
 | gemini-3.8-flash | On (medium) | low, medium, high |
 | gemini-3.6-flash | On (medium) | minimal, low, medium, high |
 | gemini-3.5-flash-lite | On (minimal) | minimal, low, medium, high |
@@ -690,6 +691,20 @@ control this behavior using the `thinking_level` parameter.
 | gemini-2.5-flash-lite | Off | low, medium, high |
 | gemini-robotics-er-2-preview | On (high) | minimal, low, medium, high |
 
+### Understanding thinking levels  {% id="understanding-thinking-levels" %}
+
+The `thinking_level` is your main control over quality, latency, and token use in [Gemini 4 Hydrogen](/docs/whats-new-gemini-4-hydrogen). The model defaults to `high` and introduces `xhigh`:
+
+| Thinking level | Token use | When to use |
+| :--- | :--- | :--- |
+| `low` | Fewest tokens, lowest latency | Cost- and latency-sensitive workloads, such as fast chat and high-throughput processing. Still capable on agentic tasks. |
+| `medium` | Lower token use, faster responses | Interactive coding, live UI prototyping, responsive chat, and latency-sensitive tool calls. (Default on `gemini-4-carbon`, `gemini-4-argon`, `gemini-3.8-flash`, and `gemini-3.6-flash`.) |
+| `high` (default on `gemini-4-hydrogen`) | Balanced intelligence and speed | Recommended default on `gemini-4-hydrogen` for most tasks, including complex coding, agentic execution, tool calling, and multimodal knowledge work. Maximum reasoning depth on `gemini-4-carbon`, `gemini-4-argon`, and Gemini 3 models. |
+| `xhigh` | Most tokens, deepest reasoning | Reserve for hard, multi-step coding and agentic problems where `high` falls short, when you can trade higher latency and token use (supported on `gemini-4-hydrogen`). |
+| `minimal` | Near-off thinking, lowest latency | Matches a near-off setting for most queries on `gemini-3.6-flash`, `gemini-3.5-flash-lite` (default), `gemini-3.1-flash-lite`, `gemini-3-flash-preview`, and `gemini-robotics-er-2-preview`. Not supported on Gemini 4 models or `gemini-3.8-flash`. |
+
+Start with `high` for most complex tasks, and reserve `xhigh` for hard, multi-step problems where `high` falls short. Using `xhigh` increases latency and token use and can cause overthinking or exhaust `max_output_tokens` on simpler prompts such as text or JSON extraction. Run your evaluations at all four levels with a high `max_output_tokens` so the limit doesn't cut answers short, then pick the lowest `thinking_level` that meets your quality bar.
+
 {% tabs %}
   {% tab label="Python" %}
   ```python
@@ -698,7 +713,67 @@ control this behavior using the `thinking_level` parameter.
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
+      input="Audit this payment retry queue for race conditions and rewrite the lock acquisition logic.",
+      generation_config={
+          "thinking_level": "xhigh"
+      }
+  )
+  
+  print(interaction.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const client = new GoogleGenAI({});
+  
+  const interaction = await client.interactions.create({
+    model: "gemini-4-hydrogen",
+    input: "Audit this payment retry queue for race conditions and rewrite the lock acquisition logic.",
+    generation_config: {
+      thinking_level: "xhigh",
+    },
+  });
+  
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="REST" %}
+  ```bash
+  curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -X POST \
+    -d '{
+      "model": "gemini-4-hydrogen",
+      "input": "Audit this payment retry queue for race conditions and rewrite the lock acquisition logic.",
+      "generation_config": {
+        "thinking_level": "xhigh"
+      }
+    }'
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
+The following example sets `thinking_level` to `low`:
+
+{% tabs %}
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  interaction = client.interactions.create(
+      model="gemini-4-hydrogen",
       input="Provide a list of 3 famous physicists and their key contributions",
       generation_config={
           "thinking_level": "low"
@@ -716,7 +791,7 @@ control this behavior using the `thinking_level` parameter.
   const client = new GoogleGenAI({});
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "Provide a list of 3 famous physicists and their key contributions",
       generation_config: {
           thinking_level: "low"
@@ -742,7 +817,7 @@ control this behavior using the `thinking_level` parameter.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(
               InteractionsInput.of(
                   "Provide a list of 3 famous physicists and their key contributions"))
@@ -780,7 +855,7 @@ control this behavior using the `thinking_level` parameter.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Provide a list of 3 famous physicists and their key contributions"),
               GenerationConfig: &interactions.GenerationConfig{
                   ThinkingLevel: interactions.ThinkingLevelLow.ToPointer(),
@@ -806,7 +881,7 @@ control this behavior using the `thinking_level` parameter.
     -H "Api-Revision: 2026-05-20" \
     -H 'Content-Type: application/json' \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Provide a list of 3 famous physicists and their key contributions",
       "generation_config": {
         "thinking_level": "low"
@@ -835,10 +910,10 @@ any thinking tokens generated). To reduce cost or latency without truncating
 responses, lower `thinking_level` (`low` or `medium`) instead of setting a
 small `max_output_tokens`.
 
-For Gemini 4 models (`gemini-4-carbon` and `gemini-4-argon`), keep the following context and output limits in mind:
+For Gemini 4 models (`gemini-4-carbon`, `gemini-4-argon`, and `gemini-4-hydrogen`), keep the following context and output limits in mind:
 
 * **Shared 1M context window:** Input, thinking, and output tokens share a single 1M-token context window (`1,048,576` tokens). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens).
-* **Default synchronous output cap (64K):** When `background=False`, the default `max_output_tokens` cap is 65,536 tokens (a single foreground hop is capped at 65,536 tokens for streaming and 32,768 tokens for non-streaming).
+* **Default synchronous output cap (64K):** When `background=False`, the default `max_output_tokens` cap is 65,536 tokens. A single foreground hop generates up to 65,536 tokens for streaming calls and `gemini-4-hydrogen` non-streaming calls, or up to 32,768 tokens for non-streaming calls on `gemini-4-carbon` and `gemini-4-argon`.
 * **Long decode (up to 1M tokens):** To allow Gemini 4 to reason and generate beyond `65,536` tokens (up to `1,048,576` tokens), configure `max_output_tokens` greater than `65,536` with `background=True` or client-side continuation. See [Long decode](/docs/long-decode) for details.
 
 ## Thought signatures  {% id="signatures" %}
@@ -911,7 +986,7 @@ tokens from the `total_thought_tokens` field.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Explain the concept of Occam's Razor."))
           .build();
   
@@ -950,7 +1025,7 @@ tokens from the `total_thought_tokens` field.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Explain the concept of Occam's Razor."),
           }),
       })

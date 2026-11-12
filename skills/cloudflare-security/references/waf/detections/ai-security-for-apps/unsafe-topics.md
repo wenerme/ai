@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/uns
 
 # Unsafe and custom topic detection
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps can detect when an LLM prompt touches on unsafe or unwanted subjects. There are two layers of topic detection:
 
@@ -117,6 +117,33 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/ai-security/custom-top
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
+Use the [`cloudflare_ai_security_custom_topics` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ai_security_custom_topics) resource to define the custom topics for a zone. This resource requires Terraform Cloudflare provider version 5.29.0 or later. For example:
+
+```tf
+resource "cloudflare_ai_security_custom_topics" "zone_custom_topics" {
+  zone_id = var.cloudflare_zone_id
+
+  topics = [
+    {
+      label = "competitors"
+      topic = "seeking info on competitors"
+    },
+    {
+      label = "financial-advice"
+      topic = "seeking financial advice"
+    },
+    {
+      label = "job-seeking"
+      topic = "asking for résumé advice"
+    }
+  ]
+}
+```
+
+Caution
+
+This resource manages the entire custom topics list for the zone. When you apply the configuration, Terraform replaces any topics added outside Terraform, such as in the dashboard.
+
 ### Constraints
 
 Custom topic descriptions accept UTF-8 characters, including non-ASCII characters. Only English descriptions are officially supported.
@@ -198,5 +225,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/og.png?v=909acf3ad220e88c","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/og.png?v=909acf3ad220e88c","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

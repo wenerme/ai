@@ -293,7 +293,7 @@ To switch to the classic layout:
 To switch to the classic layout:
 
 1. On the tool window bar, select **GitLab Duo Agent Platform** ().
-1. In the tool window title bar, select **Use classic layout**.
+1. In the tool window title bar, select **Use Classic Layout**.
 1. Optional. Complete the survey.
 
 You can also switch in the settings. Go to **Settings** > **Tools** > **GitLab Duo**, and under
@@ -304,7 +304,7 @@ You can also switch in the settings. Go to **Settings** > **Tools** > **GitLab D
 To switch back to the new layout:
 
 - In VS Code, in the **GitLab Duo Agent Platform** panel title bar, select **Use new layout**.
-- In a JetBrains IDE, in the **GitLab Duo Agent Platform** tool window title bar, select **Use new layout**.
+- In a JetBrains IDE, in the **GitLab Duo Agent Platform** tool window title bar, select **Use New Layout**.
   You can also go to **Settings** > **Tools** > **GitLab Duo**, and under **GitLab Duo Agent Platform**,
   clear the **Use classic layout** checkbox.
 

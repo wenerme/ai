@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/functions
 
 # Functions
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Rules language provides functions for manipulating and validating values in an expression:
 
@@ -378,6 +378,18 @@ Converts a string field to lowercase. Only uppercase ASCII bytes are converted. 
 
 For example, if `http.host` is `"WWW.cloudflare.com"`, then `lower(http.host) == "www.cloudflare.com"` will return `true`.
 
+### `md5`
+
+`md5(input String | Bytes)`: `Bytes`
+
+Computes the MD5 hash of the `input` string or byte array. Returns a 16-byte hash value.
+
+To encode the hash as a string, combine `md5()` with [`encode_base64()`](#encode_base64):
+
+```txt
+encode_base64(md5("hello world"))
+```
+
 ### `regex_replace`
 
 `regex_replace(source String, regular_expression String, replacement String)`: `String`
@@ -451,6 +463,18 @@ Note
 
 You can only use the `remove_query_args()` function in [rewrite expressions of Transform Rules](https://developers.cloudflare.com/rules/transform/).
 
+### `sha1`
+
+`sha1(input String | Bytes)`: `Bytes`
+
+Computes the SHA-1 hash of the `input` string or byte array. Returns a 20-byte hash value.
+
+To encode the hash as a string, combine `sha1()` with [`encode_base64()`](#encode_base64):
+
+```txt
+encode_base64(sha1("hello world"))
+```
+
 ### `sha256`
 
 `sha256(input String | Bytes)`: `Bytes`
@@ -484,6 +508,18 @@ Notes
 The `sha256()` function is available as an Enterprise add-on and requires a specific entitlement. Contact your account team to enable it.
 
 You can only use the `sha256()` function in rewrite expressions of [Transform Rules](https://developers.cloudflare.com/rules/transform/).
+
+### `sha512`
+
+`sha512(input String | Bytes)`: `Bytes`
+
+Computes the SHA-512 hash of the `input` string or byte array. Returns a 64-byte hash value.
+
+To encode the hash as a string, combine `sha512()` with [`encode_base64()`](#encode_base64):
+
+```txt
+encode_base64(sha512("hello world"))
+```
 
 ### `split`
 
@@ -891,5 +927,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

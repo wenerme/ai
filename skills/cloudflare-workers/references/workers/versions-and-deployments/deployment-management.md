@@ -12,15 +12,17 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/deploy
 
 # Deployment management
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, a new version is created and immediately deployed to 100% of traffic when you use any of the following:
+By default, these operations create a version and deploy it to 100% of traffic:
 
 - [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)
 - [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/)
 - The [Workers Script Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/)
 
-You can separate these steps so that uploading a version and deploying it are independent actions. This lets you control exactly when a new version goes live.
+You can upload a version without deploying it. This allows you to choose when to send traffic to it.
+
+Deployment changes take up to a few seconds to reach every location on the network. Deploying to 100% of traffic does not make every location switch at once. A browser's HTML and asset requests can still use different versions. Refer to [Version skew and static assets](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/).
 
 ## Upload a version without deploying
 
@@ -63,6 +65,8 @@ New versions are not created when you make changes to [resources connected to yo
 ## Deploy an uploaded version
 
 Once you have uploaded a version, you can create a deployment that routes traffic to it.
+
+Uploading a version does not add it to a deployment. To test it on your production hostname with a [version override](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/), add it to the deployment. You can set it to 0% of traffic. You can also turn on a [Version URL](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) to access the uploaded version separately.
 
 ### Via Wrangler
 
@@ -133,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#page","headline":"Deployment management","description":"Upload versions independently and control when and how they are deployed to your Worker's traffic.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/og.png?v=45414a68701c50de","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/#page","headline":"Deployment management","description":"Upload versions independently and control when and how they are deployed to your Worker's traffic.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/og.png?v=45414a68701c50de","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

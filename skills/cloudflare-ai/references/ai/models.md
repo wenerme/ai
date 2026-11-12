@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 280 modelsClear filters
+We found 281 modelsClear filters
 
 ## Compare models
 
@@ -1511,6 +1511,13 @@ Compare
 
 - Cloudflare-hosted
 - +2
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>embeddinggemma-2</h3>GoogleMultimodal Embeddings EmbeddingGemma 2 is an open multimodal embedding model built by Google DeepMind which maps text (incl. code), images, video, and audio inputs—and combinations thereof—into a single, unified 768-dimensional vector space.](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-2/)
+
+- Cloudflare-hosted
+- +1
 
 Compare
 

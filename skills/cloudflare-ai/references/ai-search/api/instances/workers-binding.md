@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/api/instances/workers-binding
 
 # Workers binding
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to create, list, update, and delete AI Search instances from a Cloudflare Worker. You can also check instance configuration and monitor indexing progress.
 
@@ -135,7 +135,7 @@ for (const instance of result) {
 | --- | --- | --- |
 | `result` | array | Array of instance objects. |
 | `result[].id` | string | The instance identifier. |
-| `result[].type` | string | The data source type (`r2`, `web-crawler`, or `null` for empty instances). |
+| `result[].type` | string | The data source type (`r2`, `web-crawler`, `d1`, or `null` for empty instances). |
 | `result[].source` | string | The data source location. |
 | `result[].status` | string | The current indexing lifecycle status, such as `waiting`, `index_source`, `embed_files`, or a `paused_*` status. |
 | `result[].paused` | boolean | Whether indexing is paused. |
@@ -186,6 +186,32 @@ const instance = await env.AI_SEARCH.create({
 });
 ```
 
+**Create a D1-backed instance:**
+
+Index the rows returned by a read-only query against a [D1](https://developers.cloudflare.com/d1/) database. A `token_id` is required. For more configuration options, refer to [D1 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/).
+
+```ts
+const instance = await env.AI_SEARCH.create({
+	id: "help-center",
+	type: "d1",
+	source: "<D1_DATABASE_ID>",
+	token_id: "<SERVICE_TOKEN_ID>",
+	source_params: {
+		d1: {
+			query: `
+				SELECT
+				  article_id AS id,
+				  title,
+				  content,
+				  category AS meta_category
+				FROM articles
+				WHERE published = 1
+			`,
+		},
+	},
+});
+```
+
 #### Parameters
 
 `id` `string` required
@@ -196,13 +222,13 @@ The unique identifier for the AI Search instance. Must be 1-64 characters and ma
 
 `type` `string` optional
 
-The type of data source. Valid values: `r2` or `web-crawler`. If omitted, an HTTP(S) URL source selects `web-crawler`, an existing R2 bucket selects `r2`, and a missing or blank source creates an instance with built-in storage. Other sources return error `7111`. The REST API also accepts `null`, which behaves like an omitted value. The Workers binding does not accept `null`.
+The type of data source. Valid values: `r2`, `web-crawler`, or `d1`. If omitted, an HTTP(S) URL source selects `web-crawler`, an existing R2 bucket selects `r2`, and a missing or blank source creates an instance with built-in storage. Other sources return error `7111`. The `d1` type is never inferred. The REST API also accepts `null`, which behaves like an omitted value. The Workers binding does not accept `null`.
 
 ---
 
 `source` `string` optional
 
-The data source location. For `r2` type, this is the R2 bucket name. For `web-crawler` type, this is the website domain. Required when `type` is specified.
+The data source location. For `r2` type, this is the R2 bucket name. For `web-crawler` type, this is the website domain. For `d1` type, this is the D1 database ID (UUID), which cannot be changed after creation. Required when `type` is specified.
 
 ---
 
@@ -252,6 +278,12 @@ Additional parameters for the data source.
       - The storage bucket ID.
     - `r2_jurisdiction` `string` optional
       - The jurisdiction for the storage bucket.
+- `d1` `object` optional
+  - Configuration for D1 sources. Required when `type` is `d1`. Refer to [D1](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/).
+  - `query` `string` required
+    - A read-only `SELECT` or `WITH` query that returns an `id` column. Up to 10,000 characters.
+  - `template` `string` optional
+    - How each row is rendered as a document. Valid values: `labelled`, `content_only`, `key_value`, `json`. Defaults to `labelled` on create. An update that omits it keeps the stored template.
 
 ---
 
@@ -306,7 +338,7 @@ Seconds between automatic data source syncs. Valid values: `3600`, `7200`, `1440
 
 `token_id` `string` optional
 
-The UUID of the [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) to use for this instance. Only required if you have never created an AI Search instance before. Refer to the [API get started guide](https://developers.cloudflare.com/ai-search/get-started/api/) for how to create and register a service token.
+The UUID of the [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) to use for this instance. Required for `d1` instances. For other types, only required if you have never created an AI Search instance before. Refer to the [API get started guide](https://developers.cloudflare.com/ai-search/get-started/api/) for how to create and register a service token.
 
 ---
 
@@ -396,7 +428,7 @@ The cache entry TTL in seconds. Valid values are `600`, `1800`, `3600`, `7200`, 
 
 `custom_metadata` `array` optional
 
-Custom metadata fields to extract and index from documents.
+Custom metadata fields to extract and index from documents. For `d1` instances, AI Search derives these fields from the `meta_*` columns of the query, so omit `custom_metadata` or pass the same fields.
 
 - `field_name` `string` required
   - The name of the metadata field.
@@ -468,7 +500,7 @@ Accepts a partial version of the [create parameters](#parameters). Only the fiel
 | `reranking_model` | string | The reranking model. |
 | `rewrite_query` | boolean | Turn on or off query rewriting. |
 | `rewrite_model` | string | The query rewriting model. |
-| `source` | string | Update the data source location. |
+| `source` | string | The data source location. Cannot be changed after creation. |
 | `cache` | boolean | Turn on or off response caching. |
 | `cache_ttl` | number | Cache entry time to live in seconds. |
 | `chunk_size` | number | Token size of each chunk. |
@@ -495,7 +527,7 @@ const info = await env.AI_SEARCH.get("my-instance").info();
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | string | The instance identifier. |
-| `type` | string | The data source type (`r2`, `web-crawler`, or `null`). |
+| `type` | string | The data source type (`r2`, `web-crawler`, `d1`, or `null`). |
 | `source` | string | The data source location. |
 | `namespace` | string | The namespace the instance belongs to. |
 | `status` | string | The current indexing lifecycle status, such as `waiting`, `index_source`, `embed_files`, or a `paused_*` status. |
@@ -638,5 +670,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

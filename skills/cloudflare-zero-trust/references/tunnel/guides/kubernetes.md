@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/tunnel/guides/kubernetes/og.png?v=ce77b
 
 # Kubernetes
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/kubernetes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/kubernetes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Kubernetes ↗︎](https://kubernetes.io/) is a container orchestration tool that is used to deploy applications onto physical or virtual machines, scale the deployment to meet traffic demands, and push updates without downtime. The Kubernetes cluster, or environment, where the application instances are running is connected internally through a private network. You can install the `cloudflared` daemon inside of the Kubernetes cluster in order to connect applications inside of the cluster to Cloudflare.
 
@@ -114,7 +114,7 @@ A pod represents an instance of a running process in the cluster. In this exampl
                - containerPort: 80
    ```
 
-4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods.
+4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods. Because `cloudflared` runs inside the cluster, the service only needs an internal cluster IP ( `type: ClusterIP`). Avoid service types such as `LoadBalancer` or `NodePort`, which would expose the application outside of the tunnel.
 
    *httpbinsvc.yamlyaml*
 
@@ -127,7 +127,7 @@ A pod represents an instance of a running process in the cluster. In this exampl
      name: httpbin-service
      namespace: default
    spec:
-     type: LoadBalancer
+     type: ClusterIP
      selector:
        app: httpbin
      ports:
@@ -152,9 +152,9 @@ A pod represents an instance of a running process in the cluster. In this exampl
    pod/httpbin-deployment-bc6689c5d-b5ftk   1/1     Running   0          79s
    pod/httpbin-deployment-bc6689c5d-cbd9m   1/1     Running   0          79s
 
-   NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
-   service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   79s
-   service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h
+   NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+   service/httpbin-service   ClusterIP   34.118.225.147   <none>        80/TCP    79s
+   service/kubernetes        ClusterIP   34.118.224.1     <none>        443/TCP   24h
 
    NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
    deployment.apps/httpbin-deployment   2/2     2            2           79s
@@ -296,9 +296,9 @@ To run the Cloudflare Tunnel in Kubernetes:
    pod/httpbin-deployment-bc6689c5d-b5ftk        1/1     Running   0          3m36s
    pod/httpbin-deployment-bc6689c5d-cbd9m        1/1     Running   0          3m36s
 
-   NAME                      TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
-   service/httpbin-service   LoadBalancer   34.118.225.147   34.75.201.60   80:31967/TCP   3m36s
-   service/kubernetes        ClusterIP      34.118.224.1     <none>         443/TCP        24h
+   NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+   service/httpbin-service   ClusterIP   34.118.225.147   <none>        80/TCP    3m36s
+   service/kubernetes        ClusterIP   34.118.224.1     <none>        443/TCP   24h
 
    NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
    deployment.apps/cloudflared-deployment   2/2     2            2           22s
@@ -355,5 +355,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/guides/kubernetes/#page","headline":"Kubernetes","description":"Deploy Cloudflare Tunnel on Kubernetes clusters.","url":"https://developers.cloudflare.com/tunnel/guides/kubernetes/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/guides/kubernetes/og.png?v=ce77be0d607543a3","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/guides/kubernetes/#page","headline":"Kubernetes","description":"Deploy Cloudflare Tunnel on Kubernetes clusters.","url":"https://developers.cloudflare.com/tunnel/guides/kubernetes/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/guides/kubernetes/og.png?v=ce77be0d607543a3","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","Integration"]}
 ```

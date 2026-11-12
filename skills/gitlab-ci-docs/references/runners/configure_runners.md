@@ -468,6 +468,7 @@ globally or for individual jobs:
 - [`GIT_CLONE_PATH`](#custom-build-directories) (custom build directories)
 - [`TRANSFER_METER_FREQUENCY`](#artifact-and-cache-settings) (artifact/cache meter update frequency)
 - [`ARTIFACT_COMPRESSION_LEVEL`](#artifact-and-cache-settings) (artifact archiver compression level)
+- [`ARTIFACT_DIRECT_DOWNLOAD`](#artifact-and-cache-settings) (artifact downloads from object storage)
 - [`CACHE_COMPRESSION_LEVEL`](#artifact-and-cache-settings) (cache archiver compression level)
 - [`CACHE_REQUEST_TIMEOUT`](#artifact-and-cache-settings) (cache request timeout)
 - [`RUNNER_SCRIPT_TIMEOUT`](#set-script-and-after_script-timeouts)
@@ -1111,6 +1112,7 @@ variables:
 |------------------------------|-------------|
 | `TRANSFER_METER_FREQUENCY`   | Specify how often to print the meter's transfer rate. It can be set to a duration (for example, `1s` or `1m30s`). A duration of `0` disables the meter (default). When a value is set, the pipeline shows a progress meter for artifact and cache uploads and downloads. |
 | `ARTIFACT_COMPRESSION_LEVEL` | To adjust compression ratio, set to `fastest`, `fast`, `default`, `slow`, or `slowest`. This setting works with the Fastzip archiver only, so the GitLab Runner feature flag [`FF_USE_FASTZIP`](https://docs.gitlab.com/runner/configuration/feature-flags/#available-feature-flags) must also be enabled. |
+| `ARTIFACT_DIRECT_DOWNLOAD`   | Set to `false` to download artifacts through GitLab, instead of asking GitLab to redirect the download to object storage. Default is `true`. If the runner's `config.toml` sets [`direct_download`](https://docs.gitlab.com/runner/configuration/advanced-configuration/#the-runnersartifact-section), or the deprecated `FF_USE_DIRECT_DOWNLOAD` feature flag in `[runners.feature_flags]`, that value takes precedence. Requires GitLab Runner 19.6 or later. |
 | `CACHE_COMPRESSION_LEVEL`    | To adjust compression ratio, set to `fastest`, `fast`, `default`, `slow`, or `slowest`. This setting works with the Fastzip archiver only, so the GitLab Runner feature flag [`FF_USE_FASTZIP`](https://docs.gitlab.com/runner/configuration/feature-flags/#available-feature-flags) must also be enabled. |
 | `CACHE_REQUEST_TIMEOUT`      | Configure the maximum duration of cache upload and download operations for a single job in minutes. Default is `10` minutes. |
 

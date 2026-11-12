@@ -39,10 +39,15 @@ The flow runs automatically in the following scenarios:
 - GitLab Duo features are enabled for the project or group.
 - The vulnerability meets the severity threshold. Without a triage and remediation profile, only vulnerabilities with high or critical severity are analyzed. With a profile, the profile sets the severity threshold, run mode, and other criteria.
 
+The flow can also run automatically on other tracked branches and tags.
+This option is controlled by a feature flag.
+For more information, see [tracked branches and tags](../../../application_security/vulnerabilities/secret_false_positive_detection.md#tracked-branches-and-tags).
+
 You can also manually trigger analysis for existing vulnerabilities:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Secure** > **Vulnerability report**.
+1. Optional. To find a vulnerability in another tracked branch or tag, [filter by tracked ref](../../../application_security/vulnerability_report/_index.md#tracked-ref-filter).
 1. Select the vulnerability you want to analyze.
 1. In the upper-right corner, select **AI actions**, then select **Check for false positive**.
 

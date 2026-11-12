@@ -14,6 +14,8 @@ The following metrics are available:
 - Median duration for the completed items in the stage.
 - Average duration for the completed items in the stage.
 
+The [value stream analytics](../../user/group/value_stream_analytics/_index.md) page shows data from the last two years.
+
 ## Retrieve configured value streams
 
 Prerequisites:

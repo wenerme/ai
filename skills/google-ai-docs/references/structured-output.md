@@ -69,7 +69,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
   """
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=prompt,
       response_format={
           "type": "text",
@@ -138,7 +138,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
   `;
   
   const interaction = await client.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: prompt,
     response_format: {
       type: 'text',
@@ -239,7 +239,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of(prompt))
           .responseFormat(format)
           .build();
@@ -333,7 +333,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
       resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(
               interactions.CreateModelInteraction{
-                  Model:          interactions.Model("gemini-3.8-flash"),
+                  Model:          interactions.Model("gemini-4-hydrogen"),
                   Input:          interactions.NewInteractionsInput(prompt),
                   ResponseFormat: &format,
               },
@@ -356,7 +356,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
       -H 'Content-Type: application/json' \
       -H "Api-Revision: 2026-05-20" \
       -d '{
-        "model": "gemini-3.8-flash",
+        "model": "gemini-4-hydrogen",
         "input": "Please extract the recipe from the following text.\nThe user wants to make delicious chocolate chip cookies.\nThey need 2 and 1/4 cups of all-purpose flour, 1 teaspoon of baking soda,\n1 teaspoon of salt, 1 cup of unsalted butter (softened), 3/4 cup of granulated sugar,\n3/4 cup of packed brown sugar, 1 teaspoon of vanilla extract, and 2 large eggs.\nFor the best part, they will need 2 cups of semisweet chocolate chips.\nFirst, preheat the oven to 375°F (190°C). Then, in a small bowl, whisk together the flour,\nbaking soda, and salt. In a large bowl, cream together the butter, granulated sugar, and brown sugar\nuntil light and fluffy. Beat in the vanilla and eggs, one at a time. Gradually beat in the dry\ningredients until just combined. Finally, stir in the chocolate chips. Drop by rounded tablespoons\nonto ungreased baking sheets and bake for 9 to 11 minutes.",
         "response_format": {
           "type": "text",
@@ -458,7 +458,7 @@ classification, allowing the output structure to vary based on the content.
   """
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=prompt,
       response_format={
           "type": "text",
@@ -519,7 +519,7 @@ classification, allowing the output structure to vary based on the content.
   `;
   
   const interaction = await client.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: prompt,
     response_format: {
       type: 'text',
@@ -612,7 +612,7 @@ classification, allowing the output structure to vary based on the content.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of(prompt))
           .responseFormat(format)
           .build();
@@ -702,7 +702,7 @@ classification, allowing the output structure to vary based on the content.
       resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(
               interactions.CreateModelInteraction{
-                  Model:          interactions.Model("gemini-3.8-flash"),
+                  Model:          interactions.Model("gemini-4-hydrogen"),
                   Input:          interactions.NewInteractionsInput(prompt),
                   ResponseFormat: &format,
               },
@@ -725,7 +725,7 @@ classification, allowing the output structure to vary based on the content.
       -H 'Content-Type: application/json' \
       -H "Api-Revision: 2026-05-20" \
       -d '{
-        "model": "gemini-3.8-flash",
+        "model": "gemini-4-hydrogen",
         "input": "Please moderate the following content and provide a decision.\nContent: '\''Congratulations! You have won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'\''",
         "response_format": {
           "type": "text",
@@ -809,7 +809,7 @@ organization chart.
   """
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=prompt,
       response_format={
           "type": "text",
@@ -855,7 +855,7 @@ organization chart.
   `;
   
   const interaction = await client.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: prompt,
     response_format: {
       type: 'text',
@@ -924,7 +924,7 @@ organization chart.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of(prompt))
           .responseFormat(format)
           .build();
@@ -991,7 +991,7 @@ organization chart.
       resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(
               interactions.CreateModelInteraction{
-                  Model:          interactions.Model("gemini-3.8-flash"),
+                  Model:          interactions.Model("gemini-4-hydrogen"),
                   Input:          interactions.NewInteractionsInput(prompt),
                   ResponseFormat: &format,
               },
@@ -1014,7 +1014,7 @@ organization chart.
       -H 'Content-Type: application/json' \
       -H "Api-Revision: 2026-05-20" \
       -d '{
-        "model": "gemini-3.8-flash",
+        "model": "gemini-4-hydrogen",
         "input": "Generate an organization chart for a small team.\nThe manager is Alice, who manages Bob and Charlie. Bob manages David.",
         "response_format": {
           "type": "text",
@@ -1091,7 +1091,7 @@ strings that can be concatenated to form the final JSON object.
   prompt = "The new UI is incredibly intuitive. Add a very long summary to test streaming!"
   
   stream = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=prompt,
       response_format={
           "type": "text",
@@ -1126,7 +1126,7 @@ strings that can be concatenated to form the final JSON object.
   const client = new GoogleGenAI({});
   
   const stream = await client.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "The new UI is incredibly intuitive. Add a very long summary!",
     response_format: {
       type: 'text',
@@ -1197,7 +1197,7 @@ strings that can be concatenated to form the final JSON object.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of(prompt))
           .responseFormat(format)
           .stream(true)
@@ -1268,7 +1268,7 @@ strings that can be concatenated to form the final JSON object.
       resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(
               interactions.CreateModelInteraction{
-                  Model:          interactions.Model("gemini-3.8-flash"),
+                  Model:          interactions.Model("gemini-4-hydrogen"),
                   Input:          interactions.NewInteractionsInput(prompt),
                   ResponseFormat: &format,
                   Stream:         genai.Ptr(true),
@@ -1299,7 +1299,7 @@ strings that can be concatenated to form the final JSON object.
 
 {% callout type="note" %}
   Preview: This feature is available only to Gemini 4 and Gemini 3 series models,
-  such as `gemini-4-carbon`, `gemini-4-argon`, and `gemini-3.8-flash`.
+  such as `gemini-4-carbon`, `gemini-4-argon`, `gemini-4-hydrogen`, and `gemini-3.8-flash`.
 
 {% /callout %}
 

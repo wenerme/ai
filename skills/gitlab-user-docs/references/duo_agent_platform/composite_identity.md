@@ -14,7 +14,7 @@ Composite identity is an authentication and authorization mechanism that combine
 - A human user. The person who initiated the request.
 
 Service accounts have a composite identity because a human user initiates the actions they perform.
-The exception is [scheduled automations](triggers/_index.md#scheduled-automations), which run with no human user.
+The exception is [scheduled automations](automations/_index.md#scheduled-automations), which run with no human user.
 
 Composite identity is automatically included in GitLab Duo Agent Platform.
 
@@ -51,7 +51,7 @@ Composite identity does not apply to:
 - GitLab Duo Agentic Chat in the UI and IDE.
 - Flows that a scheduled automation runs. These flows run as a dedicated service account, and the role
   of that account is the only limit on what the flow can do. For more information, see
-  [service account for scheduled automations](triggers/_index.md#service-account-for-scheduled-automations).
+  [service account for scheduled automations](automations/_index.md#service-account-for-scheduled-automations).
 
 ## How composite identity works
 

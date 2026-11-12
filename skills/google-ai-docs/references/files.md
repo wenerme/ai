@@ -33,7 +33,7 @@ The following code uploads a file and then uses the file in a call to
   myfile = client.files.upload(file="path/to/sample.mp3")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Describe this audio clip"},
           {"type": "audio", "uri": myfile.uri, "mime_type": myfile.mime_type}
@@ -58,7 +58,7 @@ The following code uploads a file and then uses the file in a call to
     });
   
     const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
         { type: "text", text: "Describe this audio clip" },
         { type: "audio", uri: myfile.uri, mime_type: myfile.mimeType }
@@ -107,7 +107,7 @@ The following code uploads a file and then uses the file in a call to
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -149,7 +149,7 @@ The following code uploads a file and then uses the file in a call to
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: "Describe this audio clip",
@@ -212,7 +212,7 @@ The following code uploads a file and then uses the file in a call to
       -H 'Content-Type: application/json' \
       -H "Api-Revision: 2026-05-20" \
       -d '{
-        "model": "gemini-3.8-flash",
+        "model": "gemini-4-hydrogen",
         "input": [
           {"type": "text", "text": "Describe this audio clip"},
           {"type": "audio", "uri": '$file_uri', "mime_type": "'${MIME_TYPE}'"}
@@ -230,7 +230,7 @@ The following code uploads a file and then uses the file in a call to
   {% tab label="CLI" %}
   ```bash
   FILE=$(gemini-api files upload path/to/sample.mp3 --wait)
-  gemini-api generate "Describe this audio clip" -m gemini-3.8-flash -i "$FILE"
+  gemini-api generate "Describe this audio clip" -m gemini-4-hydrogen -i "$FILE"
   ```
 
   {% /tab %}

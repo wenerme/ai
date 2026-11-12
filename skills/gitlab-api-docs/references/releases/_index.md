@@ -449,9 +449,17 @@ By default, GitLab fetches the release using `released_at` time. The use of the 
 
 ## Create a release
 
+- `warnings` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269740) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `release_evidence_size_limit`. Disabled by default.
+
 Creates a release. Developer level access to the project is required to create a release.
 Each request counts toward per-user and per-project
 [rate limits](../../rate_limits/api/releases.md).
+
+If the release evidence would exceed the
+[release evidence size limit](../../user/project/releases/release_evidence.md#release-evidence-size-limit)
+even without its issues, the release is still created and the response includes a `warnings` array. For an upcoming release,
+the warning says that no evidence is collected on the release date if the release still exceeds
+the limit then.
 
 ```plaintext
 POST /projects/:id/releases
@@ -602,8 +610,14 @@ adding milestones for ancestor groups raises an error.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
+- `422 Unprocessable Entity` response for evidence over the size limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269740) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `release_evidence_size_limit`. Disabled by default.
+
 Creates an evidence for an existing release.
 Each request counts toward a per-user [rate limit](../../rate_limits/api/releases.md).
+
+If the evidence would exceed the
+[release evidence size limit](../../user/project/releases/release_evidence.md#release-evidence-size-limit),
+returns `422 Unprocessable Entity` and collects no evidence.
 
 ```plaintext
 POST /projects/:id/releases/:tag_name/evidence

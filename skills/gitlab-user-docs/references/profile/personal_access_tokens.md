@@ -97,15 +97,40 @@ For full details, see
 
 ### Use Git over HTTPS
 
-Use your token as the password when Git prompts for credentials:
+Use a personal access token to authenticate Git operations over HTTPS, including `clone`, `fetch`,
+`pull`, and `push`.
 
-- Username: Any non-empty string (GitLab does not validate this value).
+To clone, fetch, and pull, use a token with the `read_repository` scope.
+To push, use a token with the `write_repository` scope.
+The `api` scope also grants these permissions.
+
+When Git prompts for credentials, enter:
+
+- Username: Any string that is not empty. GitLab does not validate this value.
 - Password: Your personal access token.
 
-For example:
+For example, to clone a repository:
 
 ```shell
-git clone https://oauth2:<your_access_token>@gitlab.example.com/gitlab-org/gitlab.git
+git clone https://gitlab.example.com/<namespace>/<project>.git
+```
+
+You can also include the token in the repository URL.
+This method stores your token in your shell history and in the repository's `.git/config` file:
+
+```shell
+git clone https://<username>:<your_access_token>@gitlab.example.com/<namespace>/<project>.git
+```
+
+If you omit the token from the URL, Git prompts you for credentials.
+To authenticate without a personal access token, use an
+[OAuth credential helper](account/two_factor_authentication.md#oauth-credential-helpers).
+
+To push a local repository to an empty project, add the project as a remote, then push:
+
+```shell
+git remote add origin https://gitlab.example.com/<namespace>/<project>.git
+git push --set-upstream origin <branch_name>
 ```
 
 ### Use third-party tools and IDE extensions
@@ -263,29 +288,6 @@ Prerequisites:
 You can now create personal access tokens for a service account user with no expiry date.
 
 On GitLab Self-Managed Community Edition (CE), the **Require expiration date for service accounts** checkbox is not available. Use the [**Require expiration date**](../../administration/settings/account_and_limit_settings.md#require-expiration-dates-for-new-access-tokens) setting instead.
-
-## Clone repository using personal access token
-
-To clone a repository when SSH is disabled, clone it using a personal access token by running the following command:
-
-```shell
-git clone https://<username>:<personal_token>@gitlab.com/gitlab-org/gitlab.git
-```
-
-This method saves your personal access token in your bash history. To avoid this, run the following command:
-
-```shell
-git clone https://<username>@gitlab.com/gitlab-org/gitlab.git
-```
-
-When asked for your password for `https://gitlab.com`, enter your personal access token.
-
-The `username` in the `clone` command:
-
-- Can be any string value.
-- Must not be an empty string.
-
-Remember this if you set up an automation pipeline that depends on authentication.
 
 ## Disable access tokens
 

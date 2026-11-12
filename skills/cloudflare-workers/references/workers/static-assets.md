@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/static-assets/og.png?v=acb320fc
 
 # Static Assets
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can upload static assets (HTML, CSS, images and other files) as part of your Worker, and Cloudflare will handle caching and serving them to web browsers.
 
@@ -46,7 +46,9 @@ Start building on Workers with our framework guides.
 
 ### How it works
 
-When you deploy your project, Cloudflare deploys both your Worker code and your static assets in a single operation. This deployment operates as a tightly integrated "unit" running across Cloudflare's network, combining static file hosting, custom logic, and global caching.
+Your Worker code, configuration, and static assets belong to a [Worker version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions). Each version has an asset manifest that maps request paths to uploaded files. Each request uses the selected version's files. This also applies when Cloudflare serves assets without running your Worker code.
+
+Deploying sets which versions receive traffic. The change takes time to reach every location on Cloudflare's network. During this time, requests for HTML and its assets can use different versions. Uploading an asset does not add it to earlier versions' manifests. Refer to [Version skew and static assets](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/) for ways to plan for these requests.
 
 The **assets directory** specified in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) is central to this design. During deployment, Wrangler automatically uploads the files from this directory to Cloudflare's infrastructure. Once deployed, requests for these assets are routed efficiently to locations closest to your users.
 
@@ -57,7 +59,7 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
   "main": "src/index.js",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-12",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
@@ -71,7 +73,7 @@ name = "my-spa"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-12"
 
 [assets]
 directory = "./dist"
@@ -148,7 +150,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 {
 	"name": "my-spa-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-12",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -163,7 +165,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 ```toml
 name = "my-spa-worker"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-12"
 main = "./src/index.ts"
 upload_source_maps = true
 
@@ -182,10 +184,12 @@ Learn more about how you can customize routing behavior.
 
 ### Caching behavior
 
-Cloudflare provides automatic caching for static assets across its network, ensuring fast delivery to users worldwide. When a static asset is requested, it is automatically cached for future requests.
+Cloudflare automatically caches static assets across its network. If the selected version's manifest includes the requested file, Cloudflare serves it from cache or fetches it from storage.
 
 - **First Request:** When an asset is requested for the first time, it is fetched from storage and cached at the nearest Cloudflare location.
 - **Subsequent Requests:** If a request for the same asset reaches a data center that does not have it cached, Cloudflare's [tiered caching system](https://developers.cloudflare.com/cache/how-to/tiered-cache/) allows it to be retrieved from a nearby cache rather than going back to storage. This improves cache hit ratio, reduces latency, and reduces unnecessary origin fetches.
+
+Suppose version A includes `/assets/app-a1b2.js`, but version B does not. If a request for that file reaches B, Cloudflare treats it as a [missing asset](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/#requests-for-missing-assets), even if it has a cached copy from A.
 
 ## Try it out
 
@@ -212,5 +216,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Static Assets","description":"Create full-stack applications deployed to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/og.png?v=acb320fcaf3019ec","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Static Assets","description":"Create full-stack applications deployed to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/og.png?v=acb320fcaf3019ec","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

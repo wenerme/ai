@@ -2351,6 +2351,7 @@ see [Project feature visibility level](#project-feature-visibility-level).
 - `feature_flags_minimum_role` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/8239) in GitLab 19.4 [with a feature flag](../administration/feature_flags/_index.md) named `feature_flag_management_permissions`. Disabled by default.
 - `ci_skip_branch_pipelines_for_mrs` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/607869) in GitLab 19.4.
 - `duo_code_review_decisions_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254980) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_decisions`. Disabled by default.
+- `duo_code_review_decisions_enabled` [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270328) in GitLab 19.6.
 - `duo_code_review_depth_allowed` and `duo_code_review_default_depth` [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_deep_flow`. Disabled by default.
 
 Updates an existing project.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/metrics-and-analy
 
 # Metrics and analytics
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are two graphical sources of information about your Workers traffic at a given time: Workers metrics and zone-based Workers analytics.
 
@@ -34,7 +34,7 @@ There are two metrics that can help you understand the health of your Worker in 
 The first graph shows historical request counts from the Workers runtime broken down into successful requests, errored requests, and subrequests.
 
 - **Total**: All incoming requests registered by a Worker. Requests blocked by [WAF ↗︎](https://www.cloudflare.com/waf/) or other security features will not count.
-- **Success**: Requests that returned a Success or Client Disconnected invocation status.
+- **Success**: Requests that returned a Success or Client Disconnected invocation status. This includes requests canceled before the client received the full response.
 - **Errors**: Requests that returned a Script Threw Exception, Exceeded Resources, or Internal Error invocation status — refer to [Invocation Statuses](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#invocation-statuses) for a breakdown of where your errors are coming from.
 
 Request traffic data may display a drop off near the last few minutes displayed in the graph for time ranges less than six hours. This does not reflect a drop in traffic, but a slight delay in aggregation and metrics delivery.
@@ -85,7 +85,7 @@ Worker invocation statuses indicate whether a Worker executed successfully or fa
 | Invocation status | Definition | Workers error code | GraphQL field |
 | --- | --- | --- | --- |
 | Success | Worker executed successfully |  | `success` |
-| Client disconnected | HTTP client (that is, the browser) disconnected before the request completed |  | `clientDisconnected` |
+| Client disconnected | The client disconnected or canceled the request before the Worker finished responding. The client can be any application or service, including another Worker or a Pages Function. |  | `clientDisconnected` |
 | Worker threw exception | Worker threw an unhandled JavaScript exception | 1101 | `scriptThrewException` |
 | Exceeded resources¹ | Worker exceeded runtime limits | 1102, 1027 | `exceededResources` |
 | Internal error² | Workers runtime encountered an error |  | `internalError` |
@@ -93,6 +93,12 @@ Worker invocation statuses indicate whether a Worker executed successfully or fa
 ¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](https://developers.cloudflare.com/workers/platform/limits/#request-and-response-limits). The most common cause is excessive CPU time, but is also caused by a Worker exceeding startup time or free tier limits.
 
 ² The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Worker code nor any resource limit. While requests with Internal Error status are rare, some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, review [www.cloudflarestatus.com ↗︎](https://www.cloudflarestatus.com/).
+
+A Worker can return HTTP `200` headers and then have its response body canceled. Check whether the body finished, as well as the HTTP status.
+
+When a client disconnects, the runtime may cancel pending subrequests and open streams or connections tied to that request. If a subrequest calls another Worker, that Worker loses its caller and may also report Client Disconnected. Refer to [Request cancellation](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#request-cancellation) for how this affects HTTP and RPC calls.
+
+This status alone does not tell you which Worker canceled first, or whether an exception or resource limit caused the problem. Follow [Find out why a request was canceled](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/#find-out-why-a-request-was-canceled) to check both sets of logs.
 
 To further investigate exceptions, use [`wrangler tail`](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail).
 
@@ -167,5 +173,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/og.png?v=6188b7fba9d96e7a","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#page","headline":"Metrics and analytics","description":"Diagnose issues with Workers metrics, and review request data for a zone with Workers analytics.","url":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/metrics-and-analytics/og.png?v=6188b7fba9d96e7a","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

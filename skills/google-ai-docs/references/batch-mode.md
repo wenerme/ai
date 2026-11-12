@@ -73,7 +73,7 @@ method with inline requests:
   ]
   
   inline_batch_job = client.batches.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       src=inline_requests,
       config={
           'display_name': "inlined-requests-job-1",
@@ -108,7 +108,7 @@ method with inline requests:
   ]
   
   const response = await ai.batches.create({
-      model: 'gemini-3.8-flash',
+      model: 'gemini-4-hydrogen',
       src: inlinedRequests,
       config: {
           displayName: 'inlined-requests-job-1',
@@ -158,7 +158,7 @@ method with inline requests:
   CreateBatchJobConfig config =
       CreateBatchJobConfig.builder().displayName("inlined-requests-job-1").build();
   
-  BatchJob inlineBatchJob = client.batches.create("gemini-3.8-flash", src, config);
+  BatchJob inlineBatchJob = client.batches.create("gemini-4-hydrogen", src, config);
   
   System.out.println("Created batch job: " + inlineBatchJob.name().orElse(""));
   ```
@@ -167,7 +167,7 @@ method with inline requests:
 
   {% tab label="REST" %}
   ```bash
-  curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:batchGenerateContent \
+  curl https://generativelanguage.googleapis.com/v1beta/models/gemini-4-hydrogen:batchGenerateContent \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -X POST \
   -H "Content-Type:application/json" \
@@ -217,7 +217,7 @@ The following is an example of a JSONL file. You can save it in a file named
 `my-batch-requests.json`:
 
 ```json
-{"key": "request-1", "request": {"contents": [{"parts": [{"text": "Describe the process of photosynthesis."}]}], "generation_config": {"temperature": 0.7}}}
+{"key": "request-1", "request": {"contents": [{"parts": [{"text": "Describe the process of photosynthesis."}]}]}}
 {"key": "request-2", "request": {"contents": [{"parts": [{"text": "What are the main ingredients in a Margherita pizza?"}]}]}}
 ```
 
@@ -349,7 +349,7 @@ within your JSONL file.
   {% tab label="REST" %}
   ```bash
   tmp_batch_input_file=batch_input.tmp
-  echo -e '{"contents": [{"parts": [{"text": "Describe the process of photosynthesis."}]}], "generationConfig": {"temperature": 0.7}}\n{"contents": [{"parts": [{"text": "What are the main ingredients in a Margherita pizza?"}]}]}' > batch_input.tmp
+  echo -e '{"contents": [{"parts": [{"text": "Describe the process of photosynthesis."}]}]}\n{"contents": [{"parts": [{"text": "What are the main ingredients in a Margherita pizza?"}]}]}' > batch_input.tmp
   MIME_TYPE=$(file -b --mime-type "${tmp_batch_input_file}")
   NUM_BYTES=$(wc -c < "${tmp_batch_input_file}")
   DISPLAY_NAME=BatchInput
@@ -397,7 +397,7 @@ method with the input file uploaded using File API:
   # Assumes `uploaded_file` is the file object from the previous step
   client = genai.Client()
   file_batch_job = client.batches.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       src=uploaded_file.name,
       config={
           'display_name': "file-upload-job-1",
@@ -413,7 +413,7 @@ method with the input file uploaded using File API:
   ```javascript
   // Assumes `uploadedFile` is the file object from the previous step
   const fileBatchJob = await ai.batches.create({
-      model: 'gemini-3.8-flash',
+      model: 'gemini-4-hydrogen',
       src: uploadedFile.name,
       config: {
           displayName: 'file-upload-job-1',
@@ -441,7 +441,7 @@ method with the input file uploaded using File API:
   CreateBatchJobConfig config =
       CreateBatchJobConfig.builder().displayName("file-upload-job-1").build();
   
-  BatchJob fileBatchJob = client.batches.create("gemini-3.8-flash", src, config);
+  BatchJob fileBatchJob = client.batches.create("gemini-4-hydrogen", src, config);
   
   System.out.println("Created batch job: " + fileBatchJob.name().orElse(""));
   ```
@@ -452,7 +452,7 @@ method with the input file uploaded using File API:
   ```bash
   # Set the File ID taken from the upload response.
   BATCH_INPUT_FILE='files/123456'
-  curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:batchGenerateContent \
+  curl https://generativelanguage.googleapis.com/v1beta/models/gemini-4-hydrogen:batchGenerateContent \
   -X POST \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type:application/json" \
@@ -741,7 +741,7 @@ The following example shows how to specify for your batch requests.
   ]
   
   inline_batch_job = client.batches.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       src=inline_requests,
       config={
           'display_name': "structured-output-job-1"
@@ -846,7 +846,7 @@ The following example shows how to specify for your batch requests.
   ]
   
   const inlinedBatchJob = await ai.batches.create({
-      model: 'gemini-3.8-flash',
+      model: 'gemini-4-hydrogen',
       src: inlinedRequests,
       config: {
           displayName: 'inlined-requests-job-1',
@@ -936,7 +936,7 @@ The following example shows how to specify for your batch requests.
   
   BatchJob inlineBatchJob =
       client.batches.create(
-          "gemini-3.8-flash",
+          "gemini-4-hydrogen",
           BatchJobSource.builder().inlinedRequests(inlineRequests).build(),
           CreateBatchJobConfig.builder().displayName("structured-output-job-1").build());
   

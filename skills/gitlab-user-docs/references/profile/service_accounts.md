@@ -25,7 +25,7 @@ stable regardless of changes to your team's membership.
 
 Service accounts authenticate with a [personal access token](personal_access_tokens.md).
 They can interact with [package and container registries](../packages/_index.md),
-perform [Git operations](personal_access_tokens.md#clone-repository-using-personal-access-token),
+perform [Git operations](personal_access_tokens.md#use-git-over-https),
 and access the API.
 
 Service accounts have the following characteristics:

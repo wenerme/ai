@@ -18,7 +18,7 @@ Here's a basic example:
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="How does AI work?"
   )
   print(interaction.output_text)
@@ -34,7 +34,7 @@ Here's a basic example:
   
   async function main() {
     const interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "How does AI work?",
     });
     console.log(interaction.output_text);
@@ -58,7 +58,7 @@ Here's a basic example:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("How does AI work?"))
           .build();
   
@@ -93,7 +93,7 @@ Here's a basic example:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("How does AI work?"),
           }),
       })
@@ -116,7 +116,7 @@ Here's a basic example:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "How does AI work?"
     }'
   ```
@@ -161,10 +161,10 @@ over cost, latency, and intelligence. For more details, see the
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="How does AI work?",
       generation_config={
-          "thinking_level": "low"
+          "thinking_level": "high"
       }
   )
   print(interaction.output_text)
@@ -180,10 +180,10 @@ over cost, latency, and intelligence. For more details, see the
   
   async function main() {
     const interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "How does AI work?",
       generation_config: {
-        thinking_level: "low",
+        thinking_level: "high",
       },
     });
     console.log(interaction.output_text);
@@ -209,9 +209,9 @@ over cost, latency, and intelligence. For more details, see the
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("How does AI work?"))
-          .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.LOW).build())
+          .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
           .build();
   
   Interaction interaction =
@@ -245,10 +245,10 @@ over cost, latency, and intelligence. For more details, see the
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("How does AI work?"),
               GenerationConfig: &interactions.GenerationConfig{
-                  ThinkingLevel: interactions.ThinkingLevelLow.ToPointer(),
+                  ThinkingLevel: interactions.ThinkingLevelHigh.ToPointer(),
               },
           }),
       })
@@ -271,10 +271,10 @@ over cost, latency, and intelligence. For more details, see the
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "How does AI work?",
       "generation_config": {
-        "thinking_level": "low"
+        "thinking_level": "high"
       }
     }'
   ```
@@ -284,7 +284,8 @@ over cost, latency, and intelligence. For more details, see the
   {% tab label="CLI" %}
   ```bash
   gemini-api generate "How does AI work?" \
-    --body '{"generation_config": {"thinking_level": "low"}}'
+    -m gemini-4-hydrogen \
+    --body '{"generation_config": {"thinking_level": "high"}}'
   ```
 
   {% /tab %}
@@ -304,7 +305,7 @@ a `system_instruction` parameter to configure the model's behavior.
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       system_instruction="You are a cat. Your name is Neko.",
       input="Hello there"
   )
@@ -322,7 +323,7 @@ a `system_instruction` parameter to configure the model's behavior.
   
   async function main() {
     const interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "Hello there",
       system_instruction: "You are a cat. Your name is Neko.",
     });
@@ -347,7 +348,7 @@ a `system_instruction` parameter to configure the model's behavior.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .systemInstruction("You are a cat. Your name is Neko.")
           .input(InteractionsInput.of("Hello there"))
           .build();
@@ -383,7 +384,7 @@ a `system_instruction` parameter to configure the model's behavior.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:             interactions.Model("gemini-3.8-flash"),
+              Model:             interactions.Model("gemini-4-hydrogen"),
               Input:             interactions.NewInteractionsInput("Hello there"),
               SystemInstruction: genai.Ptr("You are a cat. Your name is Neko."),
           }),
@@ -407,7 +408,7 @@ a `system_instruction` parameter to configure the model's behavior.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "system_instruction": "You are a cat. Your name is Neko.",
       "input": "Hello there"
     }'
@@ -440,7 +441,7 @@ You can also override default generation parameters, such as
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Explain how AI works",
       generation_config={
           "max_output_tokens": 500
@@ -459,7 +460,7 @@ You can also override default generation parameters, such as
   
   async function main() {
     const interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "Explain how AI works",
       generation_config: {
         max_output_tokens: 500,
@@ -487,7 +488,7 @@ You can also override default generation parameters, such as
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Explain how AI works"))
           .generationConfig(GenerationConfig.builder().maxOutputTokens(500).build())
           .build();
@@ -523,7 +524,7 @@ You can also override default generation parameters, such as
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Explain the concept of Occam's Razor and provide a simple, everyday example."),
               GenerationConfig: &interactions.GenerationConfig{
                   MaxOutputTokens: genai.Ptr(500),
@@ -549,7 +550,7 @@ You can also override default generation parameters, such as
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Explain how AI works",
       "generation_config": {
         "max_output_tokens": 1000
@@ -588,7 +589,7 @@ media files. The following example demonstrates providing an image:
   uploaded_file = client.files.upload(file="path/to/organ.jpg")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Tell me about this instrument"},
           {
@@ -616,7 +617,7 @@ media files. The following example demonstrates providing an image:
     });
   
     const interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
         {type: "text", text: "Tell me about this instrument"},
         {
@@ -658,7 +659,7 @@ media files. The following example demonstrates providing an image:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(
               InteractionsInput.ofContent(
                   Arrays.asList(
@@ -709,7 +710,7 @@ media files. The following example demonstrates providing an image:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: "Tell me about this instrument",
@@ -741,7 +742,7 @@ media files. The following example demonstrates providing an image:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Tell me about this instrument"},
         {
@@ -788,7 +789,7 @@ guide.
   client = genai.Client()
   
   stream = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Explain how AI works",
       stream=True
   )
@@ -808,7 +809,7 @@ guide.
   
   async function main() {
     const stream = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "Explain how AI works",
       stream: true,
     });
@@ -846,7 +847,7 @@ guide.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Explain how AI works"))
           .stream(true)
           .build();
@@ -892,7 +893,7 @@ guide.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:  interactions.Model("gemini-3.8-flash"),
+              Model:  interactions.Model("gemini-4-hydrogen"),
               Input:  interactions.NewInteractionsInput("Explain how AI works"),
               Stream: genai.Ptr(true),
           }),
@@ -927,7 +928,7 @@ guide.
     -H "Api-Revision: 2026-05-20" \
     --no-buffer \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Explain how AI works",
       "stream": true
     }'
@@ -965,13 +966,13 @@ and the API automatically manages conversation history.
   client = genai.Client()
   
   interaction1 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="I have 2 dogs in my house.",
   )
   print(interaction1.output_text)
   
   interaction2 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="How many paws are in my house?",
       previous_interaction_id=interaction1.id,
   )
@@ -988,13 +989,13 @@ and the API automatically manages conversation history.
   
   async function main() {
     const interaction1 = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "I have 2 dogs in my house.",
     });
     console.log("Response 1:", interaction1.output_text);
   
     const interaction2 = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "How many paws are in my house?",
       previous_interaction_id: interaction1.id,
     });
@@ -1019,7 +1020,7 @@ and the API automatically manages conversation history.
   
   CreateModelInteraction params1 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("I have 2 dogs in my house."))
           .build();
   
@@ -1029,7 +1030,7 @@ and the API automatically manages conversation history.
   
   CreateModelInteraction params2 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("How many paws are in my house?"))
           .previousInteractionId(interaction1.id().orElse(""))
           .build();
@@ -1065,7 +1066,7 @@ and the API automatically manages conversation history.
       // First turn
       turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Hello, I have 2 dogs in my house."),
           }),
       })
@@ -1079,7 +1080,7 @@ and the API automatically manages conversation history.
       // Second turn (chained using PreviousInteractionID)
       turn2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:                 interactions.Model("gemini-3.8-flash"),
+              Model:                 interactions.Model("gemini-4-hydrogen"),
               PreviousInteractionID: turn1.Interaction.ID,
               Input:                 interactions.NewInteractionsInput("How many paws are in my house?"),
           }),
@@ -1102,7 +1103,7 @@ and the API automatically manages conversation history.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "I have 2 dogs in my house."
     }')
   
@@ -1113,7 +1114,7 @@ and the API automatically manages conversation history.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "I have two dogs in my house. How many paws are in my house?",
       "previous_interaction_id": "'$INTERACTION_ID'"
     }'
@@ -1142,13 +1143,13 @@ Streaming can also be used for multi-turn conversations by combining
   client = genai.Client()
   
   interaction1 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="I have 2 dogs in my house.",
   )
   print(interaction1.output_text)
   
   stream = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="How many paws are in my house?",
       previous_interaction_id=interaction1.id,
       stream=True
@@ -1169,13 +1170,13 @@ Streaming can also be used for multi-turn conversations by combining
   
   async function main() {
     const interaction1 = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "I have 2 dogs in my house.",
     });
     console.log("Response 1:", interaction1.output_text);
   
     const stream = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "How many paws are in my house?",
       previous_interaction_id: interaction1.id,
       stream: true,
@@ -1214,7 +1215,7 @@ Streaming can also be used for multi-turn conversations by combining
   
   CreateModelInteraction params1 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("I have 2 dogs in my house."))
           .build();
   
@@ -1224,7 +1225,7 @@ Streaming can also be used for multi-turn conversations by combining
   
   CreateModelInteraction params2 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("How many paws are in my house?"))
           .previousInteractionId(interaction1.id().orElse(""))
           .stream(true)
@@ -1271,7 +1272,7 @@ Streaming can also be used for multi-turn conversations by combining
   
       turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Hello, I have 2 dogs in my house."),
           }),
       })
@@ -1281,7 +1282,7 @@ Streaming can also be used for multi-turn conversations by combining
   
       res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:                 interactions.Model("gemini-3.8-flash"),
+              Model:                 interactions.Model("gemini-4-hydrogen"),
               PreviousInteractionID: turn1.Interaction.ID,
               Input:                 interactions.NewInteractionsInput("How many paws are in my house?"),
               Stream:                genai.Ptr(true),
@@ -1316,7 +1317,7 @@ Streaming can also be used for multi-turn conversations by combining
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "I have 2 dogs in my house."
     }')
   INTERACTION_ID=$(echo "$RESPONSE1" | jq -r '.id')
@@ -1327,7 +1328,7 @@ Streaming can also be used for multi-turn conversations by combining
     -H "Api-Revision: 2026-05-20" \
     --no-buffer \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "How many paws are in my house?",
       "previous_interaction_id": "'$INTERACTION_ID'",
       "stream": true
@@ -1372,7 +1373,7 @@ To use stateless mode:
   ]
   
   interaction1 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       store=False,
       input=history
   )
@@ -1387,7 +1388,7 @@ To use stateless mode:
   })
   
   interaction2 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       store=False,
       input=history
   )
@@ -1411,7 +1412,7 @@ To use stateless mode:
     ];
   
     const interaction1 = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       store: false,
       input: history
     });
@@ -1425,7 +1426,7 @@ To use stateless mode:
     });
   
     const interaction2 = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       store: false,
       input: history
     });
@@ -1462,7 +1463,7 @@ To use stateless mode:
   
   CreateModelInteraction params1 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .store(false)
           .input(InteractionsInput.ofStep(history))
           .build();
@@ -1480,7 +1481,7 @@ To use stateless mode:
   
   CreateModelInteraction params2 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .store(false)
           .input(InteractionsInput.ofStep(history))
           .build();
@@ -1515,7 +1516,7 @@ To use stateless mode:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Step{
                   interactions.NewStep(interactions.UserInputStep{
                       Content: []interactions.Content{
@@ -1561,7 +1562,7 @@ To use stateless mode:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "store": false,
       "input": [
         {
@@ -1590,7 +1591,7 @@ To use stateless mode:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d "{
-      \"model\": \"gemini-3.8-flash\",
+      \"model\": \"gemini-4-hydrogen\",
       \"store\": false,
       \"input\": $HISTORY
     }"

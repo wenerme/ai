@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/service-b
 
 # RPC (WorkerEntrypoint)
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) allow one Worker to call into another, without going through a publicly-accessible URL.
 
@@ -48,7 +48,7 @@ Worker B implements the public method `add(a, b)`:
 	"name": "worker-b",
 	"main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-23",
+	"compatibility_date": "2026-11-12",
 	"upload_source_maps": true
 }
 ```
@@ -58,7 +58,7 @@ Worker B implements the public method `add(a, b)`:
 name = "worker-b"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-23"
+compatibility_date = "2026-11-12"
 upload_source_maps = true
 ```
 
@@ -98,7 +98,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 	"name": "worker-a",
 	"main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-23",
+	"compatibility_date": "2026-11-12",
 	"upload_source_maps": true,
 	"services": [
 		{
@@ -114,7 +114,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 name = "worker-a"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-23"
+compatibility_date = "2026-11-12"
 upload_source_maps = true
 
 [[services]]
@@ -263,6 +263,8 @@ You can use any type of [binding](https://developers.cloudflare.com/workers/runt
 ### Lifecycle methods (`ctx`)
 
 The [`ctx`](https://developers.cloudflare.com/workers/runtime-apis/context) object is exposed as a class property of the `WorkerEntrypoint` class.
+
+If the calling Worker's execution context ends, the called Worker's RPC execution context is canceled. This can happen when the original client disconnects. Refer to [Request cancellation](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#request-cancellation) for the request chain, and [RPC lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#end-of-event-handler--execution-context) for RPC object lifetimes.
 
 For example, you can extend the lifetime of the invocation context by calling the `waitUntil()` method:
 
@@ -516,5 +518,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#page","headline":"RPC (WorkerEntrypoint)","description":"Facilitate Worker-to-Worker communication via RPC.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/og.png?v=3b4498d1f4ea0bc6","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#page","headline":"RPC (WorkerEntrypoint)","description":"Facilitate Worker-to-Worker communication via RPC.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/og.png?v=3b4498d1f4ea0bc6","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 ```

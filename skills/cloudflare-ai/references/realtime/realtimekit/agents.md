@@ -1,5 +1,5 @@
 ---
-description: Add a server-side agent to a RealtimeKit meeting and stream transcripts, participant presence, and broadcasts to a Worker or Durable Object.
+description: Add a server-side agent to a RealtimeKit meeting that receives transcripts and presence, and sends chat, polls, and broadcasts.
 title: Agent Participant
 image: https://developers.cloudflare.com/realtime/realtimekit/agents/og.png?v=c6625ab8f4d89f64
 ---
@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/realtime/realtimekit/agents/og.png?v=c6
 
 # Agent Participant
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agent Participant adds a server-side agent to a RealtimeKit meeting. Any backend that can open a WebSocket — a Cloudflare Worker, a Durable Object, or your own server — can connect to it. No client SDK or browser is required.
 
-Today an agent receives live meeting activity, such as transcripts, participant presence, and broadcasts. More capabilities are planned, including sending messages and working with meeting media.
+An agent receives live meeting activity, such as transcripts, participant presence, chat, polls, and broadcasts. It can also send chat messages, run polls, and send broadcasts. Working with meeting media is planned.
 
 ## What an agent can do
 
@@ -28,9 +28,9 @@ RealtimeKit meeting
 
 **Agent participant**Configured by preset
 
-Listen: transcripts, presence, broadcasts
+Listen: transcripts, presence, chat, polls, broadcasts
 
-Send: chat, broadcasts, stream audio (future-scope)
+Send: chat, polls, broadcasts
 
 My code**Durable Object**WebSocket ↔ JSON
 
@@ -40,7 +40,7 @@ Agent participantJoins the meetingRealtimeKit meeting
 
 Agent ParticipantListen →Worker or Durable Object
 
-Worker or Durable ObjectSend (planned) →Agent Participant
+Worker or Durable ObjectSend →Agent Participant
 
 The agent is a meeting participant. Its [preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/) decides how it joins the meeting, and its subscriptions decide which events it receives.
 
@@ -86,7 +86,7 @@ Decide whether people in the meeting should see the agent. The agent receives th
 | [Hidden agent](https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/#hidden-agent) | Compliance monitor, quality review, live meeting analytics | No |
 | [Visible agent](https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/#visible-agent) | Note-taker that appears in the participant list | Yes |
 
-Agents that speak or send chat messages are not supported yet. Refer to the [Capability matrix](https://developers.cloudflare.com/realtime/realtimekit/agents/capabilities/).
+Agents that speak are not supported yet. Refer to the [Capability matrix](https://developers.cloudflare.com/realtime/realtimekit/agents/capabilities/).
 
 ## Billing
 
@@ -107,5 +107,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/agents/#page","headline":"Agent Participant","description":"Add a server-side agent to a RealtimeKit meeting and stream transcripts, participant presence, and broadcasts to a Worker or Durable Object.","url":"https://developers.cloudflare.com/realtime/realtimekit/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/agents/og.png?v=c6625ab8f4d89f64","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/agents/#page","headline":"Agent Participant","description":"Add a server-side agent to a RealtimeKit meeting that receives transcripts and presence, and sends chat, polls, and broadcasts.","url":"https://developers.cloudflare.com/realtime/realtimekit/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/agents/og.png?v=c6625ab8f4d89f64","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

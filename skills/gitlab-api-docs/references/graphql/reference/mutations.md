@@ -6244,7 +6244,7 @@ Create an environment.
 
 ## `environmentDelete`
 
-Delete an environment.
+Delete an environment. When the `environment_delete_in_batches` feature flag is enabled, a large environment is deleted over several requests: each request returns an error in `errors` until the environment is gone, and the rows deleted count toward a per-user rate limit (`environment_delete_rows_limit_per_user` application setting). Until the `rate_limit_environment_delete_rows` feature flag is enabled, requests over this limit are logged but not blocked.
 
 **Input type:** `EnvironmentDeleteInput`
 
@@ -11607,6 +11607,7 @@ Creates a release. Release creates and updates are rate limited per project (`re
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `release` | [`Release`](objects.md#release) | Release after mutation. |
+| `warnings` | [`[String!]`](scalars.md#string) | Non-fatal problems encountered while creating the release. The release was still created. Returns a warning, only if the `release_evidence_size_limit` feature flag is enabled, when the release evidence would exceed the `release_evidence_max_size_bytes` application setting even without its issues: no evidence was collected, or, for an upcoming release, none is collected on its release date if it still exceeds the limit then. |
 
 ## `releaseDelete`
 
@@ -14449,6 +14450,7 @@ Update the flat per-user budget cap for a subscription.
 | `flatUserCap` | [`Float!`](scalars.md#float) | Default per-user budget cap applied to all users. |
 | `flatUserCapEnabled` | [`Boolean!`](scalars.md#boolean) | Whether the flat per-user budget cap is enabled. |
 | `namespacePath` | [`String`](scalars.md#string) | Path of the top-level group namespace. Omit for self-managed instance scope. |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Global ID of the organization. |
 
 ### `upsertFlatUserCap` fields {.no_toc}
 
@@ -14469,6 +14471,7 @@ Bulk upsert per-user budget cap overrides.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespacePath` | [`String`](scalars.md#string) | Path of the top-level group namespace. Omit for self-managed instance scope. |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Global ID of the organization. |
 | `overrides` | [`[BudgetCapUserOverrideInput!]!`](input_objects.md#budgetcapuseroverrideinput) | List of per-user budget cap overrides to upsert. |
 
 ### `upsertUserBudgetCapOverrides` fields {.no_toc}

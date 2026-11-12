@@ -108,7 +108,7 @@ then create a trigger:
 The flow runs when a person with at least the Developer role marks a draft merge request as ready.
 
 For more information about creating and editing triggers, see
-[triggers](../../../duo_agent_platform/triggers/_index.md).
+[triggers](../../../duo_agent_platform/automations/_index.md).
 
 ### Request recommendations for an existing merge request
 

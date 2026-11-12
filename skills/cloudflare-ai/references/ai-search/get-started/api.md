@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/get-started/api/og.png?v=2130
 
 # REST API
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance using the REST API.
 
@@ -45,7 +45,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 ### Connect a data source (optional)
 
-You can create an instance that is connected to a website or R2 bucket as a data source. AI Search indexes the content automatically.
+You can create an instance that is connected to a website, R2 bucket, or D1 database as a data source. AI Search indexes the content automatically.
 
 **Website:**
 
@@ -78,9 +78,30 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
   }'
 ```
 
+**D1 database:**
+
+Index the rows returned by a read-only query against a [D1 database](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/). The `token_id` of a [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) is always required.
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances" \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "id": "my-instance",
+    "type": "d1",
+    "source": "<D1_DATABASE_ID>",
+    "token_id": "<SERVICE_TOKEN_ID>",
+    "source_params": {
+      "d1": {
+        "query": "SELECT article_id AS id, title, content\nFROM articles"
+      }
+    }
+  }'
+```
+
 ## 3. Add content
 
-If you did not create an instance that is connected to a data source, upload files using the [Items API](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/upload/). You can skip this step if you connected a website or R2 bucket.
+If you did not create an instance that is connected to a data source, upload files using the [Items API](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/upload/). You can skip this step if you connected a website, R2 bucket, or D1 database.
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/namespaces/default/instances/my-instance/items" \
@@ -138,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/api/#page","headline":"REST API","description":"Create AI Search instances programmatically using the REST API.","url":"https://developers.cloudflare.com/ai-search/get-started/api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/get-started/api/og.png?v=2130d71799ac2da7","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/api/#page","headline":"REST API","description":"Create AI Search instances programmatically using the REST API.","url":"https://developers.cloudflare.com/ai-search/get-started/api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/get-started/api/og.png?v=2130d71799ac2da7","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -227,7 +227,7 @@ POST /projects/:id/merge_requests/:merge_request_iid/draft_notes/bulk_publish
 | `merge_request_iid` | integer           | yes      | The IID of a project merge request. |
 | `note`              | string            | no       | Text of a summary note to add to the merge request. |
 | `internal`          | boolean           | no       | If `true`, the summary note is internal. |
-| `reviewer_state`    | string            | no       | If defined, sets the review state after publishing. Does not record a formal approval. Possible values: `requested_changes`, `reviewed`. |
+| `reviewer_state`    | string            | no       | If defined, sets the review state after publishing. Does not record a formal approval. Possible values: `requested_changes`, `reviewed`. If you can't request changes, sets `reviewed` instead. |
 
 ```shell
 curl --request POST \

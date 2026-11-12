@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/syncin
 
 # Syncing
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search automatically indexes your content for search. How indexing works depends on your data source.
 
 ## External data sources
 
-For instances connected to a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) or [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), AI Search creates jobs to sync your data source. Jobs run automatically on a schedule, every 24 hours by default, and process new, modified, or deleted files to keep your search index up to date.
+For instances connected to a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/), [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), or [D1 database](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/), AI Search creates jobs to sync your data source. Jobs run automatically on a schedule, every 24 hours by default, and process new, modified, or deleted files to keep your search index up to date.
 
 You can view job status and history in the **Jobs** tab in the dashboard or using the [Instances API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/).
 
@@ -66,7 +66,7 @@ The total time to index depends on the number and type of files. Factors that af
 
 ## Automatic pausing for inactive instances
 
-If an instance receives no search request for 31 days, AI Search automatically pauses its scheduled sync jobs. This applies only to [external data sources](#external-data-sources) (website or R2), since [built-in storage](#built-in-storage) has no sync jobs. This avoids unnecessary requests to your data source to rescan and sync your instance when it is not being used.
+If an instance receives no search request for 31 days, AI Search automatically pauses its scheduled sync jobs. This applies only to [external data sources](#external-data-sources) (website, R2, or D1), since [built-in storage](#built-in-storage) has no sync jobs. This avoids unnecessary requests to your data source to rescan and sync your instance when it is not being used.
 
 A paused instance stays fully searchable, but source changes are not picked up while sync jobs are paused. After the instance receives search or chat traffic again, AI Search automatically resumes scheduled sync jobs during its activity checks. You can also resume manually with the **Resume indexing** control. Refer to [Controls](#controls).
 
@@ -75,7 +75,7 @@ A paused instance stays fully searchable, but source changes are not picked up w
 To ensure smooth and reliable indexing:
 
 - Make sure your files are within the [size limit](https://developers.cloudflare.com/ai-search/configuration/data-source/#file-limits) and in a [supported format](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types) to avoid being skipped.
-- For R2-backed instances, keep your [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) valid to prevent indexing failures.
+- For R2-backed and D1-backed instances, keep your [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) valid to prevent indexing failures.
 - Regularly clean up outdated or unnecessary content to stay within [instance limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
 
 Was this helpful?
@@ -87,5 +87,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/#page","headline":"Syncing","description":"Understand how AI Search automatically syncs and indexes content from connected data sources.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/og.png?v=ac4e94456e06d7cd","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/#page","headline":"Syncing","description":"Understand how AI Search automatically syncs and indexes content from connected data sources.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/og.png?v=ac4e94456e06d7cd","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

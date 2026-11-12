@@ -56,7 +56,7 @@ Use these prompts to get started:
 
 ## Known issues
 
-- The agent runs in only GitLab Duo Chat UI and in your IDE. You cannot create a [trigger](../../triggers/_index.md) for this agent.
+- The agent runs in only GitLab Duo Chat UI and in your IDE. You cannot create a [trigger](../../automations/_index.md) for this agent.
 - The agent does not create, edit, or commit files, modify pipelines, or change project settings. It can create and update work items, issues, and epics, and add comments to issues and work items after you approve each action.
 - The agent cannot read vulnerabilities, security findings, pipeline errors, or job logs. It asks you for the relevant output, and might point you to the Security Analyst Agent or the CI Expert Agent. It cannot delegate to another agent.
 - The agent uses project and page context, but cannot always detect whether a specific feature has been turned on for the project.

@@ -265,6 +265,10 @@ query [ClickHouse](../../integration/clickhouse.md) additionally log:
 - `clickhouse_rows_read`: Total number of rows ClickHouse read to answer those queries
 - `clickhouse_bytes_read`: Total number of bytes ClickHouse read to answer those queries
 - `clickhouse_duration_s`: Total time taken by ClickHouse queries
+- `clickhouse_read_duration_s`: Time taken by queries run with `ClickHouse::Client.select`
+  (GitLab 19.7 and later)
+- `clickhouse_execute_duration_s`: Time taken by all other queries, such as inserts and
+  `ClickHouse::Client.execute` calls (GitLab 19.7 and later)
 
 [In GitLab 19.5 and later](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256645), requests that
 the LabKit rate limiter evaluates also log `rate_limit_state`. The field is added to the
@@ -1369,6 +1373,12 @@ Tool calls are logged with a `tool_status` field that records how the call ended
 | `unauthorized` | The user lacks access to the resource. The message returned to the agent might say the resource was not found. |
 | `not_found` | The resource does not exist, or could not be distinguished from one the user cannot see. |
 | `error` | A backend or downstream failure, or a failure the tool could not categorize. |
+
+Calls to tools that run a REST API route also include a `status` field with the HTTP status code
+that the route returned, for example `404`. Unlike `tool_status`, which groups outcomes into
+categories, `status` is the exact HTTP status code. The route runs inside the MCP request, so it has
+no `api_json.log` line of its own. The MCP request is logged once in `api_json.log` as a `POST`
+to `/api/:version/mcp`.
 
 When a tool raises an unexpected exception, it is reported to the error tracking service.
 `error_type` is recorded only for unknown tool names, with `not_found`.

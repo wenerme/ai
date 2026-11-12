@@ -2277,8 +2277,9 @@ paths:
       summary: Issue a short-lived JWT for a single modular-service audience
       description: Issues a short-lived RS256 JWT scoped to one modular-service audience
         (such as the Artifact Registry). Claims include the requesting user id (sub),
-        organization id, and deployment realm (saas / self-managed). Presented to
-        the corresponding backend and verified against the instance JWKS. The response
+        organization id, and deployment realm (saas / self-managed). When called with
+        a CI/CD ID token, the claims also carry its build metadata. Presented to the
+        corresponding backend and verified against the instance JWKS. The response
         uses the RFC 8693 names. token and access_token have the same value, with
         access_token preferred where possible.
       tags:
@@ -3692,6 +3693,39 @@ paths:
       summary: Get a session file with its contents
       description: Returns a file the user attached to the session, with its contents
         base64 encoded.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: workflow_id
+        required: true
+        description: ID of the workflow.
+        schema:
+          type: string
+        in: path
+      - name: file_id
+        required: true
+        description: ID of the session file.
+        schema:
+          type: integer
+        in: path
+        example: 1
+      x-gitlab-lifecycle: experiment
+  "/api/v4/ai/duo_workflows/workflows/{workflow_id}/session_files/{file_id}/raw":
+    get:
+      operationId: getApiV4AiDuoWorkflowsWorkflowsWorkflowIdSessionFilesFileIdRaw
+      summary: Download a session file
+      description: Returns the raw contents of a file the user attached to the session.
       tags:
       - GitLab Duo workflows
       responses:
@@ -34527,7 +34561,10 @@ paths:
         (`release_writes_limit_per_project` application setting) and per user (`release_writes_limit_per_user`
         application setting). Requests over a limit are blocked when its feature flag
         (`rate_limit_release_writes_per_project` or `rate_limit_release_writes_per_user`)
-        is enabled, and only logged otherwise.
+        is enabled, and only logged otherwise. When the `release_evidence_size_limit`
+        feature flag is enabled, the response includes `warnings` if the release evidence
+        would exceed the `release_evidence_max_size_bytes` application setting even
+        without its issues.
       tags:
       - Releases
       responses:
@@ -34797,7 +34834,9 @@ paths:
       description: Generates an evidence for an existing release. Requests are rate
         limited per user (`release_evidence_collections_limit_per_user` application
         setting). Requests over the limit are blocked when the `rate_limit_release_evidence_collections_per_user`
-        feature flag is enabled, and only logged otherwise.
+        feature flag is enabled, and only logged otherwise. When the `release_evidence_size_limit`
+        feature flag is enabled, returns `422` if the evidence would exceed the `release_evidence_max_size_bytes`
+        application setting.
       tags:
       - Releases
       responses:
@@ -34811,6 +34850,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '422':
+          description: Unprocessable entity
         '429':
           description: Too many requests
         '400':
@@ -65342,8 +65383,13 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdEnvironmentsEnvironmentId
       summary: Delete an environment
-      description: Deletes an environment from a project. The environment must be
-        stopped first.
+      description: 'Deletes an environment from a project. The environment must be
+        stopped first. When the `environment_delete_in_batches` feature flag is enabled,
+        a large environment is deleted over several requests: each request returns
+        `409` until the environment is gone, and the rows deleted count toward a per-user
+        rate limit (`environment_delete_rows_limit_per_user` application setting).
+        Until the `rate_limit_environment_delete_rows` feature flag is enabled, requests
+        over this limit are logged but not blocked.'
       tags:
       - Environments
       responses:
@@ -65355,8 +65401,16 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesEnvironment"
         '401':
           description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
           description: Not found
+        '409':
+          description: Conflict
+        '422':
+          description: Unprocessable entity
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -81429,6 +81483,8 @@ paths:
           description: 202 Accepted
         '404':
           description: 404 Project Not Found
+        '429':
+          description: 429 Too Many Requests
         '400':
           description: Bad Request
       parameters:
@@ -94749,6 +94805,8 @@ components:
           type: string
         merge_requests_create_limit:
           type: string
+        environment_delete_rows_limit_per_user:
+          type: string
         feature_flag_user_list_write_bytes_limit_per_user:
           type: string
         merge_requests_rebase_limit:
@@ -94981,6 +95039,8 @@ components:
           type: string
         wiki_read_request_limit_unauthenticated:
           type: string
+        merge_request_diffs_page_request_limit:
+          type: string
         work_item_hierarchy_add_children_limit:
           type: string
         work_item_move_limit:
@@ -95004,6 +95064,8 @@ components:
         ci_runner_manager_cap_cleanup_backlog_limit:
           type: string
         ci_runner_manager_creation_ceiling:
+          type: string
+        release_evidence_max_size_bytes:
           type: string
         allow_account_deletion:
           type: string
@@ -95394,6 +95456,12 @@ components:
         budget_cap_update_per_hour_limit:
           type: string
         budget_cap_update_per_day_limit:
+          type: string
+        credits_usage_per_minute_limit:
+          type: string
+        credits_usage_per_hour_limit:
+          type: string
+        credits_usage_per_day_limit:
           type: string
         duo_workflow_oauth_application_id:
           type: string
@@ -97272,6 +97340,12 @@ components:
               type: string
             self:
               type: string
+        warnings:
+          type: array
+          example:
+          - No evidence was collected for this release.
+          items:
+            type: string
     APIEntitiesProtectedTag:
       type: object
       properties:
@@ -104969,6 +105043,10 @@ components:
           description: AI-related settings for the group. Returned only to users who
             can read the group, when AI features are available for the group.
           "$ref": "#/components/schemas/APIEntitiesAiSettings"
+        duo_remote_flows_enabled:
+          type: boolean
+        lock_duo_remote_flows_enabled:
+          type: boolean
         membership_lock:
           type: string
         ip_restriction_ranges:
@@ -113159,6 +113237,11 @@ components:
             a multi-factor authentication method. Requires `require_email_verification_on_account_locked`
             to be `true`.
           nullable: true
+        environment_delete_rows_limit_per_user:
+          type: integer
+          description: Maximum number of deployment, job, and merge request link rows
+            each user can delete with environments every minute.
+          nullable: true
         iframe_rendering_enabled:
           type: boolean
           description: If `true`, allows rendering of iframes in Markdown.
@@ -113922,6 +114005,12 @@ components:
           type: boolean
           description: If `true`, `GET /projects/:id/ci/lint` requires authentication,
             including for public projects.
+          nullable: true
+        release_evidence_max_size_bytes:
+          type: integer
+          description: 'Maximum size of a release evidence, in bytes. Applies only
+            when the `release_evidence_size_limit` feature flag is enabled. Default:
+            `2097152` (2 MiB). To disable the limit, set to `0`.'
           nullable: true
         ci_job_live_trace_enabled:
           type: boolean
@@ -115362,6 +115451,21 @@ components:
             GraphQL mutation calls per day per user. Default: `20000`. Set to `0`
             to disable the rate limit.'
           nullable: true
+        credits_usage_per_minute_limit:
+          type: integer
+          description: 'Maximum number of `creditsUsage` GraphQL requests per minute
+            per user. Default: `60`. Set to `0` to disable the rate limit.'
+          nullable: true
+        credits_usage_per_hour_limit:
+          type: integer
+          description: 'Maximum number of `creditsUsage` GraphQL requests per hour
+            per user. Default: `300`. Set to `0` to disable the rate limit.'
+          nullable: true
+        credits_usage_per_day_limit:
+          type: integer
+          description: 'Maximum number of `creditsUsage` GraphQL requests per day
+            per user. Default: `3000`. Set to `0` to disable the rate limit.'
+          nullable: true
         group_owners_can_manage_default_branch_protection:
           type: boolean
           description: If `true`, allows group owners to manage default branch protection
@@ -116148,6 +116252,9 @@ components:
           type: string
           nullable: true
         wiki_read_request_limit_unauthenticated:
+          type: string
+          nullable: true
+        merge_request_diffs_page_request_limit:
           type: string
           nullable: true
         work_item_hierarchy_add_children_limit:
@@ -120498,7 +120605,7 @@ components:
         duo_code_review_decisions_enabled:
           type: boolean
           description: Enable approval and change requests by GitLab Duo on merge
-            requests. Behind a feature flag named `duo_code_review_decisions`, disabled
+            requests. Behind a feature flag named `duo_code_review_decisions`, enabled
             by default.
           nullable: true
         duo_code_review_depth_allowed:
@@ -121124,7 +121231,7 @@ components:
         duo_code_review_decisions_enabled:
           type: boolean
           description: Enable approval and change requests by GitLab Duo on merge
-            requests. Behind a feature flag named `duo_code_review_decisions`, disabled
+            requests. Behind a feature flag named `duo_code_review_decisions`, enabled
             by default.
           nullable: true
         duo_code_review_depth_allowed:
@@ -121751,7 +121858,7 @@ components:
         duo_code_review_decisions_enabled:
           type: boolean
           description: Enable approval and change requests by GitLab Duo on merge
-            requests. Behind a feature flag named `duo_code_review_decisions`, disabled
+            requests. Behind a feature flag named `duo_code_review_decisions`, enabled
             by default.
           nullable: true
         duo_code_review_depth_allowed:
@@ -122931,7 +123038,7 @@ components:
               type: boolean
               description: Enable approval and change requests by GitLab Duo on merge
                 requests. Behind a feature flag named `duo_code_review_decisions`,
-                disabled by default.
+                enabled by default.
               nullable: true
             duo_code_review_depth_allowed:
               type: boolean
@@ -123611,7 +123718,7 @@ components:
               type: boolean
               description: Enable approval and change requests by GitLab Duo on merge
                 requests. Behind a feature flag named `duo_code_review_decisions`,
-                disabled by default.
+                enabled by default.
               nullable: true
             duo_code_review_depth_allowed:
               type: boolean
@@ -124314,7 +124421,7 @@ components:
               type: boolean
               description: Enable approval and change requests by GitLab Duo on merge
                 requests. Behind a feature flag named `duo_code_review_decisions`,
-                disabled by default.
+                enabled by default.
               nullable: true
             duo_code_review_depth_allowed:
               type: boolean
@@ -136509,7 +136616,7 @@ components:
           - requested_changes
           - reviewed
           description: Sets the review state after publishing. Does not record a formal
-            approval.
+            approval. If you can't request changes, sets `reviewed` instead.
           nullable: true
         note:
           type: string

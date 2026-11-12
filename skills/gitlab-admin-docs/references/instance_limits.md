@@ -717,6 +717,42 @@ See [Environment Dashboard](../ci/environments/environments_dashboard.md#adding-
 Pods and Deployments. However, data over 10 MB for a certain environment read from
 Kubernetes aren't shown.
 
+## Release evidence size limit
+
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269740) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `release_evidence_size_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Large [release evidence](../user/project/releases/release_evidence.md) can put significant load on your instance.
+To protect against this, you can limit the size of each release evidence.
+
+The limit:
+
+- Applies to every release evidence, including the evidence collected when a release is created
+  or on the date of an upcoming release.
+- Defaults to `2097152` bytes (2 MiB).
+- Can be set to `0` to disable the limit.
+
+To stay within the limit, GitLab stores fewer issues in the evidence. If the rest of the
+evidence still exceeds the limit, no evidence is collected for the release. For more information, see
+[release evidence size limit](../user/project/releases/release_evidence.md#release-evidence-size-limit).
+
+To change the limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. In the **Maximum release evidence size (bytes)** text box, enter a value.
+1. Select **Save changes**.
+
+You can also set the limit with the [application settings API](../api/settings.md)
+attribute `release_evidence_max_size_bytes`.
+
 ## Merge requests
 
 ### Diff limits
@@ -1010,6 +1046,7 @@ The [changelog API](../api/repositories.md#add-changelog-data-to-file) enforces 
 ### Stages per top-level namespace
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267098) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `vsa_hierarchy_stage_limit`. Disabled by default.
+- Feature flag `vsa_hierarchy_stage_limit` [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/638599) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

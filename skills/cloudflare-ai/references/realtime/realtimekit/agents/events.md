@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/agents/events/og.p
 
 # Events
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agent Participant sends meeting activity as JSON messages. This page covers each event type and how delivery works.
 
@@ -62,6 +62,8 @@ Session events are always sent. Other events require their category in the `subs
 | `participant` | `participant.join`, `participant.leave` |
 | `transcript` | `transcript.received` |
 | `broadcast` | `broadcast.received` |
+| `chat` | `chat.message.created`, `chat.message.updated`, `chat.message.deleted` |
+| `poll` | `poll.created`, `poll.updated` |
 
 Pass categories, not event names: `?subscriptions=transcript,participant`. An unknown category rejects the connection with `400` `INVALID_QUERY`.
 
@@ -258,6 +260,8 @@ await meeting.participants.broadcastMessage("my-broadcast", {
 });
 ```
 
+An agent sends one with the [`broadcast.send` request](https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/#requests).
+
 Reactions already work this way. The [Reactions Manager addon](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/addons/#reactions) sends each reaction as a broadcast with type `reactions`.
 
 ### `broadcast.received`
@@ -269,7 +273,8 @@ Reactions already work this way. The [Reactions Manager addon](https://developer
 	"data": {
 		"type": "reaction",
 		"payload": { "emoji": "🔥", "peerId": "peer_7f3a" },
-		"created_at": "2026-09-23T10:03:10.123Z"
+		"created_at": "2026-09-23T10:03:10.123Z",
+		"to": { "type": "room" }
 	}
 }
 ```
@@ -279,11 +284,130 @@ Reactions already work this way. The [Reactions Manager addon](https://developer
 | `type` | App-defined type, for example `reactions` |
 | `payload` | App-defined JSON object, forwarded as sent |
 | `created_at` | When the broadcast was sent |
+| `to.type` | `room` for the whole meeting, or `peers` if sent to selected peers |
 
 - Filter on `type`. For reactions, `payload.reaction` is the emoji, and an empty string clears it.
 - `payload` keys are forwarded as sent, so they keep your app's casing, such as `peerId`.
 - The sender is not verified. Do not trust identity fields in `payload` for authorization.
 - The SDK also sends internal types, such as `spotlight`. Ignore types you do not handle.
+
+## Chat events
+
+### `chat.message.created`
+
+Sent for messages to the meeting, and for private messages that include the agent.
+
+```json
+{
+	"category": "message",
+	"name": "chat.message.created",
+	"data": {
+		"message": {
+			"id": "msg_1",
+			"sender": {
+				"peer_id": "peer_7f3a",
+				"participant_id": "par_1",
+				"display_name": "Alice"
+			},
+			"to": { "type": "room" },
+			"content": { "type": "text", "text": "Hello everyone" },
+			"is_edited": false,
+			"is_pinned": false,
+			"created_at": "2026-09-23T10:00:04.123Z"
+		}
+	}
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `id` | Message ID. Use it in `chat.edit`, `chat.delete`, and `chat.pin`. |
+| `sender` | The sending connection. `display_name` is not verified. Use `participant_id`. |
+| `to` | `{ "type": "room" }`, or `{ "type": "participants", "participant_ids": [...] }` for a private message, sender included |
+| `content` | The message content, by `type` |
+| `is_edited` | `true` after an edit |
+| `is_pinned` | `true` while pinned |
+| `created_at` | When the message was sent. Use it as `before` or `after` in `chat.list`. |
+
+| `content.type` | Fields |
+| --- | --- |
+| `text` | `text` |
+| `image` | `url` |
+| `file` | `url`, `name`, `size_bytes` |
+| `custom` | `data`, a JSON object. The SDKs use the keys `message`, `html`, `images`, `videos`, `files`. |
+| `unsupported` | None. The content could not be read. |
+
+Ignore content types you do not handle. Image and file URLs can expire.
+
+### `chat.message.updated`
+
+Carries the full current message and what changed. `change` is `edited`, `pinned`, or `unpinned`. Ignore other values.
+
+```json
+{
+	"category": "message",
+	"name": "chat.message.updated",
+	"data": {
+		"message": { "id": "msg_1", "is_pinned": true },
+		"change": "pinned"
+	}
+}
+```
+
+The example shortens `message`. It has the same fields as in `chat.message.created`.
+
+### `chat.message.deleted`
+
+```json
+{
+	"category": "message",
+	"name": "chat.message.deleted",
+	"data": { "message_id": "msg_1" }
+}
+```
+
+The ID can belong to a message the agent never received, such as a private message between others. Ignore unknown IDs.
+
+## Poll events
+
+### `poll.created`
+
+```json
+{
+	"category": "message",
+	"name": "poll.created",
+	"data": {
+		"poll": {
+			"id": "poll_1",
+			"question": "Ready to continue?",
+			"creator": { "participant_id": "par_1", "display_name": "Alice" },
+			"anonymous": false,
+			"hide_votes": false,
+			"results_visible": true,
+			"voted": false,
+			"total_votes": 0,
+			"options": [
+				{ "index": 0, "text": "Yes", "vote_count": 0 },
+				{ "index": 1, "text": "No", "vote_count": 0 }
+			]
+		}
+	}
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `creator` | Who created the poll, or `null` for polls created with the REST API |
+| `anonymous` | Set by the creator. Voter identities are never sent to the agent either way. |
+| `hide_votes` | Results are shown only after voting, and to the creator |
+| `results_visible` | Whether the agent can see results now |
+| `voted` | The agent has voted |
+| `total_votes` | Total votes, or `null` when `results_visible` is `false` |
+| `options` | Options with a zero-based `index`. `vote_count` is `null` when results are hidden. |
+
+### `poll.updated`
+
+Sent when votes change, with the full poll. For a `hide_votes` poll, the agent receives it only after it votes, or from the start if it created the poll.
 
 Was this helpful?
 
@@ -294,5 +418,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/agents/events/#page","headline":"Events","description":"Event types, payloads, ordering, and delivery rules for RealtimeKit Agent Participant.","url":"https://developers.cloudflare.com/realtime/realtimekit/agents/events/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/agents/events/og.png?v=dcd0b2d5addfa5ab","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/agents/events/#page","headline":"Events","description":"Event types, payloads, ordering, and delivery rules for RealtimeKit Agent Participant.","url":"https://developers.cloudflare.com/realtime/realtimekit/agents/events/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/agents/events/og.png?v=dcd0b2d5addfa5ab","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

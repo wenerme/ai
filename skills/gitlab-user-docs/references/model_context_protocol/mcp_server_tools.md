@@ -2086,6 +2086,7 @@ Search issues for "flaky test" across GitLab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218121) in GitLab 18.9.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/621662) in GitLab 19.5 to accept multiple search terms.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/602739) in GitLab 19.6 to accept `project_id` and `group_id`.
 
 This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -2093,9 +2094,13 @@ Searches for labels in a GitLab project or group.
 
 | Parameter    | Type                        | Required | Description |
 |--------------|-----------------------------|----------|-------------|
-| `full_path`  | string                      | Yes      | Full path of the project or group (for example, `group/project`). |
-| `is_project` | boolean                     | Yes      | Whether to search in a project (`true`) or group (`false`). |
+| `project_id` | string                      | No       | ID or path of the project. Alternative to `group_id` or `full_path`. |
+| `group_id`   | string                      | No       | ID or path of the group. Alternative to `project_id` or `full_path`. |
+| `full_path`  | string                      | No       | Full path of the project or group (for example, `group/project`). Alternative to `project_id` or `group_id`. Requires `is_project`. |
+| `is_project` | boolean                     | No       | Whether `full_path` is a project (`true`) or group (`false`). Required with `full_path`. |
 | `search`     | string or array of strings  | No       | One term or an array of up to 10 terms to filter labels by title. If omitted, lists labels instead. An empty array is invalid. |
+
+Provide exactly one of `project_id`, `group_id`, or `full_path`.
 
 When you search group labels, the results include labels from ancestor and descendant groups.
 Results from multiple terms form one list without duplicate labels.

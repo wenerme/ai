@@ -5,6 +5,7 @@
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209517) in GitLab 18.7.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266611) to return `503 Service Unavailable` for query timeouts and `500 Internal Server Error` for unexpected errors instead of `400 Bad Request` in GitLab 19.6.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270019) to return `503 Service Unavailable` instead of `500 Internal Server Error` when a ClickHouse or Elasticsearch query times out in GitLab 19.6.
 
 Use this API to execute [GitLab Query Language (GLQL)](../user/glql/_index.md) queries programmatically.
 GLQL provides a simplified query language for searching and
@@ -717,7 +718,7 @@ The API returns the following HTTP status codes:
 | `403 Forbidden`             | Insufficient permissions or missing required OAuth scope. |
 | `429 Too Many Requests`     | Query rate limit exceeded. |
 | `500 Internal Server Error` | Unexpected server error during query execution. |
-| `503 Service Unavailable`   | Query timed out. Narrow the query scope, for example with more filters or a shorter time range, and try again. |
+| `503 Service Unavailable`   | Query timed out in PostgreSQL, ClickHouse, or Elasticsearch. Narrow the query scope, for example with more filters or a shorter time range, and try again. |
 
 ### Error response examples
 

@@ -329,7 +329,16 @@ curl --request DELETE \
 
 ## Delete all merged branches
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269510) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `delete_merged_branches_rate_limit`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Deletes all branches that are merged into the project's default branch.
+
+When the rate limit is enabled, this endpoint is limited to 60 requests per minute for each authenticated user.
+The limit is shared with deleting merged branches in the UI. Requests over the limit return
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 > [!note]
 > [Protected branches](../user/project/repository/branches/protected.md) are not deleted as part of this operation.

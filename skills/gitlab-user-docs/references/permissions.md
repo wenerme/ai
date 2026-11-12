@@ -579,6 +579,8 @@ Project permissions for [merge requests](project/merge_requests/_index.md):
 | [Approve](project/merge_requests/approvals/_index.md) merge requests[^approval-planner-reporter]         |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Add internal note[^project-merge-planner-members-only]                                    |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Comment and add suggestions[^project-merge-planner-members-only]                          |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
+| [Submit a review](project/merge_requests/reviews/_index.md#submit-a-review) with **Comment**[^project-merge-guest-role-limited] |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
+| [Submit a review](project/merge_requests/reviews/_index.md#submit-a-review) with **Request changes**                           |       |         |          |                  |     ✓     |     ✓      |   ✓   |
 | Create [snippets](snippets.md)                                                            |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Create [merge request](project/merge_requests/creating_merge_requests.md)[^external-contributions]    |       |         |          |                  |     ✓     |     ✓      |   ✓   |
 | Update merge request details[^project-merge-external-contributions]                                                 |       |         |          |                  |     ✓     |     ✓      |   ✓   |

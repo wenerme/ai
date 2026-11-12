@@ -356,7 +356,7 @@ To enable an external agent:
 1. In the upper-right corner, select **Enable**.
 1. Under **Project**, select the project you want to enable the agent in.
 1. For **Add triggers**, select:
-   - One or more [trigger event types](../triggers/_index.md#trigger-event-types).
+   - One or more [trigger event types](../automations/_index.md#trigger-event-types).
    - If needed for the trigger event type, a trigger event action.
 1. Select **Enable**.
 
@@ -374,7 +374,7 @@ To enable an external agent:
    select the relevant projects. You can select up to 100 projects.
 
 1. For **Add triggers**, select:
-   - One or more [trigger event types](../triggers/_index.md#trigger-event-types).
+   - One or more [trigger event types](../automations/_index.md#trigger-event-types).
    - If needed for the trigger event type, a trigger event action.
 1. Select **Enable**.
 
@@ -396,12 +396,12 @@ To enable an external agent in a project:
 1. In the left sidebar, select **AI** > **Agents**.
 1. In the upper-right corner, select **Enable**.
 1. From the dropdown list, select the external agent you want to enable.
-1. Under **Conditions**, review the [events](../triggers/_index.md#trigger-event-types) that trigger the external agent.
+1. Under **Conditions**, review the [events](../automations/_index.md#trigger-event-types) that trigger the external agent.
    By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
    - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
 1. Optional. To tell the agent what to do for an event, edit the event, then enter text in the **Instructions** field.
-   For more information, see [Add instructions](../triggers/_index.md#add-instructions).
+   For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Select **Enable**.
 
 The external agent appears in the project's **AI** > **Agents** list.
@@ -590,7 +590,7 @@ of the service account. If you enter the wrong name, the external agent does not
 
 #### Create a trigger
 
-You must now [create a trigger](../triggers/_index.md), which determines when the external agent runs.
+You must now [create a trigger](../automations/_index.md), which determines when the external agent runs.
 
 For example, you can specify the agent to be triggered when you mention a service account
 in a discussion, or when you assign the service account as a reviewer.

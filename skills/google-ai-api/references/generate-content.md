@@ -2564,6 +2564,7 @@ A request to create an ephemeral authentication token.
   - `LOW`: Low thinking level.
   - `MEDIUM`: Medium thinking level.
   - `HIGH`: High thinking level.
+  - `XHIGH`: XHigh thinking level.
 
   {% /details %}
 

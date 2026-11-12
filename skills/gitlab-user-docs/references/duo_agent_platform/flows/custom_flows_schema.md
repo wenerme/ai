@@ -26,7 +26,7 @@ as `context:goal`. Your flow must handle the goal format for
 each trigger type you configure.
 
 For more information about trigger types, see
-[triggers](../triggers/_index.md).
+[triggers](../automations/_index.md).
 
 Components access the goal through the `inputs` field:
 

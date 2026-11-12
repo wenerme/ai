@@ -71,6 +71,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)  Access GitLab resources and tools from any MCP-compatible AI client or IDE extension.[^mcp-clients-consume] | Yes | Yes | Yes |
 | [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |
 | [Interactions in merge requests](../project/merge_requests/duo_in_merge_requests.md#interact-with-gitlab-duo)  Ask questions and discuss feedback in merge request comment threads. | Yes | Yes | Yes |
+| [Workspace subagents](customize/workspace_subagents.md)  Define specialized subagents in your repository for the Developer Flow to delegate tasks to. | Yes | Yes | Yes |
 | [Resolve merge conflicts](../project/merge_requests/conflicts.md#resolve-conflicts-with-gitlab-duo)  Autonomously analyze merge conflicts, edit conflicting files, and push a resolution commit. | No | Yes | Yes |
 | [Recommend Reviewers Flow](../project/merge_requests/reviews/automatic_reviewer_assignment.md#recommend-reviewers-flow)  Recommend the reviewers best suited to review a merge request. | No | Yes | Yes |
 | [Flow Creator Agent](agents/foundational_agents/flow_creator.md)  Create custom flows for the AI Catalog. | No | Yes  | Yes |
@@ -92,7 +93,6 @@ These features are either beta or experimental and consume GitLab Credits.
 |---------|---|---|---|
 | [GitLab for Slack app](../project/integrations/gitlab_slack_application.md#gitlab-duo)  Interact with GitLab Duo from Slack. | No | Yes | Yes |
 | [Security Review Flow](../application_security/security_review.md)  Detects business logic vulnerabilities in merge requests. | No | No | Yes |
-| [Workspace subagents](customize/workspace_subagents.md)  Define specialized subagents in your repository for the Developer Flow to delegate tasks to. | Yes | Yes | Yes |
 
 ## Beta and experimental features that don't consume credits
 

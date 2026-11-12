@@ -17,19 +17,12 @@
 - `dropReason` filter and dimension [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/552) in GitLab 19.6.
 - `model` filter [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/542) in GitLab 19.6.
 - `idle` status [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/573) in GitLab 19.6.
+- Feature flag `dap_impact_v1` [enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268734) in GitLab 19.6.
 
 > [!flag]
 > This data source reads from the GitLab Duo Agent Platform flow analytics engine, which is
 > controlled by a [feature flag](../../../administration/feature_flags/_index.md) named `dap_impact_v1`.
-> The flag is disabled by default. An administrator can enable it for a user or for a top-level group.
->
-> - When enabled for a user, queries return data for every group or project that the user selects and
->   can read, whether or not those groups have the flag.
-> - When enabled for a top-level group, queries return data when every selected group and project
->   is in an enabled top-level group.
->
-> If any selected group or project is outside an enabled top-level group, and the flag
-> is not enabled for the user, queries return an error.
+> For more information, see the history.
 
 This data source provides aggregated metrics about GitLab Duo Agent Platform flows
 (also called Duo workflows) run across your project or group, including how many
@@ -98,15 +91,17 @@ Use multiple `created` conditions to define a specified time period.
 
 **Allowed value types**:
 
-- `Enum`, one of `job_failed`, `no_status_reported`, `no_activity`, `workload_not_created`, `api_reported`, `preconditions_not_met`, or `start_failed`
+- `Enum`, one of `job_failed`, `no_status_reported`, `no_activity`, `workload_not_created`, `api_reported`, `preconditions_not_met`, `compute_minutes_used_up`, `could_not_prepare_session`, `start_failed`, `token_rejected`, or `tool_rules_unavailable`
 - `List` (use `in` or `not in` operator for multiple values)
 
 **Notes**:
 
 - `no_activity` is the stuck-session cleanup, `no_status_reported` means the CI workload
   ended without a terminal status, `job_failed` is a CI job that did not succeed,
-  `workload_not_created`, `preconditions_not_met`, and `start_failed` mean the flow never
-  started, and `api_reported` is the agent reporting an error.
+  `workload_not_created`, `preconditions_not_met`, `compute_minutes_used_up`,
+  `could_not_prepare_session`, and `start_failed` mean the flow never
+  started, `token_rejected` and `tool_rules_unavailable` mean the GitLab Duo Workflow Service
+  did not run the flow, and `api_reported` is the agent reporting an error.
 - Flows that did not fail, or that were dropped before reasons were recorded, have no reason.
   No operator matches them, so `!=` and `not in` exclude them as well.
 
@@ -181,7 +176,7 @@ For example, `claude-sonnet-4-5`.
 | Dimension   | Name         | Description |
 | ----------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Created     | `created`    | Group by date. Accepts a [`granularity` parameter](../_index.md#field-parameters) of `daily`, `weekly`, `monthly`, or a number of days such as `30d` (default: `monthly`), and an optional `origin`. For example, `created(weekly)` or `created(granularity=30d, origin=2026-07-16)`. |
-| Drop reason | `dropReason` | Group by the reason recorded when a failed flow was dropped: `job_failed`, `no_status_reported`, `no_activity`, `workload_not_created`, `api_reported`, `preconditions_not_met`, or `start_failed`. Flows that did not fail, or that were dropped before reasons were recorded, have no reason. |
+| Drop reason | `dropReason` | Group by the reason recorded when a failed flow was dropped: `job_failed`, `no_status_reported`, `no_activity`, `workload_not_created`, `api_reported`, `preconditions_not_met`, `compute_minutes_used_up`, `could_not_prepare_session`, `start_failed`, `token_rejected`, or `tool_rules_unavailable`. Flows that did not fail, or that were dropped before reasons were recorded, have no reason. |
 | Flow type   | `flowType`   | Group by flow type. |
 | Group       | `group`      | Group by group. Accepts a `depth` parameter counted from the top-level group, from `1` to `99` (default: `1`), so `group` returns top-level groups and `group(depth=2)` their subgroups. Flows above that depth, or in a project at that depth rather than in a subgroup (for example, a project directly under the top-level group when `depth=2`), have no group, and the result can contain more than one row with no group. |
 | Model       | `model`      | Group by the model the flow used (displays the model catalog name). Models that are not in the catalog display their raw identifier. Flows with no model attribution have no name. Rows are grouped by the model identifier the flow reported, so one catalog name can appear in more than one row or chart bar. |

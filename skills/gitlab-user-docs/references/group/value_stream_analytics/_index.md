@@ -68,6 +68,8 @@ If you have a GitLab Premium or Ultimate subscription:
 A value stream is the entire work process that delivers value to customers.
 Value streams are container objects for stages.
 You can have multiple value streams per group, to focus on different aspects of the DevOps lifecycle.
+For the maximum number of value streams and stages you can create, see
+[value stream analytics limits](../../../administration/instance_limits.md#value-stream-analytics-limits).
 
 ## Value stream stages
 
@@ -268,6 +270,8 @@ To view when the data was most recently updated, in the right corner next to **E
 
 ## View value stream analytics
 
+- Start date of a custom date range [limited](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268047) to the last two years in GitLab 19.6.
+
 Prerequisites:
 
 - You must have the Reporter, Developer, Maintainer, or Owner role.
@@ -285,6 +289,7 @@ To view value stream analytics for your group or project:
    1. To view metrics in a particular date range, from the dropdown list select a predefined date range or the **Custom** option. With the **Custom** option selected:
 
       - In the **From** field, select a start date.
+        The start date must be within the last two years.
       - In the **To** field, select an end date.
 
       The charts and list display workflow items created during the date range.

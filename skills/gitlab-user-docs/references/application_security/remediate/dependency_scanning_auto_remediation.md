@@ -314,6 +314,11 @@ instead of giving an automated account the Developer role on every project that 
 feature on. For the full rationale behind this design, see
 [ADR 003: Single service account model](https://handbook.gitlab.com/handbook/engineering/architecture/design-documents/automated_dependency_updates/decisions/003_single_service_account/).
 
+The internal role does not override the visibility a project sets for merge requests. If a project
+limits merge requests to project members, only users with at least the Reporter role can create
+them. Auto-remediation then creates no merge requests on that project. For the fix, see
+[auto-remediation creates no merge requests](#auto-remediation-creates-no-merge-requests).
+
 Pipelines on auto-remediation merge requests run as this service account. If a job needs
 permissions beyond what that role grants, the job fails, even though the same pipeline succeeds
 when a person with the Developer role runs it. For example:
@@ -378,3 +383,44 @@ This action grants the service account the full Developer role on the project. M
 only if your pipeline needs it. The change applies only to this project. It persists, so subsequent
 auto-remediation merge requests on the project get pipelines that work. Re-run the failed
 pipeline to pick up the change.
+
+### Auto-remediation creates no merge requests
+
+Dependency scanning runs on the default branch, but auto-remediation creates no merge requests when
+the `GitLab Dependency Management` service account cannot create merge requests in the project. On
+that project:
+
+- GitLab creates and updates no `dependency-management/` branches.
+- Open auto-remediation merge requests are no longer refreshed.
+- If you start a remediation from the vulnerability report, the report shows the error
+  `Service account cannot create merge requests in this project`.
+
+The same error has several causes. On GitLab Self-Managed, an administrator can find the cause in
+the `denial_reason` field of the `DependencyManagement: service account cannot create merge requests`
+entry in `application_json.log`.
+
+| Cause | `denial_reason` | Resolution |
+|-------|-----------------|------------|
+| Merge requests are set to . | `merge_requests_private` | Grant the service account the Reporter role. |
+| Merge requests are turned off for the project. | `merge_requests_disabled` | Turn on merge requests for the project. |
+| The repository is turned off for the project. | `repository_disabled` | Turn on the repository for the project. |
+| The project is archived, or the service account was removed from the project. | `access_denied` | Unarchive the project, or add the service account back as a member. |
+| The namespace is [read-only](../../read_only_namespaces.md). | `access_denied` | Remove the read-only state of the namespace. |
+
+The service account is a Guest member of the project. When merge requests are set to
+, only users with at least the Reporter role can create them. The internal
+role of the account does not override this requirement. For more information, see
+[service account permissions](#service-account-permissions).
+
+To grant the service account the Reporter role, a user with at least the Maintainer role can:
+
+1. In the top bar, select  and find your project.
+1. Select  > .
+1. Find the `GitLab Dependency Management` member.
+1. Change its role to **Reporter**.
+
+Alternatively, set the visibility of merge requests to . On a public
+project, this setting lets users who are not project members create merge requests too.
+
+Auto-remediation picks up any of these changes the next time dependency scanning runs on the default
+branch.

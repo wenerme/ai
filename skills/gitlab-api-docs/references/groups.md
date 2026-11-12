@@ -237,7 +237,12 @@ Users of [GitLab Premium or Ultimate](https://about.gitlab.com/pricing/) also se
 - `duo_features_enabled`
 - `lock_duo_features_enabled`
 - `duo_availability`
+- `duo_remote_flows_enabled`
+- `lock_duo_remote_flows_enabled`
 - `experiment_features_enabled`
+
+The `duo_remote_flows_enabled` and `lock_duo_remote_flows_enabled` attributes are returned only
+to administrators and users with the Owner role for the group.
 
 Additional response attributes:
 
@@ -253,6 +258,8 @@ Additional response attributes:
   "duo_features_enabled": true,
   "lock_duo_features_enabled": false,
   "duo_availability": "default_on",
+  "duo_remote_flows_enabled": true,
+  "lock_duo_remote_flows_enabled": false,
   "experiment_features_enabled": false,
   "ai_settings": {
     "duo_agent_platform_enabled": true,
@@ -2019,6 +2026,8 @@ Users of [GitLab Premium or Ultimate](https://about.gitlab.com/pricing/) also se
 `duo_features_enabled`,
 `lock_duo_features_enabled`,
 `duo_availability`, and `experiment_features_enabled` attributes.
+Administrators and users with the Owner role for the group also see the
+`duo_remote_flows_enabled` and `lock_duo_remote_flows_enabled` attributes.
 
 ### Options for `shared_runners_setting`
 

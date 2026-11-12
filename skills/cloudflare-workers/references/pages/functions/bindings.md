@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/functions/bindings/og.png?v=3a2a6
 
 # Bindings
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Pages Functions to interact with resources on the Cloudflare developer platform. Use bindings to integrate your Pages Functions with Cloudflare resources like [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1](https://developers.cloudflare.com/d1/). You can set bindings for both production and preview environments.
 
@@ -500,6 +500,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 };
 ```
 
+If the browser disconnects from your Pages Function, the Function can stop waiting for the Worker it calls. That Worker may also report Client Disconnected. Refer to [Choose when work should stop](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#choose-when-work-should-stop) to decide whether to stop the work or keep it running.
+
 ### Interact with your Service bindings locally
 
 You can interact with your Service bindings locally in one of two ways:
@@ -584,14 +586,14 @@ PostgreSQL drivers like [`Postgres.js` ↗︎](https://github.com/porsager/postg
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28"
+	"compatibility_date": "2026-11-12"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-12"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -833,5 +835,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/bindings/#page","headline":"Bindings","description":"Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.","url":"https://developers.cloudflare.com/pages/functions/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/functions/bindings/og.png?v=3a2a66ac42cf54e8","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/bindings/#page","headline":"Bindings","description":"Connect Pages Functions to Cloudflare resources like KV, R2, D1, and Durable Objects.","url":"https://developers.cloudflare.com/pages/functions/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/functions/bindings/og.png?v=3a2a66ac42cf54e8","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

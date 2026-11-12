@@ -130,7 +130,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 
 | Description                                   | ID                                            | Pipeline secret detection | Client-side secret detection | Secret push protection | Validity check | Validity check analyzer                |
 |:----------------------------------------------|:----------------------------------------------|:--------------------------|:-----------------------------|:-----------------------|:---------------|:---------------------------------------|
-| Adafruit IO Key                               | AdafruitIOKey                                 | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| Adafruit IO Key                                   | AdafruitIOKey                                 | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Adobe Client ID (OAuth Web)                       | Adobe Client ID (Oauth Web)                   | Yes | No | No | No | None |
 | Adobe client secret                               | Adobe Client Secret                           | Yes | No | Yes | No | None |
 | Adobe IMS Access Token                            | AdobeIMSAccessToken                           | Yes | No | No | No | None |
@@ -144,31 +144,33 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Artifactory Identity Token                        | ArtifactoryIdentityToken                      | Yes | No | Yes | No | None |
 | Asana client ID                                   | Asana Client ID                               | Yes | No | No | No | None |
 | Asana client secret                               | Asana Client Secret                           | Yes | No | No | No | None |
-| Asana Personal Access Token V1                   | AsanaPersonalAccessTokenV1                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| Asana Personal Access Token V2                   | AsanaPersonalAccessTokenV2                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| Atlassian API Key                                 | AtlassianApiKey                               | Yes | No | Yes | No | None |
+| Asana Personal Access Token V1                    | AsanaPersonalAccessTokenV1                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| Asana Personal Access Token V2                    | AsanaPersonalAccessTokenV2                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| Atlassian admin API key / Bitbucket repository access token | AtlassianApiKey                               | Yes | No | Yes | No | None |
 | Atlassian API token                               | Atlassian API token                           | Yes | No | No | No | None |
-| Atlassian User API Token                          | AtlassianUserApiToken                         | Yes | No | Yes | No | None |
-| Auth0 Client Secret                               | Auth0ClientSecret                             | Yes | No | No | No | None |
+| Atlassian user API token                          | AtlassianUserApiToken                         | Yes | No | Yes | No | None |
+| Auth0 Application Client Secret                   | Auth0ApplicationClientSecret                  | Yes | No | No | No | None |
 | AWS Access Key ID                                 | AWS                                           | Yes | No | Yes | Yes | Both |
-| AWS Access Secret Key                             | AWSSecretAccessKey                            | Yes | No | No | No | None |
+| AWS Secret Access Key                             | AWSSecretAccessKey                            | Yes | No | No | No | None |
 | AWS Session Token                                 | AWSSessionToken                               | Yes | No | Yes | No | None |
 | AWS Cognito Identity Pool ID                      | AWSCognitoIdentityPoolID                      | Yes | No | No | No | None |
-| AWS Bedrock Key                                   | AWSBedrockKey                       | Yes | No | No | No | None |
-| AWS Bedrock Short-lived Key                       | AWSBedrockShortLivedKey                       | Yes | No | Yes | No | None |
+| AWS Bedrock Key                                   | AWSBedrockKey                                 | Yes | No | Yes | No | None |
+| AWS Bedrock Short Lived Key                       | AWSBedrockShortLivedKey                       | Yes | No | Yes | No | None |
 | Azure API Management Gateway Key                  | AzureAPIManagementGatewayKey                  | Yes | No | Yes | No | None |
 | Azure API Management Direct Key                   | AzureAPIManagementDirectKey                   | Yes | No | No | No | None |
-| Azure App Config                                  | AzureAppConfigConnectionString                        | Yes | No | Yes | No | None |
-| Azure Communication Services                      | AzureCommServicesConnectionString                     | Yes | No | Yes | No | None |
-| Azure Cosmos DB Credentials                       | AzureCosmosDBCredentials                   | Yes | No | No | No | None |
+| Azure App Config Connection String                | AzureAppConfigConnectionString                | Yes | No | Yes | No | None |
+| Azure Communication Services Connection String    | AzureCommServicesConnectionString             | Yes | No | Yes | No | None |
+| Azure Cosmos DB Credentials                       | AzureCosmosDBCredentials                      | Yes | No | No | No | None |
 | Azure Entra Client Secret                         | AzureEntraClientSecret                        | Yes | No | Yes | No | None |
-| Azure Entra Client ID Token                       | AzureEntraIDToken                          | Yes | No | Yes | No | None |
+| Azure Entra ID Token                              | AzureEntraIDToken                             | Yes | No | No | No | None |
 | Azure EventGrid Access Key                        | AzureEventGridAccessKey                       | Yes | No | No | No | None |
-| Azure Functions API Key                           | AzureFunctionsAPIKey                          | Yes | No | Yes | No | None |
-| Azure Logic App SAS                               | AzureLogicAppSAS                          | Yes | No | Yes | No | None |
-| Azure OpenAI API Key                              | AzureOpenAIAPIKey                       | Yes | No | No | No | None |
-| Azure Personal Access Token                       | AzurePersonalAccessToken                   | Yes | No | No | No | None |
-| Azure SignalR Access Key                          | AzureSignalRAccessKey                          | Yes | No | Yes | No | None |
+| Azure EventGrid Access via Shared Access Signature | AzureEventGridSAS                             | Yes | No | No | No | None |
+| Azure Functions API Key (header)                  | AzureFunctionsAPIKeyViaHeader                 | Yes | No | No | No | None |
+| Azure Functions API Key (URL)                     | AzureFunctionsAPIKeyViaURL                    | Yes | No | Yes | No | None |
+| Azure Logic App Shared Access Signature           | AzureLogicAppSAS                              | Yes | No | Yes | No | None |
+| Azure OpenAI API key                              | AzureOpenAIAPIKey                             | Yes | No | No | No | None |
+| Azure Personal Access Token                       | AzurePersonalAccessToken                      | Yes | No | No | No | None |
+| Azure SignalR Access Key                          | AzureSignalRAccessKey                         | Yes | No | Yes | No | None |
 | Beamer API token                                  | Beamer API token                              | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Bitbucket client ID                               | Bitbucket client ID                           | Yes | No | No | No | None |
 | Bitbucket client secret                           | Bitbucket client secret                       | Yes | No | No | No | None |
@@ -192,11 +194,11 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Doppler API token                                 | Doppler API token                             | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Doppler Service token                             | Doppler Service token                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Dropbox API secret/key                            | Dropbox API secret/key                        | Yes | No | No | No | None |
-| Dropbox App Access Token                          | DropboxAppAccessToken                         | Yes | No | Yes | No | None |
+| Dropbox application access token                  | DropboxAppAccessToken                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Dropbox long lived API token                      | Dropbox long lived API token                  | Yes | No | No | No | None |
-| Dropbox short lived API token                     | Dropbox short lived API token                 | Yes | No | Yes | No | None |
+| Dropbox short lived API token                     | Dropbox short lived API token                 | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Duffel API token                                  | Duffel API token                              | Yes | No | No | No | None |
-| Dynatrace Platform Token                          | DynatracePlatformToken                        | Yes | No | No | No | None |
+| Dynatrace platform token / OAuth client secret    | DynatracePlatformToken                        | Yes | No | Yes | No | None |
 | EasyPost production API key                       | EasyPost API token                            | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | EasyPost test API key                             | EasyPost test API token                       | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Facebook token                                    | Facebook token                                | Yes | No | No | No | None |
@@ -204,53 +206,65 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Figma Personal Access Token                       | FigmaPersonalAccessToken                      | Yes | No | Yes | No | None |
 | Finicity API token                                | Finicity API token                            | Yes | No | No | No | None |
 | Finicity client secret                            | Finicity client secret                        | Yes | No | No | No | None |
-| Flutterwave Prod Encrypted Key                    | FlutterwaveProdEncryptedKey                   | Yes | No | Yes | No | None |
+| Flutterwave production encrypted key              | FlutterwaveProdEncryptedKey                   | Yes | No | Yes | No | None |
 | Flutterwave test encrypted key                    | Flutterwave encrypted key                     | Yes | No | No | No | None |
-| Flutterwave Prod Public Key                       | FlutterwaveProdPublicKey                      | Yes | No | Yes | No | None |
+| Flutterwave production public key                 | FlutterwaveProdPublicKey                      | Yes | No | Yes | No | None |
 | Flutterwave test public key                       | Flutterwave public key                        | Yes | No | No | No | None |
-| Flutterwave Prod Secret Key                       | FlutterwaveProdSecretKey                      | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| Flutterwave production secret key                 | FlutterwaveProdSecretKey                      | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Flutterwave test secret key                       | Flutterwave secret key                        | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Frame.io API token                                | Frame.io API token                            | Yes | No | No | No | None |
 | GCP API key or Google API key                     | GCP API key                                   | Yes | No | No | Yes | Both |
 | GCP OAuth client secret                           | GCP OAuth client secret                       | Yes | No | Yes | No | None |
-| GCP service account (Google)                      | Google (GCP) Service-account                  | Yes | No | Yes | No | None |
+| Google (GCP) service account                      | Google (GCP) Service-account                  | Yes | No | Yes | No | None |
 | GCP Vertex Express Mode Key                       | GCPVertexExpressModeKey                       | Yes | No | Yes | No | None |
 | GitHub app token                                  | Github App Token                              | Yes | No | Yes | No | None |
 | GitHub App Installation Token                     | GithubAppInstallationToken                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| GitHub Fine Grained Personal Access Token         | GithubFineGrainedPersonalAccessToken          | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| GitHub fine-grained personal access token         | GithubFineGrainedPersonalAccessToken          | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | GitHub OAuth Access Token                         | Github OAuth Access Token                     | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | GitHub personal access token (classic)            | Github Personal Access Token                  | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | GitHub refresh token                              | Github Refresh Token                          | Yes | No | Yes | No | None |
 | GitLab CI/CD job token                            | gitlab_ci_build_token                         | Yes | Yes | No | Yes | Both |
-| GitLab deploy token                               | gitlab_deploy_token                           | Yes | Yes | No | Yes | Both |
-| GitLab Feature Flags Client Token                 | None                                          | No | Yes | No | No | None |
+| GitLab CI/CD job token (JWT)                      | gitlab_ci_build_token_jwt                     | Yes | No | Yes | No | None |
+| GitLab deploy token                               | gitlab_deploy_token                           | Yes | Yes | Yes | Yes | Both |
+| GitLab deploy token (routable)                    | gitlab_deploy_token_routable                  | Yes | No | Yes | No | None |
+| GitLab deploy token in a Git URL                  | gitlab_deploy_token_in_url                    | Yes | No | Yes | No | None |
+| GitLab feature flags client token                 | gitlab_feature_flags_client_token             | Yes | Yes | Yes | No | None |
 | GitLab feed token                                 | gitlab_feed_token                             | Yes | Yes | No | No | None |
 | GitLab feed token v2                              | gitlab_feed_token_v2                          | Yes | Yes | Yes | Yes | Both |
+| GitLab IAM OAuth access token                     | gitlab_iam_access_token                       | Yes | No | Yes | No | None |
+| GitLab IAM OAuth authorization code               | gitlab_iam_authorization_code                 | Yes | No | Yes | No | None |
+| GitLab IAM OAuth refresh token                    | gitlab_iam_refresh_token                      | Yes | No | Yes | No | None |
 | GitLab incoming email token                       | gitlab_incoming_email_token                   | Yes | Yes | Yes | Yes | Both |
 | GitLab Kubernetes agent token                     | gitlab_kubernetes_agent_token                 | Yes | Yes | Yes | Yes | Both |
+| GitLab Kubernetes agent token (routable)          | gitlab_kubernetes_agent_token_routable        | Yes | No | Yes | No | None |
 | GitLab OAuth application secret                   | gitlab_oauth_app_secret                       | Yes | Yes | Yes | Yes | Both |
+| GitLab path-dependent feed token                  | gitlab_feed_token_path_dependent              | Yes | No | Yes | No | None |
 | GitLab personal access token                      | gitlab_personal_access_token                  | Yes | Yes | Yes | Yes | Both |
-| GitLab Personal Access Token (routable)           | gitlab_personal_access_token_routable         | Yes | Yes | Yes | Yes | Both |
-| GitLab Personal Access Token (routable, versioned) | gitlab_personal_access_token_routable_versioned | Yes | Yes | Yes | Yes | Both |
+| GitLab personal access token (routable)           | gitlab_personal_access_token_routable         | Yes | Yes | Yes | Yes | Both |
+| GitLab personal access token (routable, versioned) | gitlab_personal_access_token_routable_versioned | Yes | Yes | Yes | Yes | Both |
 | GitLab pipeline trigger token                     | gitlab_pipeline_trigger_token                 | Yes | Yes | Yes | Yes | Both |
+| GitLab pipeline trigger token in a trigger URL    | gitlab_pipeline_trigger_token_in_url          | Yes | No | Yes | No | None |
 | GitLab runner authentication token                | gitlab_runner_auth_token                      | Yes | Yes | Yes | Yes | Both |
 | GitLab runner authentication token (routable)     | gitlab_runner_auth_token_routable             | Yes | Yes | Yes | Yes | Both |
+| GitLab runner controller token                    | gitlab_runner_controller_token                | Yes | No | Yes | No | None |
 | GitLab runner registration token                  | gitlab_runner_registration_token              | Yes | No | Yes | No | None |
 | GitLab SCIM OAuth token                           | gitlab_scim_oauth_token                       | Yes | Yes | No | Yes | Both |
+| GitLab session cookie                             | gitlab_session_cookie                         | Yes | No | No | No | None |
+| GitLab stateless access token                     | gitlab_stateless_access_token                 | Yes | No | Yes | No | None |
+| GitLab workspace token                            | gitlab_workspace_token                        | Yes | No | Yes | No | None |
 | GoCardless API token                              | GoCardless API token                          | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
-| Grafana Service Account Token                     | GrafanaServiceAccountToken                    | Yes | No | Yes | No | None |
-| Grafana Cloud Access Policy Token                 | GrafanaCloudAccessPolicyToken                 | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| Grafana service account token                     | GrafanaServiceAccountToken                    | Yes | No | Yes | No | None |
+| Grafana cloud access policy token                 | GrafanaCloudAccessPolicyToken                 | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | HashiCorp Terraform API token                     | Hashicorp Terraform user/org API token        | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | HashiCorp Vault batch token                       | Hashicorp Vault batch token                   | Yes | No | Yes | No | None |
-| HashiCorp Vault Service Token                     | HashicorpVaultServiceToken                     | Yes | No | Yes | No | None |
+| HashiCorp Vault Service Token                     | HashicorpVaultServiceToken                    | Yes | No | Yes | No | None |
 | Heroku API key or application authorization token | Heroku API Key                                | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Highnote Live Secret Key                          | HighnoteLiveSecretKey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Highnote Test Secret Key                          | HighnoteTestSecretKey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | HubSpot private app API token                     | Hubspot API token                             | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Hugging Face User Access Token                    | HuggingFaceUserAccessToken                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Instagram access token                            | Instagram access token                        | Yes | No | No | No | None |
-| Intercom API token                                | Intercom API token                            | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
-| Intercom App Access Token                         | IntercomAppAccessToken                        | Yes | No | Yes | No | None |
+| Intercom API Token                                | Intercom API token                            | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Intercom client secret or client ID               | Intercom client secret/ID                     | Yes | No | No | No | None |
 | Ionic personal access token                       | Ionic API token                               | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | JFrog Platform Access Tokens                      | JfrogPlatformAccessToken                      | Yes | No | No | No | None |
@@ -267,36 +281,37 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Mailgun public verification key                   | Mailgun public validation key                 | Yes | No | No | No | None |
 | Mailgun webhook signing key                       | Mailgun webhook signing key                   | Yes | No | Yes | No | None |
 | Mapbox API token                                  | Mapbox API token                              | Yes | No | No | No | None |
-| Mapbox Secret API Token                           | MapboxSecretApiToken                          | Yes | No | No | No | None |
+| Mapbox secret API token                           | MapboxSecretApiToken                          | Yes | No | No | No | None |
 | MaxMind License Key                               | MaxMind License Key                           | Yes | No | Yes | No | None |
 | MessageBird access key                            | messagebird-api-token                         | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | MessageBird API client ID                         | MessageBird API client ID                     | Yes | No | No | No | None |
 | Meta access token                                 | Meta access token                             | Yes | No | No | No | None |
 | New Relic ingest browser API token                | New Relic ingest browser API token            | Yes | No | No | No | None |
-| New Relic ingest browser API token v2             | New Relic ingest browser API token v2         | Yes | No | Yes | No | None |
-| New Relic REST API Key                            | New Relic REST API Key                        | Yes | No | Yes | No | None |
+| New Relic ingest browser API token v2             | New Relic ingest browser API token v2         | Yes | No | No | No | None |
+| New Relic REST API key                            | New Relic REST API Key                        | Yes | No | No | No | None |
 | New Relic user API ID                             | New Relic user API ID                         | Yes | No | Yes | No | None |
 | New Relic user API key                            | New Relic user API Key                        | Yes | No | Yes | No | None |
 | npm access token                                  | npm access token                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Oculus access token                               | Oculus access token                           | Yes | No | No | No | None |
-| Okta API Token                                    | OktaAPIToken                                  | Yes | No | Yes | No | None |
+| Okta API Token                                    | OktaAPIToken                                  | Yes | No | No | No | None |
+| Okta API Token (SSWS header)                      | OktaAPITokenHeader                            | Yes | No | Yes | No | None |
 | Okta Client Secret                                | OktaClientSecret                              | Yes | No | No | No | None |
 | Onfido Live API Token                             | Onfido Live API Token                         | Yes | No | Yes | No | None |
 | OpenAI API key                                    | open ai token                                 | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
-| OpenAI Project Key                                | OpenAiProjectKey                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| OpenAI Service Account Key                        | OpenAiServiceAccountKey                       | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| OpenAI Service Admin Key                          | OpenAiServiceAdminKey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| OpenAI project key                                | OpenAiProjectKey                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| OpenAI service account key                        | OpenAiServiceAccountKey                       | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| OpenAI admin key                                  | OpenAiServiceAdminKey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Password in URL                                   | Password in URL                               | Yes | No | No | No | None |
 | PGP private key                                   | PGP private key                               | Yes | No | No | No | None |
 | PKCS8 private key                                 | PKCS8 private key                             | Yes | No | No | No | None |
 | PlanetScale API token                             | Planetscale API token                         | Yes | No | Yes | No | None |
-| PlanetScale App Secret                            | PlanetscaleAppSecret                          | Yes | No | Yes | No | None |
-| PlanetScale OAuth Secret                          | PlanetscaleOAuthSecret                        | Yes | No | Yes | No | None |
+| PlanetScale App secret                            | PlanetscaleAppSecret                          | Yes | No | Yes | No | None |
+| PlanetScale OAuth secret                          | PlanetscaleOAuthSecret                        | Yes | No | Yes | No | None |
 | PlanetScale password                              | Planetscale password                          | Yes | No | Yes | No | None |
 | PostHog Personal API key                          | PostHogPersonalAPIkey                         | Yes | No | Yes | No | None |
-| PostHog Project API key                           | PostHogProjectAPIkey                          | Yes | No | Yes | No | None |
-| Postman API token                                 | Postman API token                             | Yes | No | No | Yes | Both |
-| Postman Collection Access Key                     | PostmanCollectionAccessKey                    | Yes | No | Yes | No | None |
+| PostHog Project API key                           | PostHogProjectAPIkey                          | Yes | No | No | No | None |
+| Postman API token                                 | Postman API token                             | Yes | No | Yes | Yes | Both |
+| Postman collection access key                     | PostmanCollectionAccessKey                    | Yes | No | Yes | No | None |
 | Pulumi API token                                  | Pulumi API token                              | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | PyPi upload token                                 | PyPI upload token                             | Yes | No | Yes | No | None |
 | RSA private key                                   | RSA private key                               | Yes | No | No | No | None |
@@ -305,13 +320,13 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | SendGrid API token                                | Sendgrid API token                            | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Shippo API token                                  | Shippo API token                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Shippo Test API token                             | Shippo Test API token                         | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
-| Shopify Partner API Token                         | ShopifyPartnerAPIToken                        | Yes | No | Yes | No | None |
+| Shopify Partner API token                         | ShopifyPartnerAPIToken                        | Yes | No | Yes | No | None |
 | Shopify personal access token                     | Shopify access token                          | Yes | No | Yes | No | None |
 | Shopify private app access token                  | Shopify private app access token              | Yes | No | Yes | No | None |
-| Shopify Custom App Access Token                   | Shopify custom app access token               | Yes | No | Yes | No | None |
+| Shopify custom app access token                   | Shopify custom app access token               | Yes | No | Yes | No | None |
 | Shopify shared secret                             | Shopify shared secret                         | Yes | No | Yes | No | None |
-| Slack App Configuration Token                     | SlackAppConfigurationToken                    | Yes | No | Yes | No | None |
-| Slack App Configuration Refresh Token             | SlackAppConfigurationRefreshToken             | Yes | No | Yes | No | None |
+| Slack app configuration token                     | SlackAppConfigurationToken                    | Yes | No | Yes | No | None |
+| Slack app configuration refresh token             | SlackAppConfigurationRefreshToken             | Yes | No | Yes | No | None |
 | Slack app level token                             | SlackAppLevelToken                            | Yes | No | Yes | No | None |
 | Slack bot user OAuth token                        | Slack token                                   | Yes | No | Yes | No | None |
 | Slack webhook                                     | Slack Webhook                                 | Yes | No | No | No | None |
@@ -319,7 +334,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | SonarQube Project Analysis Token                  | SonarQubeProjectAnalysisToken                 | Yes | No | Yes | No | None |
 | SonarQube User Token                              | SonarQubeUserToken                            | Yes | No | Yes | No | None |
 | Splunk Authentication Token                       | SplunkAuthToken                               | Yes | No | Yes | No | None |
-| Splunk HTTP Event Collector (HEC) Token            | SplunkHECToken                               | Yes | No | No | No | None |
+| Splunk HEC Token                                  | SplunkHECToken                                | Yes | No | No | No | None |
 | SSH (DSA) private key                             | SSH (DSA) private key                         | Yes | No | No | No | None |
 | SSH (EC) private key                              | SSH (EC) private key                          | Yes | No | No | No | None |
 | SSH private key                                   | SSH private key                               | Yes | No | No | No | None |
@@ -330,10 +345,10 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Stripe publishable test key                       | StripeTestPublishableKey                      | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Stripe restricted test key                        | StripeTestRestrictedKey                       | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Stripe secret test key                            | StripeTestSecretKey                           | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
-| Stripe Test Short Secret Key                      | StripeTestShortSecretKey                      | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| Tailscale OAuth Client Secret                     | TailscaleOauthClientSecret                    | Yes | No | Yes | No | None |
-| Tailscale API Access Token                        | TailscaleApiAccessToken                       | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| Tailscale Personal Auth Key                       | TailscalePersonalAuthKey                      | Yes | No | Yes | No | None |
+| Stripe Test Short Secret Key                      | StripeTestShortSecretKey                      | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
+| Tailscale OAuth client secret                     | TailscaleOauthClientSecret                    | Yes | No | Yes | No | None |
+| Tailscale API access token                        | TailscaleApiAccessToken                       | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| Tailscale personal authentication key             | TailscalePersonalAuthKey                      | Yes | No | Yes | No | None |
 | Tencent Cloud Secret ID                           | TencentCloudSecretID                          | Yes | No | Yes | No | None |
 | Twilio Account SID                                | Twilio Account SID                            | Yes | No | Yes | No | None |
 | Twilio API key                                    | Twilio API Key                                | Yes | No | Yes | No | None |
@@ -343,6 +358,6 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | WakaTime API Key                                  | WakaTimeAPIKey                                | Yes | No | Yes | No | None |
 | X token                                           | Twitter token                                 | Yes | No | No | No | None |
 | Yandex.Cloud AWS API compatible access secret     | Yandex.Cloud AWS API compatible Access Secret | Yes | No | No | No | None |
-| Yandex.Cloud API Key                              | Yandex.Cloud API Key                          | Yes | No | No | No | None |
+| Yandex.Cloud API Key                              | Yandex.Cloud API Key                          | Yes | No | Yes | No | None |
 | Yandex.Cloud IAM cookie v1-1                      | Yandex.Cloud IAM Cookie v1 - 1                | Yes | No | No | No | None |
-| Yandex.Cloud IAM cookie v1-3                      | Yandex.Cloud IAM Cookie v1 - 3                | Yes | No | No | No | None |
+| Yandex.Cloud IAM cookie v1-2                      | Yandex.Cloud IAM Cookie v1 - 2                | Yes | No | No | No | None |

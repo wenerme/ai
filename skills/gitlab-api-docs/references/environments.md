@@ -290,7 +290,19 @@ Example response:
 
 ## Delete an environment
 
+- Deleting an environment over several requests [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269154) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `environment_delete_in_batches`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 Deletes an environment from a project. The environment must be stopped first.
+
+A large environment can take several requests to delete.
+Each request deletes part of the environment and keeps what it deleted.
+Until the environment is deleted, the request returns `409` and you can retry it.
+The rows each request deletes count toward a per-user
+[rate limit](../rate_limits/api/environments.md).
 
 ```plaintext
 DELETE /projects/:id/environments/:environment_id
@@ -302,6 +314,8 @@ DELETE /projects/:id/environments/:environment_id
 | `environment_id` | integer        | yes      | The ID of the environment. |
 
 If successful, returns `204`. Returns `404` if the environment does not exist. Returns `403` if the environment is not stopped.
+Returns `409` if the environment was partially deleted and the request must be retried.
+Returns `429` if the rate limit is exceeded.
 
 ```shell
 curl --request DELETE \

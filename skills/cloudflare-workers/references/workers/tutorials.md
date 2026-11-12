@@ -18,8 +18,8 @@ View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 9 days ago | Beginner |
-| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 10 days ago | Beginner |
+| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 10 days ago | Beginner |
+| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 11 days ago | Beginner |
 | [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 2 months ago | Intermediate |
 | [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 2 months ago | Intermediate |
 | [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 5 months ago | Beginner |
@@ -45,7 +45,7 @@ View tutorials to help you get started with Workers.
 | [Create a fine-tuned OpenAI model with R2](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/) | 2 years ago | Intermediate |
 | [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/) | 2 years ago | Beginner |
 | [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/) | 2 years ago | Intermediate |
-| [Build a todo list Jamstack application](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/) | 2 years ago | Beginner |
+| [Build a todo list Jamstack application](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/) | 3 years ago | Beginner |
 | [Send Emails With Postmark](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/) | 3 years ago | Beginner |
 | [Send Emails With Resend](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/) | 3 years ago | Beginner |
 | [Log and store upload events in R2 with event notifications](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/) | 3 years ago | Beginner |

@@ -21,6 +21,7 @@ The following full-stack frameworks are natively supported by Workers:
 - [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
 - [EmDash](https://developers.cloudflare.com/workers/framework-guides/web-apps/emdash/)
 - [React Router (formerly Remix)](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
+- [Remix 3](https://developers.cloudflare.com/workers/framework-guides/web-apps/remix/)
 - [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
 - [OpenNext adapter](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)
 - [RedwoodSDK](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)

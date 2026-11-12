@@ -321,6 +321,7 @@ A commit email is an email address displayed in every Git-related action carried
 
 Any of your own verified email addresses can be used as the commit email.
 Your primary email is used by default.
+If your commit email is no longer verified, commits made in the GitLab UI use your primary email instead.
 
 To change your commit email:
 
