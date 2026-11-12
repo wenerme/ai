@@ -94753,6 +94753,8 @@ components:
           type: string
         merge_requests_rebase_limit:
           type: string
+        draft_notes_create_limit:
+          type: string
         members_delete_limit:
           type: string
         milestone_destroy_limit:
@@ -105366,6 +105368,9 @@ components:
         dotenv_size:
           type: integer
           example: 5120
+        draft_notes_per_merge_request:
+          type: integer
+          example: 200
         enforcement_limit:
           type: integer
           example: 15000
@@ -113112,6 +113117,12 @@ components:
           description: 'Maximum number of thread resolve and unresolve requests per
             minute for each user. Default: `120`. Set to `0` to disable the rate limit.
             [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606720)
+            in GitLab 19.6.'
+          nullable: true
+        draft_notes_create_limit:
+          type: integer
+          description: 'Maximum number of draft note create requests per minute for
+            each user. Default: `300`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636471)
             in GitLab 19.6.'
           nullable: true
         domain_denylist_enabled:
@@ -139562,6 +139573,12 @@ components:
           type: integer
           description: Maximum number of variables in a dotenv artifact. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432529)
             in GitLab 17.1.
+          nullable: true
+        draft_notes_per_merge_request:
+          type: integer
+          description: Maximum number of draft notes one user can have on a merge
+            request. Set to `0` for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636471)
+            in GitLab 19.6.
           nullable: true
         enforcement_limit:
           type: integer

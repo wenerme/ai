@@ -1340,6 +1340,17 @@ Common failure reasons:
   successfully: <scanners>. Ensure security scan jobs are not canceled or failing.`
   Introduced in GitLab 19.3 by [merge request 243540](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243540).
   For the Dependency Scanning v2 limitation, see [Pipeline requirements](#pipeline-requirements).
+- Security scan results unavailable: A scanner required by the policy completed, but its
+  [results expired](../detect/security_scanning_results.md#security-report-artifacts) or were
+  deleted before the policy was evaluated, so they are no longer available.
+  This can happen when a merge request with an old pipeline is evaluated again, for example,
+  after a policy change.
+  Run a new pipeline to evaluate the policy.
+  The bot message reads:
+  `Policy <name> could not be evaluated because the results of the following security scans are
+  no longer available: <scanners>. Their results expired or were deleted. Run a new pipeline to
+  evaluate the policy.`
+  Introduced in GitLab 19.6.
 
 ### Inconsistent approvals from merge request approval policies
 

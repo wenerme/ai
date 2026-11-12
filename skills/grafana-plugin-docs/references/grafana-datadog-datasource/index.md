@@ -7,11 +7,11 @@ description: "Introduction to the Datadog data source plugin for Grafana."
 
 # Datadog data source
 
-Datadog is a popular monitoring and analytics tool. The Datadog data source plugin lets you query and visualize Datadog metrics, logs, traces, and events in Grafana.
+Datadog is a popular monitoring and analytics tool. The Datadog data source plugin lets you query and visualize Datadog metrics, logs, trace spans, and events in Grafana.
 
 > Note
 >
-> The Datadog data source is an Enterprise plugin. It is available with [Grafana Cloud](https://grafana.com/products/cloud/) (Pro and Advanced plans) and [Grafana Enterprise](https://grafana.com/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Datadog data source is an Enterprise plugin. It’s available with [Grafana Cloud](https://grafana.com/products/cloud/) (Pro or Advanced plans) and [Grafana Enterprise](https://grafana.com/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -21,7 +21,7 @@ Expand table
 
 | Feature                           | Supported | Details                                                          |
 |-----------------------------------|-----------|------------------------------------------------------------------|
-| Metric queries                    | Yes       | Query, Raw query, and Arithmetic query types.                    |
+| Metric queries                    | Yes       | Query, Raw Query, and Arithmetic query types.                    |
 | Logs queries                      | Yes       | Search and Aggregate modes.                                      |
 | APM trace spans                   | Yes       | APM Spans query type.                                            |
 | RUM events                        | Yes       | Real User Monitoring query type.                                 |
@@ -31,7 +31,7 @@ Expand table
 | Annotations                       | Yes       | Built on the Events query type.                                  |
 | Alerting                          | Yes       | Grafana-managed alert rules. All query types run on the backend. |
 | Template variables                | Yes       | Metric, tag, and host variables, and custom tag groups.          |
-| Ad hoc filters                    | Partial   | Metric query types only (Query, Raw query, and Arithmetic).      |
+| Ad hoc filters                    | Partial   | **Query** metric query type only (visual builder **From** tags). |
 | Data links                        | Yes       | Added to Monitor query results.                                  |
 | Private data source connect (PDC) | Yes       | Through the Secure Socks Proxy.                                  |
 
@@ -59,7 +59,7 @@ After you configure the Datadog data source, you can:
 
 - Add [Annotations](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/annotations/) to overlay Datadog events on your graphs.
 - Configure and use [Template variables](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](https://grafana.com/docs/grafana/latest/panels/transformations/).
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
 - Set up [Alerting](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/alerting/) to monitor your Datadog data.
 - Use [Grafana Assistant](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#grafana-assistant) to query your Datadog data with natural language prompts.
 
@@ -97,7 +97,7 @@ The Datadog data source includes the following pre-built dashboards:
 - **System metrics**
 - **Monitors explorer**
 
-For instructions on how to import dashboards in Grafana, refer to [Import a dashboard](https://grafana.com/docs/grafana/latest/dashboards/export-import/#importing-a-dashboard).
+For instructions on how to import dashboards in Grafana, refer to [Import dashboards](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
 To view the list of pre-built Datadog dashboards, complete the following steps:
 
@@ -115,4 +115,4 @@ To review the changes in each release, refer to the [Datadog data source CHANGEL
 
 > Note
 >
-> Plugins are automatically updated in Grafana Cloud.
+> On Grafana Cloud, the Datadog plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#version-and-upgrade-guidance).

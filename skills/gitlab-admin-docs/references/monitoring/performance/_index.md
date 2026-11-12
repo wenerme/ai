@@ -65,6 +65,7 @@ The following environment variables are recognized:
 - Status: Experiment
 
 - Introduced in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md).
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264876) in GitLab 19.6 to delete collected history when the sample interval changes.
 
 Active session history samples `pg_stat_activity` on the main database, so you can see what the
 database was doing at a point in the past.
@@ -198,6 +199,11 @@ If three samples in a row fail, no process tries to sample again for about 90 se
 A change to either setting applies without a restart, but not at once.
 Each Sidekiq process reads the new value in up to 90 seconds.
 
+> [!warning]
+> When a new sample interval applies, GitLab deletes all samples and summaries collected so far.
+> Samples taken at different intervals can't be compared.
+> If sampling is already off when you change the interval, GitLab deletes them when you turn sampling back on.
+
 `PG_ASH_SAMPLER_INTERVAL_SECONDS` sets how often a Sidekiq process checks whether it should take
 over as the sampling process.
 It does not set the sample interval.
@@ -248,10 +254,6 @@ for example on the first day after you install it, `pg_ash` reads hourly summari
 
 The tab shows only sessions on the primary database, so load on read replicas does not appear.
 Sessions of other database users appear only if the GitLab database user has the `pg_read_all_stats` role.
-
-`pg_ash` weights every stored sample by the current sample interval.
-If you change the interval, the numbers for earlier time ranges change by the same ratio.
-For example, after a change from one to five seconds, earlier load shows five times too high.
 
 #### Query IDs and text
 
@@ -308,4 +310,4 @@ Raw samples are removed only after they are summarized.
 If a rotation cannot confirm this, it fails and the `gitlab_pg_ash_consecutive_rotate_failures`
 metric increases. The `gitlab:db:pg_ash:status` Rake task shows the same counter.
 
-The jobs stop when you turn off sampling. Data collected until then stays until you uninstall `pg_ash`.
+The jobs stop when you turn off sampling. Data collected until then stays until you uninstall `pg_ash` or a new sample interval applies.

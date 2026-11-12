@@ -32,6 +32,17 @@ Geo also has a checksum feature which runs a SHA256 sum across all the Git refer
 If the refs don't match between the primary site and the secondary site, then the secondary site marks that project as dirty and tries to resync it.
 So even if we have an outdated tracking database, the validation should activate and find discrepancies in the repository state and resync.
 
+## Can I upgrade the operating system of a Geo site in place?
+
+Upgrading in place is possible, but the safe procedure depends on whether
+locale data changes between the two operating systems, and on whether your
+database is managed by the Linux package. For more information, see
+[Operating system upgrades](upgrading_the_geo_sites.md#operating-system-upgrades).
+
+You cannot use Geo itself to migrate between operating systems by upgrading a
+secondary site and promoting it. For more information, see
+[Upgrading operating systems for PostgreSQL](../../postgresql/upgrading_os.md).
+
 ## Can you use Geo in a disaster recovery situation?
 
 Yes, but there are limitations to what we replicate (see

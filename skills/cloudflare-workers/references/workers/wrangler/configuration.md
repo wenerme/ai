@@ -40,7 +40,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-11",
+	"compatibility_date": "2026-11-12",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -76,7 +76,7 @@ name = "my-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-11"
+compatibility_date = "2026-11-12"
 workers_dev = false
 
 [route]
@@ -1527,6 +1527,8 @@ The following options are available under the `assets` key.
   - Not required if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), which will automatically point to the client build output.
 - `binding` `string` optional
   - The binding name used to refer to the assets. Optional, and only useful when a Worker script is set with `main`.
+- `base_path` `string` optional, defaults to "/"
+  - The URL path prefix where static assets are available. For example, set this to `/docs` to serve the root of `assets.directory` from `/docs/`. Refer to [Serving a subdirectory](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/).
 - `run_worker_first` `boolean | string[]` optional, defaults to false
   - Controls whether static assets are fetched directly, or a Worker script is invoked. Can be a boolean ( `true`/ `false`) or an array of route pattern strings with support for glob patterns ( `*`) and exception patterns ( `!` prefix). Patterns must begin with `/` or `!/`. Supports at most 100 entries (duplicates count toward the limit). Learn more about fetching assets when using [`run_worker_first`](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first).
 - `html_handling`: `"auto-trailing-slash" | "force-trailing-slash" | "drop-trailing-slash" | "none"` optional, defaults to "auto-trailing-slash"
@@ -1541,6 +1543,7 @@ Example:
 	"assets": {
 		"directory": "./public",
 		"binding": "ASSETS",
+		"base_path": "/docs",
 		"html_handling": "force-trailing-slash",
 		"not_found_handling": "404-page",
 	},
@@ -1551,6 +1554,7 @@ Example:
 [assets]
 directory = "./public"
 binding = "ASSETS"
+base_path = "/docs"
 html_handling = "force-trailing-slash"
 not_found_handling = "404-page"
 ```

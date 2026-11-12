@@ -16,7 +16,7 @@ Products
 
 [**Set up and use a Prisma Postgres database** This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)
 
-[**Migrate from Vercel to Cloudflare Workers** Migrate a Vercel application to Cloudflare Workers. Includes tested guides for Next.js, TanStack Start, React Router, SvelteKit, Nuxt, and Astro.](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
+[**Migrate from Vercel to Cloudflare Workers** Move a Vercel app to one Cloudflare Worker. Pick your framework, then map Vercel KV, Blob, Edge Config, cron jobs, ISR, env vars, and domains to Cloudflare.](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
 
 [**Designing a distributed web performance architecture** A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/)
 

@@ -1,5 +1,5 @@
 ---
-description: Migrate an Astro SSR application from Vercel to Cloudflare Workers. Replace @astrojs/vercel with @astrojs/cloudflare. Includes a prompt for your coding agent.
+description: Swap @astrojs/vercel for @astrojs/cloudflare, upgrade to Astro 7, and replace Vercel ISR with Astro route caching and Vercel images with the Images binding.
 title: Migrate Astro from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/og.png?v=1b80ccdffe9f8185
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate Astro from Vercel to Cloudflare Workers
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide moves an [Astro ↗︎](https://astro.build/) application from Vercel to Cloudflare Workers. You replace `@astrojs/vercel` with [`@astrojs/cloudflare` ↗︎](https://docs.astro.build/en/guides/integrations-guide/cloudflare/).
 
@@ -51,7 +51,7 @@ Migrate this Astro project from Vercel to Cloudflare Workers (Workers with Stati
    - Delete vercel.json, .vercel/, @vercel/* packages, and Vercel analytics components.
    - Port redirects to the astro config `redirects` option or public/_redirects. Port headers to public/_headers.
    - For crons, add triggers.crons to wrangler.jsonc and create src/worker.ts that exports { fetch: (req, env, ctx) => handle(req, env, ctx), scheduled }, with handle imported from "@astrojs/cloudflare/handler". Set "main" to that file.
-   - A Worker does not cache its own responses based on Cache-Control: s-maxage. Replace Vercel isr and every page that sets s-maxage or stale-while-revalidate with Astro route caching: add `cache: { provider: cacheCloudflare() }` to astro.config (import cacheCloudflare from '@astrojs/cloudflare/cache') and call `Astro.cache.set({ maxAge, swr })` in the route. Tell me about the behavior change.
+   - A Worker does not cache its own responses based on Cache-Control: s-maxage. Replace Vercel isr and every page that sets s-maxage or stale-while-revalidate with Astro route caching: add `cache: { provider: cacheCloudflare() }` to astro.config (`import { cacheCloudflare } from '@astrojs/cloudflare/cache'`, a named export) and call `Astro.cache.set({ maxAge, swr })` in the route. Tell me about the behavior change.
    - If webAnalytics or speedInsights was on, ask me before you create a Cloudflare Web Analytics site. On workers.dev, add the beacon script to every page.
 8. Keep the default imageService 'cloudflare-binding' if <Image> is used on on-demand pages. Use imageService: 'compile' only if every image is on a prerendered page. Do not use sharp at runtime.
 9. Set these scripts: preview="astro build && astro preview", deploy="astro build && wrangler deploy", and cf-typegen="wrangler types". Remove the "generate-types" script that astro add creates.
@@ -140,7 +140,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "@astrojs/cloudflare/entrypoints/server",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-06",
+   	"compatibility_date": "2026-11-12",
    	"compatibility_flags": ["global_fetch_strictly_public"],
    	"assets": {
    		"binding": "ASSETS",
@@ -157,7 +157,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    name = "<YOUR_PROJECT_NAME>"
    main = "@astrojs/cloudflare/entrypoints/server"
    # Set this to today's date
-   compatibility_date = "2026-11-06"
+   compatibility_date = "2026-11-12"
    compatibility_flags = [ "global_fetch_strictly_public" ]
 
    [assets]
@@ -267,7 +267,7 @@ These `@astrojs/vercel` options have Cloudflare equivalents:
 | `isr` | Astro route caching with `cacheCloudflare()`, or prerendering |
 | `webAnalytics`, `speedInsights` | [Web Analytics](https://developers.cloudflare.com/web-analytics/). On a `workers.dev` URL, add the beacon script to your layout. |
 
-## Known issues
+## Troubleshooting
 
 - **`astro add` fails with `Cannot find module '@astrojs/vercel'`.** Remove the Vercel import from your Astro configuration before you uninstall the package.
 - **`astro add` or `@astrojs/upgrade` exits without changes.** Both commands prompt for confirmation and exit when no terminal is attached. Pass `--yes` to `astro add`. Install `astro@latest` directly instead of using `@astrojs/upgrade`.
@@ -289,5 +289,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/#page","headline":"Migrate Astro from Vercel to Cloudflare Workers","description":"Migrate an Astro SSR application from Vercel to Cloudflare Workers. Replace @astrojs/vercel with @astrojs/cloudflare. Includes a prompt for your coding agent.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/og.png?v=1b80ccdffe9f8185","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/#page","headline":"Migrate Astro from Vercel to Cloudflare Workers","description":"Swap @astrojs/vercel for @astrojs/cloudflare, upgrade to Astro 7, and replace Vercel ISR with Astro route caching and Vercel images with the Images binding.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/og.png?v=1b80ccdffe9f8185","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

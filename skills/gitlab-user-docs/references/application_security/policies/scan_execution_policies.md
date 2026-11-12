@@ -322,11 +322,7 @@ The keys for a schedule rule are:
 
 ### `time_window` schema
 
-- Default time window on GitLab.com for `schedule` rules without `time_window` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258280) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `scan_execution_policy_default_time_window`. Disabled by default.
-
-> [!flag]
-> The availability of the default time window is controlled by a feature flag.
-> For more information, see the history.
+- Default time window on GitLab.com for `schedule` rules without `time_window` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258280) in GitLab 19.6.
 
 Define how scheduled scans are distributed over time with the `time_window` object in the [`schedule` rule type](#schedule-rule-type). You can configure `time_window` only in YAML mode of the policy editor.
 

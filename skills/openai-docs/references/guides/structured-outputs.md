@@ -4,15 +4,15 @@
 
 JSON is one of the most widely used formats in the world for applications to exchange data.
 
-Structured Outputs is a feature that ensures the model will always generate responses that adhere to your supplied [JSON Schema](https://json-schema.org/overview/what-is-jsonschema), so you don't need to worry about the model omitting a required key, or hallucinating an invalid enum value.
+Structured Outputs constrains completed, non-refusal model output to your supplied [JSON Schema](https://json-schema.org/overview/what-is-jsonschema). Your application still needs to handle refusals, incomplete responses, and API errors, and validate any business rules that the schema does not express.
 
 Some benefits of Structured Outputs include:
 
-1. **Reliable type-safety:** No need to validate or retry incorrectly formatted responses
+1. **Schema adherence:** Required fields and enum values follow the supported JSON Schema you supply
 1. **Explicit refusals:** Safety-based model refusals are now programmatically detectable
 1. **Simpler prompting:** No need for strongly worded prompts to achieve consistent formatting
 
-In addition to supporting JSON Schema in the REST API, the OpenAI libraries for [Python](https://github.com/openai/openai-python/blob/main/helpers.md#structured-outputs-parsing-helpers) and [JavaScript](https://github.com/openai/openai-node/blob/master/helpers.md#structured-outputs-parsing-helpers) also let you define object schemas using [`pydantic.BaseModel`](https://docs.pydantic.dev/latest/) and [`z.object`](https://zod.dev/) respectively. Below, you can see how to extract information from unstructured text that conforms to a schema defined in code.
+In addition to supporting JSON Schema in the REST API, the OpenAI libraries for [Python](https://github.com/openai/openai-python/blob/main/helpers.md#structured-outputs-parsing-helpers) and [JavaScript](https://github.com/openai/openai-node/blob/main/docs/structured-outputs.md) also let you define object schemas using [`pydantic.BaseModel`](https://docs.pydantic.dev/latest/) and [`z.object`](https://zod.dev/) respectively. Below, you can see how to extract information from unstructured text that conforms to a schema defined in code.
 
 The Ruby SDK supports schemas defined with Sorbet `T::Struct` and returns typed parsed results.
 
@@ -3719,8 +3719,16 @@ with client.responses.stream(
             print(event.delta, end="")
         elif event.type == "response.output_text.delta":
             print(event.delta, end="")
-        elif event.type == "response.error":
-            print(event.error, end="")
+        elif event.type == "error":
+            raise RuntimeError(event.message)
+        elif event.type in ("response.failed", "response.incomplete"):
+            response = event.response
+            message = f"Response {response.status}"
+            if response.error and response.error.message:
+                message += f": {response.error.message}"
+            elif response.incomplete_details and response.incomplete_details.reason:
+                message += f": {response.incomplete_details.reason}"
+            raise RuntimeError(message)
         elif event.type == "response.completed":
             print("Completed")  # print(event.response.output)
 
@@ -3869,11 +3877,23 @@ stream.each do |event|
        OpenAI::Models::Responses::ResponseTextDeltaEvent
     print(event.delta)
   when OpenAI::Models::Responses::ResponseErrorEvent
-    warn(event.message)
-  when OpenAI::Models::Responses::ResponseCompletedEvent
-    puts("\nCompleted")
+    raise event.message
+  when OpenAI::Models::Responses::ResponseFailedEvent,
+       OpenAI::Models::Responses::ResponseIncompleteEvent
+    response = event.response
+    detail = response.error&.message || response.incomplete_details&.reason
+    message = "Response #{response.status}"
+    message += ": #{detail}" unless detail.to_s.empty?
+    raise message
   end
 end
+
+# Text deltas and response.output_text.done do not guarantee completion.
+response = stream.get_final_response
+refused = response.output.grep(OpenAI::Models::Responses::ResponseOutputMessage).any? do |message|
+  message.content.any? { |part| part.is_a?(OpenAI::Models::Responses::ResponseOutputRefusal) }
+end
+puts(refused ? "\nRefused" : "\nCompleted")
 ```
 
 

@@ -20,6 +20,14 @@ allow defining schemas using
 [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
 [Zod](https://zod.dev/) (JavaScript).
 
+{% callout type="note" %}
+  If you need yes/no probabilities, single-select choices, or rubric scores with
+  calibrated confidence and zero output tokens, use the
+  [Gemini Decision](/docs/models/gemini-decision-1) model with the
+  [Decisions API](/docs/decisions-api).
+
+{% /callout %}
+
 ## Structured output examples  {% id="structured-output-examples" %}
 
 ### Recipe Extractor  {% id="recipe" %}

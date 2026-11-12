@@ -15,12 +15,13 @@ Verify the following requirements before you install:
 
 Expand table
 
-| Requirement         | Details                                                                                                                                                                                                                                                                                                                                                                                |
-|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **License**         | A Grafana Enterprise license that includes `grafana-datadog-datasource`, or a Grafana Cloud account with Enterprise plugins enabled. On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/). |
-| **Grafana version** | `11.6.11` or later.                                                                                                                                                                                                                                                                                                                                                                    |
-| **Network access**  | Grafana Cloud instances download the plugin from the catalog and require internet access. Self-managed installations need access to `grafana.com` or a local plugin ZIP file.                                                                                                                                                                                                          |
-| **Datadog access**  | A Datadog account with an API key and an application key. For instructions, refer to [Get an API key and application key from Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).                                                                                                                           |
+| Requirement         | Details                                                                                                                                                                                                                                                                                                                         |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **License**         | A Grafana Cloud Pro or Advanced plan, or a self-managed Grafana Enterprise license that includes `grafana-datadog-datasource`. Free and Starter plans don’t include Enterprise plugins. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/). |
+| **Grafana version** | `11.6.11` or later.                                                                                                                                                                                                                                                                                                             |
+| **Role**            | Organization administrator. Only administrators can install the plugin and add the data source.                                                                                                                                                                                                                                 |
+| **Network access**  | Grafana Cloud instances download the plugin from the catalog and require internet access. Self-managed installations need access to `grafana.com` or a local plugin ZIP file.                                                                                                                                                   |
+| **Datadog access**  | A Datadog account with an API key and an application key. For instructions, refer to [Get an API key and application key from Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).                                                                    |
 
 ## Install the plugin
 
@@ -32,13 +33,13 @@ Enterprise plugins must be enabled for your organization before they appear as i
 
 1. Go to the [Grafana account portal](https://grafana.com/orgs) and sign in with your Grafana Cloud account.
 2. Select your organization.
-3. Navigate to the **Plugins** tab and verify that the Datadog plugin is enabled. If it isn’t listed, confirm that your Cloud plan includes Enterprise plugins.
+3. Navigate to the **Plugins** tab and verify that the Datadog plugin is enabled. If it isn’t listed, confirm that your Cloud plan is Pro or Advanced.
 4. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 5. Search for **Datadog** and click **Install**.
 
 > Note
 >
-> If the **Install** button doesn’t appear, verify that the plugin is enabled for your organization at the [Grafana account portal](https://grafana.com/orgs) and that your Cloud plan includes Enterprise plugins.
+> If the **Install** button doesn’t appear, verify that the plugin is enabled for your organization at the [Grafana account portal](https://grafana.com/orgs) and that your Cloud plan is Pro or Advanced.
 
 ### Self-managed Grafana (CLI)
 
@@ -122,38 +123,28 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 ### Air-gapped (offline) installation
 
-For environments without internet access:
+For environments without internet access, install the official signed ZIP. Don’t load an unsigned copy.
 
-1. Download the plugin ZIP file from your [Grafana account portal](https://grafana.com/orgs) on a machine with internet access.
+1. On a machine with internet access, download the plugin ZIP from the [Datadog plugin page](https://grafana.com/grafana/plugins/grafana-datadog-datasource) or your [Grafana account portal](https://grafana.com/orgs). Official Grafana catalog downloads include a valid signature.
 2. Transfer the ZIP file to the Grafana server.
-3. Extract it to the plugins directory:
+3. Extract the full plugin directory into the plugins path. The folder name must match the plugin ID, `grafana-datadog-datasource`, and the directory must include `MANIFEST.txt`:
 
    Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-datadog-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
-4. Set ownership:
+4. Confirm the extracted layout. You should have `/var/lib/grafana/plugins/grafana-datadog-datasource/MANIFEST.txt` plus the plugin binaries and frontend assets. If `MANIFEST.txt` is missing, you don’t have a complete signed copy.
+5. Set ownership:
 
    Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-datadog-datasource
    ```
-5. Restart Grafana.
+6. Restart Grafana.
 
-If Grafana reports an “unsigned plugin” error, add the following to `grafana.ini`:
-
-ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
-
-```ini
-[plugins]
-allow_loading_unsigned_plugins = grafana-datadog-datasource
-```
-
-> Caution
->
-> Only allow unsigned plugins if you trust the source of the ZIP file. Official downloads from Grafana are signed.
+If Grafana reports an unsigned plugin error, treat it as a bad or incomplete copy. Re-download the official signed ZIP, extract the full plugin directory including `MANIFEST.txt`, match the folder name to `grafana-datadog-datasource`, and match the ZIP architecture and Grafana version to your server. Don’t disable signature verification or allow unsigned plugins.
 
 ### Verify the installation
 
@@ -244,7 +235,7 @@ The following sections address common installation problems.
 1. Go to the [Grafana account portal](https://grafana.com/orgs).
 2. Select your organization and navigate to the **Plugins** tab.
 3. Verify that the Datadog plugin is listed and enabled.
-4. Confirm that your Cloud plan includes Enterprise plugins. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+4. Confirm that your Cloud plan is Pro or Advanced. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
 
 ### Install button missing or “Plugin not found”
 
@@ -268,10 +259,13 @@ The following sections address common installation problems.
 
 ### “Unsigned plugin” error (air-gapped installs)
 
-**Cause:** You installed the plugin from a ZIP file and Grafana can’t verify its signature.
+**Cause:** Grafana can’t verify the plugin signature. Official catalog downloads are signed, so this usually means the ZIP is incomplete, renamed, or not the official build for your architecture and Grafana version.
 
 **Solution:**
 
-1. Make sure you downloaded the ZIP file from the official [Grafana account portal](https://grafana.com/orgs). Official downloads are signed.
-2. If the error persists, add `allow_loading_unsigned_plugins = grafana-datadog-datasource` to `grafana.ini` under `[plugins]`.
-3. Restart Grafana.
+1. Re-download the plugin ZIP from the [Datadog plugin page](https://grafana.com/grafana/plugins/grafana-datadog-datasource) or your [Grafana account portal](https://grafana.com/orgs). Don’t use a copied or rebuilt directory.
+2. Extract the complete plugin directory, including `MANIFEST.txt`.
+3. Confirm the folder name is `grafana-datadog-datasource` and that the ZIP matches your Grafana version, operating system, and architecture.
+4. Restart Grafana.
+
+Don’t disable plugin signature verification. If the signature still fails after you install a complete official ZIP, contact [Grafana Support](https://grafana.com/support/).

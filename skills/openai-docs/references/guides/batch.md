@@ -476,7 +476,7 @@ The following output is abbreviated to show the ID mapping and generated text. R
 {"id": "batch_req_1", "custom_id": "request-1", "response": {"status_code": 200, "request_id": "req_1", "body": {"id": "resp_1", "object": "response", "status": "completed", "output": [{"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "blue"}]}]}}, "error": null}
 ```
 
-The output file will automatically be deleted 30 days after the batch is complete.
+By default, batch output and error files expire 30 days after file creation. Set `output_expires_after` in the [batch creation request](https://developers.openai.com/api/reference/resources/batches/methods/create) to choose an expiration period from 1 hour to 30 days, measured from file creation.
 
 ### 6. Cancel a batch
 

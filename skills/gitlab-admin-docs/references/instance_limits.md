@@ -748,6 +748,22 @@ close the affected merge request and create a new merge request.
 
 To configure this limit, see [diff limits administration](diff_limits.md).
 
+### Draft notes per merge request
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636471) in GitLab 19.6.
+
+Each user can have up to 200 unpublished [draft notes](../user/project/merge_requests/reviews/_index.md)
+on a merge request. To add more draft notes, submit or discard the review first.
+
+To set the maximum number of draft notes for a GitLab Self-Managed instance,
+run the following in the [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
+
+```ruby
+Plan.default.actual_limits.update!(draft_notes_per_merge_request: 500)
+```
+
+Set the limit to `0` to disable it.
+
 ### Merge request reports size limit
 
 Reports that go over the 20 MB limit aren't loaded. Affected reports:

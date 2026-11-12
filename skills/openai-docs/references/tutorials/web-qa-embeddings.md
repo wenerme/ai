@@ -126,6 +126,9 @@ def get_domain_hyperlinks(local_domain, url):
 The `crawl` function is the final step in the web scraping task setup. It keeps track of the visited URLs to avoid repeating the same page, which might be linked across multiple pages on a site. It also extracts the raw text from a page without the HTML tags, and writes the text content into a local .txt file specific to the page.
 
 ```python
+from hashlib import sha256
+
+
 def crawl(url):
     # Parse the URL and get the domain
     parsed = urlparse(url)
@@ -156,7 +159,15 @@ def crawl(url):
         print(url)  # for debugging and to see the progress
 
         # Save text from the url to a <url>.txt file
-        page_name = (local_domain + urlparse(url).path).replace("/", "_")
+        parsed_page = urlparse(url)
+        page_name = (local_domain + parsed_page.path).replace("/", "_")
+        if parsed_page.query:
+            # Parsed URL domains and paths cannot contain the fragment separator '#'.
+            suffix = "#" + sha256(url.encode("utf-8")).hexdigest()
+            # Keep the filename, including its extension, within 255 bytes.
+            prefix_bytes = 255 - len(suffix) - len(".txt")
+            name_prefix = page_name.encode("utf-8")[:prefix_bytes]
+            page_name = name_prefix.decode("utf-8", errors="ignore") + suffix
         with open(
             "text/" + local_domain + "/" + page_name + ".txt",
             "w",

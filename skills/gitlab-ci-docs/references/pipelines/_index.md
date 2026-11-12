@@ -546,27 +546,6 @@ GitLab provides API endpoints to:
   - [Triggering pipelines through the API](../triggers/_index.md).
   - [Pipeline trigger tokens API](../../api/pipeline_triggers.md).
 
-## Ref specs for runners
-
-When a runner picks a pipeline job, GitLab provides that job's metadata. This includes the [Git refspecs](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec),
-which indicate which ref (such as branch or tag) and commit (SHA1) are checked out from your
-project repository.
-
-This table lists the refspecs injected for each pipeline type:
-
-| Pipeline type                                        | Refspecs |
-|------------------------------------------------------|----------|
-| pipeline for branches                                | `+<sha>:refs/pipelines/<id>` and `+refs/heads/<name>:refs/remotes/origin/<name>` |
-| pipeline for tags                                    | `+<sha>:refs/pipelines/<id>` and `+refs/tags/<name>:refs/tags/<name>` |
-| [merge request pipeline](merge_request_pipelines.md) | `+refs/pipelines/<id>:refs/pipelines/<id>` |
-| [pipeline for workload refs](pipeline_types.md#workload-pipeline)  | `+refs/pipelines/<id>:refs/pipelines/<id>` |
-
-The refs `refs/heads/<name>` and `refs/tags/<name>` exist in your
-project repository. GitLab generates the special ref `refs/pipelines/<id>` during a
-running pipeline job. This ref can be created even after the associated branch or tag has been
-deleted. You can use it in some features such as [automatically stopping an environment](../environments/_index.md#stopping-an-environment),
-and [merge trains](merge_trains.md) that might run pipelines after branch deletion.
-
 ## Troubleshooting
 
 ### Pipeline subscriptions continue after user deletion

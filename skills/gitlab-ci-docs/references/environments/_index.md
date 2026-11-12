@@ -237,7 +237,7 @@ Note the following:
 - If the script that runs in `stop_review` exists only in your repository and therefore can't use
   `GIT_STRATEGY: none` or `GIT_STRATEGY: empty`, configure [merge request pipelines](../pipelines/merge_request_pipelines.md)
   for these jobs. This ensures that runners can fetch the repository even after a feature branch is
-  deleted. For more information, see [Ref Specs for Runners](../pipelines/_index.md#ref-specs-for-runners).
+  deleted. For more information, see [Ref Specs for Runners](../jobs/job_execution.md#ref-specs-for-runners).
 
 > [!note]
 > For Windows runners, you should use the PowerShell `Add-Content` command to write to `.env` files.

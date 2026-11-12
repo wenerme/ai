@@ -101,6 +101,13 @@ Audit event types belong to the following product categories.
 | [`anthropic_compliance_integration_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264598) | An Anthropic Compliance integration is deleted from a top-level group | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
 | [`anthropic_compliance_integration_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264598) | The Compliance Access Key of an Anthropic Compliance integration is replaced, or the integration is turned on or off | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
 
+### Artifact registry
+
+| Type name | Event triggered when | Saved to database | Introduced in | Scope |
+|:----------|:---------------------|:------------------|:--------------|:------|
+| [`artifact_registry_role_granted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268575) | An Artifact Registry role is granted to a user on an organization or repository | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/634604) | Group, Instance |
+| [`artifact_registry_role_revoked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268575) | An Artifact Registry role is revoked from a user on an organization or repository | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/634604) | Group, Instance |
+
 ### Audit events
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |

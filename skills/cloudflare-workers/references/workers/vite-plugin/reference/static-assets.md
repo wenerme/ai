@@ -48,6 +48,41 @@ The `assets` configuration should be used, however, if you wish to set [routing 
 not_found_handling = "single-page-application"
 ```
 
+### Serve assets from a URL path prefix
+
+To serve built assets from a URL path prefix, set `assets.base_path` in your Wrangler configuration file or `worker.assets.basePath` in [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/).
+
+You must also set Vite's [`base` ↗︎](https://vite.dev/config/shared-options#base) option to the same path, with a trailing slash. Otherwise, your built HTML references JavaScript and CSS files at the root of your domain, and those requests do not match your static assets.
+
+For example, to serve your application from `/app/`:
+
+```jsonc
+{
+	"assets": {
+		"base_path": "/app"
+	}
+}
+```
+
+```toml
+[assets]
+base_path = "/app"
+```
+
+*vite.config.tsts*
+
+```ts
+import { cloudflare } from "@cloudflare/vite-plugin";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+	base: "/app/",
+	plugins: [cloudflare()],
+});
+```
+
+For more information, refer to [Serving a subdirectory](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/).
+
 ## Features
 
 The Vite plugin ensures that all of Vite's [static asset handling ↗︎](https://vite.dev/guide/assets) features are supported in your Worker as well as in your frontend. These include importing assets as URLs, importing as strings and importing from the `public` directory as well as inlining assets.

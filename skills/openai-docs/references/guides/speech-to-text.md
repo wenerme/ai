@@ -14,7 +14,7 @@ Start with [`gpt-transcribe`](https://developers.openai.com/api/docs/models/gpt-
   specialized examples below document compatibility for existing integrations
   until shutdown.
 
-Files can be up to 25 MB. Supported input formats are `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `wav`, and `webm`.
+Files can be up to 25 MB. Supported input formats include `flac`, `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `ogg`, `wav`, and `webm`.
 
 For audio that is still arriving from a microphone, call, or media stream, use
   [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription).

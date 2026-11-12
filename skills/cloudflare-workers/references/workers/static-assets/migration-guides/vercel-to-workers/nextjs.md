@@ -1,5 +1,5 @@
 ---
-description: Migrate a Next.js application from Vercel to Cloudflare Workers with vinext, which runs Next.js on Vite. Includes a prompt for your coding agent.
+description: Run Next.js on Cloudflare Workers with vinext. Keep app/, pages/, and next.config, and swap ISR, next/image, and @vercel/* packages for Cloudflare features.
 title: Migrate Next.js from Vercel to Cloudflare Workers with vinext
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/og.png?v=16f36763ef781121
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate Next.js from Vercel to Cloudflare Workers with vinext
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide moves a Next.js application from Vercel to Cloudflare Workers with [vinext ↗︎](https://github.com/cloudflare/vinext). vinext reimplements the Next.js API on Vite and deploys to Workers.
 
@@ -39,7 +39,7 @@ Migrate this Next.js app from Vercel to Cloudflare Workers using vinext (https:/
    - Caching: if the app has no ISR (export const revalidate, fetch next.revalidate), no revalidatePath or revalidateTag, and no "use cache", use --cdn-cache=none --data-cache=none. Otherwise, use --cdn-cache=response-store --response-store-mode=self-contained --data-cache=none. Workers Response Store caches both responses and data, so do not add --data-cache=kv.
    - Images: use --image-optimization=cloudflare-images only if next/image renders raster (PNG, JPEG, WebP, AVIF) or remote images. Otherwise, use --image-optimization=none.
    Then run: npx vinext init --platform=cloudflare --name <name> --cdn-cache=<value> --data-cache=<value> --image-optimization=<value>
-   Read every file that init creates or changes. Add ".cloudflare/types" to tsconfig.json "include". Add ".cloudflare/**", ".vinext/**", and "dist/**" to the ESLint ignores. Do not add "nodejs_compat" to compatibilityFlags. A compatibility date of 2026-08-04 or later already enables it. Do not register @vitejs/plugin-rsc manually. Do not add a wrangler.jsonc file.
+   Read every file that init creates or changes. Add ".cloudflare/types" to tsconfig.json "include". Add ".cloudflare/**", ".vinext/**", and "dist/**" to the ESLint ignores. If init added "nodejs_compat" to compatibilityFlags, remove it. A compatibility date of 2026-08-04 or later already enables it. Do not register @vitejs/plugin-rsc manually. Do not add a wrangler.jsonc file.
 4. Do not modify app/ or pages/ beyond the replacements in step 5. Do not rewrite next/* imports. Do not delete next.config.*.
 5. Replace Vercel features:
    - Move vercel.json redirects, rewrites, and headers into next.config redirects(), rewrites(), and headers(). List any crons and ask me how to handle them.
@@ -98,7 +98,7 @@ vinext also provides a `migrate-to-vinext` agent skill. To install it, run `npx 
 
    `vinext init` adds dependencies, `vite.config.ts`, `cloudflare.config.ts`, and the `dev:vinext`, `build:vinext`, `start:vinext`, and `deploy:vinext` scripts. It can also upgrade `react` and `react-dom`.
 
-   You do not need `nodejs_compat` in `compatibilityFlags`. A compatibility date of `2026-08-04` or later enables Node.js compatibility by default.
+   You do not need `nodejs_compat` in `compatibilityFlags`. If `vinext init` adds it, you can remove it. A compatibility date of `2026-08-04` or later enables Node.js compatibility by default.
 3. Add `.cloudflare/types` to the `include` array in `tsconfig.json`. Add `.cloudflare/**`, `.vinext/**`, and `dist/**` to your ESLint ignores.
 4. Replace Vercel-specific packages. Declare bindings in `cloudflare.config.ts`, and read them in Server Components, Route Handlers, and Server Actions:
 
@@ -184,12 +184,12 @@ These Vercel and Next.js features behave differently on vinext:
 | --- | --- |
 | ISR, `revalidatePath`, and `revalidateTag` | Supported. Choose a persistent cache when you run `vinext init`. The default cache is in memory. |
 | `next/font/google` | Supported. Fonts are downloaded at build time and served from your Worker. |
-| `next/image` | Without an optimizer, `/_next/image` redirects to the original file. |
+| `next/image` | Without an optimizer, `next/image` renders the original file URL, and `/_next/image` returns `400`. |
 | `runtime` and `preferredRegion` route options | Ignored. Every route runs on Workers. |
 | `vercel.json` | Not read. Move its rules into `next.config`. |
 | `@vercel/kv`, `@vercel/blob`, `@vercel/postgres` | Not supported. Use [Workers KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) or [D1](https://developers.cloudflare.com/d1/). |
 
-## Known issues
+## Troubleshooting
 
 - **`vinext init` exits with `vinext init needs Cloudflare cache and image choices`.** Coding agents run without an interactive terminal. Pass `--cdn-cache`, `--data-cache`, and `--image-optimization`.
 - **The Worker uses the wrong name.** Pass `--name` to `vinext init`, or edit `worker.name` in `cloudflare.config.ts`. The `--name` option of `@vinext/cloudflare deploy` does not apply to `cloudflare.config.ts` projects.
@@ -212,5 +212,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/#page","headline":"Migrate Next.js from Vercel to Cloudflare Workers with vinext","description":"Migrate a Next.js application from Vercel to Cloudflare Workers with vinext, which runs Next.js on Vite. Includes a prompt for your coding agent.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/og.png?v=16f36763ef781121","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/#page","headline":"Migrate Next.js from Vercel to Cloudflare Workers with vinext","description":"Run Next.js on Cloudflare Workers with vinext. Keep app/, pages/, and next.config, and swap ISR, next/image, and @vercel/* packages for Cloudflare features.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/og.png?v=16f36763ef781121","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

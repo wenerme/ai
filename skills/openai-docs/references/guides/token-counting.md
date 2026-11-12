@@ -781,7 +781,7 @@ YAML
 
 ## Count tokens with files
 
-[File inputs](https://developers.openai.com/api/docs/guides/file-inputs) (currently PDFs) are supported. Pass `file_id`, `file_url`, or `file_data` as you would for `responses.create`. The token count reflects the model’s full processed input.
+[File inputs](https://developers.openai.com/api/docs/guides/file-inputs) are supported. Pass `file_id`, `file_url`, or `file_data` as you would for `responses.create`. The token count reflects the model’s full processed input.
 
 ## Understand output token counts
 

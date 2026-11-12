@@ -1051,6 +1051,7 @@ List the workflows owned by the current user. This field is a [connection](objec
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
 | `environment` | [`WorkflowEnvironment`](enums.md#workflowenvironment) | Environment, for example, IDE or web. |  |
+| `excludeCreatedInteractiveCliSessions` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Exclude `CREATED` sessions from the `DUO_CLI_INTERACTIVE` and `DUO_CLI_ACP` sources. Explicit `ids` and `workflowId` lookups bypass this filter. | `false` |
 | `excludeSourceTypes` | [`[DuoWorkflowSourceType!]`](enums.md#duoworkflowsourcetype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Source types to exclude. Sessions with no recorded source type are never excluded. |  |
 | `excludeTypes` | [`[String!]`](scalars.md#string) | Types of flows to exclude (for example, ["software_development", "chat"]). |  |
 | `ids` | [`[AiDuoWorkflowsWorkflowID!]`](scalars.md#aiduoworkflowsworkflowid) | Filter flows by a list of IDs. |  |
@@ -1062,6 +1063,7 @@ List the workflows owned by the current user. This field is a [connection](objec
 | `statuses` | [`[DuoWorkflowStatus!]`](enums.md#duoworkflowstatus) | Exact statuses to filter flow sessions by. Cannot be combined with statusGroup. |  |
 | `type` | [`String`](scalars.md#string) | Type of flow to filter by (for example, software_development or foundational_chat_agents). |  |
 | `updatedAfter` | [`ISO8601DateTime`](scalars.md#iso8601datetime) | Filters flows updated after a given date. |  |
+| `workItemIid` | [`String`](scalars.md#string) | IID of a work item to filter flows by. Requires `projectId` or `projectPath` outside a project. |  |
 | `workflowId` | [`AiDuoWorkflowsWorkflowID`](scalars.md#aiduoworkflowsworkflowid) | Flow ID to filter by. |  |
 
 ## `echo`

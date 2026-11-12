@@ -137,17 +137,18 @@ The agent appears in the AI Catalog. To use the agent with Chat, you must enable
 
 - Enabling a public agent for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
 - Feature flag `ai_catalog_bulk_item_consumer_create` removed in GitLab 19.4.
+- Enabling an agent for all projects in a top-level group [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627512) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_group_inherited_consumers`. Disabled by default.
 
 Enable an agent to use it with Chat.
 
 When you enable an agent in a project, it is enabled in the top-level group for that project at the same time.
 You can enable an agent or flow up to 30 times per minute.
 
+### From the managing project
+
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
-
-### From the managing project
+- Have the Maintainer or Owner role for the project.
 
 To enable an agent:
 
@@ -158,7 +159,43 @@ To enable an agent:
 1. Under **Project**, select the project you want to enable the agent in.
 1. Select **Enable**.
 
+### From the top-level group
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+When you enable an agent in a top-level group, the agent is enabled for all projects in the group.
+Projects that you create in or transfer to the group later also get access to the agent.
+You do not have to enable the agent in each project.
+
+Prerequisites:
+
+- Have the Maintainer or Owner role for the top-level group.
+- The agent is public, or restricted to the same top-level group.
+
+To enable an agent for all projects in a top-level group:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **AI** > **Agents**.
+1. Select the agent you want to enable.
+1. In the upper-right corner, select **Enable for all projects**.
+1. Select **Enable for all projects**.
+
+   If the agent is already enabled in one or more projects in the group,
+   select **Replace and enable for all projects**.
+   The project configurations are deleted and the group configuration is used instead.
+
+In the group, the agent is labeled **Enabled for all projects**.
+In each project, the agent is labeled **Enabled by** followed by the group name.
+
+To disable the agent for all projects, on the agent's page, select **Disable for all projects**, then select **Disable**.
+
 ### From the AI Catalog
+
+Prerequisites:
+
+- Have the Maintainer or Owner role for the project.
 
 To enable an agent:
 
@@ -175,31 +212,11 @@ To enable an agent:
 1. Select **Enable**.
 
 The agent appears in the group and project **AI** > **Agents** pages.
-Members of any project in the top-level group can now enable the agent in their project.
+If you enabled the agent in a project, maintainers of other projects in the top-level group
+can also enable the agent in their projects following the steps above.
 
 In the project, you can start a new chat with the agent.
 For more information, see [select an agent](../../gitlab_duo_chat/agentic_chat.md#select-an-agent).
-
-### Enable in a project
-
-If an agent is already enabled in a top-level group, you can enable it in the group's projects.
-
-Prerequisites:
-
-- You must have the Maintainer or Owner role for the project.
-- The agent must be enabled in the project's top-level group.
-
-To enable an agent in a project:
-
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **AI** > **Agents**.
-1. In the upper-right corner, select **Enable agent from group**.
-1. From the dropdown list, select the agent you want to enable.
-1. Select **Enable**.
-
-The agent appears in the project's **AI** > **Agents** page.
-
-In the project, you can start a new chat with the agent.
 
 ## Use an agent
 

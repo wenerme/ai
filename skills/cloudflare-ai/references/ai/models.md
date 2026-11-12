@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 274 modelsClear filters
+We found 280 modelsClear filters
 
 ## Compare models
 
@@ -139,6 +139,13 @@ Compare
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-fable-5.1</h3>AnthropicText Generation Claude Fable 5.1 is Anthropic's next model in the Fable family, with improvements in agentic coding, long-running agentic workflows, knowledge work, front-end and visual code generation, and finance and analysis tasks. It supports adaptive thinking and a 1M token context window.](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/)
 
 - Third-party
+
+Compare
+
+[![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-fable-5.2</h3>AnthropicText Generation Claude Fable 5.2 is built for demanding reasoning and long-horizon agentic work, with adaptive thinking, a 1M token context window, and up to 128K output tokens.](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.2/)
+
+- Third-party
+- +1
 
 Compare
 
@@ -502,6 +509,13 @@ Compare
 
 Compare
 
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-4-carbon</h3>GoogleText Generation Google's most capable Gemini 4 reasoning model, built for complex software engineering, math and science problems, autonomous multi-step agents, and long outputs up to 1M tokens.](https://developers.cloudflare.com/ai/models/google/gemini-4-carbon/)
+
+- Third-party
+- +1
+
+Compare
+
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-omni-1.1-flash</h3>GoogleText-to-Video High-performance multimodal video generation and editing model with conversational controls and generated audio.](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.1-flash/)
 
 - Third-party
@@ -583,7 +597,19 @@ Compare
 
 Compare
 
+[![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v3</h3>Kling AIText-to-Video Kling V3 is Kling AI's text-to-video model with audio generation support.](https://developers.cloudflare.com/ai/models/klingai/kling-v3/)
+
+- Third-party
+
+Compare
+
 [![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v3-image</h3>Kling AIText-to-Image Kling V3 Image is Kling AI's text-to-image model for photorealistic image generation.](https://developers.cloudflare.com/ai/models/klingai/kling-v3-image/)
+
+- Third-party
+
+Compare
+
+[![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v3-omni</h3>Kling AIText-to-Video Kling V3 Omni is Kling AI's multimodal video generation model supporting text-to-video with audio.](https://developers.cloudflare.com/ai/models/klingai/kling-v3-omni/)
 
 - Third-party
 
@@ -1222,6 +1248,18 @@ Compare
 
 - Third-party
 - +1
+
+Compare
+
+[v<h3>fabric-1.0</h3>veedImage-to-Video VEED Fabric 1.0 generates a talking video by lip-syncing a source image to a driving audio clip.](https://developers.cloudflare.com/ai/models/veed/fabric-1.0/)
+
+- Third-party
+
+Compare
+
+[v<h3>fabric-1.0-fast</h3>veedImage-to-Video A faster variant of VEED Fabric 1.0 optimized for lower-latency lipsync video generation.](https://developers.cloudflare.com/ai/models/veed/fabric-1.0-fast/)
+
+- Third-party
 
 Compare
 
