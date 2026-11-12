@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/service-
 
 # Service tokens
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can provide automated systems with service tokens to authenticate against your Cloudflare One policies. Cloudflare Access will generate service tokens that consist of a Client ID and a Client Secret. Automated systems or applications can then use these values to reach an application protected by Access.
 
@@ -329,6 +329,8 @@ Rotate a service token secret when you suspect exposure or as part of regular cr
 
 You can set a grace period during which both secrets work. Use this period to update your services before Access revokes the previous secret.
 
+For a token [reported as leaked](#recover-a-leaked-service-token), the previous secret must expire immediately. You cannot use a rotation grace period.
+
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**. [Go to  ↗](https://one.dash.cloudflare.com/?to=/:account/access/service-auth/service-tokens)
 2. Locate the token and select the three dots > **Rotate secret**.
 3. In **Keep the current secret valid for**, choose when Access should revoke the current secret. Available grace periods range from one hour to 30 days. To revoke it when you rotate, select *Revoke immediately*.
@@ -349,6 +351,30 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_t
 ```
 
 To revoke the previous secret immediately, omit `previous_client_secret_expires_at` from the request.
+
+## Recover a leaked service token
+
+Cloudflare can receive service token leak reports from secret scanning partners, such as GitHub. A token reported as leaked cannot be re-enabled until you rotate its secret.
+
+To recover a disabled token after a leak report:
+
+1. [Rotate the token's secret](#rotate-service-token-secrets). In the dashboard, select **Rotate secret** — the current secret is revoked immediately. In an API rotation request, omit `previous_client_secret_expires_at`.
+2. Replace the leaked secret in your services with the new Client Secret. The Client ID stays the same.
+3. [Turn the token on again](#turn-a-service-token-on-or-off). Rotation does not automatically re-enable a disabled token.
+
+Remove the exposed secret from the location identified in the report. Removing it does not replace rotation: the secret may already have been copied.
+
+The service token API returns these read-only fields when available:
+
+| Field | Description |
+| --- | --- |
+| `leak_reported_at` | When a secret scanning partner reported the leak. |
+| `leak_reporter` | The secret scanning partner that reported the leak. |
+| `leak_report_url` | Where the secret was found, if provided by the reporter. |
+
+Rotation clears the token's leak metadata. Review [admin activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/admin-activity-logs/) for the audit history.
+
+Attempting to re-enable a token before rotation returns `409`. Requesting a future `previous_client_secret_expires_at` when rotating a leaked token returns `400`. The leaked secret is discarded immediately and cannot be restored by extending its expiration.
 
 ## Renew service tokens
 
@@ -587,6 +613,12 @@ To configure a service token expiration alert:
 
 Your alert has been set and is now visible on the **Notifications** page.
 
+## Receive leaked service token alerts
+
+Cloudflare sends an email when a secret scanning partner, such as GitHub, reports a leaked service token. To restore access, [rotate the leaked secret and re-enable the token](#recover-a-leaked-service-token).
+
+Cloudflare automatically creates a leaked service token alert. By default, it emails account Super Administrators and the token creator, when their email address is available. You can [edit the alert](https://developers.cloudflare.com/notifications/get-started/#manage-alerts) to change its email recipients.
+
 Was this helpful?
 
 YesNo
@@ -596,5 +628,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/og.png?v=319d41b15b504397","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/og.png?v=319d41b15b504397","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 ```

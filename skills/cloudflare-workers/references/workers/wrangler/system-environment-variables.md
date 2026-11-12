@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/system-environment-var
 
 # System environment variables
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 System environment variables are local environment variables that can change Wrangler's behavior. There are three ways to set system environment variables:
 
@@ -66,12 +66,14 @@ Wrangler supports the following environment variables:
   - The [local connection string](https://developers.cloudflare.com/hyperdrive/configuration/local-development/) for your database to use in local development with [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). For example, if the binding for your Hyperdrive is named `PROD_DB`, this would be `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_PROD_DB="postgres://user:password@127.0.0.1:5432/testdb"`. Each Hyperdrive is uniquely distinguished by the binding name.
 - `CLOUDFLARE_API_BASE_URL` `string` optional
   - The default value is `"https://api.cloudflare.com/client/v4"`.
+- `CLOUDFLARE_API_HEADERS` `string` optional
+  - A JSON object of [custom HTTP headers](#custom-api-headers) for Cloudflare API requests. Configured values override existing request headers.
 - `WRANGLER_LOG` `string` optional
   - Options for Logging levels are `"none"`, `"error"`, `"warn"`, `"info"`, `"log"` and `"debug"`. Levels are case-insensitive and default to `"log"`. If an invalid level is specified, Wrangler will fallback to the default. Logs can include requests to Cloudflare's API, any usage data being collected, and more verbose error logs.
 - `WRANGLER_LOG_PATH` `string` optional
   - A file or directory path where Wrangler will write debug logs. If the path ends in `.log`, Wrangler will consider this the path to a file where all logs will be written. Otherwise, Wrangler will treat the path as a directory where it will write one or more log files using a timestamp for the filenames.
 - `WRANGLER_LOG_SANITIZE` `boolean` optional
-  - Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler will sanitize any sensitive information from logs written to the console or to a log file. Sensitive information includes API tokens, email addresses, account IDs, and more.
+  - Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler will sanitize any sensitive information from logs written to the console or to a log file. Sensitive information includes API tokens, email addresses, account IDs, and more. Header values outside the diagnostic allowlist remain redacted, regardless of this setting.
 - `FORCE_COLOR` `string` optional
   - By setting this to `0`, you can disable Wrangler's colorised output, which makes it easier to read with some terminal setups. For example, `FORCE_COLOR=0`.
 - `WRANGLER_HTTPS_KEY_PATH` `string` optional
@@ -113,6 +115,24 @@ Other entry types include:
 - `pages-deploy` - Written by `wrangler pages deploy` with Pages deployment details
 - `command-failed` - Written when a command fails, including error code and message
 
+## Custom API headers
+
+Set `CLOUDFLARE_API_HEADERS` to a JSON object of HTTP header names and string values. For example, to send `X-Custom-Header: value` with Cloudflare API requests, set this variable in your shell or CI environment:
+
+```sh
+export CLOUDFLARE_API_HEADERS='{"X-Custom-Header":"value"}'
+```
+
+In PowerShell, use:
+
+```powershell
+$env:CLOUDFLARE_API_HEADERS = '{"X-Custom-Header":"value"}'
+```
+
+Then run your Wrangler or `cf` command. These headers apply to Cloudflare API requests. They do not apply to local emulation or OAuth requests.
+
+Configured values override existing request headers, including authentication headers. Header names are case-insensitive. The following headers are protected and cannot be set through this variable: `Host`, `Content-Type`, `Content-Encoding`, `Content-Length`, `Connection`, `Transfer-Encoding`, `Upgrade`, `TE`, and `Trailer`.
+
 ## Example `.env` file
 
 The following is an example `.env` file:
@@ -148,5 +168,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#page","headline":"System environment variables","description":"Local environment variables that can change Wrangler's behavior.","url":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/og.png?v=d29cb656124747ed","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#page","headline":"System environment variables","description":"Local environment variables that can change Wrangler's behavior.","url":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/og.png?v=d29cb656124747ed","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

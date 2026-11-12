@@ -36,6 +36,14 @@ To view the settings of a profile:
 
 The profile details show the description, analyzer type, scan triggers, and any advanced configuration.
 
+To view the details of an automated triage and remediation profile:
+
+1. In the top bar, select **Search or go to** and find your group.
+1. In the left sidebar, select **Secure** > **Security configuration**.
+1. Select the **Automated Triage and Remediation** tab.
+   The tab lists profiles only after at least one project has a profile.
+1. Next to the profile, select **View details**.
+
 To see which projects each scanner covers, view the
 [scanner coverage](../security_inventory/_index.md#scanner-coverage) in the security inventory.
 
@@ -46,11 +54,13 @@ When you apply a profile to a subgroup, it applies to every project or subgroup.
 
 Prerequisites:
 
-- The Security Manager, Maintainer, or Owner role for the project or group.
+- The Security Manager, Maintainer, or Owner role for the project or group, or a custom role with the `apply_security_scan_profiles` permission.
 
 ### Apply profiles in the UI
 
 Use the security inventory to apply profiles to a single project, or to multiple subgroups and projects at once.
+You can also apply an automated triage and remediation profile with the
+[triage and remediation wizard](#apply-an-automated-triage-and-remediation-profile-with-the-triage-and-remediation-wizard).
 
 ### Individual projects
 
@@ -91,6 +101,64 @@ To save time, you can apply security profiles to multiple projects and subgroups
 1. For each scanner, select **Apply default profile to all** or, for a custom profile, **Apply profile to all**.
 
 To disable a scanner for the selected projects, select **Disable for all**.
+
+For the profile to run, first meet the [automated triage and remediation profile prerequisites](#automated-triage-and-remediation-profile).
+
+To apply an automated triage and remediation profile to multiple projects and subgroups:
+
+1. In the top bar, select **Search or go to** and find your group.
+1. In the left sidebar, select **Secure** > **Security inventory**.
+1. Select one or more projects or subgroups to apply the profile to.
+1. From the **Select bulk action** dropdown list, select **Apply Automated Triage and Remediation profile**.
+1. Select a profile, then select **Apply profile**.
+1. In the confirmation dialog, select **Apply profile**.
+
+To turn off automated triage and remediation for projects and subgroups:
+
+1. In the top bar, select **Search or go to** and find your group.
+1. In the left sidebar, select **Secure** > **Security inventory**.
+1. Select one or more projects or subgroups.
+1. From the **Select bulk action** dropdown list, select **Turn off Automated Triage and Remediation**.
+1. In the confirmation dialog, select **Turn off**.
+
+After you turn off automated triage and remediation, GitLab no longer triages or fixes new vulnerabilities.
+Merge requests that the flows already opened stay open.
+
+### Apply an automated triage and remediation profile with the triage and remediation wizard
+
+Prerequisites:
+
+- Have the Security Manager, Maintainer, or Owner role for the group, or a custom role with the `apply_security_scan_profiles` permission.
+- Meet the [automated triage and remediation profile prerequisites](#automated-triage-and-remediation-profile).
+
+To apply an automated triage and remediation profile:
+
+1. In the top bar, select **Search or go to** and find your group.
+1. In the left sidebar, select **Secure** > **Security configuration**.
+1. Select the **Automated Triage and Remediation** tab.
+1. Select **Apply profile**.
+   If no project has a profile yet, select **Get started**.
+1. Select an approach:
+   - To apply one profile to the whole group, select **Apply one profile group-wide** >
+     **Start quick setup**.
+     Then select which projects get the profile:
+     - **All projects**: Applies the profile to every project, including projects where automated
+       triage and remediation is turned off.
+       Replaces any automated triage and remediation profile a project already has.
+     - **Fill gaps**: Applies the profile only to projects without one.
+     - **Replace existing profiles**: Replaces the profile only on projects that already have one.
+
+     To use a different preset, by **Profile**, select **Change profile** ().
+   - To pick the projects, select **Choose projects and a profile** > **Start advanced setup**.
+     Select the projects, then choose a profile.
+1. On the **Review capabilities** step, check which capabilities can run.
+   Capabilities under **Won't run yet** are turned off for the top-level group.
+   You can still apply the profile, but those capabilities don't run until they are
+   [turned on for the top-level group](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
+1. Review the configuration, then select **Apply configuration**.
+
+GitLab applies the profile to selected projects right away.
+For a group or subgroup, GitLab applies the profile to its projects in the background.
 
 ### Apply profiles with the scanner enablement wizard
 
@@ -165,7 +233,7 @@ triage, and remediation with minimal configuration.
 | [SAST](#sast-profile) | Scans source code with the recommended configuration. | [UI](#apply-profiles-in-the-ui), [wizard](#apply-profiles-with-the-scanner-enablement-wizard), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Dependency scanning](#dependency-scanning-profile) | Scans dependencies with the recommended configuration. | [UI](#apply-profiles-in-the-ui), [wizard](#apply-profiles-with-the-scanner-enablement-wizard), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Dependency scanning auto-remediation](#dependency-scanning-auto-remediation-profile) | Opens merge requests that upgrade vulnerable dependencies. | [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
-| [Automated triage and remediation](#automated-triage-and-remediation-profile) | Turns on GitLab Duo triage flows and dependency scanning auto-remediation. | [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
+| [Automated triage and remediation](#automated-triage-and-remediation-profile) | Turns on GitLab Duo triage flows and dependency scanning auto-remediation. | [UI](#apply-profiles-in-the-ui), [wizard](#apply-an-automated-triage-and-remediation-profile-with-the-triage-and-remediation-wizard), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Business logic](#business-logic-profile) | Uses an AI agent to find business logic vulnerabilities. | [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [SkillGuard](#skillguard-profile) | Uses an AI agent to find security risks in AI agent skill files. | [API](#apply-profiles-with-the-graphql-api) |
 
@@ -207,6 +275,7 @@ dependencies to non-vulnerable versions. For more information, see
 ### Automated triage and remediation profile
 
 - Triage and remediation profile [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/622469) in GitLab 19.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `triage_and_remediation_profile`. Enabled by default.
+- Triage and remediation profiles UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631416) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `triage_and_remediation_profiles_ui`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the
@@ -244,6 +313,20 @@ Each preset configures the flows as follows:
 | [SAST vulnerability resolution](../vulnerabilities/agentic_vulnerability_resolution.md) | `high` and above, on demand, up to five open merge requests | `medium` and above, automatic, up to 15 open merge requests | `info` and above, automatic, no merge request limit |
 | [Secret detection false positive detection](../vulnerabilities/secret_false_positive_detection.md) | `high` and above, on demand | `medium` and above, automatic | `info` and above, automatic |
 | [Dependency scanning auto-remediation](../remediate/dependency_scanning_auto_remediation.md) | `high` and above, minor version upgrades, up to five open merge requests, skips fix versions from the last seven days | `high` and above, minor version upgrades, up to 30 open merge requests, skips fix versions from the last seven days | `info` and above, major version upgrades, up to 30 open merge requests, skips fix versions from the last seven days |
+
+After at least one project has a profile, the **Automated Triage and Remediation** tab on the
+[security configuration page](#view-profile-details) shows:
+
+- **Projects without a profile**: The number of projects that have no automated triage and
+  remediation profile.
+- **Capabilities off for group**: The flows that are turned off for the top-level group.
+  These flows do not run on any project.
+  If you are not assigned the Owner role for the top-level group, ask someone who is to turn them on.
+
+The tab also lists each preset with the severities and capabilities it covers.
+
+To apply a profile, see [apply profiles in the UI](#apply-profiles-in-the-ui) or
+[apply an automated triage and remediation profile with the triage and remediation wizard](#apply-an-automated-triage-and-remediation-profile-with-the-triage-and-remediation-wizard).
 
 ### Business logic profile
 
@@ -297,6 +380,7 @@ Prerequisites:
 - Custom profiles in the UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/624191) in GitLab 19.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `custom_scan_profiles_ui`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259962) in GitLab 19.5.
 - Dependency scanning scan profile configuration [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/629403) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment), available through the GraphQL API only.
+- Dependency scanning custom profiles in the UI [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634032) in GitLab 19.6.
 
 Custom profiles override the configuration a scanner uses when it runs.
 Each setting maps to an existing CI/CD variable for that scanner.
@@ -313,8 +397,7 @@ use a custom profile to:
 You can apply a custom profile to many projects at once.
 You do not have to set the same CI/CD variables in each project's `.gitlab-ci.yml` file.
 
-You can create secret detection and SAST profiles in the UI or with the GraphQL API.
-You can create dependency scanning profiles with the GraphQL API only.
+You can create secret detection, SAST, and dependency scanning profiles in the UI or with the GraphQL API.
 
 ### Create a custom profile in the UI
 
@@ -331,7 +414,7 @@ To create a custom profile in the UI:
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Secure** > **Security configuration**.
 1. Select the **Scanners** tab.
-1. On the **Secret detection** or **Static application security testing (SAST)** row, select **Manage profiles**.
+1. On the **Secret detection**, **Static application security testing (SAST)**, or **Dependency scanning** row, select **Manage profiles**.
 1. Select **Create new profile**.
 1. Enter a **Name** and a **Description**.
 1. Under **Scan triggers**, turn on the triggers you want.
@@ -460,35 +543,34 @@ mutation {
 
 - Status: Experiment
 
-These fields are available through the GraphQL API only.
 For more information about each setting, see [dependency scanning](../dependency_scanning/dependency_scanning_sbom/_index.md).
 
-| Field | Description | Equivalent CI/CD variable |
-| ----- | ----------- | ------------------------- |
-| `secureAnalyzersPrefix` | Prefix for the container registry the analyzer image is pulled from. | `SECURE_ANALYZERS_PREFIX` |
-| `additionalCaCertBundle` | CA certificate bundle to trust. The bundle is added to the system's certificates and used by other tools during the scan. | `ADDITIONAL_CA_CERT_BUNDLE` |
-| `secureLogLevel` | Logging level used by the analyzer. Set to `FATAL`, `ERROR`, `WARN`, `INFO`, or `DEBUG`. | `SECURE_LOG_LEVEL` |
-| `excludedPaths` | Glob paths excluded from the scan. | `DS_EXCLUDED_PATHS` |
-| `includeDevDependencies` | Whether to include development and test dependencies when a supported file is scanned. | `DS_INCLUDE_DEV_DEPENDENCIES` |
-| `maxDepth` | Directory depth the analyzer scans. A value of `-1` scans all directories. | `DS_MAX_DEPTH` |
-| `pipDependencyPath` | Path used to install Python packages for analysis. | `DS_PIP_DEPENDENCY_PATH` |
-| `staticReachabilityEnabled` | Whether [static reachability](../dependency_scanning/static_reachability.md) is enabled. | `DS_STATIC_REACHABILITY_ENABLED` |
-| `enableManifestFallback` | Whether to scan manifest files when no lockfile or dependency graph export is available. For more information, see [manifest fallback](../dependency_scanning/dependency_scanning_sbom/_index.md#manifest-fallback). | `DS_ENABLE_MANIFEST_FALLBACK` |
-| `pipcompileLockfileFileNamePattern` | Glob pattern that selects which pip-compile lockfiles to process. The pattern matches filenames only, not directory paths. | `DS_PIPCOMPILE_LOCKFILE_FILE_NAME_PATTERN` |
-| `pipManifestFileNamePattern` | Glob pattern that selects which pip manifest files to process for dependency resolution and manifest scanning. The pattern matches filenames only, not directory paths. | `DS_PIP_MANIFEST_FILE_NAME_PATTERN` |
-| `enableVulnerabilityScan` | Whether vulnerability analysis of generated SBOMs is enabled. | `DS_ENABLE_VULNERABILITY_SCAN` |
-| `apiTimeout` | Vulnerability scanning API request timeout in seconds, from 5 to 300. | `DS_API_TIMEOUT` |
-| `apiScanDownloadDelay` | Vulnerability scanning API initial delay in seconds before downloading scan results, from 1 to 120. | `DS_API_SCAN_DOWNLOAD_DELAY` |
-| `mavenDependencyPluginVersion` | Version of `maven-dependency-plugin` used during resolution. | `DS_MAVEN_DEPENDENCY_PLUGIN_VERSION` |
-| `mavenArgs` | Additional arguments passed to Maven during dependency resolution. | `MAVEN_ARGS` |
-| `gradleCliOpts` | Additional command-line options passed to Gradle during dependency resolution. | `GRADLE_CLI_OPTS` |
-| `disabledResolutionJobs` | List of resolution jobs to disable. Valid values are `MAVEN`, `GRADLE`, and `PYTHON`. By default, all available resolution jobs are enabled. | `DS_DISABLED_RESOLUTION_JOBS` |
-| `mavenResolutionImage` | Image used by the Maven dependency resolution job. | `DS_MAVEN_RESOLUTION_IMAGE` |
-| `gradleResolutionImage` | Image used by the Gradle dependency resolution job. | `DS_GRADLE_RESOLUTION_IMAGE` |
-| `pythonResolutionImage` | Image used by the Python dependency resolution job. | `DS_PYTHON_RESOLUTION_IMAGE` |
-| `pipIndexUrl` | Base URL of the Python Package Index. | `PIP_INDEX_URL` |
-| `pipExtraIndexUrl` | Additional URLs of Python package indexes to use in addition to `pipIndexUrl`. | `PIP_EXTRA_INDEX_URL` |
-| `searchIgnoreHiddenDirs` | Whether to ignore hidden directories when the analyzer searches for supported files. | `SEARCH_IGNORE_HIDDEN_DIRS` |
+| Field | UI setting | Description | Equivalent CI/CD variable |
+| ----- | ---------- | ----------- | ------------------------- |
+| `secureAnalyzersPrefix` | **Analyzer image registry** | Prefix for the container registry the analyzer image is pulled from. | `SECURE_ANALYZERS_PREFIX` |
+| `additionalCaCertBundle` | **CA certificate bundle** | CA certificate bundle to trust. The bundle is added to the system's certificates and used by other tools during the scan. | `ADDITIONAL_CA_CERT_BUNDLE` |
+| `secureLogLevel` | **Log level** (Fatal, Error, Warning, Info, Debug) | Logging level used by the analyzer. Set to `FATAL`, `ERROR`, `WARN`, `INFO`, or `DEBUG`. | `SECURE_LOG_LEVEL` |
+| `excludedPaths` | **Paths to exclude** | Glob paths excluded from the scan. | `DS_EXCLUDED_PATHS` |
+| `includeDevDependencies` | **Include development dependencies** | Whether to include development and test dependencies when a supported file is scanned. | `DS_INCLUDE_DEV_DEPENDENCIES` |
+| `maxDepth` | **Maximum directory depth** | Directory depth the analyzer scans. A value of `-1` scans all directories. | `DS_MAX_DEPTH` |
+| `pipDependencyPath` | **pip dependency path** | Path used to install Python packages for analysis. | `DS_PIP_DEPENDENCY_PATH` |
+| `staticReachabilityEnabled` | **Static reachability** | Whether [static reachability](../dependency_scanning/static_reachability.md) is enabled. | `DS_STATIC_REACHABILITY_ENABLED` |
+| `enableManifestFallback` | **Manifest fallback** | Whether to scan manifest files when no lockfile or dependency graph export is available. For more information, see [manifest fallback](../dependency_scanning/dependency_scanning_sbom/_index.md#manifest-fallback). | `DS_ENABLE_MANIFEST_FALLBACK` |
+| `pipcompileLockfileFileNamePattern` | **pip-compile lockfile name pattern** | Glob pattern that selects which pip-compile lockfiles to process. The pattern matches filenames only, not directory paths. | `DS_PIPCOMPILE_LOCKFILE_FILE_NAME_PATTERN` |
+| `pipManifestFileNamePattern` | **pip manifest name pattern** | Glob pattern that selects which pip manifest files to process for dependency resolution and manifest scanning. The pattern matches filenames only, not directory paths. | `DS_PIP_MANIFEST_FILE_NAME_PATTERN` |
+| `enableVulnerabilityScan` | **Vulnerability scan** | Whether vulnerability analysis of generated SBOMs is enabled. | `DS_ENABLE_VULNERABILITY_SCAN` |
+| `apiTimeout` | **API timeout** | Vulnerability scanning API request timeout in seconds, from 5 to 300. | `DS_API_TIMEOUT` |
+| `apiScanDownloadDelay` | **API download delay** | Vulnerability scanning API initial delay in seconds before downloading scan results, from 1 to 120. | `DS_API_SCAN_DOWNLOAD_DELAY` |
+| `mavenDependencyPluginVersion` | **maven-dependency-plugin version** | Version of `maven-dependency-plugin` used during resolution. | `DS_MAVEN_DEPENDENCY_PLUGIN_VERSION` |
+| `mavenArgs` | **Maven arguments** | Additional arguments passed to Maven during dependency resolution. | `MAVEN_ARGS` |
+| `gradleCliOpts` | **Gradle options** | Additional command-line options passed to Gradle during dependency resolution. | `GRADLE_CLI_OPTS` |
+| `disabledResolutionJobs` | **Resolution jobs to skip** (Maven, Gradle, Python) | List of resolution jobs to disable. Valid values are `MAVEN`, `GRADLE`, and `PYTHON`. By default, all available resolution jobs are enabled. | `DS_DISABLED_RESOLUTION_JOBS` |
+| `mavenResolutionImage` | **Maven resolution image** | Image used by the Maven dependency resolution job. | `DS_MAVEN_RESOLUTION_IMAGE` |
+| `gradleResolutionImage` | **Gradle resolution image** | Image used by the Gradle dependency resolution job. | `DS_GRADLE_RESOLUTION_IMAGE` |
+| `pythonResolutionImage` | **Python resolution image** | Image used by the Python dependency resolution job. | `DS_PYTHON_RESOLUTION_IMAGE` |
+| `pipIndexUrl` | **pip index URL** | Base URL of the Python Package Index. | `PIP_INDEX_URL` |
+| `pipExtraIndexUrl` | **pip extra index URLs** | Additional URLs of Python package indexes to use in addition to `pipIndexUrl`. | `PIP_EXTRA_INDEX_URL` |
+| `searchIgnoreHiddenDirs` | **Ignore hidden directories** | Whether to ignore hidden directories when the analyzer searches for supported files. | `SEARCH_IGNORE_HIDDEN_DIRS` |
 
 For example, to create a dependency scanning profile with a customized merge request pipeline trigger:
 

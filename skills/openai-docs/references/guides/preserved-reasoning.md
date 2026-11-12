@@ -30,3 +30,5 @@ The table below shows common ways integrations change the prefix and how to achi
 ## Auditing your integration for prefix changes
 
 Use [Prompt Cache Diagnostics](https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics) to see when cache misses occur and investigate prefix changes. Compare a request with an earlier response by setting `prompt_cache_options.comparison_response_id` to the earlier response ID, then inspect the diagnostic reason and cached token count. Use this information to reduce prefix changes in your integration. Diagnostics report the first identified difference on a best-effort basis; they can’t verify whether the model reused reasoning.
+
+Use `input_transformations` from the Responses API response to see which reasoning items the API removed from the input and why. To investigate a `prefix_mismatch` reasoning removal, you can match the `id` to a reasoning item in an earlier response’s `output`. If your integration modified an earlier input, you can make updates recommended above to preserve the reasoning.

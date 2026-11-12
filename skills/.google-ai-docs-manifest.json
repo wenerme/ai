@@ -110,8 +110,8 @@
   "google-ai-docs/structured-output.md": {
     "url": "https://ai.google.dev/gemini-api/docs/structured-output",
     "skill": "google-ai-docs",
-    "size": 61082,
-    "updatedAt": "2026-11-10T17:49:18.314Z"
+    "size": 61369,
+    "updatedAt": "2026-11-12T07:06:49.009Z"
   },
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",
@@ -164,8 +164,8 @@
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
     "skill": "google-ai-docs",
-    "size": 10881,
-    "updatedAt": "2026-11-10T17:49:26.064Z"
+    "size": 11504,
+    "updatedAt": "2026-11-12T07:06:57.748Z"
   },
   "google-ai-docs/openai.md": {
     "url": "https://ai.google.dev/gemini-api/docs/openai",

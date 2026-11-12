@@ -254,6 +254,44 @@ The sessions and their events are also listed in the AI audit event report:
   These sessions are marked finished after 24 hours without activity.
 - Dashboard numbers update after a short delay.
 
+## View connected agents
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267356) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_connected_agents_tab`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+The **Connected agents** tab lists each agent connection. A connection is an agent that a user
+connected to a project with `glab` on one computer. For example, two users who connect Claude Code
+to the same project appear as two rows. So does one user who connects it from two computers.
+
+Prerequisites:
+
+- You have the Owner role for the top-level group, or a custom role with the
+  `read_agent_artifacts` ability.
+
+To view connected agents:
+
+1. In the top bar, select **Search or go to** and find your top-level group, or a project in it.
+1. In the left sidebar, select **AI** > **Governance**.
+1. Select the **Connected agents** tab.
+
+For each connection, the tab shows:
+
+| Column | Description |
+|--------|-------------|
+| **Agent** | The agent, for example Claude Code or Cursor. |
+| **Connected by** | The user who connected the agent. |
+| **Project** | The project the agent is connected to. Shown for groups only. |
+| **First connected** | When the user first connected the agent to the project. |
+| **Last active** | When `glab` last synced the connection, or **Never** if GitLab has no record of a sync. |
+| **Sessions** | The number of sessions sent for the connection. Counts over 1,000 show as **1,000+**. |
+| **Status** | **Revoked** if the connection was revoked. Otherwise, **Active** if `glab` synced the connection in the last 30 days, or if the connection is less than 30 days old and has not synced yet. **Inactive** for all other connections. |
+
+Connections are listed by **Last active**, most recent first.
+To show only some connections, filter by agent, user, or status.
+
 ## Stop capturing sessions
 
 To stop capturing sessions, run:
@@ -282,6 +320,7 @@ Sessions already sent to GitLab stay on the dashboard.
 | `glab minder audit sync --all` prints a `403 Forbidden` warning, or `glab minder doctor` shows it as the last run's error. | Your role on the project is below Developer, the group does not have GitLab Duo Agent Platform, **Allow external agents** is turned off for the top-level group or the project is in a personal namespace on GitLab.com (both when the `ai_governance_session_gate` feature flag is disabled), or a group Owner revoked this computer's agent identity. For Claude Code and OpenCode in a fork checkout, the session went to the upstream project. | Check the role and the settings with a group Owner or, on GitLab Self-Managed and GitLab Dedicated, an administrator. In a fork checkout, run `glab repo set-default` and choose the project the sessions should go to. |
 | A session appears, but has no events or tool calls. | **Store AI audit events** is turned off for the group or project. | Turn the setting on. You need the Owner or Security Manager role. Events from before the change are not recorded. |
 | A session was sent, but is not on the dashboard. | The dashboard reads data that is processed in the background, or the filters exclude the session. | Set **Show** to **All agents** or **Connected**, check the date range, then wait a few minutes and reload the page. |
+| A session is never sent, for example after the agent created a project. | The folder the agent ran in, such as your home folder, has no remote that points to a GitLab instance that `glab` is signed in to. `glab` sends a session to the project of that folder, not to projects that the agent creates, forks, or clones. | Start the agent in a clone of the GitLab project that the session is for. |
 | A Cursor session is never sent. | `glab` could not confirm which folder the session ran in. This happens when the folder moved, when another folder's path differs only in punctuation (for example `code/cli-docs` and `code/cli/docs`), or when every file the session touched is outside the folder. It also happens when the folder has no `origin` remote. | Run `glab minder doctor` and read the "not synced" reason. Keep the folder where it was when the session ran, rename folders whose paths differ only in punctuation, and make sure the folder has an `origin` remote. |
 | `glab minder doctor` says an agent type is not supported by GitLab yet. | GitLab did not accept that agent type when `glab` first found the session. Such sessions are never sent. | Sessions that `glab` finds after GitLab accepts the agent type are sent. If the message persists, contact GitLab Support. |
 

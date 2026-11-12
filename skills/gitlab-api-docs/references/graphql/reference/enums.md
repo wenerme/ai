@@ -4990,6 +4990,7 @@ Lists the status of a virtual registry cleanup policy.
 | `PIPELINE_FAILED` | Represents error which occurs when a policy could not be evaluated because the latest pipeline failed. |
 | `SCAN_NOT_SUCCEEDED` | Represents error which occurs when a security scan job did not complete successfully (e.g., was canceled or failed), preventing policy evaluation. |
 | `SCAN_REMOVED` | Represents mismatch between the scans of the source and target pipelines. |
+| `SCAN_RESULTS_UNAVAILABLE` | Represents error which occurs when the results of a security scan are no longer available because its results expired or were deleted, preventing policy evaluation. |
 | `TARGET_PIPELINE_MISSING` | Represents error which occurs when the SBOM reports required by a policy could not be found on the target branch. |
 | `TARGET_SCAN_MISSING` | Represents error which occurs when the scans enforced by a policy could not be found in the target branch pipelines. |
 | `UNKNOWN` | Represents unknown error. |

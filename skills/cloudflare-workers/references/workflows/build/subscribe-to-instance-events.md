@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/build/subscribe-to-instance-e
 
 # Subscribe to instance events
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `WorkflowInstance.subscribe()` to receive events without polling [`status()`](https://developers.cloudflare.com/workflows/build/workers-api/#status). A subscription first delivers events recorded before you subscribed. After delivering these retained events, the subscription waits for new events as the instance runs.
 
@@ -182,10 +182,6 @@ Declare the subscription with `using` for automatic disposal when the scope exit
 
 The public type definition shows the fields available on each event:
 
-```js
-
-```
-
 ```ts
 type WorkflowInstanceEvent = {
 	instanceId: string;
@@ -326,5 +322,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/#page","headline":"Subscribe to instance events","description":"Use Cloudflare Workflows subscribe method to receive historical and live instance events without polling status.","url":"https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/og.png?v=bf171e3faf754e4e","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/#page","headline":"Subscribe to instance events","description":"Use Cloudflare Workflows subscribe method to receive historical and live instance events without polling status.","url":"https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/og.png?v=bf171e3faf754e4e","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

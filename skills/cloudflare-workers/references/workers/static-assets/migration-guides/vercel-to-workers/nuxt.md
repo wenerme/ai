@@ -1,5 +1,5 @@
 ---
-description: Migrate a Nuxt application from Vercel to Cloudflare Workers. Replace the Nitro vercel preset with cloudflare_module. Includes a prompt for your coding agent.
+description: Switch Nuxt's Nitro preset from vercel to cloudflare_module, replace isr route rules, read Cloudflare bindings, and fix stacked cache headers on Workers.
 title: Migrate Nuxt from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/og.png?v=7641575da81cc2c4
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate Nuxt from Vercel to Cloudflare Workers
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide moves a [Nuxt ↗︎](https://nuxt.com/) application from Vercel to Cloudflare Workers. Nuxt selects its Vercel preset automatically on Vercel. On Workers, you set the Nitro `cloudflare_module` preset instead.
 
@@ -97,7 +97,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "<YOUR_PROJECT_NAME>",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-06",
+   	"compatibility_date": "2026-11-12",
    	"observability": {
    		"enabled": true,
    	},
@@ -108,7 +108,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "<YOUR_PROJECT_NAME>"
    # Set this to today's date
-   compatibility_date = "2026-11-06"
+   compatibility_date = "2026-11-12"
 
    [observability]
    enabled = true
@@ -199,7 +199,7 @@ export default defineNuxtConfig({
 
 If your project has a `public/_headers` file, merge its rules into the generated file instead of overwriting them.
 
-## Known issues
+## Troubleshooting
 
 - **`nuxt dev` has no bindings.** Your `compatibilityDate` is earlier than `2025-07-17`. Check that `.nuxt/nitro.json` contains `"preset": "cloudflare-dev"`.
 - **The build warns that `main` and `assets` are overridden.** Remove `main` and `assets` from your Wrangler configuration file.
@@ -220,5 +220,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/#page","headline":"Migrate Nuxt from Vercel to Cloudflare Workers","description":"Migrate a Nuxt application from Vercel to Cloudflare Workers. Replace the Nitro vercel preset with cloudflare_module. Includes a prompt for your coding agent.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/og.png?v=7641575da81cc2c4","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/#page","headline":"Migrate Nuxt from Vercel to Cloudflare Workers","description":"Switch Nuxt's Nitro preset from vercel to cloudflare_module, replace isr route rules, read Cloudflare bindings, and fix stacked cache headers on Workers.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/og.png?v=7641575da81cc2c4","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -230,6 +230,9 @@ To change it, [select a model for the instance](../../../administration/gitlab_d
 
 Business logic scanning has the following known issues:
 
+- A top-level group can run at most 20 business logic scans at the same time. Full scans and
+  merge request scans count toward the same limit. Another scan is refused with a message until
+  one of the running scans finishes. GitLab can adjust the limit.
 - When a merge request changes more than 400 files, or its diff is too large to collect, the scan
   does not limit itself to the changed files. It runs a full scan of the repository instead, and
   the result is not a partial scan.

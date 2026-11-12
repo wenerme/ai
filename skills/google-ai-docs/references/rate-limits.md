@@ -135,6 +135,49 @@ The following standard interactive rate limits apply to
   * 2,000
 {% /table %}
 
+### Gemini Decision rate limits  {% id="gemini-decision" %}
+
+The following standard interactive rate limits apply to
+[Gemini Decision](/docs/models/gemini-decision-1) on the
+[Decisions API](/docs/decisions-api):
+
+{% table %}
+  * Usage tier
+  * Requests per minute (RPM)
+  * Tokens per minute (TPM)
+  * Requests per day (RPD)
+
+  ---
+
+  * Free
+  * 200
+  * 50,000
+  * 10,000
+
+  ---
+
+  * Tier 1
+  * 1,500
+  * 1,000,000
+  * 50,000
+
+  ---
+
+  * Tier 2
+  * 5,000
+  * 4,000,000
+  * Unlimited
+
+  ---
+
+  * Tier 3
+  * 15,000
+  * 10,000,000
+  * Unlimited
+{% /table %}
+
+Gemini Decision doesn't support the [Batch API](/docs/batch-api).
+
 ## Priority inference rate limits  {% id="priority" %}
 
 [Priority](/docs/priority-inference) consumption holds its own rate

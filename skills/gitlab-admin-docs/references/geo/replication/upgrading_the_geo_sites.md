@@ -21,6 +21,12 @@ Upgrading Geo sites involves performing:
    - [GitLab 15 upgrade notes](../../../update/versions/gitlab_15_changes.md)
 1. [General upgrade steps](#general-upgrade-steps), for all upgrades.
 
+> [!warning]
+> You cannot upgrade the operating system of a secondary site and then promote
+> it as a way to migrate between operating systems. The secondary site might
+> miss replication of some Git repositories or files. For more information, see
+> [Streaming replication](../../postgresql/upgrading_os.md#streaming-replication).
+
 ## General upgrade steps
 
 > [!note]
@@ -71,3 +77,21 @@ everything is working correctly:
    is received by secondary sites.
 
 If you encounter any issues, see the [Geo troubleshooting guide](troubleshooting/_index.md).
+
+## Operating system upgrades
+
+Upgrading the operating system of a Geo site is a separate procedure from
+upgrading GitLab, and carries a different risk. A change to `glibc` locale data
+can invalidate PostgreSQL indexes, and a secondary site can report full
+replication while some data is not safely replicated. Pausing and resuming
+replication during an OS upgrade does not mitigate this risk.
+
+Before you upgrade the operating system on any Geo site:
+
+1. [Check whether locale data changes at all](../../postgresql/upgrading_os.md#checking-glibc-versions) on your current and target operating systems.
+   If PostgreSQL on both systems runs on `glibc` 2.28 or higher, your indexes should continue to work.
+   To check this before you upgrade, [verify the collation versions](../../postgresql/upgrading_os.md#verifying-glibc-collation-versions).
+   If the versions don't match, follow one of the upgrade procedures instead.
+1. If your database is externally managed, see [Geo sites with externally managed databases](../../postgresql/upgrading_os.md#geo-sites-with-externally-managed-databases).
+   Otherwise follow the Geo procedure for your chosen approach in
+   [Upgrading operating systems for PostgreSQL](../../postgresql/upgrading_os.md).

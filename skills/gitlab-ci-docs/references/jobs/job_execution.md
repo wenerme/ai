@@ -98,6 +98,76 @@ flowchart TD
     Cleanup --> End([Job Complete])
 ```
 
+## Ref specs for runners
+
+When a runner picks a pipeline job, GitLab provides that job's metadata. This includes the [Git refspecs](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec),
+which indicate which ref (such as branch or tag) and commit (SHA1) are checked out from your
+project repository.
+
+This table lists the refspecs injected for each pipeline type:
+
+| Pipeline type                                        | Refspecs |
+|------------------------------------------------------|----------|
+| pipeline for branches                                | `+<sha>:refs/pipelines/<id>` and `+refs/heads/<name>:refs/remotes/origin/<name>` |
+| pipeline for tags                                    | `+<sha>:refs/pipelines/<id>` and `+refs/tags/<name>:refs/tags/<name>` |
+| [merge request pipeline](../pipelines/merge_request_pipelines.md) | `+<sha>:refs/pipelines/<id>` |
+| [pipeline for workload refs](../pipelines/pipeline_types.md#workload-pipeline)  | `+<sha>:refs/pipelines/<id>` |
+
+The refs `refs/heads/<name>` and `refs/tags/<name>` exist in your
+project repository. The runner fetches the pipeline's commit SHA directly and stores it in the
+local ref `refs/pipelines/<id>` in the job's clone. Because the fetch does not depend on a branch or tag,
+it works even after the associated branch or tag has been deleted. Some features rely on this, such as
+[automatically stopping an environment](../environments/_index.md#stopping-an-environment),
+and [merge trains](../pipelines/merge_trains.md) that might run pipelines after branch deletion.
+
+In GitLab 18.11 and earlier, the runner fetches `+refs/pipelines/<id>:refs/pipelines/<id>`
+for merge request and workload pipelines instead of the commit SHA.
+
+### `refs/pipelines/<id>` project ref (deprecated)
+
+- Runners [stopped fetching](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235652) `refs/pipelines/<id>` in GitLab 19.0.
+
+> [!warning]
+> This ref was [deprecated](https://gitlab.com/groups/gitlab-org/-/work_items/21097) in GitLab 19.6.
+> Fetch the commit SHA in `CI_COMMIT_SHA` instead. This change is a breaking change.
+
+GitLab creates the `refs/pipelines/<id>` ref in your project repository for each pipeline,
+but this ref is deprecated and might not be created in the future.
+For more information, see
+[issue 593383](https://gitlab.com/gitlab-org/gitlab/-/work_items/593383).
+
+A race condition can cause fetches of this ref to fail intermittently with
+`fatal: couldn't find remote ref refs/pipelines/<id>`.
+Fetching the commit SHA does not have this problem.
+
+If your scripts fetch or clone `refs/pipelines/<id>` from the remote, use the commit SHA
+in `CI_COMMIT_SHA` instead. You should fetch the commit into a local ref, like the runner does:
+
+```shell
+git fetch origin "+${CI_COMMIT_SHA}:refs/pipelines/${CI_PIPELINE_ID}"
+```
+
+You can use any local ref name. Git only fetches tags that point to the fetched commits
+automatically when the fetch updates a local ref.
+If your scripts do not need tags, you can fetch the commit without a local ref:
+
+```shell
+git fetch origin "${CI_COMMIT_SHA}"
+```
+
+To clone the commit, use `git clone --revision`, which requires Git 2.49 or later:
+
+```shell
+git clone --revision "${CI_COMMIT_SHA}" "${CI_REPOSITORY_URL}"
+```
+
+For projects that use [SHA-256 hashing](../../user/project/_index.md#create-a-project-that-uses-sha-256-hashing),
+set the object format, or the clone fails with `Remote revision <sha> not found in upstream origin`:
+
+```shell
+git -c init.defaultObjectFormat=sha256 clone --revision "${CI_COMMIT_SHA}" "${CI_REPOSITORY_URL}"
+```
+
 ## Shell context isolation
 
 Each shell context is isolated by design. The only connection between contexts is the shared working directory file system.

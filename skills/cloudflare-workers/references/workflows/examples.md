@@ -16,6 +16,8 @@ Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Explore the following examples for Workflows.
 
+[**Trigger a Workflow from a webhook** Start Workflow instances from webhooks sent by your own systems or third-party services.](https://developers.cloudflare.com/workflows/examples/trigger-from-webhook/)
+
 [**Human-in-the-Loop Image Tagging with waitForEvent** Human-in-the-loop Workflow with waitForEvent API](https://developers.cloudflare.com/workflows/examples/wait-for-event/)
 
 [**Export and save D1 database** Send invoice when shopping cart is checked out and paid for](https://developers.cloudflare.com/workflows/examples/backup-d1/)

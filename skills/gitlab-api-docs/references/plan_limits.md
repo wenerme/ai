@@ -50,6 +50,7 @@ Example response:
   "dotenv_variables": 20,
   "cargo_max_file_size": 5368709120,
   "conan_max_file_size": 3221225472,
+  "draft_notes_per_merge_request": 200,
   "enforcement_limit": 10000,
   "generic_packages_max_file_size": 5368709120,
   "helm_max_file_size": 5242880,
@@ -96,6 +97,7 @@ PUT /application/plan_limits
 | `dotenv_variables`                | integer | no       | Maximum number of variables in a dotenv artifact. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432529) in GitLab 17.1. |
 | `cargo_max_file_size`             | integer | no       | Maximum Cargo package file size in bytes. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/33060) in GitLab 19.3. |
 | `conan_max_file_size`             | integer | no       | Maximum Conan package file size in bytes. |
+| `draft_notes_per_merge_request`   | integer | no       | Maximum number of draft notes one user can have on a merge request. Set to `0` for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636471) in GitLab 19.6. |
 | `enforcement_limit`               | integer | no       | Maximum storage size for root namespace limit enforcement in MiB. |
 | `generic_packages_max_file_size`  | integer | no       | Maximum generic package file size in bytes. |
 | `helm_max_file_size`              | integer | no       | Maximum Helm chart file size in bytes. |
@@ -142,6 +144,7 @@ Example response:
   "conan_max_file_size": 3221225472,
   "dotenv_variables": 20,
   "dotenv_size": 5120,
+  "draft_notes_per_merge_request": 200,
   "generic_packages_max_file_size": 5368709120,
   "helm_max_file_size": 5242880,
   "maven_max_file_size": 3221225472,

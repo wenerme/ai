@@ -1,5 +1,18 @@
 # Upgrading operating systems for PostgreSQL
 
+Upgrade the operating system that runs PostgreSQL without corrupting database indexes.
+
+## Geo sites with externally managed databases
+
+If your Geo sites use an externally managed database, such as Amazon RDS or
+Google Cloud SQL, the procedures on this page do
+not apply as written. They use Linux package commands that do not control an
+external database.
+
+Coordinate the operating system change with the procedure offered by your
+database provider. The locale data and index requirements described on this page
+still apply to the database, regardless of which service manages it.
+
 ## When to check locale compatibility
 
 Changes to locale data in `glibc` can cause PostgreSQL database files to become incompatible between
@@ -11,6 +24,10 @@ operating systems, leading to index corruption. Check for locale compatibility w
 
 To check for locale compatibility, see
 [Check OS locale data compatibility](../geo/replication/troubleshooting/common.md#check-os-locale-data-compatibility).
+
+Nodes that run no local PostgreSQL, such as nodes running only Puma, Sidekiq, or
+Gitaly, are not affected by locale data changes. You can upgrade their operating
+systems independently of the PostgreSQL nodes.
 
 > [!warning]
 > [Geo](../geo/_index.md) cannot be used to migrate a PostgreSQL database from one operating system to another. If you attempt to do so, the secondary site may appear to be 100% replicated when in fact some data is not replicated, leading to data loss. This is because Geo depends on PostgreSQL streaming replication, which suffers from the limitations described in this document. Also see [Geo Troubleshooting - Check OS locale data compatibility](../geo/replication/troubleshooting/common.md#check-os-locale-data-compatibility).

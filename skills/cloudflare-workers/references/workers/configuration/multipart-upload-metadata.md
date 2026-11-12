@@ -53,6 +53,7 @@ At a minimum, the `main_module` key is required to upload a Worker.
 - `assets` `object` optional
   - [Asset](https://developers.cloudflare.com/workers/static-assets/) configuration for a Worker.
   - `config` `object` optional
+    - [`base_path`](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/) determines the URL path prefix where static assets are available.
     - [html\_handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/) determines the redirects and rewrites of requests for HTML content.
     - [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) determines the response when a request does not match a static asset.
   - `jwt` field provides a token authorizing assets to be attached to a Worker.

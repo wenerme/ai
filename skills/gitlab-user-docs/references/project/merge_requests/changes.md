@@ -216,38 +216,14 @@ To change how a merge request shows changed lines:
 - Default experience on the merge request **Changes** tab [enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254127) in GitLab 19.4.
 - Feature flag `rapid_diffs_on_mr_show` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241051) in GitLab 19.6.
 - Feature flag `rapid_diffs_default_on_mr_show` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266228) in GitLab 19.6.
+- Option to switch back to the classic diff experience [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269613) in GitLab 19.6.
 
 Rapid Diffs is a faster way to load and interact with code changes in merge requests.
 It reduces the time before you see the first file when reviewing a diff.
 
 Rapid Diffs is in beta. Some features from the classic diff experience are not available.
-For the list of known limitations, see [feedback issue 596236](https://gitlab.com/gitlab-org/gitlab/-/issues/596236).
+For the list of known limitations, or to share feedback, see [feedback issue 596236](https://gitlab.com/gitlab-org/gitlab/-/issues/596236).
 For the feature parity roadmap, see [epic 19380](https://gitlab.com/groups/gitlab-org/-/epics/19380).
-
-### Turn on Rapid Diffs
-
-Rapid Diffs is on by default on the merge request **Changes** tab.
-
-If you previously turned it off, you can turn it back on for all merge requests:
-
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Code** > **Merge requests** and find your merge request.
-1. Below the merge request title, select **Changes**.
-1. Select **Try Rapid Diffs**.
-
-The page reloads with the new experience. Your preference persists across sessions.
-
-To share feedback about Rapid Diffs, select **Rapid Diffs** > **Leave feedback**.
-
-### Turn off Rapid Diffs
-
-To turn off Rapid Diffs and switch back to the classic diff loading experience:
-
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Code** > **Merge requests** and find your merge request.
-1. Below the merge request title, select **Changes**.
-1. Select **Rapid Diffs** to open the dropdown list.
-1. Select **Switch to classic loading**.
 
 ## Explain code in a merge request
 

@@ -172,7 +172,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Beamer API token                                  | Beamer API token                              | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Bitbucket client ID                               | Bitbucket client ID                           | Yes | No | No | No | None |
 | Bitbucket client secret                           | Bitbucket client secret                       | Yes | No | No | No | None |
-| Brevo API token                                   | Sendinblue API token                          | Yes | No | Yes | No | None |
+| Brevo API token                                   | Sendinblue API token                          | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Brevo SMTP token                                  | Sendinblue SMTP token                         | Yes | No | Yes | No | None |
 | Canada Digital Service Notify API Key             | CDSCanadaNotifyAPIKey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | CircleCI access token                             | CircleCI access tokens                        | Yes | No | Yes | No | None |
@@ -300,7 +300,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Pulumi API token                                  | Pulumi API token                              | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | PyPi upload token                                 | PyPI upload token                             | Yes | No | Yes | No | None |
 | RSA private key                                   | RSA private key                               | Yes | No | No | No | None |
-| RubyGems API token                                | Rubygem API token                             | Yes | No | Yes | No | None |
+| RubyGems API token                                | Rubygem API token                             | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Segment public API token                          | Segment Public API token                      | Yes | No | Yes | No | None |
 | SendGrid API token                                | Sendgrid API token                            | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Shippo API token                                  | Shippo API token                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |

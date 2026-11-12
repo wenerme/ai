@@ -386,22 +386,22 @@ follows this naming convention: `ai-<agent>-<group>`.
 
 ## Enable in a project
 
-If an external agent is already enabled in a top-level group, you can enable it in the group's projects.
-
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
-- The agent must be enabled in the project's top-level group.
+- Have the Maintainer or Owner role for the project.
 
 To enable an external agent in a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Agents**.
-1. In the upper-right corner, select **Enable agent from group**.
+1. In the upper-right corner, select **Enable**.
 1. From the dropdown list, select the external agent you want to enable.
-1. For **Add triggers**, select:
-   - One or more [trigger event types](../triggers/_index.md#trigger-event-types).
-   - If needed for the trigger event type, a trigger event action.
+1. Under **Conditions**, review the [events](../triggers/_index.md#trigger-event-types) that trigger the external agent.
+   By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add condition** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
+1. Optional. To tell the agent what to do for an event, edit the event, then enter text in the **Instructions** field.
+   For more information, see [Add instructions](../triggers/_index.md#add-instructions).
 1. Select **Enable**.
 
 The external agent appears in the project's **AI** > **Agents** list.

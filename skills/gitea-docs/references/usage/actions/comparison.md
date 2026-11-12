@@ -14,10 +14,7 @@ Gitea Actions is designed to be compatible with GitHub Actions, with the differe
 
 ### Action prefixes
 
-`uses:` accepts these prefixes:
-
-- `self:` references your own Gitea instance, e.g. `uses: self:owner/repo@v1` or `uses: self:owner/repo/.gitea/workflows/build.yml@v1`
-- `builtin:` runs an action built into Gitea Runner, which needs no download and does not depend on Node.js, e.g. `uses: builtin:checkout`
+`uses:` accepts the `self:` prefix to reference your own Gitea instance, e.g. `uses: self:owner/repo@v1` or `uses: self:owner/repo/.gitea/workflows/build.yml@v1`.
 
 ### Actions written in Go
 

@@ -182,6 +182,7 @@ The flow appears in the AI Catalog.
 
 - Enabling a public flow for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
 - Feature flag `ai_catalog_bulk_item_consumer_create` removed in GitLab 19.4.
+- Enabling a flow for all projects in a top-level group [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627512) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_group_inherited_consumers`. Disabled by default.
 
 Enable a flow to trigger it from an issue, merge request, or discussion.
 
@@ -194,11 +195,11 @@ When you enable a flow in a project:
 
 You can enable a flow or agent up to 30 times per minute.
 
+### From the managing project
+
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
-
-### From the managing project
+- Have the Maintainer or Owner role for the project.
 
 To enable a flow:
 
@@ -207,14 +208,59 @@ To enable a flow:
 1. Select the **Managed** tab, then select the flow you want to enable.
 1. In the upper-right corner, select **Enable**.
 1. Under **Project**, select the project you want to enable the flow in.
-1. For **Add triggers**, select:
-   - The [event types that trigger the flow](../triggers/_index.md#trigger-event-types).
-   - If needed for the trigger event type, a trigger event action.
-1. Optional. For an event, in the **Instructions** field, enter text that tells the flow what to do.
+1. Under **Conditions**, review the [events](../triggers/_index.md#trigger-event-types) that trigger the flow.
+   By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add condition** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
+1. Optional. To tell the flow what to do for an event, edit the event, then enter text in the **Instructions** field.
    For more information, see [Add instructions](../triggers/_index.md#add-instructions).
 1. Select **Enable**.
 
+### From the top-level group
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+When you enable a flow in a top-level group, the flow is enabled for all projects in the group.
+Projects that you create in or transfer to the group later also get the flow.
+You do not have to enable the flow in each project.
+
+Prerequisites:
+
+- Have the Maintainer or Owner role for the top-level group.
+- The flow is public, or restricted to the same top-level group.
+
+To enable a flow for all projects in a top-level group:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **AI** > **Flows**.
+1. Select the flow you want to enable.
+1. In the upper-right corner, select **Enable for all projects**.
+1. Under **Conditions**, review the [events](../triggers/_index.md#trigger-event-types) that trigger the flow.
+   By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add condition** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
+1. Optional. To tell the flow what to do for an event, edit the event, then enter text in the **Instructions** field.
+   For more information, see [Add instructions](../triggers/_index.md#add-instructions).
+1. Select **Enable for all projects**.
+
+   If the flow is already enabled in one or more projects in the group,
+   select **Replace and enable for all projects**.
+   The project configurations are deleted and the group configuration is used instead.
+
+In the group, the flow is labeled **Enabled for all projects**.
+In each project, the flow is labeled **Enabled by** followed by the group name.
+
+The service account for the flow is added to each project in the group with the Developer role.
+
+To disable the flow for all projects, on the flow's page, select **Disable for all projects**, then select **Disable**.
+
 ### From the AI Catalog
+
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
 
 To enable a flow:
 
@@ -236,37 +282,11 @@ To enable a flow:
 1. Select **Enable**.
 
 The flow appears in the group and project **AI** > **Flows** pages.
-Members of any project in the top-level group can now enable the flow in their project.
+If you enabled the flow in a project, maintainers of other projects in the top-level group
+can also enable the flow in their projects by using the **From the AI Catalog** tab.
 
 A service account is created in the group. The name of the account
 follows this naming convention: `ai-<flow>-<group>`.
-
-### Enable in a project
-
-If a flow is already enabled in a top-level group, you can enable it in the group's projects.
-
-Prerequisites:
-
-- You must have the Maintainer or Owner role for the project.
-- The flow must be enabled in the project's top-level group.
-
-To enable a flow in a project:
-
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **AI** > **Flows**.
-1. In the upper-right corner, select **Enable flow from group**.
-1. From the dropdown list, select the flow you want to enable.
-1. For **Add triggers**, select:
-   - The [event types that trigger the flow](../triggers/_index.md#trigger-event-types).
-   - If needed for the trigger event type, a trigger event action.
-1. Optional. For an event, in the **Instructions** field, enter text that tells the flow what to do.
-   For more information, see [Add instructions](../triggers/_index.md#add-instructions).
-1. Select **Enable**.
-
-The flow appears in the project's **AI** > **Flows** list.
-
-The top-level group's service account is added to the project.
-This account is assigned the Developer role.
 
 ## Manage trigger conditions
 

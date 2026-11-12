@@ -14,13 +14,13 @@ This guide walks you through connecting Datadog to Grafana Cloud and visualizing
 Before you begin, ensure you have:
 
 - A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan, or a self-managed Grafana Enterprise instance with an activated license.
-- The **Admin** role in Grafana, which is required to add a data source.
+- The **Organization administrator** role in Grafana, which is required to add a data source.
 - A Datadog API key and application key with permission to run the queries you need. To create them, refer to [Get an API key and application key from Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).
 - Your Datadog region, such as **US1 / Default** or **EU**. The region determines the API endpoint that the data source connects to.
 
 ## Step 1: Install the plugin
 
-1. Verify the Datadog plugin is enabled for your organization at the [Grafana account portal](https://grafana.com/orgs). If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
+1. Verify the Datadog plugin is enabled for your organization at the [Grafana account portal](https://grafana.com/orgs). If it isn’t listed, confirm your Cloud plan is Pro or Advanced.
 2. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 3. Search for **Datadog**.
 4. Click **Install**.
@@ -34,7 +34,7 @@ The plugin is ready to use immediately after installation. For detailed installa
 3. Click **Add new data source**.
 4. Enter a **Name** for the data source.
 5. From the **API URL / Region** drop-down menu, select your Datadog region, such as **US1 / Default** or **EU**.
-6. Enter your Datadog **API key** and **Application key**.
+6. Enter your Datadog **API key** and **App key**.
 7. Click **Save &amp; test**.
 
 On success, you see a green message confirming that Grafana connected to Datadog. If the connection fails, refer to [Troubleshoot the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/).
@@ -52,14 +52,14 @@ On success, you see a green message confirming that Grafana connected to Datadog
 5. Select an **Aggregate** function, such as `avg`.
 6. Click **Run query**. You should see a time-series graph showing your Datadog metric.
 
-To write the query as a Datadog expression instead, change the query type to **Raw query** and enter an expression, such as `avg:system.cpu.user{*}`. For all query types and options, refer to [Datadog query editor](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/).
+To write the query as a Datadog expression instead, change the query type to **Raw Query** and enter an expression, such as `avg:system.cpu.user{*}`. For all query types and options, refer to [Datadog query editor](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/).
 
 ## Step 4: Build a dashboard
 
 1. Navigate to **Dashboards** in the left-side menu.
 2. Click **New** &gt; **New dashboard** &gt; **Add visualization**.
 3. Select your Datadog data source.
-4. Build a query, or change the query type to **Raw query** and paste one of the starter queries below.
+4. Build a query, or change the query type to **Raw Query** and paste one of the starter queries below.
 5. Choose a visualization type, such as Time series, Stat, Gauge, or Table.
 6. Click **Apply** to add the panel.
 7. Repeat for additional panels, then click **Save dashboard**.
@@ -68,7 +68,7 @@ To write the query as a Datadog expression instead, change the query type to **R
 
 Expand table
 
-| Panel                  | Query idea (Raw query)                   |
+| Panel                  | Query idea (Raw Query)                   |
 |------------------------|------------------------------------------|
 | CPU usage by host      | `avg:system.cpu.user{*} by {host}`       |
 | Memory used            | `avg:system.mem.used{*}`                 |

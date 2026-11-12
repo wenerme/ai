@@ -746,6 +746,7 @@ Show me all comments on merge request 5 in project gitlab-org/gitlab
 ## `save_merge_request_review`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605881) in GitLab 19.4.
+- `update_note` method [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592244) in GitLab 19.6.
 
 This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -758,6 +759,7 @@ exactly one operation, selected with the `method` parameter:
 | `reply_discussion`   | Replies in an existing discussion. |
 | `create_diff_note`   | Comments on a specific diff line. |
 | `resolve_discussion` | Resolves or unresolves a discussion. |
+| `update_note`        | Replaces the text of a note on the merge request. You must be the note author or have at least the Maintainer role. |
 | `submit_review`      | Posts multiple diff comments and an optional summary in one call. |
 | `post_duo_review`    | Asks GitLab Duo to review the merge request. Requires GitLab Duo Code Review. |
 | `approve`            | Approves the merge request. Already-approved calls succeed with status `already_approved`. |
@@ -769,12 +771,13 @@ the latest commits.
 
 | Parameter           | Type    | Required | Description |
 |---------------------|---------|----------|-------------|
-| `url`               | string  | No       | URL of the GitLab merge request. Required if `project_id` and `merge_request_iid` are missing. |
+| `url`               | string  | No       | URL of the GitLab merge request, or a comment link ending in `#note_<id>`. Required if `project_id` and `merge_request_iid` are missing. |
 | `project_id`        | string  | No       | ID or path of the project. Required if `url` is missing. |
 | `merge_request_iid` | integer | No       | Internal ID of the merge request. Required if `url` is missing. |
 | `method`            | string  | Yes      | The operation to perform. Parameters that belong to a different method are rejected. |
-| `body`              | string  | No       | Note text. Required for `create_note`, `reply_discussion`, and `create_diff_note`. Lines cannot start with `/` to avoid triggering quick actions (for example, `/merge`). |
+| `body`              | string  | No       | Note text. Required for `create_note`, `reply_discussion`, `create_diff_note`, and `update_note`. Lines cannot start with `/` to avoid triggering quick actions (for example, `/merge`). |
 | `discussion_id`     | string  | No       | Discussion to act on. Required for `reply_discussion` and `resolve_discussion`. Accepts a global ID or a bare discussion ID. |
+| `note_id`           | integer | No | Note to act on. Required for `update_note` unless `url` includes the comment anchor (`#note_<id>`). Accepts the integer note ID returned by `create_note`. To edit a note found with `get_merge_request` and `include: ["notes"]`, pass its `webUrl` as `url`. The note must belong to the specified merge request. Comments on the merge request's commits are not supported. |
 | `internal`          | boolean | No       | For `create_note`, marks the note as internal. |
 | `resolved`          | boolean | No       | For `resolve_discussion`: `true` resolves, `false` unresolves. Required for that method. |
 | `old_path`          | string  | No       | For `create_diff_note`, the file path before the change. Provide `old_path` or `new_path`, or both. |

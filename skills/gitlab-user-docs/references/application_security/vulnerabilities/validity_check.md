@@ -89,6 +89,7 @@ Validity checks support the following secret types:
 - Asana personal access tokens
 - AWS IAM long-term access key IDs (beginning with `AKIA`)
 - Beamer API tokens
+- Brevo API keys
 - Datadog API keys
 - DigitalOcean OAuth access tokens
 - DigitalOcean personal access tokens
@@ -125,6 +126,7 @@ Validity checks support the following secret types:
 - OpenAI user API keys
 - Postman API tokens
 - Pulumi access tokens
+- RubyGems API keys
 - SendGrid API tokens
 - Shippo live API tokens
 - Shippo test API tokens
@@ -156,6 +158,9 @@ A token that HCP Terraform rejects shows as possibly active, because it might be
 Mailgun private API keys are verified from GitLab IP addresses. If your Mailgun account restricts
 API access with an IP allowlist, a live key might show as inactive because Mailgun rejects the request.
 
+A Brevo API key on an account that restricts API access to authorized IP addresses shows as possibly
+active, because Brevo rejects requests from other addresses.
+
 ### Configure outbound network access
 
 Validity checks are not supported in offline environments. This feature requires outbound
@@ -166,6 +171,7 @@ for each partner's validation API.
 The supported URLs are:
 
 - `https://api.anthropic.com/v1/models`
+- `https://api.brevo.com/v3/account`
 - `https://api.datadoghq.com/api/v1/validate`
 - `https://api.digitalocean.com/v2/account`
 - `https://api.doppler.com/v3/me`
@@ -202,6 +208,7 @@ The supported URLs are:
 - `https://io.adafruit.com/api/v2/user`
 - `https://registry.npmjs.org/-/whoami`
 - `https://rest.messagebird.com/balance`
+- `https://rubygems.org/api/v1/gems.json`
 - `https://sts.amazonaws.com/`
 - `https://www.googleapis.com/discovery/v1/apis`
 

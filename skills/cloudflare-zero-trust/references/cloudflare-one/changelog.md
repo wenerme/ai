@@ -16,6 +16,56 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-11-12
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+
+
+**Cloudflare Tunnel extends URL normalization**
+
+Starting from version `2026.11.0`, [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) extends the [URL normalization introduced in `2026.10.0`](https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflared-path-normalization/). Normalization now handles semicolon-delimited path parameters before matching ingress rules. This improves security for tunnels with rules that require Cloudflare Access validation. The URL path sent to your origin stays the same.
+
+Starting 2027-02-08, new `cloudflared` releases will turn on URL normalization by default. This replaces the previously announced date of 2027-01-25, giving you time to test the updated behavior. Upgrade to version `2026.11.0` or later and test your path-based routing before that date, including rules that match paths containing semicolons. Configurations without rules requiring Access validation are unaffected.
+
+This setting is currently off by default. To turn it on, run:
+
+```sh
+cloudflared tunnel --disable-path-normalization=false run <TUNNEL_NAME_OR_UUID>
+```
+
+Alternatively, set `TUNNEL_DISABLE_PATH_NORMALIZATION=false` on each `cloudflared` replica and restart it.
+
+For more information, refer to [ingress matching](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/#how-traffic-is-matched) and [Access validation at the origin](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#access).
+
+## 2026-11-11
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**GitHub automatically detects leaked Access service tokens**
+
+GitHub secret scanning automatically detects Cloudflare Access service token secrets exposed in public repositories and reports them to Cloudflare. Access then disables the affected token and emails account administrators.
+
+Other secret scanning tools can identify Access service tokens using their consistent Client Secret format: `cfast_`, followed by 40 alphanumeric characters and an eight-character hexadecimal checksum. For tools that support custom detection rules, use this regular expression to find possible secrets:
+
+```txt
+cfast_[A-Za-z0-9]{40}[a-f0-9]{8}
+```
+
+This pattern applies to Client Secrets created on or after August 26, 2026, not legacy 64-character hexadecimal secrets. Matching the pattern does not validate the checksum or confirm that the secret is active. For details, refer to [Client Secret format](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#client-secret-format).
+
+#### Recover a leaked service token
+
+Before you can re-enable a leaked token, you must rotate its secret.
+
+Leaked secrets do not support a rotation grace period. When you rotate one, the previous secret is discarded immediately. Update your services with the new secret, then re-enable the token.
+
+For API rotations, omit `previous_client_secret_expires_at`. A future expiration returns `400`. Attempting to re-enable the token before rotation returns `409`.
+
+![Leaked service token rotation dialog warning that the current secret is revoked immediately and the token remains disabled.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=524,height=370,format=webp/_astro/leaked-service-token-rotation.DjbE6paK.png)
+
+For recovery steps and leak metadata fields, refer to [Recover a leaked service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#recover-a-leaked-service-token).
+
 ## 2026-11-10
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)

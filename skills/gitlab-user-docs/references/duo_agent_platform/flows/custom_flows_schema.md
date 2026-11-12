@@ -116,6 +116,7 @@ The action depends on the event and the **Run when** selection:
 |---------------|----------------|------------------|
 | Merge request | Approved       | `approved`       |
 | Merge request | Created        | `created`        |
+| Merge request | Merged         | `merged`         |
 | Work item     | Created        | `created`        |
 | Work item     | Status changed | `status_changed` |
 

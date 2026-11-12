@@ -584,8 +584,8 @@
   "anthropic-docs/managed-agents/overview.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/overview",
     "skill": "anthropic-docs",
-    "size": 11420,
-    "updatedAt": "2026-11-09T20:42:46.467Z"
+    "size": 11471,
+    "updatedAt": "2026-11-12T06:58:23.368Z"
   },
   "anthropic-docs/managed-agents/quickstart.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
@@ -644,8 +644,8 @@
   "anthropic-docs/managed-agents/choosing-an-environment.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/choosing-an-environment",
     "skill": "anthropic-docs",
-    "size": 13136,
-    "updatedAt": "2026-11-09T20:42:50.533Z"
+    "size": 13185,
+    "updatedAt": "2026-11-12T06:58:27.192Z"
   },
   "anthropic-docs/managed-agents/environments.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/environments",
@@ -662,8 +662,8 @@
   "anthropic-docs/managed-agents/self-hosted-sandboxes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
     "skill": "anthropic-docs",
-    "size": 29104,
-    "updatedAt": "2026-11-10T07:01:00.196Z"
+    "size": 29112,
+    "updatedAt": "2026-11-12T06:58:28.412Z"
   },
   "anthropic-docs/managed-agents/self-hosted-sandboxes-workers.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-workers",
@@ -806,8 +806,8 @@
   "anthropic-docs/managed-agents/secure-deployment.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/secure-deployment",
     "skill": "anthropic-docs",
-    "size": 74255,
-    "updatedAt": "2026-11-09T20:43:01.737Z"
+    "size": 74804,
+    "updatedAt": "2026-11-12T06:58:38.275Z"
   },
   "anthropic-docs/managed-agents/secure-deployment-monitoring.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/secure-deployment-monitoring",
@@ -1016,8 +1016,8 @@
   "anthropic-docs/manage-claude/api-and-data-retention.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
     "skill": "anthropic-docs",
-    "size": 59648,
-    "updatedAt": "2026-11-11T17:55:30.702Z"
+    "size": 59664,
+    "updatedAt": "2026-11-12T06:58:52.760Z"
   },
   "anthropic-docs/manage-claude/access-transparency.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/access-transparency",
@@ -1226,8 +1226,8 @@
   "anthropic-docs/build-with-claude/prompt-engineering/claude-prompting-best-practices.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
     "skill": "anthropic-docs",
-    "size": 77758,
-    "updatedAt": "2026-11-11T17:55:44.663Z"
+    "size": 81316,
+    "updatedAt": "2026-11-12T06:59:06.262Z"
   },
   "anthropic-docs/build-with-claude/prompt-engineering/prompting-claude-fable-5-2.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2",

@@ -1,5 +1,5 @@
 ---
-description: Migrate a TanStack Start application from Vercel to Cloudflare Workers. Replace Nitro with the Cloudflare Vite plugin. Includes a prompt for your coding agent.
+description: Move TanStack Start off Vercel by replacing the Nitro Vite plugin with the Cloudflare Vite plugin. Server functions and server routes run on Workers unchanged.
 title: Migrate TanStack Start from Vercel to Cloudflare Workers
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/og.png?v=46dc508f186a6873
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate TanStack Start from Vercel to Cloudflare Workers
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide moves a [TanStack Start ↗︎](https://tanstack.com/start) application from Vercel to Cloudflare Workers. On Vercel, TanStack Start runs through the Nitro Vite plugin. On Workers, the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) replaces it.
 
@@ -122,7 +122,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "@tanstack/react-start/server-entry",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-06",
+   	"compatibility_date": "2026-11-12",
    	"observability": {
    		"enabled": true,
    	},
@@ -134,7 +134,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    name = "<YOUR_PROJECT_NAME>"
    main = "@tanstack/react-start/server-entry"
    # Set this to today's date
-   compatibility_date = "2026-11-06"
+   compatibility_date = "2026-11-12"
 
    [observability]
    enabled = true
@@ -227,7 +227,7 @@ When you finish, list the files you changed, the Vercel features without an equi
 
 To add [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/), [Queues](https://developers.cloudflare.com/queues/), or [Durable Objects](https://developers.cloudflare.com/durable-objects/), create a custom server entrypoint. For more information, refer to [Custom entrypoints](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/#custom-entrypoints).
 
-## Known issues
+## Troubleshooting
 
 - **Assets are not cached.** Without `public/_headers`, Workers serves files in `/assets/` with `max-age=0, must-revalidate`.
 - **The server function format changes after a lockfile re-resolve.** Re-resolving dependencies can upgrade `seroval`, which changes the server function wire format. Convert old lockfiles instead.
@@ -250,5 +250,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/#page","headline":"Migrate TanStack Start from Vercel to Cloudflare Workers","description":"Migrate a TanStack Start application from Vercel to Cloudflare Workers. Replace Nitro with the Cloudflare Vite plugin. Includes a prompt for your coding agent.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/og.png?v=46dc508f186a6873","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/#page","headline":"Migrate TanStack Start from Vercel to Cloudflare Workers","description":"Move TanStack Start off Vercel by replacing the Nitro Vite plugin with the Cloudflare Vite plugin. Server functions and server routes run on Workers unchanged.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/og.png?v=46dc508f186a6873","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -16,24 +16,25 @@ For an introduction to templates and variables, refer to the following topics:
 - [Add and manage variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/)
 - [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/)
 
-To add a new Datadog query variable, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/variables/variable-types/add-query-variable/). Use your Datadog data source as your data source. The following queries are available:
+To add a Datadog query variable, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Set **Select variable type** to **Query**, select your Datadog data source, and enter one of the following queries in the **Query** field:
 
 Expand table
 
-| Query               | Description                                                                                                                                                                    |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `all-metrics`       | Returns the list of available metrics.                                                                                                                                         |
-| `all-tags`          | Returns all tags. The maximum is `1000`.                                                                                                                                       |
-| `all-hosts`         | Returns all hosts.                                                                                                                                                             |
-| `[metric]:all-tags` | Returns all tag values associated with a given metric name. For example, `datadog.agent.running:all-tags` returns all tags associated with the `datadog.agent.running` metric. |
-| `<keyword>`         | Returns the tags that match the given search keyword.                                                                                                                          |
-| `*`                 | Legacy alias for `all-metrics`.                                                                                                                                                |
-| `tag`               | Legacy alias for `all-tags`.                                                                                                                                                   |
-| `scope`             | Legacy alias for `all-tags`.                                                                                                                                                   |
+| Query               | Description                                                                                                                                            |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `all-metrics`       | Returns available metrics. The list is limited by the data source **Response Size** setting. The default is `100`.                                     |
+| `all-tags`          | Returns tags as `key:value` pairs. The maximum is `1000`.                                                                                              |
+| `all-hosts`         | Returns host names. The list is limited by the data source **Response Size** setting.                                                                  |
+| `[metric]:all-tags` | Returns tags associated with a metric, as `key:value` pairs. For example, `datadog.agent.running:all-tags`. Limited by **Response Size**.              |
+| `<keyword>`         | Returns tags that match the search keyword, as `key:value` pairs. Use this for a tag key or custom tag group, such as `region` or `subscription_name`. |
+| `*`                 | Legacy alias for `all-metrics`.                                                                                                                        |
+| `tag`               | Legacy alias for `all-tags`.                                                                                                                           |
+| `scope`             | Legacy alias for `all-tags`.                                                                                                                           |
 
-For custom tag groups, enter the tag group name in the **Query** field. For example, if your custom tag group name is `subscription_name`, enter `subscription_name`.
+After you create a variable, use it in Datadog queries with `$variable` or `${variable}` syntax. For more information, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
-After you create a variable, you can add it to your Datadog queries. For more information, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/variables/syntax/).
+- If the variable lists host names from `all-hosts`, filter with `host:$host`.
+- If the variable lists full tags from `all-tags` or a keyword query, filter with `$tag` (for example, `avg:system.cpu.user{$region}`).
 
 ## Examples
 
@@ -48,7 +49,7 @@ Create a drop-down that filters every panel by host:
 3. In the **Query** field, enter `all-hosts`.
 4. Name the variable `host` and click **Apply**.
 
-Use the variable in a query by adding it as a tag filter. For example, in a **Raw query**, enter `avg:system.cpu.user{host:$host}`. When you select a host from the drop-down, the panel updates to show only that host.
+Use the variable as a tag filter. For example, in a **Raw Query**, enter `avg:system.cpu.user{host:$host}`. In a **Query** type query, add `host:$host` in **From**. When you select a host from the drop-down, the panel updates to show only that host.
 
 ### List the tags for a metric
 
@@ -58,21 +59,21 @@ Create a variable whose values are the tags associated with a specific metric:
 2. In the **Query** field, enter `<metric>:all-tags`, such as `system.cpu.user:all-tags`.
 3. Name the variable and click **Apply**.
 
-The variable’s drop-down lists the tag values reported for that metric, which you can then use to filter or group your queries.
+The variable’s drop-down lists tags reported for that metric, such as `host:web-01` or `env:prod`. Use a selected value as a filter, for example `avg:system.cpu.user{$tag}` in a **Raw Query**.
 
 ## Ad hoc filters
 
-The [ad hoc filters](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters) variable ships with Grafana and can be used with metric Datadog queries. Ad hoc filters let you retrieve all key-value pairs from tags, such as `region:east` or `region:west`, and use them as query tags. To create this variable, complete the following steps:
+The [**Ad hoc filters**](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters) variable type is included with Grafana. With a Datadog data source, selected `key:value` tag pairs are applied to **Query** type metric queries (the visual builder **From** tags). To create this variable, complete the following steps:
 
 1. Open your dashboard and go to **Dashboard settings**.
-2. Click **Variables** under **Settings** in the sidebar menu.
+2. Click **Variables**.
 3. Click **Add variable**.
-4. Select the **Ad hoc filters** variable type from the drop-down menu.
+4. Set **Select variable type** to **Ad hoc filters**.
 5. Enter [general options](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#enter-general-options).
-6. Select `Datadog` as the data source.
+6. Select your Datadog data source.
 
 > Note
 >
-> Ad hoc filters are only supported with the metric query types: query, raw query, or arithmetic.
+> **Ad hoc filters** apply to the **Query** metric query type. An **Arithmetic** query also inherits these filters through the **Query** queries it references. Filters aren’t applied directly to **Raw Query**, Logs, RUM, APM Spans, Monitor, Events, or SLO queries.
 
-Ad hoc filters are one of the most complex and flexible variable options available. Instead of a regular list of variable options, this variable lets you build a dashboard-wide ad hoc query. Filters you apply in this manner are applied to all panels on the dashboard.
+Instead of a fixed list of values, this variable lets dashboard users add and remove tag filters. Filters you apply this way affect every **Query** type panel that uses that Datadog data source on the dashboard.

@@ -11,7 +11,7 @@ This guide helps you resolve common issues that you might encounter when configu
 
 ## License issues
 
-The Datadog data source is an Enterprise plugin. It requires a Grafana Enterprise license, or a Grafana Cloud account with Enterprise plugins enabled. A missing or invalid license causes many installation failures, rather than a problem with your Datadog credentials. On self-managed Grafana, you can review your license in [Administration &gt; General &gt; Stats and license](https://grafana.com/docs/grafana/latest/administration/stats-and-license/). On Grafana Cloud, contact Grafana Support to confirm that Enterprise plugins are enabled for your account.
+The Datadog data source is an Enterprise plugin. It requires a Grafana Enterprise license, or a Grafana Cloud Pro or Advanced plan. A missing or invalid license causes many installation failures, rather than a problem with your Datadog credentials. A change to your plan or contract at renewal can also disable a data source that previously worked, so suspect your entitlement if an existing Datadog data source suddenly fails. On self-managed Grafana, you can review your license in [Administration &gt; General &gt; Stats and license](https://grafana.com/docs/grafana/latest/administration/stats-and-license/). On Grafana Cloud, contact Grafana Support to confirm that Enterprise plugins are enabled for your account.
 
 ### Plugin health check failed
 
@@ -24,7 +24,7 @@ This error appears when the plugin backend fails to start. For an Enterprise plu
 
 **Solutions:**
 
-1. Confirm that your Grafana instance has a valid Enterprise license, or that your Grafana Cloud plan is Advanced and includes Enterprise plugins.
+1. Confirm that your Grafana instance has a valid Enterprise license, or that your Grafana Cloud plan is Pro or Advanced and includes Enterprise plugins.
 2. Review the Grafana server logs for a license error. Refer to [Invalid license for the enterprise plugin](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#invalid-license-for-the-enterprise-plugin).
 3. If your license is valid, verify that your Datadog API key and App key are correct. Refer to [Authentication errors](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#authentication-errors).
 
@@ -41,7 +41,7 @@ This error indicates a licensing problem, not a credential problem. The Enterpri
 
 1. Confirm that you’ve installed a valid Grafana Enterprise license. The token is a JSON Web Token (JWT) with three parts separated by periods; the `compact JWS format must have three parts` message means the token is incomplete or corrupted.
 2. If you provide the license through the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file, verify that you copied the full token without truncation or extra whitespace.
-3. For Grafana Cloud, confirm that your plan includes Enterprise plugins. Enterprise plugins aren’t available on the Grafana Cloud Free tier.
+3. For Grafana Cloud, confirm that your plan is Pro or Advanced. Enterprise plugins aren’t available on the Grafana Cloud Free or Starter plans.
 4. After you update the license, restart Grafana and try again.
 
 ### No Install or Enable button appears
@@ -56,8 +56,29 @@ When Enterprise plugins aren’t enabled for your Grafana Cloud account or cover
 **Solutions:**
 
 1. On self-managed Grafana, verify that your Grafana Enterprise license is valid and covers Enterprise plugins.
-2. On Grafana Cloud, verify that Enterprise plugins are enabled for your account. On some plans, Enterprise plugins are a paid add-on that you must enable. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+2. On Grafana Cloud, verify that Enterprise plugins are enabled for your account. Enterprise plugins are included with Pro or Advanced plans. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
 3. If you can’t enable Enterprise plugins, contact [Grafana Support](https://grafana.com/support/).
+
+## Version and upgrade guidance
+
+Many Datadog issues are caused by running an outdated plugin version. Before deeper troubleshooting, confirm you’re on the latest version, because upgrading resolves a wide range of problems.
+
+> Note
+>
+> On Grafana Cloud, the Datadog plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. In other managed environments, such as Azure Managed Grafana, the plugin version is controlled by the platform provider and can lag behind the latest release.
+
+### Check and update the plugin version
+
+1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
+2. Search for the plugin and open its page.
+3. Review the installed version and the latest available version.
+4. If an update is available and you’re on self-managed Grafana, click **Update**.
+
+### Symptoms of an outdated plugin version
+
+- **Configuration tab is blank or incomplete.** Older versions may not render all settings fields, which can look like settings were lost.
+- **Connection failures with unhelpful errors.** Severely outdated versions can fail to connect at all.
+- **Intermittent `Plugin unavailable` or HTTP 500 errors**, especially in managed environments with many panels.
 
 ## Configuration issues
 
@@ -161,6 +182,8 @@ This generic error appears when the plugin cannot establish a connection to Data
    - US5: `https://api.us5.datadoghq.com`
    - EU: `https://api.datadoghq.eu`
    - US1-FED: `https://api.ddog-gov.com`
+
+   For other Datadog sites, such as AP1, enter the API URL as a custom value. For the full list of built-in regions, refer to [Configure the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/#connection).
 2. Confirm that your Grafana server can reach the Datadog API endpoints.
 3. Check if a firewall or proxy is blocking outbound HTTPS connections.
 4. Verify the [Datadog status page](https://status.datadoghq.com/) for any ongoing incidents.
@@ -228,16 +251,16 @@ When a query returns no data, the issue may be with the query configuration or t
 1. Verify that the metric exists in Datadog.
 2. Expand the time range to confirm that data exists.
 3. Remove tag filters to test if data appears, then add filters back one at a time.
-4. Use the **Raw query** type to test your query syntax.
+4. Use the **Raw Query** type to test your query syntax.
 
 ### Metric data is coarser than the Datadog UI
 
-For **Query**, **Raw query**, and **Arithmetic** queries, Datadog controls the rollup interval based on the time window, and Grafana can’t override it. The granularity in Grafana might differ from the same query in the Datadog UI, and the panel **Max data points** and **Min interval** settings have no effect on these query types.
+For **Query**, **Raw Query**, and **Arithmetic** queries, Datadog controls the rollup interval based on the time window, and Grafana can’t override it. The granularity in Grafana might differ from the same query in the Datadog UI, and the panel **Max data points** and **Min interval** settings have no effect on these query types.
 
 **Solution:**
 
 1. To request a specific granularity, add the `rollup()` function to your query. For example, `avg:system.cpu.user{*}.rollup(avg, 60)` requests a 60-second rollup.
-2. For more details, refer to [Time granularity and data rollup](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#time-granularity-and-data-rollup).
+2. For more details, refer to [Time granularity](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#time-granularity).
 
 ### Arithmetic query errors
 
@@ -250,7 +273,7 @@ Arithmetic queries only work with other Datadog metric queries.
 
 **Solution:**
 
-1. Confirm that all referenced queries (for example, `#A`, `#B`) are metric-type queries (Query, Raw query, or Arithmetic).
+1. Confirm that all referenced queries (for example, `#A`, `#B`) are metric-type queries (Query or Raw Query). An **Arithmetic** query can’t reference another **Arithmetic** query.
 2. Verify that the referenced query letters match existing queries in your panel.
 
 ### Monitor queries return limited results
@@ -299,17 +322,31 @@ When a variable query returns an empty list, panels using that variable show no 
 
 ### Ad hoc filters not working
 
-Ad hoc filters only work with metric query types.
+Ad hoc filters apply to the **Query** metric query type (the visual builder **From** tags). An **Arithmetic** query also picks up ad hoc filters, but only through the **Query** queries it references, not directly.
 
 **Solution:**
 
-Confirm that panels using ad hoc filters are using one of the following query types:
+Confirm that panels using **Ad hoc filters** use the **Query** query type, or an **Arithmetic** query that references **Query** queries.
 
-- Query
-- Raw query
-- Arithmetic
+**Ad hoc filters** aren’t applied directly to **Raw Query**, Logs, RUM, APM Spans, Monitor, Events, or SLO queries.
 
-Ad hoc filters do not apply to Logs, RUM, Monitor, Events, or SLO queries.
+## Enable debug logging
+
+On self-managed Grafana, you can enable debug logging for the Datadog plugin. This isn’t available on Grafana Cloud.
+
+The plugin’s debug output is limited. It logs events such as rate-limit blocks and alias errors, not the full request and response payloads exchanged with Datadog.
+
+1. Enable debug logging for only the Datadog plugin in the Grafana configuration file, rather than raising the server-wide log level:
+
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
+
+   ```ini
+   [log]
+   filters = plugin.grafana-datadog-datasource:debug
+   ```
+2. Review logs in `/var/log/grafana/grafana.log` (or your configured log location).
+3. Look for entries from the `grafana-datadog-datasource` plugin, such as rate-limit and alias messages.
+4. Remove the filter after troubleshooting to avoid excessive log volume.
 
 ## Get additional help
 

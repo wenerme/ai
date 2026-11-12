@@ -11,9 +11,10 @@ Monitor AI agent sessions, audit logs, and developer exposure across your organi
 - Date range filter with 7-day and 30-day windows [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/610984) in GitLab 19.5.
 - **Total number of tool calls** tile and **Top tools by calls** card [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/618956) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_tool_calls`. Enabled by default.
 - **Tool calls by action** card [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259004) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_tool_calls`. Enabled by default.
-- **Which AI agents developers are using** card [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/629071) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_dashboard_charts`. Enabled by default.
+- **Agents by provider** card [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/629071) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_dashboard_charts`. Enabled by default.
 - Sessions from connected agents and the audit event count on the **Recent agent sessions** card [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/630095) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_sessions_api`. Enabled by default.
 - The **Show** control's **All agents** and **Connected** options [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260271) in GitLab 19.5.
+- **Which AI agents developers are using** card [renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269916) to **Agents by provider** in GitLab 19.6.
 
 > [!flag]
 > The availability of some tiles and cards on this page is controlled by feature flags.
@@ -45,7 +46,7 @@ Prerequisites:
   `read_agent_artifacts` ability.
 - On GitLab Self-Managed and GitLab Dedicated, [ClickHouse is configured and enabled for analytics](../../integration/clickhouse.md#enable-clickhouse-for-analytics).
   Without it, the **Total number of tool calls** tile, the tool call cards, and the
-  **Which AI agents developers are using** card show an empty state.
+  **Agents by provider** card show an empty state.
 
 ## View the dashboard
 
@@ -97,9 +98,9 @@ that report them, such as Claude Code.
 
 Below the KPI tiles, data cards provide breakdowns of agent activity.
 
-### Which AI agents developers are using
+### Agents by provider
 
-The **Which AI agents developers are using** card shows a ring chart of the
+The **Agents by provider** card shows a ring chart of the
 distinct developers who used AI agents in the selected date range. The total is
 in the center of the chart. The slices depend on the **Show** control:
 

@@ -13,10 +13,22 @@ Grafana provides a number of configuration options for Datadog. To install the D
 
 Before you configure the Datadog data source, ensure you have:
 
-- **A Grafana Enterprise license, or a Grafana Cloud account with Enterprise plugins enabled.** The Datadog data source is an Enterprise plugin. Without the required license or entitlement, the plugin doesn’t install or enable, and you might not see an **Install** or **Enable** button on the plugin page. On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+- **A Grafana Cloud Pro or Advanced plan, or a self-managed Grafana Enterprise license that includes this plugin.** The Datadog data source is an Enterprise plugin. Without the required license or entitlement, the plugin doesn’t install or enable, and you might not see an **Install** or **Enable** button on the plugin page. Free and Starter plans don’t include Enterprise plugins. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
 - **Grafana version `11.6.11` or later.**
-- **The organization `administrator` role**, which you need to add data sources. Administrators can also configure the data source with the [Grafana provisioning system](https://grafana.com/docs/grafana/latest/administration/provisioning/).
+- **The organization administrator role**, which you need to add data sources. Administrators can also configure the data source with the [Grafana provisioning system](https://grafana.com/docs/grafana/latest/administration/provisioning/).
 - **A Datadog API key and application key.** For instructions, refer to [Get an API key and application key from Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).
+
+## Key concepts
+
+If you’re new to Datadog, these terms appear throughout the configuration:
+
+Expand table
+
+| Term                      | Description                                                                                                                              |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| **API key**               | Identifies your Datadog organization. Every request requires it.                                                                         |
+| **Application key**       | Authorizes the request. By default it inherits the permissions of the user who created it. You can also create a scoped application key. |
+| **Datadog site / region** | The Datadog API endpoint for your organization, such as US1 or EU. Select it in **API URL / Region**, or enter a custom API URL.         |
 
 > Caution
 >
@@ -46,13 +58,13 @@ The first option to configure is the name of your connection:
 
 ### Connection
 
-You can connect to Datadog using 2 different connection modes, **Default** or **Hosted Datadog Metrics**.
+You can connect to Datadog using two connection modes, **Default** or **Hosted Datadog Metrics**.
 
 - **Mode** - Select your connection mode for Datadog.
 
   - **Default** - Connect directly to Datadog API endpoints.
-  - **Hosted Datadog Metrics** - This mode is now deprecated. Refer to [Datadog proxy documentation](https://grafana.com/docs/grafana-cloud/send-data/metrics/metrics-datadog/#send-or-visualize-datadog-metrics) for more information.
-- **API URL / Region** - *Use with Default mode*. Select your Datadog region from the list, or enter a custom API URL. The following regions are available:
+  - **Hosted Datadog Metrics** - Deprecated. This mode remains available for Grafana Cloud Datadog proxy users. For more information, refer to [Send or visualize Datadog metrics](https://grafana.com/docs/grafana-cloud/send-data/metrics/metrics-datadog/#send-or-visualize-datadog-metrics). To forward Datadog agent metrics into Grafana Cloud, refer to [Receive traces and metrics from Datadog-instrumented applications](https://grafana.com/docs/alloy/latest/collect/datadog-traces-metrics/).
+- **API URL / Region** - *Default mode.* Select your Datadog region from the list, or enter a custom API URL. The following regions are available:
 
   Expand table
 
@@ -64,14 +76,22 @@ You can connect to Datadog using 2 different connection modes, **Default** or **
   | EU            | `https://api.datadoghq.eu`      |
   | US1-FED       | `https://api.ddog-gov.com`      |
 
+  The **API URL / Region** field also accepts a custom API URL. Use a custom URL for Datadog sites that aren’t in the list, such as AP1 (`https://api.ap1.datadoghq.com`).
+- **Hosted metrics URL** - *Hosted Datadog Metrics mode.* The Grafana Cloud Datadog metrics endpoint, for example `https://dd-prod-10-prod-us-central-0.grafana.net/datadog`.
+
 ### Authentication
 
-The way you authenticate depends on your connection method.
+The way you authenticate depends on your connection mode. Grafana shows **Datadog authentication** in **Default** mode and basic authentication in **Hosted Datadog Metrics** mode. The **Authentication** section also includes Grafana TLS settings.
 
-If you connect using **Default mode**, configure the following to authenticate:
+If you connect using **Default** mode, configure the following:
 
 - **API key** - Enter the Datadog API key unique to your organization. To generate an API key, refer to [Add an API key or client token](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token). For more information about API keys, refer to [API and Application Keys](https://docs.datadoghq.com/account_management/api-app-keys/) in the Datadog documentation.
 - **App key** - Enter the Datadog application key unique to your organization. The application key works in conjunction with the API key to grant user access. To generate an application key, refer to [Add application keys](https://docs.datadoghq.com/account_management/api-app-keys/#application-keys). For more information about application keys, refer to [Application keys](https://docs.datadoghq.com/account_management/api-app-keys/#application-keys) in the Datadog documentation.
+
+If you connect using **Hosted Datadog Metrics**, configure the following:
+
+- **Username** - Your Grafana Cloud Prometheus username, from the Prometheus details in your Grafana Cloud portal.
+- **Password** - A Grafana Cloud API key or access policy token with metrics read permission.
 
 ### API key and application key permissions
 
@@ -80,14 +100,14 @@ The Datadog data source authenticates each request with both keys:
 - The **API key** identifies your Datadog organization. Every request requires it.
 - The **application key** authorizes the request. By default, an application key inherits the permissions of the user who created it. You can also create a [scoped application key](https://docs.datadoghq.com/account_management/api-app-keys/#scope-application-keys) that grants only specific permissions.
 
-The application key must have permission to read the Datadog products that you query. Metric, time series, event, host, and tag queries don’t require a specific permission beyond valid keys. Other query types require the following Datadog permissions:
+The application key must have permission to read the Datadog products that you query. Metric, time series, host, and tag queries don’t require a specific permission beyond valid keys. Other query types require the following Datadog permissions:
 
 Expand table
 
 | Query type                   | Datadog API endpoint                                               | Required application key permission         |
 |------------------------------|--------------------------------------------------------------------|---------------------------------------------|
-| Query, Raw query, Arithmetic | `/api/v1/query`                                                    | None beyond valid keys                      |
-| Events, Annotations          | `/api/v1/events`                                                   | None beyond valid keys                      |
+| Query, Raw Query, Arithmetic | `/api/v1/query`                                                    | None beyond valid keys                      |
+| Events, Annotations          | `/api/v1/events`                                                   | `events_read`                               |
 | Monitor                      | `/api/v1/monitor/search`, `/api/v1/monitor/groups/search`          | `monitors_read`                             |
 | SLO                          | `/api/v1/slo`, `/api/v1/slo/{slo_id}/history`                      | `slos_read`                                 |
 | Logs                         | `/api/v2/logs/events/search`, `/api/v2/logs/analytics/aggregate`   | `logs_read_data` and `logs_read_index_data` |
@@ -98,7 +118,7 @@ The Datadog **Read Only** role includes all of these permissions. The simplest s
 
 > Note
 >
-> **Save &amp; test** validates only your API key and metric access. It can succeed even when the application key lacks permission for other query types, such as logs or APM spans. If a specific query type returns a `403 Forbidden` error, verify that the application key has the permission listed in the preceding table.
+> In **Default** mode, **Save &amp; test** validates your API key (`/api/v1/validate`) and then lists metrics. It can succeed even when the application key lacks permission for other query types, such as logs or APM spans. In **Hosted Datadog Metrics** mode, **Save &amp; test** skips the metrics list check. If a specific query type returns a `403 Forbidden` error, verify that the application key has the permission listed in the preceding table.
 
 ### Validate your keys
 
@@ -129,22 +149,28 @@ A `403 Forbidden` response means that one or both keys are incorrect or lack the
 
 ## Additional settings
 
-Additional settings are optional settings that you can configure for more control over your Datadog data source.
+**Additional settings** is a collapsible section. Expand it to configure optional settings for more control over your Datadog data source.
 
-- **API rate limits** - Limit access to the Datadog API.
+- **API rate limits**
 
-  - **Show API rate limits** - Check the box to show Datadog API limits for each queried endpoint. To view the API rate limits, go to the **Query Inspector**, select the **JSON** option, and set the source to **DataFrame structure**.
+  - **Show API rate limits** - Check the box to show Datadog API limits for each queried endpoint. To view the API rate limits, go to the **Query Inspector**, select **JSON**, and set **select source** to **DataFrame structure**.
   - **Enable API rate limit threshold** - Check the box to enable rate limiting. Datadog queries stop once the threshold is reached.
-  - **API rate limit threshold %** - Enter a threshold percentage in the box. When the API hits the rate limit percent specified, the plugin blocks subsequent requests until the next reset. The default is `100`.
-- **Disable data links** - Check the box to disable data links. The Datadog data source adds data links to **Monitor** query results, which let users open the relevant monitor directly in Datadog. For more information, refer to [Data links](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#data-links).
-- **Response Size** - Set the maximum number of items to retrieve in a single API request, such as when querying the metric list or host list. The default is `100`.
-- **Secure Socks Proxy** - *Available when the `secureSocksDSProxyEnabled` feature toggle is enabled and you run Grafana version 10.0.0 or later.* Route the data source connection through the Secure Socks Proxy to a different network. For setup instructions, refer to [Connect through the Secure Socks Proxy](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/#connect-through-the-secure-socks-proxy).
+  - **API rate limit threshold %** - *Appears when you enable the threshold.* Enter a threshold percentage. When the API hits the rate limit percent specified, the plugin blocks subsequent requests until the next reset. The default is `100`. The maximum is `100`.
+- **Data links**
+
+  - **Disable data links** - Check the box to disable data links. The Datadog data source adds data links to **Monitor** query results, which let users open the relevant monitor directly in Datadog. For more information, refer to [Data links](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#data-links).
+- **Size**
+
+  - **Response Size** - Set the maximum number of items to retrieve in a single API request, such as the metric list, host list, or tags for a metric. The default is `100`. This setting doesn’t limit `all-tags` template variables, which use a Datadog API maximum of `1000`.
+- **PDC Connect**
+
+  - **Secure Socks Proxy** - *Available when the `secureSocksDSProxyEnabled` feature toggle is enabled.* Route the data source connection through the Secure Socks Proxy to a different network. For setup instructions, refer to [Connect through the Secure Socks Proxy](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/#connect-through-the-secure-socks-proxy).
 
 After you configure your Datadog data source options, click **Save &amp; test** at the bottom to test your data source connection. When the connection succeeds, Grafana displays an `OK` message. You can also remove a connection by clicking **Delete**.
 
 ## Connect through the Secure Socks Proxy
 
-By default, Grafana connects directly to the Datadog API over the public internet. If your network policy requires outbound traffic to route through a specific network, you can send the data source connection through the Secure Socks Proxy. The **Secure Socks Proxy** toggle, in the **PDC Connect** section of the data source configuration, appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled and you run Grafana version 10.0.0 or later.
+By default, Grafana connects directly to the Datadog API over the public internet. If your network policy requires outbound traffic to route through a specific network, you can send the data source connection through the Secure Socks Proxy. The **Secure Socks Proxy** toggle, in the **PDC Connect** section of **Additional settings**, appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled.
 
 ### Grafana Cloud
 
@@ -176,6 +202,7 @@ datasources:
   - name: Datadog
     type: grafana-datadog-datasource
     jsonData:
+      pluginMode: default
       url: https://api.datadoghq.com
       logApiRateLimits: false
       rateLimitEnabled: false
@@ -191,17 +218,36 @@ The following table describes the available `jsonData` and `secureJsonData` fiel
 
 Expand table
 
-| Field                    | Location         | Description                                                                              |
-|--------------------------|------------------|------------------------------------------------------------------------------------------|
-| `url`                    | `jsonData`       | The Datadog API URL for your region, such as `https://api.datadoghq.com`.                |
-| `logApiRateLimits`       | `jsonData`       | Show Datadog API rate limits for each queried endpoint. The default is `false`.          |
-| `rateLimitEnabled`       | `jsonData`       | Enable the API rate limit threshold. The default is `false`.                             |
-| `rateLimitMetrics`       | `jsonData`       | The API rate limit threshold percentage. The default is `100`.                           |
-| `disableDataLinks`       | `jsonData`       | Disable data links that take users to Datadog. The default is `false`.                   |
-| `size`                   | `jsonData`       | The maximum number of items to retrieve in a single API request. The default is `100`.   |
-| `enableSecureSocksProxy` | `jsonData`       | Route the data source connection through the Secure Socks Proxy. The default is `false`. |
-| `apiKey`                 | `secureJsonData` | The Datadog API key unique to your organization.                                         |
-| `appKey`                 | `secureJsonData` | The Datadog application key unique to your organization.                                 |
+| Field                    | Location         | Description                                                                                                                               |
+|--------------------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `pluginMode`             | `jsonData`       | Connection mode. Use `default` for the Datadog API or `hosted-metrics` for Hosted Datadog Metrics. The default is `default`.              |
+| `url`                    | `jsonData`       | The Datadog API URL for your region, such as `https://api.datadoghq.com`. In Hosted Datadog Metrics mode, this is the hosted metrics URL. |
+| `logApiRateLimits`       | `jsonData`       | Show Datadog API rate limits for each queried endpoint. The default is `false`.                                                           |
+| `rateLimitEnabled`       | `jsonData`       | Enable the API rate limit threshold. The default is `false`.                                                                              |
+| `rateLimitMetrics`       | `jsonData`       | The API rate limit threshold percentage. The default is `100`.                                                                            |
+| `disableDataLinks`       | `jsonData`       | Disable data links that take users to Datadog. The default is `false`.                                                                    |
+| `size`                   | `jsonData`       | The maximum number of items to retrieve in a single API request. The default is `100`.                                                    |
+| `enableSecureSocksProxy` | `jsonData`       | Route the data source connection through the Secure Socks Proxy. The default is `false`.                                                  |
+| `apiKey`                 | `secureJsonData` | The Datadog API key unique to your organization. Required in **Default** mode.                                                            |
+| `appKey`                 | `secureJsonData` | The Datadog application key unique to your organization. Required in **Default** mode.                                                    |
+
+For **Hosted Datadog Metrics**, set `pluginMode` to `hosted-metrics`, enable basic authentication on the data source, and store the Grafana Cloud token in `secureJsonData.basicAuthPassword`:
+
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
+
+```yaml
+apiVersion: 1
+datasources:
+  - name: Datadog hosted metrics
+    type: grafana-datadog-datasource
+    basicAuth: true
+    basicAuthUser: <YOUR_GRAFANA_CLOUD_PROMETHEUS_USERNAME>
+    jsonData:
+      pluginMode: hosted-metrics
+      url: https://dd-prod-10-prod-us-central-0.grafana.net/datadog
+    secureJsonData:
+      basicAuthPassword: <YOUR_GRAFANA_CLOUD_ACCESS_POLICY_TOKEN>
+```
 
 ## Configure Datadog with Terraform
 
@@ -231,6 +277,7 @@ resource "grafana_data_source" "datadog" {
   name = "Datadog"
 
   json_data_encoded = jsonencode({
+    pluginMode        = "default"
     url               = var.datadog_api_url
     logApiRateLimits  = false
     rateLimitEnabled  = false

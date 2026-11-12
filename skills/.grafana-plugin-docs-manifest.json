@@ -601,48 +601,48 @@
   },
   "grafana-datadog-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/alerting.md",
-    "size": 7108,
-    "updatedAt": "2026-10-28T00:53:30.332Z"
+    "size": 12287,
+    "updatedAt": "2026-11-12T07:08:26.335Z"
   },
   "grafana-datadog-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/annotations.md",
-    "size": 2653,
-    "updatedAt": "2026-10-28T00:53:30.487Z"
+    "size": 3196,
+    "updatedAt": "2026-11-12T07:08:26.491Z"
   },
   "grafana-datadog-datasource/cloud-quickstart.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/cloud-quickstart.md",
-    "size": 5671,
-    "updatedAt": "2026-10-28T00:53:30.652Z"
+    "size": 5675,
+    "updatedAt": "2026-11-12T07:08:26.654Z"
   },
   "grafana-datadog-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure.md",
-    "size": 17570,
-    "updatedAt": "2026-10-28T00:53:30.807Z"
+    "size": 21233,
+    "updatedAt": "2026-11-12T07:08:26.834Z"
   },
   "grafana-datadog-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest.md",
-    "size": 8143,
-    "updatedAt": "2026-10-28T00:53:30.965Z"
+    "size": 8438,
+    "updatedAt": "2026-11-12T07:08:27.008Z"
   },
   "grafana-datadog-datasource/install.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/install.md",
-    "size": 12333,
-    "updatedAt": "2026-10-28T00:53:31.120Z"
+    "size": 13345,
+    "updatedAt": "2026-11-12T07:08:27.175Z"
   },
   "grafana-datadog-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor.md",
-    "size": 21324,
-    "updatedAt": "2026-10-28T00:53:31.273Z"
+    "size": 24504,
+    "updatedAt": "2026-11-12T07:08:27.370Z"
   },
   "grafana-datadog-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/template-variables.md",
-    "size": 5980,
-    "updatedAt": "2026-10-28T00:53:31.435Z"
+    "size": 6035,
+    "updatedAt": "2026-11-12T07:08:27.553Z"
   },
   "grafana-datadog-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting.md",
-    "size": 13820,
-    "updatedAt": "2026-10-28T00:53:31.596Z"
+    "size": 16632,
+    "updatedAt": "2026-11-12T07:08:27.725Z"
   },
   "grafana-drone-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest/annotations.md",
