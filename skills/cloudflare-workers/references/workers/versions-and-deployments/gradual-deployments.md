@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/gradua
 
 # Gradual deployments
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gradual deployments let you incrementally deploy new [versions](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker by splitting traffic across versions. Instead of shifting all traffic to a new version at once, you can route a percentage of requests to the new version while the rest continue to be handled by the previous version.
 
@@ -135,13 +135,13 @@ pnpm wrangler versions deploy
 
 ## Version skew
 
-Because gradual deployments mean multiple versions of your Worker serve traffic simultaneously, clients and services can end up interacting with more than one version in ways that produce errors or inconsistent behavior. This is called **version skew**.
+During gradual deployments, related requests can use incompatible versions of your Worker. This is called **version skew**. It can also happen while a deployment change spreads across the network, or when an older page makes requests after a deployment changes. Refer to [Version skew and static assets](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/) for these cases.
 
 ### Version skew within a Worker
 
 By default, each request is independently routed to a version based on the configured percentages. This means consecutive requests from the same user - including page reloads and asset fetches - can be handled by different versions.
 
-If you want to pin a user to a consistent version for the duration of the gradual deployment, you can use [version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/).
+Use [version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/) to send requests with the same key to the same version. This applies while the deployment configuration stays the same. As you increase the new version's traffic percentage, some users move to it. Their open pages may still request files from the previous release.
 
 ### Version skew between Workers
 
@@ -209,5 +209,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#page","headline":"Gradual deployments","description":"Incrementally deploy code changes to your Workers with gradual deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/og.png?v=bbe45f3d08c66f85","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#page","headline":"Gradual deployments","description":"Incrementally deploy code changes to your Workers with gradual deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/og.png?v=bbe45f3d08c66f85","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

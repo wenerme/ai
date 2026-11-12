@@ -642,10 +642,15 @@ In this diagram:
 1. First, the runner attempts to fetch a job artifact by using the
    `GET /api/v4/jobs/:id/artifacts` endpoint. The runner attaches the
    `direct_download=true` query parameter on the first attempt to indicate
-   that it is capable of downloading from object storage directly. Direct
-   downloads can be disabled in the runner configuration via the
-   [`FF_USE_DIRECT_DOWNLOAD` feature flag](https://docs.gitlab.com/runner/configuration/feature-flags/).
-   This flag is set to `true` by default.
+   that it is capable of downloading from object storage directly. To turn off
+   direct downloads, set
+   [`direct_download = false`](https://docs.gitlab.com/runner/configuration/advanced-configuration/#the-runnersartifact-section)
+   in the `[runners.artifact]` section of the runner configuration.
+   In GitLab Runner 19.5 and earlier, set the `FF_USE_DIRECT_DOWNLOAD` feature flag
+   to `false` instead.
+   The flag was
+   [deprecated](https://gitlab.com/gitlab-org/gitlab-runner/-/work_items/39682)
+   in GitLab Runner 19.6 and is planned for removal in GitLab Runner 19.9.
 
 1. The runner sends the GET request using HTTP Basic Authentication
    with the `gitlab-ci-token` username and an auto-generated

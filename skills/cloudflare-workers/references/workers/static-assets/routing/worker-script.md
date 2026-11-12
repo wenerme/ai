@@ -12,11 +12,15 @@ image: https://developers.cloudflare.com/workers/static-assets/routing/worker-sc
 
 # Worker script
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you have both static assets and a Worker script configured, Cloudflare will first attempt to serve static assets if one matches the incoming request. You can read more about how we match assets in the [HTML handling docs](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
+By default, if you configure static assets and a Worker script, Cloudflare checks for a matching asset first. It uses the assets belonging to the selected Worker version. For how paths match assets, refer to [HTML handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
 
-If an appropriate static asset if not found, Cloudflare will invoke your Worker script.
+If no asset matches, Cloudflare invokes that version's `fetch()` handler. Your handler decides what response to return. A missing asset does not automatically produce a `404` response. Calling `env.ASSETS.fetch(request)` from the handler still uses the same version's assets.
+
+This also applies when an older page requests a file missing from a newer version. Refer to [Requests for missing assets](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/#requests-for-missing-assets).
+
+Routing settings can change this default behavior. For example, [single-page application routing](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) can serve `/index.html` for navigation requests without invoking your Worker.
 
 This allows you to easily combine together these two features to create powerful applications (e.g. a [full-stack application](https://developers.cloudflare.com/workers/static-assets/routing/full-stack-application/), or a [Single Page Application (SPA)](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) or [Static Site Generation (SSG) application](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/) with an API).
 
@@ -42,7 +46,7 @@ If you need to always run your Worker script before serving static assets (for e
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-12",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -56,7 +60,7 @@ If you need to always run your Worker script before serving static assets (for e
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-12"
 main = "./worker/index.ts"
 upload_source_maps = true
 
@@ -132,7 +136,7 @@ You can also configure selective Worker-first routing using an array of route pa
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-12",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -147,7 +151,7 @@ You can also configure selective Worker-first routing using an array of route pa
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-12"
 main = "./worker/index.ts"
 upload_source_maps = true
 
@@ -221,5 +225,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/og.png?v=ace0e6d8be5260df","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/og.png?v=ace0e6d8be5260df","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -702,3 +702,68 @@ Common causes are:
 To resolve this warning, address the cause noted in the warning message and create a scheduled automation for the flow again.
 
 For the full list of requirements, see the prerequisites for [creating a scheduled automation](#create-a-scheduled-automation).
+
+### Investigate scheduled run outcomes
+
+Prerequisites:
+
+- You must have access to the instance logs.
+
+`Ai::RunFlowScheduleWorker` records one line for every scheduled run it finishes.
+Use these lines when the schedule UI shows a result you cannot explain, or when a run
+produced no session at all.
+
+Where to read the lines depends on your offering:
+
+- On GitLab Self-Managed, search
+  [`application_json.log`](../../../administration/logs/_index.md#application_jsonlog).
+- On GitLab Dedicated, search the
+  [application logs](../../../administration/dedicated/monitor.md) in your Amazon S3 bucket.
+
+The line includes these fields:
+
+| Field | Description |
+|-------|-------------|
+| `outcome` | `succeeded`, `skipped`, or `failed`. |
+| `outcome_reason` | Why the run ended that way. Not set for `succeeded`. |
+| `error_message` | The matching message, truncated to 1024 characters. For a failure, this is also the `error` on the schedule's last run. |
+| `flow_schedule_id` | The schedule. Set even when GitLab cannot load the schedule. |
+| `flow_trigger_id` | The trigger the schedule belongs to. |
+| `gl_project_id`, `gl_root_namespace_id` | The project and its top-level group. |
+| `duo_workflow_id` | The session the run created. Set on a failed run too, when the run created a session and then failed to start it. Not set when the run ended before it created a session. |
+| `consecutive_failure_count`, `deactivated` | On a failure, the new count and whether it crossed the threshold. |
+
+Runs that GitLab skips, which do not count as failures, use these reasons:
+
+| `outcome_reason` | Meaning |
+|------------------|---------|
+| `schedule_not_found`, `flow_trigger_not_found` | The schedule or its trigger was deleted after the run was queued. |
+| `schedule_inactive` | The schedule was turned off after the run was queued. |
+| `trigger_inactive`, `trigger_not_scheduled` | The trigger was turned off, or no longer runs on a schedule. |
+| `scheduled_automations_disabled`, `flow_execution_disabled` | Scheduled automations or flow execution are turned off for the project. |
+| `schedules_feature_flag_disabled` | Flow schedules are not enabled for the project. |
+| `beta_features_unavailable` | Experiment and beta features are turned off for the instance or group. |
+| `project_archived`, `project_pending_deletion`, `project_not_found` | The project cannot run flows. |
+| `next_run_in_future` | The run was queued before it was due. |
+| `usage_quota_exceeded` | The namespace has no GitLab Credits left. |
+| `flow_disabled_by_feature_flag`, `non_human_trigger_not_permitted` | The flow refused the run. |
+
+A failed run counts toward the three consecutive failures that deactivate a schedule.
+GitLab assigns these reasons:
+
+| `outcome_reason` | Meaning |
+|------------------|---------|
+| `unsupported_target` | The flow does not support being scheduled. |
+| `excess_service_account_access` | The service account holds more access than the flow, and GitLab could not lower it. |
+| `unexpected_error` | The run raised an exception. The exception is also in Sentry. |
+| `run_service_error` | The run failed before it created a session, for a reason the flow did not name. |
+
+When the flow names its own reason, GitLab logs that instead.
+Common values are `unsupported_event` when the flow has no goal template for a schedule,
+`autonomous_trigger_source_not_permitted` when the trigger mixes a schedule with other event types,
+and `run_not_eligible` when a foundational flow declined the run.
+Read `error_message` on the same line for the detail.
+
+To check whether a due schedule was picked up at all, look for the worker's own Sidekiq job
+instead. Filter `sidekiq.log` on `json.class: "Ai::RunFlowScheduleWorker"`, then match
+`json.correlation_id` to the outcome line.

@@ -38,7 +38,7 @@ in the request:
   uploaded_file = client.files.upload(file="path/to/organ.jpg")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Caption this image."},
           {
@@ -65,7 +65,7 @@ in the request:
   });
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           {type: "text", text: "Caption this image."},
           {
@@ -115,7 +115,7 @@ in the request:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -156,7 +156,7 @@ in the request:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: "Caption this image.",
@@ -186,7 +186,7 @@ in the request:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Caption this image."},
         {
@@ -226,7 +226,7 @@ You can provide image data as base64-encoded strings:
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Caption this image."},
           {
@@ -252,7 +252,7 @@ You can provide image data as base64-encoded strings:
   });
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           {type: "text", text: "Caption this image."},
           {
@@ -301,7 +301,7 @@ You can provide image data as base64-encoded strings:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -343,7 +343,7 @@ You can provide image data as base64-encoded strings:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: "Caption this image.",
@@ -381,7 +381,7 @@ You can provide image data as base64-encoded strings:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Caption this image."},
         {
@@ -426,7 +426,7 @@ Files API. See the [Files API guide](/docs/files).
   my_file = client.files.upload(file="path/to/sample.jpg")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Caption this image."},
           {
@@ -453,7 +453,7 @@ Files API. See the [Files API guide](/docs/files).
   });
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           {type: "text", text: "Caption this image."},
           {
@@ -503,7 +503,7 @@ Files API. See the [Files API guide](/docs/files).
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -544,7 +544,7 @@ Files API. See the [Files API guide](/docs/files).
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: "Caption this image.",
@@ -575,7 +575,7 @@ Files API. See the [Files API guide](/docs/files).
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Caption this image."},
         {
@@ -604,7 +604,7 @@ objects in the `input` array:
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "What is different between these two images?"},
           {
@@ -631,7 +631,7 @@ objects in the `input` array:
   const client = new GoogleGenAI({});
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           {type: "text", text: "What is different between these two images?"},
           {
@@ -685,7 +685,7 @@ objects in the `input` array:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -719,7 +719,7 @@ objects in the `input` array:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: "What is different between these two images?",
@@ -753,7 +753,7 @@ objects in the `input` array:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "What is different between these two images?"},
         {
@@ -808,7 +808,7 @@ your original image size.
       boxes: List[BoundingBox]
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": prompt},
           {
@@ -847,7 +847,7 @@ your original image size.
   });
   
   const interaction = await client.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: [
       { type: "text", text: prompt },
       {
@@ -937,7 +937,7 @@ your original image size.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(Arrays.asList(textContent, imageContent)))
           .responseFormat(format)
           .build();
@@ -1013,7 +1013,7 @@ your original image size.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: prompt,
@@ -1044,7 +1044,7 @@ your original image size.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000."},
         {
@@ -1115,8 +1115,7 @@ the object, and finally the segmentation mask inside the bounding box, as base64
 encoded png that is a probability map with values between 0 and 255.
 
 {% callout type="note" %}
-  For better results, disable [thinking](/docs/thinking)
-  by setting the thinking level to "minimal".
+  Gemini 4 Hydrogen defaults to `thinking_level` set to `"high"`. For lower latency on high-volume segmentation, you can also test `"low"`, or use `"minimal"` on [models that support minimal thinking](/docs/thinking#thinking-levels) such as `gemini-3.5-flash-lite`.
 
 {% /callout %}
 
@@ -1146,7 +1145,7 @@ encoded png that is a probability map with values between 0 and 255.
       boxes: List[BoundingBox]
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": prompt},
           {
@@ -1161,7 +1160,7 @@ encoded png that is a probability map with values between 0 and 255.
           "schema": BoundingBoxes.model_json_schema()
       },
       generation_config={
-          "thinking_level": "minimal"
+          "thinking_level": "high"
       }
   )
   
@@ -1193,7 +1192,7 @@ encoded png that is a probability map with values between 0 and 255.
   });
   
   const interaction = await client.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: [
       { type: "text", text: prompt },
       {
@@ -1208,7 +1207,7 @@ encoded png that is a probability map with values between 0 and 255.
       schema: z.toJSONSchema(boundingBoxesSchema)
     },
     generation_config: {
-      thinking_level: "minimal"
+      thinking_level: "high"
     }
   });
   
@@ -1292,10 +1291,10 @@ encoded png that is a probability map with values between 0 and 255.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(Arrays.asList(textContent, imageContent)))
           .responseFormat(format)
-          .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.MINIMAL).build())
+          .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
           .build();
   
   Interaction interaction =
@@ -1372,7 +1371,7 @@ encoded png that is a probability map with values between 0 and 255.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: prompt,
@@ -1384,7 +1383,7 @@ encoded png that is a probability map with values between 0 and 255.
               }),
               ResponseFormat: genai.Ptr(format),
               GenerationConfig: &interactions.GenerationConfig{
-                  ThinkingLevel: interactions.ThinkingLevelMinimal.ToPointer(),
+                  ThinkingLevel: interactions.ThinkingLevelHigh.ToPointer(),
               },
           }),
       })
@@ -1406,7 +1405,7 @@ encoded png that is a probability map with values between 0 and 255.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Give the segmentation masks for the wooden and glass items.\nOutput a JSON list of segmentation masks where each entry contains the 2D\nbounding box in the key \"box_2d\", the segmentation mask in key \"mask\", and\nthe text label in the key \"label\". Use descriptive labels."},
         {
@@ -1438,7 +1437,7 @@ encoded png that is a probability map with values between 0 and 255.
         }
       },
       "generation_config": {
-        "thinking_level": "minimal"
+        "thinking_level": "high"
       }
     }'
   ```

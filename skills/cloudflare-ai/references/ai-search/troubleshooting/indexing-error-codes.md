@@ -12,20 +12,21 @@ image: https://developers.cloudflare.com/ai-search/troubleshooting/indexing-erro
 
 # Indexing error codes
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-After AI Search accepts an upload, sync, or crawl request, it processes your content in the background so it can be searched. When processing fails, AI Search records one of the error codes on this page. Some errors affect a single item; others pause the whole instance.
+After AI Search accepts an upload, sync, or crawl request, it processes your content in the background so it can be searched. When processing fails, AI Search records one of the error codes on this page. Some errors affect a single item, some end a sync job, and others pause the whole instance.
 
 Because this processing happens after the request succeeds, the errors are not returned in the original API response. To find them, check [item logs](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/logs/), item details, or instance stats. Errors returned immediately when a request fails are documented separately in [API error codes](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/).
 
 ## How errors are returned
 
-Indexing errors are asynchronous: an upload, sync, or crawl request can succeed, then the content can fail later while AI Search processes it. They fall into two categories:
+Indexing errors are asynchronous: an upload, sync, or crawl request can succeed, then the content can fail later while AI Search processes it. They fall into three categories:
 
 - **[Item-level errors](#item-level-errors)** affect a single item. The item moves to `status: "error"` while the rest of the instance keeps indexing.
+- **[Sync job errors](#sync-job-errors)** end a sync job without pausing the instance or deleting items. The job log shows `Error: <code>: <details>`.
 - **[Instance-level errors](#instance-level-errors)** affect the whole instance. AI Search pauses indexing because the problem, such as a source, token, model, or limit issue, blocks every item.
 
-To retry a single failed item, check [item logs](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/logs/), fix any clear source or configuration issue, then [sync the item](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/sync/) again. For website and R2 data sources, you can also run a [source sync job](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/).
+To retry a single failed item, check [item logs](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/logs/), fix any clear source or configuration issue, then [sync the item](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/sync/) again. For website, R2, and D1 data sources, you can also run a [source sync job](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/).
 
 If the instance is paused, resolve the underlying cause, then resume the instance.
 
@@ -93,6 +94,17 @@ These errors appear when AI Search cannot fetch, render, or include a page from 
 | `browser_rendering_server_refused_connection_error` | The origin refused the browser connection. | Allow the [AI Search crawler](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#allow-ai-search-through-waf) through your origin network controls, then run a source sync job. |
 | `browser_rendering_rate_limit_error` | Browser Run was rate limited. | Run a [source sync job](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/) later. If the error persists, [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/). |
 
+### D1 database
+
+These errors affect a single row of a [D1 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/). The other rows keep indexing. Fix the row or the query, then run a [source sync job](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/). Syncing the item alone does not read the row again.
+
+| Error | Details | Recommended action |
+| --- | --- | --- |
+| `d1_document_empty` | Every rendered column of the row is `NULL` or empty. | Return a non-empty column, or exclude the row with `WHERE`. |
+| `d1_document_too_large` | The rendered document is larger than 64 KiB. | Shorten the long column, for example `substr(body, 1, 20000) AS content`, or select fewer columns. |
+| `d1_id_too_long` | The text `id` is longer than 512 bytes. | Use a shorter `id`, such as the primary key. |
+| `d1_metadata_too_large` | The `id` and `meta_*` values are larger than 8,000 bytes as JSON. | Shorten the `meta_*` values or select fewer `meta_*` columns. |
+
 ### Models and AI Gateway
 
 These errors appear when [embedding models](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/#embedding), [Workers AI](https://developers.cloudflare.com/workers-ai/), external providers, or [AI Gateway](https://developers.cloudflare.com/ai-gateway/) cannot process item content.
@@ -127,9 +139,23 @@ These errors appear when storing or indexing an item fails, or when the instance
 | `hybrid_search_indexing_failed` | Hybrid search indexing failed. | Sync the item again. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | `ai_search_is_full` | The AI Search instance is full. Unlike a full hybrid search index, this does not pause the instance. | [Request a higher limit ↗︎](https://forms.gle/wnizxrEUW33Y15CT8) for the instance, or create another instance to index additional content. See [limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits). |
 
+## Sync job errors
+
+These errors end a sync job of a [D1 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/). The instance is not paused, no items are deleted, and the next sync tries again. Find them in the [job logs](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/jobs/methods/logs/).
+
+| Error | Details | Recommended action |
+| --- | --- | --- |
+| `d1_invalid_query`, `d1_read_only_violation`, `d1_forbidden_table` | The query is invalid, failed on D1, or is not read-only. | Fix the query to meet the [query requirements](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/#query-requirements), then [update the instance](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/update/). |
+| `d1_invalid_columns`, `d1_missing_id_column`, `d1_invalid_metadata_field`, `d1_too_many_metadata_fields` | The result columns are invalid or repeated, there is no `id`, or a `meta_*` column is invalid or over the limit. | Fix the columns to follow the [column conventions](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/#column-conventions), then update the instance. |
+| `d1_null_id`, `d1_invalid_id_type`, `d1_unsafe_integer_id`, `d1_duplicate_id`, `d1_mixed_id_types`, `d1_cursor_not_advancing` | Some `id` values are missing, repeated, too large, not integers or text, mix types, or change while the sync reads them. | Use a unique, stable `id`, such as the primary key. For mixed types, use `CAST(id AS TEXT) AS id`. |
+| `d1_no_rows`, `d1_too_many_rows` | The query returned no rows or more than 100,000 rows. The existing index is kept. | Check the query and data, or narrow it with `WHERE`. To remove all content, delete the instance. |
+| `d1_timeout`, `d1_response_too_large` | The query timed out three times in a row, or a single row is too large to read. | Simplify the query, use an [indexed](https://developers.cloudflare.com/d1/best-practices/use-indexes/) `id`, or select fewer or shorter columns. |
+| `d1_rate_limited`, `d1_upstream_error`, `d1_malformed_response` | D1 was rate limited or failed after several retries. | Wait for the next sync. If it happens often, use a longer [sync interval](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/#sync-interval). |
+| `d1_request_rejected`, `d1_invalid_database_id`, `d1_invalid_account_id` | D1 rejected the request. | [Contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the instance ID and error code. |
+
 ## Instance-level errors
 
-These errors pause the whole instance and stop all indexing until the underlying cause is resolved and the instance is resumed. They are distinct from a manual pause or the automatic pause after a period of inactivity.
+These errors pause the whole instance and stop all indexing until the underlying cause is resolved and the instance is resumed. They are distinct from a manual pause or the automatic pause after a period of inactivity. D1 data sources do not report an error code for these pauses, so their rows list the instance status instead.
 
 | Error | Details | Recommended action |
 | --- | --- | --- |
@@ -137,6 +163,8 @@ These errors pause the whole instance and stop all indexing until the underlying
 | `bucket_not_found` | Pauses the instance. The source R2 bucket was not found. | Check the [R2 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) bucket name and account, then resume the instance. |
 | `bucket_unauthorized` | Pauses the instance. AI Search cannot access the R2 bucket. | Check the [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) and R2 bucket permissions, then resume the instance. |
 | `external_source_missing_api_token` | Pauses the instance. The external source is missing API credentials. | Add or update the [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/), then resume the instance. |
+| D1 token cannot read the database | Pauses the instance with status `paused_invalid_api_token`. The service API token is invalid or cannot read the database of a [D1 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/). | Update `token_id` with the [Update instance API](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/methods/update/), then resume the instance. |
+| D1 database deleted | Pauses the instance with status `paused_source_parameters_are_invalid`. The database of a [D1 data source](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/) was deleted. | Create a new instance for the new database. The database of an instance cannot be changed. |
 | `bucket_name_invalid` | Pauses the instance. The R2 bucket name is invalid. | Use a valid bucket name without uppercase letters or underscores, update the R2 data source, then resume the instance. |
 | `invalid_custom_header` | Pauses the instance. A custom crawl header is invalid. | Remove or update the [authentication header](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/), then resume the instance. |
 | `ai_gateway_not_configured` | Pauses the instance. The AI Gateway set on the instance was not found. | Update the instance's [`ai_gateway_id`](https://developers.cloudflare.com/ai-search/api/instances/rest-api/) to an existing gateway in [AI Gateway](https://developers.cloudflare.com/ai-gateway/), then resume the instance. |
@@ -151,5 +179,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/#page","headline":"Indexing error codes","description":"Resolve asynchronous indexing, sync, and crawl error codes.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/og.png?v=656b5c81e6d85cf6","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/#page","headline":"Indexing error codes","description":"Resolve asynchronous indexing, sync, and crawl error codes.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/og.png?v=656b5c81e6d85cf6","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

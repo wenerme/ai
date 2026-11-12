@@ -399,7 +399,7 @@ Reasons a flow trigger mutation failed.
 
 | Value | Description |
 | ----- | ----------- |
-| `INSUFFICIENT_SERVICE_ACCOUNT_ACCESS` | Access of the user does not cover the service account that the scheduled trigger runs as. |
+| `INSUFFICIENT_SERVICE_ACCOUNT_ACCESS` | Access of the user does not cover the service account that the scheduled automation runs as. |
 
 ## `AiFlowTriggerEventType`
 
@@ -2658,6 +2658,35 @@ List of GitLab Duo licensed features.
 | `AGENTIC_CHAT` | Agentic Chat feature. |
 | `AI_CATALOG` | AI Catalog feature. |
 | `AI_FEATURES` | AI features. |
+
+## `DuoWorkflowDropReason`
+
+Reason a GitLab Duo Agent Platform session was failed.
+
+| Value | Description |
+| ----- | ----------- |
+| `API_REPORTED` | The session was failed with the reason `api_reported`. |
+| `COMPUTE_MINUTES_USED_UP` | The session was failed with the reason `compute_minutes_used_up`. |
+| `COULD_NOT_PREPARE_SESSION` | The session was failed with the reason `could_not_prepare_session`. |
+| `JOB_FAILED` | The session was failed with the reason `job_failed`. |
+| `NO_ACTIVITY` | The session was failed with the reason `no_activity`. |
+| `NO_STATUS_REPORTED` | The session was failed with the reason `no_status_reported`. |
+| `PRECONDITIONS_NOT_MET` | The session was failed with the reason `preconditions_not_met`. |
+| `START_FAILED` | The session was failed with the reason `start_failed`. |
+| `TOKEN_REJECTED` | The session was failed with the reason `token_rejected`. |
+| `TOOL_RULES_UNAVAILABLE` | The session was failed with the reason `tool_rules_unavailable`. |
+| `WORKLOAD_NOT_CREATED` | The session was failed with the reason `workload_not_created`. |
+
+## `DuoWorkflowFailureCategory`
+
+Category of why a GitLab Duo Agent Platform session failed.
+
+| Value | Description |
+| ----- | ----------- |
+| `STOPPED_PART_WAY` | Session started and stopped part way, for example at a step limit. |
+| `TRANSIENT` | Temporary cause, for example a timeout. |
+| `UNKNOWN` | Unknown cause. |
+| `USER_FIXABLE` | Cause the user can fix, for example no runner. |
 
 ## `DuoWorkflowMergeRequestLinkType`
 
@@ -5402,7 +5431,8 @@ Actions that can be performed on secrets.
 | `DELETE` | Delete secrets. |
 | `READ` | Read secrets. |
 | `READ_VALUE` | Read secret values. |
-| `WRITE` | Create and update secrets. |
+| `UPDATE` | Update existing secrets. |
+| `WRITE` | Deprecated in GitLab 19.6. Use `CREATE` and `UPDATE`. Planned for removal in GitLab 20.0. |
 
 ## `SecretsManagerEntitlementBlockedReason`
 
@@ -6111,6 +6141,7 @@ Name of the feature that the callout is for.
 | `SECURITY_CONFIGURATION_DEVOPS_ALERT` | Callout feature name for security_configuration_devops_alert. |
 | `SECURITY_CONFIGURATION_NAV_INDICATOR` | Callout feature name for security_configuration_nav_indicator. |
 | `SECURITY_CONFIGURATION_UPGRADE_BANNER` | Callout feature name for security_configuration_upgrade_banner. |
+| `SECURITY_INVENTORY_CAPABILITIES_NEW_LABEL` | Callout feature name for security_inventory_capabilities_new_label. |
 | `SECURITY_INVENTORY_NAV_INDICATOR` | Callout feature name for security_inventory_nav_indicator. |
 | `SECURITY_POLICY_PROTECTED_BRANCH_MODIFICATION` | Callout feature name for security_policy_protected_branch_modification. |
 | `SECURITY_SCANNER_PROFILES_ANNOUNCEMENT` | Callout feature name for security_scanner_profiles_announcement. |
@@ -6123,6 +6154,7 @@ Name of the feature that the callout is for.
 | `TAILORED_NAVIGATION_ONBOARDING` | Callout feature name for tailored_navigation_onboarding. |
 | `THREAT_MONITORING_INFO` | Callout feature name for threat_monitoring_info. |
 | `TRANSITION_TO_JIHU_CALLOUT` | Callout feature name for transition_to_jihu_callout. |
+| `TRIAGE_AND_REMEDIATION_TAB_NEW_LABEL` | Callout feature name for triage_and_remediation_tab_new_label. |
 | `TRIAL_STATUS_REMINDER_D14` | Callout feature name for trial_status_reminder_d14. |
 | `TRIAL_STATUS_REMINDER_D3` | Callout feature name for trial_status_reminder_d3. |
 | `ULTIMATE_TRIAL` | Callout feature name for ultimate_trial. |
@@ -6394,6 +6426,15 @@ The dismissal reason of the Vulnerability.
 | `MITIGATING_CONTROL` | A management, operational, or technical control (that is, safeguard or countermeasure) employed by an organization that provides equivalent or comparable protection for an information system. |
 | `NOT_APPLICABLE` | The vulnerability is known, and has not been remediated or mitigated, but is considered to be in a part of the application that will not be updated. |
 | `USED_IN_TESTS` | The finding is not a vulnerability because it is part of a test or is test data. |
+
+## `VulnerabilityDueDateWildcardId`
+
+Vulnerability due date wildcard values.
+
+| Value | Description |
+| ----- | ----------- |
+| `ANY` | Due date is assigned. |
+| `NONE` | No due date is assigned. |
 
 ## `VulnerabilityDuoWorkflow`
 

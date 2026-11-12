@@ -269,7 +269,7 @@ Similar to how you invite a group to a project, you can invite a group to anothe
 Prerequisites:
 
 - You must have the Owner role for the group you want to invite others to.
-- You must be able to access the group you want to invite.
+- You must be a member of the invited group or subgroup.
 
 To invite a group to your group:
 

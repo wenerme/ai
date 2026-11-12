@@ -240,6 +240,26 @@ SCIM group synchronization works with SAML group links to manage group membershi
 
 SCIM is a one-directional protocol: changes flow from your identity provider to GitLab. If you make changes to SAML group links in GitLab (such as adding or removing them), your identity provider has no way to detect these changes through SCIM.
 
+### Supported group membership changes
+
+GitLab supports these SCIM group membership changes from your identity provider:
+
+- Add members to a group.
+- Remove members from a group, either as a list or one member at a time with a
+  `members[value eq "<external_id>"]` filter.
+- Remove all members that SCIM added to a group.
+- Replace the members of a group with a list.
+  Members that SCIM added and that aren't in the list are removed.
+  Members added in GitLab aren't changed.
+
+GitLab rejects these requests with a `400 Bad Request` error and makes no changes:
+
+- A filter other than `members[value eq "<external_id>"]` on a removal, or any filter on an addition or replacement.
+- A removal that doesn't include a `path`.
+- Members that aren't sent as a list of objects that each have a string `value`.
+- A replacement or removal of all members combined with another membership change in the same request.
+- An addition and a removal of the same member in the same request.
+
 ### Rename a group
 
 GitLab does not rename SAML group links when your identity provider renames a group.

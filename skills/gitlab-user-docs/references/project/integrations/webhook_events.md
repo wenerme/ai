@@ -535,6 +535,10 @@ Payload example:
 
 ### Comment on a merge request
 
+The `merge_request` object in the payload has the same fields as the
+[`object_attributes` field](#object_attributes-field) of merge request events,
+except `action`, `actioned_at`, `oldrev`, and `system_action`.
+
 Request header:
 
 ```plaintext
@@ -959,6 +963,7 @@ The following fields are deprecated and included for backward compatibility only
 - `actioned_at` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224849) in GitLab 18.10.
 - `merged_at` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235360) in GitLab 19.1.
 - `target_branch_protected` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/480576) in GitLab 19.2.
+- `added_lines`, `deleted_lines`, `changed_lines`, and `file_count` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268317) in GitLab 19.6.
 
 The `object_attributes` field contains the current state of the merge request.
 It includes the following fields:
@@ -967,14 +972,18 @@ It includes the following fields:
 |---------------------------------|---------|-------------|
 | `action`                        | String  | The action that triggered the webhook. For example, `open`, `update`, or `merge`. |
 | `actioned_at`                   | String  | When the action that triggered the webhook occurred. |
+| `added_lines`                   | Integer | Number of lines added by the merge request (EE only). See [line counts](#line-counts). |
 | `approval_rules`                | Array   | Array of approval rule objects (EE only). |
 | `assignee_ids`                  | Array   | Array of assignee IDs. |
 | `author_id`                     | Integer | The ID of the merge request author. |
 | `blocking_discussions_resolved` | Boolean | Whether blocking discussions are resolved. |
+| `changed_lines`                 | Integer | Sum of `added_lines` and `deleted_lines` (EE only). See [line counts](#line-counts). |
 | `created_at`                    | String  | When the merge request was created. |
+| `deleted_lines`                 | Integer | Number of lines removed by the merge request (EE only). See [line counts](#line-counts). |
 | `description`                   | String  | The merge request description. |
 | `detailed_merge_status`         | String  | Detailed merge status information. For a list of potential values, see [merge status](../../../api/merge_requests.md#merge-status). |
 | `draft`                         | Boolean | Whether the merge request is a draft. |
+| `file_count`                    | Integer | Number of files changed in the latest diff of the merge request. `0` if the merge request has no diff yet. When the diff exceeds the [diff limits](../../../administration/diff_limits.md), files beyond the limits are not counted. |
 | `first_contribution`            | Boolean | Whether this is the author's first contribution. |
 | `head_pipeline_id`              | Integer | The ID of the head pipeline. |
 | `human_time_change`             | String  | Human-readable time change. |
@@ -1016,6 +1025,17 @@ It includes the following fields:
 | `updated_at`                    | String  | When the merge request was last updated. |
 | `updated_by_id`                 | Integer | The ID of the user who last updated it. |
 | `url`                           | String  | The URL to the merge request. |
+
+#### Line counts
+
+The `added_lines`, `deleted_lines`, and `changed_lines` fields:
+
+- Are `null` until the merge request is merged. GitLab stores the line counts when the
+  merge request is merged, to avoid computing them for every event. To get the size of
+  an open merge request, use the [merge request diffs API](../../../api/merge_requests.md#list-merge-request-diffs).
+- Can be `null` in the `merge` event if GitLab cannot compute the line counts in time.
+- Exclude files beyond the [diff limits](../../../administration/diff_limits.md).
+  For larger diffs, they are lower than the actual size of the merge request.
 
 ### `changes` field
 
@@ -1406,6 +1426,10 @@ recommended alternatives, see [deprecated fields](#deprecated-fields).
         "created_at": "2026-01-16T05:56:22.000Z"
       }
     ],
+    "added_lines": null,
+    "deleted_lines": null,
+    "changed_lines": null,
+    "file_count": 3,
     "action": "open",
     "actioned_at": "2026-01-16T05:56:26.000Z"
   },
@@ -2705,6 +2729,10 @@ The available values for `object_attributes.action` in the payload are:
 
 - `award` to add a reaction
 - `revoke` to remove a reaction
+
+For a merge request or a comment on a merge request, the `merge_request` object in the payload
+has the same fields as the [`object_attributes` field](#object_attributes-field) of merge request events,
+except `action`, `actioned_at`, `oldrev`, and `system_action`.
 
 Request header:
 

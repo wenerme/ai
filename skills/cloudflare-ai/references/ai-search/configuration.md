@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/configuration/og.png?v=2b15bd
 
 # Configuration
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can customize how your AI Search instance indexes your data, retrieves results, and generates responses. Some settings can be updated after the instance is created, while others are fixed at creation time.
 
@@ -23,6 +23,7 @@ You can customize how your AI Search instance indexes your data, retrieves resul
 | [Built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) | n/a | Upload files directly to an instance |
 | [Website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) | no | Connect a domain you own to index website pages |
 | [R2 Bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) | no | Connect a Cloudflare R2 bucket to index stored documents |
+| [D1 database](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/) Beta | no | Connect a Cloudflare D1 database to index query results |
 
 ## Indexing
 
@@ -35,7 +36,7 @@ You can customize how your AI Search instance indexes your data, retrieves resul
 | [Keyword search](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) | yes | Enable keyword (BM25) search for exact term matching |
 | [Hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) | yes | Combine vector and keyword search with configurable fusion |
 | [Metadata attributes](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) | yes | Define built-in and custom metadata fields |
-| [Service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) | yes | API token that grants AI Search permission to access R2 buckets |
+| [Service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) | yes | API token that grants AI Search permission to access R2 buckets and D1 databases |
 
 ## Retrieval
 
@@ -73,5 +74,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/configuration/#page","headline":"Configuration","description":"Customize how your AI Search instance indexes data, retrieves results, and generates responses.","url":"https://developers.cloudflare.com/ai-search/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/og.png?v=2b15bd7973ffffbb","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/configuration/#page","headline":"Configuration","description":"Customize how your AI Search instance indexes data, retrieves results, and generates responses.","url":"https://developers.cloudflare.com/ai-search/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/og.png?v=2b15bd7973ffffbb","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

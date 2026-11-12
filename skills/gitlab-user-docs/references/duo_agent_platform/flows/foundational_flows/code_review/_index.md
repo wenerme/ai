@@ -119,6 +119,7 @@ For more information, see [interact with GitLab Duo](../../../../project/merge_r
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254981) as a [beta](../../../../../policy/development_stages_support.md#beta) in GitLab 19.5 [with a feature flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_decisions`. Disabled by default.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/631086) in GitLab 19.6.
+- [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270328) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

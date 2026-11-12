@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/rollba
 
 # Rollbacks
 
-Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can roll back to a previously deployed [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) or the Cloudflare dashboard. Rolling back to a previous version of your Worker will immediately create a new [deployment](https://developers.cloudflare.com/workers/versions-and-deployments/#deployments) with the version specified and become the active deployment across all your deployed routes and domains.
+You can roll back to a previously deployed [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) or the Cloudflare dashboard. A rollback creates a new [deployment](https://developers.cloudflare.com/workers/versions-and-deployments/#deployments) set to 100% of traffic for the selected version. It applies to your Worker's routes and domains.
+
+The change takes time to reach every location on Cloudflare's network. Pages loaded before rollback can still request the newer version's assets. When planning rollbacks, check whether the older version includes those files. Refer to [Version skew and static assets](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/#older-pages-and-rollbacks) for ways to handle these requests.
 
 You can roll back from any deployment, including:
 
@@ -40,7 +42,7 @@ If you are using a [gradual deployment](https://developers.cloudflare.com/worker
 1. Replace the split deployment with a single-version deployment.
 2. Route 100% of traffic to the version you selected for rollback.
 
-This effectively promotes one version to handle all traffic, which is useful if you notice issues with one of the versions in your split deployment and want to revert to a stable version immediately.
+This sends traffic to the selected version and removes the other version from the deployment. Overrides naming the removed version are [ignored](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/#versions-in-the-deployment).
 
 To roll back from a split deployment:
 
@@ -80,5 +82,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#page","headline":"Rollbacks","description":"Revert to an older version of your Worker.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/og.png?v=c7b02c14baf27fce","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#page","headline":"Rollbacks","description":"Revert to an older version of your Worker.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/og.png?v=c7b02c14baf27fce","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

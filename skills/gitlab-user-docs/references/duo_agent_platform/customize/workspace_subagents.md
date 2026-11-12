@@ -4,9 +4,9 @@ Define specialized subagents in your repository for the Developer Flow to delega
 
 - Tier: [Free](../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Experiment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259664) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment) [with a feature flag](../../../administration/feature_flags/_index.md) named `dap_workspace_agents`. Enabled by default.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270158) in GitLab 19.6.
 
 Workspace subagents are specialized agents that you define as Markdown files in your project repository.
 This feature is available for the Developer Flow only, both in the GitLab UI and in GitLab Duo CLI.
@@ -109,12 +109,6 @@ Create a workspace subagent to give the Developer Flow a specialized agent to de
 
 Prerequisites:
 
-- Turn on [beta and experimental features](../turn_on_off.md#turn-on-beta-and-experimental-features).
-  You cannot turn on this setting for a single project:
-  - On GitLab.com, a user with the Owner role changes this setting on the top-level group.
-    All subgroups and projects in the top-level group inherit this setting.
-  - On GitLab Self-Managed and GitLab Dedicated, an administrator changes this setting for the instance.
-    All groups and projects on the instance inherit this setting.
 - Meet the [Developer Flow prerequisites](../../project/merge_requests/developer.md#prerequisites).
 - To test the subagent before you merge it, install [GitLab Duo CLI](../../gitlab_duo_cli/_index.md) 9.21.0 or later.
 
@@ -176,7 +170,6 @@ To keep subagent definitions out of a repository, use one or both of the followi
 
 If a workspace subagent does not work as expected:
 
-1. Check that beta and experimental features are turned on.
 1. Check the file against the [file requirements](#file-requirements).
    Files that do not meet the requirements are skipped.
 1. For sessions in GitLab, check that the file is on the default branch.

@@ -1716,7 +1716,7 @@ Older product updates
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/dex/">Digital Experience Monitoring</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/email-security/">Email security</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/gateway/">Gateway</a>
-- <a href="https://developers.cloudflare.com/multi-cloud-networking/changelog/">Multi-Cloud Networking</a>
+- <a href="https://developers.cloudflare.com/cloudflare-wan/reference/legacy-cloud-networking-changelog/">Multi-Cloud Networking</a>
 - <a href="https://developers.cloudflare.com/cloudflare-network-firewall/changelog/">Cloudflare Network Firewall</a>
 - <a href="https://developers.cloudflare.com/network-flow/changelog/">Magic Network Monitoring</a>
 - <a href="https://developers.cloudflare.com/magic-transit/changelog/">Magic Transit</a>

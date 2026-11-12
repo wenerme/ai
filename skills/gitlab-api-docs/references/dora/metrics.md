@@ -9,6 +9,8 @@ Use this API to retrieve details of [DORA metrics](../../user/analytics/dora_met
 
 Additional endpoints are available with the [GraphQL API](../graphql/reference/_index.md).
 
+The [DORA metrics dashboard](../../user/analytics/dora_metrics_charts.md) shows data from the last two years.
+
 Prerequisites:
 
 - You must have the Reporter, Developer, Maintainer, or Owner role.

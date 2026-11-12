@@ -1,5 +1,5 @@
 ---
-description: Create a service API token to grant AI Search read access to R2 buckets for indexing.
+description: Create a service API token to grant AI Search read access to R2 buckets and D1 databases for indexing.
 title: Service API token
 image: https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/og.png?v=808c9644b5632f66
 ---
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/servic
 
 # Service API token
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A service API token grants AI Search permission to access [R2](https://developers.cloudflare.com/r2/) buckets in your account. This token is only required if you connect an R2 bucket as a data source. If you use a website or upload files directly through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/), you do not need a service API token.
+A service API token grants AI Search permission to access [R2](https://developers.cloudflare.com/r2/) buckets and [D1](https://developers.cloudflare.com/d1/) databases in your account. This token is only required if you connect an R2 bucket or a D1 database as a data source. If you use a website or upload files directly through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/), you do not need a service API token.
 
 ## When you need a service API token
 
-You need a service API token when you create an AI Search instance with `type: "r2"`. The token authorizes AI Search to read objects from your R2 bucket for indexing.
+You need a service API token when you create an AI Search instance with `type: "r2"` or `type: "d1"`. The token authorizes AI Search to read your R2 bucket or D1 database for indexing. Its AI Search Index Engine permission includes R2 read access and the D1 Read permission, so one token works for both. D1-backed instances always require `token_id`.
 
 ## Create via the dashboard or Wrangler
 
@@ -95,7 +95,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
   }'
 ```
 
-Save the `id` from the response. This is your `token_id` to pass when creating R2-backed instances:
+Save the `id` from the response. This is your `token_id` to pass when creating R2-backed or D1-backed instances:
 
 ```json
 {
@@ -132,7 +132,7 @@ Once registered, the service API token is stored securely and reused across all 
 
 Caution
 
-Do not delete your service API token. If you revoke or delete the token, any R2-backed AI Search instances will lose access to their data source and stop indexing.
+Do not delete your service API token. If you revoke or delete the token, any R2-backed or D1-backed AI Search instances will lose access to their data source and stop indexing.
 
 ### Rotate your token
 
@@ -164,5 +164,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/#page","headline":"Service API token","description":"Create a service API token to grant AI Search read access to R2 buckets for indexing.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/og.png?v=808c9644b5632f66","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/#page","headline":"Service API token","description":"Create a service API token to grant AI Search read access to R2 buckets and D1 databases for indexing.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/og.png?v=808c9644b5632f66","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

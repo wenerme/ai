@@ -16,7 +16,8 @@ An achievement consists of a name, a description, and an avatar.
 
 [Achievements on user profile page]
 
-Achievements are considered to be owned by the user. They are visible regardless of the visibility setting of the namespace that created the Achievement.
+An achievement is visible only to the user who received it and to users who can view
+the namespace that awarded it.
 
 For more information about planned work, see [epic 9429](https://gitlab.com/groups/gitlab-org/-/epics/9429).
 Tell us about your use cases by leaving comments in the epic.
@@ -45,6 +46,7 @@ You can view a user's achievements on their profile page.
 
 Prerequisites:
 
+- You must be signed in.
 - The user profile must be public.
 
 To view a user's achievements:

@@ -7950,21 +7950,21 @@ Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wa
 
 ## 2024-12-05
 
-[Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)
+[Multi-Cloud Networking](https://developers.cloudflare.com/changelog/product/multi-cloud-networking/)
 
 
 **Generate customized terraform files for building cloud network on-ramps**
 
 You can now generate customized terraform files for building cloud network on-ramps to [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/).
 
-[Magic Cloud](https://developers.cloudflare.com/multi-cloud-networking/) can scan and discover existing network resources and generate the required terraform files to automate cloud resource deployment using their existing infrastructure-as-code workflows for cloud automation.
+Magic Cloud can scan and discover existing network resources and generate the required terraform files to automate cloud resource deployment using their existing infrastructure-as-code workflows for cloud automation.
 
 You might want to do this to:
 
 - Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
 - Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
 
-For more details, refer to [Set up with Terraform](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#set-up-with-terraform).
+For cloud connectivity configuration guides, refer to [Cloud networking](https://developers.cloudflare.com/cloudflare-wan/reference/cloud-networking/).
 
 ## 2024-11-22
 
@@ -8087,7 +8087,7 @@ Next, configure Okta to receive your risk scores.
 
 ## 2024-06-16
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Network Flow](https://developers.cloudflare.com/network-flow/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Interconnect](https://developers.cloudflare.com/network-interconnect/) [Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Multi-Cloud Networking](https://developers.cloudflare.com/changelog/product/multi-cloud-networking/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Network Flow](https://developers.cloudflare.com/network-flow/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Interconnect](https://developers.cloudflare.com/network-interconnect/) [Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Explore product updates for Cloudflare One**
@@ -8114,7 +8114,7 @@ Older product updates
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/dex/">Digital Experience Monitoring</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/email-security/">Email security</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/gateway/">Gateway</a>
-- <a href="https://developers.cloudflare.com/multi-cloud-networking/changelog/">Multi-Cloud Networking</a>
+- <a href="https://developers.cloudflare.com/cloudflare-wan/reference/legacy-cloud-networking-changelog/">Multi-Cloud Networking</a>
 - <a href="https://developers.cloudflare.com/cloudflare-network-firewall/changelog/">Cloudflare Network Firewall</a>
 - <a href="https://developers.cloudflare.com/network-flow/changelog/">Magic Network Monitoring</a>
 - <a href="https://developers.cloudflare.com/magic-transit/changelog/">Magic Transit</a>

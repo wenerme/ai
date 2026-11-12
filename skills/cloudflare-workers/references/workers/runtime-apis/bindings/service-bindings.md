@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/service-b
 
 # Service bindings
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## About Service bindings
 
@@ -148,9 +148,46 @@ Each Worker is deployed separately.
 
 ## Lifecycle
 
-The Service bindings API is asynchronous — you must `await` any method you call. If Worker A invokes Worker B via a Service binding, and Worker A does not await the completion of Worker B, Worker B will be terminated early.
+Use `return` or `await` for service-binding calls needed to answer a request. Otherwise, work in the called Worker can stop when the caller finishes. For a short task that should continue after the response, pass the whole task to [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil).
 
-For more about the lifecycle of calling a Worker over a Service Binding via RPC, refer to the [RPC Lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle) docs.
+### Request cancellation
+
+When a client disconnects, work handling its request may be canceled. This includes pending subrequests and open streams or connections tied to that request.
+
+If Worker A calls Worker B through an HTTP or RPC service binding, cancellation can continue down that chain. Worker A is Worker B's client. When Worker A's execution context ends, Worker B loses its caller, even though it has no direct connection to the original client.
+
+```
+sequenceDiagram
+    participant C as Client
+    participant A as Worker A
+    participant B as Worker B
+    C->>A: Request
+    A->>B: HTTP or RPC call
+    C--xA: Disconnects
+    Note over A: Request work may be canceled
+    A--xB: Call is canceled when A's context ends
+    Note over B: B loses its caller
+
+```
+
+The original client can be any application or service, such as a browser or mobile app. The calling Worker can also be a Pages Function.
+
+Using `await` does not prevent cancellation when the client disconnects. Use `ctx.waitUntil()` for short tasks that should continue after the request ends.
+
+- **HTTP:** Follow [Handle canceled requests](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/#handle-canceled-requests) to handle response bodies and compare logs from both Workers.
+- **RPC:** When the caller's execution context ends, the called Worker's RPC execution context is canceled, even if RPC object references still exist. Refer to [RPC lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#end-of-event-handler--execution-context) for object lifetimes and extending work with `ctx.waitUntil()`.
+
+### Choose when work should stop
+
+Choose how to run the work based on what should happen if the client disconnects:
+
+| What you need | What to do |
+| --- | --- |
+| Work only needed to answer this request | Return or await the call. For HTTP calls, forward the response or finish reading its body. Let the work stop if the client disconnects. |
+| A short task that should finish after the response, such as a cache update | Pass the whole task to [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil), including any response-body processing it needs. For HTTP-triggered Workers, it can run for up to 30 seconds after the response is sent or the client disconnects. |
+| A job that must finish even if the client disconnects | Send the job to [Queues](https://developers.cloudflare.com/queues/) or start a [Workflow](https://developers.cloudflare.com/workflows/). Wait for the message to be accepted or the workflow instance to be created before telling the client the job was accepted. |
+
+`waitUntil()` gives work more time. It does not guarantee completion or send a response to a disconnected client. For jobs that can retry, make it safe to run the same operation more than once. For example, [Queues can deliver the same message more than once](https://developers.cloudflare.com/queues/reference/delivery-guarantees/).
 
 ## Local development
 
@@ -210,5 +247,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/og.png?v=334bbe3e4e2db869","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/og.png?v=334bbe3e4e2db869","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

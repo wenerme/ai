@@ -208,8 +208,6 @@ To change how a merge request shows changed lines:
 
 ## Rapid Diffs
 
-- Status: Beta
-
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/590833) in GitLab 18.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `rapid_diffs_on_mr_show`. Disabled by default.
 - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/539581) in GitLab 19.0.
 - [Set as the default experience](https://gitlab.com/gitlab-org/gitlab/-/issues/602723) on the merge request **Changes** tab on GitLab.com in GitLab 19.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `rapid_diffs_default_on_mr_show`. Enabled by default.
@@ -217,13 +215,12 @@ To change how a merge request shows changed lines:
 - Feature flag `rapid_diffs_on_mr_show` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241051) in GitLab 19.6.
 - Feature flag `rapid_diffs_default_on_mr_show` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266228) in GitLab 19.6.
 - Option to switch back to the classic diff experience [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269613) in GitLab 19.6.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270288) in GitLab 19.6.
 
-Rapid Diffs is a faster way to load and interact with code changes in merge requests.
-It reduces the time before you see the first file when reviewing a diff.
+Merge requests use Rapid Diffs, a fast way to load and interact with code changes.
 
-Rapid Diffs is in beta. Some features from the classic diff experience are not available.
-For the list of known limitations, or to share feedback, see [feedback issue 596236](https://gitlab.com/gitlab-org/gitlab/-/issues/596236).
-For the feature parity roadmap, see [epic 19380](https://gitlab.com/groups/gitlab-org/-/epics/19380).
+GitLab renders diffs on the server and streams them to your browser.
+This reduces the time before you see the first file when reviewing a diff.
 
 ## Explain code in a merge request
 

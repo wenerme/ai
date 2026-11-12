@@ -23,9 +23,41 @@ Use pipeline execution policies to manage and enforce CI/CD jobs for multiple pr
 - New pipeline execution [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/233245) in GitLab 19.0. Feature flag `ensure_pipeline_policy_pre_succeeds` removed.
 
 The YAML file with pipeline execution policies consists of an array of objects matching pipeline execution
-policy schema nested under the `pipeline_execution_policy` key. You can configure a maximum of five
-policies under the `pipeline_execution_policy` key per security policy project. Any other policies configured after
-the first five are not applied.
+policy schema nested under the `pipeline_execution_policy` key.
+
+The number of enabled policies GitLab evaluates for each security policy project is controlled by the
+`pipeline_execution_policies_per_configuration_limit` setting (default: five, maximum: 20).
+GitLab evaluates only the first N enabled policies and silently ignores the rest.
+Security scans or compliance checks defined in ignored policies do not run.
+
+> [!warning]
+> A `security_policy_limit_exceeded` audit event is recorded on the security policy project
+> (available from GitLab 18.2), listing the skipped policy names. To resolve this issue,
+> disable or remove policies to stay within the limit, or ask an administrator to raise the limit.
+
+Administrators can raise the limit for the instance or for a top-level group.
+
+To raise the limit for the instance:
+
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Update .
+1. Select .
+
+To raise the limit for a top-level group:
+
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. In the row of the top-level group, select .
+1. In , update .
+1. Select .
+
+A group limit overrides the instance limit for that group's projects.
+Set the group limit to `0` to use the instance limit.
+
+You can also update the instance limit using the [application settings API](../../../api/settings.md)
+with the `pipeline_execution_policies_per_configuration_limit` parameter.
 
 When you save a new policy, GitLab validates its contents against [this JSON schema](https://gitlab.com/gitlab-org/gitlab/-/blob/master/ee/app/validators/json_schemas/security_orchestration_policy.json).
 If you're not familiar with how to read [JSON schemas](https://json-schema.org/),
@@ -33,7 +65,7 @@ the following sections and tables provide an alternative.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `pipeline_execution_policy` | `array` of pipeline execution policy | true | List of pipeline execution policies (maximum five) |
+| `pipeline_execution_policy` | `array` of pipeline execution policy | true | List of pipeline execution policies. The number evaluated is controlled by the configured limit (default: five). |
 
 ## `pipeline_execution_policy` schema
 

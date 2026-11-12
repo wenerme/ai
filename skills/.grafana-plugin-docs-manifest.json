@@ -1191,8 +1191,8 @@
   },
   "grafana-lokiexplore-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access.md",
-    "size": 5652,
-    "updatedAt": "2026-10-28T00:53:49.261Z"
+    "size": 5147,
+    "updatedAt": "2026-11-12T18:21:31.873Z"
   },
   "grafana-lokiexplore-app/access/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/configure.md",
@@ -1231,8 +1231,8 @@
   },
   "grafana-lokiexplore-app/view-logs.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs.md",
-    "size": 9591,
-    "updatedAt": "2026-10-28T00:53:50.526Z"
+    "size": 10429,
+    "updatedAt": "2026-11-12T18:21:33.085Z"
   },
   "grafana-lokiexplore-app/view-logs/json.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json.md",

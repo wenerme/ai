@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/functions/debugging-and-logging/o
 
 # Debugging and logging
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/debugging-and-logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/debugging-and-logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Access your Functions logs by using the Cloudflare dashboard or the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail).
 
@@ -103,6 +103,19 @@ To view logs for your `production` or `preview` environments associated with any
 
 Logging is available for all customers (Free, Paid, Enterprise).
 
+## Debug canceled requests to a bound Worker
+
+If your Pages Function stops waiting for a Worker it calls, that Worker may report Client Disconnected. This can happen when the browser disconnects from your Pages Function.
+
+To find out what happened, check both sets of logs:
+
+1. Log the same request ID in your Pages Function and Worker. If you create your own ID, pass it to the Worker in a request header.
+2. Open [live logs for your Pages deployment](https://developers.cloudflare.com/pages/functions/debugging-and-logging/#view-logs-with-wrangler) and [live logs for the Worker it calls](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/). Start both streams before reproducing the problem.
+3. Reproduce the problem and save the JSON output from both log streams. Pages logs are not stored, so save them during the test.
+4. Find the request in both logs using its ID and UTC time. Compare `outcome`, HTTP status, and `exceptions`. Keep the Pages deployment and Worker version with your saved logs.
+
+Follow [Find out why a request was canceled](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/#find-out-why-a-request-was-canceled) to check timeouts and test a client disconnect. Seeing Client Disconnected in both logs does not tell you which service canceled first. If an entry is missing, check [logging limits](https://developers.cloudflare.com/pages/functions/debugging-and-logging/#limits) before assuming the request never arrived.
+
 ## Limits
 
 The following limits apply to Functions logs:
@@ -131,5 +144,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/#page","headline":"Debugging and logging","description":"Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.","url":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/og.png?v=05eb47ae72ab1995","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/#page","headline":"Debugging and logging","description":"Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.","url":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/og.png?v=05eb47ae72ab1995","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

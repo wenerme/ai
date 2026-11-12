@@ -46,7 +46,6 @@ To help the Developer Flow produce better results, you should configure your pro
   For more information, see [AGENTS.md customization files](../../duo_agent_platform/customize/agents_md.md).
 - Add workspace subagents: Define specialized subagents in the `.agents/agents/` directory
   that the Developer Flow can delegate focused tasks to, like reviews or research.
-  This feature is an experiment.
   For more information, see [workspace subagents](../../duo_agent_platform/customize/workspace_subagents.md).
 - Configure the execution environment: If your project requires specific tooling
   (for example, Go, Python, or Node.js), configure the agent environment with an `agent-config.yml` file.
@@ -63,7 +62,7 @@ To help the Developer Flow produce better results, you should configure your pro
 
 Prerequisites:
 
-- The event types **Mention** and **Assign** are [configured](../../duo_agent_platform/triggers/_index.md) in the trigger for the Developer Flow.
+- The event types **Mention** and **Assign** are [configured](../../duo_agent_platform/automations/_index.md) in the trigger for the Developer Flow.
 
 ### Mention Duo Developer in a discussion
 
@@ -116,7 +115,7 @@ If the work item has no workplan, the flow uses the description.
 
 Prerequisites:
 
-- [Create an event trigger](../../duo_agent_platform/triggers/_index.md#create-an-event-trigger)
+- [Create an event trigger](../../duo_agent_platform/automations/_index.md#create-an-event-trigger)
   for the Developer Flow with the **Work item** event type and only the
   **Status changed** action. If you also select **Created**, you cannot select statuses,
   and the flow does not start when a work item is created.

@@ -998,6 +998,9 @@ scan-website:
   different input type.
 - A string containing an interpolation block must not exceed 1 MB.
 - The string inside an interpolation block must not exceed 1 KB.
+- A `spec:inputs` section can declare at most 500 inputs. Publishing a CI/CD component
+  version with more inputs fails. For pipelines, the limit is behind the
+  `ci_limit_spec_inputs_count` feature flag, which is disabled by default.
 - You can define input values [when running a new pipeline](../inputs/_index.md#for-a-pipeline).
 
 **Related topics**:

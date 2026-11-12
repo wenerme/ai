@@ -18,7 +18,7 @@ Gemini can analyze audio input and generate text responses.
   uploaded_file = client.files.upload(file="path/to/sample.mp3")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -45,7 +45,7 @@ Gemini can analyze audio input and generate text responses.
   });
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           {type: "text", text: "Describe this audio clip"},
           {
@@ -94,7 +94,7 @@ Gemini can analyze audio input and generate text responses.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -146,7 +146,7 @@ Gemini can analyze audio input and generate text responses.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(contents),
           }),
       })
@@ -169,7 +169,7 @@ Gemini can analyze audio input and generate text responses.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Describe this audio clip"},
         {
@@ -263,7 +263,7 @@ timestamps, speaker diarization, and emotion detection using
   }
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "video", "uri": YOUTUBE_URL, "mime_type": "video/mp4"},
           {"type": "text", "text": prompt}
@@ -327,7 +327,7 @@ timestamps, speaker diarization, and emotion detection using
   };
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           { type: "video", uri: YOUTUBE_URL, mime_type: "video/mp4" },
           { type: "text", text: prompt }
@@ -422,7 +422,7 @@ timestamps, speaker diarization, and emotion detection using
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .responseFormat(
               CreateModelInteractionResponseFormat.of(
@@ -510,7 +510,7 @@ timestamps, speaker diarization, and emotion detection using
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(contents),
               ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
                   interactions.NewResponseFormat(interactions.TextResponseFormat{
@@ -539,7 +539,7 @@ timestamps, speaker diarization, and emotion detection using
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {
           "type": "video",
@@ -632,7 +632,7 @@ Use the [Files API](/docs/files) for files larger than 20 MB.
   uploaded_file = client.files.upload(file="path/to/sample.mp3")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -659,7 +659,7 @@ Use the [Files API](/docs/files) for files larger than 20 MB.
   });
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           {type: "text", text: "Describe this audio clip"},
           {
@@ -709,7 +709,7 @@ Use the [Files API](/docs/files) for files larger than 20 MB.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -762,7 +762,7 @@ Use the [Files API](/docs/files) for files larger than 20 MB.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(contents),
           }),
       })
@@ -785,7 +785,7 @@ Use the [Files API](/docs/files) for files larger than 20 MB.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Describe this audio clip"},
         {
@@ -825,7 +825,7 @@ For small audio files under 20MB total request size:
       audio_bytes = f.read()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -852,7 +852,7 @@ For small audio files under 20MB total request size:
   });
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           {type: "text", text: "Describe this audio clip"},
           {
@@ -901,7 +901,7 @@ For small audio files under 20MB total request size:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -954,7 +954,7 @@ For small audio files under 20MB total request size:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(contents),
           }),
       })
@@ -985,7 +985,7 @@ For small audio files under 20MB total request size:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {"type": "text", "text": "Describe this audio clip"},
         {
@@ -1021,7 +1021,7 @@ To get a transcript, ask for it in the prompt:
   {% tab label="Python" %}
   ```python
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Generate a transcript of the speech."},
           {
@@ -1039,7 +1039,7 @@ To get a transcript, ask for it in the prompt:
   {% tab label="JavaScript" %}
   ```javascript
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           { type: "text", text: "Generate a transcript of the speech." },
           {
@@ -1088,7 +1088,7 @@ To get a transcript, ask for it in the prompt:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -1140,7 +1140,7 @@ To get a transcript, ask for it in the prompt:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(contents),
           }),
       })
@@ -1174,7 +1174,7 @@ Use `MM:SS` format to reference specific sections:
   {% tab label="Python" %}
   ```python
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Provide a transcript from 02:30 to 03:29."},
           {
@@ -1191,7 +1191,7 @@ Use `MM:SS` format to reference specific sections:
   {% tab label="JavaScript" %}
   ```javascript
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
           { type: "text", text: "Provide a transcript from 02:30 to 03:29." },
           { type: "audio", uri: uploadedFile.uri, mime_type: "audio/mp3" }
@@ -1236,7 +1236,7 @@ Use `MM:SS` format to reference specific sections:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.ofContent(contents))
           .build();
   
@@ -1288,7 +1288,7 @@ Use `MM:SS` format to reference specific sections:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(contents),
           }),
       })
@@ -1322,7 +1322,7 @@ Count tokens in an audio file:
   {% tab label="Python" %}
   ```python
   response = client.models.count_tokens(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       contents=[uploaded_file]
   )
   print(response)
@@ -1333,7 +1333,7 @@ Count tokens in an audio file:
   {% tab label="JavaScript" %}
   ```javascript
   const response = await client.models.countTokens({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       contents: [
           { fileData: { fileUri: uploadedFile.uri, mimeType: uploadedFile.mimeType } }
       ]
@@ -1361,7 +1361,7 @@ Count tokens in an audio file:
   
   CountTokensResponse response =
       client.models.countTokens(
-          "gemini-3.8-flash",
+          "gemini-4-hydrogen",
           Arrays.asList(
               Content.fromParts(
                   Part.fromUri(uploadedFile.uri().get(), uploadedFile.mimeType().get()))),
@@ -1400,7 +1400,7 @@ Count tokens in an audio file:
   
       response, err := client.Models.CountTokens(
           ctx,
-          "gemini-3.8-flash",
+          "gemini-4-hydrogen",
           []*genai.Content{
               genai.NewContentFromURI(uploadedFile.URI, uploadedFile.MIMEType, genai.RoleUser),
           },

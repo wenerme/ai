@@ -48,10 +48,10 @@ the Interactions API and `generateContent` unless specified otherwise:
 | [Function Calling](/docs/function-calling) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Structured Output](/docs/structured-output) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Thinking / Reasoning](/docs/thinking) | {% badge type="supported" /%} | {% badge type="supported" /%} |
-| [System Instructions](/docs/text-generation) | {% badge type="supported" /%} | {% badge type="supported" /%} |
-| [Audio Output (Speech Config)](/docs/audio) |  | {% badge type="supported" /%} |
+| [System Instructions](/docs/text-generation#system-instructions) | {% badge type="supported" /%} | {% badge type="supported" /%} |
+| [Audio Output (Speech Config)](/docs/speech-generation) |  | {% badge type="supported" /%} |
 | [Audio Transcription (Transcription Config)](/docs/transcribe) |  | {% badge type="supported" /%} |
-| [Service Tier (Priority / Flex)](/docs/priority-inference) | {% badge type="supported" /%} | {% badge type="supported" /%} |
+| [Service Tier (Priority / Flex)](/docs/optimization#inference-tiers) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | **Tools** |  |  |
 | [Code Execution Tool](/docs/code-execution) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Google Search Grounding](/docs/google-search) | {% badge type="supported" /%} | {% badge type="supported" /%} |
@@ -67,10 +67,10 @@ the Interactions API and `generateContent` unless specified otherwise:
 | **Platform APIs** |  |  |
 | [Models API](/docs/models) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Files Service Route](/docs/files) | {% badge type="supported" /%} | {% badge type="supported" /%} |
-| [File Search Stores Route](/docs/file-search) | {% badge type="supported" /%} | {% badge type="supported" /%} |
+| [File Search Stores Route](/docs/file-search#file-search-stores) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Agents API](/docs/agents) |  | {% badge type="supported" /%} |
 | [Webhooks API](/docs/webhooks) |  | {% badge type="supported" /%} |
-| [Explicit Context Caching](/docs/caching?generate-content=true) |  | {% badge type="supported" /%} |
+| [Explicit Context Caching](/docs/caching?generate-content=true#explicit-caching) |  | {% badge type="supported" /%} |
 
 ## Configure API version in an SDK  {% id="configure-api-version" %}
 
@@ -89,7 +89,7 @@ over the environment variable.
   client = genai.Client(http_options={"api_version": "v1beta"})
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Explain how AI works",
   )
   
@@ -108,7 +108,7 @@ over the environment variable.
   
   async function main() {
     const interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "Explain how AI works",
     });
     console.log(interaction.output_text);
@@ -125,7 +125,7 @@ over the environment variable.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Explain how AI works"
     }'
   ```

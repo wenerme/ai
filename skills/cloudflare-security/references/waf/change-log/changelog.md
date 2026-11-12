@@ -1,5 +1,5 @@
 ---
-description: This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of PHP Capture the Flag (CTF) challenge.
+description: "You can now manage AI Security for Apps with Terraform. Version 5.29.0 of the Terraform Cloudflare provider adds two resources:"
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,40 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-11-12
+
+
+**Manage AI Security for Apps with Terraform**
+
+You can now manage [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) with Terraform. Version 5.29.0 of the Terraform Cloudflare provider adds two resources:
+
+- [`cloudflare_ai_security` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ai_security): Turns AI Security for Apps on or off for a zone.
+- [`cloudflare_ai_security_custom_topics` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ai_security_custom_topics): Defines the [custom topics](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#custom-topics) that AI Security for Apps scores each prompt against.
+
+For example:
+
+```tf
+resource "cloudflare_ai_security" "zone_ai_security" {
+  zone_id = var.cloudflare_zone_id
+  enabled = true
+}
+
+resource "cloudflare_ai_security_custom_topics" "zone_custom_topics" {
+  zone_id = var.cloudflare_zone_id
+
+  topics = [
+    {
+      label = "competitors"
+      topic = "seeking info on competitors"
+    }
+  ]
+}
+```
+
+You can then use AI Security for Apps fields in custom rules managed with the `cloudflare_ruleset` resource, keeping your detection settings, topics, and mitigation rules in the same configuration.
+
+For more examples, refer to [Terraform configuration examples](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/terraform-examples/).
 
 ## 2026-11-03
 
@@ -52,6 +86,15 @@ This release introduces updates to the underlying rule expressions for PHP out-o
 | Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
 | Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
 | Cloudflare Response Ruleset | ...48d2242a | N/A | Default block for High confidence Signatures | Block | Block | Rule detection updated. |
+
+## 2026-10-28
+
+
+**Malicious uploads detection flags non-multipart Content-Type headers with a boundary**
+
+The [malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/) now sets `cf.waf.content_scan.has_failed` to `true` for requests whose `Content-Type` header has a `boundary` parameter but type is not `multipart/*`, for example `application/json; boundary=example`. The body of these requests is not scanned.
+
+For more information, refer to [Multipart requests](https://developers.cloudflare.com/waf/detections/malicious-uploads/#multipart-requests).
 
 ## 2026-10-28
 
@@ -195,6 +238,27 @@ This emergency release adds seven rules to the Cloudflare Free Ruleset to block 
 | Cloudflare Free Ruleset | ...e8d613fa | N/A | Generic Rules - Anomalous Execution - 7 | N/A | Block | This is a new detection. |
 
 For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
+
+## 2026-10-21
+
+
+**Response custom rules**
+
+The response firewall can block responses before they reach visitors. Cloudflare turns on default protections for everyone, on every plan.
+
+Every plan includes three response custom rules per zone. These rules run in the `http_response_firewall_custom` phase.
+
+Rules support the `block`, `log`, and `execute` actions. You can include at most one `execute` rule within the three-rule allowance.
+
+Response custom rules can combine request fields with response fields. For requests to `/api/` paths, this expression matches responses with status code `500`:
+
+```txt
+starts_with(http.request.uri.path, "/api/") and http.response.code eq 500
+```
+
+For background, refer to the [full transaction detection announcement ↗︎](https://blog.cloudflare.com/full-transaction-waf/).
+
+For supported actions, fields, and limits, refer to [Response firewall](https://developers.cloudflare.com/waf/response-firewall/).
 
 ## 2026-10-14
 
@@ -404,48 +468,8 @@ This emergency rule provides immediate edge-level mitigation and virtual patchin
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...440f5c55 | N/A | Adobe Commerce - Remote Code Execution - CVE:CVE-2026-75650 | N/A | Block | This is a new detection. |
 
-## 2026-09-08
-
-
-**WAF Release - 2026-09-08**
-
-This release enhances detection logic for existing rules targeting Next.js remote code execution (RCE) vulnerabilities by consolidating active beta rules into baseline signatures.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...c76ba662 | N/A | Next.js - Image Optimizer Remote Code Execution via Crafted AVIF - Beta | Log | Block | This rule is merged into the original rule "Next.js - Image Optimizer Remote Code Execution via Crafted AVIF" (ID: ...80256efe). |
-| Cloudflare Managed Ruleset | ...208457cf | N/A | Next.js - Remote Code Execution - CVE:CVE-2026-75604 - Beta | Log | Block | This rule is merged into the original rule "Next.js - Remote Code Execution - CVE:CVE-2026-75604" (ID: ...2ca6cce3). |
-
-## 2026-09-07
-
-
-**Enforce positive security with Application Profiles**
-
-Application Profiles add a positive-security layer to Cloudflare WAF. Instead of looking only for requests that resemble known attacks, Application Profiles learn what valid requests to your application look like and identify traffic that deviates from the expected structure.
-
-The first available profile type, Schema Profiles, can learn path variables, query parameters, headers, cookies, JSON bodies, and form-encoded bodies. Profiles model field types and constraints such as numeric ranges, string lengths, and character classes. After a profile becomes available, an always-on detection classifies requests as conforming or non-conforming without blocking traffic.
-
-Use **Profile Analysis** in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to review conformance trends and sampled violation details before enforcing a profile. When you are ready to mitigate traffic, use a [Custom Rule](https://developers.cloudflare.com/waf/custom-rules/) to scope enforcement by hostname, path, operation, or other security signals such as Attack Score.
-
-Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is also opening a closed beta to invited Enterprise customers without API Security. Contact your Cloudflare account team to express interest.
-
-For more information, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).
-
-## 2026-09-07
-
-
-**Attack Signature Detection is now available in Early Access**
-
-Attack Signature Detection is now available in Early Access. It evaluates requests against Cloudflare attack signatures and records matches without applying a mitigation action, allowing you to investigate detected traffic before deciding how to respond.
-
-In **Security Analytics** > **Attack Analysis**, you can review matching signature references, categories, confidence levels, and request outcomes. You can then use these fields in [Security Rules](https://developers.cloudflare.com/security/rules/) and combine them with request properties such as hostname, path, and HTTP method to apply scoped mitigation.
-
-Attack Signature Detection uses the same signature definitions as [Cloudflare Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), but it does not inherit your Managed Rules actions, overrides, or deployment configuration. Managed Rules remain the recommended baseline protection during Early Access.
-
-Contact your Cloudflare account team to request access. For more information, refer to [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/).
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of PHP Capture the Flag (CTF) challenge.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"You can now manage AI Security for Apps with Terraform. Version 5.29.0 of the Terraform Cloudflare provider adds two resources:","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

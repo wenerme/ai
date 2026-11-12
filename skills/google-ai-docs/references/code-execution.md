@@ -30,7 +30,7 @@ allows the model to generate and run code.
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="What is the sum of the first 50 prime numbers? "
             "Generate and run code for the calculation, and make sure you get all 50.",
       tools=[{"type": "code_execution"}]
@@ -56,7 +56,7 @@ allows the model to generate and run code.
   const client = new GoogleGenAI({});
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "What is the sum of the first 50 prime numbers? " +
              "Generate and run code for the calculation, and make sure you get all 50.",
       tools: [{ type: "code_execution" }]
@@ -100,7 +100,7 @@ allows the model to generate and run code.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-3.8-flash")
+          .model("gemini-4-hydrogen")
           .input(
               InteractionsInput.of(
                   "What is the sum of the first 50 prime numbers? "
@@ -154,7 +154,7 @@ allows the model to generate and run code.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput(
                   "What is the sum of the first 50 prime numbers? " +
                       "Generate and run code for the calculation, and make sure you get all 50.",
@@ -197,7 +197,7 @@ allows the model to generate and run code.
   -H 'Content-Type: application/json' \
   -H "Api-Revision: 2026-05-20" \
   -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
       "tools": [{"type": "code_execution"}]
   }'
@@ -311,7 +311,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "image", "data": base64.b64encode(image_bytes).decode('utf-8'), "mime_type": "image/jpeg"},
           {"type": "text", "text": "Zoom into the expression pedals and tell me how many pedals are there?"}
@@ -347,7 +347,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
     const base64ImageData = Buffer.from(imageArrayBuffer).toString('base64');
   
     const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
         {
           type: "image",
@@ -414,7 +414,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-3.8-flash")
+          .model("gemini-4-hydrogen")
           .input(
               InteractionsInput.ofContent(
                   Arrays.asList(
@@ -497,7 +497,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.ImageContent{
                       Data:     genai.Ptr(base64Image),
@@ -546,7 +546,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
   {% tab label="REST" %}
   ```shell
   IMG_URL="https://goo.gle/instrument-img"
-  MODEL="gemini-3.8-flash"
+  MODEL="gemini-4-hydrogen"
   
   MIME_TYPE=$(curl -sIL "$IMG_URL" | grep -i '^content-type:' | awk -F ': ' '{print $2}' | sed 's/\r$//' | head -n 1)
   if [[ -z "$MIME_TYPE" || ! "$MIME_TYPE" == image/* ]]; then
@@ -567,7 +567,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
     --rawfile b64 image_b64.txt \
     --arg mime "$MIME_TYPE" \
     '{
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: [
         {type: "image", data: $b64, mime_type: $mime},
         {type: "text", text: "Zoom into the expression pedals and tell me how many pedals are there?"}
@@ -599,14 +599,14 @@ You can also use code execution as part of a multi-turn conversation using
   client = genai.Client()
   
   interaction1 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="I have a math question for you.",
       tools=[{"type": "code_execution"}]
   )
   print(interaction1.output_text)
   
   interaction2 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       previous_interaction_id=interaction1.id,
       input="What is the sum of the first 50 prime numbers? "
             "Generate and run code for the calculation, and make sure you get all 50.",
@@ -633,14 +633,14 @@ You can also use code execution as part of a multi-turn conversation using
   const client = new GoogleGenAI({});
   
   const interaction1 = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "I have a math question for you.",
       tools: [{ type: "code_execution" }]
   });
   console.log(interaction1.output_text);
   
   const interaction2 = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       previous_interaction_id: interaction1.id,
       input: "What is the sum of the first 50 prime numbers? " +
              "Generate and run code for the calculation, and make sure you get all 50.",
@@ -685,7 +685,7 @@ You can also use code execution as part of a multi-turn conversation using
   
   CreateModelInteraction params1 =
       CreateModelInteraction.builder()
-          .model("gemini-3.8-flash")
+          .model("gemini-4-hydrogen")
           .input(InteractionsInput.of("I have a math question for you."))
           .tools(Arrays.asList(CodeExecution.builder().build()))
           .build();
@@ -696,7 +696,7 @@ You can also use code execution as part of a multi-turn conversation using
   
   CreateModelInteraction params2 =
       CreateModelInteraction.builder()
-          .model("gemini-3.8-flash")
+          .model("gemini-4-hydrogen")
           .previousInteractionId(interaction1.id().get())
           .input(
               InteractionsInput.of(
@@ -751,7 +751,7 @@ You can also use code execution as part of a multi-turn conversation using
   
       res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("I have a math question for you."),
               Tools: []interactions.Tool{
                   interactions.NewTool(interactions.CodeExecution{}),
@@ -767,7 +767,7 @@ You can also use code execution as part of a multi-turn conversation using
   
       res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:                 interactions.Model("gemini-3.8-flash"),
+              Model:                 interactions.Model("gemini-4-hydrogen"),
               PreviousInteractionID: res1.Interaction.ID,
               Input: interactions.NewInteractionsInput(
                   "What is the sum of the first 50 prime numbers? " +
@@ -812,7 +812,7 @@ You can also use code execution as part of a multi-turn conversation using
   -H 'Content-Type: application/json' \
   -H "Api-Revision: 2026-05-20" \
   -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "I have a math question for you.",
       "tools": [{"type": "code_execution"}]
   }')
@@ -825,7 +825,7 @@ You can also use code execution as part of a multi-turn conversation using
   -H 'Content-Type: application/json' \
   -H "Api-Revision: 2026-05-20" \
   -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "previous_interaction_id": "'"$INTERACTION_ID"'",
       "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
       "tools": [{"type": "code_execution"}]

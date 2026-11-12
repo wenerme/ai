@@ -113,6 +113,34 @@ When a release is created, release evidence is automatically collected. To initi
 
 Evidence collection snapshots are visible on the Releases page, along with the timestamp the evidence was collected.
 
+## Release evidence size limit
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269740) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `release_evidence_size_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Each release evidence is limited to a [maximum size](../../../administration/instance_limits.md#release-evidence-size-limit).
+The limit is 2 MiB by default.
+
+The release evidence stores the issues of linked milestones, but they are not included when you
+download the evidence. If an evidence would exceed the limit, GitLab stores fewer issues:
+it first leaves out issue descriptions, then whole issues.
+
+If the rest of the evidence alone exceeds the limit, no evidence is collected:
+
+- When you create a release, the release is created without evidence, and the response includes a warning.
+- When you create an [upcoming release](_index.md#upcoming-releases), the response includes a warning
+  if the release exceeds the limit. If it still exceeds the limit on the release date, no evidence is collected.
+- When you [collect release evidence](../../../api/releases/_index.md#collect-release-evidence) with the API,
+  the API returns `422 Unprocessable Entity`.
+- Releases imported with [direct transfer](../../group/import/_index.md) get no evidence, and no warning is shown.
+
+To collect the evidence, ask an administrator to increase the limit, then collect the evidence
+with the API. You do not need to recreate the release. The evidence is a snapshot of the release
+at the time you collect it, not at the time the release was created.
+
 ## Include report artifacts as release evidence
 
 - Tier: Ultimate

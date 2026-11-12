@@ -388,7 +388,10 @@ Configuration example:
 ### `[[$analyzer.passthrough]]` section
 
 > [!note]
-> Passthrough configurations are available for the [Semgrep-based analyzer](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep) only.
+> The [Semgrep-based analyzer](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep)
+> supports all passthrough types.
+> GitLab Advanced SAST supports only the `file` and `raw` types
+> and ignores other types. For more information, see [rule customization options](#rule-customization-options).
 
 The `[[$analyzer.passthrough]]` section allows you to build a custom configuration for an analyzer. You
 can define up to 20 of these sections per analyzer. Passthroughs are composed into a _passthrough chain_
@@ -456,6 +459,22 @@ rules:
   [[gitlab-advanced-sast.passthrough]]
     type  = "file"
     value = "my-gitlab-advanced-sast-rules.yml"
+```
+
+GitLab Advanced SAST sets the severity of each finding from the `severity` of the custom rule.
+`ERROR` becomes `Critical`, `WARNING` becomes `Medium`, and `INFO` becomes `Info`.
+
+To set a different severity, such as `High`, add `security-severity` to the rule's `metadata`.
+Valid values are `Critical`, `High`, `Medium`, `Low`, `Info`, and `Unknown`. Other values are
+ignored, and the `severity` mapping applies. For example:
+
+```yaml
+rules:
+- id: my-custom-rule
+  # ...
+  severity: ERROR
+  metadata:
+    security-severity: High
 ```
 
 ### Disable specific default GitLab Advanced SAST rules

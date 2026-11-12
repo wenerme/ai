@@ -95,6 +95,8 @@ Validity checks support the following secret types:
 - DigitalOcean personal access tokens
 - Doppler personal tokens
 - Doppler service tokens
+- Dropbox app access tokens
+- Dropbox short-lived access tokens
 - EasyPost API tokens
 - EasyPost test API tokens
 - Fastly API tokens
@@ -175,6 +177,7 @@ The supported URLs are:
 - `https://api.datadoghq.com/api/v1/validate`
 - `https://api.digitalocean.com/v2/account`
 - `https://api.doppler.com/v3/me`
+- `https://api.dropboxapi.com/2/users/get_current_account`
 - `https://api.easypost.com/v2/addresses`
 - `https://api.fastly.com/tokens/self`
 - `https://api.flutterwave.com/v3/balances`

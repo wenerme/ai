@@ -51,7 +51,7 @@ In the GitLab UI, the Developer Flow starts when you:
 - Change a work item status.
 
 Some foundational flows use triggers that you can create or manage.
-For more information, see [foundational flow triggers](../../triggers/_index.md#foundational-flow-triggers).
+For more information, see [foundational flow triggers](../../automations/_index.md#foundational-flow-triggers).
 
 ## For developers
 
@@ -111,8 +111,8 @@ The service account acts only when a flow runs, and each session is attributed t
 
 A foundational flow runs when the following events occur:
 
-- A user performs an action that matches a [trigger](../../triggers/_index.md) for the flow. For example, the user mentions the service account or assigns the service account as a reviewer.
-  For actions that can't start a flow, see [actions that don't initiate a trigger](../../triggers/_index.md#actions-that-dont-initiate-a-trigger).
+- A user performs an action that matches a [trigger](../../automations/_index.md) for the flow. For example, the user mentions the service account or assigns the service account as a reviewer.
+  For actions that can't start a flow, see [actions that don't initiate a trigger](../../automations/_index.md#actions-that-dont-initiate-a-trigger).
 - A user starts the flow from an issue, a merge request, or a pipeline.
 - An event in the project starts the flow automatically. For example:
   - The SAST False Positive Detection and Secret False Positive Detection flows run

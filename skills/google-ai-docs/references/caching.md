@@ -12,7 +12,7 @@ costs.
 {% callout type="note" %}
   The **Interactions API** only supports implicit caching. Explicit caching
   (manually creating and managing cache objects) is not supported in the
-  Interactions API, or for Gemini 4 Argon and onward. To use explicit caching on
+  Interactions API, or for Gemini 4 models. To use explicit caching on
   supported Gemini 3 and 2.5 models, switch to the
   [generateContent API](/docs/caching?generate-content=true).
 
@@ -27,7 +27,9 @@ We automatically pass on cost savings if your request hits caches. You don't nee
 
 | Model | Min token limit |
 | :--- | :--- |
+| Gemini 4 Carbon | 4,096 |
 | Gemini 4 Argon | 4,096 |
+| Gemini 4 Hydrogen | 4,096 |
 | Gemini 3.8 Flash | 4,096 |
 | Gemini 3.6 Flash | 4,096 |
 | Gemini 3.1 Pro Preview | 4,096 |
@@ -40,7 +42,7 @@ To increase the chance of an implicit cache hit:
 - Try to send requests with similar prefix in a short amount of time
 
 {% callout type="note" %}
-  **Multi-turn and agent loops on Gemini 4 (Argon and newer):** Gemini caches the
+  **Multi-turn and agent loops on Gemini 4:** Gemini caches the
   full previous request only if the new request adds at least 2,050 tokens. Model
   output, thought, and function results all count toward this total. For smaller
   additions, Gemini re-processes the last 2,050 tokens of the previous request at

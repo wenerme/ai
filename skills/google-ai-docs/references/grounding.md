@@ -30,7 +30,7 @@ Grounding helps you build applications that can:
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Who won the euro 2024?",
       tools=[{"type": "google_search"}]
   )
@@ -47,7 +47,7 @@ Grounding helps you build applications that can:
   const client = new GoogleGenAI({});
   
   const interaction = await client.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input: "Who won the euro 2024?",
       tools: [{ type: "google_search" }]
   });
@@ -72,7 +72,7 @@ Grounding helps you build applications that can:
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Who won the euro 2024?"))
           .tools(Arrays.asList(GoogleSearch.builder().build()))
           .build();
@@ -109,7 +109,7 @@ Grounding helps you build applications that can:
       resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(
               interactions.CreateModelInteraction{
-                  Model: interactions.Model("gemini-3.8-flash"),
+                  Model: interactions.Model("gemini-4-hydrogen"),
                   Input: interactions.NewInteractionsInput("Who won the euro 2024?"),
                   Tools: []interactions.Tool{
                       interactions.NewTool(interactions.GoogleSearch{}),
@@ -134,7 +134,7 @@ Grounding helps you build applications that can:
     -H "Content-Type: application/json" \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Who won the euro 2024?",
       "tools": [{"type": "google_search"}]
     }'
@@ -323,7 +323,7 @@ of the text it cites. Here's how to extract and display them.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Who won the euro 2024?"))
           .tools(Arrays.asList(GoogleSearch.builder().build()))
           .build();
@@ -393,7 +393,7 @@ of the text it cites. Here's how to extract and display them.
       resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(
               interactions.CreateModelInteraction{
-                  Model: interactions.Model("gemini-3.8-flash"),
+                  Model: interactions.Model("gemini-4-hydrogen"),
                   Input: interactions.NewInteractionsInput("Who won the euro 2024?"),
                   Tools: []interactions.Tool{
                       interactions.NewTool(interactions.GoogleSearch{}),
@@ -502,6 +502,7 @@ overview](/docs/models) page.
 | --- | :---: |
 | Gemini 4 Carbon | ✔️ |
 | Gemini 4 Argon | ✔️ |
+| Gemini 4 Hydrogen | ✔️ |
 | Gemini 3.8 Flash | ✔️ |
 | Gemini 3.6 Flash | ✔️ |
 | Gemini 3.5 Flash-Lite | ✔️ |

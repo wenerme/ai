@@ -3,15 +3,22 @@
 REST API to check and evaluate a project's Dependency Firewall.
 
 - Tier: Premium, Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Experiment
+- Offering: GitLab.com, GitLab Self-Managed
+- Status: Beta
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23242) in GitLab 19.4 [with a feature flag](../administration/feature_flags/_index.md) named `dependency_firewall_phase1`. Disabled by default.
+- Changed to [beta](../policy/development_stages_support.md#beta) in GitLab 19.5.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+
+The dependency firewall is in [beta](../policy/development_stages_support.md#beta).
+The policy schema and supported ecosystems might change between releases.
+
+The dependency firewall is free during beta. It is planned to become a paid feature, billed
+through [GitLab Credits](../subscriptions/gitlab_credits.md). You must opt in before you
+are charged, and GitLab gives notice first.
 
 Use this API to interact with the Dependency Firewall for a project.
 The Dependency Firewall blocks packages that do not meet a project's security policies before

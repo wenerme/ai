@@ -76,7 +76,7 @@ Initial API token
 
 You must create the initial API token in the dashboard. An authorized token can [create subsequent user-owned or account-owned tokens through the API](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/).
 
-Before continuing, configure every item in [Required account settings](#required-account-settings). The examples in this section configure the Mesh node device profile, node, and connector token. You must configure device enrollment and global settings separately. **Allow all Cloudflare One traffic to reach enrolled devices** and the ICMP Gateway proxy require dashboard configuration.
+Before continuing, configure every item in [Required account settings](#required-account-settings). The examples in this section configure the Mesh node device profile, node, and connector token. You must configure device enrollment and global settings separately. For the global settings, refer to [Automated settings](#automated-settings).
 
 Before connecting a node, create a safe Include-mode profile. This request requires the `Zero Trust Write` permission. It matches Mesh nodes, uses MASQUE in Traffic and DNS mode, and routes only the Mesh IP range through Cloudflare:
 
@@ -242,9 +242,44 @@ resource "cloudflare_zero_trust_device_settings" "mesh" {
 }
 ```
 
-### Human-only settings
+The [`cloudflare_zero_trust_connectivity_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_connectivity_settings) resource supports **Allow all Cloudflare One traffic to reach enrolled devices** (`offramp_warp_enabled`) and the ICMP Gateway proxy (`icmp_proxy_enabled`):
 
-The Terraform resource does not configure **Allow all Cloudflare One traffic to reach enrolled devices** or the ICMP Gateway proxy. Before connecting participants, turn on enrolled-device reachability in the dashboard. Turn on ICMP only if you require `ping`, `traceroute`, or another ICMP-based workflow.
+```tf
+resource "cloudflare_zero_trust_connectivity_settings" "mesh" {
+	account_id           = var.cloudflare_account_id
+	offramp_warp_enabled = true
+	icmp_proxy_enabled   = false
+}
+```
+
+To configure the same settings with the API, use the [Zero Trust connectivity settings endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/connectivity_settings/methods/edit/). This request requires the `Zero Trust Write` permission:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Updates the Zero Trust Connectivity Settingsbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/connectivity_settings" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"offramp_warp_enabled": true
+	}'
+```
+
+Turn on enrolled-device reachability before connecting participants. Set `icmp_proxy_enabled` to `true` only if you require `ping`, `traceroute`, or another ICMP-based workflow.
 
 ### Existing Cloudflare One accounts
 

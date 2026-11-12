@@ -158,7 +158,7 @@ For non-Code Suggestions troubleshooting for JetBrains IDEs, see [JetBrains trou
 
 ### Suggestions not displayed in JetBrains IDEs
 
-1. From the **Tools** > **GitLab Duo** menu, select **Verify setup**. Make sure the health check passes.
+1. From the **Tools** > **GitLab Duo** menu, select **Verify Setup**. Make sure the health check passes.
 1. Verify that your JetBrains IDE natively supports the language of the file you are
    working on. Go to **Settings** > **Languages & Frameworks** to see the full list of
    languages and frameworks supported by your JetBrains IDE.
@@ -175,9 +175,9 @@ GitLab Language Server process are invalid. To re-enable Code Suggestions:
 
 1. In your IDE, in the top bar, select your IDE name, then select **Settings**.
 1. In the left sidebar, select **Tools** > **GitLab Duo**.
-1. Under **Connection**, select **Verify setup**.
+1. Under **Connection**, select **Verify Setup**.
 1. Update your **Connection** details as needed.
-1. Select **Verify setup**, and confirm that authentication succeeds.
+1. Select **Verify Setup**, and confirm that authentication succeeds.
 1. Select **OK** or **Save**.
 
 ## Microsoft Visual Studio troubleshooting

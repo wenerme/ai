@@ -43,12 +43,34 @@ False positive detection runs automatically in the following scenarios:
 
 The analysis runs in the background and results appear in the vulnerability report after processing is complete.
 
+### Tracked branches and tags
+
+- Support for tracked branches [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267156) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `secrets_fp_detection_non_default_branches`. Disabled by default.
+- Support for tracked tags [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267164) in GitLab 19.6.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+False positive detection also runs automatically for secret detection vulnerabilities that are new on another
+[tracked branch or tag](../vulnerability_report/_index.md#tracking-vulnerabilities-across-contexts).
+The same severity rules apply as on the default branch.
+This automatic run works when you turn on false positive detection in the project settings.
+It also works with the
+[automated triage and remediation profile](../configuration/security_configuration_profiles.md#automated-triage-and-remediation-profile),
+when the profile is set to run automatically.
+
+The secret detection CI/CD template doesn't run jobs in tag pipelines.
+To detect false positives on a tracked tag, [override the analyzer jobs](../secret_detection/pipeline/configure.md#override-the-analyzer-jobs)
+to run in tag pipelines.
+
 ## Manual trigger
 
 You can manually run false positive detection for existing vulnerabilities:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Secure** > **Vulnerability report**.
+1. Optional. To find a vulnerability in another tracked branch or tag, [filter by tracked ref](../vulnerability_report/_index.md#tracked-ref-filter).
 1. Select the vulnerability you want to analyze.
 1. In the upper-right corner, select **AI actions**, then select **Check for false positive**.
 

@@ -24,7 +24,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 73 modelsClear filters
+We found 74 modelsClear filters
 
 ## Compare models
 
@@ -168,6 +168,13 @@ Compare
 
 - Cloudflare-hosted
 - +2
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>embeddinggemma-2</h3>GoogleMultimodal Embeddings EmbeddingGemma 2 is an open multimodal embedding model built by Google DeepMind which maps text (incl. code), images, video, and audio inputs—and combinations thereof—into a single, unified 768-dimensional vector space.](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-2/)
+
+- Cloudflare-hosted
+- +1
 
 Compare
 

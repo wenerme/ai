@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/path-f
 
 # Path filtering
 
-Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path filtering allows you to control which files or URLs are indexed by defining include and exclude patterns. Use this to limit indexing to specific content or to skip files you do not want searchable.
 
-Path filtering works with both [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) and [R2](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) data sources.
+Path filtering works with [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/), [R2](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), and [D1](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/) data sources. For D1 data sources, rules match the item key of each row, such as `42.md`.
 
 ## Configuration
 
@@ -104,6 +104,15 @@ To give each tenant an isolated instance backed by a single shared bucket, refer
 | Exclude login pages | Exclude: `**/login*` | `example.com/blog/post` | `example.com/login`, `example.com/auth/login-form` |
 | Index docs but exclude drafts | Include: `**/docs/**`, Exclude: `**/docs/drafts/**` | `example.com/docs/guide` | `example.com/docs/drafts/wip` |
 
+### D1 data source
+
+D1 item keys have no folders, so patterns do not start with `/`. Rows skipped by these rules are not listed in job logs, and already-indexed rows that become excluded are deleted on the next full sync.
+
+| Use case | Pattern | Indexed | Skipped |
+| --- | --- | --- | --- |
+| Skip draft rows | Exclude: `drafts-*.md` | `guide-1.md` | `drafts-1.md` |
+| Index only one group of rows | Include: `docs-*.md` | `docs-intro.md` | `blog-launch.md` |
+
 ### API format
 
 When using the API, specify patterns in `source_params`:
@@ -126,5 +135,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/#page","headline":"Path filtering","description":"Control which files or URLs AI Search indexes by defining include and exclude path patterns.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/og.png?v=5746285c135dd0b9","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/#page","headline":"Path filtering","description":"Control which files or URLs AI Search indexes by defining include and exclude path patterns.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/og.png?v=5746285c135dd0b9","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

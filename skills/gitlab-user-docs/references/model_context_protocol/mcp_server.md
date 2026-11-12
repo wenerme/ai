@@ -74,8 +74,8 @@ Support for these authentication methods is proposed in [issue 586184](https://g
 
 The GitLab MCP server supports two transport types:
 
-- **HTTP transport (recommended)**: Direct connection without additional dependencies.
-- **stdio transport with `mcp-remote`**: Connection through a proxy (requires Node.js).
+- HTTP transport (recommended): Direct connection without additional dependencies.
+- stdio transport with `mcp-remote`: Connection through a proxy (requires Node.js).
 
 Common AI tools support the JSON configuration format for the `mcpServers` key
 and provide different methods to configure the GitLab MCP server settings.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/get-started/dashboard/og.png?
 
 # Dashboard
 
-Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance using the Cloudflare dashboard.
 
@@ -21,7 +21,9 @@ This guide walks you through creating an AI Search instance using the Cloudflare
 1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select **Create Instance**.
 3. Name your AI Search instance.
-4. Optionally connect a [data source](https://developers.cloudflare.com/ai-search/configuration/data-source/) such as a website you own or an R2 bucket.
+4. Optionally connect a [data source](https://developers.cloudflare.com/ai-search/configuration/data-source/) such as a website you own, an R2 bucket, or a D1 database.
+
+   To connect a [D1 database](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/), select **D1 Database**, choose the database, write the **SQL query**, and choose a document template. Select **Test query** to check the query before you continue.
 5. Review your configurations.
 6. Select **Create**.
 
@@ -64,5 +66,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/dashboard/#page","headline":"Dashboard","description":"Create and configure AI Search using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/ai-search/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/get-started/dashboard/og.png?v=da4569b3265ddbb6","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/dashboard/#page","headline":"Dashboard","description":"Create and configure AI Search using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/ai-search/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/get-started/dashboard/og.png?v=da4569b3265ddbb6","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

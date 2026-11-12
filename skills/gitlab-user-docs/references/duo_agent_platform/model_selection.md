@@ -58,6 +58,7 @@ This table lists the default model for each feature in the Agent Platform.
 - GPT-6.1 Terra [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7672) as a supported model for GitLab Duo Agentic Chat and all other agents on October 26, 2026.
 - Kimi K3.1 Pro [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7879) as a supported model for GitLab Duo Agentic Chat and all other agents on November 6, 2026.
 - Claude Fable 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7916) as a supported model for GitLab Duo Agentic Chat and all other agents on November 9, 2026.
+- Claude Mythos 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7949) as a supported model for Business Logic Security Scan on November 12, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -72,6 +73,7 @@ For information about model availability during trials, see
 | Claude Fable 5.1[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Fable 5.2[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Mythos 5.1[^model-subject-limited], [^mythos-availability] | No              | No       | No           | Yes                  | No               | No       |
+| Claude Mythos 5.2[^model-subject-limited], [^mythos-availability] | No              | No       | No           | Yes                  | No               | No       |
 | Claude Sonnet 4.5           | Yes             | No      | Yes          | No                   | No               | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes                  | No               | Yes      |
 | Claude Sonnet 5             | Yes             | Yes      | No           | Yes                  | Yes              | Yes      |
@@ -155,6 +157,7 @@ Prerequisites:
 - Restricting Agentic Chat to specific models [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22028) in GitLab 19.1 [with a feature flag](../../administration/feature_flags/_index.md) named `model_selection_allowlist`. Enabled by default.
 - Restricting Agentic Chat to specific models [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/600369) in GitLab 19.2. Feature flag `model_selection_allowlist` removed.
 - Restricting Agentic Chat to specific models [extended](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259163) to external agents and third-party tools in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `third_party_agent_token_model_allowlist`. Disabled by default.
+- Restricting Agentic Chat to specific models for external agents and third-party tools [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/632588) in GitLab 19.6. Feature flag `third_party_agent_token_model_allowlist` removed.
 
 To select a model for Agentic Chat:
 
@@ -184,10 +187,6 @@ To select a model for Agentic Chat:
    > [!note]
    > To restrict Agentic Chat to specific models, you must select a GitLab-managed
    > model as the default model.
-
-> [!flag]
-> The availability of this restriction for external agents and third-party tools is controlled by a feature flag.
-> For more information, see the history.
 
 The restriction also applies to [external agents](agents/external.md)
 that use GitLab-managed credentials.

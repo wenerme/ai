@@ -189,7 +189,7 @@ Enable a flow to trigger it from an issue, merge request, or discussion.
 When you enable a flow in a project:
 
 - The flow is enabled in the top-level group for that project at the same time.
-- You add a [trigger](../triggers/_index.md) to specify which events trigger the
+- You add a [trigger](../automations/_index.md) to specify which events trigger the
   flow. Some of the trigger events involve the service account user. For more
   information, see [composite identity](../composite_identity.md).
 
@@ -208,12 +208,12 @@ To enable a flow:
 1. Select the **Managed** tab, then select the flow you want to enable.
 1. In the upper-right corner, select **Enable**.
 1. Under **Project**, select the project you want to enable the flow in.
-1. Under **Conditions**, review the [events](../triggers/_index.md#trigger-event-types) that trigger the flow.
+1. Under **Conditions**, review the [events](../automations/_index.md#trigger-event-types) that trigger the flow.
    By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
    - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
 1. Optional. To tell the flow what to do for an event, edit the event, then enter text in the **Instructions** field.
-   For more information, see [Add instructions](../triggers/_index.md#add-instructions).
+   For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Select **Enable**.
 
 ### From the top-level group
@@ -237,12 +237,12 @@ To enable a flow for all projects in a top-level group:
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to enable.
 1. In the upper-right corner, select **Enable for all projects**.
-1. Under **Conditions**, review the [events](../triggers/_index.md#trigger-event-types) that trigger the flow.
+1. Under **Conditions**, review the [events](../automations/_index.md#trigger-event-types) that trigger the flow.
    By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
    - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
 1. Optional. To tell the flow what to do for an event, edit the event, then enter text in the **Instructions** field.
-   For more information, see [Add instructions](../triggers/_index.md#add-instructions).
+   For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Select **Enable for all projects**.
 
    If the flow is already enabled in one or more projects in the group,
@@ -275,10 +275,10 @@ To enable a flow:
    You can enable a flow for multiple projects up to 10 times per minute.
 
 1. For **Add triggers**, select:
-   - The [event types that trigger the flow](../triggers/_index.md#trigger-event-types).
+   - The [event types that trigger the flow](../automations/_index.md#trigger-event-types).
    - If needed for the trigger event type, a trigger event action.
 1. Optional. For an event, in the **Instructions** field, enter text that tells the flow what to do.
-   For more information, see [Add instructions](../triggers/_index.md#add-instructions).
+   For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Select **Enable**.
 
 The flow appears in the group and project **AI** > **Flows** pages.
@@ -294,7 +294,7 @@ follows this naming convention: `ai-<flow>-<group>`.
 
 You can manage a flow's triggers from its configuration page.
 
-For more information about triggers, including how to create one, see [triggers](../triggers/_index.md).
+For more information about triggers, including how to create one, see [triggers](../automations/_index.md).
 
 Prerequisites:
 

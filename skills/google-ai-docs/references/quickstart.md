@@ -15,18 +15,18 @@ The Interactions API is available through the
 [JavaScript](https://github.com/googleapis/js-genai) SDKs, as well as through
 REST.
 
-## Choose the right Gemini tool  {% id="choose-tool" %}
+{% callout type="info" %}
+  Building with an AI coding agent? Copy this setup prompt into your agent, or
+  connect our [MCP server and skills](/docs/coding-agents) for live documentation
+  updates.
 
-Use the [Google GenAI SDKs](/docs/libraries) and [coding agent setup](/docs/coding-agents) when you are **building** Gemini into an application. Use the [Gemini API CLI](/docs/cli) (`gemini-api`) when an agent or script needs to **call** Gemini directly from the shell without adding SDK code to your project:
-
-| Tool | What it does | When to use it |
-| :--- | :--- | :--- |
-| **[Google GenAI SDKs](/docs/libraries)** | Imports Gemini client libraries into Python, TypeScript, JavaScript, Go, Java, or C# code. | You are building Gemini features into your application, backend service, or real-time [Live API](/docs/live-api) session. |
-| **[Gemini Docs MCP & skills](/docs/coding-agents)** | Gives coding agents live documentation search and current SDK rules. | Your coding agent is writing application code that imports a Google GenAI SDK. |
-| **[Gemini API CLI](/docs/cli)** (`gemini-api`) | Calls Gemini models and managed agents from any shell. | Your coding agent, shell script, or CI job needs to generate media, analyze files, or run a background research agent with zero project dependencies. |
-
-{% callout type="note" %}
-  `gemini-api` is a stateless API client, not an interactive coding agent like `@google/gemini-cli`. You can run `gemini-api` inside any coding agent.
+  ```none
+  Set up my Gemini API project using the Interactions API and the latest models. Read https://aistudio.google.com/docs/get-started.md first (every page under https://aistudio.google.com/docs/ is available as Markdown when you add `.md`, or via https://aistudio.google.com/llms.txt).
+  1. Install `google-genai` (Python) or `@google/genai` (JS/TS) for this project.
+  2. Check `GEMINI_API_KEY`, or prompt me to create one at https://aistudio.google.com/apikey.
+  3. Ask if I want to add the `gemini-api-dev` skill and Docs MCP server from https://aistudio.google.com/docs/coding-agents.md.
+  4. When we are set up, run one `client.interactions.create` test call, show me the reply, and ask what I want to build.
+  ```
 
 {% /callout %}
 
@@ -52,21 +52,9 @@ Set your key as an environment variable:
 export GEMINI_API_KEY="YOUR_API_KEY"
 ```
 
-### Upgrade to the paid tier  {% id="upgrade-paid-tier" %}
-
-Upgrading to the paid tier increases your rate limits and requires setting up
-Cloud Billing.
-
-*   Click **Set up billing** on the AI Studio [API
-  keys](https://aistudio.google.com/api-keys) or
-  [Projects](https://aistudio.google.com/projects) pages.
-*   Follow the Cloud Billing dialog to create or link a billing account, add a
-  payment method, and prepay a minimum of $5 (or currency equivalent) in paid
-  credits.
-*   View your API usage in [Google AI Studio](https://aistudio.google.com/usage)
-  under **Dashboard** > **Usage**.
-
-See the [Billing page](/docs/billing) for more information.
+To increase your rate limits, click **Set up billing** on the [API
+keys](https://aistudio.google.com/api-keys) page or see the [Billing
+guide](/docs/billing).
 
 ## 2. Install the SDK and make your first call  {% id="2-install-the-sdk-and-make-your-first-call" %}
 
@@ -88,7 +76,7 @@ Install the SDK and generate text with a single API call.
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Explain how AI works in a few words"
   )
   print(interaction.output_text)
@@ -111,7 +99,7 @@ Install the SDK and generate text with a single API call.
   const ai = new GoogleGenAI({});
   
   const interaction = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "Explain how AI works in a few words",
   });
   console.log(interaction.output_text);
@@ -132,7 +120,7 @@ Install the SDK and generate text with a single API call.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Explain how AI works in a few words"))
           .build();
   
@@ -167,7 +155,7 @@ Install the SDK and generate text with a single API call.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Explain how AI works in a few words."),
           }),
       })
@@ -190,7 +178,7 @@ Install the SDK and generate text with a single API call.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Explain how AI works in a few words"
     }'
   ```
@@ -223,7 +211,7 @@ Install the SDK and generate text with a single API call.
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash",
+    "model": "gemini-4-hydrogen",
   }
   ```
 
@@ -249,29 +237,6 @@ access final outputs directly. Learn more about the response structure in the
 generation guide](/docs/text-generation) for details on system instructions and
 generation config.
 
-{% callout type="info" %}
-  **Building with an AI coding agent?** Install the skill and then paste the
-  prompt to get started with the Gemini API using Interactions:
-
-{% /callout %}
-
-{% tabs %}
-  {% tab label="Install" %}
-  ```bash
-  npx skills add google-gemini/gemini-skills --skill gemini-api-dev
-  ```
-
-  {% /tab %}
-
-  {% tab label="Prompt" %}
-  ```none
-  Based on what you know about me and my learning style, interactively guide me through the concepts Getting Started for the Gemini API at https://aistudio.google.com/docs/get-started.md using the Interactions API
-  ```
-
-  {% /tab %}
-
-{% /tabs %}
-
 ## 3. Stream the response  {% id="3-stream-the-response" %}
 
 For more fluid interactions, stream the response as it's generated. Each
@@ -285,7 +250,7 @@ For more fluid interactions, stream the response as it's generated. Each
   client = genai.Client()
   
   stream = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Explain how AI works",
       stream=True
   )
@@ -302,7 +267,7 @@ For more fluid interactions, stream the response as it's generated. Each
   const ai = new GoogleGenAI({});
   
   const stream = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "Explain how AI works",
     stream: true,
   });
@@ -329,7 +294,7 @@ For more fluid interactions, stream the response as it's generated. Each
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Explain how AI works"))
           .stream(true)
           .build();
@@ -369,7 +334,7 @@ For more fluid interactions, stream the response as it's generated. Each
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Write a haiku about coding."),
           }),
       })
@@ -393,7 +358,7 @@ For more fluid interactions, stream the response as it's generated. Each
     -H "Api-Revision: 2026-05-20" \
     --no-buffer \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Explain how AI works",
       "stream": true
     }'
@@ -406,7 +371,7 @@ For more fluid interactions, stream the response as it's generated. Each
 
   ```json
   event: interaction.created
-  data: {"interaction":{"id":"v1_Chd...","status":"in_progress","model":"gemini-3.8-flash"},"event_type":"interaction.created"}
+  data: {"interaction":{"id":"v1_Chd...","status":"in_progress","model":"gemini-4-hydrogen"},"event_type":"interaction.created"}
   
   event: step.start
   data: {"index":0,"step":{"type":"thought"},"event_type":"step.start"}
@@ -472,13 +437,13 @@ The Interactions API supports multi-turn conversations with two approaches:
   
   # Server-side state (recommended)
   interaction1 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="I have 2 dogs in my house.",
   )
   print("Response 1:", interaction1.output_text)
   
   interaction2 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="How many paws are in my house?",
       previous_interaction_id=interaction1.id,
   )
@@ -495,13 +460,13 @@ The Interactions API supports multi-turn conversations with two approaches:
   
   // Server-side state (recommended)
   const interaction1 = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "I have 2 dogs in my house.",
   });
   console.log("Response 1:", interaction1.output_text);
   
   const interaction2 = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "How many paws are in my house?",
     previous_interaction_id: interaction1.id,
   });
@@ -524,7 +489,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   // Server-side state (recommended)
   CreateModelInteraction params1 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("I have 2 dogs in my house."))
           .build();
   
@@ -534,7 +499,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   
   CreateModelInteraction params2 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("How many paws are in my house?"))
           .previousInteractionId(interaction1.id().orElse(""))
           .build();
@@ -569,7 +534,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:  interactions.Model("gemini-3.8-flash"),
+              Model:  interactions.Model("gemini-4-hydrogen"),
               Input:  interactions.NewInteractionsInput("Explain quantum computing in simple terms."),
               Stream: genai.Ptr(true),
           }),
@@ -603,7 +568,7 @@ The Interactions API supports multi-turn conversations with two approaches:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "I have 2 dogs in my house."
     }')
   
@@ -615,7 +580,7 @@ The Interactions API supports multi-turn conversations with two approaches:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "How many paws are in my house?",
       "previous_interaction_id": "'$INTERACTION_ID'"
     }'
@@ -655,7 +620,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   ]
   
   interaction1 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       store=False,
       input=history
   )
@@ -670,7 +635,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   })
   
   interaction2 = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       store=False,
       input=history
   )
@@ -693,7 +658,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   ];
   
   const interaction1 = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     store: false,
     input: history
   });
@@ -707,7 +672,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   });
   
   const interaction2 = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     store: false,
     input: history
   });
@@ -741,7 +706,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   
   CreateModelInteraction params1 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .store(false)
           .input(InteractionsInput.ofStep(history))
           .build();
@@ -759,7 +724,7 @@ The Interactions API supports multi-turn conversations with two approaches:
   
   CreateModelInteraction params2 =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .store(false)
           .input(InteractionsInput.ofStep(history))
           .build();
@@ -795,7 +760,7 @@ The Interactions API supports multi-turn conversations with two approaches:
       // 1. First turn
       res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Hi, my name is Alex."),
           }),
       })
@@ -809,7 +774,7 @@ The Interactions API supports multi-turn conversations with two approaches:
       // 2. Second turn (passing PreviousInteractionID)
       res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:                 interactions.Model("gemini-3.8-flash"),
+              Model:                 interactions.Model("gemini-4-hydrogen"),
               Input:                 interactions.NewInteractionsInput("What's my name?"),
               PreviousInteractionID: res1.Interaction.ID,
           }),
@@ -833,7 +798,7 @@ The Interactions API supports multi-turn conversations with two approaches:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "store": false,
       "input": [
         {
@@ -857,7 +822,7 @@ The Interactions API supports multi-turn conversations with two approaches:
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d "{
-      \"model\": \"gemini-3.8-flash\",
+      \"model\": \"gemini-4-hydrogen\",
       \"store\": false,
       \"input\": $HISTORY
     }"
@@ -886,7 +851,7 @@ The Interactions API supports multi-turn conversations with two approaches:
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash"
+    "model": "gemini-4-hydrogen"
   }
   ```
 
@@ -924,7 +889,7 @@ media alongside text in a single request.
   image_b64 = base64.b64encode(image_bytes).decode("utf-8")
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input=[
           {"type": "text", "text": "Compare this local image and this remote audio file."},
           {
@@ -956,7 +921,7 @@ media alongside text in a single request.
   const imageB64 = imageBytes.toString("base64");
   
   const interaction = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: [
       { type: "text", text: "Compare this local image and this remote audio file." },
       {
@@ -1002,7 +967,7 @@ media alongside text in a single request.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(
               InteractionsInput.ofContent(
                   Arrays.asList(
@@ -1057,7 +1022,7 @@ media alongside text in a single request.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.TextContent{
                       Text: "What is in this image?",
@@ -1091,7 +1056,7 @@ media alongside text in a single request.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": [
         {
           "type": "text",
@@ -1132,7 +1097,7 @@ media alongside text in a single request.
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash",
+    "model": "gemini-4-hydrogen",
   }
   ```
 
@@ -1281,7 +1246,7 @@ Banana](/docs/image-generation) image models.
       // 1. Send prompt with tool declaration
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("What is the weather like in Boston?"),
               Tools: []interactions.Tool{weatherTool},
           }),
@@ -1299,7 +1264,7 @@ Banana](/docs/image-generation) image models.
               // 3. Execute your local function and send the result back
               finalRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
                   Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                      Model:                 interactions.Model("gemini-3.8-flash"),
+                      Model:                 interactions.Model("gemini-4-hydrogen"),
                       PreviousInteractionID: res.Interaction.ID,
                       Input: interactions.NewInteractionsInput([]interactions.Step{
                           interactions.NewStep(interactions.FunctionResultStep{
@@ -1407,7 +1372,7 @@ output works with [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Give me a recipe for banana bread",
       response_format={
           "type": "text",
@@ -1449,7 +1414,7 @@ output works with [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
   const recipeSchema = z.fromJSONSchema(recipeJsonSchema);
   
   const interaction = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "Give me a recipe for banana bread",
     response_format: {
       type: "text",
@@ -1518,7 +1483,7 @@ output works with [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Give me a recipe for banana bread"))
           .responseFormat(format)
           .build();
@@ -1553,7 +1518,7 @@ output works with [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Who won the latest Super Bowl and what was the score?"),
               Tools: []interactions.Tool{
                   interactions.NewTool(interactions.GoogleSearch{}),
@@ -1603,7 +1568,7 @@ output works with [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Give me a recipe for banana bread",
       "response_format": {
         "type": "text",
@@ -1646,7 +1611,7 @@ output works with [Pydantic](https://docs.pydantic.dev/latest/) (Python) and
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash",
+    "model": "gemini-4-hydrogen",
   }
   ```
 
@@ -1692,7 +1657,7 @@ automatically searches, processes results, and returns citations.
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Who won the euro 2024?",
       tools=[{"type": "google_search"}]
   )
@@ -1719,7 +1684,7 @@ automatically searches, processes results, and returns citations.
   const ai = new GoogleGenAI({});
   
   const interaction = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "Who won the euro 2024?",
     tools: [{ type: "google_search" }]
   });
@@ -1767,7 +1732,7 @@ automatically searches, processes results, and returns citations.
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(InteractionsInput.of("Who won the euro 2024?"))
           .tools(Arrays.asList(new GoogleSearch()))
           .build();
@@ -1819,7 +1784,7 @@ automatically searches, processes results, and returns citations.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Calculate the 20th Fibonacci number and verify if it is prime."),
               Tools: []interactions.Tool{
                   interactions.NewTool(interactions.CodeExecution{}),
@@ -1853,7 +1818,7 @@ automatically searches, processes results, and returns citations.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Who won the euro 2024?",
       "tools": [{"type": "google_search"}]
     }'
@@ -1905,7 +1870,7 @@ automatically searches, processes results, and returns citations.
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash",
+    "model": "gemini-4-hydrogen",
   }
   ```
 
@@ -1983,7 +1948,7 @@ structured arguments, and you execute it locally and send the result back.
   
   while True:
       interaction = client.interactions.create(
-          model="gemini-3.8-flash",
+          model="gemini-4-hydrogen",
           input=user_input,
           tools=[weather_tool],
           previous_interaction_id=previous_id,
@@ -2046,7 +2011,7 @@ structured arguments, and you execute it locally and send the result back.
   
   while (true) {
     interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       input,
       tools: [weatherTool],
       previous_interaction_id: previousId,
@@ -2126,7 +2091,7 @@ structured arguments, and you execute it locally and send the result back.
   while (true) {
     CreateModelInteraction.Builder paramsBuilder =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
+            .model(Model.of("gemini-4-hydrogen"))
             .input(userInput)
             .tools(Arrays.asList(weatherTool));
     if (previousId != null) {
@@ -2191,7 +2156,7 @@ structured arguments, and you execute it locally and send the result back.
       // Turn 1: Create a CSV file in the sandbox
       turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Write a Python script to save a CSV file 'sales.csv' with 5 rows of sample data."),
               Tools: []interactions.Tool{
                   interactions.NewTool(interactions.CodeExecution{}),
@@ -2210,7 +2175,7 @@ structured arguments, and you execute it locally and send the result back.
       // Turn 2: Reuse the sandbox environment to analyze the file created in Turn 1
       turn2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model:                 interactions.Model("gemini-3.8-flash"),
+              Model:                 interactions.Model("gemini-4-hydrogen"),
               PreviousInteractionID: turn1.Interaction.ID,
               Environment:           env,
               Input:                 interactions.NewInteractionsInput("Now read 'sales.csv' and compute the total revenue."),
@@ -2239,7 +2204,7 @@ structured arguments, and you execute it locally and send the result back.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "What is the temperature in London?",
       "tools": [{
         "type": "function",
@@ -2266,7 +2231,7 @@ structured arguments, and you execute it locally and send the result back.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "previous_interaction_id": "'$INTERACTION_ID'",
       "input": [{
         "type": "function_result",
@@ -2345,7 +2310,7 @@ structured arguments, and you execute it locally and send the result back.
   
   while True:
       interaction = client.interactions.create(
-          model="gemini-3.8-flash",
+          model="gemini-4-hydrogen",
           store=False,
           input=history,
           tools=[weather_tool],
@@ -2413,7 +2378,7 @@ structured arguments, and you execute it locally and send the result back.
   
   while (true) {
     interaction = await ai.interactions.create({
-      model: "gemini-3.8-flash",
+      model: "gemini-4-hydrogen",
       store: false,
       input: history,
       tools: [weatherTool],
@@ -2498,7 +2463,7 @@ structured arguments, and you execute it locally and send the result back.
   while (true) {
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.8-flash"))
+            .model(Model.of("gemini-4-hydrogen"))
             .store(false)
             .input(InteractionsInput.ofStep(history))
             .tools(Arrays.asList(weatherTool))
@@ -2574,7 +2539,7 @@ structured arguments, and you execute it locally and send the result back.
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-flash"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Give me a quick recipe for chocolate chip cookies."),
               ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
                   interactions.NewResponseFormat(interactions.TextResponseFormat{
@@ -2604,7 +2569,7 @@ structured arguments, and you execute it locally and send the result back.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "store": false,
       "input": [
         {
@@ -2650,7 +2615,7 @@ structured arguments, and you execute it locally and send the result back.
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d "{
-      \"model\": \"gemini-3.8-flash\",
+      \"model\": \"gemini-4-hydrogen\",
       \"store\": false,
       \"input\": $HISTORY,
       \"tools\": [{
@@ -2688,7 +2653,7 @@ structured arguments, and you execute it locally and send the result back.
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash"
+    "model": "gemini-4-hydrogen"
   }
   ```
 
@@ -2719,7 +2684,7 @@ structured arguments, and you execute it locally and send the result back.
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash",
+    "model": "gemini-4-hydrogen",
   }
   ```
 
@@ -2827,7 +2792,7 @@ and file management. Pass an `agent` instead of a `model` and set
   
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-              Model: interactions.Model("gemini-3.8-pro"),
+              Model: interactions.Model("gemini-4-hydrogen"),
               Input: interactions.NewInteractionsInput("Solve this logic puzzle: Three gods A, B, and C are called True, False, and Random..."),
               GenerationConfig: &interactions.GenerationConfig{
                   ThinkingLevel:     interactions.ThinkingLevelHigh.ToPointer(),
@@ -2910,7 +2875,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
   client = genai.Client()
   
   interaction = client.interactions.create(
-      model="gemini-3.8-flash",
+      model="gemini-4-hydrogen",
       input="Write a detailed analysis of the impact of artificial intelligence on modern healthcare.",
       background=True,
   )
@@ -2939,7 +2904,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
   const ai = new GoogleGenAI({});
   
   const interaction = await ai.interactions.create({
-    model: "gemini-3.8-flash",
+    model: "gemini-4-hydrogen",
     input: "Write a detailed analysis of the impact of artificial intelligence on modern healthcare.",
     background: true,
   });
@@ -2978,7 +2943,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
   
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model(Model.of("gemini-3.8-flash"))
+          .model(Model.of("gemini-4-hydrogen"))
           .input(
               InteractionsInput.of(
                   "Write a detailed analysis of the impact of artificial intelligence on modern healthcare."))
@@ -3080,7 +3045,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
     -H 'Content-Type: application/json' \
     -H "Api-Revision: 2026-05-20" \
     -d '{
-      "model": "gemini-3.8-flash",
+      "model": "gemini-4-hydrogen",
       "input": "Write a detailed analysis of the impact of artificial intelligence on modern healthcare.",
       "background": true
     }')
@@ -3115,7 +3080,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
     "id": "v1_abc123",
     "status": "in_progress",
     "object": "interaction",
-    "model": "gemini-3.8-flash"
+    "model": "gemini-4-hydrogen"
   }
   ```
 
@@ -3138,7 +3103,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
       }
     ],
     "object": "interaction",
-    "model": "gemini-3.8-flash",
+    "model": "gemini-4-hydrogen",
   }
   ```
 
@@ -3147,7 +3112,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
   {% tab label="CLI" %}
   ```bash
   INTERACTION_ID=$(gemini-api agent run "Write a detailed analysis of the impact of artificial intelligence on modern healthcare." \
-    -m gemini-3.8-flash --background --stream=false --jq '.id')
+    -m gemini-4-hydrogen --background --stream=false --jq '.id')
   echo "Started background task: $INTERACTION_ID"
   # Re-run until the status is "completed"
   gemini-api agent status "$INTERACTION_ID"

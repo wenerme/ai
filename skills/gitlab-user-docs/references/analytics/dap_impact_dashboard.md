@@ -3,10 +3,11 @@
 View the impact of your usage of GitLab Duo Agent Platform across your organization.
 
 - Tier: Premium, Ultimate
-- Offering: GitLab.com
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632113) in GitLab 19.5.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632113) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `dap_impact_v1`. Disabled by default.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268734) and introduced as a [beta](../../policy/development_stages_support.md#beta) on GitLab Self-Managed and GitLab Dedicated in GitLab 19.6.
 
 This feature is in [beta](../../policy/development_stages_support.md#beta).
 Share your feedback in [issue 632127](https://gitlab.com/gitlab-org/gitlab/-/work_items/632127).
@@ -104,7 +105,10 @@ The **Capability outcomes** section displays the following metrics:
   - **no_status_reported**: The CI workload ended without reporting a final status.
   - **job_failed**: A CI job did not succeed.
   - **workload_not_created**: The CI workload for the session could not be created.
-  - **preconditions_not_met**: A requirement for starting the session was not met, for example no eligible runner was available.
+  - **preconditions_not_met**: No eligible runner was available for the session.
+    Before GitLab 19.6, this reason was also recorded when the namespace had no compute minutes left.
+  - **compute_minutes_used_up**: No runner was available because the namespace has no compute minutes left.
+  - **could_not_prepare_session**: GitLab could not prepare the session.
   - **start_failed**: The session could not start.
   - **api_reported**: The agent reported an error.
   - **token_rejected**: The GitLab Duo Workflow Service rejected the session's token and did not run the session.
@@ -128,11 +132,18 @@ The **Spend** tab displays metrics on how much Agent Platform features are being
 - **Chat**: Number of credits consumed by Chat sessions.
 - **Credits over time**: Number of credits used over time, stacked by capability.
 
+> [!note]
+> On GitLab Self-Managed, credit data syncs every six hours and requires a paid license.
+> The first sync imports up to 90 days of credit data. On larger instances, the first sync
+> can take several runs to complete.
+
 ## View the dashboard
 
 Prerequisites:
 
 - The Owner role for the group to view credit usage data.
+- For GitLab Self-Managed, [ClickHouse must be configured](../../integration/clickhouse.md)
+  and Siphon replication must be enabled.
 
 1. In the top bar, select **Search or go to** > **Explore**.
 1. In the left sidebar, select **GitLab Intelligence**.

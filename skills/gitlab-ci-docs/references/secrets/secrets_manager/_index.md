@@ -445,10 +445,7 @@ instance subscription. Instances with a paid subscription can also start a free 
 
 ### Error: `secret source group is not accessible from this project`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633509) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `secrets_manager_defer_group_source_check`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633509) in GitLab 19.6.
 
 A job fails with this error before it runs when a secret uses
 `source: group/<full-path-to-group>` and that group is not the project's group or one of its parent groups.
@@ -457,17 +454,9 @@ For example, this happens in a pipeline for a merge request from a fork, because
 GitLab still creates the pipeline. Only the jobs that use the secret fail.
 Other jobs in the pipeline run as usual.
 
-When the feature flag is disabled, GitLab does not create the jobs. Instead, the pipeline fails with an error like:
-
-```plaintext
-jobs:<job-name>:secrets:<variable-name>:gitlab_secrets_manager source group with path '<full-path-to-group>' not found
-```
-
 To resolve this error, do one of the following:
 
 - Change `source` to the project's group or one of its parent groups.
 - Use [`rules`](../../yaml/_index.md#rules) to run the job only in projects that can read the secret.
   For example, if `source` is the top-level group `group/my-group`, use
   `if: $CI_PROJECT_ROOT_NAMESPACE == "my-group"`.
-  This works only when the feature flag is enabled. When it is disabled, GitLab checks the source
-  before it evaluates `rules`, so the pipeline still fails.

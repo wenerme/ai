@@ -23,6 +23,8 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Tunnel health checks](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/)
 - [Virtual networks](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/)
 - [How Cloudflare calculates tunnel health alerts](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/)
+- [Cloud networking](https://developers.cloudflare.com/cloudflare-wan/reference/cloud-networking/)
+- [Legacy changelog](https://developers.cloudflare.com/cloudflare-wan/reference/legacy-cloud-networking-changelog/)
 
 Was this helpful?
 

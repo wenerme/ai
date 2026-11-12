@@ -74,7 +74,7 @@ For more information, see:
 
 - [Flows](../duo_agent_platform/flows/_index.md).
 - [AI Catalog](../duo_agent_platform/ai_catalog.md).
-- [Triggers](../duo_agent_platform/triggers/_index.md).
+- [Triggers](../duo_agent_platform/automations/_index.md).
 
 ## Step 4: Monitor and review agent activity
 

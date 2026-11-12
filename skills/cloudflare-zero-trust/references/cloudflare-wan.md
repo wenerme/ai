@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/og.png?v=bcaa40d02612ec4
 
 # Cloudflare WAN
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect and secure your entire corporate network through Cloudflare, replacing MPLS circuits and hub-and-spoke routing with cloud-native networking.
 
@@ -22,7 +22,9 @@ Cloudflare WAN (formerly Magic WAN) connects your data centers, offices, and clo
 
 Cloudflare WAN provides secure, performant [routing ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-routing/) for your entire corporate network. [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) integrates with Cloudflare WAN, enabling you to enforce network firewall policies at Cloudflare's global network, across traffic from any entity within your network.
 
-You connect your sites to Cloudflare through on-ramps — tunnels or direct connections from your network to Cloudflare. Cloudflare WAN supports any device that uses anycast GRE or IPsec tunnels. To make it easier to onboard your cloud resources, you can use [Multi-Cloud Networking](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/), which automates creating on-ramps from your cloud networks. Refer to [On-ramps](https://developers.cloudflare.com/cloudflare-wan/on-ramps/) for a full list of supported on-ramps.
+You connect your sites to Cloudflare through on-ramps — tunnels or direct connections from your network to Cloudflare. Cloudflare WAN supports any device that uses anycast GRE or IPsec tunnels.
+
+For cloud networks, use IPsec tunnels or Cloud Interconnect. Refer to [Cloud networking](https://developers.cloudflare.com/cloudflare-wan/reference/cloud-networking/) for provider configurations, or [On-ramps](https://developers.cloudflare.com/cloudflare-wan/on-ramps/) for all connection options.
 
 Refer to [WAN transformation](https://developers.cloudflare.com/cloudflare-wan/wan-transformation/) to compare approaches and plan your migration, or go straight to [get started](https://developers.cloudflare.com/cloudflare-wan/get-started/).
 
@@ -59,11 +61,11 @@ Set up Cloudflare WAN with your existing routers and firewalls. If you do not ha
 
 Use a third-party device
 
-[Automatic cloud on-ramps](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/)
+[Connect your cloud networks](https://developers.cloudflare.com/cloudflare-wan/reference/cloud-networking/)
 
-Automate resource discovery, and reduce management burden when connecting to your public cloud.
+Connect cloud networks using IPsec tunnels or Cloud Interconnect. Find provider-specific configurations and routing requirements.
 
-Automate your cloud on-ramps
+Find a cloud configuration
 
 [Zero Trust integration](https://developers.cloudflare.com/cloudflare-wan/zero-trust/)
 
@@ -101,10 +103,6 @@ Cloudflare One is the full SASE platform. It extends Cloudflare WAN with identit
 
 Cloudflare Network Firewall is a firewall-as-a-service (FWaaS) that filters traffic at layers 3 and 4 across Cloudflare's global network. Included with Cloudflare WAN.
 
-[Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)
-
-Simplify and automate cloud resource discovery, and reduce your management burden when connecting to your public cloud.
-
 [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 
 Cloudflare Network Interconnect (CNI) provides a private, dedicated connection between your network and Cloudflare instead of routing over the public Internet. Use CNI when you need lower latency or more consistent performance than tunnel-based connectivity.
@@ -130,5 +128,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/#page","headline":"Cloudflare WAN","description":"Connect and secure your network locations with Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/og.png?v=bcaa40d02612ec48","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/#page","headline":"Cloudflare WAN","description":"Connect and secure your network locations with Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/og.png?v=bcaa40d02612ec48","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
