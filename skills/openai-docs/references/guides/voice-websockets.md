@@ -24,11 +24,11 @@ The example below uses Marin, PCM16 audio at 24 kHz, and a Responses backend wit
 
 ### Stream audio with an SDK
 
-For Node.js, install `openai` and `ws` with `npm install openai ws` and save the JavaScript example as `client.mjs`. For Python on macOS or Linux, install `openai[realtime]` and save the Python example as `client.py`. Set `OPENAI_API_KEY` in the server environment. These examples require an SDK version with Live support. The example reads raw, mono PCM16 audio at 24 kHz from standard input and writes returned audio in the same format to standard output. Connect these streams to your application's audio capture and playback. Logs and transcript events go to standard error so they do not corrupt the audio stream.
+For Node.js 22.6 or later, install `openai` and `ws` with `npm install openai ws` and save the TypeScript example as `client.mts`. For Python on macOS or Linux, install `openai[realtime]` and save the Python example as `client.py`. Set `OPENAI_API_KEY` in the server environment. These examples require an SDK version with Live support. The example reads raw, mono PCM16 audio at 24 kHz from standard input and writes returned audio in the same format to standard output. Connect these streams to your application's audio capture and playback. Logs and transcript events go to standard error so they do not corrupt the audio stream.
 
-For Go, use Go 1.26 or later, save the example as `main.go`, initialize a module with `go mod init live-demo`, and install `github.com/openai/openai-go/v3@v3.85.1` with `go get`. For Java, use Java 17 or later, add the Maven dependency `com.openai:openai-java:4.90.0`, and use the `LiveConnectionWebsocketExample` class. For Ruby 3.3 or later, install the SDK with `gem install openai -v 0.110.0`, install its WebSocket dependency with `gem install async-websocket`, and save the example as `client.rb`.
+For Go, use Go 1.26 or later, save the example as `main.go`, initialize a module with `go mod init live-demo`, and install `github.com/openai/openai-go/v3@v3.85.1` with `go get`. For Java, use Java 17 or later, add the Maven dependency `com.openai:openai-java:4.95.0`, and use the `LiveConnectionWebsocketExample` class. For Ruby 3.3 or later, install the SDK with `gem install openai -v 0.110.0`, install its WebSocket dependency with `gem install async-websocket`, and save the example as `client.rb`.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { LiveWS } from "openai/resources/live/ws";
 
@@ -41,7 +41,7 @@ let closing = false;
 let finalized = false;
 let pendingByte = Buffer.alloc(0);
 
-let closeTimeout;
+let closeTimeout: ReturnType<typeof setTimeout> | undefined;
 
 ws.socket.on("open", () => {
   ws.send({
@@ -642,7 +642,7 @@ end
 ```
 
 
-Run `node client.mjs`, `python client.py`, `go run .`, `ruby client.rb`, or your Java application with your audio source and player attached. After `Session ready` appears, supply a continuous microphone stream paced at its recorded sample rate. Piping an entire file at once does not simulate a live microphone. EOF on the audio source does not end the conversation. Send `SIGINT` to the process to request a graceful close.
+Run `node --experimental-strip-types client.mts`, `python client.py`, `go run .`, `ruby client.rb`, or your Java application with your audio source and player attached. After `Session ready` appears, supply a continuous microphone stream paced at its recorded sample rate. Piping an entire file at once does not simulate a live microphone. EOF on the audio source does not end the conversation. Send `SIGINT` to the process to request a graceful close.
 
 The example connects the audio streams; your application handles capture, buffering, playback, and resampling when needed. Test these parts with your devices and network before evaluating model behavior.
 
@@ -724,7 +724,7 @@ It is possible to use WebSocket in browsers with an ephemeral API token as shown
 
     Connect using the ws module (Node.js)
 
-```javascript
+```typescript
 import WebSocket from "ws";
 
 const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1";
@@ -963,7 +963,7 @@ WebSocket (browsers)
 
     Connect with standard WebSocket (browsers)
 
-```javascript
+```typescript
 /*
 Note that in client-side environments like web browsers, we recommend
 using WebRTC instead. It is possible, however, to use the standard
@@ -997,7 +997,7 @@ Realtime API sessions are managed using a combination of [client-sent events](ht
 
 Over a WebSocket, you will both send and receive JSON-serialized events as strings of text, as in this Node.js example below (the same principles apply for other WebSocket libraries):
 
-```javascript
+```typescript
 import WebSocket from "ws";
 
 const url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1";
@@ -1032,7 +1032,7 @@ ws.on("message", function incoming(message) {
 
 The WebSocket interface is perhaps the lowest-level interface available to interact with a Realtime model, where you will be responsible for both sending and processing Base64-encoded audio chunks over the socket connection.
 
-To learn how to send and receive audio over Websockets, refer to the [Realtime conversations guide](https://developers.openai.com/api/docs/guides/realtime-conversations#handling-audio-with-websockets).
+To learn how to send and receive audio over WebSockets, refer to the [Realtime conversations guide](https://developers.openai.com/api/docs/guides/realtime-conversations#handling-audio-with-websockets).
 
   
 

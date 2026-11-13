@@ -54,14 +54,14 @@ necessary context to continue the conversation. If you use
 
 ## Example user flow
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 import { createInterface } from "node:readline";
 
 const client = new OpenAI();
 
-const conversation = [
+const conversation: OpenAI.Responses.ResponseInput = [
   {
     type: "message",
     role: "user",
@@ -314,20 +314,23 @@ call as-is.
 
 ### Example user flow
 
-```javascript
+```typescript
 import OpenAI from "openai";
+import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 const client = new OpenAI();
 
-const conversation = [{ role: "user", content: "Plan a trip to Kyoto." }];
+const conversation: OpenAI.Responses.ResponseInput = [
+  { role: "user", content: "Plan a trip to Kyoto." },
+];
 
 const compacted = await client.responses.compact({
   model: "gpt-6-astra",
   input: conversation,
 });
 
-const nextInput = [
-  ...compacted.output.map((item) => item),
+const nextInput: OpenAI.Responses.ResponseInput = [
+  ...toResponseInputItems(compacted.output),
   { role: "user", content: "Add two more days to the itinerary." },
 ];
 

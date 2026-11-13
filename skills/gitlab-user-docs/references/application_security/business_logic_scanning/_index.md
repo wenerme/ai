@@ -10,6 +10,7 @@ Business logic scanning uses an AI agent, the Business Logic Security Analyzer (
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264192) from experiment to beta in GitLab 19.6.
 - [Available on GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262270) in GitLab 19.6.
 - [Available on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269040) in GitLab 19.6.
+- [Enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270207) in GitLab 19.6. Feature flags `bl_security_analyzer` and `agentic_analyzer_security_ingestion` enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -79,8 +80,6 @@ Prerequisites:
   - GitLab must turn on business logic scanning for your instance. Contact your account team.
 - On GitLab Self-Managed:
   - GitLab Duo Agent Platform turned on for the instance.
-  - An administrator must enable the `bl_security_analyzer` and `agentic_analyzer_security_ingestion`
-    feature flags for the instance.
   - An instance runner, or a group runner assigned to the top-level group,
     [configured to execute flows](../../duo_agent_platform/flows/execution/_index.md#configure-runners-to-execute-flows).
     The runner must use an executor that supports Docker images and have the `gitlab--duo` tag.

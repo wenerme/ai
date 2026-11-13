@@ -253,8 +253,10 @@ For example, after `check_availability` returns a verified slot, send the follow
 
 **After: GPT-Live result**
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "response.item.create",
     event_id: "availability_result_1",
@@ -339,8 +341,10 @@ end
 
 After submitting every required function result, continue the backend:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "response.create",
     event_id: "continue_availability_1",
@@ -476,8 +480,26 @@ Your backend remains responsible for authorization, confirmation, operation IDs,
 
 Connect a client delegation to your agent
 
-```javascript
-async function handleDelegation(event, app) {
+```typescript
+import type {
+  ServerEvent,
+  CommentaryAppendEvent,
+  DelegationCreatedEvent,
+} from "openai/resources/live/live";
+
+type AgentContext = {
+  revision: number;
+  recentConversation: string;
+  task: string;
+};
+type DelegationApp = {
+  readContext(): AgentContext | null;
+  runAgent(context: AgentContext): Promise<string>;
+  currentRevision(): number;
+  send(event: CommentaryAppendEvent): void;
+};
+
+async function handleDelegation(event: ServerEvent, app: DelegationApp) {
   if (
     event.type !== "session.delegation.created" ||
     event.delegation?.target !== "client"

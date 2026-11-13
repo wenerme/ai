@@ -8,6 +8,7 @@ REST API to check and evaluate a project's Dependency Firewall.
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23242) in GitLab 19.4 [with a feature flag](../administration/feature_flags/_index.md) named `dependency_firewall_phase1`. Disabled by default.
 - Changed to [beta](../policy/development_stages_support.md#beta) in GitLab 19.5.
+- Feature flag `dependency_firewall_phase1` replaced by `dependency_firewall_access` in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -186,7 +187,7 @@ This endpoint can also return the following status codes:
 | `400` | None | `name` or `version` is blank, or `ecosystem` or `operation` is not one of the accepted values. |
 | `401` | None | The request was not authenticated. |
 | `403` | None | The authenticated user does not have at least the Reporter role for the project, or the request used a CI/CD job token for any project other than the one its job runs in. |
-| `404` | None | The project does not exist, the authenticated user has no access to it, or the `dependency_firewall_phase1` feature flag is disabled. |
+| `404` | None | The project does not exist, the authenticated user has no access to it, or the `dependency_firewall_access` feature flag is disabled. |
 | `422` | `dependency_firewall_not_enforced` | The Dependency Firewall is not enabled for the project. |
 | `429` | None | The rate limit for this endpoint was exceeded. The limit is scoped to the combination of project and user. |
 | `503` | `dependency_firewall_evaluation_failed` | A package metadata lookup did not complete. Block the fetch. |

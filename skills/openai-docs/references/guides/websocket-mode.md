@@ -16,13 +16,13 @@ Because the connection stays open and each turn sends only incremental input, We
 
 Install the WebSocket dependencies with `pip install "openai[realtime]>=3.8.0"` for Python, `npm install openai@^7.10.0 ws` for JavaScript, or `gem install openai async-websocket` for Ruby.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.96.0`.
+For Go, run `go get github.com/openai/openai-go/v3@v3.98.0`.
 For Java, add the Maven dependency `com.openai:openai-java:4.101.0` and use Java 17 or later for these examples.
 These Go and Java SDK versions provide native Responses WebSocket support.
 
 In WebSocket mode, start each turn by sending a `response.create` event from the client. The payload mirrors the normal [Responses create body](https://developers.openai.com/api/reference/resources/responses/methods/create), except that transport-specific fields like `stream` and `background` are not used.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { ResponsesWS } from "openai/resources/responses/ws";
 
@@ -204,14 +204,14 @@ To continue a run, send another `response.create` with:
 - `previous_response_id` set to the prior response ID.
 - `input` containing only new items (for example, tool outputs and the next user message).
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { ResponsesWS } from "openai/resources/responses/ws";
 
 const client = new OpenAI();
 const model = "gpt-6-astra";
 
-const tools = [
+const tools: OpenAI.Responses.Tool[] = [
   {
     type: "function",
     name: "get_test_results",
@@ -221,7 +221,7 @@ const tools = [
   },
 ];
 
-async function waitForResponse(ws) {
+async function waitForResponse(ws: ResponsesWS) {
   for await (const event of ws) {
     if (event.type === "error") throw event.error;
     if (event.type !== "message") continue;
@@ -642,7 +642,7 @@ The standalone [`/responses/compact` endpoint](https://developers.openai.com/api
 
 Start a new chain by omitting `previous_response_id` or setting it to `null`. Pass the compacted output as-is; do not prune the returned window.
 
-```javascript
+```typescript
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 // Compact your current window with an HTTP request.
@@ -844,8 +844,9 @@ send_create(
 
 Run parallel conversations, then fork one
 
-```javascript
+```typescript
 import OpenAI from "openai";
+import type { ResponsesStreamMessage } from "openai/resources/responses/internal-base.mjs";
 import { ResponsesWS } from "openai/resources/responses/ws";
 
 const client = new OpenAI();
@@ -853,9 +854,9 @@ const client = new OpenAI();
 const latestResponseIdByLane = new Map();
 
 function sendCreate(
-  ws,
-  streamId,
-  text,
+  ws: ResponsesWS,
+  streamId: string,
+  text: string,
   previousResponseId = latestResponseIdByLane.get(streamId)
 ) {
   ws.send({
@@ -874,7 +875,9 @@ function sendCreate(
   });
 }
 
-async function readMessage(events) {
+async function readMessage(
+  events: AsyncIterableIterator<ResponsesStreamMessage>
+) {
   while (true) {
     const { value: event, done } = await events.next();
     if (done)
@@ -894,7 +897,10 @@ async function readMessage(events) {
   }
 }
 
-async function drainUntilComplete(events, expectedStreamIds) {
+async function drainUntilComplete(
+  events: AsyncIterableIterator<ResponsesStreamMessage>,
+  expectedStreamIds: Iterable<unknown> | null | undefined
+) {
   const remaining = new Set(expectedStreamIds);
   while (remaining.size > 0) {
     const message = await readMessage(events);
@@ -907,7 +913,10 @@ async function drainUntilComplete(events, expectedStreamIds) {
   }
 }
 
-async function waitForInProgress(events, streamId) {
+async function waitForInProgress(
+  events: AsyncIterableIterator<ResponsesStreamMessage>,
+  streamId: string
+) {
   while (true) {
     const message = await readMessage(events);
     if (

@@ -86,7 +86,7 @@ single final answer, but it increases latency and token usage.
 
 Tune reasoning effort for the task
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -256,7 +256,7 @@ guidance for coding agents.
 
 Set lower verbosity for compact output
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -450,12 +450,12 @@ namespace for everything.
 
 Use hosted tool search with deferred tools
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const billingNamespace = {
+const billingNamespace: OpenAI.Responses.NamespaceTool = {
   type: "namespace",
   name: "billing",
   description: "Billing tools for invoices, payments, taxes, and credits.",
@@ -479,7 +479,7 @@ const billingNamespace = {
   ],
 };
 
-const crmNamespace = {
+const crmNamespace: OpenAI.Responses.NamespaceTool = {
   type: "namespace",
   name: "crm",
   description:
@@ -876,7 +876,7 @@ user message.
 
 Continue from compacted response state
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
@@ -1129,7 +1129,7 @@ keys](https://developers.openai.com/api/docs/guides/prompt-caching#separate-prom
 
 Maintain separate cache accounting for a customer
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -1295,13 +1295,13 @@ during the next turn, so the model can use it to continue the workflow.
 
 Pass encrypted reasoning between stateless turns
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 const openai = new OpenAI();
 
-const history = [
+const history: OpenAI.Responses.ResponseInput = [
   {
     role: "user",
     content: "Investigate why invoice INV-1043 has mismatched tax totals.",
@@ -1591,7 +1591,7 @@ and retry behavior.
 
 Run and poll a background response
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import OpenAI from "openai";
 
@@ -1614,7 +1614,7 @@ let job = await openai.responses.create({
   ],
 });
 
-while (["queued", "in_progress"].includes(job.status)) {
+while (job.status === "queued" || job.status === "in_progress") {
   await new Promise((resolve) => setTimeout(resolve, 2000));
   job = await openai.responses.retrieve(job.id);
 }
@@ -1797,20 +1797,20 @@ Note: WebSocket mode works with ZDR because your data is not stored to disk,
 only stored in memory.
 
 The Python sample uses `pip install "openai[realtime]>=3.8.0"`.
-The JavaScript sample uses `npm install openai@^7.10.0 ws`.
+The TypeScript sample uses `npm install openai@^7.10.0 ws`.
 The Ruby sample uses `gem install openai async-websocket`.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.96.0`.
+For Go, run `go get github.com/openai/openai-go/v3@v3.98.0`.
 For Java, add the Maven dependency `com.openai:openai-java:4.101.0`.
 These Go and Java SDK versions provide native Responses WebSocket support.
 
 Start a Responses API WebSocket session
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { ResponsesWS } from "openai/resources/responses/ws";
 
-const testLogTool = {
+const testLogTool: OpenAI.Responses.FunctionTool = {
   type: "function",
   name: "search_test_logs",
   description: "Search test logs for a query.",
@@ -1823,7 +1823,7 @@ const testLogTool = {
   strict: true,
 };
 
-const codeSearchTool = {
+const codeSearchTool: OpenAI.Responses.FunctionTool = {
   type: "function",
   name: "search_code",
   description: "Search the codebase for a query.",

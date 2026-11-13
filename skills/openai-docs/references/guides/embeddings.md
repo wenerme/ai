@@ -23,7 +23,7 @@ To get an embedding, send your text string to the [embeddings API endpoint](http
 
 Example: Getting embeddings
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -191,7 +191,7 @@ Below, we combine the review summary and review text into a single combined text
 
 
 Get_embeddings_from_dataset.ipynb
-```javascript
+```typescript
 import { mkdir, writeFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -203,7 +203,7 @@ const response = await client.embeddings.create({
   input: reviews.map((review) => review.replaceAll("\n", " ")),
 });
 
-const csvField = (value) => `"${value.replaceAll('"', '""')}"`;
+const csvField = (value: string) => `"${value.replaceAll('"', '""')}"`;
 const rows = response.data.map(({ embedding }, index) =>
   [csvField(reviews[index]), csvField(JSON.stringify(embedding))].join(",")
 );
@@ -418,7 +418,7 @@ Both of our new embedding models were trained [with a technique](https://arxiv.o
 
 In general, using the `dimensions` parameter when creating the embedding is the suggested approach. In certain cases, you may need to change the embedding dimension after you generate it. When you change the dimension manually, you need to be sure to normalize the dimensions of the embedding as is shown below.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -553,7 +553,7 @@ Question_answering_using_embeddings.ipynb
 
 There are many common cases where the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -731,7 +731,7 @@ Semantic_text_search_using_embeddings.ipynb
 
 To retrieve the most relevant documents we use the cosine similarity between the embedding vectors of the query and each document, and return the highest scored documents.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -746,8 +746,8 @@ const { data } = await client.embeddings.create({
   input: [...reviews, "delicious beans"],
 });
 
-const query = data.at(-1).embedding;
-const similarity = (embedding) => {
+const query = data[reviews.length].embedding;
+const similarity = (embedding: number[]) => {
   const dotProduct = embedding.reduce(
     (total, value, index) => total + value * query[index],
     0
@@ -993,7 +993,7 @@ Code search works similarly to embedding-based text search. We provide a method 
 
 To perform a code search, we embed the query in natural language using the same model. Then we calculate cosine similarity between the resulting query embedding and each of the function embeddings. The highest cosine similarity results are most relevant.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1007,8 +1007,8 @@ const { data } = await client.embeddings.create({
   input: [...functions, "Completions API tests"],
 });
 
-const query = data.at(-1).embedding;
-const similarity = (embedding) => {
+const query = data[functions.length].embedding;
+const similarity = (embedding: number[]) => {
   const dotProduct = embedding.reduce(
     (total, value, index) => total + value * query[index],
     0
@@ -1256,7 +1256,7 @@ Because shorter distances between embedding vectors represent greater similarity
 
 Below, we illustrate a basic recommender. It takes in a list of strings and one 'source' string, computes their embeddings, and then returns a ranking of the strings, ranked from most similar to least similar. As a concrete example, the linked notebook below applies a version of this function to the [AG news dataset](http://groups.di.unipi.it/~gulli/AG_corpus_of_news_articles.html) (sampled down to 2,000 news article descriptions) to return the top 5 most similar articles to any given source article.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1667,7 +1667,7 @@ Zero-shot_classification_with_embeddings.ipynb
 
 We can use embeddings for zero shot classification without any labeled training data. For each class, we embed the class name or a short description of the class. To classify some new text in a zero-shot manner, we compare its embedding to all class embeddings and predict the class with the highest similarity.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1678,8 +1678,8 @@ const { data } = await client.embeddings.create({
   input: [...labels, "The coffee arrived quickly and tastes great."],
 });
 
-const review = data.at(-1).embedding;
-const similarity = (embedding) => {
+const review = data[labels.length].embedding;
+const similarity = (embedding: number[]) => {
   const dotProduct = embedding.reduce(
     (total, value, index) => total + value * review[index],
     0

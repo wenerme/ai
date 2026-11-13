@@ -511,6 +511,37 @@ To configure the limit:
 1. Set a value for **Maximum pipeline schedule changes per user**.
 1. Select **Save changes**.
 
+## Pipeline trigger token management rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636907) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `rate_limit_pipeline_trigger_management`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
+
+Creating, updating, or deleting a pipeline trigger token writes to the project and, for new
+tokens, generates and stores a secret. Repeated changes from one user can add up to excessive
+load on your instance. You can limit how often a user can change pipeline trigger tokens to
+protect against this.
+
+This rate limit applies to changes made with the
+[pipeline trigger tokens REST API](../../api/pipeline_triggers.md), the `pipelineTriggerCreate`,
+`pipelineTriggerUpdate`, and `pipelineTriggerDelete` GraphQL mutations, or the GitLab UI.
+All three actions count toward the same limit. Using a token to
+[trigger a pipeline](../../api/pipeline_triggers.md#trigger-a-pipeline-with-a-token) is covered by the
+[pipeline creation rate limits](#pipeline-creation-rate-limits) instead.
+
+GitLab limits each user to a configurable number of changes each minute across all projects,
+with a default of `300`. Set the limit to `0` to disable rate limiting for these changes.
+When a user exceeds the limit, GitLab blocks the change.
+
+To configure the limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Set a value for **Maximum pipeline trigger token changes per user**.
+1. Select **Save changes**.
+
 ## Job retry and manual job run rate limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627273) in GitLab 19.5 [with feature flags](../feature_flags/_index.md) named `rate_limit_job_retry` and `rate_limit_job_play`. Disabled by default.

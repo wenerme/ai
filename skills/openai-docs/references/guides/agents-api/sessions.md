@@ -26,7 +26,7 @@ With your [API key and SDK configured](https://developers.openai.com/api/docs/gu
 
 Create a session and stream its first turn
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -231,9 +231,14 @@ Create one idempotency key for each logical message submission. Save it with the
 
 Send a follow-up message
 
-```javascript
+```typescript
 // Reuse the same submission key when retrying this message.
-async function sendMessage(client, sessionId, text, submissionKey) {
+async function sendMessage(
+  client: OpenAI,
+  sessionId: string,
+  text: string,
+  submissionKey: string
+) {
   await client.beta.agents.sessions.events.create(sessionId, {
     "Idempotency-Key": submissionKey,
     events: [
@@ -409,9 +414,9 @@ Events show live progress. Items are the saved messages and tool calls, includin
 
 Retrieve session items
 
-```javascript
+```typescript
 // Pass your saved session ID to this helper.
-async function listItems(client, sessionId) {
+async function listItems(client: OpenAI, sessionId: string) {
   return client.beta.agents.sessions.items.list(sessionId, {
     order: "asc",
     limit: 100,
@@ -486,9 +491,9 @@ Cancel the current turn when you want the agent to stop. The session and its pre
 
 Cancel the active turn
 
-```javascript
+```typescript
 // Pass your saved session ID to this helper.
-async function cancelTurn(client, sessionId) {
+async function cancelTurn(client: OpenAI, sessionId: string) {
   await client.beta.agents.sessions.events.create(sessionId, {
     events: [{ type: "agent.session.input.cancel" }],
   });

@@ -4549,7 +4549,7 @@ Google's family of legacy music generation models.
   * [No](/docs/terms)
 {% /table %}
 
-## Gemini Decision  {% id="gemini-decision" %}
+## Gemini Decision 1  {% id="gemini-decision" %}
 
 {% two-column-layout %}
   {% left-column class="center-vertically" %}

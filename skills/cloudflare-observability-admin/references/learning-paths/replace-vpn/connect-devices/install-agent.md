@@ -39,6 +39,7 @@ To enroll your device using the client GUI:
 
       Once authenticated, you will see a Success page and a dialog prompting you to open the Cloudflare One Client.
    6. Select **Open the Cloudflare One Client** to complete the registration.
+
    7. <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/">Download</a> and install the Cloudflare One Client.
    8. Launch the Cloudflare One Client.
    9. Select the Cloudflare logo in the menu bar.

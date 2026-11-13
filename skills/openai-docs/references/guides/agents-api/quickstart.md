@@ -69,20 +69,20 @@ python quickstart.py
   
 
     
-JavaScript
+TypeScript
 
 
-Install the JavaScript SDK:
+Use Node.js 22.6 or later and install the TypeScript SDK:
 
 ```bash
 npm install openai
 ```
 
-Save the example as `quickstart.mjs`:
+Save the example as `quickstart.mts`:
 
 Create and run tree.py
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -113,7 +113,7 @@ try {
 Run it from your terminal:
 
 ```bash
-node quickstart.mjs
+node --experimental-strip-types quickstart.mts
 ```
 
   
@@ -379,15 +379,15 @@ if __name__ == "__main__":
   
 
     
-JavaScript
+TypeScript
 
     Delete the session
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import OpenAI from "openai";
 
-async function deleteSession(client, sessionId) {
+async function deleteSession(client: OpenAI, sessionId: string) {
   return client.beta.agents.sessions.delete(sessionId);
 }
 

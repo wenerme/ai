@@ -46,7 +46,7 @@ Choose the mode when you create the session; to change modes, start a new sessio
 
 Add this delegation configuration when [creating your Live session](https://developers.openai.com/api/docs/guides/live). Choose the Responses model independently of the voice model:
 
-```javascript
+```typescript
 export const session = {
   model: "gpt-live-1",
   delegation: {
@@ -212,8 +212,10 @@ The forwarded lifecycle events, including `response.completed`, contain `respons
 
 After executing the authorized operation, append the result as a Responses item:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "response.item.create",
     event_id: "tool_result_1",
@@ -297,8 +299,10 @@ end
 
 Then explicitly continue the response:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "response.create",
     event_id: "continue_1",
@@ -364,7 +368,7 @@ Both commands require Responses delegation. The Live `response.create` command u
 
 Set `delegation` when [creating your Live session](https://developers.openai.com/api/docs/guides/live):
 
-```javascript
+```typescript
 export const session = {
   model: "gpt-live-1",
   delegation: {
@@ -438,8 +442,10 @@ Save `event.delegation.id` and include it unchanged in updates about this task.
 
 Return a result using that ID:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.commentary.append",
     event_id: "result_123",
@@ -556,8 +562,10 @@ An appended instruction can interrupt the model's current speech or behavior. Us
 
 For quiet progress during a client-managed task:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.thinking.append",
     event_id: "availability_progress",
@@ -624,8 +632,10 @@ end
 
 For a confirmed booking, send the result the user should hear:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.commentary.append",
     event_id: "appointment_result",
@@ -694,8 +704,10 @@ Only send that result after the booking has actually succeeded. For a session-wi
 
 For example, after your application blocks a request under its guardrails, you can redirect the conversation:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.instructions.append",
     event_id: "guardrail_block_17",
@@ -845,8 +857,10 @@ Send typed values, such as order numbers, to the backend as user-provided data s
 
 With Responses delegation, queue a user message for the backend:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "response.item.create",
     event_id: "typed_order_number",

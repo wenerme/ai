@@ -49,11 +49,11 @@ Each OpenAI SDK automatically reads your API key from the system environment.
 
 
 
-JavaScript
+TypeScript
 
     
 
-To use the OpenAI API in server-side JavaScript environments like Node.js, Deno, or Bun, you can use the official [OpenAI SDK for TypeScript and JavaScript](https://github.com/openai/openai-node). Get started by installing the SDK using [npm](https://www.npmjs.com/) or your preferred package manager:
+To use the OpenAI API in TypeScript applications running on Node.js, Deno, or Bun, you can use the official [OpenAI SDK for TypeScript](https://github.com/openai/openai-node). The same `openai` package also supports plain JavaScript. Get started by installing the SDK using [npm](https://www.npmjs.com/) or your preferred package manager:
 
 Install the OpenAI SDK with npm
 
@@ -63,11 +63,11 @@ npm install openai
 
 
 
-With the OpenAI SDK installed, create a file called `example.mjs` and copy the example code into it:
+With the OpenAI SDK installed, create a file called `example.mts` and copy the example code into it. The `.mts` extension makes this TypeScript file an ES module, including in CommonJS projects:
 
 Test a basic API request
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -81,7 +81,9 @@ console.log(response.output_text);
 
 
 
-Execute the code with `node example.mjs` (or the equivalent command for Deno or Bun). In a few moments, you should see the output of your API request.
+Execute the code with `node --experimental-strip-types example.mts` on Node.js 22.6 or later (or use the equivalent command for Deno or Bun). In a few moments, you should see the output of your API request.
+
+To run this example as plain JavaScript, save the same code as `example.mjs` and run `node example.mjs`.
 
 [Learn more on GitHub](https://github.com/openai/openai-node)
 
@@ -185,7 +187,7 @@ OpenAI provides an API helper for the Java programming language. You can include
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.103.0</version>
+  <version>4.104.0</version>
 </dependency>
 ```
 
@@ -365,7 +367,7 @@ Image URL
 
     Analyze the content of an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -590,7 +592,7 @@ File URL
 
     Use a file URL as input
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -808,7 +810,7 @@ Upload file
 
     Upload a file and use it as input
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -1087,7 +1089,7 @@ Web search
 
     Use web search in a response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1224,7 +1226,7 @@ File search
 
     Search your files in a response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -1350,7 +1352,7 @@ Code Interpreter
 
     Use Code Interpreter in a response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1508,11 +1510,11 @@ Function calling
 
     Call your own function
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const tools = [
+const tools: OpenAI.Responses.Tool[] = [
   {
     type: "function",
     name: "get_weather",
@@ -1817,7 +1819,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1982,7 +1984,7 @@ Use server‑sent [streaming events](https://developers.openai.com/api/docs/guid
 
 Stream server-sent events from the API
 
-```javascript
+```typescript
 import { OpenAI } from "openai";
 const client = new OpenAI();
 
@@ -2126,7 +2128,7 @@ Use the OpenAI platform to build [agents](https://developers.openai.com/api/docs
 
 Build a language triage agent
 
-```javascript
+```typescript
 import { Agent, run } from "@openai/agents";
 
 const spanishAgent = new Agent({

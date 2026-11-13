@@ -7,22 +7,13 @@ Define specialized subagents in your repository for the Developer Flow to delega
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259664) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment) [with a feature flag](../../../administration/feature_flags/_index.md) named `dap_workspace_agents`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270158) in GitLab 19.6.
+- `/agents` command [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v10.2.0) in GitLab Duo CLI 10.2.0, as part of GitLab 19.6.
 
 Workspace subagents are specialized agents that you define as Markdown files in your project repository.
 This feature is available for the Developer Flow only, both in the GitLab UI and in GitLab Duo CLI.
 
 The Developer Flow decides when to delegate a task to a subagent based on the `description` of the subagent.
-You can also ask the Developer Flow to use a subagent by name.
-For example, in an issue or merge request comment,
-[mention the Developer Flow](../../project/merge_requests/developer.md#mention-duo-developer-in-a-discussion)
-and name the subagent:
-
-```plaintext
-@duo-developer-<namespace> delegate the review of these changes to the reviewer subagent.
-```
-
-Replace `<namespace>` with your GitLab namespace path.
-Naming a subagent makes delegation likely, but the Developer Flow decides whether to delegate the task.
+You can also [ask it to delegate a task](#delegate-tasks-to-workspace-subagents) to a specific subagent.
 
 Workspace subagents consume GitLab Credits like other GitLab Duo Agent Platform features.
 
@@ -82,6 +73,9 @@ A workspace subagent is used only if its file meets all of the following require
 - The front matter has a `description`.
 - The file has a prompt after the front matter.
 - The file is 64 KB or smaller.
+- The name is unique.
+
+  If one or more files that meet the requirements have the same name, the first file in alphabetical order by filename is used.
 
 If a file does not meet these requirements, the file is skipped.
 
@@ -98,10 +92,14 @@ The following limits apply to all subagents in a project.
 
 A Developer Flow session fails to start when:
 
-- Two subagents have the same name.
 - A subagent lists a tool that is not available in the Developer Flow.
 - A `name`, `description`, or prompt is longer than its maximum.
 - In GitLab Duo CLI sessions, more than 10 subagents meet the requirements.
+
+The session shows an error that describes the problem, like the subagent and the field that caused it,
+and does not continue.
+To use the Developer Flow again, fix or remove the subagent file, then start a new session.
+For sessions in GitLab, the change must be on the default branch.
 
 ## Create a workspace subagent
 
@@ -133,7 +131,7 @@ To create a workspace subagent:
 1. Test the subagent before you merge it.
    Sessions in GitLab read subagents only from the default branch,
    but the GitLab Duo CLI reads the files from your local working directory.
-   1. In the root directory of the project, start a Developer Flow session with the GitLab Duo CLI.
+   1. In the root directory of the project, start the GitLab Duo CLI.
    1. Ask the Developer Flow to delegate a task to the subagent,
       or give it a task that matches the description of the subagent.
    1. Confirm that the session shows `Delegated to workspace/agents/<subagent-name>`,
@@ -148,7 +146,56 @@ To create a workspace subagent:
    followed by **Returned to agent** with the result of the subagent.
 
 In GitLab, only new sessions pick up changes to the subagent configuration.
-Existing sessions do not pick up the changes, even when you resume them.
+
+## Delegate tasks to workspace subagents
+
+To use a specific subagent, ask the Developer Flow to delegate a task to it by name.
+If you do not know the name, ask the Developer Flow to list the subagents it can delegate to.
+Naming a subagent makes delegation likely, but the Developer Flow decides whether to delegate the task.
+
+### GitLab UI
+
+In an issue or merge request comment,
+[mention the Developer Flow](../../project/merge_requests/developer.md#mention-duo-developer-in-a-discussion)
+and ask in natural language.
+Replace `<namespace>` with your GitLab namespace path.
+For example:
+
+- To list the subagents:
+
+  ```plaintext
+  @duo-developer-<namespace> list the workspace subagents you can delegate to and post them here.
+  ```
+
+- To delegate a task:
+
+  ```plaintext
+  @duo-developer-<namespace> delegate the review of these changes to the reviewer subagent.
+  ```
+
+### GitLab Duo CLI
+
+In the root directory of the project, start the GitLab Duo CLI in
+[interactive mode](../../gitlab_duo_cli/use.md#interactive-mode).
+Run `glab duo cli` or `duo`, depending on your setup.
+Then ask the Developer Flow in natural language, as in the GitLab UI,
+but without the `@duo-developer-<namespace>` mention.
+
+In GitLab Duo CLI 10.2.0 or later, you can also use the `/agents` command:
+
+1. Enter `/agents`.
+   A dialog lists the name, description, and tools of each subagent.
+1. Optional. To filter the list, type part of the name or description of a subagent.
+1. Optional. To ask the Developer Flow to use a subagent, select the subagent and press <kbd>Enter</kbd>.
+   The request does not include a task.
+   To include one, use `/agents <subagent-name> <task>`.
+
+For example, to delegate a review to the `reviewer` subagent, enter `/agents reviewer review the changes on this branch`.
+
+The `/agents` dialog lists only the subagents whose files have a valid structure.
+The dialog does not check the other requirements and limits, so a listed subagent can still
+prevent a session from starting.
+To see changes to the subagent files in the dialog, start a new session.
 
 ## Prevent workspace subagents in a project
 
@@ -165,6 +212,7 @@ To keep subagent definitions out of a repository, use one or both of the followi
 - [AGENTS.md customization files](agents_md.md)
 - [Agent Skills](agent_skills.md)
 - [Custom rules](custom_rules.md)
+- [Epic 103: Proposed improvements to workspace subagents](https://gitlab.com/groups/gitlab-org/modelops/applied-ml/code-suggestions/-/work_items/103)
 
 ## Troubleshooting
 

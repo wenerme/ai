@@ -101,7 +101,7 @@ This method uses a self-hosted serverless function as a relay to forward logs se
     - **Delivery Format**: Select “JSON”—Vercel’s default, and OpenObserve handles it natively.
 3. Save the configuration
 
-![Configure Log Drain in Vercel](https://openobserve.ai/assets%2F4_setup_log_drain_bee0dcc96e.gif)
+[Configure Log Drain in Vercel]
 
 :::accordion[Step 5: Verify Logs in OpenObserve]
 

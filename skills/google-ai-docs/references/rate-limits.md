@@ -135,10 +135,10 @@ The following standard interactive rate limits apply to
   * 2,000
 {% /table %}
 
-### Gemini Decision rate limits  {% id="gemini-decision" %}
+### Gemini Decision 1 rate limits  {% id="gemini-decision" %}
 
 The following standard interactive rate limits apply to
-[Gemini Decision](/docs/models/gemini-decision-1) on the
+[Gemini Decision 1](/docs/models/gemini-decision-1) on the
 [Decisions API](/docs/decisions-api):
 
 {% table %}
@@ -176,7 +176,7 @@ The following standard interactive rate limits apply to
   * Unlimited
 {% /table %}
 
-Gemini Decision doesn't support the [Batch API](/docs/batch-api).
+Gemini Decision 1 doesn't support the [Batch API](/docs/batch-api).
 
 ## Priority inference rate limits  {% id="priority" %}
 

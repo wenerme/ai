@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-i
 
 # Cloudflare Ray ID
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A **Cloudflare Ray ID** is an identifier given to every request that goes through Cloudflare.
 
@@ -38,6 +38,10 @@ Additionally, you can [add filters](https://developers.cloudflare.com/waf/analyt
 
 Please note that Security Events may use sampled data to improve performance. If sampled data is applied to your search, you might not see all events, and filters might not return the expected results. To display more events, select a smaller timeframe.
 
+Note
+
+If a Ray ID does not appear in Security Events, this does not necessarily mean that Cloudflare did not act on the request. Sampling may omit the event from the results.
+
 ### Observability Logs
 
 [Log Explorer (Legacy)](https://developers.cloudflare.com/observability/logs/log-explorer/) provides access to Cloudflare logs with all the context available within the Cloudflare platform. If your account has the Log Explorer add-on, go to **Observability** > **Logs** in the dashboard and [build a query](https://developers.cloudflare.com/observability/logs/log-explorer/log-search/) that filters for a specific Ray ID to investigate HTTP errors.
@@ -59,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/#page","headline":"Cloudflare Ray ID","description":"Use Cloudflare Ray IDs to identify and trace individual requests through Security Events, Log Explorer, and server logs.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/og.png?v=b5eb1c9fbdb319a0","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/#page","headline":"Cloudflare Ray ID","description":"Use Cloudflare Ray IDs to identify and trace individual requests through Security Events, Log Explorer, and server logs.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/og.png?v=b5eb1c9fbdb319a0","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

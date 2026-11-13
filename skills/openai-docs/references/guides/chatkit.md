@@ -192,8 +192,8 @@ server.start
 
    Create a ChatKit session token
 
-```javascript
-export default async function getChatKitSessionToken(deviceId) {
+```typescript
+export default async function getChatKitSessionToken(deviceId: string) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("OPENAI_API_KEY is required");
@@ -292,11 +292,11 @@ async
 ```
 
 
-5. Render ChatKit in your UI. Pass the React `MyChat` component a `getAppAuthToken` function that returns the current user's bearer token. If you use the JavaScript tab, make the same function available in the snippet's scope. This code sends that credential to your server, fetches the client secret, and mounts a live chat widget connected to your workflow.
+5. Render ChatKit in your UI. Pass the React `MyChat` component a `getAppAuthToken` function that returns the current user's bearer token. If you use the TypeScript tab, make the same function available in the snippet's scope. This code sends that credential to your server, fetches the client secret, and mounts a live chat widget connected to your workflow.
 
    Your frontend code
 
-```javascript
+```typescript
 const chatkit = document.getElementById("my-chat");
 if (
   !chatkit ||

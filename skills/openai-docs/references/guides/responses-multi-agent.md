@@ -36,7 +36,7 @@ Note that adding subagents can increase token usage, and may not be as beneficia
 
 ## Quickstart
 
-The Python and JavaScript examples use the beta Responses SDK. For HTTP
+The Python and TypeScript examples use the beta Responses SDK. For HTTP
   requests, use `client.beta.responses` and pass `responses_multi_agent=v1` in
   the `betas` argument. For raw HTTP requests and WebSocket connections, pass
   `OpenAI-Beta: responses_multi_agent=v1` in the request or connection headers.
@@ -46,12 +46,12 @@ Enable Multi-agent in your Responses API request with `multi_agent.enabled`. Whe
 
 Review a pull request with subagents
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
 
-async function reviewPullRequest(diff) {
+async function reviewPullRequest(diff: string) {
   const response = await client.beta.responses.create({
     model: "gpt-6.1-sol",
     input:
@@ -186,7 +186,7 @@ Example client-side code:
 
 Handle HTTP streaming tool calls
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -196,7 +196,7 @@ const proposals = {
   beta: { estimated_weeks: 8, risk: "low" },
 };
 
-const tools = [
+const tools: OpenAI.Beta.Responses.BetaTool[] = [
   {
     type: "function",
     name: "get_proposal",
@@ -217,23 +217,28 @@ const tools = [
   },
 ];
 
-const history = [
+const history: (
+  | OpenAI.Beta.Responses.BetaResponseInputItem
+  | OpenAI.Beta.Responses.BetaResponseOutputItem
+)[] = [
   {
     role: "user",
     content: "Compare proposal alpha and proposal beta.",
   },
 ];
 
-function agentName(item) {
+function agentName(item: OpenAI.Beta.Responses.BetaResponseOutputItem) {
   return item.agent?.agent_name ?? ROOT;
 }
 
-function processToolCall(name, argumentsJson) {
+function processToolCall(name: string, argumentsJson: string) {
   if (name !== "get_proposal") {
     throw new Error(`Unknown tool: ${name}`);
   }
-  const { proposal } = JSON.parse(argumentsJson);
+  const { proposal }: { proposal: unknown } = JSON.parse(argumentsJson);
 
+  if (proposal !== "alpha" && proposal !== "beta")
+    throw new Error(`Unknown proposal: ${proposal}`);
   return JSON.stringify(proposals[proposal]);
 }
 
@@ -244,8 +249,9 @@ while (true) {
 
   const stream = await client.beta.responses.create({
     model: "gpt-6.1-sol",
-    // Beta output items can be replayed as input on the next request.
-    input: history,
+    // Replay Beta output unchanged, including agent metadata. The SDK input
+    // union is narrower than the agent_message content returned by the API.
+    input: history as OpenAI.Beta.Responses.BetaResponseInput,
     tools,
     store: false,
     multi_agent: {
@@ -476,7 +482,7 @@ Save the response ID from the `response.created` event and include it in every `
 
 Inject tool outputs over WebSocket
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 import { ResponsesWS } from "openai/resources/beta/responses/ws";
@@ -486,7 +492,7 @@ const proposals = {
   alpha: { estimated_weeks: 6, risk: "medium" },
   beta: { estimated_weeks: 8, risk: "low" },
 };
-const tools = [
+const tools: OpenAI.Beta.Responses.BetaTool[] = [
   {
     type: "function",
     name: "get_proposal",
@@ -507,18 +513,20 @@ const tools = [
   },
 ];
 
-function processToolCall(name, argumentsJson) {
+function processToolCall(name: string, argumentsJson: string) {
   if (name !== "get_proposal") {
     throw new Error(`Unknown tool: ${name}`);
   }
-  const { proposal } = JSON.parse(argumentsJson);
+  const { proposal }: { proposal: unknown } = JSON.parse(argumentsJson);
 
+  if (proposal !== "alpha" && proposal !== "beta")
+    throw new Error(`Unknown proposal: ${proposal}`);
   return JSON.stringify(proposals[proposal]);
 }
 
-async function runMultiAgent(ws) {
+async function runMultiAgent(ws: ResponsesWS) {
   let previousResponseId;
-  let pendingInput = [
+  let pendingInput: OpenAI.Beta.Responses.BetaResponseInput = [
     { role: "user", content: process.argv.slice(2).join(" ") },
   ];
 
@@ -599,6 +607,7 @@ async function runMultiAgent(ws) {
     previousResponseId = completedResponse.id;
     pendingInput = nextInput;
   }
+  throw new Error("The response ended without a result.");
 }
 
 const ws = new ResponsesWS(client, {

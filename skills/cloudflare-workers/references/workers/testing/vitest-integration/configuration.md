@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/conf
 
 # Configuration
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides additional configuration on top of Vitest's usual options using the `cloudflareTest()` Vite plugin.
 
@@ -43,7 +43,7 @@ The following APIs are exported from the `@cloudflare/vitest-plugin` package.
 
 ### `cloudflareTest(options)`
 
-A Vite plugin that configures Vitest to use the Workers integration with the correct module resolution settings, and provides type checking for [CloudflareTestOptions](#cloudflaretestoptions). Add this to the `plugins` array in your Vitest config alongside [`defineConfig()` ↗︎](https://vitest.dev/config/file.html) from Vitest.
+A Vite plugin that configures Vitest to use the Workers integration with the correct module resolution settings, and provides type checking for [CloudflareTestOptions](#cloudflaretestoptions). Add this to the `plugins` array in your Vitest config alongside [`defineConfig()` ↗︎](https://vitest.dev/config/) from Vitest.
 
 It also accepts an optionally-`async` function returning `options`.
 
@@ -88,7 +88,7 @@ export default defineConfig({
 
 ### `readD1Migrations(migrationsPath)`
 
-Exported from `@cloudflare/vitest-plugin/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [`applyD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗︎](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
+Exported from `@cloudflare/vitest-plugin/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [`applyD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗︎](https://vitest.dev/config/setupfiles) to apply migrations. Refer to the [D1 recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
 
 ```ts
 import path from "node:path";
@@ -137,7 +137,7 @@ Options passed directly to `cloudflareTest()`.
 
 ## Dynamic configuration with `inject`
 
-You can pass an `async` function to `cloudflareTest()` that receives an `inject` function. This allows you to define `miniflare` configuration based on injected values from [`globalSetup` ↗︎](https://vitest.dev/config/#globalsetup) scripts. Use this if you have a value in your configuration that is dynamically generated and only known at runtime of your tests. For example, a global setup script might start an upstream server on a random port. This port could be `provide()`d and then `inject()`ed in the configuration for an external service binding or [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). Refer to the [Hyperdrive recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/hyperdrive) for an example project using this provide/inject approach.
+You can pass an `async` function to `cloudflareTest()` that receives an `inject` function. This allows you to define `miniflare` configuration based on injected values from [`globalSetup` ↗︎](https://vitest.dev/config/globalsetup) scripts. Use this if you have a value in your configuration that is dynamically generated and only known at runtime of your tests. For example, a global setup script might start an upstream server on a random port. This port could be `provide()`d and then `inject()`ed in the configuration for an external service binding or [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). Refer to the [Hyperdrive recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/hyperdrive) for an example project using this provide/inject approach.
 
 <details>
 
@@ -207,5 +207,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

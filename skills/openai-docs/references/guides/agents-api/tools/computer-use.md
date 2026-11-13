@@ -21,7 +21,7 @@ To run a browser task:
 
 Follow the [Agents API quickstart prerequisites](https://developers.openai.com/api/docs/guides/agents-api/quickstart#prerequisites)
 to create an API key and export `OPENAI_API_KEY`, then install the
-[OpenAI SDK for your language](https://developers.openai.com/api/docs/libraries). For the JavaScript examples,
+[OpenAI SDK for your language](https://developers.openai.com/api/docs/libraries). For the TypeScript examples,
 install `openai` and `prompt-sync`. The cURL examples require Bash and `jq`.
 
 To enable browser access:
@@ -29,7 +29,7 @@ To enable browser access:
 - Add `{ "type": "computer_use" }` to `agent.tools`.
 - Set `environment.type` to `openai_hosted` and `environment.desktop.enabled` to `true`.
 
-The JavaScript examples below form one walkthrough: create a session, handle
+The TypeScript examples below form one walkthrough: create a session, handle
 website approvals, then send a task and print the answer. Start by creating a
 browser session with screenshots enabled. This does not start a task.
 
@@ -60,7 +60,7 @@ fi
 printf 'Session ID: %s\n' "$session_id"
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { open } from "node:fs/promises";
 
@@ -281,7 +281,7 @@ curl --fail-with-body "https://api.openai.com/v1/agents/sessions/$session_id/eve
   }'
 ```
 
-```javascript
+```typescript
 import { createInterface } from "node:readline";
 
 const inputLines = createInterface({
@@ -291,7 +291,11 @@ const inputLines = createInterface({
 const answers = inputLines[Symbol.asyncIterator]();
 
 /** @param {OpenAI} client */
-async function respondToOriginApproval(client, sessionId, approval) {
+async function respondToOriginApproval(
+  client: OpenAI,
+  sessionId: string,
+  approval: OpenAI.Beta.Agents.AgentSession.SessionRequiredActionResourceComputerUseApprovalRequest
+) {
   const request = approval.request;
   if (request.type === "browser_origin_access") {
     console.log("Requested origin:", request.origin);
@@ -327,7 +331,7 @@ async function respondToOriginApproval(client, sessionId, approval) {
       ],
     });
   } else {
-    throw new Error(`Unsupported approval request: ${request.type}`);
+    throw new Error("Unsupported approval request");
   }
 }
 ```
@@ -572,7 +576,7 @@ curl --fail-with-body "https://api.openai.com/v1/agents/sessions/$session_id/eve
   }'
 ```
 
-```javascript
+```typescript
 let screenshot;
 const events = await client.beta.agents.sessions.events.stream(session.id);
 const handledRequests = new Set();
@@ -1041,7 +1045,7 @@ printf 'Saved activity JSON: %s\n' "$activity_file"
 # Use the returned last_id and keep order=asc on every page.
 ```
 
-```javascript
+```typescript
 for await (const item of client.beta.agents.sessions.items.list(session.id, {
   order: "asc",
   limit: 100,
@@ -1351,13 +1355,17 @@ curl --fail-with-body --retry 0 "https://api.openai.com/v1/agents/sessions/$sess
   --data-binary @browser-auth-response.json
 ```
 
-```javascript
+```typescript
 import promptSync from "prompt-sync";
 
 const prompt = promptSync({ sigint: true });
 
 /** @param {OpenAI} client */
-async function respondToComputerUseApproval(client, sessionId, approval) {
+async function respondToComputerUseApproval(
+  client: OpenAI,
+  sessionId: string,
+  approval: OpenAI.Beta.Agents.AgentSession.SessionRequiredActionResourceComputerUseApprovalRequest
+) {
   const request = approval.request;
   if (request.type === "browser_origin_access") {
     console.log("Requested origin:", request.origin);
@@ -1383,7 +1391,7 @@ async function respondToComputerUseApproval(client, sessionId, approval) {
     return;
   }
   if (request.type !== "browser_authentication") {
-    throw new Error(`Unsupported approval request: ${request.type}`);
+    throw new Error("Unsupported approval request");
   }
   async function cancelSignIn() {
     await client.beta.agents.sessions.events.create(
@@ -1413,7 +1421,7 @@ async function respondToComputerUseApproval(client, sessionId, approval) {
     return;
   }
 
-  let selectedOption;
+  let selectedOption: (typeof request.options)[number] | undefined;
   let activeFields = request.fields;
   if (request.options.length > 0) {
     request.options.forEach((option, index) => {
@@ -1434,9 +1442,10 @@ async function respondToComputerUseApproval(client, sessionId, approval) {
       choice < 1 ||
       choice > request.options.length
     );
-    selectedOption = request.options[choice - 1];
+    const option = request.options[choice - 1];
+    selectedOption = option;
     activeFields = request.fields.filter((field) =>
-      selectedOption.field_ids.includes(field.id)
+      option.field_ids.includes(field.id)
     );
   }
 
@@ -2139,7 +2148,7 @@ curl --no-buffer --fail-with-body https://api.openai.com/v1/agents/sessions \
 # Keep this stream open while responding to origin and sign-in approvals there.
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -2729,7 +2738,7 @@ curl --fail-with-body -X DELETE "https://api.openai.com/v1/agents/sessions/$sess
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-```javascript
+```typescript
 await client.beta.agents.sessions.delete(session.id);
 ```
 

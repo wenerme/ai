@@ -129,7 +129,7 @@ Image API
 
     Generate an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import fs from "fs";
 const openai = new OpenAI();
@@ -145,7 +145,8 @@ const result = await openai.images.generate({
 });
 
 // Save the image to a file
-const image_base64 = result.data[0].b64_json;
+const image_base64 = result.data?.[0]?.b64_json;
+if (!image_base64) throw new Error("Image generation returned no image.");
 const image_bytes = Buffer.from(image_base64, "base64");
 fs.writeFileSync("otter.png", image_bytes);
 ```
@@ -283,7 +284,7 @@ Responses API
 
     Generate an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -301,6 +302,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync("otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -463,7 +465,7 @@ With the Responses API image generation tool, supported tool models can choose w
 
 Force image creation with action
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -483,6 +485,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync("otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -652,7 +655,7 @@ Using previous response ID
 
     Multi-turn image generation
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -669,6 +672,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync("cat_and_otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -688,6 +692,7 @@ const imageData_fwup = response_fwup.output
 
 if (imageData_fwup.length > 0) {
   const imageBase64 = imageData_fwup[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync(
     "cat_and_otter_realistic.png",
@@ -954,7 +959,7 @@ Using image ID
 
     Multi-turn image generation
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -973,6 +978,7 @@ const imageData = imageGenerationCalls.map((output) => output.result);
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync("cat_and_otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -987,7 +993,7 @@ const response_fwup = await openai.responses.create({
       content: [{ type: "input_text", text: "Now make it look realistic" }],
     },
     {
-      type: "image_generation_call",
+      type: "item_reference",
       id: imageGenerationCalls[0].id,
     },
   ],
@@ -1000,6 +1006,7 @@ const imageData_fwup = response_fwup.output
 
 if (imageData_fwup.length > 0) {
   const imageBase64 = imageData_fwup[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync(
     "cat_and_otter_realistic.png",
@@ -1360,12 +1367,13 @@ Responses API
 
     Stream an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import fs from "fs";
 const openai = new OpenAI();
 
-function saveBase64Image(filename, imageBase64) {
+function saveBase64Image(filename: string, imageBase64: string | null) {
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const imageBuffer = Buffer.from(imageBase64, "base64");
   fs.writeFileSync(filename, imageBuffer);
 }
@@ -1578,7 +1586,7 @@ Image API
 
     Stream an image
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -1597,6 +1605,7 @@ for await (const event of stream) {
   if (event.type === "image_generation.partial_image") {
     const idx = event.partial_image_index;
     const imageBase64 = event.b64_json;
+    if (!imageBase64) throw new Error("Image generation returned no image.");
     const imageBuffer = Buffer.from(imageBase64, "base64");
     fs.writeFileSync(`river${idx}.png`, imageBuffer);
   }
@@ -1783,13 +1792,13 @@ With the Responses API, you can provide input images in 3 different ways:
 
 Create a File
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-async function createFile(filePath) {
+async function createFile(filePath: fs.PathLike) {
   const fileContent = fs.createReadStream(filePath);
   const result = await openai.files.create({
     file: fileContent,
@@ -1880,10 +1889,10 @@ puts(file.id)
 
 Create a base64 encoded image
 
-```javascript
+```typescript
 import fs from "fs";
 
-function encodeImage(filePath) {
+function encodeImage(filePath: fs.PathOrFileDescriptor) {
   const base64Image = fs.readFileSync(filePath, "base64");
   return base64Image;
 }
@@ -1947,17 +1956,17 @@ puts(Base64.strict_encode64(image))
 
 Edit an image
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-function encodeImage(filePath) {
+function encodeImage(filePath: fs.PathOrFileDescriptor) {
   return fs.readFileSync(filePath, "base64");
 }
 
-async function createFile(filePath) {
+async function createFile(filePath: fs.PathLike) {
   const result = await openai.files.create({
     file: fs.createReadStream(filePath),
     purpose: "vision",
@@ -2013,6 +2022,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   fs.writeFileSync("gift-basket.png", Buffer.from(imageBase64, "base64"));
 } else {
   console.log(response.output_text);
@@ -2321,7 +2331,7 @@ Image API
 
     Edit an image
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI, { toFile } from "openai";
 
@@ -2356,7 +2366,8 @@ const response = await client.images.edit({
 });
 
 // Save the image to a file
-const image_base64 = response.data[0].b64_json;
+const image_base64 = response.data?.[0]?.b64_json;
+if (!image_base64) throw new Error("Image generation returned no image.");
 const image_bytes = Buffer.from(image_base64, "base64");
 fs.writeFileSync("basket.png", image_bytes);
 ```
@@ -2686,13 +2697,13 @@ Responses API
 
     Edit an image with a mask
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-async function createFile(filePath) {
+async function createFile(filePath: fs.PathLike) {
   const result = await openai.files.create({
     file: fs.createReadStream(filePath),
     purpose: "vision",
@@ -2739,6 +2750,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   fs.writeFileSync("lounge.png", Buffer.from(imageBase64, "base64"));
 }
 ```
@@ -2992,7 +3004,7 @@ Image API
 
     Edit an image with a mask
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI, { toFile } from "openai";
 
@@ -3010,7 +3022,8 @@ const rsp = await client.images.edit({
 });
 
 // Save the image to a file
-const image_base64 = rsp.data[0].b64_json;
+const image_base64 = rsp.data?.[0]?.b64_json;
+if (!image_base64) throw new Error("Image generation returned no image.");
 const image_bytes = Buffer.from(image_base64, "base64");
 fs.writeFileSync("lounge.png", image_bytes);
 ```
@@ -3405,7 +3418,7 @@ For most apps, keep the primary end-user message generic. Use `moderation_detail
 
 Handle moderation-blocked image generation errors
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -3418,11 +3431,20 @@ try {
     prompt: "Create a poster humiliating my coworker with insulting captions",
   });
 } catch (error) {
-  if (error?.code !== "moderation_blocked") {
+  if (
+    !(error instanceof OpenAI.APIError) ||
+    error.code !== "moderation_blocked"
+  ) {
     throw error;
   }
 
-  const moderationDetails = error.error?.moderation_details;
+  const moderationDetails =
+    error.error && "moderation_details" in error.error
+      ? (error.error.moderation_details as {
+          categories?: string[];
+          moderation_stage?: string;
+        })
+      : undefined;
   const categories = moderationDetails?.categories ?? [];
   const stage = moderationDetails?.moderation_stage;
 
@@ -3800,8 +3822,8 @@ The final cost is the sum of:
 ### Historical output costs
 
 `gpt-image-2` supports thousands of valid resolutions; the table below lists the
-same sizes used for previous GPT Image models for comparison. For GPT-Image-1.5,
-GPT-Image-1, and GPT-Image-1 Mini, the legacy per-image output pricing table is
+same sizes used for previous GPT Image models for comparison. For GPT Image 1.5,
+GPT Image 1, and GPT Image 1 mini, the legacy per-image output pricing table is
 also listed below. You should still account for text and image input tokens when
 estimating the total cost of a request.
 
@@ -3856,7 +3878,7 @@ Additional sizes available
 
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT-Image-1.5
+        GPT Image 1.5
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.009</td>
@@ -3878,7 +3900,7 @@ Additional sizes available
 
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT-Image-1
+        GPT Image 1
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.011</td>
@@ -3900,7 +3922,7 @@ Additional sizes available
 
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT-Image-1 Mini
+        GPT Image 1 mini
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.005</td>

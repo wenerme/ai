@@ -416,6 +416,7 @@ Possible event types for flow triggers.
 | `MERGE_REQUEST_READY` | Flow trigger merge_request_ready event. |
 | `PIPELINE_HOOKS` | Flow trigger pipeline_hooks event. |
 | `SCHEDULED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Flow trigger scheduled event. |
+| `SECURITY_POLICY` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Flow trigger security_policy event. |
 | `WORK_ITEM` | Flow trigger work_item event. |
 
 ## `AiFlowTriggerKind`
@@ -5691,8 +5692,8 @@ Return vulnerabilities scoped to certain types of refs.
 
 | Value | Description |
 | ----- | ----------- |
-| `ALL_REFS` | Returns all tracked refs. This is the same as omitting the filter. |
-| `DEFAULT_BRANCHES` | Returns vulnerabilities that are on a default branch. |
+| `ALL_REFS` | Returns results on all tracked refs, including refs that are not default branches. |
+| `DEFAULT_BRANCHES` | Returns only results on default branches. |
 
 ## `SecurityTrackedRefState`
 
@@ -6112,8 +6113,6 @@ Name of the feature that the callout is for.
 | `FEATURE_LIBRARY_SHIMMER_SEEN` | Callout feature name for feature_library_shimmer_seen. |
 | `FILE_TREE_BROWSER_POPOVER` | Callout feature name for file_tree_browser_popover. |
 | `FOCUSED_VULNERABILITY_REPORTING` | Callout feature name for focused_vulnerability_reporting. |
-| `GEO_ENABLE_HASHED_STORAGE` | Callout feature name for geo_enable_hashed_storage. |
-| `GEO_MIGRATE_HASHED_STORAGE` | Callout feature name for geo_migrate_hashed_storage. |
 | `GKE_CLUSTER_INTEGRATION` | Callout feature name for gke_cluster_integration. |
 | `GOLD_TRIAL_BILLINGS` | Callout feature name for gold_trial_billings. |
 | `INLINE_BLAME_POPOVER` | Callout feature name for inline_blame_popover. |
@@ -6206,6 +6205,7 @@ Name of the feature that the callout is for.
 | `ALL_SEATS_USED_ALERT` | Callout feature name for all_seats_used_alert. |
 | `APPROACHING_SEAT_COUNT_THRESHOLD` | Callout feature name for approaching_seat_count_threshold. |
 | `BILLING_RETRIAL_CARD` | Callout feature name for billing_retrial_card. |
+| `BLSA_WHATS_NEW_SPOTLIGHT` | Callout feature name for blsa_whats_new_spotlight. |
 | `CI_MINUTES_LIMIT_ALERT_DANGER_STAGE` | Callout feature name for ci_minutes_limit_alert_danger_stage. |
 | `CI_MINUTES_LIMIT_ALERT_EXCEEDED_STAGE` | Callout feature name for ci_minutes_limit_alert_exceeded_stage. |
 | `CI_MINUTES_LIMIT_ALERT_WARNING_STAGE` | Callout feature name for ci_minutes_limit_alert_warning_stage. |

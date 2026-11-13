@@ -77,7 +77,7 @@ Use startup history to resume a topic, and append relevant context as the conver
 
 Include prior text messages in `session.input` when you create the session. For example, add this `input` field to your [session creation configuration](https://developers.openai.com/api/docs/guides/live#connect-your-first-session):
 
-```javascript
+```typescript
 export const session = {
   model: "gpt-live-1",
   input: [
@@ -214,8 +214,10 @@ Choose an event based on how the model should use the update:
 
 Each event takes plain-string `content` of up to 500 tokens and a required `delegation_id`. Use `null` for session-wide context. For example, send this after your application has verified the user's acceptance and started the lookup:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.thinking.append",
     event_id: "context_1",
@@ -353,8 +355,10 @@ Use `session.output_transcript.delta` for spoken captions and show backend updat
 
 Send `session.input_audio.mute` to mute input without ending the session:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.input_audio.mute",
     event_id: "mute_1",
@@ -441,8 +445,10 @@ For predictable greeting playback, exact wording, or a known playback-completion
 
 Use `session.instructions.append` to request specific spoken wording for a disclosure. `session.commentary.append` may paraphrase the text. After `session.started`, for example, send:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.instructions.append",
     event_id: "disclosure_1",
@@ -593,11 +599,11 @@ For WebSocket, wait for `session.started` before sending more commands. For WebR
 
 Set `OPENAI_API_KEY`. The examples use the stored source session ID saved by your application. They confirm startup and then close the fork. To continue the conversation, send and receive audio after `session.started` using the [WebSocket connection flow](https://developers.openai.com/api/docs/guides/voice-websockets?api=live). See the [fork WebSocket reference](https://developers.openai.com/api/reference/resources/live/fork-websocket) for the startup fields and events.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { ForksWS } from "openai/resources/live/forks/ws";
 
-async function forkSession(sourceSessionId) {
+async function forkSession(sourceSessionId: string) {
   const ws = new ForksWS(new OpenAI(), { session_id: sourceSessionId });
   let finalized = false;
   let closeRequested = false;
@@ -779,10 +785,10 @@ end
 
 Create a new SDP offer in your frontend and send it to your backend. The following backend examples use that offer and the stored source session ID from your application:
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
-async function forkSession(sourceSessionId, offerSdp) {
+async function forkSession(sourceSessionId: string, offerSdp: string) {
   const client = new OpenAI();
   const fork = await client.live.sessions.fork(sourceSessionId, {
     transport: { type: "webrtc", sdp: offerSdp },
@@ -864,12 +870,12 @@ Use the new session ID for sideband connections and session controls. Before ret
 
 After the stored recording is finalized, download its audio with `GET /v1/live/sessions/{session_id}/content`. The response is binary stereo WAV, with input audio in the left channel and output audio in the right channel. The examples use the stored session ID from your application and stream the response to `recording.wav`:
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { createWriteStream } from "node:fs";
 import { pipeline } from "node:stream/promises";
 
-async function downloadRecording(sessionId) {
+async function downloadRecording(sessionId: string) {
   const client = new OpenAI();
   const response = await client.live.sessions.downloadRecording(sessionId);
   if (!response.body) throw new Error("Recording response has no body");

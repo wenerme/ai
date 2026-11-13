@@ -1693,7 +1693,7 @@ Attributes for recording a work item decision as resolved at creation.
 | ---- | ---- | ----------- |
 | `fromNamespace` | [`String`](scalars.md#string) | Full path of the group or project using the template. |
 | `name` | [`String!`](scalars.md#string) | Name of the description template. |
-| `projectId` | [`Int!`](scalars.md#int) | ID of the project the template belongs to. |
+| `projectId` | [`BigInt!`](scalars.md#bigint) | ID of the project the template belongs to. |
 
 ## `WorkItemRelativeDateFiltersInput`
 

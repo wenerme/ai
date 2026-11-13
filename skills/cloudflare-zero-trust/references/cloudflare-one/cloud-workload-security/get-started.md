@@ -32,7 +32,9 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
 
 ## Set up the proxy locally
 
-1. ### Install the proxy Install `cws-proxy` using your Linux distribution's package manager:
+1. ### Install the proxy
+
+   Install `cws-proxy` using your Linux distribution's package manager:
 
    ```sh
    sudo curl -fsSLo /usr/share/keyrings/cloudflare-cws.gpg \
@@ -62,7 +64,9 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
    ```
 
    For the proxy's Beta terms, license notices, and acknowledgments, refer to [Legal](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/legal/).
-2. ### Create the guardrail policy In the Cloudflare dashboard, select your account and go to **Cloud Workload Security** > **Policies**. [Go to **Policies** ↗](https://dash.cloudflare.com/?to=/:account/one/cloud-workload-security/policies)
+2. ### Create the guardrail policy
+
+   In the Cloudflare dashboard, select your account and go to **Cloud Workload Security** > **Policies**. [Go to **Policies** ↗](https://dash.cloudflare.com/?to=/:account/one/cloud-workload-security/policies)
 
    Select **Add policy** and name it `restrict-r2-public-access`. In **Filters**, select **Wirefilter** and enter:
 
@@ -87,16 +91,24 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
    ```
 
    Select **Add policy** to save it.
-3. ### Create a policy set Go to **Cloud Workload Security** > **Policy sets**. [Go to **Policy sets** ↗](https://dash.cloudflare.com/?to=/:account/one/cloud-workload-security/policy-sets)
+3. ### Create a policy set
+
+   Go to **Cloud Workload Security** > **Policy sets**. [Go to **Policy sets** ↗](https://dash.cloudflare.com/?to=/:account/one/cloud-workload-security/policy-sets)
 
    Select **Add policy set** and name it `r2-private-buckets`. In **Policies**, select **Attach policy**, choose `restrict-r2-public-access`, and select **Attach policies**. Turn on **Enforce** for the policy. Leave **Workloads** empty for this walkthrough, then select **Add policy set**.
-4. ### Create a deployment Go to **Cloud Workload Security** > **Deployments**. [Go to **Deployments** ↗](https://dash.cloudflare.com/?to=/:account/one/cloud-workload-security/deployments)
+4. ### Create a deployment
+
+   Go to **Cloud Workload Security** > **Deployments**. [Go to **Deployments** ↗](https://dash.cloudflare.com/?to=/:account/one/cloud-workload-security/deployments)
 
    Select **Add deployment** and name it `cws-r2-test`. In **Policy sets**, select **Attach policy set**, choose `r2-private-buckets`, and select **Attach policy sets**. In **Deployment settings**, choose *Default allow* for **Default mode**. This permits requests outside the guardrail's filter. Select **Add deployment** to save it. Open the deployment and copy its **ID**. Also copy your [Cloudflare Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-5. ### Create the proxy API token In the same account, go to **Manage account** > **Account API tokens**. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
+5. ### Create the proxy API token
+
+   In the same account, go to **Manage account** > **Account API tokens**. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 
    Create a custom account token with the **Cloud Workload Security Deployment** permission. Save the token for the proxy configuration. This token loads CWS configuration. Your signed-in `cf` client uses its own credentials for R2 requests.
-6. ### Prepare a certificate authority The proxy needs a certificate authority (CA) certificate and its matching private key. Clients need to trust the CA certificate.
+6. ### Prepare a certificate authority
+
+   The proxy needs a certificate authority (CA) certificate and its matching private key. Clients need to trust the CA certificate.
 
    To create a local test CA, save this configuration as `openssl.cnf`. If you already have a CA pair, use those files instead.
 
@@ -130,7 +142,9 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
    ```
 
    Keep `ca-key.pem` on the proxy host. Configure clients with `ca-cert.pem` only.
-7. ### Configure the proxy Save this configuration as `config.yaml`. Replace `<ACCOUNT_ID>` and `<DEPLOYMENT_ID>` with the values you copied. Use absolute certificate paths if the files are outside your working directory.
+7. ### Configure the proxy
+
+   Save this configuration as `config.yaml`. Replace `<ACCOUNT_ID>` and `<DEPLOYMENT_ID>` with the values you copied. Use absolute certificate paths if the files are outside your working directory.
 
    *config.yamlyaml*
 
@@ -167,7 +181,9 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
    `api_token_env` contains an environment variable name, not the token value. This local example binds the proxy to loopback and does not require a Redis server.
 
    For other authentication modes, upstream proxies, logging, and Redis options, refer to [Proxy configuration](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/configuration/).
-8. ### Validate and start the proxy In the terminal that runs the proxy, set your token and validate the file:
+8. ### Validate and start the proxy
+
+   In the terminal that runs the proxy, set your token and validate the file:
 
    ```sh
    export CWS_DEPLOYMENT_TOKEN="<DEPLOYMENT_API_TOKEN>"
@@ -183,7 +199,9 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
    ```
 
    Keep the terminal open. Wait for `remote_config_loaded` and `action_mapper_loaded` in the logs before sending requests. Do not point this terminal's `HTTP_PROXY` or `HTTPS_PROXY` variables at the local proxy.
-9. ### Route the CLI through the proxy Open a second terminal for the client. Replace the certificate path and Account ID, then set:
+9. ### Route the CLI through the proxy
+
+   Open a second terminal for the client. Replace the certificate path and Account ID, then set:
 
    ```sh
    export HTTP_PROXY="http://127.0.0.1:8080"
@@ -194,7 +212,9 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
    ```
 
    `NODE_EXTRA_CA_CERTS` points to the CA certificate, not its private key. These variables apply to the `cf` client in this terminal. Make sure `NO_PROXY` and `no_proxy` do not bypass `api.cloudflare.com`.
-10. ### Verify the guardrail In the client terminal, create an empty test bucket and inspect managed public access:
+10. ### Verify the guardrail
+
+    In the client terminal, create an empty test bucket and inspect managed public access:
 
     ```sh
     cf r2 buckets create --name cws-r2-guardrails-demo
@@ -218,7 +238,9 @@ Your account must have a [Zero Trust subscription](https://developers.cloudflare
     The request should fail with HTTP status `403` and a `CWS.Error` response. Check the managed-domain result again to confirm public access remains off.
 
     If the request succeeds, immediately turn off public access with `--enabled false`. Check that the CLI uses the proxy, the deployment contains your policy set, and **Enforce** is on. For further checks, refer to [Requests expected to be blocked succeed](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#requests-expected-to-be-blocked-succeed).
-11. ### Remove the test bucket In the client terminal, delete the empty bucket:
+11. ### Remove the test bucket
+
+    In the client terminal, delete the empty bucket:
 
     ```sh
     cf r2 buckets delete cws-r2-guardrails-demo

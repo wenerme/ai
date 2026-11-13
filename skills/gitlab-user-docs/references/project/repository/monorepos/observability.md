@@ -86,7 +86,7 @@ In this example, log message `json.command.cpu_time_ms` was `420`, and `json.com
     "trace.traceid":"AAB3QAeD8G+H9VNmzOi2CztMAcJv1+g4+l1cAgA=",
     "type":"gitaly",
     "user_id":"user-14857500",
-    "username":"ctx_ckottke",
+    "username":"ctx_ckottke"
   }
 ```
 
@@ -151,7 +151,7 @@ Example log message:
 "pack_objects_cache.key": "123456789",
 "pack_objects_cache.served_bytes": 49533030,
 "peer.address": "127.0.0.1",
-"pid": 8813,
+"pid": 8813
 }
 ```
 

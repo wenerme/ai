@@ -179,6 +179,8 @@ runs = mlflow.search_runs(experiment_ids=["<experiment_id>"], order_by=["metrics
 Accepted names, each optionally followed by `ASC` or `DESC`:
 
 - `search_runs`: `metrics.<name>`, `created_at` or `start_time`, `name` or `run_name`, and `id`. The `attributes.` prefix is accepted.
+  A metric name can contain dots, like `metrics.val.loss`.
+  Put a metric name that contains spaces in backticks, like ``metrics.`val loss` DESC``.
 - `search_experiments` and `search_registered_models`: `name`, `created_at`, `updated_at` or `last_updated_timestamp`, and `id`.
 
 For `search_runs` and `search_experiments`, an empty entry or a name that is not in this list returns `INVALID_PARAMETER_VALUE`.

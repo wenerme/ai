@@ -29,7 +29,7 @@ Set `moderation.model` when you create a response:
 
 Generate a response with moderation scores
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -45,6 +45,10 @@ const response = await client.responses.create({
   ],
   moderation: { model: "omni-moderation-latest" },
 });
+
+if (!response.moderation) {
+  throw new Error("The API did not return the requested moderation results.");
+}
 
 const inputModeration = response.moderation.input;
 const outputModeration = response.moderation.output;
@@ -224,7 +228,7 @@ Moderate text inputs
 
 Get classification information for a text input
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -346,7 +350,7 @@ Moderate images and text
 
 Get classification information for image and text input
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 

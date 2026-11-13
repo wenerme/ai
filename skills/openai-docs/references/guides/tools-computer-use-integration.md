@@ -117,11 +117,11 @@ npm install openai@7.33.0
 
 On Windows, use `py -3` instead of `python3` and `.venv\Scripts\python.exe` instead of `.venv/bin/python`.
 
-Save the matching sample as `dispatch.py` or `dispatch.mjs` in the same directory.
+Save the matching sample as `dispatch.py` or `dispatch.mts` in the same directory.
 
 Write and verify a dispatch note
 
-```javascript
+```typescript
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { setTimeout as delay } from "node:timers/promises";
@@ -130,7 +130,7 @@ import OpenAI, { ComputerToolset } from "openai";
 const note = "Dispatch #1042: ready for pickup.";
 const exec = promisify(execFile);
 
-async function desktop(...args) {
+async function desktop(...args: string[]) {
   const { stdout } = await exec(
     "docker",
     ["exec", "cua-visual-desktop", ...args],
@@ -144,7 +144,7 @@ async function desktop(...args) {
 }
 
 class EditorDriver {
-  async screenshot() {
+  async screenshot(): Promise<OpenAI.Responses.ResponseComputerToolCallOutputScreenshot> {
     const image = await desktop("import", "-window", "root", "png:-");
     return {
       type: "computer_screenshot",
@@ -165,7 +165,7 @@ class EditorDriver {
     await desktop("xdotool", "windowactivate", "--sync", window);
   }
 
-  async type(action) {
+  async type(action: { text: string }) {
     if (action.text !== note)
       throw new Error("Only the dispatch note is allowed.");
     await this.focusEditor();
@@ -180,8 +180,8 @@ class EditorDriver {
     );
   }
 
-  async keypress(action) {
-    const keys = action.keys.map((key) => key.toUpperCase()).join("+");
+  async keypress(action: { keys: string[] }) {
+    const keys = action.keys.map((key: string) => key.toUpperCase()).join("+");
     if (keys !== "CTRL+A" && keys !== "CTRL+S") {
       throw new Error(
         `Only Select All and Save are allowed; received ${JSON.stringify(action.keys)}.`
@@ -191,7 +191,7 @@ class EditorDriver {
     await desktop("xdotool", "key", "--clearmodifiers", keys.toLowerCase());
   }
 
-  refuse(action) {
+  refuse(action: OpenAI.Responses.ComputerAction) {
     throw new Error(`This exercise does not allow ${action.type}.`);
   }
 
@@ -366,7 +366,7 @@ finally:
 ```bash
 .venv/bin/python dispatch.py
 # Or:
-node dispatch.mjs
+node --experimental-strip-types dispatch.mts
 ```
 
 The SDK selects the editor's text, types a fictional note, saves it, and captures the desktop. It independently reads the guest file and prints `Verified: Dispatch #1042: ready for pickup.` The text should also appear in the viewer. The driver focuses the editor before every action and refuses inputs beyond the fixed note, Select All, and Save. Wait for the command to finish before typing in the viewer again.
@@ -382,7 +382,7 @@ Set `OPENAI_API_KEY` on the host using the [API key setup instructions](https://
 ```bash
 .venv/bin/python dispatch.py --live
 # Or:
-node dispatch.mjs --live
+node --experimental-strip-types dispatch.mts --live
 ```
 
 This run uses at most six Responses requests and verifies the file in the same way. It stops if the model requests a safety check or an input this driver does not support. API usage is billed to your project. Only the host SDK reads the API key; screenshots and prompts go to OpenAI.
@@ -430,7 +430,7 @@ Then launch a browser instance. Keep the browser and page alive while you run th
 
 Start a browser instance
 
-```javascript
+```typescript
 import { chromium } from "playwright";
 
 const browser = await chromium.launch({
@@ -538,16 +538,16 @@ Create a helper that passes the command arguments directly to the container:
 
 Execute commands on the container
 
-```javascript
+```typescript
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
 async function dockerExec(
-  containerName,
-  executable,
-  args = [],
+  containerName: string,
+  executable: string,
+  args: Array<string | number> = [],
   { decode = true, env = {} } = {}
 ) {
   const environmentArgs = Object.entries(env).flatMap(([name, value]) => [
@@ -656,9 +656,9 @@ Playwright
 
     Normalization helpers
 
-```javascript
+```typescript
 // Map model-emitted key names to the names Playwright expects.
-const normalizeKey = (key) => {
+const normalizeKey = (key: string) => {
   switch (key) {
     case "ENTER":
     case "RETURN":
@@ -714,7 +714,7 @@ const normalizeKey = (key) => {
 
 // Translate API button names to Playwright's supported button names.
 const normalizePlaywrightButton = (button = "left") => {
-  const buttons = {
+  const buttons: Partial<Record<string, "left" | "right" | "middle">> = {
     left: "left",
     right: "right",
     wheel: "middle",
@@ -729,7 +729,9 @@ const normalizePlaywrightButton = (button = "left") => {
 };
 
 // Accept drag paths as either [x, y] pairs or {x, y} objects.
-const normalizeDragPath = (path) => {
+const normalizeDragPath = (
+  path: Array<[number, number] | { x: number; y: number }>
+) => {
   if (!Array.isArray(path)) {
     throw new Error("drag action requires a path array");
   }
@@ -814,9 +816,9 @@ Docker
 
     Normalization helpers
 
-```javascript
+```typescript
 // Map model-emitted key names to the names xdotool expects.
-const normalizeXdotoolKey = (key) => {
+const normalizeXdotoolKey = (key: string) => {
   switch (key) {
     case "ENTER":
     case "RETURN":
@@ -872,7 +874,7 @@ const normalizeXdotoolKey = (key) => {
 
 // Translate API button names to X11 button numbers.
 const normalizeXdotoolButton = (button = "left") => {
-  const buttons = {
+  const buttons: Partial<Record<string, number>> = {
     left: 1,
     wheel: 2,
     right: 3,
@@ -887,9 +889,13 @@ const normalizeXdotoolButton = (button = "left") => {
 };
 
 // Translate API scroll deltas to vertical and horizontal X11 wheel clicks.
-const getXdotoolScrollButtons = (scrollX, scrollY) => {
-  const scrollButtons = [];
-  const appendClicks = (delta, negativeButton, positiveButton) => {
+const getXdotoolScrollButtons = (scrollX: number, scrollY: number) => {
+  const scrollButtons: number[] = [];
+  const appendClicks = (
+    delta: number,
+    negativeButton: number,
+    positiveButton: number
+  ) => {
     if (!delta) {
       return;
     }
@@ -904,7 +910,9 @@ const getXdotoolScrollButtons = (scrollX, scrollY) => {
 };
 
 // Accept drag paths as either [x, y] pairs or {x, y} objects.
-const normalizeDragPath = (path) => {
+const normalizeDragPath = (
+  path: Array<[number, number] | { x: number; y: number }>
+) => {
   if (!Array.isArray(path)) {
     throw new Error("drag action requires a path array");
   }
@@ -1008,20 +1016,23 @@ Playwright
 
     Execute Computer use actions
 
-```javascript
+```typescript
+import type { Page } from "playwright";
+import type { ComputerAction } from "openai/resources/responses/responses";
+
 // Reuse normalizeKey from the helper above.
 // Reuse normalizePlaywrightButton from the helper above.
 // Reuse normalizeDragPath from the helper above.
 
-function rejectModifiers(action) {
-  if (action.keys?.length) {
+function rejectModifiers(action: ComputerAction) {
+  if ("keys" in action && action.keys?.length) {
     throw new Error(
       "This handler does not support modifier keys. Use the modifier-aware handler below."
     );
   }
 }
 
-async function handleComputerActions(page, actions) {
+async function handleComputerActions(page: Page, actions: ComputerAction[]) {
   for (const action of actions) {
     switch (action.type) {
       case "click": {
@@ -1071,7 +1082,7 @@ async function handleComputerActions(page, actions) {
       case "screenshot":
         break;
       default:
-        throw new Error(`Unsupported action: ${action.type}`);
+        throw new Error("Unsupported computer action");
     }
   }
 }
@@ -1151,20 +1162,25 @@ Docker
 
     Execute Computer use actions
 
-```javascript
+```typescript
+import type { ComputerAction } from "openai/resources/responses/responses";
+
 // Reuse normalizeXdotoolKey from the helper above.
 // Reuse normalizeXdotoolButton and getXdotoolScrollButtons from the helper above.
 // Reuse normalizeDragPath from the helper above.
 
-function rejectModifiers(action) {
-  if (action.keys?.length) {
+function rejectModifiers(action: ComputerAction) {
+  if ("keys" in action && action.keys?.length) {
     throw new Error(
       "This handler does not support modifier keys. Use the modifier-aware handler below."
     );
   }
 }
 
-async function handleComputerActions(vm, actions) {
+async function handleComputerActions(
+  vm: { containerName: string; display: string },
+  actions: ComputerAction[]
+) {
   for (const action of actions) {
     switch (action.type) {
       case "click": {
@@ -1261,7 +1277,7 @@ async function handleComputerActions(vm, actions) {
       case "screenshot":
         break;
       default:
-        throw new Error(`Unsupported action: ${action.type}`);
+        throw new Error("Unsupported computer action");
     }
   }
 }
@@ -1424,12 +1440,19 @@ Playwright
 
     Execute modifier-assisted Computer use actions
 
-```javascript
+```typescript
+import type { Page } from "playwright";
+import type { ComputerAction } from "openai/resources/responses/responses";
+
 // Reuse normalizeKey from the helper above.
 // Reuse normalizePlaywrightButton from the helper above.
 // Reuse normalizeDragPath from the helper above.
 
-async function withModifiers(page, keys, callback) {
+async function withModifiers(
+  page: Page,
+  keys: string[] | null | undefined,
+  callback: () => Promise<void>
+) {
   const normalizedKeys = (keys ?? []).map(normalizeKey);
   const pressedKeys = [];
 
@@ -1447,7 +1470,7 @@ async function withModifiers(page, keys, callback) {
   }
 }
 
-async function handleComputerActions(page, actions) {
+async function handleComputerActions(page: Page, actions: ComputerAction[]) {
   for (const action of actions) {
     switch (action.type) {
       case "click":
@@ -1501,7 +1524,7 @@ async function handleComputerActions(page, actions) {
       case "screenshot":
         break;
       default:
-        throw new Error(`Unsupported action: ${action.type}`);
+        throw new Error("Unsupported computer action");
     }
   }
 }
@@ -1609,12 +1632,18 @@ Docker
 
     Execute modifier-assisted Computer use actions
 
-```javascript
+```typescript
+import type { ComputerAction } from "openai/resources/responses/responses";
+
 // Reuse normalizeXdotoolKey from the helper above.
 // Reuse normalizeXdotoolButton and getXdotoolScrollButtons from the helper above.
 // Reuse normalizeDragPath from the helper above.
 
-async function withModifiers(vm, keys, callback) {
+async function withModifiers(
+  vm: { containerName: string; display: string },
+  keys: string[] | null | undefined,
+  callback: () => Promise<void>
+) {
   const normalizedKeys = (keys ?? []).map(normalizeXdotoolKey);
   const pressedKeys = [];
 
@@ -1636,7 +1665,10 @@ async function withModifiers(vm, keys, callback) {
   }
 }
 
-async function handleComputerActions(vm, actions) {
+async function handleComputerActions(
+  vm: { containerName: string; display: string },
+  actions: ComputerAction[]
+) {
   for (const action of actions) {
     switch (action.type) {
       case "click": {
@@ -1739,7 +1771,7 @@ async function handleComputerActions(vm, actions) {
       case "screenshot":
         break;
       default:
-        throw new Error(`Unsupported action: ${action.type}`);
+        throw new Error("Unsupported computer action");
     }
   }
 }
@@ -1907,12 +1939,15 @@ This function assumes you have an action handler and a screenshot helper. Add pe
 
 Repeat the Computer use loop
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
 
-async function computerUseLoop(target, response) {
+async function computerUseLoop(
+  target: Parameters<typeof handleComputerActions>[0],
+  response: OpenAI.Responses.Response
+) {
   while (true) {
     const computerCall = response.output.find(
       (item) => item.type === "computer_call"
@@ -1920,13 +1955,16 @@ async function computerUseLoop(target, response) {
     if (!computerCall) {
       return response;
     }
+    if (!computerCall.actions) {
+      throw new Error("Expected batched computer actions.");
+    }
 
     await handleComputerActions(target, computerCall.actions);
 
     const screenshot = await captureScreenshot(target);
     const screenshotBase64 = Buffer.from(screenshot).toString("base64");
     const output = {
-      type: "computer_screenshot",
+      type: "computer_screenshot" as const,
       image_url: `data:image/png;base64,${screenshotBase64}`,
       detail: "original",
     };
@@ -2261,8 +2299,10 @@ Playwright
 
     Capture a screenshot
 
-```javascript
-async function captureScreenshot(page) {
+```typescript
+import type { Page } from "playwright";
+
+async function captureScreenshot(page: Page) {
   return await page.screenshot({ type: "png" });
 }
 ```
@@ -2281,8 +2321,11 @@ Docker
 
     Capture a screenshot
 
-```javascript
-async function captureScreenshot(vm) {
+```typescript
+async function captureScreenshot(vm: {
+  containerName: string;
+  display: string;
+}) {
   return await dockerExec(
     vm.containerName,
     "import",
@@ -2389,7 +2432,7 @@ The Java adapter is a standalone execution-service example with partial workflow
 
 Connect the API client to your execution service
 
-```javascript
+```typescript
 import readline from "node:readline/promises";
 import { z } from "zod";
 
@@ -2406,7 +2449,11 @@ const executionOutput = z
   )
   .nonempty();
 
-async function executeInSandbox(code, sessionId, endpoint) {
+async function executeInSandbox(
+  code: string,
+  sessionId: string,
+  endpoint: string
+): Promise<OpenAI.Responses.ResponseFunctionCallOutputItemList> {
   console.log(code);
   const terminal = readline.createInterface({
     input: process.stdin,
@@ -2700,7 +2747,7 @@ end
 ```
 
 
-Python, JavaScript, Ruby, and Go have complete [API loop examples](https://developers.openai.com/api/docs/guides/tools-computer-use#connect-your-own-runtime) for this execution-service contract. Use `run_computer_use` in Python or Ruby, or `runComputerUse` in JavaScript or Go, with your endpoint and task. The Go example also takes a context, SDK client, terminal scanner, and output writer; use its included adapter to preserve those inputs across calls. The loop preserves the runtime session and uses `previous_response_id` to continue the model conversation. It stops after 20 responses if the task has not finished.
+Python, TypeScript, Ruby, and Go have complete [API loop examples](https://developers.openai.com/api/docs/guides/tools-computer-use#connect-your-own-runtime) for this execution-service contract. Use `run_computer_use` in Python or Ruby, or `runComputerUse` in TypeScript or Go, with your endpoint and task. The Go example also takes a context, SDK client, terminal scanner, and output writer; use its included adapter to preserve those inputs across calls. The loop preserves the runtime session and uses `previous_response_id` to continue the model conversation. It stops after 20 responses if the task has not finished.
 
 This adapter asks for approval before every generated script as a conservative demonstration. A production runtime must enforce the action-specific rules in [Handle user confirmation and consent](#handle-user-confirmation-and-consent). Removing the prompt does not supply those controls.
 
@@ -2856,7 +2903,7 @@ To migrate from the legacy preview integration, update the model, tool definitio
 
 Legacy preview request
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();

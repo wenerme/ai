@@ -27,12 +27,12 @@ Follow these steps to create a vector store and upload a file to it. You can use
 
 Upload a file
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 const openai = new OpenAI();
 
-async function createFile(filePath) {
+async function createFile(filePath: string) {
   let result;
   if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
     // Download the file content from the URL
@@ -163,7 +163,7 @@ puts(uploaded.id)
 
 Create a vector store
 
-```javascript
+```typescript
 const vectorStore = await openai.vectorStores.create({
   name: "knowledge_base",
 });
@@ -223,7 +223,7 @@ puts(store.id)
 
 Add a file to a vector store
 
-```javascript
+```typescript
 // Use vectorStore and fileId from the earlier create and upload steps.
 await openai.vectorStores.files.create(vectorStore.id, {
   file_id: fileId,
@@ -295,7 +295,7 @@ Run this code until the file is ready to be used (i.e., when the status is `comp
 
 Check status
 
-```javascript
+```typescript
 // Use vectorStore from the earlier create step.
 const result = await openai.vectorStores.files.list(vectorStore.id);
 console.log(result.data);
@@ -362,7 +362,7 @@ Once your knowledge base is set up, you can include the `file_search` tool in th
 
 File search tool
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -547,7 +547,7 @@ Using the file search tool with the Responses API, you can customize the number 
 
 Limit the number of results
 
-```javascript
+```typescript
 const response = await openai.responses.create({
   model: "gpt-6-astra",
   input: "What is deep research by OpenAI?",
@@ -681,7 +681,7 @@ To include search results in the response, you can use the `include` parameter w
 
 Include search results
 
-```javascript
+```typescript
 const response = await openai.responses.create({
   model: "gpt-6-astra",
   input: "What is deep research by OpenAI?",
@@ -821,7 +821,7 @@ You can filter the search results based on the metadata of the files. For more d
 
 Metadata filtering
 
-```javascript
+```typescript
 const response = await openai.responses.create({
   model: "gpt-6-astra",
   input: "What is deep research by OpenAI?",

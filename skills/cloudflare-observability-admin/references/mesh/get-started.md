@@ -33,7 +33,11 @@ Set up Cloudflare Mesh so your devices and servers can reach each other by priva
   | **RAM with a desktop** | 4 GB minimum, 8 GB recommended (for example, Ubuntu GNOME) |
   | **Disk space** | 250 MiB minimum, 500 MiB recommended |
   | **Network interface type** | Wi-Fi or LAN |
-  | **MTU** | 1381 bytes recommended <sup><a href="#user-content-fn-2">2</a></sup> | ## Footnotes<a href="#footnote-label"></a>
+  | **MTU** | 1381 bytes recommended <sup><a href="#user-content-fn-2">2</a></sup> |
+
+  ## Footnotes
+
+  <a href="#footnote-label"></a>
   1. On RHEL 9 and later, enable the <a href="https://docs.fedoraproject.org/en-US/epel/">Extra Packages for Enterprise Linux (EPEL) ↗︎</a> repository before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the client UI. For the RHEL commands, refer to <a href="https://docs.fedoraproject.org/en-US/epel/getting-started/">Getting started with EPEL ↗︎</a>. <a href="#user-content-fnref-1">↩</a>
   2. Minimum 1281 bytes with <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/">Path MTU Discovery</a> <a href="#user-content-fnref-2">↩</a></details>
 

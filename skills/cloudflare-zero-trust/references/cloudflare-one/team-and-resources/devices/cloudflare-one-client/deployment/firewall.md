@@ -219,6 +219,7 @@ If your organization does not currently allow inbound/outbound communication ove
   - **Block all incoming connections**
   - **Automatically allow built-in software to receive incoming connections**
   - **Automatically allow downloaded signed software to receive incoming connections**
+
   2. Add the [WARP daemon, updater, and GUI processes](#required-scopes) to the firewall exceptions list and set them to *Allow incoming connections*.
   3. Restrict the other allow exceptions to only the processes you want receiving traffic.
   4. (Optional) Do not grant users administrative privileges, otherwise they will be able to modify firewall settings and exceptions.

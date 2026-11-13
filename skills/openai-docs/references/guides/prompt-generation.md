@@ -27,7 +27,7 @@ Text-out
 
     Text meta-prompt
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -76,7 +76,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]`;
 
-async function generatePrompt(taskOrPrompt) {
+async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
     model: "gpt-6-astra",
     messages: [
@@ -442,7 +442,7 @@ Audio-out
 
     Audio meta-prompt
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -482,7 +482,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]`;
 
-async function generatePrompt(taskOrPrompt) {
+async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
     model: "gpt-6-astra",
     messages: [
@@ -807,7 +807,7 @@ Text-out
 
     Text meta-prompt for edits
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -875,7 +875,7 @@ The final prompt you output should adhere to the following structure below. Do n
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]
 [NOTE: you must start with a <reasoning> section. the immediate next token you produce should be <reasoning>]`;
 
-async function generatePrompt(taskOrPrompt) {
+async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
     model: "gpt-6-astra",
     messages: [
@@ -1336,7 +1336,7 @@ Audio-out
 
     Audio meta-prompt for edits
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1395,7 +1395,7 @@ The final prompt you output should adhere to the following structure below. Do n
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]
 [NOTE: you must start with a <reasoning> section. the immediate next token you produce should be <reasoning>]`;
 
-async function generatePrompt(taskOrPrompt) {
+async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
     model: "gpt-6-astra",
     messages: [
@@ -1864,7 +1864,7 @@ Structured output schema
 
     Structured output meta-schema
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -2092,7 +2092,7 @@ Output: {
     "additionalProperties": false
 }`;
 
-async function generateSchema(description) {
+async function generateSchema(description: string) {
   const completion = await client.chat.completions.create({
     model: "gpt-5.6-terra",
     response_format: { type: "json_schema", json_schema: metaSchema },
@@ -3693,7 +3693,7 @@ Function schema
 
     Structured output meta-schema
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -3905,7 +3905,7 @@ Output: {
     }
 }`;
 
-async function generateFunctionSchema(description) {
+async function generateFunctionSchema(description: string) {
   const completion = await client.chat.completions.create({
     model: "gpt-5.6-terra",
     response_format: { type: "json_schema", json_schema: metaSchema },

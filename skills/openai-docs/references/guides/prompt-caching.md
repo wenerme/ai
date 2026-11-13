@@ -649,10 +649,13 @@ The following helper uses one cache-write multiplier for all writes. Use `1.25` 
 
 Calculate input cost with one cache-write rate
 
-```javascript
+```typescript
 function calculateInputCost(
-  usage,
-  inputPricePerMillion,
+  usage: {
+    input_tokens: number;
+    input_tokens_details: { cached_tokens: number; cache_write_tokens: number };
+  },
+  inputPricePerMillion: number,
   cacheInputMultiplier = 0.1,
   cacheWriteMultiplier = 1.25
 ) {

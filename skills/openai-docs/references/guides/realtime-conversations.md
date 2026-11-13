@@ -38,7 +38,7 @@ The following example shows updating the session with a `session.update` client 
 
 Update the system instructions used by the model in this session
 
-```javascript
+```typescript
 const event = {
   type: "session.update",
   session: {
@@ -274,7 +274,7 @@ Create a new text conversation item using the [`conversation.item.create`](https
 
 Create a conversation item with user input
 
-```javascript
+```typescript
 const event = {
   type: "conversation.item.create",
   item: {
@@ -382,7 +382,7 @@ After adding the user message to the conversation, send the [`response.create`](
 
 Generate a text-only response
 
-```javascript
+```typescript
 const event = {
   type: "response.create",
   response: {
@@ -467,8 +467,8 @@ When the response is completely finished, the server will emit the [`response.do
 
 Listen for response.done to see the final results
 
-```javascript
-function handleEvent(message) {
+```typescript
+function handleEvent(message: import("ws").RawData | MessageEvent<string>) {
   const data = "data" in message ? message.data : message.toString();
   const serverEvent = JSON.parse(data);
   if (serverEvent.type === "response.done") {
@@ -649,7 +649,7 @@ If you are connecting to the Realtime API using WebRTC, the Realtime API is acti
 
 The example code from the [WebRTC connection guide](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime) shows a basic example of configuring both local and remote audio using browser APIs:
 
-```javascript
+```typescript
 // Create a peer connection
 const pc = new RTCPeerConnection();
 
@@ -807,12 +807,12 @@ Set `session.audio.input.format` in [`session.update`](https://developers.openai
 
 Append audio input bytes to the conversation
 
-```javascript
+```typescript
 import fs from "fs";
 import decodeAudio from "audio-decode";
 
 // Converts Float32Array of audio data to PCM16 ArrayBuffer
-function floatTo16BitPCM(float32Array) {
+function floatTo16BitPCM(float32Array: Float32Array) {
   const buffer = new ArrayBuffer(float32Array.length * 2);
   const view = new DataView(buffer);
   let offset = 0;
@@ -828,7 +828,7 @@ function floatTo16BitPCM(float32Array) {
 }
 
 // Converts a Float32Array to base64-encoded PCM16 data
-function base64EncodeAudio(float32Array) {
+function base64EncodeAudio(float32Array: Float32Array<ArrayBufferLike>) {
   const arrayBuffer = floatTo16BitPCM(float32Array);
   let binary = "";
   let bytes = new Uint8Array(arrayBuffer);
@@ -992,7 +992,7 @@ It is also possible to create conversation messages that are full audio recordin
 
 Create full audio input conversation items
 
-```javascript
+```typescript
 const fullAudio = "<a base64-encoded string of audio bytes>";
 
 const event = {
@@ -1140,8 +1140,8 @@ The format of the output chunks can be configured either for the entire session,
 
 Listen for response.output_audio.delta events
 
-```javascript
-function handleEvent(message) {
+```typescript
+function handleEvent(message: { toString: () => string }) {
   const serverEvent = JSON.parse(message.toString());
   if (serverEvent.type === "response.output_audio.delta") {
     const audio = Buffer.from(serverEvent.delta, "base64");
@@ -1236,7 +1236,7 @@ raise "Connection closed before the response completed" unless response_done
 
 Add an image to the conversation
 
-```javascript
+```typescript
 const base64Image = "<a base64-encoded string of image bytes>";
 
 const event = {
@@ -1346,7 +1346,7 @@ When creating an out-of-band response, you will probably also want some way to i
 
 Create an out-of-band model response
 
-```javascript
+```typescript
 const prompt = `
 Analyze the conversation so far. If it is related to support, output
 "support". If it is related to sales, output "sales".
@@ -1484,8 +1484,8 @@ Now, when you listen for the [`response.done`](https://developers.openai.com/api
 
 Create an out-of-band model response
 
-```javascript
-function handleEvent(message) {
+```typescript
+function handleEvent(message: import("ws").RawData | MessageEvent<string>) {
   const data = "data" in message ? message.data : message.toString();
   const serverEvent = JSON.parse(data);
   if (
@@ -1630,7 +1630,7 @@ You can also construct a custom context that the model will use to generate a re
 
 Listen for out-of-band model response with custom context
 
-```javascript
+```typescript
 const existingItemId = "item_pizza";
 ws.send(
   JSON.stringify({
@@ -1771,7 +1771,7 @@ You can also insert responses into the default conversation, ignoring all other 
 
 Insert no-context model responses into the default conversation
 
-```javascript
+```typescript
 const prompt = `
 Say exactly the following:
 I'm a little teapot, short and stout!
@@ -2052,7 +2052,7 @@ The [`error`](https://developers.openai.com/api/reference/resources/realtime) ev
 
 Unlike HTTP requests and responses, where a response is implicitly tied to a request from the client, we need to use an `event_id` property on client events to know when one of them has triggered an error condition on the server. This technique is shown in the code below, where the client attempts to emit an unsupported event type.
 
-```javascript
+```typescript
 const event = {
   event_id: "my_awesome_event",
   type: "scooby.dooby.doo",

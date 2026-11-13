@@ -48,7 +48,7 @@ The metadata server returns a Google-signed JWT. For more information about the 
 
 Before configuring workload identity federation, export the Google identity token as `TOKEN`, then run this script locally to inspect its claims:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -395,7 +395,7 @@ Set `OPENAI_WIF_AUDIENCE` to the custom audience configured as the Workload Iden
 
 Authenticate from a Google metadata server identity token
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const metadataEndpoint =
@@ -411,9 +411,9 @@ if (!identityProviderId || !serviceAccountId || !audience) {
   );
 }
 
-function googleMetadataIdentityTokenProvider(audience) {
+function googleMetadataIdentityTokenProvider(audience: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const url = new URL(metadataEndpoint);
       url.searchParams.set("audience", audience);
@@ -885,7 +885,7 @@ export TOKEN
 
 Then run this script:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -1238,7 +1238,7 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from a GKE projected service account token
 
-```javascript
+```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -1252,9 +1252,9 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedGkeServiceAccountTokenProvider(path) {
+function mountedGkeServiceAccountTokenProvider(path: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const token = (await readFile(path, "utf8")).trim();
       if (!token) {

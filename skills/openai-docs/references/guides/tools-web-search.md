@@ -23,7 +23,7 @@ For new Responses API integrations, use `{ "type": "web_search" }`. The earlier 
 
 Web search tool example
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -227,7 +227,7 @@ For integrations still using `gpt-5`, web search requires reasoning effort above
 
 Set search context size
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -391,9 +391,9 @@ This parameter applies only to the hosted Responses API `web_search` tool with G
 
 Run longer web searches
 
-```javascript
+```typescript
 import OpenAI from "openai";
-import { Agent, fetch } from "undici";
+import { Agent } from "undici";
 
 // Allow long research runs without automatic request retries.
 const timeout = 15 * 60 * 1000;
@@ -404,7 +404,6 @@ const dispatcher = new Agent({
 const client = new OpenAI({
   timeout,
   maxRetries: 0,
-  fetch,
   fetchOptions: { dispatcher },
 });
 
@@ -588,28 +587,31 @@ The number of sources is often greater than the number of citations. Real-time t
 
 List sources
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
+
+const tools: OpenAI.Responses.Tool[] = [
+  {
+    type: "web_search",
+    filters: {
+      allowed_domains: [
+        "pubmed.ncbi.nlm.nih.gov",
+        "clinicaltrials.gov",
+        "www.who.int",
+        "www.cdc.gov",
+        "www.fda.gov",
+      ],
+      // @ts-expect-error The published SDK omits this documented API filter.
+      blocked_domains: ["reddit.com", "quora.com", "wikipedia.org"],
+    },
+  },
+];
 
 const response = await client.responses.create({
   model: "gpt-6-astra",
   reasoning: { effort: "low" },
-  tools: [
-    {
-      type: "web_search",
-      filters: {
-        allowed_domains: [
-          "pubmed.ncbi.nlm.nih.gov",
-          "clinicaltrials.gov",
-          "www.who.int",
-          "www.cdc.gov",
-          "www.fda.gov",
-        ],
-        blocked_domains: ["reddit.com", "quora.com", "wikipedia.org"],
-      },
-    },
-  ],
+  tools,
   tool_choice: "auto",
   include: ["web_search_call.action.sources"],
   input:
@@ -829,23 +831,26 @@ To inspect raw image results, include `web_search_call.results` in the request a
 
 Search for images
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
+
+const tools: OpenAI.Responses.Tool[] = [
+  {
+    type: "web_search",
+    // @ts-expect-error The published SDK omits the documented image-search options.
+    search_content_types: ["image", "text"],
+    image_settings: {
+      max_results: 3,
+      caption: true,
+    },
+  },
+];
 
 const response = await client.responses.create({
   model: "gpt-6-astra",
   reasoning: { effort: "low" },
-  tools: [
-    {
-      type: "web_search",
-      search_content_types: ["image", "text"],
-      image_settings: {
-        max_results: 3,
-        caption: true,
-      },
-    },
-  ],
+  tools,
   include: ["web_search_call.results"],
   input:
     "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
@@ -1037,7 +1042,7 @@ To refine search results based on geography, you can specify an approximate user
 
 Customizing user location
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -1245,7 +1250,7 @@ curl "https://api.openai.com/v1/responses" \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 

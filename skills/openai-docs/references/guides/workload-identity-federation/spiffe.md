@@ -87,13 +87,13 @@ export TOKEN
 
 Before configuring workload identity federation, export the JWT-SVID as `TOKEN`, then run one of these examples locally to inspect its header and claims:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
 }
 
-const decode = (segment) => {
+const decode = (segment: string) => {
   if (!/^[A-Za-z0-9_-]+$/.test(segment) || segment.length % 4 === 1) {
     throw new Error("JWT segment is not valid Base64URL");
   }
@@ -485,7 +485,7 @@ Set `OPENAI_IDENTITY_PROVIDER_ID` and `OPENAI_SERVICE_ACCOUNT_ID` in the workloa
 
 Authenticate from a SPIFFE JWT-SVID
 
-```javascript
+```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -499,9 +499,9 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function spiffeJwtSvidProvider(path) {
+function spiffeJwtSvidProvider(path: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const token = (await readFile(path, "utf8")).trim();
       if (!token) {

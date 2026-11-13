@@ -525,9 +525,9 @@ When you use the dependency firewall, you might encounter the following issues.
 If GitLab can't evaluate a package, the CLI blocks it. If the firewall isn't evaluating the
 project, the CLI allows every package.
 
-### Error: `policy check failed:`
+### Error: `policy check failed`
 
-A package is blocked, and its reason in the summary starts with `policy check failed:`.
+A package is blocked, and its reason in the summary starts with `policy check failed`.
 
 This issue occurs when the evaluation request fails because of a network error, a timeout
 after 60 seconds, a server error (`503`), rate limiting (`429`), or a permission error (`403`),

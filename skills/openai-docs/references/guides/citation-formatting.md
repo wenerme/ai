@@ -224,7 +224,7 @@ uses a different locator format.
 
 Citation parsing helpers
 
-```javascript
+```typescript
 const CITATION_START = "\uE200";
 const CITATION_DELIMITER = "\uE202";
 const CITATION_STOP = "\uE201";
@@ -237,7 +237,7 @@ const LINE_LOCATOR_RE = /^L\d+(?:-L\d+)?$/;
 //   {CITATION_START}cite{CITATION_DELIMITER}turn0file0{CITATION_STOP}
 //   {CITATION_START}cite{CITATION_DELIMITER}turn0file0{CITATION_DELIMITER}L8-L13{CITATION_STOP}
 //   {CITATION_START}cite{CITATION_DELIMITER}turn0search0{CITATION_DELIMITER}turn1news2{CITATION_STOP}
-function extractCitations(text, { families = ["cite"] } = {}) {
+function extractCitations(text: string, { families = ["cite"] } = {}) {
   if (families.length === 0) {
     return [];
   }
@@ -257,7 +257,7 @@ function extractCitations(text, { families = ["cite"] } = {}) {
     const body = match.groups?.body ?? "";
     const parts = body
       .split(CITATION_DELIMITER)
-      .map((part) => part.trim())
+      .map((part: string) => part.trim())
       .filter(Boolean);
 
     if (parts.length === 0) {
@@ -270,7 +270,10 @@ function extractCitations(text, { families = ["cite"] } = {}) {
       locator = parts.pop() ?? null;
     }
 
-    if (parts.length === 0 || parts.some((part) => !SOURCE_ID_RE.test(part))) {
+    if (
+      parts.length === 0 ||
+      parts.some((part: string) => !SOURCE_ID_RE.test(part))
+    ) {
       continue;
     }
 
@@ -287,7 +290,10 @@ function extractCitations(text, { families = ["cite"] } = {}) {
   return citations;
 }
 
-function stripCitations(text, citations) {
+function stripCitations(
+  text: string,
+  citations: ReturnType<typeof extractCitations>
+) {
   let cleanText = text;
   const sortedCitations = Array.from(citations).sort(
     (left, right) => right.start - left.start

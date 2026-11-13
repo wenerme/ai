@@ -808,6 +808,24 @@ Reports that go over the 20 MB limit aren't loaded. Affected reports:
 - [CI/CD parameter `artifacts:expose_as`](../ci/yaml/_index.md#artifactsexpose_as)
 - [Unit test reports](../ci/testing/unit_test_reports.md)
 
+## Scanned resources CSV limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637250) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `scanned_resources_csv_limits`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+When you download the scanned resources CSV for a pipeline, GitLab parses the pipeline's
+DAST reports, including those in child pipelines. The download fails if the reports:
+
+- Total more than 20 MB.
+- Number more than 100.
+
+If the download fails, download the DAST report artifact instead.
+
+For the rate limit on these downloads, see [non-configurable rate limits](../rate_limits/non_configurable.md).
+
 ## Advanced search limits
 
 ### Maximum file size indexed

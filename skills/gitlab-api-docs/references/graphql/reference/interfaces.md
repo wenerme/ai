@@ -64,7 +64,7 @@ An AI catalog item.
 | `updatedAt` | [`Time!`](scalars.md#time) | Timestamp of when the item was updated. |
 | `userPermissions` | [`AiCatalogItemPermissions!`](objects.md#aicatalogitempermissions) | Permissions for the current user on the resource. |
 | `verificationLevel` | [`AiCatalogItemVerificationLevel!`](enums.md#aicatalogitemverificationlevel) | Verification level of the item. |
-| `versions` | [`AiCatalogItemVersionConnection`](objects.md#aicatalogitemversionconnection) | Versions of the item. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `versions` | [`AiCatalogItemVersionConnection`](objects.md#aicatalogitemversionconnection) | Versions of the item. This field can only be resolved for one AiCatalogItem in any single request. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `visibility` | [`AiCatalogItemVisibility!`](enums.md#aicatalogitemvisibility) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Visibility of the item in the catalog. |
 | `webPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Web path of the item in the AI catalog. |
 

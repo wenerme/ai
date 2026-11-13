@@ -32,7 +32,7 @@ For browser apps, create a short-lived client secret on your server. Don't expos
 
 Create a translation client secret
 
-```javascript
+```typescript
 app.post("/session", async (req, res) => {
   const language = req.body.targetLanguage ?? "es";
 
@@ -65,7 +65,7 @@ In the browser, capture audio, create a peer connection, and post the SDP offer 
 
 Connect a browser translation call
 
-```javascript
+```typescript
 const { value: clientSecret } = await fetch("/session", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
@@ -129,7 +129,7 @@ The Java examples cover connection setup, language configuration, and audio inpu
 
 Connect to a translation session
 
-```javascript
+```typescript
 import WebSocket from "ws";
 
 const ws = new WebSocket(
@@ -244,7 +244,7 @@ Configure the target language after the socket opens:
 
 Configure the target language
 
-```javascript
+```typescript
 ws.on("open", () => {
   ws.send(
     JSON.stringify({
@@ -325,7 +325,7 @@ Then append audio continuously:
 
 Append source audio
 
-```javascript
+```typescript
 ws.send(
   JSON.stringify({
     type: "session.input_audio_buffer.append",
@@ -388,7 +388,7 @@ Listen for translated audio and transcripts:
 
 Listen for translated audio and transcripts
 
-```javascript
+```typescript
 ws.on("message", (data) => {
   const event = JSON.parse(data.toString());
 
@@ -497,10 +497,10 @@ After you send `session.close`, stop appending audio and continue reading events
 
 Close a translation session
 
-```javascript
+```typescript
 let translationSessionClosing = false;
 let gotTranslationClosed = false;
-let drainDeadline;
+let drainDeadline: ReturnType<typeof setTimeout> | undefined;
 
 ws.on("close", () => {
   clearTimeout(drainDeadline);

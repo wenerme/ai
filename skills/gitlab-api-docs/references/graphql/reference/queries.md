@@ -1020,7 +1020,7 @@ The alternative branches to the provided user message. Multiple branches can be 
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.
 
-List the events for a Duo Agent Platform. Returns only the latest checkpoint by default. Use `first` and `after` to page through history. When the `limit_duo_workflow_events_page_cost` feature flag is enabled, returns at most 5 checkpoints per page, otherwise at most 100. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
+List the events for a Duo Agent Platform. Returns only the latest checkpoint by default. Use `first` and `after` to page through history. Returns at most 5 checkpoints per page. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
 **Returns:** [`DuoWorkflowEventConnection!`](objects.md#duoworkfloweventconnection)
 

@@ -14,7 +14,7 @@ Audio output from model
 
     Create a human-like audio response to a prompt
 
-```javascript
+```typescript
 import { writeFileSync } from "node:fs";
 import OpenAI from "openai";
 
@@ -38,11 +38,11 @@ const response = await openai.chat.completions.create({
 console.log(response.choices[0]);
 
 // Write audio data to a file
-writeFileSync(
-  "dog.wav",
-  Buffer.from(response.choices[0].message.audio.data, "base64"),
-  { encoding: "utf-8" }
-);
+const audio = response.choices[0].message.audio;
+if (!audio) throw new Error("The response did not include audio.");
+writeFileSync("dog.wav", Buffer.from(audio.data, "base64"), {
+  encoding: "utf-8",
+});
 ```
 
 ```python
@@ -212,7 +212,7 @@ Audio input to model
 
     Use audio inputs for prompting a model
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 

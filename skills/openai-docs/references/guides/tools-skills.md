@@ -108,7 +108,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -279,16 +279,16 @@ Skills also work with local shell mode, but local shell and hosted shell do not 
 
 Use the [Shell guide](https://developers.openai.com/api/docs/guides/tools-shell) for local shell execution details.
 
-The JavaScript example requires Node.js and a running Docker daemon. Save the
+The TypeScript example requires Node.js 22.6 or later and a running Docker daemon. Save the
 [Docker adapter](https://developers.openai.com/api/docs/samples/local-skill-sandbox.mjs) as `support/local-skill-sandbox.mjs` and
-the example as `tools/skills/local-shell.mjs` so its relative import resolves.
+the example as `tools/skills/local-shell.mts` so its relative import resolves.
 Set `OPENAI_API_KEY`, then install the SDK, pull the adapter's pinned image, and
 run the example from the directory containing `support` and `tools`:
 
 ```bash
 npm install openai
 docker pull "$(node --input-type=module -e 'import { sandboxImage } from "./support/local-skill-sandbox.mjs"; console.log(sandboxImage)')"
-node tools/skills/local-shell.mjs
+node --experimental-strip-types tools/skills/local-shell.mts
 ```
 
 The adapter's helpers have these responsibilities:
@@ -329,7 +329,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import { randomUUID } from "node:crypto";
 import OpenAI from "openai";
 import {
@@ -342,10 +342,10 @@ import {
 // sandbox with the skill and CSV files; generated commands run only inside it.
 const name = "node-skill-" + randomUUID();
 
-await withLocalSkillSandbox(name, async (signal) => {
+await withLocalSkillSandbox(name, async (signal: AbortSignal) => {
   const client = new OpenAI();
   /** @type {OpenAI.Responses.ResponseCreateParamsNonStreaming} */
-  const params = {
+  const params: OpenAI.Responses.ResponseCreateParamsNonStreaming = {
     model: "gpt-6-astra",
     tools: [
       {

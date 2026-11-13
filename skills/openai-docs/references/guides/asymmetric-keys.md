@@ -4,7 +4,7 @@
 
 Register an RSA-3072 asymmetric key pair from your cloud provider for use with OpenAI.
 
-Your private key stays in AWS KMS, Azure Key Vault, or Google Cloud KMS. OpenAI stores a copy of the corresponding public key at registration.
+Your private key stays in AWS KMS, Azure Key Vault, Google Cloud KMS, or Oracle Cloud Infrastructure (OCI) Vault. OpenAI stores a copy of the corresponding public key at registration.
 
 Registering a key doesn't configure product features or storage. This guide
   covers keys for [PSP
@@ -264,6 +264,63 @@ Use your pool's project number and scope the grant to this key. Key-level IAM co
 
 
 
+
+
+<a id="oci-vault"></a>
+
+
+
+### OCI Vault
+
+
+
+#### 1. Create the vault and RSA key
+
+Confirm OCI key registration and region availability with your OpenAI contact. Your tenancy and OpenAI's tenancy both need a subscription to the region.
+
+In the OCI Console, open **Vault**. Create or select a vault in a commercial OCI region, such as `us-ashburn-1`. Wait for the vault to become **Active**.
+
+Open **Master encryption keys** and choose **Create key**. Use RSA with a length of 3072 bits and software protection. Keep the key enabled. Use a separate AES-256 key if you also configure EKM.
+
+![OCI key creation form with Software protection, the name asymmetric-key-oci, RSA, and a 3072-bit key length.](https://developers.openai.com/images/platform/guides/asymmetric-keys/oci-rsa3072-key-settings.webp)
+
+#### 2. Tag the key for your organization
+
+Add this free-form tag to the key:
+
+| Tag field     | Value                                                    |
+| ------------- | -------------------------------------------------------- |
+| Tag namespace | None (free-form tag)                                     |
+| Tag key       | `openai_organization_id`                                 |
+| Tag value     | Your OpenAI organization ID, including the `org-` prefix |
+
+The tag must be on the key itself, even if you also tag the vault or compartment.
+
+![OCI key Tags section with a free-form organization ID tag and the example value org-example.](https://developers.openai.com/images/platform/guides/asymmetric-keys/oci-key-organization-tag.webp)
+
+#### 3. Grant public-key read access
+
+In **Identity & Security > Policies**, select your tenancy's root compartment and create a policy. Turn on **Show manual editor** and enter these statements with your vault OCID and key OCID. Keep OpenAI's tenancy and group identifiers unchanged.
+
+```text snippet=configuration reason="OCI IAM policy granting scoped vault and public-key reads"
+Define tenancy OpenAIEKM as ocid1.tenancy.oc1..aaaaaaaa4kzwe5jdr4gsxft7dfnwbnp3aozhxeskabsqo7czdkbp6fkh3uha
+Define group OpenAIEKMProduction as ocid1.group.oc1..aaaaaaaaerxukyeaxwqtbsxasnp54mem3sfgyokzdk7s27o7yvepluynxi5q
+Admit group OpenAIEKMProduction of tenancy OpenAIEKM to {VAULT_READ} in tenancy where target.vault.id = '<CUSTOMER_VAULT_OCID>'
+Admit group OpenAIEKMProduction of tenancy OpenAIEKM to {KEY_READ} in tenancy where target.key.id = '<CUSTOMER_KEY_OCID>'
+```
+
+`VAULT_READ` lets OpenAI discover the vault endpoints. `KEY_READ` covers key metadata and the public key at the selected version. These grants don't include decryption, key export, or key management. Use this key-management identity even if you already configured a separate OCI Object Storage policy for PSP.
+
+#### 4. Record the exact key version
+
+Record the region identifier, vault OCID, and key OCID. In the key's versions list, copy the full OCID of the version you want to register. It starts with `ocid1.keyversion.`, not `ocid1.key.`.
+
+Use the exact version OCID, not `latest` or a version number. The vault, key, and version must belong to the same commercial region, and the key must belong to the registered vault.
+
+
+
+
+
 ## Register your key
 
 The examples use `curl` and a Bash-compatible shell. Load `OPENAI_ADMIN_KEY` securely, then set your organization ID:
@@ -326,6 +383,20 @@ Save your provider's request as `registration.json`. Replace the example values;
   "kms_key_name": "asymmetric-key",
   "kms_key_location": "us-central1",
   "kms_key_version": "1"
+}
+```
+
+#### OCI Vault request
+
+```json snippet=configuration reason="OCI external-key registration request body"
+{
+  "type": "oci",
+  "purpose": "psp_decryption",
+  "name": "asymmetric-key-oci",
+  "region": "us-ashburn-1",
+  "vault_ocid": "<CUSTOMER_VAULT_OCID>",
+  "key_ocid": "<CUSTOMER_KEY_OCID>",
+  "key_version_ocid": "<CUSTOMER_KEY_VERSION_OCID>"
 }
 ```
 
@@ -401,7 +472,7 @@ While `has_more` is `true`, request the next page with `after` set to `last_id`.
 
 ## Replace a key
 
-1. Create a replacement AWS key or Azure/GCP version and grant read access.
+1. Create a replacement AWS key or Azure/GCP/OCI key version and grant read access.
 2. Register the replacement.
 3. [Select the new `extkey` ID on the project](https://developers.openai.com/api/docs/guides/private-safety-processing#select-a-key-for-psp-decryption) and verify the selection.
 
@@ -421,14 +492,15 @@ Deletion returns HTTP 200 with `object: "organization.external_key.deleted"`. It
 
 ## Troubleshooting
 
-| Error                                  | What to check                                                                                                                |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| 401 or 403                             | Use an organization Admin API key and confirm access to external-key registration.                                           |
-| 400 `external_key_provider_error`      | Check cloud trust, read permissions, network access, and the key's enabled state and algorithm.                              |
-| 400 request-validation errors          | Check the purpose, concrete AWS key ARN, and exact Azure/GCP version.                                                        |
-| 404                                    | Check the registration ID and organization. Deleted registrations and registrations from another organization can't be used. |
-| `external_key_used_by_active_projects` | Clear or replace all active project selections.                                                                              |
-| Key no longer matches                  | Register the replacement and select its new ID.                                                                              |
+| Error                                  | What to check                                                                                                                  |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| 401 or 403                             | Use an organization Admin API key and confirm access to external-key registration.                                             |
+| 400 `external_key_provider_error`      | Check cloud trust, read permissions, network access, and the key's enabled state and algorithm.                                |
+| 400 request-validation errors          | Check the purpose, concrete AWS key ARN, and exact Azure/GCP/OCI version.                                                      |
+| OCI key validation fails               | Check the key's `openai_organization_id` tag, RSA-3072 size, enabled state, vault ownership, and scoped vault/key read grants. |
+| 404                                    | Check the registration ID and organization. Deleted registrations and registrations from another organization can't be used.   |
+| `external_key_used_by_active_projects` | Clear or replace all active project selections.                                                                                |
+| Key no longer matches                  | Register the replacement and select its new ID.                                                                                |
 
 For support, share the error and `x-request-id`. Never share credentials.
 

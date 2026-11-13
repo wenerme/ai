@@ -13,7 +13,7 @@ List sessions in your project to browse previous work. SDK pagination helpers re
 
 List sessions and retrieve the next page
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -113,9 +113,9 @@ Retrieve a session to read its status, agent configuration, environment, and `re
 
 Retrieve a session
 
-```javascript
+```typescript
 // Pass your saved session ID to this helper.
-async function retrieveSession(client, sessionId) {
+async function retrieveSession(client: OpenAI, sessionId: string) {
   return client.beta.agents.sessions.retrieve(sessionId);
 }
 ```
@@ -181,11 +181,11 @@ Delete a session when your application no longer needs it. Deletion removes the 
 
 Delete a session
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import OpenAI from "openai";
 
-async function deleteSession(client, sessionId) {
+async function deleteSession(client: OpenAI, sessionId: string) {
   return client.beta.agents.sessions.delete(sessionId);
 }
 

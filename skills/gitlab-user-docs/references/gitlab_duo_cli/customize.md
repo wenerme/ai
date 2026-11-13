@@ -37,9 +37,6 @@ The GitLab Duo CLI supports hooks at two levels:
 When both user-level and project-level `hooks.json` files exist, the CLI merges the hooks and runs
 the user-level ones first.
 
-> [!note]
-> For security reasons, sensitive environment variables (`GITLAB_TOKEN`, `GITLAB_OAUTH_TOKEN`, `CI_JOB_TOKEN`) are excluded from hook processes.
-
 ### Hook execution
 
 When a hook runs, the GitLab Duo CLI:

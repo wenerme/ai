@@ -144,13 +144,13 @@ if err != nil {
 
 
 
-#### JavaScript
+#### TypeScript
 
 
 
-#### Thread object (JavaScript)
+#### Thread object (TypeScript)
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -161,9 +161,9 @@ const thread = await client.beta.threads.create({
 console.log(thread.id);
 ```
 
-#### Conversation object (JavaScript)
+#### Conversation object (TypeScript)
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -305,13 +305,13 @@ if err != nil {
 
 
 
-#### JavaScript
+#### TypeScript
 
 
 
-#### Run object (JavaScript)
+#### Run object (TypeScript)
 
-```javascript
+```typescript
 import { setTimeout } from "node:timers/promises";
 import OpenAI from "openai";
 
@@ -331,9 +331,9 @@ while (run.status === "queued" || run.status === "in_progress") {
 console.log(run.status);
 ```
 
-#### Response object (JavaScript)
+#### Response object (TypeScript)
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import OpenAI from "openai";
 
@@ -685,14 +685,14 @@ puts(
     
 Responses API
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import express from "express";
 import OpenAI from "openai";
 
 const app = express();
 const client = new OpenAI();
-const conversationsBySession = new Map();
+const conversationsBySession = new Map<string, Promise<string>>();
 
 app.use(express.json());
 

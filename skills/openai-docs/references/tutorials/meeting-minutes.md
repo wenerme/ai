@@ -49,7 +49,7 @@ Save the downloaded file as `meeting.wav` in the directory from which you run th
 
 Define a helper that opens the recording and sends the file contents to [`gpt-transcribe`](https://developers.openai.com/api/docs/models/gpt-transcribe):
 
-```javascript
+```typescript
 import fs from "node:fs";
 
 import { Document, HeadingLevel, Packer, Paragraph, TextRun } from "docx";
@@ -57,7 +57,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-async function transcribeAudio(audioFilePath) {
+async function transcribeAudio(audioFilePath: fs.PathLike) {
   const transcription = await openai.audio.transcriptions.create({
     file: fs.createReadStream(audioFilePath),
     model: "gpt-transcribe",
@@ -194,8 +194,8 @@ This tutorial uses a separate model call for each task. You can combine the inst
 
 Define the shared helper that sends the transcript and task-specific instructions to the model:
 
-```javascript
-async function complete(transcription, instructions) {
+```typescript
+async function complete(transcription: string, instructions: string) {
   const response = await openai.chat.completions.create({
     model: "gpt-5.5",
     messages: [
@@ -273,8 +273,8 @@ end
 
 Define an orchestration helper that returns the four sections of the meeting minutes:
 
-```javascript
-async function buildMeetingMinutes(transcription) {
+```typescript
+async function buildMeetingMinutes(transcription: string) {
   return {
     "Abstract summary": await extractAbstractSummary(transcription),
     "Key points": await extractKeyPoints(transcription),
@@ -346,8 +346,8 @@ Here is how each of these functions works:
 
 The summary helper asks the model for one concise paragraph that preserves important decisions and context while omitting tangents. The system message controls this behavior. For more ways to shape the result, see the [prompt engineering guide](https://developers.openai.com/api/docs/guides/prompt-engineering).
 
-```javascript
-async function extractAbstractSummary(transcription) {
+```typescript
+async function extractAbstractSummary(transcription: string) {
   return complete(
     transcription,
     "Summarize the meeting transcript in one concise paragraph. Keep the most important decisions and context, and omit tangents."
@@ -394,8 +394,8 @@ end
 
 The key-points helper lists the important ideas, findings, and topics discussed in the meeting. Add relevant project or company context to the system message when it helps the model identify what matters to your audience.
 
-```javascript
-async function extractKeyPoints(transcription) {
+```typescript
+async function extractKeyPoints(transcription: string) {
   return complete(
     transcription,
     "List the most important ideas, findings, and topics from the meeting. Use concise bullet points."
@@ -442,8 +442,8 @@ end
 
 The action-items helper identifies tasks and follow-ups, including owners and deadlines when the transcript provides them. To create and assign tasks in another system, connect this step to [function calling](https://developers.openai.com/api/docs/guides/function-calling).
 
-```javascript
-async function extractActionItems(transcription) {
+```typescript
+async function extractActionItems(transcription: string) {
   return complete(
     transcription,
     "List every task or follow-up agreed to in the meeting. Include the owner and deadline when the transcript provides them."
@@ -490,8 +490,8 @@ end
 
 The sentiment helper classifies the discussion as positive, negative, or neutral and explains the assessment. For simpler tasks, try [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra) to see whether it meets your quality target with lower cost and latency.
 
-```javascript
-async function analyzeSentiment(transcription) {
+```typescript
+async function analyzeSentiment(transcription: string) {
   return complete(
     transcription,
     "Describe the meeting's overall sentiment as positive, negative, or neutral, and briefly explain the assessment."
@@ -557,8 +557,8 @@ end
 
 Define a helper that writes each result section to a Word document:
 
-```javascript
-async function saveAsDocx(minutes, filename) {
+```typescript
+async function saveAsDocx(minutes: Record<string, string>, filename: string) {
   const children = Object.entries(minutes).flatMap(([heading, content]) => [
     new Paragraph({ text: heading, heading: HeadingLevel.HEADING_1 }),
     new Paragraph({
@@ -659,7 +659,7 @@ The helper receives the generated sections and an output filename, adds a headin
 
 Finally, combine the steps to generate meeting minutes from an audio file:
 
-```javascript
+```typescript
 const transcription = await transcribeAudio("meeting.wav");
 const minutes = await buildMeetingMinutes(transcription);
 console.log(minutes);

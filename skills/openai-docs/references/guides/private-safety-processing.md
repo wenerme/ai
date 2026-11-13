@@ -115,7 +115,7 @@ We recommend enabling EKM for this additional control. The KMS that holds your E
 
 PSP decryption lets you decrypt customer content in PSP records stored in your connected cloud storage using an asymmetric key that you control. OpenAI uses the public key, while the private key stays in your cloud key-management service. This is separate from EKM and doesn't grant OpenAI personnel access to your content.
 
-See [Set up asymmetric keys](https://developers.openai.com/api/docs/guides/asymmetric-keys) for AWS KMS, Azure Key Vault, and Google Cloud KMS setup and key registration. Confirm PSP decryption availability and activation with your OpenAI contact. Registering a key doesn't enable PSP or configure storage, and only records written with PSP decryption enabled for your key can be decrypted with that key. Existing records aren't converted.
+See [Set up asymmetric keys](https://developers.openai.com/api/docs/guides/asymmetric-keys) for AWS KMS, Azure Key Vault, Google Cloud KMS, and OCI Vault setup and key registration. Confirm PSP decryption availability and activation with your OpenAI contact. Registering a key doesn't enable PSP or configure storage, and only records written with PSP decryption enabled for your key can be decrypted with that key. Existing records aren't converted.
 
 For the decryption steps, record format, and key derivation, see [Decrypt PSP records](https://developers.openai.com/api/docs/guides/psp-decryption).
 

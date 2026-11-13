@@ -3,7 +3,13 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
+- Rate limit on creating, updating, and deleting trigger tokens [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636907) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_trigger_management`. Disabled by default.
+
 Use this API to [trigger pipelines](../ci/triggers/_index.md).
+
+Creating, updating, and deleting pipeline trigger tokens share a
+[rate limit](../administration/cicd/limits.md#pipeline-trigger-token-management-rate-limits).
+If you exceed it, these endpoints return a `429 Too Many Requests` status code with a `Retry-After` header.
 
 ## List project trigger tokens
 

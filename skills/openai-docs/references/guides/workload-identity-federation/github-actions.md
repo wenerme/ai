@@ -48,7 +48,7 @@ For the full claim list and subject formats, see GitHub's [OpenID Connect refere
 
 Before configuring workload identity federation, export the GitHub OIDC token as `TOKEN`, then run this script in the workflow runner to inspect its claims:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -432,12 +432,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Run OpenAI SDK code
         env:
           OPENAI_WIF_AUDIENCE: ${{ vars.OPENAI_WIF_AUDIENCE }}
           OPENAI_IDENTITY_PROVIDER_ID: ${{ vars.OPENAI_IDENTITY_PROVIDER_ID }}
           OPENAI_SERVICE_ACCOUNT_ID: ${{ vars.OPENAI_SERVICE_ACCOUNT_ID }}
-        run: node ./scripts/call-openai.js
+        run: node --experimental-strip-types ./scripts/call-openai.mts
 ```
 
 Store `OPENAI_WIF_AUDIENCE`, `OPENAI_IDENTITY_PROVIDER_ID`, and `OPENAI_SERVICE_ACCOUNT_ID` as GitHub Actions variables. They identify the provider and service account but are not bearer credentials.
@@ -446,7 +450,7 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from a GitHub Actions OIDC token
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
@@ -467,9 +471,13 @@ if (
   );
 }
 
-function githubActionsOIDCTokenProvider(requestURL, requestToken, audience) {
+function githubActionsOIDCTokenProvider(
+  requestURL: string | URL,
+  requestToken: string,
+  audience: string
+) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const url = new URL(requestURL);
       url.searchParams.set("audience", audience);

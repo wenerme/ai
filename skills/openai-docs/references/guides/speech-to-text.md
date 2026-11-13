@@ -27,7 +27,7 @@ Send the audio file to `/v1/audio/transcriptions` with `gpt-transcribe`:
 
 Transcribe audio
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -169,7 +169,7 @@ Use `prompt`, `keywords`, and `languages` with `gpt-transcribe` to improve trans
 
 Add context and language hints
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -321,7 +321,7 @@ You can optionally supply up to four short audio references with `known_speaker_
 
 Diarize a meeting recording
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -329,14 +329,14 @@ const openai = new OpenAI();
 
 const agentRef = fs.readFileSync("fixtures/agent.wav").toString("base64");
 
-const transcript = await openai.audio.transcriptions.create({
+const transcript = (await openai.audio.transcriptions.create({
   file: fs.createReadStream("fixtures/meeting.wav"),
   model: "gpt-4o-transcribe-diarize",
   response_format: "diarized_json",
   chunking_strategy: "auto",
   known_speaker_names: ["agent"],
   known_speaker_references: ["data:audio/wav;base64," + agentRef],
-});
+})) as OpenAI.Audio.TranscriptionDiarized;
 
 for (const segment of transcript.segments) {
   if (!("speaker" in segment)) continue;
@@ -557,7 +557,7 @@ Existing integrations can use the deprecated `whisper-1` model for word or segme
 
 Timestamp options
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -757,7 +757,7 @@ Set `stream=true` with `gpt-transcribe`. The Transcriptions API returns [transcr
 
 Stream transcriptions
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -925,7 +925,7 @@ Whisper doesn't follow instructions like a general-purpose text model and accept
 
 Prompt parameter
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -1087,7 +1087,7 @@ Provide instructions through the `system_prompt` variable. As with the transcrip
 
 Post-processing
 
-```javascript
+```typescript
 const systemPrompt = `
 You are a helpful assistant for the company ZyntriQix. Your task is
 to correct any spelling discrepancies in the transcribed text. Make

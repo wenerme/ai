@@ -20,9 +20,15 @@ Subscribe before sending work so your application receives the turn's early even
 
 Stream session events
 
-```javascript
+```typescript
 // Pass your saved session ID to this helper.
-async function streamSession(client, sessionId, handleEvent) {
+async function streamSession(
+  client: OpenAI,
+  sessionId: string,
+  handleEvent: (
+    event: OpenAI.Beta.Agents.AgentSessionEvent
+  ) => void | Promise<void>
+) {
   const events = await client.beta.agents.sessions.events.stream(sessionId);
   try {
     for await (const event of events) {
@@ -202,9 +208,16 @@ This version accepts a message and submits it after opening the stream:
 
 Send and stream a message
 
-```javascript
+```typescript
 // Pass your saved session ID and message to this helper.
-async function sendAndStream(client, sessionId, text, handleEvent) {
+async function sendAndStream(
+  client: OpenAI,
+  sessionId: string,
+  text: string,
+  handleEvent: (
+    event: OpenAI.Beta.Agents.AgentSessionEvent
+  ) => void | Promise<void>
+) {
   const events = await client.beta.agents.sessions.events.stream(sessionId);
   try {
     await client.beta.agents.sessions.events.create(sessionId, {

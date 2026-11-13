@@ -203,6 +203,7 @@ All accounts come pre-configured with a virtual network named `default`. You can
    ```
 
    We now have two overlapping IP addresses routed over `staging-vnet` and `production-vnet` respectively.
+
    6. Within your staging environment, create a [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/) for `staging-tunnel`. The configuration file will be structured as follows:
 
       ```txt

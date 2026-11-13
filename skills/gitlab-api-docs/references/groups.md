@@ -308,7 +308,7 @@ when GitLab Duo Agent Platform is available for the group. The object contains t
 | `minimum_access_level_manage` | string | The minimum access level required to manage GitLab Duo Agent Platform. One of `developer`, `maintainer`, or `owner`. Returned when the `dap_group_customizable_permissions` feature flag is enabled. |
 | `prompt_injection_protection_level` | string | The prompt injection protection level. One of `no_checks`, `log_only`, or `interrupt`. |
 | `require_sandbox` | boolean | When `true`, flows that run on GitLab Runner fail when the execution environment sandbox is unavailable, instead of running without it. Applies only to top-level groups on GitLab.com. |
-| `web_search_enabled` | boolean | When `true`, web search is enabled in GitLab Duo Chat for this group. |
+| `web_search_enabled` | boolean | When `true`, web search is enabled in GitLab Duo Chat for this group. Applies only to top-level groups on GitLab.com. |
 
 When adding the parameter `with_projects=false`, projects aren't returned.
 
@@ -2072,7 +2072,7 @@ All attributes are optional.
 | `minimum_access_level_manage` | integer | The minimum access level required to manage GitLab Duo Agent Platform. Valid values: `30` (Developer), `40` (Maintainer), `50` (Owner). Available when the `dap_group_customizable_permissions` feature flag is enabled. |
 | `prompt_injection_protection_level` | string | The prompt injection protection level. Valid values: `no_checks`, `log_only`, `interrupt`. |
 | `require_sandbox` | boolean | When `true`, flows that run on GitLab Runner fail when the execution environment sandbox is unavailable, instead of running without it. Applies only to top-level groups on GitLab.com. |
-| `web_search_enabled` | boolean | When `true`, enables web search in GitLab Duo Chat for this group. Can only be set on top-level groups. |
+| `web_search_enabled` | boolean | When `true`, enables web search in GitLab Duo Chat for this group. Can only be set on top-level groups. Applies only on GitLab.com. |
 
 ## Update group avatars
 

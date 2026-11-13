@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 281 modelsClear filters
+We found 282 modelsClear filters
 
 ## Compare models
 
@@ -1195,13 +1195,13 @@ Compare
 
 Compare
 
-[t<h3>inkling</h3>thinkingmachinesText Generation Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output\_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint.](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/)
+[![Thinking Machines logo](https://developers.cloudflare.com/_astro/thinkingmachines.DXVufmVi.svg)<h3>inkling</h3>Thinking MachinesText Generation Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output\_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint.](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/)
 
 - Third-party
 
 Compare
 
-[t<h3>inkling-256k</h3>thinkingmachinesText Generation The 256K-context variant of Inkling, Thinking Machines' open-weights hybrid reasoning MoE model. Same hybrid reasoning, tool-use, and streaming support as the base model, with an extended context window for longer conversations and documents. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments.](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/)
+[![Thinking Machines logo](https://developers.cloudflare.com/_astro/thinkingmachines.DXVufmVi.svg)<h3>inkling-256k</h3>Thinking MachinesText Generation The 256K-context variant of Inkling, Thinking Machines' open-weights hybrid reasoning MoE model. Same hybrid reasoning, tool-use, and streaming support as the base model, with an extended context window for longer conversations and documents. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments.](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/)
 
 - Third-party
 
@@ -1651,6 +1651,13 @@ Compare
 
 - Cloudflare-hosted
 - +1
+
+Compare
+
+[![Thinking Machines logo](https://developers.cloudflare.com/_astro/thinkingmachines.DXVufmVi.svg)<h3>inkling-2-small</h3>Thinking MachinesText Generation Inkling 2 Small is a multimodal Mixture-of-Experts model from Thinking Machines Lab with 594B total and 18B active parameters and up to 1M tokens of context. It accepts text and image inputs and generates text, with built-in reasoning and tool calling.](https://developers.cloudflare.com/ai/models/@cf/thinkingmachines/inkling-2-small/)
+
+- Cloudflare-hosted
+- +4
 
 Compare
 

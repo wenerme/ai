@@ -25,7 +25,7 @@ check whether its toolset is enabled.
 | `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
 | `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`list_work_item_saved_views`](#list_work_item_saved_views), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
-| `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`save_pipeline`](#save_pipeline), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
+| `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`list_pipeline_schedules`](#list_pipeline_schedules), [`save_pipeline`](#save_pipeline), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
 | `duo_agent_platform` | [`list_duo_agents_and_flows`](#list_duo_agents_and_flows), [`start_duo_session`](#start_duo_session), [`list_duo_sessions`](#list_duo_sessions), [`get_duo_session`](#get_duo_session), [`send_duo_session_input`](#send_duo_session_input) |
 | `wikis` | [`list_wiki_pages`](#list_wiki_pages) |
 | `code_security` | [`list_vulnerabilities`](#list_vulnerabilities), [`get_vulnerability`](#get_vulnerability), [`save_vulnerability`](#save_vulnerability), [`attach_scan_profile`](#attach_scan_profile) |
@@ -1496,6 +1496,29 @@ Example:
 
 ```plaintext
 List all failed pipelines on the main branch for project gitlab-org/gitlab
+```
+
+## `list_pipeline_schedules`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635913) in GitLab 19.6.
+
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Lists pipeline schedules for a GitLab project.
+
+| Parameter  | Type    | Required | Description |
+|------------|---------|----------|-------------|
+| `id`       | string  | Yes      | ID or full path of the project. |
+| `scope`    | string  | No       | Filters schedules by status: `active` or `inactive`. |
+| `page`     | integer | No       | Page number to retrieve. Default is `1`. |
+| `per_page` | integer | No       | Number of items per page. Default is `20`, maximum is `100`. |
+
+The response includes `inputs` only for the schedule owner and users with the Maintainer or Owner role.
+
+Example:
+
+```plaintext
+List active pipeline schedules for project gitlab-org/gitlab
 ```
 
 ## `save_pipeline`

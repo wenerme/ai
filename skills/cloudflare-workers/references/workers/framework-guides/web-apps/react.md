@@ -138,7 +138,11 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    ```
 
    Next, open the `my-react-app` directory in your editor of choice.
-2. **Add the Cloudflare Vite plugin**### Add the Cloudflare dependencies npmyarnpnpmbun
+2. **Add the Cloudflare Vite plugin**
+
+   ### Add the Cloudflare dependencies
+
+   npmyarnpnpmbun
 
    ```
    npm i -D @cloudflare/vite-plugin wrangler
@@ -156,7 +160,9 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    bun add -d @cloudflare/vite-plugin wrangler
    ```
 
-   ### Add the Cloudflare Vite plugin to your project In your `vite.config.ts`, add the Cloudflare Vite plugin after your framework plugin:
+   ### Add the Cloudflare Vite plugin to your project
+
+   In your `vite.config.ts`, add the Cloudflare Vite plugin after your framework plugin:
 
    *vite.config.tsts*
 
@@ -180,14 +186,18 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    The `worker` environment generates [source maps](https://developers.cloudflare.com/workers/observability/source-maps/) for your Worker. The client environment keeps its existing source map settings.
 
    Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plugin/reference/api/) for configuration options.
-3. **Add a Wrangler configuration file**### Create your Worker config file Create a `wrangler.jsonc` file in the root of your project:
+3. **Add a Wrangler configuration file**
+
+   ### Create your Worker config file
+
+   Create a `wrangler.jsonc` file in the root of your project:
 
    ```jsonc
    {
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-10-13",
+     "compatibility_date": "2026-11-13",
      "assets": {
        "not_found_handling": "single-page-application"
      }
@@ -197,7 +207,7 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-13"
 
    [assets]
    not_found_handling = "single-page-application"
@@ -212,7 +222,11 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    Note
 
    When using the Cloudflare Vite plugin, the Worker config (for example, `wrangler.jsonc`) that you provide is the input configuration file. A separate output `wrangler.json` file is created when you run `vite build`. This output file is a snapshot of your configuration at the time of the build and is modified to reference your build artifacts. It is the configuration that is used for preview and deployment.
-4. **Update the `.gitignore` file**### Update the `.gitignore` file When developing Workers, additional files are used and/or generated that should not be stored in Git. Add the following lines to your `.gitignore` file:
+4. **Update the `.gitignore` file**
+
+   ### Update the `.gitignore` file
+
+   When developing Workers, additional files are used and/or generated that should not be stored in Git. Add the following lines to your `.gitignore` file:
 
    *.gitignoretxt*
 
@@ -223,7 +237,11 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    .dev.vars*
    ```
 
-5. **Develop locally**### Run the development server Run your framework's development command to start the Vite development server and verify that your application is working as expected.npmyarnpnpm
+5. **Develop locally**
+
+   ### Run the development server
+
+   Run your framework's development command to start the Vite development server and verify that your application is working as expected.npmyarnpnpm
 
    ```
    npm run dev
@@ -238,7 +256,11 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    ```
 
    For a purely front-end application, you could now build, preview, and deploy your application. The following sections will show you how to go further and add an API Worker.
-6. **Build and deploy your project**### Build your application Run the build command to build your application.npmyarnpnpm
+6. **Build and deploy your project**
+
+   ### Build your application
+
+   Run the build command to build your application.npmyarnpnpm
 
    ```
    npm run build
@@ -252,7 +274,11 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    pnpm run build
    ```
 
-   The `dist` directory will contain your client build output in the `client` subdirectory and your Worker code alongside the output `wrangler.json` configuration file. ### Preview your application Run the preview command to validate that your application runs as expected.npmyarnpnpm
+   The `dist` directory will contain your client build output in the `client` subdirectory and your Worker code alongside the output `wrangler.json` configuration file.
+
+   ### Preview your application
+
+   Run the preview command to validate that your application runs as expected.npmyarnpnpm
 
    ```
    npm run preview
@@ -266,7 +292,11 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    pnpm run preview
    ```
 
-   This command will run your build output locally in the Workers runtime, closely matching its behavior in production. ### Deploy to Cloudflare Run the deploy command to deploy your application to Cloudflare.npmyarnpnpm
+   This command will run your build output locally in the Workers runtime, closely matching its behavior in production.
+
+   ### Deploy to Cloudflare
+
+   Run the deploy command to deploy your application to Cloudflare.npmyarnpnpm
 
    ```
    npx wrangler deploy
@@ -286,7 +316,11 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
 
 If you want to add an API Worker to your existing React + Vite project, follow these additional steps:
 
-1. **Configure TypeScript for your Worker code**### Add Workers TypeScript types npmyarnpnpmbun
+1. **Configure TypeScript for your Worker code**
+
+   ### Add Workers TypeScript types
+
+   npmyarnpnpmbun
 
    ```
    npm i -D @cloudflare/workers-types
@@ -338,14 +372,18 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    }
    ```
 
-2. **Add the Worker entrypoint to your configuration**### Add the Worker entrypoint to your configuration Update your Wrangler configuration file to add a `main` field that points to your Worker entrypoint:
+2. **Add the Worker entrypoint to your configuration**
+
+   ### Add the Worker entrypoint to your configuration
+
+   Update your Wrangler configuration file to add a `main` field that points to your Worker entrypoint:
 
    ```jsonc
    {
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-10-13",
+     "compatibility_date": "2026-11-13",
      "main": "./worker/index.ts",
      "upload_source_maps": true,
      "assets": {
@@ -357,7 +395,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-13"
    main = "./worker/index.ts"
    upload_source_maps = true
 
@@ -366,7 +404,11 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```
 
    The `main` field specifies the entry file for your Worker code.
-3. **Add your API Worker**### Add your API Worker Create a `worker/index.ts` file with the following contents:
+3. **Add your API Worker**
+
+   ### Add your API Worker
+
+   Create a `worker/index.ts` file with the following contents:
 
    *worker/index.tsts*
 
@@ -401,7 +443,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "cloudflare-vite-tutorial",
      // Set this to today's date
-     "compatibility_date": "2026-10-13",
+     "compatibility_date": "2026-11-13",
      "main": "./worker/index.ts",
      "upload_source_maps": true,
      "assets": {
@@ -416,7 +458,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "cloudflare-vite-tutorial"
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-13"
    main = "./worker/index.ts"
    upload_source_maps = true
 

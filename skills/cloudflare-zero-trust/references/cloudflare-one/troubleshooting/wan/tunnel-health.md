@@ -285,6 +285,7 @@ This behavior is expected and the tunnel will automatically recover. To minimize
 2. **Increase rekey intervals**: Configure longer SA lifetimes on your tunnel endpoint to reduce rekey frequency. Common values are 8-24 hours for IKE SA and 1-8 hours for IPsec SA.
 3. **Adjust health check sensitivity**: If brief degradation during rekeys triggers alerts, consider lowering the health check rate:
    1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+
    2. In **IPsec/GRE tunnels**, select **Edit** on the tunnel.
    3. Change **Health check rate** to *Low*.
 4. **Stagger rekey times**: If you have multiple tunnels, configure different SA lifetimes so they do not rekey simultaneously.
