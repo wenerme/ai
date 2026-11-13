@@ -378,9 +378,9 @@ Prerequisites:
 - You must have [created](#create-a-template) at least one template already.
 
 1. In the  section, select the  dropdown list.
-1. Select a template from the list. If the page already has some content, a warning displays
-   indicating that the existing content will be overwritten.
-1. Select **Apply template**.
+1. Select a template from the list.
+   If the page already has some content, a warning displays indicating that the existing content will be overwritten.
+1. To replace the content with the template, select .
 
 ### Restore a page template to a previous version
 

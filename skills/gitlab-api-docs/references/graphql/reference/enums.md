@@ -6405,6 +6405,26 @@ Determines whether the pipeline list shows ID or IID.
 | `private` | Snippet is visible only to the snippet creator. |
 | `public` | Snippet can be accessed without any authentication. |
 
+## `VulnerabilityAuthenticationFilter`
+
+Whether the component a vulnerability is in requires authentication, used to filter vulnerabilities.
+
+| Value | Description |
+| ----- | ----------- |
+| `NOT_REQUIRED` | Component does not require authentication. |
+| `REQUIRED` | Component requires authentication. |
+| `UNKNOWN` | Authentication requirement is unknown. |
+
+## `VulnerabilityAuthorizationFilter`
+
+Authorization required by the component a vulnerability is in, used to filter vulnerabilities.
+
+| Value | Description |
+| ----- | ----------- |
+| `ELEVATED` | Component requires elevated privileges. |
+| `STANDARD` | Component requires standard privileges. |
+| `UNKNOWN` | Authorization is unknown. |
+
 ## `VulnerabilityAutoRemediationStatus`
 
 Outcome of triggering auto-remediation for a vulnerability.
@@ -6483,6 +6503,18 @@ Status of a secret token found in a vulnerability.
 | `ACTIVE` | Token is active and can be exploited. |
 | `INACTIVE` | Token is inactive and cannot be exploited. |
 | `UNKNOWN` | Token status is unknown. |
+
+## `VulnerabilityFunnelStepKey`
+
+Step in the vulnerability resolution funnel.
+
+| Value | Description |
+| ----- | ----------- |
+| `DETECTED` | Critical and High vulnerabilities detected in the date range. |
+| `MERGE_REQUESTS_CREATED` | Subset with a resolution merge request created by an automated flow. |
+| `MERGE_REQUESTS_MERGED` | Subset whose resolution merge request has been merged. |
+| `RESOLVED` | Subset that has been resolved. |
+| `TRUE_POSITIVES` | Subset confirmed as true positives by AI false positive detection. |
 
 ## `VulnerabilityFunnelStepStatus`
 
@@ -6596,6 +6628,30 @@ The type of the security scan that found the vulnerability.
 | `SARIF` | Sarif report. |
 | `SAST` | SAST report. |
 | `SECRET_DETECTION` | Secret detection report. |
+
+## `VulnerabilitySecurityBoundaryFilter`
+
+Security boundary of the component a vulnerability is in, used to filter vulnerabilities.
+
+| Value | Description |
+| ----- | ----------- |
+| `INTERNAL_ONLY` | Internal Only. |
+| `ISOLATED` | Isolated. |
+| `NETWORK_ACCESS` | Network Access. |
+| `PARTNER_BOUNDARY` | Partner Boundary. |
+| `TRUSTED_SERVICE` | Trusted Service. |
+| `UNKNOWN` | Security boundary is unknown. |
+| `USER_INPUT` | User Input. |
+
+## `VulnerabilitySensitiveDataFilter`
+
+Whether the component a vulnerability is in handles sensitive data, used to filter vulnerabilities.
+
+| Value | Description |
+| ----- | ----------- |
+| `NOT_SENSITIVE` | Component does not handle sensitive data. |
+| `SENSITIVE` | Component handles sensitive data. |
+| `UNKNOWN` | Sensitive data handling is unknown. |
 
 ## `VulnerabilitySeverity`
 
@@ -6732,6 +6788,18 @@ Status of the asynchronous workplan generation flow for a work item.
 | `GENERATING` | Indicates a workplan generation flow is in progress. |
 | `NEEDS_INPUT` | Indicates the flow is waiting for user input. |
 | `NOT_STARTED` | No workplan generation flow has run for the work item. |
+
+## `WorkItemAgentPlanReadinessScoreStatus`
+
+Status of the readiness score evaluation for a work item.
+
+| Value | Description |
+| ----- | ----------- |
+| `CANCELED` | Indicates the flow was canceled before a score was saved. |
+| `EVALUATED` | Indicates a readiness score is available. |
+| `EVALUATING` | Indicates the workplan flow is running and a new score is expected. |
+| `FAILED` | Indicates the flow failed after the plan was written, before a score was saved. |
+| `NOT_EVALUATED` | Indicates there is no score and the flow is not running. |
 
 ## `WorkItemAvailabilityAction`
 

@@ -12,6 +12,7 @@ Endpoint responses might vary based on the [permissions](../user/permissions.md)
 ## Retrieve a group
 
 - `require_two_factor_authentication_from_ancestor` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352728) in GitLab 19.6.
+- `duo_remote_flows_enabled` and `lock_duo_remote_flows_enabled` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269538) in GitLab 19.6.
 
 Retrieve details of a group. This endpoint can be accessed without authentication
 if the group is publicly accessible. If the requesting user is an administrator,
@@ -269,6 +270,7 @@ Additional response attributes:
     "ai_usage_data_collection_enabled": false,
     "prompt_injection_protection_level": "no_checks",
     "web_search_enabled": false,
+    "duo_workflow_file_attachments_enabled": false,
     "include_recommended_allowed": false,
     "allow_all_unix_sockets": false,
     "allow_project_extension": true,
@@ -299,6 +301,7 @@ when GitLab Duo Agent Platform is available for the group. The object contains t
 | `allow_all_unix_sockets` | boolean | When `true`, all Unix sockets are allowed for GitLab Duo Agent Platform. |
 | `allow_project_extension` | boolean | When `true`, projects can extend the network access domain allowlist for GitLab Duo Agent Platform. |
 | `duo_agent_platform_enabled` | boolean | When `true`, GitLab Duo Agent Platform features are enabled for this group. Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
+| `duo_workflow_file_attachments_enabled` | boolean | When `true`, file attachments are allowed in GitLab Duo Chat for this group. Returned only for top-level groups on GitLab.com. |
 | `duo_workflow_mcp_enabled` | boolean | When `true`, MCP support for GitLab Duo Agent Platform is enabled. Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `foundational_agents_default_enabled` | boolean | When `true`, new foundational agents are enabled by default for this group. Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `include_recommended_allowed` | boolean | When `true`, recommended domains are included in the network access allowlist for GitLab Duo Agent Platform. |
@@ -507,7 +510,7 @@ For GitLab Self-Managed instances, the [container registry metadata database](..
     "duo_features_enabled": true,
     "lock_duo_features_enabled": false,
     "duo_availability": "default_on",
-    "experiment_features_enabled": false,
+    "experiment_features_enabled": false
   }
 ]
 ```
@@ -1382,6 +1385,7 @@ Parameters:
 | `shared_runners_minutes_limit`       | integer | no       | Can be set by administrators only. Maximum number of monthly compute minutes for this group. Can be `nil` (default; inherit system default), `0` (unlimited), or `> 0`. GitLab Self-Managed, Premium and Ultimate only. |
 | `wiki_access_level`                  | string  | no       | The wiki access level. Can be `disabled`, `private`, or `enabled`. Premium and Ultimate only. |
 | `duo_availability` | string | no | GitLab Duo availability setting. Valid values are: `default_on`, `default_off`, `never_on`. Note: In the UI, `never_on` is displayed as "Always Off". |
+| `duo_remote_flows_availability` | boolean | no | If `true`, turns on GitLab Duo remote flows for the group and lets subgroups and projects change the setting. If `false`, turns off remote flows and enforces the setting for all subgroups and projects. Sets `duo_remote_flows_enabled` and `lock_duo_remote_flows_enabled`, which this endpoint does not accept directly. Ignored if a parent group or the instance enforces the setting. Premium and Ultimate only. |
 | `experiment_features_enabled` | boolean | no | Enable experiment features for this group. |
 | `ai_settings_attributes` | hash | no | AI-related settings for this group. For available options, see [Options for `ai_settings_attributes`](#options-for-ai_settings_attributes). GitLab Duo features must be enabled. |
 
@@ -1913,6 +1917,7 @@ PUT /groups/:id
 | `allowed_email_domains_list`                         | string      | no       | Comma-separated list of email address domains to allow group access. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/351494) in 17.4. GitLab Premium and Ultimate only. |
 | `wiki_access_level`                                  | string            | no       | The wiki access level. Can be `disabled`, `private`, or `enabled`. Premium and Ultimate only. |
 | `duo_availability`                                   | string | no | GitLab Duo availability setting. Valid values are: `default_on`, `default_off`, `never_on`. Note: In the UI, `never_on` is displayed as "Always Off". |
+| `duo_remote_flows_availability`                      | boolean | no | If `true`, turns on GitLab Duo remote flows for the group and lets subgroups and projects change the setting. If `false`, turns off remote flows and enforces the setting for all subgroups and projects. Sets `duo_remote_flows_enabled` and `lock_duo_remote_flows_enabled`, which this endpoint does not accept directly. Ignored if a parent group or the instance enforces the setting. Premium and Ultimate only. |
 | `experiment_features_enabled`                        | boolean | no | Enable experiment features for this group. |
 | `ai_settings_attributes`                             | hash | no | AI-related settings for this group. For available options, see [Options for `ai_settings_attributes`](#options-for-ai_settings_attributes). GitLab Duo features must be enabled. |
 | `math_rendering_limits_enabled`                      | boolean           | no       | Indicates if math rendering limits are used for this group. |
@@ -2052,6 +2057,7 @@ The `shared_runners_setting` attribute determines whether instance runners are e
 - `ai_catalog_restricted_to_group_hierarchy` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/233914) in GitLab 19.0.
 - `web_search_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253643) in GitLab 19.4.
 - `require_sandbox` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262117) in GitLab 19.6.
+- `duo_workflow_file_attachments_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268538) in GitLab 19.6.
 
 The `ai_settings_attributes` hash configures AI-related settings for the group.
 All attributes are optional.
@@ -2063,6 +2069,7 @@ All attributes are optional.
 | `allow_all_unix_sockets` | boolean | When `true`, allows all Unix sockets for GitLab Duo Agent Platform. |
 | `allow_project_extension` | boolean | When `true`, allows projects to extend the network access domain allowlist for GitLab Duo Agent Platform. |
 | `duo_agent_platform_enabled` | boolean | When `true`, enables GitLab Duo Agent Platform features for this group. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
+| `duo_workflow_file_attachments_enabled` | boolean | When `true`, allows file attachments in GitLab Duo Chat for this group. Can only be set on top-level groups. GitLab.com only. Ignored on GitLab Self-Managed and GitLab Dedicated. |
 | `duo_workflow_mcp_enabled` | boolean | When `true`, enables MCP support for GitLab Duo Agent Platform. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `foundational_agents_default_enabled` | boolean | When `true`, new foundational agents are enabled by default for this group. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `include_recommended_allowed` | boolean | When `true`, includes recommended domains in the network access allowlist for GitLab Duo Agent Platform. |

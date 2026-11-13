@@ -20,6 +20,11 @@ that occur in that organization and never for events in another organization.
 The [system hooks API](../api/system_hooks.md) and **Admin** > **System hooks**
 list only the hooks of the current organization.
 
+You can manage system hooks in two places:
+
+- Instance administrators manage hooks in the default organization in the **Admin** area.
+- Organization administrators manage hooks in their own organization in the  area.
+
 ## Triggered events
 
 | Event type                                | Trigger |
@@ -68,6 +73,10 @@ Membership and access request events run in the organization of the group or pro
 
 - **URL masking**, **Custom headers**, and **Custom webhook template** text boxes [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/503457) in GitLab 19.0.
 
+Use these steps to create a system hook in the default organization.
+To create a system hook in another organization, see
+[manage system hooks as an organization administrator](#manage-system-hooks-as-an-organization-administrator).
+
 Prerequisites:
 
 - Administrator access.
@@ -96,7 +105,7 @@ To create a system hook:
    For more information, see [custom webhook template](#custom-webhook-template).
 1. Optional. Clear the **Enable SSL verification** checkbox
    to disable [SSL verification](../user/project/integrations/_index.md#ssl-verification).
-1. Select **Add system hook**.
+1. Select **Add webhook**.
 
 ### Mask sensitive portions of system hook URLs
 
@@ -140,6 +149,42 @@ group documentation for [filter push events by branch](../user/project/integrati
 Custom webhook templates work the same as for project and group webhooks. For usage and examples, see project and group
 documentation for [custom webhook template](../user/project/integrations/webhooks.md#custom-webhook-template).
 
+## Manage system hooks as an organization administrator
+
+- Offering: GitLab Self-Managed
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632598) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `org_admin_hooks`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+> You can enable the flag for each organization.
+
+Create and manage system hooks for your organization without an instance administrator.
+Organization administrators cannot use the system hooks API.
+
+Prerequisites:
+
+- Organization administrator access.
+- An organization other than the default organization.
+
+To create a system hook in your organization:
+
+1. In the left sidebar, select .
+1. From the dropdown list, select the organization you want to go to.
+1. In the left sidebar, select . The  area opens.
+1. In the left sidebar, select  > .
+1. Select .
+1. Complete the form. The fields are the same as when you
+   [create a system hook](#create-a-system-hook).
+1. Select .
+
+To test, edit, or delete a system hook, next to the hook,
+select , , or .
+The  section at the bottom of the edit page lists recent deliveries.
+Select  to see the request and response for an event.
+
 ## System hook limits
 
 System hooks are subject to the same push event limits as project webhooks. By default, system hooks are not triggered when a single push includes more than 3 branches or tags.
@@ -151,11 +196,23 @@ This limit is controlled by the `push_event_hooks_limit` setting
 Each organization other than the default organization can have a limited number of system hooks.
 For more information, see [number of webhooks](instance_limits.md#number-of-webhooks).
 
+An administrator can rate limit system hooks for each organization except the default organization.
+The limit is off by default.
+For more information, see [webhook rate limit](instance_limits.md#webhook-rate-limit).
+
+Creating and testing system hooks in the  area is also rate limited.
+For more information, see [webhook operations rate limits](settings/rate-limit-on-webhook-operations.md).
+
 System hooks managed by organization administrators are
 [auto-disabled](../user/project/integrations/webhooks.md#auto-disabled-webhooks) after repeated failures,
 the same as project webhooks. System hooks managed by instance administrators are not auto-disabled.
 Auto-disabling is controlled by the `auto_disabling_web_hooks` [feature flag](feature_flags/_index.md),
 which is disabled by default.
+
+To re-enable a disabled system hook, from the  dropdown list for the hook, select an event type.
+The hook is re-enabled if the test request returns a response code in the `2xx` range.
+For more information, see
+[re-enable disabled webhooks](../user/project/integrations/webhooks.md#re-enable-disabled-webhooks).
 
 ## Hooks request example
 

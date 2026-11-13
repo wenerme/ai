@@ -611,8 +611,8 @@ estimated row count, the time since the last `ANALYZE`, the interval GitLab expe
 `ANALYZE` runs on a partitioned table, and a status. A table with a finding is marked
  or ,
 and a healthy table . A table has no statistics after
-a PostgreSQL major version upgrade before PostgreSQL 18, and autovacuum never analyzes
-a partitioned table.
+a PostgreSQL major version upgrade before PostgreSQL 18 or after a restore from a backup, and
+autovacuum never analyzes a partitioned table.
 
 For the conditions behind each finding and how to fix them, see
 [Planner statistics findings](postgresql/vacuum.md#planner-statistics-findings).

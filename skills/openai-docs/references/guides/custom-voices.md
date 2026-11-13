@@ -126,7 +126,7 @@ Replace `voice_123` with the ID returned by your creation request:
 
 For [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live), include this configuration in the JSON `session` field alongside `transport`. For [WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live), include it in the first `session.start` event. Follow the connection guide to send audio and hear the voice. Choose the voice at startup; start a new session to try a different voice.
 
-Voice creation through `/v1/audio/voices`, including creation from recordings, isn't compatible with Zero Data Retention. GPT-Live speech generations are eligible for Zero Data Retention when it's enabled for your organization or project. Stored session recordings, recording downloads, and session forking aren't available with Zero Data Retention. See the [data controls](https://developers.openai.com/api/docs/guides/your-data#v1livesessions) for session storage and retention requirements.
+Voice creation through `/v1/audio/voices`, including creation from recordings, isn't compatible with Zero Data Retention. GPT-Live speech generations are eligible for Zero Data Retention when it's enabled for your organization or project. Stored session recordings, recording downloads, and session forking aren't available with Zero Data Retention. See the [data controls](https://developers.openai.com/api/docs/guides/data-residency#v1livesessions) for session storage and retention requirements.
 
 ### Refine and reuse
 
@@ -178,7 +178,7 @@ The quality of your custom voice is highly dependent on the quality of the sampl
 **Requirements and limitations**
 
 - At most 20 voices from recordings can be created per organization.
-- The audio samples must be 30 seconds or less.
+- The audio samples must be 60 seconds or less.
 - The audio samples must be one of the following types: `mpeg`, `wav`, `ogg`, `aac`, `flac`, `webm`, or `mp4`.
 
 Refer to the Text-to-Speech Supplemental Agreement for additional terms of use.
@@ -247,7 +247,7 @@ Use `gpt-realtime-2.1-mini` with the [Realtime API](https://developers.openai.co
 
 Use the following request body when [creating a Realtime client secret](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets/methods/create), then follow the [WebRTC connection guide](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime) to connect with that secret. Replace `voice_123abc` with the ID returned by your voice creation request:
 
-```javascript
+```typescript
 const sessionConfig = JSON.stringify({
   session: {
     type: "realtime",
@@ -305,7 +305,7 @@ curl https://api.openai.com/v1/audio/consent_phrases \
 
 The consent recording and reference sample must come from the same person. The
 sample needs at least five seconds of actual speech and at least 15 transcribed
-text tokens; silence does not count. Use a 10–30-second
+text tokens; silence does not count. Use a 10–60-second
 recording with several complete sentences. Each upload is limited to 10 MiB.
 The service extracts the reference transcript from your recording.
 

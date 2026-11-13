@@ -1,12 +1,13 @@
 ---
 title: "键盘和鼠标快捷键"
 description: "ComfyUI 键盘和鼠标快捷键：完整的默认列表，以及在设置中改键并保存自定义快捷键预设的方法。"
-translationSourceHash: ea7b2a00
+translationSourceHash: 301fefca
 translationFrom: interface/shortcuts.mdx
 translationBlockHashes:
   "_intro": d0ae8abb
   "Find and edit a shortcut": c15b1bc8
   "Keybinding presets": c9b19517
+  "Undo and redo inside a node": 32fa68ab
 ---
 
 <SettingsMenuContext />
@@ -103,3 +104,9 @@ ComfyUI 自带一套默认快捷键，所有命令都可以重新绑定。打开
 | F                                    | 切换焦点模式（全屏）                                         |
 | R                                    | 刷新节点定义                                         |
 | 双击左键                               | 快速搜索要添加的节点                                  |
+
+## 在节点内撤销和重做
+
+某些控件会保留自己的编辑历史：Painter、边界框、图像裁剪、视频编辑、曲线、范围、颜色和光照控件。当键盘焦点位于这些节点之一内部时，`Ctrl + Z` 和 `Ctrl + Y`（macOS 上为 `Cmd ⌘`）会在该节点的控件历史中单步前进或后退，与它的“撤销”和“重做”按钮执行的是同一步操作。如果一个节点有多个历史控件，则会撤销你最后编辑的那个。
+
+在其他所有情况下，该快捷键仍会撤销工作流图：焦点位于空画布，或位于控件步骤已用完的节点。文本字段是单独的一种情况：焦点在文本字段时，快捷键只做正常的文本编辑，不会作用于工作流图，也不会作用于控件。App 模式不在此范围内。

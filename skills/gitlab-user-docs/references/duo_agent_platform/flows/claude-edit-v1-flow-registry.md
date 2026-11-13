@@ -178,7 +178,7 @@ LLM to:
 | `inputs` | `["context:goal"]` | List of input data sources. |
 | `toolset` | `[]` | Tools available to the agent. See [Available tools](#available-tools). |
 | `description` | None | Required when used as a sub-agent under a supervisor. |
-| `subagents` | None | List of sub-agent names. Enables [Supervisor Mode](#supervisor-mode). |
+| `subagents` | None | List of subagent names, or `include` entries for AI Catalog agents (see [`include`](custom_flows_schema.md#include)). Enables [Supervisor Mode](#supervisor-mode). |
 | `max_delegations` | unlimited | Max `delegate_task` calls in Supervisor Mode. |
 | `response_schema_id` | None | ID of structured output schema. |
 | `response_schema_version` | None | Semver for registry-based schema. |

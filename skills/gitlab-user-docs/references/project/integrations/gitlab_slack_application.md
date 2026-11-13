@@ -60,6 +60,17 @@ To install the GitLab for Slack app from the Slack App Directory:
 
 1. Go to the [GitLab for Slack page](https://gitlab.com/-/profile/slack/edit).
 1. Select a GitLab project to link with your Slack workspace.
+   To use GitLab Duo in Slack, select a top-level group instead.
+   You can select a top-level group when:
+   - You have the Owner role for the group.
+   - The `slack_duo_group` feature flag is enabled for the group.
+   - The group is not archived or scheduled for deletion.
+   - The group does not have the GitLab for Slack app yet, of its own or inherited.
+     To change an existing installation, [install the app from the group settings](#from-the-project-or-group-settings).
+   - Beta and experimental features are turned on for the group.
+
+   The page lists up to 100 groups.
+   If your group is not listed, [install the app from the group settings](#from-the-project-or-group-settings).
 
 ### Effect on the Slack notifications integration
 
@@ -118,7 +129,7 @@ Alternatively, you can [configure the integration](https://about.gitlab.com/solu
 
 You can interact with [GitLab Duo](../../gitlab_duo/_index.md) directly from Slack by mentioning the
 GitLab bot in any channel or thread where the bot is present. GitLab Duo reads the full
-conversation thread and recent channel history as context, runs a flow on a CI/CD runner, and posts the
+conversation thread and recent channel history as context, runs a flow, and posts the
 result back to the Slack thread.
 
 For example, you can ask GitLab Duo to do the following:
@@ -129,12 +140,20 @@ For example, you can ask GitLab Duo to do the following:
 - Answer questions about your projects.
 
 Each interaction runs a GitLab Duo Agent session and consumes GitLab Credits.
-Sessions execute on a CI/CD runner in the invoking user's default Duo namespace, and a `duo-workspace` project is created there automatically on first use.
-If you ask about a project in a different top-level group, GitLab Duo in Slack fails.
+Where the session runs depends on the `slack_duo_group` feature flag:
+
+- When the flag is enabled, all sessions from a Slack workspace run in one top-level group,
+  the [GitLab Duo group of the workspace](#choose-where-gitlab-duo-runs).
+  The sessions use the GitLab Duo settings of that group and, on GitLab.com, its GitLab Credits.
+- When the flag is disabled, sessions run on a CI/CD runner, in a [workspace project](#workspace-project).
+  The project is in the default GitLab Duo namespace of the person who mentions GitLab Duo.
+  If you ask about a project in a different top-level group, GitLab Duo in Slack fails.
+
+In both cases, GitLab Duo acts with the permissions of the person who mentions it.
 
 When mentioned in a channel, the agent reads recent messages from that channel as context for its response.
 Messages posted after the one it is responding to are not included.
-After users interact with GitLab Duo, it creates an agent session that is visible only to the person who invoked it, not to everyone with access to the `duo-workspace` project.
+After users interact with GitLab Duo, it creates an agent session that is visible only to the person who invoked it.
 
 > [!note]
 > When you mention the GitLab bot in a thread, the full conversation content
@@ -144,16 +163,109 @@ After users interact with GitLab Duo, it creates an agent session that is visibl
 
 ### Prerequisites
 
-- [Turn on the GitLab Duo Agent Platform](../../duo_agent_platform/turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
-- [Turn on beta and experimental features](../../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features).
 - Link a Slack account to your GitLab account.
   If your accounts are not linked, GitLab sends you a message
   with a link to authorize the connection on first mention.
-- [Set a default GitLab Duo namespace](../../profile/preferences.md#set-a-default-gitlab-duo-namespace).
-- Turn on the [Developer Flow](../merge_requests/developer.md) for the top-level group.
 - Add the GitLab bot to the Slack channel where you want to use it.
 - For existing installations, [reinstall the GitLab for Slack app](#reinstall-the-gitlab-for-slack-app)
   to grant the additional permissions required for GitLab Duo.
+
+When the `slack_duo_group` feature flag is enabled, you also need the following:
+
+- An Owner of a top-level group, or an administrator on GitLab Self-Managed, must
+  choose the GitLab Duo group of the Slack workspace.
+- In the GitLab Duo group, [turn on GitLab Duo](../../gitlab_duo/turn_on_off.md) and the
+  [GitLab Duo Agent Platform](../../duo_agent_platform/turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
+- [Turn on beta and experimental features](../../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features)
+  in the GitLab Duo group on GitLab.com, or for the instance on GitLab Self-Managed.
+- You must have at least the Developer role for the GitLab Duo group.
+- If the subscription has a GitLab Duo add-on with seats, you must have an
+  [assigned seat](../../../subscriptions/subscription-add-ons.md#assign-gitlab-duo-seats).
+  On GitLab.com, the subscription of the GitLab Duo group applies.
+  On GitLab Self-Managed, the subscription of the instance applies.
+
+When the `slack_duo_group` feature flag is disabled, you also need the following:
+
+- Turn on the GitLab Duo Agent Platform, and turn on beta and experimental features.
+- [Set a default GitLab Duo namespace](../../profile/preferences.md#set-a-default-gitlab-duo-namespace).
+- Turn on the [Developer Flow](../merge_requests/developer.md) for the top-level group.
+
+### Choose where GitLab Duo runs
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633566) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `slack_duo_group`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Each Slack workspace runs GitLab Duo in one top-level group, the GitLab Duo group of the workspace.
+Until a group is chosen, GitLab Duo is off for the workspace.
+When someone mentions GitLab Duo, the reply says who can turn it on.
+
+The first top-level group that installs the GitLab for Slack app becomes the GitLab Duo group.
+This happens only if the Slack workspace does not have a GitLab Duo group yet.
+Installing the app on a subgroup or project does not choose a GitLab Duo group.
+Reinstalling the app never moves GitLab Duo to another group.
+
+#### Turn GitLab Duo on or off for a Slack workspace
+
+Prerequisites:
+
+- You must have the Owner role for the top-level group.
+- The Slack workspace must be connected to the group.
+  To connect it, [install the GitLab for Slack app](#install-the-gitlab-for-slack-app) on the group.
+
+To turn GitLab Duo on or off for a Slack workspace:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Settings** > **Integrations**.
+1. Select **GitLab for Slack app**.
+1. In the **GitLab Duo** section, turn the toggle for the Slack workspace on or off.
+   To turn GitLab Duo off, select **Turn off GitLab Duo** to confirm.
+
+If GitLab Duo cannot answer in Slack, the section lists the settings to fix in the group.
+
+Turning off GitLab Duo affects only new mentions in Slack.
+Sessions that already run continue, and GitLab Duo in GitLab is not affected.
+
+A Slack workspace has only one GitLab Duo group.
+If another group already runs GitLab Duo for the workspace, the **GitLab Duo** section says so.
+The section names that group only if you can view it.
+To move GitLab Duo to your group, an Owner of the other group must turn it off first.
+
+GitLab Duo turns off for the Slack workspace when the GitLab Duo group:
+
+- Is archived or scheduled for deletion.
+- Is transferred and is no longer a top-level group.
+- No longer has an installation of the GitLab for Slack app for the workspace, in the group or
+  in any of its subgroups or projects.
+
+The GitLab for Slack app settings of subgroups and projects show where GitLab Duo runs for their
+Slack workspace, and who can change it.
+Notification and slash command settings are not affected.
+
+#### Choose the GitLab Duo group of the instance workspace
+
+- Offering: GitLab Self-Managed
+
+When an administrator installs the GitLab for Slack app for the instance, only an administrator
+chooses the GitLab Duo group of that Slack workspace.
+Installing the app on a group does not choose the GitLab Duo group of that Slack workspace.
+
+Prerequisites:
+
+- You must be an administrator.
+
+To choose the GitLab Duo group of the Slack workspace installed for the instance:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **Integrations**.
+1. Select **GitLab for Slack app**.
+1. In the **GitLab Duo** section, from the **Choose a top-level group** dropdown list, select a group.
+1. Select **Turn on GitLab Duo**.
+
+To move GitLab Duo to another group, select the other group, then select **Move GitLab Duo**.
+To turn GitLab Duo off, select **Turn off GitLab Duo**, then select **Turn off GitLab Duo** again to confirm.
 
 ### Use GitLab Duo in Slack
 
@@ -189,9 +301,13 @@ was installed before these permissions were added, you must
 
 ### Workspace project
 
-When you first use GitLab Duo from Slack, a workspace project called `duo-workspace`
-is automatically created in your default GitLab Duo namespace. This project serves as the
-execution environment for any flows triggered from Slack.
+When the `slack_duo_group` feature flag is enabled, sessions run in the GitLab Duo group
+and no workspace project is created.
+
+When the flag is disabled, GitLab creates a workspace project called `duo-workspace` the first time
+you use GitLab Duo from Slack.
+The project is in your default GitLab Duo namespace and is the execution environment for flows
+triggered from Slack.
 
 You can customize the agent behavior in the workspace project.
 For more information, see [Developer Flow](../merge_requests/developer.md).

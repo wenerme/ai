@@ -65,8 +65,9 @@ The following estimates apply to the [default model](../duo_agent_platform/model
 | Standard feature branch                  | ~28                   | ~14               |
 | Large or logic-heavy multi-file change   | ~40                   | ~20               |
 
-During the beta release, you always start reviews manually. This lets you assess typical credit
-usage in your codebase before broader adoption.
+By default, you start reviews manually.
+This lets you assess typical credit usage in your codebase
+before you [run reviews automatically](#run-reviews-automatically).
 
 ## Use Security Review Flow
 
@@ -102,6 +103,48 @@ The flow sets the reviewer state based on the severity of findings. The flow nev
 | `critical` or `high` | **Request changes** |
 | `medium` or `low`    | **Comment**    |
 | None                 | **Comment**    |
+
+### Run reviews automatically
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/602320) as a [beta](../../policy/development_stages_support.md#beta) in GitLab 19.6.
+
+To automatically assign Security Review Flow to merge requests in a project, apply the
+[Security Review profile](configuration/security_configuration_profiles.md#security-review-profile)
+to the project.
+Security Review Flow must also be turned on for the top-level group, as described in
+[Prerequisites](#prerequisites).
+
+The **Security Review** profile is a business logic profile.
+It runs Security Review Flow instead of the business logic scan,
+so findings are posted only as review threads on the merge request.
+They are not added to the [Vulnerability Report](vulnerability_report/_index.md)
+or the merge request security widget.
+If both business logic profiles are applied to a project,
+the profile that was created first in the group applies.
+
+If Security Review Flow is turned off for the top-level group, the business logic scan runs as
+usual instead.
+
+With the profile applied, the flow is assigned as a reviewer and starts a review in these cases:
+
+- A merge request is created and is not a draft.
+- A draft merge request is marked as ready.
+
+Merge requests that are already open when you apply the profile are not reviewed automatically,
+and the business logic scan does not run for them.
+An open draft is reviewed when it's marked as ready.
+To review other open merge requests, assign the flow as a reviewer.
+
+The flow does not review again when you push new commits.
+To request another review, reassign the flow as a reviewer.
+
+Automatic reviews use the merge request author's GitLab Credits,
+even when someone else marks the merge request as ready.
+Automatic reviews do not run for these merge requests:
+
+- Merge requests from forks
+- Merge requests created by bots or service accounts
+- Merge requests whose author cannot run the flow in the project
 
 ### Respond to a finding
 
@@ -212,8 +255,11 @@ Confirm you meet all [prerequisites](#prerequisites), then check that the flow w
 
 ### The flow does not review every merge request
 
-To run this security scan, you must manually trigger the flow on a merge request. It will not run
-automatically on every merge request. If you assigned the flow but received no findings, see
+Unless the project has the Security Review profile applied,
+you must manually assign the flow to a merge request.
+Even with the profile applied, some merge requests are not reviewed automatically.
+For more information, see [run reviews automatically](#run-reviews-automatically).
+If you assigned the flow but received no findings, see
 [The flow does not provide findings](#the-flow-does-not-provide-findings).
 
 When the flow reviews a merge request, a report with no findings typically means:

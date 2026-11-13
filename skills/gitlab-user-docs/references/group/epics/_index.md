@@ -6,22 +6,18 @@ Roadmaps, hierarchies, planning, and issue progress.
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Epics in GitLab coordinate and track large initiatives by organizing work items into a work hierarchy.
-Epics make complex projects manageable. They:
+Teams use epics in the following ways:
 
 - Break down large features into smaller deliverables that add incremental value.
 - Track the progress of related work items with scheduled start and end dates.
 - Organize discussions and decisions about feature scope and requirements.
 - Create hierarchical structures that connect tasks to strategic goals.
 - Build visual roadmaps to monitor progress toward objectives.
-
-Teams use epics to coordinate across multiple iterations and track progress toward long-term goals.
+- Coordinate work across multiple iterations.
 
 In the Ultimate tier, [nested epics](../../work_items/child_items.md#work-with-multi-level-hierarchies) provide additional
 structure through work hierarchies that align with agile frameworks.
-Break down complex projects into more manageable child epics, which can further contain their own
-sets of issues and tasks.
-This nested structure helps maintain clarity and ensures all aspects of a project are covered without
-losing sight of the overarching goals.
+Break down complex projects into child epics, which can contain their own issues and tasks.
 
 <div class="video-fallback">
   See the video: <a href="https://www.youtube.com/watch?v=c0EwYYUZppw">GitLab Epics - Setting up your Organization with GitLab</a>.
@@ -70,7 +66,7 @@ graph TD
 ### Child issues from different group hierarchies
 
 You can add issues from a different group hierarchy to an epic.
-To do it, paste the issue URL when
+To add one, paste the issue URL when
 [adding an existing issue](../../work_items/child_items.md#add-an-existing-issue-to-an-epic).
 
 ## Epics as work items
@@ -80,32 +76,18 @@ To do it, paste the issue URL when
 - [Enabled by default on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/468310) in GitLab 17.7.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/468310) in GitLab 18.1. Feature flag `work_item_epics` removed.
 
-We have changed how epics look by migrating them to a unified framework for work items to better
-meet the product needs of our Agile Planning offering.
+An epic is a type of [work item](../../work_items/_index.md),
+so epics appear with issues, tasks, and other work items in the  list.
 
-For more information, see [epic 9290](https://gitlab.com/groups/gitlab-org/-/work_items/9290) and the
-following blog posts:
-
-- [First look: The new Agile planning experience in GitLab](https://about.gitlab.com/blog/first-look-the-new-agile-planning-experience-in-gitlab/) (June 2024)
-- [Unveiling a new epic experience for improved Agile planning](https://about.gitlab.com/blog/unveiling-a-new-epic-experience-for-improved-agile-planning/) (July 2024)
-
-If you run into any issues while trying out this change, you can use the
-[feedback issue](https://gitlab.com/gitlab-org/gitlab/-/issues/494462) to provide more details.
-
-### Work item Markdown reference
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352861) in GitLab 18.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `extensible_reference_filters`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197052) in GitLab 18.2. Feature flag `extensible_reference_filters` removed.
-
-You can reference work items in GitLab Flavored Markdown fields with `[work_item:123]`.
-For more information, see [GitLab-specific references](../../markdown.md#gitlab-specific-references).
+The [epics API](../../../api/epics.md) is deprecated.
+To move your integrations, see [migrate epic APIs to work items](../../../api/graphql/epic_work_items_api_migration_guide.md).
 
 ## Related topics
 
 - [Manage epics](manage_epics.md) and multi-level child epics.
 - Link [related epics](linked_epics.md) based on a type of relationship.
 - Create workflows with [epic boards](epic_boards.md).
-- [Turn on notifications](../../profile/notifications.md) for about epic events.
+- [Turn on notifications](../../profile/notifications.md) for epic events.
 - [Add an emoji reaction](../../emoji_reactions.md) to an epic or its comments.
 - Collaborate on an epic by posting comments in a [thread](../../discussions/_index.md).
 - Use [health status](manage_epics.md#health-status) to track your progress.

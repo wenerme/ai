@@ -12,11 +12,26 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/conf
 
 # Configuration
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides additional configuration on top of Vitest's usual options using the `cloudflareTest()` Vite plugin.
 
-An example configuration would be:
+An example configuration for a project with a [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/) file would be:
+
+```ts
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+	plugins: [
+		cloudflareTest({
+			config: true,
+		}),
+	],
+});
+```
+
+If your project uses a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), set the `wrangler` option instead of `config`:
 
 ```ts
 import { cloudflareTest } from "@cloudflare/vitest-plugin";
@@ -119,11 +134,15 @@ export default defineConfig({
 
 Options passed directly to `cloudflareTest()`.
 
+- `config`: `boolean | string` optional
+  - Load the entry point, [compatibility settings](https://developers.cloudflare.com/workers/configuration/compatibility-dates/), [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/), triggers, and exports from a [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/) file. Pass `true` to load `cloudflare.config.ts` from the project root, or pass a path to the file relative to the project root. You cannot use `config` together with `wrangler`.
+  - If `cloudflare.config.ts` exports a function, it receives the Vitest mode as `ctx.mode`, which defaults to `test`. To use a different mode, run `vitest --mode <MODE>`. Refer to [Select a mode](https://developers.cloudflare.com/cf/projects/cloudflare-config/#select-a-mode) for more information.
 - `main`: string optional
-  - Entry point to Worker run in the same isolate/context as tests. This option is required to use Durable Objects without an explicit `scriptName` if classes are defined in the same Worker. This file goes through Vite transforms and can be TypeScript. Note that `import module from "<path-to-main>"` inside tests gives exactly the same `module` instance as is used internally for `exports` and Durable Object bindings. If `wrangler.configPath` is defined and this option is not, it will be read from the `main` field in that configuration file.
+  - Entry point to Worker run in the same isolate/context as tests. This option is required to use Durable Objects without an explicit `scriptName` if classes are defined in the same Worker. This file goes through Vite transforms and can be TypeScript. Note that `import module from "<path-to-main>"` inside tests gives exactly the same `module` instance as is used internally for `exports` and Durable Object bindings. If this option is not set, the integration uses the entry point from your configuration file: `main` in a Wrangler configuration file, or `entrypoint` in `cloudflare.config.ts`.
 - `miniflare`: `SourcelessWorkerOptions & { workers?: WorkerOptions\[]; }` optional
   - Use this to provide configuration information that is typically stored within the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), such as [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/), [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/), and [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). The `WorkerOptions` interface is defined [here ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions). Use the `main` option above to configure the entry point, instead of the Miniflare `script`, `scriptPath`, or `modules` options.
     - If no `compatibility_date` is provided, then the test will use the latest locally available date.
+  - If you also set `config` or `wrangler`, these options are merged with the configuration from that file, and `miniflare` values take precedence.
   - If your project makes use of multiple Workers, you can configure auxiliary Workers that run in the same `workerd` process as your tests and can be bound to. Auxiliary Workers are configured using the `workers` array, containing regular Miniflare [`WorkerOptions` ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions) objects. Note that unlike the `main` Worker, auxiliary Workers:
     - Cannot have TypeScript entrypoints. You must compile auxiliary Workers to JavaScript first. You can use the [`wrangler deploy --dry-run --outdir dist`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command for this.
     - Use regular Workers module resolution semantics. Refer to the [Isolation and concurrency](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/#modules) page for more information.
@@ -132,7 +151,7 @@ Options passed directly to `cloudflareTest()`.
     - Can be written with the [Service Worker syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/#service-worker-syntax).
     - Are not affected by global mocks defined in your tests.
 - `wrangler`: `{ configPath?: string; environment?: string; }` optional
-  - Path to [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to load `main`, [compatibility settings](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) from. These options will be merged with the `miniflare` option above, with `miniflare` values taking precedence. For example, if your Wrangler configuration defined a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) named `SERVICE` to a Worker named `service`, but you included `serviceBindings: { SERVICE(request) { return new Response("body"); } }` in the `miniflare` option, all requests to `SERVICE` in tests would return `body`. Note `configPath` accepts both `.toml` and `.json` files. The Wrangler [`alias`](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing) field is not read. Set the same aliases in Vite's [`resolve.alias` ↗︎](https://vite.dev/config/shared-options.html#resolve-alias) in your Vitest configuration.
+  - Path to [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to load `main`, [compatibility settings](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) from. These options will be merged with the `miniflare` option above, with `miniflare` values taking precedence. For example, if your Wrangler configuration defined a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) named `SERVICE` to a Worker named `service`, but you included `serviceBindings: { SERVICE(request) { return new Response("body"); } }` in the `miniflare` option, all requests to `SERVICE` in tests would return `body`. Note `configPath` accepts both `.toml` and `.json` files. The Wrangler [`alias`](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing) field is not read. Set the same aliases in Vite's [`resolve.alias` ↗︎](https://vite.dev/config/shared-options.html#resolve-alias) in your Vitest configuration. You cannot use `wrangler` together with `config`.
   - The environment option can be used to specify the [Wrangler environment](https://developers.cloudflare.com/workers/wrangler/environments/) to pick up bindings and variables from.
 
 ## Dynamic configuration with `inject`
@@ -207,5 +226,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

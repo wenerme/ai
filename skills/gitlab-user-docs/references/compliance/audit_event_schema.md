@@ -58,7 +58,7 @@ Audit events have a predictable schema in the body of the response.
     },
     "target_details": {
       "type": "string"
-    },
+    }
   },
   "type": "object"
 }

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/billing/manage/og.png?v=59dd6e6e7b3e691
 
 # Manage
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use these guides to manage invoices, subscriptions, payment status, and usage-based spend.
 
@@ -36,6 +36,10 @@ View, download, and receive Cloudflare invoices by email.
 
 Track daily usage-based costs across products.
 
+### [Spending limits and alerts](https://developers.cloudflare.com/billing/manage/spend-management/)
+
+Set separate spending limits or email alerts for Workers and Durable Objects.
+
 ### [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/)
 
 Receive email notifications when usage-based spend crosses a dollar threshold.
@@ -53,5 +57,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/manage/#page","headline":"Manage","description":"Manage subscriptions, invoices, and usage.","url":"https://developers.cloudflare.com/billing/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/manage/og.png?v=59dd6e6e7b3e6917","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/manage/#page","headline":"Manage","description":"Manage subscriptions, invoices, and usage.","url":"https://developers.cloudflare.com/billing/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/manage/og.png?v=59dd6e6e7b3e6917","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

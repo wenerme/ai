@@ -325,7 +325,7 @@ Examples:
   any images with the name `main`, and the policy is enabled:
 
   ```shell
-  curl --fail-with-body --request PUT --header 'Content-Type: application/json;charset=UTF-8'
+  curl --fail-with-body --request PUT --header 'Content-Type: application/json;charset=UTF-8' \
        --header "PRIVATE-TOKEN: <your_access_token>" \
        --data-binary '{"container_expiration_policy_attributes":{"cadence":"1month","enabled":true,"keep_n":1,"older_than":"14d","name_regex":".*","name_regex_keep":".*-main"}}' \
        "https://gitlab.example.com/api/v4/projects/2"

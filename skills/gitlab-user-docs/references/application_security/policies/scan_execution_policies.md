@@ -423,7 +423,7 @@ rule in the defined policy are met.
 
 | Field | Type | Possible values | Description |
 |-------|------|-----------------|-------------|
-| `scan` | `string` | `sast`, `sast_iac`, `dast`, `secret_detection`, `container_scanning`, `dependency_scanning` | The action's type. |
+| `scan` | `string` | `sast`, `sast_iac`, `dast`, `secret_detection`, `container_scanning`, `dependency_scanning`, `business_logic` | The action's type. `business_logic` is an [experiment](../../../policy/development_stages_support.md#experiment). See [scanner behavior](#scanner-behavior). |
 | `site_profile` | `string` | Name of the selected [DAST site profile](../dast/profiles.md#site-profile). | The DAST site profile to execute the DAST scan. This field should only be set if `scan` type is `dast`. |
 | `scanner_profile` | `string` or `null` | Name of the selected [DAST scanner profile](../dast/profiles.md#scanner-profile). | The DAST scanner profile to execute the DAST scan. This field should only be set if `scan` type is `dast`. |
 | `variables` | `object` | | A set of CI/CD variables, supplied as an array of `key: value` pairs, to apply and enforce for the selected scan. The `key` is the variable name, with its `value` provided as a string. This parameter supports any variable that the GitLab CI/CD job supports for the specified scan. |
@@ -471,6 +471,26 @@ Some scanners behave differently in a `scan` action than they do in a regular CI
   defined in the `agents` object. The `agents` object is only considered for `schedule` rule types.
   An agent with a name provided in the `agents` object must be created and configured for the
   project.
+- Business logic scanning (experiment): Runs as a GitLab Duo foundational flow, not as a CI/CD job.
+  - Supported only in `schedule` rules.
+  - Available on GitLab.com, and on GitLab Dedicated instances where GitLab has enabled business logic scanning.
+  - Requires the `bl_security_analyzer` feature flag for the top-level group, a license that includes
+    business logic scanning, [GitLab Duo experiment and beta features turned on](../../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features),
+    and [foundational flows turned on](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off)
+    for the top-level group.
+  - The scan runs as a dedicated service account for the business logic flow in the project.
+    The first scheduled scan creates this service account with a username starting with `ai-security-policy-`,
+    assigned the flow's role (never Owner). Only security policies create these triggers, and
+    project members cannot deactivate them. To exclude a project, change the policy's scope. If the
+    `autonomous_service_account_execution` feature flag is off, the scan is skipped.
+  - Groups that lock membership cannot run scheduled business logic scans.
+  - One scan runs for each branch in the schedule rule, on that branch. Results for a branch other than
+    the default branch appear on that branch's scan pipeline, and reach the vulnerability report only
+    if the branch is tracked, the same as other scanners.
+  - A group-level policy starts one scan for each project, for each listed branch, every time the
+    schedule runs. Each scan consumes GitLab Duo usage, so a policy on a large group can be costly.
+  - The policy editor shows a policy that contains `business_logic` in YAML mode only.
+  - The `variables`, `tags`, `template`, and `scan_settings` fields do not apply.
 
 ### DAST profiles
 

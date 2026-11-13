@@ -58,7 +58,7 @@ To export your license usage file:
 
 If your instance is in an offline environment, it cannot send usage data to GitLab.
 You should export a usage report instead, and upload it to Customers Portal
-within three days after the end of each month.
+by the second working day after the end of each month.
 
 The usage report is a JSON file that covers one subscription term,
 from the term start date up to the last completed day.

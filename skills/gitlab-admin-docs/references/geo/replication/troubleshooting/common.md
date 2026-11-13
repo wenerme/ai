@@ -716,8 +716,8 @@ significantly faster, and secondary site status should update correctly.
 
 ### Verification failed with: `Verification timed out after (...)`
 
-Geo may create duplicate `JobArtifactRegistry` entries for the same `artifact_id`, which can lead to synchronization
-failures between primary and secondary sites. This issue may also impact `UploadRegistry` and `PackageFileRegistry` entries.
+Geo might create duplicate `JobArtifactRegistry` entries for the same `artifact_id`, which can lead to synchronization
+failures between primary and secondary sites. This issue might also impact `UploadRegistry` and `PackageFileRegistry` entries.
 
 To determine if you might be experiencing this issue and remove the duplicate entries:
 
@@ -751,7 +751,7 @@ To determine if you might be experiencing this issue and remove the duplicate en
 
 1. Wait for the background jobs to create the registry rows again and resync.
 
-Follow [issue 479852](https://gitlab.com/gitlab-org/gitlab/-/work_items/479852) to get feedback on the fix.
+For more information, see [issue 479852](https://gitlab.com/gitlab-org/gitlab/-/work_items/479852).
 
 ### Error `end of file reached` when running Geo Rake check task on secondary
 

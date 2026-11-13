@@ -569,7 +569,7 @@ Save application task state alongside the source session ID. Before continuing, 
 
 Stored recordings are available for 30 days. With Zero Data Retention (ZDR), `store` is treated as `false` and forking is unavailable. For fork-based evaluations, use a non-ZDR organization with storage enabled for the project.
 
-If you have no completed stored recording, [start a new session with relevant saved text history](https://developers.openai.com/api/docs/guides/live-conversations#seed-a-session-with-prior-conversation). See [GPT-Live data controls](https://developers.openai.com/api/docs/guides/your-data#v1livesessions) for storage requirements.
+If you have no completed stored recording, [start a new session with relevant saved text history](https://developers.openai.com/api/docs/guides/live-conversations#seed-a-session-with-prior-conversation). See [GPT-Live data controls](https://developers.openai.com/api/docs/guides/data-residency#v1livesessions) for storage requirements.
 
 For example, set this field in the source session’s WebSocket `session.start` configuration or WebRTC creation request:
 

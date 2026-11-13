@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/billing/understand/how-charges-accrue/o
 
 # How charges accrue
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/how-charges-accrue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/how-charges-accrue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every request to a Cloudflare-proxied domain can touch multiple products, each with its own billing dimension. This page walks through a realistic request lifecycle and shows which products generate charges at each stage.
 
@@ -128,7 +128,9 @@ The key takeaway: **cached responses are the cheapest path**. Every cache hit av
 | Use Workers Smart Placement to run Workers closer to your data | Workers CPU time | Medium — reduces execution time for data-dependent Workers |
 | Use R2 lifecycle rules to move infrequently accessed data to Infrequent Access tier | R2 storage | Medium — reduces storage costs for archival data |
 | Monitor usage with the [billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/) | All usage-based products | High — visibility is the first step to optimization |
-| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes | All usage-based products | High — prevents surprise invoices |
+| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes | All usage-based products | Notifies you when spend crosses your threshold |
+
+To control Workers and Durable Objects usage charges, set [spending limits](https://developers.cloudflare.com/billing/manage/spend-management/). Each product needs its own limit. A Workers limit does not cover Durable Objects or other products used by the same request. Some charges can continue after a limit takes effect.
 
 ## Related resources
 
@@ -146,5 +148,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/#page","headline":"How charges accrue","description":"How a request generates billable usage across Cloudflare products.","url":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/og.png?v=29273dcb2c2e4838","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/#page","headline":"How charges accrue","description":"How a request generates billable usage across Cloudflare products.","url":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/understand/how-charges-accrue/og.png?v=29273dcb2c2e4838","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/concepts/namespaces/og.png?v=
 
 # Namespaces
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance belongs to a **namespace**. A namespace is a logical grouping of instances within your account.
 
@@ -75,6 +75,8 @@ const results = await instance.search({
 ```
 
 The `get()` method is synchronous and does not make a network call. The instance is resolved lazily when you call a method like `search()` or `chatCompletions()`.
+
+The binding manages instances inside its namespace. To create, update, or delete namespaces themselves, refer to the [Namespaces API](https://developers.cloudflare.com/ai-search/api/namespaces/).
 
 ## Default namespace
 
@@ -140,6 +142,25 @@ binding = "SUPPORT_SEARCH"
 namespace = "support"
 ```
 
+## Manage namespaces with Terraform
+
+From [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) v5.29.0, use the `cloudflare_ai_search_namespace` resource to create a namespace, and set `namespace` on `cloudflare_ai_search_instance` to create an instance in it. If you omit `namespace`, the instance is created in `default`.
+
+```tf
+resource "cloudflare_ai_search_namespace" "support" {
+  account_id = var.account_id
+  name       = "support"
+}
+
+resource "cloudflare_ai_search_instance" "docs" {
+  account_id = var.account_id
+  id         = "docs"
+  namespace  = cloudflare_ai_search_namespace.support.name
+}
+```
+
+Changing `namespace` on an existing instance replaces it. For imports, data sources, and other options, refer to [Namespaces with Terraform](https://developers.cloudflare.com/ai-search/api/namespaces/terraform/) and [Instances with Terraform](https://developers.cloudflare.com/ai-search/api/instances/terraform/).
+
 ## Namespace public endpoints
 
 A namespace can expose its own public `/search`, `/chat/completions`, and `/mcp` endpoints. One URL then searches across the instances you choose in that namespace and merges the results.
@@ -159,5 +180,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/concepts/namespaces/og.png?v=5e10bc976c18afa2","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/namespaces/#page","headline":"Namespaces","description":"Group AI Search instances into namespaces and manage them dynamically from a Workers binding.","url":"https://developers.cloudflare.com/ai-search/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/concepts/namespaces/og.png?v=5e10bc976c18afa2","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -220,7 +220,7 @@ For more information, see [select an agent](../../gitlab_duo_chat/agentic_chat.m
 
 ## Use an agent
 
-You can use a custom agent in the GitLab UI, VS Code, and JetBrains IDEs.
+You can use a custom agent in the GitLab UI, VS Code, JetBrains IDEs, and as a subagent in a custom flow.
 
 ### In the GitLab UI
 
@@ -278,6 +278,20 @@ Then, to use a custom agent:
    **New chat** () dropdown list, select the custom agent.
 1. Enter your question or request.
 
+### In a custom flow
+
+A custom flow can use the agent as a subagent.
+This feature is in [beta](../../../policy/development_stages_support.md#beta).
+The flow lists the agent by item ID and exact version in its YAML, and a component of the flow
+delegates tasks to it.
+The agent does not have to be enabled in the project of the flow.
+For the YAML, the rules, and the flag, see [`include`](../flows/custom_flows_schema.md#include).
+
+When the agent is a subagent, the model that runs the flow reads its name and its description.
+The model uses them to decide when to delegate a task to the agent.
+Write the description so that a model can tell what the agent does and when to use it.
+A description written only for people to read in the AI Catalog might not be enough.
+
 ## Disable an agent
 
 Prerequisites:
@@ -333,6 +347,10 @@ Hide an agent to remove it from the AI Catalog.
 
 After you hide an agent, users can't enable it. However, they can still interact with the agent in the groups and projects it is already enabled in.
 
+When a custom flow uses the agent as a subagent, hiding the agent stops that flow.
+The flow stops at run time because the subagent can no longer be used.
+To run the flow again, remove the agent from the `include` list of the flow, or replace it with a different agent.
+
 Prerequisites:
 
 - You must be a member of the managing project and have the Maintainer or Owner role.
@@ -346,8 +364,21 @@ To hide an agent:
 
 ## Delete an agent
 
-Delete an agent to remove it from the instance. If a project other than the managing project has turned off
-the agent, the agent is hidden instead of removed.
+Delete an agent to remove it from the instance.
+
+When you delete an agent, you can choose one of two deletion methods:
+
+- **Delete permanently**: The agent is removed from the instance. This action cannot be undone.
+- **Hide from the AI Catalog**: The agent is hidden instead of removed. Users can continue to use
+  the agent in the groups and projects it is enabled in.
+
+If a project other than the managing project has turned on the agent,
+or a custom flow uses the agent as a subagent, the agent is always hidden instead of removed,
+even when you choose **Delete permanently**.
+
+When a flow uses a hidden agent as a subagent, a save that changes its YAML or increases its visibility fails.
+The error shows the item ID and version of the agent, not its name.
+To save the flow, remove the agent from the `include` list of the flow, or replace it with a different agent.
 
 Prerequisites:
 
@@ -356,7 +387,8 @@ Prerequisites:
 1. In the top bar, select **Search or go to** and find your group or project.
 1. Select **AI** > **Agents**.
 1. Find the agent you want to delete and select **Actions** () > **Delete**.
-1. In the confirmation dialog, select **Delete**.
+1. In the confirmation dialog, under **Deletion method**, select **Delete permanently** or **Hide from the AI Catalog**.
+1. Select **Confirm**.
 
 ## Turn custom agents on or off
 

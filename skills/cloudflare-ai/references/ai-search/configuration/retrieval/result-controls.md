@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/resul
 
 # Result controls
 
-Last updated Jun 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These settings control how many results are returned and the minimum score required. To filter results by metadata attributes like folder or category, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
 ## Match threshold
 
-The `match_threshold` sets the minimum vector similarity score that a chunk must meet to be included in the results. Threshold values range from `0` to `1`. The threshold filters on the vector similarity score, not the fused score returned in the response.
+The match threshold sets the minimum vector similarity score that a chunk must meet to be included in the results. Threshold values range from `0` to `1`, and the default is `0.4`. On the instance, this setting is named `score_threshold`. In a search or chat completions request, set `match_threshold` in `ai_search_options.retrieval` to override the instance value for that request. The threshold filters on the vector similarity score, not the fused score returned in the response.
 
 - A higher threshold means stricter filtering, returning only highly similar matches.
 - A lower threshold allows broader matches, increasing recall but possibly reducing precision.
@@ -34,7 +34,7 @@ The `max_num_results` setting controls the number of top-matching chunks returne
 
 1. Your query is embedded using the configured embedding model.
 2. The search index is queried. For [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/), vector and keyword results are fused into a single ranked list.
-3. Chunks with a vector similarity score below `match_threshold` are filtered out.
+3. Chunks with a vector similarity score below the match threshold are filtered out.
 4. The filtered results are limited to `max_num_results` and passed into the generation step as context.
 
 If no results meet the threshold, AI Search will not generate a response.
@@ -43,7 +43,7 @@ If [reranking](https://developers.cloudflare.com/ai-search/configuration/retriev
 
 ## Per-request override
 
-These values can be configured at the instance level or overridden per request:
+These values can be configured at the instance level (`score_threshold` and `max_num_results`) or overridden per request (`match_threshold` and `max_num_results`):
 
 ```ts
 const instance = env.AI_SEARCH.get("my-instance");
@@ -68,5 +68,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/#page","headline":"Result controls","description":"Control AI Search result count and minimum score thresholds for returned results.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/og.png?v=c87a58d2d24525d0","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/#page","headline":"Result controls","description":"Control AI Search result count and minimum score thresholds for returned results.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/og.png?v=c87a58d2d24525d0","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

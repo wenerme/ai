@@ -322,8 +322,8 @@ Example request:
 curl --request POST \
      --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
-     --url "https://gitlab.example.com/api/v4/groups/5/-/virtual_registries/container/upstreams/test"
-     --data '{"url": "https://registry-1.docker.io", "username": "<your_username>", "password": "<your_password>"}' \
+     --url "https://gitlab.example.com/api/v4/groups/5/-/virtual_registries/container/upstreams/test" \
+     --data '{"url": "https://registry-1.docker.io", "username": "<your_username>", "password": "<your_password>"}'
 ```
 
 Example response:

@@ -207,7 +207,18 @@ When a component's SBOM entry includes an `expression`, GitLab stores and evalua
 When a CycloneDX SBOM doesn't contain license information, GitLab matches components against PMDB license data, which supports license expressions.
 
 License expressions are supported in [license approval policies](../license_approval_policies.md).
-When a policy targets a license that appears as a term in a component's expression, the policy evaluates correctly against the full expression.
+When a policy's `licenses` key targets a license that appears as a term in a component's `AND` expression,
+the policy evaluates correctly against the full expression.
+Operands of an `OR` expression are not matched individually.
+The `license_types` key does not match an expression-licensed component, by whole expression string or by individual term.
+
+For an expression-licensed component, the dependency list shows the raw expression built from
+SPDX identifiers, such as `Apache-2.0 AND CNRI-Python`, rather than the canonical names shown
+elsewhere (such as `Apache License 2.0`).
+A single identifier from the expression, used on its own in a policy rule, matches nothing
+under either key, and the policy shows no warning.
+Under the `licenses` key, use the SPDX license name, such as `CNRI Python License`.
+A `LicenseRef-` value has no canonical name and is matched by the token itself.
 
 ## Blocking merge requests based on detected licenses
 

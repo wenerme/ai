@@ -187,6 +187,119 @@ In this example, if the job name is `test` and the SHA checksum is `abc123`, the
 - The cache `paths` field is required. A cache configuration without paths has no effect.
 - Cache keys support CI/CD variables in the `prefix` field.
 
+### Start sessions from a reference repository
+
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262094) as a [beta](../../../../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../../../../administration/feature_flags/_index.md) named `dap_reference_repository`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+The runner clones your whole repository at the start of every flow.
+For a large repository, this clone can take most of the time before the flow starts.
+
+To make sessions start faster, build an image that contains a bare copy of your repository,
+and point the agent configuration file at it. Each session then fetches only the commits made
+after the image was built, and reads older objects from the copy in the image.
+For example, on the `gitlab-org/gitlab` project, the clone dropped from about 4 minutes to 14 seconds.
+
+The image is larger than one without the repository, so it takes longer to pull.
+Use a reference repository when the clone takes longer than the extra pull time.
+The longer the image goes without a rebuild, the more commits each session fetches.
+
+Some foundational flows always use the GitLab image.
+These flows ignore `git_strategy`.
+
+Prerequisites:
+
+- The runner that executes flows must be GitLab Runner 17.3 or later.
+- The Maintainer or Owner role for the project.
+- An image for your flows that includes Git 2.31 or later.
+- The bare repository in the image must be at an absolute path outside `/builds`.
+  The runner mounts the build directory over `/builds`.
+- The bare repository must have at least one branch. A session sends the branches of the
+  reference repository to GitLab to determine which commits it already has. Without a branch,
+  every session downloads the whole history.
+
+To start sessions from a reference repository:
+
+1. In your repository, create a `.gitlab/duo/session-image.Dockerfile` file.
+   Use the image your flows use now as the base image:
+
+   ```dockerfile
+   FROM <your-current-image>
+
+   COPY ref.git /opt/duo/ref.git
+   ```
+
+1. In your `.gitlab-ci.yml` file, add a job that copies the default branch into a
+   bare repository, then builds and pushes the image:
+
+   ```yaml
+   build-duo-session-image:
+     image: docker:27-cli
+     services:
+       - docker:27-dind
+     variables:
+       DOCKER_TLS_CERTDIR: "/certs"
+       GIT_STRATEGY: clone
+       GIT_DEPTH: 0
+       GIT_FETCH_EXTRA_FLAGS: "--prune --quiet"
+     rules:
+       - if: $CI_PIPELINE_SOURCE == "schedule" && $SCHEDULE_TYPE == "duo-session-image"
+     script:
+       - apk add --no-cache git
+       - git init --quiet --bare duo-image/ref.git
+       - git -C duo-image/ref.git fetch --quiet --no-tags "$CI_PROJECT_DIR" "$CI_COMMIT_SHA:refs/heads/$CI_DEFAULT_BRANCH"
+       - echo "$CI_REGISTRY_PASSWORD" | docker login --username "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+       - docker build --file .gitlab/duo/session-image.Dockerfile --tag "$CI_REGISTRY_IMAGE/duo-session:latest" duo-image
+       - docker push "$CI_REGISTRY_IMAGE/duo-session:latest"
+   ```
+
+   The `GIT_*` variables make the runner clone the full, unfiltered history, so the bare
+   repository is complete. The job copies the repository it already cloned, so the image
+   build needs no credentials. The job uses Docker-in-Docker, which needs a runner with
+   privileged mode. For more information, see
+   [use Docker to build Docker images](../../../../ci/docker/using_docker_build.md).
+   If other jobs in your pipeline run in scheduled pipelines, add rules so they don't run in this one.
+
+1. [Create a pipeline schedule](../../../../ci/pipelines/schedules.md#create-a-pipeline-schedule)
+   for the default branch, for example weekly, with the variable `SCHEDULE_TYPE` set to `duo-session-image`.
+1. Run the schedule once to build the first image.
+1. In the `agent-config.yml` file, set the image and the path to the bare repository:
+
+   ```yaml
+   image: registry.gitlab.com/my-group/my-project/duo-session:latest
+   git_strategy:
+     reference_repository_path: /opt/duo/ref.git
+   ```
+
+   If the flow cannot pull the image from the container registry, see
+   [configure flows to pull the image from the GitLab container registry](images.md#configure-flows-to-pull-the-image-from-the-gitlab-container-registry).
+
+Sessions now start from the reference repository.
+
+#### Verify that sessions use the reference repository
+
+To check that a flow uses the reference repository, start a flow and open the job log.
+The log includes the following line:
+
+```plaintext
+Skipping Git repository setup and creating an empty build directory
+```
+
+If the path does not exist in the image the flow runs in, or is not a bare repository,
+the job clones the repository without the reference repository, and the log also includes:
+
+```plaintext
+Reference repository not found at /opt/duo/ref.git, cloning without it
+```
+
+The flow still runs, but without the faster start. Check the path, and that the flow uses
+the image from the agent configuration file.
+
 ### Configure ID tokens
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224940) in GitLab 19.2.

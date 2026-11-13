@@ -34,9 +34,7 @@ Automatically open merge requests to fix vulnerable dependencies.
 - Swift Package Manager support [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604605)
   in GitLab 19.6.
 - Conventional Commits format for merge request titles and commit messages
-  [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631539) in GitLab 19.6
-  [with a feature flag](../../../administration/feature_flags/_index.md) named
-  `dependency_management_conventional_commits`. Disabled by default.
+  [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631539) in GitLab 19.6.
 - Per-project scheduler rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267539) in GitLab 19.6
   [with a feature flag](../../../administration/feature_flags/_index.md) named
   `dependency_management_scheduler_rate_limit`. Disabled by default.
@@ -120,10 +118,6 @@ limit of one every five minutes. For more information, see
 
 ### Merge request titles and commit messages
 
-> [!flag]
-> The availability of the Conventional Commits format is controlled by a feature flag.
-> For more information, see the history.
-
 By default, an auto-remediation merge request has a title like
 `Security: Update rack from 2.0.9 to 2.2.0`.
 The commit subject is `Update rack`.
@@ -157,7 +151,7 @@ For projects that use Conventional Commits, GitLab copies the style of the match
 - The text after `(deps):` reads `[Security] Update` if most of the matching commits start
   the subject with a capital letter, and `[security] update` otherwise.
 
-If a Conventional Commits title is longer than 100 characters, GitLab leaves out the old
+If a Conventional Commits title is longer than 72 characters, GitLab leaves out the old
 version from the title and commit subject, as in
 `build(deps): [security] update rack to 2.2.0`.
 

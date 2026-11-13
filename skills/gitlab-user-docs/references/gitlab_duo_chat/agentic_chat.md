@@ -534,6 +534,7 @@ GitLab Duo sidebar.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219759) in GitLab 18.9 as an [experiment](../../policy/development_stages_support.md#experiment) with a [flag](../../administration/feature_flags/_index.md) named `dap_web_search`. Disabled by default.
 - Group setting to allow web search [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253643) in GitLab 19.4.
 - Audit event for web searches [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604065) in GitLab 19.5.
+- Instance setting to allow web search on GitLab Self-Managed and GitLab Dedicated [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637200) in GitLab 19.6. The group setting applies only on GitLab.com.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -561,8 +562,11 @@ You cannot limit which domains web search can reach.
 
 ### Allow web search for a group
 
-Allow web search for a top-level group so users in the group can turn on web search
+On GitLab.com, allow web search for a top-level group so users in the group can turn on web search
 in their Chat conversations. The setting applies to all subgroups and projects in the group.
+
+On GitLab Self-Managed and GitLab Dedicated, the group setting is not available.
+Instead, an administrator [allows web search for the instance](#allow-web-search-for-an-instance).
 
 Prerequisites:
 
@@ -579,6 +583,31 @@ To allow web search for a group:
 To allow web search for a group, you can also [use the API](../../api/groups.md#options-for-ai_settings_attributes)
 to set the `web_search_enabled` attribute.
 
+### Allow web search for an instance
+
+On GitLab Self-Managed and GitLab Dedicated, allow web search for the instance so users
+can turn on web search in their Chat conversations in any group or project.
+This setting is the only one that controls web search on the instance.
+It is off by default.
+
+Prerequisites:
+
+- Administrator access.
+- An instance with one of the following:
+  - An active GitLab Duo Pro, Enterprise, or Self-Hosted add-on with a paid license.
+  - Active GitLab Credits.
+
+To allow web search for an instance:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. In the **Data and privacy** section, under **Web search**, select the **Allow web search** checkbox.
+1. Select **Save changes**.
+
+To allow web search for an instance, you can also use the `webSearchEnabled` argument of the
+[`duoSettingsUpdate`](../../api/graphql/reference/mutations.md#duosettingsupdate) GraphQL mutation.
+
 ### Turn on web search in a conversation
 
 Turn on web search in a conversation when you want Chat to search the web for an answer.
@@ -587,7 +616,9 @@ starts with the setting you last chose in your browser.
 
 Prerequisites:
 
-- A group Owner must allow web search for the top-level group.
+- On GitLab.com, a group Owner must [allow web search for the top-level group](#allow-web-search-for-a-group).
+- On GitLab Self-Managed and GitLab Dedicated, an administrator must
+  [allow web search for the instance](#allow-web-search-for-an-instance).
 
 To turn on web search:
 
@@ -613,6 +644,7 @@ For Anthropic models, Chat can read up to five web pages for each request.
 Web search creates the following audit events:
 
 - `web_search_enabled_updated`: A user changes the **Allow web search** setting for a group.
+- `ai_setting_updated`: An administrator changes the **Allow web search** setting for an instance.
 - `ai_web_search_invoked`: Chat runs a web search.
 
 For more information, see [audit event types](../compliance/audit_event_types.md).

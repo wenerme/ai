@@ -223,4 +223,4 @@ You can normalize these with an OpenObserve **Pipeline** (VRL) at ingest time so
 ## Need Help?
 
 - Join our [Community Slack](https://short.openobserve.ai/community)
-- Or [Contact support](https://openobserve.ai/contactus/)
+- Or [Contact support](https://openobserve.ai/contact-us/)

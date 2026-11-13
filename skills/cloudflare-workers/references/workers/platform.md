@@ -20,6 +20,7 @@ Pricing, limits and other information about the Workers platform.
 - [Changelog](https://developers.cloudflare.com/workers/platform/changelog/)
 - [Limits](https://developers.cloudflare.com/workers/platform/limits/)
 - [Choose a data or storage product](https://developers.cloudflare.com/workers/platform/storage-options/)
+- [Spending limits](https://developers.cloudflare.com/workers/platform/spend-management/)
 - [Betas](https://developers.cloudflare.com/workers/platform/betas/)
 - [Deploy to Cloudflare buttons](https://developers.cloudflare.com/workers/platform/deploy-buttons/)
 - [Claim deployments (temporary accounts)](https://developers.cloudflare.com/workers/platform/claim-deployments/)

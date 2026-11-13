@@ -114,7 +114,7 @@ Example response:
     "Hello/0.2@foo+conan_test_prod/beta",
     "Hello/0.3@foo+conan_test_prod/beta",
     "Hello/0.1@foo+conan-reference-test/stable",
-    "HelloWorld/0.1@baz+conan-reference-test/beta"
+    "HelloWorld/0.1@baz+conan-reference-test/beta",
     "hello-world/0.4@buz+conan-test/alpha"
   ]
 }

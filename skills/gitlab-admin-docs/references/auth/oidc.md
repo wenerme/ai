@@ -1212,6 +1212,12 @@ response to assign users as administrators based on group membership, configure 
 - Which group memberships grant the user administrator access, using the
   `admin_groups` setting.
 
+When a user signs in with OIDC, or uses OIDC to re-authenticate for
+[Admin Mode](../settings/sign_in_restrictions.md#admin-mode),
+GitLab checks whether the user is in a group defined in `admin_groups`.
+If the user is no longer in an administrator group, they lose administrator access and cannot enter Admin Mode.
+Users who are not in the [required groups](#required-groups) also cannot enter Admin Mode.
+
 ### Linux package (Omnibus)
 
 1. Edit `/etc/gitlab/gitlab.rb`:

@@ -8,6 +8,7 @@ Browse and filter a unified record of GitLab Duo agent activity for compliance a
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20237) in GitLab 19.1 as a [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `agent_artifacts_page`. Disabled by default.
 - Enabled by default in GitLab 19.2.
 - Per-tab permissions [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264808) in GitLab 19.6.
+- Feature flag `agent_artifacts_page` removed in GitLab 19.6.
 
 > [!warning]
 > This feature is in [beta](../../policy/development_stages_support.md).

@@ -600,7 +600,7 @@ Example response:
   "external": false,
   "private_profile": false,
   "commit_email": "admin@example.com",
-  "preferred_language": "en",
+  "preferred_language": "en"
 }
 ```
 
@@ -1076,7 +1076,7 @@ Example response:
 
 ```json
 {
-  "avatar_url": "http://gitlab.example.com/uploads/-/system/user/avatar/76/avatar.png",
+  "avatar_url": "http://gitlab.example.com/uploads/-/system/user/avatar/76/avatar.png"
 }
 ```
 

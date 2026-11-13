@@ -256,7 +256,7 @@ Standard
 | chatgpt-image-latest | Image | $8.00 | $32.00 | $2.00 |
 | chatgpt-image-latest | Text | $5.00 | $10.00 | $1.25 |
 
-Cached input rates for GPT Image 2 and GPT Image 2.5 only apply to images generated with the Responses API. [Learn more](https://developers.openai.com/api/docs/guides/image-generation#cached-input-pricing).
+Cached input rates for GPT Image 2 and GPT-Image-2.5 only apply to images generated with the Responses API. [Learn more](https://developers.openai.com/api/docs/guides/image-generation#cached-input-pricing).
 
     
 
@@ -271,12 +271,16 @@ Batch
 
 | Model | Modality | Input | Output | Cached input |
 | --- | --- | --- | --- | --- |
-| gpt-image-2 | Image | $4.00 | $15.00 | $1.00 |
-| gpt-image-2 | Text | $2.50 | - | $0.625 |
+| gpt-image-2.6-sunburst | Image | $4.00 | $15.00 | $1.00 |
+| gpt-image-2.6-sunburst | Text | $2.50 | - | $0.625 |
+| gpt-image-2.6-flare | Image | $4.00 | $15.00 | $1.00 |
+| gpt-image-2.6-flare | Text | $2.50 | - | $0.625 |
 | gpt-image-2.5-sunburst | Image | $4.00 | $15.00 | $1.00 |
 | gpt-image-2.5-sunburst | Text | $2.50 | - | $0.625 |
 | gpt-image-2.5-flare | Image | $4.00 | $15.00 | $1.00 |
 | gpt-image-2.5-flare | Text | $2.50 | - | $0.625 |
+| gpt-image-2 | Image | $4.00 | $15.00 | $1.00 |
+| gpt-image-2 | Text | $2.50 | - | $0.625 |
 | gpt-image-1.5 | Image | $4.00 | $16.00 | $1.00 |
 | gpt-image-1.5 | Text | $2.50 | $5.00 | $0.63 |
 | gpt-image-1-mini | Image | $1.25 | $4.00 | $0.13 |
@@ -284,7 +288,7 @@ Batch
 | chatgpt-image-latest | Image | $4.00 | $16.00 | $1.00 |
 | chatgpt-image-latest | Text | $2.50 | $5.00 | $0.63 |
 
-Cached input rates for GPT Image 2 and GPT Image 2.5 only apply to images generated with the Responses API. [Learn more](https://developers.openai.com/api/docs/guides/image-generation#cached-input-pricing).
+Cached input rates for GPT Image 2 and GPT-Image-2.5 only apply to images generated with the Responses API. [Learn more](https://developers.openai.com/api/docs/guides/image-generation#cached-input-pricing).
 
 
 
@@ -324,7 +328,7 @@ GPT-Live
 
 
 
-[GPT-Live 1](https://developers.openai.com/api/docs/models/gpt-live-1) voice sessions are billed per second,
+[GPT-Live-1](https://developers.openai.com/api/docs/models/gpt-live-1) voice sessions are billed per second,
 without rounding up to a whole minute. Backend model and tool usage is charged
 separately.
 
