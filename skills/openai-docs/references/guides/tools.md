@@ -12,7 +12,7 @@ Web search
 
     Include web search results for the model response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -149,7 +149,7 @@ File search
 
     Search your files in a response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -275,12 +275,12 @@ Tool search
 
     Load deferred tools at runtime
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
 
-const crmNamespace = {
+const crmNamespace: OpenAI.Responses.NamespaceTool = {
   type: "namespace",
   name: "crm",
   description: "CRM tools for customer lookup and order management.",
@@ -542,11 +542,11 @@ Function calling
 
     Call your own function
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const tools = [
+const tools: OpenAI.Responses.Tool[] = [
   {
     type: "function",
     name: "get_weather",
@@ -851,7 +851,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1088,7 +1088,7 @@ In the Agents SDK, the tool semantics stay the same, but the wiring moves into t
 
 Wrap local logic as a function tool
 
-```javascript
+```typescript
 import { tool } from "@openai/agents";
 import { z } from "zod";
 
@@ -1115,7 +1115,7 @@ def get_weather(city: str) -> str:
 
 Expose a specialist as a tool
 
-```javascript
+```typescript
 import { Agent } from "@openai/agents";
 
 const summarizer = new Agent({

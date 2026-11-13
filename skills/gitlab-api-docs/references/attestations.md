@@ -123,3 +123,58 @@ Example response:
     "tlogEntries": [
 [...]
 ```
+
+## List all signing certificates
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268757) in GitLab 19.6.
+
+Lists all unexpired signing certificates for a specified project.
+Signing certificates are the certificate authority (CA) certificates that GitLab creates for the project
+and uses for the `LOCAL_CA` attestation method.
+GitLab never returns the CA private key.
+To verify `LOCAL_CA` attestations, trust all returned certificates, including inactive ones.
+
+```plaintext
+GET /projects/:id/attestations/signing_certificates
+```
+
+Supported attributes:
+
+| Attribute | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `id` | integer or string | yes | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
+
+Use the `page` and `per_page` [pagination](rest/_index.md#offset-based-pagination) parameters to
+control the pagination of results.
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
+
+| Attribute | Type | Description |
+| --------- | ---- | ----------- |
+| `active` | boolean | If `true`, GitLab uses this CA to issue certificates for new attestations. A project has at most one active certificate. |
+| `certificate` | string | PEM-encoded CA certificate, which contains the CA public key. |
+| `created_at` | datetime | Date and time the certificate was created. |
+| `expires_at` | datetime | Date and time the certificate expires. |
+| `id` | integer | ID of the signing certificate. |
+
+Example request:
+
+```shell
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/1/attestations/signing_certificates"
+```
+
+Example response:
+
+```json
+[
+  {
+    "id": 1,
+    "certificate": "-----BEGIN CERTIFICATE-----\nMIIBszCCAVqgAwIBAgIUJ...\n-----END CERTIFICATE-----\n",
+    "active": true,
+    "expires_at": "2036-10-22T07:08:25.000Z",
+    "created_at": "2026-10-22T07:08:25.643Z"
+  }
+]
+```

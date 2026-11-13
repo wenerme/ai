@@ -218,8 +218,8 @@ If you are not using functions or multimodal inputs, text-only message inputs ar
 
 Reuse text-only message input
 
-```javascript
-const context = [
+```typescript
+const context: { role: "system" | "user"; content: string }[] = [
   { role: "system", content: "You are a helpful assistant." },
   { role: "user", content: "Hello!" },
 ];
@@ -425,7 +425,7 @@ Chat Completions
     from `completion.choices[0].message.content`.
     Generate text from a model
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -562,7 +562,7 @@ Responses
     and read generated text from `response.output_text`.
     Generate text from a model
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -709,8 +709,8 @@ Chat Completions
     `messages` array on each request.
     Multi-turn conversation
 
-```javascript
-let messages = [
+```typescript
+let messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
   { role: "system", content: "You are a helpful assistant." },
   { role: "user", content: "What is the capital of France?" },
 ];
@@ -868,10 +868,12 @@ Responses
     input of another.
     Multi-turn conversation
 
-```javascript
+```typescript
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
-let context = [{ role: "user", content: "What is the capital of France?" }];
+let context: OpenAI.Responses.ResponseInput = [
+  { role: "user", content: "What is the capital of France?" },
+];
 
 const res1 = await client.responses.create({
   model: "gpt-6-astra",
@@ -1054,7 +1056,7 @@ puts(second.output_text)
     and create response chains or forks.
     Multi-turn conversation
 
-```javascript
+```typescript
 const res1 = await client.responses.create({
   model: "gpt-6-astra",
   input: "What is the capital of France?",
@@ -1286,7 +1288,7 @@ Chat Completions
 
     Structured Outputs
 
-```javascript
+```typescript
 const completion = await openai.chat.completions.create({
   model: "gpt-6-astra",
   messages: [
@@ -1577,7 +1579,7 @@ Responses
 
     Structured Outputs
 
-```javascript
+```typescript
 const response = await openai.responses.create({
   model: "gpt-6-astra",
   input: "Jane, 54 years old",
@@ -1860,8 +1862,8 @@ Chat Completions
     require the Responses API for tool calling.
     Web search tool
 
-```javascript
-async function web_search(query) {
+```typescript
+async function web_search(query: string) {
   const res = await fetch(`https://api.example.com/search?q=${query}`);
   const data = await res.json();
   return data.results;
@@ -2042,7 +2044,7 @@ Responses
     With Responses, you can specify the tools that you want the model to use.
     Web search tool
 
-```javascript
+```typescript
 const answer = await client.responses.create({
   model: "gpt-6-astra",
   input: "Who is the current president of France?",

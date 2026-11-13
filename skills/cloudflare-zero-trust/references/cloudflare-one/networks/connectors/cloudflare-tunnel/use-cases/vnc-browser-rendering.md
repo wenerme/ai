@@ -156,6 +156,7 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
       ```
 
       The `1` variable configures the VNC service to use display `:1` (which runs on port `5901`).
+
       6. By default, `systemd` user services only run when that user is logged in. To allow your VNC service to start on boot (before you log in), enable user linger for your user:
 
       ```sh

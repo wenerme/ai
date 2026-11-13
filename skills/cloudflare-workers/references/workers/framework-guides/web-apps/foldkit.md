@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/foldk
 
 # Foldkit
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Foldkit ↗︎](https://foldkit.dev/) supports single-page applications (SPA), static site generation (SSG), and server-side rendering (SSR). Each mode uses [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) to serve browser files. SSR also runs a Worker `fetch` handler.
 
 You need Node.js 22.22.2 or newer and a Cloudflare account.
+
+This guide uses Wrangler. To deploy with infrastructure as code, refer to [Deploy with Alchemy](#deploy-with-alchemy).
 
 ## Create a Foldkit application
 
@@ -52,7 +54,7 @@ The SPA build writes `index.html` and browser assets to `dist`. The `single-page
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-foldkit-app",
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-13",
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
@@ -63,7 +65,7 @@ The SPA build writes `index.html` and browser assets to `dist`. The `single-page
 ```toml
 name = "my-foldkit-app"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-13"
 
 [assets]
 directory = "./dist"
@@ -79,7 +81,7 @@ The SSG build uses a server bundle to prerender routes, then writes HTML and bro
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-foldkit-app",
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-13",
   "assets": {
     "directory": "./dist/client"
   }
@@ -89,7 +91,7 @@ The SSG build uses a server bundle to prerender routes, then writes HTML and bro
 ```toml
 name = "my-foldkit-app"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-13"
 
 [assets]
 directory = "./dist/client"
@@ -105,7 +107,7 @@ The SSR build writes a Web `fetch` handler to `dist/server/fetch.js` and browser
   "name": "my-foldkit-app",
   "main": "./dist/server/fetch.js",
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-13",
   "assets": {
     "directory": "./dist/client"
   }
@@ -116,7 +118,7 @@ The SSR build writes a Web `fetch` handler to `dist/server/fetch.js` and browser
 name = "my-foldkit-app"
 main = "./dist/server/fetch.js"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-13"
 
 [assets]
 directory = "./dist/client"
@@ -151,6 +153,16 @@ directory = "./dist/client"
 
 Open the `workers.dev` URL printed by Wrangler to verify the deployed application. For more information about SSG and SSR builds, refer to [Foldkit's server rendering guide ↗︎](https://foldkit.dev/core/server-rendering).
 
+## Deploy with Alchemy
+
+[Alchemy ↗︎](https://alchemy.run/) is a third-party infrastructure-as-code tool built on TypeScript and Effect. You can define a Worker and its Cloudflare resources in one program.
+
+Alchemy's [`Cloudflare.Website.Foldkit` ↗︎](https://alchemy.run/cloudflare/frontend/foldkit/) integration supports SPA, SSG, and SSR. It builds your application using its existing Vite configuration.
+
+Configure rendering in the `foldkit()` Vite plugin. Alchemy reads the build metadata to select the client assets, generated server handler, and routing defaults. SSG and SSR require `@foldkit/vite-plugin` 0.27.0 or newer and Foldkit 0.167.0 or newer.
+
+Follow [Alchemy's Cloudflare setup guide ↗︎](https://alchemy.run/cloudflare/setup/), then its [Foldkit deployment guide ↗︎](https://alchemy.run/cloudflare/frontend/foldkit/). Alchemy manages the Worker configuration, so this deployment path does not require a `wrangler.jsonc` file.
+
 Was this helpful?
 
 YesNo
@@ -160,5 +172,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/#page","headline":"Foldkit","description":"Deploy a Foldkit single-page, statically generated, or server-rendered application to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/og.png?v=aec8c202932ddb85","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/#page","headline":"Foldkit","description":"Deploy a Foldkit single-page, statically generated, or server-rendered application to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/og.png?v=aec8c202932ddb85","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 ```

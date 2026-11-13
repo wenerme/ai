@@ -138,6 +138,7 @@ Important
 The command adds the client certificate to the trusted store on your device. Only proceed if you are comfortable doing so and intend to keep these testing certificates safeguarded.
 
 1. Navigate to the directory containing the client certificate and key.
+
    2. Open the `client.pem` file in Keychain Access. If prompted, enter your local password.
    3. In **Keychain**, choose the access option that suits your needs and select **Add**.
    4. In the list of certificates, locate the newly installed certificate. Keychain Access will mark this certificate as not trusted. Right-click the certificate and select **Get Info**.

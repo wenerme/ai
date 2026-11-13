@@ -25,7 +25,7 @@ Function tools are the right default when the tool should run in your applicatio
 
 Configure a function tool with session.update
 
-```javascript
+```typescript
 const event = {
   type: "session.update",
   session: {
@@ -214,7 +214,7 @@ When the model calls the function, listen for the function call item, run your a
 
 Send function call output
 
-```javascript
+```typescript
 const event = {
   type: "conversation.item.create",
   item: {
@@ -394,7 +394,7 @@ This example makes a docs MCP server available for the full session:
 
 Configure an MCP tool with session.update
 
-```javascript
+```typescript
 const event = {
   type: "session.update",
   session: {
@@ -556,7 +556,7 @@ access token in `authorization`, and narrow the tool surface with
 
 Configure a Google Calendar connector
 
-```javascript
+```typescript
 const event = {
   type: "session.update",
   session: {
@@ -743,20 +743,28 @@ This event handler logs the main MCP lifecycle events; it doesn't manage follow-
 
 Listen for MCP events during a Realtime session
 
-```javascript
-function parseRealtimeEvent(rawMessage) {
+```typescript
+import type WebSocket from "ws";
+import type {
+  ConversationItem,
+  RealtimeServerEvent,
+} from "openai/resources/realtime/realtime";
+
+function parseRealtimeEvent(
+  rawMessage: string | WebSocket.RawData | MessageEvent<string>
+): RealtimeServerEvent {
   if (typeof rawMessage === "string") {
     return JSON.parse(rawMessage);
   }
 
-  if (typeof rawMessage?.data === "string") {
+  if ("data" in rawMessage && typeof rawMessage.data === "string") {
     return JSON.parse(rawMessage.data);
   }
 
   return JSON.parse(rawMessage.toString());
 }
 
-function getOutputText(item) {
+function getOutputText(item: ConversationItem) {
   if (item.type !== "message") return "";
 
   return (item.content ?? [])
@@ -1009,8 +1017,8 @@ If a tool requires approval, the Realtime API inserts an `mcp_approval_request` 
 
 Approve an MCP request
 
-```javascript
-function approveMcpRequest(approvalRequestId) {
+```typescript
+function approveMcpRequest(approvalRequestId: string) {
   const event = {
     type: "conversation.item.create",
     item: {
@@ -1139,7 +1147,7 @@ If MCP should **only be available for a single turn**, attach the same MCP tool 
 
 Add MCP tools on one response
 
-```javascript
+```typescript
 const event = {
   type: "response.create",
   response: {
@@ -1369,7 +1377,7 @@ the full tool object again.
 
 Reuse a previously defined connector
 
-```javascript
+```typescript
 const event = {
   type: "response.create",
   response: {

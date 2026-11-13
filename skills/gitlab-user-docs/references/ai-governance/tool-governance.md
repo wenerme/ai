@@ -9,6 +9,7 @@ Configure tool-level approval policies for AI agents to gate sensitive actions w
 - Added for background flows, such as the Developer Flow, in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
 - Feature flag `gitlab_duo_governance_settings` removed in GitLab 19.4.
 - Default for local file reads [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256385) from **Always Ask** to **Always Allow** in GitLab 19.5.
+- Per-tab permissions [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264808) in GitLab 19.6.
 
 > [!warning]
 > This feature is in [beta](../../policy/development_stages_support.md).
@@ -298,7 +299,8 @@ at the project level.
 
 Prerequisites:
 
-- You have the Owner role for the top-level group.
+- You have the Owner role for the top-level group, which grants the `read_ai_tool_rule` permission.
+  Without it, the **Tool management** tab shows a message instead of the rules.
 
 To configure tool governance rules for a group:
 

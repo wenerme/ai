@@ -307,7 +307,9 @@ set. To find the audience that OpenBao stored, see
 [Find the stored JWT audience](maintenance.md#find-the-stored-jwt-audience).
 
 The `iss` (issuer) claim is the GitLab URL. OpenBao also stores the GitLab URL as the expected
-issuer, so changing the GitLab URL breaks authentication in the same way.
+issuer, so changing the GitLab URL breaks authentication in the same way. A custom
+[CI/CD ID token issuer](../../ci/cloud_services/aws/_index.md#configure-a-non-public-gitlab-instance)
+does not change the issuer of the tokens that GitLab sends to OpenBao.
 
 To fix an audience mismatch, [restore the JWT audience](maintenance.md#restore-the-jwt-audience).
 To fix an issuer mismatch, [restore the JWT issuer](maintenance.md#restore-the-jwt-issuer).

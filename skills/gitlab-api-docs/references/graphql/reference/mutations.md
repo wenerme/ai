@@ -6143,6 +6143,7 @@ Updates GitLab Duo settings.
 | `minimumAccessLevelManage` | [`AccessLevelEnum`](enums.md#accesslevelenum) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Minimum access level for manage on Duo Agent Platform. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
 | `requireSandbox` | [`Boolean`](scalars.md#boolean) | Indicates whether flows that run on GitLab Runner fail when the execution environment sandbox is unavailable, instead of running without it. |
 | `selfHostedDuoAgentPlatformServiceSecure` | [`Boolean`](scalars.md#boolean) | Whether to use secure transport (TLS) for the local Duo Agent Platform service. |
+| `webSearchEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether web search is allowed in GitLab Duo Chat. Applies to GitLab Self-Managed and GitLab Dedicated only. |
 
 ### `duoSettingsUpdate` fields {.no_toc}
 
@@ -12380,7 +12381,7 @@ Submits feedback on the latest AI assessment of a vulnerability, such as a false
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `comment` | [`String`](scalars.md#string) | Comment why finding should be dismissed. |
+| `comment` | [`String`](scalars.md#string) | Comment why finding should be dismissed (maximum 50,000 characters). |
 | `dismissalReason` | [`VulnerabilityDismissalReason`](enums.md#vulnerabilitydismissalreason) | Reason why finding should be dismissed. |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the finding to be dismissed. |
 
@@ -12461,7 +12462,7 @@ Submits feedback on the latest AI assessment of a vulnerability, such as a false
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `comment` | [`String`](scalars.md#string) | Comment that explains why finding was reverted to detected status. |
+| `comment` | [`String`](scalars.md#string) | Comment that explains why the finding was reverted to detected status (maximum 50,000 characters). |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the finding to be dismissed. |
 
 ### `securityFindingRevertToDetected` fields {.no_toc}

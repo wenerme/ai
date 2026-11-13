@@ -386,6 +386,7 @@ Example response:
   "users_api_limit_gpg_keys": 120,
   "users_api_limit_gpg_key": 120,
   "gitlab_shell_operation_per_actor_limit": 6000,
+  "git_push_per_project_limit": 600,
   "group_hooks_create_limit": 10,
   "discussions_resolve_limit": 120,
   "merge_requests_create_limit": 150,
@@ -419,6 +420,7 @@ Example response:
   "runner_job_list_project_filtered_limit_per_user": 330,
   "runner_manager_list_limit_per_user": 300000,
   "pipeline_schedule_management_limit_per_user": 300,
+  "pipeline_trigger_management_limit_per_user": 300,
   "job_retry_limit_per_user_project": 320,
   "job_play_limit_per_user_project": 200,
   "pipeline_delete_limit_per_user_project": 400,
@@ -515,6 +517,7 @@ Example responses:
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627273) in GitLab 19.5 [with feature flags](../administration/feature_flags/_index.md) named `rate_limit_job_retry` and `rate_limit_job_play`. Disabled by default.
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261718) in GitLab 19.6. Feature flags `rate_limit_job_retry` and `rate_limit_job_play` removed.
 - `pipeline_schedule_management_limit_per_user` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636908) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_schedule_management`. Disabled by default.
+- `pipeline_trigger_management_limit_per_user` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636907) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_trigger_management`. Disabled by default.
 - `pipeline_delete_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627268) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_delete`. Disabled by default.
 - `pipeline_delete_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179) in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` removed.
 - `job_erase_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_erase`. Disabled by default.
@@ -529,6 +532,7 @@ Example responses:
 - `todos_list_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6.
 - `issuable_csv_import_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266323) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `issuable_csv_import_rate_limit`. Disabled by default.
 - `epic_move_list_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268609) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `epic_move_list_rate_limit`. Disabled by default.
+- `markdown_upload_limit_megabytes_per_day` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269433) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `markdown_uploads_rate_limit_enforce`. Disabled by default.
 - `wiki_read_request_limit_unauthenticated` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266523) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `wiki_read_unauthenticated_rate_limit_enforce`. Disabled by default.
 - `work_item_move_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268181) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_move_rate_limit_enforce`. Disabled by default.
 - `work_item_hierarchy_add_children_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266141) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_hierarchy_add_children_limits`. Disabled by default.
@@ -544,6 +548,7 @@ Example responses:
 - `work_item_update_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268180) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_update_rate_limit`. Disabled by default.
 - `merge_requests_rebase_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267972) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_rebase_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
 - `cross_reference_checks_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268220) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `enforce_cross_reference_limits`. Disabled by default.
+- `git_push_per_project_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269867) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_git_push_per_project`. Disabled by default.
 - `milestone_destroy_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266700) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `milestone_destroy_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
 - `duo_code_review_depth_allowed` and `duo_code_review_default_depth` [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_deep_flow`. Disabled by default.
 - `merge_request_diffs_page_request_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268216) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `merge_request_diffs_page_rate_limit`. Disabled by default. While the flag is disabled, requests over the limit are logged but not blocked.
@@ -750,6 +755,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `globally_allowed_ips`                   | string           | no                                   | Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, `1.1.1.1, 2.2.2.0/24`. |
 | `geo_node_allowed_ips`                   | string           | yes                                  | Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, `1.1.1.1, 2.2.2.0/24`. GitLab Self-Managed, Premium and Ultimate only. |
 | `geo_status_timeout`                     | integer          | no                                   | The amount of seconds after which a request to get a secondary node status times out. GitLab Self-Managed, Premium and Ultimate only. |
+| `git_push_per_project_limit`             | integer          | no                                   | Maximum number of Git pushes every minute to one project, over HTTPS and SSH. Default: `600`. Set to `0` to disable the limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. |
 | `git_two_factor_session_expiry`          | integer          | no                                   | Maximum duration (in minutes) of a session for Git operations when 2FA is enabled. Premium and Ultimate only. |
 | `gitaly_timeout_default`                 | integer          | no                                   | Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to `0` to disable timeouts. |
 | `gitaly_timeout_fast`                    | integer          | no                                   | Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and 'failing fast' can help maintain the stability of the GitLab instance. Set to `0` to disable timeouts. |
@@ -813,6 +819,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `mailgun_events_enabled`                 | boolean          | no                                   | Enable Mailgun event receiver. |
 | `maintenance_mode_message`               | string           | no                                   | Message displayed when instance is in maintenance mode. Premium and Ultimate only. |
 | `maintenance_mode`                       | boolean          | no                                   | When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests. Premium and Ultimate only. |
+| `markdown_upload_limit_megabytes_per_day` | integer         | no                                   | Maximum size in MB of the files a user can upload for use in Markdown in a 24-hour window that starts with the user's first upload. Unauthenticated uploads are limited for each IP address. Applies to uploads in the UI, with the REST API, and with the GraphQL API. Default: `10240`. Set to `0` to turn off the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. |
 | `max_artifacts_size`                     | integer          | no                                   | Maximum artifacts size in MB. |
 | `max_attachment_size`                    | integer          | no                                   | Limit attachment size in MB. |
 | `max_decompressed_archive_size`          | integer          | no                                   | Maximum decompressed file size for imported archives in MB. Set to `0` for unlimited. Default is `25600`. |
@@ -889,6 +896,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `runner_job_list_project_filtered_limit_per_user` | integer | no | [Runner job list rate limits for user projects](../administration/cicd/limits.md#runner-job-list-rate-limits-for-user-projects), per user. Default: `330`. |
 | `runner_manager_list_limit_per_user` | integer | no | [Runner manager list rate limits](../administration/cicd/limits.md#runner-manager-list-rate-limits), in runner managers listed each minute per user. Default: `300000`. |
 | `pipeline_schedule_management_limit_per_user` | integer | no | [Pipeline schedule management rate limits](../administration/cicd/limits.md#pipeline-schedule-management-rate-limits), per user. Default: `300`. |
+| `pipeline_trigger_management_limit_per_user` | integer | no | [Pipeline trigger token management rate limits](../administration/cicd/limits.md#pipeline-trigger-token-management-rate-limits), per user. Default: `300`. |
 | `ci_lint_limit_per_user`                 | integer          | no                                   | Maximum number of CI Lint requests every minute for each user. Disabled by default. |
 | `gitpod_enabled`                         | boolean          | no                                   | (**If enabled, requires**: `gitpod_url`) Enable [Ona integration](../integration/gitpod.md). Default is `false`. |
 | `gitpod_url`                             | string           | required by: `gitpod_enabled`        | The Ona instance URL for integration. |

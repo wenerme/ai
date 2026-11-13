@@ -24,7 +24,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 74 modelsClear filters
+We found 75 modelsClear filters
 
 ## Compare models
 
@@ -308,6 +308,13 @@ Compare
 
 - Cloudflare-hosted
 - +1
+
+Compare
+
+[![Thinking Machines logo](https://developers.cloudflare.com/_astro/thinkingmachines.DXVufmVi.svg)<h3>inkling-2-small</h3>Thinking MachinesText Generation Inkling 2 Small is a multimodal Mixture-of-Experts model from Thinking Machines Lab with 594B total and 18B active parameters and up to 1M tokens of context. It accepts text and image inputs and generates text, with built-in reasoning and tool calling.](https://developers.cloudflare.com/workers-ai/models/inkling-2-small/)
+
+- Cloudflare-hosted
+- +4
 
 Compare
 

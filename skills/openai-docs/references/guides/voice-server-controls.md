@@ -99,8 +99,10 @@ See [Transcript deltas](https://developers.openai.com/api/docs/guides/live-conve
 
 Use `session.instructions.append` for guardrail steering. It can interrupt speech in progress and apply a new instruction. For example, after your application blocks a request, send:
 
-```javascript
-export function sendUpdate(connection) {
+```typescript
+import type { ClientEvent } from "openai/resources/live/live";
+
+export function sendUpdate(connection: { send: (event: ClientEvent) => void }) {
   connection.send({
     type: "session.instructions.append",
     event_id: "guardrail_block_17",
@@ -242,7 +244,7 @@ A sideband connection means there are two active connections to the same Realtim
 
 1. When [establishing a peer connection](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime) you fetch and receive an SDP response from the Realtime API to configure the connection. If you used the sample code from the WebRTC guide, that looks something like this:
 
-```javascript
+```typescript
 const baseUrl = "https://api.openai.com/v1/realtime/calls";
 const sdpResponse = await fetch(baseUrl, {
   method: "POST",
@@ -257,7 +259,7 @@ const sdpResponse = await fetch(baseUrl, {
 
 2. The fetch response will contain a `Location` header that has a unique call ID that can be used on the server to establish a WebSocket connection to that same Realtime session.
 
-```javascript
+```typescript
 // Location: /v1/realtime/calls/rtc_123456
 const location = sdpResponse.headers.get("Location");
 const callId = location?.split("/").pop();
@@ -268,7 +270,7 @@ console.log(callId);
 3. On a server, you can then [listen for events and configure the session](https://developers.openai.com/api/docs/guides/realtime-conversations) just as you would from a typical Realtime API WebSocket connection, using that call ID with the URL
    `wss://api.openai.com/v1/realtime?call_id=rtc_xxxxx`, as shown below:
 
-```javascript
+```typescript
 import WebSocket from "ws";
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
 

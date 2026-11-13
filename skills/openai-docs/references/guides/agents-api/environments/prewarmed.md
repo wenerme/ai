@@ -34,7 +34,7 @@ Use Python SDK 3.28.0, Node.js SDK 7.32.0, Java SDK 4.80.0, or Ruby SDK 0.103.0 
 
 Send the workspace configuration to `POST /v1/agents/environments`:
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -170,7 +170,7 @@ Set `environment.type` to `openai_hosted` when creating a standalone environment
 
 Retrieve the environment using the ID saved in step 1:
 
-```javascript
+```typescript
 const current = await client.beta.agents.environments.retrieve(environmentId);
 console.log(current.status);
 ```
@@ -218,7 +218,7 @@ If you attach the environment before setup finishes, follow the session's `agent
 
 Create a session with the saved environment ID, an agent, and its first input:
 
-```javascript
+```typescript
 const stream = await client.beta.agents.sessions.create({
   agent: { model: "gpt-6-astra" },
   environment: { type: "openai_hosted", environment_id: environmentId },
@@ -302,7 +302,7 @@ A newly created shared environment supports up to 128 attached sessions. Reusing
 
 If multiple tasks need the same packages and setup, [save an environment configuration as a template](https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/environments/subresources/templates/methods/create), then supply its ID when creating each pre-warmed environment:
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -370,7 +370,7 @@ curl https://api.openai.com/v1/agents/environments \\\n  -H "OpenAI-Beta: agents
 
 For browser tasks, prepare the managed browser and virtual display before the session starts. Include `desktop.enabled` when creating the environment:
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -443,7 +443,7 @@ When creating a session, attach the saved environment ID and give the agent the 
 
 Use `GET /v1/agents/environments` to find active environments created by your identity in the current organization and project:
 
-```javascript
+```typescript
 const environments = await client.beta.agents.environments.list({
   limit: 20,
   order: "desc",
@@ -495,7 +495,7 @@ Results are newest first by default. If `has_more` is true, set `after` to the p
 - **Multiple sessions can share one environment.** Pass the same `environment_id` when creating each session. They share the running workspace, including files, processes, installed packages, and environment configuration. Each session keeps its own conversation history. Changes to the workspace are visible to other attached sessions, so create separate environments when tasks need separate workspaces. A shared environment supports up to 128 attached sessions. This behavior applies to newly created standalone environments; older environments retain their original lifecycle.
 - **Unused environments expire.** An environment that remains unattached expires after 5 minutes. Prewarm close to when you expect a task to start.
 - **Keep the creating identity consistent.** Retrieval, listing, and attachment require the same organization, project, and authenticated identity that created the environment. Different API keys for that identity can access the same environments, including after key rotation.
-- **Shared environments expire after inactivity.** The first attachment starts a 20-minute idle lifetime. Activity in any attached session or through the environment file API extends it; pending work and active turns prevent idle expiry. Deleting a session removes that session from the environment without deleting the shared workspace. Even after the last session is deleted, the environment remains available for attachment until its idle deadline. The API has no standalone environment deletion endpoint.
+- **Shared compute stops after inactivity.** The first attachment starts a 20-minute idle lifetime. Activity in any attached session or through the environment file API extends it; pending work and active turns prevent idle shutdown. At idle shutdown, an environment can enter `suspended` with a checkpoint retained for 7 days instead of expiring. Suspension stops compute; it does not delete the shared workspace. Deleting a session removes that session from the environment without deleting the shared workspace or its checkpoint. The API has no standalone environment deletion endpoint.
 
 ## Retry creation safely
 

@@ -289,12 +289,13 @@ A trigger with the **Work item** event type and the **Created** action also does
 
 ## Scheduled automations
 
-- Offering: GitLab.com, GitLab Self-Managed
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594180) in GitLab 19.4 as a [beta](../../../policy/development_stages_support.md#beta) [with flags](../../../administration/feature_flags/_index.md) named `ai_flow_schedules` and `autonomous_service_account_execution`. Disabled by default.
 - Setting to turn off scheduled automations [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
 - Requirement for experiment and beta features [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/634138) in GitLab 19.6.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270414) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by feature flags.

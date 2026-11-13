@@ -14,7 +14,7 @@ To migrate away from **Prompts** in the OpenAI API platform, move the prompt con
 
 Use a prompt object
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -152,7 +152,7 @@ curl https://api.openai.com/v1/responses \
 
 Inline the prompt in code
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -345,12 +345,18 @@ Instead of referencing a saved prompt object from an API request, store the prom
 
 Build prompts with a helper function
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
 
-function buildSupportPrompt({ customerName, issue }) {
+function buildSupportPrompt({
+  customerName,
+  issue,
+}: {
+  customerName: string;
+  issue: string;
+}): OpenAI.Responses.ResponseInput {
   return [
     {
       role: "system",

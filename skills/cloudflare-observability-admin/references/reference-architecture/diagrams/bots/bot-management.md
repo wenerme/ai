@@ -44,7 +44,9 @@ Cloudflare bot score and bot traffic analysis is available in several locations.
 - **Security Analytics:** Security Analytics brings together all of Cloudflare's detection capabilities in one dashboard and provides a broad view of all traffic across the site. The Bots Likelihood graph and widget provide visibility and allow customers to easily view and filter based on bot score and respective categorization of Automated, Likely Automated, Human, and Likely Human.
 - **Events:** Events displays all events the WAF took action on. Events and logs can easily be filtered by bot score and other bot, traffic, or request criteria.
 - **Log Explorer:** Customers can use Log Explorer to pull additional detailed log data. Logs can easily be filtered by bot score and other bot, traffic, or request criteria.
-- **Log Push:** Customers can also export logs to a third party SIEM or Analytics platform. Bot score, bot score source, bot detection IDs, and bot detection tags can all be exported as part of the logs. ## Bot Management Traffic Flow
+- **Log Push:** Customers can also export logs to a third party SIEM or Analytics platform. Bot score, bot score source, bot detection IDs, and bot detection tags can all be exported as part of the logs.
+
+  ## Bot Management Traffic Flow
 
 ![Figure 1: How Cloudflare identifies, scores and processes traffic from bots.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1979,height=808,format=svg/_astro/bot-management-ra-diagram.D8aExrGs.svg "Figure 1: How Cloudflare identifies, scores and processes traffic from bots.")
 

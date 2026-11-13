@@ -165,6 +165,7 @@ The following API resources are available in the group context:
 | [Epic links](epic_links.md)                                    | `/groups/:id/epics/.../epics` |
 | [Epics](epics.md)                                              | `/groups/:id/epics` |
 | [Groups](groups.md)                                            | `/groups`, `/groups/.../subgroups` |
+| [Group applications](group_applications.md)                    | `/groups/:id/applications` |
 | [Group badges](group_badges.md)                                | `/groups/:id/badges` |
 | [Group enterprise users](group_enterprise_users.md)            | `/groups/:id/enterprise_users` |
 | [Group epic boards](group_epic_boards.md)                      | `/groups/:id/epic_boards` |

@@ -25,4 +25,4 @@ basic_auth:
 
 You will then be able to explore the metrics on the **Metrics** page and build dashboards by querying using **SQL or PromQL**
 
-[image]
+![OpenObserve Metrics page charting rate(prometheus_http_requests_total[1m]) with the PromQL query mode selected](../../images/ingestion/prometheus-metrics-explorer.png)

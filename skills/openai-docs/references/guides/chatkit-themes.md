@@ -57,8 +57,10 @@ Match the look and feel of your product by specifying colors, typography, and mo
 
 For all theming options, see the [API reference](https://openai.github.io/chatkit-js/api/openai/chatkit/type-aliases/themeoption/).
 
-```javascript
-const options = {
+```typescript
+import type { ChatKitOptions } from "@openai/chatkit";
+
+const options: Partial<ChatKitOptions> = {
   theme: {
     colorScheme: "dark",
     color: {
@@ -79,8 +81,8 @@ const options = {
 
 Let users know what to ask or guide their first input by changing the composer’s placeholder text.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   composer: {
     placeholder: "Ask anything about your data…",
   },
@@ -95,18 +97,18 @@ const options = {
 
 Guide users on what to ask or do by suggesting prompt ideas when starting a conversation.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   startScreen: {
     greeting: "What can I help you build today?",
     prompts: [
       {
-        name: "Check on the status of a ticket",
+        label: "Check on the status of a ticket",
         prompt: "Can you help me check on the status of a ticket?",
         icon: "search",
       },
       {
-        name: "Create Ticket",
+        label: "Create Ticket",
         prompt: "Can you help me create a new support ticket?",
         icon: "write",
       },
@@ -120,14 +122,14 @@ const options = {
 
 Custom header buttons help you add navigation, context, or actions relevant to your integration.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   header: {
-    customButtonLeft: {
+    leftAction: {
       icon: "settings-cog",
       onClick: () => openProfileSettings(),
     },
-    customButtonRight: {
+    rightAction: {
       icon: "home",
       onClick: () => openHomePage(),
     },
@@ -144,11 +146,11 @@ See the Python SDK docs for more information on other upload strategies work wit
 
 You can also control the number, size, and types of files that users can attach to messages.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   composer: {
     attachments: {
-      uploadStrategy: { type: "hosted" },
+      enabled: true,
       maxSize: 20 * 1024 * 1024, // 20 MB per file
       maxCount: 3,
       accept: { "application/pdf": [".pdf"], "image/*": [".png", ".jpg"] },
@@ -165,8 +167,8 @@ Let users tag custom “entities” with @-mentions. This enables richer convers
 - Use `onTagSearch` to return a list of entities based on the input query.
 - Use `onClick` to handle the click event of an entity.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   entities: {
     async onTagSearch(query) {
       void query;
@@ -203,15 +205,15 @@ Browse available widgets.
 
 
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   entities: {
     async onTagSearch() {
       return [];
     },
     onRequestPreview: async (entity) => ({
       preview: {
-        type: "Card",
+        type: "Basic",
         children: [
           { type: "Text", value: `Profile: ${entity.title}` },
           { type: "Text", value: "Role: Developer" },
@@ -228,8 +230,8 @@ const options = {
 Enhance productivity by letting users trigger app-specific actions from the composer bar. The selected tool
 will be sent to the model as a tool preference.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   composer: {
     tools: [
       {
@@ -248,8 +250,8 @@ const options = {
 
 Disable major UI regions and features if you need more customization over the options available in the header and want to implement your own instead. Disabling history can be useful when the concept of threads and history doesn't make sense for your use case—e.g., in a support chatbot.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   history: { enabled: false },
   header: { enabled: false },
 };
@@ -260,8 +262,8 @@ const options = {
 
 Override the default locale if you have an app-wide language setting. By default, the locale is set to the browser's locale.
 
-```javascript
-const options = {
+```typescript
+const options: Partial<ChatKitOptions> = {
   locale: "de-DE",
 };
 ```

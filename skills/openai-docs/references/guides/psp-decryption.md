@@ -28,6 +28,8 @@ Only records written with PSP decryption enabled for your key can be decrypted
 
 Read the record from your cloud storage. If it has an EKM storage envelope, decrypt that layer with its original EKM configuration first.
 
+For OCI EKM, your recovery application also needs `KEY_DECRYPT` on the original AES key. Preserve the envelope's key version and scope-associated data when decrypting that layer.
+
 Parse the resulting JSON bundle containing `protected_record` and `customer_access`, as shown in [Bundle format](#bundle-format). If `customer_access` is `null`, PSP decryption is unavailable for that record.
 
 ### 2. Select the original key
@@ -39,6 +41,19 @@ Check the public-key fingerprint and use the exact cloud key/version. Keep the p
 ### 3. Decrypt the recovery capsule
 
 Send the decoded `customer_access.recovery_secret` to your cloud key-management service for RSA-OAEP-SHA256 decryption.
+
+For OCI Vault, use the vault's cryptographic endpoint and the [Decrypt operation](https://docs.oracle.com/en-us/iaas/api/#/en/key/release/DecryptedData/Decrypt) with these fields:
+
+| Field                 | Value                                                |
+| --------------------- | ---------------------------------------------------- |
+| `keyId`               | The original registration's `key_ocid`               |
+| `keyVersionId`        | The original registration's exact `key_version_ocid` |
+| `encryptionAlgorithm` | `RSA_OAEP_SHA_256`                                   |
+| `ciphertext`          | The recovery-secret bytes encoded as standard Base64 |
+
+The bundle uses base64url encoding. Decode `recovery_secret` before encoding those bytes as standard Base64 for OCI. Decode the response's Base64 `plaintext` to get the recovery capsule for step 4. It isn't the recovered record yet.
+
+Your recovery application's OCI identity needs `KEY_DECRYPT` on the original RSA key. This is separate from OpenAI's public-key read access. Keep the original version available after rotation, and omit `associatedData` for this RSA operation.
 
 ### 4. Decrypt and verify the content
 

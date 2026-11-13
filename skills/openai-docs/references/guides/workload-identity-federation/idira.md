@@ -62,13 +62,13 @@ From inside the workload, read the token into the local decoder's environment:
 export TOKEN="$(cat /var/run/spiffe/openai.jwt)"
 ```
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
 }
 
-const decode = (segment) => {
+const decode = (segment: string) => {
   if (!/^[A-Za-z0-9_-]+$/.test(segment) || segment.length % 4 === 1) {
     throw new Error("JWT segment is not valid Base64URL");
   }
@@ -457,7 +457,7 @@ The following shared SPIFFE examples read `/var/run/spiffe/openai.jwt`. The subj
 
 Authenticate with an Idira-issued SPIFFE JWT-SVID
 
-```javascript
+```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -471,9 +471,9 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function spiffeJwtSvidProvider(path) {
+function spiffeJwtSvidProvider(path: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const token = (await readFile(path, "utf8")).trim();
       if (!token) {

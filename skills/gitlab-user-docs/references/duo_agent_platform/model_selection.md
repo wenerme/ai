@@ -59,6 +59,7 @@ This table lists the default model for each feature in the Agent Platform.
 - Kimi K3.1 Pro [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7879) as a supported model for GitLab Duo Agentic Chat and all other agents on November 6, 2026.
 - Claude Fable 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7916) as a supported model for GitLab Duo Agentic Chat and all other agents on November 9, 2026.
 - Claude Mythos 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7949) as a supported model for Business Logic Security Scan on November 12, 2026.
+- Gemini 4 Carbon and Gemini 4 Hydrogen [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8014) as supported models for GitLab Duo Agentic Chat and all other agents on November 12, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -91,6 +92,8 @@ For information about model availability during trials, see
 | Gemini 3.7 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
 | Gemini 3.8 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
 | Gemini 4 Argon              | Yes             | No       | No           | No                   | No               | Yes      |
+| Gemini 4 Carbon             | Yes             | No       | No           | No                   | No               | Yes      |
+| Gemini 4 Hydrogen           | Yes             | No       | No           | No                   | No               | Yes      |
 | GLM 5.3                     | Yes             | No       | No           | No                   | No               | Yes      |
 | GPT-5                       | Yes             | No       | No           | No                   | No               | Yes      |
 | GPT-5.1                     | Yes             | No       | No           | No                   | No               | Yes      |

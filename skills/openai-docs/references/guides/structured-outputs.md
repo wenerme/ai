@@ -20,7 +20,7 @@ The Ruby SDK supports schemas defined with Sorbet `T::Struct` and returns typed 
 
 Getting a structured response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
@@ -364,7 +364,7 @@ You can ask the model to output an answer in a structured, step-by-step way, to 
 
   Structured Outputs for chain-of-thought math tutoring
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
@@ -762,7 +762,7 @@ You can define structured fields to extract from unstructured input data, such a
 
   Extracting data from research papers using Structured Outputs
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
@@ -1150,14 +1150,21 @@ You can generate valid HTML by representing it as recursive data structures with
 
   Generating HTML using Structured Outputs
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
 
 const openai = new OpenAI();
 
-const UI = z.lazy(() =>
+type UIElement = {
+  type: "div" | "button" | "header" | "section" | "field" | "form";
+  label: string;
+  children: UIElement[];
+  attributes: { name: string; value: string }[];
+};
+
+const UI: z.ZodType<UIElement> = z.lazy(() =>
   z.object({
     type: z.enum(["div", "button", "header", "section", "field", "form"]),
     label: z.string(),
@@ -1173,6 +1180,7 @@ const UI = z.lazy(() =>
 
 const response = await openai.responses.parse({
   model: "gpt-6-astra",
+  max_output_tokens: 4096,
   input: [
     {
       role: "system",
@@ -1180,7 +1188,10 @@ const response = await openai.responses.parse({
     },
     {
       role: "user",
-      content: "Make a User Profile Form",
+      content:
+        "Make a small user profile form with exactly three direct children: " +
+        "a Name field, an Email field, and a Save button. Give each child no children. " +
+        "Use short labels and at most two short attributes per component.",
     },
   ],
   text: {
@@ -1189,6 +1200,8 @@ const response = await openai.responses.parse({
 });
 
 const ui = response.output_parsed;
+if (response.status !== "completed" || !ui)
+  throw new Error("UI generation did not complete.");
 ```
 
 ```python
@@ -1678,7 +1691,7 @@ You can classify inputs on multiple categories, which is a common way of doing m
 
   Moderation using Structured Outputs
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
@@ -2081,7 +2094,7 @@ For example:
 
 
 
-```javascript
+```typescript
 const response = await openai.responses.create({
   model: "gpt-6-astra",
   input: [
@@ -2461,7 +2474,7 @@ This can happen in the case of a refusal, if the model refuses to answer for saf
 
 
 
-```javascript
+```typescript
 try {
   const response = await openai.responses.create({
     model: "gpt-6-astra",
@@ -2514,7 +2527,7 @@ try {
 
   if (
     response.status === "incomplete" &&
-    response.incomplete_details.reason === "max_output_tokens"
+    response.incomplete_details?.reason === "max_output_tokens"
   ) {
     // Handle the case where the model did not return a complete response
     throw new Error("Incomplete response");
@@ -2926,7 +2939,7 @@ Suppose the previous turn described a shipment with 17 red crates and 26 blue cr
 
 Switch from plain text to a structured crate count
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
@@ -3220,7 +3233,7 @@ When the `refusal` property appears in your output object, you might present the
 
 
 
-```javascript
+```typescript
 const Step = z.object({
   explanation: z.string(),
   output: z.string(),
@@ -3650,7 +3663,7 @@ We recommend relying on the SDKs to handle streaming with Structured Outputs.
 
 
 
-```javascript
+```typescript
 import { OpenAI } from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
@@ -4037,15 +4050,17 @@ Note these constraints are [not yet supported for fine-tuned
 
 Note that the root level object of a schema must be an object, and not use `anyOf`. A pattern that appears in Zod (as one example) is using a discriminated union, which produces an `anyOf` at the top level. So code such as the following won't work:
 
-```javascript
+```typescript
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod";
 
 const BaseResponseSchema = z.object({
-  /* ... */
+  status: z.literal("success"),
+  data: z.string(),
 });
 const UnsuccessfulResponseSchema = z.object({
-  /* ... */
+  status: z.literal("error"),
+  error: z.string(),
 });
 
 const finalSchema = z.discriminatedUnion("status", [
@@ -4423,7 +4438,7 @@ Important notes:
 
 
 
-```javascript
+```typescript
 const we_did_not_specify_stop_tokens = true;
 
 try {
@@ -4449,7 +4464,7 @@ try {
   // Check if the conversation was too long for the context window, resulting in incomplete JSON
   if (
     response.status === "incomplete" &&
-    response.incomplete_details.reason === "max_output_tokens"
+    response.incomplete_details?.reason === "max_output_tokens"
   ) {
     // your code should handle this error case
   }
@@ -4464,7 +4479,7 @@ try {
   // Check if the model's output included restricted content, so the generation of JSON was halted and may be partial
   if (
     response.status === "incomplete" &&
-    response.incomplete_details.reason === "content_filter"
+    response.incomplete_details?.reason === "content_filter"
   ) {
     // your code should handle this error case
   }

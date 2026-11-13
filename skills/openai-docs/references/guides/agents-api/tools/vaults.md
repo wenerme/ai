@@ -37,7 +37,7 @@ First, create a vault:
 
 Create a vault
 
-```javascript
+```typescript
 const vault = await client.beta.agents.vaults.create({
   name: "GitHub credentials",
   metadata: {
@@ -91,11 +91,15 @@ Save its ID as `vault_id`, then add the token. `mcp_server_url` binds the creden
 
 Store a bearer token
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 const vaultId = "vault_123";
 const mcpUrl = "https://api.githubcopilot.com/mcp/";
 const accessToken = process.env.GITHUB_TOKEN;
+
+if (!accessToken) {
+  throw new Error("Set GITHUB_TOKEN");
+}
 
 const credential = await client.beta.agents.vaults.credentials.create(vaultId, {
   name: "GitHub access token",
@@ -197,7 +201,7 @@ Pass the saved ID in `vault_ids` when creating a session. Use the same server UR
 
 Attach the vault to a session
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 const mcpUrl = "https://api.githubcopilot.com/mcp/";
 const vaultId = "vault_123";
@@ -424,7 +428,7 @@ The following example uses values from your provider's OAuth flow. Include `refr
 
 Store an OAuth grant
 
-```javascript
+```typescript
 // Replace the illustrative expiry with your access token's actual expiry.
 // Replace the illustrative IDs and URLs below with your own resource values.
 const vaultId = "vault_123";
@@ -434,6 +438,10 @@ const expiresAt = "2030-01-01T00:00:00Z";
 const tokenEndpoint = "https://auth.example.com/oauth/token";
 const clientId = "example-client-id";
 const refreshToken = process.env.OAUTH_REFRESH_TOKEN;
+
+if (!accessToken || !refreshToken) {
+  throw new Error("Set OAUTH_ACCESS_TOKEN and OAUTH_REFRESH_TOKEN");
+}
 
 const credential = await client.beta.agents.vaults.credentials.create(vaultId, {
   name: "Example MCP OAuth credential",
@@ -605,7 +613,7 @@ If an expired token cannot be refreshed, supply a valid replacement. Token expir
 
 Rotate an OAuth token
 
-```javascript
+```typescript
 // Replace the illustrative expiry with your access token's actual expiry.
 // Replace the illustrative IDs and URLs below with your own resource values.
 const credentialId = "cred_123";

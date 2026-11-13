@@ -114,7 +114,7 @@ Let's look at an end-to-end tool calling flow for a `get_horoscope` function tha
 
   Complete tool calling example
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
@@ -122,7 +122,7 @@ const openai = new OpenAI();
 
 // 1. Define a list of callable tools for the model
 
-const tools = [
+const tools: OpenAI.Responses.Tool[] = [
   {
     type: "function",
     name: "get_horoscope",
@@ -142,13 +142,13 @@ const tools = [
   },
 ];
 
-function getHoroscope(sign) {
+function getHoroscope(sign: string) {
   return `${sign}: Next Tuesday you will befriend a baby otter.`;
 }
 
 // Create a running input list we will add to over time
 
-let input = [
+let input: OpenAI.Responses.ResponseInput = [
   { role: "user", content: "What is my horoscope? I am an Aquarius." },
 ];
 
@@ -638,7 +638,7 @@ If you are using [tool search](https://developers.openai.com/api/docs/guides/too
 
 Execute function calls and append results
 
-```javascript
+```typescript
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 input.push(...toResponseInputItems(response.output));
@@ -777,8 +777,8 @@ In the example above, we have a hypothetical `call_function` to route each call.
 
 Execute function calls and append results
 
-```javascript
-const callFunction = async (name, args) => {
+```typescript
+const callFunction = async (name: string, args: Record<string, unknown>) => {
   if (name === "get_weather") {
     return getWeather(args.latitude, args.longitude);
   }
@@ -906,7 +906,7 @@ After appending the results to your `input`, you can send them back to the model
 
 Send results back to model
 
-```javascript
+```typescript
 const response = await openai.responses.create({
   model: "gpt-6-astra",
   input,
@@ -1209,12 +1209,12 @@ Streaming function calls works like streaming regular responses: you set `stream
 
 Streaming function calls
 
-```javascript
+```typescript
 import { OpenAI } from "openai";
 
 const openai = new OpenAI();
 
-const tools = [
+const tools: OpenAI.Responses.Tool[] = [
   {
     type: "function",
     name: "get_weather",
@@ -1421,8 +1421,11 @@ Below is a code snippet demonstrating how to aggregate the `delta`s into a final
 
 Accumulating tool_call deltas
 
-```javascript
-const finalToolCalls = {};
+```typescript
+const finalToolCalls: Record<
+  number,
+  import("openai").OpenAI.Responses.ResponseFunctionToolCall
+> = {};
 
 for await (const event of stream) {
   if (
@@ -1641,7 +1644,7 @@ The following code sample shows creating a custom tool that expects to receive a
 
 Custom tool calling example
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1778,7 +1781,7 @@ You can provide a custom CFG using the `grammar` parameter when configuring a cu
 
 Lark context free grammar example
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -2073,7 +2076,7 @@ Don't rely on open-ended `%ignore` directives. Using unbounded ignore directives
 
 Regex context free grammar example
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 

@@ -618,6 +618,8 @@ tags:
   x-displayName: GitLab Pages
   externalDocs:
     url: https://docs.gitlab.com/api/pages_domains/
+- name: Group applications
+  description: Operations related to group applications.
 - name: Group credentials inventory
   description: |-
     Use this API to manage the credentials that members of a top-level group hold, including their
@@ -2599,7 +2601,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesAiExternalAgentsSession"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesAiExternalAgentsSession"
         '401':
           description: Unauthorized
         '403':
@@ -5791,7 +5795,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesAnalyticsCodeReviewMergeRequest"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesAnalyticsCodeReviewMergeRequest"
         '400':
           description: Bad Request
       parameters:
@@ -5884,7 +5890,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesDependency"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesDependency"
         '401':
           description: Unauthorized
         '404':
@@ -5965,7 +5973,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesProjectAlias"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesProjectAlias"
         '403':
           description: Forbidden
         '404':
@@ -6082,7 +6092,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovalRule"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMergeRequestApprovalRule"
         '404':
           description: Not Found
         '400':
@@ -6945,7 +6957,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesVulnerability"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesVulnerability"
         '404':
           description: Not Found
         '400':
@@ -7783,7 +7797,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesSshKeyWithUserId"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSshKeyWithUserId"
         '404':
           description: Not Found
         '400':
@@ -8413,7 +8429,8 @@ paths:
     get:
       operationId: getApiV4GroupsIdHooksHookIdEvents
       summary: List all events
-      description: Lists all events for a specified webhook.
+      description: Lists all events from the past seven days for a specified webhook.
+        This feature was introduced in GitLab 17.3.
       tags:
       - Hooks
       responses:
@@ -8543,12 +8560,14 @@ paths:
     put:
       operationId: putApiV4GroupsIdHooksHookIdUrlVariablesKey
       summary: Update a URL variable
-      description: Updates a URL variable for a specified webhook.
+      description: Updates a URL variable for a specified webhook. Setting the value
+        does not replace a literal value in the existing webhook URL with the placeholder.
+        To use the variable, also update the webhook URL to include the `{key}` placeholder.
       tags:
       - Hooks
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
         '404':
           description: Not Found
         '400':
@@ -8620,12 +8639,13 @@ paths:
     put:
       operationId: putApiV4GroupsIdHooksHookIdCustomHeadersKey
       summary: Update a custom header
-      description: Updates a custom header for a specified webhook.
+      description: Updates a custom header for a specified webhook. This feature was
+        introduced in GitLab 17.1.
       tags:
       - Hooks
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
         '404':
           description: Not Found
         '400':
@@ -8661,7 +8681,8 @@ paths:
     delete:
       operationId: deleteApiV4GroupsIdHooksHookIdCustomHeadersKey
       summary: Delete a custom header
-      description: Deletes a custom header from a specified webhook.
+      description: Deletes a custom header from a specified webhook. This feature
+        was introduced in GitLab 17.1.
       tags:
       - Hooks
       responses:
@@ -8700,7 +8721,8 @@ paths:
       description: Triggers a test webhook. This endpoint has a rate limit of five
         requests per minute for each authenticated user for a given project or group.
         On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
-        limit in the application settings.
+        limit in the application settings. This feature was introduced in GitLab 16.11
+        for project hooks and GitLab 17.1 for group hooks.
       tags:
       - Hooks
       responses:
@@ -8764,8 +8786,9 @@ paths:
       summary: Resend a webhook event
       description: Resends a webhook event. This endpoint has a rate limit of five
         requests per minute for each authenticated user for a given project or group.
-        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
-        limit in the application settings.
+        All webhooks in the same project or group share the limit. On GitLab Self-Managed
+        and GitLab Dedicated, an administrator can change this limit in the application
+        settings. This feature was introduced in GitLab 17.4.
       tags:
       - Hooks
       responses:
@@ -8814,7 +8837,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIdentityDetail"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIdentityDetail"
         '404':
           description: Not Found
         '400':
@@ -8940,7 +8965,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIdentityDetail"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIdentityDetail"
         '404':
           description: Not Found
         '400':
@@ -9470,7 +9497,9 @@ paths:
     get:
       operationId: getApiV4GroupsIdPushRule
       summary: Retrieve the push rules of a group
-      description: Retrieves the push rules of a specified group.
+      description: Retrieves the push rules of a specified group. When disabled, the
+        `commit_committer_check`, `reject_unsigned_commits`, and `reject_non_dco_commits`
+        attributes can return `null` instead of `false`.
       tags:
       - Push rules
       responses:
@@ -9584,7 +9613,11 @@ paths:
     get:
       operationId: getApiV4ProjectsIdPushRule
       summary: Retrieve the push rules of a project
-      description: Retrieves the push rules of a specified project.
+      description: Retrieves the push rules of a specified project. If push rules
+        were never configured for the project, returns `200 OK` with the literal string
+        `"null"` (4 characters) as the response body, not a JSON `null` value. If
+        `commit_committer_check`, `reject_unsigned_commits`, or `reject_non_dco_commits`
+        are disabled, they return `null` instead of `false`.
       tags:
       - Push rules
       responses:
@@ -13177,7 +13210,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesGroupApprovalRule"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesGroupApprovalRule"
         '404':
           description: Not Found
         '400':
@@ -13389,7 +13424,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesProjectApprovalRule"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesProjectApprovalRule"
         '404':
           description: Not Found
         '400':
@@ -13581,7 +13618,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesClustersAgentUrlConfiguration"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesClustersAgentUrlConfiguration"
         '404':
           description: Not Found
         '400':
@@ -14653,7 +14692,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesAnalyticsKnowledgeGraphEnabledNamespace"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesAnalyticsKnowledgeGraphEnabledNamespace"
         '400':
           description: 400 Bad Request
         '401':
@@ -14853,7 +14894,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesSearchZoektNode"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSearchZoektNode"
         '401':
           description: 401 Unauthorized
         '403':
@@ -14874,7 +14917,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesSearchZoektIndexedNamespace"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSearchZoektIndexedNamespace"
         '401':
           description: 401 Unauthorized
         '403':
@@ -14976,7 +15021,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesAiActiveContextConnection"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesAiActiveContextConnection"
         '401':
           description: 401 Unauthorized
         '403':
@@ -19565,7 +19612,9 @@ paths:
       operationId: getApiV4TemplatesLicensesName
       summary: Retrieve a license template
       description: Retrieves a specified license template. You can pass parameters
-        to replace the license placeholder.
+        to replace the license placeholder. If `fullname` is omitted and the request
+        is authenticated, the name of the authenticated user replaces the copyright
+        holder placeholder.
       tags:
       - Templates
       responses:
@@ -30242,7 +30291,8 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryTags
       summary: List all project repository tags
       description: Lists all repository tags from a project, sorted by update date
-        and time in descending order.
+        and time in descending order. This endpoint can be accessed without authentication
+        if the repository is publicly accessible.
       tags:
       - Tags
       responses:
@@ -30332,6 +30382,17 @@ paths:
       operationId: postApiV4ProjectsIdRepositoryTags
       summary: Create a tag
       description: Creates a tag in the repository that points to a specified reference.
+        This endpoint is rate-limited for each project. The default is 100 requests
+        every 30 minutes, configurable with the `tags_create_limit` application setting.
+        Set the limit to `0` to disable it. The limit is shared between this endpoint,
+        the GraphQL `tagCreate` mutation, tag creation in the UI, and the `/tag` quick
+        action. The limit applies to the project, so you can receive `429 Too Many
+        Requests` after other users of the project reach the limit. The type of tag
+        created determines the contents of `created_at`, `target`, and `message`.
+        For annotated tags, `created_at` contains the timestamp of tag creation, `message`
+        contains the annotation, and `target` contains the ID of the tag object. For
+        lightweight tags, `created_at` and `message` are null, and `target` contains
+        the commit ID.
       tags:
       - Tags
       responses:
@@ -30470,12 +30531,14 @@ paths:
     put:
       operationId: putApiV4HooksHookIdUrlVariablesKey
       summary: Update a URL variable
-      description: Updates a URL variable for a specified webhook.
+      description: Updates a URL variable for a specified webhook. Setting the value
+        does not replace a literal value in the existing webhook URL with the placeholder.
+        To use the variable, also update the webhook URL to include the `{key}` placeholder.
       tags:
       - Hooks
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
         '404':
           description: Not Found
         '400':
@@ -30529,12 +30592,13 @@ paths:
     put:
       operationId: putApiV4HooksHookIdCustomHeadersKey
       summary: Update a custom header
-      description: Updates a custom header for a specified webhook.
+      description: Updates a custom header for a specified webhook. This feature was
+        introduced in GitLab 17.1.
       tags:
       - Hooks
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
         '404':
           description: Not Found
         '400':
@@ -30561,7 +30625,8 @@ paths:
     delete:
       operationId: deleteApiV4HooksHookIdCustomHeadersKey
       summary: Delete a custom header
-      description: Deletes a custom header from a specified webhook.
+      description: Deletes a custom header from a specified webhook. This feature
+        was introduced in GitLab 17.1.
       tags:
       - Hooks
       responses:
@@ -30750,6 +30815,57 @@ paths:
         schema:
           type: integer
         in: path
+  "/api/v4/projects/{id}/attestations/signing_certificates":
+    get:
+      operationId: getApiV4ProjectsIdAttestationsSigningCertificates
+      summary: List all signing certificates for a project
+      description: Lists the unexpired certificate authority (CA) certificates of
+        a project. GitLab uses these CAs to issue the certificates that sign attestations
+        with the LOCAL_CA attestation method. This feature was introduced in GitLab
+        19.6.
+      tags:
+      - Attestations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesSupplyChainSigningCertificate"
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      - name: page
+        required: false
+        description: Page number of results to retrieve.
+        schema:
+          type: integer
+          default: 1
+        in: query
+        example: 1
+      - name: per_page
+        required: false
+        description: Number of items to list per page.
+        schema:
+          type: integer
+          default: 20
+        in: query
+        example: 20
+      x-gitlab-lifecycle: experiment
   "/api/v4/projects/{id}/attestations/{subject_digest}":
     get:
       operationId: getApiV4ProjectsIdAttestationsSubjectDigest
@@ -30877,7 +30993,9 @@ paths:
     put:
       operationId: putApiV4ProjectsIdRepositorySubmodulesSubmodule
       summary: Update a submodule reference
-      description: Updates a reference for a specified submodule.
+      description: Updates a reference for a specified submodule. Used in workflows,
+        especially automated ones, to keep other projects that use the submodule up
+        to date.
       tags:
       - Submodules
       responses:
@@ -30988,7 +31106,10 @@ paths:
     post:
       operationId: postApiV4Snippets
       summary: Create a snippet
-      description: Creates a snippet.
+      description: Creates a snippet. The user must have permission to create snippets.
+        Creating snippets is rate limited to 300 requests every hour for each authenticated
+        user. The limit is shared between this endpoint, creating a project snippet,
+        and the `createSnippet` GraphQL mutation.
       tags:
       - Snippets
       responses:
@@ -31155,7 +31276,8 @@ paths:
     put:
       operationId: putApiV4SnippetsId
       summary: Update snippet
-      description: Updates a specified snippet.
+      description: Updates a specified snippet. The user must have permission to change
+        the snippet.
       tags:
       - Snippets
       responses:
@@ -31266,7 +31388,8 @@ paths:
     get:
       operationId: getApiV4SnippetsIdUserAgentDetail
       summary: Retrieve user agent details for a snippet
-      description: Retrieves user agent details for a specified snippet.
+      description: Retrieves user agent details for a specified snippet. Available
+        only for administrators.
       tags:
       - Snippets
       responses:
@@ -33210,7 +33333,11 @@ paths:
       summary: Retrieve a blob from a repository
       description: Retrieves information, such as size and content, about blobs in
         a repository. Blob content is Base64 encoded. This endpoint can be accessed
-        without authentication, if the repository is publicly accessible.
+        without authentication, if the repository is publicly accessible. For blobs
+        larger than 10 MB, this endpoint has a rate limit of 5 requests per minute.
+        For text files not stored as valid UTF-8 in Git, `content` is converted to
+        UTF-8 before Base64 encoding, and `size` is the raw blob size, which might
+        differ from the length of the decoded content.
       tags:
       - Repositories
       responses:
@@ -33286,7 +33413,9 @@ paths:
         in: query
       - name: format
         required: false
-        description: Archive format.
+        description: Archive format, added as a suffix to the path, for example `archive.zip`.
+          One of `bz2`, `gz`, `tar`, `tar.bz2`, `tar.gz`, `tb2`, `tbz`, `tbz2`, `tgz`,
+          or `zip`. Default is `tar.gz`.
         schema:
           type: string
           nullable: true
@@ -33324,8 +33453,12 @@ paths:
     get:
       operationId: getApiV4ProjectsIdRepositoryCompare
       summary: Compare branches, tags, or commits
-      description: Compares branches, tags, or commits. Retrieves the differences
-        between two branches, tags, or commits in a specified project.
+      description: 'Compares branches, tags, or commits. Retrieves the differences
+        between two branches, tags, or commits in a specified project. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
+        When `compare_timeout` is `true`, the comparison exceeded size limits: the
+        `commits` array is still complete, but the `diffs` array might be incomplete,
+        and individual diff objects might have empty `diff` strings.'
       tags:
       - Repositories
       responses:
@@ -33397,7 +33530,8 @@ paths:
       summary: Retrieve repository health statistics
       description: Retrieves statistics related to the health of a project repository.
         This endpoint is rate-limited to 5 requests/hour per project when `generate`
-        is `true`. Available only to users with push access to the repository.
+        is `true`. Available only to users with push access to the repository. This
+        feature was introduced in GitLab 17.10.
       tags:
       - Repositories
       responses:
@@ -33433,7 +33567,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdRepositoryContributors
       summary: Retrieve contributors metrics
-      description: Retrieves a list of contributors to a specified repository.
+      description: Retrieves a list of contributors to a specified repository. This
+        endpoint can be accessed without authentication if the repository is publicly
+        accessible. The commit count does not include merge commits.
       tags:
       - Repositories
       responses:
@@ -33476,7 +33612,8 @@ paths:
       - name: ref
         required: false
         description: Name of a repository branch or tag. If omitted, uses the default
-          branch.
+          branch. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/156852)
+          in GitLab 17.4.
         schema:
           type: string
           nullable: true
@@ -33507,7 +33644,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdRepositoryMergeBase
       summary: Retrieve a merge base
-      description: Retrieves the merge base for two specified commits.
+      description: Retrieves the merge base, the common ancestor, of two or more refs,
+        such as commit SHAs, branch names, or tags.
       tags:
       - Repositories
       responses:
@@ -33549,8 +33687,14 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRepositoryBlobsBatch
       summary: Get contents of multiple files in a single request
-      description: Each blob is truncated to the first 1 MB; the `truncated` field
-        indicates when this happens.
+      description: Blob content is Base64 encoded. Each blob is truncated to the first
+        1 MB; the `truncated` field indicates when this happens. `size` is the full
+        blob size in bytes. Files that do not exist at the requested reference are
+        omitted from the response. This endpoint requires authentication. It is rate
+        limited per user and project, to 5 requests per minute by default, set by
+        the `project_repositories_blobs_batch_limit` application setting. This endpoint
+        is behind the `repository_blobs_batch_api` feature flag, disabled by default.
+        This feature was introduced in GitLab 19.3.
       tags:
       - Repositories
       responses:
@@ -33592,7 +33736,9 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryChangedPaths
       summary: List files changed between two commits
       description: Returns the path, change status, and file modes for every path
-        that differs between two refs.
+        that differs between two refs. This endpoint requires authentication. This
+        endpoint is behind the `repository_changed_paths_api` feature flag, disabled
+        by default. This feature was introduced in GitLab 19.4.
       tags:
       - Repositories
       responses:
@@ -33671,7 +33817,11 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryDivergingCommits
       summary: Retrieve diverging commit counts between two refs
       description: Retrieves the number of commits by which the `to` ref is ahead
-        of and behind the `from` ref.
+        of and behind the `from` ref. `behind` is the number of commits in `from`
+        that are not in `to`, and `ahead` is the number of commits in `to` that are
+        not in `from`. This endpoint requires authentication. This endpoint is behind
+        the `repository_diverging_commits_api` feature flag, disabled by default.
+        This feature was introduced in GitLab 19.3.
       tags:
       - Repositories
       responses:
@@ -33736,7 +33886,9 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryDiffStats
       summary: Get diff statistics between two commits
       description: Returns the number of added and deleted lines for every file that
-        differs between two refs.
+        differs between two refs. This endpoint requires authentication. This endpoint
+        is behind the `repository_diff_stats_api` feature flag, disabled by default.
+        This feature was introduced in GitLab 19.4.
       tags:
       - Repositories
       responses:
@@ -33809,7 +33961,9 @@ paths:
       summary: Generate changelog data
       description: Generates changelog data based on commits in a repository, without
         committing them to a changelog file. Works exactly like `POST /projects/:id/repository/changelog`,
-        except the changelog data is not committed to any changelog file.
+        except the changelog data is not committed to any changelog file. Add a `.txt`
+        suffix to the path, as in `GET /projects/:id/repository/changelog.txt`, to
+        return the changelog as plain text Markdown instead of JSON.
       tags:
       - Repositories
       responses:
@@ -33835,8 +33989,9 @@ paths:
         example: 1
       - name: version
         required: true
-        description: Version to generate the changelog for. Must follow [semantic
-          versioning](https://semver.org/) format.
+        description: 'Version to generate the changelog for. Must follow [semantic
+          versioning](https://semver.org/) format. Can include or omit the `v` prefix:
+          `1.0.0` and `v1.0.0` give the same result.'
         schema:
           type: string
           pattern: "(?:(?:(0|[1-9]\\d*))\\.(?:(0|[1-9]\\d*))\\.(?:(0|[1-9]\\d*)))(?:(?:-((?:\\d*[a-zA-Z\\-][0-9a-zA-Z\\-]*|[1-9]\\d*|0)(?:\\.(?:\\d*[a-zA-Z\\-][0-9a-zA-Z\\-]*|[1-9]\\d*|0))*))?(?:\\+([0-9a-zA-Z\\-]+(?:\\.[0-9a-zA-Z\\-]+)*))?)"
@@ -33847,7 +34002,10 @@ paths:
         required: false
         description: First commit in the range of commits, as a SHA, to use for the
           changelog. This commit is not included in the changelog. If omitted, the
-          most recent stable version tag before `version` is used.
+          most recent stable version tag before `version` is used. Tags in `X.Y.Z`
+          or `vX.Y.Z` format are recognized, and pre-release tags such as `v1.0.0-pre1`
+          are ignored. If no such tag exists, an error is returned and you must set
+          `from`.
         schema:
           type: string
           nullable: true
@@ -33855,11 +34013,11 @@ paths:
         example: ed899a2f4b50b4370feeea94676502b42383c746
       - name: to
         required: false
-        description: Last commit in the range of commits, as a SHA, to use for the
-          changelog. This commit is included in the changelog. If omitted, uses the
-          latest commit on the default branch. For the Add changelog data to file
-          operation, uses the latest commit on `branch` instead. The range can contain
-          at most 15,000 commits.
+        description: Last commit in the range of commits, as a SHA or a branch or
+          tag name, to use for the changelog. This commit is included in the changelog.
+          If omitted, uses the latest commit on the default branch. For the Add changelog
+          data to file operation, uses the latest commit on `branch` instead. The
+          range can contain at most 15,000 commits.
         schema:
           type: string
           nullable: true
@@ -33895,7 +34053,8 @@ paths:
       - name: config_file_ref
         required: false
         description: Git reference, for example a branch, where the changelog configuration
-          file is defined. Defaults to the default branch of the repository.
+          file is defined. Defaults to the default branch of the repository. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/426108)
+          in GitLab 18.2.
         schema:
           type: string
           nullable: true
@@ -33904,7 +34063,12 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRepositoryChangelog
       summary: Add changelog data to file
-      description: Adds changelog data to file.
+      description: Generates changelog data based on commits in a repository and commits
+        it to a changelog file. Given a semantic version and a range of commits, GitLab
+        generates a changelog for all commits that use a specific Git trailer, and
+        adds a new Markdown section to the changelog file. The output format can be
+        customized. Parsing the changelog configuration is limited to 2 seconds. If
+        the request times out, reduce the size of the changelog configuration file.
       tags:
       - Repositories
       responses:
@@ -33980,7 +34144,8 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRemoteMirrors
       summary: Create a push mirror
-      description: Creates a push mirror.
+      description: Creates a push mirror. Each project can have a maximum of 10 enabled
+        push mirrors.
       tags:
       - Remote mirrors
       responses:
@@ -34153,7 +34318,7 @@ paths:
       operationId: getApiV4ProjectsIdRemoteMirrorsMirrorIdPublicKey
       summary: Retrieve a public key for a remote mirror
       description: Retrieves the public key of a specified remote mirror that uses
-        SSH authentication.
+        SSH authentication. This feature was introduced in GitLab 17.9.
       tags:
       - Remote mirrors
       responses:
@@ -38540,7 +38705,9 @@ paths:
       operationId: postApiV4ProjectsIdSnippets
       summary: Create a project snippet
       description: Creates a project snippet. The user must have permission to create
-        snippets.
+        snippets. Creating snippets has a rate limit of 300 requests every hour for
+        each authenticated user. The limit is shared between this endpoint, the endpoint
+        that creates a personal snippet, and the `createSnippet` GraphQL mutation.
       tags:
       - Snippets
       responses:
@@ -39855,12 +40022,14 @@ paths:
     put:
       operationId: putApiV4ProjectsIdHooksHookIdUrlVariablesKey
       summary: Update a URL variable
-      description: Updates a URL variable for a specified webhook.
+      description: Updates a URL variable for a specified webhook. Setting the value
+        does not replace a literal value in the existing webhook URL with the placeholder.
+        To use the variable, also update the webhook URL to include the `{key}` placeholder.
       tags:
       - Hooks
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
         '404':
           description: Not Found
         '400':
@@ -39932,12 +40101,13 @@ paths:
     put:
       operationId: putApiV4ProjectsIdHooksHookIdCustomHeadersKey
       summary: Update a custom header
-      description: Updates a custom header for a specified webhook.
+      description: Updates a custom header for a specified webhook. This feature was
+        introduced in GitLab 17.1.
       tags:
       - Hooks
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
         '404':
           description: Not Found
         '400':
@@ -39973,7 +40143,8 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdHooksHookIdCustomHeadersKey
       summary: Delete a custom header
-      description: Deletes a custom header from a specified webhook.
+      description: Deletes a custom header from a specified webhook. This feature
+        was introduced in GitLab 17.1.
       tags:
       - Hooks
       responses:
@@ -40056,7 +40227,8 @@ paths:
       description: Adds a webhook to a specified project. This endpoint has a rate
         limit of five requests per minute for each authenticated user for a given
         project. On GitLab Self-Managed and GitLab Dedicated, an administrator can
-        change this limit in the application settings.
+        change this limit in the application settings. Setting `duo_flow_callback_enabled`
+        to `false` is always accepted.
       tags:
       - Hooks
       responses:
@@ -40125,7 +40297,8 @@ paths:
     put:
       operationId: putApiV4ProjectsIdHooksHookId
       summary: Update a project webhook
-      description: Updates a specified webhook for a project.
+      description: Updates a specified webhook for a project. Setting `duo_flow_callback_enabled`
+        to `false` is always accepted.
       tags:
       - Hooks
       responses:
@@ -40165,16 +40338,13 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdHooksHookId
       summary: Delete a project webhook
-      description: Deletes a specified webhook for a project.
+      description: Deletes a specified webhook for a project. If the webhook was already
+        deleted, returns `404 Not found`.
       tags:
       - Hooks
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesProjectHook"
+        '204':
+          description: No Content
         '404':
           description: Not found
         '400':
@@ -40198,7 +40368,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdHooksHookIdEvents
       summary: List all events
-      description: Lists all events for a specified webhook.
+      description: Lists all events from the past seven days for a specified webhook.
+        This feature was introduced in GitLab 17.3.
       tags:
       - Hooks
       responses:
@@ -40331,7 +40502,8 @@ paths:
       description: Triggers a test webhook. This endpoint has a rate limit of five
         requests per minute for each authenticated user for a given project or group.
         On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
-        limit in the application settings.
+        limit in the application settings. This feature was introduced in GitLab 16.11
+        for project hooks and GitLab 17.1 for group hooks.
       tags:
       - Hooks
       responses:
@@ -40395,8 +40567,9 @@ paths:
       summary: Resend a webhook event
       description: Resends a webhook event. This endpoint has a rate limit of five
         requests per minute for each authenticated user for a given project or group.
-        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
-        limit in the application settings.
+        All webhooks in the same project or group share the limit. On GitLab Self-Managed
+        and GitLab Dedicated, an administrator can change this limit in the application
+        settings. This feature was introduced in GitLab 17.4.
       tags:
       - Hooks
       responses:
@@ -45193,7 +45366,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesNamespacesStorageLimitExclusion"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesNamespacesStorageLimitExclusion"
         '401':
           description: Unauthorized
         '403':
@@ -46140,8 +46315,8 @@ paths:
         in: query
       - name: assignee_username
         required: false
-        description: Returns merge requests assigned to the given usernames. Mutually
-          exclusive with `assignee_id`.
+        description: Returns merge requests assigned to the given usernames. Instances
+          without a license accept only one username. Mutually exclusive with `assignee_id`.
         schema:
           type: array
           items:
@@ -46440,7 +46615,8 @@ paths:
       - name: not[assignee_username]
         required: false
         description: "`<Negated>` Returns merge requests assigned to the given usernames.
-          Mutually exclusive with `not[assignee_id]`."
+          Instances without a license accept only one username. Mutually exclusive
+          with `not[assignee_id]`."
         schema:
           type: array
           items:
@@ -46660,8 +46836,8 @@ paths:
         in: query
       - name: assignee_username
         required: false
-        description: Returns merge requests assigned to the given usernames. Mutually
-          exclusive with `assignee_id`.
+        description: Returns merge requests assigned to the given usernames. Instances
+          without a license accept only one username. Mutually exclusive with `assignee_id`.
         schema:
           type: array
           items:
@@ -46961,7 +47137,8 @@ paths:
       - name: not[assignee_username]
         required: false
         description: "`<Negated>` Returns merge requests assigned to the given usernames.
-          Mutually exclusive with `not[assignee_id]`."
+          Instances without a license accept only one username. Mutually exclusive
+          with `not[assignee_id]`."
         schema:
           type: array
           items:
@@ -47374,8 +47551,8 @@ paths:
         in: query
       - name: assignee_username
         required: false
-        description: Returns merge requests assigned to the given usernames. Mutually
-          exclusive with `assignee_id`.
+        description: Returns merge requests assigned to the given usernames. Instances
+          without a license accept only one username. Mutually exclusive with `assignee_id`.
         schema:
           type: array
           items:
@@ -47675,7 +47852,8 @@ paths:
       - name: not[assignee_username]
         required: false
         description: "`<Negated>` Returns merge requests assigned to the given usernames.
-          Mutually exclusive with `not[assignee_id]`."
+          Instances without a license accept only one username. Mutually exclusive
+          with `not[assignee_id]`."
         schema:
           type: array
           items:
@@ -49643,7 +49821,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesMember"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesMember"
         '404':
           description: Not Found
         '400':
@@ -49745,7 +49925,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBillableMembership"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBillableMembership"
         '404':
           description: Not Found
         '400':
@@ -49793,7 +49975,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBillableMembership"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBillableMembership"
         '404':
           description: Not Found
         '400':
@@ -50079,6 +50263,8 @@ paths:
           description: OK
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -50106,6 +50292,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesProjectUpload"
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -50331,6 +50519,8 @@ paths:
           description: OK
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -50361,6 +50551,8 @@ paths:
           description: Bad request
         '404':
           description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -53939,7 +54131,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesIssuableMetricImage"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesIssuableMetricImage"
         '404':
           description: Not Found
         '400':
@@ -62962,6 +63156,198 @@ paths:
         schema:
           type: string
         in: path
+  "/api/v4/groups/{id}/applications":
+    post:
+      operationId: postApiV4GroupsIdApplications
+      summary: Create a group application
+      description: Creates an OAuth application owned by the specified group. This
+        feature was introduced in GitLab 19.6
+      tags:
+      - Group applications
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesApplicationWithSecret"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          type: string
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/postApiV4GroupsIdApplicationsRequest"
+    get:
+      operationId: getApiV4GroupsIdApplications
+      summary: List all group applications
+      description: Lists all OAuth applications owned by a specified group.
+      tags:
+      - Group applications
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesApplication"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          type: string
+        in: path
+      - name: page
+        required: false
+        description: Page number of results to retrieve.
+        schema:
+          type: integer
+          default: 1
+        in: query
+        example: 1
+      - name: per_page
+        required: false
+        description: Number of items to list per page.
+        schema:
+          type: integer
+          default: 20
+        in: query
+        example: 20
+  "/api/v4/groups/{id}/applications/{application_id}":
+    get:
+      operationId: getApiV4GroupsIdApplicationsApplicationId
+      summary: Retrieve a group application
+      description: Retrieves details of a specified OAuth application owned by a group.
+      tags:
+      - Group applications
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesApplication"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          type: string
+        in: path
+      - name: application_id
+        required: true
+        description: ID of the application. Differs from the `application_id` in the
+          response.
+        schema:
+          type: integer
+        in: path
+    put:
+      operationId: putApiV4GroupsIdApplicationsApplicationId
+      summary: Update a group application
+      description: Updates a specified OAuth application owned by a group. You cannot
+        update the `redirect_uri` and `confidential` attributes of an existing application.
+        To change them, delete the application and create it again.
+      tags:
+      - Group applications
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesApplication"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          type: string
+        in: path
+      - name: application_id
+        required: true
+        description: ID of the application. Differs from the `application_id` in the
+          response.
+        schema:
+          type: integer
+        in: path
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/putApiV4GroupsIdApplicationsApplicationIdRequest"
+    delete:
+      operationId: deleteApiV4GroupsIdApplicationsApplicationId
+      summary: Delete a group application
+      description: Deletes a specified OAuth application owned by a group.
+      tags:
+      - Group applications
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          type: string
+        in: path
+      - name: application_id
+        required: true
+        description: ID of the application. Differs from the `application_id` in the
+          response.
+        schema:
+          type: integer
+        in: path
   "/api/v4/projects/{id}/packages/go/{module_name}/@v/list":
     get:
       operationId: getApiV4ProjectsIdPackagesGoModuleNameVList
@@ -63896,7 +64282,10 @@ paths:
     head:
       operationId: headApiV4ProjectsIdRepositoryFilesFilePathBlame
       summary: Retrieve file blame metadata
-      description: Retrieves blame metadata for lines in a specified file.
+      description: Retrieves blame metadata for lines in a specified file. Uses the
+        `HEAD` method and returns the metadata in `X-Gitlab-*` response headers, such
+        as `X-Gitlab-Blob-Id`, `X-Gitlab-Commit-Id`, `X-Gitlab-Content-Sha256`, `X-Gitlab-File-Name`,
+        `X-Gitlab-Last-Commit-Id`, `X-Gitlab-Ref`, and `X-Gitlab-Size`.
       tags:
       - Files
       responses:
@@ -63935,7 +64324,11 @@ paths:
         endpoint is rate-limited for each authenticated user for a given project,
         and for each IP address for unauthenticated requests. On GitLab Self-Managed
         and GitLab Dedicated, an administrator can change these limits in the application
-        settings.
+        settings. The default limits are 400 requests every minute for each user and
+        project, set by `project_repositories_blame_limit`, and 400 requests every
+        minute for each IP address, set by `project_repositories_blame_unauthenticated_limit`.
+        A limit of `0` disables it. `HEAD` requests do not count toward these limits.
+        The GraphQL `blame` field on `RepositoryBlob` shares these limits.
       tags:
       - Files
       responses:
@@ -63968,7 +64361,8 @@ paths:
         example: lib%2Fclass%2Erb
       - name: ref
         required: true
-        description: Commit SHA or name of a repository branch or tag.
+        description: Commit SHA or name of a repository branch or tag. Use `HEAD`
+          to use the default branch.
         schema:
           type: string
           nullable: true
@@ -64000,6 +64394,7 @@ paths:
       operationId: getApiV4ProjectsIdRepositoryFilesFilePathRaw
       summary: Retrieve a raw file from a repository
       description: Retrieves the raw file contents for a specified file in a repository.
+        To get only the file metadata, use the `HEAD` method on the file endpoint.
       tags:
       - Files
       responses:
@@ -64031,7 +64426,8 @@ paths:
         example: lib%2Fclass%2Erb
       - name: ref
         required: false
-        description: Commit SHA or name of a repository branch or tag.
+        description: Commit SHA or name of a repository branch or tag. Default is
+          the `HEAD` of the project.
         schema:
           type: string
           nullable: true
@@ -64049,7 +64445,10 @@ paths:
     head:
       operationId: headApiV4ProjectsIdRepositoryFilesFilePath
       summary: Retrieve file metadata
-      description: Retrieves metadata for a specified file in a repository.
+      description: Retrieves metadata for a specified file in a repository. Uses the
+        `HEAD` method and returns the metadata in `X-Gitlab-*` response headers, such
+        as `X-Gitlab-Blob-Id`, `X-Gitlab-Commit-Id`, `X-Gitlab-Content-Sha256`, `X-Gitlab-File-Name`,
+        `X-Gitlab-Last-Commit-Id`, `X-Gitlab-Ref`, and `X-Gitlab-Size`.
       tags:
       - Files
       responses:
@@ -64085,7 +64484,14 @@ paths:
       summary: Retrieve a file from a repository
       description: Retrieves information about a specified file in a repository. This
         includes information like the name, size, and the file contents. File content
-        is Base64 encoded.
+        is Base64 encoded. You can access this endpoint without authentication if
+        the repository is publicly accessible. For blobs larger than 10 MB, this endpoint
+        has a rate limit of 5 requests every minute for each project. For text files
+        not stored as valid UTF-8 in Git, `content` is converted to UTF-8 before Base64
+        encoding. In that case, `size` is the raw blob size, which might differ from
+        the length of the decoded content, and `content_sha256` is the hash of the
+        converted content, not the raw blob. To retrieve the exact bytes stored in
+        Git, use the raw file endpoint.
       tags:
       - Files
       responses:
@@ -64112,7 +64518,8 @@ paths:
         example: lib%2Fclass%2Erb
       - name: ref
         required: true
-        description: Commit SHA or name of a repository branch or tag.
+        description: Commit SHA or name of a repository branch or tag. Use `HEAD`
+          to use the default branch.
         schema:
           type: string
           nullable: true
@@ -64122,7 +64529,9 @@ paths:
       operationId: postApiV4ProjectsIdRepositoryFilesFilePath
       summary: Create a file in a repository
       description: Creates a file in a specified repository. Use the Commits API to
-        create multiple files with a single request.
+        create multiple files with a single request. Requests larger than 300 MB by
+        default are rejected. Requests larger than 20 MB are rate-limited to 3 requests
+        every 30 seconds for each user.
       tags:
       - Files
       responses:
@@ -64157,7 +64566,12 @@ paths:
       operationId: putApiV4ProjectsIdRepositoryFilesFilePath
       summary: Update a file in a repository
       description: Updates a specified file in a repository. Use the Commits API to
-        update multiple files with a single request.
+        update multiple files with a single request. Requests larger than 300 MB by
+        default are rejected. Requests larger than 20 MB are rate-limited to 3 requests
+        every 30 seconds for each user. If the commit fails, returns `400 Bad Request`
+        with an error message. Possible causes are a `file_path` that contains `/../`,
+        new file contents that are identical to the current contents, or a `git push`
+        to the branch while the edit was in progress.
       tags:
       - Files
       responses:
@@ -66213,8 +66627,8 @@ paths:
         in: query
       - name: assignee_username
         required: false
-        description: Returns merge requests assigned to the given usernames. Mutually
-          exclusive with `assignee_id`.
+        description: Returns merge requests assigned to the given usernames. Instances
+          without a license accept only one username. Mutually exclusive with `assignee_id`.
         schema:
           type: array
           items:
@@ -66514,7 +66928,8 @@ paths:
       - name: not[assignee_username]
         required: false
         description: "`<Negated>` Returns merge requests assigned to the given usernames.
-          Mutually exclusive with `not[assignee_id]`."
+          Instances without a license accept only one username. Mutually exclusive
+          with `not[assignee_id]`."
         schema:
           type: array
           items:
@@ -72632,7 +73047,8 @@ paths:
         description: If `true`, follows file renames when filtering commits by `path`
           and returns commits for the file even if it was renamed. If `false`, returns
           only commits where the file existed at its current path. Used only when
-          `path` specifies a single file.
+          `path` specifies a single file. Default is `true`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225733)
+          in GitLab 18.10.
         schema:
           type: boolean
           nullable: true
@@ -72723,7 +73139,11 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRepositoryCommits
       summary: Create a commit
-      description: This feature was introduced in GitLab 8.13
+      description: Creates a commit in the specified project from a JSON payload.
+        The request body can also be form-encoded, with each action sent as `actions[][<attribute>]`
+        fields. By default, requests larger than 300 MB are rejected. Requests larger
+        than 20 MB are rate-limited to 3 requests every 30 seconds for each user.
+        This feature was introduced in GitLab 8.13
       tags:
       - Commits
       responses:
@@ -72801,7 +73221,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdRepositoryCommitsShaDiff
       summary: Retrieve a commit diff
-      description: Retrieves the diff of a commit in a project.
+      description: Retrieves the diff of a commit in a project. Diff limits apply.
+        When a commit exceeds the maximum number of files, pagination stops and no
+        files beyond the limit are returned.
       tags:
       - Commits
       responses:
@@ -72912,7 +73334,10 @@ paths:
       summary: Create a comment on a commit
       description: Creates a comment on a commit. To comment on a specific line in
         a file, specify the full commit SHA, `path`, `line`, and set `line_type` to
-        `new`.
+        `new`. If `path` or `line` does not exist in the commit diff, the comment
+        is added to the commit without a line position, and `line`, `line_type`, and
+        `path` are `null` in the response. GitLab might change the comment body before
+        saving it, for example by running and removing quick actions.
       tags:
       - Commits
       responses:
@@ -72951,7 +73376,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdRepositoryCommitsShaSequence
       summary: Retrieve a commit sequence
-      description: Retrieves the commit sequence for a specified commit.
+      description: Retrieves the sequence number of a specified commit, found by following
+        the parent links from the commit. The result is the same as `git rev-list
+        --count` for the commit SHA.
       tags:
       - Commits
       responses:
@@ -72992,7 +73419,13 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRepositoryCommitsShaCherryPick
       summary: Cherry-pick a commit
-      description: Cherry-picks a commit to a specified branch.
+      description: 'Cherry-picks a commit to a specified branch. If the cherry-pick
+        fails, the `400` response contains a `message` and an `error_code`. The `error_code`
+        is `empty` when the changeset is empty, which usually means the commit already
+        exists in the target branch, or `conflict` when there is a merge conflict.
+        If `dry_run` is `true`, a successful check returns `{"dry_run": "success"}`,
+        and a failed check returns the same error response with `"dry_run": "error"`
+        added.'
       tags:
       - Commits
       responses:
@@ -73031,7 +73464,13 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRepositoryCommitsShaRevert
       summary: Revert a commit
-      description: Reverts a commit in a specified branch.
+      description: 'Reverts a commit in a specified branch. If the revert fails, the
+        `400` response contains a `message` and an `error_code`. The `error_code`
+        is `conflict` when the revert causes a merge conflict, or `empty` when the
+        revert changes nothing on the branch, for example because the changes were
+        already reverted or were never on the branch. If `dry_run` is `true`, a successful
+        check returns `{"dry_run": "success"}`, and a failed check returns the same
+        error response with `"dry_run": "error"` added.'
       tags:
       - Commits
       responses:
@@ -74221,6 +74660,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too Many Requests
       parameters:
       - name: id
         required: true
@@ -74297,6 +74738,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too Many Requests
       parameters:
       - name: id
         required: true
@@ -74338,6 +74781,8 @@ paths:
           description: Not found
         '412':
           description: Precondition Failed
+        '429':
+          description: Too Many Requests
       parameters:
       - name: id
         required: true
@@ -80124,7 +80569,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesUserPublic"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesUserPublic"
         '404':
           description: Not Found
         '400':
@@ -81197,7 +81644,8 @@ paths:
       description: Lists all repository branches from a specified project, sorted
         alphabetically by name. Search by name, or use regular expressions to find
         specific branch patterns. Returns detailed information about the branch, including
-        its protection status, merge status, and commit details.
+        its protection status, merge status, and commit details. This endpoint can
+        be accessed without authentication if the repository is publicly accessible.
       tags:
       - Branches
       responses:
@@ -81332,14 +81780,15 @@ paths:
         in: path
       - name: branch
         required: true
-        description: Name of the branch.
+        description: URL-encoded name of the branch.
         schema:
           type: string
         in: path
     get:
       operationId: getApiV4ProjectsIdRepositoryBranchesBranch
       summary: Retrieve a repository branch
-      description: Retrieves a specified project repository branch.
+      description: Retrieves a specified project repository branch. This endpoint
+        can be accessed without authentication if the repository is publicly accessible.
       tags:
       - Branches
       responses:
@@ -81364,14 +81813,17 @@ paths:
         in: path
       - name: branch
         required: true
-        description: Name of the branch.
+        description: URL-encoded name of the branch.
         schema:
           type: string
         in: path
     delete:
       operationId: deleteApiV4ProjectsIdRepositoryBranchesBranch
       summary: Delete a repository branch
-      description: Deletes a specified branch from the repository.
+      description: Deletes a specified branch from the repository. If an error occurs,
+        the response includes a message that explains it. Deleting a branch does not
+        completely erase all related data. Some information persists to maintain project
+        history and to support recovery processes.
       tags:
       - Branches
       responses:
@@ -81392,7 +81844,8 @@ paths:
         in: path
       - name: branch
         required: true
-        description: Name of the branch.
+        description: URL-encoded name of the branch. Cannot be the default branch.
+          Only users with the Maintainer or Owner role can delete a protected branch.
         schema:
           type: string
         in: path
@@ -81475,7 +81928,7 @@ paths:
       operationId: deleteApiV4ProjectsIdRepositoryMergedBranches
       summary: Delete all merged branches
       description: Deletes all branches that are merged into the default branch for
-        a project.
+        a project. Protected branches are not deleted.
       tags:
       - Branches
       responses:
@@ -85635,7 +86088,9 @@ components:
         extra_shared_runners_minutes_limit:
           type: string
         scim_identities:
-          "$ref": "#/components/schemas/APIEntitiesScimIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesScimIdentity"
     APIEntitiesProtectedRefAccess:
       type: object
       properties:
@@ -85936,12 +86391,16 @@ components:
           type: string
           example: production
         deploy_access_levels:
-          "$ref": "#/components/schemas/APIEntitiesProtectedEnvironmentsDeployAccessLevel"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProtectedEnvironmentsDeployAccessLevel"
         required_approval_count:
           type: integer
           example: 2
         approval_rules:
-          "$ref": "#/components/schemas/APIEntitiesProtectedEnvironmentsApprovalRule"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProtectedEnvironmentsApprovalRule"
     APIEntitiesAnalyticsDeploymentFrequency:
       type: object
       properties:
@@ -86065,7 +86524,9 @@ components:
         author:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         approved_by:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         notes_count:
           type: integer
           example: 10
@@ -86107,9 +86568,13 @@ components:
         dependency_file_path:
           type: string
         vulnerabilities:
-          "$ref": "#/components/schemas/DependencyEntityVulnerabilityEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/DependencyEntityVulnerabilityEntity"
         licenses:
-          "$ref": "#/components/schemas/DependencyEntityLicenseEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/DependencyEntityLicenseEntity"
         malware:
           type: boolean
           description: 'Malware status: true if the package version matches a malware
@@ -86310,9 +86775,13 @@ components:
         ldap_access:
           type: string
         ldap_group_links:
-          "$ref": "#/components/schemas/APIEntitiesLdapGroupLink"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesLdapGroupLink"
         saml_group_links:
-          "$ref": "#/components/schemas/APIEntitiesSamlGroupLink"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesSamlGroupLink"
         file_template_project_id:
           type: string
         wiki_access_level:
@@ -86899,8 +87368,11 @@ components:
           type: string
         path:
           type: string
+          example: "/root"
         applicable_approval_rules:
-          "$ref": "#/components/schemas/APIEntitiesApprovalRuleShort"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesApprovalRuleShort"
     VulnerabilitiesFeedbackEntity:
       type: object
       properties:
@@ -87027,8 +87499,11 @@ components:
           type: string
         path:
           type: string
+          example: "/root"
         applicable_approval_rules:
-          "$ref": "#/components/schemas/APIEntitiesApprovalRuleShort"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesApprovalRuleShort"
         human:
           type: boolean
           example: true
@@ -87083,7 +87558,9 @@ components:
         unverified:
           type: string
         identifiers:
-          "$ref": "#/components/schemas/VulnerabilitiesIdentifierEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/VulnerabilitiesIdentifierEntity"
         uuid:
           type: string
         create_jira_issue_url:
@@ -87105,13 +87582,21 @@ components:
         merge_request_feedback:
           "$ref": "#/components/schemas/VulnerabilitiesFeedbackEntity"
         state_transitions:
-          "$ref": "#/components/schemas/VulnerabilitiesStateTransitionEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/VulnerabilitiesStateTransitionEntity"
         issue_links:
-          "$ref": "#/components/schemas/VulnerabilitiesIssueLinkEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/VulnerabilitiesIssueLinkEntity"
         external_issue_links:
-          "$ref": "#/components/schemas/VulnerabilitiesExternalIssueLinkEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/VulnerabilitiesExternalIssueLinkEntity"
         merge_request_links:
-          "$ref": "#/components/schemas/VulnerabilitiesMergeRequestLinkEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/VulnerabilitiesMergeRequestLinkEntity"
         description:
           type: string
         description_html:
@@ -87169,9 +87654,13 @@ components:
       type: object
       properties:
         approvers:
-          "$ref": "#/components/schemas/APIEntitiesApprover"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesApprover"
         approver_groups:
-          "$ref": "#/components/schemas/APIEntitiesApproverGroup"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesApproverGroup"
         approvals_before_merge:
           type: integer
         reset_approvals_on_push:
@@ -87271,6 +87760,7 @@ components:
           example: '2020-08-31T15:53:00.073Z'
         token:
           type: string
+          example: glpat-<example-token>
     APIEntitiesSshKeyWithUserId:
       type: object
       properties:
@@ -87655,9 +88145,13 @@ components:
           example: https://webhook.site
         name:
           type: string
+          description: Name of the hook. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887)
+            in GitLab 17.1.
           example: Hook name
         description:
           type: string
+          description: Description of the hook. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887)
+            in GitLab 17.1.
           example: Hook description
         created_at:
           type: string
@@ -87706,11 +88200,13 @@ components:
             type: object
         token_present:
           type: boolean
-          description: Whether a secret token is configured
+          description: Whether a secret token is configured. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325)
+            in GitLab 19.0.
           example: false
         signing_token_present:
           type: boolean
-          description: Whether an HMAC signing token is configured
+          description: Whether an HMAC signing token is configured. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325)
+            in GitLab 19.0.
           example: false
         group_id:
           type: integer
@@ -91633,14 +92129,18 @@ components:
         report_type:
           type: string
         protected_branches:
-          "$ref": "#/components/schemas/APIEntitiesProtectedBranch"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProtectedBranch"
         applies_to_all_protected_branches:
           type: boolean
         coverage_minimum_threshold:
           type: number
           example: 80.0
         approvers:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesUserBasic"
         scanners:
           type: array
           items:
@@ -91659,7 +92159,9 @@ components:
       type: object
       properties:
         rules:
-          "$ref": "#/components/schemas/APIEntitiesProjectApprovalSettingRule"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProjectApprovalSettingRule"
         fallback_approvals_required:
           type: integer
     APIEntitiesExternalStatusCheck:
@@ -92230,7 +92732,9 @@ components:
         report_type:
           type: string
         protected_branches:
-          "$ref": "#/components/schemas/APIEntitiesProtectedBranch"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProtectedBranch"
         applies_to_all_protected_branches:
           type: boolean
     APIEntitiesProjectApprovalRule:
@@ -92270,7 +92774,9 @@ components:
         report_type:
           type: string
         protected_branches:
-          "$ref": "#/components/schemas/APIEntitiesProtectedBranch"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProtectedBranch"
         applies_to_all_protected_branches:
           type: boolean
         coverage_minimum_threshold:
@@ -92851,7 +93357,9 @@ components:
         assignee:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         labels:
-          "$ref": "#/components/schemas/APIEntitiesLabelBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesLabelBasic"
         weight:
           type: integer
           example: 0
@@ -93365,7 +93873,9 @@ components:
         extra_shared_runners_minutes_limit:
           type: string
         scim_identities:
-          "$ref": "#/components/schemas/APIEntitiesScimIdentity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesScimIdentity"
         is_admin:
           type: string
         note:
@@ -93567,7 +94077,8 @@ components:
           format: date-time
           example: '2020-08-31T15:53:00.073Z'
         impersonation:
-          type: string
+          type: boolean
+          example: true
     APIEntitiesImpersonationTokenWithToken:
       type: object
       properties:
@@ -93622,33 +94133,44 @@ components:
           format: date-time
           example: '2020-08-31T15:53:00.073Z'
         impersonation:
-          type: string
+          type: boolean
+          example: true
         token:
           type: string
+          example: glpat-<example-token>
     APIEntitiesUserCreditCardValidations:
       type: object
       properties:
         user_id:
-          type: string
+          type: integer
+          format: int64
+          example: 1
         credit_card_validated_at:
           type: string
+          format: date-time
+          example: '2025-01-01T00:00:00.000Z'
     APIEntitiesUserPreferences:
       type: object
       properties:
         id:
-          type: string
+          type: integer
+          format: int64
+          example: 1
         user_id:
-          type: string
+          type: integer
+          format: int64
+          example: 1
         view_diffs_file_by_file:
-          type: string
+          type: boolean
         show_whitespace_in_diffs:
-          type: string
+          type: boolean
         pass_user_identities_to_ci_jwt:
-          type: string
+          type: boolean
         policy_advanced_editor:
-          type: string
+          type: boolean
         emoji_skin_tone:
-          type: string
+          type: integer
+          example: 0
         mobile_push_working_hours_enabled:
           type: boolean
           example: true
@@ -94813,6 +95335,8 @@ components:
           type: string
         draft_notes_create_limit:
           type: string
+        markdown_upload_limit_megabytes_per_day:
+          type: string
         members_delete_limit:
           type: string
         milestone_destroy_limit:
@@ -95069,6 +95593,8 @@ components:
           type: string
         allow_account_deletion:
           type: string
+        git_push_per_project_limit:
+          type: string
         gitlab_shell_operation_limit:
           type: string
         gitlab_shell_operation_per_actor_limit:
@@ -95096,6 +95622,8 @@ components:
         runner_manager_list_limit_per_user:
           type: string
         pipeline_schedule_management_limit_per_user:
+          type: string
+        pipeline_trigger_management_limit_per_user:
           type: string
         job_retry_limit_per_user_project:
           type: string
@@ -95850,6 +96378,7 @@ components:
           type: string
         notification_email:
           type: string
+          example: user@example.com
     APIEntitiesNotificationSetting:
       type: object
       properties:
@@ -96120,11 +96649,16 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: integer
+          format: int64
+          example: 1
         token:
           type: string
+          example: glrt-abc123
         token_expires_at:
           type: string
+          format: date-time
+          example: '2025-01-01T00:00:00.000Z'
     APIEntitiesUserCounts:
       type: object
       properties:
@@ -96193,7 +96727,9 @@ components:
       type: object
       properties:
         modules:
-          type: string
+          type: array
+          items:
+            type: object
     APIEntitiesTerraformModuleVersion:
       type: object
       properties:
@@ -96323,9 +96859,13 @@ components:
           example: https://webhook.site
         name:
           type: string
+          description: Name of the hook. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887)
+            in GitLab 17.1.
           example: Hook name
         description:
           type: string
+          description: Description of the hook. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887)
+            in GitLab 17.1.
           example: Hook description
         created_at:
           type: string
@@ -96374,12 +96914,45 @@ components:
             type: object
         token_present:
           type: boolean
-          description: Whether a secret token is configured
+          description: Whether a secret token is configured. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325)
+            in GitLab 19.0.
           example: false
         signing_token_present:
           type: boolean
-          description: Whether an HMAC signing token is configured
+          description: Whether an HMAC signing token is configured. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325)
+            in GitLab 19.0.
           example: false
+    APIEntitiesSupplyChainSigningCertificate:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the signing certificate
+          format: int64
+          example: 1
+        certificate:
+          type: string
+          description: PEM-encoded certificate authority (CA) certificate, which contains
+            the CA public key
+          example: |
+            -----BEGIN CERTIFICATE-----
+            MIIBszCCAVqgAwIBAgIUJ...
+            -----END CERTIFICATE-----
+        active:
+          type: boolean
+          description: If true, GitLab uses this CA to issue certificates for new
+            attestations
+          example: true
+        expires_at:
+          type: string
+          description: Date and time the certificate expires
+          format: date-time
+          example: '2036-10-22T07:08:25.000Z'
+        created_at:
+          type: string
+          description: Date and time the certificate was created
+          format: date-time
+          example: '2026-10-22T07:08:25.643Z'
     APIEntitiesSupplyChainAttestation:
       type: object
       properties:
@@ -96791,6 +97364,7 @@ components:
           example: 1234
         token:
           type: string
+          example: glpat-<example-token>
     APIEntitiesResourceAccessToken:
       type: object
       properties:
@@ -99699,9 +100273,13 @@ components:
           example: https://webhook.site
         name:
           type: string
+          description: Name of the hook. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887)
+            in GitLab 17.1.
           example: Hook name
         description:
           type: string
+          description: Description of the hook. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460887)
+            in GitLab 17.1.
           example: Hook description
         created_at:
           type: string
@@ -99750,11 +100328,13 @@ components:
             type: object
         token_present:
           type: boolean
-          description: Whether a secret token is configured
+          description: Whether a secret token is configured. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325)
+            in GitLab 19.0.
           example: false
         signing_token_present:
           type: boolean
-          description: Whether an HMAC signing token is configured
+          description: Whether an HMAC signing token is configured. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325)
+            in GitLab 19.0.
           example: false
         project_id:
           type: integer
@@ -100242,9 +100822,11 @@ components:
       type: object
       properties:
         expired:
-          type: string
+          type: boolean
         expiration:
           type: string
+          format: date-time
+          example: '2025-01-01T00:00:00.000Z'
     APIEntitiesPagesDomainBasic:
       type: object
       properties:
@@ -101343,6 +101925,7 @@ components:
           type: string
         path:
           type: string
+          example: "/root"
     APIEntitiesCommitWithLink:
       type: object
       properties:
@@ -103263,12 +103846,16 @@ components:
         group_inheritance_type:
           type: integer
         deployment_approvals:
-          "$ref": "#/components/schemas/APIEntitiesDeploymentsApproval"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesDeploymentsApproval"
     APIEntitiesDeploymentsApprovalSummary:
       type: object
       properties:
         rules:
-          "$ref": "#/components/schemas/APIEntitiesProtectedEnvironmentsApprovalRuleForSummary"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesProtectedEnvironmentsApprovalRuleForSummary"
     APIEntitiesDeploymentExtended:
       type: object
       properties:
@@ -103306,7 +103893,9 @@ components:
           type: integer
           example: 0
         approvals:
-          "$ref": "#/components/schemas/APIEntitiesDeploymentsApproval"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesDeploymentsApproval"
         approval_summary:
           "$ref": "#/components/schemas/APIEntitiesDeploymentsApprovalSummary"
     APIEntitiesDeployToken:
@@ -104424,8 +105013,11 @@ components:
       properties:
         token:
           type: string
+          example: your_runner_token
         token_expires_at:
           type: string
+          format: date-time
+          example: '2025-01-01T00:00:00.000Z'
     APIEntitiesCiJobRouterDiscoveryInformation:
       type: object
       properties:
@@ -104952,9 +105544,13 @@ components:
         ldap_access:
           type: string
         ldap_group_links:
-          "$ref": "#/components/schemas/APIEntitiesLdapGroupLink"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesLdapGroupLink"
         saml_group_links:
-          "$ref": "#/components/schemas/APIEntitiesSamlGroupLink"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesSamlGroupLink"
         file_template_project_id:
           type: string
         wiki_access_level:
@@ -105667,6 +106263,8 @@ components:
           example: https://gitlab.example.com/root
         requested_at:
           type: string
+          format: date-time
+          example: '2025-01-01T00:00:00.000Z'
     postApiV4RolloutsIdRequest:
       type: object
       properties:
@@ -109448,20 +110046,22 @@ components:
           nullable: true
         commit_message_negative_regex:
           type: string
-          description: Regular expression that commit messages must not match. At
-            least one of `deny_delete_tag`, `member_check`, `prevent_secrets`, `commit_message_regex`,
-            `commit_message_negative_regex`, `branch_name_regex`, `author_email_regex`,
-            `file_name_regex`, `max_file_size`, `commit_committer_check`, `commit_committer_name_check`,
-            `reject_unsigned_commits`, `reject_non_dco_commits` must be provided.
+          description: Regular expression that commit messages must not match, for
+            example `ssh\:\/\/`. At least one of `deny_delete_tag`, `member_check`,
+            `prevent_secrets`, `commit_message_regex`, `commit_message_negative_regex`,
+            `branch_name_regex`, `author_email_regex`, `file_name_regex`, `max_file_size`,
+            `commit_committer_check`, `commit_committer_name_check`, `reject_unsigned_commits`,
+            `reject_non_dco_commits` must be provided.
           example: ssh\:\/\/
           nullable: true
         branch_name_regex:
           type: string
-          description: Regular expression that branch names must match. At least one
-            of `deny_delete_tag`, `member_check`, `prevent_secrets`, `commit_message_regex`,
-            `commit_message_negative_regex`, `branch_name_regex`, `author_email_regex`,
-            `file_name_regex`, `max_file_size`, `commit_committer_check`, `commit_committer_name_check`,
-            `reject_unsigned_commits`, `reject_non_dco_commits` must be provided.
+          description: Regular expression that branch names must match, for example
+            `(feature|hotfix)\/.*`. At least one of `deny_delete_tag`, `member_check`,
+            `prevent_secrets`, `commit_message_regex`, `commit_message_negative_regex`,
+            `branch_name_regex`, `author_email_regex`, `file_name_regex`, `max_file_size`,
+            `commit_committer_check`, `commit_committer_name_check`, `reject_unsigned_commits`,
+            `reject_non_dco_commits` must be provided.
           example: "(feature|hotfix)\\/.*"
           nullable: true
         author_email_regex:
@@ -109476,12 +110076,12 @@ components:
           nullable: true
         file_name_regex:
           type: string
-          description: Regular expression that committed filenames must not match.
-            At least one of `deny_delete_tag`, `member_check`, `prevent_secrets`,
-            `commit_message_regex`, `commit_message_negative_regex`, `branch_name_regex`,
-            `author_email_regex`, `file_name_regex`, `max_file_size`, `commit_committer_check`,
-            `commit_committer_name_check`, `reject_unsigned_commits`, `reject_non_dco_commits`
-            must be provided.
+          description: Regular expression that committed filenames must not match,
+            for example `(jar|exe)$`. At least one of `deny_delete_tag`, `member_check`,
+            `prevent_secrets`, `commit_message_regex`, `commit_message_negative_regex`,
+            `branch_name_regex`, `author_email_regex`, `file_name_regex`, `max_file_size`,
+            `commit_committer_check`, `commit_committer_name_check`, `reject_unsigned_commits`,
+            `reject_non_dco_commits` must be provided.
           example: "(jar|exe)$"
           nullable: true
         max_file_size:
@@ -109572,20 +110172,22 @@ components:
           nullable: true
         commit_message_negative_regex:
           type: string
-          description: Regular expression that commit messages must not match. At
-            least one of `deny_delete_tag`, `member_check`, `prevent_secrets`, `commit_message_regex`,
-            `commit_message_negative_regex`, `branch_name_regex`, `author_email_regex`,
-            `file_name_regex`, `max_file_size`, `commit_committer_check`, `commit_committer_name_check`,
-            `reject_unsigned_commits`, `reject_non_dco_commits` must be provided.
+          description: Regular expression that commit messages must not match, for
+            example `ssh\:\/\/`. At least one of `deny_delete_tag`, `member_check`,
+            `prevent_secrets`, `commit_message_regex`, `commit_message_negative_regex`,
+            `branch_name_regex`, `author_email_regex`, `file_name_regex`, `max_file_size`,
+            `commit_committer_check`, `commit_committer_name_check`, `reject_unsigned_commits`,
+            `reject_non_dco_commits` must be provided.
           example: ssh\:\/\/
           nullable: true
         branch_name_regex:
           type: string
-          description: Regular expression that branch names must match. At least one
-            of `deny_delete_tag`, `member_check`, `prevent_secrets`, `commit_message_regex`,
-            `commit_message_negative_regex`, `branch_name_regex`, `author_email_regex`,
-            `file_name_regex`, `max_file_size`, `commit_committer_check`, `commit_committer_name_check`,
-            `reject_unsigned_commits`, `reject_non_dco_commits` must be provided.
+          description: Regular expression that branch names must match, for example
+            `(feature|hotfix)\/.*`. At least one of `deny_delete_tag`, `member_check`,
+            `prevent_secrets`, `commit_message_regex`, `commit_message_negative_regex`,
+            `branch_name_regex`, `author_email_regex`, `file_name_regex`, `max_file_size`,
+            `commit_committer_check`, `commit_committer_name_check`, `reject_unsigned_commits`,
+            `reject_non_dco_commits` must be provided.
           example: "(feature|hotfix)\\/.*"
           nullable: true
         author_email_regex:
@@ -109600,12 +110202,12 @@ components:
           nullable: true
         file_name_regex:
           type: string
-          description: Regular expression that committed filenames must not match.
-            At least one of `deny_delete_tag`, `member_check`, `prevent_secrets`,
-            `commit_message_regex`, `commit_message_negative_regex`, `branch_name_regex`,
-            `author_email_regex`, `file_name_regex`, `max_file_size`, `commit_committer_check`,
-            `commit_committer_name_check`, `reject_unsigned_commits`, `reject_non_dco_commits`
-            must be provided.
+          description: Regular expression that committed filenames must not match,
+            for example `(jar|exe)$`. At least one of `deny_delete_tag`, `member_check`,
+            `prevent_secrets`, `commit_message_regex`, `commit_message_negative_regex`,
+            `branch_name_regex`, `author_email_regex`, `file_name_regex`, `max_file_size`,
+            `commit_committer_check`, `commit_committer_name_check`, `reject_unsigned_commits`,
+            `reject_non_dco_commits` must be provided.
           example: "(jar|exe)$"
           nullable: true
         max_file_size:
@@ -114108,6 +114710,11 @@ components:
           description: Maximum number of pipeline schedule changes (create, update,
             delete, take ownership) allowed per minute for a given user.
           nullable: true
+        pipeline_trigger_management_limit_per_user:
+          type: integer
+          description: Maximum number of pipeline trigger token changes (create, update,
+            delete) allowed per minute for a given user.
+          nullable: true
         job_retry_limit_per_user_project:
           type: integer
           description: Maximum number of job retries allowed per minute for a given
@@ -114564,6 +115171,13 @@ components:
           description: Start day of the week for calendar views and date pickers.
             Valid values are `0` (default) for Sunday, `1` for Monday, and `6` for
             Saturday.
+          nullable: true
+        git_push_per_project_limit:
+          type: integer
+          description: 'Maximum number of Git pushes every minute to one project,
+            over HTTPS and SSH. Default: `600`. Set to `0` to disable the limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269867)
+            in GitLab 19.6. This attribute is in beta and might be changed or removed
+            without notice.'
           nullable: true
         github_gists_import_limit:
           type: string
@@ -116090,6 +116704,9 @@ components:
           type: string
           nullable: true
         notes_create_limit_allowlist_raw:
+          type: string
+          nullable: true
+        markdown_upload_limit_megabytes_per_day:
           type: string
           nullable: true
         members_delete_limit:
@@ -119261,9 +119878,9 @@ components:
       properties:
         content:
           type: string
-          description: The content of a snippet. Mutually exclusive with `files`.
-            At least one of `content`, `description`, `files`, `file_name`, `title`,
-            `visibility` must be provided.
+          description: The content of a snippet. Deprecated. Use `files` instead.
+            Mutually exclusive with `files`. At least one of `content`, `description`,
+            `files`, `file_name`, `title`, `visibility` must be provided.
           nullable: true
         description:
           type: string
@@ -119272,9 +119889,9 @@ components:
           nullable: true
         file_name:
           type: string
-          description: The name of a snippet file. Mutually exclusive with `files`.
-            At least one of `content`, `description`, `files`, `file_name`, `title`,
-            `visibility` must be provided.
+          description: The name of a snippet file. Deprecated. Use `files` instead.
+            Mutually exclusive with `files`. At least one of `content`, `description`,
+            `files`, `file_name`, `title`, `visibility` must be provided.
           nullable: true
         title:
           type: string
@@ -119531,16 +120148,19 @@ components:
           type: string
           description: First commit in the range of commits, as a SHA, to use for
             the changelog. This commit is not included in the changelog. If omitted,
-            the most recent stable version tag before `version` is used.
+            the most recent stable version tag before `version` is used. Tags in `X.Y.Z`
+            or `vX.Y.Z` format are recognized, and pre-release tags such as `v1.0.0-pre1`
+            are ignored. If no such tag exists, an error is returned and you must
+            set `from`.
           example: ed899a2f4b50b4370feeea94676502b42383c746
           nullable: true
         to:
           type: string
-          description: Last commit in the range of commits, as a SHA, to use for the
-            changelog. This commit is included in the changelog. If omitted, uses
-            the latest commit on the default branch. For the Add changelog data to
-            file operation, uses the latest commit on `branch` instead. The range
-            can contain at most 15,000 commits.
+          description: Last commit in the range of commits, as a SHA or a branch or
+            tag name, to use for the changelog. This commit is included in the changelog.
+            If omitted, uses the latest commit on the default branch. For the Add
+            changelog data to file operation, uses the latest commit on `branch` instead.
+            The range can contain at most 15,000 commits.
           example: 6104942438c14ec7bd21c6cd5bd995272b3faff6
           nullable: true
         date:
@@ -119564,7 +120184,8 @@ components:
         config_file_ref:
           type: string
           description: Git reference, for example a branch, where the changelog configuration
-            file is defined. Defaults to the default branch of the repository.
+            file is defined. Defaults to the default branch of the repository. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/426108)
+            in GitLab 18.2.
           example: main
           nullable: true
         branch:
@@ -119595,7 +120216,7 @@ components:
           nullable: true
         enabled:
           type: boolean
-          description: If `true`, the mirror is enabled.
+          description: If `true`, the mirror is enabled. Default is `false`.
           nullable: true
         auth_method:
           type: string
@@ -119638,7 +120259,8 @@ components:
           nullable: true
         auth_method:
           type: string
-          description: Mirror authentication method.
+          description: Mirror authentication method. Accepted values are `ssh_public_key`
+            and `password`.
           nullable: true
         keep_divergent_refs:
           type: boolean
@@ -135006,6 +135628,47 @@ components:
       required:
       - name
       - platform_kubernetes_attributes
+    postApiV4GroupsIdApplicationsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the application.
+          example: MyApplication
+          nullable: true
+        redirect_uri:
+          type: string
+          description: Redirect URI of the application.
+          example: https://redirect.uri
+          nullable: true
+        scopes:
+          type: string
+          description: Scopes available to the application. Separate multiple scopes
+            with a space.
+          nullable: true
+        confidential:
+          type: boolean
+          description: If `true`, the application can securely store client credentials,
+            such as the client secret. Non-confidential applications, such as native
+            mobile apps and Single Page Apps might expose client credentials. If unset,
+            defaults to `true`.
+          default: true
+      required:
+      - name
+      - redirect_uri
+      - scopes
+    putApiV4GroupsIdApplicationsApplicationIdRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the application.
+          nullable: true
+        scopes:
+          type: string
+          description: Scopes available to the application. Separate multiple scopes
+            with a space.
+          nullable: true
     postApiV4GeoStatusRequest:
       type: object
       properties:
@@ -137011,7 +137674,8 @@ components:
           nullable: true
         line:
           type: integer
-          description: Line number where the comment should be placed.
+          description: Line number where the comment should be placed. Required if
+            `path` is provided.
           example: 11
           nullable: true
         line_type:

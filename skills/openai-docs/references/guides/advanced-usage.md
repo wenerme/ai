@@ -120,7 +120,7 @@ print(f"{num_tokens_from_messages(messages, model)} prompt tokens counted.")
 
 The following historical example shows how to read the API's prompt token count. It cannot run against the retired model:
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -131,6 +131,8 @@ const response = await client.chat.completions.create({
   temperature: 0,
 });
 
+if (!response.usage)
+  throw new Error("The response did not include token usage.");
 console.log(`${response.usage.prompt_tokens} prompt tokens used.`);
 ```
 

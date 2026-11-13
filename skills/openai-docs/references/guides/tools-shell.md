@@ -45,7 +45,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -203,7 +203,7 @@ curl -L 'https://api.openai.com/v1/containers' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -316,7 +316,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -449,7 +449,7 @@ curl -L 'https://api.openai.com/v1/containers' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -611,7 +611,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -859,7 +859,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -1193,7 +1193,7 @@ curl -L -X DELETE 'https://api.openai.com/v1/containers/container_id' \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1309,7 +1309,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1529,7 +1529,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1696,7 +1696,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1810,16 +1810,23 @@ When you receive `shell_call` output items:
 
 Local shell executor example
 
-```javascript
+```typescript
 import { spawn } from "node:child_process";
+import type { Readable } from "node:stream";
 
 class ShellExecutor {
+  defaultTimeoutMs: number;
   constructor(defaultTimeoutMs = 60_000) {
     this.defaultTimeoutMs = defaultTimeoutMs;
   }
 
-  async run(cmd, timeoutMs) {
-    return new Promise((resolve, reject) => {
+  async run(cmd: string, timeoutMs: number | undefined) {
+    return new Promise<{
+      stdout: string;
+      stderr: string;
+      exitCode: number | null;
+      timedOut: boolean;
+    }>((resolve, reject) => {
       const child = spawn("sh", ["-c", cmd], {
         detached: true,
         stdio: ["ignore", "pipe", "pipe"],
@@ -1829,20 +1836,28 @@ class ShellExecutor {
       let timedOut = false;
       let outputLimited = false;
       const stop = () => {
+        if (child.pid === undefined) return;
         try {
           process.kill(-child.pid, "SIGKILL");
         } catch (error) {
-          if (error.code !== "ESRCH") reject(error);
+          if (
+            !(
+              error instanceof Error &&
+              "code" in error &&
+              error.code === "ESRCH"
+            )
+          )
+            reject(error);
         }
       };
       const timer = setTimeout(() => {
         timedOut = true;
         stop();
       }, timeoutMs ?? this.defaultTimeoutMs);
-      const collect = (stream, append) => {
+      const collect = (stream: Readable, append: (chunk: string) => void) => {
         let bytes = 0;
         stream.setEncoding("utf8");
-        stream.on("data", (chunk) => {
+        stream.on("data", (chunk: string) => {
           bytes += Buffer.byteLength(chunk);
           if (bytes > 1024 * 1024) {
             outputLimited = true;
@@ -1853,10 +1868,10 @@ class ShellExecutor {
           }
         });
       };
-      collect(child.stdout, (chunk) => {
+      collect(child.stdout, (chunk: string) => {
         stdout += chunk;
       });
-      collect(child.stderr, (chunk) => {
+      collect(child.stderr, (chunk: string) => {
         stderr += chunk;
       });
       child.on("error", (error) => {
@@ -2063,11 +2078,18 @@ If you are using the [Agents SDK](https://developers.openai.com/api/docs/guides/
 
 Use local shell with Agents SDK
 
-```javascript
-import { Agent, run, withTrace, shellTool } from "@openai/agents";
+```typescript
+import {
+  Agent,
+  run,
+  withTrace,
+  shellTool,
+  type ShellAction,
+  type ShellResult,
+} from "@openai/agents";
 
 class LocalShell {
-  async run(action) {
+  async run(action: ShellAction): Promise<ShellResult> {
     return {
       output: [
         {

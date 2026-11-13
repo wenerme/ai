@@ -10,11 +10,11 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-t
+![Thinking Machines logo](https://developers.cloudflare.com/_astro/thinkingmachines.DXVufmVi.svg)
 
 # Inkling 256K
 
-Text Generation • thinkingmachines
+Text Generation • Thinking Machines
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 

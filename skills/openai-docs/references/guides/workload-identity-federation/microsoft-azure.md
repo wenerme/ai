@@ -44,7 +44,7 @@ If the resource has multiple user-assigned managed identities, add the `client_i
 
 Before configuring workload identity federation, export the Microsoft Entra token as `TOKEN`, then run this script locally to inspect its claims:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -410,7 +410,7 @@ Set `OPENAI_WIF_AUDIENCE` to the Microsoft Entra Application ID URI configured a
 
 Authenticate from an Azure managed identity token
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const imdsEndpoint = "http://169.254.169.254/metadata/identity/oauth2/token";
@@ -425,9 +425,9 @@ if (!identityProviderId || !serviceAccountId || !audience) {
   );
 }
 
-function azureManagedIdentityTokenProvider(resource) {
+function azureManagedIdentityTokenProvider(resource: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const url = new URL(imdsEndpoint);
       url.searchParams.set("api-version", "2018-02-01");
@@ -920,7 +920,7 @@ export TOKEN
 
 Then run this script:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -1281,7 +1281,7 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from an AKS projected service account token
 
-```javascript
+```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -1295,9 +1295,9 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedAksServiceAccountTokenProvider(path) {
+function mountedAksServiceAccountTokenProvider(path: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const token = (await readFile(path, "utf8")).trim();
       if (!token) {

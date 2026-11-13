@@ -72,7 +72,7 @@ export TOKEN
 
 Before configuring workload identity federation, export the AWS-issued token as `TOKEN`, then run this script locally to inspect its claims:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -440,7 +440,7 @@ Set `OPENAI_WIF_AUDIENCE` to the same audience configured on the OpenAI Workload
 
 Authenticate from an AWS-issued OIDC token
 
-```javascript
+```typescript
 import { GetWebIdentityTokenCommand, STSClient } from "@aws-sdk/client-sts";
 import OpenAI from "openai";
 
@@ -460,7 +460,7 @@ const sts = new STSClient({ region: awsRegion });
 
 function awsOutboundWebIdentityTokenProvider() {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const response = await sts.send(
         new GetWebIdentityTokenCommand({
@@ -858,7 +858,7 @@ export TOKEN
 
 Then run this script:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -1213,7 +1213,7 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from an EKS projected service account token
 
-```javascript
+```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -1227,9 +1227,9 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedEksServiceAccountTokenProvider(path) {
+function mountedEksServiceAccountTokenProvider(path: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const token = (await readFile(path, "utf8")).trim();
       if (!token) {

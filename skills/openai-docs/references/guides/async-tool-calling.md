@@ -26,13 +26,13 @@ Add `async: true` to the tool definition. The corresponding call items in `respo
 
 Run a weather lookup in the background
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
 const model = "gpt-6-astra";
 
-const tools = [
+const tools: OpenAI.Responses.Tool[] = [
   {
     type: "function",
     name: "get_weather",
@@ -47,7 +47,7 @@ const tools = [
     },
   },
 ];
-async function getWeather(city) {
+async function getWeather(city: string) {
   const snapshots = {
     Paris: {
       city: "Paris",
@@ -59,7 +59,7 @@ async function getWeather(city) {
   if (typeof city !== "string" || !Object.hasOwn(snapshots, city)) {
     throw new Error(`No demo weather snapshot for ${city}.`);
   }
-  return snapshots[city];
+  return snapshots[city as keyof typeof snapshots];
 }
 const instructions =
   "Start the weather lookup and answer the independent packing question " +

@@ -16,7 +16,7 @@ The Retrieval API is powered by [**vector stores**](#vector-stores), which serve
 
 Create vector store with files
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -143,7 +143,7 @@ puts(store.id)
 
 Search query
 
-```javascript
+```typescript
 const userQuery = "What is the return policy?";
 
 const results = await client.vectorStores.search(vector_store.id, {
@@ -235,7 +235,7 @@ You can query a vector store using the `search` function and specifying a `query
 
 Search query
 
-```javascript
+```typescript
 const results = await client.vectorStores.search(vector_store.id, {
   query: "How many woodchucks are allowed per passenger?",
 });
@@ -553,7 +553,7 @@ Create
 
     Create vector store
 
-```javascript
+```typescript
 await client.vectorStores.create({
   name: "Support FAQ",
   file_ids: ["file_123"],
@@ -626,7 +626,7 @@ Retrieve
 
     Retrieve vector store
 
-```javascript
+```typescript
 await client.vectorStores.retrieve("vs_123");
 ```
 
@@ -682,7 +682,7 @@ Update
 
     Update vector store
 
-```javascript
+```typescript
 await client.vectorStores.update("vs_123", {
   name: "Support FAQ Updated",
 });
@@ -751,7 +751,7 @@ Delete
 
     Delete vector store
 
-```javascript
+```typescript
 await client.vectorStores.delete("vs_123");
 ```
 
@@ -807,7 +807,7 @@ List
 
     List vector stores
 
-```javascript
+```typescript
 await client.vectorStores.list();
 ```
 
@@ -864,7 +864,7 @@ Create
 
     Create vector store file
 
-```javascript
+```typescript
 await client.vectorStores.files.createAndPoll("vs_123", {
   file_id: "file_123",
 });
@@ -938,7 +938,7 @@ Upload
 
     Upload vector store file
 
-```javascript
+```typescript
 await client.vectorStores.files.uploadAndPoll(
   "vs_123",
   fs.createReadStream("customer_policies.txt")
@@ -1044,7 +1044,7 @@ Retrieve
 
     Retrieve vector store file
 
-```javascript
+```typescript
 await client.vectorStores.files.retrieve("file_123", {
   vector_store_id: "vs_123",
 });
@@ -1114,7 +1114,7 @@ Update
 
     Update vector store file
 
-```javascript
+```typescript
 await client.vectorStores.files.update("file_123", {
   vector_store_id: "vs_123",
   attributes: { key: "value" },
@@ -1197,7 +1197,7 @@ Delete
 
     Delete vector store file
 
-```javascript
+```typescript
 await client.vectorStores.files.delete("file_123", {
   vector_store_id: "vs_123",
 });
@@ -1267,7 +1267,7 @@ List
 
     List vector store files
 
-```javascript
+```typescript
 await client.vectorStores.files.list("vs_123");
 ```
 
@@ -1324,7 +1324,7 @@ Create
 
     Batch create operation
 
-```javascript
+```typescript
 await client.vectorStores.fileBatches.createAndPoll("vs_123", {
   files: [
     {
@@ -1501,7 +1501,7 @@ Retrieve
 
     Batch retrieve operation
 
-```javascript
+```typescript
 await client.vectorStores.fileBatches.retrieve("vsfb_123", {
   vector_store_id: "vs_123",
 });
@@ -1574,7 +1574,7 @@ Cancel
 
     Batch cancel operation
 
-```javascript
+```typescript
 await client.vectorStores.fileBatches.cancel("vsfb_123", {
   vector_store_id: "vs_123",
 });
@@ -1647,7 +1647,7 @@ List
 
     List files in a batch
 
-```javascript
+```typescript
 await client.vectorStores.fileBatches.listFiles("vsfb_123", {
   vector_store_id: "vs_123",
 });
@@ -1723,7 +1723,7 @@ Each `vector_store.file` can have associated `attributes`, a dictionary of value
 
 Create vector store file with attributes
 
-```javascript
+```typescript
 await client.vectorStores.files.create("<vector_store_id>", {
   file_id: "file_123",
   attributes: {
@@ -1815,7 +1815,7 @@ You can set an expiration policy on `vector_store` objects with `expires_after`.
 
 Set expiration policy for vector store
 
-```javascript
+```typescript
 await client.vectorStores.update("vs_123", {
   expires_after: {
     anchor: "last_active_at",
@@ -1951,7 +1951,7 @@ After performing a query you may want to synthesize a response based on the resu
 
 Perform search query to get results
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -2029,7 +2029,7 @@ puts(results.data)
 
 Synthesize a response based on results
 
-```javascript
+```typescript
 const formattedResults = formatResults(results.data);
 // Join the text content of all results
 const textSources = results.data
@@ -2210,8 +2210,10 @@ so:
 
 Sample result formatting function
 
-```javascript
-function formatResults(results) {
+```typescript
+function formatResults(results: {
+  data: import("openai/resources/vector-stores").VectorStoreSearchResponse[];
+}) {
   let formattedResults = "";
   for (const result of results.data) {
     let formattedResult = `<result file_id='${result.file_id}' file_name='${result.filename}'>`;

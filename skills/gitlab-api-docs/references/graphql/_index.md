@@ -449,7 +449,7 @@ GraphQL mutations can be detected as spam. If a mutation is detected as spam and
     ],
     "data": {
       "updateSnippet": {
-        "snippet": null,
+        "snippet": null
       }
     }
   }

@@ -8,7 +8,7 @@ Use the [Responses API](https://developers.openai.com/api/reference/resources/re
 
 Generate text from a simple prompt
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -161,7 +161,7 @@ In addition to plain text, you can also have the model return structured data in
 
 Because the content generated from a model is non-deterministic, prompting to get your desired output is a mix of art and science. However, you can apply techniques and best practices to get good results consistently.
 
-Some prompt engineering techniques work with every model, like using message roles. But different models might need to be prompted differently to produce the best results. Even different snapshots of models within the same family could produce different results. So as you build more complex applications, we strongly recommend:
+Some prompt engineering techniques work with every model, like using message roles. But different models might need to be prompted differently to produce the best results. Even different snapshots of models within the same family could produce different results. As you build more complex applications, we strongly recommend:
 
 - Pinning your production applications to specific [model snapshots](https://developers.openai.com/api/docs/models) (like `gpt-5.5-2026-04-23` for example) to ensure consistent behavior
 - Building tests and evaluation suites that measure prompt behavior so you can monitor performance as you iterate, or when you change and upgrade model versions
@@ -182,7 +182,7 @@ The `instructions` parameter gives the model high-level instructions on how it s
 
 Generate text with instructions
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -325,7 +325,7 @@ The example above is roughly equivalent to using the following input messages in
 
 Generate text with messages using different roles
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 

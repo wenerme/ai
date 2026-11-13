@@ -7,7 +7,7 @@
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/597648) in GitLab 19.3. Feature flag `group_security_configuration_scanners_tab` removed.
 
 Use the Scanner Enablement Wizard to apply [security configuration profiles](security_configuration_profiles.md)
-to projects that lack scanner coverage. The wizard configures dependency scanning, SAST, and secret
+to projects in a group. The wizard configures dependency scanning, SAST, and secret
 detection, and updates the coverage shown in the [security inventory](../security_inventory/_index.md).
 
 Prerequisites:
@@ -81,7 +81,8 @@ To configure a scanner for a project:
 
 The Scanner Enablement Wizard provides two approaches:
 
-- **Quick setup**: Applies the GitLab default profiles to every uncovered project in the group.
+- : Applies profiles to the projects in the group that match the mode you select.
+  The GitLab default profiles are preselected, and you can change the profile for each scanner.
 - **Advanced setup**: Applies selected profiles to specific projects and scanners.
 
 > [!note]
@@ -90,14 +91,44 @@ The Scanner Enablement Wizard provides two approaches:
 
 ### Quick setup
 
-Quick setup applies the GitLab default profiles to every uncovered project in the group.
+- Mode step [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635247) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `scanner_wizard_attach_modes`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the
+> history.
+
+Use Quick setup to apply profiles to the entire group, based on the mode you select.
+
+To use Quick setup:
 
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Secure** > **Security configuration**.
 1. Select the **Scanners** tab.
 1. Select **Enable scanners**.
 1. Select **Quick setup**, then select **Start quick setup**.
-1. On the **Review configuration** step, review the scanners and the projects they apply to.
+1. On the  step, select which projects get the profiles:
+
+   - : Applies the profile to every project.
+     Replaces any profile a project already has for that scanner.
+     Projects that also scan another way, such as with CI/CD configuration or a security policy,
+     run both scans.
+   - : Applies the profile only
+     to projects that have no profile and no scan for that scanner.
+     Projects that already scan keep their current setup.
+     This mode is selected by default.
+   - : Applies the profile only to projects
+     that already have a profile for that scanner, and replaces that profile.
+     Other projects are not changed.
+
+   GitLab checks each scanner separately.
+   For example, with ,
+   a project that already runs SAST but not secret detection gets the secret detection profile.
+1. Optional. To use a different profile for a scanner, next to **Scanners**, select
+    ().
+   On the  step, from the
+    dropdown list, select a profile,
+   then select .
+1. On the  step, review the scanners and the mode.
 1. Select **Apply configuration**.
 
 After you apply a configuration, GitLab applies the profiles to projects in batches, which can take several
@@ -118,8 +149,9 @@ to more than 100 projects at once, use Quick setup.
    projects. The **Scanner coverage** column shows existing coverage. You can select up to 100 items.
 1. On the **Select scanners** step, select the scanners to enable. For each scanner, select the
    configuration profile to apply.
-1. On the **Review configuration** step, review the selected projects and scanners. To make changes,
-   select the edit icon () next to **Items** or **Scanners**.
+1. On the **Review configuration** step, review the selected projects and scanners.
+   To make changes, next to **Items**, select  (),
+   or next to **Scanners**, select  ().
 1. Select **Apply configuration**.
 
 After you apply a configuration, GitLab applies the profiles to projects in batches, which can take several

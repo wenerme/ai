@@ -33,7 +33,7 @@ With the Images API, choose `gpt-image-2.5-sunburst` to generate images from tex
 
 Generate images with Responses
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -51,6 +51,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("The image generation result is empty.");
   const fs = await import("fs");
   fs.writeFileSync("cat_and_otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -252,7 +253,7 @@ Passing a URL
 
     Analyze the content of an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -474,7 +475,7 @@ Passing a Base64 encoded image
 
     Analyze the content of an image
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -719,14 +720,14 @@ Passing a file ID
 
     Analyze the content of an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import fs from "fs";
 
 const openai = new OpenAI();
 
 // Function to create a file with the Files API
-async function createFile(filePath) {
+async function createFile(filePath: fs.PathLike) {
   const fileContent = fs.createReadStream(filePath);
   const result = await openai.files.create({
     file: fileContent,

@@ -26,7 +26,7 @@ for guidance on both image APIs.
 
 Generate an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -44,6 +44,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync("otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -254,7 +255,7 @@ Using previous response ID
 
     Multi-turn image generation
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -271,6 +272,7 @@ const imageData = response.output
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync("cat_and_otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -290,6 +292,7 @@ const imageData_fwup = response_fwup.output
 
 if (imageData_fwup.length > 0) {
   const imageBase64 = imageData_fwup[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync(
     "cat_and_otter_realistic.png",
@@ -556,7 +559,7 @@ Using image ID
 
     Multi-turn image generation
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -575,6 +578,7 @@ const imageData = imageGenerationCalls.map((output) => output.result);
 
 if (imageData.length > 0) {
   const imageBase64 = imageData[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync("cat_and_otter.png", Buffer.from(imageBase64, "base64"));
 }
@@ -589,7 +593,7 @@ const response_fwup = await openai.responses.create({
       content: [{ type: "input_text", text: "Now make it look realistic" }],
     },
     {
-      type: "image_generation_call",
+      type: "item_reference",
       id: imageGenerationCalls[0].id,
     },
   ],
@@ -602,6 +606,7 @@ const imageData_fwup = response_fwup.output
 
 if (imageData_fwup.length > 0) {
   const imageBase64 = imageData_fwup[0];
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const fs = await import("fs");
   fs.writeFileSync(
     "cat_and_otter_realistic.png",
@@ -915,12 +920,13 @@ You can set the number of partial images (1-3) with the `partial_images` paramet
 
 Stream an image
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import fs from "fs";
 const openai = new OpenAI();
 
-function saveBase64Image(filename, imageBase64) {
+function saveBase64Image(filename: string, imageBase64: string | null) {
+  if (!imageBase64) throw new Error("Image generation returned no image.");
   const imageBuffer = Buffer.from(imageBase64, "base64");
   fs.writeFileSync(filename, imageBuffer);
 }

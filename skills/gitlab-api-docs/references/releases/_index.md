@@ -384,7 +384,8 @@ Example response:
        "sha": "760d6cdfb0879c3ffedec13af470e0f71cf52c6cde4d",
        "filepath": "https://gitlab.example.com/root/awesome-app/-/releases/v0.1/evidence.json",
        "collected_at": "2019-07-16T14:00:12.256Z"
-     },
+     }
+   ],
    "_links": {
       "closed_issues_url": "https://gitlab.example.com/root/awesome-app/-/issues?release_tag=v0.1&scope=all&state=closed",
       "closed_merge_requests_url": "https://gitlab.example.com/root/awesome-app/-/merge_requests?release_tag=v0.1&scope=all&state=closed",
@@ -394,7 +395,6 @@ Example response:
       "opened_merge_requests_url": "https://gitlab.example.com/root/awesome-app/-/merge_requests?release_tag=v0.1&scope=all&state=opened",
       "self": "https://gitlab.example.com/root/awesome-app/-/releases/v0.1"
     }
-  ]
 }
 ```
 

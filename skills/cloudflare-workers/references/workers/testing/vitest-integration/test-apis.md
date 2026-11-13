@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/test
 
 # Test APIs
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides runtime helpers for writing tests. Some helpers are exported from the `cloudflare:workers` module, and others from the `cloudflare:test` module. Both modules are provided by the `@cloudflare/vitest-plugin` package, but can only be imported from test files that execute in the Workers runtime.
 
@@ -114,7 +114,8 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
         {
           id: "message-1",
           timestamp: new Date(1000),
-          body: "body-1"
+          body: "body-1",
+          attempts: 1
         }
       ]);
       const ctx = createExecutionContext();
@@ -381,7 +382,7 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
       await env.MY_WORKFLOW.create();
 
       // 3. ASSERTION
-      const instances = introspector.get();
+      const instances = await introspector.get();
       for(const instance of instances) {
         await expect(instance.waitForStatus("complete")).resolves.not.toThrow();
         const output = await instance.getOutput();
@@ -473,7 +474,7 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
         expect(error.name).toEqual("Error");
         expect(error.message).toContain("Execution timed out");
 
-      } catch {
+      } finally {
         // 4. DISPOSE
         await instance.dispose();
       }
@@ -542,5 +543,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/og.png?v=75594a5cce1aa029","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/og.png?v=75594a5cce1aa029","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

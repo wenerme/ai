@@ -66,7 +66,7 @@ export TOKEN
 
 Then run this script:
 
-```javascript
+```typescript
 const parts = process.env.TOKEN?.split(".") ?? [];
 if (parts.length !== 3) {
   throw new Error("Expected a compact JWT with three segments");
@@ -423,7 +423,7 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from a Kubernetes projected service account token
 
-```javascript
+```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -437,9 +437,9 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedServiceAccountTokenProvider(path) {
+function mountedServiceAccountTokenProvider(path: string) {
   return {
-    tokenType: "jwt",
+    tokenType: "jwt" as const,
     getToken: async () => {
       const token = (await readFile(path, "utf8")).trim();
       if (!token) {

@@ -79,12 +79,12 @@ Hosted tool search is the simplest path when you already know the full inventory
 
 Configure hosted tool search
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
 
-const crmNamespace = {
+const crmNamespace: OpenAI.Responses.NamespaceTool = {
   type: "namespace",
   name: "crm",
   description: "CRM tools for customer lookup and order management.",
@@ -412,7 +412,7 @@ Configure the `tool_search` tool with `execution: "client"` and a schema for the
 
 Configure client-executed tool search
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
@@ -450,7 +450,7 @@ if (!searchCall) {
   throw new Error("The response did not include a tool search call.");
 }
 
-const loadedTools = [
+const loadedTools: OpenAI.Responses.FunctionTool[] = [
   {
     type: "function",
     name: "get_shipping_eta",
@@ -468,7 +468,7 @@ const loadedTools = [
   },
 ];
 
-const searchOutput = {
+const searchOutput: OpenAI.Responses.ResponseInputItem = {
   type: "tool_search_output",
   execution: "client",
   call_id: searchCall.call_id,
@@ -908,7 +908,7 @@ Set `OPENAI_API_KEY` before running this example:
 
 Load function tools only when needed
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 

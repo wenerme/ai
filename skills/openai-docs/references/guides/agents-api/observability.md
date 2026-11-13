@@ -23,7 +23,7 @@ Every session exposes an event stream that shows what the agent is doing in real
 
 Follow live session events
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import OpenAI from "openai";
 
@@ -171,7 +171,7 @@ To inspect work that has already happened, retrieve the session’s saved items:
 
 Inspect saved session items
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -267,12 +267,12 @@ Session turns are available through the public API. Use the `turn_id` from a com
 
 Identify delegated command execution
 
-```javascript
+```typescript
 // Replace the illustrative session and turn IDs with values from your command item.
 import OpenAI from "openai";
 const client = new OpenAI();
 
-async function findTurn(sessionId, turnId) {
+async function findTurn(sessionId: string, turnId: string) {
   for await (const turn of client.beta.agents.sessions.turns.list(sessionId, {
     limit: 100,
   })) {

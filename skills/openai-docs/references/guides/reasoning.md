@@ -17,7 +17,7 @@ Call the [Responses API](https://developers.openai.com/api/reference/resources/r
 
 Using a reasoning model in the Responses API
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -289,7 +289,7 @@ To prevent this, ensure there's sufficient space in the context window or adjust
 
 Handling incomplete responses
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -313,7 +313,7 @@ const response = await openai.responses.create({
 
 if (
   response.status === "incomplete" &&
-  response.incomplete_details.reason === "max_output_tokens"
+  response.incomplete_details?.reason === "max_output_tokens"
 ) {
   console.log("Ran out of tokens");
   if (response.output_text?.length > 0) {
@@ -532,7 +532,7 @@ Use `previous_response_id` for the shortest stateful integration:
 
 Preserve reasoning with a previous response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -711,13 +711,13 @@ To use `all_turns` with `store: false`, preserve every output item, append the n
 
 Preserve reasoning without storing responses
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 const client = new OpenAI();
 
-const history = [
+const history: OpenAI.Responses.ResponseInput = [
   {
     role: "user",
     content: "Inspect this repository and identify the likely bug.",
@@ -970,7 +970,7 @@ For example, if the conversation starts with request-level effort `low`, this up
 
 Increase reasoning effort for a follow-up
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -1180,7 +1180,7 @@ The example below shows how to make an API request that includes a reasoning sum
 
 Include a reasoning summary with the API response
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -1373,7 +1373,7 @@ Missing or dropped `phase` can cause preambles to be treated as final answers in
 
 Round-trip assistant phase values
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1561,7 +1561,7 @@ Reasoning models can implement complex algorithms and produce code. This prompt 
 
   Refactor code
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -1810,7 +1810,7 @@ Reasoning models can also create multi-step plans. This example prompt asks the 
 
   Plan and create a Python project
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -1985,7 +1985,7 @@ OpenAI o-series models have shown excellent performance in STEM research. Prompt
 
   Ask questions related to basic scientific research
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();

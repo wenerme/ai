@@ -15,6 +15,7 @@ Monitor AI agent sessions, audit logs, and developer exposure across your organi
 - Sessions from connected agents and the audit event count on the **Recent agent sessions** card [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/630095) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_governance_sessions_api`. Enabled by default.
 - The **Show** control's **All agents** and **Connected** options [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260271) in GitLab 19.5.
 - **Which AI agents developers are using** card [renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269916) to **Agents by provider** in GitLab 19.6.
+- Per-tab permissions [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264808) in GitLab 19.6.
 
 > [!flag]
 > The availability of some tiles and cards on this page is controlled by feature flags.
@@ -42,8 +43,9 @@ Cursor, and OpenCode that report their sessions to GitLab. By default, the dashb
 
 Prerequisites:
 
-- You have the Owner role for the top-level group, or a custom role with the
-  `read_agent_artifacts` ability.
+- You have the Owner or Security Manager role for the top-level group or project, or a custom role
+  with the `read_agent_artifacts` permission.
+  Without it, the **Dashboard** tab shows a message instead of the dashboard.
 - On GitLab Self-Managed and GitLab Dedicated, [ClickHouse is configured and enabled for analytics](../../integration/clickhouse.md#enable-clickhouse-for-analytics).
   Without it, the **Total number of tool calls** tile, the tool call cards, and the
   **Agents by provider** card show an empty state.

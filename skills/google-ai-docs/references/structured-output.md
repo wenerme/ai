@@ -23,7 +23,7 @@ allow defining schemas using
 {% callout type="note" %}
   If you need yes/no probabilities, single-select choices, or rubric scores with
   calibrated confidence and zero output tokens, use the
-  [Gemini Decision](/docs/models/gemini-decision-1) model with the
+  [Gemini Decision 1](/docs/models/gemini-decision-1) model with the
   [Decisions API](/docs/decisions-api).
 
 {% /callout %}

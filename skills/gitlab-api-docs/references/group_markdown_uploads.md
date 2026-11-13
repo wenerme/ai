@@ -8,6 +8,17 @@ REST API to upload, list, download, and delete Markdown file uploads for a group
 Use this API to manage [Markdown uploads](../security/user_file_uploads.md) that can be referenced
 in Markdown text in epics or wiki pages.
 
+## Rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269433) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `markdown_uploads_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+A rate limit applies to the total size of the files each user uploads every day.
+For more information, see [rate limits](../rate_limits/_index.md#api-and-rails-console).
+
 ## Upload a file to a group
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230537) in GitLab 19.0.

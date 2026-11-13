@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/configuration/headers/og.png?v=0a
 
 # Headers
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Custom headers
 
@@ -68,9 +68,25 @@ You may define up to 100 header rules. Each line in the `_headers` file has a 2,
 
 If a header is applied twice in the `_headers` file, the values are joined with a comma separator.
 
+Rules are applied in the order they appear in the file.
+
+Caution
+
+Joining works as intended for list-valued headers such as `X-Robots-Tag`. For headers where repeated directives conflict, such as `Cache-Control`, joining two rules produces conflicting directives:
+
+```txt
+Cache-Control: public, max-age=604800, public, max-age=0, s-maxage=86400
+```
+
+When a directive such as `max-age` appears more than once, [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.1) says caches should use the first value or treat the response as stale, so the result may not be what you intended. Nothing errors and the asset still serves, which makes this easy to miss.
+
+To give one file a different value from the rule that already covers it, [detach the header](#detach-a-header) and set it again.
+
 ### Detach a header
 
 You may wish to remove a default header or a header which has been added by a more pervasive rule. This can be done by prepending the header name with an exclamation mark and space (`!` ).
+
+Because rules are applied in file order, `!` removes only what earlier rules have already added. A detach placed above the rule it is meant to override has no effect, so put the narrower rule after the broader one.
 
 ```txt
 /*
@@ -79,6 +95,19 @@ You may wish to remove a default header or a header which has been added by a mo
 /*.jpg
   ! Content-Security-Policy
 ```
+
+Detaching and setting the header again is how one file takes a different value for a header such as `Cache-Control`:
+
+```txt
+/assets/*
+  Cache-Control: public, max-age=0, s-maxage=86400
+
+/assets/model.bin
+  ! Cache-Control
+  Cache-Control: public, max-age=604800
+```
+
+`/assets/model.bin` is served with `max-age=604800` alone. Reversing the two blocks causes both values to be joined, because the detach runs before the broader rule adds its value.
 
 ### Match a path
 
@@ -176,5 +205,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/headers/#page","headline":"Headers","description":"Set custom HTTP response headers for your Cloudflare Pages site using a _headers file.","url":"https://developers.cloudflare.com/pages/configuration/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/headers/og.png?v=0a4338c45fff84d6","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/headers/#page","headline":"Headers","description":"Set custom HTTP response headers for your Cloudflare Pages site using a _headers file.","url":"https://developers.cloudflare.com/pages/configuration/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/headers/og.png?v=0a4338c45fff84d6","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

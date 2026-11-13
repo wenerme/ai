@@ -19,7 +19,7 @@ While each text generation request is independent and stateless, you can still i
 
   Manually construct a past conversation
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -184,13 +184,13 @@ In the following example, we ask the model to tell a joke, followed by a request
 
   Manually manage conversation state with the Responses API.
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 const openai = new OpenAI();
 
-let history = [
+let history: OpenAI.Responses.ResponseInput = [
   {
     role: "user",
     content: "tell me a joke",
@@ -449,7 +449,7 @@ Conversations store items, which can be messages, tool calls, tool outputs, and 
 
   Create a conversation
 
-```javascript
+```typescript
 const conversation = await client.conversations.create();
 ```
 
@@ -482,7 +482,7 @@ In a multi-turn interaction, you can pass the `conversation` into subsequent res
 
   Manage conversation state with Conversations and Responses APIs
 
-```javascript
+```typescript
 const response = await client.responses.create({
   model: "gpt-6-astra",
   input: [{ role: "user", content: "What are the five Ds of dodgeball?" }],
@@ -557,7 +557,7 @@ Another way to manage conversation state is to share context across generated re
 
   Chain responses across turns by passing the previous response ID
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const openai = new OpenAI();

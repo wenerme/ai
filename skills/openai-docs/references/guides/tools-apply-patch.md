@@ -44,7 +44,7 @@ At a high level, using `apply_patch` with the Responses API looks like this:
 
 Ask the model to plan and emit patches
 
-```javascript
+```typescript
 import OpenAI from "openai";
 // Application-owned helper; see "Implementing the patch harness" in the guide.
 // This demo only applies exact updates to the two in-memory files below.
@@ -204,10 +204,10 @@ Example apply_patch_call object
 
 Apply the patch and return results
 
-```javascript
+```typescript
 for (let turn = 0; patchCalls.length > 0; turn++) {
   if (turn === 8) throw new Error("Patch workflow exceeded eight tool turns.");
-  const results = patchCalls.map((call) => {
+  const results = patchCalls.map((call): OpenAI.Responses.ResponseInputItem => {
     const { success, output } = applyOperation(files, call.operation);
 
     return {
@@ -427,7 +427,7 @@ Alternatively, you can use the [Agents SDK](https://developers.openai.com/api/do
 
 Use the apply patch tool with the Agents SDK
 
-```javascript
+```typescript
 import {
   mkdirSync,
   realpathSync,
@@ -437,15 +437,23 @@ import {
   unlinkSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
-import { applyDiff, Agent, run, applyPatchTool } from "@openai/agents";
+import {
+  applyDiff,
+  Agent,
+  run,
+  applyPatchTool,
+  type Editor,
+  type ApplyPatchResult,
+} from "@openai/agents";
 
-class WorkspaceEditor {
+class WorkspaceEditor implements Editor {
+  root: string;
   constructor(root = "workspace") {
     mkdirSync(root, { recursive: true });
     this.root = realpathSync(root);
   }
 
-  path(name) {
+  path(name: string) {
     const target = resolve(this.root, name);
     const relativePath = relative(this.root, target);
     if (
@@ -466,7 +474,9 @@ class WorkspaceEditor {
     return target;
   }
 
-  async createFile(operation) {
+  async createFile(
+    operation: Parameters<Editor["createFile"]>[0]
+  ): Promise<ApplyPatchResult> {
     const path = this.path(operation.path);
     const content = applyDiff("", operation.diff, "create");
     mkdirSync(dirname(path), { recursive: true });
@@ -474,14 +484,18 @@ class WorkspaceEditor {
     return { status: "completed", output: `Created ${operation.path}` };
   }
 
-  async updateFile(operation) {
+  async updateFile(
+    operation: Parameters<Editor["updateFile"]>[0]
+  ): Promise<ApplyPatchResult> {
     const path = this.path(operation.path);
     const content = applyDiff(readFileSync(path, "utf8"), operation.diff);
     writeFileSync(path, content, "utf8");
     return { status: "completed", output: `Updated ${operation.path}` };
   }
 
-  async deleteFile(operation) {
+  async deleteFile(
+    operation: Parameters<Editor["deleteFile"]>[0]
+  ): Promise<ApplyPatchResult> {
     unlinkSync(this.path(operation.path));
     return { status: "completed", output: `Deleted ${operation.path}` };
   }

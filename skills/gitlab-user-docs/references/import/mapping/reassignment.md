@@ -366,10 +366,7 @@ The contribution reassignment process starts only after you accept the reassignm
 ### Revoke contribution reassignment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/629220) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `revoke_import_source_user_reassignment`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/478147) in GitLab 19.6. Feature flag `revoke_import_source_user_reassignment` removed.
 
 After you accept a contribution reassignment, you can revoke your approval.
 When you revoke a reassignment:
