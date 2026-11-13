@@ -226,6 +226,9 @@ When you create an agent or flow, you select a project to manage it and choose w
 public, private, or restricted.
 Visibility controls who can view, enable, and run the item.
 These rules apply to custom agents, external agents, and flows.
+They also apply when a custom flow uses an agent as a subagent.
+The agent must be at least as visible as the flow that references it.
+For more information, see [`include`](flows/custom_flows_schema.md#include).
 
 ### Public items
 
@@ -298,9 +301,11 @@ To confine the AI Catalog to your group hierarchy:
 
 ## Delete an item
 
-When you delete an agent or flow, GitLab removes it from the instance. If a project other than the managing
-project has turned on the item, GitLab hides the item instead. The item is no longer listed in the AI Catalog,
-and no project can enable it. For the steps, see
+When you delete an agent or flow, GitLab removes it from the instance.
+If a project other than the managing project has turned on the item,
+or a custom flow uses the item as a subagent, GitLab hides the item instead.
+The item is no longer listed in the AI Catalog, and no project can enable it.
+For the steps, see
 [delete an agent](agents/custom.md#delete-an-agent) and [delete a flow](flows/custom.md#delete-a-flow).
 
 ## Related topics

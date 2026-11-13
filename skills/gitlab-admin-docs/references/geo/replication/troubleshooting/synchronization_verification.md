@@ -79,21 +79,11 @@ This procedure provides detailed status information for all Geo registry types a
 
    ```ruby
    def output_geo_failures()
-     registry_classes = [
-       Geo::UploadRegistry,
-       Geo::JobArtifactRegistry,
-       Geo::PackageFileRegistry,
-       Geo::PagesDeploymentRegistry,
-       Geo::ProjectRepositoryRegistry,
-       Geo::TerraformStateVersionRegistry,
-       Geo::MergeRequestDiffRegistry,
-       Geo::LfsObjectRegistry,
-       Geo::PipelineArtifactRegistry,
-       Geo::CiSecureFileRegistry,
-       Geo::ContainerRepositoryRegistry
-     ]
+     registry_classes = Gitlab::Geo.replication_enabled_replicator_classes.map(&:registry_class)
 
      registry_classes.each do |klass|
+       next if klass.none?
+
        puts "\n=== #{klass.name} ==="
        puts "Total: #{klass.count}"
        puts "Failed: #{klass.failed.count}"
@@ -113,7 +103,7 @@ This procedure provides detailed status information for all Geo registry types a
    output_geo_failures()
    ```
 
-1. This script outputs detailed information for each registry type, including:
+1. This script outputs detailed information for each registry type that has records, including:
    - Total count of records
    - Number of failed, synced, and pending records
    - Sample failed records for investigation
@@ -160,11 +150,11 @@ When missing files or inconsistencies are present, you can encounter entries in 
    "model_record_id" : 55,
    "primary_missing_file" : true,
    "reason" : "Not Found",
-   "replicable_name" : "upload",
+   "replicable_name" : "project_upload",
    "severity" : "WARN",
    "status_code" : 404,
    "time" : "2025-05-01T16:02:44.836Z",
-   "url" : "http://gitlab.example.com/api/v4/geo/retrieve/upload/55"
+   "url" : "http://gitlab.example.com/api/v4/geo/retrieve/project_upload/55"
 }
 ```
 
@@ -186,30 +176,31 @@ The same errors are also reflected in the UI under **Admin** > **Geo** > **Sites
 
 To remove those errors, first identify which particular resources are affected. Then, run the appropriate `destroy` commands to ensure the deletion is propagated across all Geo sites and their databases. Based on the previous scenario, an upload is causing those errors which is used as an example below.
 
-1. Map the identified inconsistencies to their respective [Geo Model class](../resync_reverify.md#geo-data-type-model-classes) name. The class name is needed in the following steps. In this scenario, for uploads it corresponds to `Upload`.
+1. Map the identified inconsistencies to their respective [Geo Model class](../resync_reverify.md#geo-data-type-model-classes) name. The class name is needed in the following steps. In this scenario, the `replicable_name` is `project_upload`, which corresponds to `Geo::ProjectUpload`.
+   To look up the class for any `replicable_name`, run `Gitlab::Geo::Replicator.for_replicable_name('project_upload').model` in a Rails console.
 1. Start a [Rails console](../../../operations/rails_console.md#starting-a-rails-console-session) on the Geo primary site.
 1. Query all resources where verification failed due to missing files based on the *Geo Model class* of the previous step. Adjust or remove the `limit(20)` to display more results. Observe how the listed resources should match the failed ones shown in the UI:
 
    ```ruby
-   Upload.verification_failed.where("verification_failure like '%File is not checksummable%'").limit(20)
+   Geo::ProjectUpload.verification_failed.where("verification_failure like '%File is not checksummable%'").limit(20)
 
-   => #<Upload:0x00007b362bb6c4e8
+   => #<Geo::ProjectUpload:0x00007b362bb6c4e8
     id: 55,
     size: 13346,
-    path: "503d99159e2aa8a3ac23602058cfdf58/openbao.png",
-    checksum: "db29d233de49b25d2085dcd8610bac787070e721baa8dcedba528a292b6e816b",
     model_id: 1,
-    model_type: "Project",
-    uploader: "FileUploader",
-    created_at: Thu, 01 May 2025 15:54:10.549178000 UTC +00:00,
-    store: 1,
-    mount_point: nil,
-    secret: "[FILTERED]",
-    version: 2,
     uploaded_by_user_id: 1,
     organization_id: nil,
     namespace_id: nil,
     project_id: 1,
+    created_at: Thu, 01 May 2025 15:54:10.549178000 UTC +00:00,
+    store: 1,
+    version: 2,
+    path: "503d99159e2aa8a3ac23602058cfdf58/openbao.png",
+    checksum: "db29d233de49b25d2085dcd8610bac787070e721baa8dcedba528a292b6e816b",
+    model_type: "Project",
+    uploader: "FileUploader",
+    mount_point: nil,
+    secret: "[FILTERED]",
     verification_checksum: nil>
    ```
 
@@ -244,6 +235,8 @@ To remove those errors, first identify which particular resources are affected. 
      - Spot check some to try to determine that it's probably fine to destroy the records, for example, if they are all very old artifacts, then maybe they are not critical data.
 
 1. Use the `id` of the identified resources to properly delete them individually or in bulk by using `destroy`. Ensure to use the appropriate *Geo Model class* name.
+   For uploads, delete the records through the `Upload` class. Upload data type classes, such as `Geo::ProjectUpload`,
+   only read the upload tables for Geo.
    - Delete individual resources:
 
      ```ruby
@@ -254,7 +247,8 @@ To remove those errors, first identify which particular resources are affected. 
 
      ```ruby
      def destroy_uploads_not_checksummable
-       uploads = Upload.verification_failed.where("verification_failure like '%File is not checksummable%'");1
+       ids = Geo::ProjectUpload.verification_failed.where("verification_failure like '%File is not checksummable%'").pluck(:id)
+       uploads = Upload.id_in(ids)
        puts "Found #{uploads.count} resources that failed verification with 'File is not checksummable'."
        puts "Enter 'y' to continue: "
        prompt = STDIN.gets.chomp
@@ -328,8 +322,12 @@ def delete_orphaned_uploads(dry_run: true)
     p "This is NOT A DRY RUN! Upload rows will be deleted from the DB!"
   end
 
-  subquery = Geo::UploadState.where("(verification_failure LIKE 'Error during verification: The model which owns this upload is missing.%' OR verification_failure = 'Error during verification: undefined method `underscore'' for NilClass:Class') AND verification_checksum IS NULL")
-  uploads = Upload.where(upload_state: subquery)
+  failure = "(verification_failure LIKE 'Error during verification: The model which owns this upload is missing.%' OR verification_failure = 'Error during verification: undefined method `underscore'' for NilClass:Class') AND verification_checksum IS NULL"
+  upload_models = Gitlab::Geo::REPLICATOR_CLASSES.map(&:model).select { |model| model < ::Upload }
+  ids = upload_models.flat_map do |model|
+    model.verification_state_table_class.where(failure).pluck(model.verification_state_model_key)
+  end
+  uploads = Upload.id_in(ids)
   p "Found #{uploads.count} uploads with a model that does not exist"
 
   uploads_deleted = 0
@@ -843,21 +841,26 @@ Different Geo data types have unique characteristics and common failure patterns
 **Diagnosis:**
 
 1. [Start a Rails console session](../../../operations/rails_console.md#starting-a-rails-console-session) on the primary site.
-1. Identify uploads with missing files. Update `limit(5)` as needed to see more results:
+1. Identify uploads with missing files for each upload data type. Update `limit(5)` as needed to see more results:
 
    ```ruby
-   checksummable_failures = Upload.verification_failed
+   upload_models = Gitlab::Geo::REPLICATOR_CLASSES.map(&:model).select { |model| model < ::Upload }
+
+   upload_models.each do |model|
+     checksummable_failures = model.verification_failed
                                    .where("verification_failure LIKE '%File is not checksummable%'")
+     next if checksummable_failures.none?
 
-   puts "Found #{checksummable_failures.count} uploads with missing files"
+     puts "#{model.name}: found #{checksummable_failures.count} uploads with missing files"
 
-   checksummable_failures.limit(5).each_with_index do |record, index|
-     puts "Record #{index + 1}:"
-     puts "  ID: #{record.id}"
-     puts "  Path: #{record.path}"
-     puts "  Model: #{record.model_type} (ID: #{record.model_id})"
-     puts "  Created: #{record.created_at}"
-     puts "---"
+     checksummable_failures.limit(5).each_with_index do |record, index|
+       puts "Record #{index + 1}:"
+       puts "  ID: #{record.id}"
+       puts "  Path: #{record.path}"
+       puts "  Model: #{record.model_type} (ID: #{record.model_id})"
+       puts "  Created: #{record.created_at}"
+       puts "---"
+     end
    end
    ```
 
@@ -1774,7 +1777,7 @@ In some cases, you may need to manually mark an object type as synced after reso
 ```ruby
 def mark_upload_synced(upload_id)
   upload = Upload.find(upload_id)
-  registry = upload.replicator.registry
+  registry = upload.partition_record.replicator.registry
   registry.start
   registry.synced!
   puts "Marked upload #{upload_id} as synced"
@@ -1784,6 +1787,8 @@ end
 upload_ids = [107221, 107320] # Replace with actual IDs
 upload_ids.each { |id| mark_upload_synced(id) }
 ```
+
+In GitLab 19.5 and earlier, use `upload.replicator.registry` instead of `upload.partition_record.replicator.registry`.
 
 ## Resetting Geo secondary site replication
 

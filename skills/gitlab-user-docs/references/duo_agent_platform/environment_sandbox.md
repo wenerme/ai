@@ -212,6 +212,7 @@ the host. This is disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235670) in GitLab 19.0.
 - Feature flag `dap_group_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/595210) in GitLab 19.2.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/595211) in GitLab 19.3. Feature flag `dap_instance_network_access_controls` removed.
+- Limits on the domain allowlist and denylist [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636069) in GitLab 19.6.
 
 In addition to [project-level `agent-config.yml` settings](#configure-a-network-policy),
 administrators and top-level group owners can manage network access controls through the GitLab UI.
@@ -246,6 +247,7 @@ To configure instance-level network access controls:
      through the `agent-config.yml` file, add more domains, and allow all Unix sockets.
 1. Optional. Under **Allowed domains**, add or remove domains from the allowlist.
    Under **Blocked domains**, add or remove domains from the denylist.
+   Each list can contain up to 500 domains, and each domain can be up to 253 characters long.
 1. Select **Save changes**.
 
 #### Configure top-level group network access controls (GitLab.com)
@@ -306,6 +308,7 @@ This setting turns on access to the following domains:
 - `raw.githubusercontent.com`
 - `pkg-npm.githubusercontent.com`
 - `objects.githubusercontent.com`
+- `release-assets.githubusercontent.com`
 - `codeload.github.com`
 - `avatars.githubusercontent.com`
 - `camo.githubusercontent.com`
@@ -313,6 +316,7 @@ This setting turns on access to the following domains:
 - `gitlab.com`
 - `www.gitlab.com`
 - `registry.gitlab.com`
+- `cdn.registry.gitlab-static.net`
 - `bitbucket.org`
 - `www.bitbucket.org`
 - `api.bitbucket.org`

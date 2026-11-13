@@ -45,7 +45,7 @@ use this command:
 
 ```shell
 curl --request PUT \
-  --header "PRIVATE-TOKEN: <your_access_token>"
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/application/settings?snippet_size_limit=52428800"
 ```
 

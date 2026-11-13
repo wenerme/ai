@@ -263,6 +263,6 @@ identify recurring problems with CI pipeline efficiency.
 
 ### Related topics
 
-- [CI expert agent](../../user/duo_agent_platform/agents/foundational_agents/ci_expert_agent.md)
+- [CI expert agent](../../topics/build_your_application/ci_expert_agent.md)
 - [CI/CD analytics](../../user/analytics/ci_cd_analytics.md)
 - [Building dashboards for operational visibility](https://aws.amazon.com/builders-library/building-dashboards-for-operational-visibility/)

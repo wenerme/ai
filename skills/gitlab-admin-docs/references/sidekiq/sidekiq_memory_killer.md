@@ -70,12 +70,12 @@ The following is an example of one of these log events in `/var/log/gitlab/sidek
   "message": "rss memory limit exceeded",
   "running_jobs": [
     {
-      jid: "83efb701c59547ee42ff7068",
-      worker_class: "Ci::DeleteObjectsWorker"
+      "jid": "83efb701c59547ee42ff7068",
+      "worker_class": "Ci::DeleteObjectsWorker"
     },
     {
-      jid: "c3a74503dc2637f8f9445dd3",
-      worker_class: "Ci::ArchiveTraceWorker"
+      "jid": "c3a74503dc2637f8f9445dd3",
+      "worker_class": "Ci::ArchiveTraceWorker"
     }
   ]
 }

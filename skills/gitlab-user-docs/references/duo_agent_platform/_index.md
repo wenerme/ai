@@ -110,7 +110,7 @@ but you require credits in your monthly commitment pool to access them.
 | [Agent tool governance](../ai-governance/tool-governance.md)  Configure tool-level approval policies to gate sensitive agent actions with human approval at execution time. | Yes | Yes | Yes |
 | [AI audit event report](../ai-governance/ai-audit-events.md)  Browse and filter a unified record of GitLab Duo agent activity for compliance and governance purposes. | No | Yes | Yes |
 | [AI Governance Dashboard](../ai-governance/governance-dashboard.md)  Monitor AI agent sessions, audit logs, and developer exposure across a group. | No | No | Yes |
-| [CI Expert Agent](agents/foundational_agents/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | Yes | Yes | Yes |
+| [CI Expert Agent](../../topics/build_your_application/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | Yes | Yes | Yes |
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
 | [Generate Workplan Flow](../work_items/workplan.md)  Draft a workplan for a work item and add it to the **Workplan** widget. | No | Yes | Yes |
 | [Readiness Score Flow](../work_items/workplan.md#readiness)  Show how ready a work item is for GitLab Duo to implement, with suggested improvements. | No | Yes | Yes |

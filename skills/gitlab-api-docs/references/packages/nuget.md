@@ -313,7 +313,7 @@ Example response:
             "packageContent": "https://gitlab.example.com/api/v4/projects/1/packages/nuget/download/MyNuGetPkg/1.3.0.17/helloworld.1.3.0.17.nupkg",
             "description": "Description of the package",
             "summary": "Description of the package",
-            "published": "2023-05-08T17:23:25Z",
+            "published": "2023-05-08T17:23:25Z"
           }
         }
       ]
@@ -356,7 +356,7 @@ Example response:
     "packageContent": "https://gitlab.example.com/api/v4/projects/1/packages/nuget/download/MyNuGetPkg/1.3.0.17/helloworld.1.3.0.17.nupkg",
     "description": "Description of the package",
     "summary": "Description of the package",
-    "published": "2023-05-08T17:23:25Z",
+    "published": "2023-05-08T17:23:25Z"
   }
 }
 ```

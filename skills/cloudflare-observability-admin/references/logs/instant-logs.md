@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/logs/instant-logs/og.png?v=991df745a081
 
 # Instant Logs
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/instant-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/instant-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instant Logs allows Cloudflare customers to access a live stream of the traffic for their domain from the Cloudflare dashboard or from a command-line interface (CLI). Seeing data in real time allows you to investigate an attack, troubleshoot, debug or test out changes made to your network. Instant Logs is lightweight, simple to use and does not require any additional setup.
 
@@ -26,7 +26,7 @@ Instant Logs allows Cloudflare customers to access a live stream of the traffic 
 
 Dashboard navigation updated
 
-The **Analytics > Instant Logs** menu entry has moved. Instant Logs is now integrated into **Observability > Logs** as a live streaming mode. The standalone Instant Logs page remains accessible via direct link (refer to [Instant Logs page (legacy)](#instant-logs-page-legacy)), but the Analytics navigation entry no longer appears in the dashboard.
+The **Analytics > Instant Logs** menu entry has moved. Instant Logs is now integrated into **Observability > Logs** as a live streaming mode.
 
 ### Observability Logs
 
@@ -183,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/instant-logs/#page","headline":"Instant Logs","description":"Stream live traffic logs from the dashboard or CLI.","url":"https://developers.cloudflare.com/logs/instant-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/instant-logs/og.png?v=991df745a0815cdd","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/instant-logs/#page","headline":"Instant Logs","description":"Stream live traffic logs from the dashboard or CLI.","url":"https://developers.cloudflare.com/logs/instant-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/instant-logs/og.png?v=991df745a0815cdd","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

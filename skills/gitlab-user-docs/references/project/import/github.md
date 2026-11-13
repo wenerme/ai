@@ -103,7 +103,7 @@ because the backend exchanges the access token with the appropriate permissions.
 
 1. In the upper-right corner, select **Create new** () and **New project/repository**.
 1. Select **Import project** and then **GitHub**.
-1. Select **Authorize with GitHub**.
+1. Select **Connect with GitHub**.
 1. Proceed to [selecting which repositories to import](#select-which-repositories-to-import).
 
 To use a different method to perform an import after previously performing
@@ -121,9 +121,9 @@ To import your GitHub repository using a GitHub personal access token:
    1. Select **Generate token**.
 1. In the upper-right corner, select **Create new** () and **New project/repository**.
 1. Select **Import project** and then **GitHub**.
-1. Select **Authorize with GitHub**.
+1. If **Use a personal access token instead** is shown, select it. Otherwise, the token field is already visible.
 1. In the **Personal access token** field, paste the GitHub personal access token.
-1. Select **Authenticate**.
+1. Select **Continue**.
 1. Proceed to [selecting which repositories to import](#select-which-repositories-to-import).
 
 To use a different token to perform an import after previously performing

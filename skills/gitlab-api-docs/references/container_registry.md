@@ -138,7 +138,7 @@ Example response:
     "project_id": 9,
     "location": "gitlab.example.com:5000/group/project",
     "created_at": "2019-01-10T13:38:57.391Z",
-    "cleanup_policy_started_at": "2020-08-17T03:12:35.489Z",
+    "cleanup_policy_started_at": "2020-08-17T03:12:35.489Z"
   },
   {
     "id": 2,
@@ -147,7 +147,7 @@ Example response:
     "project_id": 11,
     "location": "gitlab.example.com:5000/group/other_project",
     "created_at": "2019-01-10T13:39:08.229Z",
-    "cleanup_policy_started_at": "2020-01-10T15:40:57.391Z",
+    "cleanup_policy_started_at": "2020-01-10T15:40:57.391Z"
   }
 ]
 ```

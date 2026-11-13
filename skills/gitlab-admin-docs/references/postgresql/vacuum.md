@@ -180,6 +180,7 @@ Both sections read from the primary database, because autovacuum runs only there
 - Tasks for a single check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251735) in GitLab 19.4.
 - Menu removed for a single check [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257133) in GitLab 19.5.
 - Planner statistics check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265314) in GitLab 19.6.
+- Tables restored from a backup [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/636988) to the planner statistics check in GitLab 19.7.
 
 Use the Rake task when you have no access to the UI, or when you want the report from a script.
 
@@ -207,11 +208,11 @@ section lists the findings, the effective settings, the per-table overrides, and
 risks for each database.
 
 The **Planner statistics** section lists tables of 10 MiB or more that PostgreSQL has never
-analyzed or vacuumed, and partitioned tables whose statistics are older than twice their expected
-interval. Statistics are missing after a PostgreSQL major version upgrade before PostgreSQL 18, and
-autovacuum never analyzes a partitioned table. After a restore, the section reports only partitioned
-tables: building the indexes records a row count for the other restored tables, although they have
-no column statistics either. See [Planner statistics findings](#planner-statistics-findings).
+analyzed, and partitioned tables whose statistics are older than twice their expected interval.
+Statistics are missing after a PostgreSQL major version upgrade before PostgreSQL 18 and after a
+restore from a backup, and autovacuum never analyzes a partitioned table. After a restore, the
+section reports only tables the GitLab database role owns.
+See [Planner statistics findings](#planner-statistics-findings).
 
 The task exits with status `1` when it finds an error, so a monitoring job can use the exit code.
 
@@ -256,7 +257,7 @@ without indexes.
 
 | Finding            | Severity | Reported when                                                                                                                                                                                                                                                                                                           | Action                                                                                                                                                                                                                                                                                             |
 |--------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Statistics missing | Error    | PostgreSQL has never analyzed or vacuumed a table, or never analyzed a partitioned table, so it has no statistics to plan queries against it. This is the state after a PostgreSQL major version upgrade before PostgreSQL 18. The check looks at the 100 largest such tables and lists up to 50; when all 100 are 10 MiB or more, the finding says "at least 100". | Run `ANALYZE` on each table in a session with `statement_timeout` set to `0`. `ANALYZE` on a partitioned table covers its partitions as well. When the finding says "at least 100", run `ANALYZE` with no table name to cover the whole database.                                                 |
+| Statistics missing | Error    | PostgreSQL has never analyzed a table or a partitioned table, so it has no column statistics to plan queries against it. This is the state after a PostgreSQL major version upgrade before PostgreSQL 18, and after a restore from a backup, where only tables the GitLab database role owns are reported. The check looks at the 100 largest such tables and lists up to 50; when all 100 are 10 MiB or more, the finding says "at least 100". | Run `ANALYZE` on each table in a session with `statement_timeout` set to `0`. `ANALYZE` on a partitioned table covers its partitions as well. When the finding says "at least 100", run `ANALYZE` with no table name to cover the whole database.                                                 |
 | Statistics stale   | Warning  | A partitioned table was last analyzed more than twice its expected interval ago. The **Expected interval** column on the page, and the **Interval** column in the Rake task, show that interval: the schedule GitLab analyzes the table on, or one week for a partitioned table GitLab does not analyze itself.                                                                           | Run `ANALYZE` on the table in a session with `statement_timeout` set to `0`. For a table GitLab analyzes on a schedule, also check that the `postgres_dynamic_partitions_manager` cron job runs.                                                                                                   |
 
 ### Check dead tuples and freeze age

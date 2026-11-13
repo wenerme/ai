@@ -51,7 +51,7 @@ calling in Chat Completions only with `reasoning_effort: "none"`.
 When reasoning effort is not `none`, remove `temperature`, `top_p`, and
 `top_logprobs`; also remove `logprobs` from Chat Completions requests and
 `message.output_text.logprobs` from the Responses `include` array. Check
-[data residency eligibility](https://developers.openai.com/api/docs/guides/your-data#which-models-and-features-are-eligible-for-data-residency)
+[data residency eligibility](https://developers.openai.com/api/docs/guides/data-residency#which-models-and-features-are-eligible-for-data-residency)
 before selecting a model or processing tier. See the
 [model migration guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra#migration-quickstart)
 for other compatibility checks. Run representative evals before changing prompts or adding new

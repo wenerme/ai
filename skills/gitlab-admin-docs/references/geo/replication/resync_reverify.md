@@ -181,7 +181,7 @@ relevant data and is replicated by Geo to secondary sites.
   - `Packages::PackageFile`
   - `PagesDeployment`
   - `Terraform::StateVersion`
-  - `Upload`
+  - `Upload`. In GitLab 19.6 and later, each upload data type has its own model class, such as `Geo::ProjectUpload`.
   - `DependencyProxy::Manifest`
   - `DependencyProxy::Blob`
 - **Git Repository types**:
@@ -218,7 +218,7 @@ models that correspond to Geo registry tables that can be queried are:
   - `Geo::ProjectWikiRepositoryRegistry`
   - `Geo::SnippetRepositoryRegistry`
   - `Geo::TerraformStateVersionRegistry`
-  - `Geo::UploadRegistry`
+  - `Geo::UploadRegistry`. In GitLab 19.6 and later, each upload data type has its own registry class, such as `Geo::ProjectUploadRegistry`.
 - **Git Repository types**:
   - `Geo::DesignManagementRepositoryRegistry`
   - `Geo::ProjectRepositoryRegistry`

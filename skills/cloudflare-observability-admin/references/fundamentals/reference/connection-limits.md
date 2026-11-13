@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/reference/connection-limit
 
 # Connection limits
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When HTTP/HTTPS traffic is [proxied through Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy), there are often two established [TCP connections](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/): the first is between the requesting client to Cloudflare and the second is between Cloudflare and the origin server. Each connection has their own set of TCP and HTTP limits, which are documented below.
 
@@ -33,9 +33,16 @@ Requests can reuse established connections, and a proxied request may traverse m
 
 The TCP establishment and request-acknowledgment rows describe specific TCP timeout conditions. They are not an exhaustive list of every operation that can produce [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/). Neither value is a universal TCP-plus-TLS setup budget. A timeout while TLS remains pending can be reported as `522` rather than [525](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-525/).
 
-Note
+Cloudflare Tunnel timeout behavior
 
-If you are using [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), refer to [Origin configuration](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/) to view or modify your connection settings.
+When using Cloudflare Tunnel with **published applications** (proxied DNS records), both timeout layers apply to the same request:
+
+1. **CDN layer** (this table): Proxy Read Timeout and Proxy Write Timeout apply between the client and Cloudflare's Tunnel service
+2. **Tunnel layer** ([Origin parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/)): Connection and TLS timeout parameters apply between `cloudflared` and your origin server
+
+**When both layers apply, the shorter timeout takes precedence.** Configure timeouts in both layers to ensure requests complete successfully.
+
+For **private network routes**, only Tunnel origin parameters apply—the CDN timeouts in this table do not affect private network traffic.
 
 | Type | Limit (seconds) | HTTP status code at limit | [Configurable](https://developers.cloudflare.com/fundamentals/reference/connection-limits/#configurable-limits) |
 | --- | --- | --- | --- |
@@ -79,5 +86,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/#page","headline":"Connection limits","description":"Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.","url":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/og.png?v=1342db86bc378fe9","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/#page","headline":"Connection limits","description":"Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.","url":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/og.png?v=1342db86bc378fe9","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

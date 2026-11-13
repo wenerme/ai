@@ -307,7 +307,7 @@ Example of response:
       "architecture": "amd64",
       "created_at": "2024-05-01T10:12:02.507Z",
       "contacted_at": "2024-05-07T06:30:09.355Z",
-      "ip_address": "127.0.0.1",
+      "ip_address": "127.0.0.1"
     },
     "stage": "test",
     "status": "failed",

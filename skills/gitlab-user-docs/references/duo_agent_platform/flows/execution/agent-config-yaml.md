@@ -30,6 +30,8 @@ For more information about usage, see [Configure flow execution](_index.md).
 | `cache.key` | string or object | Cache key. If omitted, a default key is used. |
 | `cache.key.files` | array of strings | Files used to generate a SHA-based cache key. Maximum 10 files. For details, see [cache limitations](_index.md#cache-limitations). |
 | `cache.key.prefix` | string | Prefix combined with the file SHA to form the cache key. Requires `files`. |
+| `git_strategy` | object | How the flow gets the repository. For more information, see [Start sessions from a reference repository](_index.md#start-sessions-from-a-reference-repository). |
+| `git_strategy.reference_repository_path` | string | Absolute path to a bare Git repository in the image. Sessions fetch only the commits that are not in it. Must not be in `/builds`. |
 
 ## Complete example
 
@@ -55,6 +57,10 @@ cache:
   paths:
     - .cache/pip
     - venv/
+
+# Reuse a bare repository in the image instead of a full clone
+git_strategy:
+  reference_repository_path: /opt/duo/ref.git
 
 # Network configuration
 network_policy:

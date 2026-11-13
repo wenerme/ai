@@ -62,8 +62,8 @@
   "anthropic-docs/build-with-claude/text-watermark.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/text-watermark",
     "skill": "anthropic-docs",
-    "size": 1384,
-    "updatedAt": "2026-11-04T05:57:54.247Z"
+    "size": 1537,
+    "updatedAt": "2026-11-13T17:40:40.834Z"
   },
   "anthropic-docs/build-with-claude/task-budgets.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/task-budgets",
@@ -230,8 +230,8 @@
   "anthropic-docs/agents-and-tools/tool-use/tool-runner.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner",
     "skill": "anthropic-docs",
-    "size": 68225,
-    "updatedAt": "2026-11-11T17:54:30.747Z"
+    "size": 68543,
+    "updatedAt": "2026-11-13T17:40:51.443Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/strict-tool-use.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use",
@@ -344,8 +344,8 @@
   "anthropic-docs/agents-and-tools/tool-use/programmatic-tool-calling.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling",
     "skill": "anthropic-docs",
-    "size": 67609,
-    "updatedAt": "2026-11-09T20:42:28.344Z"
+    "size": 67741,
+    "updatedAt": "2026-11-13T17:40:59.133Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/fine-grained-tool-streaming.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/fine-grained-tool-streaming",
@@ -374,8 +374,8 @@
   "anthropic-docs/build-with-claude/message-threads.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/message-threads",
     "skill": "anthropic-docs",
-    "size": 60357,
-    "updatedAt": "2026-11-12T18:10:44.156Z"
+    "size": 60611,
+    "updatedAt": "2026-11-13T17:41:01.187Z"
   },
   "anthropic-docs/build-with-claude/mid-conversation-system-messages.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages",
@@ -578,8 +578,8 @@
   "anthropic-docs/build-with-claude/claude-in-microsoft-foundry.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry",
     "skill": "anthropic-docs",
-    "size": 37598,
-    "updatedAt": "2026-11-13T06:17:31.482Z"
+    "size": 39038,
+    "updatedAt": "2026-11-13T17:41:14.478Z"
   },
   "anthropic-docs/build-with-claude/claude-models-on-google-cloud/overview.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/overview",
@@ -650,8 +650,8 @@
   "anthropic-docs/managed-agents/permission-policies.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/permission-policies",
     "skill": "anthropic-docs",
-    "size": 51225,
-    "updatedAt": "2026-11-12T18:11:02.762Z"
+    "size": 51214,
+    "updatedAt": "2026-11-13T17:41:19.569Z"
   },
   "anthropic-docs/managed-agents/skills.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/skills",
@@ -818,8 +818,8 @@
   "anthropic-docs/managed-agents/scheduled-deployments.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/scheduled-deployments",
     "skill": "anthropic-docs",
-    "size": 32650,
-    "updatedAt": "2026-11-12T18:11:14.212Z"
+    "size": 33305,
+    "updatedAt": "2026-11-13T17:41:30.118Z"
   },
   "anthropic-docs/managed-agents/secure-deployment.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/secure-deployment",
@@ -896,8 +896,8 @@
   "anthropic-docs/manage-claude/admin-api-keys.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/admin-api-keys",
     "skill": "anthropic-docs",
-    "size": 24120,
-    "updatedAt": "2026-11-11T05:52:37.560Z"
+    "size": 29362,
+    "updatedAt": "2026-11-13T17:41:35.669Z"
   },
   "anthropic-docs/manage-claude/app-attest.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/app-attest",
@@ -908,8 +908,8 @@
   "anthropic-docs/manage-claude/ip-allowlist.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/ip-allowlist",
     "skill": "anthropic-docs",
-    "size": 12566,
-    "updatedAt": "2026-11-05T18:05:40.713Z"
+    "size": 12583,
+    "updatedAt": "2026-11-13T17:41:36.347Z"
   },
   "anthropic-docs/manage-claude/workload-identity-federation.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/workload-identity-federation",
@@ -926,8 +926,8 @@
   "anthropic-docs/manage-claude/wif-reference.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-reference",
     "skill": "anthropic-docs",
-    "size": 49881,
-    "updatedAt": "2026-11-07T05:44:43.399Z"
+    "size": 46976,
+    "updatedAt": "2026-11-13T17:41:37.523Z"
   },
   "anthropic-docs/manage-claude/wif-providers/aws.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/aws",
@@ -992,8 +992,8 @@
   "anthropic-docs/manage-claude/analytics-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/analytics-api",
     "skill": "anthropic-docs",
-    "size": 16690,
-    "updatedAt": "2026-11-11T17:55:27.656Z"
+    "size": 16431,
+    "updatedAt": "2026-11-13T17:41:42.075Z"
   },
   "anthropic-docs/manage-claude/claude-code-analytics-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/claude-code-analytics-api",
@@ -1154,8 +1154,8 @@
   "anthropic-docs/manage-claude/compliance-api-access.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access",
     "skill": "anthropic-docs",
-    "size": 19879,
-    "updatedAt": "2026-11-11T05:52:52.623Z"
+    "size": 19677,
+    "updatedAt": "2026-11-13T17:41:51.833Z"
   },
   "anthropic-docs/manage-claude/compliance-activity-feed.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed",
@@ -1844,8 +1844,8 @@
   "anthropic-api/api/claude-platform-on-aws-iam-actions.md": {
     "url": "https://platform.claude.com/docs/en/api/claude-platform-on-aws-iam-actions",
     "skill": "anthropic-api",
-    "size": 63030,
-    "updatedAt": "2026-11-04T05:59:52.432Z"
+    "size": 63617,
+    "updatedAt": "2026-11-13T17:42:35.262Z"
   },
   "anthropic-api/api/claude-models-on-google-cloud-anthropic-managed-iam-permissions.md": {
     "url": "https://platform.claude.com/docs/en/api/claude-models-on-google-cloud-anthropic-managed-iam-permissions",

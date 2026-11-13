@@ -137,7 +137,7 @@ If that is not the case, this might mean one of the following:
 In the GitLab Rails console, check if a user can request Code Suggestions by running:
 
 ```ruby
-User.find_by_id("<user_id>").can?(:access_code_suggestions)
+Ability.allowed?(User.find_by_id("<user_id>"), :access_code_suggestions)
 ```
 
 If this returns `false`, it means some configuration is missing, and the user

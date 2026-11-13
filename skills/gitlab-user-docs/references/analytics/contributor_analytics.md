@@ -3,8 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-Contributor analytics give you an overview of commits made, and lines added and removed,
-by project members over time.
+Contributor analytics give you an overview of the commits made by project members to a project over time.
 
 ## View contributor analytics
 

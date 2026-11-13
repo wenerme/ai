@@ -1549,8 +1549,6 @@ tags:
   x-displayName: Service accounts
   externalDocs:
     url: https://docs.gitlab.com/api/service_accounts/
-- name: Service ping
-  description: Operations related to service ping.
 - name: Sidekiq
   description: |-
     Use this API to retrieve information about the current state of Sidekiq, including its jobs, queues,
@@ -2299,6 +2297,10 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
       requestBody:
         required: true
         content:
@@ -9281,7 +9283,8 @@ paths:
         example: 11
       - name: scope
         required: false
-        description: Filter merge trains by scope.
+        description: Filter merge trains by scope. `active` returns merge trains to
+          be merged. `complete` returns merge trains that have been merged.
         schema:
           type: string
           enum:
@@ -9361,7 +9364,8 @@ paths:
         example: main
       - name: scope
         required: false
-        description: Filter merge trains by scope.
+        description: Filter merge trains by scope. `active` returns merge trains to
+          be merged. `complete` returns merge trains that have been merged.
         schema:
           type: string
           enum:
@@ -13767,7 +13771,7 @@ paths:
       summary: List all runner controller tokens
       description: Lists all runner controller tokens.
       tags:
-      - Runners
+      - Runner controller tokens
       responses:
         '200':
           description: OK
@@ -13820,7 +13824,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunnerControllerToken"
+                "$ref": "#/components/schemas/APIEntitiesCiRunnerControllerTokenWithToken"
         '403':
           description: Forbidden
         '400':
@@ -14031,7 +14035,7 @@ paths:
       description: Adds a runner scope to a runner controller. When added, the runner
         controller evaluates jobs only for a specified runner. A runner controller
         with an instance scope cannot have runner scopes. Remove the instance scope
-        before adding runner scopes.
+        before adding runner scopes. This feature was introduced in GitLab 18.10.
       tags:
       - Runner controllers
       responses:
@@ -14060,7 +14064,7 @@ paths:
         in: path
       - name: runner_id
         required: true
-        description: ID of the runner.
+        description: ID of the runner. Must be an instance runner.
         schema:
           type: integer
         in: path
@@ -14068,7 +14072,8 @@ paths:
     delete:
       operationId: deleteApiV4RunnerControllersIdScopesRunnersRunnerId
       summary: Remove runner scope
-      description: Removes a runner scope from a runner controller.
+      description: Removes a runner scope from a runner controller. This feature was
+        introduced in GitLab 18.10.
       tags:
       - Runner controllers
       responses:
@@ -14100,7 +14105,7 @@ paths:
       summary: List all runner controllers
       description: Lists all runner controllers.
       tags:
-      - Runners
+      - Runner controllers
       responses:
         '200':
           description: OK
@@ -33468,10 +33473,14 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCompare"
-        '404':
-          description: Not Found
         '400':
           description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '503':
+          description: Service Unavailable
       parameters:
       - name: id
         required: true
@@ -72878,7 +72887,8 @@ paths:
         example: bundler:audit
       - name: pipeline_id
         required: false
-        description: Filter statuses by pipeline ID.
+        description: Filter statuses by pipeline ID. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/176142)
+          in GitLab 17.9.
         schema:
           type: integer
           nullable: true
@@ -72894,7 +72904,8 @@ paths:
       - name: order_by
         required: false
         description: Sort results by the specified field. With `pipeline_id`, statuses
-          of the same pipeline are also sorted by `id` in the `sort` direction.
+          of the same pipeline are also sorted by `id` in the `sort` direction. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/176142)
+          in GitLab 17.9.
         schema:
           type: string
           enum:
@@ -72905,6 +72916,8 @@ paths:
       - name: sort
         required: false
         description: Sort statuses in ascending or descending order. Defaults to `asc`.
+          [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/176142)
+          in GitLab 17.9.
         schema:
           type: string
           enum:
@@ -72932,9 +72945,16 @@ paths:
     post:
       operationId: postApiV4ProjectsIdStatusesSha
       summary: Create or update a commit pipeline status
-      description: Creates or updates the status of a commit represented by a job
+      description: 'Creates or updates the status of a commit represented by a job
         in an `external` stage. If the commit is associated with a merge request,
-        target the commit in the merge request source branch.
+        target the commit in the merge request source branch. The job is added to
+        the newest matching pipeline for the commit. If no matching pipeline exists,
+        a new pipeline is created with `CI_PIPELINE_SOURCE: external`. When duplicate
+        pipelines exist for the same commit, the newest one receives the status. If
+        the matching pipeline exceeds the maximum number of jobs in a pipeline, a
+        `422` error is returned when `pipeline_id` is specified. Otherwise, a new
+        pipeline is created. If an update is already in progress for the same SHA
+        and ref, a `409` error is returned, and the request can be retried.'
       tags:
       - Commit statuses
       responses:
@@ -74398,7 +74418,8 @@ paths:
         in: path
       - name: filter
         required: false
-        description: Filter results when multiple variables share the same key.
+        description: Filter results when multiple variables share the same key. Supports
+          `filter[environment_scope]`.
         schema:
           type: object
           nullable: true
@@ -74486,7 +74507,8 @@ paths:
         in: path
       - name: filter
         required: false
-        description: Filter results when multiple variables share the same key.
+        description: Filter results when multiple variables share the same key. Supports
+          `filter[environment_scope]`.
         schema:
           type: object
           nullable: true
@@ -74593,7 +74615,10 @@ paths:
     get:
       operationId: getApiV4ProjectsIdTriggers
       summary: List all project trigger tokens
-      description: Lists all pipeline trigger tokens for a specified project.
+      description: Lists all pipeline trigger tokens for a specified project. The
+        trigger token is displayed in full if the trigger token was created by the
+        authenticated user. Trigger tokens created by other users are shortened to
+        four characters.
       tags:
       - CI triggers
       responses:
@@ -74807,7 +74832,12 @@ paths:
       description: Lists recently created pipelines across all projects that were
         triggered by the authenticated user. By default, child pipelines are not included
         in the results. To return child pipelines, set `source` to `parent_pipeline`.
-        This endpoint only supports keyset pagination.
+        Pipelines from projects the user can no longer access are not included. The
+        `merge_request` field is included only for merge request pipelines whose merge
+        request is visible to the user. This endpoint only supports keyset pagination,
+        and returns up to 100 records per page, 20 by default. To retrieve the next
+        page of results, use the URL in the `Link` response header. This feature was
+        introduced in GitLab 19.3.
       tags:
       - Pipelines
       responses:
@@ -74895,7 +74925,8 @@ paths:
         example: desc
       - name: cursor
         required: false
-        description: Cursor for obtaining the next set of records
+        description: Cursor for obtaining the next set of records, from the `Link`
+          header of a previous response.
         schema:
           type: string
           nullable: true
@@ -74915,7 +74946,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdPipelineSchedules
       summary: List all pipeline schedules
-      description: Lists all pipeline schedules for a project.
+      description: Lists all pipeline schedules for a project. The `inputs` field
+        is included only for users with the Maintainer or Owner role, or for the schedule
+        owner.
       tags:
       - Pipeline schedules
       responses:
@@ -75015,7 +75048,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdPipelineSchedulesPipelineScheduleId
       summary: Retrieve a pipeline schedule
-      description: Retrieves a pipeline schedule for a project.
+      description: Retrieves a pipeline schedule for a project. The `inputs` and `variables`
+        fields are included only for users with the Maintainer or Owner role, or for
+        the schedule owner.
       tags:
       - Pipeline schedules
       responses:
@@ -75321,7 +75356,8 @@ paths:
       operationId: postApiV4ProjectsIdPipelineSchedulesPipelineScheduleIdPlay
       summary: Run a pipeline schedule
       description: Runs a pipeline schedule immediately. The next scheduled run of
-        this pipeline is not affected.
+        this pipeline is not affected. This endpoint has a rate limit of one request
+        per minute for each user for a given pipeline schedule.
       tags:
       - Pipeline schedules
       responses:
@@ -75403,7 +75439,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdPipelineSchedulesPipelineScheduleIdVariablesKey
       summary: Retrieve a variable for a pipeline schedule
-      description: Retrieves a specified variable for a pipeline schedule.
+      description: Retrieves a specified variable for a pipeline schedule. This feature
+        was introduced in GitLab 18.7.
       tags:
       - Pipeline schedules
       responses:
@@ -75550,6 +75587,7 @@ paths:
       summary: List all project pipelines
       description: Lists all pipelines in a project. By default, child pipelines are
         not included in the results. To return child pipelines, set `source` to `parent_pipeline`.
+        Child pipelines are also returned when requested by `iids` or `ids`.
       tags:
       - Pipelines
       responses:
@@ -75595,7 +75633,8 @@ paths:
         example: 20
       - name: scope
         required: false
-        description: Return pipelines in the specified scope.
+        description: Return pipelines in the specified scope. `branches` and `tags`
+          return only the latest pipeline for each branch or tag.
         schema:
           type: string
           enum:
@@ -75759,6 +75798,36 @@ paths:
           nullable: true
         in: query
         example: Build pipeline
+      - name: iids
+        required: false
+        description: Return pipelines with the specified IIDs. Child pipelines are
+          included when requested by IID.
+        schema:
+          type: array
+          items:
+            type: integer
+          nullable: true
+        in: query
+        example:
+        - 1
+        - 2
+        style: form
+        explode: false
+      - name: ids
+        required: false
+        description: Return pipelines with the specified IDs. Child pipelines are
+          included when requested by ID.
+        schema:
+          type: array
+          items:
+            type: integer
+          nullable: true
+        in: query
+        example:
+        - 1
+        - 2
+        style: form
+        explode: false
   "/api/v4/projects/{id}/pipeline":
     post:
       operationId: postApiV4ProjectsIdPipeline
@@ -75878,7 +75947,11 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdPipelinesPipelineId
       summary: Delete a pipeline
-      description: Deletes a specified pipeline for a project.
+      description: Deletes a specified pipeline for a project. Deleting a pipeline
+        expires all pipeline caches and deletes all immediately related objects, such
+        as jobs, logs, artifacts, and triggers. This action cannot be undone. Child
+        pipelines of the pipeline are not deleted. This endpoint requires the Owner
+        role for the project.
       tags:
       - Pipelines
       responses:
@@ -75911,7 +75984,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdPipelinesPipelineIdJobs
       summary: List all jobs by pipeline
-      description: Lists all jobs for a specified pipeline.
+      description: Lists all jobs for a specified pipeline, including a child pipeline.
+        Retried jobs are not included by default. Jobs are sorted by ID in descending
+        order.
       tags:
       - Pipelines
       responses:
@@ -75941,7 +76016,8 @@ paths:
         example: '11'
       - name: pipeline_id
         required: true
-        description: ID of the pipeline.
+        description: ID of the pipeline. In a CI/CD job, the `CI_PIPELINE_ID` predefined
+          variable holds this value.
         schema:
           type: integer
         in: path
@@ -75955,7 +76031,8 @@ paths:
         in: query
       - name: scope
         required: false
-        description: The scope of builds to show
+        description: Scope of jobs to show. Accepts a single job status or an array
+          of job statuses. If omitted, returns all jobs.
         schema:
           oneOf:
           - type: string
@@ -76040,7 +76117,8 @@ paths:
         example: 18
       - name: scope
         required: false
-        description: The scope of builds to show
+        description: Scope of jobs to show. Accepts a single job status or an array
+          of job statuses. If omitted, returns all jobs.
         schema:
           oneOf:
           - type: string
@@ -76087,7 +76165,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdPipelinesPipelineIdTriggerJobs
       summary: List all trigger jobs by pipeline
-      description: Lists all trigger jobs for a specified pipeline.
+      description: Lists all trigger jobs for a specified pipeline. This feature was
+        introduced in GitLab 19.2.
       tags:
       - Pipelines
       responses:
@@ -76124,7 +76203,8 @@ paths:
         example: 18
       - name: scope
         required: false
-        description: The scope of builds to show
+        description: Scope of jobs to show. Accepts a single job status or an array
+          of job statuses. If omitted, returns all jobs.
         schema:
           oneOf:
           - type: string
@@ -76330,6 +76410,9 @@ paths:
       summary: Retry jobs in a pipeline
       description: Retries failed or canceled jobs in a pipeline. If there are no
         failed or canceled jobs in the pipeline, calling this endpoint has no effect.
+        Only one retry of a pipeline runs at a time. If a retry of the same pipeline
+        is in progress, returns `409 Conflict`. Wait for the retry to finish, then
+        send the request again.
       tags:
       - Pipelines
       responses:
@@ -76370,7 +76453,9 @@ paths:
     post:
       operationId: postApiV4ProjectsIdPipelinesPipelineIdCancel
       summary: Cancel all jobs for a pipeline
-      description: Cancels all jobs in a specified pipeline.
+      description: Cancels all jobs in a specified pipeline. If the pipeline cancellation
+        rate limit is exceeded, returns `429 Too Many Requests` with a `Retry-After`
+        header.
       tags:
       - Pipelines
       responses:
@@ -76582,7 +76667,9 @@ paths:
       operationId: getApiV4Runners
       summary: List all available runners
       description: Lists all runners available to the user. For group runners, you
-        must have the Owner role in the owner namespace.
+        must have the Owner role in the owner namespace. For project runners, you
+        must have the Maintainer or Owner role in a project assigned to the runner.
+        Requires a token with the `api` or `read_api` scope.
       tags:
       - Runners
       responses:
@@ -76601,8 +76688,8 @@ paths:
       parameters:
       - name: scope
         required: false
-        description: Scope of runners to return. Deprecated. Use `type` or `status`
-          instead.
+        description: Scope of runners to return. If omitted, all runners are returned.
+          Deprecated. Use `type` or `status` instead.
         schema:
           type: string
           enum:
@@ -76640,7 +76727,10 @@ paths:
         in: query
       - name: status
         required: false
-        description: Status of runners to return.
+        description: Status of runners to return. The `active` and `paused` values
+          are deprecated. Use the `paused` parameter instead. Requesting `offline`
+          runners might also return `stale` runners, because `stale` is included in
+          `offline`.
         schema:
           type: string
           enum:
@@ -76694,7 +76784,11 @@ paths:
     post:
       operationId: postApiV4Runners
       summary: Create a runner
-      description: Creates a runner.
+      description: Creates a runner with a runner registration token. Runner registration
+        tokens are deprecated and disabled by default in GitLab 17.0 and later. If
+        registration with runner registration tokens is disabled in the instance,
+        project, or group settings, returns `410 Gone`. Use `POST /user/runners` to
+        create runners instead.
       tags:
       - CI runners
       responses:
@@ -76707,9 +76801,9 @@ paths:
         '400':
           description: Bad Request
         '403':
-          description: Forbidden
+          description: Invalid runner registration token
         '410':
-          description: Gone
+          description: Runner registration disabled
       requestBody:
         required: true
         content:
@@ -76719,7 +76813,7 @@ paths:
     delete:
       operationId: deleteApiV4Runners
       summary: Delete a registered runner
-      description: Deletes a specified registered runner.
+      description: Deletes a registered runner by using its authentication token.
       tags:
       - CI runners
       responses:
@@ -76761,8 +76855,8 @@ paths:
       parameters:
       - name: scope
         required: false
-        description: Scope of runners to return. Deprecated. Use `type` or `status`
-          instead.
+        description: Scope of runners to return. If omitted, all runners are returned.
+          Deprecated. Use `type` or `status` instead.
         schema:
           type: string
           enum:
@@ -76800,7 +76894,10 @@ paths:
         in: query
       - name: status
         required: false
-        description: Status of runners to return.
+        description: Status of runners to return. The `active` and `paused` values
+          are deprecated. Use the `paused` parameter instead. Requesting `offline`
+          runners might also return `stale` runners, because `stale` is included in
+          `offline`.
         schema:
           type: string
           enum:
@@ -76858,6 +76955,10 @@ paths:
       description: Retrieves details of a runner. Instance runner details are available
         to all authenticated users through this endpoint. For groups and projects,
         you must have the Maintainer or Owner role for the associated project or group.
+        The Security Manager role in the associated project or group, or a custom
+        role with the `admin_runners` permission in the owner group or project, also
+        grants access. Requires a token with the `api`, `read_api`, or `manage_runner`
+        scope.
       tags:
       - Runners
       responses:
@@ -76893,7 +76994,12 @@ paths:
     put:
       operationId: putApiV4RunnersId
       summary: Update a runner
-      description: Updates a specified runner.
+      description: Updates a specified runner. For instance runners, you must be an
+        administrator. For group runners, you must have the Owner role in the owner
+        group. For project runners, you must have the Maintainer or Owner role in
+        a project assigned to the runner. A custom role with the `admin_runners` permission
+        in the owner group or project also grants access. Requires a token with the
+        `api` or `manage_runner` scope.
       tags:
       - Runners
       responses:
@@ -76927,7 +77033,12 @@ paths:
     delete:
       operationId: deleteApiV4RunnersId
       summary: Delete a runner
-      description: Deletes a specified runner.
+      description: Deletes a specified runner. For instance runners, you must be an
+        administrator. For group runners, you must have the Owner role in the owner
+        group. For project runners, you must have the Maintainer or Owner role in
+        the project that owns the runner. A custom role with the `admin_runners` permission
+        in the owner group or project also grants access. Requires a token with the
+        `api` or `manage_runner` scope.
       tags:
       - Runners
       responses:
@@ -77158,7 +77269,12 @@ paths:
     post:
       operationId: postApiV4RunnersIdResetAuthenticationToken
       summary: Reset an authentication token for a runner
-      description: Resets the authentication token for a specified runner.
+      description: Resets the authentication token for a specified runner. For instance
+        runners, you must be an administrator. For group runners, you must have the
+        Owner role in the owner group. For project runners, you must have the Maintainer
+        or Owner role in a project assigned to the runner. A custom role with the
+        `admin_runners` permission in the owner group or project also grants access.
+        Requires a token with the `api` or `manage_runner` scope.
       tags:
       - Runners
       responses:
@@ -77187,8 +77303,10 @@ paths:
     get:
       operationId: getApiV4ProjectsIdRunners
       summary: List all runners for a project
-      description: List all runners available in the project, including from ancestor
-        groups and any allowed shared runners.
+      description: Lists all runners available in the project, including from ancestor
+        groups and any allowed instance runners. You must be an administrator of the
+        GitLab instance or have at least the Maintainer or Auditor role for the target
+        project.
       tags:
       - Runners
       - Projects
@@ -77218,8 +77336,8 @@ paths:
         in: path
       - name: scope
         required: false
-        description: Scope of runners to return. Deprecated. Use `type` or `status`
-          instead.
+        description: Scope of runners to return. If omitted, all runners are returned.
+          Deprecated. Use `type` or `status` instead.
         schema:
           type: string
           enum:
@@ -77257,7 +77375,10 @@ paths:
         in: query
       - name: status
         required: false
-        description: Status of runners to return.
+        description: Status of runners to return. The `active` and `paused` values
+          are deprecated. Use the `paused` parameter instead. Requesting `offline`
+          runners might also return `stale` runners, because `stale` is included in
+          `offline`.
         schema:
           type: string
           enum:
@@ -77311,7 +77432,10 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRunners
       summary: Assign a runner to a project
-      description: Assigns an available project runner to a project.
+      description: Assigns an available project runner to a project. You must have
+        the Maintainer or Owner role in the target project and in a project assigned
+        to the runner, or a custom role with the `admin_runners` permission. Requires
+        a token with the `api` scope.
       tags:
       - Runners
       - Projects
@@ -77349,7 +77473,9 @@ paths:
       summary: Unassign a runner from a project
       description: Unassigns a specified project runner from a project. You cannot
         unassign a runner from the owner project. Use the delete a runner operation
-        instead.
+        instead. If the runner is locked, only administrators can unassign it. You
+        must have the Maintainer or Owner role in the project, or a custom role with
+        the `admin_runners` permission. Requires a token with the `api` scope.
       tags:
       - Runners
       - Projects
@@ -77389,7 +77515,10 @@ paths:
       operationId: getApiV4GroupsIdRunners
       summary: List all runners in a group
       description: Lists all runners available in a specified group and any ancestor
-        groups, including any allowed instance runners.
+        groups, including any allowed instance runners. You must be an administrator
+        or auditor, or have the Security Manager, Maintainer, or Owner role in the
+        group, or a custom role with the `admin_runners` permission in the group.
+        Requires a token with the `api` or `read_api` scope.
       tags:
       - Runners
       - Groups
@@ -77436,7 +77565,10 @@ paths:
         in: query
       - name: status
         required: false
-        description: Status of runners to return.
+        description: Status of runners to return. The `active` and `paused` values
+          are deprecated. Use the `paused` parameter instead. Requesting `offline`
+          runners might also return `stale` runners, because `stale` is included in
+          `offline`.
         schema:
           type: string
           enum:
@@ -77491,7 +77623,9 @@ paths:
     post:
       operationId: postApiV4RunnersResetRegistrationToken
       summary: Reset the runner registration token for the instance
-      description: Resets the runner registration token for the GitLab instance.
+      description: Resets the runner registration token for the GitLab instance. Registering
+        runners with a registration token is deprecated. Create runners with `POST
+        /user/runners` and use their authentication token instead.
       tags:
       - Runners
       - Groups
@@ -77510,7 +77644,9 @@ paths:
     post:
       operationId: postApiV4ProjectsIdRunnersResetRegistrationToken
       summary: Reset the runner registration token for a project
-      description: Resets the runner registration token for a specified project.
+      description: Resets the runner registration token for a specified project. Registering
+        runners with a registration token is deprecated. Create runners with `POST
+        /user/runners` and use their authentication token instead.
       tags:
       - Runners
       - Projects
@@ -77540,7 +77676,9 @@ paths:
     post:
       operationId: postApiV4GroupsIdRunnersResetRegistrationToken
       summary: Reset the runner registration token for a group
-      description: Resets the runner registration token for a specified group.
+      description: Resets the runner registration token for a specified group. Registering
+        runners with a registration token is deprecated. Create runners with `POST
+        /user/runners` and use their authentication token instead.
       tags:
       - Runners
       - Groups
@@ -77613,7 +77751,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCiRunnerRegistrationDetails"
         '403':
-          description: Forbidden
+          description: Credentials are invalid
         '422':
           description: Runner is orphaned
         '400':
@@ -77656,7 +77794,8 @@ paths:
       operationId: getApiV4RunnersRouterDiscovery
       summary: Discover Job Router information
       description: Discovers Job Router information for a runner. You must provide
-        a valid runner authentication token.
+        a valid runner authentication token. This feature was introduced in GitLab
+        18.7.
       tags:
       - CI runners
       responses:
@@ -77669,7 +77808,7 @@ paths:
         '403':
           description: 403 Forbidden
         '501':
-          description: 501 Not Implemented
+          description: Job Router is not available
   "/api/v4/jobs/request":
     post:
       operationId: postApiV4JobsRequest
@@ -78074,6 +78213,7 @@ paths:
       operationId: getApiV4ProjectsIdResourceGroupsKeyCurrentJob
       summary: Retrieve current job for a resource group
       description: Retrieves the current job for a specified resource group in a project.
+        This feature was introduced in GitLab 18.6.
       tags:
       - CI resource groups
       responses:
@@ -78164,7 +78304,10 @@ paths:
       operationId: getApiV4ProjectsIdJobs
       summary: List all jobs for a project
       description: Lists all jobs for a specified project. By default, this request
-        returns 20 results at a time because the API results are paginated.
+        returns 20 results at a time because the API results are paginated. This endpoint
+        supports offset-based and keyset-based pagination. Keyset-based pagination
+        is recommended when requesting consecutive pages of results. Jobs are returned
+        by ID in descending order.
       tags:
       - CI jobs
       responses:
@@ -78344,7 +78487,8 @@ paths:
     post:
       operationId: postApiV4ProjectsIdJobsJobIdCancel
       summary: Cancel a job
-      description: Cancels a specified job in a project.
+      description: Cancels a specified job in a project. If the job cancellation rate
+        limit is exceeded, returns `429 Too Many Requests` with a `Retry-After` header.
       tags:
       - CI jobs
       responses:
@@ -78391,7 +78535,9 @@ paths:
     post:
       operationId: postApiV4ProjectsIdJobsJobIdRetry
       summary: Retry a job
-      description: Retries a specified job in a project.
+      description: Retries a specified job in a project. Retries both CI/CD jobs and
+        trigger jobs. If the job retry rate limit is exceeded, returns `429 Too Many
+        Requests` with a `Retry-After` header.
       tags:
       - CI jobs
       responses:
@@ -78439,7 +78585,8 @@ paths:
       operationId: postApiV4ProjectsIdJobsJobIdErase
       summary: Erase a job
       description: Erases a specified job in a project. This removes job artifacts
-        and the job log.
+        and the job log. If the job erasure rate limit is exceeded, returns `429 Too
+        Many Requests` with a `Retry-After` header.
       tags:
       - CI jobs
       responses:
@@ -78483,7 +78630,8 @@ paths:
       operationId: postApiV4ProjectsIdJobsJobIdPlay
       summary: Run a job
       description: Runs a specified job. For a job in manual status, triggers an action
-        to start the job.
+        to start the job. If the manual job run rate limit is exceeded, returns `429
+        Too Many Requests` with a `Retry-After` header.
       tags:
       - CI jobs
       responses:
@@ -78530,7 +78678,8 @@ paths:
     get:
       operationId: getApiV4Job
       summary: Retrieve a job by job token
-      description: Retrieves a job that was generated by a specified job token.
+      description: Retrieves a job that was generated by a specified job token. The
+        request must run as part of the `script` section of a CI/CD job.
       tags:
       - CI jobs
       responses:
@@ -78550,7 +78699,9 @@ paths:
     get:
       operationId: getApiV4JobAllowedAgents
       summary: List all GitLab agents for Kubernetes by job token
-      description: Lists all GitLab agents for Kubernetes with a specified `CI_JOB_TOKEN`.
+      description: Retrieves the job that generated the specified `CI_JOB_TOKEN`,
+        along with a list of the GitLab agents for Kubernetes the job is allowed to
+        access.
       tags:
       - Agents
       responses:
@@ -80776,8 +80927,18 @@ paths:
     get:
       operationId: getApiV4ProjectsIdJobsArtifactsRefNameDownload
       summary: Retrieve job artifacts
-      description: Retrieves the artifacts archive for the latest successful job on
-        a specified branch or tag.
+      description: 'Retrieves the artifacts archive for the latest successful job
+        on a specified branch or tag. The latest successful pipeline is determined
+        by its creation time. The start or end time of individual jobs does not affect
+        which pipeline is the latest. When `search_recent_successful_pipelines` is
+        `true`, the search includes up to 100 recent successful pipelines for the
+        ref. Otherwise, for parent and child pipelines, artifacts are searched in
+        hierarchical order from parent to child. If both parent and child pipelines
+        have a job with the same name, the artifact from the parent pipeline is returned.
+        The pipeline must have completed with a `success` status, so any manual jobs
+        in it must either complete successfully or have `allow_failure: true` set.
+        On GitLab.com, the request might redirect through a CDN, so clients must follow
+        redirects, for example with the cURL `--location` option.'
       tags:
       - Job artifacts
       responses:
@@ -80832,8 +80993,7 @@ paths:
         required: false
         description: If `true`, searches across recent successful pipelines instead
           of just the latest one. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/515864)
-          in GitLab 18.7 [with a feature flag](https://docs.gitlab.com/administration/feature_flags/)
-          named `ci_search_recent_successful_pipelines`. Disabled by default.
+          in GitLab 18.7.
         schema:
           type: boolean
           default: false
@@ -80853,7 +81013,18 @@ paths:
     get:
       operationId: getApiV4ProjectsIdJobsArtifactsRefNameRawArtifactPath
       summary: Download a specific file from artifacts archive from a ref
-      description: This feature was introduced in GitLab 11.5
+      description: 'Downloads a single file from the artifacts of the latest successful
+        job on a specified branch or tag. The file is extracted from the archive and
+        streamed to the client. When `search_recent_successful_pipelines` is `true`,
+        the search includes up to 100 recent successful pipelines for the ref. Otherwise,
+        for parent and child pipelines, artifacts are searched in hierarchical order
+        from parent to child. If both parent and child pipelines have a job with the
+        same name, the artifact from the parent pipeline is returned. The pipeline
+        must have completed with a `success` status, so any manual jobs in it must
+        either complete successfully or have `allow_failure: true` set. On GitLab.com,
+        the request might redirect through a CDN, so clients must follow redirects,
+        for example with the cURL `--location` option. This feature was introduced
+        in GitLab 11.5'
       tags:
       - Job artifacts
       responses:
@@ -80909,8 +81080,7 @@ paths:
         required: false
         description: If `true`, searches across recent successful pipelines instead
           of just the latest one. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/515864)
-          in GitLab 18.7 [with a feature flag](https://docs.gitlab.com/administration/feature_flags/)
-          named `ci_search_recent_successful_pipelines`. Disabled by default.
+          in GitLab 18.9.
         schema:
           type: boolean
           default: false
@@ -80919,8 +81089,11 @@ paths:
     get:
       operationId: getApiV4ProjectsIdJobsJobIdArtifacts
       summary: Download an artifact from a job
-      description: This feature was introduced in GitLab 8.5. The `file_type` attribute
-        was added in GitLab 19.4.
+      description: Downloads the artifacts archive of a specified job. To download
+        a specific report file, such as JUnit test results, use the `file_type` attribute.
+        On GitLab.com, the request might redirect through a CDN, so clients must follow
+        redirects, for example with the cURL `--location` option. This feature was
+        introduced in GitLab 8.5. The `file_type` attribute was added in GitLab 19.4.
       tags:
       - Job artifacts
       responses:
@@ -81013,7 +81186,10 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdJobsJobIdArtifacts
       summary: Delete job artifacts
-      description: Deletes job artifacts from a specified job in a project.
+      description: Deletes job artifacts from a specified job in a project. This includes
+        archived files, metadata, and report artifacts such as JUnit reports. The
+        job log is not deleted. Artifacts cannot be recovered after deletion. You
+        must have the Maintainer or Owner role for the project.
       tags:
       - Job artifacts
       responses:
@@ -81048,8 +81224,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdJobsJobIdArtifactsTree
       summary: List all files in an artifacts archive
-      description: Lists all files in a specified artifacts archive without extracting
-        them.
+      description: Lists all files and directories in a specified artifacts archive.
+        It reads the artifact metadata without extracting the archive. This feature
+        was introduced in GitLab 18.8.
       tags:
       - Job artifacts
       responses:
@@ -81130,7 +81307,11 @@ paths:
     get:
       operationId: getApiV4ProjectsIdJobsJobIdArtifactsArtifactPath
       summary: Download a specific file from artifacts archive
-      description: This feature was introduced in GitLab 10.0
+      description: Downloads a single file from the artifacts of a specified job.
+        The file is extracted from the archive and streamed to the client. On GitLab.com,
+        the request might redirect through a CDN, so clients must follow redirects,
+        for example with the cURL `--location` option. This feature was introduced
+        in GitLab 10.0
       tags:
       - Job artifacts
       responses:
@@ -81215,7 +81396,14 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdArtifacts
       summary: Delete all job artifacts in a project
-      description: Deletes job artifacts from all jobs in a specified project.
+      description: Deletes job artifacts that are eligible for deletion from all jobs
+        in a specified project. By default, artifacts from the most recently completed
+        pipeline and the most recent successful pipeline for each ref are kept, regardless
+        of expiration. The request sets the expiry of all deletable job artifacts
+        to the current time. The files are then deleted by the regular cleanup of
+        expired job artifacts, which runs asynchronously on a schedule, so deletion
+        might take a short time. Job logs are never deleted. Artifacts cannot be recovered
+        after deletion. You must have the Maintainer or Owner role for the project.
       tags:
       - Job artifacts
       responses:
@@ -88470,37 +88658,47 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the pipeline.
           format: int64
           example: 1
         iid:
           type: integer
+          description: Internal ID of the pipeline.
           example: 2
         project_id:
           type: integer
+          description: ID of the project of the pipeline.
           format: int64
           example: 3
         sha:
           type: string
+          description: SHA of the commit the pipeline runs for.
           example: 0ec9e58fdfca6cdd6652c083c9edb53abc0bad52
         ref:
           type: string
+          description: Git reference of the pipeline.
           example: feature-branch
         status:
           type: string
+          description: Status of the pipeline.
           example: success
         source:
           type: string
+          description: Source that triggered the pipeline.
           example: push
         created_at:
           type: string
+          description: Timestamp when the pipeline was created.
           format: date-time
           example: '2022-10-21T16:49:48.000+02:00'
         updated_at:
           type: string
+          description: Timestamp when the pipeline was last updated.
           format: date-time
           example: '2022-10-21T16:49:48.000+02:00'
         web_url:
           type: string
+          description: URL of the pipeline in the GitLab UI.
           example: https://gitlab.example.com/gitlab-org/gitlab-foss/-/pipelines/61
     APIEntitiesMergeTrainsCar:
       type: object
@@ -92249,26 +92447,33 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the pipeline.
           format: int64
           example: 1
         iid:
           type: integer
+          description: Internal ID of the pipeline.
           example: 2
         project_id:
           type: integer
+          description: ID of the project of the pipeline.
           format: int64
           example: 3
         sha:
           type: string
+          description: SHA of the commit the pipeline runs for.
           example: 0ec9e58fdfca6cdd6652c083c9edb53abc0bad52
         ref:
           type: string
+          description: Git reference of the pipeline.
           example: feature-branch
         status:
           type: string
+          description: Status of the pipeline.
           example: success
         source:
           type: string
+          description: Source that triggered the pipeline.
           example: push
         created_at:
           type: string
@@ -92280,6 +92485,7 @@ components:
           example: '2015-12-24T17:54:31.198Z'
         web_url:
           type: string
+          description: URL of the pipeline in the GitLab UI.
           example: https://gitlab.example.com/gitlab-org/gitlab-foss/-/pipelines/61
         before_sha:
           type: string
@@ -92808,110 +93014,143 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the runner controller token.
           format: int64
           example: 1
         runner_controller_id:
           type: integer
+          description: ID of the associated runner controller.
           format: int64
           example: 1
         description:
           type: string
+          description: Description of the token.
           example: Controller for managing runner
         last_used_at:
           type: string
+          description: Date and time when the token was last used.
           format: date-time
         created_at:
           type: string
+          description: Date and time when the token was created.
           format: date-time
         updated_at:
           type: string
+          description: Date and time when the token was last updated.
           format: date-time
     APIEntitiesCiRunnerControllerTokenWithToken:
       type: object
       properties:
         id:
           type: integer
+          description: ID of the runner controller token.
           format: int64
           example: 1
         runner_controller_id:
           type: integer
+          description: ID of the associated runner controller.
           format: int64
           example: 1
         description:
           type: string
+          description: Description of the token.
           example: Controller for managing runner
         last_used_at:
           type: string
+          description: Date and time when the token was last used.
           format: date-time
         created_at:
           type: string
+          description: Date and time when the token was created.
           format: date-time
         updated_at:
           type: string
+          description: Date and time when the token was last updated.
           format: date-time
         token:
           type: string
+          description: Token value used for authentication.
     APIEntitiesCiRunnerControllerInstanceLevelScoping:
       type: object
       properties:
         created_at:
           type: string
+          description: Date and time when the scope was created.
           format: date-time
         updated_at:
           type: string
+          description: Date and time when the scope was last updated.
           format: date-time
     APIEntitiesCiRunnerControllerRunnerLevelScoping:
       type: object
       properties:
         runner_id:
           type: integer
+          description: ID of the runner.
           format: int64
         created_at:
           type: string
+          description: Date and time when the scope was created.
           format: date-time
         updated_at:
           type: string
+          description: Date and time when the scope was last updated.
           format: date-time
     APIEntitiesCiRunnerController:
       type: object
       properties:
         id:
           type: integer
+          description: ID of the runner controller.
           format: int64
           example: 1
         description:
           type: string
+          description: Description of the runner controller.
           example: Controller for managing runner
         state:
           type: string
+          description: 'State of the runner controller. Possible values: `disabled`
+            (default), `enabled`, or `dry_run`.'
           example: enabled
         created_at:
           type: string
+          description: Date and time when the runner controller was created.
           format: date-time
         updated_at:
           type: string
+          description: Date and time when the runner controller was last updated.
           format: date-time
     APIEntitiesCiRunnerControllerDetail:
       type: object
       properties:
         id:
           type: integer
+          description: ID of the runner controller.
           format: int64
           example: 1
         description:
           type: string
+          description: Description of the runner controller.
           example: Controller for managing runner
         state:
           type: string
+          description: 'State of the runner controller. Possible values: `disabled`
+            (default), `enabled`, or `dry_run`.'
           example: enabled
         created_at:
           type: string
+          description: Date and time when the runner controller was created.
           format: date-time
         updated_at:
           type: string
+          description: Date and time when the runner controller was last updated.
           format: date-time
         connected:
           type: boolean
+          description: If `true`, the runner controller is connected. A runner controller
+            is connected when it has used at least one of its active tokens within
+            the last hour.
           example: true
     APIEntitiesAuditEvent:
       type: object
@@ -95565,6 +95804,8 @@ components:
           type: string
         merge_request_diffs_page_request_limit:
           type: string
+        merge_request_diff_resources_request_limit:
+          type: string
         work_item_hierarchy_add_children_limit:
           type: string
         work_item_move_limit:
@@ -95572,6 +95813,8 @@ components:
         work_item_update_limit:
           type: string
         github_gists_import_limit:
+          type: string
+        ipv6_rate_limit_prefix_length:
           type: string
         gitlab_dedicated_instance:
           type: string
@@ -95590,6 +95833,10 @@ components:
         ci_runner_manager_creation_ceiling:
           type: string
         release_evidence_max_size_bytes:
+          type: string
+        ci_stale_runner_managers_cleanup_deletions_per_run:
+          type: string
+        ci_stale_runner_managers_cleanup_backlog_limit:
           type: string
         allow_account_deletion:
           type: string
@@ -100026,37 +100273,47 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the pipeline.
           format: int64
           example: 1
         iid:
           type: integer
+          description: Internal ID of the pipeline.
           example: 2
         project_id:
           type: integer
+          description: ID of the project of the pipeline.
           format: int64
           example: 3
         sha:
           type: string
+          description: SHA of the commit the pipeline runs for.
           example: 0ec9e58fdfca6cdd6652c083c9edb53abc0bad52
         ref:
           type: string
+          description: Git reference of the pipeline.
           example: feature-branch
         status:
           type: string
+          description: Status of the pipeline.
           example: success
         source:
           type: string
+          description: Source that triggered the pipeline.
           example: push
         created_at:
           type: string
+          description: Timestamp when the pipeline was created.
           format: date-time
           example: '2022-10-21T16:49:48.000+02:00'
         updated_at:
           type: string
+          description: Timestamp when the pipeline was last updated.
           format: date-time
           example: '2022-10-21T16:49:48.000+02:00'
         web_url:
           type: string
+          description: URL of the pipeline in the GitLab UI.
           example: https://gitlab.example.com/gitlab-org/gitlab-foss/-/pipelines/61
         user:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
@@ -101273,12 +101530,15 @@ components:
       properties:
         total_minutes_used:
           type: integer
+          description: Total compute minutes used in the current billing period.
           example: 105
         monthly_minutes_used:
           type: integer
+          description: Compute minutes used from the monthly quota.
           example: 100
         purchased_minutes_used:
           type: integer
+          description: Compute minutes used from additional purchased allocations.
           example: 5
     APIEntitiesNamespace:
       type: object
@@ -101337,11 +101597,19 @@ components:
           example: 123
         shared_runners_minutes_limit:
           type: integer
+          description: Monthly compute minutes quota allocated to the namespace. Returned
+            only on GitLab.com, for administrators.
           example: 133
         ci_minutes_usage:
+          description: Compute minutes usage breakdown. Returned only for top-level
+            namespaces when the user has the Owner role, is an auditor, or is an administrator.
+            [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/12379)
+            in GitLab 19.4.
           "$ref": "#/components/schemas/APIEntitiesCiMinutesUsage"
         extra_shared_runners_minutes_limit:
           type: integer
+          description: Additional compute minutes added on top of the monthly quota,
+            from purchased minute packs. Returned only on GitLab.com, for administrators.
           example: 133
         additional_purchased_storage_size:
           type: integer
@@ -101352,30 +101620,50 @@ components:
           example: '2022-06-18'
         billable_members_count:
           type: integer
+          description: Number of billable members in the namespace. `null` unless
+            the user has the Owner role, is an auditor, or is an administrator.
           example: 2
         seats_in_use:
           type: integer
+          description: Number of seats currently in use. Returned only for namespaces
+            with a subscription. `null` unless the user has the Owner role, is an
+            auditor, or is an administrator.
           example: 5
         max_seats_used:
           type: integer
+          description: Maximum number of seats used during the current subscription
+            period. Returned only for namespaces with a subscription. `null` unless
+            the user has the Owner role, is an auditor, or is an administrator.
           example: 100
         max_seats_used_changed_at:
           type: string
-          format: date
-          example: '2022-06-18'
+          description: Timestamp of when `max_seats_used` last changed. Returned only
+            for namespaces with a subscription. `null` unless the user has the Owner
+            role, is an auditor, or is an administrator.
+          format: date-time
+          example: '2025-05-15T12:00:02.000Z'
         end_date:
           type: string
+          description: End date of the current subscription. Returned only for namespaces
+            with a subscription. `null` if not applicable, or unless the user has
+            the Owner role, is an auditor, or is an administrator.
           format: date
           example: '2022-06-18'
         plan:
           type: string
+          description: Subscription plan of the namespace, for example `free` or `ultimate`.
+            Returned only when the user has the Owner role or is an administrator.
           example: default
         trial_ends_on:
           type: string
+          description: Date the trial ends. `null` if not on a trial. Returned only
+            when the user has the Owner role or is an administrator.
           format: date
           example: '2022-06-18'
         trial:
           type: boolean
+          description: If `true`, the namespace is on a trial plan. Returned only
+            when the user has the Owner role or is an administrator.
     APIEntitiesGitlabSubscription:
       type: object
       properties:
@@ -103083,12 +103371,15 @@ components:
       properties:
         variable_type:
           type: string
+          description: Type of the variable. Either `env_var` or `file`.
           example: env_var
         key:
           type: string
+          description: Key of the variable.
           example: TEST_VARIABLE_1
         value:
           type: string
+          description: Value of the variable.
           example: TEST_1
         hidden:
           type: boolean
@@ -103098,6 +103389,8 @@ components:
           type: boolean
         raw:
           type: boolean
+          description: Whether the variable is treated as a raw string. When `false`,
+            variable references in the value are expanded.
         environment_scope:
           type: string
           example: "*"
@@ -103482,9 +103775,13 @@ components:
           example: test-1-20150125
         ip_address:
           type: string
+          description: Always `null`. Deprecated. Use the runner manager fields in
+            the GraphQL API instead.
           example: 127.0.0.1
         active:
           type: boolean
+          description: If `true`, the runner is allowed to receive jobs. Deprecated.
+            Use `paused` instead.
           example: true
         paused:
           type: boolean
@@ -104326,37 +104623,47 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the pipeline.
           format: int64
           example: 1
         iid:
           type: integer
+          description: Internal ID of the pipeline.
           example: 2
         project_id:
           type: integer
+          description: ID of the project of the pipeline.
           format: int64
           example: 3
         sha:
           type: string
+          description: SHA of the commit the pipeline runs for.
           example: 0ec9e58fdfca6cdd6652c083c9edb53abc0bad52
         ref:
           type: string
+          description: Git reference of the pipeline.
           example: feature-branch
         status:
           type: string
+          description: Status of the pipeline.
           example: success
         source:
           type: string
+          description: Source that triggered the pipeline.
           example: push
         created_at:
           type: string
+          description: Timestamp when the pipeline was created.
           format: date-time
           example: '2022-10-21T16:49:48.000+02:00'
         updated_at:
           type: string
+          description: Timestamp when the pipeline was last updated.
           format: date-time
           example: '2022-10-21T16:49:48.000+02:00'
         web_url:
           type: string
+          description: URL of the pipeline in the GitLab UI.
           example: https://gitlab.example.com/gitlab-org/gitlab-foss/-/pipelines/61
         name:
           type: string
@@ -104481,26 +104788,33 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the pipeline.
           format: int64
           example: 1
         iid:
           type: integer
+          description: Internal ID of the pipeline.
           example: 2
         project_id:
           type: integer
+          description: ID of the project of the pipeline.
           format: int64
           example: 3
         sha:
           type: string
+          description: SHA of the commit the pipeline runs for.
           example: 0ec9e58fdfca6cdd6652c083c9edb53abc0bad52
         ref:
           type: string
+          description: Git reference of the pipeline.
           example: feature-branch
         status:
           type: string
+          description: Status of the pipeline.
           example: success
         source:
           type: string
+          description: Source that triggered the pipeline.
           example: push
         created_at:
           type: string
@@ -104512,6 +104826,7 @@ components:
           example: '2015-12-24T17:54:31.198Z'
         web_url:
           type: string
+          description: URL of the pipeline in the GitLab UI.
           example: https://gitlab.example.com/gitlab-org/gitlab-foss/-/pipelines/61
         before_sha:
           type: string
@@ -104813,9 +105128,13 @@ components:
           example: test-1-20150125
         ip_address:
           type: string
+          description: Always `null`. Deprecated. Use the runner manager fields in
+            the GraphQL API instead.
           example: 127.0.0.1
         active:
           type: boolean
+          description: If `true`, the runner is allowed to receive jobs. Deprecated.
+            Use `paused` instead.
           example: true
         paused:
           type: boolean
@@ -104853,6 +105172,8 @@ components:
           example: idle
         uuid:
           type: string
+          description: UUID of the runner. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813)
+            in GitLab 19.6.
           example: '01966aa0-f383-7a6b-b694-cd4f2f96cca1'
     APIEntitiesCiRunnerDetails:
       type: object
@@ -104866,9 +105187,13 @@ components:
           example: test-1-20150125
         ip_address:
           type: string
+          description: Always `null`. Deprecated. Use the runner manager fields in
+            the GraphQL API instead.
           example: 127.0.0.1
         active:
           type: boolean
+          description: If `true`, the runner is allowed to receive jobs. Deprecated.
+            Use `paused` instead.
           example: true
         paused:
           type: boolean
@@ -104906,6 +105231,8 @@ components:
           example: idle
         uuid:
           type: string
+          description: UUID of the runner. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813)
+            in GitLab 19.6.
           example: '01966aa0-f383-7a6b-b694-cd4f2f96cca1'
         tag_list:
           type: string
@@ -104919,16 +105246,31 @@ components:
           type: string
         token_expires_at:
           type: string
+          description: Expiry time of the runner authentication token. `null` if the
+            token does not expire. Returned only to users who can view sensitive runner
+            data. For instance runners, only administrators.
           format: date-time
           example: '2025-01-01T00:00:00.000Z'
         version:
           type: string
+          description: Version of the runner, from its most recently contacted runner
+            manager. Deprecated. Use the runner manager fields in the GraphQL API
+            instead.
         revision:
           type: string
+          description: Revision of the runner, from its most recently contacted runner
+            manager. Deprecated. Use the runner manager fields in the GraphQL API
+            instead.
         platform:
           type: string
+          description: Platform of the runner, from its most recently contacted runner
+            manager. Deprecated. Use the runner manager fields in the GraphQL API
+            instead.
         architecture:
           type: string
+          description: Architecture of the runner, from its most recently contacted
+            runner manager. Deprecated. Use the runner manager fields in the GraphQL
+            API instead.
         contacted_at:
           type: string
         maintenance_note:
@@ -105023,6 +105365,7 @@ components:
       properties:
         server_url:
           type: string
+          description: URL of the Job Router.
           example: wss://kas.example.com
     APIEntitiesCiJobRequestJobInfo:
       type: object
@@ -105401,6 +105744,9 @@ components:
         web_search_enabled:
           type: boolean
           example: false
+        duo_workflow_file_attachments_enabled:
+          type: boolean
+          example: false
         include_recommended_allowed:
           type: boolean
           example: false
@@ -105691,21 +106037,28 @@ components:
       properties:
         name:
           type: string
+          description: Name of the file or directory.
           example: index.html
         path:
           type: string
+          description: Full path in the artifacts archive. Directories end with a
+            slash.
           example: coverage/index.html
         type:
           type: string
+          description: Type of the entry. Either `file` or `directory`.
           enum:
           - file
           - directory
           example: file
         size:
           type: integer
+          description: File size in bytes. Returned only for files.
           example: 12345
         mode:
           type: string
+          description: Unix file mode in octal format, such as `100644` for a file
+            or `040755` for a directory.
           example: '100644'
     APIEntitiesCiCatalogResourcesVersion:
       type: object
@@ -106636,6 +106989,11 @@ components:
             be shorter than requested depending on the authentication method used
             to call this endpoint or the audience.
           default: 300
+        organization_id:
+          type: integer
+          description: ID of the organization to mint the token for. Required for
+            Artifact Registry when the caller belongs to more than one.
+          nullable: true
       required:
       - audience
     postApiV4CodeSuggestionsCompletionsRequest:
@@ -114603,6 +114961,20 @@ components:
             feature flag is enabled. Default: `150000`. To disable the limit, set
             to `0`.'
           nullable: true
+        ci_stale_runner_managers_cleanup_deletions_per_run:
+          type: integer
+          description: 'Maximum number of stale runner managers deleted by each run
+            of the stale runner manager cleanup. Applies only when the `stale_runner_manager_cleanup_by_partition`
+            feature flag is enabled. Default: `500`.'
+          nullable: true
+        ci_stale_runner_managers_cleanup_backlog_limit:
+          type: integer
+          description: 'Number of deleted runner manager records still waiting for
+            background cleanup, above which the stale runner manager cleanup stops
+            deleting. If higher than `ci_runner_manager_cap_cleanup_backlog_limit`,
+            that value is used instead. Applies only when the `stale_runner_manager_cleanup_by_partition`
+            feature flag is enabled. Default: `5000`.'
+          nullable: true
         ci_lint_api_require_authentication:
           type: boolean
           description: If `true`, `GET /projects/:id/ci/lint` requires authentication,
@@ -116874,6 +117246,9 @@ components:
         merge_request_diffs_page_request_limit:
           type: string
           nullable: true
+        merge_request_diff_resources_request_limit:
+          type: string
+          nullable: true
         work_item_hierarchy_add_children_limit:
           type: string
           nullable: true
@@ -116881,6 +117256,9 @@ components:
           type: string
           nullable: true
         work_item_update_limit:
+          type: string
+          nullable: true
+        ipv6_rate_limit_prefix_length:
           type: string
           nullable: true
         observability_backend_ssl_verification_enabled:
@@ -137628,13 +138006,13 @@ components:
         name:
           type: string
           description: String label to differentiate this status from the status of
-            other systems.
+            other systems. Default is `default`.
           example: coverage
           nullable: true
         context:
           type: string
           description: String label to differentiate this status from the status of
-            other systems.
+            other systems. Default is `default`.
           example: coverage
           nullable: true
         coverage:
@@ -137769,16 +138147,17 @@ components:
           nullable: true
         protected:
           type: boolean
-          description: If `true`, the variable is protected.
+          description: If `true`, the variable is protected. Default is `false`.
           nullable: true
         masked:
           type: boolean
-          description: If `true`, the variable is masked.
+          description: If `true`, the variable is masked. Default is `false`.
           nullable: true
         masked_and_hidden:
           type: boolean
-          description: If `true`, the variable is masked and hidden. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/29674)
-            in GitLab 17.4.
+          description: If `true`, the variable is masked and hidden. Default is `false`.
+            [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/29674) in GitLab
+            17.4.
           nullable: true
         raw:
           type: boolean
@@ -137798,7 +138177,8 @@ components:
           nullable: true
         description:
           type: string
-          description: Description of the variable. Limited to 255 characters.
+          description: Description of the variable. Limited to 255 characters. Default
+            is `null`.
           nullable: true
       required:
       - key
@@ -137837,6 +138217,7 @@ components:
         filter:
           type: object
           description: Filter results when multiple variables share the same key.
+            Supports `filter[environment_scope]`.
           properties:
             environment_scope:
               type: string
@@ -137866,7 +138247,8 @@ components:
         inputs:
           type: object
           description: Map of inputs, as key-value pairs, to use when creating the
-            pipeline. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548)
+            pipeline. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519958)
+            in GitLab 17.10. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548)
             in GitLab 18.1. Feature flag `ci_inputs_for_pipelines` removed.
           nullable: true
       required:
@@ -137890,7 +138272,8 @@ components:
         inputs:
           type: object
           description: Map of inputs, as key-value pairs, to use when creating the
-            pipeline. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548)
+            pipeline. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519958)
+            in GitLab 17.10. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548)
             in GitLab 18.1. Feature flag `ci_inputs_for_pipelines` removed.
           nullable: true
       required:
@@ -137956,7 +138339,8 @@ components:
           description: Array of inputs to pass to the pipeline schedule. Each input
             has a `name` and a `value`, which can be a string, array, number, or boolean.
             To delete an existing input, include the `name` field and set `destroy`
-            to `true`.
+            to `true`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/525504)
+            in GitLab 17.11.
           items:
             type: object
             properties:
@@ -138094,12 +138478,14 @@ components:
       properties:
         ref:
           type: string
-          description: Reference
+          description: Branch or tag to run the pipeline on. For merge request pipelines,
+            use the merge request pipelines endpoint.
           example: develop
           nullable: true
         variables:
           type: array
-          description: Array of variables to make available in the pipeline. If `variable_type`
+          description: Array of variables to make available in the pipeline. Each
+            variable is a hash with `key`, `value`, and `variable_type`. If `variable_type`
             is omitted, it defaults to `env_var`.
           items:
             type: object
@@ -138125,7 +138511,8 @@ components:
         inputs:
           type: object
           description: Map of inputs, as key-value pairs, to use when creating the
-            pipeline. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548)
+            pipeline. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519958)
+            in GitLab 17.10. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548)
             in GitLab 18.1. Feature flag `ci_inputs_for_pipelines` removed.
           nullable: true
       required:
@@ -138152,7 +138539,7 @@ components:
         file:
           type: string
           format: binary
-          description: The secure file being uploaded
+          description: The secure file being uploaded. Maximum size is 5 MB.
           nullable: true
       required:
       - name
@@ -138180,7 +138567,8 @@ components:
           nullable: true
         info:
           type: object
-          description: Runner's metadata
+          description: Runner's metadata. Accepts the keys `name`, `version`, `revision`,
+            `platform`, and `architecture`.
           properties:
             name:
               type: string
@@ -138622,7 +139010,8 @@ components:
       properties:
         inputs:
           type: object
-          description: Input values for the job.
+          description: Input values for the job. [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17833)
+            in GitLab 18.10.
           example:
             environment: production
           nullable: true
@@ -139007,6 +139396,11 @@ components:
               type: boolean
               description: Allow web search in GitLab Duo Chat for this top-level
                 group. Can only be set on top-level groups.
+              nullable: true
+            duo_workflow_file_attachments_enabled:
+              type: boolean
+              description: Allow file attachments in GitLab Duo Chat for this top-level
+                group. Can only be set on top-level groups. GitLab.com only.
               nullable: true
             foundational_agents_default_enabled:
               type: boolean
@@ -139431,6 +139825,11 @@ components:
               type: boolean
               description: Allow web search in GitLab Duo Chat for this top-level
                 group. Can only be set on top-level groups.
+              nullable: true
+            duo_workflow_file_attachments_enabled:
+              type: boolean
+              description: Allow file attachments in GitLab Duo Chat for this top-level
+                group. Can only be set on top-level groups. GitLab.com only.
               nullable: true
             foundational_agents_default_enabled:
               type: boolean

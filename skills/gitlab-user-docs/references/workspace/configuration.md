@@ -74,7 +74,7 @@ Prerequisites:
 1. Select .
 
 The workspace might take a few minutes to start.
-To open the workspace, under **Preview**, select the workspace.
+To open the workspace, select .
 You also have access to the terminal and can install any necessary dependencies.
 
 ### Monitor workspace startup progress

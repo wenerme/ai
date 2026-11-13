@@ -34,6 +34,7 @@ The cron job name matches the name shown in the **Cron** tab of the Sidekiq dash
 | Mechanism | Worker | Cron job name | Default schedule | Purpose |
 |-----------|--------|---------------|------------------|---------|
 | Sync timeout recovery | `Geo::SyncTimeoutCronWorker` | `geo_sync_timeout_cron_worker` | Every 10 min (secondary) | Marks registries stuck in `started` state as `failed` with retry backoff. |
+| Blob location backfill | `Geo::RegistryBlobLocationBackfillCronWorker` | `geo_registry_blob_location_backfill_cron_worker` | Every 5 min (secondary) | Records the file location of blob registries that were synced earlier, until each blob type has been processed once. |
 | Blob sync scheduler | `Geo::RegistrySyncWorker` | `geo_registry_sync_worker` | Every 1 min (secondary) | Polls for `pending` and `failed` blob registries and enqueues `Geo::SyncWorker`. |
 | Repository sync scheduler | `Geo::RepositoryRegistrySyncWorker` | `geo_repository_registry_sync_worker` | Every 1 min (secondary) | Polls for `pending` and `failed` repository registries and enqueues `Geo::SyncWorker`. |
 | Registry consistency | `Geo::Secondary::RegistryConsistencyWorker` | `geo_secondary_registry_consistency_worker` | Every 1 min (secondary) | Creates missing registry records for untracked replicables. Detects orphaned registries. |

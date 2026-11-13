@@ -312,6 +312,27 @@ Add commits to a merge request by adding patches as attachments to the email.
 
 ## Troubleshooting
 
+### No option to create a merge request
+
+You might not find an option to create a merge request in your project.
+
+This issue occurs when merge requests or the repository are turned off for the project.
+Projects created to [run CI/CD for an external repository](../../../ci/ci_cd_for_external_repos/_index.md)
+have merge requests turned off by default.
+
+Prerequisites:
+
+- The Maintainer or Owner role for the project.
+
+To resolve this issue:
+
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. If the  toggle is off, turn it on.
+1. Under , turn on the  toggle.
+1. Select .
+
 ### No option to create a merge request on an issue
 
 The option to **Create merge request** doesn't display on an issue if:

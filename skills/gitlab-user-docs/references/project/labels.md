@@ -388,14 +388,15 @@ The following labels are created:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-Teams can use scoped labels to annotate issues, merge requests, and epics with mutually exclusive
-labels. By preventing certain labels from being used together, you can create more complex workflows.
+Teams can use scoped labels to annotate merge requests and work items, such as issues, tasks,
+and epics, with mutually exclusive labels.
+By preventing certain labels from being used together, you can create more complex workflows.
 
 [A list of scoped labels.]
 
 A scoped label uses a double-colon (`::`) syntax in its title, for example: `workflow::in-review`.
 
-An issue, merge request, or epic cannot have two scoped labels, of the form `key::value`,
+A merge request or work item cannot have two scoped labels, of the form `key::value`,
 with the same `key`. If you add a new label with the same `key` but a different `value`,
 the previous `key` label is replaced with the new label.
 

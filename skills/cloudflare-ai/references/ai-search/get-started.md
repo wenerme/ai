@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/get-started/og.png?v=15f1a711
 
 # Get started
 
-Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search is a managed search service. Connect a website, an R2 bucket, or upload your own documents, and AI Search indexes your content for natural language queries.
 
@@ -38,6 +38,10 @@ Create, populate, and query an AI Search instance from Python.
 
 Create AI Search instances programmatically using the REST API.
 
+### [Terraform](https://developers.cloudflare.com/ai-search/api/instances/terraform/)
+
+Create and manage AI Search instances and namespaces as code with the Cloudflare Terraform provider.
+
 Was this helpful?
 
 YesNo
@@ -47,5 +51,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/#page","headline":"Get started","description":"Create fully-managed, retrieval-augmented generation pipelines with Cloudflare AI Search.","url":"https://developers.cloudflare.com/ai-search/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/get-started/og.png?v=15f1a71149a1a4bc","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/get-started/#page","headline":"Get started","description":"Create fully-managed, retrieval-augmented generation pipelines with Cloudflare AI Search.","url":"https://developers.cloudflare.com/ai-search/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/get-started/og.png?v=15f1a71149a1a4bc","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -133,6 +133,29 @@ Hi, please message @frank :incoming_envelope:
 ```
 ````
 
+### Create a to-do item for a comment
+
+- Offering: GitLab.com, GitLab Self-Managed
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251726) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todo_for_comment`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+You can add a to-do item for one comment on an issue, merge request, epic, or task.
+The to-do item links to the comment.
+
+To create a to-do item for a comment:
+
+1. Go to your issue, merge request, epic, or task.
+1. Find the comment.
+1. In the upper-right corner of the comment, select  ().
+1. Select .
+
+To mark the to-do item as done from the comment, select  () > .
+
 ## Actions that mark a to-do item as done
 
 Various actions on the to-do item object (like issue, merge request, or epic) mark its

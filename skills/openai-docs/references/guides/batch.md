@@ -62,7 +62,7 @@ Similar to our [Fine-tuning API](https://developers.openai.com/api/docs/guides/m
 
 Upload files for Batch API
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 const openai = new OpenAI();
@@ -166,7 +166,7 @@ Once you've successfully uploaded your input file, you can use the input File ob
 
 Create the Batch
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -294,7 +294,7 @@ You can check the status of a batch at any time, which will also return a Batch 
 
 Check the status of a batch
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -377,7 +377,7 @@ Once the batch is complete, you can download the output by making a request agai
 
 Retrieving the batch results
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -484,7 +484,7 @@ If necessary, you can cancel an ongoing batch. The batch's status will change to
 
 Cancelling a batch
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -559,7 +559,7 @@ At any time, you can see all your batches. For users with many batches, you can 
 
 Getting a list of all batches
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -635,9 +635,9 @@ openai batches list \
 
 ## Model availability
 
-Most models support the Batch API. Check the [model reference](https://developers.openai.com/api/docs/models) for your model. GPT-6 Sol and Luna support EU data residency with Standard, Flex, and Batch processing. See [data residency eligibility](https://developers.openai.com/api/docs/guides/your-data#which-models-and-features-are-eligible-for-data-residency).
+Most models support the Batch API. Check the [model reference](https://developers.openai.com/api/docs/models) for your model. GPT-6 Sol and Luna support EU data residency with Standard, Flex, and Batch processing. See [data residency eligibility](https://developers.openai.com/api/docs/guides/data-residency#which-models-and-features-are-eligible-for-data-residency).
 
-GPT Image 2.5 supports batch image generation and editing with `gpt-image-2.5-flare` and `gpt-image-2.5-sunburst`, including their `2026-09-08` snapshots. Use `/v1/images/generations` or `/v1/images/edits` and see [image generation pricing](https://developers.openai.com/api/docs/pricing?multimodal-image-pricing=batch#image-generation) for Batch rates.
+GPT-Image-2.5 supports batch image generation and editing with `gpt-image-2.5-flare` and `gpt-image-2.5-sunburst`, including their `2026-09-08` snapshots. Use `/v1/images/generations` or `/v1/images/edits` and see [image generation pricing](https://developers.openai.com/api/docs/pricing?multimodal-image-pricing=batch#image-generation) for Batch rates.
 
 ## Rate limits
 

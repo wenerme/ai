@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/containers/guides/snapshots/og.png?v=74
 
 # Use snapshots
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/snapshots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/snapshots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Snapshots let you save point-in-time filesystem state from a running [Container](https://developers.cloudflare.com/containers/). The examples on this page use the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/).
+
+Container snapshots are in public beta.
 
 Scheduling policy requirement
 
@@ -103,6 +105,12 @@ export class MyDurableObject extends DurableObject {
 }
 ```
 
+## Manage snapshots
+
+Snapshots are not listed in the Cloudflare dashboard. The Container binding supports creating and restoring snapshots, but does not provide methods to list or delete them. For expiration details, refer to [Understand retention](#understand-retention).
+
+Snapshots do not support jurisdiction selection.
+
 ## Understand retention
 
 Snapshots have an implicit [30-day time-to-live](https://developers.cloudflare.com/containers/platform/limits/#snapshot-limits). Each restore refreshes that time-to-live.
@@ -124,5 +132,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/snapshots/#page","headline":"Use snapshots","description":"Save and restore Container filesystems with the Durable Object scheduling policy.","url":"https://developers.cloudflare.com/containers/guides/snapshots/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/snapshots/og.png?v=74144dfc758483da","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/snapshots/#page","headline":"Use snapshots","description":"Save and restore Container filesystems with the Durable Object scheduling policy.","url":"https://developers.cloudflare.com/containers/guides/snapshots/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/snapshots/og.png?v=74144dfc758483da","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1021,51 +1021,6 @@ engineering, autonomous agents, and complex enterprise workflows.
 
   {% /tab %}
 
-  {% tab title="Contributor" %}
-  {% callout type="note" %}
-  The Gemini API Contributor Tier is offered as a private preview on an
-      invite-only basis. Speed and reliability are equivalent to
-      [Standard Tier inference](/docs/optimization). Eligible users will be invited by
-      email and see a callout in AI Studio.
-
-  {% /callout %}
-
-  {% table %}
-  * Feature
-  * Free Tier
-  * Paid Tier, per 1M tokens in USD{% sup %}*{% /sup %}
-
-  ---
-
-  * Input price
-  * Free of charge
-  * $0.375
-
-  ---
-
-  * Output price (including thinking tokens)
-  * Free of charge
-  * $1.875
-
-  ---
-
-  * Context caching price
-  * Free of charge
-  * $0.0375   
-  $0.50 / 1,000,000 tokens per hour (storage price)
-
-  ---
-
-  * Used to improve our products
-  * [Yes](/docs/terms)
-  * [Yes](/docs/logs-policy#contributor-tier)
-  {% /table %}
-
-  {% sup %}*{% /sup %} Discounts and model availability are subject to change.
-    
-
-  {% /tab %}
-
 {% /tabs %}
 
 ## Gemini 3.6 Flash  {% id="gemini-3.6-flash" %}
@@ -1674,51 +1629,6 @@ and simple data processing.
     query performed.
 
   {% sup %}**{% /sup %} Can be tested in Google AI Studio.
-    
-
-  {% /tab %}
-
-  {% tab title="Contributor" %}
-  {% callout type="note" %}
-  The Gemini API Contributor Tier is offered as a private preview on an
-      invite-only basis. Speed and reliability are equivalent to
-      [Standard Tier inference](/docs/optimization). Eligible users will be invited by
-      email and see a callout in AI Studio.
-
-  {% /callout %}
-
-  {% table %}
-  * Feature
-  * Free Tier
-  * Paid Tier, per 1M tokens in USD{% sup %}*{% /sup %}
-
-  ---
-
-  * Input price
-  * Free of charge
-  * $0.15 (text / image / video / audio)
-
-  ---
-
-  * Output price (including thinking tokens)
-  * Free of charge
-  * $1.25
-
-  ---
-
-  * Context caching price
-  * Not available
-  * $0.015    
-  $1.00 / 1,000,000 tokens per hour (storage price)
-
-  ---
-
-  * Used to improve our products
-  * [Yes](/docs/terms)
-  * [Yes](/docs/logs-policy#contributor-tier)
-  {% /table %}
-
-  {% sup %}*{% /sup %} Discounts and model availability are subject to change.
     
 
   {% /tab %}
@@ -2457,54 +2367,6 @@ capabilities, and vibe-coding.
     query performed.
 
   {% sup %}**{% /sup %} Can be tested in Google AI Studio.
-    
-
-  {% /tab %}
-
-  {% tab title="Contributor" %}
-  {% callout type="note" %}
-  The Gemini API Contributor Tier is offered as a private preview on an
-      invite-only basis. Speed and reliability are equivalent to
-      [Standard Tier inference](/docs/optimization). Eligible users will be invited by
-      email and see a callout in AI Studio.
-
-  {% /callout %}
-
-  {% table %}
-  * Feature
-  * Free Tier
-  * Paid Tier, per 1M tokens in USD{% sup %}*{% /sup %}
-
-  ---
-
-  * Input price
-  * Not available
-  * $1.00, prompts <= 200k tokens    
-  $2.00, prompts > 200k tokens
-
-  ---
-
-  * Output price (including thinking tokens)
-  * Not available
-  * $6.00, prompts <= 200k tokens    
-  $9.00, prompts > 200k tokens
-
-  ---
-
-  * Context caching price
-  * Not available
-  * $0.10, prompts <= 200k tokens    
-  $0.20, prompts > 200k tokens    
-  $4.50 / 1,000,000 tokens per hour (storage price)
-
-  ---
-
-  * Used to improve our products
-  * Not available
-  * [Yes](/docs/logs-policy#contributor-tier)
-  {% /table %}
-
-  {% sup %}*{% /sup %} Discounts and model availability are subject to change.
     
 
   {% /tab %}

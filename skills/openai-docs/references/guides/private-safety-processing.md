@@ -905,7 +905,7 @@ Customers using ZDR with PSP are required to:
     {" - ZDR eligibility, endpoint-specific retention, and exceptions."}
   </li>
   <li>
-    [{"Data residency"}](https://developers.openai.com/api/docs/guides/your-data#data-residency-controls)
+    [{"Data residency"}](https://developers.openai.com/api/docs/guides/data-residency)
     {" - Supported regions and processing boundaries."}
   </li>
 </ul>

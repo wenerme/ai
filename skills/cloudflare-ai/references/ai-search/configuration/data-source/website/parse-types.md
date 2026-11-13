@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/web
 
 # Parse types
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The parse type controls how AI Search finds the pages to index on a [website data source](https://developers.cloudflare.com/ai-search/configuration/data-source/website/). AI Search supports two parse types.
 
@@ -73,7 +73,7 @@ If the `<lastmod>` attribute is not defined, AI Search uses the `<changefreq>` a
 
 By default, AI Search crawls all sitemaps listed in your `robots.txt` in the order they appear (top to bottom). If you do not want the crawler to index everything, or if your sitemap is hosted at a non-standard path, you can configure custom sitemap URLs in the dashboard under **Parser options** > **Specific sitemap**.
 
-When custom sitemap URLs are configured, AI Search uses those sitemap URLs instead of auto-discovering sitemaps from `robots.txt` or `/sitemap.xml`. You can add up to five sitemap URLs.
+When custom sitemap URLs are configured, AI Search uses those sitemap URLs instead of auto-discovering sitemaps from `robots.txt` or `/sitemap.xml`. You can add up to 10 sitemap URLs.
 
 ### robots.txt
 
@@ -192,7 +192,7 @@ Because `discover` does not depend on a sitemap, it reaches pages that a sitemap
 3. The crawler follows links up to the configured depth and stops once it reaches the page limit.
 4. Each fetched page is stored in built-in storage, converted to Markdown, chunked, and indexed.
 
-The crawler identifies itself as `Cloudflare-AI-Search` on domains in your Cloudflare account. If you enable [external links or subdomains](#external-links-and-subdomains) and the crawl reaches a domain outside your account, it identifies itself as `Cloudflare-AI-Search-External`. Pages that `robots.txt` disallows are recorded with the `blocked_by_robots_txt` [indexing error code](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/) instead of being indexed.
+The crawler identifies itself as `Cloudflare-AI-Search`. Pages that `robots.txt` disallows are recorded with the `blocked_by_robots_txt` [indexing error code](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/) instead of being indexed.
 
 Note
 
@@ -204,7 +204,7 @@ The crawler declares the `search` and `ai-input` crawl purposes. A site that set
 2. Select **Create**, then select **Website** as your data source.
 3. Under **Crawl target**, enter the website URL.
 4. Under **Parse type**, select **Discover**.
-5. Under **Crawl options**, adjust **Crawl source**, **Page limit**, **Crawl depth**, **Max cache age**, **Include external links**, and **Include subdomains**.
+5. Under **Crawl options**, adjust **Crawl source**, **Page limit**, **Crawl depth**, **Max cache age**, and **Include subdomains**.
 6. Complete the setup process to create your instance.
 
 To change these options later, select your instance, open the **Settings** tab, and edit **Crawl options** under **Parser options**. Saving the change starts a new indexing job that reindexes every item.
@@ -246,7 +246,6 @@ The following options apply only when `parse_type` is `discover`. All of them ar
 | `limit` | number | `100000` | 1 to 100,000 | Maximum number of pages to crawl. |
 | `depth` | number | `5` | 1 to 100,000 | Maximum number of link hops to follow from the source URL. |
 | `max_age` | number | `86400` | 0 to 604,800 seconds | How long the crawler reuses cached page content before it re-fetches. |
-| `include_external_links` | boolean | `false` | `true`, `false` | Whether to follow links that point to other domains. |
 | `include_subdomains` | boolean | `false` | `true`, `false` | Whether to follow links that point to subdomains of the source URL. |
 
 #### Discovery source
@@ -271,13 +270,13 @@ The `max_age` option sets the maximum age, in seconds, of cached page content th
 
 In the dashboard, **Max cache age** offers **No cache**, **1 hour**, **1 day**, **3 days**, and **7 days**.
 
-#### External links and subdomains
+#### Subdomains
 
-By default, the crawler stays on the host of the source URL. Enable `include_subdomains` to follow links into subdomains, and `include_external_links` to follow links to other domains.
+By default, the crawler stays on the host of the source URL. Enable `include_subdomains` to follow links into subdomains.
 
 Caution
 
-Either option can grow a crawl well beyond your own site. Pair them with `limit`, `depth`, and [path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/).
+`include_subdomains` can grow a crawl well beyond the pages you expect. Pair it with `limit`, `depth`, and [path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/).
 
 ### Sync behavior
 
@@ -316,5 +315,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#page","headline":"Parse types","description":"Choose how AI Search finds pages on a website data source.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/og.png?v=dc672d4a9c0f7582","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#page","headline":"Parse types","description":"Choose how AI Search finds pages on a website data source.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/og.png?v=dc672d4a9c0f7582","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

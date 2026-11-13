@@ -271,6 +271,9 @@ For the embedding model family, the supported models per platform are:
 
 To request support for additional embedding models, see [epic 23917](https://gitlab.com/groups/gitlab-org/-/work_items/23917).
 
+After you add an embedding model, select it for semantic code search.
+For more information, see [configure an embedding model](../semantic_code_search.md#configure-an-embedding-model).
+
 ## Declare image support for a self-hosted model
 
 - [Introduced](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3335) in GitLab 19.6.

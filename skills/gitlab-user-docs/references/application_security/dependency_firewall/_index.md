@@ -341,7 +341,9 @@ rules:
 ### Bypass settings
 
 Bypass settings let specific users or access tokens skip a policy. A request made by a listed
-user, or with a listed access token, is allowed, and the bypass reason is recorded.
+user, or with a listed access token, skips that policy. Each bypass is recorded as an
+[audit event](#view-audit-events) in the security policy project, even when another policy
+warns about or blocks the package.
 
 ```yaml
 bypass_settings:
@@ -517,6 +519,15 @@ The following audit event types are recorded:
 | `dependency_firewall_allowed` | The firewall allows the package, including through a bypass or an exception. |
 | `dependency_firewall_warned`  | A `warn` policy matches the package. |
 | `dependency_firewall_blocked` | An `enforced` policy matches the package. |
+
+A request that bypasses a policy also records one of these events for each bypassed policy.
+These events are recorded in the [security policy project](../policies/enforcement/security_policy_projects.md),
+like bypass events for other security policy types:
+
+| Event type                                | Recorded when |
+|-------------------------------------------|---------------|
+| `dependency_firewall_access_token_bypass` | A request made with an access token in the policy's bypass settings skips the policy. |
+| `dependency_firewall_user_bypass`         | A request made by a user in the policy's bypass settings skips the policy. |
 
 ## Troubleshooting
 

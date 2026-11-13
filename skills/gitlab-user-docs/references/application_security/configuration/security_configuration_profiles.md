@@ -235,6 +235,7 @@ triage, and remediation with minimal configuration.
 | [Dependency scanning auto-remediation](#dependency-scanning-auto-remediation-profile) | Opens merge requests that upgrade vulnerable dependencies. | [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Automated triage and remediation](#automated-triage-and-remediation-profile) | Turns on GitLab Duo triage flows and dependency scanning auto-remediation. | [UI](#apply-profiles-in-the-ui), [wizard](#apply-an-automated-triage-and-remediation-profile-with-the-triage-and-remediation-wizard), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Business logic](#business-logic-profile) | Uses an AI agent to find business logic vulnerabilities. | [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
+| [Security Review](#security-review-profile) | Posts review threads on merge requests instead of running the business logic scan. | [API](#apply-profiles-with-the-graphql-api) |
 | [SkillGuard](#skillguard-profile) | Uses an AI agent to find security risks in AI agent skill files. | [API](#apply-profiles-with-the-graphql-api) |
 
 ### Secret detection profile
@@ -342,10 +343,37 @@ modifies. It does not run on default branch pipelines. To cover the default bran
 If the project has no CI/CD pipelines, no merge request scans run. For more information, see
 [business logic scanning](../business_logic_scanning/_index.md).
 
+Findings appear in the merge request security widget.
+To get findings as review threads on the merge request instead,
+apply the [Security Review profile](#security-review-profile).
+
 Prerequisites:
 
 - Turn on **Allow flow execution**, **Allow foundational flows**, and the **Business Logic Security Scan** flow
   [for the top-level group](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
+
+### Security Review profile
+
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/602320) as a [beta](../../../policy/development_stages_support.md#beta) in GitLab 19.6.
+
+The Security Review profile is a business logic profile that
+[runs Security Review Flow automatically](../security_review.md#run-reviews-automatically)
+instead of the business logic scan, so findings are posted only as review threads on the merge request.
+They are not added to the [vulnerability report](../vulnerability_report/_index.md)
+or the merge request security widget.
+If both business logic profiles are applied to a project,
+the profile that was created first in the group applies.
+If Security Review Flow is turned off for the top-level group,
+a project with this profile applied runs the business logic scan instead.
+To apply it with the GraphQL API, use the profile ID
+`gid://gitlab/Security::ScanProfile/business_logic_security_review`.
+
+Prerequisites:
+
+- Meet the [business logic profile prerequisites](#business-logic-profile).
+- Turn on [Security Review Flow](../security_review.md#prerequisites) for the top-level group.
 
 ### SkillGuard profile
 

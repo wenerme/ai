@@ -404,6 +404,34 @@ To change access to the MCP server for a top-level group:
 
 ## Troubleshooting
 
+When working with group access and permissions, you might encounter the following issues.
+
+### Error: `MCP server not enabled for any of your groups`
+
+When you connect to the MCP server, you might get a `403 Forbidden` error that states
+`MCP server not enabled for any of your groups`.
+
+This issue can occur when you try to connect, and then create or join a top-level group that has MCP client access turned on.
+Your authorization result is cached, and creating or joining a group does not refresh the cache.
+The cached result can persist for up to one hour.
+
+Prerequisites:
+
+- The Owner role for the top-level group.
+
+The workaround is to force the cache to refresh:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **Permissions and group features**.
+1. In the **MCP client access** section, clear the **Allow connection to GitLab** checkbox, and select **Save changes**.
+1. Select the **Allow connection to GitLab** checkbox again, and select **Save changes**.
+
+If you created or joined the group less than 10 minutes ago, wait until 10 minutes have passed before you connect again.
+If you connect sooner, the error can persist for up to another hour.
+
+For more information, see [issue 635444](https://gitlab.com/gitlab-org/gitlab/-/work_items/635444).
+
 ### Verify if access is blocked by IP restriction
 
 If a user sees a 404 error when they try to access a specific group,

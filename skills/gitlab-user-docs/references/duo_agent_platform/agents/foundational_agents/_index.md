@@ -29,7 +29,7 @@ Tier availability varies by agent. For details, see each agent's page.
 
 | Agent | Description |
 |-------|-------------|
-| [CI Expert](ci_expert_agent.md) | Create, debug, and optimize GitLab CI/CD pipelines. |
+| [CI Expert](../../../../topics/build_your_application/ci_expert_agent.md) | Create, debug, and optimize GitLab CI/CD pipelines. |
 | [Data Analyst](../../../analytics/data_analyst.md) | Analyze and visualize platform data. |
 | [Flow Creator](flow_creator.md) | Create custom flows for the AI Catalog from Chat. |
 | [Onboarding Agent](onboarding_guide.md) | Adopt the GitLab DevSecOps platform, from first repository import through security and compliance maturity. |

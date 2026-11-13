@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/publi
 
 # Namespace public endpoints
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) can expose its own public endpoint. A single URL then searches across several instances in that namespace and merges the results. Use one when a single search experience covers content that lives in several instances, such as documentation, a blog, and a support portal.
 
@@ -51,15 +51,15 @@ Enabling a namespace endpoint does not change the instance endpoints inside it. 
 - An empty list means nothing is searchable. This is the state a namespace starts in when you first enable the endpoint.
 - Deleting an instance, or moving it to another namespace, removes it from the allowlist.
 
-A request that resolves to no searchable instance returns a `404` with error `60013`. This response is identical whether the instance does not exist, is outside the allowlist, or the allowlist is empty, so callers cannot discover which instances a namespace contains.
+While the allowlist is empty, every request returns a `404` with error `60013`.
 
 Caution
 
 `public_endpoint_params` is replaced in full on every update. Send the complete object, including `instances_allowed`, or omitted fields revert to their defaults. Omitting `instances_allowed` resets it to an empty list and makes the endpoint return `404` for every request.
 
-## Search a subset of instances
+## Search the allowlist
 
-By default, a request searches every instance in the allowlist. To narrow a single request, set `ai_search_options.instance_ids` in the request body.
+Every request searches all instances in the allowlist and merges the results. You cannot narrow a request to a subset of instances. If the request body includes `ai_search_options.instance_ids`, the endpoint replaces it with the full allowlist.
 
 ```bash
 curl https://ns-<NAMESPACE_ENDPOINT_ID>.search.ai.cloudflare.com/search \
@@ -70,22 +70,15 @@ curl https://ns-<NAMESPACE_ENDPOINT_ID>.search.ai.cloudflare.com/search \
         "content": "How do I configure AI Search?",
         "role": "user"
       }
-    ],
-    "ai_search_options": {
-      "instance_ids": ["docs", "support"]
-    }
+    ]
   }'
 ```
 
-Every value must be in the allowlist. Rules for this field:
-
-- Omitting the field, or setting it to `null`, searches the full allowlist.
-- A malformed value, such as an empty array or a non-string entry, returns a `400` with error `60012`.
-- A value outside the allowlist returns a `404` with error `60013`.
+To search a different set of instances, update `instances_allowed`, or query the instances from a [Workers binding or the REST API](https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/).
 
 Note
 
-The request body must be a JSON object. An array, a string, or an empty body returns a `400` with error `60015`.
+The request body must be a JSON object. An array or a string returns a `400` with error `60015`. An empty body is treated as an empty JSON object.
 
 ## Disable a namespace public endpoint
 
@@ -106,8 +99,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-searc
 | --- | --- | --- | --- |
 | `7097` | `instances_allowed_contains_unknown_instances` | 400 | An entry in `instances_allowed` is not an instance in this namespace. |
 | `7099` | `namespace_modified_concurrently_please_retry` | 409 | Another update changed the namespace at the same time. Retry. |
-| `60012` | `invalid ai_search_options.instance_ids` | 400 | The `instance_ids` value is malformed. |
-| `60013` | `ai_search_not_found` | 404 | No searchable instance matched the request. |
+| `60013` | `ai_search_not_found` | 404 | The allowlist is empty, so no instance is searchable. |
 | `60014` | `path not supported for namespace-kind hash` | 404 | The path is not `/search`, `/chat/completions`, or `/mcp`. |
 | `60015` | `request body must be a JSON object` | 400 | The request body is not a JSON object. |
 
@@ -134,5 +126,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/#page","headline":"Namespace public endpoints","description":"Expose several AI Search instances through a single public endpoint scoped to a namespace.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/og.png?v=f40ee0336faa3652","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/#page","headline":"Namespace public endpoints","description":"Expose several AI Search instances through a single public endpoint scoped to a namespace.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/og.png?v=f40ee0336faa3652","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

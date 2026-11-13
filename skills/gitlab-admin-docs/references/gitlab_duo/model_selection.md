@@ -62,6 +62,9 @@ To select a model for a feature:
 If your GitLab instance has both GitLab-managed and self-hosted models,
 the **Managed by** column shows the model each feature uses.
 
+Semantic code search uses an embedding model that you configure separately.
+To select an embedding model, see [configure an embedding model](../semantic_code_search.md#configure-an-embedding-model).
+
 ### Select a model for Agentic Chat
 
 - Restricting Agentic Chat to specific models [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22028) in GitLab 19.1 [with a feature flag](../feature_flags/_index.md) named `model_selection_allowlist`. Enabled by default.

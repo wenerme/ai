@@ -16,20 +16,18 @@ A specific step in a work item's workflow ('In progress', 'Done', 'Won't do') th
 > For more information, see the history.
 
 Work item status represents a specific step in a work item's workflow, such as **In progress**, **Done**, or **Won't do**.
-Status provides more granular tracking than the traditional binary open/closed state system used in GitLab Free.
+Status gives more detail than the open and closed states that GitLab Free uses.
 
 <i class="fa-youtube-play" aria-hidden="true"></i>
 For a video overview, see [Configurable Status for Issues and Tasks - Complete Walkthrough (GitLab 18.2)](https://www.youtube.com/watch?v=oxN95MSo6UU).
 
-Use status to:
+Use status in the following ways:
 
 - Track work items through different stages of completion.
-- Provide clearer visibility into work item progress.
-- Replace the need for labels to manage work item lifecycles.
+- Show the progress of work items more clearly.
 - Standardize workflows across teams and projects.
 
-Status is available for tasks and issues.
-Status is also available for epics and tickets.
+Status is available for issues, tasks, epics, and Service Desk tickets.
 For information on plans to add status to other work item types, see [epic 5099](https://gitlab.com/groups/gitlab-org/-/epics/5099).
 
 ## Default statuses
@@ -57,18 +55,38 @@ Status categories are logical groupings that determine how a status affects a wo
 
 Statuses in the  and  categories automatically set work items to closed state. All other categories maintain work items in open state.
 
+## Status compared to scoped labels
+
+[Scoped labels](../project/labels.md#scoped-labels), such as `workflow::in-review`, can also track
+the workflow step of a work item.
+Status and scoped labels are both available in the Premium and Ultimate tiers, but they work differently:
+
+| Behavior               | Status | Scoped labels |
+|------------------------|--------|---------------|
+| Open and closed state  | A status in the  or  category closes the work item. A status in another category reopens it. | Adding or removing a label does not change the state. |
+| Configuration          | Once, for the top-level group. Its subgroups and projects use the same statuses. | In any project or group. |
+| Values for each item   | One status. | One label for each scope, with any number of scopes. |
+| Supported types        | Issues, tasks, epics, and Service Desk tickets. | Merge requests and all work item types except requirements. |
+
+Status and scoped labels are separate.
+Setting a status does not add or remove labels.
+
+Use status to track the workflow step of a work item, with the same statuses across a top-level group.
+Use scoped labels to track other attributes that have one value at a time, such as priority or platform.
+You can also use scoped labels to track the workflow of merge requests.
+
 ## Lifecycles
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/556113) in GitLab 18.5 [with a feature flag](../../administration/feature_flags/_index.md) named `work_item_status_mvc2`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/576610) in GitLab 18.6. Feature flag `work_item_status_mvc2` removed.
 
-A lifecycle is a collection of statuses that can be applied to a work item type. Lifecycles group statuses into meaningful workflows that can be reused consistently across work item types and namespaces.
+A lifecycle is a collection of statuses that can be applied to a work item type. Lifecycles group statuses into meaningful workflows that can be reused consistently across work item types in a top-level group.
 
 Each lifecycle defines default transition statuses:
 
-- : Applied when creating and reopening work items.
-- : Applied when closing work items.
-- : Applied when marking work items as duplicates, moved, or promoted.
+- : Applied when a work item is created or reopened.
+- : Applied when a work item is closed.
+- : Applied when a work item is marked as a duplicate, moved, or promoted.
 
 When status for epics is enabled for a top-level group that uses custom lifecycles, epics use the same lifecycle as issues.
 If issues have no custom lifecycle, epics use the first custom lifecycle in the group.
@@ -88,7 +106,8 @@ To create a lifecycle:
 1. In the top bar, select  and find your group.
 1. In the left sidebar, select  > .
 1. In the  section, select .
-1. Add the lifecycle name and choose either the default lifecycle configuration or one of the existing lifecycles to start from. This pre-populates the new lifecycle with statuses which you can customize afterwards.
+1. Enter a name, and choose whether to start from the default lifecycle or an existing lifecycle.
+   The new lifecycle starts with the statuses of the lifecycle you choose, which you can edit later.
 1. Select .
 
 ### Rename a lifecycle
@@ -119,7 +138,7 @@ To remove a lifecycle:
 1. In the top bar, select  and find your group.
 1. In the left sidebar, select  > .
 1. In the  section, select  for the lifecycle you want to remove.
-1. On the confirmation dialog, select .
+1. In the confirmation dialog, select .
 
 ### Change lifecycle for a work item type
 
@@ -145,13 +164,13 @@ To change the lifecycle for a work item type:
 
 ## Custom statuses
 
-Custom statuses are namespace-defined statuses that replace default statuses for all groups and projects in that namespace.
-When you edit a lifecycle, custom statuses replace the default statuses for that namespace.
+Custom statuses are statuses that you define for a top-level group.
+When you edit a lifecycle, custom statuses replace the default statuses for all subgroups and projects in that group.
 
 Custom statuses have the following limits:
 
-- Maximum 70 statuses per namespace
-- Maximum 30 statuses per lifecycle
+- A maximum of 70 statuses for each top-level group
+- A maximum of 30 statuses for each lifecycle
 
 ### Status category changes
 
@@ -164,7 +183,7 @@ You cannot change the category of a status when:
 
 To use a different category, create a status with a different name and the category you want.
 
-### Configure custom statuses for a namespace
+### Configure custom statuses for a top-level group
 
 Configure custom statuses for top-level groups to make them available for work items in that group, its subgroups, and projects.
 
@@ -178,7 +197,7 @@ To configure custom statuses:
 1. In the top bar, select  and find your group.
 1. In the left sidebar, select  > .
 1. In the  section, select  for the lifecycle being used by the work item type.
-1. Add, edit, or reorder statuses for the namespace.
+1. Add, edit, or reorder statuses.
 1. Select .
 
 ### Set status for a work item
@@ -189,9 +208,9 @@ Prerequisites:
 
 To set a status for a work item:
 
-1. Go to an issue or task.
+1. Go to an issue, task, epic, or Service Desk ticket.
 1. In the right sidebar, in the  section, select .
-1. Select the desired status.
+1. Select a status.
 1. Select any area outside the dropdown list.
 
 The work item's status updates immediately.

@@ -30,6 +30,8 @@ To find the cause, read the message in the response body. Administrators can als
 - `MCP server not enabled for any of your groups` (`denial_reason`: `no_enabled_namespace`):
   On GitLab.com, no top-level group you belong to has the MCP server
   [turned on](../group/access_and_permissions.md#allow-access-to-the-mcp-server).
+  For a newly created group, see
+  [Error: `MCP server not enabled for any of your groups`](../group/access_and_permissions.md#error-mcp-server-not-enabled-for-any-of-your-groups).
 
 > [!note]
 > `404` errors returned by a REST-backed tool call, for example `404 Project Not Found`,

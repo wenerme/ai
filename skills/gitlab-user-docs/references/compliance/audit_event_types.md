@@ -173,6 +173,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`duo_workflow_file_attachments_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268538) | In a group, the setting that allows file attachments in GitLab Duo Chat is changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/20481) | Group |
 | [`web_search_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253643) | In a group, the setting that allows web search in GitLab Duo Chat is changed | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/issues/587234) | Group |
 
 ### Ci variables
@@ -388,8 +389,10 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`dependency_firewall_access_token_bypass`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270199) | A dependency firewall policy is bypassed by an access token listed in its bypass settings | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/639638) | Project |
 | [`dependency_firewall_allowed`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223712) | A dependency is allowed by the dependency firewall policy | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/588486) | Project |
 | [`dependency_firewall_blocked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223712) | A dependency is blocked by the dependency firewall policy | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/588486) | Project |
+| [`dependency_firewall_user_bypass`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270199) | A dependency firewall policy is bypassed by a user listed in its bypass settings | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/639638) | Project |
 | [`dependency_firewall_warned`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223712) | A dependency matched an advisory (warn-mode) dependency firewall policy | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/588486) | Project |
 
 ### Deployment management

@@ -12,7 +12,7 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 Feature · Model: gpt-6-cyber
 
-Use [GPT-6-Cyber](https://developers.openai.com/api/docs/models/gpt-6-cyber) to investigate vulnerabilities, reproduce them in an authorized test environment, and verify fixes. See [Daybreak setup](https://developers.openai.com/api/docs/guides/daybreak#set-up-gpt-6-cyber) before sending your first request.
+Use [GPT-6 Cyber](https://developers.openai.com/api/docs/models/gpt-6-cyber) to investigate vulnerabilities, reproduce them in an authorized test environment, and verify fixes. See [Daybreak setup](https://developers.openai.com/api/docs/guides/daybreak#set-up-gpt-6-cyber) before sending your first request.
 
 ### Nov 4
 
@@ -249,7 +249,7 @@ Compare cache reuse against a previous response, identify reasons for cache miss
 
 Feature · Model: gpt-image-2.5-sunburst · Model: gpt-image-2.5-flare · API: v1/images · API: v1/responses
 
-Released [GPT Image 2.5 Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst) and [GPT Image 2.5 Flare](https://developers.openai.com/api/docs/models/gpt-image-2.5-flare) for image generation and editing through the Image API and the Responses API image generation tool.
+Released [GPT-Image-2.5 Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst) and [GPT-Image-2.5 Flare](https://developers.openai.com/api/docs/models/gpt-image-2.5-flare) for image generation and editing through the Image API and the Responses API image generation tool.
 
 Use Sunburst for workflows where editing precision matters most, or Flare for fast, high-quality everyday image generation. Both models support the new `xhigh` and `max` quality settings and use GPT Image 2 token rates. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) and [pricing](https://developers.openai.com/api/docs/pricing#image-generation).
 
@@ -322,7 +322,7 @@ The Assistants API shut down on August 26, 2026. Migrate to the Responses API an
 
 Feature
 
-API customers can now select regional processing for an individual request by using a prefixed domain with an API key from a project having Global geography. Existing eligibility, data retention control, endpoint, and model support requirements continue to apply. Learn more in the [data controls guide](https://developers.openai.com/api/docs/guides/your-data#select-a-processing-region-per-request).
+API customers can now select regional processing for an individual request by using a prefixed domain with an API key from a project having Global geography. Existing eligibility, data retention control, endpoint, and model support requirements continue to apply. Learn more in the [data controls guide](https://developers.openai.com/api/docs/guides/data-residency#select-a-processing-region-per-request).
 
 ### Aug 21
 
@@ -400,7 +400,7 @@ Provision and manage projects, users, groups, roles, access assignments, service
 
 Feature · Model: gpt-transcribe · Model: gpt-live-transcribe · API: v1/audio/transcriptions · API: v1/realtime
 
-Released [GPT Transcribe](https://developers.openai.com/api/docs/models/gpt-transcribe) for accurate file transcription and final transcripts of committed Realtime turns, along with [GPT Live Transcribe](https://developers.openai.com/api/docs/models/gpt-live-transcribe) for low-latency streaming transcription.
+Released [GPT-Transcribe](https://developers.openai.com/api/docs/models/gpt-transcribe) for accurate file transcription and final transcripts of committed Realtime turns, along with [GPT-Live-Transcribe](https://developers.openai.com/api/docs/models/gpt-live-transcribe) for low-latency streaming transcription.
 
 Both models support free-form transcription context, keyword hints, and multiple expected input languages. Compare supported outputs and workflows in the [transcription guide](https://developers.openai.com/api/docs/guides/transcription).
 
@@ -881,7 +881,7 @@ Released [Enterprise Key Management (EKM)](https://platform.openai.com/docs/guid
 
 Feature
 
-Released [UK data residency](https://platform.openai.com/docs/guides/your-data#data-residency-controls).
+Released [UK data residency](https://developers.openai.com/api/docs/guides/data-residency).
 
 ### Oct 6
 
@@ -889,7 +889,7 @@ Feature · Model: gpt-5-pro · Model: gpt-realtime-mini · Model: gpt-audio-mini
 
 Released several new features at [OpenAI DevDay](https://openai.com/devday/):
 
-Released [GPT-5 Pro](https://developers.openai.com/api/docs/models/gpt-5-pro), a version of [GPT-5](https://developers.openai.com/api/docs/models/gpt-5) that uses more compute to think harder and provide consistently better answers.
+Released [GPT-5 pro](https://developers.openai.com/api/docs/models/gpt-5-pro), a version of [GPT-5](https://developers.openai.com/api/docs/models/gpt-5) that uses more compute to think harder and provide consistently better answers.
 
 Released [GPT-Realtime mini](https://developers.openai.com/api/docs/models/gpt-realtime-mini) and [gpt-audio-mini](https://developers.openai.com/api/docs/models/gpt-audio-mini) for more cost-efficient speech to speech performance.
 
@@ -1103,7 +1103,7 @@ Launched the [API Usage Dashboard Update](https://help.openai.com/en/articles/10
 
 Feature
 
-Introducing data residency in Europe. Read more [here](https://platform.openai.com/docs/guides/your-data).
+Introducing data residency in Europe. Read more [here](https://developers.openai.com/api/docs/guides/data-residency).
 
 ## January, 2025
 
@@ -1449,7 +1449,7 @@ Released [OpenAI Deno SDK](https://deno.land/x/openai)
 
 Update
 
-Released [GPT-4 Turbo Preview](https://developers.openai.com/api/docs/models/gpt-4-turbo), [updated GPT-3.5 Turbo](https://developers.openai.com/api/docs/models/gpt-3-5-turbo), [GPT-4 Turbo with Vision](https://developers.openai.com/api/docs/guides/images-vision), [Assistants API](https://developers.openai.com/api/docs/assistants/migration), [DALL·E 3 in the API](https://developers.openai.com/api/docs/models/dall-e-3), and [text-to-speech API](https://developers.openai.com/api/docs/guides/text-to-speech)
+Released [GPT-4 Turbo preview](https://developers.openai.com/api/docs/models/gpt-4-turbo), [updated GPT-3.5 Turbo](https://developers.openai.com/api/docs/models/gpt-3-5-turbo), [GPT-4 Turbo with Vision](https://developers.openai.com/api/docs/guides/images-vision), [Assistants API](https://developers.openai.com/api/docs/assistants/migration), [DALL·E 3 in the API](https://developers.openai.com/api/docs/models/dall-e-3), and [text-to-speech API](https://developers.openai.com/api/docs/guides/text-to-speech)
 
 Deprecated the Chat Completions `functions` parameter [in favor of `tools`](https://developers.openai.com/api/reference/resources/chat#chat-create-tools)
 

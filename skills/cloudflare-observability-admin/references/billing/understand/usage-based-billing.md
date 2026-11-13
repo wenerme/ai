@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/billing/understand/usage-based-billing/
 
 # Usage-based billing
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/usage-based-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/usage-based-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For some Cloudflare subscriptions and services, Cloudflare charges you based on how much you used a feature during your previous billing period. This differs from other services, which are a prepaid flat fee for the upcoming month (for example, plans and page rules).
 
@@ -56,7 +56,7 @@ Reducing usage-based charges starts with understanding where your consumption co
 | Set up [R2 lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) to transition cold data to Infrequent Access | R2 storage costs |
 | Use [Workers Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) for data-heavy Workers | Workers CPU time |
 | Batch R2 operations where possible instead of per-object reads | R2 Class B operation count |
-| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes early | All products — prevents surprise invoices |
+| Set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to catch unexpected spikes early | All products — notifies you about rising costs |
 
 For a detailed walkthrough of how a single request generates charges across multiple products, refer to [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/).
 
@@ -65,6 +65,12 @@ For a detailed walkthrough of how a single request generates charges across mult
 The [billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/) gives Pay-as-you-go customers daily visibility into usage-based costs. The dashboard shows a daily cost breakdown chart and a per-product usage table with free-tier allowances, so you can see exactly what you are being charged for.
 
 You can also set up [budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) to get notified by email when your account-wide spend crosses a dollar threshold you define.
+
+## Set spending limits
+
+[Set separate spending limits](https://developers.cloudflare.com/billing/manage/spend-management/) for Workers and Durable Objects. When a limit takes effect, Cloudflare blocks new invocations or requests for that product. Limits apply across your account and do not guarantee a maximum invoice amount.
+
+You can also set product-specific email alerts without blocking usage. The spending limits and alerts guide covers dashboard and cf CLI setup.
 
 ## Usage-based billing notifications
 
@@ -107,5 +113,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/usage-based-billing/#page","headline":"Usage-based billing","description":"Products that bill based on metered consumption.","url":"https://developers.cloudflare.com/billing/understand/usage-based-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/understand/usage-based-billing/og.png?v=67068eb97db5a643","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/usage-based-billing/#page","headline":"Usage-based billing","description":"Products that bill based on metered consumption.","url":"https://developers.cloudflare.com/billing/understand/usage-based-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/understand/usage-based-billing/og.png?v=67068eb97db5a643","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

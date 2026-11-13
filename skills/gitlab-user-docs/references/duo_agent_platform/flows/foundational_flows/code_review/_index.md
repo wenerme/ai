@@ -120,6 +120,7 @@ For more information, see [interact with GitLab Duo](../../../../project/merge_r
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254981) as a [beta](../../../../../policy/development_stages_support.md#beta) in GitLab 19.5 [with a feature flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_decisions`. Disabled by default.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/631086) in GitLab 19.6.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270328) in GitLab 19.6.
+- Requirement for experiment and beta features [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267657) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -144,6 +145,7 @@ You can turn on this setting for a project, a group, or an instance.
 Prerequisites:
 
 - The Maintainer or Owner role for the project.
+- [Experiment and beta features](../../../turn_on_off.md#turn-on-beta-and-experimental-features) turned on.
 
 To turn on GitLab Duo approvals and requests for changes for a project:
 
@@ -157,6 +159,7 @@ To turn on GitLab Duo approvals and requests for changes for a project:
 Prerequisites:
 
 - The Owner role for the group.
+- [Experiment and beta features](../../../turn_on_off.md#turn-on-beta-and-experimental-features) turned on.
 
 To turn on GitLab Duo approvals and requests for changes for a group:
 
@@ -173,6 +176,7 @@ Settings cascade from group to project. More specific settings override broader 
 Prerequisites:
 
 - Administrator access
+- [Experiment and beta features](../../../turn_on_off.md#turn-on-beta-and-experimental-features) turned on.
 
 To turn on GitLab Duo approvals and requests for changes for an instance:
 

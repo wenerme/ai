@@ -539,20 +539,6 @@ query: project = "team/project" and milestone = "Sprint 23" and opened = true
 | Epic                      | `&123`              | `&123`  |
 | Milestone                 | `%"Milestone Name"` | `%"18.5"` |
 
-### Creating issues from wiki
-
-Use task lists in wiki that can be converted to issues:
-
-```markdown
-## Action items from retrospective
-
-- [ ] Improve CI pipeline performance
-- [ ] Update documentation
-- [ ] Add monitoring for API endpoints
-```
-
-Select the checkboxes and use **Create issue** to convert tasks to tracked issues.
-
 ## Tips for effective integration
 
 ### Use page slugs correctly

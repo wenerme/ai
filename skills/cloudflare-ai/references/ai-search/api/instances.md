@@ -16,7 +16,7 @@ Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Create, list, update, and delete AI Search instances programmatically.
 
-[REST API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/) [Workers binding](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/)
+[REST API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/) [Terraform](https://developers.cloudflare.com/ai-search/api/instances/terraform/) [Workers binding](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/platform/pricing/og.png
 
 # Pricing
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects can incur two types of billing: compute and storage.
 
@@ -139,6 +139,12 @@ Footnotes
 Requests that hit the <a href="https://developers.cloudflare.com/durable-objects/reference/in-memory-state/">Durable Objects in-memory cache</a> or that use the <a href="https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/">multi-key versions of <code>get()</code>/<code>put()</code>/<code>delete()</code> methods</a> are billed the same as if they were a normal, individual request for each key.
 
 </details>
+
+## Control usage costs
+
+Set a [Durable Objects spending limit](https://developers.cloudflare.com/durable-objects/platform/spend-management/) for requests, duration, and storage operations after included usage. Stored data charges are excluded and can continue during a pause.
+
+Review the [operations that can continue](https://developers.cloudflare.com/durable-objects/platform/spend-management/#operations-that-can-continue) before relying on a limit. For email without blocking usage, configure an [email alert](https://developers.cloudflare.com/billing/manage/spend-management/cli/#create-an-email-alert).
 
 ## Compute billing examples
 
@@ -282,5 +288,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/pricing/og.png?v=692e099f34a1b330","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/pricing/og.png?v=692e099f34a1b330","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

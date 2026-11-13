@@ -628,13 +628,13 @@ that cannot be accessed directly from the internet, keep the following in mind:
 - When you [install the GitLab for Jira Cloud app manually](#install-the-gitlab-for-jira-cloud-app-manually),
   use the reverse proxy FQDN for **Redirect URI** to [set up OAuth authentication](#set-up-oauth-authentication).
 - The reverse proxy must meet the prerequisites for your installation method:
-  - [Prerequisites for connecting the GitLab for Jira Cloud app](#prerequisites).
+  - [Prerequisites for installing the GitLab for Jira Cloud app from the Atlassian Marketplace](#prerequisites).
   - [Prerequisites for installing the GitLab for Jira Cloud app manually](#prerequisites-1).
 - The [Jira development panel](../../integration/jira/development_panel.md) might link
   to the internal GitLab FQDN or GitLab.com instead of the reverse proxy FQDN.
   For more information, see [issue 434085](https://gitlab.com/gitlab-org/gitlab/-/issues/434085).
-- To secure the reverse proxy on the public internet, allow inbound traffic from
-  [Atlassian IP addresses](https://support.atlassian.com/organization-administration/docs/ip-addresses-and-domains-for-atlassian-cloud-products/#Outgoing-Connections) only.
+- To secure the reverse proxy on the public internet, allow inbound traffic only from the sources
+  that the [connectivity requirements](#connectivity-requirements) list for your installation method.
 - If you use a `rewrite` or `sub_filter` directive with your proxy, ensure the proxy
   does not rewrite or replace the `gitlab-jira-connect-${host}` app key.
   Otherwise, you might get a [`Failed to link group`](jira_cloud_app_troubleshooting.md#error-failed-to-link-group) error.
@@ -643,6 +643,32 @@ that cannot be accessed directly from the internet, keep the following in mind:
   If the proxy changes any of these, GitLab rejects the request with a `401` or `403` error.
 - When you select [**Create branch**](https://support.atlassian.com/jira-software-cloud/docs/view-development-information-for-an-issue/#Create-feature-branches) in the Jira development panel,
   you are redirected to the reverse proxy FQDN rather than the internal GitLab FQDN.
+
+### Instance paths for the Atlassian Marketplace listing
+
+When you [install the GitLab for Jira Cloud app from the Atlassian Marketplace](#install-the-gitlab-for-jira-cloud-app-from-the-atlassian-marketplace),
+the app uses the following paths on your instance.
+
+The list is not a supported allowlist.
+If the reverse proxy forwards only these paths, the app might stop working after an upgrade.
+
+| Path | From | Purpose |
+|------|------|---------|
+| `POST /-/jira_connect/events/installed` | GitLab.com | Forward the install event from Jira. |
+| `POST /-/jira_connect/events/uninstalled` | GitLab.com | Forward the uninstall event from Jira. |
+| `GET /-/jira_connect/oauth_application_id` | Jira users | Get the OAuth application ID before sign-in. |
+| `/oauth/authorize` and `/oauth/token` | Jira users | Authorize the app with OAuth. |
+| `/users/sign_in` and the paths of your sign-in provider, such as `/users/auth/*` | Jira users | Sign in to GitLab. |
+| `GET /api/v4/user` and `GET /api/v4/groups` | Jira users | Get the authenticated user and the groups to link. |
+| `POST /api/v4/integrations/jira_connect/subscriptions` | Jira users | Link a group. |
+| `GET /-/jira_connect/subscriptions.json` | Jira users | List linked groups. |
+| `DELETE /-/jira_connect/subscriptions/<id>` | Jira users | Unlink a group. |
+| `GET /-/jira_connect/branches/new`, `/api/graphql`, and `/assets/*` | Jira users | Create a branch from Jira. |
+| Project pages | Jira users | Open links from the Jira development panel. |
+
+The reverse proxy must also forward `OPTIONS` requests for `/oauth/token`, `/api/v4/*`,
+`/-/jira_connect/oauth_application_id`, `/-/jira_connect/subscriptions.json`, and `/-/jira_connect/subscriptions/<id>`.
+Before the app calls these paths from Jira, the browser sends an `OPTIONS` preflight request.
 
 ### External NGINX
 

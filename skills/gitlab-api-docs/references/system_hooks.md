@@ -24,6 +24,11 @@ Prerequisites:
 
 - Administrator access.
 
+Organization administrators who are not instance administrators cannot use this API.
+They can manage system hooks in the  area.
+For more information, see
+[manage system hooks as an organization administrator](../administration/system_hooks.md#manage-system-hooks-as-an-organization-administrator).
+
 ## List all system hooks
 
 Lists all system hooks in the current organization.

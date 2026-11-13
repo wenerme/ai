@@ -141,11 +141,13 @@ Example of response
 ## List project pipelines
 
 - Support for returning child pipelines with `source` set to `parent_pipeline` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/39503) in GitLab 17.0.
+- `iids` and `ids` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637864) in GitLab 19.6.
 
 Lists pipelines in a project.
 
 By default, [child pipelines](../ci/pipelines/downstream_pipelines.md#parent-child-pipelines)
 are not included in the results. To return child pipelines, set `source` to `parent_pipeline`.
+Child pipelines are also returned when you request them by `iids` or `ids`.
 
 ```plaintext
 GET /projects/:id/pipelines
@@ -165,6 +167,8 @@ control the pagination of results.
 | `sort`           | string            | No       | The sort order: `asc` or `desc` (default: `desc`). |
 | `source`         | string            | No       | Return pipelines with the specified [source](../ci/jobs/job_rules.md#ci_pipeline_source-predefined-variable). |
 | `status`         | string            | No       | Return pipelines with the specified status: `created`, `waiting_for_resource`, `preparing`, `waiting_for_callback`, `pending`, `running`, `success`, `failed`, `canceling`, `canceled`, `skipped`, `manual`, or `scheduled`. |
+| `ids`            | integer array     | No       | Return pipelines, including child pipelines, with the specified IDs. |
+| `iids`           | integer array     | No       | Return pipelines, including child pipelines with the specified IIDs. |
 | `updated_after`  | datetime          | No       | Return pipelines updated after the specified date. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `updated_before` | datetime          | No       | Return pipelines updated before the specified date. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `created_after`  | datetime          | No       | Return pipelines created after the specified date. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |

@@ -1062,7 +1062,7 @@ Example:
   "pack_objects_cache.key": "123456789",
   "pack_objects_cache.served_bytes": 49533030,
   "peer.address": "127.0.0.1",
-  "pid": 8813,
+  "pid": 8813
 }
 ```
 

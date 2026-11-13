@@ -222,6 +222,21 @@ Merge requests use Rapid Diffs, a fast way to load and interact with code change
 GitLab renders diffs on the server and streams them to your browser.
 This reduces the time before you see the first file when reviewing a diff.
 
+### File mode changes
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265772) in GitLab 19.6.
+
+In Rapid Diffs, the file header marks symbolic links and changes to a file's mode:
+
+| Indicator | Meaning |
+| --------- | ------- |
+| `+x` before the line counts | The file is now executable, or is a new executable file. |
+| `−x` before the line counts | The file is no longer executable, or is a deleted executable file. |
+|  before the path | The file is a symbolic link. The diff shows the link's target instead of file content. |
+| The old and new mode, such as `100644 → 120000`, before the line counts | Any other mode change. |
+
+To view the old and new mode, hover over the indicator.
+
 ## Explain code in a merge request
 
 - Tier: Premium, Ultimate

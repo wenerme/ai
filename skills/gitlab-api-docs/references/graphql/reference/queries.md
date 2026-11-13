@@ -1057,7 +1057,7 @@ List the workflows owned by the current user. This field is a [connection](objec
 | `ids` | [`[AiDuoWorkflowsWorkflowID!]`](scalars.md#aiduoworkflowsworkflowid) | Filter flows by a list of IDs. |  |
 | `projectId` | [`ProjectID`](scalars.md#projectid) | Global ID of the project that contains the flows. |  |
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project that contains the flows. |  |
-| `search` | [`String`](scalars.md#string) | Flow title or goal to search for. |  |
+| `search` | [`String`](scalars.md#string) | Flow title or goal to search for. When the `duo_workflow_project_search_guard` feature flag is enabled, words shorter than 3 characters are ignored and at most 10 words are matched. If every word is shorter than 3 characters, the whole term must match the title or goal exactly. Searches also only match sessions created in the last 30 days, unless the search is only session IDs. When disabled, every word is matched against all sessions. |  |
 | `sort` | [`DuoWorkflowsWorkflowSort`](enums.md#duoworkflowsworkflowsort) | Sort flows by the criteria. | `created_desc` |
 | `statusGroup` | [`DuoWorkflowStatusGroup`](enums.md#duoworkflowstatusgroup) | Status group to filter flow sessions by. |  |
 | `statuses` | [`[DuoWorkflowStatus!]`](enums.md#duoworkflowstatus) | Exact statuses to filter flow sessions by. Cannot be combined with statusGroup. |  |
@@ -2480,6 +2480,8 @@ Vulnerabilities reported on projects on the current user's instance security das
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
+| `authentication` | [`[VulnerabilityAuthenticationFilter!]`](enums.md#vulnerabilityauthenticationfilter) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter vulnerabilities by whether their component requires authentication. Maximum is 1000 values. This filter is not available yet, and using this argument returns an error. |  |
+| `authorization` | [`[VulnerabilityAuthorizationFilter!]`](enums.md#vulnerabilityauthorizationfilter) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter vulnerabilities by whether their component requires elevated privileges. Maximum is 1000 values. This filter is not available yet, and using this argument returns an error. |  |
 | `clusterAgentId` | [`[ClustersAgentID!]`](scalars.md#clustersagentid) | Filter vulnerabilities by `cluster_agent_id`. Vulnerabilities with a `reportType` of `cluster_image_scanning` are only included with this filter. |  |
 | `clusterId` | [`[ClustersClusterID!]`](scalars.md#clustersclusterid) | Filter vulnerabilities by `cluster_id`. Vulnerabilities with a `reportType` of `cluster_image_scanning` are only included with this filter. |  |
 | `dismissalReason` | [`[VulnerabilityDismissalReason!]`](enums.md#vulnerabilitydismissalreason) | Filter by dismissal reason. Only dismissed Vulnerabilities will be included with the filter. |  |
@@ -2506,6 +2508,8 @@ Vulnerabilities reported on projects on the current user's instance security das
 | `scanner` | [`[String!]`](scalars.md#string) | Filter vulnerabilities by VulnerabilityScanner.externalId. |  |
 | `scannerId` | [`[VulnerabilitiesScannerID!]`](scalars.md#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |  |
 | `securityAttributesFilters` | [`[AttributeFilterInput!]`](input_objects.md#attributefilterinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |  |
+| `securityBoundary` | [`[VulnerabilitySecurityBoundaryFilter!]`](enums.md#vulnerabilitysecurityboundaryfilter) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter vulnerabilities by the security boundary of their component. Maximum is 1000 values. This filter is not available yet, and using this argument returns an error. |  |
+| `sensitiveData` | [`[VulnerabilitySensitiveDataFilter!]`](enums.md#vulnerabilitysensitivedatafilter) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter vulnerabilities by whether their component handles sensitive data. Maximum is 1000 values. This filter is not available yet, and using this argument returns an error. |  |
 | `severity` | [`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity) | Filter vulnerabilities by severity. |  |
 | `sort` | [`VulnerabilitySort`](enums.md#vulnerabilitysort) | List vulnerabilities by sort order. | `severity_desc` |
 | `state` | [`[VulnerabilityState!]`](enums.md#vulnerabilitystate) | Filter vulnerabilities by state. |  |

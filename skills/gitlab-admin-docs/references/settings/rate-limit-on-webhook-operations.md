@@ -14,7 +14,9 @@ Configure the per-minute rate limit for requests that:
 
 - [Add a project webhook](../../api/project_webhooks.md#add-a-webhook-to-a-project) with the API.
 - [Create a group webhook](../../api/group_webhooks.md#create-a-group-hook) with the API.
-- [Add a system hook](../../api/system_hooks.md#add-new-system-hook) with the API.
+- [Add a system hook](../../api/system_hooks.md#add-new-system-hook) with the API, or
+  [create a system hook](../system_hooks.md#manage-system-hooks-as-an-organization-administrator)
+  in the  area.
 - [Test a webhook](../../user/project/integrations/webhooks.md#test-a-webhook).
 - [Resend a webhook event](../../user/project/integrations/webhooks.md#inspect-request-and-response-details).
 
@@ -30,8 +32,9 @@ The project and group limits apply per user, for a given project or group.
 The webhook test limit also applies per user, for a given organization when you test an organization webhook.
 All webhooks in the same project, group, or organization share the limit.
 The system hook creation limit applies per user across the instance.
-The test and event resend limits cover both the UI and the API. The webhook creation limits cover the
-API only.
+The test and event resend limits cover both the UI and the API. The project and group webhook creation
+limits cover the API only. The system hook creation limit covers the API and the
+ area.
 
 These limits are separate from the [webhook delivery rate limit](../instance_limits.md#webhook-rate-limit),
 which limits how often webhooks can be triggered. Configuring webhook delivery rate limits depends on the

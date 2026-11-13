@@ -94,10 +94,9 @@ For more information, see the history.
 
 You can create a flow from a project, with the AI Catalog, or with the GitLab flow builder in VS Code.
 
-> [!note]
-> You cannot define a custom flow to call a specific custom agent from a project
-> or the AI Catalog. Custom flows create and use their own agents based
-> on their YAML configuration.
+A custom flow can use AI Catalog agents as subagents.
+This feature is in [beta](../../../policy/development_stages_support.md#beta).
+For the YAML, the rules, and the flag, see [`include`](custom_flows_schema.md#include).
 
 Prerequisites:
 

@@ -970,7 +970,7 @@ The message has these fields:
 | `limit`            | Number of requests that the rule allows in each period. |
 | `period_s`         | Length of the period, in seconds. |
 | `count`            | Number of requests that the rule counted for this client in the current period. |
-| `counted_by`       | Values that the rule counts requests by, for example `ip` for a rule that counts by IP address. For a rule that counts by authenticated requester, the field contains `requester_type` (`user` or `deploy_token`) and `requester_id`. Some rules count by other values, such as `aid`. |
+| `counted_by`       | Values that the rule counts requests by, for example `ip` for a rule that counts by IP address. For a rule that counts by authenticated requester, the field contains `requester_type` (`user` or `deploy_token`) and `requester_id`. Some rules count by other values, such as `aid`. For an IPv6 client, the `ip` value can be the network of the client instead of its exact address. |
 | `rate_limit_state` | Rate limit rules that counted the request or ended the check. The format is the same as the `rate_limit_state` field in `production_json.log`. |
 
 To find the requests that GitLab blocked for a user or an IP address:
