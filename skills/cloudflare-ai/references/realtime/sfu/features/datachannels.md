@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/features/datachannels/og.p
 
 # DataChannels
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/datachannels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/datachannels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use DataChannels for application messages such as chat, sensor updates, and control events. Use media tracks for standard audio and video transport.
 
@@ -242,7 +242,7 @@ A subscription can set both `waitForAck` and `canReply`. Its first message opens
 
 ## Close channels
 
-On the backend, send `PUT /apps/{appId}/sessions/{sessionId}/datachannels/close` with the IDs allocated on that endpoint's session:
+For a live session, send `PUT /apps/{appId}/sessions/{sessionId}/datachannels/close` from your backend with its allocated channel IDs:
 
 ```json
 {
@@ -250,9 +250,9 @@ On the backend, send `PUT /apps/{appId}/sessions/{sessionId}/datachannels/close`
 }
 ```
 
-Match results by `id`. A `close_track_error` item means the channel is absent or already closed. Retain other failed or unreported IDs for retry. Refer to [close-result handling](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#interpret-close-results).
+Match results by `id`. A `close_track_error` item means the channel is absent or already closed. Retry other failed or unreported IDs. Refer to [close-result handling](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#interpret-close-results).
 
-Closure needs no SDP exchange. Close the endpoint's channel objects, then its PeerConnection when no longer needed. Follow [teardown ordering](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#teardown) if work is still outstanding.
+Closure needs no SDP exchange. Close the corresponding channel objects on the endpoint. To end the whole connection, [close its PeerConnection](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#teardown).
 
 ## Custom media payloads
 
@@ -275,5 +275,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/features/datachannels/#page","headline":"DataChannels","description":"Send application messages, telemetry, and authorized controls through Realtime SFU DataChannels.","url":"https://developers.cloudflare.com/realtime/sfu/features/datachannels/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/features/datachannels/og.png?v=6f86ce73e455ba04","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/features/datachannels/#page","headline":"DataChannels","description":"Send application messages, telemetry, and authorized controls through Realtime SFU DataChannels.","url":"https://developers.cloudflare.com/realtime/sfu/features/datachannels/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/features/datachannels/og.png?v=6f86ce73e455ba04","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

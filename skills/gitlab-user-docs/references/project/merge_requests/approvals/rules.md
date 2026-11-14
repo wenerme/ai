@@ -125,6 +125,20 @@ You can override the merge request approval rules for a project by either:
 - Editing an existing merge request.
 - Creating a new merge request.
 
+When you create a merge request and you can edit its approval rules, GitLab copies the project's
+approval rules to the merge request, so you can change them for that merge request only.
+If you cannot edit approval rules, GitLab does not copy them,
+and the merge request uses the project approval rules.
+
+For open merge requests:
+
+- If the project allows editing approval rules, the merge request uses its own approval rules.
+  If it has none, it uses the project approval rules.
+- If the project prevents editing approval rules, the merge request uses the project approval rules,
+  even if it has its own rules from before the setting was enabled.
+- Code Owner approval rules, approval rules from merge request approval policies,
+  and coverage check approval rules apply in both cases.
+
 Prerequisites:
 
 - The project setting [**Prevent editing approval rules in merge requests**](settings.md#prevent-editing-approval-rules-in-merge-requests)

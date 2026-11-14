@@ -90,6 +90,7 @@ Validity checks support the following secret types:
 - AWS IAM long-term access key IDs (beginning with `AKIA`)
 - Beamer API tokens
 - Brevo API keys
+- Contentful personal access tokens
 - Datadog API keys
 - DigitalOcean OAuth access tokens
 - DigitalOcean personal access tokens
@@ -118,17 +119,21 @@ Validity checks support the following secret types:
 - Hugging Face user access tokens
 - Intercom access tokens
 - Ionic personal access tokens
+- LangChain API keys
 - Linear personal API keys
 - Mailgun private API keys
 - MessageBird access keys
+- New Relic user API keys
 - npm access tokens
 - OpenAI admin API keys
 - OpenAI project API keys
 - OpenAI service account keys
 - OpenAI user API keys
+- PostHog personal API keys
 - Postman API tokens
 - Pulumi access tokens
 - RubyGems API keys
+- Segment public API tokens
 - SendGrid API tokens
 - Shippo live API tokens
 - Shippo test API tokens
@@ -174,11 +179,14 @@ The supported URLs are:
 
 - `https://api.anthropic.com/v1/models`
 - `https://api.brevo.com/v3/account`
+- `https://api.contentful.com/users/me`
 - `https://api.datadoghq.com/api/v1/validate`
 - `https://api.digitalocean.com/v2/account`
 - `https://api.doppler.com/v3/me`
 - `https://api.dropboxapi.com/2/users/get_current_account`
 - `https://api.easypost.com/v2/addresses`
+- `https://api.eu.contentful.com/users/me`
+- `https://api.eu.newrelic.com/v2/applications.json`
 - `https://api.fastly.com/tokens/self`
 - `https://api.flutterwave.com/v3/balances`
 - `https://api.getbeamer.com/v0/ping`
@@ -193,11 +201,14 @@ The supported URLs are:
 - `https://api.ionicjs.com/users/self`
 - `https://api.linear.app/graphql`
 - `https://api.mailgun.net/v4/domains`
+- `https://api.newrelic.com/v2/applications.json`
 - `https://api.notification.canada.ca/v2/notifications`
 - `https://api.openai.com/v1/models`
 - `https://api.openai.com/v1/organization/admin_api_keys`
 - `https://api.pulumi.com/api/user`
+- `https://api.segmentapis.com/echo`
 - `https://api.sendgrid.com/v3/scopes`
+- `https://api.smith.langchain.com/api/v1/sessions`
 - `https://api.stripe.com/v1/balance`
 - `https://api.tailscale.com/api/v2/tailnet/-/devices`
 - `https://api.typeform.com/me`
@@ -206,6 +217,9 @@ The supported URLs are:
 - `https://api.us.test.highnote.com/graphql`
 - `https://app.asana.com/api/1.0/users/me`
 - `https://app.terraform.io/api/v2/account/details`
+- `https://eu.api.smith.langchain.com/api/v1/sessions`
+- `https://eu.posthog.com/api/users/@me/`
+- `https://eu1.api.segmentapis.com/echo`
 - `https://grafana.com/api/stack-regions`
 - `https://huggingface.co/api/whoami-v2`
 - `https://io.adafruit.com/api/v2/user`
@@ -213,6 +227,7 @@ The supported URLs are:
 - `https://rest.messagebird.com/balance`
 - `https://rubygems.org/api/v1/gems.json`
 - `https://sts.amazonaws.com/`
+- `https://us.posthog.com/api/users/@me/`
 - `https://www.googleapis.com/discovery/v1/apis`
 
 If you cannot allow outbound access to these endpoints, do not enable this feature.

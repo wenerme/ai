@@ -50,8 +50,8 @@ In the GitLab UI, the Developer Flow starts when you:
 - Select **Implement**.
 - Change a work item status.
 
-Some foundational flows use triggers that you can create or manage.
-For more information, see [foundational flow triggers](../../automations/_index.md#foundational-flow-triggers).
+Some foundational flows use automations that you can create or manage.
+For more information, see [automations for foundational flows](../../automations/_index.md#automations-for-foundational-flows).
 
 ## For developers
 
@@ -92,7 +92,7 @@ This is done to adhere to compliance frameworks that require segregation of duti
 
 This attribution does not determine [who is billed for usage](../../../../subscriptions/gitlab_credits.md#billing-subjects-for-credit-usage).
 
-#### Service account and trigger setup
+#### Service account and automation setup
 
 When you turn on a foundational flow, GitLab completes the following actions:
 
@@ -100,7 +100,7 @@ When you turn on a foundational flow, GitLab completes the following actions:
   The username is similar to `duo-<flow_name>-<top_level_group_name>`.
 - Adds the service account with the Developer role as a direct member of each project
   in the group that has foundational flows turned on.
-- Creates the triggers for the flow in each of those projects, if the flow has triggers.
+- Creates the automations for the flow in each of those projects, if the flow has automations.
 
 GitLab completes these steps in background jobs, so changes to a large group can take time to reach every project.
 
@@ -111,8 +111,8 @@ The service account acts only when a flow runs, and each session is attributed t
 
 A foundational flow runs when the following events occur:
 
-- A user performs an action that matches a [trigger](../../automations/_index.md) for the flow. For example, the user mentions the service account or assigns the service account as a reviewer.
-  For actions that can't start a flow, see [actions that don't initiate a trigger](../../automations/_index.md#actions-that-dont-initiate-a-trigger).
+- A user performs an action that matches an [automation](../../automations/_index.md) for the flow. For example, the user mentions the service account or assigns the service account as a reviewer.
+  For actions that can't start a flow, see [actions that don't initiate an automation](../../automations/_index.md#actions-that-dont-initiate-an-automation).
 - A user starts the flow from an issue, a merge request, or a pipeline.
 - An event in the project starts the flow automatically. For example:
   - The SAST False Positive Detection and Secret False Positive Detection flows run
@@ -238,8 +238,8 @@ Prerequisites:
 
 When you turn off a foundational flow for a group or project:
 
-- GitLab deletes the triggers for the flow.
-  Mentions, assignments, and other trigger events no longer start the flow.
+- GitLab deletes the automations for the flow.
+  Mentions, assignments, and other events no longer start the flow.
 - The service account might remain a member of projects.
   For more information, see [service account remains a project member](../../troubleshooting.md#service-account-remains-a-project-member-after-foundational-flows-are-turned-off).
 

@@ -161,8 +161,20 @@ The following example sets every setting you can enforce:
   "notifications": {
     "channel": "auto" // or "disabled"
   },
+  "plugins": {
+    "allowedMarketplaces": [
+      { "source": "hostPattern", "hostPattern": "^gitlab\\.example\\.com$" }
+    ],
+    "blockedMarketplaces": [],
+    "additionalMarketplaces": {},
+    "enabledPlugins": {},
+    "trustMessage": "Install only plugins your security team has approved."
+  },
 }
 ```
+
+For information about the `plugins` settings, see
+[control plugins for your organization](customize.md#control-plugins-for-your-organization).
 
 ## Settings precedence
 
@@ -172,3 +184,7 @@ For each setting, the GitLab Duo CLI uses the first value it finds, in this orde
 1. Command-line options and environment variables, which apply to the current session only.
 1. The settings file.
 1. The default value.
+
+Some settings restrict what users can do, for example which plugin marketplaces they can use.
+For these settings, the GitLab Duo CLI combines the values from every file and applies all of the restrictions.
+Users can add restrictions, but can't remove restrictions set in the managed settings file.

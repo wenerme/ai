@@ -173,7 +173,7 @@ In VS Code, you can use the GitLab flow builder to create a custom flow.
 
 > [!note]
 > The GitLab flow builder can publish a flow to the AI Catalog, but enabling a flow in a project
-> and attaching triggers is done in the GitLab UI only.
+> and attaching automations is done in the GitLab UI only.
 
 The flow appears in the AI Catalog.
 
@@ -188,8 +188,8 @@ Enable a flow to trigger it from an issue, merge request, or discussion.
 When you enable a flow in a project:
 
 - The flow is enabled in the top-level group for that project at the same time.
-- You add a [trigger](../automations/_index.md) to specify which events trigger the
-  flow. Some of the trigger events involve the service account user. For more
+- You add an [automation](../automations/_index.md) to specify which events trigger the
+  flow. Some of the events involve the service account user. For more
   information, see [composite identity](../composite_identity.md).
 
 You can enable a flow or agent up to 30 times per minute.
@@ -206,13 +206,12 @@ To enable a flow:
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the **Managed** tab, then select the flow you want to enable.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to enable the flow in.
-1. Under **Conditions**, review the [events](../automations/_index.md#trigger-event-types) that trigger the flow.
-   By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
-   - To add an event, select **Add condition** > **On an event**.
-   - To change or remove an event, select the edit or delete icon next to it.
-1. Optional. To tell the flow what to do for an event, edit the event, then enter text in the **Instructions** field.
+1. Optional. In the **Instructions** field, enter what the flow should do each time it runs.
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
+1. Under **Runs when**, review the [events](../automations/_index.md#event-types) that trigger the flow.
+   By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add trigger** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
 1. Select **Enable**.
 
 ### From the top-level group
@@ -236,7 +235,7 @@ To enable a flow for all projects in a top-level group:
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to enable.
 1. In the upper-right corner, select **Enable for all projects**.
-1. Under **Conditions**, review the [events](../automations/_index.md#trigger-event-types) that trigger the flow.
+1. Under **Conditions**, review the [events](../automations/_index.md#event-types) that trigger the flow.
    By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
    - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
@@ -267,15 +266,16 @@ To enable a flow:
 1. Select **AI Catalog**, then select the **Flows** tab.
 1. Select the flow you want to enable.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to enable the flow in.
+1. Under **Select projects**, select the project you want to enable the flow in.
 
-   To enable a public or restricted flow for multiple projects, from the **Project** dropdown list,
-   select the relevant projects. You can select up to 100 projects.
+   To enable a public or restricted flow for multiple projects, select the relevant projects.
+   You can select up to 100 projects.
    You can enable a flow for multiple projects up to 10 times per minute.
 
-1. For **Add triggers**, select:
-   - The [event types that trigger the flow](../automations/_index.md#trigger-event-types).
-   - If needed for the trigger event type, a trigger event action.
+1. Under **Conditions**, review the [events](../automations/_index.md#event-types) that trigger the flow.
+   By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add condition** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
 1. Optional. For an event, in the **Instructions** field, enter text that tells the flow what to do.
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Select **Enable**.
@@ -287,41 +287,41 @@ can also enable the flow in their projects by using the **From the AI Catalog** 
 A service account is created in the group. The name of the account
 follows this naming convention: `ai-<flow>-<group>`.
 
-## Manage trigger conditions
+## Manage automation conditions
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/255119) in GitLab 19.5.
 
-You can manage a flow's triggers from its configuration page.
+You can manage a flow's automations from its configuration page.
 
-For more information about triggers, including how to create one, see [triggers](../automations/_index.md).
+For more information about automations, including how to create one, see [automations](../automations/_index.md).
 
 Prerequisites:
 
 - The Maintainer or Owner role for the project.
 
-### Turn a trigger on or off
+### Turn an automation on or off
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to manage.
-1. In the **Trigger conditions** section, for the trigger you want to turn on or off,
+1. In the **Trigger conditions** section, for the automation you want to turn on or off,
    select the toggle.
 
-### Edit a trigger
+### Edit an automation
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to manage.
-1. In the **Trigger conditions** section, for the trigger you want to change,
+1. In the **Trigger conditions** section, for the automation you want to change,
    select **Trigger actions** () > **Edit**.
 1. Make the changes and select **Save changes**.
 
-### Delete a trigger
+### Delete an automation
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
 1. Select the flow you want to manage.
-1. In the **Trigger conditions** section, for the trigger you want to delete,
+1. In the **Trigger conditions** section, for the automation you want to delete,
    select **Trigger actions** () > **Delete**.
 1. On the confirmation dialog, select **Delete**.
 
@@ -339,7 +339,7 @@ To disable a flow:
 1. Find the flow you want to remove and select **Actions** () > **Disable**.
 1. On the confirmation dialog, select **Disable**.
 
-The flow no longer appears in the project or group, and can't be run. Any service accounts or triggers associated with the flow are also removed.
+The flow no longer appears in the project or group, and can't be run. Any service accounts or automations associated with the flow are also removed.
 You can disable a flow or agent up to 30 times per minute.
 
 ## Use a flow

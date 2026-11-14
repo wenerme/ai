@@ -82,33 +82,33 @@ For a click-through demo, see [Recommend Reviewers Flow](https://click-through-d
 
 ### Use the flow
 
-When you turn on the Recommend Reviewers Flow for the top-level group, GitLab creates a flow
-trigger in each project. This trigger runs the flow when a merge request is created, including
+When you turn on the Recommend Reviewers Flow for the top-level group, GitLab creates
+an automation in each project. This automation runs the flow when a merge request is created, including
 merge requests created as drafts and merge requests created in a ready state. For a draft merge
 request, the flow recommends reviewers when the merge request is created, not when it is marked
 as ready.
 
-This trigger appears on the **AI** > **Triggers** page of the project, where you can turn it off.
+This automation appears on the **AI** > **Automations** page of the project, where you can turn it off.
 
-To run the flow when a draft merge request is marked as ready instead, turn off this trigger,
-then create a trigger:
+To run the flow when a draft merge request is marked as ready instead, turn off this automation,
+then create an automation:
 
 1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **AI** > **Triggers**.
-1. Select **New flow trigger**.
-1. In **Description**, enter a description for the trigger.
-1. If **Configuration source** is shown, select **Flow or external agent**, then select **Recommend Reviewers** from the flow list.
-1. In the **Conditions** section:
-   1. Select **Add condition**, then select **On an event**.
-   1. From the **Event** dropdown list, select **Merge request**.
+1. In the left sidebar, select **AI** > **Automations**.
+1. Select **New automation**.
+1. In **Name**, enter a name for the automation.
+1. From the **Runs with** dropdown list, select **Recommend Reviewers**.
+1. Under **Runs when**, if a schedule is open, select **Cancel**.
+1. Select **Add trigger** > **On an event**, then:
+   1. From the **Select an event** dropdown list, select **Merge request**.
    1. From the **Run when** dropdown list, select **Marked ready**.
    1. Select **Add event**.
-1. Select **Create flow trigger**.
+1. Select **Create**.
 
 The flow runs when a person with at least the Developer role marks a draft merge request as ready.
 
-For more information about creating and editing triggers, see
-[triggers](../../../duo_agent_platform/automations/_index.md).
+For more information about creating and editing automations, see
+[automations](../../../duo_agent_platform/automations/_index.md).
 
 ### Request recommendations for an existing merge request
 

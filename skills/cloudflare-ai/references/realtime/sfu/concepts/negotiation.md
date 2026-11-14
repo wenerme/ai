@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/og.pn
 
 # Negotiation and session lifecycle
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Realtime SFU session has one WebRTC PeerConnection and one offer/answer state machine. Session Description Protocol (SDP) is the setup text that describes the connection's media and transport settings. It does not carry the media itself.
 
@@ -82,27 +82,21 @@ Use the interrupted operation to choose the next step:
 
 | Interrupted operation | Next step |
 | --- | --- |
-| `sessions/new` | Without its returned ID, the allocation cannot be looked up. Create a replacement session. Another request creates another allocation. |
+| `sessions/new` | Create a replacement session. |
 | `tracks/new` | Inspect allocations before creating more tracks. Repeated subscriptions can allocate duplicates. If the SDP response is lost, replace the connection. |
 | `datachannels/new` | Recover visible allocations through session inspection. An empty snapshot cannot resolve an uncertain request. Retain successful allocations from partial responses. |
 | `datachannels/establish` | Complete the transport's SDP exchange. If its response is lost, replace the connection. Repeating establish is not a state check. |
 | `/renegotiate` | A repeated answer can fail after the first succeeds. If acceptance remains unknown, replace the connection. A retry error cannot resolve that uncertainty. |
-| Forced media close or `datachannels/close` | Retry known unresolved IDs in order. Process each result, including already-closed items. |
-| Negotiated media close | Apply the original answer if available. Otherwise, retire the connection and force-close its known tracks. |
+| Forced media close or `datachannels/close` | While the session is live, retry unresolved IDs in order. Process each result. |
+| Negotiated media close | Apply the original answer if available. Otherwise, close the PeerConnection and discard the session. |
 
 [Session inspection](https://developers.cloudflare.com/realtime/sfu/api/#inspect-a-session) can recover resource identifiers, but not lost SDP or request history. [`correlationId`](https://developers.cloudflare.com/realtime/sfu/api/#correlate-session-creation) labels diagnostics. It does not recover or deduplicate a session.
 
-Give a replacement connection a new application attempt ID. Ignore old responses when updating it, but retain any resource IDs they return for cleanup. Republish and rebuild subscriptions using the new session identifiers.
+Give a replacement connection a new application attempt ID. Ignore old responses when updating it. Republish and rebuild subscriptions using the new session identifiers.
 
 ## Teardown
 
-Stop accepting new mutations and withdraw ended publications from discovery. Keep their resource IDs for cleanup.
-
-With a responsive endpoint, finish the current API/SDP exchange, then [close tracks](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/#close-media-tracks), [channels](https://developers.cloudflare.com/realtime/sfu/features/datachannels/#close-channels), and the endpoint's PeerConnection in order.
-
-If the endpoint cannot answer, retire the connection, force-close known tracks, and close known DataChannels. Forced closure does not finish the abandoned SDP exchange. Do not resume queued work on that connection.
-
-A timed-out API request may still finish. Closing known tracks does not cancel it. Retain late allocations for cleanup. Keep [required cleanup](https://developers.cloudflare.com/realtime/sfu/best-practices/#retain-cleanup-state) unresolved until the affected resources are accounted for and closed.
+Stop accepting new mutations, withdraw ended publications from discovery, and close the PeerConnection. [Discard the session](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#resource-lifetime) and cancel its queued work.
 
 ## Learn with an example
 
@@ -119,5 +113,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#page","headline":"Negotiation and session lifecycle","description":"Coordinate SFU operations with WebRTC offer/answer state, immediate renegotiation, reconnect, and cleanup.","url":"https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/og.png?v=ff0ff64b95be6af1","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#page","headline":"Negotiation and session lifecycle","description":"Coordinate SFU operations with WebRTC offer/answer state, immediate renegotiation, reconnect, and cleanup.","url":"https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/og.png?v=ff0ff64b95be6af1","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

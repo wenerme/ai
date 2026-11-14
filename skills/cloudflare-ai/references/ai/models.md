@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 282 modelsClear filters
+We found 284 modelsClear filters
 
 ## Compare models
 
@@ -522,6 +522,12 @@ Compare
 
 Compare
 
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-omni-1.2-flash</h3>GoogleText-to-Video Gemini Omni 1.2 Flash is Google's video generation and editing model with native audio. It turns text, images or video into 3 to 15 second clips at up to 4K, and supports conversational editing, video extension and first and last frame interpolation.](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/)
+
+- Third-party
+
+Compare
+
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-omni-flash</h3>GoogleText-to-Video Preview high-performance multimodal video generation and editing model with conversational controls and generated audio.](https://developers.cloudflare.com/ai/models/google/gemini-omni-flash/)
 
 - Third-party
@@ -774,6 +780,12 @@ Compare
 Compare
 
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k3</h3>Moonshot AIText Generation Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/)
+
+- Third-party
+
+Compare
+
+[![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k3.1-pro</h3>Moonshot AIText Generation Kimi K3.1 Pro is Moonshot's flagship model for long-horizon coding and end-to-end knowledge work, and the first model in the K3.1 series. A post-trained version of Kimi K3 with substantially larger post-training compute, it offers native visual understanding, always-on reasoning, and a 1M-token context window, with gains in coding, 3D creation, and financial research.](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3.1-pro/)
 
 - Third-party
 

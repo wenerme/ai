@@ -8,9 +8,10 @@ aliases:
 
 ## Builtin repository code search without indexer
 
-Users could do repository-level code search without setting up a repository indexer.
-The builtin code search is based on the `git grep` command, which is fast and efficient for small repositories.
-Better code search support could be achieved by setting up the repository indexer.
+Users can search the code of a single repository without setting up a repository indexer.
+This search uses `git grep`, which is fast for small repositories and requires Git built with PCRE support, as most distributions provide.
+Searching across repositories requires the repository indexer.
+See [Code Search](../usage/code-search.md) for the query syntax.
 
 ## Setting up the repository indexer
 

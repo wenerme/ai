@@ -1,0 +1,265 @@
+---
+description: Gemini Omni 1.2 Flash is Google's video generation and editing model with native audio. It turns text, images or video into 3 to 15 second clips at up to 4K, and supports conversational editing, video extension and first and last frame interpolation.
+title: Gemini Omni 1.2 Flash
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
+
+# Gemini Omni 1.2 Flash
+
+Text-to-Video • Google
+
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Model ID
+
+`google/gemini-omni-1.2-flash` Copy
+
+Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/), the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), or the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/).
+
+Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
+- Third-party
+
+Gemini Omni 1.2 Flash is Google's video generation and editing model with native audio. It turns text, images or video into 3 to 15 second clips at up to 4K, and supports conversational editing, video extension and first and last frame interpolation.
+
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) |
+| Pricing | <ul><li>Input text (per 1M tokens)$1.50</li><li>Input image (per 1M tokens)$1.50</li><li>Input video (per 1M tokens)$1.50</li><li>Input audio (per 1M tokens)$1.50</li><li>Output text (per 1M tokens)$9.00</li><li>Reasoning (per 1M tokens)$9.00</li><li>Output video (per 1M tokens)$12.00</li></ul> |
+
+## Usage
+
+```ts
+const response = await env.AI.run(
+  'google/gemini-omni-1.2-flash',
+  {
+    text: 'A marble rolling fast on a chain reaction style track, continuous smooth shot.',
+    aspect_ratio: '16:9',
+    resolution: '720p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/gemini-omni-1.2-flash",
+  "input": {
+    "text": "A marble rolling fast on a chain reaction style track, continuous smooth shot.",
+    "aspect_ratio": "16:9",
+    "resolution": "720p"
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.2-flash/text-to-video.mp4"
+  }
+}
+```
+
+## Examples
+
+<details>
+
+<summary>**Portrait city** — Generate a portrait-format cinematic city scene</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'google/gemini-omni-1.2-flash',
+  {
+    text: 'A futuristic city with neon lights and flying cars, cinematic camera movement and atmospheric haze.',
+    aspect_ratio: '9:16',
+    resolution: '720p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/gemini-omni-1.2-flash",
+  "input": {
+    "text": "A futuristic city with neon lights and flying cars, cinematic camera movement and atmospheric haze.",
+    "aspect_ratio": "9:16",
+    "resolution": "720p"
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.2-flash/portrait-city.mp4"
+  }
+}
+```
+
+</details>
+
+<details>
+
+<summary>**Mountain sunrise** — Generate a high-resolution landscape nature scene</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'google/gemini-omni-1.2-flash',
+  {
+    text: 'A drone shot flying over a mountain landscape at sunrise, golden light reflecting across a misty valley.',
+    aspect_ratio: '16:9',
+    resolution: '1080p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/gemini-omni-1.2-flash",
+  "input": {
+    "text": "A drone shot flying over a mountain landscape at sunrise, golden light reflecting across a misty valley.",
+    "aspect_ratio": "16:9",
+    "resolution": "1080p"
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.2-flash/mountain-sunrise.mp4"
+  }
+}
+```
+
+</details>
+
+<details>
+
+<summary>**Chain reaction** — Generate a low-resolution landscape action scene</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'google/gemini-omni-1.2-flash',
+  {
+    text: 'A marble rolling quickly along a wooden track, knocking through a playful chain reaction in one continuous shot.',
+    aspect_ratio: '16:9',
+    resolution: '360p',
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "google/gemini-omni-1.2-flash",
+  "input": {
+    "text": "A marble rolling quickly along a wooden track, knocking through a playful chain reaction in one continuous shot.",
+    "aspect_ratio": "16:9",
+    "resolution": "360p"
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/google/gemini-omni-1.2-flash/chain-reaction.mp4"
+  }
+}
+```
+
+</details>
+
+## Parameters
+
+text
+
+`string`Text prompt or editing instruction
+
+image
+
+`string`First-frame or primary reference image
+
+last\_frame
+
+`string`Last-frame reference image
+
+▶reference\_images\[]
+
+`array`maxItems: 10
+
+video
+
+`string`Reference video for editing or extension
+
+audio
+
+`string`Reference audio input
+
+previous\_interaction\_id
+
+`string`
+
+aspect\_ratio
+
+`string`enum: 16:9, 9:16
+
+resolution
+
+`string`enum: 360p, 720p, 1080p, 4k
+
+▶video
+
+`one of`
+
+## API Schemas (Raw)
+
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/schema-input.json)
+
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/schema-output.json)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/#page","headline":"Gemini Omni 1.2 Flash","description":"Gemini Omni 1.2 Flash is Google's video generation and editing model with native audio. It turns text, images or video into 3 to 15 second clips at up to 4K, and supports conversational editing, video extension and first and last frame interpolation.","url":"https://developers.cloudflare.com/ai/models/google/gemini-omni-1.2-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

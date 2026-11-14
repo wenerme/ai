@@ -55,7 +55,14 @@ For more information, see [issue 467544](https://gitlab.com/gitlab-org/gitlab/-/
 
 ## Export metric definitions
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270522) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_metric_definitions`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Exports all metric definitions as a single YAML file, similar to the [Metrics Dictionary](https://metrics.gitlab.com/), for easier importing.
+
+This endpoint has a [rate limit](../rate_limits/non_configurable.md) for each IP address.
 
 ```plaintext
 GET /usage_data/metric_definitions

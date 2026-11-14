@@ -118,7 +118,7 @@ Where appropriate, the following foundational flows can be triggered from an Age
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/629298) in GitLab 19.4.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/629298) in GitLab 19.5.
 
-In GitLab Duo Agentic Chat, you can start a flow with a slash command. Use a flow command when a flow does not have a configured trigger, or when you want to start the flow yourself instead of waiting for a trigger.
+In GitLab Duo Agentic Chat, you can start a flow with a slash command. Use a flow command when a flow does not have a configured automation, or when you want to start the flow yourself instead of waiting for an automation.
 
 Prerequisites:
 
@@ -529,12 +529,11 @@ GitLab Duo sidebar.
 
 ## Web search
 
-- Status: Experiment
-
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219759) in GitLab 18.9 as an [experiment](../../policy/development_stages_support.md#experiment) with a [flag](../../administration/feature_flags/_index.md) named `dap_web_search`. Disabled by default.
 - Group setting to allow web search [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253643) in GitLab 19.4.
 - Audit event for web searches [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604065) in GitLab 19.5.
 - Instance setting to allow web search on GitLab Self-Managed and GitLab Dedicated [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637200) in GitLab 19.6. The group setting applies only on GitLab.com.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/587158) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -546,8 +545,14 @@ the status of a security advisory, or the documentation for a third-party tool.
 
 When Chat searches the web, the model writes a search query from your conversation and
 sends the query to a search service. The search service depends on the model provider.
-Do not include sensitive information in a conversation that uses web search.
-The search query might include it.
+For more information, see [search services](#search-services).
+
+> [!warning]
+> The search query might include content from your conversation.
+> Do not include sensitive information in a conversation that uses web search.
+>
+> Web search might not respect your data residency choices.
+> For example, the Amazon Bedrock AgentCore web search connector runs only in the AWS `us-east-1` region.
 
 Web search is limited for each model call:
 

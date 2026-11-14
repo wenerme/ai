@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/og.
 
 # Pre-render pages for crawlers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pre-rendering generates the final HTML for a page before returning it to a client. For JavaScript-heavy applications, this means loading the page in a browser, waiting for client-side JavaScript to run, and returning the rendered HTML instead of the initial app shell.
 
@@ -23,7 +23,7 @@ In this tutorial, you will:
 - Add a Browser Run binding to a Worker
 - Create a minimal pre-rendering endpoint
 - Restrict which hostnames the Worker can render
-- Test the endpoint locally with remote mode
+- Test the endpoint locally
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ Add a Browser Run binding to your Wrangler configuration:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-14",
   "browser": {
     "binding": "BROWSER"
   }
@@ -58,7 +58,7 @@ name = "my-prerender-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-14"
 
 [browser]
 binding = "BROWSER"
@@ -241,21 +241,21 @@ The `waitUntil: "networkidle2"` option waits until the page has no more than two
 
 ## 3. Test pre-rendering
 
-1. Start your Worker in remote mode:npmyarnpnpm
+1. Start your Worker locally:npmyarnpnpm
 
    ```
-   npx wrangler dev --remote
-   ```
-
-   ```
-   yarn wrangler dev --remote
+   npx wrangler dev
    ```
 
    ```
-   pnpm wrangler dev --remote
+   yarn wrangler dev
    ```
 
-   The `.quickAction()` method is not yet supported in local development mode. Use `wrangler dev --remote` when testing Browser Run Quick Actions locally.
+   ```
+   pnpm wrangler dev
+   ```
+
+   Wrangler runs the `.quickAction()` call against a Chrome instance on your machine.
 2. In another terminal, request a rendered page:
 
    ```bash
@@ -313,5 +313,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/#page","headline":"Pre-render pages for crawlers","description":"Use Browser Run to render JavaScript-heavy pages and return crawler-ready HTML from a Worker.","url":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/og.png?v=2db9d4ab2fe1dd31","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/#page","headline":"Pre-render pages for crawlers","description":"Use Browser Run to render JavaScript-heavy pages and return crawler-ready HTML from a Worker.","url":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/og.png?v=2db9d4ab2fe1dd31","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -112,7 +112,7 @@ k3s server \
 
 In general, CLI arguments map to their respective YAML key, with repeatable CLI arguments being represented as YAML lists. Boolean flags are represented as `true` or `false` in the YAML file.
 
-It is also possible to use both a configuration file and CLI arguments. In these situations, values will be loaded from both sources, but CLI arguments will take precedence. For repeatable arguments such as `--node-label`, the CLI arguments will overwrite all values in the list.
+It is also possible to use both a configuration file and CLI arguments. In these situations, values will be loaded from both sources, but CLI arguments will take precedence. For repeatable arguments such as `--node-label`, `--disable`, and so on, values passed by the CLI are appended to the values from the configuration file.
 
 ### Value Merge Behavior
 
@@ -154,6 +154,14 @@ node-taint:
   - alice=bob:NoExecute
   - charlie=delta:NoSchedule
 ```
+
+CLI arguments are applied after all configuration files. Values passed by the CLI for repeatable arguments are appended to the values from the configuration files. For example, with the configuration files above, running:
+
+```bash
+k3s server --node-label foo=four --node-label bar=baz
+```
+
+Results in K3s passing the labels `other=what,foo=three,foo=four,bar=baz` to the kubelet. The kubelet applies these key/value pairs in order, so the last value for a duplicate key is used, and the node is registered with the labels `other=what`, `foo=four`, and `bar=baz`. For repeatable arguments that are not key/value pairs, the values from the CLI are simply appended.
 
 ## Putting it all together
 

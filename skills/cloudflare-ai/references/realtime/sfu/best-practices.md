@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/best-practices/og.png?v=99
 
 # Best practices
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your application owns identity, state, and lifecycle around the SFU's media transport. Preserve these boundaries when adapting an example.
 
@@ -42,13 +42,11 @@ Make reconnect visible to the user, bound retries, and provide a recovery action
 
 For WebSocket adapters, implement recreation after terminal closure and respect the different ingest and stream reconnect behavior.
 
-## Retain cleanup state
+## Close unused resources
 
-Remove unavailable or unauthorized publications from discovery. Retain their resource identifiers privately until required cleanup is complete. Check [individual close results](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#interpret-close-results) and keep unresolved items available for retry.
+Remove unavailable or unauthorized publications from discovery. To stop forwarding on a live session, close the affected tracks or DataChannels and check [individual close results](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#interpret-close-results).
 
-Decide whether replacement can proceed while old resources remain. Discarding an obsolete connection from application state does not stop SFU forwarding. When you need to stop access, close the affected SFU resources and confirm the result.
-
-Use explicit leave/stop operations and application expiry for abandoned clients. A browser tab may close without sending cleanup. Keep the backend available while retries still need to run.
+When finished, close the PeerConnection and [discard its session](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#resource-lifetime).
 
 ## Apply application limits
 
@@ -69,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/best-practices/#page","headline":"Best practices","description":"Preserve credential boundaries, resource authorization, negotiation ordering, and cleanup when adapting Realtime SFU applications.","url":"https://developers.cloudflare.com/realtime/sfu/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/best-practices/og.png?v=9982b9e7b9639db8","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/best-practices/#page","headline":"Best practices","description":"Preserve credential boundaries, resource authorization, negotiation ordering, and cleanup when adapting Realtime SFU applications.","url":"https://developers.cloudflare.com/realtime/sfu/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/best-practices/og.png?v=9982b9e7b9639db8","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

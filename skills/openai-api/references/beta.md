@@ -20,11 +20,11 @@ Content type: `application/json`
 
 - `compaction: optional object { async }  or null`
 
-  Context compaction settings. Omission or null enables background compaction.
+  Context compaction settings. Omission or null uses blocking compaction.
 
   - `async: optional boolean or null`
 
-    Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+    Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
 - `experimental: optional object { time_awareness }  (default: {"time_awareness":false})`
 
@@ -864,7 +864,7 @@ Content type: `application/json`
 
     - `async: boolean`
 
-      Whether context is compacted in the background. Defaults to true.
+      Whether context is compacted in the background. Defaults to false.
 
   - `experimental: optional object { time_awareness }`
 
@@ -1447,7 +1447,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
     - `async: boolean`
 
-      Whether context is compacted in the background. Defaults to true.
+      Whether context is compacted in the background. Defaults to false.
 
   - `experimental: optional object { time_awareness }`
 
@@ -1981,7 +1981,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
     - `async: boolean`
 
-      Whether context is compacted in the background. Defaults to true.
+      Whether context is compacted in the background. Defaults to false.
 
   - `experimental: optional object { time_awareness }`
 
@@ -2069,11 +2069,11 @@ Content type: `application/json`
 
 - `compaction: optional object { async }  or null`
 
-  Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+  Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object uses blocking compaction.
 
   - `async: optional boolean or null`
 
-    Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+    Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
 - `experimental: optional object { time_awareness }  (default: {})`
 
@@ -2919,7 +2919,7 @@ Content type: `application/json`
 
     - `async: boolean`
 
-      Whether context is compacted in the background. Defaults to true.
+      Whether context is compacted in the background. Defaults to false.
 
   - `experimental: optional object { time_awareness }`
 
@@ -3438,7 +3438,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `async: boolean`
 
-      Whether context is compacted in the background. Defaults to true.
+      Whether context is compacted in the background. Defaults to false.
 
   - `experimental: optional object { time_awareness }`
 
@@ -5682,7 +5682,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 
@@ -6804,7 +6804,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         - `async: boolean`
 
-          Whether context is compacted in the background. Defaults to true.
+          Whether context is compacted in the background. Defaults to false.
 
       - `experimental: optional object { time_awareness }`
 
@@ -9142,7 +9142,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           - `async: boolean`
 
-            Whether context is compacted in the background. Defaults to true.
+            Whether context is compacted in the background. Defaults to false.
 
         - `experimental: optional object { time_awareness }`
 
@@ -12852,7 +12852,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         - `async: boolean`
 
-          Whether context is compacted in the background. Defaults to true.
+          Whether context is compacted in the background. Defaults to false.
 
       - `experimental: optional object { time_awareness }`
 
@@ -13910,7 +13910,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         - `async: boolean`
 
-          Whether context is compacted in the background. Defaults to true.
+          Whether context is compacted in the background. Defaults to false.
 
       - `experimental: optional object { time_awareness }`
 
@@ -14968,7 +14968,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         - `async: boolean`
 
-          Whether context is compacted in the background. Defaults to true.
+          Whether context is compacted in the background. Defaults to false.
 
       - `experimental: optional object { time_awareness }`
 
@@ -17550,7 +17550,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         - `async: boolean`
 
-          Whether context is compacted in the background. Defaults to true.
+          Whether context is compacted in the background. Defaults to false.
 
       - `experimental: optional object { time_awareness }`
 
@@ -25990,11 +25990,11 @@ Content type: `application/json`
 
           - `compaction: optional object { async }  or null`
 
-            Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+            Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object uses blocking compaction.
 
             - `async: optional boolean or null`
 
-              Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+              Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
           - `experimental: optional object { time_awareness }  (default: {})`
 
@@ -26958,7 +26958,7 @@ Content type: `application/json`
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 
@@ -28064,7 +28064,7 @@ Lists project-owned automations, optionally filtered by target session.
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 
@@ -29097,7 +29097,7 @@ Pauses future scheduled delivery without stopping an active session.
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 
@@ -30101,7 +30101,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 
@@ -31105,7 +31105,7 @@ Retrieves a project-owned automation.
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 
@@ -32054,11 +32054,11 @@ Content type: `application/json`
 
       - `compaction: optional object { async }  or null`
 
-        Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+        Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object uses blocking compaction.
 
         - `async: optional boolean or null`
 
-          Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+          Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
       - `experimental: optional object { time_awareness }  (default: {})`
 
@@ -32988,7 +32988,7 @@ Content type: `application/json`
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 
@@ -33983,7 +33983,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 
@@ -34795,7 +34795,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     - `async: boolean`
 
-      Whether context is compacted in the background. Defaults to true.
+      Whether context is compacted in the background. Defaults to false.
 
   - `experimental: optional object { time_awareness }`
 
@@ -35521,11 +35521,11 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           - `compaction: optional object { async }  or null`
 
-            Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+            Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object uses blocking compaction.
 
             - `async: optional boolean or null`
 
-              Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+              Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
           - `experimental: optional object { time_awareness }  (default: {})`
 
@@ -36407,7 +36407,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         - `async: boolean`
 
-          Whether context is compacted in the background. Defaults to true.
+          Whether context is compacted in the background. Defaults to false.
 
       - `experimental: optional object { time_awareness }`
 
@@ -37157,11 +37157,11 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       - `compaction: optional object { async }  or null`
 
-        Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+        Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object uses blocking compaction.
 
         - `async: optional boolean or null`
 
-          Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+          Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
       - `experimental: optional object { time_awareness }  (default: {})`
 
@@ -38083,7 +38083,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           - `async: boolean`
 
-            Whether context is compacted in the background. Defaults to true.
+            Whether context is compacted in the background. Defaults to false.
 
         - `experimental: optional object { time_awareness }`
 
@@ -38911,7 +38911,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           - `async: boolean`
 
-            Whether context is compacted in the background. Defaults to true.
+            Whether context is compacted in the background. Defaults to false.
 
         - `experimental: optional object { time_awareness }`
 
@@ -39839,7 +39839,7 @@ Queues a manual delivery without changing the saved schedule.
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -40904,7 +40904,7 @@ Lists delivery records for a project-owned automation.
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -41974,7 +41974,7 @@ Retrieves a delivery record for a project-owned automation.
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -43000,7 +43000,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -43930,7 +43930,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 - `async: boolean`
 
-                  Whether context is compacted in the background. Defaults to true.
+                  Whether context is compacted in the background. Defaults to false.
 
               - `experimental: optional object { time_awareness }`
 
@@ -48329,11 +48329,11 @@ Content type: `application/json`
 
   - `compaction: optional object { async }  or null`
 
-    Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+    Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object uses blocking compaction.
 
     - `async: optional boolean or null`
 
-      Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+      Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
   - `experimental: optional object { time_awareness }  (default: {})`
 
@@ -49267,7 +49267,7 @@ Content type: `application/json`
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 
@@ -50506,7 +50506,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 
@@ -51684,7 +51684,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 
@@ -53198,7 +53198,7 @@ Content type: `application/json`
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 
@@ -55431,7 +55431,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `async: boolean`
 
-            Whether context is compacted in the background. Defaults to true.
+            Whether context is compacted in the background. Defaults to false.
 
         - `experimental: optional object { time_awareness }`
 

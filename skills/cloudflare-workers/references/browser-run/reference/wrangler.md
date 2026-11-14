@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/reference/wrangler/og.png?v
 
 # Wrangler
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/) is a command-line tool for building with Cloudflare developer products.
 
@@ -77,9 +77,11 @@ The browser binding's `.quickAction()` method requires a compatibility date of `
 }
 ```
 
-Quick Actions require remote mode for local development
+To test a Worker locally, run `npx wrangler dev`. Wrangler runs Puppeteer, Playwright, CDP, and `.quickAction()` calls against Chrome on your machine.
 
-The `.quickAction()` method is not yet supported in local development mode. When using `wrangler dev`, you must run with `--remote` or set `"remote": true` in your browser binding configuration:
+Some Quick Actions need remote mode
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/) is not available locally, so the `json` Quick Action returns placeholder data shaped like `response_format.json_schema`. The [Kitesurf](https://developers.cloudflare.com/browser-run/kitesurf/) browser is not available locally either. To get real `json` results or use Kitesurf, set `"remote": true` in your browser binding configuration:
 
 ```jsonc
 {
@@ -90,9 +92,7 @@ The `.quickAction()` method is not yet supported in local development mode. When
 }
 ```
 
-Without remote mode, calls to `.quickAction()` will fail with: `The RPC receiver does not implement the method "quickAction"`.
-
-For Puppeteer, Playwright, or CDP-based Workers, run `npx wrangler dev` to test locally. For Quick Actions via `.quickAction()`, use `npx wrangler dev --remote` as noted above.
+For details, refer to [Test Quick Actions locally](https://developers.cloudflare.com/browser-run/quick-actions/#test-quick-actions-locally).
 
 ### Headful mode (experimental)
 
@@ -121,5 +121,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/wrangler/#page","headline":"Wrangler","description":"Use Wrangler, a command-line tool, to deploy projects using Cloudflare's Workers Browser Run API.","url":"https://developers.cloudflare.com/browser-run/reference/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/reference/wrangler/og.png?v=5109985827d0e5c2","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/reference/wrangler/#page","headline":"Wrangler","description":"Use Wrangler, a command-line tool, to deploy projects using Cloudflare's Workers Browser Run API.","url":"https://developers.cloudflare.com/browser-run/reference/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/reference/wrangler/og.png?v=5109985827d0e5c2","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

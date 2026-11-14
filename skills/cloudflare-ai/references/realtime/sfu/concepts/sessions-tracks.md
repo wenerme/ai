@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/o
 
 # Sessions and tracks
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Applications group your SFU resources. Sessions represent WebRTC connections. Media tracks carry audio or video, and DataChannels carry application messages.
 
@@ -68,9 +68,9 @@ DataChannels carry application messages such as telemetry, text, and control eve
 
 ## Resource lifetime
 
-Remove a publication from discovery when your application stops offering it. This does not close existing subscriptions. Retain its SFU identifiers privately while cleanup remains outstanding.
+After setup fails or the connection ends, discard the session. The SFU reclaims its resources automatically.
 
-Follow the [media-close sequence](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/#close-media-tracks) or [DataChannel closure](https://developers.cloudflare.com/realtime/sfu/features/datachannels/#close-channels) when resources are no longer needed. Refer to [limits](https://developers.cloudflare.com/realtime/sfu/platform/limits/#inactivity-timeout) for expiration and reuse, and [Best practices](https://developers.cloudflare.com/realtime/sfu/best-practices/#retain-cleanup-state) for cleanup ownership.
+On a live session, close unused [media tracks](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/#close-media-tracks) or [DataChannels](https://developers.cloudflare.com/realtime/sfu/features/datachannels/#close-channels). Remove ended publications from discovery. Refer to [limits](https://developers.cloudflare.com/realtime/sfu/platform/limits/#inactivity-timeout) for inactivity timeouts.
 
 ## Learn with an example
 
@@ -85,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#page","headline":"Sessions and tracks","description":"Understand Realtime SFU applications, PeerConnection sessions, track names, and publication and subscription.","url":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/og.png?v=3dcf0ce2ac231f0d","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#page","headline":"Sessions and tracks","description":"Understand Realtime SFU applications, PeerConnection sessions, track names, and publication and subscription.","url":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/og.png?v=3dcf0ce2ac231f0d","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -78,7 +78,7 @@ The composite identity is part of the workflow.
      For foundational flows, the username is similar to `duo-<flow_name>-<top_level_group_name>`.
    - The service account is added to the project with the Developer role.
      A foundational flow service account is added to
-     [each project that has foundational flows turned on](flows/foundational_flows/_index.md#service-account-and-trigger-setup).
+     [each project that has foundational flows turned on](flows/foundational_flows/_index.md#service-account-and-automation-setup).
 1. A user executes the flow.
    - The flow is executed by a one-time composite identity.
      This identity has a combination of the user's role and the service account's Developer role,
@@ -110,7 +110,7 @@ not that the service account accessed the project.
   Use the members list as the authoritative source, because not every foundational flow membership change creates an audit event.
 - To check membership history, review the `member_created`, `member_destroyed`, and `duo_service_account_provisioned`
   [audit events](../compliance/audit_event_types.md).
-- To check when flow triggers were created, changed, or deleted in a project, review the
+- To check when automations were created, changed, or deleted in a project, review the
   `flow_trigger_created`, `flow_trigger_updated`, and `flow_trigger_deleted` audit events.
   Like membership, these events show configuration changes, not flow runs.
 

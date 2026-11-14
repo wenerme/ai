@@ -10758,9 +10758,14 @@ paths:
     get:
       operationId: getApiV4Experiments
       summary: List all experiments
-      description: Lists all experiments on the GitLab instance. Each experiment has
-        an `enabled` status that indicates whether the experiment is enabled globally,
-        or only in specific contexts.
+      description: 'Lists all experiments on the GitLab instance. Each experiment
+        has an `enabled` status that indicates whether the experiment is enabled globally,
+        or only in specific contexts. Each experiment also has a `context` array with
+        the context keys the experiment declares: `user`, `namespace`, `project`,
+        or `actor`. The array is empty for experiments that declare no context keys.
+        Pass these keys when you force, read, or clear a variant assignment. For an
+        `actor` key, pass the `context[user]` parameter, because the actor is resolved
+        from the user.'
       tags:
       - Experiments
       responses:
@@ -10784,7 +10789,9 @@ paths:
       summary: Delete cached assignments for an experiment
       description: Removes all cached variant assignments for the experiment with
         the given cache key. Useful for cleaning up completed experiments whose code
-        has been removed from the codebase.
+        has been removed from the codebase. The `name` value is used directly as the
+        cache key, so this endpoint clears any matching cache entry, even one that
+        does not belong to a currently defined experiment.
       tags:
       - Experiments
       responses:
@@ -10810,7 +10817,11 @@ paths:
       operationId: getApiV4ExperimentsExperimentNameAssignments
       summary: Get current variant assignment for an experiment context
       description: Returns the currently cached variant assignment for the given experiment
-        and context. Defaults to current user if no context is provided.
+        and context. Defaults to current user if no context is provided. If the experiment
+        declares multiple context keys, pass every declared key. The fallback to the
+        authenticated user applies only when you omit the `context` parameter, and
+        only for the `user` and `actor` keys. The `namespace` and `project` keys must
+        always be passed.
       tags:
       - Experiments
       responses:
@@ -29018,6 +29029,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -91651,6 +91664,10 @@ components:
           example: code_quality_walkthrough
         context:
           type: array
+          description: 'Context keys the experiment declares: `user`, `namespace`,
+            `project`, or `actor`. Empty when the experiment declares no context keys.
+            [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248274)
+            in GitLab 19.3.'
           example:
           - user
           items:
@@ -95575,6 +95592,10 @@ components:
         draft_notes_create_limit:
           type: string
         markdown_upload_limit_megabytes_per_day:
+          type: string
+        pages_domain_create_limit:
+          type: string
+        pages_domain_verify_limit:
           type: string
         members_delete_limit:
           type: string
@@ -114451,6 +114472,19 @@ components:
           description: URL of the Observability provisioner API. GitLab.com only.
           nullable: true
           maxLength: 255
+        pages_domain_create_limit:
+          type: integer
+          description: 'Maximum number of Pages custom domains each user can create
+            per day. Default: `20`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635642)
+            in GitLab 19.6.'
+          nullable: true
+        pages_domain_verify_limit:
+          type: integer
+          description: 'Maximum number of Pages custom domain verification requests
+            per minute for each user. Default: `5`. Set to `0` to disable the rate
+            limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635642)
+            in GitLab 19.6.'
+          nullable: true
         password_authentication_enabled:
           type: boolean
           description: Flag indicating if password authentication is enabled for the

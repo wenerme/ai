@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/observability/error-codes/
 
 # Error codes
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this reference when the [Connection API](https://developers.cloudflare.com/realtime/sfu/api/) returns an `errorCode`. Read its `errorDescription` for the specific failure. The operation, response placement, and connection state help determine the next action.
 
@@ -48,7 +48,7 @@ Use the [complete message recipe](https://developers.cloudflare.com/realtime/sfu
 
 | Code | Meaning and next action |
 | --- | --- |
-| `session_error` | With HTTP `425`, complete connection setup. If the PeerConnection has failed or closed, create a new session instead. With HTTP `410`, create a new session and reconnect. |
+| `session_error` | With HTTP `425`, complete connection setup. If the PeerConnection has failed or closed, [create a new session](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#resource-lifetime) instead. With HTTP `410`, create a new session and reconnect. |
 | `invalid_session_description` | SDP cannot be accepted, or the offer/answer order is wrong. Check the generated SDP, transceivers, `mid` values, codec support, and which session expects the answer. Complete the outstanding exchange and serialize later mutations. Do not replay an answer after its exchange has finished. |
 
 HTTP `406` alone does not establish that requests overlapped. Inspect the public error and endpoint state. [Negotiation and session lifecycle](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/) explains the full exchange boundary and concurrent handlers.
@@ -63,13 +63,13 @@ These codes usually appear in individual resource results. Some operations can i
 | `empty_track_error` | A media subscription did not receive source media in time. Check the publisher's connection and outgoing packets, then retry the failed subscription after media is available. |
 | `repeated_local_track_error` | A DataChannel allocation already exists. This code can apply to a publication or a subscription. Reconcile retained allocations. If replacement is intended, close the correct allocation before creating it again. |
 | `update_track_error` | The track is not configured for the requested simulcast update. Check the publication and use [simulcast updates](https://developers.cloudflare.com/realtime/sfu/features/simulcast/#change-the-received-layer) on an applicable receiving track. |
-| `close_track_error` | The track or DataChannel does not exist or is already closed. For cleanup of a resource your application owns, an explicit result reporting absence satisfies that resource's cleanup. Process other items independently. |
+| `close_track_error` | The track or DataChannel does not exist or is already closed. Treat that item as closed and process the remaining results. |
 
-For simulcast updates, use the receiving session's `mid`. For media closure, use the `mid` from the session on which you are closing the track. DataChannel closure uses that endpoint's allocated channel ID. Refer to [identifier ownership](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#media-tracks) and [cleanup state](https://developers.cloudflare.com/realtime/sfu/best-practices/#retain-cleanup-state).
+For simulcast updates, use the receiving session's `mid`. For media closure, use the `mid` from the session on which you are closing the track. DataChannel closure uses that endpoint's allocated channel ID. Refer to [identifier ownership](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#media-tracks) and [closing unused resources](https://developers.cloudflare.com/realtime/sfu/best-practices/#close-unused-resources).
 
 ### Interpret close results
 
-Match each media-close result to the requested `mid` on the session you modified. For example, a forced close of mids `0`, `1`, and `2` can return HTTP `200` with:
+On a live session, match each media-close result to the requested `mid`. For example, a forced close of mids `0`, `1`, and `2` can return HTTP `200` with:
 
 ```json
 {
@@ -91,8 +91,6 @@ Match each media-close result to the requested `mid` on the session you modified
 ```
 
 Track `0` closed. Track `1` is absent or already closed. Keep `2` and any unreported mids pending. For DataChannels, match results by `id`.
-
-A request-level error without item results does not establish resource absence. Follow [recovery and teardown guidance](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#retry-and-reconnect) after an interrupted request.
 
 ## Adapter errors
 
@@ -116,7 +114,7 @@ For endpoint configuration, packet formats, and recovery, follow the [WebSocket 
 | `temporarily_unavailable_error` | The service is temporarily unavailable. Wait before another attempt. Retain successful allocations and reconcile an uncertain mutation outcome before repeating resource creation. |
 | `transport_unavailable_error` | Media transport setup could not complete. A later attempt may succeed. Bound retries and check whether the session is still usable before continuing. |
 | `backend_error` | The service could not obtain or supply a required result. Retain resource state and sanitized diagnostic context. Inspect unresolved operations before starting another mutation. |
-| `internal_error` | The API could not classify the failure more specifically. Check operation inputs and current session/resource state. Preserve diagnostics and unresolved cleanup. This code does not prescribe automatic resource recreation. |
+| `internal_error` | The API could not classify the failure more specifically. Check operation inputs and current session/resource state. Preserve diagnostics. This code does not prescribe automatic resource recreation. |
 
 Retry failed items individually instead of repeating a partially successful creation batch. A timeout with no response leaves the result uncertain. Follow [retry and reconnect guidance](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#retry-and-reconnect), and retain [diagnostic context](https://developers.cloudflare.com/realtime/sfu/observability/#record-useful-context) for persistent failures.
 
@@ -129,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#page","headline":"Error codes","description":"Look up public Realtime SFU API errors and find the next action for request, session, media, DataChannel, or adapter failures.","url":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/og.png?v=fc4833b6a85814e6","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#page","headline":"Error codes","description":"Look up public Realtime SFU API errors and find the next action for request, session, media, DataChannel, or adapter failures.","url":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/og.png?v=fc4833b6a85814e6","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

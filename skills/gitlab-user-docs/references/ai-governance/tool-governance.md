@@ -63,7 +63,7 @@ Local access
 
 Background access
 : Runs on GitLab as a service account, without waiting for anyone.
-  For example, flows started by a trigger or a mention, and code review.
+  For example, flows started by an automation or a mention, and code review.
 
 > [!note]
 > Local access modes apply only to calls to the GitLab MCP server. They don't apply
@@ -144,8 +144,8 @@ The error also names the group or project that denied the call if you can read i
 
 The access type the server checks depends on who calls the tool:
 
-- For third-party clients, the GitLab Duo CLI, and external agents started by a flow
-  trigger, the server uses the mode set for [local access](#access-types), the same
+- For third-party clients, the GitLab Duo CLI, and external agents started by an
+  automation, the server uses the mode set for [local access](#access-types), the same
   mode that applies to the IDE extensions.
 - For GitLab Duo Agentic Chat and other flows, the server uses the access type that
   the session uses for its own tools. For example, a call from Agentic Chat in the
