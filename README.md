@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 54859 files, 556 MiB total
+> 125 skills, 54857 files, 556 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1406,7 +1406,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [alpine-aports-docs](./skills/alpine-aports-docs/SKILL.md) | 7 | 41 KiB |
 | [ant-design-docs](./skills/ant-design-docs/SKILL.md) | 105 | 603 KiB |
 | [anthropic-agent-sdk](./skills/anthropic-agent-sdk/SKILL.md) | 30 | 614 KiB |
-| [anthropic-api](./skills/anthropic-api/SKILL.md) | 757 | 41 MiB |
+| [anthropic-api](./skills/anthropic-api/SKILL.md) | 754 | 41 MiB |
 | [anthropic-docs](./skills/anthropic-docs/SKILL.md) | 368 | 13 MiB |
 | [anthropic-sdk-csharp](./skills/anthropic-sdk-csharp/SKILL.md) | 159 | 8.8 MiB |
 | [anthropic-sdk-go](./skills/anthropic-sdk-go/SKILL.md) | 159 | 11 MiB |
@@ -1423,7 +1423,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 4.5 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 143 | 7.9 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 144 | 7.9 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1701 | 14 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 333 | 2.7 MiB |
@@ -1467,12 +1467,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 32 KiB |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 79 | 500 KiB |
-| [justfile-docs](./skills/justfile-docs/SKILL.md) | 115 | 169 KiB |
+| [justfile-docs](./skills/justfile-docs/SKILL.md) | 115 | 170 KiB |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | 59 | 2.0 MiB |
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
 | [linear-docs](./skills/linear-docs/SKILL.md) | 137 | 2.0 MiB |
 | [litellm-docs](./skills/litellm-docs/SKILL.md) | 1 | 2.8 KiB |
-| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 56 | 536 KiB |
+| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 56 | 538 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 40 | 190 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 13 | 96 KiB |
