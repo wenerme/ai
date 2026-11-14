@@ -354,10 +354,12 @@ To enable an external agent:
 1. In the left sidebar, select **AI** > **Agents**.
 1. Select the **Managed** tab, then select the agent you want to enable.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to enable the agent in.
-1. For **Add triggers**, select:
-   - One or more [trigger event types](../automations/_index.md#trigger-event-types).
-   - If needed for the trigger event type, a trigger event action.
+1. Optional. In the **Instructions** field, enter what the agent should do each time it runs.
+   For more information, see [Add instructions](../automations/_index.md#add-instructions).
+1. Under **Runs when**, review the [events](../automations/_index.md#event-types) that trigger the external agent.
+   By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add trigger** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
 1. Select **Enable**.
 
 ### From the AI Catalog
@@ -368,14 +370,15 @@ To enable an external agent:
 1. Select **AI Catalog**, then select the **Agents** tab.
 1. Select the agent you want to enable.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to enable the agent in.
+1. Under **Select projects**, select the project you want to enable the agent in.
 
-   To turn on a public or restricted agent for multiple projects, from the **Project** dropdown list,
-   select the relevant projects. You can select up to 100 projects.
+   To turn on a public or restricted agent for multiple projects, select the relevant projects.
+   You can select up to 100 projects.
 
-1. For **Add triggers**, select:
-   - One or more [trigger event types](../automations/_index.md#trigger-event-types).
-   - If needed for the trigger event type, a trigger event action.
+1. Under **Conditions**, review the [events](../automations/_index.md#event-types) that trigger the external agent.
+   By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add condition** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
 1. Select **Enable**.
 
 The external agent appears in the group and project **AI** > **Agents** pages.
@@ -396,7 +399,7 @@ To enable an external agent in a project:
 1. In the left sidebar, select **AI** > **Agents**.
 1. In the upper-right corner, select **Enable**.
 1. From the dropdown list, select the external agent you want to enable.
-1. Under **Conditions**, review the [events](../automations/_index.md#trigger-event-types) that trigger the external agent.
+1. Under **Conditions**, review the [events](../automations/_index.md#event-types) that trigger the external agent.
    By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
    - To add an event, select **Add condition** > **On an event**.
    - To change or remove an event, select the edit or delete icon next to it.
@@ -449,7 +452,7 @@ Instead, use a [GitLab-managed external agent](#quickstart-for-gitlab-managed-ex
 The preferred workflow is:
 
 1. Create the agent in the AI Catalog.
-1. Enable the agent for your project and specify a trigger that determines how you call the agent.
+1. Enable the agent for your project and specify an automation that determines how you call the agent.
 
 In this case, a service account is created for you.
 When the agent runs, it uses a combination of the user's memberships and the service account memberships.
@@ -525,7 +528,7 @@ If you prefer to not follow the UI flow, you can create an external agent manual
 
 1. Create a configuration file in your project.
 1. Create a service account.
-1. Create a trigger that determines how you call the agent.
+1. Create an automation that determines how you call the agent.
 1. Use the agent.
 
 In this case, you manually create the service account that is used to run the agent.
@@ -588,9 +591,9 @@ permissions, ask your instance administrator or top-level group Owner for help.
 When adding the service account to your project, you must enter the exact name
 of the service account. If you enter the wrong name, the external agent does not work.
 
-#### Create a trigger
+#### Create an automation
 
-You must now [create a trigger](../automations/_index.md), which determines when the external agent runs.
+You must now [create an automation](../automations/_index.md), which determines when the external agent runs.
 
 For example, you can specify the agent to be triggered when you mention a service account
 in a discussion, or when you assign the service account as a reviewer.

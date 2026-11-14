@@ -373,7 +373,7 @@ Example response:
 
 Updates a specified epic for a group.
 
-By default, this endpoint is rate limited to 600 requests every minute for each user.
+By default, this endpoint is rate limited to 1,000 requests every minute for each user.
 The limit is shared with other issue, epic, and work item updates in the UI, the REST API, and GraphQL.
 Administrators can change the limit with the `work_item_update_limit` [application setting](settings.md#available-settings).
 After you reach the limit, you receive

@@ -17,7 +17,7 @@ Sessions are created by GitLab Duo Agentic Chat and foundational flows in the ID
   [classic layout](../../gitlab_duo_chat/agentic_chat.md#change-the-layout-in-your-ide).
 - Sessions created by GitLab Duo Chat. These sessions are visible on the right sidebar
   by selecting **GitLab Duo Chat history**.
-- Flows that are invoked by triggers. These sessions are visible in the UI under **AI** > **Sessions**.
+- Flows that are invoked by automations. These sessions are visible in the UI under **AI** > **Sessions**.
 
 ## View sessions for your project
 

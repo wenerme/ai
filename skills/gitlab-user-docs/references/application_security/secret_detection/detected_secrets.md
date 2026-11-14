@@ -180,7 +180,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | CircleCI access token                             | CircleCI access tokens                        | Yes | No | Yes | No | None |
 | Clojars deploy token                              | Clojars API token                             | Yes | No | No | No | None |
 | Contentful delivery API token                     | Contentful delivery API token                 | Yes | No | No | No | None |
-| Contentful personal access token                  | ContentfulPersonalAccessToken                 | Yes | No | Yes | No | None |
+| Contentful personal access token                  | ContentfulPersonalAccessToken                 | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Contentful preview API token                      | Contentful preview API token                  | Yes | No | No | No | None |
 | Databricks API token                              | Databricks API token                          | Yes | No | No | No | None |
 | DataDog API Key                                   | DataDogAPIKey                                 | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
@@ -269,7 +269,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Ionic personal access token                       | Ionic API token                               | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | JFrog Platform Access Tokens                      | JfrogPlatformAccessToken                      | Yes | No | No | No | None |
 | Kubernetes Service Account Token                  | KubernetesServiceAccToken                     | Yes | No | Yes | No | None |
-| LangChain API Key                                 | LangChainAPIKey                               | Yes | No | Yes | No | None |
+| LangChain API Key                                 | LangChainAPIKey                               | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Linear API token                                  | Linear API token                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Linear client secret or ID (OAuth 2.0)            | Linear client secret/ID                       | Yes | No | No | No | None |
 | LinkedIn client ID                                | Linkedin Client ID                            | Yes | No | No | No | None |
@@ -290,7 +290,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | New Relic ingest browser API token v2             | New Relic ingest browser API token v2         | Yes | No | No | No | None |
 | New Relic REST API key                            | New Relic REST API Key                        | Yes | No | No | No | None |
 | New Relic user API ID                             | New Relic user API ID                         | Yes | No | Yes | No | None |
-| New Relic user API key                            | New Relic user API Key                        | Yes | No | Yes | No | None |
+| New Relic user API key                            | New Relic user API Key                        | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | npm access token                                  | npm access token                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Oculus access token                               | Oculus access token                           | Yes | No | No | No | None |
 | Okta API Token                                    | OktaAPIToken                                  | Yes | No | No | No | None |
@@ -308,7 +308,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | PlanetScale App secret                            | PlanetscaleAppSecret                          | Yes | No | Yes | No | None |
 | PlanetScale OAuth secret                          | PlanetscaleOAuthSecret                        | Yes | No | Yes | No | None |
 | PlanetScale password                              | Planetscale password                          | Yes | No | Yes | No | None |
-| PostHog Personal API key                          | PostHogPersonalAPIkey                         | Yes | No | Yes | No | None |
+| PostHog Personal API key                          | PostHogPersonalAPIkey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | PostHog Project API key                           | PostHogProjectAPIkey                          | Yes | No | No | No | None |
 | Postman API token                                 | Postman API token                             | Yes | No | Yes | Yes | Both |
 | Postman collection access key                     | PostmanCollectionAccessKey                    | Yes | No | Yes | No | None |
@@ -316,7 +316,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | PyPi upload token                                 | PyPI upload token                             | Yes | No | Yes | No | None |
 | RSA private key                                   | RSA private key                               | Yes | No | No | No | None |
 | RubyGems API token                                | Rubygem API token                             | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| Segment public API token                          | Segment Public API token                      | Yes | No | Yes | No | None |
+| Segment public API token                          | Segment Public API token                      | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | SendGrid API token                                | Sendgrid API token                            | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Shippo API token                                  | Shippo API token                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Shippo Test API token                             | Shippo Test API token                         | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |

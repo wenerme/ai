@@ -22,7 +22,7 @@ You can select an available region when creating a project.
 
 ## Sub-processors and regional request processing
 
-OpenAI uses [sub-processors](https://openai.com/policies/sub-processor-list/) to provide its services. For requests sent to `us.api.openai.com` or `eu.api.openai.com`, OpenAI uses [Cloudflare Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) so that TLS termination and HTTPS decryption occur within the selected processing region.
+OpenAI uses [sub-processors](https://openai.com/policies/sub-processor-list/) to provide its services. For requests sent to `us.api.openai.com`, `eu.api.openai.com`, `au.api.openai.com`, `in.api.openai.com`, or `jp.api.openai.com`, OpenAI uses [Cloudflare Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) so that TLS termination and HTTPS decryption occur within the selected processing region.
 
 ## Limitations
 

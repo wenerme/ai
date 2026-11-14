@@ -98,7 +98,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-16",
+  "compatibility_date": "2026-11-14",
   "browser": {
     "binding": "BROWSER"
   }
@@ -110,7 +110,7 @@ name = "browser-quick-action"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-14"
 
 [browser]
 binding = "BROWSER"
@@ -152,7 +152,7 @@ This Worker uses the browser binding to take a screenshot of `example.com` and r
 
 #### 4. Test
 
-Run `npx wrangler dev --remote` to test your Worker locally.
+Run `npx wrangler dev` to test your Worker locally.
 
 Use real headless browser during local development
 
@@ -312,7 +312,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-11-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -333,7 +333,7 @@ name = "browser-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

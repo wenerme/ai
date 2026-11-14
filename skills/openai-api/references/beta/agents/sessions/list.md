@@ -438,7 +438,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 

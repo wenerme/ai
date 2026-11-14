@@ -129,6 +129,8 @@ When you change this field, it can affect all open merge requests depending on t
 
 - If users could edit approval rules previously, and you disable this behavior,
   GitLab updates all open merge requests to enforce the approval rules.
+  GitLab does not delete rules already stored on a merge request, so the API can still list rules that no longer apply.
+  For more information, see [approval rules for a merge request](../../../../api/merge_request_approvals.md#approval-rules-for-a-merge-request).
 - If users could not edit approval rules previously, and you enable approval rule
   editing, open merge requests remain unchanged. This preserves any changes already
   made to approval rules in those merge requests.

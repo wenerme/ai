@@ -28,7 +28,7 @@ GitLab provides two types of flows:
   production-ready workflows created by GitLab for common development
   tasks.
 - [Custom flows](custom.md) are workflows you create to automate your
-  team's specific processes. You define the workflow steps and agents, and define triggers to control when the
+  team's specific processes. You define the workflow steps and agents, and define automations to control when the
   flow runs.
 
 Flows are available in the GitLab UI, the GitLab Duo CLI, and IDEs:

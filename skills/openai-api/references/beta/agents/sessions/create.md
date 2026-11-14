@@ -322,11 +322,11 @@ Content type: `application/json`
 
   - `compaction: optional object { async }  or null`
 
-    Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+    Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object uses blocking compaction.
 
     - `async: optional boolean or null`
 
-      Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+      Whether to compact context in the background. Omission or null defaults to false. Set to true to enable background compaction. Background compaction may increase token usage.
 
   - `experimental: optional object { time_awareness }  (default: {})`
 
@@ -1260,7 +1260,7 @@ Content type: `application/json`
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 

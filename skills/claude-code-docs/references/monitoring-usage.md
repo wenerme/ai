@@ -110,7 +110,7 @@ On machines with managed settings, see [How managed settings lock the OTLP desti
 | `CLAUDE_CODE_ENABLE_TELEMETRY` | Enables telemetry collection (required) | `1` |
 | `OTEL_METRICS_EXPORTER` | Metrics exporter types, comma-separated. Use `none` to disable | `console`, `otlp`, `prometheus`, `none` |
 | `OTEL_LOGS_EXPORTER` | Logs/events exporter types, comma-separated. Use `none` to disable | `console`, `otlp`, `none` |
-| `OTEL_EXPORTER_OTLP_PROTOCOL` | Protocol for OTLP exporter, applies to all signals. Claude Code has no default protocol, so set this or the signal-specific protocol variable for each `otlp` exporter you enable | `grpc`, `http/json`, `http/protobuf` |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` | Protocol for OTLP exporter, applies to all signals. Defaults to `http/protobuf` for a valid `http://` or `https://` endpoint. For a gRPC endpoint such as `http://localhost:4317`, set this to `grpc`. The default requires Claude Code v2.1.323 or later | `grpc`, `http/json`, `http/protobuf` |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP collector endpoint for all signals | `http://localhost:4317` |
 | `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` | Protocol for metrics, overrides general setting | `grpc`, `http/json`, `http/protobuf` |
 | `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | OTLP metrics endpoint, overrides general setting | `http://localhost:4318/v1/metrics` |
@@ -475,7 +475,7 @@ If the name doesn't arrive, check for one of these causes:
 
 * **You set it on the computer that runs Desktop**: Desktop doesn't pass a value you set there to the SSH session
 * **You exported it in `/etc/profile` or another file that only login shells read**: the name arrives when you run `claude` from a login shell, but not in a Desktop SSH session. Desktop doesn't start Claude Code through a login shell. Set the variable under `env` in the [managed settings file](https://code.claude.com/docs/en/desktop.md#managed-settings) on the remote machine instead.
-* **A value has a space inside it**: Claude Code then copies none of the keys onto events or datapoints and reports no error. [Take the space out of the value](#multi-team-organization-support).
+* **A value has a space inside it**: Claude Code then copies none of the keys onto events or datapoints. To see which value has the space, run `/status` in a session on the remote machine. [Take the space out of the value](#multi-team-organization-support).
 * **Something else already sets the variable**: in a session that the desktop app starts, a variable already set in the launch environment [takes precedence over settings files](https://code.claude.com/docs/en/settings-reference.md#how-env-values-interact-with-your-shell). The [debug log](https://code.claude.com/docs/en/debug-your-config.md) names each ignored variable. When a third-party Desktop deployment [names an OTLP endpoint](#how-managed-settings-lock-the-otlp-destination) in the environment it provides, that environment carries Desktop's own `OTEL_RESOURCE_ATTRIBUTES`.
 
 ### Example configurations
@@ -703,12 +703,12 @@ The `agent.name`, `skill.name`, `plugin.name`, `mcp_server.name`, and `mcp_tool.
 
 * All [standard attributes](#standard-attributes)
 * `model`: Model identifier (for example, "claude-sonnet-5")
-* `query_source`: Category of the subsystem that issued the request. One of `"main"`, `"subagent"`, or `"auxiliary"`
+* `query_source`: Category of the subsystem that issued the request. One of `"main"`, `"subagent"`, `"auxiliary"`, `"plugin_model_complete"`, or `"plugin_model_classify"`. The last two mark the requests a [mod](https://code.claude.com/docs/en/plugins/mods/overview.md) makes with `$.model.complete` or `$.model.classify`. Claude Code counts those requests from v2.1.324, so totals can step up after you upgrade.
 * `speed`: `"fast"` when the request used fast mode. Absent otherwise
 * `effort`: [Effort level](https://code.claude.com/docs/en/model-config.md#adjust-effort-level) applied to the request: `"low"`, `"medium"`, `"high"`, `"xhigh"`, or `"max"`. Absent when Claude Code sends no effort level, for example on a model that doesn't support effort.
 * `agent.name`: Subagent type that issued the request. Built-in agent names and agents from official-marketplace plugins appear verbatim. Other user-defined agent names are replaced with `"custom"`. Absent when the request was not issued by a named subagent type.
 * `skill.name`: Skill active for the request, set by the Skill tool or a `/` command, or inherited by a spawned subagent. Built-in, bundled, user-defined, and official-marketplace plugin skill names appear verbatim. Third-party plugin skill names are replaced with `"third-party"`. Absent when no skill is active.
-* `plugin.name`: Owning plugin when the active skill or subagent is provided by a plugin. Official-marketplace plugin names appear verbatim. Third-party plugin names are replaced with `"third-party"`. Absent when neither the skill nor the subagent has an owning plugin.
+* `plugin.name`: Owning plugin when the active skill or subagent is provided by a plugin, or the plugin whose `$.model` call made the request. Official-marketplace plugin names appear verbatim. Third-party plugin names are replaced with `"third-party"`. Absent for other requests.
 * `marketplace.name`: Marketplace the owning plugin was installed from. Only emitted for official-marketplace plugins, even with `OTEL_LOG_TOOL_DETAILS=1` set. Absent otherwise.
 * `mcp_server.name`: MCP server whose tool result this request consumed. Built-in, claude.ai-proxied, and official-registry server names appear verbatim. User-configured server names are replaced with `"custom"`. Absent when the request consumed no MCP tool result. Before v2.1.222, Claude Code set this attribute on every request after an MCP tool call, not only on requests that consumed a tool result, so dashboards that aggregate it show a step down after you upgrade.
   * From v2.1.312, the name of a remote server with a fixed URL that a plugin from Anthropic's official marketplace declares also appears verbatim, as `plugin_<plugin>_<server>`. That name is replaced with `"custom"` when the plugin's marketplace copy didn't come from Anthropic's registered source, such as one mounted from a seed directory in a cloud session.
@@ -723,7 +723,7 @@ Incremented after each API request.
 * All [standard attributes](#standard-attributes)
 * `type`: (`"input"`, `"output"`, `"cacheRead"`, `"cacheCreation"`). The `"input"` type excludes tokens read from or written to the prompt cache, which are counted under `"cacheRead"` and `"cacheCreation"`. The `"cacheCreation"` type counts cache writes with the five-minute and one-hour [cache lifetimes](https://code.claude.com/docs/en/prompt-caching.md#cache-lifetime) together.
 * `model`: Model identifier (for example, "claude-sonnet-5")
-* `query_source`: Category of the subsystem that issued the request. One of `"main"`, `"subagent"`, or `"auxiliary"`
+* `query_source`: Category of the subsystem that issued the request. See [Cost counter](#cost-counter) for the values.
 * `speed`: `"fast"` when the request used fast mode. Absent otherwise
 * `effort`: [Effort level](https://code.claude.com/docs/en/model-config.md#adjust-effort-level) applied to the request. See [Cost counter](#cost-counter) for details.
 * `agent.name`, `skill.name`, `plugin.name`, `marketplace.name`, `mcp_server.name`, `mcp_tool.name`: Skill, plugin, agent, and MCP attribution for the request. See [Cost counter](#cost-counter) for definitions and redaction behavior.

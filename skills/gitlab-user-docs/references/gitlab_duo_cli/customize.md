@@ -254,6 +254,7 @@ Before you can install a plugin, you must register the marketplace that contains
 The first time you use plugins, the GitLab Duo CLI automatically registers the official GitLab
 marketplace, [`gitlab-duo-plugins`](https://gitlab.com/gitlab-org/ai/gitlab-duo-plugins).
 If you remove this marketplace, the GitLab Duo CLI does not register it again.
+If your organization blocks this marketplace, the GitLab Duo CLI does not register it.
 
 To register a marketplace:
 
@@ -478,6 +479,8 @@ duo plugin list
 ```
 
 Installed plugins are grouped by scope, and the list shows whether each plugin is enabled.
+If your organization requires a plugin, the list shows `required by policy`.
+If your organization blocks a plugin, the list shows `blocked by policy` and the reason.
 
 #### Enable or disable a plugin
 
@@ -553,6 +556,85 @@ bundles the next time it starts:
   [tool approval](../gitlab_duo/model_context_protocol/mcp_clients.md#configure-tool-approval) in
   the same way. To identify where a server comes from, the GitLab Duo CLI prefixes the server name
   with the plugin name.
+
+### Control plugins for your organization
+
+- [Introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v10.4.0) in GitLab Duo CLI 10.4.0, during the GitLab 19.6 release.
+
+System administrators can control which marketplaces and plugins users can use.
+To do this, add `plugins` settings to the [managed settings file](settings.md#managed-settings-file).
+
+| Setting                  | Description |
+|--------------------------|-------------|
+| `allowedMarketplaces`    | Marketplaces users can register and install plugins from. If not set, users can use any marketplace. If set to `[]`, users can't use any marketplace. |
+| `blockedMarketplaces`    | Marketplaces users can't register or install plugins from. |
+| `additionalMarketplaces` | Marketplaces registered for every user, by name and source. Users can't remove them or change their source. These marketplaces must also pass the `allowedMarketplaces` and `blockedMarketplaces` rules. |
+| `enabledPlugins`         | Plugins to require or block, identified as `<plugin>@<marketplace>`. Set to `true` to automatically install and enable a plugin from a marketplace in `additionalMarketplaces`. Set to `false` to block a plugin. |
+| `trustMessage`           | A message the GitLab Duo CLI shows to users when they install a plugin. |
+
+Users can set `allowedMarketplaces`, `blockedMarketplaces`, and `enabledPlugins` in their own
+[settings file](settings.md#settings-file) to add restrictions.
+They can't remove restrictions set in the managed settings file.
+
+For example:
+
+```json
+{
+  "plugins": {
+    "allowedMarketplaces": [
+      { "source": "hostPattern", "hostPattern": "^gitlab\\.example\\.com$" }
+    ],
+    "blockedMarketplaces": [
+      { "source": "url", "url": "https://gitlab.example.com/sandbox/marketplace.git" }
+    ],
+    "additionalMarketplaces": {
+      "example-tools": {
+        "source": { "source": "url", "url": "https://gitlab.example.com/tools/marketplace.git" }
+      }
+    },
+    "enabledPlugins": {
+      "code-review@example-tools": true,
+      "deploy@example-tools": false
+    },
+    "trustMessage": "Install only plugins your security team has approved."
+  }
+}
+```
+
+#### Match marketplaces
+
+In `allowedMarketplaces` and `blockedMarketplaces`, each rule matches a marketplace by its source,
+not by its name:
+
+| Rule          | Matches                                                         | Example |
+|---------------|-----------------------------------------------------------------|---------|
+| `url`         | One Git repository URL or local path.                           | `{ "source": "url", "url": "https://gitlab.example.com/tools/marketplace.git" }` |
+| `hostPattern` | A regular expression on the host of a Git repository URL.       | `{ "source": "hostPattern", "hostPattern": "^gitlab\\.example\\.com$" }` |
+| `pathPattern` | A regular expression on the full path of a local marketplace.   | `{ "source": "pathPattern", "pathPattern": "^/opt/marketplaces/" }` |
+
+Patterns match anywhere in the value.
+For example, `gitlab\.example\.com` also matches `gitlab.example.com.other.net`.
+To match an exact host, start the pattern with `^` and end it with `$`.
+
+#### Policy enforcement
+
+When the GitLab Duo CLI starts, it:
+
+- Registers and updates the marketplaces in `additionalMarketplaces`.
+- Installs the plugins set to `true` in `enabledPlugins`.
+- Does not load plugins that are blocked, or that come from a marketplace that is not allowed,
+  even if they were installed earlier.
+
+The same rules apply when users register, update, or remove marketplaces, and when they install
+or update plugins.
+If the policy does not allow the action, the GitLab Duo CLI displays an error that explains why.
+
+Users can enable a blocked plugin or disable a required plugin, but the change has no effect.
+Blocked plugins never load, and required plugins always load.
+
+If the GitLab Duo CLI cannot read the managed settings file, or `allowedMarketplaces` or
+`blockedMarketplaces` is not valid, the GitLab Duo CLI blocks all marketplaces.
+If an entry in `enabledPlugins` is not valid, the GitLab Duo CLI blocks that plugin.
 
 ### Create a marketplace
 

@@ -27,6 +27,7 @@ Cloudflare integrates with the majority of SaaS applications that support the SA
 - [AWS](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/aws-sso-saas/)
 - [Braintree](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/braintree-saas/)
 - [Coupa](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/coupa-saas/)
+- [Datadog](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/datadog-saas/)
 - [Digicert](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/digicert-saas/)
 - [DocuSign](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/docusign-access/)
 - [Dropbox](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/dropbox-saas/)

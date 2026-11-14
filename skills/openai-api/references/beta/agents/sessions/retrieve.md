@@ -408,7 +408,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       - `async: boolean`
 
-        Whether context is compacted in the background. Defaults to true.
+        Whether context is compacted in the background. Defaults to false.
 
     - `experimental: optional object { time_awareness }`
 

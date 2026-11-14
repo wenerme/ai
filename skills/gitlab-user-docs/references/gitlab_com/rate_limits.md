@@ -188,6 +188,7 @@ the burst limit is also 2,000 requests each minute, so the two limits are the sa
 | Authenticated Git HTTPS traffic for a user                                                                    | 10,000 requests each minute     |
 | Unauthenticated Git HTTPS traffic from an IP address                                                          | 15,000 requests each minute     |
 | Git SSH operations for a user, project, and Git command                                                       | 600 operations each minute      |
+| Git operations for a user across all repositories                                                             | 6,000 operations each minute    |
 | All traffic from an IP address                                                                                | 2,000 requests each minute      |
 | Issue creation                                                                                                | 200 requests each minute        |
 | Project creation (`POST /api/v4/projects` and UI) for a user                                                  | 200 requests each day           |

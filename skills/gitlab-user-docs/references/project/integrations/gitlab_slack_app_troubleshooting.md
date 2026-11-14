@@ -73,7 +73,7 @@ Use the message text to identify the cause and apply the fix.
 | `"Foundational flows are turned off in <namespace>"` | The **Allow foundational flows** setting is turned off in the top-level group of your default GitLab Duo namespace. | Ask an Owner of the group named in the message to turn on **Allow foundational flows** and the flow named in the message in the group GitLab Duo settings. If the message names the wrong group, change your default GitLab Duo namespace in your GitLab preferences. |
 | `"Could not set up the service account…"` | The service account for your namespace could not be provisioned. | Check your namespace GitLab Duo configuration and service account provisioning. |
 | `"Could not set up the workspace project…"` | GitLab could not find or create the `duo-workspace` project in your namespace. | Verify that you can create projects in the namespace. Your role and the namespace `project_creation_level` setting must allow project creation. |
-| `"Failed to start the GitLab Duo session"` or `"Something went wrong…"` | The GitLab Duo flow trigger or execution failed. | Check the CI job logs and GitLab integration logs for details. |
+| `"Failed to start the GitLab Duo session"` or `"Something went wrong…"` | The GitLab Duo flow failed to start or run. | Check the CI job logs and GitLab integration logs for details. |
 
 ### Debugging tips for GitLab Duo `@mention`
 

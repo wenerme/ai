@@ -400,6 +400,8 @@ Prerequisites:
 
 - Turn on **Allow flow execution**, **Allow foundational flows**, and the **SkillGuard Security Scan** flow
   [for the top-level group](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
+- Turn on **Include recommended domains in the allowlist**
+  [for the instance or top-level group](../../duo_agent_platform/environment_sandbox.md#configure-network-access-controls-for-your-instance-or-group).
 
 ## Custom profiles
 

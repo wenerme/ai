@@ -62,7 +62,7 @@ To help the Developer Flow produce better results, you should configure your pro
 
 Prerequisites:
 
-- The event types **Mention** and **Assign** are [configured](../../duo_agent_platform/automations/_index.md) in the trigger for the Developer Flow.
+- The event types **Mention** and **Assign** are [configured](../../duo_agent_platform/automations/_index.md) in the automation for the Developer Flow.
 
 ### Mention Duo Developer in a discussion
 
@@ -115,16 +115,16 @@ If the work item has no workplan, the flow uses the description.
 
 Prerequisites:
 
-- [Create an event trigger](../../duo_agent_platform/automations/_index.md#create-an-event-trigger)
+- [Create an event-based automation](../../duo_agent_platform/automations/_index.md#create-an-event-based-automation)
   for the Developer Flow with the **Work item** event type and only the
   **Status changed** action. If you also select **Created**, you cannot select statuses,
   and the flow does not start when a work item is created.
-- In the trigger, select the statuses that start the work. If you select no status,
+- In the automation, select the statuses that start the work. If you select no status,
   every status change starts a session, including a change to a done status.
 
 To start the flow:
 
-1. Change the status of the work item to one of the statuses selected in the trigger.
+1. Change the status of the work item to one of the statuses selected in the automation.
 1. To monitor progress, in the left sidebar, select **AI** > **Sessions**.
 1. When the session completes, review the merge request from the link in
    the **Activity** section of the work item. The flow assigns the merge request

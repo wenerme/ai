@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/guides/migrate-to-durable-ob
 
 # Migrate to the Durable Object scheduling policy
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You cannot change the scheduling policy of an existing Container application. To move from the `default` policy to the `durable_object` policy, create a replacement Container application and cut traffic over to it.
 
@@ -52,13 +52,14 @@ For the complete field compatibility list, refer to [Wrangler configuration](htt
 
 ### Instance size changes
 
-With the `durable_object` policy, you set the instance size with the `instance` option of `ctx.container.start()` instead of `instance_type` in Wrangler configuration. `instance` accepts `lite`, `standard-1`, `standard-2`, `standard-3`, and `standard-4`. If your existing application uses one of the following `instance_type` values, choose a replacement:
+With the `durable_object` policy, you set the instance size with the `instance` option of `ctx.container.start()` instead of `instance_type` in Wrangler configuration. `instance` accepts `lite`, `basic`, `standard-1`, `standard-2`, `standard-3`, and `standard-4`. If your existing application uses one of the following `instance_type` values, choose a replacement:
 
 - `dev`: Use `lite`.
 - `standard`: Use `standard-1`.
-- `basic`: Choose `lite` or `standard-1`. Custom instance types require at least 1 vCPU, so you cannot reproduce `basic` with a custom instance.
 
 Custom instance objects use camel case at runtime. Rename `memory_mib` to `memoryMib` and `disk_mb` to `diskMb`. Refer to [Choose an instance size at runtime](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#choose-an-instance-size-at-runtime).
+
+For custom instance minimums and maximums, refer to [Custom Instance Types](https://developers.cloudflare.com/containers/platform/limits/#custom-instance-types).
 
 ## Move the application
 
@@ -309,5 +310,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/#page","headline":"Migrate to the Durable Object scheduling policy","description":"Replace a Container application that uses the default scheduling policy with a Durable Object-managed application.","url":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/og.png?v=c4a9b833bc8d835b","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/#page","headline":"Migrate to the Durable Object scheduling policy","description":"Replace a Container application that uses the default scheduling policy with a Durable Object-managed application.","url":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/og.png?v=c4a9b833bc8d835b","dateModified":"2026-11-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

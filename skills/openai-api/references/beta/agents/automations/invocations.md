@@ -550,7 +550,7 @@ Queues a manual delivery without changing the saved schedule.
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -1615,7 +1615,7 @@ Lists delivery records for a project-owned automation.
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -2685,7 +2685,7 @@ Retrieves a delivery record for a project-owned automation.
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -3711,7 +3711,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   - `async: boolean`
 
-                    Whether context is compacted in the background. Defaults to true.
+                    Whether context is compacted in the background. Defaults to false.
 
                 - `experimental: optional object { time_awareness }`
 
@@ -4641,7 +4641,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 - `async: boolean`
 
-                  Whether context is compacted in the background. Defaults to true.
+                  Whether context is compacted in the background. Defaults to false.
 
               - `experimental: optional object { time_awareness }`
 

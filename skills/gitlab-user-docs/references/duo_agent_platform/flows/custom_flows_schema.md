@@ -27,13 +27,13 @@ The YAML configuration also has a maximum size. For more information, see
 ## Goal values by trigger type
 
 When you design a custom flow, the goal value depends on which
-trigger type starts the flow. A flow can have multiple trigger
-types configured, and each trigger type passes a different value
+event type starts the flow. A flow can have multiple event
+types configured, and each event type passes a different value
 as `context:goal`. Your flow must handle the goal format for
-each trigger type you configure.
+each event type you configure.
 
-For more information about trigger types, see
-[triggers](../automations/_index.md).
+For more information, see
+[event types](../automations/_index.md#event-types).
 
 Components access the goal through the `inputs` field:
 
@@ -93,7 +93,7 @@ Context:
 MergeRequest: https://gitlab.example.com/my-group/my-project/-/merge_requests/10
 ```
 
-Use the URL to identify the resource. Don't use the resource type, because the same issue can appear as `Issue` or `WorkItem`, depending on the trigger.
+Use the URL to identify the resource. Don't use the resource type, because the same issue can appear as `Issue` or `WorkItem`, depending on the event.
 
 > [!warning]
 > When the feature flag is enabled, `context:goal` contains the resource type and URL instead of the IID.
@@ -137,7 +137,7 @@ MergeRequest: https://gitlab.example.com/my-group/my-project/-/merge_requests/10
 Action: approved
 ```
 
-Use the URL to identify the resource. Don't use the resource type, because the same issue can appear as `Issue` or `WorkItem`, depending on the trigger.
+Use the URL to identify the resource. Don't use the resource type, because the same issue can appear as `Issue` or `WorkItem`, depending on the event.
 
 > [!warning]
 > When the feature flag is enabled, `context:goal` contains the resource type and URL instead of the IID.

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/realtime/sfu/get-started/connection-pat
 
 # Connection patterns
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Choose the task for your endpoint. Each initial setup recipe starts with a new browser connection and matching SFU session. Your application can combine these endpoints into rooms, broadcasts, and device interfaces.
 
-Create the SFU session when ready to begin that connection's SDP exchange. [Unconnected sessions can expire before their first operation](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#session-setup).
+Create the SFU session when ready to begin that connection's SDP exchange.
 
 | Task | Result | Runnable example |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Create an [SFU app](https://developers.cloudflare.com/realtime/sfu/get-started/#
 
 In a browser, an `RTCPeerConnection` manages one connection to the SFU. The matching `sessionId` identifies that connection in API calls. Session Description Protocol (SDP) describes the connection's media and transport settings. The browser and SFU exchange an offer and answer to agree on those settings.
 
-Check the HTTP status, public errors, and individual resource results on every API call. Retain successful allocations for cleanup. Complete each request and its required SDP exchange before starting the next mutation on the same session. Different sessions can proceed independently. [Negotiation and session lifecycle](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/) explains how to coordinate overlapping handlers.
+Check the HTTP status, public errors, and individual resource results on every API call. Complete each request and its required SDP exchange before starting the next mutation on the same session. Different sessions can proceed independently. [Negotiation and session lifecycle](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/) explains how to coordinate overlapping handlers.
 
 ### Network connectivity
 
@@ -100,7 +100,7 @@ Start with the publisher's session ID and track name, obtained through your appl
 
 This recipe connects a publisher and a subscriber without audio or video. It uses reliable, ordered delivery. First connect each endpoint's DataChannel transport, then allocate the application channel carried over it.
 
-1. **Create both connections.** In each browser, create a new `RTCPeerConnection`. Install a `datachannel` event listener to retain channels opened by the SFU and close them during teardown. On the backend, call `POST /sessions/new` with no body for each connection. Save `publisherSessionId` and `subscriberSessionId`.
+1. **Create both connections.** In each browser, create a new `RTCPeerConnection`. On the backend, call `POST /sessions/new` with no body for each connection. Save `publisherSessionId` and `subscriberSessionId`.
 2. **Connect DataChannel transport.** For each session, call `POST /sessions/{sessionId}/datachannels/establish` once:
 
    ```json
@@ -196,7 +196,7 @@ This recipe uses one browser connection for incoming media and outgoing controls
    }
    ```
 
-   Retain the successful allocation and reserved `server-events` channel for cleanup.
+   Check the returned `dataChannel` allocation.
 5. **Finish the new negotiation.** Apply this new SFU offer with `pc.setRemoteDescription()`. Create and set a new local answer. After candidate gathering, submit `pc.localDescription` through your backend to `PUT /sessions/{subscriberSessionId}/renegotiate`:
 
    ```json
@@ -248,7 +248,7 @@ Finish the required SDP exchange before the next mutation.
 
 Start here when an existing PeerConnection has completed media-only negotiation and has no DataChannel transport. Keep its SFU session and finish any outstanding operation first.
 
-1. Install a `datachannel` listener to retain the reserved channel for teardown. Call `POST /sessions/{sessionId}/datachannels/establish` with `dataChannel: { location: "remote", dataChannelName: "server-events" }`.
+1. Call `POST /sessions/{sessionId}/datachannels/establish` with `dataChannel: { location: "remote", dataChannelName: "server-events" }`.
 2. Check the allocation and apply the returned offer. Await creation and local application of a new answer. After candidate gathering, submit `pc.localDescription` through your backend to `PUT /sessions/{sessionId}/renegotiate` as `sessionDescription`.
 3. Wait for API acceptance and a `connected` PeerConnection. You can now [add application channels](https://developers.cloudflare.com/realtime/sfu/features/datachannels/#add-an-application-channel) using `datachannels/new`.
 
@@ -295,7 +295,7 @@ Use [close results](https://developers.cloudflare.com/realtime/sfu/observability
 
 ### Stop forwarding without negotiation
 
-Set `force: true` to close selected media flows without exchanging SDP. This is useful when the endpoint cannot supply a close offer. On the backend, send `PUT /sessions/{sessionId}/tracks/close`:
+On a live session, set `force: true` to close selected media flows without exchanging SDP. On the backend, send `PUT /sessions/{sessionId}/tracks/close`:
 
 ```json
 {
@@ -304,11 +304,11 @@ Set `force: true` to close selected media flows without exchanging SDP. This is 
 }
 ```
 
-Check each track result. No `/renegotiate` call is needed. Forced closure can leave records in [session information](https://developers.cloudflare.com/realtime/sfu/api/#inspect-a-session). Follow [teardown ordering](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#teardown) for outstanding negotiation or requests.
+Check each track result. No `/renegotiate` call is needed. Forced closure can leave records in [session information](https://developers.cloudflare.com/realtime/sfu/api/#inspect-a-session).
 
 ## Clean up
 
-Stop accepting new operations and withdraw ended publications from discovery. Close allocated [media tracks](#close-media-tracks) and [DataChannels](https://developers.cloudflare.com/realtime/sfu/features/datachannels/#close-channels), then close the endpoint's PeerConnection and stop captures when no longer needed. Follow [cleanup responsibilities](https://developers.cloudflare.com/realtime/sfu/best-practices/#retain-cleanup-state) if the endpoint leaves before finishing.
+Stop accepting new operations and withdraw ended publications from discovery. Close the PeerConnection, stop captures, and [discard the session](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#resource-lifetime).
 
 Was this helpful?
 
@@ -319,5 +319,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/#page","headline":"Connection patterns","description":"Follow browser and backend recipes to publish media, receive tracks, exchange messages, or receive media and send controls.","url":"https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/og.png?v=627d452af49868dc","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/#page","headline":"Connection patterns","description":"Follow browser and backend recipes to publish media, receive tracks, exchange messages, or receive media and send controls.","url":"https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/og.png?v=627d452af49868dc","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

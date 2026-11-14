@@ -2,11 +2,12 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-This guide covers the core set of principles you can apply to improve latency across a wide variety of LLM-related use cases. These techniques come from working with a wide range of customers and developers on production applications, so they should apply regardless of what you're building—from a granular workflow to an end-to-end chat application.
+Measure where users wait before changing the model or prompt.
 
-Although there are many individual techniques, this guide groups them into **seven principles** that represent a high-level taxonomy of approaches for improving latency.
+- **Time to first token (TTFT)** measures how long an API request takes to start returning content. For streaming text in the Responses API, time the request from when you send it until you receive the first nonempty `response.output_text.delta`.
+- **End-to-end latency** measures how long the user waits for the complete result. Time it from the user's action through retrieval, model and tool calls, retries, and rendering.
 
-At the end, we'll walk through an [example](#example) to see how they can be applied.
+Compare the median (p50) and the 95th percentile (p95) on representative traffic. Group similar requests by model, service tier, and task. Record input, cached input, and output tokens alongside the timings. If TTFT looks good but users still see a blank screen, time the work before the model call and check when the client displays the first text.
 
 ### Seven principles
 
@@ -20,533 +21,64 @@ At the end, we'll walk through an [example](#example) to see how they can be app
 
 ## Process tokens faster
 
-**Inference speed** is probably the first thing that comes to mind when addressing latency (but as you'll see soon, it's far from the only one). This refers to the actual **rate at which the LLM processes tokens**, and is often measured in TPM (tokens per minute) or TPS (tokens per second).
+Choose a model using examples from your workload. For a focused task like routing a support ticket, try [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna). For more demanding work, use the [model selection guide](https://developers.openai.com/api/docs/guides/model-selection) to choose a comparison model. Keep the fastest configuration that meets your quality target, including on difficult cases.
 
-The main factor that influences inference speed is **model size**—smaller models usually run faster (and cheaper), and when used correctly can even outperform larger models. To maintain high-quality performance with smaller models, you can explore:
+If you need to keep the same model, compare Standard processing with [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) or [Ultrafast mode](https://developers.openai.com/api/docs/guides/ultrafast-mode) where supported. Both charge a premium. Compare the same prompts and output lengths, and record the `service_tier` returned in each response.
 
-- using a longer, [more detailed prompt](https://developers.openai.com/api/docs/guides/prompt-engineering#prompt-engineering),
-- adding (more) [few-shot examples](https://developers.openai.com/api/docs/guides/prompt-engineering#few-shot-learning), or
-- [fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization) / distillation.
+For long answers, measure visible output speed in tokens per second. Count the text tokens received after the first text event and divide by the time from the first text event to the last. A streamed event can contain multiple tokens. A tokens-per-minute rate limit measures how much traffic you can send across requests.
 
-You can also employ inference optimizations like our [**Predicted outputs**](https://developers.openai.com/api/docs/guides/predicted-outputs) feature. Predicted outputs let you significantly reduce latency of a generation when you know most of the output ahead of time, such as code editing tasks. By giving the model a prediction, the LLM can focus more on the actual changes, and less on the content that will remain the same.
-
-
-
-Other factors that affect inference speed are the amount of 
-  **compute** you have available and any additional 
-  **inference optimizations** you employ. 
- 
-
-  Most people can't influence these factors directly, but if you're curious, and
-  have some control over your infra, **faster hardware** or 
-  **running engines at a lower saturation** may give you a modest
-  TPM boost. And if you're down in the trenches, there's a myriad of other 
-  [inference optimizations](https://lilianweng.github.io/posts/2023-01-10-inference-optimization/) 
-  that are a bit beyond the scope of this guide.
-
-
+For Chat Completions on a supported model, [Predicted Outputs](https://developers.openai.com/api/docs/guides/predicted-outputs) can reduce generation time when you already know most of the answer, such as when editing a few lines in a file. Check model and parameter compatibility before using this option.
 
 ## Generate fewer tokens
 
-Generating tokens is almost always the highest latency step when using an LLM: as a general heuristic, **cutting 50% of your output tokens may cut ~50% of your latency**. The way you reduce your output size will depend on output type:
+If an answer starts quickly but takes too long to finish, inspect what the model generates.
 
-If you're generating **natural language**, **asking the model to be more concise** ("under 20 words" or "be brief") may help. You can also use few-shot examples and/or fine-tuning to teach the model shorter responses.
+- **Visible text.** Ask for the amount of detail the user needs, such as “Give the next step in one sentence.” On supported Responses API models, lower [`text.verbosity`](https://developers.openai.com/api/docs/guides/deployment-checklist#set-up-textverbosity) for shorter answers.
+- **Reasoning.** For routine extraction or classification, try a lower supported [`reasoning.effort`](https://developers.openai.com/api/docs/guides/reasoning#reasoning-effort). Compare accuracy and time to first text on the same examples. Check `usage.output_tokens_details.reasoning_tokens` to see how much reasoning the model used.
+- **Structured output.** Request only the fields your application consumes. Compute values you already know, such as a message count, in application code. Use [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs) when the response must follow a schema.
 
-If you're generating **structured output**, try to **minimize your output syntax** where possible: shorten function names, omit named arguments, coalesce parameters, etc.
-
-Finally, while not common, you can also use `max_tokens` or `stop_tokens` to end your generation early.
-
-Always remember: an output token cut is a (milli)second earned!
+In the Responses API, `max_output_tokens` caps both reasoning and visible output tokens. A low cap can leave the response `incomplete`, even before it produces visible text. Use the cap as a budget and check response status before consuming a partial answer.
 
 ## Use fewer input tokens
 
-While reducing the number of input tokens does result in lower latency, this is not usually a significant factor—**cutting 50% of your prompt may only result in a 1–5% latency improvement**. Unless you're working with truly massive context sizes (documents, images), you may want to spend your efforts elsewhere.
+A long prompt can delay the first token, especially when much of the input is new. Filter search results for relevance, strip markup you don't need, and send only the context required to answer accurately.
 
-That being said, if you _are_ working with massive contexts (or you're set on squeezing every last bit of performance _and_ you've exhausted all other options) you can use the following techniques to reduce your input tokens:
-
-- **Fine-tuning the model**, to replace the need for lengthy instructions / examples.
-- **Filtering context input**, like pruning RAG results, cleaning HTML, etc.
-- **Maximize shared prompt prefix**, by putting dynamic portions (for example, RAG results and history) later in the prompt. This makes your request more [KV cache](https://medium.com/@joaolages/kv-caching-explained-276520203249)-friendly (which most LLM providers use) and means fewer input tokens are processed on each request.
-
-Check out our docs to learn more about how [prompt
-  caching](https://developers.openai.com/api/docs/guides/prompt-engineering#save-on-cost-and-latency-with-prompt-caching)
-  works.
+For repeated inputs, put stable instructions, examples, and tool definitions first. In multi-turn conversations, [keep the prefix unchanged](https://developers.openai.com/api/docs/guides/preserved-reasoning) and append new messages and tool results. [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) can reuse an eligible exact prefix match. In the Responses API, inspect `usage.input_tokens_details.cached_tokens` and compare TTFT for requests with and without cache hits.
 
 ## Make fewer requests
 
-Each time you make a request, you incur some round-trip latency—this can start to add up.
+Each sequential model or tool call adds another wait. Combine steps when one request has all the information it needs. For example, a model can turn a customer's follow-up into a standalone search query and decide whether a lookup is necessary in the same response. A reply that depends on a lookup still needs its result.
 
-If you have sequential steps for the LLM to perform, instead of firing off one request per step consider **putting them in a single prompt and getting them all in a single response**. You'll avoid the additional round-trip latency, and potentially also reduce complexity of processing multiple responses.
-
-An approach to doing this is by collecting your steps in an enumerated list in the combined prompt, and then requesting the model to return the results in named fields in a JSON object. This way, you can parse and reference each result.
+If your agent makes many short, sequential tool calls, try [WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode). Reuse the connection and continue from the prior response with `previous_response_id`, sending only new input items and tool results. This reduces overhead between turns.
 
 ## Parallelize
 
-Parallel processing can be powerful when performing multiple steps with an LLM.
+Run independent work concurrently. For example, once you have an order ID, you can look up its shipment status while fetching the return policy. An answer that needs both can start as soon as the slower lookup finishes. On supported models, [async tool calling](https://developers.openai.com/api/docs/guides/async-tool-calling) also lets the model continue independent work while your application runs a tool.
 
-If the steps **are _not_ strictly sequential**, you can **split them out into parallel calls**. Two shirts take just as long to dry as one.
-
-If the steps **_are_ strictly sequential**, however, you might still be able to **leverage speculative execution**. This is particularly effective for classification steps where one outcome is more likely than the others (for example, moderation).
-
-1. Start step 1 and step 2 simultaneously (for example, input moderation and story generation)
-2. Verify the result of step 1
-3. If result was not the expected, cancel step 2 (and retry if necessary)
-
-If your guess for step 1 is right, then you essentially got to run it with zero added latency!
+For a likely but uncertain branch, consider starting a read-only lookup early and discarding it if it's unnecessary. Measure the extra cost on a wrong guess. Wait for required checks before displaying a result or taking an action such as issuing a refund.
 
 ## Make your users wait less
 
-There's a huge difference between **waiting** and **watching progress happen**—make sure your users experience the latter. Here are a few techniques:
+For interactive text over HTTP, [stream the response](https://developers.openai.com/api/docs/guides/streaming-responses) with `stream: true` and display text as it arrives. Streaming lets the user start reading before generation finishes. Time to the first visible text still depends on the request, including any reasoning or tool work before the answer.
 
-- **Streaming**: The single most effective approach, as it cuts the _waiting_ time to a second or less. (ChatGPT would feel pretty different if you saw nothing until each response was done.)
-- **Chunking**: If your output needs further processing before being shown to the user (moderation, translation), consider **processing it in chunks** instead of all at once. Do this by streaming to your back end, then sending processed chunks to your front end.
-- **Show your steps**: If you're taking multiple steps or using tools, surface this to the user. The more real progress you can show, the better.
-- **Loading states**: Spinners and progress bars go a long way.
-
-Note that while **showing your steps & having loading states** have a mostly
-psychological effect, **streaming & chunking** genuinely do reduce overall
-latency once you consider the app + user system: the user will finish reading a response
-sooner.
+If you check or moderate output before displaying it, buffer enough text to perform that check. For longer tasks, show actual progress, such as “Looking up your order,” while the lookup runs. When the user can return later, [Background mode](https://developers.openai.com/api/docs/guides/background) lets your application submit the work and retrieve the result asynchronously.
 
 ## Don't default to an LLM
 
-Language models are powerful and versatile, and are therefore sometimes used in cases where a **faster classical method** would be more appropriate. Identifying such cases may allow you to cut your latency significantly. Consider the following examples:
-
-- **Hard-coding:** If your **output** is highly constrained, you may not need an LLM to generate it. Action confirmations, refusal messages, and requests for standard input are all great candidates to be hard-coded. (You can even use the age-old method of coming up with a few variations for each.)
-- **Pre-computing:** If your **input** is constrained (for example, category selection), you can generate multiple responses in advance, and just make sure you never show the same one to a user twice.
-- **Leveraging UI:** Summarized metrics, reports, or search results are sometimes better conveyed with classical, bespoke UI components rather than LLM-generated text.
-- **Traditional optimization techniques:** An LLM application is still an application; binary search, caching, hash maps, and runtime complexity are all _still_ useful in a world of language models.
+Use application code when you already know the answer. Render an order status from the order API, use a template to confirm a refund that succeeded, or show search results directly. Each of these can remove a model call from the user's wait.
 
 ## Example
 
-Let's now look at a sample application, identify potential latency optimizations, and propose some solutions!
-
-We'll be analyzing the architecture and prompts of a hypothetical customer service bot inspired by real production applications. The [architecture and prompts](#architecture-and-prompts) section sets the stage, and the [analysis and optimizations](#analysis-and-optimizations) section will walk through the latency optimization process.
-
-You'll notice this example doesn't cover every single principle, much like
-  real-world use cases don't require applying every technique.
-
 ### Architecture and prompts
 
-The following is the **initial architecture** for a hypothetical **customer service bot**. This is what we'll be making changes to.
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-0.png)
-
-At a high level, the diagram flow describes the following process:
-
-1. A user sends a message as part of an ongoing conversation.
-2. The last message is turned into a **self-contained query** (see examples in prompt).
-3. We determine whether or not **additional (retrieved) information is required** to respond to that query.
-4. **Retrieval** is performed, producing search results.
-5. The assistant **reasons** about the user's query and search results, and **produces a response**.
-6. The response is sent back to the user.
-
-Below are the prompts used in each part of the diagram. While they are still only hypothetical and simplified, they are written with the same structure and wording that you would find in a production application.
-
-Places where you see placeholders like "**[user input here]**" represent
-  dynamic portions, that would be replaced by actual data at runtime.
-
-
-
-#### Query contextualization prompt
-
-
-
-Re-writes user query to be a self-contained search query.
-
-```example-chat
-SYSTEM: Given the previous conversation, re-write the last user query so it contains
-all necessary context.
-
-# Example
-History: [{user: "What is your return policy?"},{assistant: "..."}]
-User Query: "How long does it cover?"
-Response: "How long does the return policy cover?"
-
-# Conversation
-[last 3 messages of conversation]
-
-# User Query
-[last user query]
-
-USER: [JSON-formatted input conversation here]
-```
-
-
-
-
-
-
-
-#### Retrieval check prompt
-
-
-Determines whether a query requires performing retrieval to respond.
-
-```example-chat
-SYSTEM: Given a user query, determine whether it requires doing a realtime lookup to
-respond to.
-
-# Examples
-User Query: "How can I return this item after 30 days?"
-Response: "true"
-
-User Query: "Thank you!"
-Response: "false"
-
-USER: [input user query here]
-```
-
-
-
-
-
-
-
-#### Assistant prompt
-
-
-Fills the fields of a JSON to reason through a pre-defined set of steps to produce a final response given a user conversation and relevant retrieved information.
-
-```example-chat
-SYSTEM: You are a helpful customer service bot.
-
-Use the result JSON to reason about each user query - use the retrieved context.
-
-# Example
-
-User: "My computer screen is cracked! I want it fixed now!!!"
-
-Assistant Response:
-{
-  "message_is_conversation_continuation": "True",
-  "number_of_messages_in_conversation_so_far": "1",
-  "user_sentiment": "Aggravated",
-  "query_type": "Hardware Issue",
-  "response_tone": "Validating and solution-oriented",
-  "response_requirements": "Propose options for repair or replacement.",
-  "user_requesting_to_talk_to_human": "False",
-  "enough_information_in_context": "True",
-  "response": "..."
-}
-
-USER: # Relevant Information
-` ` `
-[retrieved context]
-` ` `
-
-USER: [input user query here]
-```
-
-
-
-
+A customer asks, “Is it still eligible for a return?” after discussing a pair of headphones. The support assistant makes three model calls in sequence. The first rewrites the question with the product name. The second decides whether to search. After retrieval, the third generates a reply plus internal fields for message count, sentiment, and tone. The customer sees nothing until the final call finishes.
 
 ### Analysis and optimizations
 
-#### Part 1: Looking at retrieval prompts
-
-Looking at the architecture, the first thing that stands out is the **consecutive GPT-4 calls** - these hint at a potential inefficiency, and can often be replaced by a single call or parallel calls.
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-2.png)
-
-In this case, since the check for retrieval requires the contextualized query, let's **combine them into a single prompt** to [make fewer requests](#make-fewer-requests).
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-3.png)
-
-
-
-##### Combined query contextualization and retrieval check prompt
-
-
-
-**What changed?** Before, we had one prompt to re-write the query and one to determine whether this requires doing a retrieval lookup. Now, this combined prompt does both. Specifically, notice the updated instruction in the first line of the prompt, and the updated output JSON:
-
-```javascript
-{
-  query: "[contextualized query]",
-  retrieval: "[true/false - whether retrieval is required]",
-};
-```
-
-```ruby
-require "json"
-
-combined_query = {
-  query: "[contextualized query]",
-  retrieval: "[true/false - whether retrieval is required]"
-}
-
-puts(JSON.generate(combined_query))
-```
-
-
-```example-chat
-SYSTEM: Given the previous conversation, re-write the last user query so it contains
-all necessary context. Then, determine whether the full request requires doing a
-realtime lookup to respond to.
-
-Respond in the following form:
-{
-  query:"[contextualized query]",
-  retrieval:"[true/false - whether retrieval is required]"
-}
-
-# Examples
-
-History: [{user: "What is your return policy?"},{assistant: "..."}]
-User Query: "How long does it cover?"
-Response: {query: "How long does the return policy cover?", retrieval: "true"}
-
-History: [{user: "How can I return this item after 30 days?"},{assistant: "..."}]
-User Query: "Thank you!"
-Response: {query: "Thank you!", retrieval: "false"}
-
-# Conversation
-[last 3 messages of conversation]
-
-# User Query
-[last user query]
-
-USER: [JSON-formatted input conversation here]
-```
-
-
-
-
-
-
-
-Actually, adding context and determining whether to retrieve are straightforward and well-defined tasks, so we can likely use a **smaller, fine-tuned model** instead. Switching to GPT-3.5 will let us [process tokens faster](#process-tokens-faster).
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-4.png)
-
-#### Part 2: Analyzing the assistant prompt
-
-Let's now direct our attention to the Assistant prompt. There seem to be many distinct steps happening as it fills the JSON fields—this could indicate an opportunity to [parallelize](#parallelize).
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-5.png)
-
-However, let's pretend we have run some tests and discovered that splitting the reasoning steps in the JSON produces worse responses, so we need to explore different solutions.
-
-**Could we use a fine-tuned GPT-3.5 instead of GPT-4?** Maybe—but in general, open-ended responses from assistants are best left to GPT-4 so it can better handle a greater range of cases. That being said, looking at the reasoning steps themselves, they may not all require GPT-4-level reasoning to produce. Their well-defined, limited scope makes them **good potential candidates for fine-tuning**.
-
-```javascript
-{
-  message_is_conversation_continuation: "True", // <-
-  number_of_messages_in_conversation_so_far: "1", // <-
-  user_sentiment: "Aggravated", // <-
-  query_type: "Hardware Issue", // <-
-  response_tone: "Validating and solution-oriented", // <-
-  response_requirements: "Propose options for repair or replacement.", // <-
-  user_requesting_to_talk_to_human: "False", // <-
-  enough_information_in_context: "True", // <-
-  response: "...", // X -- benefits from GPT-4
-};
-```
-
-```ruby
-require "json"
-
-assistant_response = {
-  message_is_conversation_continuation: "True", # <-
-  number_of_messages_in_conversation_so_far: "1", # <-
-  user_sentiment: "Aggravated", # <-
-  query_type: "Hardware Issue", # <-
-  response_tone: "Validating and solution-oriented", # <-
-  response_requirements: "Propose options for repair or replacement.", # <-
-  user_requesting_to_talk_to_human: "False", # <-
-  enough_information_in_context: "True", # <-
-  response: "..." # X -- benefits from GPT-4
-}
-
-puts(JSON.generate(assistant_response))
-```
-
-
-This opens up the possibility of a trade-off. Do we keep this as a **single request entirely generated by GPT-4**, or **split it into two sequential requests** and use GPT-3.5 for all but the final response? We have a case of conflicting principles: the first option lets us [make fewer requests](#make-fewer-requests), but the second may let us [process tokens faster](#process-tokens-faster).
-
-As with many optimization tradeoffs, the answer will depend on the details. For example:
-
-- The proportion of tokens in the `response` vs the other fields.
-- The average latency decrease from processing most fields faster.
-- The average latency _increase_ from doing two requests instead of one.
-
-The conclusion will vary by case, and the best way to make the determination is by testing this with production examples. In this case, let's pretend the tests indicated it's favorable to split the prompt in two to [process tokens faster](#process-tokens-faster).
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-6.png)
-
-**Note:** We'll be grouping `response` and `enough_information_in_context` together in the second prompt to avoid passing the retrieved context to both new prompts.
-
-
-
-##### Assistants prompt - reasoning
-
-
-
-This prompt will be passed to GPT-3.5 and can be fine-tuned on curated examples.
-
-**What changed?** The "enough_information_in_context" and "response" fields were removed, and the retrieval results are no longer loaded into this prompt.
-
-```example-chat
-SYSTEM: You are a helpful customer service bot.
-
-Based on the previous conversation, respond in a JSON to determine the required
-fields.
-
-# Example
-
-User: "My freaking computer screen is cracked!"
-
-Assistant Response:
-{
-  "message_is_conversation_continuation": "True",
-  "number_of_messages_in_conversation_so_far": "1",
-  "user_sentiment": "Aggravated",
-  "query_type": "Hardware Issue",
-  "response_tone": "Validating and solution-oriented",
-  "response_requirements": "Propose options for repair or replacement.",
-  "user_requesting_to_talk_to_human": "False",
-}
-```
-
-
-
-
-
-
-##### Assistants prompt - response
-
-
-
-This prompt will be processed by GPT-4 and will receive the reasoning steps determined in the prior prompt, as well as the results from retrieval.
-
-**What changed?** All steps were removed except for "enough_information_in_context" and "response". Additionally, the JSON we were previously filling in as output will be passed in to this prompt.
-
-```example-chat
-SYSTEM: You are a helpful customer service bot.
-
-Use the retrieved context, as well as these pre-classified fields, to respond to
-the user's query.
-
-# Reasoning Fields
-` ` `
-[reasoning json determined in previous GPT-3.5 call]
-` ` `
-
-# Example
-
-User: "My freaking computer screen is cracked!"
-
-Assistant Response:
-{
-  "enough_information_in_context": "True",
-  "response": "..."
-}
-
-USER: # Relevant Information
-` ` `
-[retrieved context]
-` ` `
-```
-
-
-
-
-
-
-
-
-In fact, now that the reasoning prompt does not depend on the retrieved context we can [parallelize](#parallelize) and fire it off at the same time as the retrieval prompts.
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-6b.png)
-
-#### Part 3: Optimizing the structured output
-
-Let's take another look at the reasoning prompt.
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-7b.png)
-
-Taking a closer look at the reasoning JSON you may notice the field names themselves are quite long.
-
-```javascript
-{
-  message_is_conversation_continuation: "True", // <-
-  number_of_messages_in_conversation_so_far: "1", // <-
-  user_sentiment: "Aggravated", // <-
-  query_type: "Hardware Issue", // <-
-  response_tone: "Validating and solution-oriented", // <-
-  response_requirements: "Propose options for repair or replacement.", // <-
-  user_requesting_to_talk_to_human: "False", // <-
-};
-```
-
-```ruby
-require "json"
-
-reasoning = {
-  message_is_conversation_continuation: "True", # <-
-  number_of_messages_in_conversation_so_far: "1", # <-
-  user_sentiment: "Aggravated", # <-
-  query_type: "Hardware Issue", # <-
-  response_tone: "Validating and solution-oriented", # <-
-  response_requirements: "Propose options for repair or replacement.", # <-
-  user_requesting_to_talk_to_human: "False" # <-
-}
-
-puts(JSON.generate(reasoning))
-```
-
-
-By making them shorter and moving explanations to the comments we can [generate fewer tokens](#generate-fewer-tokens).
-
-```javascript
-{
-  cont: "True", // whether last message is a continuation
-  n_msg: "1", // number of messages in the continued conversation
-  tone_in: "Aggravated", // sentiment of user query
-  type: "Hardware Issue", // type of the user query
-  tone_out: "Validating and solution-oriented", // desired tone for response
-  reqs: "Propose options for repair or replacement.", // response requirements
-  human: "False", // whether user is expressing want to talk to human
-};
-```
-
-```ruby
-require "json"
-
-reasoning = {
-  cont: "True", # whether last message is a continuation
-  n_msg: "1", # number of messages in the continued conversation
-  tone_in: "Aggravated", # sentiment of user query
-  type: "Hardware Issue", # type of the user query
-  tone_out: "Validating and solution-oriented", # desired tone for response
-  reqs: "Propose options for repair or replacement.", # response requirements
-  human: "False" # whether user wants to talk to a human
-}
-
-puts(JSON.generate(reasoning))
-```
-
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-8b.png)
-
-This small change removed 19 output tokens. While with GPT-3.5 this may only result in a few millisecond improvement, with GPT-4 this could shave off up to a second.
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/token-counts-latency-customer-service-large.png)
-
-You might imagine, however, how this can have quite a significant impact for larger model outputs.
-
-We could go further and use single characters for the JSON fields, or put everything in an array, but this may start to hurt our response quality. The best way to know, once again, is through testing.
-
-#### Example wrap-up
-
-Let's review the optimizations we implemented for the customer service bot example:
-
-![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-11b.png)
-
-1. **Combined** query contextualization and retrieval check steps to [make fewer requests](#make-fewer-requests).
-2. For the new prompt, **switched to a smaller, fine-tuned GPT-3.5** to [process tokens faster](#process-tokens-faster).
-3. Split the assistant prompt in two, **switching to a smaller, fine-tuned GPT-3.5** for the reasoning, again to [process tokens faster](#process-tokens-faster).
-4. [Parallelized](#parallelize) the retrieval checks and the reasoning steps.
-5. **Shortened reasoning field names** and moved comments into the prompt, to [generate fewer tokens](#generate-fewer-tokens).
+| Step               | Change                                                                                                                                                                                  | What to measure                                                                                          |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Route the question | Ask one model to decide whether to search and, if so, produce the standalone query. For this turn, the query is “headphones return policy.” An acknowledgment can skip retrieval.       | Routing accuracy on both kinds of turns and time until retrieval starts.                                 |
+| Fetch the evidence | Once the router identifies a return question, fetch the policy and the customer's order details concurrently if both inputs are available.                                              | Elapsed time until both results are ready.                                                               |
+| Answer             | Give the model the policy and order details, request only the customer-facing reply, and stream the text. If the policy or order lacks a fact needed to decide eligibility, ask for it. | Time to first visible text, time to the complete reply, and whether the eligibility decision is correct. |
+
+On the return-question path, this removes one of three sequential model calls and overlaps two independent lookups. Replay the same support conversations before and after each change. Include ambiguous follow-ups and cases that need no lookup so a faster answer still sends customers to the right place.

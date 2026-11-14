@@ -137,7 +137,7 @@ curl https://api.openai.com/v1/decisions \
 JSON
 ```
 
-```javascript
+```typescript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
 
@@ -442,6 +442,12 @@ When adding images to question instructions:
 
 A `choice` question selects one value from the options you provide. Use distinct values and descriptions that explain when each option applies.
 
+The model sees each choice's `value` and its `description`, when provided. Both fields are part of the prompt, so changing a `value` can change the result even when its description stays the same.
+
+When choosing a string `value`, prefer meaningful labels such as `"billing"` and `"technical"` over opaque identifiers such as a UUID.
+
+Keep choice descriptions concise and direct, as in the examples below.
+
 
 
 This request routes a customer complaint:
@@ -469,7 +475,7 @@ curl https://api.openai.com/v1/decisions \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -735,7 +741,7 @@ curl https://api.openai.com/v1/decisions \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/quick-actions/og.png?v=b1c1
 
 # Quick Actions
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Quick Actions provide simple interfaces for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more. You can use Quick Actions in two ways:
 
@@ -59,14 +59,28 @@ To use Quick Actions from a [Worker](https://developers.cloudflare.com/workers/)
 
 Caution
 
-The `.quickAction()` method has two requirements:
-
-- **Compatibility date:** Your Worker must use a compatibility date of `2026-03-24` or later.
-- **Remote mode for local development:** The `.quickAction()` method is not yet supported in local development mode. When developing locally with `wrangler dev`, you must use `npx wrangler dev --remote` or set `"remote": true` in your browser binding configuration. Without remote mode, you will receive the error: `The RPC receiver does not implement the method "quickAction"`.
+The `.quickAction()` method requires a compatibility date of `2026-03-24` or later.
 
 ```jsonc
 {
   "compatibility_date": "2026-03-24",
+  "browser": {
+    "binding": "BROWSER"
+  }
+}
+```
+
+### Test Quick Actions locally
+
+Under `npx wrangler dev`, `.quickAction()` uses a Chrome instance on your machine. It returns the same responses and errors as Browser Run, with two exceptions:
+
+- The `json` action returns placeholder data, because [Workers AI](https://developers.cloudflare.com/workers-ai/) is not available locally. If a field in `response_format.json_schema` sets `const`, `enum`, or `default`, it gets that value, or the first `enum` entry. Other fields get an empty value, such as `""`, `0`, `false`, or `[]`. Wrangler also logs a warning.
+- The [Kitesurf](https://developers.cloudflare.com/browser-run/kitesurf/) browser is not available. If you pass `browser: "kitesurf"`, `.quickAction()` throws an error.
+
+To get real `json` results or use Kitesurf during local development, set `"remote": true` in your browser binding configuration:
+
+```jsonc
+{
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -90,5 +104,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/quick-actions/#page","headline":"Quick Actions","description":"Use Browser Run Quick Actions HTTP endpoints to capture screenshots, extract HTML, generate PDFs, and perform other common browser tasks.","url":"https://developers.cloudflare.com/browser-run/quick-actions/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/quick-actions/og.png?v=b1c1413af4139157","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/quick-actions/#page","headline":"Quick Actions","description":"Use Browser Run Quick Actions HTTP endpoints to capture screenshots, extract HTML, generate PDFs, and perform other common browser tasks.","url":"https://developers.cloudflare.com/browser-run/quick-actions/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/quick-actions/og.png?v=b1c1413af4139157","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

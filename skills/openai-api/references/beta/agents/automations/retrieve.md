@@ -472,7 +472,7 @@ Retrieves a project-owned automation.
 
             - `async: boolean`
 
-              Whether context is compacted in the background. Defaults to true.
+              Whether context is compacted in the background. Defaults to false.
 
           - `experimental: optional object { time_awareness }`
 

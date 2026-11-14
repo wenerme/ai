@@ -5635,7 +5635,7 @@ Scan profile type.
 
 | Value | Description |
 | ----- | ----------- |
-| `BUSINESS_LOGIC` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Business logic. |
+| `BUSINESS_LOGIC` | Business logic. Available only when the Experiment and beta features setting and the `bl_security_analyzer` feature flag are enabled for the top-level group. On GitLab Self-Managed, GitLab must also enable it for the instance. On GitLab Dedicated, GitLab enabling it for the instance replaces the feature flag. Otherwise, scan profiles are hidden and cannot be created or updated. |
 | `CONTAINER_SCANNING` | Container scanning. |
 | `DEPENDENCY_SCANNING` | Dependency scanning. |
 | `DEPENDENCY_SCANNING_POST_PROCESSING` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Dependency scanning post processing. |
