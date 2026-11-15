@@ -23,13 +23,13 @@ The adapters are distributed under the [MiniMax H3 Community License Agreement](
 Three `video_pika_h3_flex_*` template Workflows are available in **Template Library** > **Video**. All three load the H3 base plus one adapter, and all three run Pika's six-step sampling schedule.
 
   
-    Prompt only, no image input. ComfyUI **0.43.2+**.
+    Prompt only, no image input. ComfyUI **0.44.0+**.
   
   
-    Two or more image references drive identity, props, and scene. ComfyUI **0.30.0+**.
+    Two or more image references drive identity, props, and scene. ComfyUI **0.44.0+**.
   
   
-    Two frames anchor the opening and the ending of the shot. ComfyUI **0.30.0+**.
+    Two frames anchor the opening and the ending of the shot. ComfyUI **0.44.0+**.
   
 
 The three templates ship Pika's published six-step schedule: `lcm` with `ManualSigmas` and CFG 1.0 through `BasicGuider`. Keep the sigma list and the adapter strength at 1.0, and do not stack a turbo or Lightning LoRA on top, because the adapter is already distilled to six steps and a second acceleration LoRA breaks the output.
