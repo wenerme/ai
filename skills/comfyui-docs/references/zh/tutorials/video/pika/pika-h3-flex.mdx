@@ -1,12 +1,12 @@
 ---
 title: "Pika H3 Flex ComfyUI 工作流"
 description: "在 ComfyUI 中运行 Pika H3 Flex：支持同步立体声音频的六步文生视频、参考生视频与首尾帧工作流。"
-translationSourceHash: f7347839
+translationSourceHash: c43abfad
 translationFrom: tutorials/video/pika/pika-h3-flex.mdx
 translationBlockHashes:
   "_intro": 817da546
   "Key features": c01176cf
-  "Choosing a template Workflow": 226e627e
+  "Choosing a template Workflow": f1cde6ed
   "Text to Video (T2V) {#text-to-video-t2v}": 5b8ffe76
   "Reference to Video (Ref2VA) {#reference-to-video-ref2va}": bcc7ca80
   "First and Last Frame (FL2VA) {#first-and-last-frame-fl2va}": b397fdfd
@@ -34,13 +34,13 @@ translationBlockHashes:
 **模板库** > **视频** 中提供了三个 `video_pika_h3_flex_*` 模板工作流。三者都加载 H3 基础模型加一个适配器，并且都运行 Pika 的六步采样调度。
 
   
-    仅使用提示词，无图像输入。ComfyUI **0.43.2+**。
+    仅使用提示词，无图像输入。ComfyUI **0.44.0+**。
   
   
-    两个或更多图像参考决定主体身份、道具和场景。ComfyUI **0.30.0+**。
+    两个或更多图像参考决定主体身份、道具和场景。ComfyUI **0.44.0+**。
   
   
-    两帧分别锚定镜头的开头和结尾。ComfyUI **0.30.0+**。
+    两帧分别锚定镜头的开头和结尾。ComfyUI **0.44.0+**。
   
 
 这三个模板采用 Pika 公布的六步采样调度：`lcm` 搭配 `ManualSigmas`，并通过 `BasicGuider` 使用 CFG 1.0。请保持 sigma 列表不变，并将适配器强度设为 1.0，不要在其上叠加 turbo 或 Lightning LoRA，因为该适配器已经蒸馏到六步，再叠加第二个加速 LoRA 会破坏输出。

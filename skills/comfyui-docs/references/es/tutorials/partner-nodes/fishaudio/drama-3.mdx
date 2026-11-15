@@ -1,15 +1,15 @@
 ---
 title: "Fish Audio Drama 3: direcciones, etiquetas de palabras y plantillas"
 description: "Ejecuta Fish Audio Drama 3 en ComfyUI con direcciones en lenguaje natural y etiquetas de palabras emparejadas, y aprovecha las plantillas listas."
-translationSourceHash: efb7c40f
+translationSourceHash: aa43ac6b
 translationFrom: tutorials/partner-nodes/fishaudio/drama-3.mdx
 translationBlockHashes:
   "_intro": 21646a5e
   "Use Drama 3 in ComfyUI": cd468cc0
   "Directing a performance": a0489f1f
-  "Available workflows": 1aa5dc70
+  "Available workflows": 2439bec6
   "Account and pricing": e545e921
-  "Get started": 29b72f54
+  "Get started": f3e5802d
 ---
 
 Drama 3 es el modelo de texto a voz más reciente de Fish Audio, diseñado para la dirección de voz. Una escena completa se escribe como un solo guion, la interpretación se describe en lenguaje natural dentro del texto y las etiquetas de palabras emparejadas cambian solo las palabras que envuelven. En ComfyUI se ejecuta en el nodo Fish Audio Text to Speech con `model` establecido en `drama-3`. Para ver los demás modelos de Fish Audio, consulta [Fish Audio: texto a voz, clonación de voz y voz a texto](/es/tutorials/partner-nodes/fishaudio/fish-audio).
@@ -96,7 +96,7 @@ Las etiquetas de emoción, tono y efecto de la [guía de prompts](/es/tutorials/
 
 ## Flujos de trabajo disponibles
 
-Dos plantillas listas para usar cubren Drama 3: una actuación dirigida con una sola voz y un diálogo de dos hablantes. Ábrelas desde la Biblioteca de plantillas en ComfyUI o ejecútalas directamente en Comfy Cloud. Ambas requieren ComfyUI 0.39.3 o posterior.
+Dos plantillas listas para usar cubren Drama 3: una actuación dirigida con una sola voz y un diálogo de dos hablantes. Ábrelas desde la Biblioteca de plantillas en ComfyUI o ejecútalas directamente en Comfy Cloud. Ambas requieren ComfyUI 0.40.0 o posterior.
 
 ### Fish Audio Drama 3: Actuación dirigida {#api_fishaudio_drama3_directed}
 
@@ -152,7 +152,7 @@ Los nodos requieren iniciar sesión en una cuenta de ComfyUI y se cobran por uso
 
 ## Empezar
 
-1. Actualiza ComfyUI a 0.39.3 o una versión más reciente
+1. Actualiza ComfyUI a 0.40.0 o una versión más reciente
 2. Abre una de las plantillas de Drama 3 de arriba, o agrega los nodos de Fish Audio desde `partner/audio/Fish Audio`
 3. Selecciona `drama-3` en el nodo Text to Speech y conecta una voz mediante el Voice Selector o el Instant Voice Clone
 4. Escribe el guion con [indicaciones y etiquetas de palabras](#dirigir-una-interpretación) y luego ejecútalo

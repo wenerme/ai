@@ -1,12 +1,12 @@
 ---
 title: "Flujos de trabajo de Pika H3 Flex en ComfyUI"
 description: "Ejecuta Pika H3 Flex en ComfyUI: flujos de trabajo en seis pasos de texto a video, referencia a video y primer y último fotograma con audio estéreo."
-translationSourceHash: f7347839
+translationSourceHash: c43abfad
 translationFrom: tutorials/video/pika/pika-h3-flex.mdx
 translationBlockHashes:
   "_intro": 817da546
   "Key features": c01176cf
-  "Choosing a template Workflow": 226e627e
+  "Choosing a template Workflow": f1cde6ed
   "Text to Video (T2V) {#text-to-video-t2v}": 5b8ffe76
   "Reference to Video (Ref2VA) {#reference-to-video-ref2va}": bcc7ca80
   "First and Last Frame (FL2VA) {#first-and-last-frame-fl2va}": b397fdfd
@@ -34,13 +34,13 @@ Los adaptadores se distribuyen bajo el [MiniMax H3 Community License Agreement](
 Tres flujos de trabajo de plantilla `video_pika_h3_flex_*` están disponibles en **Template Library** > **Video**. Los tres cargan la base H3 más un adaptador, y los tres ejecutan el programa de muestreo de seis pasos de Pika.
 
   
-    Solo prompt, sin entrada de imagen. ComfyUI **0.43.2+**.
+    Solo prompt, sin entrada de imagen. ComfyUI **0.44.0+**.
   
   
-    Dos o más referencias de imagen determinan la identidad, los accesorios y la escena. ComfyUI **0.30.0+**.
+    Dos o más referencias de imagen determinan la identidad, los accesorios y la escena. ComfyUI **0.44.0+**.
   
   
-    Dos fotogramas anclan el inicio y el final de la toma. ComfyUI **0.30.0+**.
+    Dos fotogramas anclan el inicio y el final de la toma. ComfyUI **0.44.0+**.
   
 
 Las tres plantillas incluyen el programa de seis pasos publicado por Pika: `lcm` con `ManualSigmas` y CFG 1.0 mediante `BasicGuider`. Mantén la lista de sigmas y la fuerza del adaptador en 1.0, y no apiles un LoRA turbo o Lightning encima, porque el adaptador ya está destilado a seis pasos y un segundo LoRA de aceleración rompe la salida.
