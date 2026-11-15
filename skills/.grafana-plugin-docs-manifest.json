@@ -1571,13 +1571,13 @@
   },
   "grafana-pathfinder-app/administrators-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
-    "size": 13587,
-    "updatedAt": "2026-10-29T10:35:29.088Z"
+    "size": 14111,
+    "updatedAt": "2026-11-15T17:11:26.211Z"
   },
   "grafana-pathfinder-app/architecture.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",
-    "size": 9156,
-    "updatedAt": "2026-10-29T10:35:29.396Z"
+    "size": 10474,
+    "updatedAt": "2026-11-15T17:11:26.392Z"
   },
   "grafana-pathfinder-app/block-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor.md",
@@ -1586,8 +1586,8 @@
   },
   "grafana-pathfinder-app/getting-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started.md",
-    "size": 7846,
-    "updatedAt": "2026-11-07T16:31:19.332Z"
+    "size": 7894,
+    "updatedAt": "2026-11-15T17:11:26.778Z"
   },
   "grafana-pathfinder-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest.md",
@@ -1596,8 +1596,8 @@
   },
   "grafana-pathfinder-app/terms-and-conditions.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/terms-and-conditions.md",
-    "size": 3745,
-    "updatedAt": "2026-06-25T05:42:57.701Z"
+    "size": 4155,
+    "updatedAt": "2026-11-15T17:11:27.136Z"
   },
   "grafana-pathfinder-app/upgrade-notes.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes.md",

@@ -78,7 +78,7 @@ export type IAddress = InferEntity<typeof Address>;
   
 
 ```ts
-import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Embeddable()
 export class Address {
@@ -113,7 +113,7 @@ export class User {
   
 
 ```ts
-import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Embeddable()
 export class Address {
@@ -384,7 +384,7 @@ The default behavior can be overridden in the ORM configuration:
 ```ts
 MikroORM.init({
   embeddables: {
-    prefixMode: 'absolute', // defaults to `true`
+    prefixMode: 'absolute', // defaults to `relative`
   }, 
 })
 ```
@@ -674,7 +674,7 @@ export type IIdentity = InferEntity<typeof Identity>;
   
 
 ```ts
-import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class User {
@@ -723,7 +723,7 @@ export class Identity {
   
 
 ```ts
-import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class User {
@@ -898,7 +898,7 @@ export type IOwner = InferEntity<typeof Owner>;
   
 
 ```ts
-import { Embeddable, Embedded, Entity, Enum, PrimaryKey, Property } from '@mikro-orm/core';
+import { Embeddable, Embedded, Entity, Enum, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 export enum AnimalType {
   CAT,
@@ -963,7 +963,7 @@ export class Owner {
   
 
 ```ts
-import { Embeddable, Embedded, Entity, Enum, PrimaryKey, Property } from '@mikro-orm/core';
+import { Embeddable, Embedded, Entity, Enum, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 export enum AnimalType {
   CAT,

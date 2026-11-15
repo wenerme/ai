@@ -307,7 +307,8 @@ export const BaseEntity = defineEntity({
 With `defineEntity`, the `repository` option provides both the runtime binding and the type inference — no `EntityRepositoryType` symbol needed. All entities extending this base will inherit the repository type.
 
 ```ts
-import { EntityRepositoryType, PrimaryKey } from '@mikro-orm/core';
+import { EntityRepositoryType } from '@mikro-orm/core';
+import { PrimaryKey } from '@mikro-orm/decorators/legacy';
 
 export abstract class BaseEntity {
 
@@ -320,7 +321,8 @@ export abstract class BaseEntity {
 ```
 
 ```ts
-import { EntityRepositoryType, PrimaryKey } from '@mikro-orm/core';
+import { EntityRepositoryType } from '@mikro-orm/core';
+import { PrimaryKey } from '@mikro-orm/decorators/legacy';
 
 export abstract class BaseEntity {
 

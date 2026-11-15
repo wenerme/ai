@@ -53,7 +53,7 @@ export type IOutboxEvent = InferEntity<typeof OutboxEvent>;
   
 
 ```ts title="./entities/OutboxEvent.ts"
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class OutboxEvent {
@@ -80,7 +80,7 @@ export class OutboxEvent {
   
 
 ```ts title="./entities/OutboxEvent.ts"
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class OutboxEvent {

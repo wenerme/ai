@@ -69,7 +69,7 @@ export const AuthorStats = defineEntity({
   
 
 ```ts title="./entities/AuthorStats.ts"
-import { Entity, Property, PrimaryKey } from '@mikro-orm/postgresql';
+import { Entity, Property, PrimaryKey } from '@mikro-orm/decorators/legacy';
 
 @Entity({
   tableName: 'author_stats_matview',
@@ -102,7 +102,7 @@ export class AuthorStats {
   
 
 ```ts title="./entities/AuthorStats.ts"
-import { Entity, Property, PrimaryKey } from '@mikro-orm/postgresql';
+import { Entity, Property, PrimaryKey } from '@mikro-orm/decorators/legacy';
 
 @Entity({
   tableName: 'author_stats_matview',
