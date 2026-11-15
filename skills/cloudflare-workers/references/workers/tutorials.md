@@ -18,8 +18,8 @@ View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 10 days ago | Beginner |
-| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 11 days ago | Beginner |
+| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 13 days ago | Beginner |
+| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 14 days ago | Beginner |
 | [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 2 months ago | Intermediate |
 | [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 2 months ago | Intermediate |
 | [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 5 months ago | Beginner |
@@ -29,7 +29,7 @@ View tutorials to help you get started with Workers.
 | [Connect to a PostgreSQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/postgres/) | last year | Beginner |
 | [Connect to a MongoDB database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/) | last year | Beginner |
 | [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/) | last year | Beginner |
-| [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/) | last year | Beginner |
+| [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/) | 2 years ago | Beginner |
 | [Connect to a MySQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/mysql/) | 2 years ago | Beginner |
 | [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | 2 years ago | Beginner |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | 2 years ago | Beginner |
@@ -44,7 +44,7 @@ View tutorials to help you get started with Workers.
 | [Build a web crawler with Queues and Browser Run](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/) | 2 years ago | Intermediate |
 | [Create a fine-tuned OpenAI model with R2](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/) | 2 years ago | Intermediate |
 | [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/) | 2 years ago | Beginner |
-| [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/) | 2 years ago | Intermediate |
+| [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/) | 3 years ago | Intermediate |
 | [Build a todo list Jamstack application](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/) | 3 years ago | Beginner |
 | [Send Emails With Postmark](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/) | 3 years ago | Beginner |
 | [Send Emails With Resend](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/) | 3 years ago | Beginner |

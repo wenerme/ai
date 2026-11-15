@@ -53,8 +53,6 @@ MikroORM.init({
     checkDuplicateTableNames: false, 
     // by default, discovery throws when duplicate field names are found
     checkDuplicateFieldNames: false,
-    // by default, discovery throws when duplicate entities are found
-    checkDuplicateEntities: false, 
     // by default, discovery throws when composite primary keys are marked as `persist: false`
     checkNonPersistentCompositeProps: false,
     // by default, default values are inferred from property initializers (if it's possible to invoke the constructor without parameters)
@@ -531,18 +529,9 @@ MikroORM.init({
 
 Read more about this in [Repositories](./repositories.md) section.
 
-## Strict Mode and property validation
+## Property validation
 
-> The validation needs to be explicitly enabled via `validate: true`. It has performance implications and usually should not be needed, as long as you don't modify your entities via `Object.assign()`.
-
-`MikroORM` will validate your properties before actual persisting happens. It will try to fix wrong data types for you automatically. If automatic conversion fails, it will throw an error. You can enable strict mode to disable this feature and let ORM throw errors instead. Validation is triggered when persisting the entity.
-
-```ts
-MikroORM.init({
-  validate: true,
-  strict: true,
-});
-```
+`MikroORM` validates your properties before actual persisting happens, and throws an error if a value does not match the property type. The validation is always enabled, and wrong data types are no longer fixed automatically.
 
 Read more about this in [Property Validation](property-validation.md) section.
 
@@ -575,7 +564,7 @@ Read more about this in [Debugging](./logging.md) section.
 
 ## Custom Fail Handler
 
-When no entity is found during `em.findOneOrFail()` call, a `NotFoundError` will be thrown. You can customize how the `Error` instance is created via `findOneOrFailHandler` (or `findExactlyOneOrFailHandler` if [strict mode](#strict-mode-and-property-validation) is enabled):
+When no entity is found during `em.findOneOrFail()` call, a `NotFoundError` will be thrown. You can customize how the `Error` instance is created via `findOneOrFailHandler` (or `findExactlyOneOrFailHandler` when the `strict` option is passed to `em.findOneOrFail()`):
 
 ```ts
 MikroORM.init({
@@ -771,7 +760,7 @@ Full list of supported options:
 |-------------------------------------------------------------|------------------------------------------------|
 | `MIKRO_ORM_CONTEXT_NAME`                                    | `contextName`                                  |
 | `MIKRO_ORM_BASE_DIR`                                        | `baseDir`                                      |
-| `MIKRO_ORM_TYPE`                                            | `type`                                         |
+| `MIKRO_ORM_TYPE`                                            | `driver` (CLI only)                            |
 | `MIKRO_ORM_ENTITIES`                                        | `entities`                                     |
 | `MIKRO_ORM_ENTITIES_TS`                                     | `entitiesTs`                                   |
 | `MIKRO_ORM_CLIENT_URL`                                      | `clientUrl`                                    |
@@ -785,8 +774,8 @@ Full list of supported options:
 | `MIKRO_ORM_BATCH_SIZE`                                      | `batchSize`                                    |
 | `MIKRO_ORM_USE_BATCH_INSERTS`                               | `useBatchInserts`                              |
 | `MIKRO_ORM_USE_BATCH_UPDATES`                               | `useBatchUpdates`                              |
+| `MIKRO_ORM_ALLOW_GLOBAL_CONTEXT`                            | `allowGlobalContext`                           |
 | `MIKRO_ORM_AUTO_JOIN_ONE_TO_ONE_OWNER`                      | `autoJoinOneToOneOwner`                        |
-| `MIKRO_ORM_PROPAGATE_TO_ONE_OWNER`                          | `propagateToOneOwner`                          |
 | `MIKRO_ORM_POPULATE_AFTER_FLUSH`                            | `populateAfterFlush`                           |
 | `MIKRO_ORM_FORCE_ENTITY_CONSTRUCTOR`                        | `forceEntityConstructor`                       |
 | `MIKRO_ORM_FORCE_UNDEFINED`                                 | `forceUndefined`                               |
@@ -799,7 +788,6 @@ Full list of supported options:
 | `MIKRO_ORM_DISCOVERY_WARN_WHEN_NO_ENTITIES`                 | `discovery.warnWhenNoEntities`                 |
 | `MIKRO_ORM_DISCOVERY_CHECK_DUPLICATE_TABLE_NAMES`           | `discovery.checkDuplicateTableNames`           |  
 | `MIKRO_ORM_DISCOVERY_CHECK_DUPLICATE_FIELD_NAMES`           | `discovery.checkDuplicateFieldNames`           |  
-| `MIKRO_ORM_DISCOVERY_CHECK_DUPLICATE_ENTITIES`              | `discovery.checkDuplicateEntities`             |  
 | `MIKRO_ORM_DISCOVERY_CHECK_NON_PERSISTENT_COMPOSITE_PROPS`  | `discovery.checkNonPersistentCompositeProps`   |  
 | `MIKRO_ORM_DISCOVERY_INFER_DEFAULT_VALUES`                  | `discovery.inferDefaultValues`                 |  
 | `MIKRO_ORM_DISCOVERY_TS_CONFIG_PATH`                        | `discovery.tsConfigPath`                       |  
@@ -812,9 +800,13 @@ Full list of supported options:
 | `MIKRO_ORM_MIGRATIONS_ALL_OR_NOTHING`                       | `migrations.allOrNothing`                      |
 | `MIKRO_ORM_MIGRATIONS_DROP_TABLES`                          | `migrations.dropTables`                        |
 | `MIKRO_ORM_MIGRATIONS_SAFE`                                 | `migrations.safe`                              |
+| `MIKRO_ORM_MIGRATIONS_SILENT`                               | `migrations.silent`                            |
 | `MIKRO_ORM_MIGRATIONS_EMIT`                                 | `migrations.emit`                              |
-| `MIKRO_ORM_SCHEMA_GENERATOR_DISABLE_FOREIGN_KEYS`           | `migrations.disableForeignKeys`                |
-| `MIKRO_ORM_SCHEMA_GENERATOR_CREATE_FOREIGN_KEY_CONSTRAINTS` | `migrations.createForeignKeyConstraints`       |
+| `MIKRO_ORM_MIGRATIONS_SNAPSHOT`                             | `migrations.snapshot`                          |
+| `MIKRO_ORM_MIGRATIONS_SNAPSHOT_ON_MIGRATE`                  | `migrations.snapshotOnMigrate`                 |
+| `MIKRO_ORM_MIGRATIONS_SNAPSHOT_NAME`                        | `migrations.snapshotName`                      |
+| `MIKRO_ORM_SCHEMA_GENERATOR_DISABLE_FOREIGN_KEYS`           | `schemaGenerator.disableForeignKeys`           |
+| `MIKRO_ORM_SCHEMA_GENERATOR_CREATE_FOREIGN_KEY_CONSTRAINTS` | `schemaGenerator.createForeignKeyConstraints`  |
 | `MIKRO_ORM_SCHEMA_GENERATOR_IGNORE_TRIGGERS`               | `schemaGenerator.ignoreTriggers`               |
 | `MIKRO_ORM_SCHEMA_GENERATOR_IGNORE_ROUTINES`               | `schemaGenerator.ignoreRoutines`               |
 | `MIKRO_ORM_SCHEMA_GENERATOR_IGNORE_POLICIES`               | `schemaGenerator.ignorePolicies`               |
@@ -856,7 +848,6 @@ There are also env vars you can use to control the CLI settings (those you can s
 |---------------------------------|------------|
 | `MIKRO_ORM_CLI_CONFIG`          | (CLI only) |
 | `MIKRO_ORM_CLI_TS_CONFIG_PATH`  | (CLI only) |
-| `MIKRO_ORM_CLI_ALWAYS_ALLOW_TS` | (CLI only) |
 | `MIKRO_ORM_CLI_PREFER_TS`       | (CLI only) |
 | `MIKRO_ORM_CLI_TS_LOADER`       | (CLI only) |
 | `MIKRO_ORM_CLI_VERBOSE`         | (CLI only) |

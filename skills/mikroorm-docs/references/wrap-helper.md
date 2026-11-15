@@ -65,7 +65,7 @@ wrap(book).assign({ title: 'New Title' });
 ```
 
 ```ts title="./entities/Book.ts"
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class Book {
@@ -85,7 +85,7 @@ wrap(book).assign({ title: 'New Title' });
 ```
 
 ```ts title="./entities/Book.ts"
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class Book {
@@ -145,7 +145,8 @@ book.assign({ title: 'New Title' });
 ```
 
 ```ts title="./entities/Book.ts"
-import { BaseEntity, Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { BaseEntity } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class Book extends BaseEntity {
@@ -165,7 +166,8 @@ book.assign({ title: 'New Title' });
 ```
 
 ```ts title="./entities/Book.ts"
-import { BaseEntity, Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { BaseEntity } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 @Entity()
 export class Book extends BaseEntity {
