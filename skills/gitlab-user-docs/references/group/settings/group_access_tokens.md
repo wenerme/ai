@@ -14,6 +14,10 @@ You can use a group access token to authenticate:
   - Any non-blank value as a username.
   - The group access token as the password.
 
+  For examples of cloning and pushing, see
+  [use Git over HTTPS](../../profile/personal_access_tokens.md#use-git-over-https).
+  Those examples use a personal access token. Use your group access token in its place.
+
 Prerequisites:
 
 - You must have the Owner role for the group.

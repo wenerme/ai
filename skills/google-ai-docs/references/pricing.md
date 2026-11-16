@@ -4999,38 +4999,38 @@ usage of the tools.
 
 ## Notes  {% id="notes" %}
 
-*     **Agentic video understanding:** When using agentic video understanding,
-  token usage is variable based on the content loaded by the model rather than
-  full video length. This typically results in up to 88% fewer input tokens
-  for long-form video, though token counts depend on query complexity and
-  dynamic sampling depth (which may exceed 1 FPS for detailed visual
-  segments). See [Agentic video
-  understanding](/docs/video-understanding#agentic-video-understanding).
+*   **Agentic video understanding:** When using agentic video understanding,
+    token usage is variable based on the content loaded by the model rather than
+    full video length. This typically results in up to 88% fewer input tokens
+    for long-form video, though token counts depend on query complexity and
+    dynamic sampling depth (which may exceed 1 FPS for detailed visual
+    segments). See [Agentic video
+    understanding](/docs/video-understanding#agentic-video-understanding).
 
-*     **Document token billing:** Tokens for the `DOCUMENT` modality (for example,
-  PDFs) are billed at the image token rate. In API responses, these tokens
-  appear under the `DOCUMENT` modality within `promptTokensDetails`.
+*   **Document token billing:** Tokens for the `DOCUMENT` modality (for example,
+    PDFs) are billed at the image token rate. In API responses, these tokens
+    appear under the `DOCUMENT` modality within `promptTokensDetails`.
 
-*     Google AI Studio usage is free of charge in all [available
-  regions](/docs/available-regions). See [Billing FAQs](/docs/billing) for
-  details.
+*   Google AI Studio usage is free of charge in all [available
+    regions](/docs/available-regions). See [Billing FAQs](/docs/billing) for
+    details.
 
-*     Prices may differ from the prices listed here and the prices offered on
-  Gemini Enterprise Agent Platform. For Gemini Enterprise Agent Platform
-  prices, see the [Gemini Enterprise Agent Platform pricing
-  page](https://cloud.google.com/products/gemini-enterprise-agent-platform).
+*   Prices may differ from the prices listed here and the prices offered on
+    Gemini Enterprise Agent Platform. For Gemini Enterprise Agent Platform
+    prices, see the [Gemini Enterprise Agent Platform pricing
+    page](https://cloud.google.com/products/gemini-enterprise-agent-platform).
 
-*     If you are using [dynamic retrieval](/docs/google-search) to optimize costs,
-  only requests that contain at least one grounding support URL from the web
-  in their response are charged for Grounding with Google Search. Costs for
-  Gemini always apply. Rate limits are subject to change.
+*   If you are using [dynamic retrieval](/docs/google-search) to optimize costs,
+    only requests that contain at least one grounding support URL from the web
+    in their response are charged for Grounding with Google Search. Costs for
+    Gemini always apply. Rate limits are subject to change.
 
-*     **Search Grounding rate limits:** On the Gemini Developer API, Grounding
-  with Google Search on Gemini 3 and newer models is subject to a default
-  daily rate limit of 1,500 requests per day (RPD) per project across all paid
-  tiers, resetting daily at midnight Pacific Time. For high-volume production
-  workloads requiring higher daily limits, consider using
-  [Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search#considerations),
-  which provides a default quota of 1,000,000 search queries per day.
+*   **Search Grounding rate limits:** On the Gemini Developer API, Grounding
+    with Google Search on Gemini 3 and newer models is subject to a default
+    daily rate limit of 1,500 requests per day (RPD) per project across all paid
+    tiers, resetting daily at midnight Pacific Time. For high-volume production
+    workloads requiring higher daily limits, consider using
+    [Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/grounding-with-google-search#considerations),
+    which provides a default quota of 1,000,000 search queries per day.
 
 

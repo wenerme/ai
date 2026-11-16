@@ -58,13 +58,13 @@ Safety ratings and content filtering are reported for both
 prompt in `GenerateContentResponse.prompt_feedback` and for each candidate
 in `finish_reason` and in `safety_ratings`. The API:
 
--    Returns either all requested candidates or none of them
+-  Returns either all requested candidates or none of them
 
--    Returns no candidates at all only if there was something wrong with the
-  prompt (check `prompt_feedback`)
+-  Returns no candidates at all only if there was something wrong with the
+   prompt (check `prompt_feedback`)
 
--    Reports feedback on each candidate in `finish_reason` and
-  `safety_ratings`.
+-  Reports feedback on each candidate in `finish_reason` and
+   `safety_ratings`.
 
 
 **Properties:**

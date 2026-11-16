@@ -355,3 +355,69 @@ If there are problems with the manual upload:
 1. Open a confidential issue in the [security fork of version app project](https://gitlab.com/gitlab-org/security/version.gitlab.com).
 1. Attach the JSON payload if possible.
 1. Tag `@gitlab-org/analytics-section/analytics-instrumentation` who will triage the issue.
+
+## Set or rotate the Service Ping internal API secret
+
+Services that report Service Ping on behalf of your instance, such as the [Service Ping exporter](https://gitlab.com/gitlab-org/analytics-section/analytics-instrumentation/serviceping-exporter/-/blob/main/README.md#the-service-ping-key),
+authenticate to GitLab with a shared secret.
+The secret is a Base64-encoded 32-byte value and must be the same on every Rails node.
+Clients must call a URL served by Workhorse, such as the external URL of the instance, not a Rails process directly.
+
+### Linux package (Omnibus)
+
+Until every node is reconfigured and the service is updated, requests that reach a node with a
+different secret fail with `401 Unauthorized`.
+
+When you upgrade a multi-node installation to 19.6, see the
+[19.6 upgrade note](../../update/versions/gitlab_19_changes.md#service-ping-internal-api-secret-on-multi-node-installations).
+
+To set or rotate the secret:
+
+1. Generate a value:
+
+   ```shell
+   openssl rand -base64 32
+   ```
+
+1. Edit `/etc/gitlab/gitlab.rb` on every Rails node and set the same value:
+
+   ```ruby
+   gitlab_rails['service_ping_secret'] = '<base64-encoded 32-byte value>'
+   ```
+
+1. Reconfigure every Rails node:
+
+   ```shell
+   sudo gitlab-ctl reconfigure
+   ```
+
+1. Update the service that uses the secret.
+
+### Helm chart (Kubernetes)
+
+The chart generates the secret in the `<release>-gitlab-service-ping-secret` Kubernetes Secret
+and mounts it in the Rails pods.
+
+To use a secret you created:
+
+1. Create a Kubernetes Secret that holds a Base64-encoded 32-byte value:
+
+   ```shell
+   kubectl create secret generic <name> --from-literal=secret=$(head -c 32 /dev/urandom | base64)
+   ```
+
+1. In your values file, set `global.appConfig.servicePing.jwtSecret.secret` to the name of the
+   Kubernetes Secret and `global.appConfig.servicePing.jwtSecret.key` to the key that holds the
+   value (default `secret`).
+
+Until every pod is restarted and the service is updated, requests that reach a pod with a
+different secret fail with `401 Unauthorized`.
+
+To rotate the secret:
+
+1. Update the value in the Kubernetes Secret.
+1. Restart the `webservice` pods.
+1. Update the service that uses the secret.
+
+For more information, see the
+[chart documentation](https://docs.gitlab.com/charts/charts/globals/#service-ping-settings).

@@ -43,6 +43,10 @@ Krea 2には2つのバリアントがあります：
 
 ## Krea-2 Turbo テキストから画像へのワークフロー
 
+### Krea-2: Text to Image {#image_krea2_turbo_t2i}
+
+Krea 2 を使い、テキストプロンプトから画像を生成します。審美性とクリエイティブなコントロールのために作られた基盤モデルで、表現豊かでスタイルの多様な画像の描画に優れています。
+
 [Krea-2 Turbo テキストから画像ワークフロー]
 
   
@@ -134,6 +138,10 @@ Krea 2向けのスタイルLoRAコレクションもKreaから公開されてい
 
 ## Krea-2 Turbo スタイル参照ワークフロー
 
+### Krea-2 Int8: Image Style Reference {#image_krea2_turbo_int8_image_style_reference}
+
+Krea-2 Turbo モデルで画像を生成しながら、アップロードした 1〜2 枚の画像のスタイルを参照します。高速推論のため高性能な Int8 Convrot 形式を使用します。
+
 [Krea-2 Turbo スタイル参照ワークフロー]
 
   
@@ -142,6 +150,22 @@ Krea 2向けのスタイルLoRAコレクションもKreaから公開されてい
   
     JSONをダウンロードするか、テンプレートライブラリで「Krea-2 スタイル参照」を検索してください
   
+
+**入力素材**
+
+このファイルを対応する `LoadImage` ノードにアップロードしてください:
+
+  
+    `LoadImage` ノード 69 · `krea2_reference_image.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [krea2_reference_image.png]
+</div>
+
+**出力例**
+
+![Krea-2 スタイル参照の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_krea2_turbo_int8_image_style_reference.png)
 
 スタイル参照ワークフローは、Krea-2 Turbo パイプラインに参照画像の条件付けを追加したものです。1つ以上の参照画像をアップロードして、生成出力の美的スタイル、雰囲気、ビジュアルの方向性に影響を与えます。
 

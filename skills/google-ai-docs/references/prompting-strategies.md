@@ -467,21 +467,21 @@ Check that the Ethernet cable is connected to both your router and your modem an
 For use cases that require complex prompts, you can help the model manage this
 complexity by breaking things down into simpler components.
 
-1.    **Break down instructions:** Instead of having many instructions in one
-  prompt, create one prompt per instruction. You can choose which prompt to
-  process based on the user's input.
+1.  **Break down instructions:** Instead of having many instructions in one
+    prompt, create one prompt per instruction. You can choose which prompt to
+    process based on the user's input.
 
-2.   **Chain prompts:** For complex tasks that involve multiple sequential steps,
-  make each step a prompt and chain the prompts together in a sequence. In this
-  sequential chain of prompts, the output of one prompt in the sequence becomes
-  the input of the next prompt. The output of the last prompt in the sequence
-  is the final output.
+2. **Chain prompts:** For complex tasks that involve multiple sequential steps,
+   make each step a prompt and chain the prompts together in a sequence. In this
+   sequential chain of prompts, the output of one prompt in the sequence becomes
+   the input of the next prompt. The output of the last prompt in the sequence
+   is the final output.
 
-3.   **Aggregate responses:** Aggregation is when you want to perform different
-  parallel tasks on different portions of the data and aggregate the results to
-  produce the final output. For example, you can tell the model to perform one
-  operation on the first part of the data, perform another operation on the
-  rest of the data and aggregate the results.
+3. **Aggregate responses:** Aggregation is when you want to perform different
+   parallel tasks on different portions of the data and aggregate the results to
+   produce the final output. For example, you can tell the model to perform one
+   operation on the first part of the data, perform another operation on the
+   rest of the data and aggregate the results.
 
 
 ## Experiment with model parameters  {% id="model-parameters" %}
@@ -492,17 +492,17 @@ different parameter values. Experiment with different parameter values to get
 the best values for the task. The parameters available for
 different models may differ. The most common parameters are the following:
 
-1.    **Max output tokens:** Specifies the maximum number of tokens that can be
-  generated in the response. A token is approximately four characters. 100
-  tokens correspond to roughly 60-80 words.
+1.  **Max output tokens:** Specifies the maximum number of tokens that can be
+    generated in the response. A token is approximately four characters. 100
+    tokens correspond to roughly 60-80 words.
 
-2.    **Temperature:** The temperature controls the degree of randomness in token
-  selection. The temperature is used for sampling during response generation,
-  which occurs when `topP` and `topK` are applied. Lower temperatures are good
-  for prompts that require a more deterministic or less open-ended response,
-  while higher temperatures can lead to more diverse or creative results. A
-  temperature of 0 is deterministic, meaning that the highest probability
-  response is always selected.
+2.  **Temperature:** The temperature controls the degree of randomness in token
+    selection. The temperature is used for sampling during response generation,
+    which occurs when `topP` and `topK` are applied. Lower temperatures are good
+    for prompts that require a more deterministic or less open-ended response,
+    while higher temperatures can lead to more diverse or creative results. A
+    temperature of 0 is deterministic, meaning that the highest probability
+    response is always selected.
 
 
 {% callout type="note" %}
@@ -520,26 +520,26 @@ different models may differ. The most common parameters are the following:
 
 {% /callout %}
 
-1.    **`topK`:** The `topK` parameter changes how the model selects tokens for
-  output. A `topK` of 1 means the selected token is the most probable among
-  all the tokens in the model's vocabulary (also called greedy decoding),
-  while a `topK` of 3 means that the next token is selected from among the 3
-  most probable using the temperature. For each token selection step, the
-  `topK` tokens with the highest probabilities are sampled. Tokens are then
-  further filtered based on `topP` with the final token selected using
-  temperature sampling.
+1.  **`topK`:** The `topK` parameter changes how the model selects tokens for
+    output. A `topK` of 1 means the selected token is the most probable among
+    all the tokens in the model's vocabulary (also called greedy decoding),
+    while a `topK` of 3 means that the next token is selected from among the 3
+    most probable using the temperature. For each token selection step, the
+    `topK` tokens with the highest probabilities are sampled. Tokens are then
+    further filtered based on `topP` with the final token selected using
+    temperature sampling.
 
-2.    **`topP`:** The `topP` parameter changes how the model selects tokens for
-  output. Tokens are selected from the most to least probable until the sum of
-  their probabilities equals the `topP` value. For example, if tokens A, B,
-  and C have a probability of 0.3, 0.2, and 0.1 and the `topP` value is 0.5,
-  then the model will select either A or B as the next token by using the
-  temperature and exclude C as a candidate. The default `topP` value is 0.95.
+2.  **`topP`:** The `topP` parameter changes how the model selects tokens for
+    output. Tokens are selected from the most to least probable until the sum of
+    their probabilities equals the `topP` value. For example, if tokens A, B,
+    and C have a probability of 0.3, 0.2, and 0.1 and the `topP` value is 0.5,
+    then the model will select either A or B as the next token by using the
+    temperature and exclude C as a candidate. The default `topP` value is 0.95.
 
-3.    **`stop_sequences`:** Set a stop sequence to
-  tell the model to stop generating content. A stop sequence can be any
-  sequence of characters. Try to avoid using a sequence of characters that
-  may appear in the generated content.
+3.  **`stop_sequences`:** Set a stop sequence to
+    tell the model to stop generating content. A stop sequence can be any
+    sequence of characters. Try to avoid using a sequence of characters that
+    may appear in the generated content.
 
 
 ## Prompt iteration strategies  {% id="iteration" %}
@@ -548,13 +548,13 @@ Prompt design can sometimes require a few iterations before
 you consistently get the response you're looking for. This section provides
 guidance on some things you can try when iterating on your prompts:
 
-1.    **Use different phrasing:** Using different words or phrasing in your
-  prompts often yields different responses from the model even though they
-  all mean the same thing. If you're not getting the expected results from
-  your prompt, try rephrasing it.
+1.  **Use different phrasing:** Using different words or phrasing in your
+    prompts often yields different responses from the model even though they
+    all mean the same thing. If you're not getting the expected results from
+    your prompt, try rephrasing it.
 
-  ```none
-  ```
+    ```none
+    ```
 
 
 Version 1:
@@ -569,14 +569,14 @@ What's a good pie recipe?
 ```
 ```
 
-1.    **Switch to an analogous task:** If you can't get the model to follow your
-  instructions for a task, try giving it instructions for an analogous task
-  that achieves the same result.
+1.  **Switch to an analogous task:** If you can't get the model to follow your
+    instructions for a task, try giving it instructions for an analogous task
+    that achieves the same result.
 
-  This prompt tells the model to categorize a book by using predefined
-  categories:
+    This prompt tells the model to categorize a book by using predefined
+    categories:
 
-  **Prompt:**
+    **Prompt:**
 
 
 ```none
@@ -629,26 +629,26 @@ The correct answer is **mythology**.
 
 *(gemini-2.5-flash)*
 
-1.    **Change the order of prompt content:** The order of the content in the
-  prompt can sometimes affect the response. Try changing the content order and
-  see how that affects the response.
+1.  **Change the order of prompt content:** The order of the content in the
+    prompt can sometimes affect the response. Try changing the content order and
+    see how that affects the response.
 
-  ```none
-  Version 1:
-  [examples]
-  [context]
-  [input]
-  
-  Version 2:
-  [input]
-  [examples]
-  [context]
-  
-  Version 3:
-  [examples]
-  [input]
-  [context]
-  ```
+    ```none
+    Version 1:
+    [examples]
+    [context]
+    [input]
+
+    Version 2:
+    [input]
+    [examples]
+    [context]
+
+    Version 3:
+    [examples]
+    [input]
+    [context]
+    ```
 
 
 ## Fallback responses  {% id="fallback-responses" %}
@@ -682,73 +682,73 @@ optimal results with Gemini 3:
 
 ### Core prompting principles  {% id="core-prompting-principles" %}
 
-*     **Be precise and direct:** State your goal clearly and concisely. Avoid
-  unnecessary or overly persuasive language.
+*   **Be precise and direct:** State your goal clearly and concisely. Avoid
+    unnecessary or overly persuasive language.
 
-*     **Use consistent structure:** Employ clear delimiters to separate different
-  parts of your prompt. XML-style tags (e.g., `<context>`, `<task>`) or
-  Markdown headings are effective. Choose one format and use it consistently
-  within a single prompt.
+*   **Use consistent structure:** Employ clear delimiters to separate different
+    parts of your prompt. XML-style tags (e.g., `<context>`, `<task>`) or
+    Markdown headings are effective. Choose one format and use it consistently
+    within a single prompt.
 
-*     **Define parameters:** Explicitly explain any ambiguous terms or parameters.
+*   **Define parameters:** Explicitly explain any ambiguous terms or parameters.
 
-*     **Control output verbosity:** By default, Gemini 3 models provide direct and
-  efficient answers. If you need a more conversational or detailed response,
-  you must explicitly request it in your instructions.
+*   **Control output verbosity:** By default, Gemini 3 models provide direct and
+    efficient answers. If you need a more conversational or detailed response,
+    you must explicitly request it in your instructions.
 
-*     **Handle multimodal inputs coherently:** When using text, images, audio, or
-  video, treat them as equal-class inputs. Ensure your instructions clearly
-  reference each modality as needed.
+*   **Handle multimodal inputs coherently:** When using text, images, audio, or
+    video, treat them as equal-class inputs. Ensure your instructions clearly
+    reference each modality as needed.
 
-*     **Prioritize critical instructions:** Place essential behavioral
-  constraints, role definitions (persona), and output format requirements in
-  the System Instruction or at the very beginning of the user prompt.
+*   **Prioritize critical instructions:** Place essential behavioral
+    constraints, role definitions (persona), and output format requirements in
+    the System Instruction or at the very beginning of the user prompt.
 
-*     **Structure for long contexts:** When providing large amounts of context
-  (e.g., documents, code), supply all the context first. Place your specific
-  instructions or questions at the very *end* of the prompt.
+*   **Structure for long contexts:** When providing large amounts of context
+    (e.g., documents, code), supply all the context first. Place your specific
+    instructions or questions at the very *end* of the prompt.
 
-*     **Anchor context:** After a large block of data, use a clear transition
-  phrase to bridge the context and your query, such as "Based on the
-  information above..."
+*   **Anchor context:** After a large block of data, use a clear transition
+    phrase to bridge the context and your query, such as "Based on the
+    information above..."
 
 
 ### Gemini 3 Flash strategies  {% id="gemini-3-flash-strategies" %}
 
-*     **Current day accuracy:** Add the following clause to the system
-  instructions to help the model pay attention to the current day being in
-  2026:
+*   **Current day accuracy:** Add the following clause to the system
+    instructions to help the model pay attention to the current day being in
+    2026:
 
-  ```none
-  For time-sensitive user queries that require up-to-date information, you
-  MUST follow the provided current time (date and year) when formulating
-  search queries in tool calls. Remember it is 2026 this year.
-  ```
+    ```none
+    For time-sensitive user queries that require up-to-date information, you
+    MUST follow the provided current time (date and year) when formulating
+    search queries in tool calls. Remember it is 2026 this year.
+    ```
 
-*     **Knowledge cutoff accuracy:** Add the following clause to the system
-  instructions to make the model aware of its knowledge cutoff:
+*   **Knowledge cutoff accuracy:** Add the following clause to the system
+    instructions to make the model aware of its knowledge cutoff:
 
-  ```none
-  Your knowledge cutoff date is January 2025.
-  ```
+    ```none
+    Your knowledge cutoff date is January 2025.
+    ```
 
-*     **Grounding performance:** Add the following clause to the system
-  instructions (with edits where appropriate) to improve the model's ability
-  to ground responses in provided context:
+*   **Grounding performance:** Add the following clause to the system
+    instructions (with edits where appropriate) to improve the model's ability
+    to ground responses in provided context:
 
-  ```none
-  You are a strictly grounded assistant limited to the information provided in
-  the User Context. In your answers, rely **only** on the facts that are
-  directly mentioned in that context. You must **not** access or utilize your
-  own knowledge or common sense to answer. Do not assume or infer from the
-  provided facts; simply report them exactly as they appear. Your answer must
-  be factual and fully truthful to the provided text, leaving absolutely no
-  room for speculation or interpretation. Treat the provided context as the
-  absolute limit of truth; any facts or details that are not directly
-  mentioned in the context must be considered **completely untruthful** and
-  **completely unsupported**. If the exact answer is not explicitly written in
-  the context, you must state that the information is not available.
-  ```
+    ```none
+    You are a strictly grounded assistant limited to the information provided in
+    the User Context. In your answers, rely **only** on the facts that are
+    directly mentioned in that context. You must **not** access or utilize your
+    own knowledge or common sense to answer. Do not assume or infer from the
+    provided facts; simply report them exactly as they appear. Your answer must
+    be factual and fully truthful to the provided text, leaving absolutely no
+    room for speculation or interpretation. Treat the provided context as the
+    absolute limit of truth; any facts or details that are not directly
+    mentioned in the context must be considered **completely untruthful** and
+    **completely unsupported**. If the exact answer is not explicitly written in
+    the context, you must state that the information is not available.
+    ```
 
 
 ### Enhancing reasoning and planning  {% id="enhancing-reasoning-and-planning" %}
@@ -945,15 +945,15 @@ Before taking any action (either tool calls *or* responses to the user), you mus
 
 ## Next steps  {% id="next-steps" %}
 
--     Now that you have a deeper understanding of prompt design, try writing your
-  own prompts using [Google AI Studio](http://aistudio.google.com).
+-   Now that you have a deeper understanding of prompt design, try writing your
+    own prompts using [Google AI Studio](http://aistudio.google.com).
 
--     To learn about multimodal prompting, see
-  [Prompting with media files](/docs/files#prompt-guide).
+-   To learn about multimodal prompting, see
+    [Prompting with media files](/docs/files#prompt-guide).
 
--     To learn about image prompting, see the [Nano Banana](/docs/image-generation#prompt-guide)
-  prompt guide.
+-   To learn about image prompting, see the [Nano Banana](/docs/image-generation#prompt-guide)
+    prompt guide.
 
--     To learn about video prompting, see the [Veo prompt guide](/docs/veo#prompt-guide).
+-   To learn about video prompting, see the [Veo prompt guide](/docs/veo#prompt-guide).
 
 

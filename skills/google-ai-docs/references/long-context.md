@@ -88,22 +88,22 @@ new techniques becoming available which unlock new use cases.
 
 Some emerging and standard use cases for text based long context include:
 
--   Summarizing large corpuses of text
+- Summarizing large corpuses of text
 
   -   Previous summarization options with smaller context models would require
-    a sliding window or another technique to keep state of previous sections
-    as new tokens are passed to the model
+      a sliding window or another technique to keep state of previous sections
+      as new tokens are passed to the model
 
--   Question and answering
+- Question and answering
 
   -   Historically this was only possible with RAG given the limited amount of
-    context and models' factual recall being low
+      context and models' factual recall being low
 
--   Agentic workflows
+- Agentic workflows
 
   -   Text is the underpinning of how agents keep state of what they have done
-    and what they need to do; not having enough information about the world
-    and the agent's goal is a limitation on the reliability of agents
+      and what they need to do; not having enough information about the world
+      and the agent's goal is a limitation on the reliability of agents
 
 
 [Many-shot in-context learning](https://arxiv.org/pdf/2404.11018) is one of the
@@ -130,22 +130,22 @@ sustained performance.
 
 Some emerging and standard use cases for video long context include:
 
--   Video question and answering
+- Video question and answering
 
--   Video memory, as shown with [Google's Project Astra](https://deepmind.google/technologies/gemini/project-astra/)
+- Video memory, as shown with [Google's Project Astra](https://deepmind.google/technologies/gemini/project-astra/)
 
--   Video captioning
+- Video captioning
 
--   Video recommendation systems, by enriching existing metadata with new
+- Video recommendation systems, by enriching existing metadata with new
   multimodal understanding
 
--   Video customization, by looking at a corpus of data and associated video
+- Video customization, by looking at a corpus of data and associated video
   metadata and then removing parts of videos that are not relevant to the
   viewer
 
--   Video content moderation
+- Video content moderation
 
--   Real-time video processing
+- Real-time video processing
 
 
 When working with videos, it is important to consider how the [videos are

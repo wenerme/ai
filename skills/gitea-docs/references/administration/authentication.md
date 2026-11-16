@@ -16,12 +16,13 @@ Both the LDAP via BindDN and the simple auth LDAP share the following fields:
 
 - Host **(required)**
 
-  - The address where the LDAP server can be reached.
-  - Example: `mydomain.com`
+  - Comma-separated LDAP servers. Each is a host using the Port and Security Protocol fields, or an `ldap://`, `ldaps://` or `ldap+starttls://` URL with an optional port. `ldap://` requires the Unencrypted Security Protocol, the other URLs require an encrypted one.
+  - The next server is tried when the previous one fails or takes over 250 ms to connect. Bind and search failures do not move on to it.
+  - Example: `ldap1.mydomain.com, ldaps://ldap2.mydomain.com:636`
 
 - Port **(required)**
 
-  - The port to use when connecting to the server.
+  - The port to use when connecting to hosts given without a URL.
   - Example: `389` for LDAP or `636` for LDAP SSL
 
 - Enable TLS Encryption (optional)
@@ -425,6 +426,3 @@ USERNAME = nickname
 ; what to do when the username or email is already taken
 ACCOUNT_LINKING = login
 ```
-
-> **note**: This is unrelated to `ENABLE_OPENID_SIGNIN` and the `[openid]` section, which
-configure the older OpenID 2.0 sign-in.

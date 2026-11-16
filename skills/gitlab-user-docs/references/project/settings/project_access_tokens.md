@@ -16,6 +16,10 @@ You can use a project access token to authenticate:
   - Any non-blank value as a username.
   - The project access token as the password.
 
+  For examples of cloning and pushing, see
+  [use Git over HTTPS](../../profile/personal_access_tokens.md#use-git-over-https).
+  Those examples use a personal access token. Use your project access token in its place.
+
 Prerequisites:
 
 - The Maintainer or Owner role for the project.

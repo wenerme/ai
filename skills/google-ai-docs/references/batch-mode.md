@@ -24,13 +24,13 @@ required.
 
 You have two ways to submit your requests in Batch API:
 
-*   **[Inline requests](/docs/batch-api#inline-requests):** A list of
+* **[Inline requests](/docs/batch-api#inline-requests):** A list of
   [`GenerateContentRequest`](/api-reference/batch-api/batch-generate-content#request-body) objects
   directly included in your batch creation request. This is suitable for
   smaller batches that keep the total request size under 20MB. The **output**
   returned from the model is a list of `inlineResponse` objects.
 
-*   **[Input file](/docs/batch-api#input-file):** A [JSON Lines (JSONL)](https://jsonlines.org/)
+* **[Input file](/docs/batch-api#input-file):** A [JSON Lines (JSONL)](https://jsonlines.org/)
   file where each line contains a complete
   [`GenerateContentRequest`](/api-reference/batch-api/batch-generate-content#request-body) object.
   This method is recommended for larger requests. The **output**
@@ -2328,21 +2328,21 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
 
 ## Technical details  {% id="technical-details" %}
 
-*   **Supported models:** Batch API supports a range of Gemini models.
+* **Supported models:** Batch API supports a range of Gemini models.
   Refer to the [Models page](/docs/models) for each model's support
   of Batch API. The supported modalities for Batch API are the same
   as what's supported on the interactive (or non-batch) API.
 
-*   **Pricing:** Batch API usage is priced at 50% of the standard interactive
+* **Pricing:** Batch API usage is priced at 50% of the standard interactive
   API cost for the equivalent model. See the [pricing page](/docs/pricing)
   for details. Refer to the [rate limits page](/docs/rate-limits#batch-api)
   for details on rate limits for this feature.
 
-*   **Service level objective (SLO):** Batch jobs are designed to complete
+* **Service level objective (SLO):** Batch jobs are designed to complete
   within a 24-hour turnaround time. Many jobs may complete much faster
   depending on their size and current system load.
 
-*   **Caching:** [Context caching](/docs/caching) is supported
+* **Caching:** [Context caching](/docs/caching) is supported
   for batch requests. Reuse cached content by specifying the `cached_content`
   resource name in the configuration of individual requests within your batch.
   If a request in your batch results in a cache hit, you pay the
@@ -2351,24 +2351,24 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
 
 ## Best practices  {% id="best-practices" %}
 
-*   **Use input files for large requests:** For a large number of requests,
+* **Use input files for large requests:** For a large number of requests,
   always use the file input
   method for better manageability and to avoid hitting request size limits for
   the [`BatchGenerateContent`](/api-reference/batch-api/batch-generate-content)
   call itself. Note that there's a 2GB file size limit per input file.
 
-*   **Error handling:** Check the `batchStats` for `failedRequestCount` after a
+* **Error handling:** Check the `batchStats` for `failedRequestCount` after a
   job completes. If using file output, parse each line to check if it's a
   `GenerateContentResponse` or a status object indicating an error for that
   specific request. See the [troubleshooting
   guide](/docs/troubleshooting#error-codes) for a complete set of
   error codes.
 
-*   **Submit jobs once:** The creation of a batch job is not idempotent.
+* **Submit jobs once:** The creation of a batch job is not idempotent.
   If you send the same creation request twice, two separate batch jobs will
   be created.
 
-*   **Break up very large batches:** While the target turnaround time is 24
+* **Break up very large batches:** While the target turnaround time is 24
   hours, actual processing time can vary based on system load and job size.
   For large jobs, consider breaking them into smaller
   batches if intermediate results are needed sooner.
@@ -2376,10 +2376,10 @@ a [JSONL input file](/docs/batch-api#input-file-images) for large batches (recom
 
 ## What's next  {% id="whats-next" %}
 
-*   Check out the [Batch API notebook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Batch_mode.ipynb)
+* Check out the [Batch API notebook](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Batch_mode.ipynb)
   for more examples.
 
-*   The OpenAI compatibility layer supports Batch API. Read the examples on the
+* The OpenAI compatibility layer supports Batch API. Read the examples on the
   [OpenAI Compatibility](/docs/openai#batch) page.
 
 
