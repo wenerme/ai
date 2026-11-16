@@ -9198,7 +9198,7 @@ Triggers a re-evaluation of the security approval policies applicable to the mer
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `duoCodeReviewDepth` | [`DuoCodeReviewDepth`](enums.md#duocodereviewdepth) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Depth of the GitLab Duo Code Review to run when the user is the GitLab Duo Code Review bot. Ignored for other users, and where deep reviews are not available for the project. |
+| `duoCodeReviewDepth` | [`DuoCodeReviewDepth`](enums.md#duocodereviewdepth) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Depth of the GitLab Duo Code Review to run when the user is the GitLab Duo Code Review bot. Ignored for other users, and where Standard reviews are not available for the project. |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 | `userId` | [`UserID!`](scalars.md#userid) | User ID for the user that has been requested for a new review. |
@@ -15726,7 +15726,7 @@ Deprecated in GitLab 18.0. Use WorkItemsCsvExport.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Scores the readiness of a work item asynchronously through a Duo Agent Platform flow, instead of Duo Chat. Available only when the `workplan_score` feature flag is enabled; returns an error otherwise.
+Scores the readiness of a work item asynchronously through a Duo Agent Platform flow, instead of Duo Chat. Available only when the `workplan` feature flag is enabled; returns an error otherwise.
 
 **Input type:** `WorkItemGenerateReadinessScoreInput`
 

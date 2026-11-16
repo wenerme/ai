@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/turnstile/get-started/og.png?v=cb452fc4
 
 # Get started
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile protects your website forms from bots. It works in two steps: a JavaScript widget runs challenges in the visitor's browser and produces a token, then your server sends that token to Cloudflare to confirm it is valid. This guide covers how to set up both steps.
 
@@ -65,6 +65,8 @@ Follow the steps below to implement Turnstile.
 
 First, you must create a Turnstile widget to get your sitekey and secret key.
 
+Select your widget's **region** when you create it. You cannot change its region after creation.
+
 Select your preferred implementation method:
 
 [Cloudflare dashboard](https://developers.cloudflare.com/turnstile/get-started/widget-management/dashboard/) [API](https://developers.cloudflare.com/turnstile/get-started/widget-management/api/) [Terraform](https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/)
@@ -94,6 +96,12 @@ You can test the dummy token generated with testing sitekey via Siteverify API w
 Refer to [Testing](https://developers.cloudflare.com/turnstile/troubleshooting/testing/) for more information.
 
 ## Additional implementation options
+
+### Turnstile in China
+
+Turnstile in China serves challenges and validates tokens through endpoints within China. Contact your account team to add access for your account.
+
+For Cloudflare customers on the China Network, China-native challenge pages require no configuration changes.
 
 ### Mobile configuration
 
@@ -141,5 +149,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/#page","headline":"Get started","description":"Set up Turnstile to verify visitors without a traditional CAPTCHA.","url":"https://developers.cloudflare.com/turnstile/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/og.png?v=cb452fc457b818e0","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/#page","headline":"Get started","description":"Set up Turnstile to verify visitors without a traditional CAPTCHA.","url":"https://developers.cloudflare.com/turnstile/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/og.png?v=cb452fc457b818e0","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms"]}
 ```

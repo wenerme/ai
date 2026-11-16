@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # Audio understanding
 
@@ -1448,12 +1448,12 @@ For the complete list of supported MIME types and parameter schemas, see the [In
 
 ## What's next  {% id="whats-next" %}
 
-*   [Files API](/docs/files): Upload and manage audio files
+* [Files API](/docs/files): Upload and manage audio files
 
-*   [System instructions](/docs/text-generation#system-instructions):
+* [System instructions](/docs/text-generation#system-instructions):
   Customize model behavior
 
-*   [Structured output](/docs/structured-output):
+* [Structured output](/docs/structured-output):
   Get transcription results in JSON format
 
 

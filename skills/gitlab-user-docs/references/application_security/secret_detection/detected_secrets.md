@@ -274,7 +274,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Linear client secret or ID (OAuth 2.0)            | Linear client secret/ID                       | Yes | No | No | No | None |
 | LinkedIn client ID                                | Linkedin Client ID                            | Yes | No | No | No | None |
 | LinkedIn client secret                            | Linkedin Client secret                        | Yes | No | No | No | None |
-| Lob API key                                       | Lob API Key                                   | Yes | No | No | No | None |
+| Lob API key                                       | Lob API Key                                   | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Lob publishable API key                           | Lob Publishable API Key                       | Yes | No | No | No | None |
 | Mailchimp API key                                 | Mailchimp API key                             | Yes | No | Yes | No | None |
 | Mailgun private API token                         | Mailgun private API token                     | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
@@ -296,7 +296,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Okta API Token                                    | OktaAPIToken                                  | Yes | No | No | No | None |
 | Okta API Token (SSWS header)                      | OktaAPITokenHeader                            | Yes | No | Yes | No | None |
 | Okta Client Secret                                | OktaClientSecret                              | Yes | No | No | No | None |
-| Onfido Live API Token                             | Onfido Live API Token                         | Yes | No | Yes | No | None |
+| Onfido Live API Token                             | Onfido Live API Token                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | OpenAI API key                                    | open ai token                                 | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | OpenAI project key                                | OpenAiProjectKey                              | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | OpenAI service account key                        | OpenAiServiceAccountKey                       | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |

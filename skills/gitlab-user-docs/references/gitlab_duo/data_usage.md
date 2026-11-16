@@ -189,10 +189,10 @@ The cached data is never logged to any persistent storage.
 For both Agent Platform features that use the prompt registry and Code Suggestions,
 token caching is automatically turned on for supported models.
 
-### Turn off prompt caching
+### Turn prompt caching on or off
 
+You can turn prompt caching on or off for a top-level group or an instance.
 By default, prompt caching is turned on.
-You can turn prompt caching off for a top-level group or an instance.
 
 ### For a top-level group
 
@@ -203,7 +203,8 @@ Prerequisites:
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Settings** > **GitLab Duo**.
 1. Select **Change configuration**.
-1. In the **Data and privacy** section, under **Prompt cache**, clear the **Turn on prompt caching** checkbox.
+1. In the **Data and privacy** section, under **Prompt cache**,
+   select or clear the **Turn on prompt caching** checkbox.
 1. Select **Save changes**.
 
 ### For an instance
@@ -215,5 +216,6 @@ Prerequisites:
 1. In the upper-right corner, select **Admin**.
 1. In the left sidebar, select **GitLab Duo**.
 1. Select **Change configuration**.
-1. In the **Data and privacy** section, under **Prompt cache**, clear the **Turn on prompt caching** checkbox.
+1. In the **Data and privacy** section, under **Prompt cache**,
+   select or clear the **Turn on prompt caching** checkbox.
 1. Select **Save changes**.

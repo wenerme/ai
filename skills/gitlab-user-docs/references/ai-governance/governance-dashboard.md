@@ -106,7 +106,7 @@ The **Agents by provider** card shows a ring chart of the
 distinct developers who used AI agents in the selected date range. The total is
 in the center of the chart. The slices depend on the **Show** control:
 
-- With **All agents**, one slice per agent product, such as **GitLab Duo**, **Claude Code**,
+- With **All agents**, one slice per agent product, such as **GitLab Duo**, **Claude**,
   **Cursor**, or **OpenCode**.
 - With **DAP**, one slice per GitLab Duo Agent Platform flow type, such as chat, code review, or
   software development.
@@ -153,8 +153,8 @@ The **Recent agent sessions** card lists the latest agent sessions from the last
 It ignores the date range. It follows the **Show** control.
 
 The card lists sessions from GitLab Duo and from connected agents. Each row
-shows the agent that ran the session, such as **GitLab Duo**, **Claude Code (glab)**,
-**Cursor (glab)**, or **Claude Code (Compliance API)**, and the number of audit
+shows the agent that ran the session, such as **GitLab Duo**, **Claude (glab)**,
+**Cursor (glab)**, or **Claude (Compliance API)**, and the number of audit
 events the session produced.
 
 Select a GitLab Duo session to open it in the

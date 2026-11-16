@@ -11,6 +11,8 @@ External users:
 
 - Can access public groups, projects, and snippets.
 - Can access internal or private groups and projects where they are members.
+- Can use a [CI/CD job token](../ci/jobs/ci_job_token.md#limit-job-token-scope-for-public-or-internal-projects)
+  from jobs they trigger to access internal projects only where they are members.
 - Can create subgroups, projects, and snippets in any top-level groups where they are members.
 - Cannot create groups, projects, or snippets in their personal namespace.
 

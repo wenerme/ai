@@ -25,6 +25,8 @@ You can manage your branches:
 
 ## View branch rules
 
+- Support for custom roles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/584313) in GitLab 19.6.
+
 The branch rules overview page shows all branches with any configured protections,
 and their protection methods:
 
@@ -32,7 +34,16 @@ and their protection methods:
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- The Maintainer or Owner role for the project, or a [custom role](../../../custom_roles/_index.md)
+  with the `admin_protected_branch` or `manage_merge_request_settings` permission.
+
+With the `admin_protected_branch` permission, you can view only rules that target a branch name
+or pattern.
+For those rules, the approval rules, status checks, and squash option are hidden.
+
+With the `manage_merge_request_settings` permission, you can view only the approval rules,
+status checks, and squash option for each rule.
+The **Protect branch** settings are hidden.
 
 To view the branch rules overview list:
 
@@ -57,10 +68,16 @@ To view branch rules and protections for a single branch:
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.4.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.5.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/586354) in GitLab 18.9. Feature flag `edit_branch_rules` removed.
+- Support for custom roles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/584313) in GitLab 19.6.
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- One of the following for the project:
+  - The Maintainer or Owner role.
+  - To create a rule for a branch name or pattern, a custom role with the
+    `admin_protected_branch` permission.
+  - To create an **All branches** or **All protected branches** rule, a custom role with the
+    `manage_merge_request_settings` permission.
 
 To create a branch rule:
 
@@ -98,12 +115,15 @@ To add protections to a new branch:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
+- Support for custom roles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/584313) in GitLab 19.6.
+
 > [!note]
 > Not available for `all branches`.
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- The Maintainer or Owner role for the project, or a custom role with the
+  `manage_merge_request_settings` permission.
 
 To add a merge request approval rule:
 
@@ -131,12 +151,16 @@ For additional information, see [approval rules](../../merge_requests/approvals/
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181370) in GitLab 17.9 with a flag named `branch_rule_squash_settings`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/506542) in GitLab 17.10.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/524860) in GitLab 17.11. Feature flag `branch_rule_squash_settings` removed.
+- Support for custom roles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/584313) in GitLab 19.6.
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- The Maintainer or Owner role for the project, or a custom role with the
+  `manage_merge_request_settings` permission.
 - In GitLab Free, this feature is available only if the branch rule targets **All branches**.
 - In GitLab Premium and GitLab Ultimate, this feature is available for all branch rules.
+  If the branch has an unprotect access level, you must be allowed to unprotect the branch.
+  For more information, see [control who can unprotect branches](protected.md#control-who-can-unprotect-branches).
 
 To edit a squash option:
 
@@ -162,9 +186,15 @@ To edit a squash option:
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.4.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.5.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/586354) in GitLab 18.9. Feature flag `edit_branch_rules` removed.
+- Support for custom roles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/584313) in GitLab 19.6.
 
 > [!note]
 > Not available for `all protected branches`.
+
+Prerequisites:
+
+- The Maintainer or Owner role for the project, or a custom role with the
+  `manage_merge_request_settings` permission.
 
 To add a status check service:
 
@@ -186,10 +216,14 @@ For more information, see [external status checks](../../merge_requests/status_c
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.4.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.5.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/586354) in GitLab 18.9. Feature flag `edit_branch_rules` removed.
+- Support for custom roles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/584313) in GitLab 19.6.
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- The Maintainer or Owner role for the project, or a custom role with the
+  `admin_protected_branch` permission.
+- If the branch has an unprotect access level, you must be allowed to unprotect the branch.
+  For more information, see [control who can unprotect branches](protected.md#control-who-can-unprotect-branches).
 
 To edit a branch rule target:
 
@@ -215,10 +249,18 @@ For information about branch protection controls, see [Protected branches](prote
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.4.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/454501) in GitLab 17.5.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/586354) in GitLab 18.9. Feature flag `edit_branch_rules` removed.
+- Support for custom roles [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/584313) in GitLab 19.6.
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role for the project.
+- One of the following for the project:
+  - The Maintainer or Owner role.
+  - To delete a rule for a branch name or pattern, a custom role with the
+    `admin_protected_branch` permission.
+  - To delete the **All protected branches** rule, a custom role with the
+    `manage_merge_request_settings` permission.
+- If the branch has an unprotect access level, you must be allowed to unprotect the branch.
+  For more information, see [control who can unprotect branches](protected.md#control-who-can-unprotect-branches).
 
 To delete a branch rule:
 

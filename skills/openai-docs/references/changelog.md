@@ -8,6 +8,12 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## November, 2026
 
+### Nov 16
+
+Feature · Model: omni-moderation-csam-latest · API: v1/moderations
+
+Approved organizations can use the [OpenAI CSAM Image Classifier](https://developers.openai.com/api/docs/guides/csam-classifier) at no cost to help prioritize images for human review. The model returns separate signals for potential child sexual abuse material (CSAM) and potential AI-generated CSAM.
+
 ### Nov 5
 
 Feature · Model: gpt-6-cyber

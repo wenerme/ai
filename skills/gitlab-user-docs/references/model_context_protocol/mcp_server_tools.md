@@ -21,7 +21,7 @@ check whether its toolset is enabled.
 | Toolset | Tools |
 |---------|-------|
 | `meta` | [`get_mcp_server_version`](#get_mcp_server_version) |
-| `core` | [`get_project`](#get_project), [`save_project`](#save_project), [`get_user`](#get_user), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`list_user_events`](#list_user_events), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
+| `core` | [`get_project`](#get_project), [`save_project`](#save_project), [`get_user`](#get_user), [`get_group`](#get_group), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`list_user_events`](#list_user_events), [`list_milestones`](#list_milestones), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
 | `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
 | `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`list_work_item_saved_views`](#list_work_item_saved_views), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
@@ -794,6 +794,32 @@ Example:
 
 ```plaintext
 Review merge request 42 in project gitlab-org/gitlab and leave your findings as diff comments with a summary
+```
+
+## `list_milestones`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268735) in GitLab 19.6.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Lists milestones in a GitLab project or group.
+
+| Parameter             | Type    | Required | Description |
+|------------------------|---------|----------|-------------|
+| `url`                  | string  | No       | GitLab URL of the project or group. Provide exactly one of `url`, `project_id`, or `group_id`. |
+| `project_id`           | string  | No       | ID or full path of the project. Provide exactly one of `url`, `project_id`, or `group_id`. |
+| `group_id`             | string  | No       | ID or full path of the group. Provide exactly one of `url`, `project_id`, or `group_id`. |
+| `state`                | string  | No       | Filter milestones by state (`active` or `closed`). If omitted, returns milestones of all states. |
+| `search`               | string  | No       | Search string to filter milestones by title. |
+| `include_ancestors`    | boolean | No       | Include milestones from parent groups. For a project, includes milestones from the project's parent group and its ancestors. |
+| `include_descendants`  | boolean | No       | Include milestones from subgroups and their projects. Applies only to a group. |
+| `first`                | integer | No       | Number of milestones to return after the cursor (forward pagination). Maximum 100. |
+| `after`                | string  | No       | Cursor for forward pagination of milestones. Use `pageInfo.endCursor` from a previous response. |
+
+Example:
+
+```plaintext
+List the open milestones in project gitlab-org/gitlab
 ```
 
 ## `list_project_members`
@@ -1905,7 +1931,7 @@ one. Send only the fields you intend to set, and omit the rest. The tool names
 | `status_id`        | string            | No       | Global ID of the status to set. Premium and Ultimate only. |
 | `is_fixed`         | boolean           | No       | Whether start and due dates are fixed. When `false`, dates roll up from child items and `start_date` and `due_date` are ignored. Premium and Ultimate only. |
 | `agent_plan`       | string            | No       | Markdown content of the agent plan. Premium and Ultimate only. Requires the workplan feature. |
-| `readiness_score`  | integer           | No       | Readiness score of the agent plan, from 0 to 100. Premium and Ultimate only. Requires the `workplan_score` feature flag. Returns an error when the flag is disabled. |
+| `readiness_score`  | integer           | No       | Readiness score of the agent plan, from 0 to 100. Premium and Ultimate only. Requires the workplan feature. |
 
 Example:
 
@@ -2043,6 +2069,39 @@ Example:
 
 ```plaintext
 List my projects
+```
+
+## `get_group`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635914) in GitLab 19.6.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Returns the following metadata for a single GitLab group:
+
+- Numeric ID
+- Full path
+- Name
+- Visibility
+- Parent
+- Web URL
+
+Provide either the `url` or `group_id`.
+
+| Parameter  | Type   | Required | Description |
+|------------|--------|----------|-------------|
+| `url`      | string | No       | URL of the group. |
+| `group_id` | string | No       | ID or full path of the group, for example `gitlab-org/quality`. |
+
+The response includes `id`, `fullPath`, `name`, `visibility`, `webUrl`, and `parent`.
+The `parent` field contains the numeric ID of the parent group.
+It is `null` for a top-level group or when you do not have access to the parent group.
+To discover groups, use `list_groups`.
+
+Example:
+
+```plaintext
+What is the ID and visibility of gitlab-org/quality?
 ```
 
 ## `list_groups`

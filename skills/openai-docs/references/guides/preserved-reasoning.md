@@ -4,7 +4,7 @@
 
 In agentic and multi-turn applications, our models work best when [thinking is preserved](https://developers.openai.com/api/docs/guides/reasoning?api-mode=responses#preserve-reasoning-across-calls) across API requests, where new actions and instructions are always appended to the model’s context. Keeping the prefix intact has long been a best practice for [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching). The cache matches requests from the beginning, so a change to the prefix can cut cache reuse from that point onward. Appending changes keeps more of the conversation eligible for cache reuse, which can substantially **lower input costs and speed up responses**.
 
-Starting with newer frontier models, the API **will drop reasoning items** that follow a prefix change as part of our anti-distillation safeguards. When reasoning items are dropped, the model may have to redo some reasoning, which can increase token usage, cost, and latency. If the model can't recover the lost reasoning, output quality may also drop.
+Starting with newer frontier models, the API **will drop reasoning items** that follow a prefix change as part of our safeguards. When reasoning items are dropped, the model may have to redo some reasoning, which can increase token usage, cost, and latency. If the model can't recover the lost reasoning, output quality may also drop.
 
 To get the best performance from our models, we recommend avoiding changes to the prefix and adopting an append-only integration pattern as far as possible.
 

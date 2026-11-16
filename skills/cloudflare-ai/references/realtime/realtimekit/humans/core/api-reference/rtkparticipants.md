@@ -11,7 +11,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKParticipants
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This module represents all the participants in the meeting (except the local user). It consists of 4 maps:
 
@@ -101,17 +101,21 @@ Return the controls for Picture-in-Picture
 
 ### meeting.participants.viewMode
 
-Indicates whether the meeting is in 'ACTIVE\_GRID' mode or 'PAGINATED' mode.
+Controls how participants are selected for the participants.active map.
 
-In 'ACTIVE\_GRID' mode, participants are populated in the participants.active map dynamically. The participants present in the map will keep changing when other participants unmute their audio or turn on their videos.
+In 'ACTIVE\_GRID' mode, the SDK automatically moves speakers into the grid, replacing non-speakers as needed.
 
-In 'PAGINATED' mode, participants are populated in the participants.active map just once, and the participants in the map will only change if the page number is changed by the user using setPage(page).
+In 'PAGINATED' mode, participants are split into numbered pages starting at 1, with up to maxActiveParticipantsCount participants per page. Use setPage(page) to select which page populates participants.active. Speaking does not move participants between pages. If all participants fit on page 1, page 2 is empty.
+
+In 'MANUAL' mode, the application controls participant selection and media subscriptions instead of relying on the SDK's automatic grid or pagination.
+
+Reconnect preserves the current mode; an unavailable paginated page is adjusted.
 
 **Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
 
 ### meeting.participants.currentPage
 
-This indicates the current page that has been set by the user in PAGINATED mode. If the meeting is in ACTIVE\_GRID mode, this value will be 0.
+This indicates the current page that has been set by the user in PAGINATED mode. PAGINATED starts at page 1. ACTIVE\_GRID and MANUAL use page 0.
 
 **Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
 
@@ -187,7 +191,7 @@ Rejects requests from waitlisted participants if user has appropriate permission
 
 ### meeting.participants.setViewMode(viewMode)
 
-Sets the view mode of the meeting to either ACTIVE\_GRID or PAGINATED.
+Sets the view mode of the meeting to either ACTIVE\_GRID, PAGINATED, or MANUAL.
 
 **Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
 
@@ -286,5 +290,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/#page","headline":"RTKParticipants","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/og.png?v=2a1d7451ac9c7547","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/#page","headline":"RTKParticipants","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/og.png?v=2a1d7451ac9c7547","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

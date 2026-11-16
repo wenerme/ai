@@ -131,6 +131,8 @@ pre-approved. Write and delete MCP tools still prompt for approval.
 #### Always Deny enforcement
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258209) in GitLab 19.6 with a [feature flag](../../administration/feature_flags/_index.md) named `duo_mcp_server_governance_rule_enforcement`. Disabled by default.
+- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/632906) in GitLab 19.6.
+- [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/632906) in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

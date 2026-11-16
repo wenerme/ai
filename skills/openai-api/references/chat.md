@@ -909,7 +909,7 @@ Content type: `application/json`
 
 - `n: optional integer or null (default: 1)`
 
-  How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs.
+  How many chat completion choices to generate for each input message. Omit `n` to generate one choice. Newer models reject an explicit `n`, even `n=1`. When requesting multiple choices, you are billed for generated tokens across all choices.
 
   `minimum: 1`, `maximum: 128`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/artifacts/get-started/workers/og.png?v=
 
 # Workers
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create an Artifacts repo from a Worker and use a standard Git client to push and pull content.
 
@@ -49,10 +49,10 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
 
 You also need:
 
-- Wrangler installed. If you use local Wrangler commands in this guide, authenticate Wrangler first. For local OAuth authentication or CI setup, refer to [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) and [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
-- Access to Artifacts on the [Workers Paid plan](https://developers.cloudflare.com/artifacts/platform/pricing/).
+- Wrangler installed. You do not need Cloudflare credentials to develop with Artifacts locally. Authenticate Wrangler before you deploy or use a remote binding. For local OAuth authentication or CI setup, refer to [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) and [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
+- Access to Artifacts on the [Workers Paid plan](https://developers.cloudflare.com/artifacts/platform/pricing/) for the deployment step.
 - A namespace name, for example `default`.
-- A local `git` client.
+- Git 2.32 or newer installed on your development machine and available on `PATH`. The local simulator checks the Git version at startup.
 - `jq`, if you want to extract response fields automatically.
 
 ## 1. Create a Worker project
@@ -95,7 +95,7 @@ Open your Wrangler config file and add the Artifacts binding:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-23",
+  "compatibility_date": "2026-11-16",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -110,15 +110,15 @@ name = "artifacts-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-23"
+compatibility_date = "2026-11-16"
 
 [[artifacts]]
 binding = "ARTIFACTS"
 namespace = "default"
-# Set remote = true if you want Wrangler to use the remote Artifacts service in local dev.
+# To use deployed Artifacts during local development, set remote = true.
 ```
 
-This exposes Artifacts as `env.ARTIFACTS` inside your Worker.
+This exposes Artifacts as `env.ARTIFACTS` inside your Worker. During local development, an omitted `remote` setting uses local storage. Set `remote = true` only if you want to use deployed Artifacts. Local and deployed repos do not synchronize. For prerequisites, persistence, and migration from implicit remote bindings, refer to [Local development](https://developers.cloudflare.com/artifacts/guides/local-development/).
 
 If you are using TypeScript, regenerate your local binding types:
 
@@ -245,20 +245,21 @@ Your Worker will call `env.ARTIFACTS.create()` and return three values you will 
 ```json
 {
 	"name": "starter-repo",
-	"remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
-	"token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
+	"remote": "http://127.0.0.1:<PORT>/git/default/starter-repo.git",
+	"token": "<REPO_TOKEN>"
 }
 ```
 
 - `name`: the repo name. Must be unique within the namespace.
-- `remote`: the Git remote URL for this repo. `<ACCOUNT_ID>` will be your actual Cloudflare account ID.
-- `token`: a short-lived credential for Git operations. The token encodes its expiry directly in the `?expires=` suffix as a Unix timestamp.
+- `remote`: the local Git URL. Use the returned port rather than copying the placeholder. A deployed Worker instead returns an HTTPS URL for your account.
+- `token`: a repo-scoped credential for Git operations. Keep its full value private.
 
 Copy the `remote` and `token` values into local shell variables:
 
 ```sh
 export ARTIFACTS_REMOTE="<PASTE_REMOTE_FROM_RESPONSE>"
-export ARTIFACTS_TOKEN="<PASTE_TOKEN_FROM_RESPONSE>"
+read -rs ARTIFACTS_TOKEN # Paste the token without saving it in your shell history.
+printf '\n'
 ```
 
 ```bash
@@ -287,13 +288,7 @@ git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" push -u origin 
 
 The `-c http.extraHeader` flag passes the token as a request header, which keeps it out of your Git config and shell history.
 
-If you need a self-contained remote URL for a short-lived command, build one from the token secret instead:
-
-```sh
-export ARTIFACTS_TOKEN_SECRET="${ARTIFACTS_TOKEN%%\?expires=*}"
-export ARTIFACTS_AUTH_REMOTE="https://x:${ARTIFACTS_TOKEN_SECRET}@${ARTIFACTS_REMOTE#https://}"
-git push "$ARTIFACTS_AUTH_REMOTE" HEAD:main
-```
+For other authentication options, refer to [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/).
 
 ## 6. Pull the repo with a regular Git client
 
@@ -307,11 +302,7 @@ git -C artifacts-clone log --oneline -1
 
 You should see the commit you pushed in the previous step.
 
-You can also clone with a self-contained remote URL for a short-lived command:
-
-```sh
-git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
-```
+The local Git port is saved with your local state and reused after a dev-server restart. If it changes because another process took it, use the new `remote` URL returned by your Worker.
 
 ## 7. Deploy your Worker
 
@@ -341,6 +332,10 @@ Wrangler prints your `workers.dev` URL. Use the same `curl` request against that
 
 ## Next steps
 
+### [Local development](https://developers.cloudflare.com/artifacts/guides/local-development/)
+
+Configure local Artifacts, persistence, Git, and explicit remote opt-in.
+
 ### [Workers binding reference](https://developers.cloudflare.com/artifacts/api/workers-binding/)
 
 Review the binding surface, return types, and method-by-method examples.
@@ -362,5 +357,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Workers","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/get-started/workers/og.png?v=880a8c41de9190da","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Workers","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/get-started/workers/og.png?v=880a8c41de9190da","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

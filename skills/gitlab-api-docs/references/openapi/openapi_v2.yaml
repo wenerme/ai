@@ -56959,6 +56959,13 @@ definitions:
             dist:
               shasum: '12345'
               tarball: https://...
+      time:
+        type: object
+        example:
+          created: '2026-01-12T08:41:01.956Z'
+          modified: '2026-01-15T10:36:46.866Z'
+          1.0.0: '2026-01-12T08:41:01.956Z'
+          1.0.1: '2026-01-15T10:36:46.866Z'
       dist-tags:
         type: object
         example:

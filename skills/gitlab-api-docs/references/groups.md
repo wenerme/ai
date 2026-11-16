@@ -1864,6 +1864,7 @@ Returns `204` and no content on success.
 - `ai_audit_events_storage_enabled` and `lock_ai_audit_events_storage_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2.
 - `ai_governance_enabled` and `lock_ai_governance_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261994) in GitLab 19.6.
 - `duo_code_review_depth_allowed` and `duo_code_review_default_depth` [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_deep_flow`. Disabled by default.
+- Feature flag [renamed](https://gitlab.com/groups/gitlab-org/-/work_items/23598) to `duo_code_review_standard_flow`, and `duo_code_review_default_depth` values `standard` and `deep` renamed to `lite` and `standard` in GitLab 19.7.
 
 Updates the attributes for a specified group.
 
@@ -1927,7 +1928,7 @@ PUT /groups/:id
 | `duo_features_enabled`                               | boolean           | no       | Indicates whether GitLab Duo features are enabled for this group. GitLab Self-Managed, Premium and Ultimate only. |
 | `lock_duo_features_enabled`                          | boolean           | no       | Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. GitLab Self-Managed, Premium and Ultimate only. |
 | `duo_code_review_depth_allowed`                       | boolean           | no       | If `true`, Code Review Flow can run reviews at different depths in this group. Beta. |
-| `duo_code_review_default_depth`                       | string            | no       | Default review depth for Code Review Flow. One of `standard` or `deep`. If `duo_code_review_depth_allowed` is `false`, `deep` is saved as `standard`. Beta. |
+| `duo_code_review_default_depth`                       | string            | no       | Default review depth for Code Review Flow. One of `lite` or `standard`. If `duo_code_review_depth_allowed` is `false`, `standard` is saved as `lite`. Beta. |
 | `ai_audit_events_storage_enabled`                    | boolean           | no       | Indicates whether AI audit events are stored for the group. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2. Premium and Ultimate only. |
 | `lock_ai_audit_events_storage_enabled`               | boolean           | no       | Indicates whether the AI audit events storage setting is enforced for all subgroups and projects. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2. Premium and Ultimate only. |
 | `ai_governance_enabled`                              | boolean           | no       | Indicates whether AI Governance is turned on for the group, its subgroups, and its projects. Off by default. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261994) in GitLab 19.6. Premium and Ultimate only. |

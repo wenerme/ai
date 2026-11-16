@@ -12,11 +12,12 @@ image: https://developers.cloudflare.com/artifacts/guides/og.png?v=6fd584c72d6ad
 
 # Guides
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In-depth guides for using Artifacts in production, including how Artifacts authenticates clients, imports existing Git repos, and mounts large repos within sandboxes.
+Guides for local development and deployed Artifacts, including authentication, imports, and mounting large repos within sandboxes.
 
 - [Authentication](https://developers.cloudflare.com/artifacts/guides/authentication/)
+- [Local development](https://developers.cloudflare.com/artifacts/guides/local-development/)
 - [Import repositories](https://developers.cloudflare.com/artifacts/guides/import-repositories/)
 - [ArtifactFS](https://developers.cloudflare.com/artifacts/guides/artifact-fs/)
 - [Event subscriptions](https://developers.cloudflare.com/artifacts/guides/event-subscriptions/)
@@ -32,5 +33,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/guides/#page","headline":"Guides","description":"Use Artifacts with the right auth and workflows.","url":"https://developers.cloudflare.com/artifacts/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/guides/og.png?v=6fd584c72d6adb35","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/artifacts/guides/#page","headline":"Guides","description":"Use Artifacts with the right auth and workflows.","url":"https://developers.cloudflare.com/artifacts/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/guides/og.png?v=6fd584c72d6adb35","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

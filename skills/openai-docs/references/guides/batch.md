@@ -38,6 +38,8 @@ For a given input file, the parameters in each line's `body` field are the same 
 
 When targeting `/v1/moderations`, include an `input` field in every request body. Batch accepts plain-text inputs and content arrays with text or image inputs using `omni-moderation-latest`. The Batch worker rejects requests that set `stream=true`, matching the synchronous moderation endpoint.
 
+The Batch API doesn't support `omni-moderation-csam-latest`. Approved organizations can use the [CSAM classifier](https://developers.openai.com/api/docs/guides/csam-classifier) with a synchronous request.
+
 ```jsonl
 {"custom_id": "request-1", "method": "POST", "url": "/v1/responses", "body": {"model": "gpt-6-luna", "input": "Reply with the word blue.", "reasoning": {"effort": "none"}, "max_output_tokens": 64}}
 {"custom_id": "request-2", "method": "POST", "url": "/v1/responses", "body": {"model": "gpt-6-luna", "input": "Reply with the word green.", "reasoning": {"effort": "none"}, "max_output_tokens": 64}}

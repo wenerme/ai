@@ -617,6 +617,10 @@ which prioritizes accuracy over coverage. To detect more potential data flows, y
 unverified vulnerabilities. This feature reports findings even when a complete data flow path cannot
 be established, which increases coverage but may also increase the number of false positives.
 
+Unverified vulnerability reporting applies only to the `gitlab-advanced-sast` job. The
+`gitlab-advanced-sast-cpp` job (GitLab Advanced SAST CPP) and the `gitlab-advanced-sast-ext` job do
+not support it and ignore the `REPORT_UNVERIFIED_VULNS` variable.
+
 When you enable unverified vulnerability reporting, the analyzer also reports findings where a
 partial taint flow was detected but could not be fully verified from source to sink. These
 near-miss findings help you identify and proactively fix risky code before it becomes exploitable.
@@ -768,7 +772,7 @@ You can adjust GitLab Advanced SAST behavior using the following variables:
 | `GITLAB_ADVANCED_SAST_EXT_DEDUP_LANGUAGES` | `kotlin,scala,swift` | Applies only to the `gitlab-advanced-sast-ext` analyzer. Comma-separated list of beta languages for which the analyzer defers to `semgrep-sast` for the weaknesses Semgrep already reports, so they are not reported twice. For Kotlin: CWE-89, CWE-78, CWE-22, CWE-79, CWE-327, and CWE-295. For Scala: CWE-89, CWE-78, CWE-79, CWE-918, and CWE-601. For Swift: the Keychain accessibility check (CWE-922). Set to an empty value to turn the de-duplication off, for example when benchmarking. |
 | `ADVANCED_SAST_PARTIAL_SCAN`                | `false`                | Enable GitLab Advanced SAST diff-scanning mode by setting to `differential`.                                                                                                                    |
 | `GITLAB_ADVANCED_SAST_RULE_TIMEOUT`         | `30`                   | Timeout in seconds per rule per file. When exceeded, that analysis is skipped.                                                                                                                  |
-| `REPORT_UNVERIFIED_VULNS`                   | `false`                | Include unverified findings in scan results. Set to `true`, `1`, or `True` to enable.                                                                                                           |
+| `REPORT_UNVERIFIED_VULNS`                   | `false`                | Include unverified findings in scan results. Set to `true`, `1`, or `True` to enable. Applies only to the `gitlab-advanced-sast` job. The `gitlab-advanced-sast-cpp` and `gitlab-advanced-sast-ext` jobs ignore it. |
 | `GITLAB_ADV_SAST_INCR_SCAN_SEARCH_PERIOD`   | `3 days`               | How far back to search for a cached taint signature artifact. Supported format: number followed by `d`, `day`, or `days` (for example, `7 days`). Should not exceed the artifact expiry period. |
 | `GITLAB_ADV_SAST_INCR_SCAN_CUSTOM_JOB_NAME` | `gitlab-advanced-sast` | Custom job name for cache artifact lookup. Set this if you renamed the `gitlab-advanced-sast` job.                                                                                              |
 | `GITLAB_ADV_SAST_INCR_SCAN_STORAGE`         | Not set                | Cache storage backend. Set to `s3` to store the cache in AWS S3 instead of CI/CD artifacts. For details, see [store cache in external object storage](#store-cache-in-external-object-storage).           |

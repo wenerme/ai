@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/local-development/og.png?v=d7d1eb63e
 
 # Local development
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Develop and test applications against R2 with [Wrangler](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/). Both run your Worker locally and support local R2 simulations and remote bindings.
 
@@ -99,7 +99,7 @@ Create a minimal Wrangler project
      "name": "r2-local",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-11-13"
+     "compatibility_date": "2026-11-16"
    }
    ```
 
@@ -107,7 +107,7 @@ Create a minimal Wrangler project
    name = "r2-local"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-13"
+   compatibility_date = "2026-11-16"
    ```
 
 </details>
@@ -291,7 +291,7 @@ curl http://localhost:8787/cdn-cgi/local/r2/public/my-bucket/hello.txt
 
 The endpoint simulates a [public bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/). It accepts `GET` and `HEAD` requests, and honors the `Range` and conditional request headers. Stored HTTP metadata, such as `Content-Type`, is returned with the object.
 
-Requests using any other method return `401`. Buckets configured with `remote = true` are not served. This endpoint does not enable public access to a deployed bucket.
+Requests using any other method return `401`. Requests with a `Host` or `Origin` header other than `localhost`, `127.0.0.1`, or `[::1]` return `403`. Buckets configured with `remote = true` are not served. This endpoint does not enable public access to a deployed bucket.
 
 ## Serve buckets over the S3 API
 
@@ -441,7 +441,7 @@ Although the local endpoint tries to match R2's production behavior, it does not
 
 - Server-side encryption with customer-provided keys (SSE-C) is rejected rather than applied.
 - The `x-amz-storage-class` header accepts `STANDARD` only. Local buckets do not store a [storage class](https://developers.cloudflare.com/r2/buckets/storage-classes/), so `STANDARD_IA` is rejected.
-- Cross-origin requests are always allowed. Production buckets answer preflight requests according to their [CORS configuration](https://developers.cloudflare.com/r2/buckets/cors/).
+- Cross-origin requests are allowed only from `localhost`, `127.0.0.1`, or `[::1]` origins, on any port. The development server returns `403` for requests with any other `Host` or `Origin` header, including `*.localhost` subdomains, local network IP addresses, and hostnames behind a reverse proxy or tunnel. Production buckets answer preflight requests according to their [CORS configuration](https://developers.cloudflare.com/r2/buckets/cors/).
 
 ## Related resources
 
@@ -458,5 +458,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/local-development/#page","headline":"Local development","description":"Develop with local R2 buckets or remote bindings, seed and inspect test data, and access local public and S3-compatible endpoints.","url":"https://developers.cloudflare.com/r2/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/local-development/og.png?v=d7d1eb63e782ec6d","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/local-development/#page","headline":"Local development","description":"Develop with local R2 buckets or remote bindings, seed and inspect test data, and access local public and S3-compatible endpoints.","url":"https://developers.cloudflare.com/r2/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/local-development/og.png?v=d7d1eb63e782ec6d","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

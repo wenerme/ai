@@ -506,7 +506,12 @@ Other MLflowClient methods:
 
 ## Request limits
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263921) in GitLab 19.6.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263921) in GitLab 19.6 [with a feature flag](../../../../administration/feature_flags/_index.md) named `mlflow_enforce_request_limits`. Disabled by default.
+- Enabled on GitLab.com in GitLab 19.6.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 GitLab limits the number of items in some MLflow requests.
 When a request has more items than a limit, GitLab rejects the full request.

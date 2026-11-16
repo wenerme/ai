@@ -16,6 +16,24 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-core/index.xml)
 
+## 2026-11-16
+
+**RealtimeKit Web Core 2.1.0**
+
+**Compatibility:** Works best with RealtimeKit Web UI Kit 2.1.0 or later.
+
+**Features**
+
+- Added the preset permission `permissions.can_edit_meeting_title`. When `meeting.self.permissions.canEditMeetingTitle` is enabled, participants can update the meeting title with `meeting.meta.setMeetingTitle(title)`.
+- Added support for custom participant token validity windows using `not_before` and `expires_on`. Refer to [Token validity and refresh](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#token-validity-and-refresh). Token validation failures now include a specific `error.reason` under [error code `0004`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/error-codes/#error-code-0004), instead of a generic error. Listen for these errors with `window.addEventListener("ClientError", console.error)`.
+- Added `defaults.viewMode` to SDK initialization. Accepted values are `ACTIVE_GRID`, `PAGINATED`, and `MANUAL`. The selected mode is retained across reconnects. Refer to [Core SDK initialization](https://developers.cloudflare.com/realtime/realtimekit/humans/core/#advanced-options).
+
+**Enhancements**
+
+- Removed the deprecated `location.realtime.cloudflare.com` endpoint as part of API consolidation. With Web Core 2.1.0, you no longer need to include this domain in your [network allowlist](https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/).
+- Meeting and breakout room titles can now be updated after a breakout session starts, removing the restriction that titles could only be set before creation.
+- Participants can switch the screen they share without stopping the current share first. Call `meeting.self.enableScreenShare()` again to open the screen picker. A successful selection replaces the current share; otherwise, the current share continues. To stop sharing, call `meeting.self.disableScreenShare()`.
+
 ## 2026-10-19
 
 **RealtimeKit Web Core 2.0.4**

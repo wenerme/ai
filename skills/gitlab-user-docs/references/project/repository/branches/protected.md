@@ -47,7 +47,8 @@ Configure protected branches for individual projects or for all projects in a gr
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role.
+- The Maintainer or Owner role, or a [custom role](../../../custom_roles/_index.md) with the
+  `admin_protected_branch` permission.
 - When granting a group **Allowed to merge** or **Allowed to push and merge** permissions
   on a protected branch, the project must be accessible and shared with the group.
   For more information, see [shared projects](../../members/sharing_projects_groups.md).
@@ -178,7 +179,7 @@ how the branch behaves. For merge controls to work properly, set
 
 Prerequisites:
 
-- You must have the Maintainer or Owner role.
+- The Maintainer or Owner role, or a custom role with the `admin_protected_branch` permission.
 
 To protect multiple branches at the same time:
 
@@ -411,10 +412,14 @@ their feature branches. Thus, they can skip merge request approval rules, Code O
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 When you protect a branch, you can also control who can unprotect it later.
-By default, users with the Maintainer or Owner role can unprotect protected branches.
+If a branch has no unprotect access level, users with the Maintainer or Owner role can unprotect the branch.
+Users with a custom role that has the `admin_protected_branch` permission can also unprotect the branch.
+Branches protected in the UI or with the `branchRuleCreate` GraphQL mutation have no unprotect access level.
+If you protect a branch with the REST API and don't set `unprotect_access_level`,
+the unprotect access level is set to Maintainer.
 
 For organizations with regulatory or compliance requirements, you can restrict these permissions to
-specific users, groups, or access levels.
+specific users, groups, custom roles, or access levels.
 
 > [!note]
 > To avoid permanently locking protection settings for a branch, ensure at least one user or group
@@ -439,9 +444,10 @@ The following table shows who can unprotect a branch based on your configuration
 
 | Configuration                     | Who can unprotect |
 |-----------------------------------|-------------------|
-| Default behavior                  | Users with the Maintainer or Owner role |
+| Default behavior                  | Users with the Maintainer or Owner role, or a custom role with the `admin_protected_branch` permission |
 | Specific users configured         | Only designated users |
 | Specific groups configured        | Only members of designated groups |
+| Specific custom roles configured  | Only users assigned a designated custom role |
 | Multiple access levels configured | Any user, group, or role from the configured access levels |
 
 ## CI/CD on protected branches
@@ -478,8 +484,9 @@ If branch protection is configured to [allow everyone to push directly to a prot
 
 ## Delete protected branches
 
-Users with the Maintainer or Owner role can manually delete protected
-branches by using the GitLab web interface:
+Users with the Maintainer or Owner role, or a custom role with the `admin_protected_branch`
+permission and the Developer, Maintainer, or Owner role, can manually delete protected branches by using
+the GitLab web interface:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Code** > **Branches**.

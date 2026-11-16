@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/og.png
 
 # Build using Core SDK
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### Initialize Core SDK
 
@@ -293,6 +293,7 @@ You can pass the following options as `defaults` to alter default behavior.
 | --- | --- | --- | --- |
 | **video** | Should video be enabled by default | `boolean` | false |
 | **audio** | Should audio be enabled by default | `boolean` | false |
+| **viewMode** | Sets the initial view mode for Web Core 2.1.0 or later; retained across reconnects | `"ACTIVE_GRID" \| "PAGINATED" \| "MANUAL"` | false |
 | **mediaConfiguration** | Allows you to pass custom media quality constraints | `MediaConfiguration` | false |
 | **autoSwitchAudioDevice** | Automatically switch to a newly plugged microphone or speaker | `boolean` | false |
 | **isNonPreferredDevice** | Allows you to set specific devices as "not preferred" | `(device: MediaDeviceInfo) => boolean` | false |
@@ -348,6 +349,7 @@ interface RecordingConfig {
 interface DefaultOptions {
 	video?: boolean;
 	audio?: boolean;
+	viewMode?: "ACTIVE_GRID" | "PAGINATED" | "MANUAL"; // Web Core 2.1.0 or later.
 	mediaConfiguration?: MediaConfiguration;
 	isNonPreferredDevice?: (device: MediaDeviceInfo) => boolean;
 	autoSwitchAudioDevice?: boolean;
@@ -374,5 +376,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/#page","headline":"Build using Core SDK","description":"Initialize and build with the RealtimeKit Core SDK for full control over video calls.","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/og.png?v=73b47178a9b7ca88","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/#page","headline":"Build using Core SDK","description":"Initialize and build with the RealtimeKit Core SDK for full control over video calls.","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/og.png?v=73b47178a9b7ca88","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

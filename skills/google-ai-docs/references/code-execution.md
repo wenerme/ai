@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # Code execution
 
@@ -273,14 +273,14 @@ manipulate and inspect images.
 
 **Use cases**
 
-*   **Zoom and inspect**: The model implicitly detects when details are too small
+* **Zoom and inspect**: The model implicitly detects when details are too small
   (e.g., reading a distant gauge) and writes code to crop and re-examine the area
   at higher resolution.
 
-*   **Visual math**: The model can run multi-step calculations using code (e.g.,
+* **Visual math**: The model can run multi-step calculations using code (e.g.,
   summing line items on a receipt).
 
-*   **Image annotation**: The model can annotate images to answer questions, such
+* **Image annotation**: The model can annotate images to answer questions, such
   as drawing arrows to show relationships.
 
 
@@ -866,16 +866,16 @@ tokens:
 When you're working with code execution I/O, be aware of the following technical
 details:
 
-*   The maximum runtime of the code environment is 30 seconds.
+* The maximum runtime of the code environment is 30 seconds.
 
-*   If the code environment generates an error, the model may decide to
+* If the code environment generates an error, the model may decide to
   regenerate the code output. This can happen up to 5 times.
 
-*   The maximum file input size is limited by the model token window. If you upload a file that exceeds the model's maximum context window, the API will return an error.
+* The maximum file input size is limited by the model token window. If you upload a file that exceeds the model's maximum context window, the API will return an error.
 
-*   Code execution works best with text and CSV files.
+* Code execution works best with text and CSV files.
 
-*   The input file can be passed as inline data or uploaded using the
+* The input file can be passed as inline data or uploaded using the
   [Files API](/docs/files),
   and the output file is always returned as inline data.
 
@@ -888,43 +888,43 @@ Gemini model you're using.
 
 Here are a few other things to know about billing for code execution:
 
-*   You're only billed once for the input tokens you pass to the model, and you're
+* You're only billed once for the input tokens you pass to the model, and you're
   billed for the final output tokens returned to you by the model.
 
-*   Tokens representing generated code are counted as output tokens. Generated
+* Tokens representing generated code are counted as output tokens. Generated
   code can include text and multimodal output like images.
 
-*   Code execution results are also counted as output tokens.
+* Code execution results are also counted as output tokens.
 
 
 The billing model is shown in the following diagram:
 
 ![](https://www.gstatic.com/cloud-cms/ecde91a1ae68725124dc8c1532aabd8c.png)
 
-*   You're billed at the current rate of input and output tokens based on the
+* You're billed at the current rate of input and output tokens based on the
   Gemini model you're using.
 
-*   If Gemini uses code execution when generating your response, the original
+* If Gemini uses code execution when generating your response, the original
   prompt, the generated code, and the result of the executed code are labeled
   *intermediate tokens* and are billed as *input tokens*.
 
-*   Gemini then generates a summary and returns the generated code, the result of
+* Gemini then generates a summary and returns the generated code, the result of
   the executed code, and the final summary. These are billed as *output tokens*.
 
-*   The Gemini API includes an intermediate token count in the API response, so
+* The Gemini API includes an intermediate token count in the API response, so
   you know why you're getting additional input tokens beyond your initial
   prompt.
 
 
 ## Limitations  {% id="limitations" %}
 
-*   The model can only generate and execute code. It can't return other artifacts
+* The model can only generate and execute code. It can't return other artifacts
   like media files.
 
-*   In some cases, enabling code execution can lead to regressions in other areas
+* In some cases, enabling code execution can lead to regressions in other areas
   of model output (for example, writing a story).
 
-*   There is some variation in the ability of the different models to use code
+* There is some variation in the ability of the different models to use code
   execution successfully.
 
 
@@ -989,7 +989,8 @@ You can't install your own libraries.
 ## What's next  {% id="whats-next" %}
 
 * Try the [Code execution quickstart](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Code_Execution.ipynb) in Google Colab.
-* Learn about other Gemini API tools:  * [Function calling](/docs/function-calling)
+* Learn about other Gemini API tools:
+  * [Function calling](/docs/function-calling)
   * [Grounding with Google Search](/docs/google-search)
 
 

@@ -95,34 +95,64 @@ To authenticate:
 
 To modify the configuration after initial setup, use `duo config edit`.
 
-### Authenticate with environment variables
+### Configure with environment variables
+
+- Support for `GITLAB_HOST` [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v10.1.0) in GitLab Duo CLI 10.1.0, during the GitLab 19.6 release.
+
+Use environment variables to configure the GitLab Duo CLI when you:
+
+- Run the GitLab Duo CLI in headless mode, CI/CD pipelines, or scripts, where you can't
+  authenticate interactively.
+- Configure developer machines centrally and want to use the same variables as the
+  [GitLab CLI](https://docs.gitlab.com/cli/).
 
 Prerequisites:
 
 - A [personal access token](../profile/personal_access_tokens.md) with `api` permissions.
 
-The GitLab Duo CLI respects standard proxy environment variables:
+The GitLab Duo CLI, the GitLab CLI, the
+[GitLab for VS Code extension](../../editor_extensions/visual_studio_code/setup.md#configure-with-environment-variables),
+and the GitLab Duo plugin for JetBrains IDEs all read `GITLAB_HOST` and `GITLAB_TOKEN`.
+Use these shared variables when possible, so one configuration covers all of these tools.
+Before you start the GitLab Duo CLI, set `GITLAB_HOST` and `GITLAB_TOKEN`:
+
+| Variable       | Description |
+| -------------- | ----------- |
+| `GITLAB_HOST`  | Your GitLab instance URL or hostname. For example, `https://gitlab.example.com`. If you omit `http://` or `https://`, the GitLab Duo CLI uses `https://`. |
+| `GITLAB_TOKEN` | Your personal access token for `GITLAB_HOST`. |
+
+For example:
+
+```shell
+export GITLAB_HOST="https://gitlab.example.com"
+export GITLAB_TOKEN="<your-personal-access-token>"
+```
+
+The GitLab Duo CLI also reads these variables:
+
+| Variable                          | Description |
+| --------------------------------- | ----------- |
+| `GITLAB_URL` or `GITLAB_BASE_URL` | Your GitLab instance URL, including the `http://` or `https://`. For example, `https://gitlab.example.com`. Takes priority over `GITLAB_HOST`. |
+| `GITLAB_OAUTH_TOKEN`              | Your authentication token. Used only when `GITLAB_TOKEN` is not set. |
+
+The GitLab Duo CLI reads these variables as follows:
+
+- `GITLAB_TOKEN` takes priority over a token you saved with `duo config edit` and over the
+  GitLab CLI credentials.
+- If you set `GITLAB_TOKEN` without `GITLAB_HOST`, `GITLAB_URL`, or `GITLAB_BASE_URL`, the
+  GitLab Duo CLI sends the token to the instance you saved with `duo config edit`, or to
+  `https://gitlab.com`. Always set `GITLAB_HOST` with `GITLAB_TOKEN`.
+- The GitLab Duo CLI does not read `GITLAB_CLIENT_ID`.
+
+The GitLab Duo CLI also respects standard proxy environment variables:
 
 - `HTTP_PROXY` or `http_proxy`: Proxy URL for HTTP requests.
 - `HTTPS_PROXY` or `https_proxy`: Proxy URL for HTTPS requests.
 - `NO_PROXY` or `no_proxy`: Comma-separated list of hosts to exclude from proxying.
 
-To authenticate with environment variables:
-
-1. Set `GITLAB_TOKEN` or `GITLAB_OAUTH_TOKEN` to your personal access token.
-
-   ```shell
-   export GITLAB_TOKEN="<your-personal-access-token>"
-   ```
-
-1. Optional. Set `GITLAB_BASE_URL` or `GITLAB_URL` to your custom GitLab instance URL, for example `https://gitlab.example.com`. The default is `https://gitlab.com`.
-
-   ```shell
-   export GITLAB_BASE_URL="<your-instance-url>"
-   ```
-
-This method is useful for headless mode, CI/CD pipelines, and scripted workflows
-where interactive authentication is not possible.
+To avoid storing a personal access token in environment variables, authenticate with OAuth instead.
+Use the GitLab Duo CLI [with the GitLab CLI](#with-the-gitlab-cli), and do not set `GITLAB_TOKEN` or `GITLAB_OAUTH_TOKEN`.
+The GitLab CLI reads `GITLAB_HOST` and `GITLAB_CLIENT_ID` itself.
 
 ## Related topics
 

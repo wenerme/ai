@@ -2353,6 +2353,7 @@ see [Project feature visibility level](#project-feature-visibility-level).
 - `duo_code_review_decisions_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254980) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_decisions`. Disabled by default.
 - `duo_code_review_decisions_enabled` [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270328) in GitLab 19.6.
 - `duo_code_review_depth_allowed` and `duo_code_review_default_depth` [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_deep_flow`. Disabled by default.
+- Feature flag [renamed](https://gitlab.com/groups/gitlab-org/-/work_items/23598) to `duo_code_review_standard_flow`, and `duo_code_review_default_depth` values `standard` and `deep` renamed to `lite` and `standard` in GitLab 19.7.
 
 Updates an existing project.
 
@@ -2401,7 +2402,7 @@ Supported general project attributes:
 | `default_branch`                                   | string            | No       | The [default branch](../user/project/repository/branches/default.md) name. |
 | `description`                                      | string            | No       | Short project description. |
 | `duo_code_review_decisions_enabled`                | boolean           | No       | Enable approval and change requests by GitLab Duo on merge requests. See [GitLab Duo in merge requests](../user/project/merge_requests/duo_in_merge_requests.md#use-gitlab-duo-to-review-your-code). Ultimate only. |
-| `duo_code_review_default_depth`                    | string            | No       | Default review depth for Code Review Flow. One of `standard` or `deep`. If `duo_code_review_depth_allowed` is `false`, `deep` is saved as `standard`. Beta. |
+| `duo_code_review_default_depth`                    | string            | No       | Default review depth for Code Review Flow. One of `lite` or `standard`. If `duo_code_review_depth_allowed` is `false`, `standard` is saved as `lite`. Beta. |
 | `duo_code_review_depth_allowed`                     | boolean           | No       | If `true`, Code Review Flow can run reviews at different depths in this project. Beta. |
 | `duo_remote_flows_enabled`                         | boolean           | No       | Determine whether or not [flows](../user/duo_agent_platform/flows/_index.md) can run in your project. |
 | `duo_sast_fp_detection_enabled` | boolean | No | If `true`, turns on SAST false positive detection. Requires the Security Manager, Maintainer, or Owner role. See [turn on SAST false positive detection](../user/application_security/vulnerabilities/false_positive_detection.md#turn-on-for-a-project). |

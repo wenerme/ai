@@ -313,6 +313,16 @@ The possible names are:
 - `throttle_unauthenticated_git_http`
 - `throttle_authenticated_git_http`
 - `throttle_authenticated_mcp`
+- `throttle_unauthenticated_git_http_project`
+- `throttle_authenticated_git_http_project`
+- `throttle_authenticated_git_lfs_project`
+
+The three throttles that end in `_project` are companion throttles for the per-project Git rate
+limit override. They enforce a project's own limit, and run alongside the instance-wide throttle
+of the same name, not instead of it. Because they're separate throttles, setting the instance-wide
+throttle to dry run doesn't also set its companion to dry run. To observe rather than enforce Git
+rate limits for a project with an override, name both throttles, for example
+`throttle_authenticated_git_http` and `throttle_authenticated_git_http_project`.
 
 For example, you can try out throttles for all authenticated requests to
 non-protected paths by setting

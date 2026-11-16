@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # Image understanding
 
@@ -1512,17 +1512,17 @@ read fine text or identify small details, but increase token usage and latency.
 This guide shows you how to upload image files and generate text outputs
 from image inputs. To learn more, see the following resources:
 
-*   [Files API](/docs/files): Learn more about uploading and managing files for use with Gemini.
+* [Files API](/docs/files): Learn more about uploading and managing files for use with Gemini.
 
-*   [System instructions](/docs/text-generation#system-instructions):
+* [System instructions](/docs/text-generation#system-instructions):
   System instructions let you steer the behavior of the model based on your
   specific needs and use cases.
 
-*   [File prompting strategies](/docs/files#prompt-guide): The
+* [File prompting strategies](/docs/files#prompt-guide): The
   Gemini API supports prompting with text, image, audio, and video data, also
   known as multimodal prompting.
 
-*   [Safety guidance](/docs/safety-guidance): Sometimes generative
+* [Safety guidance](/docs/safety-guidance): Sometimes generative
   AI models produce unexpected outputs, such as outputs that are inaccurate,
   biased, or offensive. Post-processing and human evaluation are essential to
   limit the risk of harm from such outputs.

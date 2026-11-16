@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # Gemini Live API overview
 
@@ -23,27 +23,27 @@ experience for your users.
 Live API can be used to build real-time voice agents for a
 variety of industries, including:
 
-*   **E-commerce and retail:** Shopping assistants that offer personalized
+* **E-commerce and retail:** Shopping assistants that offer personalized
   recommendations and support agents that resolve customer issues.
 
-*   **Gaming:** Interactive non-player characters (NPCs), in-game help
+* **Gaming:** Interactive non-player characters (NPCs), in-game help
   assistants, and real-time translation of in-game content.
 
-*   **Next-gen interfaces:** Voice- and video-enabled experiences in robotics,
+* **Next-gen interfaces:** Voice- and video-enabled experiences in robotics,
   smart glasses, and vehicles.
 
-*   **Healthcare:** Health companions for patient support and education.
+* **Healthcare:** Health companions for patient support and education.
 
-*   **Financial services:** AI advisors for wealth management and investment
+* **Financial services:** AI advisors for wealth management and investment
   guidance.
 
-*   **Education:** AI mentors and learner companions that provide personalized
+* **Education:** AI mentors and learner companions that provide personalized
   instruction and feedback.
 
-*   **Translation and localization:** Real-time, low-latency translation of
+* **Translation and localization:** Real-time, low-latency translation of
   spoken conversations, enabling seamless multilingual communication.
 
-*   **Live transcription and captioning:** Real-time speech-to-text streaming for
+* **Live transcription and captioning:** Real-time speech-to-text streaming for
   live subtitles, meeting transcription, voice dictation, and customer call logging.
 
 
@@ -52,29 +52,29 @@ variety of industries, including:
 Live API offers a comprehensive set of features for building
 robust voice agents:
 
-*   [**Multilingual support**](/docs/live-api/capabilities#supported-languages):
+* [**Multilingual support**](/docs/live-api/capabilities#supported-languages):
   Converse in 70 supported languages.
 
-*   [**Barge-in**](/docs/live-api/capabilities#interruptions):
+* [**Barge-in**](/docs/live-api/capabilities#interruptions):
   Users can interrupt the model at any time for responsive interactions.
 
-*   [**Tool use**](/docs/live-api/tools):
+* [**Tool use**](/docs/live-api/tools):
   Integrates tools like function calling and Google Search for dynamic
   interactions.
 
-*   [**Audio transcriptions**](/docs/live-api/capabilities#audio-transcription):
+* [**Audio transcriptions**](/docs/live-api/capabilities#audio-transcription):
   Provides text transcripts of both user input and model output.
 
-*   [**Proactive audio**](/docs/live-api/capabilities#proactive-audio):
+* [**Proactive audio**](/docs/live-api/capabilities#proactive-audio):
   Lets you control when the model responds and in what contexts.
 
-*   [**Affective dialog**](/docs/live-api/capabilities#affective-dialog):
+* [**Affective dialog**](/docs/live-api/capabilities#affective-dialog):
   Adapts response style and tone to match the user's input expression.
 
-*   [**Live Transcription**](/docs/live-api/live-transcribe):
+* [**Live Transcription**](/docs/live-api/live-transcribe):
   Real-time, continuous speech-to-text streaming with automatic language detection and custom vocabulary.
 
-*   [**Live Translation**](/docs/live-api/live-translate):
+* [**Live Translation**](/docs/live-api/live-translate):
   Real-time voice-to-voice translation in 70+ languages.
 
 
@@ -108,11 +108,11 @@ Live API:
 When integrating with Live API, you'll need to choose one of the following
 implementation approaches:
 
--   **Server-to-server**: Your backend connects to the Live API using
+- **Server-to-server**: Your backend connects to the Live API using
   [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). Typically, your client sends stream data (audio, video,
   text) to your server, which then forwards it to the Live API.
 
--   **Client-to-server**: Your frontend code connects directly to the Live API
+- **Client-to-server**: Your frontend code connects directly to the Live API
   using [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) to stream data, bypassing your backend.
 
 

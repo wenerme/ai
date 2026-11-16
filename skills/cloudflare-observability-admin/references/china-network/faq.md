@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/china-network/faq/og.png?v=796c8e7c41a6
 
 # FAQ
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites and onboarding
 
@@ -64,7 +64,9 @@ All sites hosted in Mainland China must have IPv6 enabled. China Network automat
 
 ### Is Turnstile available in Mainland China?
 
-[Turnstile](https://developers.cloudflare.com/turnstile/) is not supported in Mainland China. Therefore, both China Network zones and [global zones](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) with users visiting your content from Mainland China may experience issues with Turnstile.
+Turnstile in China serves challenges and validates tokens through endpoints within Mainland China. Contact your account team to request access. A China Network subscription is not required.
+
+Refer to [Get started with Turnstile](https://developers.cloudflare.com/turnstile/get-started/) for implementation guidance.
 
 ### Is Pages available in Mainland China?
 
@@ -79,5 +81,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/faq/#page","headline":"FAQ","description":"Review FAQs for Cloudflare's China Network.","url":"https://developers.cloudflare.com/china-network/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/china-network/faq/og.png?v=796c8e7c41a66c60","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/faq/#page","headline":"FAQ","description":"Review FAQs for Cloudflare's China Network.","url":"https://developers.cloudflare.com/china-network/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/china-network/faq/og.png?v=796c8e7c41a66c60","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

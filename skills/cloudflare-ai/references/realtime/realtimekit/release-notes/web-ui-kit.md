@@ -16,6 +16,37 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/index.xml)
 
+## 2026-11-16
+
+**RealtimeKit Web UI Kit 2.1.0**
+
+**Compatibility:** Works best with RealtimeKit Web Core 2.1.0 or later.
+
+**Features**
+
+- Added support for custom participant token validity windows, with specific messages for tokens that are not yet valid, expired, revoked, or invalid. The UI also displays a specific message for inactive meetings. Refer to [Token validity and refresh](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#token-validity-and-refresh).
+- Added meeting title editing for participants with the preset permission `permissions.can_edit_meeting_title`.
+- Added a screen-sharing menu with options to share a different screen or stop sharing. Participants can select a different screen without stopping the current share first.
+
+**New localization keys**
+
+Added the following entries to the [default language pack](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/meeting-locale/#default-language-reference):
+
+- `init.token_not_yet_valid` - "Your access to this meeting isn't active yet. Please try again at the meeting time."
+- `init.token_expired` - "Your access to this meeting has expired. Please ask the meeting organizer for a new invite."
+- `init.token_revoked` - "Your access to this meeting has been revoked. Please contact the meeting organizer."
+- `init.token_invalid` - "We couldn't verify your access to this meeting. Please ask the meeting organizer for a new invite."
+- `init.meeting_inactive` - "This meeting is inactive and is not accepting participants."
+- `meeting_title.edit` - "Edit meeting title"
+- `meeting_title.save` - "Save meeting title"
+- `screenshare.share_different_screen` - "Share Different Screen"
+- `screenshare.menu` - "Screen Sharing"
+
+**New icons**
+
+- `share_screen_different` - Identifies the menu option to share a different screen.
+- `share_screen_menu` - Indicates that multiple screen-sharing options are available, rather than only stopping the current share.
+
 ## 2026-10-12
 
 **RealtimeKit Web UI Kit 2.0.3**

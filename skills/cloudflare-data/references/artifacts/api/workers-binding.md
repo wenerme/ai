@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/artifacts/api/workers-binding/og.png?v=
 
 # Workers binding
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/api/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/api/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Artifacts Workers binding to create, import, inspect, fork, and delete repos directly from your Worker. The Artifacts binding returns disposable repository capabilities that support metadata lookup, token management, Git object inspection, path-based file reads, commit history, and forking.
 
@@ -38,7 +38,7 @@ Add the Artifacts binding to your Wrangler config file:
 [[artifacts]]
 binding = "ARTIFACTS"
 namespace = "default" # replace with your Artifacts namespace
-# remote = true # optional: use the remote Artifacts service in local dev
+# Set remote = true to use deployed Artifacts during local development.
 ```
 
 After you run `npx wrangler types`, your Worker environment looks like this:
@@ -49,7 +49,7 @@ export interface Env {
 }
 ```
 
-Wrangler generates the `Artifacts` type for consumers and binds it directly in your environment.
+Wrangler generates the `Artifacts` type for consumers and binds it directly in your environment. In local development, omitting `remote` or setting `remote = false` uses the local simulator. Set `remote = true` to reach the deployed service. For the local Git prerequisite, storage boundaries, and setup instructions, refer to [Local development](https://developers.cloudflare.com/artifacts/guides/local-development/).
 
 Note
 
@@ -644,5 +644,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/api/workers-binding/og.png?v=8f6f94f63f1b3c24","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/api/workers-binding/og.png?v=8f6f94f63f1b3c24","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

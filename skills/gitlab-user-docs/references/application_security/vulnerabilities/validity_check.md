@@ -121,10 +121,12 @@ Validity checks support the following secret types:
 - Ionic personal access tokens
 - LangChain API keys
 - Linear personal API keys
+- Lob API keys
 - Mailgun private API keys
 - MessageBird access keys
 - New Relic user API keys
 - npm access tokens
+- Onfido live API tokens
 - OpenAI admin API keys
 - OpenAI project API keys
 - OpenAI service account keys
@@ -179,6 +181,7 @@ The supported URLs are:
 
 - `https://api.anthropic.com/v1/models`
 - `https://api.brevo.com/v3/account`
+- `https://api.ca.onfido.com/v3.6/applicants`
 - `https://api.contentful.com/users/me`
 - `https://api.datadoghq.com/api/v1/validate`
 - `https://api.digitalocean.com/v2/account`
@@ -187,6 +190,7 @@ The supported URLs are:
 - `https://api.easypost.com/v2/addresses`
 - `https://api.eu.contentful.com/users/me`
 - `https://api.eu.newrelic.com/v2/applications.json`
+- `https://api.eu.onfido.com/v3.6/applicants`
 - `https://api.fastly.com/tokens/self`
 - `https://api.flutterwave.com/v3/balances`
 - `https://api.getbeamer.com/v0/ping`
@@ -200,6 +204,7 @@ The supported URLs are:
 - `https://api.intercom.io/me`
 - `https://api.ionicjs.com/users/self`
 - `https://api.linear.app/graphql`
+- `https://api.lob.com/v1/addresses`
 - `https://api.mailgun.net/v4/domains`
 - `https://api.newrelic.com/v2/applications.json`
 - `https://api.notification.canada.ca/v2/notifications`
@@ -214,6 +219,7 @@ The supported URLs are:
 - `https://api.typeform.com/me`
 - `https://api.typeform.eu/me`
 - `https://api.us.highnote.com/graphql`
+- `https://api.us.onfido.com/v3.6/applicants`
 - `https://api.us.test.highnote.com/graphql`
 - `https://app.asana.com/api/1.0/users/me`
 - `https://app.terraform.io/api/v2/account/details`
