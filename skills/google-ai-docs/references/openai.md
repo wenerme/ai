@@ -84,14 +84,14 @@ aren't already using the OpenAI libraries, we recommend that you call the
 
   What changed? Just three lines!
 
-  *   **`api_key="GEMINI_API_KEY"`**: Replace "`GEMINI_API_KEY`" with your actual Gemini
-      API key, which you can get in [Google AI Studio](https://aistudio.google.com).
+  * **`api_key="GEMINI_API_KEY"`**: Replace "`GEMINI_API_KEY`" with your actual Gemini
+    API key, which you can get in [Google AI Studio](https://aistudio.google.com).
 
-  *   **`base_url="https://generativelanguage.googleapis.com/v1beta/openai/"`:** This
-      tells the OpenAI library to send requests to the Gemini API endpoint instead of
-      the default URL.
+  * **`base_url="https://generativelanguage.googleapis.com/v1beta/openai/"`:** This
+    tells the OpenAI library to send requests to the Gemini API endpoint instead of
+    the default URL.
 
-  *   **`model="gemini-4-hydrogen"`**: Choose a compatible Gemini model
+  * **`model="gemini-4-hydrogen"`**: Choose a compatible Gemini model
 
 
   {% /tab %}

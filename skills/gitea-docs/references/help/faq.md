@@ -131,19 +131,12 @@ You can also see an example of the `swagger.json` file at https://gitea.com/swag
 There are multiple things you can combine to prevent spammers.
 
 1. By whitelisting or blocklisting certain email domains
-2. By only whitelisting certain domains with OpenID (see below)
-3. Setting `ENABLE_CAPTCHA` to `true` in your `app.ini` and properly configuring `RECAPTCHA_SECRET` and `RECAPTCHA_SITEKEY`
-4. Settings `DISABLE_REGISTRATION` to `true` and creating new users via the [CLI](../administration/command-line.md), [API](development/api-usage.md), or Gitea's Admin UI
+2. Setting `ENABLE_CAPTCHA` to `true` in your `app.ini` and properly configuring `RECAPTCHA_SECRET` and `RECAPTCHA_SITEKEY`
+3. Settings `DISABLE_REGISTRATION` to `true` and creating new users via the [CLI](../administration/command-line.md), [API](development/api-usage.md), or Gitea's Admin UI
 
 ### Only allow/block certain email domains
 
 You can configure `EMAIL_DOMAIN_WHITELIST` or `EMAIL_DOMAIN_BLOCKLIST` in your app.ini under `[service]`
-
-### Only allow/block certain OpenID providers
-
-You can configure `WHITELISTED_URIS` or `BLACKLISTED_URIS` under `[openid]` in your `app.ini`
-
-> **note**: Whitelisted takes precedence, so if it is non-blank then blacklisted is ignored.
 
 ### Issue only users
 
@@ -323,14 +316,8 @@ It is highly recommended to back-up your database before running these commands.
 
 ## How to adopt repositories from disk
 
-- Add your (bare) repositories to the correct spot for your configuration (`repository.ROOT`), ensuring they are in the correct layout `<REPO_ROOT>/[user]/[repo].git`.
-  - **Note:** the directory names must be lowercase.
-  - You can also check `<ROOT_URL>/-/admin/config` for the repository root path.
-- Ensure that the user/org exists that you want to adopt repositories for.
-- As an admin, go to `<ROOT_URL>/-/admin/repos/unadopted` and search.
-  - Users can also be given similar permissions via config [`ALLOW_ADOPTION_OF_UNADOPTED_REPOSITORIES`](../administration/config-cheat-sheet.md#repository-repository).
-- If the above steps are done correctly, you should be able to select repositories to adopt.
-  - If no repositories are found, enable [debug logging](../administration/config-cheat-sheet.md#repository-repository) to check for any specific errors.
+To import repositories from disk, use the [Gitea importer](https://gitea.com/gitea/importer) with `--source-type local`.
+If the repositories are already under Gitea's repository root, move them outside it before importing to avoid conflicts with destination paths.
 
 ## Gitea can't start on NFS
 

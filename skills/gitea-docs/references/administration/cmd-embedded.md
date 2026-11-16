@@ -46,13 +46,6 @@ Listing all embedded files with `openid` in their path:
 ```sh
 $ gitea embedded list '**openid**'
 public/assets/img/auth/openid_connect.svg
-public/assets/img/openid-16x16.png
-templates/user/auth/finalize_openid.tmpl
-templates/user/auth/signin_openid.tmpl
-templates/user/auth/signup_openid_connect.tmpl
-templates/user/auth/signup_openid_navbar.tmpl
-templates/user/auth/signup_openid_register.tmpl
-templates/user/settings/security_openid.tmpl
 ```
 
 ## Extracting resources

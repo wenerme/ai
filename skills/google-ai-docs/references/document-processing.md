@@ -9,15 +9,15 @@ Gemini models can process documents in PDF format, using native
 vision to understand entire document contexts. This goes beyond
 just text extraction, allowing Gemini to:
 
-*   Analyze and interpret content, including text, images, diagrams,
+* Analyze and interpret content, including text, images, diagrams,
   charts, and tables, even in long documents up to 1000 pages.
 
-*   Extract information into [structured output](/docs/structured-output) formats.
+* Extract information into [structured output](/docs/structured-output) formats.
 
-*   Summarize and answer questions based on both the visual and textual elements
+* Summarize and answer questions based on both the visual and textual elements
   in a document.
 
-*   Transcribe document content (e.g. to HTML), preserving layouts and
+* Transcribe document content (e.g. to HTML), preserving layouts and
   formatting, for use in downstream applications.
 
 
@@ -1559,18 +1559,18 @@ Gemini 3 introduces granular control over multimodal vision processing with the
 high per individual media part. With this addition, the processing of PDF
 documents has been updated:
 
-1.   **Native text inclusion:** Text natively embedded in the PDF is extracted
-  and provided to the model.
+1. **Native text inclusion:** Text natively embedded in the PDF is extracted
+   and provided to the model.
 
-2.   **Billing & token reporting:**
+2. **Billing & token reporting:**
 
-  *     You are **not charged** for tokens originating from the extracted
-    **native text** in PDFs.
+   * You are **not charged** for tokens originating from the extracted
+     **native text** in PDFs.
 
-  *     In the `usage_metadata` section of the API response, tokens generated
-    from processing PDF pages (as images) are now counted under the `IMAGE`
-    modality, not a separate `DOCUMENT` modality as in some earlier
-    versions.
+   * In the `usage_metadata` section of the API response, tokens generated
+     from processing PDF pages (as images) are now counted under the `IMAGE`
+     modality, not a separate `DOCUMENT` modality as in some earlier
+     versions.
 
 
 
@@ -1605,11 +1605,11 @@ For best results:
 
 To learn more, see the following resources:
 
-*   [File prompting strategies](/docs/files#prompt-guide): The
+* [File prompting strategies](/docs/files#prompt-guide): The
   Gemini API supports prompting with text, image, audio, and video data, also
   known as multimodal prompting.
 
-*   [System instructions](/docs/text-generation#system-instructions):
+* [System instructions](/docs/text-generation#system-instructions):
   System instructions let you steer the behavior of the model based on your
   specific needs and use cases.
 

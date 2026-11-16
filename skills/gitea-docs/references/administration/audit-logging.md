@@ -110,7 +110,7 @@ Events cover security-relevant changes, grouped by action family:
 
 - **User**: create and delete, admin, restricted and active status, name,
   password and password reset requests, visibility, emails, authentication
-  source, 2FA, WebAuthn, OpenID, external logins, access tokens, OAuth2
+  source, 2FA, WebAuthn, external logins, access tokens, OAuth2
   applications and grants, SSH/GPG/principal keys, secrets, webhooks,
   impersonation, failed two-factor authentication
 - **Organization**: create and delete, name, visibility, members, teams,

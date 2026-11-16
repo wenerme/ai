@@ -89,8 +89,9 @@ To view Service Desk tickets:
 
 - Custom fields for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580397) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named
   `work_item_ticket_migration`. Disabled by default.
+- Custom fields for tickets [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/630485) in GitLab 19.6.
 - Status for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580398) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named
-  `work_item_ticket_migration`. Disabled by default.
+  `work_item_ticket_migration`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

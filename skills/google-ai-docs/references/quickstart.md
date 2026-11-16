@@ -36,13 +36,13 @@ To use the Gemini API, you need to have an API key to authenticate your
 requests, enforce security limits, and track usage to your account.
 
 *   Google AI Studio automatically creates a project and API key for new users.
-  You can copy it from the [API keys
-  page](https://aistudio.google.com/api-keys).
+    You can copy it from the [API keys
+    page](https://aistudio.google.com/api-keys).
 *   If you need a new key, click **Create API key** in AI Studio and follow the
-  dialog to add a new key-project pair.
+    dialog to add a new key-project pair.
 *   Additional projects and projects imported from Google Cloud may need
-  [project verification](/docs/verification) before they can use the free
-  tier.
+    [project verification](/docs/verification) before they can use the free
+    tier.
 
 {% button href="https://aistudio.google.com/apikey" variant="ais" %}Create a Gemini API Key{% /button %}
 
@@ -417,11 +417,11 @@ For a detailed look at handling streaming events and delta types, see the
 The Interactions API supports multi-turn conversations with two approaches:
 
 *   **Stateful (recommended)**: Continue a conversation on the server using
-  `previous_interaction_id`. Ideal for most chat and agentic workflows where
-  you want the server to manage history and optimize caching.
+    `previous_interaction_id`. Ideal for most chat and agentic workflows where
+    you want the server to manage history and optimize caching.
 *   **Stateless**: Manage the conversation history on the client by passing all
-  previous turns (including intermediate model thought and tool steps) in each
-  request.
+    previous turns (including intermediate model thought and tool steps) in each
+    request.
 
 {% tabs %}
   {% tab title=Stateful (recommended) %}
@@ -3128,21 +3128,21 @@ guide](/docs/background-execution).
 ## What's next  {% id="whats-next" %}
 
 -   [Text generation](/docs/text-generation): System instructions, generation
-  config, and advanced text patterns.
+    config, and advanced text patterns.
 -   [Image generation](/docs/image-generation): Aspect ratios, image editing,
-  and style references.
+    and style references.
 -   [Image understanding](/docs/image-understanding): Classification, object
-  detection, and visual Q&A.
+    detection, and visual Q&A.
 -   [Thinking](/docs/thinking): Use chain-of-thought reasoning for complex
-  tasks.
+    tasks.
 -   [Function calling](/docs/function-calling): Parallel, compositional, and
-  constrained function modes.
+    constrained function modes.
 -   [Google Search](/docs/google-search): Grounding, citations, and search
-  suggestions.
+    suggestions.
 -   [Managed Agents](/docs/managed-agents-quickstart): Pre-built agents with
-  code execution and file management.
+    code execution and file management.
 -   [Deep Research](/docs/deep-research): Autonomous multi-step research with
-  planning and synthesis.
+    planning and synthesis.
 -   [Structured output](/docs/structured-output): JSON schemas, enums, and
-  recursive type definitions.
+    recursive type definitions.
 

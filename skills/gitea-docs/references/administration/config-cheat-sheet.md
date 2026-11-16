@@ -144,8 +144,6 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
 - `DISABLE_MIGRATIONS`: **false**: Disable migrating feature.
 - `DISABLE_STARS`: **false**: Disable stars feature.
 - `DEFAULT_BRANCH`: **main**: Default branch name of all repositories.
-- `ALLOW_ADOPTION_OF_UNADOPTED_REPOSITORIES`: **false**: Allow non-admin users to adopt unadopted repositories
-- `ALLOW_DELETION_OF_UNADOPTED_REPOSITORIES`: **false**: Allow non-admin users to delete unadopted repositories
 - `DISABLE_DOWNLOAD_SOURCE_ARCHIVES`: **false**: Don't allow download source archive files from UI
 - `ALLOW_FORK_WITHOUT_MAXIMUM_LIMIT`: **true**: Allow to fork repositories without maximum number limit
 - `ALLOW_FORK_INTO_SAME_OWNER`: **false**: Allow to fork repositories into the same owner (user or organization).
@@ -562,7 +560,7 @@ And the following unique queues:
   - `manage_ssh_keys`: User cannot configure ssh keys.
   - `manage_gpg_keys`: User cannot configure gpg keys.
   - `manage_mfa`: a User cannot configure mfa devices.
-  - `manage_credentials`: a user cannot configure emails, passwords, or openid
+  - `manage_credentials`: a user cannot configure emails or passwords
   - `change_username`: a user cannot change their username
   - `change_full_name`: a user cannot change their full name
 - `EXTERNAL_USER_DISABLE_FEATURES`: **_empty_**: Comma separated list of disabled features ONLY if the user has an external login type (eg. LDAP, Oauth, etc.), could be `deletion`, `manage_ssh_keys`, `manage_gpg_keys`, `manage_mfa`, `manage_credentials`. This setting is independent from `USER_DISABLED_FEATURES` and supplements its behavior.
@@ -570,7 +568,7 @@ And the following unique queues:
   - `manage_ssh_keys`: User cannot configure ssh keys.
   - `manage_gpg_keys`: User cannot configure gpg keys.
   - `manage_mfa`: a User cannot configure mfa devices.
-  - `manage_credentials`: a user cannot configure emails, passwords, or openid
+  - `manage_credentials`: a user cannot configure emails or passwords
   - `change_username`: a user cannot change their username
   - `change_full_name`: a user cannot change their full name
 
@@ -672,15 +670,6 @@ And the following unique queues:
 - `HMAC_KEY`: **_empty_**: Provide the HMAC key for encoding URLs, it **is required** if camo is enabled.
 - `ALWAYS`: **false**: Set to true to use camo for both HTTP and HTTPS content, otherwise only non-HTTPS URLs are proxied. `ALLWAYS` is deprecated and will be removed in a future release.
 
-## OpenID (`openid`)
-
-- `ENABLE_OPENID_SIGNIN`: **false**: Allow authentication in via OpenID.
-- `ENABLE_OPENID_SIGNUP`: **false**: Allow registering via OpenID.
-- `WHITELISTED_URIS`: **_empty_**: If non-empty, list of POSIX regex patterns matching
-   OpenID URI's to permit.
-- `BLACKLISTED_URIS`: **_empty_**: If non-empty, list of POSIX regex patterns matching
-   OpenID URI's to block.
-
 ## OAuth2 Client (`oauth2_client`)
 
 - `REGISTER_EMAIL_CONFIRM`: _[service]_ **REGISTER\_EMAIL\_CONFIRM**: Set this to enable or disable email confirmation of OAuth2 auto-registration. (Overwrites the REGISTER\_EMAIL\_CONFIRM setting of the `[service]` section)
@@ -758,6 +747,7 @@ And the following unique queues:
 - `CF_TURNSTILE_SECRET` **""**: Go to https://dash.cloudflare.com/?to=/:account/turnstile to get a secret for cloudflare turnstile.
 - `CF_TURNSTILE_SITEKEY` **""**: Go to https://dash.cloudflare.com/?to=/:account/turnstile to get a sitekey for cloudflare turnstile.
 - `DEFAULT_KEEP_EMAIL_PRIVATE`: **false**: By default set users to keep their email address private.
+- `FORCE_USER_ACTIVITY_VISIBILITY`: **_empty_**: Force all users' activity to "public" or "private", overwriting their "Hide Activity" setting.
 - `DEFAULT_ALLOW_CREATE_ORGANIZATION`: **true**: Allow new users to create organizations by default.
 - `DEFAULT_USER_IS_RESTRICTED`: **false**: Give new users restricted permissions by default
 - `DEFAULT_ENABLE_DEPENDENCIES`: **true**: Enable this to have dependencies enabled by default.

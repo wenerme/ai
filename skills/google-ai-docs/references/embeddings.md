@@ -1006,14 +1006,14 @@ through the [Files API](/docs/files).
 When working with multimodal content, how you structure your input affects the
 embedding output:
 
-*   **Multiple parts (aggregated):** Adding multiple inputs directly to the
+* **Multiple parts (aggregated):** Adding multiple inputs directly to the
   `contents` parameter produces one aggregated embedding for all inputs.
 
-*   **Multiple `Content` objects (separate):** Wrapping each input in a
+* **Multiple `Content` objects (separate):** Wrapping each input in a
   `Content` object and passing them in the `contents` parameter returns
   separate embeddings for each entry.
 
-*   **Post-level representation:** For complex objects like social media posts
+* **Post-level representation:** For complex objects like social media posts
   with multiple media items, we recommend aggregating separate embeddings
   (for example, by averaging) to create a coherent post-level representation.
 
@@ -1646,31 +1646,31 @@ The following example shows how to embed a PDF using `gemini-embedding-2`:
 
 Text embeddings are crucial for a variety of common AI use cases, such as:
 
-*   **Retrieval-Augmented Generation (RAG):** Embeddings enhance the quality
+* **Retrieval-Augmented Generation (RAG):** Embeddings enhance the quality
   of generated text by retrieving and incorporating relevant information into
   the context of a model.
 
-*   **Information retrieval:** Search for the most semantically similar text or
+* **Information retrieval:** Search for the most semantically similar text or
   documents given a piece of input text.
 
   {% button href="https://github.com/google-gemini/cookbook/blob/main/examples/Talk_to_documents_with_embeddings.ipynb" icon="task" variant="primary" %}Document search tutorial{% /button %}
 
-*   **Search reranking**: Prioritize the most relevant items by semantically
+* **Search reranking**: Prioritize the most relevant items by semantically
   scoring initial results against the query.
 
   {% button href="https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb" icon="task" variant="primary" %}Search reranking tutorial{% /button %}
 
-*   **Anomaly detection:** Comparing groups of embeddings can help identify
+* **Anomaly detection:** Comparing groups of embeddings can help identify
   hidden trends or outliers.
 
   {% button href="https://github.com/google-gemini/cookbook/blob/main/examples/Anomaly_detection_with_embeddings.ipynb" icon="bubble_chart" variant="primary" %}Anomaly detection tutorial{% /button %}
 
-*   **Classification:** Automatically categorize text based on its content, such
+* **Classification:** Automatically categorize text based on its content, such
   as sentiment analysis or spam detection
 
   {% button href="https://github.com/google-gemini/cookbook/blob/main/examples/Classify_text_with_embeddings.ipynb" icon="token" variant="primary" %}Classification tutorial{% /button %}
 
-*   **Clustering:** Effectively grasp complex relationships by creating clusters
+* **Clustering:** Effectively grasp complex relationships by creating clusters
   and visualizations of your embeddings.
 
   {% button href="https://github.com/google-gemini/cookbook/blob/main/examples/clustering_with_embeddings.ipynb" icon="bubble_chart" variant="primary" %}Clustering visualization tutorial{% /button %}
@@ -1853,7 +1853,7 @@ re-embed all of your existing data.
 Beyond incompatibility, there are several other notable differences between
 the two models:
 
-*   **Task type specification:** With `gemini-embedding-001`, you specify the
+* **Task type specification:** With `gemini-embedding-001`, you specify the
   task type using the `task_type` parameter (e.g., `SEMANTIC_SIMILARITY`,
   `RETRIEVAL_DOCUMENT`). With `gemini-embedding-2`, the `task_type`
   parameter is not supported. Instead, you should include task instructions
@@ -1861,7 +1861,7 @@ the two models:
   [Task types with Embeddings 2](/docs/embeddings#task-types-embeddings-2) for details on how
   to format prompts for different use cases.
 
-*   **Embedding aggregation:** `gemini-embedding-001` generates individual
+* **Embedding aggregation:** `gemini-embedding-001` generates individual
   embeddings for each string in a list of inputs. In contrast,
   `gemini-embedding-2` produces a single, aggregated embedding when multiple
   inputs (like text and images) are provided directly in one request. To
@@ -1870,7 +1870,7 @@ the two models:
   [Batch API](/docs/batch-api#batch-embedding). See
   [Embedding aggregation](/docs/embeddings#embedding-aggregation) for more information.
 
-*   **Normalization:** If you use `output_dimensionality` to request embeddings
+* **Normalization:** If you use `output_dimensionality` to request embeddings
   with fewer than 3072 dimensions, `gemini-embedding-2` automatically
   normalizes these truncated embeddings. With `gemini-embedding-001`, you
   need to perform manual normalization for dimensions other than 3072. See

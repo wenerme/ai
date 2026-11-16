@@ -1608,19 +1608,19 @@ suggestions on getting the most out of Gemini.
 
 ## What's next  {% id="whats-next" %}
 
-*   Try [Gemini in Google AI Studio](https://aistudio.google.com).
+* Try [Gemini in Google AI Studio](https://aistudio.google.com).
 
-*   Experiment with
+* Experiment with
   [structured outputs](/docs/structured-output) for
   JSON-like responses.
 
-*   Explore Gemini's [image](/docs/image-understanding),
+* Explore Gemini's [image](/docs/image-understanding),
   [video](/docs/video-understanding),
   [audio](/docs/audio) and
   [document](/docs/document-processing) understanding
   capabilities.
 
-*   Learn about multimodal
+* Learn about multimodal
   [file prompting strategies](/docs/files#prompt-guide).
 
 

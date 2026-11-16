@@ -61,8 +61,7 @@ Please note the following when using this evaluation benchmark:
 Before running the evaluation, you need to install the following dependencies:
 
 ```bash
-pip install evalscope
-pip install bfcl-eval==2025.10.27.1 
+pip install 'evalscope[bfcl]'
 ```
 
 ## Usage

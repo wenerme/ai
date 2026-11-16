@@ -203,8 +203,8 @@ Admin operations:
         - `--not-active`: Deactivate the authentication source.
         - `--security-protocol value`: Security protocol name. Required.
         - `--skip-tls-verify`: Disable TLS verification.
-        - `--host value`: The address where the LDAP server can be reached. Required.
-        - `--port value`: The port to use when connecting to the LDAP server. Required.
+        - `--host value`: Comma-separated LDAP hosts or `ldap://`, `ldaps://` or `ldap+starttls://` URLs, tried in order. Required.
+        - `--port value`: The port to use when connecting to hosts given without a URL. Required.
         - `--user-search-base value`: The LDAP base at which user accounts will be searched for. Required.
         - `--user-filter value`: An LDAP filter declaring how to find the user record that is attempting to authenticate. Required.
         - `--admin-filter value`: An LDAP filter specifying if a user should be given administrator privileges.
@@ -229,8 +229,8 @@ Admin operations:
         - `--not-active`: Deactivate the authentication source.
         - `--security-protocol value`: Security protocol name.
         - `--skip-tls-verify`: Disable TLS verification.
-        - `--host value`: The address where the LDAP server can be reached.
-        - `--port value`: The port to use when connecting to the LDAP server.
+        - `--host value`: Comma-separated LDAP hosts or `ldap://`, `ldaps://` or `ldap+starttls://` URLs, tried in order.
+        - `--port value`: The port to use when connecting to hosts given without a URL.
         - `--user-search-base value`: The LDAP base at which user accounts will be searched for.
         - `--user-filter value`: An LDAP filter declaring how to find the user record that is attempting to authenticate.
         - `--admin-filter value`: An LDAP filter specifying if a user should be given administrator privileges.
@@ -255,8 +255,8 @@ Admin operations:
         - `--not-active`: Deactivate the authentication source.
         - `--security-protocol value`: Security protocol name. Required.
         - `--skip-tls-verify`: Disable TLS verification.
-        - `--host value`: The address where the LDAP server can be reached. Required.
-        - `--port value`: The port to use when connecting to the LDAP server. Required.
+        - `--host value`: Comma-separated LDAP hosts or `ldap://`, `ldaps://` or `ldap+starttls://` URLs, tried in order. Required.
+        - `--port value`: The port to use when connecting to hosts given without a URL. Required.
         - `--user-search-base value`: The LDAP base at which user accounts will be searched for.
         - `--user-filter value`: An LDAP filter declaring how to find the user record that is attempting to authenticate. Required.
         - `--admin-filter value`: An LDAP filter specifying if a user should be given administrator privileges.
@@ -277,8 +277,8 @@ Admin operations:
         - `--not-active`: Deactivate the authentication source.
         - `--security-protocol value`: Security protocol name.
         - `--skip-tls-verify`: Disable TLS verification.
-        - `--host value`: The address where the LDAP server can be reached.
-        - `--port value`: The port to use when connecting to the LDAP server.
+        - `--host value`: Comma-separated LDAP hosts or `ldap://`, `ldaps://` or `ldap+starttls://` URLs, tried in order.
+        - `--port value`: The port to use when connecting to hosts given without a URL.
         - `--user-search-base value`: The LDAP base at which user accounts will be searched for.
         - `--user-filter value`: An LDAP filter declaring how to find the user record that is attempting to authenticate.
         - `--admin-filter value`: An LDAP filter specifying if a user should be given administrator privileges.

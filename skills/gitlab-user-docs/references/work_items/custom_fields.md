@@ -10,6 +10,7 @@ Create and use custom fields for work items to track specific information unique
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/479571) in GitLab 18.0. Feature flag `custom_fields_feature` removed.
 - Custom fields for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580397) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named
   `work_item_ticket_migration`. Disabled by default.
+- Custom fields for tickets [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/630485) in GitLab 19.6.
 
 > [!flag]
 > The availability of custom fields for tickets is controlled by a feature flag.
