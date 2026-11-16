@@ -163,7 +163,7 @@ in memory by the model vendor.
 Prompt caching significantly improves latency by avoiding the re-processing of
 cached prompt and input data. The cached data is never logged to any persistent storage.
 
-You can [turn off prompt caching](../../../gitlab_duo/data_usage.md#turn-off-prompt-caching):
+You can [turn prompt caching on or off](../../../gitlab_duo/data_usage.md#turn-prompt-caching-on-or-off):
 
 - On GitLab.com: For a top-level group.
 - On GitLab Self-Managed: For an instance.

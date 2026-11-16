@@ -48,11 +48,12 @@ For example, a GitLab report with the key `bugsCharts` has the deep link URL `ht
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267890) in GitLab 19.6.
 
 Each chart in a report loads its data with a separate request.
-GitLab limits these requests to 60 every minute for each user in each group or project.
+On GitLab.com, GitLab limits these requests to 60 every minute for each user in each group or project.
 For unauthenticated users, the limit applies to each IP address.
 When you reach the limit, the chart displays an error. Try again after a minute.
 
-On GitLab Self-Managed, administrators can change the limit with the `insights_query_limit`
+On GitLab Self-Managed and GitLab Dedicated, this limit is off by default.
+Administrators can turn it on with the `insights_query_limit`
 [application setting](../../../api/settings.md).
 
 ## Configuration

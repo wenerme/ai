@@ -28,7 +28,7 @@ You can create a [custom role](_index.md) by adding one or more custom permissio
 
 | Permission | Description | API Attribute | Scope | Introduced |
 |:-----------|:------------|:--------------|:------|:-----------|
-| Manage merge request approvals and settings | Configure merge request settings at the group or project level. Group actions include managing merge checks and approval settings. Project actions include managing MR configurations, approval rules and settings, and branch targets. In order to enable Suggested reviewers, the "Manage project access tokens" custom permission needs to be enabled. | [`manage_merge_request_settings`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/151586) | Group, Project | GitLab [17.0](https://gitlab.com/gitlab-org/gitlab/-/issues/443235) |
+| Manage merge request approvals and settings | Configure merge request settings at the group or project level. Group actions include managing merge checks and approval settings. Project actions include viewing branch rules, creating and deleting rules for all branches or all protected branches, and managing MR configurations, approval rules and settings, external status checks, squash options, and branch targets. In order to enable Suggested reviewers, the "Manage project access tokens" custom permission needs to be enabled. | [`manage_merge_request_settings`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/151586) | Group, Project | GitLab [17.0](https://gitlab.com/gitlab-org/gitlab/-/issues/443235) |
 
 ## Compliance management
 
@@ -56,7 +56,7 @@ You can create a [custom role](_index.md) by adding one or more custom permissio
 
 | Permission | Description | API Attribute | Scope | Introduced |
 |:-----------|:------------|:--------------|:------|:-----------|
-| Configure AI catalog items | Enable, disable, and configure custom agents and flows from the AI catalog for a project. | [`admin_ai_catalog_item_consumer`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234759) | Project | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/578558) |
+| Configure AI catalog items | Enable, disable, and configure items from the AI catalog for a project. | [`admin_ai_catalog_item_consumer`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234759) | Project | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/578558) |
 | Manage AI catalog items | Create, edit, and delete custom agents and flows in the AI catalog. | [`admin_ai_catalog_item`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234759) | Project | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/578558) |
 
 ## Groups and projects
@@ -128,7 +128,7 @@ You can create a [custom role](_index.md) by adding one or more custom permissio
 | Permission | Description | API Attribute | Scope | Introduced |
 |:-----------|:------------|:--------------|:------|:-----------|
 | Approve merge request | Allows approval of merge requests. | [`admin_merge_request`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128302) | Project | GitLab [16.4](https://gitlab.com/gitlab-org/gitlab/-/issues/412708) |
-| Manage Protected Branches | Create, read, update, and delete protected branches for a project. | [`admin_protected_branch`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/162208) | Project | GitLab [17.4](https://gitlab.com/gitlab-org/gitlab/-/issues/448823) |
+| Manage Protected Branches | Create, read, update, and delete protected branches and branch rules for a project. Branch rules must target a branch name or pattern. | [`admin_protected_branch`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/162208) | Project | GitLab [17.4](https://gitlab.com/gitlab-org/gitlab/-/issues/448823) |
 | Manage push rules | Configure push rules for repositories at the group or project level. | [`admin_push_rules`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147872) | Group, Project | GitLab [16.11](https://gitlab.com/gitlab-org/gitlab/-/issues/421786) |
 | View repository code | Allows read-only access to the source code in the user interface. Does not allow users to edit or download repository archives, clone or pull repositories, view source code in an IDE, or view merge requests for private projects. You can download individual files because read-only access inherently grants the ability to make a local copy of the file. | [`read_code`](https://gitlab.com/gitlab-org/gitlab/-/issues/376180) | Group, Project | GitLab [15.7](https://gitlab.com/gitlab-org/gitlab/-/issues/20277) |
 

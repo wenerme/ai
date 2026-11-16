@@ -1330,7 +1330,7 @@ download the file, for example from its URL.
 
 Image tags that link to content from an allowed embed provider render as embedded content.
 The content loads in a browser sandbox, below a banner that shows the host the content loads from.
-To open the original URL in a new tab, in the banner, select .
+To open the content on the provider's site in a new tab, in the banner, select .
 When the content loads, the provider receives your IP address and browser information.
 
 Some providers do not load content automatically.
@@ -1340,7 +1340,7 @@ To load the content, select .
 If a URL does not match an allowed provider, does not use HTTPS, or is inside a link, it renders as
 a standard image.
 Where embedded content cannot load, like in email notifications, it displays as a link to the
-original URL.
+content on the provider's site.
 
 GitLab defines the available embed providers.
 Administrators [choose which embed providers to allow](../administration/settings/embedded-content.md).

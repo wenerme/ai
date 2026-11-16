@@ -22,6 +22,7 @@ The Cloudflare dashboard provides a user-friendly interface for creating and man
 2. Select **Add widget**.
 3. Fill out the required information:
    - **Widget name**: A descriptive name for your widget.
+   - **Region**: Select **China** or **Rest of World** based on the location of the visitor who will be solving Turnstile. You cannot change the region after creating the widget.
    - **Hostname management**: Domains where the widget will be used.
    - **Widget mode**: Choose from Managed, Non-Interactive, or Invisible.
 4. (Optional) Configure **Pre-clearance support** for single-page applications.

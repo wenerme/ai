@@ -26500,7 +26500,7 @@ Content type: `application/json`
 
   A saved automation and its schedule.
 
-  - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+  - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -27332,7 +27332,13 @@ Content type: `application/json`
 
       - `"periodic"`
 
-  - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
+
+  - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -27393,6 +27399,12 @@ Content type: `application/json`
       The type of the object. Always `once`.
 
       - `"once"`
+
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
 
 ### Example
 
@@ -27505,7 +27517,8 @@ curl https://api.openai.com/v1/agents/automations \
     ]
   },
   "timezone": "timezone",
-  "type": "periodic"
+  "type": "periodic",
+  "pause_reason": "target_session_failed"
 }
 ```
 
@@ -27606,7 +27619,7 @@ Lists project-owned automations, optionally filtered by target session.
 
   `minItems: 0`, `maxItems: 2000`
 
-  - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+  - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -28438,7 +28451,13 @@ Lists project-owned automations, optionally filtered by target session.
 
       - `"periodic"`
 
-  - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
+
+  - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -28499,6 +28518,12 @@ Lists project-owned automations, optionally filtered by target session.
       The type of the object. Always `once`.
 
       - `"once"`
+
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
 
 - `first_id: string or null`
 
@@ -28611,7 +28636,8 @@ curl https://api.openai.com/v1/agents/automations \
         ]
       },
       "timezone": "timezone",
-      "type": "periodic"
+      "type": "periodic",
+      "pause_reason": "target_session_failed"
     }
   ],
   "first_id": "first_id",
@@ -28639,7 +28665,7 @@ Pauses future scheduled delivery without stopping an active session.
 
   A saved automation and its schedule.
 
-  - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+  - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -29471,7 +29497,13 @@ Pauses future scheduled delivery without stopping an active session.
 
       - `"periodic"`
 
-  - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
+
+  - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -29532,6 +29564,12 @@ Pauses future scheduled delivery without stopping an active session.
       The type of the object. Always `once`.
 
       - `"once"`
+
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
 
 ### Example
 
@@ -29621,7 +29659,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/pause \
     ]
   },
   "timezone": "timezone",
-  "type": "periodic"
+  "type": "periodic",
+  "pause_reason": "target_session_failed"
 }
 ```
 
@@ -29643,7 +29682,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
   A saved automation and its schedule.
 
-  - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+  - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -30475,7 +30514,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       - `"periodic"`
 
-  - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
+
+  - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -30536,6 +30581,12 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
       The type of the object. Always `once`.
 
       - `"once"`
+
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
 
 ### Example
 
@@ -30625,7 +30676,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/resume \
     ]
   },
   "timezone": "timezone",
-  "type": "periodic"
+  "type": "periodic",
+  "pause_reason": "target_session_failed"
 }
 ```
 
@@ -30647,7 +30699,7 @@ Retrieves a project-owned automation.
 
   A saved automation and its schedule.
 
-  - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+  - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -31479,7 +31531,13 @@ Retrieves a project-owned automation.
 
       - `"periodic"`
 
-  - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
+
+  - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -31540,6 +31598,12 @@ Retrieves a project-owned automation.
       The type of the object. Always `once`.
 
       - `"once"`
+
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
 
 ### Example
 
@@ -31628,7 +31692,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     ]
   },
   "timezone": "timezone",
-  "type": "periodic"
+  "type": "periodic",
+  "pause_reason": "target_session_failed"
 }
 ```
 
@@ -32530,7 +32595,7 @@ Content type: `application/json`
 
   A saved automation and its schedule.
 
-  - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+  - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -33362,7 +33427,13 @@ Content type: `application/json`
 
       - `"periodic"`
 
-  - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
+
+  - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -33423,6 +33494,12 @@ Content type: `application/json`
       The type of the object. Always `once`.
 
       - `"once"`
+
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
 
 ### Example
 
@@ -33513,7 +33590,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     ]
   },
   "timezone": "timezone",
-  "type": "periodic"
+  "type": "periodic",
+  "pause_reason": "target_session_failed"
 }
 ```
 
@@ -33525,7 +33603,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
   A saved automation and its schedule.
 
-  - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+  - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -34357,7 +34435,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       - `"periodic"`
 
-  - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
+
+  - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
     Fields shared by periodic and one-time automations.
 
@@ -34418,6 +34502,12 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
       The type of the object. Always `once`.
 
       - `"once"`
+
+    - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+      Why the service paused this schedule, or null for other schedules.
+
+      - `"target_session_failed"`
 
 ### Automation Agent Config
 
@@ -37623,7 +37713,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
 ### One Time Automation
 
-- `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+- `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
   Fields shared by periodic and one-time automations.
 
@@ -38451,9 +38541,15 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     - `"once"`
 
+  - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+    Why the service paused this schedule, or null for other schedules.
+
+    - `"target_session_failed"`
+
 ### Periodic Automation
 
-- `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+- `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
   Fields shared by periodic and one-time automations.
 
@@ -39285,6 +39381,12 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     - `"periodic"`
 
+  - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+    Why the service paused this schedule, or null for other schedules.
+
+    - `"target_session_failed"`
+
 # Invocations
 
 ## Invoke an automation
@@ -39381,7 +39483,7 @@ Queues a manual delivery without changing the saved schedule.
 
         The automation snapshot for this occurrence, excluding confidential values.
 
-        - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+        - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -40213,7 +40315,13 @@ Queues a manual delivery without changing the saved schedule.
 
             - `"periodic"`
 
-        - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
+
+        - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -40274,6 +40382,12 @@ Queues a manual delivery without changing the saved schedule.
             The type of the object. Always `once`.
 
             - `"once"`
+
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
 
       - `type: "automation" (default: "automation")`
 
@@ -40446,7 +40560,7 @@ Lists delivery records for a project-owned automation.
 
         The automation snapshot for this occurrence, excluding confidential values.
 
-        - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+        - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -41278,7 +41392,13 @@ Lists delivery records for a project-owned automation.
 
             - `"periodic"`
 
-        - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
+
+        - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -41339,6 +41459,12 @@ Lists delivery records for a project-owned automation.
             The type of the object. Always `once`.
 
             - `"once"`
+
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
 
       - `type: "automation" (default: "automation")`
 
@@ -41516,7 +41642,7 @@ Retrieves a delivery record for a project-owned automation.
 
         The automation snapshot for this occurrence, excluding confidential values.
 
-        - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+        - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -42348,7 +42474,13 @@ Retrieves a delivery record for a project-owned automation.
 
             - `"periodic"`
 
-        - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
+
+        - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -42409,6 +42541,12 @@ Retrieves a delivery record for a project-owned automation.
             The type of the object. Always `once`.
 
             - `"once"`
+
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
 
       - `type: "automation" (default: "automation")`
 
@@ -42542,7 +42680,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
         The automation snapshot for this occurrence, excluding confidential values.
 
-        - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+        - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -43374,7 +43512,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             - `"periodic"`
 
-        - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
+
+        - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -43436,6 +43580,12 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             - `"once"`
 
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
+
       - `type: "automation" (default: "automation")`
 
         The type of the object. Always `automation`.
@@ -43472,7 +43622,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
       The automation snapshot for this occurrence, excluding confidential values.
 
-      - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+      - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
         Fields shared by periodic and one-time automations.
 
@@ -44304,7 +44454,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           - `"periodic"`
 
-      - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+        - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+          Why the service paused this schedule, or null for other schedules.
+
+          - `"target_session_failed"`
+
+      - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
         Fields shared by periodic and one-time automations.
 
@@ -44365,6 +44521,12 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
           The type of the object. Always `once`.
 
           - `"once"`
+
+        - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+          Why the service paused this schedule, or null for other schedules.
+
+          - `"target_session_failed"`
 
     - `type: "automation" (default: "automation")`
 

@@ -96,7 +96,7 @@ Retrieves a delivery record for a project-owned automation.
 
         The automation snapshot for this occurrence, excluding confidential values.
 
-        - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
+        - `PeriodicAutomation object { id, created_at, created_by, 9 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -928,7 +928,13 @@ Retrieves a delivery record for a project-owned automation.
 
             - `"periodic"`
 
-        - `OneTimeAutomation object { id, created_at, created_by, 7 more }`
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
+
+        - `OneTimeAutomation object { id, created_at, created_by, 8 more }`
 
           Fields shared by periodic and one-time automations.
 
@@ -989,6 +995,12 @@ Retrieves a delivery record for a project-owned automation.
             The type of the object. Always `once`.
 
             - `"once"`
+
+          - `pause_reason: optional "target_session_failed" or null (default: "target_session_failed")`
+
+            Why the service paused this schedule, or null for other schedules.
+
+            - `"target_session_failed"`
 
       - `type: "automation" (default: "automation")`
 

@@ -153,6 +153,17 @@ Projects not in the allowlist can use a job token to authenticate with public or
 - Access releases, deployments, and environments.
 - Access the repository.
 
+If an [external user](../../administration/external_users.md) triggers the job, the job token
+can access an internal project only if the user is a member of that project.
+Adding the job's project to the allowlist does not change this.
+
+The bot user of a group or project access token can also be an external user,
+for example when the instance makes new users external by default.
+You cannot add this bot user to other groups or projects.
+If a job that the bot user triggers must access an internal project, use a
+[service account](../../user/profile/service_accounts.md#add-a-service-account-to-a-group-or-project)
+that is a member of the internal project instead of the access token.
+
 You can limit access to these actions to only the projects on the allowlist by setting
 each feature to be only visible to project members.
 

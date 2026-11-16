@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/artifacts/api/git-protocol/og.png?v=f01
 
 # Git protocol
 
-Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/api/git-protocol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/api/git-protocol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts exposes Git access for every Artifacts repository.
 
-Each repo has a standard Git smart HTTP remote at `https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/<namespace>/<repo>.git`.
+Each deployed repo has a standard Git smart HTTP remote at `https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/<namespace>/<repo>.git`.
 
-Replace the `<ACCOUNT_ID>` placeholder with your Cloudflare account ID. Use the exact hostname from the repo `remote` returned by the Workers binding or REST API.
+Replace the `<ACCOUNT_ID>` placeholder with your Cloudflare account ID. A local Artifacts binding instead returns an HTTP loopback URL with a dev-session port. Use the exact `remote` returned by the Workers binding or REST API, and refer to [Local development](https://developers.cloudflare.com/artifacts/guides/local-development/) for local setup.
 
 Use the returned repo `remote` with a regular Git client for `clone`, `fetch`, `pull`, and `push`.
 
@@ -33,7 +33,7 @@ Git routes accept repo access tokens in two forms:
 
 ### Token format
 
-Repo tokens are issued in the format `art_v1_<40 hex>?expires=<unix_seconds>`. The `?expires=` suffix is the token's expiry as a unix timestamp in seconds. To check when a token expires, parse the value after `?expires=`.
+Use the complete token returned by Artifacts for Bearer authentication. Tokens include an `?expires=` suffix with their expiry as a Unix timestamp in seconds. Do not assume a fixed token prefix or secret length. For HTTP Basic authentication, use only the portion before `?expires=` as the password.
 
 ### Git `extraHeader` parameter
 
@@ -93,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/git-protocol/#page","headline":"Git protocol","description":"Use Artifacts with standard git-over-HTTPS clients.","url":"https://developers.cloudflare.com/artifacts/api/git-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/api/git-protocol/og.png?v=f01247e8a935569e","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/git-protocol/#page","headline":"Git protocol","description":"Use Artifacts with standard git-over-HTTPS clients.","url":"https://developers.cloudflare.com/artifacts/api/git-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/api/git-protocol/og.png?v=f01247e8a935569e","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

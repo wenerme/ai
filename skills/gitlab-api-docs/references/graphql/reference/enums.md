@@ -384,7 +384,7 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | `RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | `REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | `REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
-| `REVIEW_MERGE_REQUEST_DAP_DEEP` | Review merge request dap deep feature setting. |
+| `REVIEW_MERGE_REQUEST_DAP_STANDARD` | Review merge request dap standard feature setting. |
 | `RISK_CLASSIFICATION` | Risk classification feature setting. |
 | `SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | `SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
@@ -568,7 +568,7 @@ AI features that can be configured through the Model Selection feature settings.
 | `RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | `REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | `REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
-| `REVIEW_MERGE_REQUEST_DAP_DEEP` | Review merge request dap deep feature setting. |
+| `REVIEW_MERGE_REQUEST_DAP_STANDARD` | Review merge request dap standard feature setting. |
 | `RISK_CLASSIFICATION` | Risk classification feature setting. |
 | `SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | `SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
@@ -2647,7 +2647,7 @@ Depth of a GitLab Duo Code Review.
 
 | Value | Description |
 | ----- | ----------- |
-| `DEEP` | Deep review. |
+| `LITE` | Lite review. |
 | `STANDARD` | Standard review. |
 
 ## `DuoLicensedFeature`
@@ -3962,13 +3962,13 @@ Member role permission.
 | Value | Description |
 | ----- | ----------- |
 | `ADMIN_AI_CATALOG_ITEM` | Create, edit, and delete custom agents and flows in the AI catalog. |
-| `ADMIN_AI_CATALOG_ITEM_CONSUMER` | Enable, disable, and configure custom agents and flows from the AI catalog for a project. |
+| `ADMIN_AI_CATALOG_ITEM_CONSUMER` | Enable, disable, and configure items from the AI catalog for a project. |
 | `ADMIN_CICD_VARIABLES` | Create, read, update, and delete CI/CD variables. |
 | `ADMIN_COMPLIANCE_FRAMEWORK` | Create, read, update, and delete compliance frameworks. Users with this permission can also assign a compliance framework label to a project, and set the default framework of a group. |
 | `ADMIN_GROUP_MEMBER` | Add or remove users in a group, and assign roles to users. When assigning a role, users with this custom permission must select a role that has the same or fewer permissions as the default role used as the base for their custom role. |
 | `ADMIN_INTEGRATIONS` | Create, read, update, and delete integrations with external applications. |
 | `ADMIN_MERGE_REQUEST` | Allows approval of merge requests. |
-| `ADMIN_PROTECTED_BRANCH` | Create, read, update, and delete protected branches for a project. |
+| `ADMIN_PROTECTED_BRANCH` | Create, read, update, and delete protected branches and branch rules for a project. Branch rules must target a branch name or pattern. |
 | `ADMIN_PROTECTED_ENVIRONMENTS` | Create, read, update, and delete protected environments. |
 | `ADMIN_PUSH_RULES` | Configure push rules for repositories at the group or project level. |
 | `ADMIN_RUNNERS` | Create, view, edit, and delete group or project Runners. Includes configuring Runner settings. |
@@ -3984,7 +3984,7 @@ Member role permission.
 | `DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
 | `MANAGE_DEPLOY_TOKENS` | Manage deploy tokens at the group or project level. |
 | `MANAGE_GROUP_ACCESS_TOKENS` | Create, read, update, and delete group access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
-| `MANAGE_MERGE_REQUEST_SETTINGS` | Configure merge request settings at the group or project level. Group actions include managing merge checks and approval settings. Project actions include managing MR configurations, approval rules and settings, and branch targets. In order to enable Suggested reviewers, the "Manage project access tokens" custom permission needs to be enabled. |
+| `MANAGE_MERGE_REQUEST_SETTINGS` | Configure merge request settings at the group or project level. Group actions include managing merge checks and approval settings. Project actions include viewing branch rules, creating and deleting rules for all branches or all protected branches, and managing MR configurations, approval rules and settings, external status checks, squash options, and branch targets. In order to enable Suggested reviewers, the "Manage project access tokens" custom permission needs to be enabled. |
 | `MANAGE_PROJECT_ACCESS_TOKENS` | Create, read, update, and delete project access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
 | `MANAGE_SECURITY_POLICY_LINK` | Allows linking security policy projects. |
 | `PULL_CONTAINER_IMAGE` | Grants the ability to pull images from the container registry. |
@@ -4017,13 +4017,13 @@ Member role standard permission.
 | Value | Description |
 | ----- | ----------- |
 | `ADMIN_AI_CATALOG_ITEM` | Create, edit, and delete custom agents and flows in the AI catalog. |
-| `ADMIN_AI_CATALOG_ITEM_CONSUMER` | Enable, disable, and configure custom agents and flows from the AI catalog for a project. |
+| `ADMIN_AI_CATALOG_ITEM_CONSUMER` | Enable, disable, and configure items from the AI catalog for a project. |
 | `ADMIN_CICD_VARIABLES` | Create, read, update, and delete CI/CD variables. |
 | `ADMIN_COMPLIANCE_FRAMEWORK` | Create, read, update, and delete compliance frameworks. Users with this permission can also assign a compliance framework label to a project, and set the default framework of a group. |
 | `ADMIN_GROUP_MEMBER` | Add or remove users in a group, and assign roles to users. When assigning a role, users with this custom permission must select a role that has the same or fewer permissions as the default role used as the base for their custom role. |
 | `ADMIN_INTEGRATIONS` | Create, read, update, and delete integrations with external applications. |
 | `ADMIN_MERGE_REQUEST` | Allows approval of merge requests. |
-| `ADMIN_PROTECTED_BRANCH` | Create, read, update, and delete protected branches for a project. |
+| `ADMIN_PROTECTED_BRANCH` | Create, read, update, and delete protected branches and branch rules for a project. Branch rules must target a branch name or pattern. |
 | `ADMIN_PROTECTED_ENVIRONMENTS` | Create, read, update, and delete protected environments. |
 | `ADMIN_PUSH_RULES` | Configure push rules for repositories at the group or project level. |
 | `ADMIN_RUNNERS` | Create, view, edit, and delete group or project Runners. Includes configuring Runner settings. |
@@ -4039,7 +4039,7 @@ Member role standard permission.
 | `DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
 | `MANAGE_DEPLOY_TOKENS` | Manage deploy tokens at the group or project level. |
 | `MANAGE_GROUP_ACCESS_TOKENS` | Create, read, update, and delete group access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
-| `MANAGE_MERGE_REQUEST_SETTINGS` | Configure merge request settings at the group or project level. Group actions include managing merge checks and approval settings. Project actions include managing MR configurations, approval rules and settings, and branch targets. In order to enable Suggested reviewers, the "Manage project access tokens" custom permission needs to be enabled. |
+| `MANAGE_MERGE_REQUEST_SETTINGS` | Configure merge request settings at the group or project level. Group actions include managing merge checks and approval settings. Project actions include viewing branch rules, creating and deleting rules for all branches or all protected branches, and managing MR configurations, approval rules and settings, external status checks, squash options, and branch targets. In order to enable Suggested reviewers, the "Manage project access tokens" custom permission needs to be enabled. |
 | `MANAGE_PROJECT_ACCESS_TOKENS` | Create, read, update, and delete project access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
 | `MANAGE_SECURITY_POLICY_LINK` | Allows linking security policy projects. |
 | `PULL_CONTAINER_IMAGE` | Grants the ability to pull images from the container registry. |
@@ -6216,6 +6216,8 @@ Name of the feature that the callout is for.
 | `EXPIRED_TRIAL_STATUS_WIDGET` | Callout feature name for expired_trial_status_widget. |
 | `EXPLORE_PREMIUM_REQUEST_PAINTED_DOOR` | Callout feature name for explore_premium_request_painted_door. |
 | `FREE_GROUP_LIMITED_ALERT` | Callout feature name for free_group_limited_alert. |
+| `GITLAB_CREDITS_EXPIRED_ALERT` | Callout feature name for gitlab_credits_expired_alert. |
+| `GITLAB_CREDITS_EXPIRING_ALERT` | Callout feature name for gitlab_credits_expiring_alert. |
 | `NAMESPACE_OVER_STORAGE_USERS_COMBINED_ALERT` | Callout feature name for namespace_over_storage_users_combined_alert. |
 | `NAMESPACE_STORAGE_LIMIT_ALERT_ALERT_THRESHOLD` | Callout feature name for namespace_storage_limit_alert_alert_threshold. |
 | `NAMESPACE_STORAGE_LIMIT_ALERT_ERROR_THRESHOLD` | Callout feature name for namespace_storage_limit_alert_error_threshold. |

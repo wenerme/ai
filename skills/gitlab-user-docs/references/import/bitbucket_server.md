@@ -32,6 +32,7 @@ The Bitbucket Server importer imports a subset of items from Bitbucket Server.
 [^doesn-allow-comments]: GitLab doesn't allow comments on arbitrary lines of code. Any out-of-bounds Bitbucket comments are inserted as
     comments in the merge request.
 [^multiple-threading-levels]: Multiple threading levels are collapsed into one thread and quotes are added as part of the original comment.
+    Imported threads are unresolved, because the resolved state is not imported from Bitbucket Server.
 [^project-filtering-doesn]: Project filtering doesn't support fuzzy search. Only starts with or full match strings are supported.
 
 ## Known issues

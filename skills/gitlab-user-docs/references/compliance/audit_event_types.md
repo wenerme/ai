@@ -371,7 +371,7 @@ Audit event types belong to the following product categories.
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`duo_code_review_default_depth_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review default review depth setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
-| [`duo_code_review_depth_allowed_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review allow deep reviews setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
+| [`duo_code_review_depth_allowed_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review allow Standard reviews setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
 
 ### Dap triggers
 
@@ -795,6 +795,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`compliance_and_security_policy_group_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270527) | The compliance and security policy group for the instance is assigned, changed, or removed | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/601730) | Instance |
 | [`govern_policy_violation_detected`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263547) | A settings enforcement policy detected a violation on a governed project | No | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/630148) | Group, Instance |
 | [`policy_project_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/102154) | The security policy project is updated for a project | Yes | GitLab [15.6](https://gitlab.com/gitlab-org/gitlab/-/issues/377877) | Group, Project |
 | [`policy_warn_mode_group_protected_branch_modification_override`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/213392) | A group is affected by a warn mode policy that prevents modification of the group's protected branches if the policy changes from warn mode to strictly enforced. | No | GitLab [18.7](https://gitlab.com/gitlab-org/gitlab/-/issues/580966) | Group |

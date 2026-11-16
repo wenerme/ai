@@ -53,6 +53,9 @@ You can configure the GitLab Duo CLI using environment variables:
 - `DUO_WORKFLOW_GIT_HTTP_USER`: Git HTTP authentication username.
 - `GITLAB_BASE_URL` or `GITLAB_URL`: GitLab instance URL.
 - `GITLAB_DUO_MODEL`: AI model to use for the session.
+- `GITLAB_HOST`: GitLab instance URL or hostname for `GITLAB_TOKEN`, shared with the GitLab CLI
+  and editor extensions. `GITLAB_BASE_URL` and `GITLAB_URL` take priority. For details, see
+  [configure with environment variables](set_up.md#configure-with-environment-variables).
 - `GITLAB_OAUTH_TOKEN` or `GITLAB_TOKEN`: Authentication token.
 - `STARTUP_CARDS`: Show the [welcome and onboarding cards](use.md#startup-cards) when a session
   starts.

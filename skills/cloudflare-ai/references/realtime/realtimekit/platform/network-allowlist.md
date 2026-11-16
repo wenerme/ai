@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/realtime/realtimekit/platform/network-a
 
 # Network allowlist
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If your network restricts outbound traffic, allow the following RealtimeKit domains and ports.
+If your network restricts outbound traffic, allow the following RealtimeKit domains and ports. These requirements apply to Web Core SDK 2.1.0 or later and Web UI Kit SDK 2.1.0 or later.
 
 ## Allow service domains
 
@@ -23,22 +23,19 @@ Allow these domains for RealtimeKit SDKs:
 | Domain | Purpose |
 | --- | --- |
 | `api.realtime.cloudflare.com` | Handles requests from RealtimeKit SDKs |
-| `api-silos.realtime.cloudflare.com` | Collects SDK logs |
-| `da-collector.realtime.cloudflare.com` | Collects call statistics |
-| `location.realtime.cloudflare.com` | Determines the location in call statistics reports |
 | `r2.cloudflarestorage.com` | Stores and retrieves chat messages |
-| `socket-edge.realtime.cloudflare.com` | Establishes signaling connections between clients and RealtimeKit |
 
-If your application uses RealtimeKit Web UI Kit, also allow these domains:
+If your application uses RealtimeKit Web UI Kit, also allow this domain:
 
 | Domain | Purpose |
 | --- | --- |
 | `rtk-assets.realtime.cloudflare.com` | Serves Web UI Kit assets, including speaker-test audio |
-| `rtk-uploads.realtime.cloudflare.com` | Serves notification sounds and other Web UI Kit assets |
 
 Applications that use only RealtimeKit Core do not require the Web UI Kit asset domains.
 
 If your application uses the [Whiteboard plugin](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/), also allow `whiteboard-v2.plugins.realtime.cloudflare.com`, which serves the whiteboard and syncs its boards.
+
+If you use Web Core SDK or Web UI Kit SDK earlier than 2.1.0, also allow `api-silos.realtime.cloudflare.com`, `da-collector.realtime.cloudflare.com`, `location.realtime.cloudflare.com`, `socket-edge.realtime.cloudflare.com`, and `rtk-uploads.realtime.cloudflare.com`.
 
 ## Allow media traffic
 
@@ -74,5 +71,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/#page","headline":"Network allowlist","description":"Allow the domains and ports required for RealtimeKit connectivity.","url":"https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/og.png?v=47f95dc05de81314","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/#page","headline":"Network allowlist","description":"Allow the domains and ports required for RealtimeKit connectivity.","url":"https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/og.png?v=47f95dc05de81314","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

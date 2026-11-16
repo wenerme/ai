@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # Function calling with the Gemini API
 
@@ -747,14 +747,14 @@ Function calling involves a structured interaction between your application, the
 model, and external functions:
 
 1. **Define Function Declaration:** Define the function's name, parameters, and
-  purpose to the model.
+   purpose to the model.
 2. **Call LLM with function declarations:** Send user prompt along with the
-  function declaration(s) to the model.
+   function declaration(s) to the model.
 3. **Execute Function Code (Your Responsibility):** The model *doesn't*
-  execute the function itself. Extract the name and args and execute in
-  your application.
+   execute the function itself. Extract the name and args and execute in
+   your application.
 4. **Create User friendly response:** Send the result back to the model for a
-  final, user-friendly response.
+   final, user-friendly response.
 
 This process can be repeated over multiple turns. The model supports calling
 multiple functions in a single turn ([parallel function calling](/docs/function-calling#parallel_function_calling)) and in sequence ([compositional function calling](/docs/function-calling#compositional_function_calling)).
@@ -1806,7 +1806,8 @@ A function declaration is passed as a tool and includes:
 * `type` (string): Must be `"function"` for custom functions.
 * `name` (string): Unique function name (use underscores or camelCase).
 * `description` (string): Clear explanation of the function's purpose.
-* `parameters` (object): Input parameters the function expects.  *   `type` (string): Overall data type, such as `object`.
+* `parameters` (object): Input parameters the function expects.
+  *   `type` (string): Overall data type, such as `object`.
   *   `properties` (object): Individual parameters with type and description.
   *   `required` (array): Mandatory parameter names.
 

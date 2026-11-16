@@ -639,8 +639,7 @@ The search service that Chat uses depends on the provider of the selected model:
 | -------------- | -------------- |
 | Anthropic | The Anthropic web search and web fetch tools. |
 | OpenAI | The OpenAI built-in web search tool. |
-| Google Vertex AI | The web search tool hosted by the model provider, if the model supports one. |
-| Other providers | The Amazon Bedrock AgentCore web search connector, if the AI Gateway is configured to use it. The connector runs in the AWS `us-east-1` region. |
+| Google Vertex AI and other providers | The Amazon Bedrock AgentCore web search connector, which runs in the AWS `us-east-1` region. With a self-hosted AI Gateway, web search with these models works only if the AI Gateway is configured to use the connector. |
 
 For Anthropic models, Chat can read up to five web pages for each request.
 
@@ -668,7 +667,7 @@ by the model vendor.
 Prompt caching significantly improves latency by avoiding the
 re-processing of cached prompt and input data.
 
-You can [turn off prompt caching](../gitlab_duo/data_usage.md#turn-off-prompt-caching):
+You can [turn prompt caching on or off](../gitlab_duo/data_usage.md#turn-prompt-caching-on-or-off):
 
 - On GitLab.com: For a top-level group.
 - On GitLab Self-Managed: For an instance.

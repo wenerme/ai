@@ -6,7 +6,7 @@ Use OpenAI moderation models to detect harmful content in text and images. You c
 
 The `omni-moderation-latest` model accepts text and image inputs. It doesn't classify audio. The moderation endpoint is free to use, and image files can be up to 20 MB.
 
-**Child safety:** Do not send known or suspected child sexual abuse material (CSAM) to the Moderation API. The API is not designed for CSAM detection or handling and is not a substitute for dedicated child-safety safeguards. See our [CSAM guidance](https://developers.openai.com/api/docs/guides/csam-guidance) for steps to prevent, detect, respond to, and report CSAM.
+**Child safety:** Never submit known child sexual abuse material (CSAM). Do not send suspected CSAM to `omni-moderation-latest`. Approved organizations can use the [OpenAI CSAM Image Classifier](https://developers.openai.com/api/docs/guides/csam-classifier) to check images for potential CSAM. See our [CSAM guidance](https://developers.openai.com/api/docs/guides/csam-guidance) for prevention, detection, and reporting practices.
 
 ## Choose a moderation workflow
 
@@ -22,6 +22,8 @@ The `omni-moderation-latest` model accepts text and image inputs. It doesn't cla
 When your application needs generated text and moderation scores together, pass a top-level `moderation` object in the generation request. The API returns moderation scores for the model input and generated output without a separate moderation request.
 
 The model still generates normally. Review the moderation results before you show the output to a user or take downstream actions.
+
+The Responses and Chat Completions APIs don't support `omni-moderation-csam-latest` for inline moderation. See the [CSAM classifier guide](https://developers.openai.com/api/docs/guides/csam-classifier) for a standalone image request.
 
 
 
@@ -678,8 +680,8 @@ Categories marked as "Text only" do not support image inputs. If you send only
     <td>
       Content that expresses, incites, or promotes hate based on race, gender,
       ethnicity, religion, nationality, sexual orientation, disability status,
-      or caste. Hateful content aimed at non-protected groups (e.g., chess
-      players) is harassment.
+      or caste. Hateful content aimed at non-protected groups (for example,
+      chess players) is harassment.
     </td>
     <td>Text only</td>
   </tr>

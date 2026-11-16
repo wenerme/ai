@@ -563,7 +563,7 @@ Diff:
 
 ------------------------------------------------------
 ------------------------------------------------------
-The foreign key public.fk_024fc4aa00 is missing from the database
+The foreign key public.oauth_application_granular_scopes.fk_024fc4aa00 is missing from the database
 Diff:
 -FOREIGN KEY (granular_scope_id) REFERENCES granular_scopes(id) ON DELETE CASCADE
 

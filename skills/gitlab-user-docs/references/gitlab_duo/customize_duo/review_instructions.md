@@ -105,10 +105,12 @@ To configure custom merge request review instructions:
 
 1. Optional: Add a [Code Owners](../../project/codeowners/_index.md) entry to
    protect changes to the `mr-review-instructions.yaml` file.
+   Replace `<owner>` and `<reviewer>` with the usernames of the people
+   who should approve any changes:
 
-   ```markdown
+   ```plaintext
    [GitLab Duo]
-   .gitlab/duo @default-owner @tech-lead
+   .gitlab/duo @<owner> @<reviewer>
    ```
 
 1. [Create a merge request](../../project/merge_requests/creating_merge_requests.md)

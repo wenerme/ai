@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # API versions explained
 
@@ -37,7 +37,11 @@ and `v1beta` (Beta). Core API capabilities and tools apply to both
 the Interactions API and `generateContent` unless specified otherwise:
 
 {% callout type="note" %}
-  All models are supported in both `v1` and `v1beta`. This table tracks the availability of features across the `v1` and `v1beta` **API versions** (endpoint routes and schema parameters).
+  Most models are supported in both `v1` and `v1beta`. Models that depend on
+  `v1beta`-only features may not be available on `v1`. Refer to the
+  [model cards](/docs/models) for details. This table tracks the availability of
+  features across the `v1` and `v1beta` **API versions** (endpoint routes and
+  schema parameters).
 
 {% /callout %}
 

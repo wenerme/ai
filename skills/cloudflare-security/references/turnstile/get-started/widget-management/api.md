@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/turnstile/get-started/widget-management
 
 # Create and manage widgets using Cloudflare API
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/widget-management/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/widget-management/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Cloudflare API](https://developers.cloudflare.com/api/resources/turnstile/) for programmatic widget management and automation.
 
@@ -52,6 +52,24 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widge
 		],
 		"mode": "managed",
 		"name": "My Example Turnstile Widget"
+	}'
+```
+
+To create a China domain widget, set `region` to `china` in the request. You cannot change a widget's region after creation.
+
+*Create a Turnstile Widget in Chinabash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"domains": [
+				"example.cn"
+		],
+		"mode": "managed",
+		"name": "My Widget for China Domains",
+		"region": "china"
 	}'
 ```
 
@@ -198,5 +216,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/widget-management/api/#page","headline":"Create and manage widgets using Cloudflare API","description":"Create and manage Turnstile widgets using the Cloudflare API.","url":"https://developers.cloudflare.com/turnstile/get-started/widget-management/api/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/widget-management/api/og.png?v=3ee3163dce753625","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/widget-management/api/#page","headline":"Create and manage widgets using Cloudflare API","description":"Create and manage Turnstile widgets using the Cloudflare API.","url":"https://developers.cloudflare.com/turnstile/get-started/widget-management/api/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/widget-management/api/og.png?v=3ee3163dce753625","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

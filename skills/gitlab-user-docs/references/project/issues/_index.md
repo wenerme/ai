@@ -5,32 +5,6 @@ Tasks, bug reports, feature requests, and tracking.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-Issues help you collaborate with your team to plan, track, and deliver work in GitLab.
-Issues:
-
-- Track feature proposals, tasks, support requests, and bug reports.
-- Organize and prioritize work with assignees, due dates, and health status.
-- Facilitate team discussion and decision-making through comments and threaded discussions.
-- Support custom workflows through templates, labels, epics, and boards.
-- Integrate with external tools like Zoom, Jira, and email services.
-
-Issues are always associated with a specific project. If you have multiple
-projects in a group, you can view all of the projects' issues at once.
-
-<div class="video-fallback">
-  See the video: <a href="https://www.youtube.com/watch?v=Mt1EzlKToig">Issues - Setting up your Organization with GitLab</a>.
-</div>
-<figure class="video-container">
-  <iframe src="https://www.youtube-nocookie.com/embed/Mt1EzlKToig" frameborder="0" allowfullscreen> </iframe>
-</figure>
-
-<i class="fa-youtube-play" aria-hidden="true"></i>
-To learn how the GitLab Strategic Marketing department uses GitLab issues with [labels](../labels.md) and
-[issue boards](../issue_board.md), see the
-[managing commitments with issues](https://www.youtube.com/watch?v=cuIHNintg1o&t=3) video.
-
-## Issues as work items
-
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/9584) in GitLab 17.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `work_items_view_preference`. Disabled by default. This feature is in [beta](../../../policy/development_stages_support.md#beta).
 - Feature flag named `work_items_view_preference` enabled on GitLab.com in GitLab 17.9 for a subset of users.
 - Feature flag named `work_items_view_preference` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/184496) on GitLab.com, GitLab Self-Managed, and GitLab Dedicated in 17.10.
@@ -40,46 +14,33 @@ To learn how the GitLab Strategic Marketing department uses GitLab issues with [
 - Additional filters on the Issues page in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/202089) in GitLab 18.5. [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/205308).
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/520791) in GitLab 18.7. Feature flag `work_item_view_for_issues` removed.
 
-Issues have moved to a unified framework for work items, to better
-meet the product needs of the GitLab Agile Planning offering.
+Issues help you collaborate with your team to plan, track, and deliver work in GitLab.
+An issue is a type of [work item](../../work_items/_index.md),
+so issues appear with epics, tasks, and other work items in the  list.
 
-For more information, see [epic 9290](https://gitlab.com/groups/gitlab-org/-/work_items/9290) and the [new Agile planning experience in GitLab](https://about.gitlab.com/blog/first-look-the-new-agile-planning-experience-in-gitlab/) blog post (June 2024).
+Each issue belongs to one project.
+To view the issues from every project in a group, open the  list for the group.
 
-If you run into any issues while trying out this change, you can use the
-[feedback issue](https://gitlab.com/gitlab-org/gitlab/-/issues/523713) to provide more details.
+Teams use issues in the following ways:
 
-### Work item Markdown reference
+- Track feature proposals, tasks, support requests, and bug reports.
+- Organize and prioritize work with assignees, due dates, and health status.
+- Discuss decisions in comments and threads.
+- Support custom workflows with templates, labels, epics, and boards.
+- Integrate with external tools like Zoom, Jira, and email services.
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352861) in GitLab 18.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `extensible_reference_filters`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197052) in GitLab 18.2. Feature flag `extensible_reference_filters` removed.
-
-You can reference work items in GitLab Flavored Markdown fields with `[work_item:123]`.
-For more information, see [GitLab-specific references](../../markdown.md#gitlab-specific-references).
+<div class="video-fallback">
+  See the video: <a href="https://www.youtube.com/watch?v=Mt1EzlKToig">Issues - Setting up your Organization with GitLab</a>.
+</div>
+<figure class="video-container">
+  <iframe src="https://www.youtube-nocookie.com/embed/Mt1EzlKToig" frameborder="0" allowfullscreen> </iframe>
+</figure>
 
 ## Related topics
 
-- [Create issues](create_issues.md)
-- [Create an issue from a template](../description_templates.md#use-the-templates)
-- [Edit issues](managing_issues.md#edit-an-issue)
-- [Move issues](managing_issues.md#move-an-issue)
-- [Close issues](managing_issues.md#close-an-issue)
-- [Delete issues](managing_issues.md#delete-an-issue)
-- [Promote issues](managing_issues.md#promote-an-issue-to-an-epic)
-- [Set a due date](due_dates.md)
-- [Import issues](csv_import.md)
-- [Export issues](csv_export.md)
-- [Upload designs to issues](design_management.md)
-- [Linked issues](related_issues.md)
-- [Similar issues](managing_issues.md#similar-issues)
-- [Health status](managing_issues.md#health-status)
-- [Cross-link issues](crosslinking_issues.md)
-- [Sort issue lists](sorting_issue_lists.md)
-- [Search for issues](managing_issues.md#filter-the-list-of-issues)
 - [Epics](../../group/epics/_index.md)
-- [Issue boards](../issue_board.md)
-- [Issues API](../../../api/issues.md)
-- [Configure an external issue tracker](../../../integration/external-issue-tracker.md)
 - [Tasks](../../tasks.md)
-- [View count and weight of tasks in an issue](../../tasks.md#view-count-and-weight-of-tasks-in-the-parent-issue)
-- [View progress of an issue with child tasks](../../tasks.md#view-progress-of-the-parent-issue)
-- [External participants](../service_desk/external_participants.md)
+- [Status](../../work_items/status.md)
+- [Description templates](../description_templates.md)
+- [Issues API](../../../api/issues.md)
+- [External issue trackers](../../../integration/external-issue-tracker.md)

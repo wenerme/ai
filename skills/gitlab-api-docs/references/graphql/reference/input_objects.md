@@ -1835,8 +1835,8 @@ Date relative to today, in the instance time zone.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `content` | [`String`](scalars.md#string) | Content of the agent plan. |
-| `readinessScore` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
-| `readinessScoreFeedback` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Markdown feedback explaining the readiness score. Only available when the `workplan_score` feature flag is enabled. |
+| `readinessScore` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan` feature flag is enabled. |
+| `readinessScoreFeedback` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Markdown feedback explaining the readiness score. Only available when the `workplan` feature flag is enabled. |
 
 ## `WorkItemWidgetAssigneesInput`
 

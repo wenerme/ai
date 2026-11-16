@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # Files API
 
@@ -632,25 +632,27 @@ tips for improving prompts that use multimodal input.
 
 You can improve your multimodal prompts by following these best practices:
 
-* **[Prompt design fundamentals](/docs/files#specific-instructions)**  *   **Be specific in your instructions**: Craft clear and concise instructions
-    that leave minimal room for misinterpretation.
+* **[Prompt design fundamentals](/docs/files#specific-instructions)**
+  *   **Be specific in your instructions**: Craft clear and concise instructions
+      that leave minimal room for misinterpretation.
   *   **Add a few examples to your prompt**: Use realistic few-shot examples to
-    illustrate what you want to achieve.
+      illustrate what you want to achieve.
   *   **Break it down step-by-step**: Divide complex tasks into manageable
-    sub-goals, guiding the model through the process.
+      sub-goals, guiding the model through the process.
   *   **Specify the output format**: In your prompt, ask for the output to be in
-    the format you want, like Markdown, JSON, HTML and more.
+      the format you want, like Markdown, JSON, HTML and more.
   *   **Put your image first for single-image prompts**: While Gemini can handle
-    image and text inputs in any order, for prompts containing a single image,
-    it might perform better if that image is placed before the text prompt.
+      image and text inputs in any order, for prompts containing a single image,
+      it might perform better if that image is placed before the text prompt.
 
-* **[Troubleshooting your multimodal prompt](/docs/files#troubleshooting)**  *   **If the model is not drawing information from the relevant part of the
-    image**: Drop hints with which aspects of the image you want the prompt to
-    draw information from.
+* **[Troubleshooting your multimodal prompt](/docs/files#troubleshooting)**
+  *   **If the model is not drawing information from the relevant part of the
+      image**: Drop hints with which aspects of the image you want the prompt to
+      draw information from.
   *   **If the model output is too generic (not tailored enough to the image)**:
-    At the start of the prompt, try asking the model to describe the image(s)
-    before providing the task instruction, or try asking the model to refer to
-    what's in the image.
+      At the start of the prompt, try asking the model to describe the image(s)
+      before providing the task instruction, or try asking the model to refer to
+      what's in the image.
 
 
 ### Be specific in your instructions  {% id="specific-instructions" %}
@@ -1093,15 +1095,15 @@ narrow down which part of the reasoning broke down, if any.
 
 ## What's next  {% id="whats-next" %}
 
--   Try writing your own multimodal prompts using [Google AI
+- Try writing your own multimodal prompts using [Google AI
   Studio](http://aistudio.google.com).
 
--   For information on using the Gemini Files API for
+- For information on using the Gemini Files API for
   uploading media files and including them in your prompts, see the
   [Vision](/docs/image-understanding), [Audio](/docs/audio), and
   [Document processing](/docs/document-processing) guides.
 
--   For more guidance on prompt design, like tuning sampling parameters, see the
+- For more guidance on prompt design, like tuning sampling parameters, see the
   [Prompt strategies](/docs/prompting-strategies) page.
 
 

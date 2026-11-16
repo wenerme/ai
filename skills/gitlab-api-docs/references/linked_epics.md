@@ -131,7 +131,7 @@ Example response:
         "group": "http://gitlab.example.com/api/v4/groups/26",
         "parent": null
       }
-    },
+    }
   }
 ]
 ```
@@ -332,7 +332,7 @@ Example response:
       "group": "http://gitlab.example.com/api/v4/groups/26",
       "parent": null
     }
-  },
+  }
 }
 ```
 
@@ -451,6 +451,6 @@ Example response:
       "group": "http://gitlab.example.com/api/v4/groups/26",
       "parent": null
     }
-  },
+  }
 }
 ```

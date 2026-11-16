@@ -237,7 +237,7 @@ Sessions from Externally Connected Agents (ECAs) appear on the AI Governance das
 is set to **All agents** (the default) or **Connected**:
 
 - The **Recent agent sessions** card names each session after its agent. For example, **Cursor (glab)**
-  or **Claude Code (glab)**.
+  or **Claude (glab)**.
 - The **Most used agents** card lists each connected agent with the number of machines and users
   that ran it. For example, **2 machines · 2 users**.
 - The KPI tiles and the other cards count the sessions and tool calls alongside GitLab Duo Agent Platform

@@ -9,6 +9,21 @@ Use this API to manage [repository files](../user/project/repository/_index.md).
 You can also [configure rate limits](../rate_limits/api/repository-files.md)
 for this API.
 
+## Content SHA header for large files
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604992) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `files_api_content_sha_size_cap`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+The `HEAD` file metadata, blame, and raw file endpoints do not return `X-Gitlab-Content-Sha256`
+for files larger than 300 MiB.
+This limit is fixed and does not change with the [fast Gitaly call timeout](../administration/settings/gitaly_timeouts.md#available-call-timeouts).
+Where available, use `X-Gitlab-Blob-Id` to identify the Git blob instead.
+With `lfs=true` on an LFS pointer, the raw endpoint serves the LFS object without these metadata headers.
+The blob ID identifies the pointer, not the LFS content.
+
 ## Available scopes for personal access tokens
 
 [Personal access tokens](../user/profile/personal_access_tokens.md) support these scopes:
@@ -103,6 +118,7 @@ Example response:
 ### Get file metadata only
 
 You can also use `HEAD` to fetch just file metadata.
+For files larger than 300 MiB, this endpoint does not return the [content SHA header](#content-sha-header-for-large-files).
 
 ```plaintext
 HEAD /projects/:id/repository/files/:file_path
@@ -136,6 +152,7 @@ X-Gitlab-Execute-Filemode: false
 - Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261912) in GitLab 19.6.
 
 Retrieves blame history for a specified file in a repository. Each blame range contains lines and their corresponding commit information.
+For files larger than 300 MiB, this endpoint does not return the [content SHA header](#content-sha-header-for-large-files).
 
 This endpoint has the following rate limits:
 
@@ -209,6 +226,7 @@ Example response:
 ### Get file blame metadata only
 
 Use the `HEAD` method to return just file blame metadata.
+For files larger than 300 MiB, this endpoint does not return the [content SHA header](#content-sha-header-for-large-files).
 
 ```plaintext
 HEAD /projects/:id/repository/files/:file_path/blame
@@ -276,6 +294,7 @@ Example response:
 ## Retrieve a raw file from a repository
 
 Retrieves the raw file contents on a specified file in a repository.
+For files larger than 300 MiB, this endpoint does not return the [content SHA header](#content-sha-header-for-large-files).
 
 ```plaintext
 GET /projects/:id/repository/files/:file_path/raw

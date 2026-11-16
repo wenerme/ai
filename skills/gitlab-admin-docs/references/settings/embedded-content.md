@@ -28,7 +28,7 @@ of users who view it.
 Allow only providers you trust.
 
 If you stop allowing a provider or turn off embedded content, existing content from those providers
-displays as a link to its original URL.
+displays as a link to the content.
 If you allow a provider or turn on embedded content, existing content is not embedded until
 GitLab next renders it, like when someone edits it.
 

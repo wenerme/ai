@@ -72,6 +72,15 @@ To specify content that GitLab Duo excludes:
 1. Optional. To delete an existing exclusion, select **Delete** () for the appropriate exclusion.
 1. Select **Save changes**.
 
+### Size limit for exclusions
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265774) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_context_exclusion_settings_size_limit`. Disabled by default.
+- Enabled on GitLab.com in GitLab 19.6.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 The exclusions for a project can be up to 64 KiB in total.
 
 ## Context exclusion limitations

@@ -11,7 +11,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKMeta
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This consists of the metadata of the meeting, such as the room name and the title.
 
@@ -23,6 +23,7 @@ This consists of the metadata of the meeting, such as the room name and the titl
   - [.meetingTitle](#module_RTKMeta+meetingTitle)
   - [.sessionId](#module_RTKMeta+sessionId)
   - [.meetingId](#module_RTKMeta+meetingId)
+  - [.setMeetingTitle(meetingTitle)](#module_RTKMeta+setMeetingTitle)
   - [.setBroadcastTabChanges(broadcastTabChanges)](#module_RTKMeta+setBroadcastTabChanges)
   - [.setSelfActiveTab(spotlightTab, tabChangeSource)](#module_RTKMeta+setSelfActiveTab)
 
@@ -68,6 +69,16 @@ The room name of the meeting.
 
 **Kind**: instance property of [`RTKMeta`](#module_RTKMeta)
 
+### meeting.meta.setMeetingTitle(meetingTitle)
+
+Renames the meeting for everyone in the current session. When connected meetings are loaded, the parent or breakout meeting is renamed through `connectedMeetings.updateMeetings` and requires `canAlterConnectedMeetings`. Otherwise it requires `canEditMeetingTitle`.
+
+**Kind**: instance method of [`RTKMeta`](#module_RTKMeta)
+
+| Param | Type |
+| --- | --- |
+| meetingTitle | `string` |
+
 ### meeting.meta.setBroadcastTabChanges(broadcastTabChanges)
 
 Sets current user as broadcasting tab changes
@@ -98,5 +109,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/#page","headline":"RTKMeta","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/og.png?v=12336b5b0cb38ada","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/#page","headline":"RTKMeta","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/og.png?v=12336b5b0cb38ada","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

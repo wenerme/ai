@@ -2,15 +2,15 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use `access_programs.cyber` to select a cybersecurity access program for a Responses API request. The [Daybreak Blue and Daybreak Red programs](https://help.openai.com/en/articles/20001258-trusted-access-for-cyber) provide approved access for cybersecurity work. Other [API cybersecurity safeguards](https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity) continue to apply.
+Set `access_programs.cyber` in a Responses API request to select [Daybreak Blue or Daybreak Red](https://help.openai.com/en/articles/20001258-trusted-access-for-cyber). Other [API cybersecurity safeguards](https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity) still apply.
 
-Before using Daybreak, complete [organization approval and project setup](https://help.openai.com/en/articles/20001261-enterprise-daybreak-onboarding). Your project needs access to both the program and the model. Use an API key from that project. The request parameter selects behavior within your approved access; it doesn't grant access.
+Before sending a request, complete [organization approval and project setup](https://help.openai.com/en/articles/20001261-enterprise-daybreak-onboarding). Use an API key from a project with access to both the program and the model. The parameter doesn't grant access.
 
 All Daybreak Red organizations must [require SSO](https://help.openai.com/en/articles/9534785-single-sign-on-sso-setup-for-openai-products) for the API organization that holds Cyber access and enforce MFA through your identity provider. If you use a separate Cyber organization, verify its domain and test SSO there.
 
 ## Choose the model and access program
 
-The `model` field selects the model. The `access_programs.cyber` field selects a supported access program for that request: `standard`, `daybreak_blue`, or `daybreak_red`.
+Choose a `model` and a compatible `access_programs.cyber` value: `standard`, `daybreak_blue`, or `daybreak_red`.
 
 Only organizations with existing access can use `gpt-5.5-cyber-preview`. It
   retires on **February 1, 2027**. Requests that use this model will fail after
@@ -54,7 +54,7 @@ GPT-6 Astra
 GPT-5.5-Cyber (existing access only)
 
             
-GPT-5.6-Cyber
+GPT-5.6 Cyber
 
           
 
@@ -88,7 +88,7 @@ GPT-5.6-Cyber
         </td>
       </tr>
       <tr>
-        <td>GPT-6-Cyber</td>
+        <td>GPT-6 Cyber</td>
         <td>Red + additional model approval</td>
         <td>
           `daybreak_red`
@@ -99,17 +99,16 @@ GPT-5.6-Cyber
 
 
 
-Match the request value to the model, not your organization's approval level. For example, when using `gpt-6-sol` with Daybreak, send `daybreak_blue` even if your organization has Daybreak Red approval. Sending `daybreak_red` with this model returns `invalid_access_program`.
+Use the value listed for the model even if your organization has a higher approval level. For example, `gpt-6-sol` accepts `daybreak_blue`, but returns `invalid_access_program` for `daybreak_red`.
 
-Reduced refusals on `gpt-6-astra` and `gpt-6.1-sol` require Daybreak Red
-  access, but the request value is `daybreak_blue`. Both models reject
-  `daybreak_red`. Daybreak Blue approval alone doesn't authorize reduced
-  refusals on either model. Your project must also have the required access
-  enabled.
+For reduced refusals on `gpt-6-astra` and `gpt-6.1-sol`, your organization
+  needs Daybreak Red approval and your project needs the required access
+  enabled. Send `daybreak_blue`. Both models reject `daybreak_red`, and Blue
+  approval alone isn't sufficient.
 
 ## Send a request
 
-To get started with Daybreak Blue approval, explicitly select `daybreak_blue` with a Daybreak-eligible model, such as `gpt-6-sol`:
+With Daybreak Blue approval, send `daybreak_blue` with an eligible model such as `gpt-6-sol`:
 
 ```bash
 curl https://api.openai.com/v1/responses \
@@ -145,15 +144,15 @@ Both `access_programs` and `cyber` are optional, but neither accepts `null` in a
 
 ## Understand defaults when omitted
 
-Starting with `gpt-6.1-terra`, omitting the `access_programs.cyber` parameter results in `standard` request treatment instead of defaulting to the highest available Daybreak tier.
+Starting with `gpt-6.1-terra`, requests that omit `access_programs.cyber` default to `standard` instead of the highest available Daybreak tier.
 
-For the models listed below, omitting `access_programs.cyber` uses the following defaults:
+These models use the following defaults when you omit the parameter:
 
 - **Mainline models such as `gpt-6-sol`:** Daybreak Blue treatment when your organization and project have the required access; otherwise, standard safeguards.
 - **Red models such as `gpt-5.6-cyber`:** The API selects `daybreak_red`. The request fails if the required access is missing.
 - **`gpt-6-astra` and `gpt-6.1-sol`:** Reduced refusals for eligible callers with Daybreak Red access enabled for their project; otherwise, standard safeguards.
 
-Model permissions still apply. To turn Daybreak off and request standard safeguards on a compatible model, set `access_programs.cyber` to `standard`, even if you have Daybreak access. An explicit Daybreak selection fails if it's incompatible with the model or you don't have the required access.
+Set `access_programs.cyber` to `standard` to use standard safeguards on a compatible model. An explicit Daybreak selection fails if the model is incompatible or you lack the required access. Model permissions still apply.
 
 ## Check the response
 
@@ -171,17 +170,17 @@ When available, `access_programs.cyber` records the selected program. This parti
 
 When no program is specified and the request uses standard safeguards, `access_programs` is `null`. For a `-latest` alias, inspect `model` to see which model served the request. Alias resolution can change and depends on your approved access.
 
-## Set up GPT-6-Cyber
+## Set up GPT-6 Cyber
 
-Confirm with your account team that your organization has Daybreak Red access and approval for [GPT-6-Cyber](https://developers.openai.com/api/docs/models/gpt-6-cyber).
+Confirm with your account team that your organization has Daybreak Red access and approval for [GPT-6 Cyber](https://developers.openai.com/api/docs/models/gpt-6-cyber).
 
 **Project access.** Ask an organization owner to [enable Daybreak Red](https://help.openai.com/en/articles/20001531-openai-daybreak-set-up-access-for-your-team) for the project that will send requests. With project-level controls, use a non-default project and a key from that project.
 
-**IP allowlisting.** To use GPT-6-Cyber through the API, [configure an IP allowlist](https://developers.openai.com/api/docs/guides/ip-allowlist) for the public IPs your application sends requests from. If you have received approval to embed the model in a product, end users without direct model access don’t need to allowlist their own IPs.
+**IP allowlisting.** To use GPT-6 Cyber through the API, [configure an IP allowlist](https://developers.openai.com/api/docs/guides/ip-allowlist) for the public IPs your application sends requests from. If you have received approval to embed the model in a product, end users without direct model access don’t need to allowlist their own IPs.
 
 **Zero Data Retention.** If the project uses ZDR, [configure Private Safety Processing](https://developers.openai.com/api/docs/guides/private-safety-processing) (PSP). Check that storage shows “Validated” and that the project’s retention policy is “Zero Data Retention with Private Safety Processing.” PSP applies to all API traffic in that project.
 
-### Send a GPT-6-Cyber request
+### Send a GPT-6 Cyber request
 
 Set `OPENAI_API_KEY` to a key from the approved project. Replace the sample safety identifier with a stable, pseudonymous identifier for the user making the request.
 
@@ -207,4 +206,4 @@ If the request fails, check the project associated with the key, the active allo
 | `400 unsupported_access_program` | Switch to a model that supports Daybreak, or set `access_programs.cyber` to `standard` to keep using this model with standard safeguards.                                                                                                                     |
 | `403 access_program_not_enabled` | Check that your API key belongs to a project with the required program enabled. If organization approval is missing, request the Daybreak level named in the error. If project access is missing, ask your organization administrator to enable that program. |
 
-Unknown fields, invalid values, and request-side `null` values fail validation. Model permissions are checked separately. A selected Daybreak program doesn't guarantee that every safety check or prompt will succeed. For more help, see [Daybreak troubleshooting](https://help.openai.com/en/articles/20001259).
+Unknown fields, invalid values, and request-side `null` values fail validation. Model permissions and cybersecurity safeguards still apply. For more help, see [Daybreak troubleshooting](https://help.openai.com/en/articles/20001259).

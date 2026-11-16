@@ -14,7 +14,7 @@ Indicates whether the request originated from a known good bot or crawler.
 
 Provides the same information as [`cf.client.bot`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.client.bot/).
 
-Requires a Cloudflare Enterprise plan with [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/) enabled.
+Requires a Cloudflare Enterprise plan with [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/) enabled, except in [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability), where this field is available on all plans.
 
 Categories:
 - Request

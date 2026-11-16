@@ -503,14 +503,14 @@ container_scanning:
 ### Setting the default branch image
 
 By default, container scanning assumes that the image naming convention stores any branch-specific
-identifiers in the image tag rather than the image name. When the image name differs between the
-default branch and the non-default branch, previously-detected vulnerabilities show up as newly
-detected in merge requests.
+identifiers in the image tag rather than the image name. However, the default
+`CI_APPLICATION_REPOSITORY` value includes `$CI_COMMIT_REF_SLUG` in the repository path, so the
+default `CS_IMAGE` can have a different image name for each branch. When the image name differs
+between the default branch and a non-default branch, previously-detected vulnerabilities can show up
+as newly detected in merge requests.
 
-When the same image has different names on the default branch and a non-default branch, you can use
-the `CS_DEFAULT_BRANCH_IMAGE` variable to indicate what that image's name is on the default branch.
-GitLab then correctly determines if a vulnerability already exists when running scans on non-default
-branches.
+Set `CS_DEFAULT_BRANCH_IMAGE` to the image reference used on the default branch. GitLab then correctly
+determines if a vulnerability already exists when running scans on non-default branches.
 
 As an example, suppose the following:
 

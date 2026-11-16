@@ -43,7 +43,7 @@ You can authenticate by executing the following command. More information in [Au
 glab auth login
 ```
 
-## Step 1: Turn on the firewall
+## Turn on the firewall
 
 On GitLab.com:
 
@@ -60,7 +60,7 @@ On GitLab Self-Managed:
 
 Nothing is evaluated yet. The firewall needs a policy, which you add next.
 
-## Step 2: Add a policy in warn mode
+## Add a policy in warn mode
 
 Policies live in a [security policy project](../policies/enforcement/security_policy_projects.md).
 If your group does not have one, GitLab creates it when you save your first policy.
@@ -97,10 +97,10 @@ If your group does not have one, GitLab creates it when you save your first poli
 This policy reports any package that carries a critical vulnerability or is flagged as
 malicious. Because `enforcement_type` is `warn`, nothing is blocked.
 
-## Step 3: Install a package through the firewall
+## Install a package through the firewall
 
-Policies are evaluated by the [GitLab CLI](../../../editor_extensions/gitlab_cli/_index.md), so
-install and authenticate first.
+The [GitLab CLI](../../../editor_extensions/gitlab_cli/_index.md) sends each package to GitLab,
+which evaluates it against your policies. Install and authenticate the CLI first.
 
 Clone the project the policy applies to, then install its dependencies with `glab df` in front
 of your usual command:
@@ -113,7 +113,7 @@ glab df npm install
 
 `npm` runs as it always does. The CLI checks each package it resolves against your policy.
 
-## Step 4: Read the result
+## Read the result
 
 After `npm` finishes, the CLI prints what the firewall saw:
 
@@ -140,7 +140,7 @@ If no summary is printed, none of the packages matched your policy. Try
 To see the same results in GitLab, select **Secure** > **Dependency firewall** in your group or
 project. The dashboard counts what has been blocked and warned on, and lists each active rule.
 
-## Step 5: Switch to enforcement
+## Switch to enforcement
 
 When the warnings match what you expect to block, change the policy to enforce them:
 

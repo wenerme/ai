@@ -119,6 +119,11 @@ Use accessible CSAM detection tools:
       requires minimal technical expertise to integrate.
 - **Novel CSAM detection classifiers.** These tools can detect unknown or unseen
   CSAM.
+  - The [OpenAI CSAM Image Classifier](https://developers.openai.com/api/docs/guides/csam-classifier) helps approved organizations review images
+    for potential child sexual abuse material (CSAM), including AI-generated
+    material. Access is available at no cost and requires approval. To request
+    access, submit the and complete the Persona verification flow. Access also requires completing
+    the program onboarding process and accepting the applicable terms.
   - offers
     classifiers intended to identify potentially novel CSAM in images and
     videos, as well as relevant text-based exploitation signals.
@@ -158,22 +163,23 @@ Local laws and reporting obligations may vary by jurisdiction.
   policy, escalation path, and the limits of any automated system.
 - **Use the tools you need to moderate content or respond to abuse.** Other
   tools can help you address child safety risks and harms:
-  - The [Moderation API](https://developers.openai.com/api/docs/guides/moderation) detects potentially harmful
-    content in text and images. Learn more about the
-    [`omni-moderation-latest`](https://developers.openai.com/api/docs/models/omni-moderation-latest) model.
-    This isn't a substitute for dedicated CSAM detection. It still includes a
-    `sexual/minors` category covering sexual content involving people
-    under 18; this category is text-only. Use results to:
+  - The [standard moderation model](https://developers.openai.com/api/docs/models/omni-moderation-latest) detects
+    potentially harmful content in text and images. Its `sexual/minors` category
+    covers text only. For image-based CSAM detection, see [Detect](#detect).
+    Use [moderation results](https://developers.openai.com/api/docs/guides/moderation) to:
     - Block or filter content.
     - Send content for human review.
     - Intervene on an account.
     - Add friction to repeated misuse and apply product- or service-specific
       enforcement.
-  - Consider other moderation tools that could help. For example, is an open-source review console for
-    triaging potential policy violations in text, multimedia, and profiles. It
-    supports human and automated review, takes a wellness-oriented approach for
-    reviewers, and enables end-to-end moderation workflows, including
-    NCMEC CyberTipline reporting.
+  - Consider other moderation tools that could help. combines AI-powered moderation with human review, configurable workflows,
+    case management, and audit trails to help teams detect and respond to policy
+    violations. is an open-source review console for triaging potential policy violations in
+    text, multimedia, and profiles. It supports human and automated review, takes
+    a wellness-oriented approach for reviewers, and enables end-to-end moderation
+    workflows, including NCMEC CyberTipline reporting. offers content moderation tools through Safer Enterprise for reviewing
+    suspected child sexual abuse material (CSAM), with built-in reviewer wellness
+    features and NCMEC reporting workflows.
 
 When you are ready to do more, consider other response and reporting
 measures:

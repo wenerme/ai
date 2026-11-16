@@ -90,6 +90,9 @@ To create a system hook:
    Use percent-encoding for special characters.
 1. Optional. In the **Name** text box, enter a name for the webhook.
 1. Optional. In the **Description** text box, enter a description for the webhook.
+1. Optional. To sign requests, select .
+   Save the token now because you can access it only once.
+   For more information, see [signing tokens](../user/project/integrations/webhooks.md#signing-tokens).
 1. Optional. In the **Secret token** text box, enter a secret token to validate requests.
 
    The token is sent with the webhook request in the `X-Gitlab-Token` HTTP header.

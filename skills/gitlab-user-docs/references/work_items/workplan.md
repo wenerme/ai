@@ -219,6 +219,7 @@ This action cannot be undone.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248374) in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `workplan_score`. Disabled by default.
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259555) from confidence score to readiness score in GitLab 19.5.
+- Feature flag `workplan_score` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268375) and replaced by the `workplan` feature flag in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

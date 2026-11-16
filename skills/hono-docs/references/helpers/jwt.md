@@ -64,6 +64,7 @@ verify(
   alg: 'HS256';
   issuer?: string | RegExp;
   aud?: string | string[] | RegExp;
+  typ?: string | string[];
 ): Promise<any>;
 
 ```
@@ -101,6 +102,10 @@ The expected issuer used for JWT verification.
 ####  aud: `string | string[] | RegExp`
 
 The expected audience used for JWT verification. If this is set, the token must include an `aud` claim and at least one audience value must match.
+
+####  typ: `string | string[]`
+
+The expected `typ` header of the token, for example `at+jwt` for OAuth 2.0 access tokens. If this is set, the token must have one of these values. If this is not set, only `JWT` or no `typ` is accepted.
 
 ## `decode()`
 

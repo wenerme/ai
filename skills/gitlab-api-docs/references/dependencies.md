@@ -78,8 +78,9 @@ Example response:
     "licenses": [
       {
         "name": "MIT AND Zlib",
+        "url": null
       }
     ]
-  },
+  }
 ]
 ```

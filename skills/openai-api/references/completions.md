@@ -94,7 +94,7 @@ Content type: `application/json`
 
 - `n: optional integer or null (default: 1)`
 
-  How many completions to generate for each prompt.
+  How many completions to generate for each prompt. Omit `n` to generate one completion per prompt. Newer models reject an explicit `n`, even `n=1`.
 
   **Note:** Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for `max_tokens` and `stop`.
 

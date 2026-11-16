@@ -512,6 +512,8 @@ and use your organization's URL. The name is case-sensitive and must match the n
 
 ### npm metadata
 
+- `time` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/585659) in GitLab 19.6 [with a flag](../../../administration/feature_flags/_index.md) named `npm_metadata_time`. Disabled by default.
+
 The GitLab package registry exposes the following attributes to the npm client:
 
 - `name`
@@ -529,6 +531,12 @@ The GitLab package registry exposes the following attributes to the npm client:
   - `engines`
   - `_hasShrinkwrap`
   - `hasInstallScript`: `true` (if this version has the install scripts)
+- `time`: when each version was published, plus `created` and `modified`.
+  Tools like Renovate and pnpm use it to delay updates to new versions.
+
+> [!flag]
+> The availability of the `time` attribute is controlled by a feature flag.
+> For more information, see the history.
 
 For more information, see [Abbreviated version object](https://github.com/npm/registry/blob/main/docs/responses/package-metadata.md#abbreviated-version-object).
 

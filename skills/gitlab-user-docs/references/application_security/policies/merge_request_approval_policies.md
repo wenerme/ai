@@ -182,8 +182,8 @@ the following sections and tables provide an alternative.
 
 - The `enforcement_type` field:
   - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/202746) in GitLab 18.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_approval_warn_mode`.
-  - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/505352) in GitLab 18.6. Feature flag `security_policy_approval_warn_mode` removed.
-  - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/221747) in GitLab 18.9. Feature flag `security_policy_approval_warn_mode` removed.
+  - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/505352) in GitLab 18.6.
+  - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/580658) in GitLab 18.9. Feature flag `security_policy_approval_warn_mode` removed.
 
 | Field               | Type               | Required | Possible values | Description                                              |
 |---------------------|--------------------|----------|-----------------|----------------------------------------------------------|
@@ -600,14 +600,12 @@ the bot message is sent as long as at least one of those policies has the `send_
 
 ## Warn mode
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/15552) in GitLab 17.8 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_approval_warn_mode`. Disabled by default
-- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/505352) in GitLab 18.6.
-- License scanning support:
-  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/579664) in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_warn_mode_license_scanning`. Enabled by default.
-  - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/221747) in GitLab 18.9. Feature flag `security_policy_approval_warn_mode` removed.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/15552) in GitLab 17.8 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_approval_warn_mode`. Disabled by default.
+- `security_policy_approval_warn_mode` [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/505352) in GitLab 18.6.
+- License scanning support [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/579664) in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_policy_warn_mode_license_scanning`. Enabled by default.
+- Generally available in GitLab 18.9:
+  - Feature flag `security_policy_approval_warn_mode` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/580658).
+  - Feature flag `security_policy_warn_mode_license_scanning` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/579664).
 
 Warn mode allows security teams to test and validate the impact of security policies before applying full enforcement, reducing developer friction when applying new security policies. When a policy is configured with `enforcement_type: warn`, the merge request provides an option to bypass any merge request approval policy violations.
 
