@@ -17,6 +17,7 @@ Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developer
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
 | [Monitor Cloudflare Tunnel with Grafana](https://developers.cloudflare.com/tunnel/tutorials/grafana/) | 3 years ago | Intermediate |
+| [Demonstrate an identity-gated edge with Tunnel](https://developers.cloudflare.com/reference-architecture/implementation-guides/identity-gated-edge/) |  | Intermediate |
 
 Was this helpful?
 

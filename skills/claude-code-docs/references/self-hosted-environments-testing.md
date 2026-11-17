@@ -79,7 +79,7 @@ Install this hook only on runners serving your test environment. It writes every
 
 The `--environment` and `--ref` dispatch flags require Claude Code v2.1.224 or later on the machine that runs the script, the same floor as the runner itself. With the hook in place and a runner started on this host, the test script:
 
-1. Creates a session on the test environment with `claude -p "<prompt>" --environment <environment-id> --output-format json`. Run the command from a git checkout so the CLI can auto-detect the repository from the `origin` remote. The optional `--ref <branch>` bases the session's checkout on a named ref instead of local HEAD. The command exits without waiting for Claude's reply. What it prints tells your script the outcome:
+1. Creates a session on the test environment with `claude -p "<prompt>" --environment <environment-id> --output-format json`. Run the command from a git checkout so the CLI can auto-detect the repository from the `origin` remote. The optional `--ref <branch>` bases the session's checkout on a named ref. The command exits without waiting for Claude's reply. What it prints tells your script the outcome:
    * **Session created**: one line of JSON such as `{"ok":true,"session_id":"session_...","title":"...","url":"...","pool_id":"..."}`
    * **Session creation failed**: the line `{"ok":false,"error":"..."}`, and the command exits with status 1
    * **Some earlier errors**, such as cloud sessions being unavailable for your organization or a missing prompt: the error on stderr with no JSON line, and the command exits with status 1
@@ -146,7 +146,7 @@ await_reply() {
 
 # 1. Create the session on the test environment. Run from a git checkout
 # so the CLI can auto-detect the repo. --ref pins the checkout to a named
-# ref regardless of local HEAD.
+# ref.
 TURN1="e2e-probe-$(date +%s)-$$: say exactly 'ok: custom tools are reachable' and nothing else"
 EXPECT1="ok: custom tools are reachable"
 create_json=$(claude -p "$TURN1" --environment "$CLAUDE_TEST_ENVIRONMENT_ID" \
@@ -194,7 +194,7 @@ On the driver side, run anything that accepts the POST and holds the reply until
 
 ## Authenticate from CI
 
-Both `claude -p ... --environment` and `claude -p ... --cloud` authenticate with a claude.ai OAuth token; API keys, such as `sk-ant-xxxxx`, aren't accepted for either call. Two approaches make a token available in CI.
+Both `claude -p ... --environment` and `claude -p ... --cloud` authenticate with a claude.ai OAuth token; API keys, such as `sk-ant-xxxxx`, aren't accepted for either call.
 
 ### Long-lived CI host
 
@@ -206,7 +206,7 @@ The CLI refreshes the short-lived access token automatically on each invocation,
 
 There is no long-lived CI token for this today. The scope that grants cloud-session control, `user:sessions:claude_code`, is capped server-side at 30 days, so `claude setup-token`, which mints a one-year inference-only token, doesn't cover it. The [environment secret](https://code.claude.com/docs/en/self-hosted-environments-quickstart.md#set-up-an-environment-and-runner) isn't accepted either, since it only authorizes a runner to register with the environment, not to create sessions.
 
-To provision a stored login onto an ephemeral runner, set [`CLAUDE_CODE_OAUTH_REFRESH_TOKEN` and `CLAUDE_CODE_OAUTH_SCOPES`](https://code.claude.com/docs/en/env-vars#variables) so `claude auth login` exchanges the token without a browser; the same 30-day cap applies to the refresh grant. Contact your Anthropic account team if you need a machine-identity path that isn't bound to a human account.
+Run `claude -p` from a [long-lived CI host](#long-lived-ci-host) instead. Contact your Anthropic account team if you need a machine-identity path that isn't bound to a human account.
 
 ## Create a dedicated test environment
 

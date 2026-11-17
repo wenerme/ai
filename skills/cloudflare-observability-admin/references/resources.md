@@ -494,11 +494,17 @@ Products
 
 [**Best practices** Preserve credential boundaries, resource authorization, negotiation ordering, and cleanup when adapting Realtime SFU applications.](https://developers.cloudflare.com/realtime/sfu/best-practices/)
 
+[**Identity-gated edge architecture** Protect application login surfaces with Cloudflare Access, close alternate origin paths, and validate identity before forwarding requests.](https://developers.cloudflare.com/reference-architecture/architectures/identity-gated-edge/)
+
+[**Design an identity-gated edge** Choose Cloudflare products and settings for an identity-gated edge, close origin bypasses, and verify enforcement with repeatable tests.](https://developers.cloudflare.com/reference-architecture/design-guides/identity-gated-edge/)
+
 [**AI Vibe Coding Platform** Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
 
 [**Enterprise AI agent workspace** Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/)
 
 [**Enterprise AI Vibe Coding Platform** Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
+
+[**Demonstrate an identity-gated edge with Tunnel** Run a minimal Tunnel and Access demonstration with a protected handler, browser positive controls, correlated logs, and explicit verification limits.](https://developers.cloudflare.com/reference-architecture/implementation-guides/identity-gated-edge/)
 
 [**When to use Snippets vs Workers** This guide helps you determine when to use Snippets or Workers on Cloudflare's global network.](https://developers.cloudflare.com/rules/snippets/when-to-use/)
 

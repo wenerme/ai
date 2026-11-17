@@ -29,8 +29,10 @@ The new token value is never shown to you or sent to GitLab Duo.
 - You must have the Security Manager, Maintainer, or Owner role for the project,
   or a custom role with the `admin_vulnerability` permission.
 - You must have permission to [create secrets](_index.md#manage-secrets-permissions) in the project.
-- The vulnerability must be a secret detection vulnerability for a GitLab personal access token
+- The vulnerability must be a secret detection vulnerability for a GitLab personal access token,
+  including a fine-grained personal access token,
   with the active [token status](../../../user/application_security/vulnerabilities/validity_check.md).
+  You cannot use this feature for other secrets that secret detection finds, like cloud provider keys.
 - [Pipeline secret detection](../../../user/application_security/secret_detection/pipeline/_index.md) must run with validity checks turned on.
 - You must own the token or have administrator access.
 
@@ -88,6 +90,31 @@ If GitLab Duo can't start the session, the token is still rotated and stored.
 To finish the fix, replace the hardcoded token yourself and
 [use the secret in your CI/CD jobs](_index.md#use-secrets-in-job-scripts).
 
+### What GitLab Duo receives
+
+The request that starts the GitLab Duo session includes:
+
+- The project and the vulnerability.
+- The file and line where the token was leaked.
+- The name of the secret that stores the new value.
+- Your username, so GitLab Duo can assign the merge request to you.
+
+The request does not include the leaked token value or the new token value.
+To remove the hardcoded token, GitLab Duo reads the file, which contains the leaked value.
+The leaked token is already revoked by then, and GitLab Duo never receives the new value.
+
+### Code and systems that use the leaked token
+
+Code and systems that use the leaked token fail from the moment you rotate it
+until they use the new token:
+
+- CI/CD jobs in the project work again after you merge the merge request from GitLab Duo.
+- CI/CD jobs in other projects need a new token, because the secret is stored only in this project.
+- Systems outside GitLab CI/CD need a new token, because you cannot retrieve the secret value
+  through the UI.
+
+For other projects and systems, [create a personal access token](../../../user/profile/personal_access_tokens.md#create-a-personal-access-token).
+
 ## GitLab Credits usage
 
 This feature consumes [GitLab Credits](../../../subscriptions/gitlab_credits.md) for:
@@ -97,6 +124,20 @@ This feature consumes [GitLab Credits](../../../subscriptions/gitlab_credits.md)
   [GitLab Secrets Manager credit usage](credit_usage.md).
 
 ## Troubleshooting
+
+### Fix with AI is not available
+
+If  does not include
+on a secret detection vulnerability, check that:
+
+- The `secrets_manager_pat_rotation` feature flag is enabled.
+- The token status on the vulnerability is active.
+  The token status comes from validity checks.
+  If you turned on validity checks after the last pipeline ran, run a new pipeline.
+- The Developer Flow is turned on for the project.
+- You have the Security Manager, Maintainer, or Owner role for the project,
+  or a custom role with the `admin_vulnerability` permission.
+- You meet the other [prerequisites](#prerequisites), including those for the GitLab Duo Agent Platform.
 
 ### Errors before the token is rotated
 

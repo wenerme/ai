@@ -201,8 +201,10 @@ variables:
 
 ### Run a pipeline by using a URL query string
 
+- `inputs` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/553383) in GitLab 19.6.
+
 You can use a query string to pre-populate the  page. For example, the query string
-`.../pipelines/new?ref=my_branch&var[foo]=bar&file_var[file_foo]=file_bar` pre-populates the
+`.../pipelines/new?ref=my_branch&var[foo]=bar&file_var[file_foo]=file_bar&inputs[environment]=production` pre-populates the
  page with:
 
 -  field: `my_branch`.
@@ -213,11 +215,13 @@ You can use a query string to pre-populate the  page. For example, the query str
   - File:
     - Key: `file_foo`
     - Value: `file_bar`
+-  section:
+  - `environment` input: `production`
 
 The format of the `pipelines/new` URL is:
 
 ```plaintext
-.../pipelines/new?ref=<branch>&var[<variable_key>]=<value>&file_var[<file_key>]=<value>
+.../pipelines/new?ref=<branch>&var[<variable_key>]=<value>&file_var[<file_key>]=<value>&inputs[<input_name>]=<value>
 ```
 
 The following parameters are supported:
@@ -225,8 +229,13 @@ The following parameters are supported:
 - `ref`: specify the branch to populate the  field with.
 - `var`: specify a `Variable` variable.
 - `file_var`: specify a `File` variable.
+- `inputs`: specify the value of a [pipeline input](../inputs/_index.md) defined in the pipeline configuration.
+  Values for `boolean` and `number` inputs are converted to the input's type.
+  For `array` inputs, use a JSON array or a comma-separated list, for example
+  `inputs[regions]=["eu","us"]` or `inputs[regions]=eu,us`.
+  Inputs that are not defined in the pipeline configuration are ignored.
 
-For each `var` or `file_var`, a key and value are required.
+For each `var`, `file_var`, or `inputs` parameter, a key and value are required.
 
 ### Add manual interaction to your pipeline
 

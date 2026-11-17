@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # DLP settings
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DLP settings allow you to configure account-level settings that apply across all DLP profiles and policies. These settings are located in **Zero Trust** > **Data loss prevention** > **DLP settings** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
@@ -54,7 +54,7 @@ Before you begin logging DLP payloads, you will need to set a DLP payload encryp
 
 You will generate two keys: a public key (uploaded to Cloudflare to encrypt log data) and a private key (kept by you to decrypt log data later).
 
-To generate a public/private key pair in the command line, refer to [Generate a key pair](https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/generate-key-pair/).
+To generate a public/private key pair in the command line, refer to [Generate a key pair](https://developers.cloudflare.com/waf/payload-logging/command-line/generate-key-pair/).
 
 ### Upload the public key to Cloudflare
 
@@ -110,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#page","headline":"DLP settings","description":"Configure account-level DLP settings.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/og.png?v=44b09be5872ffb4c","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/#page","headline":"DLP settings","description":"Configure account-level DLP settings.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/og.png?v=44b09be5872ffb4c","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

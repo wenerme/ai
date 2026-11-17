@@ -24,6 +24,7 @@ Design guides take your knowledge from a reference architecture and walk through
 - [Leveraging Cloudflare for your SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/leveraging-cloudflare-for-your-saas-applications/)
 - [Using a zero trust framework to secure SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/)
 - [Building zero trust architecture into your startup](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/)
+- [Design an identity-gated edge](https://developers.cloudflare.com/reference-architecture/design-guides/identity-gated-edge/)
 - [Designing ZTNA access policies for Cloudflare Access](https://developers.cloudflare.com/reference-architecture/design-guides/designing-ztna-access-policies/)
 - [Network-focused migration from VPN concentrators to Zero Trust Network Access](https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/)
 - [Securely deliver applications with Cloudflare](https://developers.cloudflare.com/reference-architecture/design-guides/secure-application-delivery/)

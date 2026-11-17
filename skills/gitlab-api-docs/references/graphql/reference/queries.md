@@ -593,6 +593,7 @@ AI tool governance rules for a namespace. This field is a [connection](objects.m
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the root namespace to fetch tool rules for. |
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project to fetch effective tool rules for. When provided, returns the merged effective rules for the project, applying most-restrictive-wins across namespace and project rules. |
 | `search` | [`String`](scalars.md#string) | Case-insensitive text search on tool name or display name. |
+| `source` | [`AiToolSource`](enums.md#aitoolsource) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Filter tools by source. |
 
 ## `aiUsageData`
 

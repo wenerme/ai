@@ -50509,6 +50509,8 @@ paths:
       responses:
         '200':
           description: OK
+        '403':
+          description: Forbidden
         '404':
           description: Not found
         '429':
@@ -50541,6 +50543,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesProjectUpload"
+        '403':
+          description: Forbidden
         '404':
           description: Not found
         '429':
@@ -50780,6 +50784,8 @@ paths:
       responses:
         '200':
           description: OK
+        '403':
+          description: Forbidden
         '404':
           description: Not found
         '429':
@@ -50812,6 +50818,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesGroupUpload"
         '400':
           description: Bad request
+        '403':
+          description: Forbidden
         '404':
           description: Not found
         '429':
@@ -86278,6 +86286,9 @@ components:
         external_xid:
           type: string
           example: uuid
+        parent_external_xid:
+          type: string
+          example: agent-session-1
         session_started_at:
           type: string
           example: '2026-06-17T00:00:00.000Z'
@@ -87372,9 +87383,9 @@ components:
             for all subgroups. Premium and Ultimate only.
         auto_duo_code_review_enabled:
           type: string
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           example: lite
         duo_code_review_decisions_enabled:
@@ -96848,6 +96859,8 @@ components:
           type: string
         insights_query_limit:
           type: string
+        merge_train_removal_limit_per_user:
+          type: string
         orbit_query_limit:
           type: string
         orbit_indexing_status_limit:
@@ -97080,9 +97093,9 @@ components:
           type: string
         duo_code_review_decisions_enabled:
           type: string
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           example: lite
         elasticsearch_index_settings:
@@ -99502,9 +99515,9 @@ components:
           type: string
         duo_code_review_decisions_enabled:
           type: string
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           example: lite
         reviewer_assignment_strategy:
@@ -99963,9 +99976,9 @@ components:
           type: string
         duo_code_review_decisions_enabled:
           type: string
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           example: lite
         reviewer_assignment_strategy:
@@ -100444,9 +100457,9 @@ components:
           type: string
         duo_code_review_decisions_enabled:
           type: string
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           example: lite
         reviewer_assignment_strategy:
@@ -100907,9 +100920,9 @@ components:
           type: string
         duo_code_review_decisions_enabled:
           type: string
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           example: lite
         reviewer_assignment_strategy:
@@ -106855,9 +106868,9 @@ components:
             for all subgroups. Premium and Ultimate only.
         auto_duo_code_review_enabled:
           type: string
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           example: lite
         duo_code_review_decisions_enabled:
@@ -108122,6 +108135,12 @@ components:
         agent_version:
           type: string
           description: Version of the agent that ran the session.
+          nullable: true
+          maxLength: 255
+        parent_idempotency_key:
+          type: string
+          description: Client-generated key shared by the sessions of one agent run,
+            one session for each project the agent worked in. Not used for idempotency.
           nullable: true
           maxLength: 255
       required:
@@ -117448,6 +117467,11 @@ components:
             user or IP address, for each group or project. Default: `0`, which disables
             the rate limit. GitLab.com uses `60`.'
           nullable: true
+        merge_train_removal_limit_per_user:
+          type: integer
+          description: 'Maximum number of merge requests a user can remove from merge
+            trains per minute. Default: `30`. Set to `0` to disable the rate limit.'
+          nullable: true
         orbit_query_limit:
           type: integer
           description: 'Maximum number of GitLab Orbit queries per minute per user.
@@ -117612,17 +117636,17 @@ components:
           description: If `true`, GitLab Duo can approve and request changes on merge
             requests.
           nullable: true
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
           description: If `true`, allows Standard reviews by GitLab Duo Code Review
             Flow. Beta.
           nullable: true
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           enum:
           - lite
           - standard
-          description: Default review depth for GitLab Duo Code Review Flow. One of
+          description: Default review level for GitLab Duo Code Review Flow. One of
             `lite` or `standard`. Beta.
           nullable: true
         security_scan_stale_after_days:
@@ -122759,16 +122783,16 @@ components:
             requests. Behind a feature flag named `duo_code_review_decisions`, enabled
             by default.
           nullable: true
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
           description: "[Beta] Allow Standard reviews by GitLab Duo Code Review Flow"
           nullable: true
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           enum:
           - lite
           - standard
-          description: "[Beta] Default review depth for GitLab Duo Code Review Flow.
+          description: "[Beta] Default review level for GitLab Duo Code Review Flow.
             One of `lite` or `standard`"
           nullable: true
         duo_remote_flows_enabled:
@@ -123385,16 +123409,16 @@ components:
             requests. Behind a feature flag named `duo_code_review_decisions`, enabled
             by default.
           nullable: true
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
           description: "[Beta] Allow Standard reviews by GitLab Duo Code Review Flow"
           nullable: true
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           enum:
           - lite
           - standard
-          description: "[Beta] Default review depth for GitLab Duo Code Review Flow.
+          description: "[Beta] Default review level for GitLab Duo Code Review Flow.
             One of `lite` or `standard`"
           nullable: true
         duo_remote_flows_enabled:
@@ -124012,16 +124036,16 @@ components:
             requests. Behind a feature flag named `duo_code_review_decisions`, enabled
             by default.
           nullable: true
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
           description: "[Beta] Allow Standard reviews by GitLab Duo Code Review Flow"
           nullable: true
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           enum:
           - lite
           - standard
-          description: "[Beta] Default review depth for GitLab Duo Code Review Flow.
+          description: "[Beta] Default review level for GitLab Duo Code Review Flow.
             One of `lite` or `standard`"
           nullable: true
         duo_remote_flows_enabled:
@@ -125192,17 +125216,17 @@ components:
                 requests. Behind a feature flag named `duo_code_review_decisions`,
                 enabled by default.
               nullable: true
-            duo_code_review_depth_allowed:
+            duo_code_review_level_allowed:
               type: boolean
               description: "[Beta] Allow Standard reviews by GitLab Duo Code Review
                 Flow"
               nullable: true
-            duo_code_review_default_depth:
+            duo_code_review_default_level:
               type: string
               enum:
               - lite
               - standard
-              description: "[Beta] Default review depth for GitLab Duo Code Review
+              description: "[Beta] Default review level for GitLab Duo Code Review
                 Flow. One of `lite` or `standard`"
               nullable: true
             duo_remote_flows_enabled:
@@ -125873,17 +125897,17 @@ components:
                 requests. Behind a feature flag named `duo_code_review_decisions`,
                 enabled by default.
               nullable: true
-            duo_code_review_depth_allowed:
+            duo_code_review_level_allowed:
               type: boolean
               description: "[Beta] Allow Standard reviews by GitLab Duo Code Review
                 Flow"
               nullable: true
-            duo_code_review_default_depth:
+            duo_code_review_default_level:
               type: string
               enum:
               - lite
               - standard
-              description: "[Beta] Default review depth for GitLab Duo Code Review
+              description: "[Beta] Default review level for GitLab Duo Code Review
                 Flow. One of `lite` or `standard`"
               nullable: true
             duo_remote_flows_enabled:
@@ -126577,17 +126601,17 @@ components:
                 requests. Behind a feature flag named `duo_code_review_decisions`,
                 enabled by default.
               nullable: true
-            duo_code_review_depth_allowed:
+            duo_code_review_level_allowed:
               type: boolean
               description: "[Beta] Allow Standard reviews by GitLab Duo Code Review
                 Flow"
               nullable: true
-            duo_code_review_default_depth:
+            duo_code_review_default_level:
               type: string
               enum:
               - lite
               - standard
-              description: "[Beta] Default review depth for GitLab Duo Code Review
+              description: "[Beta] Default review level for GitLab Duo Code Review
                 Flow. One of `lite` or `standard`"
               nullable: true
             duo_remote_flows_enabled:
@@ -141199,16 +141223,16 @@ components:
           description: Enable approval and change requests by GitLab Duo on merge
             requests
           nullable: true
-        duo_code_review_depth_allowed:
+        duo_code_review_level_allowed:
           type: boolean
           description: "[Beta] Allow Standard reviews by GitLab Duo Code Review Flow"
           nullable: true
-        duo_code_review_default_depth:
+        duo_code_review_default_level:
           type: string
           enum:
           - lite
           - standard
-          description: "[Beta] Default review depth for GitLab Duo Code Review Flow.
+          description: "[Beta] Default review level for GitLab Duo Code Review Flow.
             One of `lite` or `standard`"
           nullable: true
         ai_audit_events_storage_enabled:

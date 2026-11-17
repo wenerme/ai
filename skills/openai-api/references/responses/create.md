@@ -2275,7 +2275,7 @@ Content type: `application/json`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
-                An optional list of skills referenced by id or inline data.
+                An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                 `maxItems: 200`
 
@@ -9037,7 +9037,7 @@ Content type: `application/json`
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
-                  An optional list of skills referenced by id or inline data.
+                  An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                   `maxItems: 200`
 

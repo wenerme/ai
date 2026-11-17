@@ -6006,7 +6006,7 @@ Cancel an ongoing evaluation run.
 
               - `skills: optional array of SkillReference or InlineSkill`
 
-                An optional list of skills referenced by id or inline data.
+                An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                 `maxItems: 200`
 
@@ -8588,7 +8588,7 @@ Content type: `application/json`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
-                An optional list of skills referenced by id or inline data.
+                An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                 `maxItems: 200`
 
@@ -10840,7 +10840,7 @@ Content type: `application/json`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
-                An optional list of skills referenced by id or inline data.
+                An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                 `maxItems: 200`
 
@@ -13459,7 +13459,7 @@ Get a list of runs for an evaluation.
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
-                  An optional list of skills referenced by id or inline data.
+                  An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                   `maxItems: 200`
 
@@ -16012,7 +16012,7 @@ Get an evaluation run by ID.
 
               - `skills: optional array of SkillReference or InlineSkill`
 
-                An optional list of skills referenced by id or inline data.
+                An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                 `maxItems: 200`
 
@@ -19247,7 +19247,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
-                  An optional list of skills referenced by id or inline data.
+                  An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                   `maxItems: 200`
 
@@ -21603,7 +21603,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
-                  An optional list of skills referenced by id or inline data.
+                  An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                   `maxItems: 200`
 
@@ -23969,7 +23969,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
-                  An optional list of skills referenced by id or inline data.
+                  An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                   `maxItems: 200`
 
@@ -26325,7 +26325,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
-                  An optional list of skills referenced by id or inline data.
+                  An optional list of skills referenced by id or inline data. Across all inline skills in this list, decoded ZIP data must total at most 50 MiB and Base64 text must total at most 70,254,592 characters, including line breaks. Skill references do not count toward these limits.
 
                   `maxItems: 200`
 

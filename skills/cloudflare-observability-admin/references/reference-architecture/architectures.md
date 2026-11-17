@@ -31,6 +31,7 @@ Reference architecture documents and diagrams are designed to provide a foundati
 - [SentinelOne and Cloudflare — An AI-driven security ecosystem for autonomous, risk-based protection](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/)
 - [AI Security for Apps Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/)
 - [Understanding Email Security Deployments](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/)
+- [Identity-gated edge architecture](https://developers.cloudflare.com/reference-architecture/architectures/identity-gated-edge/)
 
 Was this helpful?
 

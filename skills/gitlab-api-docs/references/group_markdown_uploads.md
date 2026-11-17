@@ -22,10 +22,13 @@ For more information, see [rate limits](../rate_limits/_index.md#api-and-rails-c
 ## Upload a file to a group
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230537) in GitLab 19.0.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269454) in GitLab 19.7 to return `403 Forbidden` for archived groups and groups pending deletion.
 
 Uploads a file to the specified group. Returns a Markdown-formatted link to the file.
 
 You must have the Guest, Planner, Reporter, Developer, Maintainer, or Owner role to use this endpoint.
+You cannot upload files to an archived group or a group pending deletion.
+The endpoint returns `403 Forbidden` instead.
 
 ```plaintext
 POST /groups/:id/uploads

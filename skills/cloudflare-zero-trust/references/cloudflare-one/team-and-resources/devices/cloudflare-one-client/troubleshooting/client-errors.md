@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Client errors
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the error codes that can appear in the Cloudflare One Client (formerly WARP) GUI. If you do not see your error below, refer to [common issues](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/) or [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
@@ -311,6 +311,77 @@ Your device was unenrolled from your company's [organization](https://developers
 
 Contact your company or team administrator for assistance.
 
+## CF\_SERVICE\_CONNECTION\_LOST
+
+### Symptoms
+
+- The Cloudflare One Client GUI shows **Reconnecting to service**
+- Unable to view or change the client status from the GUI
+
+### Cause
+
+The Cloudflare One Client GUI lost its connection to the Cloudflare One Client service on the device. This is usually temporary, for example while the service restarts.
+
+### Resolution
+
+The GUI reconnects automatically. No action is needed if the error clears on its own.
+
+If the GUI cannot reconnect, it shows one of the following errors instead. Follow the resolution for that error.
+
+- [CF\_SERVICE\_NOT\_ACCEPTING](#cf_service_not_accepting)
+- [CF\_SERVICE\_NOT\_RESPONDING](#cf_service_not_responding)
+- [CF\_SERVICE\_NOT\_RUNNING](#cf_service_not_running)
+
+## CF\_SERVICE\_NOT\_ACCEPTING
+
+### Symptoms
+
+- The Cloudflare One Client GUI shows **Service not accepting connections**
+- Unable to view or change the client status from the GUI
+
+### Cause
+
+The Cloudflare One Client service is running, but it is not accepting connections from the GUI. This can happen for a short time while the service starts.
+
+### Resolution
+
+1. Wait one minute. The GUI keeps trying to connect to the service.
+2. If the error does not clear, [restart the client service](#restart-the-client-service).
+3. If this does not resolve the error, restart your device.
+
+## CF\_SERVICE\_NOT\_RESPONDING
+
+### Symptoms
+
+- The Cloudflare One Client GUI shows **Service not responding**
+- Unable to view or change the client status from the GUI
+
+### Cause
+
+The Cloudflare One Client GUI connected to the Cloudflare One Client service, but the service did not respond in time.
+
+### Resolution
+
+1. [Restart the client service](#restart-the-client-service).
+2. If this does not resolve the error, restart your device.
+
+## CF\_SERVICE\_NOT\_RUNNING
+
+### Symptoms
+
+- The Cloudflare One Client GUI shows **Service not running**
+- Unable to view or change the client status from the GUI
+
+### Cause
+
+The Cloudflare One Client service is not running on the device. For example, the service was stopped or failed to start.
+
+### Resolution
+
+1. [Start the client service](#restart-the-client-service).
+2. If the service does not start, restart your device.
+3. If this does not resolve the error, [reinstall the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
 ## CF\_TLS\_INTERCEPTION\_BLOCKING\_DOH
 
 ### Symptoms
@@ -353,6 +424,35 @@ The account administrator has disconnected the Cloudflare One Client for all dev
 
 The account administrator must turn off both of the following features: - [Disconnect the Cloudflare One Client on all devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-the-cloudflare-one-client-on-all-devices) - [Manage device connection using an external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#manage-device-connection-using-an-external-signal)
 
+## Restart the client service
+
+To restart the Cloudflare One Client service, run the command for your operating system as an administrator. The command also starts the service if it is stopped.
+
+```sh
+sudo launchctl kickstart -k system/com.cloudflare.1dot1dot1dot1.macos.warp.daemon
+```
+
+If the command returns `Could not find service`, load the service instead. The service starts when it loads.
+
+```sh
+sudo launchctl enable system/com.cloudflare.1dot1dot1dot1.macos.warp.daemon
+sudo launchctl bootstrap system /Library/LaunchDaemons/com.cloudflare.1dot1dot1dot1.macos.warp.daemon.plist
+```
+
+In an elevated PowerShell window, run:
+
+```powershell
+Restart-Service -Name CloudflareWARP
+```
+
+Alternatively, restart the **Cloudflare One Client** service in the Windows **Services** app.
+
+If [uninstall protection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/uninstall-protection/) is on, you cannot stop or restart the service. Restart your device instead.
+
+```sh
+sudo systemctl restart warp-svc
+```
+
 Was this helpful?
 
 YesNo
@@ -362,5 +462,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#page","headline":"Client errors","description":"Reference information for Client errors in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/og.png?v=ef947ab86cd3e080","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#page","headline":"Client errors","description":"Reference information for Client errors in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/og.png?v=ef947ab86cd3e080","dateModified":"2026-11-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

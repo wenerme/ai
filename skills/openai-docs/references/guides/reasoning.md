@@ -1162,7 +1162,7 @@ Preserve updates with `previous_response_id`, or replay them in their original p
 
 You can set `reasoning.effort` and [`text.format`](https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses#change-the-response-format-mid-conversation) in the same `configuration_update` item. An update to either setting alone preserves the other.
 
-Do not combine configuration updates with automatic compaction or automatic truncation. The standalone `/responses/compact` endpoint also rejects histories containing these updates.
+You can combine configuration updates with automatic compaction through `context_management`. If earlier updates exist, the API emits a fresh update after the compaction item with the latest effort and output format. Automatic truncation and the standalone `/responses/compact` endpoint still reject histories containing updates. See the [Compaction guide](https://developers.openai.com/api/docs/guides/compaction#continue-with-configuration-updates-and-tools) for how to prepare a standalone request.
 
 You can still explicitly compact history by including a `compaction_trigger` item in a `/responses` request. After compaction, add a fresh `configuration_update` before the next user message. Restate each setting you changed, including the format if you changed it.
 

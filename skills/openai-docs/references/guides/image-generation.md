@@ -42,7 +42,7 @@ To ensure these models are used responsibly, you may need to complete the [API
 
 ### GPT-Image-2.6
 
-GPT-Image-2.6 includes [Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst) for detailed visual work and [Flare](https://developers.openai.com/api/docs/models/gpt-image-2.6-flare) for fast iteration. Both models support complexity control, markup-guided edits, SVG output, and animated GIF output through the Image API. The existing examples below use GPT-Image-2.5.
+GPT-Image-2.6 includes [Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst) for detailed visual work and [Flare](https://developers.openai.com/api/docs/models/gpt-image-2.6-flare) for fast iteration. Both models support complexity control, markup-guided edits, SVG output, and animated GIF output through the Image API. Explore [Sunburst examples and their generation settings](https://developers.openai.com/api/docs/guides/image-generation?gallery=open).
 
 #### Set image complexity
 
@@ -2570,7 +2570,7 @@ openai images edit \
 
 ### Guide an edit with markup
 
-Use the Image API’s `POST /v1/images/edits` endpoint for markup-guided edits with supported GPT-Image-2.5 and GPT-Image-2.6 models. For regional edits with the Responses API, use a [mask](#edit-an-image-using-a-mask). Use an annotation layer to show where a change should happen and describe the change in `prompt`.
+For markup-guided edits with supported GPT-Image-2.5 and GPT-Image-2.6 models, use the `POST /v1/images/edits` endpoint in the Image API. For regional edits with the Responses API, use a [mask](#edit-an-image-using-a-mask). Use an annotation layer to show where a change should happen and describe the change in `prompt`.
 
 For example, download the [kitchen photo](https://developers.openai.com/images/platform/guides/image-prompting/kitchen.webp) and [transparent overlay](https://developers.openai.com/images/platform/guides/image-prompting/markup-vase-overlay-gpt-image-2-6.png) into the same directory. The overlay circles the vase to recolor.
 
@@ -3283,16 +3283,16 @@ You can configure the following output options:
 
 ### Size and quality options
 
-`gpt-image-2.5-sunburst` and `gpt-image-2.5-flare` add `xhigh` and `max` quality settings. Both default to `auto`. Earlier GPT Image models support quality settings up to `high`.
+Sunburst and Flare in GPT-Image-2.6 and GPT-Image-2.5 support `xhigh` and `max` quality settings and default to `auto`. Earlier GPT Image models support quality settings up to `high`.
 
 | Setting           | Options                                                               |
 | ----------------- | --------------------------------------------------------------------- |
 | Recommended sizes | `1024x1024` (square), `1536x1024` (landscape), `1024x1536` (portrait) |
 | Quality           | `low`, `medium`, `high`, `xhigh`, `max`, `auto`                       |
 
-Both models also support custom dimensions as `WIDTHxHEIGHT` strings, such as `1536x864`. Width and height must be multiples of 16, the aspect ratio must be between 1:3 and 3:1, and neither edge may exceed 3840 pixels. The total pixel count must be between 655,360 and 8,294,400 (4K). Resolutions above `2560x1440` are experimental.
+Sunburst and Flare also support custom dimensions as `WIDTHxHEIGHT` strings, such as `1536x864`. Width and height must be multiples of 16, the aspect ratio must be between 1:3 and 3:1, and neither edge may exceed 3840 pixels. The total pixel count must be between 655,360 and 8,294,400 (4K). For GPT-Image-2.5, resolutions above `2560x1440` are experimental.
 
-For transparent backgrounds with either model, set `background: "transparent"` and use `output_format: "png"` or `"webp"`.
+For transparent backgrounds, set `background: "transparent"` and use `output_format: "png"` or `"webp"`.
 
 Use `quality: "low"` for quick drafts. For final assets, compare higher quality settings to find the right balance of detail, latency, and cost.
 

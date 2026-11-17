@@ -25,7 +25,7 @@ check whether its toolset is enabled.
 | `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
 | `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`list_work_item_saved_views`](#list_work_item_saved_views), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
-| `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`list_pipeline_schedules`](#list_pipeline_schedules), [`save_pipeline`](#save_pipeline), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
+| `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`list_pipeline_schedules`](#list_pipeline_schedules), [`save_pipeline`](#save_pipeline), [`save_pipeline_job`](#save_pipeline_job), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
 | `duo_agent_platform` | [`list_duo_agents_and_flows`](#list_duo_agents_and_flows), [`start_duo_session`](#start_duo_session), [`list_duo_sessions`](#list_duo_sessions), [`get_duo_session`](#get_duo_session), [`send_duo_session_input`](#send_duo_session_input) |
 | `wikis` | [`list_wiki_pages`](#list_wiki_pages) |
 | `code_security` | [`list_vulnerabilities`](#list_vulnerabilities), [`get_vulnerability`](#get_vulnerability), [`save_vulnerability`](#save_vulnerability), [`attach_scan_profile`](#attach_scan_profile) |
@@ -1601,6 +1601,52 @@ Examples:
   ```plaintext
   Rename pipeline 12345 to "Nightly security scan" in project gitlab-org/gitlab
   ```
+
+## `save_pipeline_job`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/597698) in GitLab 19.6.
+
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Prerequisites:
+
+- The job must belong to the specified project, be in the manual state, and be playable.
+- You must have permission to play the job, including access to any protected environment it deploys to.
+- To pass variables, the authenticated user must have permission to override pipeline variables in the project.
+
+The `save_pipeline_job` plays an existing manual CI/CD job in a GitLab project, optionally with CI/CD variables.
+
+If you play a job, it might trigger a deployment.
+Before you play the job, check it with [`get_job`](#get_job).
+
+Provide either the job's `url`, or both `project_id` and `job_id`.
+You can also provide `url` with `project_id`, `job_id`, or both.
+All supplied identifiers must refer to the same project and job.
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `url` | string | No | Full job URL, for example `https://gitlab.example.com/group/project/-/jobs/12345`. Required if `project_id` and `job_id` are not provided. |
+| `project_id` | string | No | ID or full path of the project. Required if `url` is not provided. |
+| `job_id` | integer | No | ID of the manual job to play. Required if `url` is not provided. |
+| `variables` | array | No | CI/CD variables in array format (`[{key, value, variable_type}]`). Each variable requires `key` and `value`. The optional `variable_type` is `env_var` (default) or `file`. |
+
+Returns the following job details:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | integer | Job ID. |
+| `name` | string | Job name. |
+| `status` | string | Job status after playing, in lowercase (for example, `pending`). |
+| `stage` | string | Stage name. |
+| `pipeline_id` | integer | Pipeline ID. |
+| `web_url` | string | URL of the job. |
+| `pipeline_web_url` | string | URL of the pipeline. |
+
+Example:
+
+```plaintext
+Check job 12345 in project example/my-project, then play it with DEPLOY_ENV set to staging
+```
 
 ## `manage_pipeline`
 

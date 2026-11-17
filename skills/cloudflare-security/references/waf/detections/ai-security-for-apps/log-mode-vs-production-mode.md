@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log
 
 # Log mode versus production mode
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps can operate in two distinct modes. Understanding the trade-offs between them helps you choose the right approach for your stage of deployment.
 
@@ -21,7 +21,7 @@ AI Security for Apps can operate in two distinct modes. Understanding the trade-
 | Feature | Production mode | Log mode |
 | --- | --- | --- |
 | **How it works** | You write WAF [custom rules](https://developers.cloudflare.com/waf/custom-rules/) using AI Security for Apps detection fields | You enable the AI Security Log Mode Ruleset with pre-built rules |
-| **Prompt logging** | No — only request metadata is logged | Yes — the full request body is logged (encrypted via [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/)) |
+| **Prompt logging** | No — only request metadata is logged | Yes — the full request body is logged (encrypted via [payload logging](https://developers.cloudflare.com/waf/payload-logging/)) |
 | **Response logging** | No — use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) if response visibility is required | No — same limitation |
 | **Policy flexibility** | Full — combine injection scores, PII categories, bot scores, custom topics, and more | Limited — three fixed rules (PII detected, unsafe topic detected, prompt injection detected) with no score-based or subcategory logic |
 | **Blocking behavior** | Customizable — issue custom responses including custom JSON | Default WAF block page only |
@@ -50,7 +50,7 @@ Log mode uses the AI Security Log Mode Ruleset — a pre-built ruleset that logs
 In log mode:
 
 - The managed ruleset fires on three broad conditions: PII detected, unsafe topic detected, and prompt injection detected.
-- The entire request body is logged using [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/) (encrypted — you must configure a key pair to decrypt payloads).
+- The entire request body is logged using [payload logging](https://developers.cloudflare.com/waf/payload-logging/) (encrypted — you must configure a key pair to decrypt payloads).
 - You can correlate specific prompts with their detection scores to understand how the model classifies your traffic.
 
 **When to use log mode:**
@@ -65,7 +65,7 @@ In log mode:
 2. Under **AI Security for Apps**, find the **Managed Ruleset** section.
 3. Enable the **AI Security Log Mode Ruleset**.
 4. Set the action to *Log*.
-5. (Recommended) Configure [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/) so you can decrypt and view the full prompt content alongside detection results.
+5. (Recommended) Configure [payload logging](https://developers.cloudflare.com/waf/payload-logging/) so you can decrypt and view the full prompt content alongside detection results.
 
 Deploy the managed ruleset using a `PUT` request:
 
@@ -113,7 +113,7 @@ Since the managed ruleset uses broad, binary detection logic (detected/not detec
 
 ## Recommended workflow
 
-1. **Start in log mode.** Enable the AI Security Log Mode Ruleset with the action set to *Log*. Configure [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/) so you can view prompts alongside detection results.
+1. **Start in log mode.** Enable the AI Security Log Mode Ruleset with the action set to *Log*. Configure [payload logging](https://developers.cloudflare.com/waf/payload-logging/) so you can view prompts alongside detection results.
 2. **Review detections in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/).** Filter on events from the managed ruleset. Decrypt payloads and review the prompts that triggered detections. Note the scores to understand where to set thresholds.
 3. **Build production rules.** Based on your analysis, [create custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) with appropriate score thresholds and PII category filters.
 4. **Disable log mode.** Once your production rules are deployed and validated, disable the managed ruleset or keep it on *Log* as ongoing monitoring.
@@ -132,5 +132,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#page","headline":"Log mode versus production mode","description":"Differences between log mode and production mode for AI security detections.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/og.png?v=1339532797a70b9c","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#page","headline":"Log mode versus production mode","description":"Differences between log mode and production mode for AI security detections.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/og.png?v=1339532797a70b9c","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

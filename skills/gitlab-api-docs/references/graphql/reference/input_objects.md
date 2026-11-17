@@ -1252,8 +1252,10 @@ Auto-remediation configuration for a dependency scanning post-processing scan pr
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `batchUpdates` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Whether to batch updates into one merge request per lockfile. |
 | `cooldown` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Minimum number of days after a package is released before it can be used. |
 | `enabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Whether auto-remediation is enabled. |
+| `maxUpdatesPerBatch` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Maximum number of dependency updates in one batch merge request. Further updates wait for the next run. |
 | `openMergeRequestsLimit` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Maximum number of open auto-remediation merge requests at once. |
 | `runnerTags` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Runner tags applied to the auto-remediation job. |
 | `severityLevel` | [`VulnerabilitySeverity`](enums.md#vulnerabilityseverity) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Minimum vulnerability severity that triggers an automated upgrade. Findings below this threshold are skipped. |

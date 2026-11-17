@@ -3002,8 +3002,10 @@ Auto-remediation configuration for a dependency scanning post-processing scan pr
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `batchUpdates` | [`Boolean`](scalars.md#boolean) | Indicates whether updates are batched into one merge request per lockfile. |
 | `cooldown` | [`Int`](scalars.md#int) | Minimum number of days after a package is released before it can be used. |
 | `enabled` | [`Boolean`](scalars.md#boolean) | Indicates whether auto-remediation is enabled. |
+| `maxUpdatesPerBatch` | [`Int`](scalars.md#int) | Maximum number of dependency updates in one batch merge request. Further updates wait for the next run. |
 | `openMergeRequestsLimit` | [`Int`](scalars.md#int) | Maximum number of open merge requests the feature may have open at once. |
 | `runnerTags` | [`[String!]`](scalars.md#string) | Runner tags used for auto-remediation jobs. |
 | `severityLevel` | [`VulnerabilitySeverity`](enums.md#vulnerabilityseverity) | Minimum vulnerability severity that triggers an automated upgrade. |
@@ -22537,6 +22539,7 @@ Represents a question a workplan flow asked on a work item.
 | `answered` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the thread the question was asked in is resolved. |
 | `discussionId` | [`DiscussionID!`](scalars.md#discussionid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Global ID of the thread the question was asked in. |
 | `noteId` | [`NoteID!`](scalars.md#noteid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Global ID of the comment that asked the question. |
+| `userPermissions` | [`NotePermissions!`](#notepermissions) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Permissions for the current user on the comment that asked the question. |
 
 ## `WorkItemAgentPlanQuestionConnection`
 

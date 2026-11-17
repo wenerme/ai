@@ -5,6 +5,7 @@
 
 - Visibility of billing-related fields changed in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `restrict_namespace_api_billing_fields`. Disabled by default.
 - Visibility of billing-related fields [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/565598) in GitLab 18.9. Feature flag `restrict_namespace_api_billing_fields` removed.
+- `billable_members_count` for subgroups [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270740) to `null` in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `skip_subgroup_billable_members_count`. Disabled by default.
 
 Use this API to interact with namespaces, a special resource category used to organize users and groups. For more information, see [namespaces](../user/namespace/_index.md).
 
@@ -40,7 +41,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `parent_id` | integer | ID of the parent namespace. `null` for top-level namespaces. |
 | `avatar_url` | string | URL of the namespace avatar. `null` if not set. |
 | `web_url` | string | URL of the namespace on GitLab. |
-| `billable_members_count` | integer | Number of billable members in the namespace. |
+| `billable_members_count` | integer | Number of billable members in the namespace. `null` if the user does not have permission to view billing for the namespace. If the `skip_subgroup_billable_members_count` feature flag is enabled, also `null` for subgroups. |
 | `plan` | string | Subscription plan of the namespace (for example, `free`, `ultimate`). |
 | `end_date` | date | End date of the current subscription. `null` if not applicable. |
 | `trial_ends_on` | date | Date the trial ends. `null` if not on a trial. |
@@ -176,7 +177,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `parent_id` | integer | ID of the parent namespace. `null` for top-level namespaces. |
 | `avatar_url` | string | URL of the namespace avatar. `null` if not set. |
 | `web_url` | string | URL of the namespace on GitLab. |
-| `billable_members_count` | integer | Number of billable members in the namespace. |
+| `billable_members_count` | integer | Number of billable members in the namespace. `null` if the user does not have permission to view billing for the namespace. If the `skip_subgroup_billable_members_count` feature flag is enabled, also `null` for subgroups. |
 | `plan` | string | Subscription plan of the namespace (for example, `free`, `ultimate`). |
 | `end_date` | date | End date of the current subscription. `null` if not applicable. |
 | `trial_ends_on` | date | Date the trial ends. `null` if not on a trial. |

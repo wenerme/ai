@@ -46,6 +46,17 @@ You can then use AI Security for Apps fields in custom rules managed with the `c
 
 For more examples, refer to [Terraform configuration examples](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/terraform-examples/).
 
+## 2026-11-12
+
+
+**Payload logging for WAF custom rules**
+
+[Payload logging](https://developers.cloudflare.com/waf/payload-logging/) now supports WAF custom rules. Enterprise customers can configure an account-level public key, or a zone-level public key that takes precedence, to encrypt matched payloads for supported managed rules and custom rules.
+
+This release does not add payload logging support for rate limiting rules.
+
+Refer to [Configure payload logging via API](https://developers.cloudflare.com/waf/payload-logging/configure-api/) for configuration details.
+
 ## 2026-11-03
 
 
@@ -448,25 +459,6 @@ This release introduces new threat detections to enhance protection against comm
 | Cloudflare Managed Ruleset | ...e540f17f | N/A | Version Control - Information Disclosure - Beta | Log | Block | This rule is merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529). |
 | Cloudflare Managed Ruleset | ...ba458b4b | N/A | Command Injection - Generic 10 | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...7b58420b | N/A | XSS, HTML Injection - Script Tag | Block | Block | Reverts the detection changes introduced on August 25, 2026 |
-
-## 2026-09-10
-
-
-**WAF Release - 2026-09-10 - Emergency**
-
-This update provides immediate defense against a high-severity, actively exploited zero-day vulnerability targeting Adobe Commerce and Magento Open Source storefronts.
-
-**Key Findings**
-
-- Adobe Commerce and Magento RCE (CVE-2026-75650 / "StyleSmuggler"): Unauthenticated Remote Code Execution (RCE) vulnerability caused by improper neutralization of special elements in the platform's template engine. Unauthenticated attackers can inject arbitrary PHP payloads through style properties to execute system commands and deploy persistent malware.
-
-**Impact**
-
-This emergency rule provides immediate edge-level mitigation and virtual patching, origin applications must be urgently updated. We strongly recommend to apply the hotfix outlined in Adobe Security Bulletin [APSB26-146](https://experienceleague.adobe.com/en/docs/commerce-knowledge-base/kb/announcements/commerce-apsb26-146) and immediately rotate all potentially exposed encryption keys, integration tokens, and system credentials, as patching alone does not remediate an existing compromise.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...440f5c55 | N/A | Adobe Commerce - Remote Code Execution - CVE:CVE-2026-75650 | N/A | Block | This is a new detection. |
 
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 

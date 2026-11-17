@@ -121,7 +121,7 @@ Example response:
      "expires_at": "2020-11-22T14:13:35Z",
      "user_name": "Raymond Smith",
      "created_by_name": "Administrator"
-   },
+   }
 ]
 ```
 
@@ -155,7 +155,7 @@ Example response:
 ```json
 {
   "expires_at": "2012-10-22T14:13:35Z",
-  "access_level": 40,
+  "access_level": 40
 }
 ```
 

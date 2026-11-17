@@ -23,8 +23,12 @@ For more information, see [rate limits](../rate_limits/_index.md#api-and-rails-c
 
 - `full_path` response attribute pattern [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150939) in GitLab 17.1.
 - `id` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/161160) in GitLab 17.3.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269454) in GitLab 19.7 to return `403 Forbidden` for archived projects and projects pending deletion.
 
 Uploads a file to the specified project to be used in an issue or merge request description, or a comment.
+
+You cannot upload files to an archived project or a project pending deletion.
+The endpoint returns `403 Forbidden` instead.
 
 ```plaintext
 POST /projects/:id/uploads
