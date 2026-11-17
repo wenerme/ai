@@ -504,10 +504,7 @@ To turn scheduled automations on or off for a project:
 ## Add instructions
 
 - Instructions for each condition [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627896) in GitLab 19.5 [with a flag](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_goals`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Generally available in GitLab 19.7. Feature flag `ai_flow_trigger_goals` removed.
 
 Instructions are text that tells the flow what to do when the automation runs.
 An automation has one set of instructions, which applies to every event and schedule

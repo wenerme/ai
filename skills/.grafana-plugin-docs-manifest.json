@@ -596,8 +596,8 @@
   },
   "grafana-databricks-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting.md",
-    "size": 30578,
-    "updatedAt": "2026-10-28T00:53:30.171Z"
+    "size": 31015,
+    "updatedAt": "2026-11-17T07:50:55.104Z"
   },
   "grafana-datadog-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/alerting.md",
@@ -1226,8 +1226,8 @@
   },
   "grafana-lokiexplore-app/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting.md",
-    "size": 16701,
-    "updatedAt": "2026-11-04T18:10:47.795Z"
+    "size": 19538,
+    "updatedAt": "2026-11-17T07:51:16.332Z"
   },
   "grafana-lokiexplore-app/view-logs.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs.md",

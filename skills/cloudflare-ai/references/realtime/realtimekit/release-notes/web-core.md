@@ -232,7 +232,7 @@ Connected Meetings:
 
 ## 2026-05-28
 
-**RealtimeKit Web Core 1.5.1**
+**RealtimeKit Web Core 1.5.1** Deprecated
 
 **Compatibility:** Works best with RealtimeKit Web UI Kit 1.2.0 or later.
 
@@ -256,7 +256,7 @@ Connected Meetings:
 
 ## 2026-04-20
 
-**RealtimeKit Web Core 1.4.0**
+**RealtimeKit Web Core 1.4.0** Deprecated
 
 **Compatibility:** Works best with RealtimeKit Android Core 2.0.0+ and RealtimeKit iOS Core 2.0.0+.
 
@@ -275,7 +275,7 @@ Connected Meetings:
 
 ## 2026-03-31
 
-**RealtimeKit Web Core 1.3.0**
+**RealtimeKit Web Core 1.3.0** Deprecated
 
 **Features**
 
@@ -284,7 +284,7 @@ Connected Meetings:
 
 ## 2026-03-10
 
-**RealtimeKit Web Core 1.2.5**
+**RealtimeKit Web Core 1.2.5** Deprecated
 
 **Compatibility:** Works best with RealtimeKit Web UI Kit 1.1.1 or later.
 
@@ -300,7 +300,7 @@ Connected Meetings:
 
 ## 2026-01-30
 
-**RealtimeKit Web Core 1.2.4**
+**RealtimeKit Web Core 1.2.4** Deprecated
 
 **Compatibility:** Works best with RealtimeKit Web UI Kit 1.1.0 or later.
 
@@ -356,7 +356,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2026-01-05
 
-**RealtimeKit Web Core 1.2.3**
+**RealtimeKit Web Core 1.2.3** Deprecated
 
 **Fixes**
 
@@ -385,7 +385,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-12-17
 
-**RealtimeKit Web Core 1.2.2**
+**RealtimeKit Web Core 1.2.2** Deprecated
 
 **Fixes**
 
@@ -395,7 +395,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-11-18
 
-**RealtimeKit Web Core 1.2.1**
+**RealtimeKit Web Core 1.2.1** Deprecated
 
 **Fixes**
 
@@ -408,7 +408,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-10-30
 
-**RealtimeKit Web Core 1.2.0**
+**RealtimeKit Web Core 1.2.0** Deprecated
 
 **Features**
 
@@ -436,7 +436,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-08-26
 
-**RealtimeKit Web Core 1.1.7**
+**RealtimeKit Web Core 1.1.7** Deprecated
 
 **Fixes**
 
@@ -447,7 +447,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-08-14
 
-**RealtimeKit Web Core 1.1.6**
+**RealtimeKit Web Core 1.1.6** Deprecated
 
 **Enhancements**
 
@@ -455,7 +455,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-08-04
 
-**RealtimeKit Web Core 1.1.5**
+**RealtimeKit Web Core 1.1.5** Deprecated
 
 **Fixes**
 
@@ -465,7 +465,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-07-17
 
-**RealtimeKit Web Core 1.1.4**
+**RealtimeKit Web Core 1.1.4** Deprecated
 
 **Fixes**
 
@@ -475,7 +475,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-07-08
 
-**RealtimeKit Web Core 1.1.3**
+**RealtimeKit Web Core 1.1.3** Deprecated
 
 **Fixes**
 
@@ -483,7 +483,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-07-02
 
-**RealtimeKit Web Core 1.1.2**
+**RealtimeKit Web Core 1.1.2** Deprecated
 
 **Fixes**
 
@@ -491,7 +491,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-06-30
 
-**RealtimeKit Web Core 1.1.0–1.1.1**
+**RealtimeKit Web Core 1.1.0–1.1.1** Deprecated
 
 **Features**
 
@@ -515,7 +515,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-06-17
 
-**RealtimeKit Web Core 1.0.2**
+**RealtimeKit Web Core 1.0.2** Deprecated
 
 **Fixes**
 
@@ -524,7 +524,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-05-29
 
-**RealtimeKit Web Core 1.0.1**
+**RealtimeKit Web Core 1.0.1** Deprecated
 
 **Fixes**
 
@@ -534,7 +534,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 ## 2025-05-29
 
-**RealtimeKit Web Core 1.0.0**
+**RealtimeKit Web Core 1.0.0** Deprecated
 
 **Features**
 

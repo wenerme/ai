@@ -191,7 +191,7 @@ After a session ends, a window prompts the user to sign in again.
 
 ### Sign-in prompt on SAML instances
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257368) in GitLab 19.6 [with a flag](../feature_flags/_index.md) named `session_expire_modal_on_saml_instances`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257368) in GitLab 19.6 [with a flag](../feature_flags/_index.md) named `session_expire_modal_on_saml_instances`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

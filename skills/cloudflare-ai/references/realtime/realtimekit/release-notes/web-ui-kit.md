@@ -150,7 +150,7 @@ Key changes:
 
 ## 2026-05-28
 
-**RealtimeKit Web UI Kit 1.2.0**
+**RealtimeKit Web UI Kit 1.2.0** Deprecated
 
 **Compatibility:** Works best with RealtimeKit Web Core 1.5.1 or later.
 
@@ -169,7 +169,7 @@ Key changes:
 
 ## 2026-03-31
 
-**RealtimeKit Web UI Kit 1.1.2**
+**RealtimeKit Web UI Kit 1.1.2** Deprecated
 
 **Enhancements**
 
@@ -177,7 +177,7 @@ Key changes:
 
 ## 2026-03-10
 
-**RealtimeKit Web UI Kit 1.1.1**
+**RealtimeKit Web UI Kit 1.1.1** Deprecated
 
 **Compatibility:** Works best with RealtimeKit Web Core 1.2.5 or later.
 
@@ -197,7 +197,7 @@ Key changes:
 
 ## 2026-01-30
 
-**RealtimeKit Web UI Kit 1.1.0**
+**RealtimeKit Web UI Kit 1.1.0** Deprecated
 
 **Compatibility:** Works best with RealtimeKit Web Core 1.2.4 or later.
 
@@ -270,7 +270,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-12-17
 
-**RealtimeKit Web UI Kit 1.0.8**
+**RealtimeKit Web UI Kit 1.0.8** Deprecated
 
 **Fixes**
 
@@ -278,7 +278,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-11-18
 
-**RealtimeKit Web UI Kit 1.0.7**
+**RealtimeKit Web UI Kit 1.0.7** Deprecated
 
 **Fixes**
 
@@ -287,7 +287,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-10-30
 
-**RealtimeKit Web UI Kit 1.0.6**
+**RealtimeKit Web UI Kit 1.0.6** Deprecated
 
 **Fixes**
 
@@ -305,7 +305,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-08-14
 
-**RealtimeKit Web UI Kit 1.0.5**
+**RealtimeKit Web UI Kit 1.0.5** Deprecated
 
 **Fixes**
 
@@ -317,7 +317,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-07-17
 
-**RealtimeKit Web UI Kit 1.0.4**
+**RealtimeKit Web UI Kit 1.0.4** Deprecated
 
 **Fixes**
 
@@ -330,7 +330,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-07-08
 
-**RealtimeKit Web UI Kit 1.0.3**
+**RealtimeKit Web UI Kit 1.0.3** Deprecated
 
 **Fixes**
 
@@ -343,7 +343,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-07-02
 
-**RealtimeKit Web UI Kit 1.0.2**
+**RealtimeKit Web UI Kit 1.0.2** Deprecated
 
 **Performance**
 
@@ -351,7 +351,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-06-30
 
-**RealtimeKit Web UI Kit 1.0.1**
+**RealtimeKit Web UI Kit 1.0.1** Deprecated
 
 **Deprecated API**
 
@@ -359,7 +359,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 ## 2025-05-29
 
-**RealtimeKit Web UI Kit 1.0.0**
+**RealtimeKit Web UI Kit 1.0.0** Deprecated
 
 **Features**
 

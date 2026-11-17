@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/network-interconnect/locations/og.png?v
 
 # Direct CNI locations
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/locations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/locations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following facilities offer **Direct CNI**, a dedicated physical connection between your network equipment and Cloudflare hardware in a shared data center.
 
@@ -26,7 +26,7 @@ For public peering and best-effort interconnection at additional locations, refe
 
 The [v1](https://developers.cloudflare.com/network-interconnect/#dataplane) and [v2](https://developers.cloudflare.com/network-interconnect/#dataplane) columns show the Direct CNI dataplanes offered at each facility.
 
-In this table, a metro has *device-level diversity* when at least two devices of the same dataplane provide paths to the rest of the Cloudflare network without a shared single point-of-failure device.
+In this table, a metro has *device-level diversity* when at least two devices of the same dataplane provide paths to the rest of the Cloudflare network without a shared single point-of-failure device. At least one offered dataplane must meet this condition; an asterisk marks an offered dataplane that does not.
 
 `—` means the dataplane is not offered at this time.
 
@@ -52,7 +52,7 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **MSP** Minneapolis, MN | Cologix MIN1 | 2 | — |
 | **MSP** Minneapolis, MN | EdgeConneX MSP01 | 1 | — |
 | **ORD** Chicago, IL | Equinix CH2 | 2 | 2 |
-| **PDX** Portland, OR | EdgeConneX EDCPOR01 | 1 | 1 |
+| **PHX** Phoenix, AZ | EdgeConneX EDCPHX01 | 2 | 2 |
 | **SEA** Seattle, WA | Digital Realty SEA10 | 2 | 2 |
 | **SEA** Seattle, WA | Equinix SE3 | 1 | — |
 | **SJC** San Jose, CA | Equinix SV5 | 2 | 2 |
@@ -62,7 +62,6 @@ Values show whether a dataplane is available through one or two connectivity dev
 | --- | --- | --- | --- |
 | **GIG** Rio de Janeiro | Equinix RJ2 | 2 | 2 |
 | **GRU** São Paulo | Equinix SP2 | 2 | 2 |
-| **GRU** São Paulo | Equinix SP4 | 2 | — |
 
 #### Europe
 
@@ -79,7 +78,7 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **FRA** Frankfurt | Equinix FR5 | 2 | 2 |
 | **IST** Istanbul | Equinix IL2 | 1 | 2 |
 | **IST** Istanbul | Radore Istanbul | 1 | — |
-| **IST** Istanbul | Turkcell/Superonline Istanbul | 1 | 2 |
+| **IST** Istanbul | Turkcell/Superonline/TISparkle Istanbul | 1 | 2 |
 | **LHR** London | Equinix LD7 | 2 | 1 |
 | **LHR** London | Equinix LD8 | 2 | 1 |
 | **LHR** London | Telehouse North 2 | 1 | 1 |
@@ -88,6 +87,7 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **MXP** Milan | Retelit Via Caldera | 2 | 2 |
 | **VIE** Vienna | Digital Realty VIE1 | 2 | 2 |
 | **WAW** Warsaw | Equinix WA1 | 2 | 2 |
+| **ZRH** Zurich | Equinix ZH4 | 2 | 1\* |
 
 #### Africa
 
@@ -112,6 +112,8 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **SIN** Singapore | Equinix SG1 | 2 | 2 |
 | **SYD** Sydney | Equinix SY2 | 2 | 2 |
 
+**\*** This dataplane does not yet have device-level redundancy within the metro. A single CCR remains a single point of failure even when connected to two edge routers.
+
 ### Locations in non-diverse metros
 
 `✓` means that the dataplane is offered.
@@ -122,7 +124,6 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **BNA** Nashville, TN | EdgeConneX NAS01 | ✓ | — |
 | **BNA** Nashville, TN | H5 Data Centers NAS1 | ✓ | — |
 | **BOS** Boston, MA | Markley Group One Summer Street Boston | ✓ | ✓ |
-| **BUF** Buffalo, NY | H5 Data Centers BUF2 | ✓ | — |
 | **CLT** Charlotte, NC | Digital Realty CLT10 | ✓ | — |
 | **DTW** Detroit, MI | EdgeConneX DET01 | ✓ | — |
 | **HNL** Honolulu, HI | 1547 DRFortress | ✓ | — |
@@ -137,8 +138,8 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **OKC** Oklahoma City, OK | Rack59 Data Center | ✓ | — |
 | **OMA** Omaha, NE | 1623 Farnam | ✓ | ✓ |
 | **ORF** Norfolk, VA | EdgeConneX NOR01 | ✓ | — |
+| **PDX** Portland, OR | EdgeConneX EDCPOR01 | ✓ | ✓ |
 | **PHL** Philadelphia, PA | Netrality-PHL | ✓ | ✓ |
-| **PHX** Phoenix, AZ | EdgeConneX EDCPHX01 | ✓ | ✓ |
 | **PIT** Pittsburgh, PA | Databank PIT1 | ✓ | — |
 | **PIT** Pittsburgh, PA | EdgeConneX PIT01 | ✓ | — |
 | **QRO** Queretaro | Kio Networks QRO1 | ✓ | — |
@@ -177,9 +178,9 @@ Values show whether a dataplane is available through one or two connectivity dev
 | Metro | Site | [v1](https://developers.cloudflare.com/network-interconnect/#dataplane) | [v2](https://developers.cloudflare.com/network-interconnect/#dataplane) |
 | --- | --- | --- | --- |
 | **ATH** Athens | Digital Realty (Lamda Hellix) ATH 1/2/3 | ✓ | — |
-| **BCN** Barcelona | Equinix BA1 | ✓ | ✓ |
+| **BCN** Barcelona | Equinix BA1 | ✓ | — |
 | **BEG** Belgrade | BeotelNet ISP | ✓ | — |
-| **BOD** Bordeaux | Equinix BX1 | ✓ | ✓ |
+| **BOD** Bordeaux | Equinix BX1 | ✓ | — |
 | **BRU** Brussels | Digital Realty BRU1 | ✓ | — |
 | **BTS** Bratislava | SITELPOP1 | ✓ | — |
 | **BUD** Budapest | T-Systems Dataplex Budapest | ✓ | — |
@@ -201,7 +202,7 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **LUX** Luxembourg City | LuxConnect DC1.1 | ✓ | — |
 | **LYS** Lyon | FreePro Jaguar Rockefeller | ✓ | — |
 | **LYS** Lyon | SFR NetCentre Venissieux | ✓ | — |
-| **MAN** Manchester | Equinix MA1 | ✓ | ✓ |
+| **MAN** Manchester | Equinix MA1 | ✓ | — |
 | **MUC** Munich | Equinix MU1 | ✓ | — |
 | **OSL** Oslo | Stack EMEA (Digiplex) Oslo Ulvenveien OSL1 | ✓ | — |
 | **OTP** Bucharest | NXDATA 1 | ✓ | — |
@@ -214,14 +215,13 @@ Values show whether a dataplane is available through one or two connectivity dev
 | **TXL** Berlin | CarrierColo Berlin Lützow (I/P/B/ site B) | ✓ | — |
 | **VNO** Vilnius | Data Logistics Center J13 | ✓ | — |
 | **ZAG** Zagreb | Digital Realty ZAG1 | ✓ | — |
-| **ZRH** Zurich | Equinix ZH4 | ✓ | ✓ |
 
 #### Africa
 
 | Metro | Site | [v1](https://developers.cloudflare.com/network-interconnect/#dataplane) | [v2](https://developers.cloudflare.com/network-interconnect/#dataplane) |
 | --- | --- | --- | --- |
 | **CPT** Cape Town | Digital Realty (Teraco) CT1 | ✓ | ✓ |
-| **DUR** Durban | Digital Realty (Teraco) DB1 | ✓ | ✓ |
+| **DUR** Durban | Digital Realty (Teraco) DB1 | ✓ | — |
 | **LOS** Lagos | Equinix LG1 LG2 (MainOne MDX-i) | ✓ | — |
 
 | Metro | Site | [v1](https://developers.cloudflare.com/network-interconnect/#dataplane) | [v2](https://developers.cloudflare.com/network-interconnect/#dataplane) |
@@ -252,5 +252,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/locations/#page","headline":"Direct CNI locations","description":"Facilities offering Direct Cloudflare Network Interconnect for private connectivity to Cloudflare","url":"https://developers.cloudflare.com/network-interconnect/locations/","inLanguage":"en","image":"https://developers.cloudflare.com/network-interconnect/locations/og.png?v=042b429bcb86a7b0","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/locations/#page","headline":"Direct CNI locations","description":"Facilities offering Direct Cloudflare Network Interconnect for private connectivity to Cloudflare","url":"https://developers.cloudflare.com/network-interconnect/locations/","inLanguage":"en","image":"https://developers.cloudflare.com/network-interconnect/locations/og.png?v=042b429bcb86a7b0","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

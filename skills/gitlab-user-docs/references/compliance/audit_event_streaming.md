@@ -45,8 +45,9 @@ GitLab sends the audit events of the group in batches instead.
 A batch can contain events of different types, and can contain a single event.
 The batch format applies to every delivery to the destinations of the group.
 
-If a destination is briefly unavailable, GitLab retries the whole batch,
+If a delivery to a destination fails, GitLab redelivers the whole batch,
 which can duplicate every event in it.
+For details, see [Failed deliveries to a streaming destination](#failed-deliveries-to-a-streaming-destination).
 Deduplicate events by `id`, as described earlier on this page.
 
 The batch format depends on the destination type.
@@ -83,6 +84,57 @@ Batched keys do not include the entity type or event type, because a batch can c
 
 GitLab writes a batch as multiple log entries in a single request.
 Each log entry contains one event, in the same format as without batched delivery.
+
+## Failed deliveries to a streaming destination
+
+If deliveries to your destination keep failing, GitLab pauses that destination and drops the events
+that occur during the pause.
+GitLab does not notify you, so monitor ingestion on your side.
+
+A delivery to a streaming destination fails when:
+
+- GitLab cannot connect to the destination, or the request times out.
+- An HTTP or Google Cloud Logging destination responds with a status code outside the `2xx` range,
+  when non-2xx handling is enabled.
+  For details, see [Non-2xx responses](#non-2xx-responses).
+- AWS S3 returns an error, or a Google Cloud Logging destination rejects the credentials.
+- The destination URL is invalid, or points to a host that GitLab does not allow.
+
+GitLab does not retry a failed per-event delivery.
+With [batched event delivery](#batched-event-delivery), GitLab redelivers the whole batch,
+for a limited time, until the destination accepts the batch
+or the circuit breaker pauses the destination.
+
+Each destination has a circuit breaker:
+
+- After 25 consecutive failed deliveries to a destination, GitLab pauses that destination
+  for five minutes, then resumes.
+- A successful delivery, or five minutes without a failure, resets the failure count.
+- Events that occur while a destination is paused are dropped for that destination.
+  GitLab does not send them later.
+
+With batched event delivery, a redelivered batch goes to every destination of the group,
+including destinations that already accepted it, which can duplicate events there.
+Events of a type that is [saved to the database](audit_event_types.md) remain available in the
+[audit events](audit_events.md) of the group or instance.
+
+To detect failures, monitor the receiving side.
+Alert when the expected flow of events from GitLab stops or when your endpoint returns errors.
+
+### Non-2xx responses
+
+- Failing on status codes outside the `2xx` range instead of succeeding [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266404) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `audit_event_streaming_fail_on_non_2xx_response`. Disabled by default.
+
+> [!flag]
+> Failing on status codes outside the `2xx` range is controlled by a feature flag.
+> For more information, see the history.
+
+When an HTTP or Google Cloud Logging destination responds with a status code
+outside the `2xx` range, such as `401`, `429`, or `5xx`, GitLab counts the delivery as failed.
+The failure counts toward pausing the destination.
+
+To reduce dropped events, respond with a `2xx` status code before the request times out,
+and queue events for later processing instead of returning `429` or `5xx`.
 
 ## HTTP destinations
 

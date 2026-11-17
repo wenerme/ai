@@ -165,6 +165,12 @@ This error indicates that your credentials are valid but you lack permission to 
 - Verify you have `USE` privilege on the catalog and schema
 - Ask your administrator to enable API tokens for your account
 
+### SQL 401 and 403 error details
+
+If Databricks returns a reason or a request ID with a SQL 401 or 403 response, the error message includes them. The plugin removes credentials from the reason. To find the request in the workspace audit logs, give your Databricks administrator the request ID and the UTC time of the error.
+
+The reason can contain permission or resource details, so review it before sharing outside your organization.
+
 ### API tokens are disabled for user
 
 Your Databricks administrator has disabled API token authentication for your account.

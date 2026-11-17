@@ -382,3 +382,4 @@ To delete only the custom HTTP headers for a streaming destination:
 ## Related topics
 
 - [Audit event streaming for top-level groups](../../user/compliance/audit_event_streaming.md)
+- [Failed deliveries to a streaming destination](../../user/compliance/audit_event_streaming.md#failed-deliveries-to-a-streaming-destination)

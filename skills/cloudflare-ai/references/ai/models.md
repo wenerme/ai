@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 284 modelsClear filters
+We found 286 modelsClear filters
 
 ## Compare models
 
@@ -386,6 +386,12 @@ Compare
 
 Compare
 
+[![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)<h3>eleven-text-to-sound-v3</h3>ElevenLabsMusic Generation Eleven Sound Effects v3 generates sound effects up to 30 seconds long from a text description, with optional seamless looping.](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-text-to-sound-v3/)
+
+- Third-party
+
+Compare
+
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)<h3>eleven-turbo-v2-5</h3>ElevenLabsText-to-Speech ElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages.](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/)
 
 - Third-party
@@ -513,6 +519,12 @@ Compare
 
 - Third-party
 - +1
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-4-hydrogen</h3>GoogleText Generation Gemini 4 Hydrogen brings Gemini 4 agent and coding quality at Flash speed.](https://developers.cloudflare.com/ai/models/google/gemini-4-hydrogen/)
+
+- Third-party
 
 Compare
 

@@ -101,7 +101,7 @@ For more information, see
 | `ARTIFACT_REGISTRY_DOMAINS` | `artifact_registry_domains` | - | Alternative name for `GLAB_ARTIFACT_REGISTRY_DOMAINS`, checked after it. |
 | `GLAB_CA_CERT` | `ca_cert` | - | Path to a CA certificate (PEM) used to verify the GitLab server's TLS certificate. glab dependency-firewall commands also trust it for package registries and outbound proxies. Useful for self-signed or private certificate authorities. |
 | `CA_CERT` | `ca_cert` | - | Alternative name for `GLAB_CA_CERT`, checked after it. |
-| `GLAB_CLIENT_CERT` | `client_cert` | - | Path to a client certificate used for mutual TLS authentication. Use a PEM or DER certificate with client_key, or a PKCS#12 bundle (.p12, .pfx) and leave client_key unset. |
+| `GLAB_CLIENT_CERT` | `client_cert` | - | Path to a client certificate used for mutual TLS authentication. Use a PEM or DER certificate with client_key, or a PKCS#12 bundle (.p12, .pfx) and leave client_key unset. glab dependency-firewall commands also present it to an https:// outbound proxy, never to package registries. |
 | `CLIENT_CERT` | `client_cert` | - | Alternative name for `GLAB_CLIENT_CERT`, checked after it. |
 | `GLAB_CLIENT_CERT_PASSWORD` | `client_cert_password` | - | Password that decrypts a PKCS#12 client_cert. Stored in the operating system's keyring when use_keyring is true. |
 | `GLAB_CLIENT_KEY` | `client_key` | - | Path to the private key (PEM or DER, in PKCS#8, PKCS#1, or EC format) that matches client_cert. Leave unset when client_cert is a PKCS#12 bundle. |
@@ -155,7 +155,7 @@ For more information, see
 | `ORBIT_CLI_AUTO_RUN` | `orbit_cli_auto_run` | - | Alternative name for `GLAB_ORBIT_CLI_AUTO_RUN`, checked after it. |
 | `GLAB_PAGER` | `glab_pager` | - | Your desired pager command to use, such as `less -R`. Takes precedence over the PAGER environment variable. GLAB_PAGER takes precedence over both. |
 | `GLAB_SEND_TELEMETRY` | `telemetry` | `true` | Set to false (0) to disable sending usage data to your GitLab instance or true (1) to enable. See <https://docs.gitlab.com/administration/settings/usage_statistics/> for more information. |
-| `GLAB_SHOW_WHATS_NEW` | `show_whats_new` | `true` | Show a one-time post-upgrade banner pointing at `glab whatsnew` when a new version is detected. |
+| `GLAB_SHOW_WHATS_NEW` | `show_whats_new` | `true` | Show a one-time post-upgrade banner pointing at `glab whatsnew` when a new version is detected. Not shown when standard error is not a terminal, or when `CI` or `GITLAB_CI` is true. Set `GLAB_SHOW_WHATS_NEW=false` to turn it off. |
 | `NO_COLOR` | - | - | Set to any value to avoid printing ANSI escape sequences for color output. |
 
 ### Other variables

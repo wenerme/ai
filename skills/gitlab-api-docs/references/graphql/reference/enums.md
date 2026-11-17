@@ -2643,7 +2643,16 @@ GitLab Duo availability states for an admin-locked namespace override.
 
 ## `DuoCodeReviewDepth`
 
-Depth of a GitLab Duo Code Review.
+Depth of a GitLab Duo Code Review. Use `DuoCodeReviewLevel`.
+
+| Value | Description |
+| ----- | ----------- |
+| `LITE` | Lite review. |
+| `STANDARD` | Standard review. |
+
+## `DuoCodeReviewLevel`
+
+Level of a review by GitLab Duo Code Review Flow.
 
 | Value | Description |
 | ----- | ----------- |

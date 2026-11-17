@@ -1,7 +1,7 @@
 ---
-description: Configure payload logging for managed rulesets using the API.
+description: Configure payload logging for managed rules and custom rules using the API.
 title: Configure payload logging via API
-image: https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/og.png?v=0abab03ab64e167a
+image: https://developers.cloudflare.com/waf/payload-logging/configure-api/og.png?v=0abab03ab64e167a
 ---
 
 [Skip to content](#main-content)
@@ -12,11 +12,71 @@ image: https://developers.cloudflare.com/waf/managed-rules/payload-logging/confi
 
 # Configure payload logging via API
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/configure-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure payload logging for a managed ruleset via API.
+Configure an account-level or zone-level public key to capture payloads for WAF managed rules and custom rules. You can also use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure a key for a specific managed ruleset.
 
-## Configure and enable payload logging
+## Configure an account-level key
+
+An account-level key applies to supported rule matches for every zone in the account that does not have a zone-level key.
+
+Use the following operation with a base64-encoded, 32-byte X25519 public key:
+
+*Set the payload logging keybash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/firewall/payload_logging/key" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
+	}'
+```
+
+You can [generate a public key in the command line](https://developers.cloudflare.com/waf/payload-logging/command-line/generate-key-pair/).
+
+## Configure a zone-level key
+
+A zone-level key applies to supported rule matches in the zone and takes precedence over the account-level key.
+
+An account-level or zone-level key also takes precedence over a key configured for a specific managed ruleset. The managed ruleset key remains stored and becomes effective again if no account-level or zone-level key applies.
+
+*Set the payload logging keybash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/payload_logging/key" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
+	}'
+```
+
+## Delete an account-level or zone-level key
+
+Use the corresponding `DELETE` operation to remove a key. When you delete a zone-level key, the zone inherits the account-level key, if one is configured.
+
+*Delete the payload logging keybash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/payload_logging/key" \
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+*Delete the payload logging keybash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/firewall/payload_logging/key" \
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+## Configure a managed ruleset key
+
+Use this legacy configuration method to apply a key only to a specific managed ruleset.
+
+### Configure and enable payload logging
 
 1. Use the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the following IDs:
    - The ID of the [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) of the `http_request_firewall_managed` [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/).
@@ -34,7 +94,7 @@ Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets
    }
    ```
 
-   Replace `<PUBLIC_KEY_VALUE>` with the public key you want to use for payload logging. You can generate a public key [in the command line](https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/generate-key-pair/) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/).
+   Replace `<PUBLIC_KEY_VALUE>` with the public key you want to use for payload logging. You can generate a public key [in the command line](https://developers.cloudflare.com/waf/payload-logging/command-line/generate-key-pair/) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/payload-logging/configure/).
 
 Account-level configuration
 
@@ -43,7 +103,7 @@ To configure payload logging for a managed ruleset deployed at the account level
 - In step 1: [Get an account entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/)
 - In step 2: [Update an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/edit/)
 
-### Example
+#### Example
 
 This example configures payload logging for the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/), which is already deployed for a zone with ID `$ZONE_ID`.
 
@@ -131,7 +191,7 @@ For more information on deploying managed rulesets via API, refer to [Deploy a m
 
 ---
 
-## Disable payload logging
+### Disable payload logging for a managed ruleset
 
 To disable payload logging for a managed ruleset:
 
@@ -155,7 +215,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 	}'
 ```
 
-For details on obtaining the entry point ruleset ID and the ID of the rule to update, refer to [Configure and enable payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#configure-and-enable-payload-logging).
+For details on obtaining the entry point ruleset ID and the ID of the rule to update, refer to [Configure and enable payload logging](https://developers.cloudflare.com/waf/payload-logging/configure-api/#configure-and-enable-payload-logging).
 
 Was this helpful?
 
@@ -166,5 +226,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/#page","headline":"Configure payload logging via API","description":"Configure payload logging for managed rulesets using the API.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure-api/og.png?v=0abab03ab64e167a","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/payload-logging/configure-api/#page","headline":"Configure payload logging via API","description":"Configure payload logging for managed rules and custom rules using the API.","url":"https://developers.cloudflare.com/waf/payload-logging/configure-api/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/payload-logging/configure-api/og.png?v=0abab03ab64e167a","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

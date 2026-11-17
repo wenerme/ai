@@ -370,7 +370,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
-| [`duo_code_review_default_depth_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review default review depth setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
+| [`duo_code_review_default_depth_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | Default review level setting for GitLab Duo Code Review Flow changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
 | [`duo_code_review_depth_allowed_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review allow Standard reviews setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
 
 ### Dap triggers
