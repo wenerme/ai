@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use `apply_patch` with the Responses API to propose file creations, updates, and deletions as structured diffs. Your application applies each operation and returns its result. The examples use `gpt-6-astra`.
+Use `apply_patch` with the Responses API to propose file creations, updates, and deletions as structured diffs. Your application applies each operation and returns its result. The examples use `gpt-6.2-astra`.
 
 ## When to use
 
@@ -72,7 +72,7 @@ ${Object.entries(files)
 Help me rename the fib() function to fibonacci().`;
 
 let response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: fileContext,
   tools: [{ type: "apply_patch" }],
 });
@@ -114,7 +114,7 @@ Help me rename the fib() function to fibonacci()
 """
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=RESPONSE_INPUT,
     tools=[{"type": "apply_patch"}],
 )
@@ -129,7 +129,7 @@ patch_calls = [
 
 ```go
 response, err := client.Responses.New(ctx, responses.ResponseNewParams{
-	Model: "gpt-6-astra",
+	Model: "gpt-6.2-astra",
 	Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(responseInput)},
 	Tools: []responses.ToolUnionParam{{OfApplyPatch: &responses.ApplyPatchToolParam{}}},
 })
@@ -146,7 +146,7 @@ import com.openai.models.responses.ResponseCreateParams;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             "Rename fib() to fibonacci() in lib/fib.py and update run.py to use the new name.")
         .addTool(ApplyPatchTool.builder().build())
@@ -167,7 +167,7 @@ files = {
 }
 context = files.map { |path, content| "===== #{path}\n#{content}" }.join
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "The user has the following files:\n<BEGIN_FILES>\n#{context}<END_FILES>\nHelp me rename fib() to fibonacci() in both existing files.",
   tools: [{ type: :apply_patch }]
 )
@@ -219,7 +219,7 @@ for (let turn = 0; patchCalls.length > 0; turn++) {
   });
 
   response = await client.responses.create({
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     previous_response_id: response.id,
     input: results,
     tools: [{ type: "apply_patch" }],
@@ -259,7 +259,7 @@ for turn in range(9):
         )
 
     response = client.responses.create(
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         previous_response_id=response.id,
         input=results,
         tools=[{"type": "apply_patch"}],
@@ -301,7 +301,7 @@ for turn := 0; ; turn++ {
 		results = append(results, result)
 	}
 	response, err = client.Responses.New(ctx, responses.ResponseNewParams{
-		Model:              "gpt-6-astra",
+		Model:              "gpt-6.2-astra",
 		PreviousResponseID: openai.String(response.ID),
 		Input:              responses.ResponseNewParamsInputUnion{OfInputItemList: results},
 		Tools:              []responses.ToolUnionParam{{OfApplyPatch: &responses.ApplyPatchToolParam{}}},
@@ -322,7 +322,7 @@ import java.util.List;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .inputOfResponse(
             List.of(
                 ResponseInputItem.ofApplyPatchCallOutput(
@@ -364,7 +364,7 @@ client.responses().create(params).output().stream()
     }
   end
   response = client.responses.create(
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     previous_response_id: response.id,
     input: results,
     tools: [{ type: :apply_patch }]
@@ -505,7 +505,7 @@ const editor = new WorkspaceEditor();
 
 const agent = new Agent({
   name: "Patch Assistant",
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   instructions:
     "Use apply_patch to edit files in the workspace. Supply paths relative to that workspace.",
   tools: [
@@ -570,7 +570,7 @@ editor = WorkspaceEditor()
 
 agent = Agent(
     name="Patch Assistant",
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     instructions="Use apply_patch to edit files in the workspace. Supply paths relative to that workspace.",
     tools=[
         ApplyPatchTool(
@@ -710,6 +710,8 @@ The model can then adjust future diffs (for example, by re-reading a file in you
 - [`gpt-6-sol`](https://developers.openai.com/api/docs/models/gpt-6-sol)
 - [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
 - [`gpt-6.1-terra`](https://developers.openai.com/api/docs/models/gpt-6.1-terra)
+- [`gpt-6.2-astra`](https://developers.openai.com/api/docs/models/gpt-6.2-astra)
+- [`gpt-6.2-sol`](https://developers.openai.com/api/docs/models/gpt-6.2-sol)
   </td>
 </tr>
 

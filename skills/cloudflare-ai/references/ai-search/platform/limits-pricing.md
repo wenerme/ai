@@ -1,6 +1,6 @@
 ---
 description: Review AI Search limits, included monthly usage, and usage-based pricing.
-title: Limits &amp; pricing
+title: Limits & pricing
 image: https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b
 ---
 
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.pn
 
 # Limits & pricing
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Limits
 
@@ -80,7 +80,7 @@ AI Search counts ingestion tokens the same way for every instance, regardless of
 - Each chunk is tokenized with the `cl100k_base` tokenizer. You can estimate usage for your own content with any `cl100k_base` implementation, such as [tiktoken ↗︎](https://github.com/openai/tiktoken).
 - For images and scanned documents processed with OCR, the extracted text is also counted as image processing tokens, in addition to base ingestion.
 
-Workers AI embedding and reranking usage is included in AI Search usage and does not appear on your Workers AI bill or in your AI Gateway logs. Generation, query rewriting, and external model providers continue to use your account and gateway. Their usage is billed and logged through the applicable service.
+Workers AI embedding and reranking usage is included in AI Search usage and does not appear on your Workers AI bill or in your AI Gateway logs. Generation, query rewriting, [file summaries](https://developers.cloudflare.com/ai-search/configuration/data-source/#file-summaries), and external model providers continue to use your account and gateway. Their usage is billed and logged through the applicable service.
 
 The R2, Vectorize, and [Browser Run](https://developers.cloudflare.com/browser-run/pricing/) usage that AI Search runs on your behalf for storage, vector indexing, and website crawling does not appear on separate R2, Vectorize, or Browser Run bills. Storage is billed as AI Search storage, as described in [How storage is measured](#how-storage-is-measured).
 
@@ -110,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing","description":"Review AI Search limits, included monthly usage, and usage-based pricing.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing","description":"Review AI Search limits, included monthly usage, and usage-based pricing.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

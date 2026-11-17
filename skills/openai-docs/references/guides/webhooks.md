@@ -24,7 +24,7 @@ For the Ruby examples, install the required dependencies with
 
 Webhooks server
 
-```javascript
+```typescript
 import OpenAI from "openai";
 import express from "express";
 
@@ -159,18 +159,18 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "input": "Write a very long novel about otters in space.",
   "background": true
 }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Write a very long novel about otters in space.",
   background: true,
 });
@@ -184,7 +184,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="Write a very long novel about otters in space.",
     background=True,
 )
@@ -207,7 +207,7 @@ func main() {
 	client := openai.NewClient()
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:      "gpt-6-astra",
+		Model:      "gpt-6.2-astra",
 		Background: openai.Bool(true),
 		Input: responses.ResponseNewParamsInputUnion{
 			OfString: openai.String("Write a very long novel about otters in space."),
@@ -228,7 +228,7 @@ import com.openai.models.responses.ResponseCreateParams;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Write a detailed market analysis.")
         .background(true)
         .build();
@@ -246,7 +246,7 @@ ResponsesClient client = new(key);
 
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.2-astra",
     BackgroundModeEnabled = true,
 };
 options.InputItems.Add(
@@ -262,7 +262,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Write a detailed market analysis.",
   background: true
 )
@@ -341,7 +341,7 @@ The simplest way to verify webhook signatures is by using the `unwrap()` method 
 
 Signature verification with the OpenAI SDK
 
-```javascript
+```typescript
 const client = new OpenAI();
 const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
 if (!webhook_secret) throw new Error("Set OPENAI_WEBHOOK_SECRET.");

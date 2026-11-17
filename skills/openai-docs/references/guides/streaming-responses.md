@@ -11,12 +11,12 @@ This guide focuses on HTTP streaming (`stream=true`) over server-sent events (SS
 
 To start streaming responses, set `stream=True` in your request to the Responses endpoint:
 
-```javascript
+```typescript
 import { OpenAI } from "openai";
 const client = new OpenAI();
 
 const stream = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: [
     {
       role: "user",
@@ -37,7 +37,7 @@ from openai import OpenAI
 client = OpenAI()
 
 stream = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=[
         {
             "role": "user",
@@ -65,7 +65,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	stream := client.Responses.NewStreaming(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say 'double bubble bath' ten times fast.")},
 	})
 	for stream.Next() {
@@ -86,7 +86,7 @@ import com.openai.models.responses.ResponseStreamEvent;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Say 'double bubble bath' ten times fast.")
         .build();
 
@@ -103,7 +103,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
 var responses = client.CreateResponseStreamingAsync(
-    "gpt-6-astra",
+    "gpt-6.2-astra",
     "Say 'double bubble bath' ten times fast."
 );
 
@@ -122,7 +122,7 @@ require "openai"
 openai = OpenAI::Client.new
 
 stream = openai.responses.stream(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: [
     {
       role: "user",
@@ -141,7 +141,7 @@ The Responses API uses semantic events for streaming. Each event is typed with a
 
 For a full list of event types, see the [API reference for streaming](https://developers.openai.com/api/reference/resources/responses). Here are a few examples:
 
-```javascript
+```typescript
 for await (const event of stream) {
   if (event.type === "response.output_text.delta") {
     process.stdout.write(event.delta);

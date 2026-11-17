@@ -6640,6 +6640,15 @@ The type of the security scan that found the vulnerability.
 | `SAST` | SAST report. |
 | `SECRET_DETECTION` | Secret detection report. |
 
+## `VulnerabilityResolutionSource`
+
+Source that resolved a vulnerability.
+
+| Value | Description |
+| ----- | ----------- |
+| `AI` | Resolved by a merge request created by AI. |
+| `HUMAN` | Resolved without a merged merge request created by AI. |
+
 ## `VulnerabilitySecurityBoundaryFilter`
 
 Security boundary of the component a vulnerability is in, used to filter vulnerabilities.

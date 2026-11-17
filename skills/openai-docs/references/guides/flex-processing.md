@@ -9,6 +9,8 @@ Tokens are [priced](https://developers.openai.com/api/docs/pricing) at [Batch AP
 Flex processing is in beta with limited model availability. Supported models
   are listed on the [pricing page](https://developers.openai.com/api/docs/pricing?latest-pricing=flex).
 
+For asynchronous Responses API workflows that can wait longer for the initial response, see [discounted background completion windows](https://developers.openai.com/api/docs/guides/background#use-discounted-completion-windows). These windows use Standard processing.
+
 ## API usage
 
 To use Flex processing, set the `service_tier` parameter to `flex` in your API request:
@@ -16,7 +18,7 @@ To use Flex processing, set the `service_tier` parameter to `flex` in your API r
 
   Flex processing example
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI({
   timeout: 15 * 1000 * 60, // Increase default timeout to 15 minutes
@@ -24,7 +26,7 @@ const client = new OpenAI({
 
 const response = await client.responses.create(
   {
-    model: "gpt-6-astra",
+    model: "gpt-6.1-sol",
     instructions: "List and describe all the metaphors used in this book.",
     input: "<very long text of book here>",
     service_tier: "flex",
@@ -45,7 +47,7 @@ client = OpenAI(
 
 # you can override the max timeout per request as well
 response = client.with_options(timeout=900.0).responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.1-sol",
     instructions="List and describe all the metaphors used in this book.",
     input="<very long text of book here>",
     service_tier="flex",
@@ -70,7 +72,7 @@ import (
 func main() {
 	client := openai.NewClient(option.WithRequestTimeout(15 * time.Minute))
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:        "gpt-6-astra",
+		Model:        "gpt-6.1-sol",
 		Instructions: openai.String("List and describe all the metaphors used in this book."),
 		Input:        responses.ResponseNewParamsInputUnion{OfString: openai.String("<very long text of book here>")},
 		ServiceTier:  responses.ResponseNewParamsServiceTierFlex,
@@ -92,7 +94,7 @@ client = client.withOptions(options -> options.timeout(Duration.ofMinutes(15)));
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.1-sol")
         .input("<very long text of book here>")
         .instructions("List and describe all the metaphors used in this book.")
         .serviceTier(ResponseCreateParams.ServiceTier.FLEX)
@@ -116,7 +118,7 @@ ResponsesClient client = new(new ApiKeyCredential(key), clientOptions);
 
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.1-sol",
     Instructions = "List and describe all the metaphors used in this book.",
     ServiceTier = ResponseServiceTier.Flex,
 };
@@ -133,7 +135,7 @@ require "openai"
 client = OpenAI::Client.new(timeout: 900.0)
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.1-sol",
   service_tier: :flex,
   instructions: "List and describe all the metaphors used in this book.",
   input: "<very long text of book here>"
@@ -147,7 +149,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "${sampleParameters.model}",
     "instructions": "List and describe all the metaphors used in this book.",
     "input": "<very long text of book here>",
     "service_tier": "flex"
@@ -163,7 +165,7 @@ curl https://api.openai.com/v1/responses \
 Due to slower processing speeds with Flex processing, request timeouts are more likely. Here are some considerations for handling timeouts:
 
 - **Default timeout**: The default timeout is **10 minutes** when making API requests with an official OpenAI SDK. You may need to increase this timeout for lengthy prompts or complex tasks.
-- **Configuring timeouts**: Each SDK will provide a parameter to increase this timeout. In the Python and JavaScript SDKs, this is `timeout` as shown in the code samples above.
+- **Configuring timeouts**: Each SDK will provide a parameter to increase this timeout. In the Python and TypeScript SDKs, this is `timeout` as shown in the code samples above.
 - **Automatic retries**: The OpenAI SDKs automatically retry requests that result in a `408 Request Timeout` error code twice before throwing an exception.
 
 ## Resource unavailable errors

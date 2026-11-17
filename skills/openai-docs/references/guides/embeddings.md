@@ -19,7 +19,7 @@ Visit our [pricing page](https://openai.com/api/pricing/) to learn about embeddi
 
 ## How to get embeddings
 
-To get an embedding, send your text string to the [embeddings API endpoint](https://developers.openai.com/api/reference/resources/embeddings) along with the embedding model name (e.g., `text-embedding-3-small`):
+To get an embedding, send your text string to the [embeddings API endpoint](https://developers.openai.com/api/reference/resources/embeddings) along with the embedding model name (for example, `text-embedding-3-small`):
 
 Example: Getting embeddings
 
@@ -154,7 +154,7 @@ The response contains the embedding vector (list of floating point numbers) alon
 ```
 
 
-By default, the length of the embedding vector is `1536` for `text-embedding-3-small` or `3072` for `text-embedding-3-large`. To reduce the embedding's dimensions without losing its concept-representing properties, pass in the [dimensions parameter](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings-create-dimensions). Find more detail on embedding dimensions in the [embedding use case section](#use-cases).
+By default, the length of the embedding vector is `1536` for `text-embedding-3-small` or `3072` for `text-embedding-3-large`. To reduce the dimensions of an embedding without losing its ability to represent concepts, pass in the [dimensions parameter](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings-create-dimensions). Find more detail on embedding dimensions in the [embedding use case section](#use-cases).
 
 ## Embedding models
 
@@ -179,18 +179,25 @@ The dataset contains a total of 568,454 food reviews left by Amazon users up to 
 
 
 
-| Product Id | User Id        | Score | Summary               | Text                                              |
-| ---------- | -------------- | ----- | --------------------- | ------------------------------------------------- |
-| B001E4KFG0 | A3SGXH7AUHU8GW | 5     | Good Quality Dog Food | I have bought several of the Vitality canned...   |
-| B00813GRG4 | A1D87F6ZCVE5NK | 1     | Not as Advertised     | Product arrived labeled as Jumbo Salted Peanut... |
+| Product Id | User Id        | Score | Summary               | Text                                            |
+| ---------- | -------------- | ----- | --------------------- | ----------------------------------------------- |
+| B001E4KFG0 | A3SGXH7AUHU8GW | 5     | Good Quality Dog Food | I have bought several of the Vitality canned…   |
+| B00813GRG4 | A1D87F6ZCVE5NK | 1     | Not as Advertised     | Product arrived labeled as Jumbo Salted Peanut… |
 
 
 
 
-Below, we combine the review summary and review text into a single combined text. The model encodes this combined text and output a single vector embedding.
+Below, we combine the review summary and review text into a single combined text. The model encodes this combined text and outputs a single vector embedding.
 
 
 Get_embeddings_from_dataset.ipynb
+ For Ruby, save the review CSV as `data/fine_food_reviews_1k.csv` or set `REVIEWS_CSV` to its path. Keep the `Summary`, `Text`, `Score`, `UserId`, and `ProductId` columns; the saved embeddings retain them for the analysis steps.
+
+
+
+
+Create review embeddings
+
 ```typescript
 import { mkdir, writeFile } from "node:fs/promises";
 import OpenAI from "openai";
@@ -378,24 +385,35 @@ require "json"
 require "openai"
 
 client = OpenAI::Client.new
-reviews = ["A rich cup of coffee.", "A bright herbal tea."]
-
-response = client.embeddings.create(
-  model: "text-embedding-3-small",
-  input: reviews.map { |review| review.tr("\n", " ") }
-)
+table = CSV.read(ENV.fetch("REVIEWS_CSV", "data/fine_food_reviews_1k.csv"))
+headers = table.shift or raise ArgumentError, "Review CSV is empty"
+reviews = table.map { |fields| headers.zip(fields).to_h }
+combined = reviews.map { |row| "#{row.fetch("Summary")} #{row.fetch("Text")}".tr("\n", " ") }
+response = client.embeddings.create(model: "text-embedding-3-small", input: combined)
 
 FileUtils.mkdir_p("output")
 CSV.open("output/embedded_1k_reviews.csv", "w") do |csv|
-  csv << ["combined", "ada_embedding"]
+  csv << headers + ["combined", "ada_embedding"]
   response.data.each do |embedding|
-    csv << [reviews.fetch(embedding.index), JSON.generate(embedding.embedding)]
+    row = reviews.fetch(embedding.index)
+
+    csv << headers.map { |header| row.fetch(header) } + [combined.fetch(embedding.index), JSON.generate(embedding.embedding)]
   end
 end
 ```
 
 
+
+
+
+For Ruby, use Ruby 3.3 and install the [sample project dependencies](https://github.com/openai/developers-website/blob/main/src/content/platform/ruby-examples/Gemfile). Append the loading and analysis snippets to the same Ruby file; run the split before either forest example. The metrics below come from the linked Python notebooks and depend on the dataset and implementation.
+
+
+
+
 To load the data from a saved file, you can run the following:
+
+Load saved embeddings
 
 ```python
 from ast import literal_eval
@@ -403,6 +421,17 @@ import pandas as pd
 
 df = pd.read_csv("output/embedded_1k_reviews.csv")
 df["ada_embedding"] = df.ada_embedding.apply(literal_eval).apply(np.array)
+```
+
+```ruby
+# standard:disable Lint/UselessAssignment -- Preserve named results for the next workflow step.
+require "csv"
+require "json"
+
+rows = CSV.read("output/embedded_1k_reviews.csv", headers: true).map do |row|
+  row.to_h.merge("ada_embedding" => JSON.parse(row.fetch("ada_embedding")))
+end
+# standard:enable Lint/UselessAssignment
 ```
 
 
@@ -414,9 +443,11 @@ df["ada_embedding"] = df.ada_embedding.apply(literal_eval).apply(np.array)
 
 Using larger embeddings, for example storing them in a vector store for retrieval, generally costs more and consumes more compute, memory and storage than using smaller embeddings.
 
-Both of our new embedding models were trained [with a technique](https://arxiv.org/abs/2205.13147) that allows developers to trade-off performance and cost of using embeddings. Specifically, developers can shorten embeddings (i.e. remove some numbers from the end of the sequence) without the embedding losing its concept-representing properties by passing in the [`dimensions` API parameter](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings-create-dimensions). For example, on the MTEB benchmark, a `text-embedding-3-large` embedding can be shortened to a size of 256 while still outperforming an unshortened `text-embedding-ada-002` embedding with a size of 1536. You can read more about how changing the dimensions impacts performance in our [embeddings v3 launch blog post](https://openai.com/blog/new-embedding-models-and-api-updates#:~:text=Native%20support%20for%20shortening%20embeddings).
+Both of our new embedding models were trained [with a technique](https://arxiv.org/abs/2205.13147) that allows developers to trade-off performance and cost of using embeddings. Specifically, developers can shorten embeddings (that is, remove some numbers from the end of the sequence) without the embedding losing its concept-representing properties by passing in the [`dimensions` API parameter](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings-create-dimensions). For example, on the MTEB benchmark, a `text-embedding-3-large` embedding can be shortened to a size of 256 while still outperforming a full-length `text-embedding-ada-002` embedding with a size of 1536. You can read more about how changing the dimensions impacts performance in our [embeddings v3 launch blog post](https://openai.com/blog/new-embedding-models-and-api-updates#:~:text=Native%20support%20for%20shortening%20embeddings).
 
 In general, using the `dimensions` parameter when creating the embedding is the suggested approach. In certain cases, you may need to change the embedding dimension after you generate it. When you change the dimension manually, you need to be sure to normalize the dimensions of the embedding as is shown below.
+
+Reduce embedding dimensions
 
 ```typescript
 import OpenAI from "openai";
@@ -531,7 +562,7 @@ puts(normalized)
 ```
 
 
-Dynamically changing the dimensions enables very flexible usage. For example, when using a vector data store that only supports embeddings up to 1024 dimensions long, developers can now still use our best embedding model `text-embedding-3-large` and specify a value of 1024 for the `dimensions` API parameter, which will shorten the embedding down from 3072 dimensions, trading off some accuracy in exchange for the smaller vector size.
+Dynamically changing the dimensions enables flexible usage. For example, when using a vector data store that only supports embeddings up to 1024 dimensions long, developers can now still use our best embedding model `text-embedding-3-large` and specify a value of 1024 for the `dimensions` API parameter, which will shorten the embedding down from 3072 dimensions, trading off some accuracy in exchange for the smaller vector size.
 
 
 
@@ -551,7 +582,9 @@ Question_answering_using_embeddings.ipynb
 
 
 
-There are many common cases where the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
+In many common cases, the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
+
+Answer a question with retrieved context
 
 ```typescript
 import OpenAI from "openai";
@@ -730,6 +763,8 @@ Semantic_text_search_using_embeddings.ipynb
 
 
 To retrieve the most relevant documents we use the cosine similarity between the embedding vectors of the query and each document, and return the highest scored documents.
+
+Search reviews by similarity
 
 ```typescript
 import OpenAI from "openai";
@@ -993,6 +1028,8 @@ Code search works similarly to embedding-based text search. We provide a method 
 
 To perform a code search, we embed the query in natural language using the same model. Then we calculate cosine similarity between the resulting query embedding and each of the function embeddings. The highest cosine similarity results are most relevant.
 
+Search function source code
+
 ```typescript
 import OpenAI from "openai";
 
@@ -1254,7 +1291,9 @@ Recommendation_using_embeddings.ipynb
 
 Because shorter distances between embedding vectors represent greater similarity, embeddings can be useful for recommendation.
 
-Below, we illustrate a basic recommender. It takes in a list of strings and one 'source' string, computes their embeddings, and then returns a ranking of the strings, ranked from most similar to least similar. As a concrete example, the linked notebook below applies a version of this function to the [AG news dataset](http://groups.di.unipi.it/~gulli/AG_corpus_of_news_articles.html) (sampled down to 2,000 news article descriptions) to return the top 5 most similar articles to any given source article.
+Below, we illustrate a basic recommendation function. It takes in a list of strings and one 'source' string, computes their embeddings, and then returns a ranking of the strings, ranked from most similar to least similar. As a concrete example, the linked notebook below applies a version of this function to the [AG news dataset](http://groups.di.unipi.it/~gulli/AG_corpus_of_news_articles.html) (sampled down to 2,000 news article descriptions) to return the top 5 most similar articles to any given source article.
+
+Recommend similar strings
 
 ```typescript
 import OpenAI from "openai";
@@ -1539,6 +1578,8 @@ We color the individual reviews based on the star rating which the reviewer has 
 
 The visualization seems to have produced roughly 3 clusters, one of which has mostly negative reviews.
 
+Visualize embeddings with t-SNE
+
 ```python
 from ast import literal_eval
 import numpy as np
@@ -1566,6 +1607,34 @@ plt.scatter(x, y, c=color_indices, cmap=colormap, alpha=0.3)
 plt.title("Amazon ratings visualized in language using t-SNE")
 ```
 
+```ruby
+require "csv"
+require "json"
+require "rumale/manifold"
+require "chunky_png"
+
+rows = CSV.read("output/embedded_1k_reviews.csv", headers: true).map do |row|
+  row.to_h.merge("ada_embedding" => JSON.parse(row.fetch("ada_embedding")))
+end
+matrix = Numo::DFloat.asarray(rows.map { |row| row.fetch("ada_embedding") })
+tsne = Rumale::Manifold::TSNE.new(n_components: 2, perplexity: 15, random_seed: 42, init: "random")
+points = tsne.fit_transform(matrix).to_a
+color_indices = rows.map { |row| Integer(row.fetch("Score")) - 1 }
+palette = ["#ff0000", "#ff8c00", "#ffd700", "#40e0d0", "#006400"]
+
+plot = ChunkyPNG::Image.new(600, 400, ChunkyPNG::Color::WHITE)
+x_min, x_max = points.map(&:first).minmax
+y_min, y_max = points.map(&:last).minmax
+plotted = points.map(&:dup)
+plotted.each_with_index do |(x, y), index|
+  pixel_x = 20 + ((x - x_min) / [x_max - x_min, Float::EPSILON].max * 560).round
+  pixel_y = 380 - ((y - y_min) / [y_max - y_min, Float::EPSILON].max * 360).round
+  color = ChunkyPNG::Color.from_hex(palette.fetch(color_indices.fetch(index)))
+  plot.circle(pixel_x, pixel_y, 3, color, color)
+end
+plot.save("local-plot.png")
+```
+
 
 
 
@@ -1587,9 +1656,11 @@ Regression_using_embeddings.ipynb
 
 An embedding can be used as a general free-text feature encoder within a machine learning model. Incorporating embeddings will improve the performance of any machine learning model, if some of the relevant inputs are free text. An embedding can also be used as a categorical feature encoder within a ML model. This adds most value if the names of categorical variables are meaningful and numerous, such as job titles. Similarity embeddings generally perform better than search embeddings for this task.
 
-We observed that generally the embedding representation is very rich and information dense. For example, reducing the dimensionality of the inputs using SVD or PCA, even by 10%, generally results in worse downstream performance on specific tasks.
+We observed that generally the embedding representation is rich and information dense. For example, reducing the dimensionality of the inputs using SVD or PCA, even by 10%, generally results in worse downstream performance on specific tasks.
 
 This code splits the data into a training set and a testing set, which will be used by the following two use cases, namely regression and classification.
+
+Split the dataset for training and testing
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -1599,12 +1670,28 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
+```ruby
+vectors = rows.map { |row| row.fetch("ada_embedding") }
+scores = rows.map { |row| Integer(row.fetch("Score")) }
+
+indices = (0...vectors.length).to_a.shuffle(random: Random.new(42))
+test_size = (vectors.length * 0.2).ceil
+test_indices = indices.take(test_size)
+train_indices = indices.drop(test_size)
+x_train = train_indices.map { |index| vectors.fetch(index) }
+holdout_vectors = test_indices.map { |index| vectors.fetch(index) }
+y_train = train_indices.map { |index| scores.fetch(index) }
+holdout_scores = test_indices.map { |index| scores.fetch(index) }
+```
+
 
 #### Regression using the embedding features
 
-Embeddings present an elegant way of predicting a numerical value. In this example we predict the reviewer’s star rating, based on the text of their review. Because the semantic information contained within embeddings is high, the prediction is decent even with very few reviews.
+Embeddings present an elegant way of predicting a numerical value. In this example we predict the reviewer’s star rating, based on the text of their review. Because the semantic information contained within embeddings is high, the prediction is decent even with few reviews.
 
 We assume the score is a continuous variable between 1 and 5, and allow the algorithm to predict any floating point value. The ML algorithm minimizes the distance of the predicted value to the true score, and achieves a mean absolute error of 0.39, which means that on average the prediction is off by less than half a star.
+
+Predict review scores
 
 ```python
 from sklearn.ensemble import RandomForestRegressor
@@ -1612,6 +1699,18 @@ from sklearn.ensemble import RandomForestRegressor
 rfr = RandomForestRegressor(n_estimators=100)
 rfr.fit(X_train, y_train)
 preds = rfr.predict(X_test)
+```
+
+```ruby
+require "rumale/ensemble"
+
+x_train = Numo::DFloat.asarray(x_train)
+y_train = Numo::DFloat.asarray(y_train)
+holdout_vectors = Numo::DFloat.asarray(holdout_vectors)
+
+forest = Rumale::Ensemble::RandomForestRegressor.new(n_estimators: 100, random_seed: 42)
+forest.fit(x_train, y_train)
+predictions = forest.predict(holdout_vectors)
 ```
 
 
@@ -1637,6 +1736,8 @@ This time, instead of having the algorithm predict a value anywhere between 1 an
 
 After the training, the model learns to predict 1 and 5-star reviews much better than the more nuanced reviews (2-4 stars), likely due to more extreme sentiment expression.
 
+Classify review scores
+
 ```python
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
@@ -1644,6 +1745,18 @@ from sklearn.metrics import classification_report, accuracy_score
 clf = RandomForestClassifier(n_estimators=100)
 clf.fit(X_train, y_train)
 preds = clf.predict(X_test)
+```
+
+```ruby
+require "rumale/ensemble"
+
+x_train = Numo::DFloat.asarray(x_train)
+y_train = Numo::Int32.asarray(y_train)
+holdout_vectors = Numo::DFloat.asarray(holdout_vectors)
+
+forest = Rumale::Ensemble::RandomForestClassifier.new(n_estimators: 100, random_seed: 42)
+forest.fit(x_train, y_train)
+predictions = forest.predict(holdout_vectors)
 ```
 
 
@@ -1666,6 +1779,8 @@ Zero-shot_classification_with_embeddings.ipynb
 
 
 We can use embeddings for zero shot classification without any labeled training data. For each class, we embed the class name or a short description of the class. To classify some new text in a zero-shot manner, we compare its embedding to all class embeddings and predict the class with the highest similarity.
+
+Classify text without training examples
 
 ```typescript
 import OpenAI from "openai";
@@ -1876,9 +1991,26 @@ We can obtain a user embedding by averaging over all of their reviews. Similarly
 
 We evaluate the usefulness of these embeddings on a separate test set, where we plot similarity of the user and product embedding as a function of the rating. Interestingly, based on this approach, even before the user receives the product we can predict better than random whether they would like the product.
 
+Average user and product embeddings
+
 ```python
 user_embeddings = df.groupby("UserId").ada_embedding.apply(np.mean)
 prod_embeddings = df.groupby("ProductId").ada_embedding.apply(np.mean)
+```
+
+```ruby
+vectors = rows.map { |row| row.fetch("ada_embedding") }
+user_ids = rows.map { |row| row.fetch("UserId") }
+product_ids = rows.map { |row| row.fetch("ProductId") }
+
+def average_embeddings(ids, vectors)
+  ids.zip(vectors).group_by(&:first).transform_values do |rows|
+    rows.map(&:last).transpose.map { |dimension| dimension.sum / dimension.length.to_f }
+  end
+end
+
+user_embeddings = average_embeddings(user_ids, vectors)
+product_embeddings = average_embeddings(product_ids, vectors)
 ```
 
 
@@ -1904,6 +2036,8 @@ Clustering is one way of making sense of a large volume of textual data. Embeddi
 
 In this example, we discover four distinct clusters: one focusing on dog food, one on negative reviews, and two on positive reviews.
 
+Cluster embeddings
+
 ```python
 import numpy as np
 from sklearn.cluster import KMeans
@@ -1914,6 +2048,16 @@ n_clusters = 4
 kmeans = KMeans(n_clusters=n_clusters, init="k-means++", random_state=42)
 kmeans.fit(matrix)
 df["Cluster"] = kmeans.labels_
+```
+
+```ruby
+require "rumale/clustering"
+
+vectors = rows.map { |row| row.fetch("ada_embedding") }
+
+matrix = Numo::DFloat.asarray(vectors)
+kmeans = Rumale::Clustering::KMeans.new(n_clusters: 4, init: "k-means++", random_seed: 42)
+labels = kmeans.fit_predict(matrix)
 ```
 
 
@@ -1929,6 +2073,8 @@ In Python, you can split a string into tokens with OpenAI's tokenizer [`tiktoken
 
 Example code:
 
+Count tokens before embedding
+
 ```python
 import tiktoken
 
@@ -1941,6 +2087,16 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
 
 
 num_tokens_from_string("tiktoken is great!", "cl100k_base")
+```
+
+```ruby
+require "tiktoken_ruby"
+
+def num_tokens_from_string(string, encoding_name)
+  Tiktoken.get_encoding(encoding_name).encode(string).length
+end
+
+puts(num_tokens_from_string("tiktoken is great!", "cl100k_base"))
 ```
 
 

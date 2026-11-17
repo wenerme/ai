@@ -2037,7 +2037,7 @@ const textSources = results.data
   .join("\n");
 
 const completion = await client.chat.completions.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [
     {
       role: "developer",
@@ -2061,7 +2061,7 @@ formatted_results = format_results(results.data)
 "\n".join("\n".join(c.text for c in result.content) for result in results.data)
 
 completion = client.chat.completions.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     messages=[
         {
             "role": "developer",
@@ -2099,7 +2099,7 @@ func main() {
 	}
 
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.DeveloperMessage("Produce a concise answer to the query based on the provided sources."),
 			openai.UserMessage(fmt.Sprintf("Sources: %s\n\nQuery: %q", formatResults(results.Data), userQuery)),
@@ -2161,7 +2161,7 @@ var completion =
         .completions()
         .create(
             ChatCompletionCreateParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .addDeveloperMessage(
                     "Answer the query concisely using only the provided sources.")
                 .addUserMessage(
@@ -2185,7 +2185,7 @@ sources = (results.data || []).map do |result|
 end.join
 
 completion = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [
     {
       role: :developer,

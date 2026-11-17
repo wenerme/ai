@@ -24,31 +24,31 @@ Use these fields in the `query` parameter to filter your results.
 
 | Field                                                          | Name (and alias)                             | Operators                  | Types              |
 | -------------------------------------------------------------- | -------------------------------------------- | -------------------------- | ------------------ |
-| [Assignees](#workitem-assignees)                               | `assignee`, `assignees`                      | `=`, `in`, `!=`            | All                |
-| [Author](#workitem-author)                                     | `author`                                     | `=`, `in`, `!=`            | All                |
-| [Cadence](#workitem-cadence)                                   | `cadence`                                    | `=`, `in`                  | All except Epic    |
-| [Closed at](#workitem-closed-at)                               | `closed`, `closedAt`                         | `=`, `>`, `<`, `>=`, `<=`  | All                |
-| [Confidential](#workitem-confidential)                         | `confidential`                               | `=`, `!=`                  | All                |
-| [Created at](#workitem-created-at)                             | `created`, `createdAt`, `opened`, `openedAt` | `=`, `>`, `<`, `>=`, `<=`  | All                |
-| [Custom field](#workitem-custom-field)                         | `customField("Field name")`                  | `=`                        | All                |
-| [Due date](#workitem-due-date)                                 | `due`, `dueDate`                             | `=`, `>`, `<`, `>=`, `<=`  | All                |
-| [Epic](#workitem-epic)                                         | `epic`                                       | `=`, `!=`                  | All except Epic    |
-| [Health status](#workitem-health-status)                       | `health`, `healthStatus`                     | `=`, `!=`                  | All                |
-| [ID](#workitem-identifier)                                     | `id`                                         | `=`, `in`                  | All                |
-| [Include subgroups](#workitem-include-subgroups)               | `includeSubgroups`                           | `=`, `!=`                  | All                |
-| [Iteration](#workitem-iteration)                               | `iteration`                                  | `=`, `in`, `!=`            | All except Epic    |
-| [Labels](#workitem-labels)                                     | `label`, `labels`                            | `=`, `in`, `!=`            | All                |
-| [Milestone](#workitem-milestone)                               | `milestone`                                  | `=`, `in`, `!=`            | All                |
-| [My reaction emoji](#workitem-my-reaction-emoji)               | `myReaction`, `myReactionEmoji`              | `=`, `!=`                  | All                |
-| [Parent](#workitem-parent)                                     | `parent`                                     | `=`, `!=`                  | All except Epic    |
-| [Search](#workitem-search)                                     | `search`                                     | `=`                        | All                |
-| [State](#workitem-state)                                       | `state`                                      | `=`                        | All                |
-| [Status](#workitem-status)                                     | `status`                                     | `=`                        | All except Epic    |
-| [Subscribed](#workitem-subscribed)                             | `subscribed`                                 | `=`, `!=`                  | All                |
-| [Updated at](#workitem-updated-at)                             | `updated`, `updatedAt`                       | `=`, `>`, `<`, `>=`, `<=`  | All                |
-| [Weight](#workitem-weight)                                     | `weight`                                     | `=`, `!=`                  | All except Epic    |
+| [Assignees](#assignees)                               | `assignee`, `assignees`                      | `=`, `in`, `!=`            | All                |
+| [Author](#author)                                     | `author`                                     | `=`, `in`, `!=`            | All                |
+| [Cadence](#cadence)                                   | `cadence`                                    | `=`, `in`                  | All except Epic    |
+| [Closed at](#closed-at)                               | `closed`, `closedAt`                         | `=`, `>`, `<`, `>=`, `<=`  | All                |
+| [Confidential](#confidential)                         | `confidential`                               | `=`, `!=`                  | All                |
+| [Created at](#created-at)                             | `created`, `createdAt`, `opened`, `openedAt` | `=`, `>`, `<`, `>=`, `<=`  | All                |
+| [Custom field](#custom-field)                         | `customField("Field name")`                  | `=`                        | All                |
+| [Due date](#due-date)                                 | `due`, `dueDate`                             | `=`, `>`, `<`, `>=`, `<=`  | All                |
+| [Epic](#epic)                                         | `epic`                                       | `=`, `!=`                  | All except Epic    |
+| [Health status](#health-status)                       | `health`, `healthStatus`                     | `=`, `!=`                  | All                |
+| [ID](#id)                                     | `id`                                         | `=`, `in`                  | All                |
+| [Include subgroups](#include-subgroups)               | `includeSubgroups`                           | `=`, `!=`                  | All                |
+| [Iteration](#iteration)                               | `iteration`                                  | `=`, `in`, `!=`            | All except Epic    |
+| [Labels](#labels)                                     | `label`, `labels`                            | `=`, `in`, `!=`            | All                |
+| [Milestone](#milestone)                               | `milestone`                                  | `=`, `in`, `!=`            | All                |
+| [My reaction emoji](#my-reaction-emoji)               | `myReaction`, `myReactionEmoji`              | `=`, `!=`                  | All                |
+| [Parent](#parent)                                     | `parent`                                     | `=`, `!=`                  | All except Epic    |
+| [Search](#search)                                     | `search`                                     | `=`                        | All                |
+| [State](#state)                                       | `state`                                      | `=`                        | All                |
+| [Status](#status)                                     | `status`                                     | `=`                        | All except Epic    |
+| [Subscribed](#subscribed)                             | `subscribed`                                 | `=`, `!=`                  | All                |
+| [Updated at](#updated-at)                             | `updated`, `updatedAt`                       | `=`, `>`, `<`, `>=`, `<=`  | All                |
+| [Weight](#weight)                                     | `weight`                                     | `=`, `!=`                  | All except Epic    |
 
-### Assignees {#workitem-assignees}
+### Assignees
 
 - Alias `assignees` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Support for querying epics by assignees [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/222) in GitLab 18.3.
@@ -62,7 +62,7 @@ Use these fields in the `query` parameter to filter your results.
 - `List` (containing `String` or `User` values)
 - `Nullable` (either of `null`, `none`, or `any`)
 
-### Author {#workitem-author}
+### Author
 
 - Support for querying epics by author [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 - Support for `in` operator [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/221) in GitLab 18.3.
@@ -75,7 +75,7 @@ Use these fields in the `query` parameter to filter your results.
 - `User` (for example, `@username`)
 - `List` (containing `String` or `User` values)
 
-### Cadence {#workitem-cadence}
+### Cadence
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-haskell/-/issues/74) in GitLab 17.6.
 
@@ -87,11 +87,11 @@ Use these fields in the `query` parameter to filter your results.
 - `List` (containing `Number` values)
 - `Nullable` (either of `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - Because a work item can have only one iteration, the `=` operator cannot be used with `List` type for the `cadence` field.
 
-### Closed at {#workitem-closed-at}
+### Closed at
 
 - Alias `closedAt` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Operators `>=` and `<=` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/work_items/58) in GitLab 18.0.
@@ -105,11 +105,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Confidential {#workitem-confidential}
+### Confidential
 
 - Support for querying epics by their confidentiality [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 
@@ -119,11 +119,11 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Boolean` (either of `true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - Confidential work items queried using GLQL are only visible to people who have permission to view them.
 
-### Created at {#workitem-created-at}
+### Created at
 
 - Aliases `createdAt`, `opened`, and `openedAt` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Operators `>=` and `<=` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/work_items/58) in GitLab 18.0.
@@ -137,11 +137,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Custom field {#workitem-custom-field}
+### Custom field
 
 - Tier: Premium, Ultimate
 
@@ -154,11 +154,11 @@ Use these fields in the `query` parameter to filter your results.
 - `String` (for single-select custom fields)
 - `List` (of `String`, for multi-select custom fields)
 
-**Notes**:
+**Additional details**:
 
 - Custom field names and values are not case-sensitive.
 
-### Due date {#workitem-due-date}
+### Due date
 
 - Alias `dueDate` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Operators `>=` and `<=` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/work_items/58) in GitLab 18.0.
@@ -172,11 +172,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Epic {#workitem-epic}
+### Epic
 
 - Tier: Premium, Ultimate
 
@@ -191,7 +191,7 @@ Use these fields in the `query` parameter to filter your results.
 - `String` (containing an epic reference like `&123`)
 - `Epic` (for example, `&123`, `gitlab-org&123`)
 
-### Health status {#workitem-health-status}
+### Health status
 
 - Tier: Ultimate
 
@@ -205,7 +205,7 @@ Use these fields in the `query` parameter to filter your results.
 - `StringEnum` (one of `"needs attention"`, `"at risk"` or `"on track"`)
 - `Nullable` (either of `null`, `none`, or `any`)
 
-### ID {#workitem-identifier}
+### ID
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/92) in GitLab 17.8.
 - Support for querying epics by ID [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
@@ -217,7 +217,7 @@ Use these fields in the `query` parameter to filter your results.
 - `Number` (only positive integers)
 - `List` (containing `Number` values)
 
-### Include subgroups {#workitem-include-subgroups}
+### Include subgroups
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/106) in GitLab 17.10.
 - Support for this field to be used with epics [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
@@ -228,12 +228,12 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Boolean` (either of `true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - This field can only be used with a `group` scope.
 - The value of this field defaults to `false`.
 
-### Iteration {#workitem-iteration}
+### Iteration
 
 - Tier: Premium, Ultimate
 
@@ -250,11 +250,11 @@ Use these fields in the `query` parameter to filter your results.
 - `Enum` (only `current` is supported)
 - `Nullable` (either of `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - Because a work item can have only one iteration, the `=` operator cannot be used with `List` type for the `iteration` field.
 
-### Labels {#workitem-labels}
+### Labels
 
 - Support for label value types [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/79) in GitLab 17.8.
 - Alias `labels` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
@@ -269,11 +269,11 @@ Use these fields in the `query` parameter to filter your results.
 - `List` (containing `String` or `Label` values)
 - `Nullable` (either of `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - Scoped labels or labels containing spaces must be wrapped in quotes.
 
-### Milestone {#workitem-milestone}
+### Milestone
 
 - Support for milestone value types [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/77) in GitLab 17.8.
 - Support for querying epics by milestone [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
@@ -287,13 +287,13 @@ Use these fields in the `query` parameter to filter your results.
 - `List` (containing `String` or `Milestone` values)
 - `Nullable` (either of `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - Milestones containing spaces must be wrapped in quotes (`"`).
 - Because a work item can have only one milestone, the `=` operator cannot be used with `List` type for the `milestone` field.
 - The `Epic` type does not support wildcard milestone filters like `none` or `any`.
 
-### My reaction emoji {#workitem-my-reaction-emoji}
+### My reaction emoji
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/223) in GitLab 18.3.
 
@@ -301,7 +301,7 @@ Use these fields in the `query` parameter to filter your results.
 
 **Allowed value types**: `String`
 
-### Parent {#workitem-parent}
+### Parent
 
 - Values that are not a work item or epic reference [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/550) to return an error in GitLab 19.6.
 
@@ -314,7 +314,7 @@ Use these fields in the `query` parameter to filter your results.
 - `WorkItem` (for example, `#123`, `gitlab-org/gitlab#123`)
 - `Epic` (for example, `&123`, `gitlab-org&123`)
 
-### Search {#workitem-search}
+### Search
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/547) in GitLab 19.6.
 
@@ -322,11 +322,11 @@ Use these fields in the `query` parameter to filter your results.
 
 **Allowed value types**: `String`
 
-**Notes**:
+**Additional details**:
 
 - Queries that use `search` count toward the [search rate limit](../../../administration/instance_limits.md#search-rate-limit).
 
-### State {#workitem-state}
+### State
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/96) in GitLab 17.8.
 - Support for querying epics by state [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
@@ -337,11 +337,11 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Enum`, one of `opened`, `closed`, or `all`
 
-**Notes**:
+**Additional details**:
 
 - The `state` field does not support the `!=` operator.
 
-### Status {#workitem-status}
+### Status
 
 - Tier: Premium, Ultimate
 
@@ -351,7 +351,7 @@ Use these fields in the `query` parameter to filter your results.
 
 **Allowed value types:** `String`
 
-### Subscribed {#workitem-subscribed}
+### Subscribed
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/223) in GitLab 18.3.
 
@@ -360,7 +360,7 @@ Use these fields in the `query` parameter to filter your results.
 
 **Allowed value types**: `Boolean`
 
-### Updated at {#workitem-updated-at}
+### Updated at
 
 - Alias `updatedAt` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Operators `>=` and `<=` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/work_items/58) in GitLab 18.0.
@@ -374,11 +374,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Weight {#workitem-weight}
+### Weight
 
 - Tier: Premium, Ultimate
 
@@ -389,7 +389,7 @@ Use these fields in the `query` parameter to filter your results.
 - `Number` (only positive integers or 0)
 - `Nullable` (either of `null`, `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - Comparison operators `<` and `>` cannot be used.
 

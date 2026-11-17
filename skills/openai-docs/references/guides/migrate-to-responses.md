@@ -70,7 +70,7 @@ from openai import OpenAI
 client = OpenAI()
 
 completion = client.chat.completions.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     messages=[
         {
             "role": "user",
@@ -87,7 +87,7 @@ require "openai"
 
 client = OpenAI::Client.new
 completion = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [
     {
       role: :user,
@@ -106,7 +106,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="Write a one-sentence bedtime story about a unicorn.",
 )
 
@@ -118,7 +118,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Write a one-sentence bedtime story about a unicorn."
 )
 puts(response.output_text)
@@ -225,12 +225,12 @@ const context: { role: "system" | "user"; content: string }[] = [
 ];
 
 const completion = await client.chat.completions.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: context,
 });
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: context,
 });
 ```
@@ -241,9 +241,9 @@ context = [
     {"role": "user", "content": "Hello!"},
 ]
 
-completion = client.chat.completions.create(model="gpt-6-astra", messages=context)
+completion = client.chat.completions.create(model="gpt-6.2-astra", messages=context)
 
-response = client.responses.create(model="gpt-6-astra", input=context)
+response = client.responses.create(model="gpt-6.2-astra", input=context)
 ```
 
 ```go
@@ -261,7 +261,7 @@ func main() {
 	client := openai.NewClient()
 
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage("You are a helpful assistant."),
 			openai.UserMessage("Hello!"),
@@ -273,7 +273,7 @@ func main() {
 	fmt.Println(completion.Choices[0].Message.Content)
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
 			responses.ResponseInputItemParamOfMessage("You are a helpful assistant.", responses.EasyInputMessageRoleSystem),
 			responses.ResponseInputItemParamOfMessage("Hello!", responses.EasyInputMessageRoleUser),
@@ -301,7 +301,7 @@ var completion =
         .completions()
         .create(
             ChatCompletionCreateParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .addSystemMessage("You are a helpful assistant.")
                 .addUserMessage("Hello!")
                 .build());
@@ -314,7 +314,7 @@ var response =
         .responses()
         .create(
             ResponseCreateParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .inputOfResponse(
                     List.of(
                         ResponseInputItem.ofEasyInputMessage(
@@ -341,7 +341,7 @@ using OpenAI.Responses;
 #pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 
 ChatClient chat = new(model, key);
 
@@ -381,13 +381,13 @@ messages = [
 ]
 
 completion = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: messages
 )
 puts(completion.choices.fetch(0).message.content)
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: messages
 )
 puts(response.output_text)
@@ -403,7 +403,7 @@ curl -s https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d "{
-    \"model\": \"gpt-6-astra\",
+    \"model\": \"gpt-6.2-astra\",
     \"messages\": $INPUT
   }"
 
@@ -411,7 +411,7 @@ curl -s https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d "{
-    \"model\": \"gpt-6-astra\",
+    \"model\": \"gpt-6.2-astra\",
     \"input\": $INPUT
   }"
 ```
@@ -430,7 +430,7 @@ import OpenAI from "openai";
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const completion = await client.chat.completions.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [
     { role: "system", content: "You are a helpful assistant." },
     { role: "user", content: "Hello!" },
@@ -445,7 +445,7 @@ from openai import OpenAI
 client = OpenAI()
 
 completion = client.chat.completions.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Hello!"},
@@ -468,7 +468,7 @@ func main() {
 	client := openai.NewClient()
 
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage("You are a helpful assistant."),
 			openai.UserMessage("Hello!"),
@@ -488,7 +488,7 @@ import com.openai.models.chat.completions.ChatCompletionCreateParams;
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .addSystemMessage("You are a helpful assistant.")
         .addUserMessage("Hello!")
         .build();
@@ -502,7 +502,7 @@ client.chat().completions().create(params).choices().stream()
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 ChatClient client = new(model, key);
 
 ChatCompletion completion = await client.CompleteChatAsync(
@@ -521,7 +521,7 @@ require "openai"
 client = OpenAI::Client.new
 
 completion = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [
     {
       role: :system,
@@ -542,7 +542,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-      "model": "gpt-6-astra",
+      "model": "gpt-6.2-astra",
       "messages": [
           {"role": "system", "content": "You are a helpful assistant."},
           {"role": "user", "content": "Hello!"}
@@ -567,7 +567,7 @@ import OpenAI from "openai";
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   instructions: "You are a helpful assistant.",
   input: "Hello!",
 });
@@ -581,7 +581,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra", instructions="You are a helpful assistant.", input="Hello!"
+    model="gpt-6.2-astra", instructions="You are a helpful assistant.", input="Hello!"
 )
 print(response.output_text)
 ```
@@ -601,7 +601,7 @@ func main() {
 	client := openai.NewClient()
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:        "gpt-6-astra",
+		Model:        "gpt-6.2-astra",
 		Instructions: openai.String("You are a helpful assistant."),
 		Input:        responses.ResponseNewParamsInputUnion{OfString: openai.String("Hello!")},
 	})
@@ -619,7 +619,7 @@ import com.openai.models.responses.ResponseCreateParams;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Hello!")
         .instructions("You are a helpful assistant.")
         .build();
@@ -640,7 +640,7 @@ ResponsesClient client = new(key);
 
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.2-astra",
     Instructions = "You are a helpful assistant.",
 };
 options.InputItems.Add(ResponseItem.CreateUserMessageItem("Hello!"));
@@ -656,7 +656,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   instructions: "You are a helpful assistant.",
   input: "Hello!"
 )
@@ -669,7 +669,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-      "model": "gpt-6-astra",
+      "model": "gpt-6.2-astra",
       "instructions": "You are a helpful assistant.",
       "input": "Hello!"
   }'
@@ -715,7 +715,7 @@ let messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
   { role: "user", content: "What is the capital of France?" },
 ];
 const res1 = await client.chat.completions.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages,
 });
 
@@ -723,7 +723,7 @@ messages = messages.concat([res1.choices[0].message]);
 messages.push({ role: "user", content: "And its population?" });
 
 const res2 = await client.chat.completions.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages,
 });
 ```
@@ -733,12 +733,12 @@ messages = [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "What is the capital of France?"},
 ]
-res1 = client.chat.completions.create(model="gpt-6-astra", messages=messages)
+res1 = client.chat.completions.create(model="gpt-6.2-astra", messages=messages)
 
 messages += [res1.choices[0].message]
 messages += [{"role": "user", "content": "And its population?"}]
 
-res2 = client.chat.completions.create(model="gpt-6-astra", messages=messages)
+res2 = client.chat.completions.create(model="gpt-6.2-astra", messages=messages)
 ```
 
 ```go
@@ -758,13 +758,13 @@ func main() {
 		openai.UserMessage("What is the capital of France?"),
 	}
 
-	first, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{Model: "gpt-6-astra", Messages: messages})
+	first, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{Model: "gpt-6.2-astra", Messages: messages})
 	if err != nil {
 		panic(err)
 	}
 	messages = append(messages, openai.AssistantMessage(first.Choices[0].Message.Content), openai.UserMessage("And its population?"))
 
-	second, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{Model: "gpt-6-astra", Messages: messages})
+	second, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{Model: "gpt-6.2-astra", Messages: messages})
 	if err != nil {
 		panic(err)
 	}
@@ -779,7 +779,7 @@ import com.openai.models.chat.completions.ChatCompletionCreateParams;
 
 var params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .addSystemMessage("You are a helpful assistant.")
         .addUserMessage("What is the capital of France?")
         .build();
@@ -803,7 +803,7 @@ second.choices().stream()
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 ChatClient client = new(model, key);
 
 List<ChatMessage> messages =
@@ -836,7 +836,7 @@ messages = [
 ]
 
 first = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: messages
 )
 messages << {
@@ -849,7 +849,7 @@ messages << {
 }
 
 second = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: messages
 )
 
@@ -876,7 +876,7 @@ let context: OpenAI.Responses.ResponseInput = [
 ];
 
 const res1 = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: context,
 });
 
@@ -887,7 +887,7 @@ context = context.concat(toResponseInputItems(res1.output));
 context.push({ role: "user", content: "And its population?" });
 
 const res2 = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: context,
 });
 ```
@@ -895,7 +895,7 @@ const res2 = await client.responses.create({
 ```python
 context = [{"role": "user", "content": "What is the capital of France?"}]
 res1 = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=context,
 )
 
@@ -906,7 +906,7 @@ context += res1.output
 context += [{"role": "user", "content": "And its population?"}]
 
 res2 = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=context,
 )
 ```
@@ -929,7 +929,7 @@ func main() {
 		responses.ResponseInputItemParamOfMessage("What is the capital of France?", responses.EasyInputMessageRoleUser),
 	}
 	first, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: contextItems},
 	})
 	if err != nil {
@@ -938,7 +938,7 @@ func main() {
 	contextItems = append(contextItems, outputAsInput(first.Output)...)
 	contextItems = append(contextItems, responses.ResponseInputItemParamOfMessage("And its population?", responses.EasyInputMessageRoleUser))
 	second, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: contextItems},
 	})
 	if err != nil {
@@ -981,7 +981,7 @@ var first =
     client
         .responses()
         .create(
-            ResponseCreateParams.builder().model("gpt-6-astra").inputOfResponse(history).build());
+            ResponseCreateParams.builder().model("gpt-6.2-astra").inputOfResponse(history).build());
 first.output().stream()
     .map(item -> JsonValue.from(item).convert(ResponseInputItem.class))
     .forEach(history::add);
@@ -994,7 +994,7 @@ history.add(
 
 client
     .responses()
-    .create(ResponseCreateParams.builder().model("gpt-6-astra").inputOfResponse(history).build())
+    .create(ResponseCreateParams.builder().model("gpt-6.2-astra").inputOfResponse(history).build())
     .output()
     .stream()
     .flatMap(item -> item.message().stream())
@@ -1015,11 +1015,11 @@ List<ResponseItem> history =
     ResponseItem.CreateUserMessageItem("What is the capital of France?"),
 ];
 
-ResponseResult first = await client.CreateResponseAsync("gpt-6-astra", history);
+ResponseResult first = await client.CreateResponseAsync("gpt-6.2-astra", history);
 history.AddRange(first.OutputItems);
 history.Add(ResponseItem.CreateUserMessageItem("And its population?"));
 
-ResponseResult second = await client.CreateResponseAsync("gpt-6-astra", history);
+ResponseResult second = await client.CreateResponseAsync("gpt-6.2-astra", history);
 Console.WriteLine(second.GetOutputText());
 ```
 
@@ -1035,7 +1035,7 @@ context = [
 ]
 
 first = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: context
 )
 context.concat(first.output)
@@ -1045,7 +1045,7 @@ context << {
 }
 
 second = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: context
 )
 
@@ -1058,13 +1058,13 @@ puts(second.output_text)
 
 ```typescript
 const res1 = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is the capital of France?",
   store: true,
 });
 
 const res2 = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "And its population?",
   previous_response_id: res1.id,
   store: true,
@@ -1073,11 +1073,11 @@ const res2 = await client.responses.create({
 
 ```python
 res1 = client.responses.create(
-    model="gpt-6-astra", input="What is the capital of France?", store=True
+    model="gpt-6.2-astra", input="What is the capital of France?", store=True
 )
 
 res2 = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="And its population?",
     previous_response_id=res1.id,
     store=True,
@@ -1099,7 +1099,7 @@ func main() {
 	client := openai.NewClient()
 
 	first, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Store: openai.Bool(true),
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What is the capital of France?")},
 	})
@@ -1108,7 +1108,7 @@ func main() {
 	}
 
 	second, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:              "gpt-6-astra",
+		Model:              "gpt-6.2-astra",
 		Store:              openai.Bool(true),
 		PreviousResponseID: openai.String(first.ID),
 		Input:              responses.ResponseNewParamsInputUnion{OfString: openai.String("And its population?")},
@@ -1130,7 +1130,7 @@ var first =
         .responses()
         .create(
             ResponseCreateParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .input("What is the capital of France?")
                 .store(true)
                 .build());
@@ -1140,7 +1140,7 @@ var second =
         .responses()
         .create(
             ResponseCreateParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .input("And its population?")
                 .previousResponseId(first.id())
                 .store(true)
@@ -1160,11 +1160,11 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
 ResponseResult first = await client.CreateResponseAsync(
-    "gpt-6-astra",
+    "gpt-6.2-astra",
     "What is the capital of France?"
 );
 ResponseResult second = await client.CreateResponseAsync(
-    "gpt-6-astra",
+    "gpt-6.2-astra",
     "And its population?",
     previousResponseId: first.Id
 );
@@ -1178,13 +1178,13 @@ require "openai"
 client = OpenAI::Client.new
 
 first = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is the capital of France?",
   store: true
 )
 
 second = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   previous_response_id: first.id,
   input: "And its population?",
   store: true
@@ -1290,7 +1290,7 @@ Chat Completions
 
 ```typescript
 const completion = await openai.chat.completions.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [
     {
       role: "user",
@@ -1330,7 +1330,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.chat.completions.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     messages=[
         {
             "role": "user",
@@ -1381,7 +1381,7 @@ func main() {
 	}
 
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model:           "gpt-6-astra",
+		Model:           "gpt-6.2-astra",
 		ReasoningEffort: openai.ReasoningEffortMedium,
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.UserMessage("Jane, 54 years old"),
@@ -1410,7 +1410,7 @@ import java.util.Map;
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .reasoningEffort(ReasoningEffort.MEDIUM)
         .addUserMessage("Jane, 54 years old")
         .putAdditionalBodyProperty(
@@ -1451,7 +1451,7 @@ using OpenAI.Chat;
 #pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 ChatClient client = new(model, key);
 
 BinaryData schema = BinaryData.FromString(
@@ -1507,7 +1507,7 @@ schema = {
 }
 
 completion = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   reasoning_effort: :medium,
   messages: [
     {
@@ -1533,7 +1533,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "messages": [
     {
       "role": "user",
@@ -1581,7 +1581,7 @@ Responses
 
 ```typescript
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Jane, 54 years old",
   text: {
     format: {
@@ -1611,7 +1611,7 @@ const response = await openai.responses.create({
 
 ```python
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="Jane, 54 years old",
     text={
         "format": {
@@ -1656,7 +1656,7 @@ func main() {
 	}
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Jane, 54 years old")},
 		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
 			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "person", Schema: schema, Strict: openai.Bool(true)},
@@ -1681,7 +1681,7 @@ import java.util.Map;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Jane, 54 years old")
         .text(
             ResponseTextConfig.builder()
@@ -1740,7 +1740,7 @@ BinaryData schema = BinaryData.FromString(
 );
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.2-astra",
     TextOptions = new ResponseTextOptions
     {
         TextFormat = ResponseTextFormat.CreateJsonSchemaFormat(
@@ -1781,7 +1781,7 @@ schema = {
 }
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Jane, 54 years old",
   text: {
     format: {
@@ -1801,7 +1801,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "input": "Jane, 54 years old",
   "text": {
     "format": {
@@ -2046,7 +2046,7 @@ Responses
 
 ```typescript
 const answer = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Who is the current president of France?",
   tools: [{ type: "web_search" }],
 });
@@ -2056,7 +2056,7 @@ console.log(answer.output_text);
 
 ```python
 answer = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="Who is the current president of France?",
     tools=[{"type": "web_search"}],
 )
@@ -2078,7 +2078,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Who is the current president of France?")},
 		Tools: []responses.ToolUnionParam{
 			responses.ToolParamOfWebSearch(responses.WebSearchToolTypeWebSearch),
@@ -2099,7 +2099,7 @@ import com.openai.models.responses.WebSearchTool;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Who is the current president of France?")
         .addTool(WebSearchTool.builder().type(WebSearchTool.Type.WEB_SEARCH).build())
         .build();
@@ -2118,7 +2118,7 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(ResponseTool.CreateWebSearchTool());
 options.InputItems.Add(
     ResponseItem.CreateUserMessageItem("Who is the current president of France?")
@@ -2134,7 +2134,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Who is the current president of France?",
   tools: [{ type: :web_search }]
 )
@@ -2147,7 +2147,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "Who is the current president of France?",
     "tools": [{"type": "web_search"}]
   }'

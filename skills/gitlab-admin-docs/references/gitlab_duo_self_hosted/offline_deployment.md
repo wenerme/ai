@@ -20,6 +20,9 @@ internet.
 These instructions also apply to environments with limited
 connectivity or restrictive firewall policies.
 
+With an offline cloud license, GitLab does not contact the Customers Portal
+to check Agent Platform usage quotas.
+
 In an offline environment, you must manually transfer the AI Gateway
 container image, LLM model weights, vLLM inference server image,
 and Agent Platform Flows executor image to your internal

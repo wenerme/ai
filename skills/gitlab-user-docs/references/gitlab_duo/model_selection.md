@@ -43,8 +43,9 @@ The following table lists the default model for each GitLab Duo feature.
 
 ## Supported models
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/614057) model setting for GitLab Duo Code Review to **Non-Agentic Code Review** in GitLab 19.4.
+- Model setting for GitLab Duo Code Review [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/614057) to **Non-Agentic Code Review** in GitLab 19.4.
 - Claude Sonnet 4.5 Bedrock [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7896) and Claude Sonnet 4.5 and Claude Sonnet 4.5 Gemini Enterprise Agent Platform [removed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7896) as supported models for GitLab Duo Code Review on November 11, 2026.
+- Claude Sonnet 4.5 for Code Suggestions [changed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7483) to Claude Sonnet 4.5 Bedrock on November 13, 2026.
 
 The following tables list the models you can select for each feature.
 
@@ -52,11 +53,15 @@ The following tables list the models you can select for each feature.
 
 | Model | Code Generation | Code Completion |
 |------------|-----------------|-----------------|
-| Claude Sonnet 4.5 | Yes | Yes |
+| Claude Sonnet 4.5 Bedrock | Yes | Yes |
+| Claude Sonnet 4.6 | Yes | No |
+| Claude Sonnet 4.6 Bedrock | Yes | No |
+| Claude Sonnet 4.6 Gemini Enterprise Agent Platform | Yes | No |
+| Claude Sonnet 5.5 | No | Yes |
+| Claude Sonnet 5.5 Gemini Enterprise Agent Platform | No | Yes |
 | Codestral 25.01 Fireworks | No | Yes |
 | Codestral 25.08 Fireworks | No | Yes |
 | Codestral 25.08 Gemini Enterprise Agent Platform | No | Yes |
-| Gemini 2.5 Flash Gemini Enterprise Agent Platform | Yes | No |
 
 ### GitLab Duo Non-Agentic Chat
 

@@ -25,12 +25,12 @@ Use these fields in the `query` parameter to filter your results.
 
 | Field                                          | Name                | Operators  |
 | ---------------------------------------------- | ------------------- | ---------- |
-| [Kind](#job-kind)                              | `kind`              | `=`        |
-| [Pipeline](#job-pipeline)                      | `pipeline`          | `=`        |
-| [Status](#job-status)                          | `status`            | `=`        |
-| [With artifacts](#job-with-artifacts)          | `withArtifacts`     | `=`, `!=`  |
+| [Kind](#kind)                              | `kind`              | `=`        |
+| [Pipeline](#pipeline)                      | `pipeline`          | `=`        |
+| [Status](#status)                          | `status`            | `=`        |
+| [With artifacts](#with-artifacts)          | `withArtifacts`     | `=`, `!=`  |
 
-### Kind {#job-kind}
+### Kind
 
 **Description**: Filter jobs by their kind.
 
@@ -38,18 +38,18 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Enum`, one of `bridge` or `build`
 
-**Notes**:
+**Additional details**:
 
 - `bridge` jobs are trigger jobs that start downstream pipelines.
 - `build` jobs are regular CI/CD jobs.
 
-### Pipeline {#job-pipeline}
+### Pipeline
 
 **Description**: Filter jobs by the pipeline they belong to, using the pipeline IID.
 
 **Allowed value types**: `Number` (pipeline IID)
 
-### Status {#job-status}
+### Status
 
 **Description**: Filter jobs by their CI/CD status.
 
@@ -59,7 +59,7 @@ Use these fields in the `query` parameter to filter your results.
   `preparing`, `running`, `scheduled`, `skipped`, `success`, `waiting_for_callback`,
   or `waiting_for_resource`
 
-### With artifacts {#job-with-artifacts}
+### With artifacts
 
 **Description**: Filter jobs by whether they have artifacts.
 

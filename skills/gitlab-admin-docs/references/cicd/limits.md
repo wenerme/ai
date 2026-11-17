@@ -351,6 +351,8 @@ To change this limit on your GitLab Self-Managed instance:
 - CI Lint rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/599486) in GitLab 19.2 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_ci_lint_rate_limit`. Disabled by default.
 - `ci_lint_limit_per_user` [reset to `0`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256176) on all instances in GitLab 19.5.
 - CI Lint rate limit [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264018) in GitLab 19.6. Feature flag `ci_enforce_ci_lint_rate_limit` removed.
+- Child pipelines counting toward the per-user limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636881) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `ci_rate_limit_child_pipelines_per_user`. Disabled by default.
+- Child pipelines counting toward the per-user limit [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270500) in GitLab 19.7. Feature flag `ci_rate_limit_child_pipelines_per_user` removed.
 
 You can set limits so that users and processes can't request more than a certain number of pipelines each minute.
 These limits can help save resources and improve stability.
@@ -359,8 +361,10 @@ Each limit resets after one minute.
 GitLab enforces the following rate limits in this section:
 
 - **Per project, commit, and user**: Limits pipelines created for the same combination of project,
-  commit SHA, and user. Set to `0` (no limit) by default.
-- **Per user**: Limits total pipelines created by a user across all projects. Set to `0` (no limit) by default.
+  commit SHA, and user. Set to `0` (no limit) by default. [Child pipelines](../../ci/pipelines/downstream_pipelines.md#parent-child-pipelines)
+  do not count toward this limit.
+- **Per user**: Limits total pipelines created by a user across all projects, including child pipelines.
+  Set to `0` (no limit) by default.
 - **Per user for CI lint requests**: Limits [CI lint](../../ci/yaml/lint.md) requests made by a user across all
   projects. CI lint requests do not count toward the pipeline creation limits, except requests that
   [simulate a pipeline](../../ci/yaml/lint.md#simulate-a-pipeline), which count toward both.

@@ -1,5 +1,5 @@
 ---
-description: Create a Cloudflare account, set up member permissions, and explore the Build, Protect &amp; Connect, and Network services available to you.
+description: Create a Cloudflare account, set up member permissions, and explore the Build, Protect & Connect, and Network services available to you.
 title: Get started
 image: https://developers.cloudflare.com/fundamentals/get-started/og.png?v=7a66698a656f9ddc
 ---

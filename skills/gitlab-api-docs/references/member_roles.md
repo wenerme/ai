@@ -80,7 +80,7 @@ Supported attributes:
 |:----------|:--------|:---------|:-------------------------------------|
 | `name`         | string         | yes      | The name of the member role. |
 | `description`  | string         | no       | The description of the member role. |
-| `base_access_level` | integer   | yes      | Base access level for configured role. Valid values are `10` (Guest), `15` (Planner), `20` (Reporter), `25` (Security Manager), `30` (Developer), `40` (Maintainer), or `50` (Owner). |
+| `base_access_level` | integer   | yes      | Base access level for configured role. Valid values are `5` (Minimal Access), `10` (Guest), `15` (Planner), `20` (Reporter), `25` (Security Manager), `30` (Developer), or `40` (Maintainer). |
 | `admin_cicd_variables` | boolean | no       | Permission to create, read, update, and delete CI/CD variables. |
 | `admin_compliance_framework` | boolean | no       | Permission to administer compliance frameworks. |
 | `admin_group_member` | boolean | no       | Permission to add, remove, and assign members in a group. |

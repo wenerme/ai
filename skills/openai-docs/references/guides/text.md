@@ -13,7 +13,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Write a one-sentence bedtime story about a unicorn.",
 });
 
@@ -26,7 +26,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="Write a one-sentence bedtime story about a unicorn.",
 )
 
@@ -48,7 +48,7 @@ func main() {
 	client := openai.NewClient()
 
 	resp, err := client.Responses.New(context.TODO(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say this is a test")},
 	})
 	if err != nil {
@@ -70,7 +70,7 @@ public class Main {
     OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
     ResponseCreateParams params =
-        ResponseCreateParams.builder().input("Say this is a test").model("gpt-6-astra").build();
+        ResponseCreateParams.builder().input("Say this is a test").model("gpt-6.2-astra").build();
 
     Response response = client.responses().create(params);
     response.output().stream()
@@ -90,7 +90,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
 ResponseResult response = await client.CreateResponseAsync(
-    "gpt-6-astra",
+    "gpt-6.2-astra",
     "Say 'this is a test.'"
 );
 
@@ -103,7 +103,7 @@ require "openai"
 openai = OpenAI::Client.new
 
 response = openai.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Write a one-sentence bedtime story about a unicorn."
 )
 
@@ -112,7 +112,7 @@ puts(response.output_text)
 
 ```bash
 openai responses create \
-  --model "gpt-6-astra" \
+  --model "gpt-6.2-astra" \
   --input "Write a one-sentence bedtime story about a unicorn." \
   --raw-output \
   --transform 'output.#(type=="message").content.0.text'
@@ -123,7 +123,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-6-astra",
+        "model": "gpt-6.2-astra",
         "input": "Write a one-sentence bedtime story about a unicorn."
     }'
 ```
@@ -170,7 +170,7 @@ Now, let's examine some tools and techniques available to you to construct promp
 
 ## Choosing models and APIs
 
-OpenAI has many different [models](https://developers.openai.com/api/docs/models) and several APIs to choose from. [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning), like [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra), behave differently from chat models and respond better to different prompts. One important note is that reasoning models perform better and demonstrate higher intelligence when used with the Responses API.
+OpenAI has many different [models](https://developers.openai.com/api/docs/models) and several APIs to choose from. [Reasoning models](https://developers.openai.com/api/docs/guides/reasoning), like [`gpt-6.2-astra`](https://developers.openai.com/api/docs/models/gpt-6.2-astra), behave differently from chat models and respond better to different prompts. One important note is that reasoning models perform better and demonstrate higher intelligence when used with the Responses API.
 
 If you're building any text generation app, we recommend using the Responses API over the older Chat Completions API. And if you're using a reasoning model, it's especially useful to [migrate to Responses](https://developers.openai.com/api/docs/guides/migrate-to-responses).
 
@@ -187,7 +187,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   reasoning: { effort: "low" },
   instructions: "Talk like a pirate.",
   input: "Are semicolons optional in JavaScript?",
@@ -202,7 +202,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     reasoning={"effort": "low"},
     instructions="Talk like a pirate.",
     input="Are semicolons optional in JavaScript?",
@@ -226,7 +226,7 @@ func main() {
 	client := openai.NewClient()
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:        "gpt-6-astra",
+		Model:        "gpt-6.2-astra",
 		Instructions: openai.String("Talk like a pirate."),
 		Reasoning: responses.ReasoningParam{
 			Effort: responses.ReasoningEffortLow,
@@ -256,7 +256,7 @@ String semicolonsPrompt = "Are semicolons optional in JavaScript?";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(semicolonsPrompt)
         .instructions(semicolonsDevMsg)
         .reasoning(Reasoning.builder().effort(ReasoningEffort.LOW).build())
@@ -278,7 +278,7 @@ ResponsesClient client = new(key);
 
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.2-astra",
     Instructions = "Talk like a pirate.",
     ReasoningOptions = new ResponseReasoningOptions
     {
@@ -299,7 +299,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   instructions: "Talk like a pirate.",
   reasoning: { effort: :low },
   input: "Are semicolons optional in JavaScript?"
@@ -313,7 +313,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-6-astra",
+        "model": "gpt-6.2-astra",
         "reasoning": {"effort": "low"},
         "instructions": "Talk like a pirate.",
         "input": "Are semicolons optional in JavaScript?"
@@ -330,7 +330,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   reasoning: { effort: "low" },
   input: [
     {
@@ -353,7 +353,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     reasoning={"effort": "low"},
     input=[
         {"role": "developer", "content": "Talk like a pirate."},
@@ -379,7 +379,7 @@ func main() {
 	client := openai.NewClient()
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Reasoning: responses.ReasoningParam{
 			Effort: responses.ReasoningEffortLow,
 		},
@@ -420,7 +420,7 @@ String semicolonsPrompt = "Are semicolons optional in JavaScript?";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             ResponseCreateParams.Input.ofResponse(
                 List.of(
@@ -453,7 +453,7 @@ ResponsesClient client = new(key);
 
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.2-astra",
     ReasoningOptions = new ResponseReasoningOptions
     {
         ReasoningEffortLevel = ResponseReasoningEffortLevel.Low,
@@ -476,7 +476,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   reasoning: { effort: :low },
   input: [
     {
@@ -498,7 +498,7 @@ curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-6-astra",
+        "model": "gpt-6.2-astra",
         "reasoning": {"effort": "low"},
         "input": [
             {

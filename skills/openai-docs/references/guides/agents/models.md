@@ -14,13 +14,13 @@ In production, prefer explicit model choice over whichever runtime default your 
 
 Set models per agent and per run
 
-```javascript
+```typescript
 import { Agent, Runner } from "@openai/agents";
 
 const fastAgent = new Agent({
   name: "Fast support agent",
   instructions: "Handle routine support questions.",
-  model: "gpt-5.6-terra",
+  model: "gpt-6.1-terra",
 });
 
 const generalAgent = new Agent({
@@ -29,7 +29,7 @@ const generalAgent = new Agent({
 });
 
 const runner = new Runner({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
 });
 
 await runner.run(fastAgent, "Summarize ticket 123.");
@@ -49,7 +49,7 @@ from agents import Agent, RunConfig, Runner
 fast_agent = Agent(
     name="Fast support agent",
     instructions="Handle routine support questions.",
-    model="gpt-5.6-terra",
+    model="gpt-6.1-terra",
 )
 
 general_agent = Agent(
@@ -64,7 +64,7 @@ async def main() -> None:
     result = await Runner.run(
         general_agent,
         "Investigate the billing issue on account 456.",
-        run_config=RunConfig(model="gpt-6-astra"),
+        run_config=RunConfig(model="gpt-6.2-astra"),
     )
     print(result.final_output)
 
@@ -74,7 +74,7 @@ if __name__ == "__main__":
 ```
 
 
-For most new SDK workflows, start with [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra) and move to a smaller variant only when latency or cost matters enough to justify it. Use the platform-wide [Model guidance](https://developers.openai.com/api/docs/guides/latest-model) page for current model-selection advice.
+For most new SDK workflows, start with [`gpt-6.2-astra`](https://developers.openai.com/api/docs/models/gpt-6.2-astra) and move to a smaller variant only when latency or cost matters enough to justify it. Use the platform-wide [Model guidance](https://developers.openai.com/api/docs/guides/latest-model) page for current model-selection advice.
 
 ## Choose the simplest default strategy
 

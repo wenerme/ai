@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 286 modelsClear filters
+We found 296 modelsClear filters
 
 ## Compare models
 
@@ -645,6 +645,12 @@ Compare
 
 Compare
 
+[![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v4-image</h3>Kling AIText-to-Image Kling Image 4.0 is Kling AI's latest image model, generating 2K images from a text prompt and up to 10 reference images, in nine aspect ratios including auto.](https://developers.cloudflare.com/ai/models/klingai/kling-v4-image/)
+
+- Third-party
+
+Compare
+
 [k<h3>krea-2-large</h3>kreaText-to-Image More than 2x the size of Medium, with softer post-training. Outputs are rawer, more textured, and more flexible — at its best, Large produces results Medium can't match. Strongest on photorealism, raw looks (motion blur, grain, low dynamic range), and expressive and artistic styles.](https://developers.cloudflare.com/ai/models/krea/krea-2-large/)
 
 - Third-party
@@ -664,6 +670,18 @@ Compare
 Compare
 
 [k<h3>krea-3</h3>kreaImage-to-Image Krea 3 is Krea's image generation and editing model, in beta. It edits one or more reference images from a text instruction, or generates an image from the prompt alone. References are passed as HTTP(S) URLs in image\_urls (up to 8). Outputs go up to 2K, with optional thinking\_mode, aspect\_ratio, seed and regional\_edit controls.](https://developers.cloudflare.com/ai/models/krea/krea-3/)
+
+- Third-party
+
+Compare
+
+[l<h3>ltx-2-3-fast</h3>lightricksText-to-Video Lightricks LTX-2.3 Fast is a low-cost video generation model for text-to-video and image-to-video, with synchronized audio, first-to-last frame control, portrait and landscape output up to 4K, and clips up to 20 seconds.](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-3-fast/)
+
+- Third-party
+
+Compare
+
+[l<h3>ltx-2-3-pro</h3>lightricksText-to-Video Lightricks LTX-2.3 Pro is a high-fidelity video generation model for text-to-video and image-to-video, with synchronized audio, first-to-last frame control, and portrait and landscape output up to 4K, in 6, 8 or 10 second clips.](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-3-pro/)
 
 - Third-party
 
@@ -774,6 +792,30 @@ Compare
 
 - Third-party
 - +1
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>speech-02-hd</h3>MiniMaxText-to-Speech MiniMax Speech 02 HD is a studio-quality multilingual text-to-speech model with emotion control and support for cloned and designed voices.](https://developers.cloudflare.com/ai/models/minimax/speech-02-hd/)
+
+- Third-party
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>speech-02-turbo</h3>MiniMaxText-to-Speech MiniMax Speech 02 Turbo is a fast, lower-cost multilingual text-to-speech model with emotion control and support for cloned and designed voices.](https://developers.cloudflare.com/ai/models/minimax/speech-02-turbo/)
+
+- Third-party
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>speech-2.6-hd</h3>MiniMaxText-to-Speech MiniMax Speech 2.6 HD is a studio-quality multilingual text-to-speech model with emotion control (including fluent and whisper styles) and support for cloned and designed voices.](https://developers.cloudflare.com/ai/models/minimax/speech-2.6-hd/)
+
+- Third-party
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>speech-2.6-turbo</h3>MiniMaxText-to-Speech MiniMax Speech 2.6 Turbo is a fast, lower-cost multilingual text-to-speech model with emotion control (including fluent and whisper styles) and support for cloned and designed voices.](https://developers.cloudflare.com/ai/models/minimax/speech-2.6-turbo/)
+
+- Third-party
 
 Compare
 
@@ -994,6 +1036,18 @@ Compare
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2.5-sunburst</h3>OpenAIText-to-Image OpenAI's most capable image generation and editing model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.](https://developers.cloudflare.com/ai/models/openai/gpt-image-2.5-sunburst/)
+
+- Third-party
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2.6-flare</h3>OpenAIText-to-Image OpenAI's fastest high-quality everyday image generation model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.](https://developers.cloudflare.com/ai/models/openai/gpt-image-2.6-flare/)
+
+- Third-party
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2.6-sunburst</h3>OpenAIText-to-Image OpenAI's most capable image generation and editing model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.](https://developers.cloudflare.com/ai/models/openai/gpt-image-2.6-sunburst/)
 
 - Third-party
 
@@ -1405,6 +1459,12 @@ Compare
 
 Compare
 
+[x<h3>mimo-v2.6-pro</h3>xiaomiText Generation Xiaomi MiMo-V2.6-Pro is a reasoning model served by PrimaLabs. It thinks before it answers, supports tool calling and prompt caching, and has a context window of about 1M tokens through an OpenAI-compatible Chat Completions API.](https://developers.cloudflare.com/ai/models/xiaomi/mimo-v2.6-pro/)
+
+- Third-party
+
+Compare
+
 [s<h3>apertus-v1.5-8b</h3>swiss-aiText Generation Apertus 1.5 is an 8B parameter language model designed to advance the state of multilingual, multimodal, fully open, and transparent AI. The models support a wide range of languages, handle contexts of up to 262,144 tokens, and it uses only fully open training data whilst delivering performance comparable to other models of similar size. For access, please fill out this form: https://forms.gle/kgvmkr6ucHN3xNuH6](https://developers.cloudflare.com/ai/models/@cf/swiss-ai/apertus-v1.5-8b/)
 
 - Cloudflare-hosted
@@ -1622,28 +1682,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +5

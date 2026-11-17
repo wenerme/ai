@@ -40,15 +40,37 @@ This table lists the default model for each feature in the Agent Platform.
 
 ## Supported models
 
+Model availability can vary by subscription and trial status.
+For information about model availability during trials, see
+[GitLab Duo Agent Platform trials](../../subscriptions/free_trials.md#gitlab-duo-agent-platform-trials).
+
+### Code Review Flow
+
 - GPT-5.2 and GPT-5.3 Codex [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/5652) as supported models for Code Review Flow on May 26, 2026.
 - Claude Sonnet 5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6383) as a supported model for Code Review Flow on August 3, 2026.
 - Claude Sonnet 4.5 as a supported model for Code Review Flow [deprecated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6483) on August 10, 2026 and [removed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6621) on August 25, 2026.
+- Claude Sonnet 5.5 and Claude Sonnet 5.5 Gemini Enterprise Agent Platform [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7238) as supported models for Code Review Flow on October 5, 2026.
+
+This table lists the models you can select for Code Review Flow.
+
+| Model             | Code Review Flow[^supported-models-earlier-code-review] |
+|-------------------|---------------------------------------------------------|
+| Claude Sonnet 4.6 | Yes                                             |
+| Claude Sonnet 5   | Yes                                             |
+| Claude Sonnet 5.5 | Yes                                             |
+| GPT-5.2           | Yes                                             |
+| GPT-5.3 Codex     | Yes                                             |
+
+[^supported-models-earlier-code-review]: In GitLab 19.0 and earlier, Code Review Flow can use only the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)
+    for GitLab Duo Code Review, the non-agentic version.
+
+### Agentic Chat and other features
+
 - GLM 5.3, Kimi K3, and MiniMax M3 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6930) as supported models for GitLab Duo Agentic Chat and all other agents on September 16, 2026.
 - GPT-6 Sol and GPT-6 Luna [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7062) as supported models for GitLab Duo Agentic Chat and all other agents on September 22, 2026.
 - Claude Sonnet 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7129) as a supported model for GitLab Duo Agentic Chat and all other agents on September 28, 2026.
 - GPT-6.1 Sol [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7169) as a supported model for GitLab Duo Agentic Chat and all other agents on September 29, 2026.
 - Claude Sonnet 4.6 and Claude Sonnet 5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7077) as supported models for Business Logic Security Scan on October 2, 2026.
-- Claude Sonnet 5.5 and Claude Sonnet 5.5 Gemini Enterprise Agent Platform [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7238) as supported models for Code Review Flow on October 5, 2026.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7364) as a supported model for GitLab Duo Agentic Chat and all other agents on October 7, 2026.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7370) as a supported model for Recommend Reviewers Flow on October 8, 2026.
 - Gemini 4 Argon [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7445) as a supported model for GitLab Duo Agentic Chat and all other agents on October 13, 2026.
@@ -61,64 +83,58 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Mythos 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7949) as a supported model for Business Logic Security Scan on November 12, 2026.
 - Gemini 4 Carbon and Gemini 4 Hydrogen [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8014) as supported models for GitLab Duo Agentic Chat and all other agents on November 12, 2026.
 
-This table lists the models you can select for features
-in the Agent Platform.
+This table lists the models you can select for Agentic Chat and other features in the Agent Platform.
+For Code Review Flow, see the previous table.
 
-Model availability can vary by subscription and trial status.
-For information about model availability during trials, see
-[GitLab Duo Agent Platform trials](../../subscriptions/free_trials.md#gitlab-duo-agent-platform-trials).
+| Model                       | GitLab Duo Agentic Chat | Security Review Flow | Business Logic Security Scan | Recommend Reviewers Flow | All other agents |
+|-----------------------------|-------------------------|----------------------|------------------------------|--------------------------|------------------|
+| Claude Fable 5[^model-subject-limited] | Yes             | No           | No                   | No               | Yes      |
+| Claude Fable 5.1[^model-subject-limited] | Yes             | No           | No                   | No               | Yes      |
+| Claude Fable 5.2[^model-subject-limited] | Yes             | No           | No                   | No               | Yes      |
+| Claude Mythos 5.1[^model-subject-limited], [^mythos-availability] | No              | No           | Yes                  | No               | No       |
+| Claude Mythos 5.2[^model-subject-limited], [^mythos-availability] | No              | No           | Yes                  | No               | No       |
+| Claude Sonnet 4.5           | Yes             | Yes          | No                   | No               | Yes      |
+| Claude Sonnet 4.6           | Yes             | Yes          | Yes                  | No               | Yes      |
+| Claude Sonnet 5             | Yes             | No           | Yes                  | Yes              | Yes      |
+| Claude Sonnet 5.5           | Yes             | No           | Yes                  | Yes              | Yes      |
+| Claude Haiku 4.5            | Yes             | No           | No                   | Yes              | Yes      |
+| Claude Haiku 5.5            | Yes             | No           | No                   | Yes              | Yes      |
+| Claude Opus 4.5             | Yes             | No           | No                   | No               | Yes      |
+| Claude Opus 4.6             | Yes             | No           | No                   | No               | Yes      |
+| Claude Opus 4.7             | Yes             | No           | No                   | No               | Yes      |
+| Claude Opus 4.8             | Yes             | No           | No                   | No               | Yes      |
+| Claude Opus 5               | Yes             | No           | No                   | No               | Yes      |
+| Claude Opus 5.5             | Yes             | Yes          | Yes                  | No               | Yes      |
+| Gemini 3.5 Flash            | Yes             | No           | No                   | No               | Yes      |
+| Gemini 3.6 Flash            | Yes             | No           | No                   | No               | Yes      |
+| Gemini 3.7 Flash            | Yes             | No           | No                   | No               | Yes      |
+| Gemini 3.8 Flash            | Yes             | No           | No                   | No               | Yes      |
+| Gemini 4 Argon              | Yes             | No           | No                   | No               | Yes      |
+| Gemini 4 Carbon             | Yes             | No           | No                   | No               | Yes      |
+| Gemini 4 Hydrogen           | Yes             | No           | No                   | No               | Yes      |
+| GLM 5.3                     | Yes             | No           | No                   | No               | Yes      |
+| GPT-5                       | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.1                     | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.2                     | Yes             | Yes          | No                   | No               | Yes      |
+| GPT-5 Codex                 | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.2 Codex               | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.3 Codex               | Yes             | Yes          | No                   | No               | Yes      |
+| GPT-5 Mini                  | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.4 Mini                | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.4 Nano                | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.5[^model-subject-limited]        | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.6 Sol[^model-subject-limited]    | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.6 Terra[^model-subject-limited]  | Yes             | No           | No                   | No               | Yes      |
+| GPT-5.6 Luna[^model-subject-limited]   | Yes             | No           | No                   | No               | Yes      |
+| GPT-6 Astra[^model-subject-limited]    | Yes             | No           | No                   | No               | Yes      |
+| GPT-6 Sol[^model-subject-limited]      | Yes             | No           | No                   | No               | Yes      |
+| GPT-6 Luna[^model-subject-limited]     | Yes             | No           | No                   | Yes              | Yes      |
+| GPT-6.1 Sol[^model-subject-limited]    | Yes             | No           | No                   | No               | Yes      |
+| GPT-6.1 Terra[^model-subject-limited]  | Yes             | No           | No                   | No               | Yes      |
+| Kimi K3                     | Yes             | No           | No                   | No               | Yes      |
+| Kimi K3.1 Pro               | Yes             | No           | No                   | No               | Yes      |
+| MiniMax M3                  | Yes             | No           | No                   | No               | Yes      |
 
-| Model                       | GitLab Duo Agentic Chat | Code Review Flow[^supported-models-earlier-code-review] | Security Review Flow | Business Logic Security Scan | Recommend Reviewers Flow | All other agents |
-|-----------------------------|-------------------------|------------------|----------------------|------------------------------|--------------------------|------------------|
-| Claude Fable 5[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Fable 5.1[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Fable 5.2[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Mythos 5.1[^model-subject-limited], [^mythos-availability] | No              | No       | No           | Yes                  | No               | No       |
-| Claude Mythos 5.2[^model-subject-limited], [^mythos-availability] | No              | No       | No           | Yes                  | No               | No       |
-| Claude Sonnet 4.5           | Yes             | No      | Yes          | No                   | No               | Yes      |
-| Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes                  | No               | Yes      |
-| Claude Sonnet 5             | Yes             | Yes      | No           | Yes                  | Yes              | Yes      |
-| Claude Sonnet 5.5           | Yes             | Yes       | No           | Yes                  | Yes              | Yes      |
-| Claude Haiku 4.5            | Yes             | No       | No           | No                   | Yes              | Yes      |
-| Claude Haiku 5.5            | Yes             | No       | No           | No                   | Yes              | Yes      |
-| Claude Opus 4.5             | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Opus 4.6             | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Opus 4.7             | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Opus 4.8             | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Opus 5               | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Opus 5.5             | Yes             | No       | Yes          | Yes                  | No               | Yes      |
-| Gemini 3.5 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
-| Gemini 3.6 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
-| Gemini 3.7 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
-| Gemini 3.8 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
-| Gemini 4 Argon              | Yes             | No       | No           | No                   | No               | Yes      |
-| Gemini 4 Carbon             | Yes             | No       | No           | No                   | No               | Yes      |
-| Gemini 4 Hydrogen           | Yes             | No       | No           | No                   | No               | Yes      |
-| GLM 5.3                     | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5                       | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.1                     | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.2                     | Yes             | Yes      | Yes          | No                   | No               | Yes      |
-| GPT-5 Codex                 | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.2 Codex               | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.3 Codex               | Yes             | Yes      | Yes          | No                   | No               | Yes      |
-| GPT-5 Mini                  | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.4 Mini                | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.4 Nano                | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.5[^model-subject-limited]        | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.6 Sol[^model-subject-limited]    | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.6 Terra[^model-subject-limited]  | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-5.6 Luna[^model-subject-limited]   | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-6 Astra[^model-subject-limited]    | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-6 Sol[^model-subject-limited]      | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-6 Luna[^model-subject-limited]     | Yes             | No       | No           | No                   | Yes              | Yes      |
-| GPT-6.1 Sol[^model-subject-limited]    | Yes             | No       | No           | No                   | No               | Yes      |
-| GPT-6.1 Terra[^model-subject-limited]  | Yes             | No       | No           | No                   | No               | Yes      |
-| Kimi K3                     | Yes             | No       | No           | No                   | No               | Yes      |
-| Kimi K3.1 Pro               | Yes             | No       | No           | No                   | No               | Yes      |
-| MiniMax M3                  | Yes             | No       | No           | No                   | No               | Yes      |
-
-[^supported-models-earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow can only use the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)
-    for GitLab Duo Code Review, the non-agentic version.
 [^model-subject-limited]: This model is subject to [limited vendor-side data retention](../gitlab_duo/data_usage.md#data-retention).
 [^mythos-availability]: Available only for top-level groups that GitLab has enabled.
     If this model is not listed for your group, it is not enabled.

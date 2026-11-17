@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/email-service/reference/troubleshooting
 
 # Troubleshooting
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email authentication is critical for successful email delivery. This guide helps you troubleshoot common authentication, delivery, and inbox placement issues with Email Service.
 
@@ -130,6 +130,8 @@ If DKIM validation is failing:
 ### Missing DMARC policy
 
 While not required, DMARC significantly improves email deliverability. When Email Sending is enabled on a domain, Cloudflare adds a `p=reject` DMARC record to the sending domain if none exists. If you already have a DMARC record, Cloudflare keeps it unchanged.
+
+You can edit the record Cloudflare adds, and Cloudflare keeps your changes. To choose a policy, refer to [Sending records](https://developers.cloudflare.com/email-service/configuration/domains/#sending-records).
 
 To add a DMARC record manually:
 
@@ -347,5 +349,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and fix authentication, delivery, and inbox placement issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/troubleshooting/og.png?v=cfb0345825341448","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and fix authentication, delivery, and inbox placement issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/troubleshooting/og.png?v=cfb0345825341448","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

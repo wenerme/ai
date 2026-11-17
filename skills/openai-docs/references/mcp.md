@@ -167,13 +167,15 @@ Remix the server example on Replit to test live.
 
 
 
-A full implementation of both the `search` and `fetch` tools in FastMCP is below also for convenience.
+The following examples implement both `search` and `fetch` with an MCP SDK.
 
 
 
-#### Full implementation - FastMCP server
+#### Full MCP server implementation
 
 
+
+Create a document search MCP server
 
 ```python
 # Replace the illustrative IDs and URLs below with your own resource values.
@@ -389,6 +391,136 @@ if __name__ == "__main__":
     main()
 ```
 
+```ruby
+require "openai"
+require "mcp"
+require "json"
+
+class SearchDocuments < MCP::Tool
+  tool_name "search"
+  description "Search documents and return identities, titles, and citation URLs."
+  input_schema(type: "object", properties: { query: { type: "string" } }, required: ["query"])
+  output_schema(
+    type: "object", properties: {
+      results: {
+        type: "array",
+
+        items: {
+          type: "object",
+
+          properties: {
+            id: { type: "string" },
+            title: { type: "string" },
+            url: { type: "string" }
+          },
+          required: %w[id title url]
+        }
+      }
+    }, required: ["results"]
+  )
+
+  def self.call(query:, server_context:)
+    results = []
+    unless query.strip.empty?
+      response = server_context.fetch(:client).vector_stores.search(server_context.fetch(:store), query: query)
+      results = response.data.map do |item|
+        {
+          id: item.file_id,
+          title: item.filename,
+          url: "https://platform.openai.com/storage/files/#{item.file_id}"
+        }
+      end
+    end
+    result = { results: results }
+    MCP::Tool::Response.new(
+      [
+        {
+          type: "text",
+          text: JSON.generate(result)
+        }
+      ], structured_content: result
+    )
+  end
+end
+
+class FetchDocument < MCP::Tool
+  tool_name "fetch"
+  description "Retrieve a complete document with its citation and metadata."
+  input_schema(type: "object", properties: { id: { type: "string" } }, required: ["id"])
+  output_schema(
+    type: "object", properties: {
+      id: { type: "string" },
+
+      title: { type: "string" },
+
+      text: { type: "string" },
+
+      url: { type: "string" },
+      metadata: { type: ["object", "null"] }
+    }, required: %w[id title text url]
+  )
+
+  def self.call(id:, server_context:)
+    if id.empty?
+      return MCP::Tool::Response.new(
+        [
+          {
+            type: "text",
+            text: "Document ID is required"
+          }
+        ], error: true
+      )
+    end
+
+    client = server_context.fetch(:client)
+    store = server_context.fetch(:store)
+    content = client.vector_stores.files.content(id, vector_store_id: store)
+    info = client.vector_stores.files.retrieve(id, vector_store_id: store)
+    file = client.files.retrieve(id)
+    text = content.data.map(&:text).join("\n")
+    result = {
+      id: id,
+
+      title: file.filename,
+
+      text: text,
+      url: "https://platform.openai.com/storage/files/#{id}"
+    }
+    result[:metadata] = info.attributes unless info.attributes.nil? || info.attributes.empty?
+    MCP::Tool::Response.new(
+      [
+        {
+          type: "text",
+          text: JSON.generate(result)
+        }
+      ], structured_content: result
+    )
+  end
+end
+
+server = MCP::Server.new(
+  name: "Sample MCP Server", version: "1.0.0", tools: [SearchDocuments, FetchDocument],
+  instructions: "Search for relevant documents, then fetch complete content with citations.",
+  server_context: {
+    client: OpenAI::Client.new,
+    store: ENV.fetch("OPENAI_VECTOR_STORE_ID", "vs_123")
+  }
+)
+if ARGV.first == "stdio"
+  MCP::Server::Transports::StdioTransport.new(server).open
+  exit
+end
+
+require "rackup"
+require "rackup/handler/webrick"
+transport = MCP::Server::Transports::StreamableHTTPTransport.new(server, stateless: true, enable_json_response: true)
+app = Rack::URLMap.new("/mcp" => transport)
+Rackup::Handler::WEBrick.run(app, Host: ENV.fetch("MCP_HOST", "127.0.0.1"), Port: Integer(ENV.fetch("PORT", "8000"))) do |http_server|
+  trap("INT") { http_server.shutdown }
+  trap("TERM") { http_server.shutdown }
+end
+```
+
 
 
 
@@ -406,7 +538,7 @@ On free Replit accounts, server URLs are active for as long as the editor is act
 
 ![replit configuration](https://cdn.openai.com/API/docs/images/replit.png)
 
-In the long dev URL, ensure it ends with `/sse/`, which is the server-sent events (streaming) interface to the MCP server. This is the URL you will use to connect your app in ChatGPT and call it via API. An example Replit URL looks like:
+For the Python server, ensure the long dev URL ends with `/sse/`, which is the server-sent events (streaming) interface to the MCP server. This is the URL you will use to connect your app in ChatGPT and call it via API. An example Replit URL looks like:
 
 ```text
 https://777xxx.janeway.replit.dev/sse/
@@ -416,10 +548,18 @@ https://777xxx.janeway.replit.dev/sse/
 
 
 
+For Ruby, install the `openai`, `mcp` (version 1.10.0), `rackup`, and `webrick` gems, save the Ruby source as `server.rb`, and run `ruby server.rb`. Set `OPENAI_VECTOR_STORE_ID` to your vector store ID and `MCP_HOST` to `0.0.0.0` on Replit. The Ruby server uses Streamable HTTP at `/mcp`; use that path instead of `/sse/` in the connection URL. The Ruby server uses port 8000 by default or the port specified by `PORT`.
+
+
+
+
+
+
+
 
 ## Test and connect your MCP server
 
-You can test your MCP server with `gpt-6.1-sol` [in the prompts dashboard](https://platform.openai.com/chat). Create a new prompt, or edit an existing one, and add a new MCP tool to the prompt configuration. This compatibility example exposes only read-only `search` and `fetch` tools, so its API request skips approval for those tools. Keep approval enabled for tools that can modify data or take other consequential actions.
+You can test your MCP server with `gpt-6.2-sol` [in the prompts dashboard](https://platform.openai.com/chat). Create a new prompt, or edit an existing one, and add a new MCP tool to the prompt configuration. This compatibility example exposes only read-only `search` and `fetch` tools, so its API request skips approval for those tools. Keep approval enabled for tools that can modify data or take other consequential actions.
 
 If you are testing this server as part of a plugin, follow [Connect and test your plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt).
 
@@ -436,7 +576,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-  "model": "gpt-6.1-sol",
+  "model": "gpt-6.2-sol",
   "input": [
     {
       "role": "developer",

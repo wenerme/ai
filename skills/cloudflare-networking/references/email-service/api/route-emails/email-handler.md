@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/api/route-emails/email-ha
 
 Process incoming emails with the email() handler in Cloudflare Workers. Forward, reply, reject, or process emails programmatically.
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Process incoming emails using the `email()` handler in your Cloudflare Workers. This allows you to programmatically handle email routing with custom logic.
 
@@ -63,9 +63,25 @@ interface ForwardableEmailMessage {
 	// Actions
 	setReject(reason: string): void;
 	forward(rcptTo: string, headers?: Headers): Promise<EmailSendResult>;
-	reply(message: EmailMessage): Promise<EmailSendResult>;
+	reply(
+		message: EmailReplyMessageBuilder | EmailMessage,
+	): Promise<EmailSendResult>;
+}
+
+// Structured reply builder (recommended)
+interface EmailReplyMessageBuilder {
+	from: string | EmailAddress;
+	subject: string;
+	text?: string;
+	html?: string;
+	replyTo?: string | EmailAddress;
+	attachments?: Attachment[];
+	// Custom headers. See /email-service/reference/headers/
+	headers?: { [key: string]: string };
 }
 ```
+
+`EmailAddress` and `Attachment` are the same types that the [Email Sending Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#interface) uses.
 
 ### Properties
 
@@ -196,47 +212,34 @@ export default {
 
 ### Reply to emails
 
-Send automatic replies with `message.reply()`. Replies built this way are threaded with the original message and pass through the same SMTP session, so they preserve the original `Message-ID` chain.
+Send automatic replies with `message.reply()`. Replies are threaded with the original message and pass through the same SMTP session, so they preserve the original `Message-ID` chain.
+
+`reply()` accepts two payload forms:
+
+- **Message builder** (recommended): An `EmailReplyMessageBuilder` object with `from`, `subject`, and the message body. The reply goes to the sender of the incoming email, so the builder has no `to`, `cc`, or `bcc` fields.
+- **Raw MIME message**: An `EmailMessage` built from a raw MIME string. Use this form when you already build MIME messages. Refer to [Reply with a raw MIME message](#reply-with-a-raw-mime-message).
+
+In both forms, Email Service sets the `In-Reply-To` and `References` headers from the incoming email. If you set either header yourself, its value must match the value Email Service computes.
 
 Replies through the Workers API must satisfy the following requirements, otherwise `reply()` throws an exception:
 
 - The incoming email must have a valid DMARC result.
-- An email can only be replied to once per `EmailMessage` event.
-- The recipient in the reply must match the sender of the incoming email.
+- An email can only be replied to once per `EmailMessage` event. A failed `reply()` call also counts as the one reply.
+- With a raw `EmailMessage`, the recipient in the reply must match the sender of the incoming email.
 - The outgoing sender domain must match the domain that received the email.
 - The reply is rejected if the incoming email has more than 100 entries in its `References` header, to prevent reply loops and abuse.
 
-The reply payload is an `EmailMessage` built from a raw MIME string. The examples below use [`mimetext` ↗︎](https://www.npmjs.com/package/mimetext) to build the MIME body. The `mimetext` package requires the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
-
 ```ts
-import { EmailMessage } from "cloudflare:email";
-import { createMimeMessage } from "mimetext";
-
 export default {
 	async email(message, env, ctx): Promise<void> {
 		const subject = message.headers.get("subject") || "";
-		const messageId = message.headers.get("Message-ID");
 
-		const reply = createMimeMessage();
-		if (messageId) {
-			reply.setHeader("In-Reply-To", messageId);
-			reply.setHeader("References", messageId);
-		}
-		reply.setSender(message.to);
-		reply.setRecipient(message.from);
-		reply.setSubject(`Re: ${subject}`);
-		reply.addMessage({
-			contentType: "text/plain",
-			data: "Thank you for your message. We have received your email and will respond shortly.",
+		await message.reply({
+			from: message.to,
+			subject: `Re: ${subject}`,
+			text: "Thank you for your message. We have received your email and will respond shortly.",
+			html: "<h1>Thank you for your message</h1><p>We have received your email and will respond shortly.</p>",
 		});
-		reply.addMessage({
-			contentType: "text/html",
-			data: "<h1>Thank you for your message</h1><p>We have received your email and will respond shortly.</p>",
-		});
-
-		await message.reply(
-			new EmailMessage(message.to, message.from, reply.asRaw()),
-		);
 
 		// Also forward to human team
 		await message.forward("team@example.com");
@@ -245,17 +248,13 @@ export default {
 ```
 
 ```ts
-import { EmailMessage } from "cloudflare:email";
-import { createMimeMessage } from "mimetext";
-
 export default {
 	async email(message, env, ctx): Promise<void> {
 		const sender = message.from;
 		const recipient = message.to;
 		const subject = message.headers.get("subject") || "";
-		const messageId = message.headers.get("Message-ID");
 
-		// Don't reply to automated emails
+		// Do not reply to automated emails
 		if (
 			sender.includes("noreply") ||
 			sender.includes("no-reply") ||
@@ -287,27 +286,60 @@ export default {
             `;
 		}
 
-		const reply = createMimeMessage();
-		if (messageId) {
-			reply.setHeader("In-Reply-To", messageId);
-			reply.setHeader("References", messageId);
-		}
-		reply.setSender(recipient);
-		reply.setRecipient(sender);
-		reply.setSubject(`Re: ${subject}`);
-		reply.addMessage({
-			contentType: "text/plain",
-			data: html.replace(/<[^>]*>/g, ""),
+		await message.reply({
+			from: recipient,
+			subject: `Re: ${subject}`,
+			text: html.replace(/<[^>]*>/g, ""),
+			html,
 		});
-		reply.addMessage({ contentType: "text/html", data: html });
-
-		await message.reply(new EmailMessage(recipient, sender, reply.asRaw()));
 
 		// Forward to appropriate team
 		await message.forward("team@example.com");
 	},
 };
 ```
+
+#### Reply with a raw MIME message
+
+Pass an `EmailMessage` to `reply()` to send a MIME message that you build yourself. The following example uses [`mimetext` ↗︎](https://www.npmjs.com/package/mimetext) to build the MIME body. The `mimetext` package requires the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
+
+```ts
+import { EmailMessage } from "cloudflare:email";
+import { createMimeMessage } from "mimetext";
+
+export default {
+	async email(message, env, ctx): Promise<void> {
+		const subject = message.headers.get("subject") || "";
+		const messageId = message.headers.get("Message-ID");
+
+		const reply = createMimeMessage();
+		if (messageId) {
+			reply.setHeader("In-Reply-To", messageId);
+			reply.setHeader("References", messageId);
+		}
+		reply.setSender(message.to);
+		reply.setRecipient(message.from);
+		reply.setSubject(`Re: ${subject}`);
+		reply.addMessage({
+			contentType: "text/plain",
+			data: "Thank you for your message. We have received your email and will respond shortly.",
+		});
+
+		await message.reply(
+			new EmailMessage(message.to, message.from, reply.asRaw()),
+		);
+	},
+};
+```
+
+#### Reply errors
+
+`reply()` throws errors with the same `code` property as [`send()`](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#error-codes). The following codes are specific to replies:
+
+| Error code | Common causes |
+| --- | --- |
+| `E_TEMPORARY_AUTHENTICATION_ERROR` | Authentication of the incoming email failed temporarily. |
+| `E_FIELD_MISSING` | The incoming email has no `Message-ID` header, so the reply cannot be threaded. |
 
 ### Reject emails
 
@@ -432,5 +464,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#page","headline":"Workers API","description":"Process incoming emails with the email() handler in Cloudflare Workers to forward, reply, or reject messages.","url":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/og.png?v=bce7e41c11423abf","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#page","headline":"Workers API","description":"Process incoming emails with the email() handler in Cloudflare Workers to forward, reply, or reject messages.","url":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/og.png?v=bce7e41c11423abf","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

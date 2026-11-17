@@ -34,7 +34,7 @@ To implement this use case, you can use either the [Chat Completions API](https:
 
   Categorize IT support tickets
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -47,7 +47,7 @@ or "Other". Respond with only one of those words.
 const ticket = "My monitor won't turn on - help!";
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: [
     { role: "developer", content: instructions },
     { role: "user", content: ticket },
@@ -71,7 +71,7 @@ or "Other". Respond with only one of those words.
 ticket = "My monitor won't turn on - help!"
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=[
         {"role": "developer", "content": instructions},
         {"role": "user", "content": ticket},
@@ -96,7 +96,7 @@ func main() {
 	client := openai.NewClient()
 	instructions := "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of \"Hardware\", \"Software\", or \"Other\". Respond with only one of those words."
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
 			responses.ResponseInputItemParamOfMessage(instructions, responses.EasyInputMessageRoleDeveloper),
 			responses.ResponseInputItemParamOfMessage("My monitor won't turn on - help!", responses.EasyInputMessageRoleUser),
@@ -119,7 +119,7 @@ import java.util.List;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .inputOfResponse(
             List.of(
                 ResponseInputItem.ofEasyInputMessage(
@@ -150,7 +150,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
 ResponseResult response = await client.CreateResponseAsync(
-    "gpt-6-astra",
+    "gpt-6.2-astra",
     [
         ResponseItem.CreateDeveloperMessageItem(
             "Categorize the IT support ticket as Hardware, Software, or Other. Respond with only one of those words."
@@ -172,7 +172,7 @@ instructions = <<~INSTRUCTIONS
   Respond with only one of those words.
 INSTRUCTIONS
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: [
     {
       role: :developer,
@@ -192,7 +192,7 @@ curl https://api.openai.com/v1/responses \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-        "model": "gpt-6-astra",
+        "model": "gpt-6.2-astra",
         "input": [
             {
                 "role": "developer",
@@ -217,7 +217,7 @@ Let's set up an eval to test this behavior [via API](https://developers.openai.c
 
 Create an eval
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -497,7 +497,7 @@ Next, let's upload our test data file to the OpenAI platform so we can reference
 
 Upload a test data file
 
-```javascript
+```typescript
 import fs from "fs";
 import OpenAI from "openai";
 
@@ -613,7 +613,7 @@ Make sure to replace `YOUR_EVAL_ID` and `YOUR_FILE_ID` with the unique IDs of th
 
   Create an eval run
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 
@@ -621,7 +621,7 @@ const run = await openai.evals.runs.create("YOUR_EVAL_ID", {
   name: "Categorization text run",
   data_source: {
     type: "responses",
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     sampling_params: { reasoning_effort: "low" },
     input_messages: {
       type: "template",
@@ -651,7 +651,7 @@ run = client.evals.runs.create(
     name="Categorization text run",
     data_source={
         "type": "responses",
-        "model": "gpt-6-astra",
+        "model": "gpt-6.2-astra",
         "input_messages": {
             "type": "template",
             "template": [
@@ -688,7 +688,7 @@ var run =
                         .type(
                             RunCreateParams.DataSource.CreateEvalResponsesRunDataSource.Type
                                 .RESPONSES)
-                        .model("gpt-6-astra")
+                        .model("gpt-6.2-astra")
                         .samplingParams(
                             RunCreateParams.DataSource.CreateEvalResponsesRunDataSource
                                 .SamplingParams.builder()
@@ -749,7 +749,7 @@ run = client.evals.runs.create(
         }
       ]
     },
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     sampling_params: { reasoning_effort: :low }
   }
 )
@@ -764,7 +764,7 @@ curl https://api.openai.com/v1/evals/YOUR_EVAL_ID/runs \
         "name": "Categorization text run",
         "data_source": {
             "type": "responses",
-            "model": "gpt-6-astra",
+            "model": "gpt-6.2-astra",
             "input_messages": {
                 "type": "template",
                 "template": [
@@ -848,7 +848,7 @@ Depending on the size of your dataset, the eval run may take some time to comple
 
 Retrieve eval run status
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const openai = new OpenAI();
 

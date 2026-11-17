@@ -32,6 +32,8 @@ Standard
 
 | Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-6.2-astra | $8.00 | $40.00 | $0.40 | $10.00 | $20.00 | $16.00 | $60.00 | $0.80 | $20.00 | $40.00 |
+| gpt-6.2-sol | $2.00 | $10.00 | $0.10 | $2.50 | $5.00 | $4.00 | $15.00 | $0.20 | $5.00 | $10.00 |
 | gpt-6-astra | $10.00 | $50.00 | $1.00 | $12.50 | $25.00 | $20.00 | $75.00 | $2.00 | $25.00 | $50.00 |
 | gpt-6.1-sol | $2.00 | $10.00 | $0.10 | $2.50 | $5.00 | $4.00 | $15.00 | $0.20 | $5.00 | $10.00 |
 | gpt-6.1-terra | $1.00 | $5.00 | $0.05 | $1.25 | $2.50 | $2.00 | $7.50 | $0.10 | $2.50 | $5.00 |
@@ -74,10 +76,10 @@ Batch
       
 ### Batch pricing data
 
-#### Batch
-
 | Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-6.2-astra | $4.00 | $20.00 | $0.20 | $5.00 | $10.00 | $8.00 | $30.00 | $0.40 | $10.00 | $20.00 |
+| gpt-6.2-sol | $1.00 | $5.00 | $0.05 | $1.25 | $2.50 | $2.00 | $7.50 | $0.10 | $2.50 | $5.00 |
 | gpt-6-astra | $5.00 | $25.00 | $0.50 | $6.25 | $12.50 | $10.00 | $37.50 | $1.00 | $12.50 | $25.00 |
 | gpt-6.1-sol | $1.00 | $5.00 | $0.05 | $1.25 | $2.50 | $2.00 | $7.50 | $0.10 | $2.50 | $5.00 |
 | gpt-6.1-terra | $0.50 | $2.50 | $0.025 | $0.625 | $1.25 | $1.00 | $3.75 | $0.05 | $1.25 | $2.50 |
@@ -109,7 +111,16 @@ Batch
 | o3-pro | $10.00 | $40.00 | - |
 | o3 | $1.00 | $4.00 | - |
 
-#### Flex
+    
+
+    
+
+      
+Flex
+
+
+      
+### Flex pricing data
 
 | Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -150,6 +161,8 @@ Fast
 
 | Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-6.2-astra | $16.00 | $80.00 | $0.80 | $20.00 | $40.00 | $32.00 | $120.00 | $1.60 | $40.00 | $80.00 |
+| gpt-6.2-sol | $4.00 | $20.00 | $0.20 | $5.00 | $10.00 | $8.00 | $30.00 | $0.40 | $10.00 | $20.00 |
 | gpt-6-astra | $20.00 | $100.00 | $2.00 | $25.00 | $50.00 | $40.00 | $150.00 | $4.00 | $50.00 | $100.00 |
 | gpt-6.1-sol | $4.00 | $20.00 | $0.20 | $5.00 | $10.00 | $8.00 | $30.00 | $0.40 | $10.00 | $20.00 |
 | gpt-6.1-terra | $2.00 | $10.00 | $0.10 | $2.50 | $5.00 | $4.00 | $15.00 | $0.20 | $5.00 | $10.00 |
@@ -192,8 +205,30 @@ Ultrafast
 Short context: ≤272K input tokens. Long context: >272K input tokens.
 
 
+For GPT-6.2 Astra and GPT-6.2 Sol, Ultrafast costs 3 times the Standard rate through February 28, 2027, and 6 times the Standard rate starting March 1, 2027 (Pacific time).
+
+      
+### Ultrafast promotion pricing data
+
+| Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-6.2-astra | $24.00 | $120.00 | $1.20 | $30.00 | $60.00 | $48.00 | $180.00 | $2.40 | $60.00 | $120.00 |
+| gpt-6.2-sol | $6.00 | $30.00 | $0.30 | $7.50 | $15.00 | $12.00 | $45.00 | $0.60 | $15.00 | $30.00 |
+
+
+      
+### Ultrafast list pricing data
+
+| Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-6.2-astra | $48.00 | $240.00 | $2.40 | $60.00 | $120.00 | $96.00 | $360.00 | $4.80 | $120.00 | $240.00 |
+| gpt-6.2-sol | $12.00 | $60.00 | $0.60 | $15.00 | $30.00 | $24.00 | $90.00 | $1.20 | $30.00 | $60.00 |
+
+
   
 
+
+For GPT‑6.2 Astra, GPT‑6.2 Sol, GPT‑6.1 Terra, and GPT‑6 Luna, model token rates for [eligible background requests](https://developers.openai.com/api/docs/guides/background#use-discounted-completion-windows) are 30% below Standard for the 2‑hour completion window and 40% below Standard for the 8‑hour completion window.
 
 Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. FedRAMP endpoints are also charged a 10% uplift. Priority processing was renamed Fast mode on July 30, 2026. GPT-5.6 Sol’s promotional pricing is available until November 30, 2026.
 
@@ -435,13 +470,16 @@ Standard
 | Cyber — Trusted Access: [Daybreak](https://openai.com/daybreak/) | gpt-5.6-cyber (long context) | - | - | - | - | - |
 | Cyber — Trusted Access: [Daybreak](https://openai.com/daybreak/) | gpt-5.5-cyber-preview (short context) | $12.50 | $75.00 | $1.25 | - | - |
 | Cyber — Trusted Access: [Daybreak](https://openai.com/daybreak/) | gpt-5.5-cyber-preview (long context) | - | - | - | - | - |
-| <a id="life-sciences-models"></a>Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-6-rosalind (short context) | $15.00 | $75.00 | $1.50 | $18.75 | $37.50 |
-| Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-6-rosalind (long context) | $30.00 | $112.50 | $3.00 | $37.50 | $75.00 |
+| <a id="life-sciences-models"></a>Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-6-rosalind (short context) | $10.00 | $50.00 | $1.00 | $12.50 | $25.00 |
+| Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-6-rosalind (long context) | $20.00 | $75.00 | $2.00 | $25.00 | $50.00 |
 | Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-rosalind-research (short context) | $5.00 | $25.00 | $0.50 | - | - |
 | Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-rosalind-research (long context) | - | - | - | - | - |
 | Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-rosalind-discovery (short context) | $5.00 | $25.00 | $0.50 | - | - |
 | Life Sciences — Trusted Access: [Rosalind](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) | gpt-rosalind-discovery (long context) | - | - | - | - | - |
-| <a id="legal-model-configurations"></a>Legal | gpt-6-astra-law | $10.00 | $50.00 | $1.00 | - | - |
+| <a id="legal-model-configurations"></a>Legal model configurations | gpt-6.2-astra-law (short context) | $8.00 | $40.00 | $0.40 | $10.00 | $20.00 |
+| Legal model configurations | gpt-6.2-astra-law (long context) | $16.00 | $60.00 | $0.80 | $20.00 | $40.00 |
+| Legal model configurations | gpt-6-astra-law (short context) | $10.00 | $50.00 | $1.00 | - | - |
+| Legal model configurations | gpt-6-astra-law (long context) | $20.00 | $75.00 | $2.00 | - | - |
 | ChatGPT | chat-latest | $5.00 | $30.00 | $0.50 | - | - |
 | Codex | gpt-5.3-codex | $1.75 | $14.00 | $0.175 | - | - |
 | Search | gpt-5-search-api | $1.25 | $10.00 | $0.125 | - | - |
@@ -450,7 +488,7 @@ Standard
 | Embedding | text-embedding-ada-002 | $0.10 | - | - | - | - |
 | Moderation | omni-moderation-latest | Free | - | - | - | - |
 
-GPT-6 Astra for Law promotional pricing is available at least through December 31, 2026. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026.
+GPT-6 Astra for Law, GPT-6.2 Astra for Law, and GPT-6 Rosalind promotional pricing is available at least through December 31, 2026. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. For standalone FedRAMP endpoints, GPT-6 Rosalind rates are 10% above the corresponding global rates.
 
     
 

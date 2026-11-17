@@ -36,7 +36,7 @@ Use these fields in the `query` parameter to filter your results.
 | [Started at](#started-at)           | `started`  | `=`, `>`, `<`, `>=`, `<=` |
 | [Status](#status)                   | `status`   | `=`, `!=`, `in`, `not in` |
 
-### Finished at {#finished-at}
+### Finished at
 
 **Description**: Filter pipelines by their finish date.
 
@@ -46,11 +46,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Ref {#ref}
+### Ref
 
 **Description**: Filter pipelines by the Git ref (branch or tag name) they ran on.
 
@@ -59,12 +59,12 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - `!=` and `not in` return only pipelines that have a ref. Pipelines without one are left out,
   so `ref != "main"` is not the same as every pipeline except those on `main`.
 
-### Source {#source}
+### Source
 
 **Description**: Filter pipelines by their trigger event.
 
@@ -73,13 +73,13 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - `!=` and `not in` return only pipelines that have a source. Pipelines without one are left out.
 - Excluding a source that GitLab does not recognize excludes nothing.
   Validation of source values is proposed in [issue 629846](https://gitlab.com/gitlab-org/gitlab/-/issues/629846).
 
-### Started at {#started-at}
+### Started at
 
 **Description**: Filter pipelines by their start date.
 
@@ -89,11 +89,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Status {#status}
+### Status
 
 **Description**: Filter pipelines by their CI/CD status.
 

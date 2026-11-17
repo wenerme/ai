@@ -28,15 +28,15 @@ Use these fields in the `query` parameter to filter your results.
 
 | Field                                          | Name (and alias)                             | Operators                  |
 | ---------------------------------------------- | -------------------------------------------- | -------------------------- |
-| [Author](#pipeline-author)                     | `author`                                     | `=`                        |
-| [Ref](#pipeline-ref)                           | `ref`                                        | `=`                        |
-| [Scope](#pipeline-scope)                       | `scope`                                      | `=`                        |
-| [SHA](#pipeline-sha)                           | `sha`                                        | `=`                        |
-| [Source](#pipeline-source)                     | `source`                                     | `=`                        |
-| [Status](#pipeline-status)                     | `status`                                     | `=`                        |
-| [Updated at](#pipeline-updated-at)             | `updated`, `updatedAt`                       | `=`, `>`, `<`, `>=`, `<=`  |
+| [Author](#author)                     | `author`                                     | `=`                        |
+| [Ref](#ref)                           | `ref`                                        | `=`                        |
+| [Scope](#scope)                       | `scope`                                      | `=`                        |
+| [SHA](#sha)                           | `sha`                                        | `=`                        |
+| [Source](#source)                     | `source`                                     | `=`                        |
+| [Status](#status)                     | `status`                                     | `=`                        |
+| [Updated at](#updated-at)             | `updated`, `updatedAt`                       | `=`, `>`, `<`, `>=`, `<=`  |
 
-### Author {#pipeline-author}
+### Author
 
 **Description**: Filter pipelines by the user who triggered them.
 
@@ -45,13 +45,13 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `User` (for example, `@username`)
 
-### Ref {#pipeline-ref}
+### Ref
 
 **Description**: Filter pipelines by the Git ref (branch or tag name) they ran on.
 
 **Allowed value types**: `String`
 
-### Scope {#pipeline-scope}
+### Scope
 
 **Description**: Filter pipelines by their scope.
 
@@ -59,19 +59,19 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Enum`, one of `branches`, `tags`, `finished`, `pending`, or `running`
 
-### SHA {#pipeline-sha}
+### SHA
 
 **Description**: Filter pipelines by the commit SHA.
 
 **Allowed value types**: `String`
 
-### Source {#pipeline-source}
+### Source
 
 **Description**: Filter pipelines by what triggered them.
 
 **Allowed value types**: `String`
 
-### Status {#pipeline-status}
+### Status
 
 **Description**: Filter pipelines by their CI/CD status.
 
@@ -81,7 +81,7 @@ Use these fields in the `query` parameter to filter your results.
   `preparing`, `running`, `scheduled`, `skipped`, `success`, `waiting_for_callback`,
   or `waiting_for_resource`
 
-### Updated at {#pipeline-updated-at}
+### Updated at
 
 **Description**: Filter pipelines by when they were last updated.
 
@@ -91,7 +91,7 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/configuration/og.png?v=ef67fa3
 
 # Configuration
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler configuration file. The binding gives your Worker access to `env.FLAGS`, which provides methods to evaluate feature flags.
 
@@ -129,7 +129,7 @@ npx wrangler flagship flags pull <APP_ID>
 
 Flags are not pulled automatically, so `wrangler dev` works offline and never overwrites flags you changed locally.
 
-`pull` writes to the default local store in `.wrangler/state`. If your dev server keeps its data in a different directory, pass `--persist-to <DIRECTORY>` so that `pull` writes to the same place. For example, the Cloudflare Vite plugin 2.0 beta keeps its data in `.cloudflare/state`:
+`pull` writes to the default local store in `.wrangler/state`. If your dev server keeps its data in a different directory, pass `--persist-to <DIRECTORY>` so that `pull` writes to the same place. For example, the Cloudflare Vite plugin 2.0 keeps its data in `.cloudflare/state`:
 
 ```sh
 npx wrangler flagship flags pull <APP_ID> --persist-to .cloudflare/state
@@ -190,7 +190,7 @@ These commands support `--local`:
 
 Other `cf flagship` commands, such as `cf flagship apps get`, `cf flagship apps definitions get`, and `cf flagship apps flags changelog`, fail with `This command has no local equivalent.` Run them without `--local` to use the remote app.
 
-By default, `cf` keeps [local data in its own directory](https://developers.cloudflare.com/cf/projects/#local-resource-data), which `wrangler dev` and the Cloudflare Vite plugin do not read. To work on the same flags as your dev server, pass its data directory. This is `.wrangler/state` for `wrangler dev` and the Cloudflare Vite plugin 1.x, and `.cloudflare/state` for the Vite plugin 2.0 beta:
+By default, `cf` keeps [local data](https://developers.cloudflare.com/cf/projects/#local-resource-data) in `.cloudflare/state` next to `cloudflare.config.ts`, the same directory as the Cloudflare Vite plugin 2.0. To work on the same flags as `wrangler dev` or the Cloudflare Vite plugin 1.x, pass their data directory, `--persist-to=".wrangler/state"`:
 
 ```sh
 cf flagship apps flags list --app-id <APP_ID> --local --persist-to .wrangler/state
@@ -207,5 +207,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/configuration/#page","headline":"Configuration","description":"Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.","url":"https://developers.cloudflare.com/flagship/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/configuration/og.png?v=ef67fa3a4f19afc7","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/configuration/#page","headline":"Configuration","description":"Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.","url":"https://developers.cloudflare.com/flagship/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/configuration/og.png?v=ef67fa3a4f19afc7","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

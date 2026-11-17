@@ -14,6 +14,7 @@ Supported models:
 - [ZONOS3](#zonos3)
 - [Fish Audio S2 Pro](#fish-audio-s2-pro)
 - [YuE2](#yue2) (songs)
+- [MiniMax Music 3](#minimax-music-3) (songs)
 
 The sections below list the params supported by each model, with `llama-tts` examples. In `llama-server`, the same options are set with `--tts-lang` and `--tts-voice`, or per request (see the [`/tts` endpoint](../../tools/server/README.md#post-tts-generate-speech-audio-from-text)).
 
@@ -22,6 +23,7 @@ The sections below list the params supported by each model, with `llama-tts` exa
 Available params:
 - `--tts-lang` can be `zh`, `en`, `de`, `it`, `pt`, `es`, `ja`, `ko`, `fr`, `ru` (default: `en`)
 - `--tts-speaker-file` should point to a speaker reference audio file (wav, mp3)
+- `--tts-speaker-text` is the transcript of the speaker file. With it, the speech continues from the reference codes (the "ICL" mode of the reference), which clones the voice more closely. It needs a clip of 30 s or less and an mmproj converted with the speech tokenizer encoder, otherwise it falls back to the speaker embedding only
 
 Example usage:
 
@@ -30,6 +32,16 @@ llama-tts -hf ggml-org/Qwen3-TTS-12Hz-1.7B-Base-GGUF \
     -p "Hello world" \
     --tts-lang english \
     --tts-speaker-file speaker.mp3 \
+    --output out.wav
+```
+
+Voice cloning with the transcript of the reference:
+
+```sh
+llama-tts -hf ggml-org/Qwen3-TTS-12Hz-1.7B-Base-GGUF \
+    -p "Hello world" \
+    --tts-speaker-file speaker.wav \
+    --tts-speaker-text "The words spoken in speaker.wav." \
     --output out.wav
 ```
 
@@ -306,3 +318,48 @@ python convert_hf_to_gguf.py YuE2-3B --mmproj --outfile mmproj-yue2-3b.gguf
 ```
 
 The mmproj holds the NAR transformer layers (loaded with libllama as a Qwen3 text model, in the `--outtype` type), and the latent projections and the VAE decoder, always in F32.
+
+## MiniMax Music 3
+
+[MiniMaxAI/MiniMax-Music3](https://huggingface.co/MiniMaxAI/MiniMax-Music3) generates songs (vocals and accompaniment) from a music description and lyrics, as 44.1 kHz stereo. For each 40 ms frame, the backbone (a Qwen3 text model) samples the semantic code and the RVQ depth decoder the 7 other codes; the hidden states of both go to a flow-matching DiT, then a DAC decoder makes the audio. Both use the settings of the reference (the diffusers pipeline).
+
+The prompt has the same format as YuE2, the description goes under `[Tags]`:
+
+```
+[Tags]
+Genre: acoustic pop. BPM: 96. Key: C major. Vocals: soft female lead. Arrangement: fingerpicked guitar and soft piano.
+[Lyrics]
+[verse]
+Morning light filtering through the pine
+[chorus]
+Softly the world begins to breathe
+```
+
+Available params:
+- The description and the lyrics are cleaned up like the reference: markdown is removed, a line that starts with structure tags (e.g. `[Verse]`) keeps only the tags
+- The generation stops at the end-of-audio token or at the limit of the reference (9000 frames, 6 minutes); `-n` sets a lower limit in frames (25 per second)
+- `--temp` changes the temperature of the codes (default 1.0); `--top-k` and `--top-p` are not used, the codes are sampled with top-k 50 like the reference
+- The codes are sampled with classifier-free guidance, scale 1.5 like the reference; `llama-server` takes `cfg_scale` to change it (1.0 disables it). The uncond prompt runs as a second sequence that shares the context, so a song needs about 2 x (prompt tokens + frames) positions: the default context (10240) holds about 3 minutes with a short description, use a larger `-c` (e.g. 20480) for longer songs
+- The flow matching runs 30 Euler steps like the reference; `llama-server` takes `flow_steps` to change it
+- The audio is made in windows of 200 frames (8 s) every 100 frames, like the reference: a window is processed during the generation once the frame after it exists, so with streaming the audio arrives in steps of about 4 s
+
+Example usage:
+
+```sh
+llama-tts -m minimax-music3.gguf \
+    -mm mmproj-minimax-music3.gguf \
+    -f song.txt \
+    --output song.wav
+```
+
+**Note for GGUF conversion:**
+
+The conversion reads the diffusers layout of the repository, the `qwen_7B` directory and the `.pth` files are not needed:
+
+```sh
+hf download MiniMaxAI/MiniMax-Music3 --local-dir MiniMax-Music3 --exclude "qwen_7B/*" --exclude "*.pth"
+python convert_hf_to_gguf.py MiniMax-Music3 --outfile minimax-music3.gguf
+python convert_hf_to_gguf.py MiniMax-Music3 --mmproj --outfile mmproj-minimax-music3.gguf
+```
+
+The mmproj holds the depth decoder and the DiT layers (in the `--outtype` type), and the condition encoder, the small DiT projections and the DAC decoder, always in F32.

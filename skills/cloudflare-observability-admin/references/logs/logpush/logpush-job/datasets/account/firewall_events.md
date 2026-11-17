@@ -51,7 +51,7 @@ List of unsafe topic categories detected in the request by AI Security.
 Type: `string`
 
 The code of the first-class action the Cloudflare Firewall took on this request.
-Possible actions are *unknown* | *allow* | *block* | *challenge* | *jschallenge* | *log* | *connectionclose* | *challengesolved* | *challengebypassed* | *jschallengesolved* | *jschallengebypassed* | *bypass* | *managedchallenge* | *managedchallengenoninteractivesolved* | *managedchallengeinteractivesolved* | *managedchallengebypassed* | *precursorinterstitialpageissued* | *precursorinterstitialpagebypassed* | *precursorinterstitialpagesolved*.
+Possible actions are *unknown* | *allow* | *block* | *challenge* | *jschallenge* | *log* | *connectionclose* | *challengesolved* | *challengebypassed* | *jschallengesolved* | *jschallengebypassed* | *bypass* | *managedchallenge* | *managedchallengenoninteractivesolved* | *managedchallengeinteractivesolved* | *managedchallengebypassed* | *precursorinterstitialpageissued* | *precursorinterstitialpagebypassed* | *precursorinterstitialpagesolved* | *precursorinterstitialpageissuancewithheld*.
 
 ## ClientASN
 

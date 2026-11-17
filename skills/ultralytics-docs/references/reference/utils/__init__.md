@@ -66,6 +66,10 @@ keywords: Ultralytics, utils, TQDM, Python, ML, Machine Learning utilities, YOLO
 
 <hr>
 
+## ::: ultralytics.utils.__init__.cpu_threads
+
+<hr>
+
 ## ::: ultralytics.utils.__init__.is_ubuntu
 
 <hr>

@@ -43,7 +43,7 @@ In the Responses API, `max_output_tokens` caps both reasoning and visible output
 
 A long prompt can delay the first token, especially when much of the input is new. Filter search results for relevance, strip markup you don't need, and send only the context required to answer accurately.
 
-For repeated inputs, put stable instructions, examples, and tool definitions first. In multi-turn conversations, [keep the prefix unchanged](https://developers.openai.com/api/docs/guides/preserved-reasoning) and append new messages and tool results. [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) can reuse an eligible exact prefix match. In the Responses API, inspect `usage.input_tokens_details.cached_tokens` and compare TTFT for requests with and without cache hits.
+For repeated inputs, put stable instructions, examples, and tool definitions first. In multi-turn conversations, [keep the prefix unchanged](https://developers.openai.com/api/docs/guides/keep-prefix-unchanged) and append new messages and tool results. [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) can reuse an eligible exact prefix match. In the Responses API, inspect `usage.input_tokens_details.cached_tokens` and compare TTFT for requests with and without cache hits.
 
 ## Make fewer requests
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Configure hardware Appliance
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this page you will find instructions on how to configure Cloudflare One Appliance. This guide provides a step-by-step guide for Cloudflare One Appliance initial setup. You can either return here after setting up your Cloudflare One Appliance, or refer to the [Maintenance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/) section where you will find instructions on how to update your settings.
 
@@ -126,7 +126,7 @@ You will need your [account ID](https://developers.cloudflare.com/fundamentals/a
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
 
-The `static_addressing` object is optional. Omit it if you are using DHCP. If you are using static addressing, add the `secondary_address` parameter when your site is in high availability (HA) mode.
+The `static_addressing` object is optional. Omit it if you are using DHCP. If you are using static addressing, add the `secondary_address` parameter when your site is in high availability (HA) mode. If the secondary appliance uses a different default gateway than the primary appliance (for example, because each appliance connects to a different ISP), also add the `secondary_gateway_address` parameter. If you omit `secondary_gateway_address`, the secondary appliance uses `gateway_address`. You can only use `secondary_gateway_address` on sites in HA mode.
 
 Example:
 
@@ -402,13 +402,20 @@ The main reason to use the bootstrapper is if every network your Cloudflare One 
 
 You need to deploy two Appliances in your premises before you can set up a site in high availability. When you set up a site in high availability, the WANs and LANs in your Cloudflare One Appliance have the same configuration but are replicated on two nodes. In case of failure of one of the devices, the other device becomes the active node, taking over the configuration of the LAN gateway IP and allowing traffic to continue without disruption.
 
-Because Cloudflare One Appliances in high availability configurations share a single site, you need to set up:
+Because Cloudflare One Appliances in high availability configurations share a single site, you need to set up the following for each LAN:
 
 - **Static address**: The IP for the primary node in your site.
 - **Secondary static address**: The IP for the secondary node in your site.
 - **Virtual static address**: The IP that the LAN south of the Cloudflare One Appliance device will forward traffic to, which is the LAN's gateway IP.
 
-Make sure all IPs are part of the same subnet.
+Make sure all LAN IPs are part of the same subnet.
+
+For WANs with a static IP address, you need to set up:
+
+- **Static address**: The IP for the primary node's WAN interface.
+- **Secondary static address**: The IP for the secondary node's WAN interface.
+- **Primary gateway address**: The default gateway for the primary node.
+- **Secondary gateway address** (optional): The default gateway for the secondary node. Use this when each node connects to its own Internet circuit, such as a different ISP per appliance. If you leave it blank, the secondary node uses the primary gateway address.
 
 For detailed information about the expected behavior of high availability configurations, refer to the [High availability configurations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#high-availability-configurations) reference page.
 
@@ -425,7 +432,7 @@ To set up a high availability configuration:
 5. From the list, choose your first Cloudflare One Appliance > **Add Appliance**.
 6. Back on the previous screen, select **Add secondary appliance**.
 7. From the list, choose your second Cloudflare One Appliance > **Add Appliance**.
-8. Select **Continue** to create a WAN. If you are configuring a static IP, configure the IP for the primary node as the static address, and the IP for the secondary node as the secondary static address.
+8. Select **Continue** to create a WAN. If you are configuring a static IP, configure the IP for the primary node as the static address, and the IP for the secondary node as the secondary static address. If the secondary node uses a different default gateway (for example, because it connects to a different ISP), enter it in **Secondary gateway address**. Otherwise, leave it blank and the secondary node will use the **Primary gateway address**.
 9. To create a LAN, follow the steps in [Create a LAN](#create-a-lan) up until step 4.
 10. In **Static address**, enter the IP for the primary node in your site. For example, `192.168.10.1/24`.
 11. In **Secondary static address**, enter the IP for the secondary node in your site. For example, `192.168.10.2/24`.
@@ -465,5 +472,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#page","headline":"Configure hardware Appliance","description":"Configure the hardware Cloudflare One Appliance.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/og.png?v=9f1448654f589b70","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#page","headline":"Configure hardware Appliance","description":"Configure the hardware Cloudflare One Appliance.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/og.png?v=9f1448654f589b70","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

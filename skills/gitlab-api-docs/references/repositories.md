@@ -351,7 +351,7 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 
 - `collapsed` and `too_large` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/199633) in GitLab 18.4.
 - Limit of 100 commits for unauthenticated requests [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268855) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `compare_api_anonymous_commits_limit`. Disabled by default.
-- `503 Service Unavailable` response after a comparison times out [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635884) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `compare_api_diff_timeout_cache`. Disabled by default.
+- `503 Service Unavailable` response after a comparison times out [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268448) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `compare_api_diff_timeout_cache`. Disabled by default.
 
 > [!flag]
 > The limit on commits for unauthenticated requests is controlled by a feature flag.

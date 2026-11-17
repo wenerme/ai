@@ -28,7 +28,7 @@ Language models read and write text in chunks called tokens. In English, a token
 As a rough rule of thumb, 1 token is approximately 4 characters or 0.75 words for English text.
 
 Check out our 
-  [Tokenizer tool](https://platform.openai.com/tokenizer) 
+  [tokenizer tool](https://platform.openai.com/tokenizer) 
   to test specific strings and see how they are translated into tokens.
 
 For example, the string `"ChatGPT is great!"` is encoded into six tokens: `["Chat", "G", "PT", " is", " great", "!"]`.
@@ -50,6 +50,8 @@ Chat models use additional tokens for message formatting, so counting the text a
 The examples below use `gpt-3.5-turbo-0613`, which was [retired on September 13, 2024](https://developers.openai.com/api/docs/deprecations#2023-11-06-chat-model-updates).
 
 This local counter applies only to text messages for that historical snapshot. Message formatting varies by model.
+
+Count chat message tokens
 
 ```python
 import tiktoken
@@ -76,8 +78,23 @@ def num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613"):
     )
 ```
 
+```ruby
+require "tiktoken_ruby"
+
+def num_tokens_from_messages(messages, model = "gpt-3.5-turbo-0613")
+  raise ArgumentError, "Token counting only supports gpt-3.5-turbo-0613" unless model == "gpt-3.5-turbo-0613"
+
+  encoding = Tiktoken.get_encoding("cl100k_base")
+  messages.sum do |message|
+    3 + message.sum { |key, value| encoding.encode(value).length + ((key.to_s == "name") ? 1 : 0) }
+  end + 3
+end
+```
+
 
 Count the example messages locally:
+
+Count tokens in an example prompt
 
 ```python
 messages = [
@@ -117,8 +134,50 @@ print(f"{num_tokens_from_messages(messages, model)} prompt tokens counted.")
 # 129 prompt tokens counted.
 ```
 
+```ruby
+require "json"
 
-The following historical example shows how to read the API's prompt token count. It cannot run against the retired model:
+messages = JSON.parse(<<~MESSAGES)
+  [
+    {
+      "role": "system",
+      "content": "You are a helpful, pattern-following assistant that translates corporate jargon into plain English."
+    },
+    {
+      "role": "system",
+      "name": "example_user",
+      "content": "New synergies will help drive top-line growth."
+    },
+    {
+      "role": "system",
+      "name": "example_assistant",
+      "content": "Things working well together will increase revenue."
+    },
+    {
+      "role": "system",
+      "name": "example_user",
+      "content": "Let's circle back when we have more bandwidth to touch base on opportunities for increased leverage."
+    },
+    {
+      "role": "system",
+      "name": "example_assistant",
+      "content": "Let's talk later when we're less busy about how to do better."
+    },
+    {
+      "role": "user",
+      "content": "This late pivot means we don't have time to boil the ocean for the client deliverable."
+    }
+  ]
+MESSAGES
+model = "gpt-3.5-turbo-0613"
+puts("#{num_tokens_from_messages(messages, model)} prompt tokens counted.")
+```
+
+
+
+Read the prompt token count from `response.usage`:
+
+Read API prompt token usage
 
 ```typescript
 import OpenAI from "openai";
@@ -126,9 +185,10 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.chat.completions.create({
-  model,
-  messages,
-  temperature: 0,
+  model: "gpt-6.2-astra",
+  messages: [
+    { role: "user", content: "Translate this sentence into plain English." },
+  ],
 });
 
 if (!response.usage)
@@ -143,11 +203,14 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.chat.completions.create(
-    model=model,
-    messages=messages,
-    temperature=0,
+    model="gpt-6.2-astra",
+    messages=[
+        {"role": "user", "content": "Translate this sentence into plain English."}
+    ],
 )
 
+if response.usage is None:
+    raise RuntimeError("The response did not include token usage")
 print(f"{response.usage.prompt_tokens} prompt tokens used.")
 ```
 
@@ -158,9 +221,8 @@ import com.openai.models.chat.completions.ChatCompletionCreateParams;
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-3.5-turbo-0613")
+        .model("gpt-6.2-astra")
         .addUserMessage("Translate this sentence into plain English.")
-        .temperature(0)
         .build();
 
 var completion = client.chat().completions().create(params);
@@ -169,6 +231,22 @@ var usage =
 System.out.println(usage.promptTokens() + " prompt tokens used.");
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.chat.completions.create(
+  model: "gpt-6.2-astra",
+  messages: [
+    {
+      role: :user,
+      content: "Translate this sentence into plain English."
+    }
+  ]
+)
+usage = response.usage or raise "The response did not include token usage"
+puts "#{usage.prompt_tokens} prompt tokens used."
+```
 
 
 To see how many tokens are in a text string without making an API call, use OpenAI’s [tiktoken](https://github.com/openai/tiktoken) Python library. Example code can be found in the OpenAI Cookbook’s guide on [how to count tokens with tiktoken](https://developers.openai.com/cookbook/examples/how_to_count_tokens_with_tiktoken).
@@ -187,7 +265,9 @@ The frequency and presence penalties found in the [Chat Completions API](https:/
 
 
 
-They work by directly modifying the logits (un-normalized log-probabilities) with an additive contribution.
+They work by directly modifying the raw token scores (un-normalized log-probabilities) with an additive contribution.
+
+Set frequency and presence penalties
 
 ```python
 mu[j] = mu[j] - c[j] * alpha_frequency - float(c[j] > 0) * alpha_presence
@@ -200,7 +280,7 @@ mu[j] = mu[j] - c[j] * alpha_frequency - ((c[j] > 0) ? alpha_presence : 0.0)
 
 Where:
 
-- `mu[j]` is the logits of the j-th token
+- `mu[j]` is the raw score of the j-th token
 - `c[j]` is how often that token was sampled prior to the current position
 - The presence penalty subtracts `alpha_presence` if `c[j] > 0` and 0 otherwise
 - `alpha_frequency` is the frequency penalty coefficient

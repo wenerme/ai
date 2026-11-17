@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Outbound Workers
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Outbound Workers sit between your customer's Workers and the public Internet. They give you visibility into all outgoing `fetch()` requests from user Workers.
+Outbound Workers sit between your customer's Workers and the public Internet. They give you visibility into outgoing requests that user Workers make with the global `fetch()`. Requests made through bindings are not intercepted. Refer to [Requests that Outbound Workers do not intercept](#requests-that-outbound-workers-do-not-intercept).
 
 ![Outbound Workers diagram information](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1100,height=400,format=webp/_astro/outbound-worker-diagram.BSvN4KG0.png)
 
@@ -22,13 +22,15 @@ Outbound Workers sit between your customer's Workers and the public Internet. Th
 
 Outbound Workers can be used to:
 
-- Log all subrequests to identify malicious domains or usage patterns.
+- Log outgoing `fetch()` requests to identify malicious domains or usage patterns.
 - Create, allow, or block lists for hostnames requested by user Workers.
 - Configure authentication to your APIs behind the scenes (without end developers needing to set credentials).
 
 Note
 
-When an Outbound Worker is enabled, your customer's Worker will no longer be able to use the [`connect() API`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) to create outbound TCP Sockets. This is to ensure all outbound communication goes through the Outbound Worker's `fetch` method.
+When an Outbound Worker is enabled, your customer's Worker will no longer be able to use the [`connect() API`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) to create outbound TCP Sockets. This ensures that user code cannot bypass the Outbound Worker by opening a TCP socket instead of calling the global `fetch()`.
+
+[Hyperdrive](https://developers.cloudflare.com/hyperdrive/) bindings continue to work when an Outbound Worker is enabled, including database drivers that use `connect()` with the connection details of the binding.
 
 ## Use Outbound Workers
 
@@ -102,7 +104,7 @@ export default {
 };
 ```
 
-4. The Outbound Worker will now be invoked on any `fetch()` requests from a user Worker. The user Worker will trigger a [FetchEvent](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) on the Outbound Worker. The variables declared in the binding can be accessed in the Outbound Worker through `env.<VAR_NAME>`.
+4. The Outbound Worker will now be invoked on any global `fetch()` requests from a user Worker. The user Worker will trigger a [FetchEvent](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) on the Outbound Worker. The variables declared in the binding can be accessed in the Outbound Worker through `env.<VAR_NAME>`.
 
 The following is an example of an Outbound Worker that logs the fetch request from user Worker and creates a JWT if the fetch request matches `api.example.com`.
 
@@ -144,9 +146,17 @@ export default {
 };
 ```
 
-Note
+## Requests that Outbound Workers do not intercept
 
-Outbound Workers do not intercept fetch requests made from [Durable Objects](https://developers.cloudflare.com/durable-objects/) or [mTLS certificate bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
+Outbound Workers only intercept requests made with the global `fetch()` of a user Worker. Requests made through a binding use that binding's own channel and are not intercepted. For example, Outbound Workers do not intercept requests made:
+
+- Through [Workers VPC](https://developers.cloudflare.com/workers-vpc/) bindings, with `fetch()` or `connect()` on the binding. [VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) bindings can also reach public Internet destinations.
+- Through [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) bindings, including database drivers that use `connect()` with the connection details of the binding.
+- With [mTLS certificate bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
+- Through [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) and other bindings, such as [R2](https://developers.cloudflare.com/r2/) or [KV](https://developers.cloudflare.com/kv/).
+- From [Durable Objects](https://developers.cloudflare.com/durable-objects/).
+
+An Outbound Worker does not control all outbound traffic from user Workers on its own. To restrict where user Workers can send traffic, also control which bindings you attach to user Workers when you upload them.
 
 Was this helpful?
 
@@ -157,5 +167,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/#page","headline":"Outbound Workers","description":"Intercept and control outgoing fetch requests from user Workers using Outbound Workers in Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/og.png?v=8282a664312c90f1","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/#page","headline":"Outbound Workers","description":"Intercept and control outgoing fetch requests from user Workers using Outbound Workers in Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/og.png?v=8282a664312c90f1","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Learn how to use OpenAI's Batch API to send asynchronous groups of requests with 50% lower costs, a separate pool of significantly higher rate limits, and a clear 24-hour turnaround time. The service is ideal for processing jobs that don't require immediate responses. You can also [explore the API reference directly here](https://developers.openai.com/api/reference/resources/batches).
+Learn how to use OpenAI's Batch API to send asynchronous groups of requests with 50% lower costs, a queued-token limit separate from per-minute limits, and a clear 24-hour turnaround time. The service is ideal for processing jobs that don't require immediate responses. You can also [explore the API reference directly here](https://developers.openai.com/api/reference/resources/batches).
 
 ## Overview
 
@@ -637,19 +637,19 @@ openai batches list \
 
 ## Model availability
 
-Most models support the Batch API. Check the [model reference](https://developers.openai.com/api/docs/models) for your model. GPT-6 Sol and Luna support EU data residency with Standard, Flex, and Batch processing. See [data residency eligibility](https://developers.openai.com/api/docs/guides/data-residency#which-models-and-features-are-eligible-for-data-residency).
+Most models support the Batch API. Check the [model reference](https://developers.openai.com/api/docs/models) for your model. GPT-6.2 Astra and GPT-6.2 Sol support US and EU data residency with Batch processing. GPT-6 Sol and Luna support EU data residency with Standard, Flex, and Batch processing. See [data residency eligibility](https://developers.openai.com/api/docs/guides/data-residency#which-models-and-features-are-eligible-for-data-residency).
 
 GPT-Image-2.5 supports batch image generation and editing with `gpt-image-2.5-flare` and `gpt-image-2.5-sunburst`, including their `2026-09-08` snapshots. Use `/v1/images/generations` or `/v1/images/edits` and see [image generation pricing](https://developers.openai.com/api/docs/pricing?multimodal-image-pricing=batch#image-generation) for Batch rates.
 
 ## Rate limits
 
-Batch API rate limits are separate from existing per-model rate limits. The Batch API has three types of rate limits:
+The Batch API has three types of limits:
 
 1. **Per-batch limits:** A single batch may include up to 50,000 requests, and a batch input file can be up to 200 MB in size. Note that `/v1/embeddings` batches are also restricted to a maximum of 50,000 embedding inputs across all requests in the batch.
-2. **Queued prompt tokens per model:** Each model has a maximum number of prompt tokens that can be queued for batch processing. You can find these limits on the [Platform Settings page](https://platform.openai.com/settings/organization/limits).
+2. **Queued input tokens per model:** Batch API jobs share the [Batch/Background Rate Limit](https://developers.openai.com/api/docs/guides/rate-limits#how-do-these-rate-limits-work) with Background mode requests using `2h` or `8h` completion windows. The API counts input tokens at submission. You can find your limits in [Settings > Organization > Limits](https://platform.openai.com/settings/organization/limits).
 3. **Batch creation rate limit:** You can create up to 2,000 batches per hour. If you need to submit more requests, increase the number of requests per batch.
 
-The Batch API currently has no output-token limit. Because Batch API rate limits are a new, separate pool, **using the Batch API will not consume tokens from your standard per-model rate limits**, thereby offering you a convenient way to increase the number of requests and processed tokens you can use when querying our API.
+The Batch API currently has no output-token limit. Batch API jobs don't count toward standard per-model request or token rate limits.
 
 ## Batch expiration
 

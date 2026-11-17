@@ -38,7 +38,7 @@ Use these fields in the `query` parameter to filter your results.
 | [State](#state)                     | `state`        | `=`, `!=`, `in`, `not in` |
 | [Target branch](#target-branch)     | `targetBranch` | `=`, `!=`, `in`, `not in` |
 
-### Author is human {#author-is-human}
+### Author is human
 
 **Description**: Filter merge requests by whether their author is a human user.
 
@@ -46,7 +46,7 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Boolean` (`true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - Bots, service accounts, and every other non-human user type count as not human.
   For example, merge requests opened with a project access token or by a GitLab Duo service account count as not human.
@@ -54,7 +54,7 @@ Use these fields in the `query` parameter to filter your results.
 - Merge requests with no author count as not human.
 - Changes to a user's type can take up to an hour to apply.
 
-### Created at {#created-at}
+### Created at
 
 **Description**: Filter merge requests by their creation date.
 
@@ -64,11 +64,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Created by Duo {#created-by-duo}
+### Created by Duo
 
 **Description**: Filter merge requests by whether a GitLab Duo Agent Platform session created them.
 
@@ -76,14 +76,14 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Boolean` (`true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - A merge request counts as created by Duo when an Agent Platform session records that it opened the merge request.
   A merge request that a session was started from, for example to review it, does not count.
 - The author does not affect this filter. Sessions that run in GitLab CI/CD open merge requests as a service account,
   so to compare against a human baseline, use `authorHuman = true` only with `createdByDuo = false`.
 
-### Merged at {#merged-at}
+### Merged at
 
 **Description**: Filter merge requests by their merge date.
 
@@ -93,11 +93,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### State {#state}
+### State
 
 **Description**: Filter merge requests by their state.
 
@@ -106,11 +106,11 @@ Use these fields in the `query` parameter to filter your results.
 - `Enum`, one of `opened`, `closed`, `merged`, or `locked`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - The `all` value is not supported. To include merge requests in all states, omit the filter.
 
-### Target branch {#target-branch}
+### Target branch
 
 **Description**: Filter merge requests by their target branch.
 

@@ -299,7 +299,7 @@ const input: OpenAI.Responses.ResponseInput = [
 
 while (true) {
   const response = await client.responses.create({
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     store: false,
     input,
     tools,
@@ -350,7 +350,7 @@ import json
 from openai import OpenAI
 
 client = OpenAI()
-model = "gpt-6-astra"
+model = "gpt-6.2-astra"
 
 
 def get_inventory(sku):
@@ -504,7 +504,7 @@ func main() {
 
 	for {
 		response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-			Model: "gpt-6-astra",
+			Model: "gpt-6.2-astra",
 			Store: openai.Bool(false),
 			Input: responses.ResponseNewParamsInputUnion{OfInputItemList: input},
 			Tools: tools,
@@ -675,7 +675,7 @@ while (true) {
           .responses()
           .create(
               ResponseCreateParams.builder()
-                  .model("gpt-6-astra")
+                  .model("gpt-6.2-astra")
                   .store(false)
                   .inputOfResponse(input)
                   .tools(tools)
@@ -841,7 +841,7 @@ input = [
 
 loop do
   response = client.responses.create(
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     store: false,
     input: input,
     tools: tools

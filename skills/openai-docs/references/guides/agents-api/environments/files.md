@@ -97,6 +97,27 @@ def download_artifact(client, session_id, turn_id, path, destination):
     raise FileNotFoundError(f"No artifact for {path!r} in turn {turn_id}")
 ```
 
+```ruby
+require "openai"
+
+def download_artifact(client, session_id, turn_id, path, destination)
+  client.beta.agents.sessions.artifacts.list(session_id).auto_paging_each do |artifact|
+    next unless artifact.turn_id == turn_id && artifact.path == path
+
+    content = client.beta.agents.sessions.artifacts.content(artifact.id, session_id: session_id)
+    begin
+      File.open(destination, "wb") { |file| IO.copy_stream(content, file) }
+    ensure
+      content.close
+    end
+    return destination
+  end
+  raise Errno::ENOENT, "No artifact for #{path.inspect} in turn #{turn_id}"
+end
+
+download_artifact(OpenAI::Client.new, "sess_123", "turn_123", "/workspace/outputs/report.pdf", "report.pdf")
+```
+
 
 
 

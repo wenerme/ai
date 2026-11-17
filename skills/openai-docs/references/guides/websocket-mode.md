@@ -33,7 +33,7 @@ try {
   ws.send({
     type: "response.create",
     stream_id: "main",
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     store: false,
     input: [
       {
@@ -76,7 +76,7 @@ client = OpenAI()
 with client.responses.connect() as connection:
     connection.response.create(
         stream_id="main",
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         store=False,
         input=[
             {
@@ -107,7 +107,7 @@ if err != nil {
 }
 defer conn.Close()
 if err := conn.Create(ctx, responses.ResponsesClientEventResponseCreateParam{
-	Model: "gpt-6-astra",
+	Model: "gpt-6.2-astra",
 	Store: openai.Bool(false),
 	Input: responses.ResponsesClientEventResponseCreateInputUnionParam{
 		OfString: openai.String("Find fizz_buzz()"),
@@ -138,7 +138,7 @@ try (var conn = client.responses().connect()) {
   conn.send(
       ResponsesClientEvent.ofResponseCreate(
           ResponsesClientEvent.ResponseCreate.builder()
-              .model("gpt-6-astra")
+              .model("gpt-6.2-astra")
               .store(false)
               .input("Find fizz_buzz()")
               .streamId("main")
@@ -178,7 +178,7 @@ Sync do |task|
   task.with_timeout(120) do
     client.responses.connect(request_options: { timeout: 10 }) do |connection|
       connection.response.create(
-        stream_id: "main", model: "gpt-6-astra", store: false,
+        stream_id: "main", model: "gpt-6.2-astra", store: false,
         input: [
           {
             role: "user",
@@ -209,7 +209,7 @@ import OpenAI from "openai";
 import { ResponsesWS } from "openai/resources/responses/ws";
 
 const client = new OpenAI();
-const model = "gpt-6-astra";
+const model = "gpt-6.2-astra";
 
 const tools: OpenAI.Responses.Tool[] = [
   {
@@ -294,7 +294,7 @@ from openai.resources.responses.responses import ResponsesConnection
 from openai.types.responses import FunctionToolParam, Response
 
 client = OpenAI()
-model = "gpt-6-astra"
+model = "gpt-6.2-astra"
 tools: list[FunctionToolParam] = [
     {
         "type": "function",
@@ -387,7 +387,7 @@ if err != nil {
 }
 defer conn.Close()
 if err := conn.Create(ctx, responses.ResponsesClientEventResponseCreateParam{
-	Model: "gpt-6-astra",
+	Model: "gpt-6.2-astra",
 	Store: openai.Bool(false),
 	Input: responses.ResponsesClientEventResponseCreateInputUnionParam{
 		OfString: openai.String("Find the failing test and suggest a fix."),
@@ -423,7 +423,7 @@ if callID == "" {
 // The result is a local demo fixture; carry the real response and call IDs.
 result := `{"test":"test_fizz_buzz","failure":"Expected FizzBuzz for 15, got Fizz."}`
 if err := conn.Create(ctx, responses.ResponsesClientEventResponseCreateParam{
-	Model:              "gpt-6-astra",
+	Model:              "gpt-6.2-astra",
 	StreamID:           openai.String("main"),
 	Store:              openai.Bool(false),
 	PreviousResponseID: openai.String(first.ID),
@@ -481,7 +481,7 @@ try (var conn = client.responses().connect()) {
   conn.send(
       ResponsesClientEvent.ofResponseCreate(
           ResponsesClientEvent.ResponseCreate.builder()
-              .model("gpt-6-astra")
+              .model("gpt-6.2-astra")
               .store(false)
               .input("Find the failing test and suggest a fix.")
               .streamId("main")
@@ -505,7 +505,7 @@ try (var conn = client.responses().connect()) {
   conn.send(
       ResponsesClientEvent.ofResponseCreate(
           ResponsesClientEvent.ResponseCreate.builder()
-              .model("gpt-6-astra")
+              .model("gpt-6.2-astra")
               .streamId("main")
               .store(false)
               .previousResponseId(first.id())
@@ -574,7 +574,7 @@ Sync do |task|
   task.with_timeout(120) do
     client.responses.connect(request_options: { timeout: 10 }) do |connection|
       connection.response.create(
-        stream_id: "main", model: "gpt-6-astra", store: false,
+        stream_id: "main", model: "gpt-6.2-astra", store: false,
         input: "Find the failing test and suggest a fix.", tools: tools,
         tool_choice: {
           type: "function",
@@ -593,7 +593,7 @@ Sync do |task|
         failure: 'Expected "FizzBuzz" for 15, got "Fizz".'
       }
       connection.response.create(
-        stream_id: "main", model: "gpt-6-astra", store: false,
+        stream_id: "main", model: "gpt-6.2-astra", store: false,
         previous_response_id: response.id,
         input: [
           {
@@ -647,7 +647,7 @@ import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 // Compact your current window with an HTTP request.
 const compacted = await client.responses.compact({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: longInputItems,
 });
 const nextInput = toResponseInputItems(compacted.output);
@@ -663,7 +663,7 @@ try {
   ws.send({
     type: "response.create",
     stream_id: "main",
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     store: false,
     input: nextInput,
     tools: [],
@@ -700,7 +700,7 @@ from openai.types.responses import ResponseInputParam
 
 # Compact your current window (HTTP call).
 compacted = client.responses.compact(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=long_input_items_array,
 )
 next_input = cast(
@@ -719,7 +719,7 @@ next_input.append(
 with client.responses.connect() as connection:
     connection.response.create(
         stream_id="main",
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         store=False,
         input=next_input,
         tools=[],
@@ -751,7 +751,7 @@ end
 
 client = OpenAI::Client.new
 compacted = client.responses.compact(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: [
     {
       role: :user,
@@ -769,7 +769,7 @@ Sync do |task|
   task.with_timeout(120) do
     client.responses.connect(request_options: { timeout: 10 }) do |connection|
       connection.response.create(
-        stream_id: "main", model: "gpt-6-astra", store: false,
+        stream_id: "main", model: "gpt-6.2-astra", store: false,
         input: next_input, tools: []
       )
       puts(wait_for_response(connection).output_text)
@@ -862,7 +862,7 @@ function sendCreate(
   ws.send({
     type: "response.create",
     stream_id: streamId,
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     store: false,
     input: [
       {
@@ -985,7 +985,7 @@ def send_create(
         previous_response_id = latest_response_id_by_lane.get(stream_id)
     connection.response.create(
         stream_id=stream_id,
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         store=False,
         input=[
             {
@@ -1071,7 +1071,7 @@ require "json"
 def send_create(connection, stream_id, text, previous_response_id = nil)
   payload = {
     stream_id: stream_id,
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     store: false,
     input: [
       {

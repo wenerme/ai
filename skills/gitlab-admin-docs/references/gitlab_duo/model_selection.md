@@ -115,7 +115,7 @@ To select a model for Code Review Flow:
 1. Under **GitLab Duo Agent Platform**, find **Agentic Code Review**.
 1. Select a model from the dropdown list to set as the default model.
 
-For a list of available models, see [Agent Platform AI models](../../user/duo_agent_platform/model_selection.md#supported-models).
+For a list of available models, see [supported models for Code Review Flow](../../user/duo_agent_platform/model_selection.md#code-review-flow).
 
 ### GitLab 19.0 or earlier
 

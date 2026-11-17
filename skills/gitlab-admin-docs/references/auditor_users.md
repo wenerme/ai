@@ -48,3 +48,22 @@ You can also create auditor users with:
 
 - [SAML groups](../integration/saml.md#auditor-groups).
 - The [users API](../api/users.md).
+
+## Make an instance service account an auditor
+
+You can make an instance [service account](../user/profile/service_accounts.md) an auditor.
+Automation that uses the service account token can then read projects
+without being added as a member of each one.
+
+Prerequisites:
+
+- Administrator access.
+- An [instance service account](../api/service_accounts.md#create-an-instance-service-account).
+
+To make an instance service account an auditor:
+
+1. Use the [users API](../api/users.md#modify-a-user) to set `auditor` to `true` for the service account.
+1. [Create a personal access token](../api/user_tokens.md#create-a-personal-access-token-for-a-user) for the service account with the `read_api` and `read_repository` scopes.
+
+With this token, the service account can list, read, and clone private projects
+where the service account is not a member.

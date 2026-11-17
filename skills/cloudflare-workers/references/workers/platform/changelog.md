@@ -20,10 +20,26 @@ This is *different* from [compatibility dates](https://developers.cloudflare.com
 
 [Subscribe to RSS](https://developers.cloudflare.com/workers/platform/changelog/index.xml)
 
+## 2026-11-05
+
+- Updated V8 to version 15.8.
+
+## 2026-11-02
+
+- The Temporal API is available with the `temporal` compatibility flag, or a compatibility date of 2026-12-01 or later.
+
 ## 2026-10-22
 
 - Hyperdrive bindings expose `ip`, and `node:dns` resolves a binding's host to it.
 - Workers traces now include spans for `queue.metrics()` calls.
+
+## 2026-10-17
+
+- Updated V8 to version 15.7.
+
+## 2026-10-14
+
+- Updated V8 to version 15.6.
 
 ## 2026-09-28
 

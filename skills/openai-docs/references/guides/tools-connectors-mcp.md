@@ -27,7 +27,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
     "tools": [
       {
         "type": "mcp",
@@ -41,12 +41,12 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   tools: [
     {
       type: "mcp",
@@ -69,7 +69,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     tools=[
         {
             "type": "mcp",
@@ -104,7 +104,7 @@ func main() {
 	tool.OfMcp.RequireApproval = responses.ToolMcpRequireApprovalUnionParam{OfMcpToolApprovalSetting: openai.String("never")}
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Tools: []responses.ToolUnionParam{tool},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Search the OpenAI docs for Responses API streaming and return the relevant links.")},
 	})
@@ -123,7 +123,7 @@ import com.openai.models.responses.Tool;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             "Search the OpenAI docs for Responses API streaming and return the relevant links.")
         .addTool(
@@ -149,7 +149,7 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(
     ResponseTool.CreateMcpTool(
         serverLabel: "openai_docs",
@@ -170,7 +170,7 @@ require "openai"
 openai = OpenAI::Client.new
 
 response = openai.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   tools: [
     {
       type: "mcp",
@@ -314,7 +314,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [
       {
         "type": "mcp",
@@ -329,12 +329,12 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   tools: [
     {
       type: "mcp",
@@ -358,7 +358,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     tools=[
         {
             "type": "mcp",
@@ -395,7 +395,7 @@ func main() {
 	tool.OfMcp.AllowedTools = responses.ToolMcpAllowedToolsUnionParam{OfMcpAllowedTools: []string{"search_openai_docs"}}
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Tools: []responses.ToolUnionParam{tool},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Search the OpenAI docs for Responses API streaming and return the relevant links.")},
 	})
@@ -415,7 +415,7 @@ import java.util.List;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             "Search the OpenAI docs for Responses API streaming and return the relevant links.")
         .addTool(
@@ -442,7 +442,7 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(
     ResponseTool.CreateMcpTool(
         serverLabel: "openai_docs",
@@ -464,7 +464,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Search the OpenAI docs for Responses API streaming and return the relevant links.",
   tools: [
     {
@@ -526,7 +526,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [
       {
         "type": "mcp",
@@ -545,12 +545,12 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   tools: [
     {
       type: "mcp",
@@ -580,7 +580,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     tools=[
         {
             "type": "mcp",
@@ -622,7 +622,7 @@ func main() {
 	tool.OfMcp.RequireApproval = responses.ToolMcpRequireApprovalUnionParam{OfMcpToolApprovalSetting: openai.String("always")}
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:              "gpt-6-astra",
+		Model:              "gpt-6.2-astra",
 		PreviousResponseID: openai.String("resp_682d498bdefc81918b4a6aa477bfafd904ad1e533afccbfa"),
 		Tools:              []responses.ToolUnionParam{tool},
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
@@ -650,7 +650,7 @@ String approvalRequestId = "mcpr_682d498e3bd4819196a0ce1664f8e77b04ad1e533afccbf
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             ResponseCreateParams.Input.ofResponse(
                 List.of(
@@ -685,7 +685,7 @@ ResponsesClient client = new(key);
 
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.2-astra",
     ToolChoice = ResponseToolChoice.CreateRequiredChoice(),
     ParallelToolCallsEnabled = false
 };
@@ -722,7 +722,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   previous_response_id: "resp_682d498bdefc81918b4a6aa477bfafd904ad1e533afccbfa",
   input: [
     {
@@ -757,7 +757,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [
       {
         "type": "mcp",
@@ -774,12 +774,12 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   tools: [
     {
       type: "mcp",
@@ -805,7 +805,7 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     tools=[
         {
             "type": "mcp",
@@ -846,7 +846,7 @@ func main() {
 	}
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Tools: []responses.ToolUnionParam{tool},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What transport protocols does the 2025-03-26 version of the MCP spec (modelcontextprotocol/modelcontextprotocol) support?")},
 	})
@@ -865,7 +865,7 @@ import com.openai.models.responses.Tool;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("What transport protocols does the 2025-03-26 version of the MCP spec support?")
         .addTool(
             Tool.Mcp.builder()
@@ -896,7 +896,7 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(
     ResponseTool.CreateMcpTool(
         serverLabel: "deepwiki",
@@ -927,7 +927,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What transport protocols does the 2025-03-26 version of the MCP spec support?",
   tools: [
     {
@@ -956,7 +956,7 @@ curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "Create a payment link for $20",
     "tools": [
       {
@@ -969,12 +969,12 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
 const resp = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Create a payment link for $20",
   tools: [
     {
@@ -997,7 +997,7 @@ client = OpenAI()
 authorization = os.environ["STRIPE_OAUTH_ACCESS_TOKEN"]
 
 resp = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="Create a payment link for $20",
     tools=[
         {
@@ -1035,7 +1035,7 @@ func main() {
 	tool.OfMcp.Authorization = openai.String(authorization)
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Tools: []responses.ToolUnionParam{tool},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Create a payment link for $20")},
 	})
@@ -1056,7 +1056,7 @@ String stripeAccessToken = System.getenv("STRIPE_OAUTH_ACCESS_TOKEN");
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Create a payment link for $20.")
         .addTool(
             Tool.Mcp.builder()
@@ -1082,7 +1082,7 @@ string authToken =
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(
     ResponseTool.CreateMcpTool(
         serverLabel: "stripe",
@@ -1104,7 +1104,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Create a payment link for $20.",
   tools: [
     {
@@ -1160,7 +1160,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -1363,7 +1363,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 

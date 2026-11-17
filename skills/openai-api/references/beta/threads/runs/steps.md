@@ -258,7 +258,7 @@ openai = OpenAI()
 conversation_id = "conv_123"
 
 response = openai.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=[{"role": "user", "content": "What are the 5 Ds of dodgeball?"}],
     conversation=conversation_id,
 )
@@ -292,7 +292,7 @@ for run.Status == openai.RunStatusQueued || run.Status == openai.RunStatusInProg
 
 ```go
 _, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-	Model: "gpt-6-astra",
+	Model: "gpt-6.2-astra",
 	Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
 		responses.ResponseInputItemParamOfMessage("What are the 5 Ds of dodgeball?", responses.EasyInputMessageRoleUser),
 	}},
@@ -341,7 +341,7 @@ const client = new OpenAI();
 const conversationId = "conv_123";
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: [{ role: "user", content: "What are the five Ds of dodgeball?" }],
   conversation: conversationId,
 });

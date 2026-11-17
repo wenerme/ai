@@ -74,8 +74,7 @@ Prerequisites:
 
 To use the Data Analyst Agent in VS Code:
 
-1. In VS Code, in the left sidebar, select **GitLab Duo Agent Platform** ().
-1. Select the **Chat** tab.
+1. In VS Code, in the Secondary Side Bar, select **GitLab Duo**.
 1. Under the message box, from the agent dropdown list, select **Data Analyst**.
    In the [classic layout](../gitlab_duo_chat/agentic_chat.md#change-the-layout-in-your-ide), select the **Chat** tab, then from the **New chat** () dropdown list, select **Data Analyst**.
 1. Enter your analytics question or request. To get the best results from your request:

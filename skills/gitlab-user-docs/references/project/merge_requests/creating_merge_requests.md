@@ -316,7 +316,13 @@ Add commits to a merge request by adding patches as attachments to the email.
 
 You might not find an option to create a merge request in your project.
 
-This issue occurs when merge requests or the repository are turned off for the project.
+This issue occurs when:
+
+- Merge requests or the repository are turned off for the project.
+- You don't have at least the Developer role and you don't have a fork of the project.
+
+#### Merge requests or the repository are turned off
+
 Projects created to [run CI/CD for an external repository](../../../ci/ci_cd_for_external_repos/_index.md)
 have merge requests turned off by default.
 
@@ -324,7 +330,7 @@ Prerequisites:
 
 - The Maintainer or Owner role for the project.
 
-To resolve this issue:
+To turn on merge requests for the project:
 
 1. In the top bar, select  and find your project.
 1. In the left sidebar, select  > .
@@ -332,6 +338,14 @@ To resolve this issue:
 1. If the  toggle is off, turn it on.
 1. Under , turn on the  toggle.
 1. Select .
+
+#### You don't have the Developer role or a fork
+
+If you are a member of the project, you must have the Developer, Maintainer, or Owner role to create a merge request. Ask a project maintainer to change your role.
+
+If you are not a member of the project, [fork the project](../repository/forking_workflow.md#create-a-fork).
+You can then create the merge request from your fork and target the parent project.
+If forking is turned off for the project, you can't fork the project or create merge requests.
 
 ### No option to create a merge request on an issue
 

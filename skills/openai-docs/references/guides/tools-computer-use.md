@@ -529,7 +529,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   tools: [{ type: "computer" }],
   input:
     "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
@@ -544,7 +544,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6.1-sol",
+    model="gpt-6.2-sol",
     tools=[{"type": "computer"}],
     input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
 )
@@ -566,7 +566,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6.1-sol",
+		Model: "gpt-6.2-sol",
 		Tools: []responses.ToolUnionParam{{OfComputer: &responses.ComputerToolParam{}}},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.")},
 	})
@@ -587,7 +587,7 @@ import java.util.Map;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.")
         .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
@@ -601,7 +601,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
   tools: [{ type: :computer }]
 )
@@ -630,7 +630,7 @@ async function sendComputerScreenshot(
   };
 
   return await client.responses.create({
-    model: "gpt-6.1-sol",
+    model: "gpt-6.2-sol",
     tools: [{ type: "computer" }],
     previous_response_id: response.id,
     input: [
@@ -652,7 +652,7 @@ client = OpenAI()
 
 def send_computer_screenshot(response, call_id, screenshot_base64):
     return client.responses.create(
-        model="gpt-6.1-sol",
+        model="gpt-6.2-sol",
         tools=[{"type": "computer"}],
         previous_response_id=response.id,
         input=[
@@ -695,7 +695,7 @@ func sendComputerScreenshot(client openai.Client, responseID string, callID stri
 	}
 	screenshot.SetExtraFields(map[string]any{"detail": "original"})
 	return client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:              "gpt-6.1-sol",
+		Model:              "gpt-6.2-sol",
 		Tools:              []responses.ToolUnionParam{{OfComputer: &responses.ComputerToolParam{}}},
 		PreviousResponseID: openai.String(responseID),
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
@@ -723,7 +723,7 @@ String screenshotBase64 = "<base64 bytes here>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             ResponseCreateParams.Input.ofResponse(
                 List.of(
@@ -748,7 +748,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   previous_response_id: "resp_abc123",
   input: [
     {
@@ -902,7 +902,7 @@ async function main() {
       const response = await tools.run(
         client,
         {
-          model: "gpt-6.1-sol",
+          model: "gpt-6.2-sol",
           store: false,
           input:
             "Take a screenshot. Open 'Show pickup details' and report the locker and pickup code. Use only screenshots and left clicks.",
@@ -992,7 +992,7 @@ async def main():
                 response = await tools.run(
                     client,
                     {
-                        "model": "gpt-6.1-sol",
+                        "model": "gpt-6.2-sol",
                         "store": False,
                         "input": "Take a screenshot. Open 'Show pickup details' and report the locker and pickup code. Use only screenshots and left clicks.",
                     },
@@ -1118,7 +1118,7 @@ async function main() {
     const response = await new ResponsesToolRunner({ browser: tools }).run(
       client,
       {
-        model: "gpt-6-astra",
+        model: "gpt-6.2-astra",
         store: false,
         input: "Create a visitor badge for Mira.",
       },
@@ -1214,7 +1214,7 @@ async def main():
             response = await AsyncResponsesToolRunner(browser=tools).run(
                 client,
                 {
-                    "model": "gpt-6-astra",
+                    "model": "gpt-6.2-astra",
                     "store": False,
                     "input": "Create a visitor badge for Mira.",
                 },
@@ -1687,7 +1687,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   tools: [{ type: "computer" }],
   input:
     "Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
@@ -1702,7 +1702,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6.1-sol",
+    model="gpt-6.2-sol",
     tools=[{"type": "computer"}],
     input="Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.",
 )
@@ -1724,7 +1724,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6.1-sol",
+		Model: "gpt-6.2-sol",
 		Tools: []responses.ToolUnionParam{{OfComputer: &responses.ComputerToolParam{}}},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.")},
 	})
@@ -1745,7 +1745,7 @@ import java.util.Map;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.")
         .putAdditionalBodyProperty("tools", JsonValue.from(List.of(Map.of("type", "computer"))))
@@ -1759,7 +1759,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
   tools: [{ type: :computer }]
 )
@@ -1833,7 +1833,7 @@ async function sendComputerScreenshot(
   };
 
   return await client.responses.create({
-    model: "gpt-6.1-sol",
+    model: "gpt-6.2-sol",
     tools: [{ type: "computer" }],
     previous_response_id: response.id,
     input: [
@@ -1855,7 +1855,7 @@ client = OpenAI()
 
 def send_computer_screenshot(response, call_id, screenshot_base64):
     return client.responses.create(
-        model="gpt-6.1-sol",
+        model="gpt-6.2-sol",
         tools=[{"type": "computer"}],
         previous_response_id=response.id,
         input=[
@@ -1898,7 +1898,7 @@ func sendComputerScreenshot(client openai.Client, responseID string, callID stri
 	}
 	screenshot.SetExtraFields(map[string]any{"detail": "original"})
 	return client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:              "gpt-6.1-sol",
+		Model:              "gpt-6.2-sol",
 		Tools:              []responses.ToolUnionParam{{OfComputer: &responses.ComputerToolParam{}}},
 		PreviousResponseID: openai.String(responseID),
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
@@ -1926,7 +1926,7 @@ String screenshotBase64 = "<base64 bytes here>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6.1-sol")
+        .model("gpt-6.2-sol")
         .input(
             ResponseCreateParams.Input.ofResponse(
                 List.of(
@@ -1951,7 +1951,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6.1-sol",
+  model: "gpt-6.2-sol",
   previous_response_id: "resp_abc123",
   input: [
     {

@@ -191,6 +191,8 @@ To remove the goal before you send the message, on the **Goal** label, select **
 
 ### Use GitLab Duo Chat in VS Code
 
+- [Moved](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v7.7.1) to the Secondary Side Bar in GitLab for VS Code 7.7.1 during the GitLab 19.6 release.
+
 Prerequisites:
 
 - [Install and configure the GitLab for VS Code extension](../../editor_extensions/visual_studio_code/setup.md) version 6.15.1 or later.
@@ -208,7 +210,11 @@ Turn on GitLab Duo Chat:
 
 Then, to use GitLab Duo Chat:
 
-1. In the left sidebar, select **GitLab Duo Agent Platform** ().
+1. Open the **GitLab Duo** panel by using one of these methods:
+   - In the Secondary Side Bar, select **GitLab Duo**.
+   - In the left sidebar, select **GitLab** (). Under **Recent GitLab Duo Chats**,
+     select a chat, or select **Open GitLab Duo** if no chats are listed.
+   - In the Command Palette, run `GitLab: Open GitLab Duo`.
 1. If you use the [classic layout](#change-the-layout-in-your-ide), select the **Chat** tab.
 1. Select **Refresh page** if prompted.
 1. In the message box, enter your question and press <kbd>Enter</kbd> or select **Send**.
@@ -256,7 +262,7 @@ Then, to use GitLab Duo Chat:
 
 - New layout [made the default](https://gitlab.com/groups/gitlab-org/editor-extensions/-/epics/243) in GitLab for VS Code 7.2.0 and GitLab Duo plugin for JetBrains IDEs 3.50.0.
 
-In VS Code and JetBrains IDEs, the **GitLab Duo Agent Platform** panel uses the new layout by default.
+In VS Code and JetBrains IDEs, the Agent Platform panel uses the new layout by default.
 The new layout has no tabs. You start conversations, view your chat history, and select
 an agent and model in the same view.
 
@@ -284,7 +290,7 @@ After you share feedback or select **Don't show again**, the survey does not app
 
 To switch to the classic layout:
 
-1. In the sidebar, select **GitLab Duo Agent Platform** ().
+1. In the Secondary Side Bar, select **GitLab Duo**.
 1. In the panel title bar, select **Use classic layout**.
 1. Optional. Complete the survey.
 
@@ -303,7 +309,7 @@ You can also switch in the settings. Go to **Settings** > **Tools** > **GitLab D
 
 To switch back to the new layout:
 
-- In VS Code, in the **GitLab Duo Agent Platform** panel title bar, select **Use new layout**.
+- In VS Code, in the **GitLab Duo** panel title bar, select **Use new layout**.
 - In a JetBrains IDE, in the **GitLab Duo Agent Platform** tool window title bar, select **Use New Layout**.
   You can also go to **Settings** > **Tools** > **GitLab Duo**, and under **GitLab Duo Agent Platform**,
   clear the **Use classic layout** checkbox.
@@ -321,6 +327,11 @@ To view your chat history:
 - In your IDE, at the top of the panel, select **History** ().
   In the [classic layout](#change-the-layout-in-your-ide), in the upper-right corner of the
   message box, select **Chat history** ().
+
+- In VS Code, you can also resume one of your three most recent conversations.
+  In the left sidebar, select **GitLab** (), then under
+  **Recent GitLab Duo Chats**, select a conversation. Recent conversations are not listed
+  in the classic layout.
 
 In the GitLab UI, all of the conversations in your chat history are visible.
 
@@ -351,6 +362,8 @@ Your conversations synchronize across GitLab Duo Chat in the GitLab UI and your 
    - Under the Chat text box, ensure the **Agentic** toggle is turned on.
    - In your IDE, at the top of the panel, select **New chat** ().
      In the classic layout, **New chat** is in the upper-right corner of the message box.
+   - In VS Code, you can also go to the left sidebar and select **GitLab** ().
+     Then, next to **Recent GitLab Duo Chats**, select **Start New Chat** ().
 
 1. Enter your question and press <kbd>Enter</kbd> or select **Send**.
 1. To view all of your conversations, look at your [chat history](#view-the-chat-history).
@@ -446,7 +459,9 @@ To select a model:
   1. Under the chat text box, ensure the **Agentic** toggle is turned on.
   1. Select a model from the dropdown list.
 - In your IDE:
-  1. In the sidebar, select **GitLab Duo Agent Platform** ().
+  1. Open the Agent Platform panel:
+     - In VS Code, in the Secondary Side Bar, select **GitLab Duo**.
+     - In JetBrains IDEs, on the right tool window bar, select **GitLab Duo Agent Platform** ().
   1. If you use the [classic layout](#change-the-layout-in-your-ide), select the **Chat** tab.
   1. Select a model from the dropdown list.
 
@@ -487,6 +502,7 @@ After you create a conversation with an agent:
 - Status: Experiment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250665) in GitLab 19.5 as an [experiment](../../policy/development_stages_support.md#experiment) with a [feature flag](../../administration/feature_flags/_index.md) named `dap_web_chat_file_attachments`. Disabled by default.
+- Instance setting to allow file attachments [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269169) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -515,7 +531,35 @@ These restrictions also apply:
 - You can attach images only in the GitLab UI, not in editor extensions.
 - Because of the total size limit, a message cannot contain five images of the maximum size.
 
+### Allow file attachments for an instance
+
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+Allow file attachments for an instance so users can attach images to Chat messages.
+File attachments are turned off by default.
+
+Prerequisites:
+
+- Administrator access.
+
+To allow file attachments for an instance:
+
+1. In the upper-right corner, select .
+1. In the left sidebar, select .
+1. Select .
+1. In the  section, under ,
+   select the  checkbox.
+1. Select .
+
+You can also use the [application settings API](../../api/settings.md#update-application-settings)
+to set the `duo_workflow_file_attachments_enabled` attribute.
+
 ### Attach an image to a message
+
+Prerequisites:
+
+- On GitLab Self-Managed and GitLab Dedicated, an administrator must
+  [allow file attachments for the instance](#allow-file-attachments-for-an-instance).
 
 To attach an image to a message:
 

@@ -33,6 +33,10 @@ The `sha` parameter ensures you're approving the current version of the merge re
 value must match the merge request's HEAD commit SHA. A mismatch returns a `409 Conflict` response.
 This matches the behavior of [accepting a merge request](merge_requests.md#merge-a-merge-request).
 
+Changing the target branch can change the diff without changing the HEAD commit.
+If the diff changed since a version of the merge request with that `sha`, the approval also returns a `409 Conflict` response.
+To approve, wait for the next commit to the source branch, or review the current diff and approve without `sha`.
+
 ```plaintext
 POST /projects/:id/merge_requests/:merge_request_iid/approve
 ```

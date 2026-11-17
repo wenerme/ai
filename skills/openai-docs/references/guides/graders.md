@@ -141,6 +141,8 @@ Within each message, the same templating can be used as with other common grader
 
 Here’s a full runnable code sample:
 
+Run a score model grader
+
 ```python
 import os
 import requests
@@ -296,6 +298,8 @@ This grader allows you to execute arbitrary python code to grade the model outpu
 
 The python source code must contain a grade function that takes in exactly two arguments and returns a float value as a grade.
 
+Define a Python grading function
+
 ```python
 from typing import Any
 
@@ -327,7 +331,17 @@ The second argument supplied is a dictionary populated with input grading contex
 }
 ```
 
-Here's a working example. For Ruby, save the `grade` function shown above, including its import, as `grader.py`. Place `grader.py` in the directory where you run the example. The supplied function returns `1.0`; replace its body with your grading logic.
+Here's a working example.
+
+
+
+
+For Ruby, save the `grade` function shown above, including its import, as `grader.py`. Place `grader.py` in the directory where you run the example. The supplied function returns `1.0`; replace its body with your grading logic.
+
+
+
+
+Run a Python grader through the API
 
 ```python
 import os
@@ -395,12 +409,22 @@ puts(client.fine_tuning.alpha.graders.run(grader: grader, item: item, model_samp
 **Tip:**
 If you don't want to manually put your grading function in a string, you can also load it from a Python file using `importlib` and `inspect`. For example, if your grader function is in a file named `grader.py`, you can do:
 
+Load a grader from a Python file
+
 ```python
 import importlib
 import inspect
 
 grader_module = importlib.import_module("grader")
 grader = {"type": "python", "source": inspect.getsource(grader_module)}
+```
+
+```ruby
+# The grader executes in the service's Python runtime; Ruby packages its source.
+grader = {
+  type: :python,
+  source: File.read("grader.py")
+}
 ```
 
 
@@ -410,7 +434,7 @@ This will automatically use the entire source code of your `grader.py` file as t
 
 - Your uploaded code must be less than `256kB` and will not have network access.
 - The grading execution itself is limited to 2 minutes.
-- At runtime you will be given a limit of 2Gb of memory and 1Gb of disk space to use.
+- At runtime you will be given a limit of 2GB of memory and 1GB of disk space to use.
 - There's a limit of 2 CPU cores—any usage above this amount will result in throttling
 
 The following third-party packages are available at execution time for the image tag `2025-05-08`

@@ -22,7 +22,7 @@ Please work through this document in its entirety to better understand how
 
 Rate limits use metrics such as **RPM** (requests per minute), **RPD** (requests per day), **TPM** (tokens per minute), **TPD** (tokens per day), **IPM** (images per minute), and audio minutes per minute for some streaming audio models. Rate limits can be hit across any of the options depending on what occurs first. For example, you might send 20 requests with only 100 tokens to the ChatCompletions endpoint and that would fill your limit (if your RPM was 20), even if you didn't send 150k tokens (if your TPM limit was 150k) within those 20 requests.
 
-[Batch API](https://developers.openai.com/api/reference/resources/batches/methods/create) queue limits are calculated based on the total number of input tokens queued for a given model. Tokens from pending batch jobs are counted against your queue limit. Once a batch job is completed, its tokens are no longer counted against that model's limit.
+The **Batch/Background Rate Limit** caps the total input tokens queued for a model. It applies to [Batch API](https://developers.openai.com/api/docs/guides/batch) jobs and [Background mode](https://developers.openai.com/api/docs/guides/background) requests with `2h` or `8h` completion windows. The API counts input tokens at submission. Once a batch job completes, its tokens no longer count toward the limit. Background requests with the default `soonest` window use the regular request and token limits.
 
 Other important things worth noting:
 
@@ -253,6 +253,22 @@ response = response_with_backoff(
 print(response.output_text)
 ```
 
+```ruby
+require "openai"
+require "retriable"
+
+client = OpenAI::Client.new(max_retries: 0)
+response = Retriable.retriable(on: OpenAI::Errors::RateLimitError, tries: 6, base_interval: 1, max_interval: 60, multiplier: 2) do
+  client.responses.create(
+    model: "gpt-6-luna",
+    input: "Say hello in one sentence.",
+    reasoning: { effort: :low },
+    max_output_tokens: 1024
+  )
+end
+puts(response.output_text)
+```
+
 
 Note that the Tenacity library is a third-party tool, and OpenAI makes no guarantees about
 its reliability or security.
@@ -291,6 +307,22 @@ response = response_with_backoff(
     max_output_tokens=64,
 )
 print(response.output_text)
+```
+
+```ruby
+require "openai"
+require "retryable"
+
+client = OpenAI::Client.new(max_retries: 0)
+response = Retryable.retryable(on: OpenAI::Errors::RateLimitError, tries: 6, sleep: ->(attempt) { rand * (2**attempt) }) do
+  client.responses.create(
+    model: "gpt-6-luna",
+    input: "Say hello in one sentence.",
+    reasoning: { effort: :low },
+    max_output_tokens: 1024
+  )
+end
+puts(response.output_text)
 ```
 
 
@@ -377,6 +409,37 @@ response = response_with_backoff(
     max_output_tokens=64,
 )
 print(response.output_text)
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new(max_retries: 0)
+
+def retry_with_exponential_backoff(initial_delay: 1, exponential_base: 2, jitter: true, max_retries: 10)
+  retries = 0
+  delay = initial_delay
+  begin
+    yield
+  rescue OpenAI::Errors::RateLimitError
+    raise if retries >= max_retries
+
+    retries += 1
+    delay *= exponential_base * (1 + (jitter ? rand : 0))
+    sleep(delay)
+    retry
+  end
+end
+
+response = retry_with_exponential_backoff do
+  client.responses.create(
+    model: "gpt-6-luna",
+    input: "Say hello in one sentence.",
+    reasoning: { effort: :low },
+    max_output_tokens: 1024
+  )
+end
+puts(response.output_text)
 ```
 
 Again, OpenAI makes no guarantees on the security or efficiency of this solution but it can be a good starting place for your own solution.

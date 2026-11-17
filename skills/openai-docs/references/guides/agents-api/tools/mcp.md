@@ -90,14 +90,34 @@ Here, a localhost URL refers to the session's environment. If you omit `connecti
 
 Use stdio to let the executor start a server process. Install the server and its dependencies in the environment first.
 
-For this customer lookup example, install the MCP SDK:
+
+
+
+For the Python version of this customer lookup example, install the MCP SDK:
 
 ```bash
 python3 -m venv /workspace/mcp-demo
 /workspace/mcp-demo/bin/python -m pip install 'mcp==1.26.0'
 ```
 
-Save the server as `/workspace/lookup_mcp.py`:
+
+
+
+
+
+
+Save the Python server as `/workspace/lookup_mcp.py`.
+
+
+
+
+
+
+
+For Ruby, install the `mcp` gem at version `1.10.0` and save the Ruby server as `/workspace/lookup_mcp.rb`. The Ruby example is tested with Ruby 3.3.
+
+
+
 
 Run a customer lookup MCP server
 
@@ -121,8 +141,65 @@ if __name__ == "__main__":
     server.run(transport=transport)
 ```
 
+```ruby
+require "mcp"
+require "json"
 
-Add the server to `agent.tools`. The `stdio` argument selects the script's transport:
+class GetCustomer < MCP::Tool
+  tool_name "get_customer"
+  description "Look up a customer in the example data."
+  input_schema(type: "object", properties: { customer_id: { type: "string" } }, required: ["customer_id"])
+
+  def self.call(customer_id:, server_context:)
+    customers = {
+      "123" => {
+        name: "Example Customer",
+        plan: "pro"
+      }
+    }
+    result = { customer: customers[customer_id] }
+    MCP::Tool::Response.new(
+      [
+        {
+          type: "text",
+          text: JSON.generate(result)
+        }
+      ], structured_content: result
+    )
+  end
+end
+
+server = MCP::Server.new(name: "customer-lookup", version: "1.0.0", tools: [GetCustomer])
+# Use `ruby main.rb http` for the HTTP endpoint at /mcp; default to stdio.
+if ARGV.first == "http"
+  require "rackup"
+  require "rackup/handler/webrick"
+  transport = MCP::Server::Transports::StreamableHTTPTransport.new(server, stateless: true, enable_json_response: true)
+  app = Rack::URLMap.new("/mcp" => transport)
+  Rackup::Handler::WEBrick.run(app, Host: "127.0.0.1", Port: Integer(ENV.fetch("PORT", "8765")))
+else
+  MCP::Server::Transports::StdioTransport.new(server).open
+end
+```
+
+
+Add the server to `agent.tools`.
+
+
+
+
+The following configuration starts the Python server.
+
+
+
+
+
+
+
+For Ruby, set `transport.command` to the absolute path of your Ruby executable and `transport.args` to `["/workspace/lookup_mcp.rb", "stdio"]`. Install the gem for that Ruby runtime. The `stdio` argument selects the script's transport:
+
+
+
 
 ```json
 {

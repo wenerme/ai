@@ -1,6 +1,6 @@
 ---
-description: Limits &amp; pricing for Workers Builds
-title: Limits &amp; pricing
+description: Limits & pricing for Workers Builds
+title: Limits & pricing
 image: https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/og.png?v=db53c6e993192d49
 ---
 

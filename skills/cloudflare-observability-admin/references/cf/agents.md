@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803
 
 # Use cf with coding agents
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coding agents can use `cf` to work with your Cloudflare account. Commands return JSON and describe their own inputs, so an agent can find and run the right command without prior knowledge of `cf`.
 
@@ -141,7 +141,7 @@ A failed command exits with a non-zero status and prints the error to standard e
 ## Run commands safely
 
 - **Preview changes.** Add `--dry-run` to print the request as JSON without sending it. Dry runs need no credentials.
-- **Check for aborted deletes.** In a non-interactive session, a destructive command without `--force` prints `Aborted.` to standard error and exits with status `0`. A successful exit does not mean the resource was deleted.
+- **Check for aborted deletes.** In a non-interactive session, a destructive command without `--force` prints `Aborted.` to standard error, makes no change, and exits with status `1`.
 - **Review `--force` before you allow it.** On some commands, `--force` is also an API parameter. For example, `cf workers delete --force` also deletes a Worker that other Workers still reference.
 - **Use local data where supported.** `--local` works only for a few resources that local development provides, mainly KV keys, D1 databases through `cf d1 raw`, `cf d1 migrations list`, and `cf d1 migrations apply`, and R2 objects. Commands without a local equivalent, including `cf d1 query`, return an error instead of calling the Cloudflare API.
 
@@ -201,5 +201,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/agents/#page","headline":"Use cf with coding agents","description":"Set up the Cloudflare CLI for coding agents, and help agents find, inspect, and safely run the right commands.","url":"https://developers.cloudflare.com/cf/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/agents/#page","headline":"Use cf with coding agents","description":"Set up the Cloudflare CLI for coding agents, and help agents find, inspect, and safely run the right commands.","url":"https://developers.cloudflare.com/cf/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

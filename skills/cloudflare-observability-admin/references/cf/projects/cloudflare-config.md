@@ -16,11 +16,11 @@ Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 `cloudflare.config.ts` is the typed configuration file for a Workers project. Its default export can define a Worker, Container applications, and account settings. Because the file is a TypeScript module, it can use imports, functions, environment variables, and asynchronous values.
 
-Open beta
+Release candidate
 
-Programmatic configuration with `cloudflare.config.ts` is in open beta. The configuration format can change before the stable release.
+Programmatic configuration with `cloudflare.config.ts` is part of the `cf` 1.0 release candidate. We expect the configuration format to stay the same through the stable release.
 
-Loading `cloudflare.config.ts` requires Node.js 22.18 or later. Bun is not supported: when `cf` runs on Bun, loading the file fails with `cloudflare.config.ts loading is not supported on Bun`. Most `cf` commands load the nearest `cloudflare.config.ts`, including commands that only call the Cloudflare API, so this is the practical minimum for any `cf` command you run inside the project.
+`cf` supports the latest versions of the Node.js LTS releases and the latest active release of Node.js. Bun is not supported: when `cf` runs on Bun, loading the file fails with `cloudflare.config.ts loading is not supported on Bun`. Most `cf` commands load the nearest `cloudflare.config.ts`, including commands that only call the Cloudflare API, so this applies to any `cf` command you run inside the project.
 
 Set `"type": "module"` in the project's `package.json`. Without it, Node.js prints a warning each time it loads the file. With `"type": "commonjs"`, loading fails with `Cannot use import statement outside a module`.
 
@@ -3360,7 +3360,7 @@ Container names must be unique. Each Container can be linked to only one Durable
 
 Set `accountId` and `complianceRegion` at the top level of the default export. Supported compliance regions are `public` and `fedramp-high`.
 
-`CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_COMPLIANCE_REGION` take priority over these values. When neither the environment nor the configuration sets an account, `cf` uses the account it saved on an earlier command, or resolves one from your credentials. For the full order, refer to [Select an account](https://developers.cloudflare.com/cf/get-started/#select-an-account).
+`CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_COMPLIANCE_REGION` take priority over these values. When neither the environment nor the configuration sets an account, `cf` resolves one from your credentials. For the full order, refer to [Select an account](https://developers.cloudflare.com/cf/get-started/#select-an-account).
 
 `cf` searches from the current directory toward the filesystem root and uses the nearest `cloudflare.config.ts` file.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/api/instances/workers-binding
 
 # Workers binding
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to create, list, update, and delete AI Search instances from a Cloudflare Worker. You can also check instance configuration and monitor indexing progress.
 
@@ -312,6 +312,8 @@ Configuration for how content is indexed.
   - The tokenizer used for keyword search indexing. Valid values: `porter` (stemming-based), `trigram` (character n-gram). Defaults to `porter`.
 - `use_ocr` `boolean` optional
   - Use optical character recognition (OCR) when ingesting PDFs and images. Defaults to `false`. OCR is available on every account and is billed as image-processing ingestion tokens.
+- `file_summary` `boolean` optional
+  - Generate a summary, topics, and keywords for each eligible file during indexing. Defaults to `false`. The LLM calls are billed to your account as Workers AI usage, not as AI Search ingestion. Refer to [File summaries](https://developers.cloudflare.com/ai-search/configuration/data-source/#file-summaries).
 
 ---
 
@@ -342,7 +344,7 @@ The UUID of the [service API token](https://developers.cloudflare.com/ai-search/
 
 `ai_gateway_id` `string` optional
 
-The AI Gateway ID for generation, query rewriting, and external-provider requests. Workers AI embedding and reranking usage is included in AI Search usage. These requests do not appear in your AI Gateway logs or Workers AI bill.
+The AI Gateway ID for generation, query rewriting, file summaries, and external-provider requests. File summaries use the `default` gateway when this is not set. Workers AI embedding and reranking usage is included in AI Search usage. These requests do not appear in your AI Gateway logs or Workers AI bill.
 
 ---
 
@@ -484,7 +486,7 @@ const updated = await env.AI_SEARCH.get("my-instance").update({
 
 #### Parameters
 
-Accepts a partial version of the [create parameters](#parameters-2). Only the fields you include are updated.
+Accepts a partial version of the [create parameters](#parameters-2). Only the fields you include are updated. `indexing_options` is replaced as a whole, so include the current value of every indexing option.
 
 | Field | Type | Description |
 | --- | --- | --- |
@@ -492,7 +494,7 @@ Accepts a partial version of the [create parameters](#parameters-2). Only the fi
 | `embedding_model` | string | The embedding model. |
 | `index_method` | object | Indexing methods: `\{ vector: boolean, keyword: boolean \}`. |
 | `fusion_method` | string | How vector and keyword scores are combined (`rrf` or `max`). |
-| `indexing_options` | object | Indexing configuration including `keyword_tokenizer` and `use_ocr`. |
+| `indexing_options` | object | Indexing configuration including `keyword_tokenizer`, `use_ocr`, and `file_summary`. |
 | `retrieval_options` | object | Retrieval configuration including `keyword_match_mode` and `boost_by`. |
 | `reranking` | boolean | Turn on or off reranking. |
 | `reranking_model` | string | The reranking model. |
@@ -543,7 +545,7 @@ const info = await env.AI_SEARCH.get("my-instance").info();
 | `cache_ttl` | number | Cache entry time to live in seconds. |
 | `index_method` | object | Which indexing methods are enabled (`vector`, `keyword`). |
 | `fusion_method` | string | How vector and keyword scores are combined (`rrf` or `max`). |
-| `indexing_options` | object | Indexing configuration including `keyword_tokenizer` and `use_ocr`. |
+| `indexing_options` | object | Indexing configuration including `keyword_tokenizer`, `use_ocr`, and `file_summary`. |
 | `retrieval_options` | object | Retrieval configuration including `keyword_match_mode` and `boost_by`. |
 | `chunk_size` | number | Token size of each chunk. |
 | `chunk_overlap` | number | Token overlap between chunks. |
@@ -668,5 +670,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

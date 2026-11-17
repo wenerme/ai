@@ -386,12 +386,11 @@ that project:
 
 - GitLab creates and updates no `dependency-management/` branches.
 - Open auto-remediation merge requests are no longer refreshed.
-- If you start a remediation from the vulnerability report, the report shows the error
-  `Service account cannot create merge requests in this project`.
+- If you start a remediation from the vulnerability report, the report shows an error that describes
+  the likely cause.
 
-The same error has several causes. On GitLab Self-Managed, an administrator can find the cause in
-the `denial_reason` field of the `DependencyManagement: service account cannot create merge requests`
-entry in `application_json.log`.
+On GitLab Self-Managed, an administrator can also find the cause in the `denial_reason` field of the
+`DependencyManagement: service account cannot create merge requests` entry in `application_json.log`.
 
 | Cause | `denial_reason` | Resolution |
 |-------|-----------------|------------|

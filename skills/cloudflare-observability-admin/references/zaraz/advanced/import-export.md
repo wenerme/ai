@@ -1,6 +1,6 @@
 ---
 description: Import and export Zaraz configurations between zones.
-title: Configuration Import &amp; Export
+title: Configuration Import & Export
 image: https://developers.cloudflare.com/zaraz/advanced/import-export/og.png?v=e5f908f441afccec
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Use C3 and Wrangler CLI for Workers.
-title: C3 &amp; Wrangler
+title: C3 & Wrangler
 image: https://developers.cloudflare.com/learning-paths/workers/get-started/c3-and-wrangler/og.png?v=1bac9d052bc1fee6
 ---
 

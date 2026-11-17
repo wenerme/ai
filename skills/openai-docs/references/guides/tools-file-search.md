@@ -367,7 +367,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   tools: [
     {
@@ -385,7 +385,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="What is deep research by OpenAI?",
     tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
 )
@@ -406,7 +406,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What is deep research by OpenAI?")},
 		Tools: []responses.ToolUnionParam{responses.ToolParamOfFileSearch([]string{"<vector_store_id>"})},
 	})
@@ -427,7 +427,7 @@ String vectorStoreId = "<vector_store_id>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("What is deep research by OpenAI?")
         .addFileSearchTool(List.of(vectorStoreId))
         .build();
@@ -447,7 +447,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 string vectorStoreId = "<vector_store_id>";
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(
     ResponseTool.CreateFileSearchTool([vectorStoreId])
 );
@@ -466,7 +466,7 @@ require "openai"
 openai = OpenAI::Client.new
 
 response = openai.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   tools: [
     {
@@ -549,7 +549,7 @@ Limit the number of results
 
 ```typescript
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   tools: [
     {
@@ -566,7 +566,7 @@ console.log(response);
 
 ```python
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="What is deep research by OpenAI?",
     tools=[
         {
@@ -597,7 +597,7 @@ func main() {
 	tool := responses.ToolParamOfFileSearch([]string{"<vector_store_id>"})
 	tool.OfFileSearch.MaxNumResults = openai.Int(2)
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What is deep research by OpenAI?")},
 		Tools: []responses.ToolUnionParam{tool},
 	})
@@ -618,7 +618,7 @@ String vectorStoreId = "<vector_store_id>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("What is deep research by OpenAI?")
         .addTool(
             FileSearchTool.builder().addVectorStoreId(vectorStoreId).maxNumResults(2).build())
@@ -640,7 +640,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 string vectorStoreId = "<vector_store_id>";
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(
     ResponseTool.CreateFileSearchTool([vectorStoreId], maxResultCount: 2)
 );
@@ -658,7 +658,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   tools: [
     {
@@ -683,7 +683,7 @@ Include search results
 
 ```typescript
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   tools: [
     {
@@ -700,7 +700,7 @@ console.log(response);
 
 ```python
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="What is deep research by OpenAI?",
     tools=[
         {
@@ -729,7 +729,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:   "gpt-6-astra",
+		Model:   "gpt-6.2-astra",
 		Input:   responses.ResponseNewParamsInputUnion{OfString: openai.String("What is deep research by OpenAI?")},
 		Tools:   []responses.ToolUnionParam{responses.ToolParamOfFileSearch([]string{"<vector_store_id>"})},
 		Include: []responses.ResponseIncludable{responses.ResponseIncludableFileSearchCallResults},
@@ -752,7 +752,7 @@ String vectorStoreId = "<vector_store_id>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("What is deep research by OpenAI?")
         .addInclude(ResponseIncludable.of("file_search_call.results"))
         .addFileSearchTool(List.of(vectorStoreId))
@@ -774,7 +774,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 string vectorStoreId = "<vector_store_id>";
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(ResponseTool.CreateFileSearchTool([vectorStoreId]));
 options.IncludedProperties.Add(IncludedResponseProperty.FileSearchCallResults);
 options.InputItems.Add(
@@ -797,7 +797,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   include: ["file_search_call.results"],
   tools: [
@@ -823,7 +823,7 @@ Metadata filtering
 
 ```typescript
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   tools: [
     {
@@ -844,7 +844,7 @@ console.log(response);
 
 ```python
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="What is deep research by OpenAI?",
     tools=[
         {
@@ -889,7 +889,7 @@ func main() {
 		},
 	}
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What is deep research by OpenAI?")},
 		Tools: []responses.ToolUnionParam{tool},
 	})
@@ -912,7 +912,7 @@ String vectorStoreId = "<vector_store_id>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("What is deep research by OpenAI?")
         .addTool(
             FileSearchTool.builder()
@@ -952,7 +952,7 @@ BinaryData filters = BinaryData.FromString(
     { "type": "in", "key": "category", "value": ["blog", "announcement"] }
     """
 );
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra" };
 options.Tools.Add(
     ResponseTool.CreateFileSearchTool([vectorStoreId], filters: filters)
 );
@@ -970,7 +970,7 @@ require "openai"
 client = OpenAI::Client.new
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "What is deep research by OpenAI?",
   tools: [
     {

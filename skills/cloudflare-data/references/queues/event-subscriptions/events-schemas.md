@@ -1,6 +1,6 @@
 ---
 description: Reference of available event sources and their schemas for Queues event subscriptions.
-title: Events &amp; schemas
+title: Events & schemas
 image: https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/og.png?v=f54d418032af5d67
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Fix errors when modifying a canceled subscription.
-title: Resolve &quot;you cannot modify this subscription&quot;
+title: Resolve "you cannot modify this subscription"
 image: https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/og.png?v=fb077fb25567a217
 ---
 

@@ -101,7 +101,7 @@ const prompt = [
 ].join("\n");
 
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   reasoning: { effort: "xhigh", mode: "pro" },
   input: prompt,
 });
@@ -124,7 +124,7 @@ Identify the likeliest root cause and the smallest safe fix.
 """
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     reasoning={"effort": "xhigh", "mode": "pro"},
     input=prompt,
 )
@@ -158,7 +158,7 @@ func main() {
 	reasoning := shared.ReasoningParam{Effort: shared.ReasoningEffortXhigh}
 	reasoning.SetExtraFields(map[string]any{"mode": "pro"})
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:     "gpt-6-astra",
+		Model:     "gpt-6.2-astra",
 		Reasoning: reasoning,
 		Input:     responses.ResponseNewParamsInputUnion{OfString: openai.String(prompt)},
 	})
@@ -179,7 +179,7 @@ import com.openai.models.responses.ResponseCreateParams;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             "Our CI job started failing after a dependency bump. Error: TypeError: Timeout.__init__() got an unexpected keyword argument 'connect'. Identify the likeliest root cause and the smallest safe fix.")
         .reasoning(
@@ -210,7 +210,7 @@ prompt = <<~PROMPT
 PROMPT
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   reasoning: {
     effort: :xhigh,
     mode: :pro
@@ -270,7 +270,7 @@ const incident = [
 ].join("\n");
 
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   text: { verbosity: "low" },
   input: incident,
 });
@@ -284,7 +284,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     text={"verbosity": "low"},
     input="""
     Summarize this incident for the next on-call engineer.
@@ -320,7 +320,7 @@ func main() {
 		"- likely trigger: cache stampede after deploy",
 	}, "\n")
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Text:  responses.ResponseTextConfigParam{Verbosity: "low"},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(incident)},
 	})
@@ -339,7 +339,7 @@ import com.openai.models.responses.ResponseTextConfig;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             "Summarize this incident for the next on-call engineer: checkout latency spiked from 220 ms to 4.8 s, only us-east-1 was affected, rollback is complete, and the likely trigger was a cache stampede.")
         .text(ResponseTextConfig.builder().verbosity(ResponseTextConfig.Verbosity.LOW).build())
@@ -365,7 +365,7 @@ incident = <<~INCIDENT
 INCIDENT
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   text: { verbosity: :low },
   input: incident
 )
@@ -504,7 +504,7 @@ const crmNamespace: OpenAI.Responses.NamespaceTool = {
 };
 
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input:
     "Find the right billing tool and explain why invoice INV-1043 still " +
     "shows overdue after a payment yesterday.",
@@ -566,7 +566,7 @@ crm_namespace = {
 }
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=(
         "Find the right billing tool and explain why invoice INV-1043 still "
         "shows overdue after a payment yesterday."
@@ -606,7 +606,7 @@ func main() {
 	)
 	toolSearch := responses.ToolUnionParam{OfToolSearch: &responses.ToolSearchToolParam{}}
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(
 			"Find the right billing tool and explain why invoice INV-1043 still shows overdue after a payment yesterday.",
 		)},
@@ -650,7 +650,7 @@ import java.util.Map;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             "Find the right billing tool and explain why invoice INV-1043 still shows overdue after a payment yesterday.")
         .addTool(
@@ -746,7 +746,7 @@ crm = namespace_tool(
 )
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Find the right billing tool and explain why invoice INV-1043 still shows overdue after a payment yesterday.",
   tools: [billing, crm, { type: :tool_search }]
 )
@@ -887,12 +887,12 @@ const openai = new OpenAI();
 const longWindow = sessionItems;
 
 const compacted = await openai.responses.compact({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: longWindow,
 });
 
 const nextResponse = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   store: false,
   input: [
     // Preserve replayable compacted items.
@@ -920,12 +920,12 @@ client = OpenAI()
 long_window = session_items
 
 compacted = client.responses.compact(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=long_window,
 )
 
 next_response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     store=False,
     input=[
         *compacted.output,  # Use compact output as-is.
@@ -961,7 +961,7 @@ func main() {
 		responses.ResponseInputItemParamOfMessage("Find the cache invalidation bug in this debugging session.", responses.EasyInputMessageRoleUser),
 	}
 	compacted, err := client.Responses.Compact(context.Background(), responses.ResponseCompactParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseCompactParamsInputUnion{OfResponseInputItemArray: longWindow},
 	})
 	if err != nil {
@@ -974,7 +974,7 @@ func main() {
 		),
 	)
 	nextResponse, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Store: openai.Bool(false),
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: input},
 	})
@@ -1012,7 +1012,7 @@ var compacted =
         .responses()
         .compact(
             ResponseCompactParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .input("Find the cache invalidation bug in this debugging session.")
                 .build());
 var input = new ArrayList<ResponseInputItem>();
@@ -1041,7 +1041,7 @@ client
     .responses()
     .create(
         ResponseCreateParams.builder()
-            .model("gpt-6-astra")
+            .model("gpt-6.2-astra")
             .inputOfResponse(input)
             .store(false)
             .build())
@@ -1065,7 +1065,7 @@ long_window = [
 ]
 
 compacted = client.responses.compact(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: long_window
 )
 input = compacted.output.dup
@@ -1075,7 +1075,7 @@ input << {
 }
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   store: false,
   input: input
 )
@@ -1141,7 +1141,7 @@ const instructions = [
 ].join("\n");
 
 const response = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   prompt_cache_key: "tenant-acme-support-agent",
   instructions,
   input: "Summarize the current escalation for the on-call lead.",
@@ -1162,7 +1162,7 @@ Use the same tone, safety rules, and tool plan for each ticket.
 """
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     prompt_cache_key="tenant-acme-support-agent",
     instructions=instructions,
     input="Summarize the current escalation for the on-call lead.",
@@ -1191,7 +1191,7 @@ func main() {
 		"Use the same tone, safety rules, and tool plan for each ticket.",
 	}, "\n")
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:          "gpt-6-astra",
+		Model:          "gpt-6.2-astra",
 		PromptCacheKey: openai.String("tenant-acme-support-agent"),
 		Instructions:   openai.String(instructions),
 		Input:          responses.ResponseNewParamsInputUnion{OfString: openai.String("Summarize the current escalation for the on-call lead.")},
@@ -1210,7 +1210,7 @@ import com.openai.models.responses.ResponseCreateParams;
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .instructions(
             "You are the support agent for Acme.\n"
                 + "Follow the Acme support policy and escalation rubric.\n"
@@ -1235,7 +1235,7 @@ ResponsesClient client = new(key);
 
 CreateResponseOptions options = new()
 {
-    Model = "gpt-6-astra",
+    Model = "gpt-6.2-astra",
     PromptCacheKey = "tenant-acme-support-agent",
     Instructions = "Follow the Acme support policy and escalation rubric.",
 };
@@ -1258,7 +1258,7 @@ instructions = <<~INSTRUCTIONS
 INSTRUCTIONS
 
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   prompt_cache_key: "tenant-acme-support-agent",
   instructions: instructions,
   input: "Summarize the current escalation for the on-call lead."
@@ -1309,7 +1309,7 @@ const history: OpenAI.Responses.ResponseInput = [
 ];
 
 const first = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   store: false,
   reasoning: { effort: "medium", context: "current_turn" },
   input: history,
@@ -1322,7 +1322,7 @@ history.push({
 });
 
 const second = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   store: false,
   reasoning: { effort: "medium", context: "all_turns" },
   input: history,
@@ -1344,7 +1344,7 @@ history = [
 ]
 
 first = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     store=False,
     reasoning={"effort": "medium", "context": "current_turn"},
     input=history,
@@ -1359,7 +1359,7 @@ history.append(
 )
 
 second = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     store=False,
     reasoning={"effort": "medium", "context": "all_turns"},
     input=history,
@@ -1387,7 +1387,7 @@ func main() {
 		responses.ResponseInputItemParamOfMessage("Investigate why invoice INV-1043 has mismatched tax totals.", responses.EasyInputMessageRoleUser),
 	}
 	first, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:     "gpt-6-astra",
+		Model:     "gpt-6.2-astra",
 		Store:     openai.Bool(false),
 		Reasoning: shared.ReasoningParam{Effort: shared.ReasoningEffortMedium, Context: shared.ReasoningContextCurrentTurn},
 		Include:   []responses.ResponseIncludable{responses.ResponseIncludableReasoningEncryptedContent},
@@ -1402,7 +1402,7 @@ func main() {
 		responses.EasyInputMessageRoleUser,
 	))
 	second, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:     "gpt-6-astra",
+		Model:     "gpt-6.2-astra",
 		Store:     openai.Bool(false),
 		Reasoning: shared.ReasoningParam{Effort: shared.ReasoningEffortMedium, Context: shared.ReasoningContextAllTurns},
 		Input:     responses.ResponseNewParamsInputUnion{OfInputItemList: history},
@@ -1450,7 +1450,7 @@ var first =
         .responses()
         .create(
             ResponseCreateParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .inputOfResponse(history)
                 .store(false)
                 .reasoning(
@@ -1474,7 +1474,7 @@ client
     .responses()
     .create(
         ResponseCreateParams.builder()
-            .model("gpt-6-astra")
+            .model("gpt-6.2-astra")
             .inputOfResponse(history)
             .store(false)
             .reasoning(
@@ -1503,7 +1503,7 @@ history = [
 ]
 
 first = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   store: false,
   reasoning: {
     effort: :medium,
@@ -1519,7 +1519,7 @@ history << {
 }
 
 second = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   store: false,
   reasoning: {
     effort: :medium,
@@ -1599,7 +1599,7 @@ const openai = new OpenAI();
 const logBundleFileId = "file_123";
 
 let job = await openai.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   background: true,
   store: false,
   input: "Analyze this large log bundle and cluster the primary failure modes.",
@@ -1631,7 +1631,7 @@ client = OpenAI()
 log_bundle_file_id = "file_123"
 
 job = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     background=True,
     store=False,
     input="Analyze this large log bundle and cluster the primary failure modes.",
@@ -1671,7 +1671,7 @@ func main() {
 		FileIDs: []string{"file_abc123"},
 	})
 	job, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:      "gpt-6-astra",
+		Model:      "gpt-6.2-astra",
 		Background: openai.Bool(true),
 		Store:      openai.Bool(false),
 		Input:      responses.ResponseNewParamsInputUnion{OfString: openai.String("Analyze this large log bundle and cluster the primary failure modes.")},
@@ -1702,7 +1702,7 @@ String fileId = "file_abc123";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Analyze this large log bundle and cluster the primary failure modes.")
         .background(true)
         .store(false)
@@ -1736,7 +1736,7 @@ require "openai"
 client = OpenAI::Client.new
 
 job = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   background: true,
   store: false,
   input: "Analyze this large log bundle and cluster the primary failure modes.",
@@ -1842,7 +1842,7 @@ const ws = new ResponsesWS(openai);
 try {
   ws.send({
     type: "response.create",
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     store: false,
     input: [
       {
@@ -1919,7 +1919,7 @@ client = OpenAI()
 with client.responses.connect() as connection:
     # Use the same typed parameters as client.responses.create(...).
     connection.response.create(
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         store=False,
         input=[
             {
@@ -1984,7 +1984,7 @@ if err != nil {
 }
 defer conn.Close()
 if err := conn.Create(ctx, responses.ResponsesClientEventResponseCreateParam{
-	Model: "gpt-6-astra",
+	Model: "gpt-6.2-astra",
 	Store: openai.Bool(false),
 	Input: responses.ResponsesClientEventResponseCreateInputUnionParam{
 		OfString: openai.String("Find the flaky test in this run, call the tools you need, and keep going until you can explain the root cause."),
@@ -2038,7 +2038,7 @@ try (var conn = client.responses().connect()) {
   conn.send(
       ResponsesClientEvent.ofResponseCreate(
           ResponsesClientEvent.ResponseCreate.builder()
-              .model("gpt-6-astra")
+              .model("gpt-6.2-astra")
               .store(false)
               .input(
                   "Find the flaky test in this run, call the tools you need, and keep going until you can explain the root cause.")
@@ -2098,7 +2098,7 @@ Sync do |task|
   task.with_timeout(120) do
     client.responses.connect(request_options: { timeout: 10 }) do |connection|
       connection.response.create(
-        stream_id: "main", model: "gpt-6-astra", store: false,
+        stream_id: "main", model: "gpt-6.2-astra", store: false,
         input: [
           {
             role: "user",

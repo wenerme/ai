@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/hyperdrive/configuration/connect-to-pri
 
 # Connect to a private database using Workers VPC (Recommended)
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers VPC](https://developers.cloudflare.com/workers-vpc/) provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) that points to your database and pass its service ID to Hyperdrive.
 
@@ -111,11 +111,28 @@ npx wrangler vpc service create my-postgres-db \
 
 To update an existing VPC Service, use `wrangler vpc service update` with the same flag.
 
-Note
-
-Workers VPC trusts publicly trusted certificates and [Cloudflare Origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/). Uploading a custom CA certificate to Workers VPC is not supported yet. If your database uses a certificate signed by a private CA, set `--cert-verification-mode` to `verify_ca` or `disabled` until custom CA support is available.
-
 For the full list of verification modes, refer to [TLS certificate verification mode](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#tls-certificate-verification-mode).
+
+### Private CA and client certificates
+
+If your database uses a certificate signed by a private CA (for example, the Amazon RDS CA bundle), or requires a client certificate, upload the certificates and attach them to the VPC Service instead of weakening verification:
+
+```sh
+npx wrangler cert upload certificate-authority --ca-cert ./db-ca.pem --name db-ca
+npx wrangler cert upload mtls-certificate --cert ./client.pem --key ./client-key.pem --name db-client
+
+npx wrangler vpc service create my-postgres-db \
+  --type tcp \
+  --tcp-port 5432 \
+  --app-protocol postgresql \
+  --tunnel-id <YOUR_TUNNEL_ID> \
+  --hostname <YOUR_DATABASE_HOSTNAME> \
+  --certificate-authority <CA_CERTIFICATE_ID> \
+  --client-certificate <CLIENT_CERTIFICATE_ID> \
+  --cert-verification-mode verify_full
+```
+
+Omit `--client-certificate` if your database does not require client certificate authentication. Refer to [Custom CA and client certificates](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#custom-ca-and-client-certificates) for all options, including the API and certificate rotation.
 
 ## 3. Create a Hyperdrive configuration
 
@@ -262,7 +279,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-17",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -275,7 +292,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-17"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -363,7 +380,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-17",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -376,7 +393,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-17"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -450,5 +467,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/#page","headline":"Connect to a private database using Workers VPC (Recommended)","description":"Workers VPC provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP VPC Service that points to your database and pass its service ID to Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/og.png?v=74c80cc8872d1921","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/#page","headline":"Connect to a private database using Workers VPC (Recommended)","description":"Workers VPC provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP VPC Service that points to your database and pass its service ID to Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/og.png?v=74c80cc8872d1921","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
