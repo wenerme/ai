@@ -2,12 +2,9 @@
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/604390) in GitLab 19.5 [with a flag](../feature_flags/_index.md) named `custom_code_dropdown_clients`. Enabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/604390) as a [beta](../../policy/development_stages_support.md#beta) in GitLab 19.5 [with a flag](../feature_flags/_index.md) named `custom_code_dropdown_clients`. Enabled by default.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/632947) in GitLab 19.7. Feature flag `custom_code_dropdown_clients` removed.
 
 Add custom clients to the **Open with** section of the **Code** dropdown list on project pages.
 Users can then clone a repository directly into a Git client that GitLab doesn't list by default.
@@ -17,7 +14,6 @@ Users can then clone a repository directly into a Git client that GitLab doesn't
 Prerequisites:
 
 - You must be an administrator.
-- The `custom_code_dropdown_clients` feature flag must be enabled.
 
 To configure entries:
 

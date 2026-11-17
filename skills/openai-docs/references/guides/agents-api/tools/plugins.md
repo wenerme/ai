@@ -60,7 +60,7 @@ Copy the plugin to `/workspace/plugins/docs-helper` and add that absolute path t
 
 Register a plugin
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -170,6 +170,14 @@ Supply one ZIP per plugin in `environment.plugins`. Each ZIP must contain one pl
 
 This helper packages your folder and creates a session. Pass your API client and the path to `docs-helper`. OpenAI extracts and registers the plugin automatically.
 
+
+
+
+The Ruby helper requires the `openai` and `rubyzip` gems. Install them with `gem install openai rubyzip` and set `OPENAI_API_KEY` before creating the client.
+
+
+
+
 Upload a plugin folder
 
 ```python
@@ -210,6 +218,49 @@ def upload_plugin(client, plugin_directory):
                 ],
             },
         )
+```
+
+```ruby
+require "openai"
+require "json"
+require "base64"
+require "tmpdir"
+require "fileutils"
+require "zip"
+
+def upload_plugin(client, plugin_directory)
+  plugin_directory = File.expand_path(plugin_directory)
+  manifest = JSON.parse(File.read(File.join(plugin_directory, ".codex-plugin/plugin.json")))
+  Dir.mktmpdir do |temporary|
+    archive = File.join(temporary, "plugin.zip")
+    Zip::File.open(archive, create: true) do |zip|
+      Dir.glob("**/*", File::FNM_DOTMATCH, base: plugin_directory).sort.each do |relative|
+        source = File.join(plugin_directory, relative)
+        next unless File.file?(source)
+
+        zip.add(File.join(File.basename(plugin_directory), relative), source)
+      end
+    end
+    client.beta.agents.sessions.create(
+      agent: { model: "gpt-6-astra" },
+      environment: {
+        type: :openai_hosted,
+        plugins: [
+          {
+            type: :inline,
+            name: manifest.fetch("name"),
+            description: manifest.fetch("description"),
+            source: {
+              type: :base64,
+              media_type: "application/zip",
+              data: Base64.strict_encode64(File.binread(archive))
+            }
+          }
+        ]
+      }
+    )
+  end
+end
 ```
 
 

@@ -1421,6 +1421,8 @@ If you want to control more closely what type of phrases the model outputs at th
 
 #### Example
 
+Add sample phrases to a tool description
+
 ```python
 tools = [
     {
@@ -1461,6 +1463,53 @@ Preamble sample phrases:
             "additionalProperties": False,
         },
     },
+]
+```
+
+```ruby
+tools = [
+  {
+    "type" => "function",
+    "name" => "lookup_account",
+    "description" => "Retrieve a customer account using either an email or phone number to e" \
+      "nable verification and account-specific actions.\n\nPreamble sample phra" \
+      "ses:\n- For security, I’ll pull up your account using the email on file" \
+      ".\n- Let me look up your account by {email} now.\n- I’m fetching the acc" \
+      "ount linked to {phone} to verify access.\n- One moment—I’m opening your" \
+      " account details.",
+    "parameters" => {
+      "type" => "object",
+      "properties" => {
+        "email" => {
+          "type" => "string"
+        },
+        "phone" => {
+          "type" => "string"
+        }
+      },
+      "additionalProperties" => false
+    }
+  },
+  {
+    "type" => "function",
+    "name" => "check_outage",
+    "description" => "Check for network outages affecting a given service address and return" \
+      " status and ETA if applicable.\n\nPreamble sample phrases:\n- I’ll check " \
+      "for any outages at {service_address} right now.\n- Let me look up netwo" \
+      "rk status for your area.\n- I’m checking whether there’s an active outa" \
+      "ge impacting your address.\n- One sec—verifying service status and any " \
+      "posted ETA.",
+    "parameters" => {
+      "type" => "object",
+      "properties" => {
+        "service_address" => {
+          "type" => "string"
+        }
+      },
+      "required" => ["service_address"],
+      "additionalProperties" => false
+    }
+  }
 ]
 ```
 
@@ -1950,6 +1999,8 @@ This approach reduces the model’s cognitive load, making it easier for it to h
 
 #### Example
 
+Update the conversation state
+
 ```python
 from typing import Literal
 
@@ -2045,6 +2096,96 @@ def build_session_update(state: State) -> dict:
             "tools": TOOLS_BY_STATE[state] + [build_state_change_tool(state)],
         },
     }
+```
+
+```ruby
+TRANSITIONS = {
+  "verify" => ["resolve"],
+  "resolve" => []
+}.freeze
+
+TOOLS_BY_STATE = {
+  "verify" => [
+    {
+      "type" => "function",
+      "name" => "lookup_account",
+      "description" => "Fetch account by email or phone.",
+      "parameters" => {
+        "type" => "object",
+        "properties" => {
+          "email_or_phone" => {
+            "type" => "string"
+          }
+        },
+        "required" => ["email_or_phone"]
+      }
+    }
+  ],
+  "resolve" => [
+    {
+      "type" => "function",
+      "name" => "schedule_technician",
+      "description" => "Book a technician visit.",
+      "parameters" => {
+        "type" => "object",
+        "properties" => {
+          "account_id" => {
+            "type" => "string"
+          },
+          "window" => {
+            "type" => "string",
+            "enum" => ["10-12 ET", "14-16 ET"]
+          }
+        },
+        "required" => ["account_id", "window"]
+      }
+    }
+  ]
+}.freeze
+
+INSTRUCTIONS_BY_STATE = {
+  "verify" => "# Role & Objective\nVerify identity to access the account.\n\n# Conversat" \
+    "ion (Verify)\n- Ask for the email or phone on the account.\n- Read back " \
+    "digits one-by-one (e.g., '4-1-5… Is that correct?').\nExit when: Accoun" \
+    "t ID is returned.\nWhen exit is satisfied: call set_conversation_state(" \
+    "next_state=\"resolve\").",
+  "resolve" => "# Role & Objective\nApply a fix by booking a technician.\n\n# Conversatio" \
+    "n (Resolve)\n- Offer two windows: '10–12 ET' or '2–4 ET'.\n- Book the ch" \
+    "osen window.\nExit when: Appointment is confirmed.\nWhen exit is satisfi" \
+    "ed: end the call politely."
+}.freeze
+
+def build_state_change_tool(current)
+  allowed = TRANSITIONS.fetch(current)
+  readable = allowed.empty? ? "no further states (terminal)" : allowed.join(", ")
+  {
+    "type" => "function",
+    "name" => "set_conversation_state",
+    "description" => "Switch the conversation phase. Current: '#{current}'. " \
+                     "You may switch only to: #{readable}. Call this AFTER exit criteria are satisfied.",
+    "parameters" => {
+      "type" => "object",
+      "properties" => {
+        "next_state" => {
+          "type" => "string",
+          "enum" => allowed
+        }
+      },
+      "required" => ["next_state"]
+    }
+  }
+end
+
+def build_session_update(state)
+  {
+    "type" => "session.update",
+    "session" => {
+      "type" => "realtime",
+      "instructions" => INSTRUCTIONS_BY_STATE.fetch(state),
+      "tools" => TOOLS_BY_STATE.fetch(state) + [build_state_change_tool(state)]
+    }
+  }
+end
 ```
 
 

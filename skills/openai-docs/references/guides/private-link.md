@@ -172,7 +172,7 @@ curl https://southcentralus.privatelink.api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "Say hello from Private Link."
   }'
 ```

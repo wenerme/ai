@@ -38,7 +38,7 @@ Use these fields in the `query` parameter to filter your results.
 | [Timestamp](#timestamp)              | `timestamp`     | `=`, `>`, `<`, `>=`, `<=` |
 | [User](#user)                        | `user`          | `=`, `!=`, `in`, `not in` |
 
-### Event {#event}
+### Event
 
 **Description**: Filter by the event identifier.
 
@@ -47,12 +47,12 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - Excluding an event identifier that GitLab does not recognize excludes nothing.
   Validation of event identifiers is proposed in [issue 629846](https://gitlab.com/gitlab-org/gitlab/-/issues/629846).
 
-### Feature {#feature}
+### Feature
 
 **Description**: Filter by the GitLab Duo feature that generated the event. For example,
 `code_suggestions` or `chat`.
@@ -62,19 +62,19 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - `!=` and `not in` return only events whose feature is known. Events that GitLab could not
   map to a feature are left out, so `feature != "chat"` is not the same as every event except chat.
 
-### Features count {#features-count}
+### Features count
 
 **Description**: Filter by the number of unique features used. This filter is only
 valid when the `featuresCount` metric is also selected.
 
 **Allowed value types**: `Number`
 
-### Timestamp {#timestamp}
+### Timestamp
 
 **Description**: Filter by when the event occurred.
 Use range operators to define a time window.
@@ -85,11 +85,11 @@ Use range operators to define a time window.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### User {#user}
+### User
 
 **Description**: Filter by the user who triggered the event.
 
@@ -121,7 +121,7 @@ Use range operators to define a time window.
 | Total count                 | `totalCount`              | Total number of events, optionally filtered by event. Accepts an optional `event` parameter with one or more event identifiers (the same values as the `event` filter), for example `totalCount(event="publish_duo_code_review_comments")` or `totalCount(event=["request_review_duo_code_review_on_mr_by_author", "request_review_duo_code_review_on_mr_by_non_author"])`. Without the parameter, or with `event=[]`, all events are counted. An event identifier that GitLab does not recognize returns an error. |
 | Users count                 | `usersCount`              | Number of unique users.                                 |
 
-**Notes**:
+**Additional details**:
 
 - The `returningUsersCount` and `previousPeriodUsersCount` metrics compare each `timestamp`
   bucket with the preceding one, so the `timestamp` dimension must also be selected. Without it,

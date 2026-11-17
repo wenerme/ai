@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/cf/wrangler/reference/og.png?v=89a02a5f
 
 # Wrangler to cf reference
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/wrangler/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/wrangler/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `cf migrate` converts a Wrangler project to `cf` for you. It writes `cloudflare.config.ts` from the Wrangler configuration file, adds `cf` to the project, and lists the items that you finish by hand. Start with [Migrate a Wrangler project](https://developers.cloudflare.com/cf/wrangler/migrate/), then use this page to understand what `cf migrate` changed or to finish a conversion by hand.
 
 ## Commands
 
-Most Wrangler commands have a `cf` equivalent, although the command name and arguments can differ. For example, Worker versions and deployments are under `cf workers versions` and `cf workers deployments`.
+Most Wrangler commands have a `cf` equivalent, although the command name and arguments can differ. For example, Worker versions and deployments are under `cf workers versions` and `cf workers deployments`, `wrangler secret put` is `cf workers secrets update`, and `wrangler tail <WORKER_NAME>` is `cf observability tail --worker <WORKER_NAME>`. `cf observability tail` streams events from [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/), so turn on Workers Logs for the Worker first.
 
 To find the `cf` command for a task, use any of the following:
 
@@ -33,18 +33,6 @@ To find the `cf` command for a task, use any of the following:
 - **Coding agent**: ask your agent for the `cf` equivalent of a Wrangler command. To set up your agent, refer to [Use cf with coding agents](https://developers.cloudflare.com/cf/agents/).
 
 Resource commands in `cf` take the identifiers that the Cloudflare API expects, such as a D1 database ID rather than its name. They act on remote resources. `--local` works only for a few resources that local development provides, such as KV keys, D1 through `cf d1 raw`, `cf d1 migrations list`, and `cf d1 migrations apply`, and R2 objects. For the full list, refer to [Local resource data](https://developers.cloudflare.com/cf/projects/#local-resource-data). Commands without a local equivalent, such as `cf d1 query`, return an error.
-
-### Commands not yet supported
-
-`cf` is in beta, and some Wrangler commands are not supported yet. Run these with `npx wrangler` instead of installing Wrangler. Wrangler does not read `cloudflare.config.ts`, so pass the Worker name.
-
-- **`wrangler tail`**: `cf` cannot stream live logs yet. Run:
-
-  ```sh
-  npx wrangler tail <WORKER_NAME>
-  ```
-
-- **`wrangler secret put`**: `cf` cannot set a single secret yet. Run `npx wrangler secret put <SECRET_NAME> --name <WORKER_NAME>`, or upload secrets with a new Worker version by passing `--secrets-file <PATH>` to `cf deploy` or `cf workers versions create`.
 
 ## Configuration fields
 
@@ -106,7 +94,7 @@ Build settings do not go in `cloudflare.config.ts`. Where they go depends on the
 | `dev` | `server` options | `dev`, with camelCase keys |
 | `rules`, `tsconfig`, `no_bundle`, `find_additional_modules`, `base_dir`, `preserve_file_names` | Not used. Vite handles module resolution and bundling. | camelCase keys, such as `noBundle` and `baseDir` |
 
-With the Wrangler bundler, `cf migrate` writes these settings to `wrangler.config.ts` for you and adds `types: { generate: false }`. With the Vite bundler, it lists the fields in a required item for you to move. `wrangler.config.ts` is experimental and can change during the beta.
+With the Wrangler bundler, `cf migrate` writes these settings to `wrangler.config.ts` for you and adds `types: { generate: false }`. With the Vite bundler, it lists the fields in a required item for you to move. `wrangler.config.ts` is experimental and can change.
 
 ## Convert environments to modes
 
@@ -980,5 +968,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/wrangler/reference/#page","headline":"Wrangler to cf reference","description":"Find cf equivalents for Wrangler commands, and map Wrangler configuration, build settings, and environments to cf.","url":"https://developers.cloudflare.com/cf/wrangler/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/wrangler/reference/og.png?v=89a02a5f88f20fa3","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/wrangler/reference/#page","headline":"Wrangler to cf reference","description":"Find cf equivalents for Wrangler commands, and map Wrangler configuration, build settings, and environments to cf.","url":"https://developers.cloudflare.com/cf/wrangler/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/wrangler/reference/og.png?v=89a02a5f88f20fa3","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

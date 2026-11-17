@@ -37,6 +37,15 @@ widget appears and shows the workplan status:
 
 - : The work item has no workplan, and you can create one.
 - : The work item has no workplan, and you do not have permission to create one.
+- : GitLab Duo starts to generate a workplan.
+- : GitLab Duo reviews the work item before it writes the workplan.
+- : GitLab Duo writes the workplan.
+- : GitLab Duo needs your input to continue.
+  When GitLab Duo asks questions, the status also shows the number of open questions.
+- : All open questions from GitLab Duo are
+  resolved, and the generation can continue.
+- : GitLab Duo could not generate a workplan.
+- : The generation was canceled before GitLab Duo wrote a workplan.
 - : The work item has a workplan.
 
 ## Set up workplan generation
@@ -242,7 +251,14 @@ evaluates the work item.
 
 To view feedback on how to improve readiness, select
 () next to the readiness level.
-The feedback opens in a drawer and shows any suggested changes to the work item or its workplan.
+The feedback opens in a drawer and shows one of the following:
+
+- Suggested changes to the work item or its workplan
+- , when GitLab Duo has no suggestions
+
+If the feedback cannot be loaded, the drawer shows an error.
+To load the feedback again, select .
+
 To close the drawer, select  again.
 
 To improve readiness, make the suggested changes.

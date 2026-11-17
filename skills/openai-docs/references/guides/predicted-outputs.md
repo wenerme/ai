@@ -10,7 +10,7 @@ Predicted Outputs are available today using the latest `gpt-4o`, `gpt-4o-mini`, 
 
 Predicted Outputs are particularly useful for regenerating text documents and code files with small modifications. Let's say you want the [GPT-4o model](https://developers.openai.com/api/docs/models#gpt-4o) to refactor a piece of JavaScript code, and convert the `username` property of the `User` class to be `email` instead:
 
-```javascript
+```typescript
 class User {
   firstName = "";
   lastName = "";
@@ -20,6 +20,18 @@ class User {
 export default User;
 ```
 
+```ruby
+class User
+  attr_accessor :first_name, :last_name, :username
+
+  def initialize
+    @first_name = ""
+    @last_name = ""
+    @username = ""
+  end
+end
+```
+
 
 Most of the file will be unchanged, except for line 4 above. If you use the current text of the code file as your prediction, you can regenerate the entire file with lower latency. These time savings add up quickly for larger files.
 
@@ -27,7 +39,7 @@ Below is an example of using the `prediction` parameter in our SDKs to predict t
 
 Refactor a JavaScript class with a Predicted Output
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const code = `
@@ -317,7 +329,7 @@ The latency gains of Predicted Outputs are even greater when you use streaming f
 
 Predicted Outputs with streaming
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const code = `
@@ -573,7 +585,7 @@ stream.text.each { |text| print(text) }
 
 When providing prediction text, your prediction can appear anywhere within the generated response, and still provide latency reduction for the response. Let's say your predicted text is the simple [Hono](https://hono.dev/) server shown below:
 
-```javascript
+```typescript
 import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
@@ -601,6 +613,33 @@ serve({
 });
 ```
 
+```ruby
+require "webrick"
+
+server = WEBrick::HTTPServer.new(Port: Integer(ENV.fetch("PORT", "3000")), BindAddress: "127.0.0.1")
+# Build your client first and place its static files in dist/.
+static_files = WEBrick::HTTPServlet::FileHandler.new(server, File.expand_path("dist"))
+server.mount_proc("/") do |request, response|
+  response["Content-Type"] = "text/plain"
+  if !%w[GET HEAD].include?(request.request_method)
+    response.status = 404
+    response.body = "404 Not Found"
+  elsif request.path == "/api"
+    response.body = "Hello Hono!"
+  else
+    begin
+      static_files.service(request, response)
+    rescue WEBrick::HTTPStatus::NotFound
+      response.status = 404
+      response.body = "404 Not Found"
+    end
+  end
+end
+trap("INT") { server.shutdown }
+trap("TERM") { server.shutdown }
+server.start
+```
+
 
 You could prompt the model to regenerate the file with a prompt like:
 
@@ -613,7 +652,7 @@ markdown formatting.
 
 The response to the prompt might look something like this:
 
-```javascript
+```typescript
 import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
@@ -643,6 +682,35 @@ serve({
   fetch: app.fetch,
   port,
 });
+```
+
+```ruby
+require "webrick"
+
+server = WEBrick::HTTPServer.new(Port: Integer(ENV.fetch("PORT", "3000")), BindAddress: "127.0.0.1")
+# Build your client first and place its static files in dist/.
+static_files = WEBrick::HTTPServlet::FileHandler.new(server, File.expand_path("dist"))
+server.mount_proc("/") do |request, response|
+  response["Content-Type"] = "text/plain"
+  if !%w[GET HEAD].include?(request.request_method)
+    response.status = 404
+    response.body = "404 Not Found"
+  elsif request.path == "/api"
+    response.body = "Hello Hono!"
+  elsif request.path == "/hello"
+    response.body = "hello world"
+  else
+    begin
+      static_files.service(request, response)
+    rescue WEBrick::HTTPStatus::NotFound
+      response.status = 404
+      response.body = "404 Not Found"
+    end
+  end
+end
+trap("INT") { server.shutdown }
+trap("TERM") { server.shutdown }
+server.start
 ```
 
 
@@ -676,7 +744,7 @@ This time, there were no rejected prediction tokens, because the entire content 
 
 When using Predicted Outputs, you should consider the following factors and limitations.
 
-- Predicted Outputs are only supported with the GPT-4o, GPT-4o-mini, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano series of models.
+- Predicted Outputs are only supported with the GPT-4o, GPT-4o mini, GPT-4.1, GPT-4.1 mini, and GPT-4.1 nano series of models.
 - When providing a prediction, any tokens provided that are not part of the final completion are still charged at completion token rates. See the [`rejected_prediction_tokens` property of the `usage` object](https://developers.openai.com/api/reference/resources/chat#chat/object-usage) to see how many tokens are not used in the final response.
 - The following [API parameters](https://developers.openai.com/api/reference/resources/chat) are not supported when using Predicted Outputs:
   - `n`: values higher than 1 are not supported

@@ -9,7 +9,7 @@ size while preserving state needed for subsequent turns.
 
 Compaction helps you balance quality, cost, and latency as conversations grow.
 For guidance on preserving reasoning when changing conversation history, see
-[Keep the prefix unchanged](https://developers.openai.com/api/docs/guides/preserved-reasoning).
+[Keep the prefix unchanged](https://developers.openai.com/api/docs/guides/keep-prefix-unchanged).
 
 ## Server-side compaction
 
@@ -767,7 +767,7 @@ const conversation: OpenAI.Responses.ResponseInput = [
 ];
 
 const compacted = await client.responses.compact({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: conversation,
 });
 
@@ -777,7 +777,7 @@ const nextInput: OpenAI.Responses.ResponseInput = [
 ];
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: nextInput,
   store: false,
 });
@@ -791,7 +791,7 @@ long_input_items_array = [{"role": "user", "content": "Plan a trip to Kyoto."}]
 
 # 1) Compact the current window
 compacted = client.responses.compact(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=long_input_items_array,
 )
 
@@ -806,7 +806,7 @@ next_input = [
 ]
 
 next_response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input=next_input,
     store=False,  # Keep the flow ZDR-friendly
 )
@@ -832,7 +832,7 @@ func main() {
 		responses.ResponseInputItemParamOfMessage("Plan a trip to Kyoto.", responses.EasyInputMessageRoleUser),
 	}
 	compacted, err := client.Responses.Compact(context.Background(), responses.ResponseCompactParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseCompactParamsInputUnion{OfResponseInputItemArray: longInputItems},
 	})
 	if err != nil {
@@ -846,7 +846,7 @@ func main() {
 		responses.ResponseInputItemParamOfMessage(scanner.Text(), responses.EasyInputMessageRoleUser),
 	)
 	nextResponse, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Store: openai.Bool(false),
 		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: nextInput},
 	})
@@ -884,7 +884,7 @@ var compacted =
         .responses()
         .compact(
             ResponseCompactParams.builder()
-                .model("gpt-6-astra")
+                .model("gpt-6.2-astra")
                 .input("Plan a trip to Kyoto.")
                 .build());
 var input = new ArrayList<ResponseInputItem>();
@@ -912,7 +912,7 @@ client
     .responses()
     .create(
         ResponseCreateParams.builder()
-            .model("gpt-6-astra")
+            .model("gpt-6.2-astra")
             .inputOfResponse(input)
             .store(false)
             .build())
@@ -935,7 +935,7 @@ long_input = [
   }
 ]
 compaction = client.responses.compact(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: long_input
 )
 next_input = [
@@ -947,7 +947,7 @@ next_input = [
   }
 ]
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: next_input,
   store: false
 )

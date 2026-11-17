@@ -31,12 +31,12 @@ Use these fields in the `query` parameter to filter your results.
 
 | Field                                      | Name (and alias) | Operators                 |
 | ------------------------------------------ | ---------------- | ------------------------- |
-| [IDE name](#cs-ide-name)                   | `ideName`        | `=`, `!=`, `in`, `not in` |
-| [Language](#cs-language)                    | `language`       | `=`, `!=`, `in`, `not in` |
-| [Timestamp](#cs-timestamp)                 | `timestamp`      | `=`, `>`, `<`, `>=`, `<=` |
-| [User](#cs-user)                           | `user`           | `=`, `!=`, `in`, `not in` |
+| [IDE name](#ide-name)                   | `ideName`        | `=`, `!=`, `in`, `not in` |
+| [Language](#language)                    | `language`       | `=`, `!=`, `in`, `not in` |
+| [Timestamp](#timestamp)                 | `timestamp`      | `=`, `>`, `<`, `>=`, `<=` |
+| [User](#user)                           | `user`           | `=`, `!=`, `in`, `not in` |
 
-### IDE name {#cs-ide-name}
+### IDE name
 
 **Description**: Filter by the IDE used to generate suggestions.
 
@@ -45,7 +45,7 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `List` (use `in` or `not in` operator for multiple values)
 
-### Language {#cs-language}
+### Language
 
 **Description**: Filter by the programming language of the suggestion.
 
@@ -54,7 +54,7 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `List` (use `in` or `not in` operator for multiple values)
 
-### Timestamp {#cs-timestamp}
+### Timestamp
 
 **Description**: Filter by when the suggestion was generated.
 Use range operators to define a time window.
@@ -65,7 +65,7 @@ Use range operators to define a time window.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-### User {#cs-user}
+### User
 
 **Description**: Filter by the user who received the suggestion.
 

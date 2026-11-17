@@ -123,9 +123,45 @@ await pc.setRemoteDescription({
 
 Connect to the dedicated translation endpoint and select the model in the URL:
 
-Before running this example, install `ws` for Node.js, `websocket-client` and `sounddevice` for Python, or `async-websocket` for Ruby (`gem install async-websocket`). For Java, add the Maven dependency `com.openai:openai-java:4.75.1`.
+
+
+
+Before running this example, install `ws` for Node.js.
+
+
+
+
+
+
+
+Before running this example, install `websocket-client` and `sounddevice` for Python.
+
+
+
+
+
+
+
+Before running this example, install `openai` version 0.121.0 and `async-websocket` for Ruby (`gem install openai -v 0.121.0` and `gem install async-websocket`).
+
+
+
+
+
+
+
+Before running this example, add the Maven dependency `com.openai:openai-java:4.75.1`.
+
+
+
+
+
+
 
 The Java examples cover connection setup, language configuration, and audio input separately. They don't show a complete translation workflow: the Java SDK supports receiving events and finishing a session, but this guide doesn't include Java examples for those steps. Use the Node.js or Python examples to follow the complete workflow below.
+
+
+
 
 Connect to a translation session
 
@@ -212,33 +248,40 @@ try (http;
 ```
 
 ```ruby
-require "async"
-require "async/http/endpoint"
-require "async/websocket/client"
-require "json"
+require "openai"
+require "base64"
 
-endpoint = Async::HTTP::Endpoint.parse("wss://api.openai.com/v1/realtime/translations?model=gpt-realtime-translate", timeout: 10, alpn_protocols: ["http/1.1"])
-headers = {
-  "Authorization" => "Bearer #{ENV.fetch("OPENAI_API_KEY")}",
-  "OpenAI-Safety-Identifier" => "hashed-user-id"
-}
-Sync do |task|
-  task.with_timeout(120) do
-    Async::WebSocket::Client.connect(endpoint, headers: headers) do |connection|
-      message = connection.read or raise "Connection closed before session creation"
-      event = JSON.parse(message.to_str)
-      raise "Expected session.created: #{event}" unless event["type"] == "session.created"
-
-      puts(event.fetch("type"))
-    end
+client = OpenAI::Client.new
+client.realtime.connect_translation(
+  model: "gpt-realtime-translate",
+  request_options: { extra_headers: { "OpenAI-Safety-Identifier" => "hashed-user-id" } }
+) do |session|
+  created = session.receive
+  unless created.is_a?(OpenAI::Realtime::RealtimeTranslationSessionCreatedEvent)
+    raise "Connection closed before session creation"
   end
+
+  puts created.type
+  # Insert the configuration, audio, listener, and closing steps here.
 end
 ```
 
 
-For Ruby, insert the following configuration and audio-append snippets inside the `Async::WebSocket::Client.connect` block, after the session-created check and before the block ends. Keep the connection open while sending audio and receiving translation events.
+
+
+
+For Ruby, insert the configuration, audio-append, listener, and closing snippets below inside the same `client.realtime.connect_translation` block, after the session-created check. The listener snippet defines the event handler. The closing snippet calls that handler while `session.finish` drains the existing connection through `session.closed`. Keep all four steps inside the block so they use the configured Spanish session.
+
+
+
+
+
+
 
 The Java connection example closes the socket when its `try` block ends. The Java configuration and audio-input examples require an open `TranslationConnection`; keep it open while sending audio and receiving output. Before leaving the block, finish the session and drain its events through `session.closed` as described in [Close a WebSocket session](#close-a-websocket-session).
+
+
+
 
 Configure the target language after the socket opens:
 
@@ -316,8 +359,13 @@ connection.send(
 ```
 
 ```ruby
-connection.write(JSON.generate(type: "session.update", session: { audio: { output: { language: "es" } } }))
-connection.flush
+session.send_event(type: "session.update", session: { audio: { output: { language: "es" } } })
+updated = session.receive
+unless updated.is_a?(OpenAI::Realtime::RealtimeTranslationSessionUpdatedEvent)
+  raise "Connection closed before session update"
+end
+
+puts updated.type
 ```
 
 
@@ -373,12 +421,12 @@ static void appendAudio(TranslationConnection connection, byte[] pcmAudio) {
 ```
 
 ```ruby
-require "base64"
+# speech.pcm contains nonempty mono PCM16 audio sampled at 24 kHz.
+raise "Expected nonempty PCM16 audio" unless File.size("speech.pcm").positive? && File.size("speech.pcm").even?
 
-File.open("speech.pcm", "rb") do |audio|
-  while (chunk = audio.read(4_800))
-    connection.write(JSON.generate(type: "session.input_audio_buffer.append", audio: Base64.strict_encode64(chunk)))
-    connection.flush
+File.open("speech.pcm", "rb") do |input|
+  while (chunk = input.read(4800))
+    session.send_event(type: "session.input_audio_buffer.append", audio: Base64.strict_encode64(chunk))
   end
 end
 ```
@@ -484,6 +532,22 @@ func listen(ctx context.Context, session *realtime.TranslationSession) error {
 		}
 	}
 }
+```
+
+```ruby
+handle_translation_event = lambda do |event, output|
+  case event
+  when OpenAI::Realtime::RealtimeErrorEvent
+    raise "Translation error: #{event.error.message}"
+  when OpenAI::Realtime::RealtimeTranslationOutputTranscriptDeltaEvent
+    print event.delta
+    $stdout.flush
+  when OpenAI::Realtime::RealtimeTranslationOutputAudioDeltaEvent
+    pcm = Base64.strict_decode64(event.delta)
+    output.write(pcm)
+    warn "Received audio bytes: #{pcm.bytesize}"
+  end
+end
 ```
 
 
@@ -645,6 +709,16 @@ if err := session.Send(ctx, realtime.RealtimeTranslationClientEventUnionParam{
 }); err != nil {
 	return err
 }
+```
+
+```ruby
+# Finish the existing session and consume its trailing output through session.closed.
+File.open("translated.pcm", "wb") do |output|
+  session.finish(timeout: 15) do |event|
+    handle_translation_event.call(event, output)
+  end
+end
+# translated.pcm is ready for your application's 24 kHz PCM16 audio player.
 ```
 
 

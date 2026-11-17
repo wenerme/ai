@@ -115,7 +115,7 @@ async def add_to_todo_list(ctx: RunContextWrapper[AgentContext], item: str) -> N
 
 
 assistant_agent = Agent[AgentContext](
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     name="Assistant",
     instructions="You are a helpful assistant",
     tools=[add_to_todo_list],
@@ -206,7 +206,7 @@ Use the following resources and reference to complete your integration.
 
 ChatKit emits `CustomEvent` instances from the Web Component. Listen for lifecycle events and read payload data from `event.detail`:
 
-```javascript
+```typescript
 chatkit.addEventListener("chatkit.error", (event) => {
   console.error(event.detail.error);
 });

@@ -19,72 +19,72 @@ Use these fields in the `query` parameter to filter your results.
 
 | Field                                                    | Name (and alias)       | Operators  |
 | -------------------------------------------------------- | ---------------------- | ---------- |
-| [Archived only](#project-archived-only)                  | `archivedOnly`         | `=`, `!=`  |
-| [Has code coverage](#project-has-code-coverage)          | `hasCodeCoverage`      | `=`, `!=`  |
-| [Has vulnerabilities](#project-has-vulnerabilities)      | `hasVulnerabilities`   | `=`, `!=`  |
-| [Include archived](#project-include-archived)            | `includeArchived`      | `=`, `!=`  |
-| [Include subgroups](#project-include-subgroups)          | `includeSubgroups`     | `=`, `!=`  |
-| [Issues enabled](#project-issues-enabled)                | `issuesEnabled`        | `=`, `!=`  |
-| [Merge requests enabled](#project-merge-requests-enabled)| `mergeRequestsEnabled` | `=`, `!=`  |
-| [Search](#project-search)                                | `search`               | `=`        |
+| [Archived only](#archived-only)                  | `archivedOnly`         | `=`, `!=`  |
+| [Has code coverage](#has-code-coverage)          | `hasCodeCoverage`      | `=`, `!=`  |
+| [Has vulnerabilities](#has-vulnerabilities)      | `hasVulnerabilities`   | `=`, `!=`  |
+| [Include archived](#include-archived)            | `includeArchived`      | `=`, `!=`  |
+| [Include subgroups](#include-subgroups)          | `includeSubgroups`     | `=`, `!=`  |
+| [Issues enabled](#issues-enabled)                | `issuesEnabled`        | `=`, `!=`  |
+| [Merge requests enabled](#merge-requests-enabled)| `mergeRequestsEnabled` | `=`, `!=`  |
+| [Search](#search)                                | `search`               | `=`        |
 
-### Archived only {#project-archived-only}
+### Archived only
 
 **Description**: Filter to show only archived projects.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - Cannot be used together with `includeArchived`.
 
-### Has code coverage {#project-has-code-coverage}
+### Has code coverage
 
 **Description**: Filter projects by whether they have code coverage reports.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
 
-### Has vulnerabilities {#project-has-vulnerabilities}
+### Has vulnerabilities
 
 **Description**: Filter projects by whether they have security vulnerabilities.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
 
-### Include archived {#project-include-archived}
+### Include archived
 
 **Description**: Include archived projects in the results.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - Cannot be used together with `archivedOnly`.
 - By default, archived projects are not included.
 
-### Include subgroups {#project-include-subgroups}
+### Include subgroups
 
 **Description**: Whether to include projects from subgroups.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - This field can only be used with a `namespace` scope.
 - Defaults to `true` when a `namespace` scope is specified.
 
-### Issues enabled {#project-issues-enabled}
+### Issues enabled
 
 **Description**: Filter projects by whether they have issues enabled.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
 
-### Merge requests enabled {#project-merge-requests-enabled}
+### Merge requests enabled
 
 **Description**: Filter projects by whether they have merge requests enabled.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
 
-### Search {#project-search}
+### Search
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/547) in GitLab 19.6.
 
@@ -124,7 +124,7 @@ Use these fields in the `query` parameter to filter your results.
 | Last activity | `lastActivity`, `lastActivityAt` | Sort by last activity date     |
 | Path          | `path`                           | Sort by path                   |
 
-**Notes**:
+**Additional details**:
 
 - `lastActivity` only supports descending (`desc`) sort order.
 

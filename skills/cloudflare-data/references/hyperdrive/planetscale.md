@@ -1,6 +1,6 @@
 ---
 description: Learn how Cloudflare partners with PlanetScale to provide managed Postgres and MySQL databases for Workers applications with Hyperdrive acceleration.
-title: PlanetScale Postgres &amp; MySQL
+title: PlanetScale Postgres & MySQL
 image: https://developers.cloudflare.com/hyperdrive/planetscale/og.png?v=e4d0acbf14eeaf5b
 ---
 

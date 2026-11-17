@@ -25,31 +25,31 @@ Use these fields in the `query` parameter to filter your results.
 
 | Field                                                    | Name (and alias)                             | Operators                  |
 | -------------------------------------------------------- | -------------------------------------------- | -------------------------- |
-| [Approved by user](#mr-approved-by-user)                 | `approver`, `approvedBy`, `approvers`        | `=`, `!=`                  |
-| [Assignees](#mr-assignees)                               | `assignee`, `assignees`                      | `=`, `!=`                  |
-| [Author](#mr-author)                                     | `author`                                     | `=`, `!=`                  |
-| [Closed at](#mr-closed-at)                               | `closed`, `closedAt`                         | `=`, `>`, `<`, `>=`, `<=`  |
-| [Created at](#mr-created-at)                             | `created`, `createdAt`, `opened`, `openedAt` | `=`, `>`, `<`, `>=`, `<=`  |
-| [Draft](#mr-draft)                                       | `draft`                                      | `=`, `!=`                  |
-| [Environment](#mr-environment)                           | `environment`                                | `=`                        |
-| [ID](#mr-identifier)                                     | `id`                                         | `=`, `in`                  |
-| [Include subgroups](#mr-include-subgroups)               | `includeSubgroups`                            | `=`, `!=`                  |
-| [Labels](#mr-labels)                                     | `label`, `labels`                            | `=`, `!=`                  |
-| [Merged at](#mr-merged-at)                               | `merged`, `mergedAt`                         | `=`, `>`, `<`, `>=`, `<=`  |
-| [Merged by user](#mr-merged-by-user)                     | `merger`, `mergedBy`                         | `=`                        |
-| [Milestone](#mr-milestone)                               | `milestone`                                  | `=`, `!=`                  |
-| [My reaction emoji](#mr-my-reaction-emoji)               | `myReaction`, `myReactionEmoji`              | `=`, `!=`                  |
-| [Review state](#mr-review-state)                         | `reviewState`, `reviewStates`                | `=`, `!=`, `in`            |
-| [Reviewers](#mr-reviewers)                               | `reviewer`, `reviewers`, `reviewedBy`        | `=`, `!=`                  |
-| [Search](#mr-search)                                     | `search`                                     | `=`                        |
-| [Source branch](#mr-source-branch)                       | `sourceBranch`                               | `=`, `in`, `!=`            |
-| [State](#mr-state)                                       | `state`                                      | `=`                        |
-| [Subscribed](#mr-subscribed)                             | `subscribed`                                 | `=`, `!=`                  |
-| [Target branch](#mr-target-branch)                       | `targetBranch`                               | `=`, `in`, `!=`            |
-| [Deployed at](#mr-deployed-at)                           | `deployed`, `deployedAt`                     | `=`, `>`, `<`, `>=`, `<=`  |
-| [Updated at](#mr-updated-at)                             | `updated`, `updatedAt`                       | `=`, `>`, `<`, `>=`, `<=`  |
+| [Approved by user](#approved-by-user)                 | `approver`, `approvedBy`, `approvers`        | `=`, `!=`                  |
+| [Assignees](#assignees)                               | `assignee`, `assignees`                      | `=`, `!=`                  |
+| [Author](#author)                                     | `author`                                     | `=`, `!=`                  |
+| [Closed at](#closed-at)                               | `closed`, `closedAt`                         | `=`, `>`, `<`, `>=`, `<=`  |
+| [Created at](#created-at)                             | `created`, `createdAt`, `opened`, `openedAt` | `=`, `>`, `<`, `>=`, `<=`  |
+| [Draft](#draft)                                       | `draft`                                      | `=`, `!=`                  |
+| [Environment](#environment)                           | `environment`                                | `=`                        |
+| [ID](#id)                                     | `id`                                         | `=`, `in`                  |
+| [Include subgroups](#include-subgroups)               | `includeSubgroups`                            | `=`, `!=`                  |
+| [Labels](#labels)                                     | `label`, `labels`                            | `=`, `!=`                  |
+| [Merged at](#merged-at)                               | `merged`, `mergedAt`                         | `=`, `>`, `<`, `>=`, `<=`  |
+| [Merged by user](#merged-by-user)                     | `merger`, `mergedBy`                         | `=`                        |
+| [Milestone](#milestone)                               | `milestone`                                  | `=`, `!=`                  |
+| [My reaction emoji](#my-reaction-emoji)               | `myReaction`, `myReactionEmoji`              | `=`, `!=`                  |
+| [Review state](#review-state)                         | `reviewState`, `reviewStates`                | `=`, `!=`, `in`            |
+| [Reviewers](#reviewers)                               | `reviewer`, `reviewers`, `reviewedBy`        | `=`, `!=`                  |
+| [Search](#search)                                     | `search`                                     | `=`                        |
+| [Source branch](#source-branch)                       | `sourceBranch`                               | `=`, `in`, `!=`            |
+| [State](#state)                                       | `state`                                      | `=`                        |
+| [Subscribed](#subscribed)                             | `subscribed`                                 | `=`, `!=`                  |
+| [Target branch](#target-branch)                       | `targetBranch`                               | `=`, `in`, `!=`            |
+| [Deployed at](#deployed-at)                           | `deployed`, `deployedAt`                     | `=`, `>`, `<`, `>=`, `<=`  |
+| [Updated at](#updated-at)                             | `updated`, `updatedAt`                       | `=`, `>`, `<`, `>=`, `<=`  |
 
-### Approved by user {#mr-approved-by-user}
+### Approved by user
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
 - Aliases `approvedBy` and `approvers` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
@@ -64,7 +64,7 @@ Use these fields in the `query` parameter to filter your results.
 - `List` (containing `String` or `User` values)
 - `Nullable` (either of `null`, `none`, or `any`)
 
-### Assignees {#mr-assignees}
+### Assignees
 
 **Description**: Query merge requests by one or more users who are assigned to them.
 
@@ -74,11 +74,11 @@ Use these fields in the `query` parameter to filter your results.
 - `User` (for example, `@username`)
 - `Nullable` (either of `null`, `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - `List` values and the `in` operator are not supported for merge requests.
 
-### Author {#mr-author}
+### Author
 
 **Description**: Query merge requests by their author.
 
@@ -87,11 +87,11 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `User` (for example, `@username`)
 
-**Notes**:
+**Additional details**:
 
 - The `in` operator is not supported for merge requests.
 
-### Closed at {#mr-closed-at}
+### Closed at
 
 **Description**: Query merge requests by the date when they were closed.
 
@@ -101,11 +101,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Created at {#mr-created-at}
+### Created at
 
 **Description**: Query merge requests by the date when they were created.
 
@@ -115,11 +115,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Draft {#mr-draft}
+### Draft
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
 
@@ -129,7 +129,7 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Boolean` (either of `true` or `false`)
 
-### Deployed at {#mr-deployed-at}
+### Deployed at
 
 **Description**: Query merge requests by the date when they were deployed.
 
@@ -139,11 +139,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Environment {#mr-environment}
+### Environment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
 
@@ -151,7 +151,7 @@ Use these fields in the `query` parameter to filter your results.
 
 **Allowed value types**: `String`
 
-### ID {#mr-identifier}
+### ID
 
 **Description**: Query merge requests by their IDs.
 
@@ -160,7 +160,7 @@ Use these fields in the `query` parameter to filter your results.
 - `Number` (only positive integers)
 - `List` (containing `Number` values)
 
-### Include subgroups {#mr-include-subgroups}
+### Include subgroups
 
 **Description**: Query merge requests in the entire hierarchy of a group.
 
@@ -168,12 +168,12 @@ Use these fields in the `query` parameter to filter your results.
 
 - `Boolean` (either of `true` or `false`)
 
-**Notes**:
+**Additional details**:
 
 - This field can only be used with a `group` scope.
 - The value of this field defaults to `false`.
 
-### Labels {#mr-labels}
+### Labels
 
 **Description**: Query merge requests by their associated labels.
 
@@ -183,12 +183,12 @@ Use these fields in the `query` parameter to filter your results.
 - `Label` (for example, `~bug`, `~"team::planning"`)
 - `Nullable` (either of `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - The `in` operator is not supported for merge requests.
 - Scoped labels or labels containing spaces must be wrapped in quotes.
 
-### Merged at {#mr-merged-at}
+### Merged at
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
 - Alias `mergedAt` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
@@ -202,11 +202,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 
-### Merged by user {#mr-merged-by-user}
+### Merged by user
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
 - Alias `mergedBy` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
@@ -218,7 +218,7 @@ Use these fields in the `query` parameter to filter your results.
 - `String`
 - `User` (for example, `@username`)
 
-### Milestone {#mr-milestone}
+### Milestone
 
 **Description**: Query merge requests by their associated milestone.
 
@@ -228,18 +228,18 @@ Use these fields in the `query` parameter to filter your results.
 - `Milestone` (for example, `%Backlog`, `%"Awaiting Further Demand"`)
 - `Nullable` (either of `none`, or `any`)
 
-**Notes**:
+**Additional details**:
 
 - The `in` operator is not supported for merge requests.
 - Milestones containing spaces must be wrapped in quotes (`"`).
 
-### My reaction emoji {#mr-my-reaction-emoji}
+### My reaction emoji
 
 **Description**: Query merge requests by the current user's [emoji reaction](../../emoji_reactions.md) on it.
 
 **Allowed value types**: `String`
 
-### Review state {#mr-review-state}
+### Review state
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/508) in GitLab 19.5.
 
@@ -251,7 +251,7 @@ For more information about review states, see [Merge request reviews](../../proj
 - `Enum`, one of `unreviewed`, `review_started`, `reviewed`, `requested_changes`, `approved`, or `unapproved`
 - `List` (containing `Enum` values)
 
-**Notes**:
+**Additional details**:
 
 - `List` values are only supported with the `in` and `!=` operators.
 - A merge request matches when at least one of its reviewers is in the given state,
@@ -263,7 +263,7 @@ For more information about review states, see [Merge request reviews](../../proj
   with `reviewer = any` or `reviewer = none`.
 - To exclude more than one state, use a `List`: `reviewState != (approved, unapproved)`.
 
-### Reviewers {#mr-reviewers}
+### Reviewers
 
 - Aliases `reviewers` and `reviewedBy` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
 
@@ -275,7 +275,7 @@ For more information about review states, see [Merge request reviews](../../proj
 - `User` (for example, `@username`)
 - `Nullable` (either of `null`, `none`, or `any`)
 
-### Search {#mr-search}
+### Search
 
 - [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/547) in GitLab 19.6.
 
@@ -283,11 +283,11 @@ For more information about review states, see [Merge request reviews](../../proj
 
 **Allowed value types**: `String`
 
-**Notes**:
+**Additional details**:
 
 - Queries that use `search` count toward the [search rate limit](../../../administration/instance_limits.md#search-rate-limit).
 
-### Source branch {#mr-source-branch}
+### Source branch
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197407) in GitLab 18.2.
 
@@ -295,11 +295,11 @@ For more information about review states, see [Merge request reviews](../../proj
 
 **Allowed value types:** `String`, `List`
 
-**Notes**:
+**Additional details**:
 
 - `List` values are only supported with the `in` and `!=` operators.
 
-### State {#mr-state}
+### State
 
 **Description**: Query merge requests by state.
 
@@ -307,18 +307,18 @@ For more information about review states, see [Merge request reviews](../../proj
 
 - `Enum`, one of `opened`, `closed`, `merged`, or `all`
 
-**Notes**:
+**Additional details**:
 
 - The `state` field does not support the `!=` operator.
 
-### Subscribed {#mr-subscribed}
+### Subscribed
 
 **Description**: Query merge requests by whether the current user has
 [set notifications](../../profile/notifications.md) on or off.
 
 **Allowed value types**: `Boolean`
 
-### Target branch {#mr-target-branch}
+### Target branch
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197407) in GitLab 18.2.
 
@@ -326,11 +326,11 @@ For more information about review states, see [Merge request reviews](../../proj
 
 **Allowed value types:** `String`, `List`
 
-**Notes**:
+**Additional details**:
 
 - `List` values are only supported with the `in` and `!=` operators.
 
-### Updated at {#mr-updated-at}
+### Updated at
 
 **Description**: Query merge requests by when they were last updated.
 
@@ -340,7 +340,7 @@ For more information about review states, see [Merge request reviews](../../proj
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, the time range is considered from 00:00 to 23:59 in the user's time zone.
 

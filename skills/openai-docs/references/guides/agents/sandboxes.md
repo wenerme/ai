@@ -210,7 +210,7 @@ working context during the run.
 
 Load skills
 
-```javascript
+```typescript
 import {
   Capabilities,
   SandboxAgent,
@@ -290,7 +290,7 @@ interpreter is available.
 
 Run a Unix-local sandbox agent
 
-```javascript
+```typescript
 import { run } from "@openai/agents";
 import { Manifest, SandboxAgent, file, shell } from "@openai/agents/sandbox";
 import { UnixLocalSandboxClient } from "@openai/agents/sandbox/local";
@@ -314,7 +314,7 @@ const manifest = new Manifest({
 
 const agent = new SandboxAgent({
   name: "Renewal Packet Analyst",
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   instructions:
     "Review the workspace before answering. Keep the response concise, " +
     "business-focused, and cite the file names that support each conclusion.",
@@ -366,7 +366,7 @@ manifest = Manifest(
 
 agent = SandboxAgent(
     name="Renewal Packet Analyst",
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     instructions=(
         "Review the workspace before answering. Keep the response concise, "
         "business-focused, and cite the file names that support each conclusion."
@@ -405,14 +405,14 @@ the same pattern with their own client classes and options.
 
 Switch to Docker
 
-```javascript
+```typescript
 import { run } from "@openai/agents";
 import { SandboxAgent } from "@openai/agents/sandbox";
 import { DockerSandboxClient } from "@openai/agents/sandbox/local";
 
 const agent = new SandboxAgent({
   name: "Workspace reviewer",
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   instructions: "Inspect the sandbox workspace before answering.",
 });
 
@@ -504,7 +504,7 @@ run:
 
 Serialize and resume sandbox state
 
-```javascript
+```typescript
 import { run } from "@openai/agents";
 import { Manifest, SandboxAgent } from "@openai/agents/sandbox";
 import { UnixLocalSandboxClient } from "@openai/agents/sandbox/local";
@@ -515,7 +515,7 @@ const client = new UnixLocalSandboxClient({
 });
 const agent = new SandboxAgent({
   name: "Workspace builder",
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   instructions: "Inspect the sandbox workspace before answering.",
 });
 
@@ -633,7 +633,7 @@ guidance about work that happened in the workspace.
 
 Enable sandbox memory
 
-```javascript
+```typescript
 import {
   Manifest,
   SandboxAgent,

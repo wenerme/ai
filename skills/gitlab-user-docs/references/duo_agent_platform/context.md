@@ -14,11 +14,13 @@ You can also [manage context exclusions](#manage-context-exclusions) to keep pro
 ## Context available to GitLab Duo
 
 - Page title and URL [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209186) to Agentic Chat context in GitLab 18.6.
+- Your username [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270494) to the context in GitLab 19.6.
 
 The following table shows when each type of context is available:
 
 | Context | GitLab Duo Agentic Chat | Software development flow |
 |---------|-------------------------|---------------------------|
+| Your GitLab username[^username] | Always | Always |
 | GitLab documentation | Always | Not available |
 | General programming knowledge, best practices, and language specifics | Always | Always |
 | Files in your project that Git tracks | Always | Always |
@@ -38,6 +40,9 @@ The following table shows when each type of context is available:
     [image requirements](../project/merge_requests/developer.md#image-requirements).
 
 [^open]: To stop GitLab Duo from using a file as context, close the file in your IDE.
+
+[^username]: GitLab Duo uses your username to recognize you in issues, merge requests, and comments.
+    Sessions that a service account owns do not get a username.
 
 Unlike GitLab Duo Non-Agentic Chat, Agentic Chat can search for referenced resources without exact IDs or URLs.
 For example, you can ask "Find the merge request about authentication" and Agentic Chat searches for relevant merge requests.

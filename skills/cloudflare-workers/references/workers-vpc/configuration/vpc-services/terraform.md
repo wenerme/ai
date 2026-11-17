@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/
 
 # Configure with Terraform
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC Services can be managed as infrastructure using the [`cloudflare_connectivity_directory_service` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity_directory_service) resource in the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/).
 
@@ -140,6 +140,50 @@ Valid values for `cert_verification_mode` are:
 - `disabled`
 
 Refer to [TLS certificate verification mode](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#tls-certificate-verification-mode) for details.
+
+### Custom CA and client certificates
+
+To verify an origin that uses a private certificate authority (CA), or to present a client certificate for mutual TLS (mTLS), upload the certificates with `cloudflare_mtls_certificate` and reference their IDs in `tls_settings`. When you set `certificate_authority` or `client_certificate`, `cert_verification_mode` is required, and a custom CA cannot be combined with `disabled`.
+
+```tf
+resource "cloudflare_mtls_certificate" "private_ca" {
+  account_id   = var.account_id
+  name         = "private-ca"
+  ca           = true
+  certificates = file("${path.module}/ca.pem")
+}
+
+resource "cloudflare_mtls_certificate" "client" {
+  account_id   = var.account_id
+  name         = "private-client"
+  ca           = false
+  certificates = file("${path.module}/client.pem")
+  private_key  = file("${path.module}/client-key.pem")
+}
+
+resource "cloudflare_connectivity_directory_service" "my_database" {
+  account_id   = var.account_id
+  name         = "my-postgres-db"
+  type         = "tcp"
+  tcp_port     = 5432
+  app_protocol = "postgresql"
+
+  host = {
+    hostname = "db.internal.example"
+    resolver_network = {
+      tunnel_id = var.tunnel_id
+    }
+  }
+
+  tls_settings = {
+    certificate_authority  = cloudflare_mtls_certificate.private_ca.id
+    client_certificate     = cloudflare_mtls_certificate.client.id
+    cert_verification_mode = "verify_full"
+  }
+}
+```
+
+Custom CA and client certificate support requires version 5.29.0 or later of the Cloudflare Terraform provider. Refer to [Custom CA and client certificates](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#custom-ca-and-client-certificates) for details.
 
 ### Port configuration
 
@@ -281,5 +325,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#page","headline":"Configure with Terraform","description":"Learn how to manage VPC Services using the Cloudflare Terraform provider.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/og.png?v=e61b05ae264acf57","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#page","headline":"Configure with Terraform","description":"Learn how to manage VPC Services using the Cloudflare Terraform provider.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/og.png?v=e61b05ae264acf57","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

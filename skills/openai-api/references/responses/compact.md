@@ -10,17 +10,21 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 Content type: `application/json`
 
-- `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 109 more or string or null`
+- `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 109 more`
+  - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
     - `"gpt-6-astra"`
 
+    - `"gpt-6.2-astra"`
+
     - `"gpt-6.1-sol"`
+
+    - `"gpt-6.2-sol"`
 
     - `"gpt-6.1-terra"`
 
@@ -241,6 +245,8 @@ Content type: `application/json`
     - `"gpt-rosalind-research"`
 
     - `"gpt-6-rosalind"`
+
+    - `"gpt-6.2-astra-law"`
 
   - `string`
 

@@ -38,6 +38,7 @@ platform. For exports, GitLab:
   edit `max_export_size` using either:
   - [GitLab UI](../administration/settings/import_and_export_settings.md).
   - [Application settings API](settings.md#update-application-settings)
+- Excluded `lfs_objects` and `uploads` relations do not count toward the maximum export file size.
 - Has a fixed limit for the maximum import file size on GitLab.com. For more information, see
   [account and limit settings](../user/gitlab_com/_index.md#account-and-limit-settings).
 

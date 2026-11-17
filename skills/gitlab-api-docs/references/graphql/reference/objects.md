@@ -19026,6 +19026,7 @@ Represents security metrics.
 | `vulnerabilitiesByIdentifier` | [`[VulnerabilitiesByIdentifier!]`](#vulnerabilitiesbyidentifier) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Vulnerability identifier statistics with filtering. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilitiesByIdentifier`:</strong> <dl><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd></dl> |
 | `vulnerabilitiesOverTime` | [`VulnerabilitiesOverTimeConnection`](#vulnerabilitiesovertimeconnection) | Vulnerability metrics over time with filtering and grouping capabilities. This feature is currently under development and not yet available for general use. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `vulnerabilitiesOverTime`:</strong> <dl><dt>`endDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>End date for the vulnerability metrics time range. The end date should be within 31 days from the start date.</dd><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd><dt>`startDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>Start date for the vulnerability metrics time range.</dd></dl> |
 | `vulnerabilitiesPerSeverity` | [`VulnerabilitiesPerSeverity`](#vulnerabilitiesperseverity) | Count of open vulnerabilities per severity level. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilitiesPerSeverity`:</strong> <dl><dt>`endDate` ([`ISO8601Date`](scalars.md#iso8601date))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.End date for the vulnerability metrics time range. Optional.</dd><dt>`startDate` ([`ISO8601Date`](scalars.md#iso8601date))</dt><dd>Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.Start date for the vulnerability metrics time range. Optional.</dd></dl> |
+| `vulnerabilitiesResolvedBySource` | [`[VulnerabilitiesResolvedBySource!]`](#vulnerabilitiesresolvedbysource) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Number of vulnerabilities resolved in the time range, by source. Returns `null` unless the `security_dashboard_resolved_by_source_chart` feature flag is enabled. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilitiesResolvedBySource`:</strong> <dl><dt>`endDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>End date of the time range (inclusive).</dd><dt>`startDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>Start date of the time range (inclusive).</dd></dl> |
 | `vulnerabilityResolutionFunnel` | [`VulnerabilityResolutionFunnel`](#vulnerabilityresolutionfunnel) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Adoption funnel for AI-assisted vulnerability resolution. Returns `null` for organizations. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilityResolutionFunnel`:</strong> <dl><dt>`endDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>End date of the detection window (inclusive).</dd><dt>`startDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>Start date of the detection window (inclusive).</dd></dl> |
 
 ## `SecurityPolicy`
@@ -21204,6 +21205,17 @@ Represents vulnerability counts grouped by severity level.
 | `low` | [`VulnerabilitySeverityCount`](#vulnerabilityseveritycount) | Number of LOW severity vulnerabilities. |
 | `medium` | [`VulnerabilitySeverityCount`](#vulnerabilityseveritycount) | Number of MEDIUM severity vulnerabilities. |
 | `unknown` | [`VulnerabilitySeverityCount`](#vulnerabilityseveritycount) | Number of UNKNOWN severity vulnerabilities. |
+
+## `VulnerabilitiesResolvedBySource`
+
+Number of vulnerabilities resolved by a single source.
+
+### `VulnerabilitiesResolvedBySource` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `count` | [`Int!`](scalars.md#int) | Number of vulnerabilities resolved by the source. |
+| `source` | [`VulnerabilityResolutionSource!`](enums.md#vulnerabilityresolutionsource) | Source that resolved the vulnerabilities. |
 
 ## `Vulnerability`
 

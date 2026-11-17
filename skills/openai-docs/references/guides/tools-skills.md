@@ -91,7 +91,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [
       {
         "type": "shell",
@@ -114,7 +114,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   tools: [
     {
       type: "shell",
@@ -136,7 +136,7 @@ console.log(response.output_text);
 
 ```python
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     tools=[
         {
             "type": "shell",
@@ -181,7 +181,7 @@ func main() {
 		}},
 	}}
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Tools: []responses.ToolUnionParam{tool},
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Use the skills to add 144 and 377, then compute triangle area with base 9 height 13.")},
 	})
@@ -204,7 +204,7 @@ String skillId = "<skill_id>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input(
             "Use the skills to add 144 and 377, then compute a triangle area with base 9 and height 13.")
         .putAdditionalBodyProperty(
@@ -239,7 +239,7 @@ require "openai"
 
 client = OpenAI::Client.new
 response = client.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Use the skills to add 144 and 377, then compute a triangle area with base 9 and height 13.",
   tools: [
     {
@@ -309,7 +309,7 @@ curl -L 'https://api.openai.com/v1/responses' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [
       {
         "type": "shell",
@@ -346,7 +346,7 @@ await withLocalSkillSandbox(name, async (signal: AbortSignal) => {
   const client = new OpenAI();
   /** @type {OpenAI.Responses.ResponseCreateParamsNonStreaming} */
   const params: OpenAI.Responses.ResponseCreateParamsNonStreaming = {
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     tools: [
       {
         type: "shell",
@@ -390,7 +390,7 @@ await withLocalSkillSandbox(name, async (signal: AbortSignal) => {
 
 ```python
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     tools=[
         {
             "type": "shell",
@@ -428,7 +428,7 @@ tool := responses.ToolUnionParam{OfShell: &responses.FunctionShellToolParam{
 	},
 }}
 params := responses.ResponseNewParams{
-	Model: "gpt-6-astra",
+	Model: "gpt-6.2-astra",
 	Tools: []responses.ToolUnionParam{tool},
 	Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(
 		"Use the csv-insights skill and run locally to summarize /workspace/reports.csv. Read the skill instructions, write /workspace/report.md, and include the total in your final answer.")},
@@ -483,7 +483,7 @@ String skillPath = "<path-to-skill-folder>";
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .input("Use the csv-insights skill to summarize today's CSV reports.")
         .putAdditionalBodyProperty(
             "tools",
@@ -526,7 +526,7 @@ def run_local_skill(name)
     sandbox.prepare
     client = OpenAI::Client.new(max_retries: 0)
     params = {
-      model: "gpt-6-astra",
+      model: "gpt-6.2-astra",
       input: "Use the csv-insights skill and run locally to summarize /workspace/reports.csv. Read the skill instructions, write /workspace/report.md, and include the total in your final answer.",
       tools: [
         {

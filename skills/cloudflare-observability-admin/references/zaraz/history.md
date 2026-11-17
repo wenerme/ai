@@ -1,6 +1,6 @@
 ---
 description: Manage Zaraz configuration versions and history.
-title: Versions &amp; History
+title: Versions & History
 image: https://developers.cloudflare.com/zaraz/history/og.png?v=c94bc9fc772519af
 ---
 

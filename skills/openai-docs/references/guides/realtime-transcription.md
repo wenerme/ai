@@ -40,7 +40,7 @@ This example uses 24 kHz PCM audio. In `gpt-live-transcribe` transcription sessi
 
 Send audio chunks with `input_audio_buffer.append`:
 
-```javascript
+```typescript
 ws.send(
   JSON.stringify({
     type: "input_audio_buffer.append",
@@ -52,7 +52,7 @@ ws.send(
 
 Send `input_audio_buffer.commit` at the end of each audio turn to receive the final transcript:
 
-```javascript
+```typescript
 ws.send(
   JSON.stringify({
     type: "input_audio_buffer.commit",
@@ -67,7 +67,7 @@ Use client-side VAD to detect the end of speech, then send `input_audio_buffer.c
 
 Listen for incremental transcript deltas and completion events:
 
-```javascript
+```typescript
 ws.on("message", (data) => {
   const event = JSON.parse(data);
 
@@ -154,6 +154,65 @@ func transcribeTurn(ctx context.Context, conn *realtime.RealtimeConnection, audi
 		}
 	}
 }
+```
+
+```ruby
+require "openai"
+require "base64"
+
+client = OpenAI::Client.new
+client.realtime.connect_transcription do |connection|
+  connection.session.update(
+    type: :transcription,
+    audio: {
+      input: {
+        format: {
+          type: "audio/pcm",
+          rate: 24000
+        },
+        transcription: { model: "gpt-live-transcribe" },
+
+        turn_detection: nil
+      }
+    }
+  )
+  updated = connection.find do |event|
+    raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+
+    event.is_a?(OpenAI::Realtime::SessionUpdatedEvent)
+  end
+  raise "Connection closed before transcription configuration" unless updated
+
+  # speech.pcm contains mono PCM16 audio sampled at 24 kHz.
+  raise "Expected nonempty PCM16 audio" unless File.size("speech.pcm").positive? && File.size("speech.pcm").even?
+
+  File.open("speech.pcm", "rb") do |input|
+    while (chunk = input.read(9600))
+      connection.input_audio_buffer.append(audio: Base64.strict_encode64(chunk))
+    end
+  end
+  connection.input_audio_buffer.commit
+  state = {}
+  completed = connection.find do |event|
+    case event
+    when OpenAI::Realtime::InputAudioBufferCommittedEvent
+      state[:item_id] = event.item_id
+    when OpenAI::Realtime::ConversationItemInputAudioTranscriptionDeltaEvent
+      warn "Partial transcript (#{event.item_id}): #{event.delta}" if state[:item_id] && event.item_id == state[:item_id]
+    when OpenAI::Realtime::ConversationItemInputAudioTranscriptionCompletedEvent
+      if state[:item_id] && event.item_id == state[:item_id]
+        puts "Final transcript: #{event.transcript}"
+        next true
+      end
+    when OpenAI::Realtime::ConversationItemInputAudioTranscriptionFailedEvent
+      raise "Transcription failed" if state[:item_id] && event.item_id == state[:item_id]
+    when OpenAI::Realtime::RealtimeErrorEvent
+      raise event.error.message
+    end
+    false
+  end
+  raise "Connection closed before the committed item's final transcript" unless completed
+end
 ```
 
 

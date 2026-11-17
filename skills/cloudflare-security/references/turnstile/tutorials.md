@@ -18,9 +18,9 @@ View tutorials to help you get started with Turnstile.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
+| [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/) | yesterday | Intermediate |
 | [Fraud detection with Ephemeral IDs](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/) | 10 months ago | Advanced |
 | [Protect your forms](https://developers.cloudflare.com/turnstile/tutorials/login-pages/) | last year | Beginner |
-| [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/) | 2 years ago | Intermediate |
 | [Exclude Turnstile from E2E tests](https://developers.cloudflare.com/turnstile/tutorials/excluding-turnstile-from-e2e-tests/) | 2 years ago | Intermediate |
 | [Integrate Turnstile, WAF, & Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/) | 2 years ago | Beginner |
 

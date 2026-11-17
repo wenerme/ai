@@ -1,6 +1,6 @@
 ---
 description: Understand how Workers tracks changes with versions and releases them with deployments.
-title: Versions &amp; deployments
+title: Versions & deployments
 image: https://developers.cloudflare.com/workers/versions-and-deployments/og.png?v=ed23c8daadd08946
 ---
 

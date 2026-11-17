@@ -424,6 +424,7 @@ Fix the flaky spec in issue #1234 and open an MR in gitlab-org/gitlab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248587) in GitLab 19.3.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256101) to accept the `statuses` parameter in GitLab 19.5.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/640198) to return the merge requests and work items each session was started from in GitLab 19.7.
 
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -431,6 +432,15 @@ Lists your GitLab Duo Agent Platform sessions, excluding Duo Chat sessions.
 Each session includes its individual status, goal preview, flow definition, and creation timestamp.
 Project and group sessions also include a session URL.
 The goal preview might be truncated.
+
+Each session also includes `source_merge_requests` and `source_work_items`: the merge request or
+work item the session was started from.
+Each is an array with at most one entry, empty when the session has no source of that kind
+or when you cannot read it.
+Entries have `id` (the GraphQL global ID), `iid`, `title`, and `url`.
+For older sessions, and for sessions that had a work item added after they started,
+these sources can differ from the  panel of the session page.
+Use [`get_duo_session`](#get_duo_session) to get the sources shown in that panel.
 
 | Parameter      | Type    | Required | Description |
 |----------------|---------|----------|-------------|
@@ -457,12 +467,20 @@ List my active Duo Agent Platform sessions in gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607634) in GitLab 19.4. `get_duo_workflow_status` is also accepted as an alias.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/627561) to return the merge requests, work items and comments the session created, to vary the polling delay by status, and to report `status` with underscores (`input_required` rather than `input required`) to match `list_duo_sessions`, in GitLab 19.5.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631690) to return why a failed session failed and a link to its CI job, in GitLab 19.5.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/640198) to return the merge requests and work items the session was started from in GitLab 19.7.
 
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Checks the status of a GitLab Duo Agent Platform session. Running sessions include a suggested
 polling delay, which is longer while the session waits for its CI job to start. Finished sessions
-and completed chat turns include the latest agent answer. Any merge request, work item or comment
+and completed chat turns include the latest agent answer. The merge requests and work items the
+session was started from are included as `source_merge_requests` and `source_work_items`. Each is an
+array, empty when the session has no source of that kind. Entries have `id` (the GraphQL global ID),
+`iid`, `title`, and `url`. If the source could not be read (for example, a timeout), both arrays are
+empty and `source_artifacts_unreadable` is `true`, so a caller can tell that apart from a session
+with no source.
+
+Any merge request, work item or comment
 the session created is included once it exists, as `created_merge_requests`, `created_work_items`
 and `created_notes`. Each is an array, empty when the session created nothing of that kind, and
 holds at most the 20 most recent items. When a list is cut off, `artifacts_truncated` names the
@@ -788,7 +806,7 @@ the latest commits.
 | `verdict`           | string  | No       | For `submit_review`, an overall verdict prefixed to the summary note. |
 | `summary`           | string  | No       | For `submit_review`, a summary note posted after the diff comments. |
 | `summary_internal`  | boolean | No       | For `submit_review`, marks the summary note as internal. |
-| `sha`               | string  | No       | For `approve`, a head SHA guard. When given and it no longer matches the merge request head, the approval is refused. Pass the full 40-character `diff_head_sha` returned by `get_merge_request`. |
+| `sha`               | string  | No       | For `approve`, a head SHA guard. When given and it no longer matches the merge request head, or the diff changed since a version with that head, the approval is refused. Pass the full 40-character `diff_head_sha` returned by `get_merge_request`. |
 
 Example:
 
@@ -1858,14 +1876,24 @@ List critical and high severity vulnerabilities in project gitlab-org/gitlab
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251243) in GitLab 19.4.
+- Output fields `dismissalReason`, `stateComment`, `confirmedBy`, and `dismissedBy` [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/640194) in GitLab 19.7.
 
 This tool is part of the [`code_security`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Returns comprehensive details for a single vulnerability, including title, state, description,
-severity, and identifiers.
+severity, identifiers, and the context behind its state (dismissal reason, state comment,
+and the users who confirmed or dismissed it).
 
 This tool is listed only when the licensed feature is available for you.
 For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).
+
+With a [fine-grained personal access token](../../auth/tokens/fine_grained_access_tokens.md),
+these nested objects need their own permission:
+
+- `project`: the [Project resource and the Read permission](../../auth/tokens/fine_grained_access_tokens_rest.md#project).
+- `confirmedBy` and `dismissedBy`: the [User resource and the Read permission](../../auth/tokens/fine_grained_access_tokens_rest.md#user).
+
+Without these permissions, the tool still succeeds but returns `null` for those fields.
 
 | Parameter          | Type   | Required | Description |
 |--------------------|--------|----------|-------------|

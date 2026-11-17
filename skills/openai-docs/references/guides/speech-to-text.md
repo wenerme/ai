@@ -710,7 +710,23 @@ The `timestamp_granularities[]` parameter is only supported for `whisper-1`.
 
 The Transcriptions API accepts files up to 25 MB. For larger recordings, use a compressed audio format or split the file into chunks of 25 MB or less. Avoid splitting in the middle of a sentence, which can remove context and reduce accuracy.
 
-One way to handle this is to use the [PyDub open source Python package](https://github.com/jiaaro/pydub) to split the audio:
+
+
+
+The Python example uses the [`pydub`](https://github.com/jiaaro/pydub) package to split the audio.
+
+
+
+
+
+
+
+The Ruby example calls `ffmpeg`.
+
+
+
+
+Split a long audio file
 
 ```python
 from pydub import AudioSegment
@@ -725,8 +741,30 @@ first_10_minutes = song[:ten_minutes]
 first_10_minutes.export("good_morning_10.wav", format="wav")
 ```
 
+```ruby
+# standard:disable Lint/UselessAssignment -- Preserve named results for the next workflow step.
+require "open3"
+require "json"
 
-_OpenAI makes no guarantees about the usability or security of third-party software like PyDub._
+def audio_duration_ms(path)
+  output, status = Open3.capture2("ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "json", path)
+  raise "Unable to inspect audio duration" unless status.success?
+
+  (Float(JSON.parse(output).fetch("format").fetch("duration")) * 1000).round
+end
+
+input_ms = audio_duration_ms("good_morning.wav")
+# Keep the first ten minutes with the original PCM samples and encoding.
+_output, error, status = Open3.capture3(
+  "ffmpeg", "-v", "error", "-y", "-i", "good_morning.wav",
+  "-t", "600", "-c:a", "pcm_s16le", "-flags:a", "+bitexact", "-fflags", "+bitexact", "-map_metadata", "-1",
+  "good_morning_10.wav"
+)
+raise "Audio trimming failed: #{error}" unless status.success?
+```
+
+
+_OpenAI makes no guarantees about the usability or security of third-party tools such as `pydub` and `ffmpeg`._
 
 ## Prompting
 

@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-There are several ways to reduce costs when using OpenAI models. Cost and latency are typically interconnected; reducing tokens and requests generally leads to faster processing. OpenAI's Batch API and flex processing are additional ways to lower costs.
+Reducing tokens and requests can lower costs and shorten response times. For workloads that can wait, you can also lower costs with the Batch API, discounted background completion windows, or Flex processing.
 
 ## Cost and latency
 
@@ -20,8 +20,12 @@ Process jobs asynchronously. The Batch API offers a straightforward set of endpo
 
 [Get started with the Batch API →](https://developers.openai.com/api/docs/guides/batch)
 
+## Background completion windows
+
+Choose a discounted completion window for a Responses API workflow that can wait for its initial response. Use the same continuation ID across related requests to make follow-ups eligible for higher scheduling priority. See [how to choose a completion window](https://developers.openai.com/api/docs/guides/background#use-discounted-completion-windows).
+
 ## Flex processing
 
-Get significantly lower costs for Chat Completions or Responses requests in exchange for slower response times and occasional resource unavailability. Ieal for non-production or lower-priority tasks such as model evaluations, data enrichment, or asynchronous workloads.
+Get significantly lower costs for Chat Completions or Responses requests in exchange for slower response times and occasional resource unavailability. Ideal for non-production or lower-priority tasks such as model evaluations, data enrichment, or asynchronous workloads.
 
 [Get started with flex processing →](https://developers.openai.com/api/docs/guides/flex-processing)

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15
 
 # Use cf in CI
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/ci/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/ci/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Beta
+Release candidate
 
-`cf` is in beta. Commands, configuration, and Build Output can change before the stable release.
+`cf` 1.0 is in release candidate. The configuration format, Build Output, and the commands that develop and deploy projects are stable. A small number of less commonly used API commands can still change before 1.0.
 
 Run `cf` in continuous integration (CI) to check every pull request and deploy your Worker without a person present. In CI, `cf` authenticates with an API token and does not wait for input.
 
@@ -89,14 +89,14 @@ The workflow assumes a project created with `cf init`, with `package-lock.json` 
 | Variable | Purpose |
 | --- | --- |
 | `CLOUDFLARE_API_TOKEN` | Authenticates API requests. Takes priority over any stored login. |
-| `CLOUDFLARE_ACCOUNT_ID` | Selects the account. Without it, `cf` uses `accountId` from `cloudflare.config.ts`, then an account saved by an earlier run in the same checkout, then the only account available. |
+| `CLOUDFLARE_ACCOUNT_ID` | Selects the account. Without it, `cf` uses `accountId` from `cloudflare.config.ts`, then prompts you to choose if the token can access more than one account. |
 | `CLOUDFLARE_ZONE_ID` | Selects a zone for zone-level commands when you do not pass `--zone`. |
 
-If the token can access more than one account and no account is set or saved, the command fails instead of prompting:
+If the token can access more than one account and no account is set, the command fails instead of prompting:
 
 ```txt
 More than one account available but unable to select one in non-interactive mode.
-Please set the appropriate `account_id` in your cf config file or assign it to the `CLOUDFLARE_ACCOUNT_ID` environment variable.
+Please set the appropriate account ID in your cloudflare.config.ts file or assign it to the `CLOUDFLARE_ACCOUNT_ID` environment variable.
 Available accounts are (`<name>`: `<account_id>`):
   `(redacted)`: `<ACCOUNT_ID>`
 ```
@@ -105,7 +105,7 @@ In CI, `cf` replaces account names with `(redacted)`. To fix the error, set `CLO
 
 ### Use a `.env` file for local automation
 
-For scripts on your own machine, `cf` commands that call the Cloudflare API can also read these variables from a `.env` file in the current directory. They do not read `.env.local`. Variables already set in the environment take priority. For details, refer to [Load credentials from a .env file](https://developers.cloudflare.com/cf/get-started/#load-credentials-from-a-env-file).
+For scripts on your own machine, `cf` commands that call the Cloudflare API can also read these variables from `.env` and `.env.local` files in the current directory, and from `.env.<MODE>` and `.env.<MODE>.local` when you pass `--mode`. Variables already set in the environment take priority. For details, refer to [Load credentials from a .env file](https://developers.cloudflare.com/cf/get-started/#load-credentials-from-a-env-file).
 
 Caution
 
@@ -115,14 +115,14 @@ Do not commit a `.env` file that contains API tokens. Add it to `.gitignore`.
 
 With `cf` installed as a development dependency, `npx cf <COMMAND>` runs the project's copy. On a developer's machine, a globally installed `cf` also hands each command to the project's copy. Collaborators, coding agents, and CI then run the same version. One-off runs such as `npx cf@<VERSION>` are not handed off.
 
-Use Node.js 22.18 or later. For details, refer to [Requirements](https://developers.cloudflare.com/cf/get-started/#requirements).
+Use the latest version of a Node.js LTS release or the latest active release of Node.js. For details, refer to [Requirements](https://developers.cloudflare.com/cf/get-started/#requirements).
 
 ## Understand non-interactive behavior
 
 `cf` treats a run as non-interactive when it has no terminal, or when it detects a CI environment, for example through the `CI` environment variable. In a non-interactive run:
 
 - **Prompts** use their default answer. Prompts without a default fail, so pass the value as an option instead.
-- **Destructive commands** abort without `--force`. They print `Aborted.` to standard error, make no change, and exit with status `0`.
+- **Destructive commands** abort without `--force`. They print `Aborted.` to standard error, make no change, and exit with status `1`.
 - **`cf init`** needs a directory, such as `cf init my-worker` or `cf init .`. A new project uses the package manager that started `cf`, or npm. Pass `--package-manager` to choose another.
 
 Before you pass `--force` in a job, read the command's `--help` output. On some commands, `--force` is also an API parameter.
@@ -197,7 +197,7 @@ To check a build from an earlier step instead, add `--prebuilt` and the recorded
 
 ## Deploy previews from CI
 
-`cf previews deploy` builds the project and deploys a Worker Preview. It needs credentials and has no `--dry-run` option.
+`cf previews deploy` builds the project and deploys a Worker Preview. It needs credentials. `--dry-run` checks the arguments without building or uploading.
 
 npmyarnpnpm
 
@@ -249,5 +249,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/ci/#page","headline":"Use cf in CI","description":"Run the Cloudflare CLI in continuous integration with an API token, predictable non-interactive behavior, and a build that you deploy once.","url":"https://developers.cloudflare.com/cf/ci/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/ci/#page","headline":"Use cf in CI","description":"Run the Cloudflare CLI in continuous integration with an API token, predictable non-interactive behavior, and a build that you deploy once.","url":"https://developers.cloudflare.com/cf/ci/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -113,7 +113,7 @@ messages = [
 
 # Initial API call with tools
 response = client.chat.completions.create(
-    model="deepseek-ai/DeepSeek-R1-0528",
+    model="deepseek-ai/DeepSeek-V4.1-Flash",
     messages=messages,
     tools=tools,
     tool_choice="auto" # Let the model decide when to call functions
@@ -153,7 +153,7 @@ if response_message.tool_calls:
 
     # Get final response with function results
     final_response = client.chat.completions.create(
-        model="deepseek-ai/DeepSeek-R1-0528",
+        model="deepseek-ai/DeepSeek-V4.1-Flash",
         messages=messages,
     )
 
@@ -227,7 +227,7 @@ tools = [
 ]
 
 response = client.chat.completions.create(
-    model="deepseek-ai/DeepSeek-R1-0528",
+    model="deepseek-ai/DeepSeek-V4.1-Flash",
     messages=messages,
     tools=tools,
     tool_choice="auto"
@@ -266,7 +266,7 @@ if response_message.tool_calls:
 
     # get the final response with function results
     final_response = client.chat.completions.create(
-        model="deepseek-ai/DeepSeek-R1-0528",
+        model="deepseek-ai/DeepSeek-V4.1-Flash",
         messages=messages,
     )
 
@@ -301,8 +301,8 @@ client = OpenAI(
 )
 
 client.chat.completions.create(
--     model="deepseek-ai/DeepSeek-R1-0528", # automatically selects the fastest available provider
-+     model="deepseek-ai/DeepSeek-R1-0528:novita", # manually select Novita
+-     model="deepseek-ai/DeepSeek-V4.1-Flash", # default routing
++     model="deepseek-ai/DeepSeek-V4.1-Flash:novita", # manually select Novita
       ...
 )
 ```
@@ -317,7 +317,7 @@ In the Hugging Face Hub client, you can specify the provider you want to use for
 # Specify a provider directly
 client = InferenceClient(
     token=os.environ["HF_TOKEN"]
-+    provider="auto"  # automatically select provider based on hf.co/settings/inference-providers
++    provider="auto"  # default routing, skips providers turned off in hf.co/settings/inference-providers
 -    provider="together"  # manually select Together AI
 -    provider="novita"  # manually select Novita
 )
@@ -342,7 +342,7 @@ The `tool_choice` parameter is used to control when the model calls functions. I
 ```python
 # Let the model decide (default)
 response = client.chat.completions.create(
-    model="deepseek-ai/DeepSeek-R1-0528",
+    model="deepseek-ai/DeepSeek-V4.1-Flash",
     messages=messages,
     tools=tools,
     tool_choice="auto"  # Model decides when to call functions
@@ -354,7 +354,7 @@ However, in some use cases, you may want to force the model to call a function s
 ```python
 # Force the model to call at least one function
 response = client.chat.completions.create(
-    model="deepseek-ai/DeepSeek-R1-0528",
+    model="deepseek-ai/DeepSeek-V4.1-Flash",
     messages=messages,
     tools=tools,
     tool_choice="required"  # Must call at least one function
@@ -372,7 +372,7 @@ For example, let's say your assistant's only job is to give the weather for a gi
 ```python
 # Force a specific function call
 response = client.chat.completions.create(
-    model="deepseek-ai/DeepSeek-R1-0528",
+    model="deepseek-ai/DeepSeek-V4.1-Flash",
     messages=messages,
     tools=tools,
     tool_choice={
@@ -433,7 +433,7 @@ Enable streaming for real-time responses with function calls. This is useful to 
 ```python
 # Enable streaming with function calls
 stream = client.chat.completions.create(
-    model="deepseek-ai/DeepSeek-R1-0528",
+    model="deepseek-ai/DeepSeek-V4.1-Flash",
     messages=messages,
     tools=tools,
     tool_choice="auto",

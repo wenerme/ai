@@ -337,6 +337,31 @@ func updateSession(ctx context.Context, client openai.Client, callID string) err
 }
 ```
 
+```ruby
+require "openai"
+
+# Use the call ID from the WebRTC creation Location header or SIP webhook.
+call_id = ENV.fetch("OPENAI_CALL_ID")
+client = OpenAI::Client.new
+client.realtime.connect_to_call(call_id: call_id) do |connection|
+  connection.session.update(type: :realtime, instructions: "Be extra nice today!")
+  updated = connection.find do |event|
+    raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+
+    if event.is_a?(OpenAI::Realtime::SessionUpdatedEvent)
+      session = event.session
+      raise "Session update was not applied" unless session.is_a?(OpenAI::Realtime::RealtimeSessionCreateRequest) && session.instructions == "Be extra nice today!"
+
+      puts "session.updated"
+      true
+    else
+      false
+    end
+  end
+  raise "Connection closed before the session update" unless updated
+end
+```
+
 
 In this way, you are able to add tools, monitor sessions, and carry out business logic on the server instead of needing to configure those actions on the client.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/get-started/resources/og.png?v=bacce
 
 # Manage resources from the command line
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/get-started/resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/get-started/resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `cf` manages Cloudflare resources directly, without a Workers project. This guide uses DNS records to show a pattern that most resource commands follow: find a resource, list what it contains, preview a change, make the change, and clean up.
 
@@ -119,7 +119,7 @@ cf dns records delete <RECORD_ID> --zone example.com
 
 `cf` asks you to confirm before it deletes anything. The default answer is no.
 
-In a non-interactive session, such as a script or CI job, `cf` cannot ask. It prints the question and `Aborted.`, makes no change, and exits with status `0`. To delete without confirmation, pass `--force`:
+In a non-interactive session, such as a script or CI job, `cf` cannot ask. It prints the question and `Aborted.`, makes no change, and exits with status `1`. To delete without confirmation, pass `--force`:
 
 ```sh
 cf dns records delete <RECORD_ID> --zone example.com --force
@@ -127,7 +127,7 @@ cf dns records delete <RECORD_ID> --zone example.com --force
 
 Caution
 
-Because a skipped deletion exits with status `0`, a script cannot tell from the exit status that nothing was deleted. On some commands, `--force` also changes what the API operation does. Read the `--help` output of a command before you pass `--force` in a script.
+On some commands, `--force` also changes what the API operation does. Read the `--help` output of a command before you pass `--force` in a script.
 
 ## 7. Find other commands
 
@@ -167,5 +167,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/get-started/resources/#page","headline":"Manage resources from the command line","description":"Find a zone, list, create, and delete DNS records, and find other commands with the Cloudflare CLI.","url":"https://developers.cloudflare.com/cf/get-started/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/get-started/resources/og.png?v=bacce884889204ff","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/get-started/resources/#page","headline":"Manage resources from the command line","description":"Find a zone, list, create, and delete DNS records, and find other commands with the Cloudflare CLI.","url":"https://developers.cloudflare.com/cf/get-started/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/get-started/resources/og.png?v=bacce884889204ff","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

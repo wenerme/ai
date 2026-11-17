@@ -188,7 +188,7 @@ The helper accepts a local audio path, opens the file with the language's standa
 
 ## Summarizing and analyzing the transcript with a GPT model
 
-Pass the transcript to a GPT model through the [Chat Completions API](https://developers.openai.com/api/reference/resources/chat). This tutorial demonstrates the still-supported Chat Completions path for existing integrations. For new projects, use the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) and start with [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra). The snippets below use a tested model to generate a summary, extract key points and action items, and analyze sentiment.
+Pass the transcript to a GPT model through the [Chat Completions API](https://developers.openai.com/api/reference/resources/chat). This tutorial demonstrates the still-supported Chat Completions path for existing integrations. For new projects, use the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) and start with [`gpt-6.2-astra`](https://developers.openai.com/api/docs/models/gpt-6.2-astra). The snippets below use a tested model to generate a summary, extract key points and action items, and analyze sentiment.
 
 This tutorial uses a separate model call for each task. You can combine the instructions into one request to reduce calls, but separate prompts make each result easier to tune.
 
@@ -488,7 +488,7 @@ end
 
 ### Sentiment analysis
 
-The sentiment helper classifies the discussion as positive, negative, or neutral and explains the assessment. For simpler tasks, try [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra) to see whether it meets your quality target with lower cost and latency.
+The sentiment helper classifies the discussion as positive, negative, or neutral and explains the assessment. For simpler tasks, try [`gpt-6.1-terra`](https://developers.openai.com/api/docs/models/gpt-6.1-terra) to see whether it meets your quality target with lower cost and latency.
 
 ```typescript
 async function analyzeSentiment(transcription: string) {

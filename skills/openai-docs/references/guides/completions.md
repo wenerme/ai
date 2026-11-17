@@ -16,7 +16,7 @@ The completions API endpoint received its final update in July 2023 and has a di
 
 An example legacy Completions API call looks like the following:
 
-```javascript
+```typescript
 const completion = await openai.completions.create({
   model: "gpt-3.5-turbo-instruct",
   prompt: "Write a tagline for an ice cream shop.",
@@ -206,4 +206,4 @@ And an equivalent chat prompt would be:
 
 Likewise, the completions API can be used to simulate a chat between a user and an assistant by formatting the input [accordingly](https://platform.openai.com/playground/p/default-chat?model=gpt-3.5-turbo-instruct).
 
-The difference between these APIs is the underlying models that are available in each. The Chat Completions API supports current GPT models like [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra) and lower-cost options like [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra).
+The difference between these APIs is the underlying models that are available in each. The Chat Completions API supports current GPT models like [`gpt-6.2-astra`](https://developers.openai.com/api/docs/models/gpt-6.2-astra) and lower-cost options like [`gpt-6.1-terra`](https://developers.openai.com/api/docs/models/gpt-6.1-terra).

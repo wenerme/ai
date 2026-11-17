@@ -2717,7 +2717,18 @@ For important notes on response data, see [single merge request response notes](
 
 ## Update a merge request
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606719) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_update_rate_limit`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Update an existing merge request.
+
+By default, this endpoint is rate limited to 600 requests every minute for each user.
+The limit is shared with other ways of updating merge requests, like GraphQL and the UI.
+Administrators can change the limit with the `merge_requests_update_limit` [application setting](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 PUT /projects/:id/merge_requests/:merge_request_iid

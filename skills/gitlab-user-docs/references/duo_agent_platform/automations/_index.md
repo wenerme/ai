@@ -10,10 +10,6 @@ Create and manage automations to control when flows run in your project.
 - Feature flag `ai_flow_triggers` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239280) in GitLab 19.1.
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260755) from triggers to automations in GitLab 19.6 [with a flag](../../../administration/feature_flags/_index.md) named `duo_automations`. Enabled by default.
 
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-
 An automation determines when a flow or external agent runs.
 An automation cannot be created for a custom agent or foundational agent.
 

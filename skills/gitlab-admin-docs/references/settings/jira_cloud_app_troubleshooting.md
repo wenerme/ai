@@ -306,6 +306,9 @@ administrator privileges, but if they are not explicitly added to the `site-admi
 administrator privileges assigned through custom groups or product-specific roles
 are not detected by GitLab.
 
+On Atlassian Government Cloud, the same groups apply. Groups synced from your
+identity provider are not detected unless they are named `org-admins` or `site-admins`.
+
 To resolve this issue, add the Jira user to the `org-admins` or `site-admins`
 group:
 

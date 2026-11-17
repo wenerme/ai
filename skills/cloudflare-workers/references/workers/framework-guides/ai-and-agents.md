@@ -1,6 +1,6 @@
 ---
 description: Deploy AI and agent framework applications on Cloudflare Workers.
-title: AI &amp; agents
+title: AI & agents
 image: https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/og.png?v=0f1ef4a7b2080bcd
 ---
 

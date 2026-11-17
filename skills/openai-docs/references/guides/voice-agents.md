@@ -64,7 +64,7 @@ def get_weather(city: str) -> str:
 agent = Agent(
     name="Assistant",
     instructions="You are a helpful voice assistant.",
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     tools=[get_weather],
 )
 

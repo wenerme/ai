@@ -34,7 +34,7 @@ Use these fields in the `query` parameter to filter your results.
 | [Created at](#created-at)  | `created` | `=`, `>`, `<`, `>=`, `<=` |
 | [User](#user)              | `user`    | `=`, `!=`, `in`, `not in` |
 
-### Created at {#created-at}
+### Created at
 
 **Description**: Filter contributions by date when they were created.
 
@@ -44,11 +44,11 @@ Use these fields in the `query` parameter to filter your results.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months) or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, GLQL considers the time range from 00:00 to 23:59 in the user's time zone.
 
-### User {#user}
+### User
 
 **Description**: Filter by the user who made the contributions.
 

@@ -64,7 +64,7 @@ selected period. `activeDays = 1` matches users who were active on exactly one d
 
 **Allowed value types**: `Number`
 
-**Notes**:
+**Additional details**:
 
 - The count covers the whole selected period, per user.
 - You can combine two range operators for a window, for example
@@ -81,7 +81,7 @@ Use multiple `created` conditions to define a specified time period.
 - `RelativeDate` (in the format `<sign><digit><unit>`, where sign is `+`, `-`, or omitted,
   digit is an integer, and `unit` is one of `d` (days), `w` (weeks), `m` (months), or `y` (years))
 
-**Notes**:
+**Additional details**:
 
 - For the `=` operator, GLQL considers the time range from 00:00 to 23:59 in the user's time zone.
 
@@ -94,7 +94,7 @@ Use multiple `created` conditions to define a specified time period.
 - `Enum`, one of `job_failed`, `no_status_reported`, `no_activity`, `workload_not_created`, `api_reported`, `preconditions_not_met`, `compute_minutes_used_up`, `could_not_prepare_session`, `start_failed`, `token_rejected`, or `tool_rules_unavailable`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - `no_activity` is the stuck-session cleanup, `no_status_reported` means the CI workload
   ended without a terminal status, `job_failed` is a CI job that did not succeed,
@@ -122,7 +122,7 @@ selected period. `flowTypesUsed >= 2` matches users who used two or more flow ty
 
 **Allowed value types**: `Number`
 
-**Notes**:
+**Additional details**:
 
 - The count covers the whole selected period, per user.
 - The same combination rule applies: use two range operators for a window, but not `=` with
@@ -138,7 +138,7 @@ For example, `claude-sonnet-4-5`.
 - `String`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - Use the model identifier that the flow reported, not the catalog name that the `model` dimension displays.
 - Flows with no model attribution have an empty identifier. Use `model != ""` to exclude them.
@@ -153,7 +153,7 @@ For example, `claude-sonnet-4-5`.
   `input_required`, `plan_approval_required`, `tool_call_approval_required`, or `idle`
 - `List` (use `in` or `not in` operator for multiple values)
 
-**Notes**:
+**Additional details**:
 
 - The three `*_required` statuses are flows waiting on the user, and are distinct from `paused`.
 - `idle` flows have finished their turn and accept a next message.
@@ -229,7 +229,7 @@ For example, `claude-sonnet-4-5`.
 > [custom role](../../custom_roles/abilities.md) with the `read_agent_artifacts` permission.
 > For other users, these metrics are empty.
 
-**Notes**:
+**Additional details**:
 
 - The `returningUsersCount`, `joinedUsersCount`, `churnedUsersCount`, and `previousPeriodUsersCount`
   metrics compare each `created` bucket with the preceding one, so they are only valid when the

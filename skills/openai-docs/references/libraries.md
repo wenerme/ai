@@ -62,7 +62,7 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const response = await client.responses.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Write a one-sentence bedtime story about a unicorn.",
 });
 
@@ -109,7 +109,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     input="Write a one-sentence bedtime story about a unicorn.",
 )
 
@@ -153,7 +153,7 @@ string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
 ResponseResult response = await client.CreateResponseAsync(
-    "gpt-6-astra",
+    "gpt-6.2-astra",
     "Say 'this is a test.'"
 );
 
@@ -177,7 +177,7 @@ OpenAI provides an API helper for the Java programming language. You can include
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.104.0</version>
+  <version>4.106.0</version>
 </dependency>
 ```
 
@@ -198,7 +198,7 @@ public class Main {
     OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
     ResponseCreateParams params =
-        ResponseCreateParams.builder().input("Say this is a test").model("gpt-6-astra").build();
+        ResponseCreateParams.builder().input("Say this is a test").model("gpt-6.2-astra").build();
 
     Response response = client.responses().create(params);
     response.output().stream()
@@ -247,7 +247,7 @@ func main() {
 	client := openai.NewClient()
 
 	resp, err := client.Responses.New(context.TODO(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say this is a test")},
 	})
 	if err != nil {
@@ -296,7 +296,7 @@ require "openai"
 openai = OpenAI::Client.new
 
 response = openai.responses.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   input: "Write a one-sentence bedtime story about a unicorn."
 )
 
@@ -337,7 +337,7 @@ Test a basic API request
 
 ```bash
 openai responses create \
-  --model "gpt-6-astra" \
+  --model "gpt-6.2-astra" \
   --input "Write a one-sentence bedtime story about a unicorn." \
   --raw-output \
   --transform 'output.#(type=="message").content.0.text'

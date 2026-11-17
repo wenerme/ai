@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Configure Virtual Appliance
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Register a virtual appliance and generate a license key
 
@@ -296,7 +296,7 @@ You will need your [account ID](https://developers.cloudflare.com/fundamentals/a
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
 
-The `static_addressing` object is optional. Omit it if you are using DHCP. If you are using static addressing, add the `secondary_address` parameter when your site is in high availability (HA) mode.
+The `static_addressing` object is optional. Omit it if you are using DHCP. If you are using static addressing, add the `secondary_address` parameter when your site is in high availability (HA) mode. If the secondary appliance uses a different default gateway than the primary appliance (for example, because each appliance connects to a different ISP), also add the `secondary_gateway_address` parameter. If you omit `secondary_gateway_address`, the secondary appliance uses `gateway_address`. You can only use `secondary_gateway_address` on sites in HA mode.
 
 Example:
 
@@ -426,13 +426,20 @@ Make sure you complete the setup workflow and activate your Cloudflare One Virtu
 
 You need to install two Virtual Appliances before you can set up a site in high availability. When you set up a site in high availability, the WANs and LANs in your Cloudflare One Virtual Appliance have the same configuration but are replicated on two nodes. In case of failure of one of the devices, the other device becomes the active node, taking over the configuration of the LAN gateway IP and allowing traffic to continue without disruption.
 
-Because Cloudflare One Virtual Appliances in high availability configurations share a single site, you need to set up:
+Because Cloudflare One Virtual Appliances in high availability configurations share a single site, you need to set up the following for each LAN:
 
 - **Static address**: The IP for the primary node in your site.
 - **Secondary static address**: The IP for the secondary node in your site.
 - **Virtual static address**: The IP that the LAN south of the Cloudflare One Virtual Appliance device will forward traffic to, which is the LAN's gateway IP.
 
-Make sure all IPs are part of the same subnet.
+Make sure all LAN IPs are part of the same subnet.
+
+For WANs with a static IP address, you need to set up:
+
+- **Static address**: The IP for the primary node's WAN interface.
+- **Secondary static address**: The IP for the secondary node's WAN interface.
+- **Primary gateway address**: The default gateway for the primary node.
+- **Secondary gateway address** (optional): The default gateway for the secondary node. Use this when each node connects to its own Internet circuit, such as a different ISP per appliance. If you leave it blank, the secondary node uses the primary gateway address.
 
 For detailed information about the expected behavior of high availability configurations, refer to the [High availability configurations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#high-availability-configurations) reference page.
 
@@ -449,7 +456,7 @@ To set up a high availability configuration:
 5. From the list, choose your first Cloudflare One Virtual Appliance > **Add Appliance**.
 6. Back on the previous screen, select **Add secondary appliance**.
 7. From the list, choose your second Cloudflare One Virtual Appliance > **Add Appliance**.
-8. Select **Continue** to create a WAN. If you are configuring a static IP, configure the IP for the primary node as the static address, and the IP for the secondary node as the secondary static address.
+8. Select **Continue** to create a WAN. If you are configuring a static IP, configure the IP for the primary node as the static address, and the IP for the secondary node as the secondary static address. If the secondary node uses a different default gateway (for example, because it connects to a different ISP), enter it in **Secondary gateway address**. Otherwise, leave it blank and the secondary node will use the **Primary gateway address**.
 9. To create a LAN, follow the steps in [Create a LAN](#create-a-lan) up until step 4.
 10. In **Static address**, enter the IP for the primary node in your site. For example, `192.168.10.1/24`.
 11. In **Secondary static address**, enter the IP for the secondary node in your site. For example, `192.168.10.2/24`.
@@ -489,5 +496,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/og.png?v=15655f7ee3651792","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/og.png?v=15655f7ee3651792","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -2,7 +2,9 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Ultrafast mode is the fastest service tier in the OpenAI API. It is broadly available for GPT-6 Astra and GPT-6.1 Sol. Use it when speed justifies the higher cost.
+Ultrafast mode is the fastest service tier in the OpenAI API. It supports GPT-6.2 Astra, GPT-6.2 Sol, GPT-6 Astra, and GPT-6.1 Sol. Use it when speed justifies the higher cost.
+
+To use Ultrafast in ChatGPT Work or Codex, [choose a speed in the composer](https://learn.chatgpt.com/docs/agent-configuration/speed#choose-a-speed-in-the-composer).
 
 We strongly recommend [WebSockets](https://developers.openai.com/api/docs/guides/websocket-mode), especially for agentic applications that make many tool calls in quick succession. Without a persistent connection, network overhead can reduce the latency gains.
 
@@ -13,13 +15,13 @@ Ultrafast mode for GPT-6 Astra and GPT-6.1 Sol is available to all API users.
 
 ## Configure your request
 
-Set `model` to `gpt-6-astra` or `gpt-6.1-sol` and `service_tier` to `ultrafast` in each `response.create` event.
+Set `model` to `gpt-6.2-astra`, `gpt-6.2-sol`, `gpt-6-astra`, or `gpt-6.1-sol`. Set `service_tier` to `ultrafast` in each `response.create` event.
 
 Install your language's SDK and WebSocket dependencies as described in [Connect and create responses](https://developers.openai.com/api/docs/guides/websocket-mode#connect-and-create-responses). Set `OPENAI_API_KEY` in your environment before running the example.
 
 Use Ultrafast across turns on one WebSocket
 
-```javascript
+```typescript
 // Install: npm install openai ws
 // Set OPENAI_API_KEY in your environment.
 
@@ -268,7 +270,7 @@ Ultrafast also supports HTTP requests through the SDK. For agentic applications 
 
 Create an Ultrafast response over HTTP
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -372,6 +374,8 @@ This example waits for the complete response. To display output as it arrives, e
 
 ## Availability
 
+Check your organization’s [rate limits](https://platform.openai.com/settings/organization/limits) for GPT-6.2 Astra and GPT-6.2 Sol.
+
 GPT-6.1 Sol has the following default Ultrafast token rate limits:
 
 | API usage tier | Tokens per minute (TPM) |
@@ -389,5 +393,7 @@ GPT-6 Astra has the following default Ultrafast token rate limits:
 | Grow           | 5,000,000               |
 
 See the [Ultrafast pricing table](https://developers.openai.com/api/docs/pricing?latest-pricing=ultrafast) for input, cached input, cache write, and output prices.
+
+Ultrafast data residency for GPT-6.2 Astra and GPT-6.2 Sol is limited to the US. See the [Data residency guide](https://developers.openai.com/api/docs/guides/data-residency#which-models-and-features-are-eligible-for-data-residency) for other service tiers.
 
 Ultrafast mode for GPT-6.1 Sol supports US and EU data residency and global processing. GPT-6 Astra Ultrafast supports US data residency and global processing only.

@@ -64,13 +64,13 @@ requests with the `safety_identifier` parameter:
 
 Example: Providing a safety identifier
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
 
 const response = await client.chat.completions.create({
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [{ role: "user", content: "This is a test" }],
   max_completion_tokens: 5,
   safety_identifier: "user_123456",
@@ -85,7 +85,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.chat.completions.create(
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
     messages=[{"role": "user", "content": "This is a test"}],
     max_completion_tokens=5,
     safety_identifier="user_123456",
@@ -105,7 +105,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	response, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model:               "gpt-6-astra",
+		Model:               "gpt-6.2-astra",
 		Messages:            []openai.ChatCompletionMessageParamUnion{openai.UserMessage("This is a test")},
 		MaxCompletionTokens: openai.Int(5),
 		SafetyIdentifier:    openai.String("user_123456"),
@@ -124,7 +124,7 @@ import com.openai.models.chat.completions.ChatCompletionCreateParams;
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .addUserMessage("Help me plan a study schedule.")
         .safetyIdentifier("user_1234")
         .build();
@@ -139,7 +139,7 @@ require "openai"
 
 client = OpenAI::Client.new
 completion = client.chat.completions.create(
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
   messages: [
     {
       role: :user,
@@ -157,7 +157,7 @@ curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-"model": "gpt-6-astra",
+"model": "gpt-6.2-astra",
 "messages": [
 {"role": "user", "content": "This is a test"}
 ],

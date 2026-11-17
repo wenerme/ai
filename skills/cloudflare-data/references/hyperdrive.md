@@ -1,6 +1,6 @@
 ---
 description: Accelerate access to your existing databases from Cloudflare Workers with Hyperdrive's global connection pooling and query caching.
-title: Hyperdrive (Postgres &amp; MySQL)
+title: Hyperdrive (Postgres & MySQL)
 image: https://developers.cloudflare.com/hyperdrive/og.png?v=a9e8ea8c4285a41d
 ---
 

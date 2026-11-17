@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Use this page when you want the shortest path to a working SDK-based agent. The examples below use the same high-level concepts in both JavaScript and Python: define an agent, run it, then add tools and specialist agents as your workflow grows.
+Use this page when you want the shortest path to a working SDK-based agent. The examples below use the same high-level concepts in both TypeScript and Python: define an agent, run it, then add tools and specialist agents as your workflow grows.
 
 ## Install the SDK
 
@@ -14,7 +14,7 @@ Create a project, install the SDK, and set your API key.
 
 
 ```bash
-# JavaScript
+# TypeScript
 npm install @openai/agents zod
 
 # Python
@@ -30,13 +30,13 @@ Start with one focused agent and one turn. The SDK handles the model call and re
 
 Create and run an agent
 
-```javascript
+```typescript
 import { Agent, run } from "@openai/agents";
 
 const agent = new Agent({
   name: "History tutor",
   instructions: "You answer history questions clearly and concisely.",
-  model: "gpt-6-astra",
+  model: "gpt-6.2-astra",
 });
 
 const result = await run(agent, "When did the Roman Empire fall?");
@@ -51,7 +51,7 @@ from agents import Agent, Runner
 agent = Agent(
     name="History tutor",
     instructions="You answer history questions clearly and concisely.",
-    model="gpt-6-astra",
+    model="gpt-6.2-astra",
 )
 
 
@@ -86,7 +86,7 @@ The first capability you add is often a function tool or a hosted OpenAI tool su
 
 Add a function tool
 
-```javascript
+```typescript
 import { Agent, run, tool } from "@openai/agents";
 import { z } from "zod";
 
@@ -154,7 +154,7 @@ A common next step is to split the workflow into specialists and let a router de
 
 Route to specialist agents
 
-```javascript
+```typescript
 import { Agent, run } from "@openai/agents";
 
 const historyTutor = new Agent({

@@ -78,7 +78,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       { role: "system", content: metaPrompt },
       {
@@ -150,7 +150,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         messages=[
             {
                 "role": "system",
@@ -227,7 +227,7 @@ func run() error {
 		"\n" +
 		"[optional: edge cases, details, and an area to call or repeat out specific important considerations]\n"
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage(metaPrompt), openai.UserMessage("Task, Goal, or Current Prompt: Help a customer resolve a billing issue."),
 		}})
@@ -294,7 +294,7 @@ String metaPrompt =
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .addSystemMessage(metaPrompt)
         .addUserMessage(
             "Task, Goal, or Current Prompt:\nWrite a concise product launch announcement.")
@@ -309,7 +309,7 @@ client.chat().completions().create(params).choices().stream()
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 ChatClient client = new(model, key);
 
 string metaPrompt = """"
@@ -414,7 +414,7 @@ PROMPT
 
 def generate_prompt(client, meta_prompt, task_or_prompt)
   completion = client.chat.completions.create(
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       {
         role: :system,
@@ -484,7 +484,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       { role: "system", content: metaPrompt },
       {
@@ -547,7 +547,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         messages=[
             {
                 "role": "system",
@@ -615,7 +615,7 @@ func run() error {
 		"\n" +
 		"[optional: edge cases, details, and an area to call or repeat out specific important considerations]\n"
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage(metaPrompt), openai.UserMessage("Task, Goal, or Current Prompt: Help a customer resolve a billing issue."),
 		}})
@@ -673,7 +673,7 @@ String metaPrompt =
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .addSystemMessage(metaPrompt)
         .addUserMessage(
             "Task, Goal, or Current Prompt:\n"
@@ -689,7 +689,7 @@ client.chat().completions().create(params).choices().stream()
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 ChatClient client = new(model, key);
 
 string metaPrompt = """"
@@ -776,7 +776,7 @@ PROMPT
 
 def generate_prompt(client, meta_prompt, task_or_prompt)
   completion = client.chat.completions.create(
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       {
         role: :system,
@@ -877,7 +877,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       { role: "system", content: metaPrompt },
       {
@@ -968,7 +968,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         messages=[
             {
                 "role": "system",
@@ -1064,7 +1064,7 @@ func run() error {
 		"[optional: edge cases, details, and an area to call or repeat out specific important considerations]\n" +
 		"[NOTE: you must start with a <reasoning> section. the immediate next token you produce should be <reasoning>]\n"
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage(metaPrompt), openai.UserMessage("Task, Goal, or Current Prompt: Help a customer resolve a billing issue."),
 		}})
@@ -1150,7 +1150,7 @@ String metaPrompt =
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .addSystemMessage(metaPrompt)
         .addUserMessage(
             "Task, Goal, or Current Prompt:\nMake this product launch announcement clearer and more concise.")
@@ -1165,7 +1165,7 @@ client.chat().completions().create(params).choices().stream()
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 ChatClient client = new(model, key);
 
 string metaPrompt = """"
@@ -1308,7 +1308,7 @@ PROMPT
 
 def generate_prompt(client, meta_prompt, task_or_prompt)
   completion = client.chat.completions.create(
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       {
         role: :system,
@@ -1397,7 +1397,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 async function generatePrompt(taskOrPrompt: string) {
   const completion = await client.chat.completions.create({
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       { role: "system", content: metaPrompt },
       {
@@ -1481,7 +1481,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
-        model="gpt-6-astra",
+        model="gpt-6.2-astra",
         messages=[
             {
                 "role": "system",
@@ -1568,7 +1568,7 @@ func run() error {
 		"[optional: edge cases, details, and an area to call or repeat out specific important considerations]\n" +
 		"[NOTE: you must start with a <reasoning> section. the immediate next token you produce should be <reasoning>]\n"
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-6-astra",
+		Model: "gpt-6.2-astra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage(metaPrompt), openai.UserMessage("Task, Goal, or Current Prompt: Help a customer resolve a billing issue."),
 		}})
@@ -1645,7 +1645,7 @@ String metaPrompt =
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-6-astra")
+        .model("gpt-6.2-astra")
         .addSystemMessage(metaPrompt)
         .addUserMessage(
             "Task, Goal, or Current Prompt:\nMake this voice assistant prompt warmer and more direct.")
@@ -1660,7 +1660,7 @@ client.chat().completions().create(params).choices().stream()
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-6-astra";
+string model = "gpt-6.2-astra";
 ChatClient client = new(model, key);
 
 string metaPrompt = """"
@@ -1785,7 +1785,7 @@ PROMPT
 
 def generate_prompt(client, meta_prompt, task_or_prompt)
   completion = client.chat.completions.create(
-    model: "gpt-6-astra",
+    model: "gpt-6.2-astra",
     messages: [
       {
         role: :system,
@@ -2094,7 +2094,7 @@ Output: {
 
 async function generateSchema(description: string) {
   const completion = await client.chat.completions.create({
-    model: "gpt-5.6-terra",
+    model: "gpt-6.1-terra",
     response_format: { type: "json_schema", json_schema: metaSchema },
     messages: [
       { role: "system", content: metaPrompt },
@@ -2354,7 +2354,7 @@ def generate_schema(description: str):
     # Generation is non-strict. Validate locally and allow one correction.
     for attempt in range(2):
         completion = client.chat.completions.create(
-            model="gpt-5.6-terra",
+            model="gpt-6.1-terra",
             response_format={"type": "json_schema", "json_schema": META_SCHEMA},
             messages=messages,
         )
@@ -2765,7 +2765,7 @@ func run() error {
 		return err
 	}
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-5.6-terra",
+		Model: "gpt-6.1-terra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage(metaPrompt), openai.UserMessage("Description: Schedule a meeting with a title and start time."),
 		}, ResponseFormat: openai.ChatCompletionNewParamsResponseFormatUnion{OfJSONSchema: &shared.ResponseFormatJSONSchemaParam{JSONSchema: shared.ResponseFormatJSONSchemaJSONSchemaParam{Name: "metaschema", Schema: schema}}}})
@@ -3029,7 +3029,7 @@ Map<String, Object> metaSchema =
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-5.6-terra")
+        .model("gpt-6.1-terra")
         .addSystemMessage(metaPrompt)
         .addUserMessage("Description:\nDescribe a calendar event.")
         .putAdditionalBodyProperty(
@@ -3047,7 +3047,7 @@ using System.Text.Json;
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-5.6-terra";
+string model = "gpt-6.1-terra";
 ChatClient client = new(model, key);
 
 string metaPrompt = """"
@@ -3662,7 +3662,7 @@ PROMPT
 
 client = OpenAI::Client.new
 completion = client.chat.completions.create(
-  model: "gpt-5.6-terra",
+  model: "gpt-6.1-terra",
   response_format: {
     type: :json_schema,
     json_schema: META_SCHEMA
@@ -3907,7 +3907,7 @@ Output: {
 
 async function generateFunctionSchema(description: string) {
   const completion = await client.chat.completions.create({
-    model: "gpt-5.6-terra",
+    model: "gpt-6.1-terra",
     response_format: { type: "json_schema", json_schema: metaSchema },
     messages: [
       { role: "system", content: metaPrompt },
@@ -4126,7 +4126,7 @@ Output: {
 
 def generate_function_schema(description: str):
     completion = client.chat.completions.create(
-        model="gpt-5.6-terra",
+        model="gpt-6.1-terra",
         response_format={"type": "json_schema", "json_schema": META_SCHEMA},
         messages=[
             {
@@ -4383,7 +4383,7 @@ func run() error {
 		return err
 	}
 	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
-		Model: "gpt-5.6-terra",
+		Model: "gpt-6.1-terra",
 		Messages: []openai.ChatCompletionMessageParamUnion{
 			openai.SystemMessage(metaPrompt), openai.UserMessage("Description: Schedule a meeting with a title and start time."),
 		}, ResponseFormat: openai.ChatCompletionNewParamsResponseFormatUnion{OfJSONSchema: &shared.ResponseFormatJSONSchemaParam{JSONSchema: shared.ResponseFormatJSONSchemaJSONSchemaParam{Name: "function-metaschema", Schema: schema}}}})
@@ -4602,7 +4602,7 @@ Map<String, Object> functionSchema =
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
-        .model("gpt-5.6-terra")
+        .model("gpt-6.1-terra")
         .addSystemMessage(metaPrompt)
         .addUserMessage("Description:\nSchedule a meeting with a title and start time.")
         .putAdditionalBodyProperty(
@@ -4625,7 +4625,7 @@ using System.Text.Json;
 using OpenAI.Chat;
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-string model = "gpt-5.6-terra";
+string model = "gpt-6.1-terra";
 ChatClient client = new(model, key);
 
 string metaPrompt = """"
@@ -5061,7 +5061,7 @@ PROMPT
 
 client = OpenAI::Client.new
 completion = client.chat.completions.create(
-  model: "gpt-5.6-terra",
+  model: "gpt-6.1-terra",
   response_format: {
     type: :json_schema,
     json_schema: META_SCHEMA

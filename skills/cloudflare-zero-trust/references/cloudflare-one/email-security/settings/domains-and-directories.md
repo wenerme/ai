@@ -1,6 +1,6 @@
 ---
 description: Domains and directories resources and guides for Email Security.
-title: Domains &amp; directories
+title: Domains & directories
 image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/og.png?v=555ac9bacd645e7a
 ---
 

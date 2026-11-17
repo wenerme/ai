@@ -11,13 +11,23 @@ in Markdown text in epics or wiki pages.
 ## Rate limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269433) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `markdown_uploads_rate_limit_enforce`. Disabled by default.
+- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/639259) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
-A rate limit applies to the total size of the files each user uploads every day.
-For more information, see [rate limits](../rate_limits/_index.md#api-and-rails-console).
+By default, you can upload 10,240 MB of files in a 24-hour window that starts with your
+first upload.
+Uploads to all projects and groups count toward the limit, including uploads in the UI and
+with the GraphQL API.
+
+Administrators can change the limit with the `markdown_upload_limit_megabytes_per_day`
+[application setting](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
+
+While the feature flag is disabled, uploads over the limit are logged but not blocked.
 
 ## Upload a file to a group
 

@@ -1,6 +1,6 @@
 ---
 description: This tutorial will guide you on how to integrate Cloudflare Turnstile, Web Application Firewall (WAF), and Bot Management. This combination creates a robust defense against various threats, including automated attacks and malicious login attempts.
-title: Integrate Turnstile, WAF, &amp; Bot Management
+title: Integrate Turnstile, WAF, & Bot Management
 image: https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/og.png?v=df9cb0f1ef7ac600
 ---
 

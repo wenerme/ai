@@ -12,22 +12,24 @@ image: https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952
 
 # Develop, build, and deploy
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `cf` develops, builds, and deploys Workers projects with the same CLI that manages the rest of your Cloudflare account. To create a project, follow [Deploy your first Worker](https://developers.cloudflare.com/cf/get-started/first-worker/).
 
-Configure the project with [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/). Builds write Build Output to `.cloudflare/output/v0/`.
+Configure the project with [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/). Builds write Build Output to `.cloudflare/output/v1/`.
 
 ## How `cf` runs your project
 
 `cf` does not run a dev server or bundler itself. For `cf dev`, `cf build`, and every other command that builds first, `cf` hands the work to one of these tools:
 
-1. **The framework's own command.** When `cf` detects a supported framework, it runs that framework's dev or build command through your package manager. In a Vite project, including a project created with `cf init`, that is `vite` or `vite build`, for example `npx vite build` with npm.
-2. **An installed Cloudflare build tool.** Otherwise, `cf` uses the Cloudflare build tool declared in the project's `package.json`. That is the Cloudflare Vite plugin, or Wrangler 4.136.0 or later when the Vite plugin is not declared.
+1. **The framework's own command.** When `cf` detects a supported framework, it runs that framework's dev or build command with the executable installed in your project, including a dependency hoisted to the workspace root. In a Vite or Vite+ project, including a project created with `cf init`, that is `vite` or `vp`.
+2. **An installed Cloudflare build tool.** Otherwise, `cf` uses the Cloudflare build tool listed in the project's `package.json` dependencies: the Cloudflare Vite plugin, or Wrangler when the Vite plugin is not listed.
 
-`cf` uses the Cloudflare Vite plugin 2.0 beta (`@cloudflare/vite-plugin@beta`), which does not depend on Wrangler. Wrangler builds projects that declare it without the Vite plugin, such as projects that `cf migrate` converts with the Wrangler bundler and static sites that [automatic configuration](#automatic-configuration) sets up. These projects keep build settings, such as the static assets directory, in a generated `wrangler.config.ts` file. That file can change during the beta.
+`cf` supports the latest release of the Cloudflare Vite plugin 2.0 and the latest release of Wrangler. The Vite plugin 2.0 does not depend on Wrangler.
 
-`cf` does not run your `package.json` scripts. If your `build` script runs extra steps, such as `tsc -b && vite build`, then `cf build` and `cf deploy` skip them. Chain those steps with `cf build` in your own script instead:
+Wrangler builds projects such as those that `cf migrate` converts with the Wrangler bundler, and static sites that [automatic configuration](#automatic-configuration) sets up. These projects keep build settings, such as the static assets directory, in a generated `wrangler.config.ts` file. That file is experimental and can change.
+
+`cf build` and `cf deploy` run the framework's own build command, such as `vite build` or `astro build`, not the `build` script in `package.json`. If your `build` script runs extra steps, such as `tsc -b && vite build`, chain those steps with `cf build` in your own script instead:
 
 *package.jsonjson*
 
@@ -39,7 +41,7 @@ Configure the project with [`cloudflare.config.ts`](https://developers.cloudflar
 }
 ```
 
-When `cf` runs a framework command, it forwards `--mode` and rejects other arguments. For example, `cf dev --port 8788` fails in a Vite project. Set the option in the framework's configuration, such as `server.port` in `vite.config.ts`, or run the framework command directly. When `cf` uses an installed build tool instead, `cf dev` forwards extra arguments to it, and the tool rejects arguments it does not support. `cf build` accepts only `--mode`.
+`cf dev` forwards extra arguments to the development server it starts, so `cf dev --port 8788` works in a Vite project. The development server decides which arguments it accepts and rejects the rest. To separate the server's arguments from `cf` options, put them after `--`, as in `cf dev -- --host 0.0.0.0`. `cf build` accepts only `--mode`.
 
 ## Automatic configuration
 
@@ -71,6 +73,19 @@ cf dev
 
 The dev server prints its local URL. Append `/cdn-cgi/local/explorer` to that URL to open [Local Explorer](https://developers.cloudflare.com/workers/local-development/local-explorer/). Use it to inspect local binding data, view logs and traces, and [test Cron Triggers](https://developers.cloudflare.com/workers/local-development/local-explorer/#test-cron-triggers) with a chosen cron expression and scheduled time.
 
+### Local variables and secrets
+
+During `cf dev`, the development server reads values for your Worker's variables and secrets from files in the project directory. When you pass `--mode`, it also reads the files for that mode.
+
+The Cloudflare Vite plugin reads both of these groups:
+
+- `.env`, `.env.local`, `.env.<MODE>`, and `.env.<MODE>.local`, in that order. A value in a later file overrides the same variable in an earlier one.
+- `.dev.vars.<MODE>` if it exists, otherwise `.dev.vars`.
+
+Wrangler reads `.dev.vars.<MODE>` if it exists, otherwise `.dev.vars`. It reads the `.env` files only when the project has no `.dev.vars` file.
+
+`cf` also reads its own credentials, such as `CLOUDFLARE_API_TOKEN`, from the same `.env` files. For details, refer to [Load credentials from a .env file](https://developers.cloudflare.com/cf/get-started/#load-credentials-from-a-env-file).
+
 ## Build
 
 Build the project:
@@ -79,7 +94,7 @@ Build the project:
 cf build
 ```
 
-After the build finishes, `cf` reads and validates `.cloudflare/output/v0/`. `cf build` does not upload anything and does not need credentials.
+After the build finishes, `cf` reads and validates `.cloudflare/output/v1/`. `cf build` does not upload anything and does not need credentials.
 
 ## Deploy
 
@@ -91,7 +106,7 @@ cf deploy
 
 Sign in with `cf auth login`, or set `CLOUDFLARE_API_TOKEN`, before you deploy. For details, refer to [Sign in](https://developers.cloudflare.com/cf/get-started/#sign-in).
 
-`cf deploy` can provision missing resources for bindings that omit resource identifiers. It does not write provisioned identifiers back to `cloudflare.config.ts`.
+`cf deploy` can provision missing resources for bindings that omit resource identifiers. It does not write provisioned identifiers back to `cloudflare.config.ts`. To make those bindings fail instead, pass `--no-provision`.
 
 `cf deploy` accepts these options:
 
@@ -105,6 +120,8 @@ Sign in with `cf auth login`, or set `CLOUDFLARE_API_TOKEN`, before you deploy. 
 | `--containers-rollout <STRATEGY>` | Sets the Container rollout strategy: `immediate`, `gradual`, or `none` |
 | `--worker <NAME>` | Selects a Worker from Build Output instead of the default Worker |
 | `--prebuilt` | Deploys existing Build Output without building |
+| `--no-provision` | Fails on bindings without resource identifiers instead of creating resources |
+| `--force` | Uploads in CI even when the remote Worker has changes that conflict with the local Build Output |
 
 `--dry-run` sends no API requests and needs no credentials, so you can validate a project before you sign in. In a project without `cloudflare.config.ts`, it still runs automatic configuration first, which can install packages and change files.
 
@@ -112,6 +129,18 @@ Sign in with `cf auth login`, or set `CLOUDFLARE_API_TOKEN`, before you deploy. 
 cf deploy --dry-run
 cf deploy --message "Fix header parsing" --tag v1.2.0
 ```
+
+### Deploy a static assets directory
+
+To deploy a directory of files that another tool already built, such as a static site, pass the directory:
+
+```sh
+cf deploy ./dist
+```
+
+`cf` skips the build and deploys the files as an assets-only Worker. When the project has a `cloudflare.config.ts`, `cf` uses its Worker settings, such as the name. Otherwise, it names the Worker after the `name` in `package.json`, or after the project directory. `cf previews deploy` and `cf workers versions create` accept a directory in the same way.
+
+Use this form only for projects without server-side code. When `cloudflare.config.ts` configures a Worker entrypoint or Containers, the command fails. Run it without the directory so that `cf` builds the project. You cannot combine a directory with `--prebuilt` or `--worker`.
 
 ## Modes
 
@@ -291,7 +320,7 @@ Build Output records the mode it was built with. When you deploy an existing bui
 
 ## Deploy a prebuilt build
 
-Pass `--prebuilt` to deploy an existing `.cloudflare/output/v0/` directory without building. One CI job can build, and another can deploy the restored directory. `--prebuilt` also skips automatic configuration.
+Pass `--prebuilt` to deploy an existing `.cloudflare/output/v1/` directory without building. One CI job can build, and another can deploy the restored directory. `--prebuilt` also skips automatic configuration.
 
 The deploy command must request the mode that Build Output records:
 
@@ -312,7 +341,7 @@ cf build --mode staging
 cf deploy --prebuilt --mode staging
 ```
 
-Builds through Wrangler record a mode only when you pass `--mode` to `cf build`. To check the recorded mode, read `buildContext.mode` in `.cloudflare/output/v0/config.json`.
+Builds through Wrangler record a mode only when you pass `--mode` to `cf build`. To check the recorded mode, read `buildContext.mode` in `.cloudflare/output/v1/config.json`.
 
 The same rule applies to `--prebuilt` with `cf previews deploy`, `cf workers versions create`, `cf workers triggers deploy`, and `cf workers check`. When the modes do not match, the command stops before it uploads anything and prints the `--mode` value to use.
 
@@ -352,7 +381,7 @@ Deploy the project as a Worker Preview:
 cf previews deploy
 ```
 
-The command builds the project with `isPreview` set to `true`, so a function-form `cloudflare.config.ts` can return preview-specific settings. It then uploads the preview and prints the result as JSON. Previews in `cf` can change during the beta.
+The command builds the project with `isPreview` set to `true`, so a function-form `cloudflare.config.ts` can return preview-specific settings. It then uploads the preview and prints the result as JSON.
 
 The preview name defaults to the current branch. `cf` reads the branch from Workers Builds, GitHub Actions, or GitLab CI/CD, and then from Git. To override the branch name, pass `--preview-name`. This flag is required on a detached `HEAD` with no CI branch:
 
@@ -360,7 +389,7 @@ The preview name defaults to the current branch. `cf` reads the branch from Work
 cf previews deploy --preview-name my-feature
 ```
 
-The command accepts `--mode`, `--worker`, and `--prebuilt`. With `--prebuilt`, Build Output must come from a preview build, and the [mode rule](#deploy-a-prebuilt-build) applies. There is no `--dry-run`, and the command needs credentials.
+The command accepts `--mode`, `--worker`, and `--prebuilt`. With `--prebuilt`, Build Output must come from a preview build, and the [mode rule](#deploy-a-prebuilt-build) applies. `--dry-run` checks the arguments and shows what the command would run, without building or uploading.
 
 The JSON result contains `type`, `version`, `preview_id`, `preview_name`, `preview_slug`, `preview_urls`, `deployment_id`, and `deployment_urls`.
 
@@ -388,7 +417,7 @@ cf workers types
 
 The command writes `.cloudflare/types/index.d.ts`, which contains the `Env` binding types and the Workers runtime types. Pass `--no-include-runtime` to leave out the runtime types, or `--mode` to evaluate the configuration for a named mode.
 
-The Cloudflare Vite plugin writes the same file during development and builds. Run `cf workers types` in projects that build through Wrangler, or before `tsc` in a type-check script. Projects created with `cf init` include a `typecheck` script that runs `cf workers types && tsc`.
+The Cloudflare Vite plugin writes the same file during development and builds. Run `cf workers types` in projects that build through Wrangler, or before a type check. Projects created with `cf init` include a `typecheck` script that runs `cf workers types` and then the Vite+ type check.
 
 ## Local resource data
 
@@ -412,9 +441,7 @@ cf r2 objects list --bucket-name <BUCKET_NAME> --local
 
 `cf d1 query` has no local equivalent. Use `cf d1 raw` instead. A command without a local equivalent fails with `This command has no local equivalent.` instead of calling the Cloudflare API.
 
-By default, `--local` keeps its data in a `state/v3` directory inside the `cf` configuration directory. That is `~/.config/cloudflare/state/v3` on Linux and `~/Library/Preferences/cloudflare/state/v3` on macOS. Every project on your machine shares this directory. Pass `--persist-to <DIRECTORY>` to use `<DIRECTORY>/v3` instead. `--persist-to` works only with `--local`.
-
-This is not the data your dev server uses. The Cloudflare Vite plugin 2.0 beta keeps development data in the project, under `.cloudflare/state/`.
+By default, `--local` keeps its data in `.cloudflare/state/v3` next to the nearest `cloudflare.config.ts`. The Cloudflare Vite plugin 2.0 uses the same directory, so a command such as `cf kv keys list --local` reads the data your development server created. Pass `--persist-to <DIRECTORY>` to use `<DIRECTORY>/v3` instead. Outside a project, `--local` needs `--persist-to`. `--persist-to` works only with `--local`.
 
 ## Which configuration each command reads
 
@@ -429,7 +456,7 @@ API credentials, such as `CLOUDFLARE_API_TOKEN`, can also come from a `.env` fil
 ### No dev server is installed
 
 ```txt
-No Cloudflare dev-server is installed in this project.
+No Cloudflare dev server is installed in <PATH>.
 ```
 
 `cf` found no framework that it recognizes and no Cloudflare build tool declared in `package.json`, for example in an empty directory. To create a project, run `cf init`.
@@ -437,14 +464,6 @@ No Cloudflare dev-server is installed in this project.
 ### Dependencies are not installed
 
 In a configured project whose dependencies are not installed, Vite reports that it cannot resolve `@cloudflare/vite-plugin`, or `cf` reports that a build tool is declared but not installed. Install dependencies with your package manager, then run the command again.
-
-### Arguments are rejected
-
-```txt
-Arguments cannot currently be forwarded to the detected dev command `npx vite`. Run that command directly with the required arguments.
-```
-
-`cf` runs the framework's command and forwards only `--mode`. Set the option in the framework's configuration, or run the framework command directly.
 
 ### A framework rejects `--mode`
 
@@ -469,10 +488,10 @@ Pass exactly the mode that Build Output records, or omit `--mode` when it record
 ### Build Output is missing
 
 ```txt
-Build Output Specification: no root config found at <PATH>/.cloudflare/output/v0/config.json.
+Build Output Specification: no root config found at <PATH>/.cloudflare/output/v1/config.json.
 ```
 
-A `--prebuilt` command found no build. Run `cf build` first, or restore the complete `.cloudflare/output/v0/` directory from your build job.
+A `--prebuilt` command found no build. Run `cf build` first, or restore the complete `.cloudflare/output/v1/` directory from your build job. If the build job ran a beta release of `cf`, rebuild with the current release.
 
 ### Preview output reaches a production deploy
 
@@ -511,5 +530,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/projects/#page","headline":"Develop, build, and deploy","description":"Run, build, and deploy Workers projects with the Cloudflare CLI, including modes, prebuilt deploys, and previews.","url":"https://developers.cloudflare.com/cf/projects/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952","dateModified":"2026-11-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/projects/#page","headline":"Develop, build, and deploy","description":"Run, build, and deploy Workers projects with the Cloudflare CLI, including modes, prebuilt deploys, and previews.","url":"https://developers.cloudflare.com/cf/projects/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

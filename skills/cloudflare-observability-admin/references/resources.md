@@ -14,6 +14,8 @@ Products
 
 1.1.1.1AccessAgentsAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBasin CatalogBasin PipelinesBasin SQLBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsDynamic WorkersEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPulumiQueuesR2Rate limitingRealtimeReference ArchitectureRulesSandboxesSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
 
+[**Conditionally enforce Turnstile** Learn two ways to show Turnstile only for certain requests using a Transform Rule or HTMLRewriter.](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/)
+
 [**Set up and use a Prisma Postgres database** This tutorial shows you how to set up a Cloudflare Workers project with Prisma ORM.](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)
 
 [**Migrate from Vercel to Cloudflare Workers** Move a Vercel app to one Cloudflare Worker. Pick your framework, then map Vercel KV, Blob, Edge Config, cron jobs, ISR, env vars, and domains to Cloudflare.](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
@@ -105,8 +107,6 @@ Products
 [**Whisper-large-v3-turbo with Cloudflare Workers AI** Learn how to transcribe large audio files using Workers AI.](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/)
 
 [**Connect to a MySQL database with Cloudflare Workers** This tutorial explains how to connect to a Cloudflare database using TCP Sockets and Hyperdrive. The Workers application you create in this tutorial will interact with a product database inside of MySQL.](https://developers.cloudflare.com/workers/tutorials/mysql/)
-
-[**Conditionally enforce Turnstile** This tutorial explains how to conditionally enforce Turnstile based on the incoming request, such as a pre-shared secret in a header or a specific IP address.](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/)
 
 [**Storing user generated content** Store user-generated content in R2 for fast, secure, and cost-effective architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/)
 

@@ -147,7 +147,7 @@ Use the [unified WebRTC connection flow](https://developers.openai.com/api/docs/
 
 This application server supports standard WebRTC and WARP. The comment marked `WARP only` identifies the `dcid` forwarding needed for WARP:
 
-```javascript
+```typescript
 import express from "express";
 
 const app = express();
@@ -251,12 +251,63 @@ func handler(client openai.Client) http.Handler {
 }
 ```
 
+```ruby
+require "openai"
+require "webrick"
+require "json"
+require "uri"
+
+client = OpenAI::Client.new(max_retries: 0)
+server = WEBrick::HTTPServer.new(
+  BindAddress: "127.0.0.1", Port: Integer(ENV.fetch("PORT", "3000")),
+  Logger: WEBrick::Log.new($stderr), AccessLog: []
+)
+server.mount_proc("/session") do |request, response|
+  unless request.request_method == "POST" && request.path == "/session"
+    response.status = 405
+    next
+  end
+  begin
+    options = { extra_headers: { "OpenAI-Safety-Identifier" => "hashed-user-id" } }
+    # Forward the data-channel ID negotiated by the WARP client.
+    dcid = URI.decode_www_form(request.query_string.to_s).to_h["dcid"]
+    options[:extra_query] = { dcid: dcid } if dcid
+    upstream = client.realtime.calls.create(
+      sdp: request.body.to_s,
+      session: {
+        type: :realtime,
+        model: "gpt-realtime-2.1",
+        audio: { output: { voice: :marin } }
+      },
+      request_options: options
+    )
+    response.status = upstream.status
+    response["Content-Type"] = "application/sdp"
+    # Resolve against the API origin before WEBrick normalizes Location headers.
+    location = upstream.headers["location"]
+    response["Location"] = URI.join(client.base_url.to_s, location).to_s if location
+    response.body = upstream.body.to_a.join
+  rescue OpenAI::Errors::APIError => error
+    response.status = error.status || 502
+    response["Content-Type"] = "application/json"
+    response.body = JSON.generate(error.body)
+  rescue
+    response.status = 500
+    response["Content-Type"] = "application/json"
+    response.body = JSON.generate(error: "Failed to create session")
+  end
+end
+trap("INT") { server.shutdown }
+trap("TERM") { server.shutdown }
+server.start
+```
+
 
 ### Connect from your browser
 
 After enabling the optimizations available in your browser, set `useWarp` to `true`. Choose any available data-channel ID and pass the same ID to the server. Comments marked `WARP only` identify the configuration and signaling that aren't needed for standard WebRTC:
 
-```javascript
+```typescript
 // WARP only: set to true after enabling the supported WARP optimizations.
 const useWarp = false;
 

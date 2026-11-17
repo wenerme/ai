@@ -5658,14 +5658,14 @@ Retrieves a model response with the given ID.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 109 more or string`
+  - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 109 more`
+    - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -5674,7 +5674,11 @@ Retrieves a model response with the given ID.
 
       - `"gpt-6-astra"`
 
+      - `"gpt-6.2-astra"`
+
       - `"gpt-6.1-sol"`
+
+      - `"gpt-6.2-sol"`
 
       - `"gpt-6.1-terra"`
 
@@ -5895,6 +5899,8 @@ Retrieves a model response with the given ID.
       - `"gpt-rosalind-research"`
 
       - `"gpt-6-rosalind"`
+
+      - `"gpt-6.2-astra-law"`
 
     - `string`
 

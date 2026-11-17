@@ -169,6 +169,8 @@ system versioning, feature state management, and feature flags:
 ## Use GitLab Duo Chat in VS Code
 
 - Status [added](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/issues/1712) in the GitLab for VS Code extension 5.29.0.
+- [Moved](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v7.7.1) to the Secondary Side Bar in GitLab for VS Code 7.7.1 during the GitLab 19.6 release.
+- GitLab Duo Non-Agentic Chat section [added](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v7.7.1) to the GitLab panel in GitLab for VS Code 7.7.1 during the GitLab 19.6 release.
 
 Prerequisites:
 
@@ -177,7 +179,16 @@ Prerequisites:
 To use GitLab Duo Chat in the GitLab for VS Code extension:
 
 1. In VS Code, open a file. The file does not need to be a file in a Git repository.
-1. In the left sidebar, select **GitLab Duo Chat** ().
+1. Open Chat by using one of these methods:
+   - In the Secondary Side Bar, select **GitLab Duo Non-Agentic Chat**.
+   - In the left sidebar, select **GitLab** ().
+     Under **GitLab Duo Non-Agentic Chat**, select **Open GitLab Duo**.
+     This section is shown only if GitLab Duo Agent Platform is unavailable
+     or [turned off in VS Code](agentic_chat.md#use-gitlab-duo-chat-in-vs-code).
+   - Use the keyboard shortcut:
+     - On Windows or Linux: <kbd>Alt</kbd>+<kbd>D</kbd>
+     - On macOS: <kbd>Option</kbd>+<kbd>D</kbd>
+   - In the Command Palette, run `GitLab Duo Non-Agentic Chat: Open chat`.
 1. In the message box, enter your question and press <kbd>Enter</kbd> or select **Send**.
 
 If you have selected code in the editor, this selection is included with your question to GitLab Duo Chat.
@@ -193,9 +204,10 @@ To open GitLab Duo Chat in the editor window, use any of these methods:
 - From a keyboard shortcut:
   - On Windows and Linux: <kbd>ALT</kbd>+<kbd>c</kbd>
   - On macOS: <kbd>Option</kbd>+<kbd>c</kbd>
-- In the currently open file in your IDE, right-click and select **GitLab Duo Chat** > **Open Quick Chat**.
+- In the currently open file in your IDE, right-click and select
+  **GitLab Duo Non-Agentic Chat** > **Open Quick Chat**.
   Select some code to provide additional context.
-- Open the Command Palette, then select **GitLab Duo Chat: Open Quick Chat**.
+- Open the Command Palette, then select **GitLab Duo Non-Agentic Chat: Open Quick Chat**.
 
 After Quick Chat opens:
 
@@ -216,7 +228,12 @@ To check the health of your GitLab Duo configuration:
 
 To close GitLab Duo Chat:
 
-- For GitLab Duo Chat in the left sidebar, select **GitLab Duo Chat** ().
+- For GitLab Duo Chat in the Secondary Side Bar, either:
+  - When Chat is focused, press <kbd>Alt</kbd>+<kbd>D</kbd> on Windows or Linux,
+    or <kbd>Option</kbd>+<kbd>D</kbd> on macOS.
+  - In the Command Palette, run `GitLab Duo Non-Agentic Chat: Close chat`.
+
+  Closing Chat hides the Secondary Side Bar.
 - For the quick chat window that's embedded in your file, in the upper-right corner,
   select **Collapse** ().
 

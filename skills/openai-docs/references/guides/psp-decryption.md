@@ -11,7 +11,7 @@ This guide applies to ZDR with PSP. It does not apply to Private Retention
 
 Your cloud key-management service decrypts a small recovery capsule. Your application uses the recovered secret to decrypt the record locally. Your private key stays in your cloud key-management service.
 
-The [appendix](#appendix-format-and-decryption-reference) shows the record bundle and a Python example.
+The [appendix](#appendix-format-and-decryption-reference) shows the record bundle and local decryption examples.
 
 ## Before you start
 
@@ -57,7 +57,7 @@ Your recovery application's OCI identity needs `KEY_DECRYPT` on the original RSA
 
 ### 4. Decrypt and verify the content
 
-Use the [Python example](#python-example) to check the capsule's binding to the record and decrypt the content locally.
+Use the [decryption examples](#decryption-examples) to check the capsule's binding to the record and decrypt the content locally.
 
 Return content only after all checks and AES-GCM authentication succeed.
 
@@ -72,7 +72,7 @@ A successful operation returns authenticated UTF-8 content. Request records cont
 | `customer_access` is `null`          | The record wasn't written with PSP decryption enabled for a recovery key. Selecting a key doesn't enable PSP decryption for that record. |
 | KMS access denied or key unavailable | Check your decrypt permission and the availability of the original cloud key and version.                                                |
 | Fingerprint or binding mismatch      | Check the intended record and original registration. Don't modify authenticated fields or substitute another key.                        |
-| AES-GCM authentication fails         | Check the inputs to the [Python example](#python-example). Don't return partial plaintext.                                               |
+| AES-GCM authentication fails         | Check the inputs to the [decryption examples](#decryption-examples). Don't return partial plaintext.                                     |
 
 ## Related guides
 
@@ -81,7 +81,7 @@ A successful operation returns authenticated UTF-8 content. Request records cont
 
 ## Appendix: Format and decryption reference
 
-This appendix covers **bundle version 1, protected-record version `v4`**. Use the Python example below to implement local decryption without OpenAI libraries.
+This appendix covers **bundle version 1, protected-record version `v4`**. Use the examples below to implement local decryption without OpenAI libraries.
 
 ### Bundle format
 
@@ -115,11 +115,30 @@ The object is UTF-8 JSON with this shape. Angle brackets are placeholders.
 
 `encrypted_cot` contains encrypted chain-of-thought content. This content cannot be decrypted with your customer recovery key. The array may be empty.
 
-### Python example
+
+
+
+### Decryption examples
 
 Use the example below after decrypting any separate EKM storage envelope and the recovery capsule with the original cloud key. It checks the key fingerprint, capsule binding, recovered scalar, and runtime thumbprint before authenticating and decrypting the payload.
 
-Install `pyhpke`, `cryptography`, and `rfc8785` in your Python environment. Pass these inputs to `recover_record`:
+
+
+
+For Python, install `pyhpke`, `cryptography`, and `rfc8785`.
+
+
+
+
+
+
+
+For Ruby, install `hpke` and `json-canonicalization` with the OpenSSL Ruby bindings.
+
+
+
+
+Pass these inputs to `recover_record`:
 
 - `bundle_json`: The inner record bundle as UTF-8 JSON bytes.
 - `capsule`: The bytes returned by your cloud key-management service.
@@ -271,6 +290,131 @@ def point(value):
     encoded = decode64(value)
     require(len(encoded) == 65 and encoded[0] == 4, "Invalid P-256 encoding")
     return ec.EllipticCurvePublicKey.from_encoded_point(ec.SECP256R1(), encoded)
+```
+
+```ruby
+require "base64"
+require "digest"
+require "json"
+require "json/canonicalization"
+require "openssl"
+require "hpke"
+
+def require_valid(condition, message)
+  raise ArgumentError, message unless condition
+end
+
+def b64url(bytes)
+  Base64.urlsafe_encode64(bytes, padding: false)
+end
+
+def decode64(value)
+  require_valid(value.is_a?(String), "Expected base64url text")
+  bytes = Base64.strict_decode64(value.tr("-_", "+/") + "=" * (-value.length % 4))
+  require_valid(b64url(bytes) == value, "Noncanonical base64url")
+  bytes
+end
+
+def equal_bytes?(left, right)
+  left.bytesize == right.bytesize && OpenSSL.fixed_length_secure_compare(left, right)
+end
+
+def recovery_point(kem, value)
+  encoded = decode64(value)
+  require_valid(encoded.bytesize == 65 && encoded.getbyte(0) == 4, "Invalid P-256 encoding")
+  key = kem.deserialize_public_key(encoded)
+  require_valid(key.check_key, "Invalid P-256 point")
+  [key, encoded]
+rescue OpenSSL::PKey::PKeyError
+  raise ArgumentError, "Invalid P-256 point"
+end
+
+# Recover from exact inner bundle bytes and an already decrypted capsule.
+# No cloud calls occur here; the RSA private key stays in the cloud.
+def recover_record(bundle_json, capsule, original_key_id, original_public_key_pem)
+  bundle = JSON.parse(bundle_json, allow_duplicate_key: false)
+  require_valid(
+    bundle["bundle_version"].is_a?(Integer) && bundle["bundle_version"] == 1,
+    "Unsupported bundle version"
+  )
+  record = bundle.fetch("protected_record")
+  access = bundle.fetch("customer_access")
+  require_valid(access.is_a?(Hash), "Customer recovery is unavailable")
+  require_valid(
+    record["version"] == "v4" &&
+        record["algorithm"] == "HPKE-v1-DHKEM_P256_HKDF_SHA256-EXPORT_ONLY-AES256_GCM" &&
+        access["version"].is_a?(Integer) && access["version"] == 1 &&
+        access["algorithm"] == "RSA-OAEP-256" && access["customer_key_id"] == original_key_id,
+    "Wrong schema or original key"
+  )
+
+  public_key = OpenSSL::PKey.read(original_public_key_pem)
+  require_valid(public_key.is_a?(OpenSSL::PKey::RSA) && !public_key.private?, "Expected an RSA public key")
+  require_valid(public_key.n.num_bits == 3072, "Expected RSA-3072")
+  require_valid(
+    decode64(access.fetch("recovery_secret")).bytesize == 384,
+    "Wrong RSA ciphertext length"
+  )
+  fingerprint = Digest::SHA256.digest(public_key.public_to_der)
+  require_valid(equal_bytes?(decode64(access.fetch("customer_public_key_fingerprint")), fingerprint), "Wrong key")
+
+  suite = HPKE.new(HPKE::DHKEM_P256_HKDF_SHA256, HPKE::HKDF_SHA256, HPKE::EXPORT_ONLY)
+  runtime, encoded = recovery_point(suite.kem, record.fetch("safety_review_runtime_public_key"))
+  jwk = {
+    "crv" => "P-256",
+
+    "kty" => "EC",
+
+    "x" => b64url(encoded.byteslice(1, 32)),
+    "y" => b64url(encoded.byteslice(33, 32))
+  }
+  require_valid(record["key_thumbprint"] == b64url(Digest::SHA256.digest(jwk.to_json_c14n)), "Wrong runtime key")
+  nonce = decode64(record.fetch("nonce"))
+  ciphertext = decode64(record.fetch("ciphertext"))
+  require_valid(nonce.bytesize == 12 && ciphertext.bytesize >= 16, "Invalid AES-GCM encoding")
+
+  binding_input = {
+    "purpose" => "OpenAI-PSP-v4/customer-recovery-binding",
+
+    "bundle_version" => 1,
+    "record" => record,
+
+    "recovery_header" => access.except("recovery_secret")
+  }
+  binding = Digest::SHA256.digest(binding_input.to_json_c14n)
+  require_valid(
+    capsule.is_a?(String) && capsule.bytesize == 72 &&
+        capsule.byteslice(0, 8) == "PSPv4\x00\x00\x01".b && equal_bytes?(capsule.byteslice(40, 32), binding),
+    "Invalid recovery capsule binding"
+  )
+  secret = capsule.byteslice(8, 32)
+  scalar = OpenSSL::BN.new(secret, 2).to_i
+  order = 0xFFFFFFFF00000000FFFFFFFFFFFFFFFFBCE6FAADA7179E84F3B9CAC2FC632551
+  require_valid(scalar >= 1 && scalar < order, "Invalid P-256 private scalar")
+
+  # Restore the recovered key on this one KEM instance. The library performs
+  # the complete HPKE encapsulation and key schedule, without generating a new
+  # ephemeral key that would differ from the original encryption operation.
+  ephemeral = suite.kem.create_key_pair_from_secret(secret)
+  suite.kem.define_singleton_method(:generate_key_pair) { ephemeral }
+  sender = suite.setup_base_s(runtime, "OpenAI-PSP-v4/HPKE-export")
+  require_valid(sender.fetch(:enc) == decode64(record.fetch("encrypted_dek")), "Wrong recovered scalar")
+  aad = record.except("ciphertext").to_json_c14n
+  key = sender.fetch(:context_s).export("OpenAI-PSP-v4/payload-key" + Digest::SHA256.digest(aad), 32)
+
+  cipher = OpenSSL::Cipher.new("aes-256-gcm")
+  cipher.decrypt
+  cipher.key = key
+  cipher.iv = nonce
+  cipher.auth_tag = ciphertext.byteslice(-16, 16)
+  cipher.auth_data = aad
+  encrypted_body = ciphertext.byteslice(0, ciphertext.bytesize - 16)
+  plaintext = encrypted_body.empty? ? "".b : cipher.update(encrypted_body)
+  plaintext << cipher.final
+  plaintext.force_encoding(Encoding::UTF_8)
+  require_valid(plaintext.valid_encoding?, "Recovered plaintext is not UTF-8")
+  plaintext
+end
 ```
 
 

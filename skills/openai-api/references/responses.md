@@ -4988,11 +4988,15 @@ the `background` parameter set to `true` can be cancelled.
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+    - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
       - `"gpt-6-astra"`
 
+      - `"gpt-6.2-astra"`
+
       - `"gpt-6.1-sol"`
+
+      - `"gpt-6.2-sol"`
 
       - `"gpt-6.1-terra"`
 
@@ -5170,7 +5174,7 @@ the `background` parameter set to `true` can be cancelled.
 
       - `"gpt-3.5-turbo-16k-0613"`
 
-    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
       - `"o1-pro"`
 
@@ -5215,6 +5219,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-rosalind-research"`
 
       - `"gpt-6-rosalind"`
+
+      - `"gpt-6.2-astra-law"`
 
   - `object: "response"`
 
@@ -10924,17 +10930,21 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 Content type: `application/json`
 
-- `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 109 more or string or null`
+- `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 109 more`
+  - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
     - `"gpt-6-astra"`
 
+    - `"gpt-6.2-astra"`
+
     - `"gpt-6.1-sol"`
+
+    - `"gpt-6.2-sol"`
 
     - `"gpt-6.1-terra"`
 
@@ -11155,6 +11165,8 @@ Content type: `application/json`
     - `"gpt-rosalind-research"`
 
     - `"gpt-6-rosalind"`
+
+    - `"gpt-6.2-astra-law"`
 
   - `string`
 
@@ -20863,6 +20875,26 @@ Content type: `application/json`
   Whether to run the model response in the background.
   [Learn more](/api/docs/guides/background).
 
+- `background_options: optional object { completion_window, continuation_id }`
+
+  Options for background execution on HTTP requests. The `2h` and `8h`
+  completion windows require `background: true`, Standard processing,
+  and `stream: false` or omitted.
+
+  - `completion_window: optional "soonest" or "2h" or "8h"`
+
+    The completion window for background execution. Defaults to `soonest`; `2h` and `8h` select discounted background execution.
+
+    - `"soonest"`
+
+    - `"2h"`
+
+    - `"8h"`
+
+  - `continuation_id: optional string`
+
+    A customer-provided opaque identifier used to prioritize related background requests. It does not add prior history to the input.
+
 - `context_management: optional array of object { type, compact_threshold }  or null`
 
   Context management configuration for this request.
@@ -25789,11 +25821,15 @@ Content type: `application/json`
 
   - `string`
 
-  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+  - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
     - `"gpt-6-astra"`
 
+    - `"gpt-6.2-astra"`
+
     - `"gpt-6.1-sol"`
+
+    - `"gpt-6.2-sol"`
 
     - `"gpt-6.1-terra"`
 
@@ -25971,7 +26007,7 @@ Content type: `application/json`
 
     - `"gpt-3.5-turbo-16k-0613"`
 
-  - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+  - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
     - `"o1-pro"`
 
@@ -26016,6 +26052,8 @@ Content type: `application/json`
     - `"gpt-rosalind-research"`
 
     - `"gpt-6-rosalind"`
+
+    - `"gpt-6.2-astra-law"`
 
 - `moderation: optional object { model, policy }  or null`
 
@@ -32533,11 +32571,15 @@ Content type: `application/json`
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+    - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
       - `"gpt-6-astra"`
 
+      - `"gpt-6.2-astra"`
+
       - `"gpt-6.1-sol"`
+
+      - `"gpt-6.2-sol"`
 
       - `"gpt-6.1-terra"`
 
@@ -32715,7 +32757,7 @@ Content type: `application/json`
 
       - `"gpt-3.5-turbo-16k-0613"`
 
-    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
       - `"o1-pro"`
 
@@ -32760,6 +32802,8 @@ Content type: `application/json`
       - `"gpt-rosalind-research"`
 
       - `"gpt-6-rosalind"`
+
+      - `"gpt-6.2-astra-law"`
 
   - `object: "response"`
 
@@ -44262,11 +44306,15 @@ Retrieves a model response with the given ID.
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+    - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
       - `"gpt-6-astra"`
 
+      - `"gpt-6.2-astra"`
+
       - `"gpt-6.1-sol"`
+
+      - `"gpt-6.2-sol"`
 
       - `"gpt-6.1-terra"`
 
@@ -44444,7 +44492,7 @@ Retrieves a model response with the given ID.
 
       - `"gpt-3.5-turbo-16k-0613"`
 
-    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
       - `"o1-pro"`
 
@@ -44489,6 +44537,8 @@ Retrieves a model response with the given ID.
       - `"gpt-rosalind-research"`
 
       - `"gpt-6-rosalind"`
+
+      - `"gpt-6.2-astra-law"`
 
   - `object: "response"`
 
@@ -60764,11 +60814,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+    - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
       - `"gpt-6-astra"`
 
+      - `"gpt-6.2-astra"`
+
       - `"gpt-6.1-sol"`
+
+      - `"gpt-6.2-sol"`
 
       - `"gpt-6.1-terra"`
 
@@ -60946,7 +61000,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"gpt-3.5-turbo-16k-0613"`
 
-    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
       - `"o1-pro"`
 
@@ -60991,6 +61045,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"gpt-rosalind-research"`
 
       - `"gpt-6-rosalind"`
+
+      - `"gpt-6.2-astra-law"`
 
   - `object: "response"`
 
@@ -71676,11 +71732,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+      - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
         - `"gpt-6-astra"`
 
+        - `"gpt-6.2-astra"`
+
         - `"gpt-6.1-sol"`
+
+        - `"gpt-6.2-sol"`
 
         - `"gpt-6.1-terra"`
 
@@ -71858,7 +71918,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-3.5-turbo-16k-0613"`
 
-      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
         - `"o1-pro"`
 
@@ -71903,6 +71963,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-rosalind-research"`
 
         - `"gpt-6-rosalind"`
+
+        - `"gpt-6.2-astra-law"`
 
     - `object: "response"`
 
@@ -83109,11 +83171,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+      - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
         - `"gpt-6-astra"`
 
+        - `"gpt-6.2-astra"`
+
         - `"gpt-6.1-sol"`
+
+        - `"gpt-6.2-sol"`
 
         - `"gpt-6.1-terra"`
 
@@ -83291,7 +83357,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-3.5-turbo-16k-0613"`
 
-      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
         - `"o1-pro"`
 
@@ -83336,6 +83402,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-rosalind-research"`
 
         - `"gpt-6-rosalind"`
+
+        - `"gpt-6.2-astra-law"`
 
     - `object: "response"`
 
@@ -94005,11 +94073,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+      - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
         - `"gpt-6-astra"`
 
+        - `"gpt-6.2-astra"`
+
         - `"gpt-6.1-sol"`
+
+        - `"gpt-6.2-sol"`
 
         - `"gpt-6.1-terra"`
 
@@ -94187,7 +94259,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-3.5-turbo-16k-0613"`
 
-      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
         - `"o1-pro"`
 
@@ -94232,6 +94304,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-rosalind-research"`
 
         - `"gpt-6-rosalind"`
+
+        - `"gpt-6.2-astra-law"`
 
     - `object: "response"`
 
@@ -105106,11 +105180,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+      - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
         - `"gpt-6-astra"`
 
+        - `"gpt-6.2-astra"`
+
         - `"gpt-6.1-sol"`
+
+        - `"gpt-6.2-sol"`
 
         - `"gpt-6.1-terra"`
 
@@ -105288,7 +105366,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-3.5-turbo-16k-0613"`
 
-      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
         - `"o1-pro"`
 
@@ -105333,6 +105411,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-rosalind-research"`
 
         - `"gpt-6-rosalind"`
+
+        - `"gpt-6.2-astra-law"`
 
     - `object: "response"`
 
@@ -115839,11 +115919,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+      - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
         - `"gpt-6-astra"`
 
+        - `"gpt-6.2-astra"`
+
         - `"gpt-6.1-sol"`
+
+        - `"gpt-6.2-sol"`
 
         - `"gpt-6.1-terra"`
 
@@ -116021,7 +116105,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-3.5-turbo-16k-0613"`
 
-      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
         - `"o1-pro"`
 
@@ -116066,6 +116150,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-rosalind-research"`
 
         - `"gpt-6-rosalind"`
+
+        - `"gpt-6.2-astra-law"`
 
     - `object: "response"`
 
@@ -141633,11 +141719,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+      - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
         - `"gpt-6-astra"`
 
+        - `"gpt-6.2-astra"`
+
         - `"gpt-6.1-sol"`
+
+        - `"gpt-6.2-sol"`
 
         - `"gpt-6.1-terra"`
 
@@ -141815,7 +141905,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-3.5-turbo-16k-0613"`
 
-      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
         - `"o1-pro"`
 
@@ -141860,6 +141950,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-rosalind-research"`
 
         - `"gpt-6-rosalind"`
+
+        - `"gpt-6.2-astra-law"`
 
     - `object: "response"`
 
@@ -154418,11 +154510,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `string`
 
-        - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+        - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
           - `"gpt-6-astra"`
 
+          - `"gpt-6.2-astra"`
+
           - `"gpt-6.1-sol"`
+
+          - `"gpt-6.2-sol"`
 
           - `"gpt-6.1-terra"`
 
@@ -154600,7 +154696,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"gpt-3.5-turbo-16k-0613"`
 
-        - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+        - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
           - `"o1-pro"`
 
@@ -154645,6 +154741,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-rosalind-research"`
 
           - `"gpt-6-rosalind"`
+
+          - `"gpt-6.2-astra-law"`
 
       - `object: "response"`
 
@@ -162069,11 +162167,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Responses Client Event
 
-- `ResponsesClientEvent = ResponseCreate { type, access_programs, background, 33 more }  or ResponseSteerEvent`
+- `ResponsesClientEvent = ResponseCreate { type, access_programs, background, 34 more }  or ResponseSteerEvent`
 
   Client events accepted by the Responses WebSocket server.
 
-  - `ResponseCreate object { type, access_programs, background, 33 more }`
+  - `ResponseCreate object { type, access_programs, background, 34 more }`
 
     Client event for creating a response over a persistent WebSocket connection.
     This payload uses the same top-level fields as `POST /v1/responses`, plus
@@ -162109,6 +162207,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Whether to run the model response in the background.
       [Learn more](/api/docs/guides/background).
+
+    - `background_options: optional object { completion_window, continuation_id }`
+
+      Options for background execution on HTTP requests. The `2h` and `8h`
+      completion windows require `background: true`, Standard processing,
+      and `stream: false` or omitted.
+
+      - `completion_window: optional "soonest" or "2h" or "8h"`
+
+        The completion window for background execution. Defaults to `soonest`; `2h` and `8h` select discounted background execution.
+
+        - `"soonest"`
+
+        - `"2h"`
+
+        - `"8h"`
+
+      - `continuation_id: optional string`
+
+        A customer-provided opaque identifier used to prioritize related background requests. It does not add prior history to the input.
 
     - `context_management: optional array of object { type, compact_threshold }  or null`
 
@@ -167042,11 +167160,15 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 87 more`
+      - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
         - `"gpt-6-astra"`
 
+        - `"gpt-6.2-astra"`
+
         - `"gpt-6.1-sol"`
+
+        - `"gpt-6.2-sol"`
 
         - `"gpt-6.1-terra"`
 
@@ -167224,7 +167346,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-3.5-turbo-16k-0613"`
 
-      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 19 more`
+      - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 20 more`
 
         - `"o1-pro"`
 
@@ -167269,6 +167391,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-rosalind-research"`
 
         - `"gpt-6-rosalind"`
+
+        - `"gpt-6.2-astra-law"`
 
     - `moderation: optional object { model, policy }  or null`
 

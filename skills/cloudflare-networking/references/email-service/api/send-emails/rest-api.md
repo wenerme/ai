@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/email-service/api/send-emails/rest-api/
 
 # REST API
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The REST API allows you to send emails from any application using a standard HTTP request to `POST /accounts/{account_id}/email/sending/send`. Use it from any backend, serverless function, or CI/CD pipeline — no Cloudflare Workers binding is required.
 
@@ -94,7 +94,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
 
 ## Response
 
-A successful response returns the delivery status for each recipient:
+A successful response returns the message ID and the delivery status for each recipient:
 
 ```json
 {
@@ -102,20 +102,24 @@ A successful response returns the delivery status for each recipient:
 	"errors": [],
 	"messages": [],
 	"result": {
+		"message_id": "<aB3xK9mP2qR5sT8uV0wX1yZ4cD6fG7hJ9kL0@example.com>",
 		"delivered": ["recipient@example.com"],
 		"permanent_bounces": [],
-		"queued": []
+		"queued": [],
+		"suppressed_recipients": []
 	}
 }
 ```
 
+- `message_id` - Message ID of the sent email
 - `delivered` - Email addresses to which the message was delivered immediately
 - `permanent_bounces` - Email addresses that permanently bounced
 - `queued` - Email addresses for which delivery was queued for later
+- `suppressed_recipients` - Email addresses dropped because they are on the [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/). This list is populated only when [**Drop suppressed recipients**](https://developers.cloudflare.com/email-service/configuration/domains/#drop-suppressed-recipients) is on. When the setting is off, a request with a suppressed recipient fails instead.
 
 Workers binding vs REST API responses
 
-The REST API returns recipient-grouped delivery status. The [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) returns a single `messageId` per `send()` call instead.
+Both APIs return the message ID of the sent email. The REST API returns it as `message_id` together with recipient-grouped delivery status. The [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) returns only `messageId` from each `send()` call.
 
 ## Error responses
 
@@ -175,5 +179,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/#page","headline":"REST API","description":"Email Sending REST API requests, responses, authentication, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/#page","headline":"REST API","description":"Email Sending REST API requests, responses, authentication, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

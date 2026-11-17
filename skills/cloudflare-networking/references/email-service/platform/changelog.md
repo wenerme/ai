@@ -59,7 +59,7 @@ You can now manage Email Routing rules that route emails to Workers from your Wr
   "name": "invoice-handler",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-10-16",
+  "compatibility_date": "2026-11-17",
   "addresses": [
     "invoice@yourdomain.com"
   ]
@@ -70,7 +70,7 @@ You can now manage Email Routing rules that route emails to Workers from your Wr
 name = "invoice-handler"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-17"
 addresses = ["invoice@yourdomain.com"]
 ```
 
@@ -167,7 +167,7 @@ Refer to the [SMTP reference](https://developers.cloudflare.com/email-service/ap
 
 **Send emails with named recipient addresses**
 
-You can now send emails with display names on recipient addresses in addition to the existing `from` support. Pass an object with `email` and an optional `name` field for `to`, `cc`, `bcc`, `replyTo`, or `from`:
+You can now send emails with display names on recipient addresses in addition to the existing `from` support. With the Workers binding, pass an object with `email` and `name` fields for `to`, `cc`, `bcc`, `replyTo`, or `from`. With the REST API, the object uses `address` and an optional `name`:
 
 *src/index.jsjs*
 
