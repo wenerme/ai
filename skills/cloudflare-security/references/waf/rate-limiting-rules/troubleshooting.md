@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting
 
 # Troubleshoot rate limiting rules
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Some Workers subrequests are counted as separate requests
 
 Cloudflare may count Workers subrequests on the same zone as separate requests, which will cause a rate limiting rule to trigger sooner than expected. This behavior happens when the rate limiting rule is configured with [**Also apply rate limiting to cached assets**](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#also-apply-rate-limiting-to-cached-assets) set to false.

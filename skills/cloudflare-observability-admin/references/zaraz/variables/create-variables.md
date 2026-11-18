@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/variables/create-variables/og.png
 
 # Create a variable
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/variables/create-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Variables are reusable blocks of information. They allow you to have one source of data you can reuse across tools and triggers in the dashboard. You can then update this data in a single place.
 
 For example, instead of typing a specific user ID in multiple fields, you can create a variable with that information instead. If there is a change and you have to update the user ID, you just need to update the variable and the change will be reflected across the dashboard.

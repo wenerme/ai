@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/og.png?v=57df7a270078be5d
 
 # Basin SQL
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Query Apache Iceberg tables managed by Basin Catalog using SQL.
 
 Basin SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [Basin Catalog](https://developers.cloudflare.com/basin-catalog/). Basin SQL is designed to efficiently query large amounts of data by automatically utilizing file pruning, Cloudflare's distributed compute, and R2 object storage.

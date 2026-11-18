@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/faq/og.
 
 # FAQ
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These questions cover Log Explorer (Legacy).
 
 ## Which fields (or columns) are available for querying?

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/url-rewrite/reference/f
 
 # Available fields and functions
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/url-rewrite/reference/fields-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Filter expressions
 
 A URL rewrite rule [filter expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) (that is, the expression that defines which incoming requests match the rule) can include the following fields:

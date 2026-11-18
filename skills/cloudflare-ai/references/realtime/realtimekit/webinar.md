@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/webinar/og.png?v=c
 
 # Set up a webinar
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webinar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In a RealtimeKit webinar, presenters publish audio and video from the [stage](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/#stage). Viewers watch and can request to join the stage.
 
 This guide sets up a webinar using the default webinar [presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/) and renders it with [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/). To build a custom interface instead, use [RealtimeKit Core SDK](https://developers.cloudflare.com/realtime/realtimekit/humans/core/) with [stage management](https://developers.cloudflare.com/realtime/realtimekit/humans/core/stage-management/).

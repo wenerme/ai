@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/o
 
 # Parameters
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/override-parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure the HTTP DDoS Attack Protection managed ruleset to change the action applied to a given attack or modify the sensitivity level of the detection mechanism. You can [configure the managed ruleset in the Cloudflare dashboard](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-dashboard/) or [define overrides via Rulesets API](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-api/).
 
 The available parameters are the following:

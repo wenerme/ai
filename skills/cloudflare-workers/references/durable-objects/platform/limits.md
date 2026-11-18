@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/platform/limits/og.png?
 
 # Limits
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Durable Objects are a special kind of Worker, so [Workers limits](https://developers.cloudflare.com/workers/platform/limits/) also apply. Limits that depend on your Workers plan are identified on that page. This page also covers Durable Object storage, CPU, and [outbound HTTP request body size](#outbound-http-request-body-size) limits.
 
 ## Spending limits

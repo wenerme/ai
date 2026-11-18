@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/sql-reference/complex-types/o
 
 # Complex types
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/sql-reference/complex-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin SQL supports querying struct, array, and map column types stored in Iceberg tables. This page covers access patterns, supported functions, and examples for each type.
 
 ---

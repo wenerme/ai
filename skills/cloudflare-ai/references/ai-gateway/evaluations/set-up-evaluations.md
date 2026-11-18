@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluatio
 
 # Set up Evaluations
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deprecated
 
 Evaluations are deprecated and no longer supported for new accounts.

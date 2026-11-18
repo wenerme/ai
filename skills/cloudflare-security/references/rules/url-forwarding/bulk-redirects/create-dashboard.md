@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/cre
 
 # Create Bulk Redirects in the dashboard
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To create Bulk Redirects in the Cloudflare dashboard you must:
 
 1. Create a Bulk Redirect List with one or more URL redirects.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/e-commerce/performance/og.png
 
 # Accelerate your store's performance
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Slow page loads directly reduce e-commerce conversion rates. Cloudflare accelerates your storefront with global edge caching, on-the-fly image optimization for product images, automatic asset minification, and server-side loading of analytics and marketing tags through Zaraz.
 
 ## Solutions

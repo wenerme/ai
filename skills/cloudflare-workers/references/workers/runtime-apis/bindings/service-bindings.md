@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/service-b
 
 # Service bindings
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## About Service bindings
 
 Service bindings allow one Worker to call into another, without going through a publicly-accessible URL. A Service binding allows Worker A to call a method on Worker B, or to forward a request from Worker A to Worker B.

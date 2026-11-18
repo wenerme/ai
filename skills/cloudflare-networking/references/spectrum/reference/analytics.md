@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/reference/analytics/og.png?v=6
 
 # Analytics
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare measures the following metrics for every connection.
 
 | Metric | Name | Example | Unit |

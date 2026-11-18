@@ -5,7 +5,7 @@ description: "Browse Umans AI Coding Plan model IDs, capabilities, and context w
 
 # [Umans AI Coding Plan logo]Umans AI Coding Plan
 
-Access 9 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
+Access 10 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
 
 Learn more in the [Umans AI Coding Plan documentation](https://app.umans.ai/offers/code/docs).
 
@@ -42,18 +42,6 @@ for await (const chunk of stream) {
   {
     "model": "umans-ai-coding-plan/umans-coder",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131071,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "umans-ai-coding-plan/umans-deepseek-v4-flash-0731",
-    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -95,7 +83,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 262144,
+    "maxOutput": 32768,
     "inputCost": null,
     "outputCost": null
   },
@@ -112,38 +100,14 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "umans-ai-coding-plan/umans-glm-5.3-flash",
+    "model": "umans-ai-coding-plan/umans-kimi-k3.1-pro",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": true,
+    "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131071,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "umans-ai-coding-plan/umans-kimi-k3",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "umans-ai-coding-plan/umans-qwen3.6-35b-a3b",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
     "inputCost": null,
     "outputCost": null
   }

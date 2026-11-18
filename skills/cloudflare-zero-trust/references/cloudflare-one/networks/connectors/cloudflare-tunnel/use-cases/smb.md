@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # SMB
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Server Message Block (SMB) protocol allows users to read, write, and access shared resources on a network. Due to security risks, firewalls and ISPs usually block public connections to an SMB file share. With Cloudflare Tunnel, you can provide secure and simple SMB access to users outside of your network.
 
 Note

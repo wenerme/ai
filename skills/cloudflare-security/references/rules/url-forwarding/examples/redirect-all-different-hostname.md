@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-
 
 Create a redirect rule to redirect all requests for `smallshop.example.com` to a different hostname using HTTPS, keeping the original path and query string.
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example single redirect will redirect all requests for `smallshop.example.com` to a different hostname `globalstore.example.net` using HTTPS, keeping the original path and query string.
 
 **When incoming requests match**

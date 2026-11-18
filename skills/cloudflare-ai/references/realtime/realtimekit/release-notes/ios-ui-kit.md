@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-
 
 # iOS UI Kit SDK
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/index.xml)
 
 ## 2026-10-22

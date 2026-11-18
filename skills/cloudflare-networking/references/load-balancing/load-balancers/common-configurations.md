@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/load-balancers/common-co
 
 # Common configurations
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consider the following sections to understand how to achieve some commonly used load balancer configurations.
 
 This page assumes you understand the Cloudflare [Load Balancing components](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/) and how to create and edit each of them.

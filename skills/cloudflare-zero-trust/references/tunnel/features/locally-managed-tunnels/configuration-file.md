@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels
 
 # Configuration file
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 [Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/) do not need a configuration file.

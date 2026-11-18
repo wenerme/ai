@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/region
 
 # Regional health
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/regional-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Cloudflare Load Balancing makes one global health decision for each pool and its endpoints. Your load balancer steers on that single decision everywhere.
 
 Regional health changes that. Each region gets its own health decision, with global health as a fallback. A region that cannot reach a pool steers around it right away. It does not wait for a global decision to change.

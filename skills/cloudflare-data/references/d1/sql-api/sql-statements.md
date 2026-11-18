@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/sql-api/sql-statements/og.png?v=2d50
 
 # SQL statements
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/sql-statements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 is compatible with most SQLite's SQL convention since it leverages SQLite's query engine. D1 supports a number of database-level statements that allow you to list tables, indexes, and inspect the schema for a given table or index.
 
 You can execute any of these statements via the D1 console in the Cloudflare dashboard, [`wrangler d1 execute`](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-execute), or with the [D1 Worker Bindings API](https://developers.cloudflare.com/d1/worker-api/d1-database).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/concepts/og.png?v=7a00f91266708330
 
 # Concepts
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Domain Name System (DNS) translates human-readable domain names (like `example.com`) into IP addresses that computers use to locate each other on the Internet. This page covers key DNS concepts used throughout the Cloudflare DNS documentation. For more concepts and broader descriptions, refer to the [Cloudflare Learning Center ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/).
 
 ## Domain

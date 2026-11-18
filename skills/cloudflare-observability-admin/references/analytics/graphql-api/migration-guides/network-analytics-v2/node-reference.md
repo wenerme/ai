@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/
 
 # NAv2 node reference
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/node-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Main nodes
 
 Main nodes provide deep packet-level information about traffic and attacks for Spectrum customers and Magic Transit customers.

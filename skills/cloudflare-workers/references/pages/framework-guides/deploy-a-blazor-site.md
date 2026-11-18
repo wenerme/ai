@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-
 
 # Blazor
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Blazor ↗︎](https://blazor.net) is an SPA framework that can use C# code, rather than JavaScript in the browser. In this guide, you will build a site using Blazor, and deploy it using Cloudflare Pages.
 
 ## Install .NET

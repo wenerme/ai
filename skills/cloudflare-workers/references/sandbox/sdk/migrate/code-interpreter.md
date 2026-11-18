@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/og
 
 # Replace the code interpreter
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In Sandbox SDK 0.12, `runCode()` ran Python, JavaScript, and TypeScript in an interpreter process for each code context, and variables stayed defined between calls. 1.0 has no interpreter. This page runs Python in an IPython kernel that your Durable Object starts, with the results that 0.12 returned, and runs JavaScript in a Dynamic Worker.
 
 ## Before you start

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/og.png?v=9f8a355b477ca
 
 # AI Crawl Control
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Available on all plans
 
 Monitor and control how AI services access your website content.

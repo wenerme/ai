@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ethereum-gateway/reference/support
 
 # Supported networks
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Currently, Cloudflare Ethereum gateways support [interacting with](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/) the following networks.
 
 | Network | Usage |

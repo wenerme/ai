@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Workers for Platforms Paid plan is **$25 monthly**. Workers for Platforms can be purchased through the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers-for-platforms).
 
 Workers for Platforms comes with the following usage allotments and overage pricing.

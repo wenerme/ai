@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/api/namespaces/workers-bindin
 
 # Workers binding
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/namespaces/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `ai_search_namespaces` binding gives a [Worker](https://developers.cloudflare.com/workers/) access to one [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). Use it to get, list, create, and delete instances in that namespace, and to search across several of its instances in one call.
 
 The binding is scoped to the namespace you configure. It cannot create, list, update, or delete namespaces. To manage namespaces, use the [REST API](https://developers.cloudflare.com/ai-search/api/namespaces/rest-api/), [Terraform](https://developers.cloudflare.com/ai-search/api/namespaces/terraform/), or [Wrangler](https://developers.cloudflare.com/ai-search/wrangler-commands/).
@@ -26,7 +24,7 @@ Add an `ai_search_namespaces` entry to your [Wrangler configuration](https://dev
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-11-13",
+  "compatibility_date": "2026-11-18",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -38,7 +36,7 @@ Add an `ai_search_namespaces` entry to your [Wrangler configuration](https://dev
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-13"
+compatibility_date = "2026-11-18"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"

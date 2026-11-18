@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Customize cipher suites
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With an [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) subscription, you can restrict connections between Cloudflare and clients — such as your visitor's browser — to specific [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/).
 
 You may want to do this to follow specific [recommendations](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/), to [disable weak cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/#ssl-labs-weak-ciphers-report), or to comply with [industry standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/).

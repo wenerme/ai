@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/v2-beta/og.png?v=09
 
 # v2 beta
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/v2-beta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Vite plugin v2 is in beta
 
 v2 may change before general availability. The other Vite plugin pages describe v1, the current stable version.

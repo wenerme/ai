@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/concepts/bot-tags/og.png?v=c59ecf6
 
 # Bot tags
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bot tags provide more detail about *why* Cloudflare assigned a [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) to a request.
 
 Use these tags to learn more about your bot traffic and better inform security settings.

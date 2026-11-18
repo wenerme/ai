@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/privacy/og.png?v=9a49d6e794d09d
 
 # Privacy
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/privacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare maintains separate privacy commitments depending on how you use 1.1.1.1:
 
 - [1.1.1.1 Public DNS Resolver](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/): Privacy commitments for the 1.1.1.1 public DNS resolver, including what data Cloudflare collects, uses, retains, and shares. Governed by the Cloudflare [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/).

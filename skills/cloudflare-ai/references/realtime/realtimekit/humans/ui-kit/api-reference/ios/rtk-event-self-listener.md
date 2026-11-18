@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkEventSelfListener
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-event-self-listener/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A helper class that wraps self-participant and meeting event listeners with closure-based callbacks. Provides methods for toggling audio and video, observing state changes, and checking device permissions.
 
 ## Initializer parameters

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/
 
 # Configure link actions
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure how Email security handles links in emails.
 
 Note

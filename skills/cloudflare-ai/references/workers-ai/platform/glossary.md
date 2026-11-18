@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/platform/glossary/og.png?v=2
 
 # Glossary
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/platform/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the definitions for terms used across Cloudflare's Workers AI documentation.
 
 | Term | Definition |

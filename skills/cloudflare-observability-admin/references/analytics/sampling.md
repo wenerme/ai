@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/sampling/og.png?v=242840609cb
 
 # Understanding sampling in Cloudflare Analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sampling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Sampling ↗︎](<https://en.wikipedia.org/wiki/Sampling_(statistics)>) is a technique used in analytics to analyze a subset of data rather than processing every individual data point. In Cloudflare Analytics, sampling ensures efficient performance and scalability while maintaining high accuracy and reliability. This document provides a comprehensive overview of how sampling works, why it is used, and its impact on analytics across different Cloudflare tools.
 
 ## How sampling works

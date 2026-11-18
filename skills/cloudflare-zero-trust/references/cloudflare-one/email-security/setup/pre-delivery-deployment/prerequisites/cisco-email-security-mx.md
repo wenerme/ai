@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre
 
 # Cisco - Email security as MX Record
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/cisco-email-security-mx/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ![A schematic showing where Email security sits in the life cycle of an email received](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1275,height=360,format=webp/_astro/Cisco_to_Email_Security_MX_Inline.CY054jTO.png)
 
 In this tutorial, you will learn how to configure Cisco IronPort with Email security as MX record.

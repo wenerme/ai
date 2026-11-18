@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/og.pn
 
 # Troubleshooting
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Cloudflare-specific
 
 ### No link named "ipfs"

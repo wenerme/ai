@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/workers/cache/limitations/og.png?v=d53a
 
 # Limitations
 
-Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page lists the scenarios where Workers Caching does not apply, followed by notes on how it relates to other caches you may already be using.
 
 ## Unsupported scenarios
+
+### Local tests
+
+Local Vitest tests do not exercise Workers Caching. Test cache behavior on a [Preview with its own cache](https://developers.cloudflare.com/workers/cache/#what-gets-cached) or a deployed test Worker with caching enabled. Check for `Cf-Cache-Status: HIT` using the [two-request debugging example](https://developers.cloudflare.com/workers/cache/debugging/#inspect-cf-cache-status).
 
 ### HTTP methods
 

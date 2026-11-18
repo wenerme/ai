@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/best-practices/vid
 
 # Video resolution and simulcast
 
-Last updated Jun 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure video resolution, simulcast, and frame rate in RealtimeKit to balance quality against bandwidth. The right settings depend on your grid layout, participant count, and use case.
 
 Note

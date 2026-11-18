@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/og.p
 
 # Multitenancy
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In a multi-tenant application, each tenant must only ever see their own data. AI Search supports two ways to isolate search per tenant: give each tenant its own instance, or share one instance and filter by tenant at query time.
 
 ## Choose an approach

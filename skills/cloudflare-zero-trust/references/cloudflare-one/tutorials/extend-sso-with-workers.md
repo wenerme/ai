@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-wit
 
 # Send SSO attributes to Access-protected origins with Workers
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial will walk you through extending the single-sign-on (SSO) capabilities of [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) with our serverless computing platform, [Cloudflare Workers](https://developers.cloudflare.com/workers/). Specifically, this guide will demonstrate how to modify requests sent to your secured origin to include additional information from the Cloudflare Access authentication event.
 
 **Time to complete:** 45 minutes

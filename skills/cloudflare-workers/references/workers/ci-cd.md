@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/og.png?v=66d3d2c68cdaeca5
 
 # CI/CD
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can set up continuous integration and continuous deployment (CI/CD) for your Workers by using either the integrated build system, [Workers Builds](#workers-builds), or using [external providers](#external-cicd) to optimize your development workflow.
 
 ## Why use CI/CD?

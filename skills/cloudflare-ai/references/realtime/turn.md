@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/turn/og.png?v=aa9cabbf1f98830d
 
 # TURN Service
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Separately from the SFU, Realtime offers a managed TURN service. TURN acts as a relay point for traffic between WebRTC clients like the browser and SFUs, particularly in scenarios where direct communication is obstructed by NATs or firewalls. TURN maintains an allocation of public IP addresses and ports for each session, ensuring connectivity even in restrictive network environments.
 
 Using Cloudflare Realtime TURN service is available free of charge when used together with the Realtime SFU. Otherwise, it costs $0.05/real-time GB outbound from Cloudflare to the TURN client.

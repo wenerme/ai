@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/configure-queues/o
 
 # Configure Queues
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/configure-queues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Queues can be configured using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Cloudflare's Developer Platform, which includes [Workers](https://developers.cloudflare.com/workers/), [R2](https://developers.cloudflare.com/r2/), and other developer products.
 
 Each Producer and Consumer Worker has a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that specifies environment variables, triggers, and resources, such as a queue. To enable Worker-to-resource communication, you must set up a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) in your Worker project's Wrangler file.

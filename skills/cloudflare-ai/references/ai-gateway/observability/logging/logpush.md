@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/logging/logpus
 
 # Logpush
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway allows you to securely export logs to an external storage location, where you can decrypt and process them. You can toggle Logpush on and off in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) settings. For pricing information, refer to [Logpush pricing](https://developers.cloudflare.com/logs/logpush/pricing/).
 
 This guide explains how to set up Logpush for AI Gateway, generate an RSA key pair for encryption, and decrypt the logs once they are received.

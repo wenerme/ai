@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/sql-reference/og.png?v=ac7618
 
 # SQL reference
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/sql-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [Basin Catalog](https://developers.cloudflare.com/basin-catalog/). This page documents the supported SQL syntax.
 
 ---

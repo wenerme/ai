@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/workers/examples/streaming-json/og.png?
 
 Parse and transform large JSON request and response bodies using streaming.
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/streaming-json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Streams API](https://developers.cloudflare.com/workers/runtime-apis/streams/) to process JSON payloads that would exceed a Worker's 128 MB memory limit if fully buffered. Streaming allows you to parse and transform JSON data incrementally as it arrives. This is faster than buffering the entire payload into memory, as your Worker can start processing data incrementally, and allows your Worker to handle multi-gigabyte payloads or files within its memory limits.
 
 The [`@streamparser/json-whatwg` ↗︎](https://www.npmjs.com/package/@streamparser/json-whatwg) library provides a streaming JSON parser compatible with the Web Streams API.

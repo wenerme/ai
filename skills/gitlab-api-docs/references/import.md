@@ -8,6 +8,7 @@ Import repositories from GitHub or Bitbucket Server with the REST API.
 - Reassigning contributions to a personal namespace owner when importing to a personal namespace [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/525342) in GitLab 18.3 [with a feature flag](../administration/feature_flags/_index.md) named `user_mapping_to_personal_namespace_owner`. Disabled by default.
 - Reassigning contributions to a personal namespace owner when importing to a personal namespace [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/211626) in GitLab 18.6. Feature flag `user_mapping_to_personal_namespace_owner` removed.
 - `single_endpoint_notes_import` [made always enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250959) for newly configured imports in GitLab 19.4, and can no longer be disabled. Imports configured on earlier GitLab versions keep their previously configured value.
+- `continuous_sync` in `optional_stages` for `POST /import/github` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271321) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `github_continuous_import`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -68,6 +69,12 @@ The following keys are available for `optional_stages`:
 
 - `attachments_import`, for Markdown attachments import.
 - `collaborators_import`, for importing direct repository collaborators who are not outside collaborators.
+- `continuous_sync`, to keep the project updated from GitHub after the import. Only available for GitHub.com,
+  in a group with a Premium or Ultimate license. The request returns `422` if `github_hostname` is set to
+  another host, if the feature is not enabled for your account, or if the group is not licensed. If the token
+  cannot create a webhook, the webhook is not created and the project is updated from GitHub on a schedule
+  instead. Use a classic token with the `repo` or `admin:repo_hook` scope, or a fine-grained token with
+  read and write access to webhooks, to receive changes sooner.
 - `single_endpoint_notes_import`, for an alternative and more thorough comments import method that is
   optional on GitLab 19.3 and earlier. On GitLab 19.4 and later, this method is mandatory for newly
   configured imports.
@@ -87,8 +94,7 @@ Example response:
     "import_status": "scheduled",
     "human_import_status_name": "scheduled",
     "provider_link": "/my-github/repo",
-    "relation_type": null,
-    "import_warning": null
+    "relation_type": null
 }
 ```
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/e-commerce/og.png?v=e146bb684
 
 # E-commerce
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 E-commerce applications require exceptional performance, security, and reliability. Cloudflare protects and accelerates online stores with application security against attacks, bot security against credential stuffing and fraud, cache and image optimization for fast global delivery of product pages, load balancing and Waiting Room for handling traffic spikes, and Zaraz for server-side analytics and marketing tags.
 
 - [Protect your store](https://developers.cloudflare.com/use-cases/e-commerce/protect/)

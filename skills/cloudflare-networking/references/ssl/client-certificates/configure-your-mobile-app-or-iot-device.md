@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/client-certificates/configure-your-
 
 # Configure your mobile app or IoT device
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with [API Shield](https://developers.cloudflare.com/api-shield/).
 
 ## Scenario details

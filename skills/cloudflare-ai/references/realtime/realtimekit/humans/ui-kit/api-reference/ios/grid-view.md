@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # GridView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/grid-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A generic grid layout view that arranges child views in a responsive grid. Supports both portrait and landscape orientations with configurable maximum item count.
 
 ## Initializer parameters

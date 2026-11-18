@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/purge-cache/purge-zone-ver
 
 # Purge zone versions via API
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-zone-versions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To purge zone versions via the Cloudflare API, follow these steps:
 
 ## Step 1: Retrieve the environment ID

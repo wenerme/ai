@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/troubleshooting/common-e
 
 # Common error codes
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Load Balancing API adds global health to each pool and endpoint. It also gives you a view into what our network sees at a wider level. Cloudflare uses a quorum system to determine pool and endpoint health status. The quorum is taken from PoPs responsible for running health monitor requests in a region, and the majority result is used.
 
 When troubleshooting failures, use the Cloudflare API for programmatic access to Cloudflare Load Balancing. The Health Monitor Events and Load Balancer Monitors routes are excellent tools for accessing load balancing event logs and reconfiguring Cloudflare monitors.

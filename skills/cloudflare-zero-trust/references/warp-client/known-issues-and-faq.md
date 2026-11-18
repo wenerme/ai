@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/warp-client/known-issues-and-faq/og.png
 
 # FAQ
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/known-issues-and-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find answers to our most commonly asked questions regarding the WARP client. If you cannot find the answer you are looking for, refer to the [community page ↗︎](https://community.cloudflare.com/) to explore more resources.
 
 ## Why am I not connecting to a closer Cloudflare data center?

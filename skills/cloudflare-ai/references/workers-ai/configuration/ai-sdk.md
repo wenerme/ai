@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/og.png?
 
 # Vercel AI SDK
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To use Workers AI with the [AI SDK ↗︎](https://ai-sdk.dev/), use `createAI` from `agents/models/ai-sdk`. This page covers Workers AI models. For AI Gateway catalog models, fallback, gateway options, and the full option reference, refer to [AI SDK](https://developers.cloudflare.com/agents/models/ai-sdk/).
 
 The `workers-ai-provider` package is deprecated. Use `createAI` instead.

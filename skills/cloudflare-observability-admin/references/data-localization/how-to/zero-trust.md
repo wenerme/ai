@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/how-to/zero-trust/og.
 
 # Data residency for Cloudflare One
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/zero-trust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) provides separate controls for where Cloudflare processes supported traffic and where Cloudflare stores supported logs. These controls have different settings and supported regions.
 
 | Control | What it controls | Current availability |

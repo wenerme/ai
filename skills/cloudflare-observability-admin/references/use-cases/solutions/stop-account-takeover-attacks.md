@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/solutions/stop-account-takeov
 
 # Stop account takeover attacks (Free, Pro, and Business)
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/solutions/stop-account-takeover-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When your site has login pages, you need to decide how to verify that visitors are human, how aggressively to limit failed attempts, and which request patterns to block. This guide covers five stages: enforce HTTPS, turn on bot protection, add [Turnstile](https://developers.cloudflare.com/turnstile/) to your login form, create Application Security [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) and [custom rules](https://developers.cloudflare.com/waf/custom-rules/) for suspicious patterns, and monitor for ongoing attacks using [SSL/TLS](https://developers.cloudflare.com/ssl/) transport security and [Cloudflare bot solutions](https://developers.cloudflare.com/bots/). The core workflow covers features available on Free, Pro, and Business plans. Enterprise features such as leaked credentials custom detection locations and Bot Management custom rules are included as callouts.
 
 Note

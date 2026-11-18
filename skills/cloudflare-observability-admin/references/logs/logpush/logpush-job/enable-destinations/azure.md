@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable Microsoft Azure
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/azure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Logpush supports pushing logs directly to Microsoft Azure via the Cloudflare dashboard or via API.
 
 Note

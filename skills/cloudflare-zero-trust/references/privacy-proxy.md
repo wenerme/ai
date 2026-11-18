@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-proxy/og.png?v=c3d1d939348b9910
 
 # Privacy Proxy
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A MASQUE-based forward proxy that protects user privacy while preserving geolocation accuracy.
 
 Enterprise-only

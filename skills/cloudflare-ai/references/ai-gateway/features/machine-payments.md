@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/machine-payments/og
 
 # Machine Payments (x402)
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/machine-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Machine Payments allows clients to pay for inference calls to select open models from their stablecoin wallet, without having to maintain a prepaid credit balance. To use Machine Payments, you must be based in the United States and have a credit card on file.
 
 The `Payment-Method: x402` header tells Cloudflare to negotiate payment through the [x402 protocol ↗︎](https://github.com/x402-foundation/x402). This header is specific to Cloudflare.

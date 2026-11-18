@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/targeting/og.png?v=3091e56ea67
 
 # Targeting rules
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/targeting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Targeting rules let you serve different flag values to different users based on their attributes. Each flag can have zero or more rules.
 
 Rules are evaluated in sequential order, from top to bottom. The first rule whose conditions match is used, and its configured variant is returned. If no rule matches, Flagship returns the flag's default variant.

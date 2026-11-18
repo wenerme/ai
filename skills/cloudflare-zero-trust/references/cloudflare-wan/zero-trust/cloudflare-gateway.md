@@ -12,15 +12,13 @@ image: https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-ga
 
 # Cloudflare Gateway
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
-[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), our comprehensive Secure Web Gateway, allows you to set up policies to inspect DNS, network, HTTP, and egress traffic.
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/), our comprehensive Secure Web Gateway, allows you to set up policies to inspect DNS, network, HTTP, and egress traffic.
 
 You can apply network and HTTP Gateway policies alongside [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) policies (for L3/4 traffic filtering) to Internet-bound traffic or private traffic entering the Cloudflare network through Cloudflare WAN (formerly Magic WAN). Additionally, you can configure Gateway to [resolve DNS queries](#dns-filtering) from Cloudflare WAN.
 
 ## HTTPS filtering
 
-To inspect HTTPS traffic, you need to install a Cloudflare root certificate on each client device. A certificate is required for Cloudflare to [decrypt TLS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/).
+To inspect HTTPS traffic, you need to install a Cloudflare root certificate on each client device. A certificate is required for Cloudflare to [decrypt TLS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/).
 
 ### Installing certificates
 
@@ -28,7 +26,7 @@ You can use the [Cloudflare One Client](https://developers.cloudflare.com/cloudf
 
 ### Exempting traffic from inspection
 
-If you cannot or do not want to install the certificate, you can create [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) policies to exempt incompatible Cloudflare WAN traffic from inspection or to disable TLS decryption entirely.
+If you cannot or do not want to install the certificate, you can create [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) policies to exempt incompatible Cloudflare WAN traffic from inspection or to disable TLS decryption entirely.
 
 Because Gateway cannot discern Cloudflare WAN traffic, you must use [Cloudflare One Client checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/) or the IP addresses associated with Cloudflare WAN to match traffic with Gateway policies.
 
@@ -52,7 +50,7 @@ If your organization onboards users to Cloudflare WAN using an [on-ramp other th
 
 You can configure the DNS resolver for your Cloudflare WAN networks to the shared IP addresses for the Gateway DNS resolver. The Gateway DNS resolver IPs are `172.64.36.1` and `172.64.36.2`.
 
-When you resolve DNS queries from Cloudflare WAN through Gateway, Gateway will log the queries with the private source IP. You can use the private source IP to create [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for queries intended for [internal DNS records](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#internal-dns).
+When you resolve DNS queries from Cloudflare WAN through Gateway, Gateway will log the queries with the private source IP. You can use the private source IP to create [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) for queries intended for [internal DNS records](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/#internal-dns).
 
 The following diagram illustrates how DNS queries from Cloudflare WAN and Cloudflare Mesh flow through Gateway to your internal DNS:
 
@@ -86,7 +84,7 @@ By default, the following traffic routed through IPsec/GRE tunnels and destined 
 
 By default, traffic destined to public IPs will be routed over the public Internet. If you want to configure specific public IP ranges to be routed through your IPsec/GRE tunnels instead of over the public Internet after filtering, contact your account team.
 
-This traffic will egress from Cloudflare according to the [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) you define in Cloudflare Gateway. By default, it will egress from a shared Cloudflare public IP range.
+This traffic will egress from Cloudflare according to the [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/) you define in Cloudflare Gateway. By default, it will egress from a shared Cloudflare public IP range.
 
 ## Private traffic
 
@@ -149,5 +147,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#page","headline":"Cloudflare Gateway","description":"Route WAN traffic through Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/og.png?v=d77e1648ba5ff2ec","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#page","headline":"Cloudflare Gateway","description":"Route WAN traffic through Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/og.png?v=d77e1648ba5ff2ec","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

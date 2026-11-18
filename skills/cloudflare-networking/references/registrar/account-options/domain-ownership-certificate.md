@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/account-options/domain-owners
 
 # Domain ownership certificate
 
-Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/domain-ownership-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A domain ownership certificate is a PDF letter that certifies Cloudflare is the registrar of record for your domain and lists the domain's current registration data. You can use it as proof of ownership when a third party (such as a bank, marketplace, or legal entity) requires written confirmation that you control the domain.
 
 The certificate is generated on demand and is automatically populated with your domain's current WHOIS information and the date it was generated. It includes:

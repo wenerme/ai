@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/randomness-beacon/cryptographic-backgro
 
 # Cryptographic Background
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/randomness-beacon/cryptographic-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 drand is an efficient randomness beacon daemon that utilizes pairing-based cryptography, `𝑡-of-𝑛` distributed key generation, and threshold BLS signatures to generate publicly-verifiable, unbiasable, unpredictable, distributed randomness.
 
 This is an overview of the cryptographic building blocks drand uses to generate publicly-verifiable, unbiasable, and unpredictable randomness in a distributed manner.

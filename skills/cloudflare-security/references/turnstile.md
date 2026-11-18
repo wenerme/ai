@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/og.png?v=f32f2fffb8d054ed
 
 # Cloudflare Turnstile
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's smart CAPTCHA alternative.
 
 Turnstile can be embedded into any website without sending traffic through Cloudflare and works without showing visitors a CAPTCHA.

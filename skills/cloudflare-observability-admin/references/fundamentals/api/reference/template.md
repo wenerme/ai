@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/reference/template/og.
 
 # API token templates
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/template/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is a table of the currently available API token templates and the default [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) they grant. You can start creating a token with one of these templates and modify the permissions and resources from there.
 
 | Template Name | Permission | Resource |

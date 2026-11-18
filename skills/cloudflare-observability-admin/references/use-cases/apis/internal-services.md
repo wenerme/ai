@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/apis/internal-services/og.png
 
 # Connect your internal network services
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/apis/internal-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Internal services and microservices often need to communicate without exposing endpoints to the public Internet. Cloudflare Tunnel creates outbound-only connections with no inbound firewall rules, while Access enforces Zero Trust policies for every request between services.
 
 ## Solutions

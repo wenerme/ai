@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/nameservers/nameserver-options/og.p
 
 # Nameserver options
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/nameserver-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the following sections to learn about different Cloudflare nameserver options. The availability of these options depends on your plan. Also, if you acquired your domain from Cloudflare Registrar, your domain already uses and [must remain](https://developers.cloudflare.com/registrar/faq/#can-i-use-my-own-third-party-nameservers) on Cloudflare nameservers.
 
 ## Assignment method

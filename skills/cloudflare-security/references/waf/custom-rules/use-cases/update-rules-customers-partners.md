@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules
 
 # Update custom rules for customers or partners
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/update-rules-customers-partners/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You may want to adjust your [custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) to increase access by customers or partners.
 
 Potential examples include:

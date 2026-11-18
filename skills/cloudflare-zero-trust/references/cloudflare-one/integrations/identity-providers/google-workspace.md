@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Google Workspace
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 The Google Workspace IdP integration [is not supported](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/#google-workspace-redirect-loop) if your Google Workspace account is protected by Access.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/o
 
 # Meeting
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Meeting is a **re-usable virtual room** that you can join and interact in, in real-time.
 
 You can assign a title and feature configuration to it, then add participants who are authorised to join. The Meeting itself doesn't "start" or "end"; it just exists.

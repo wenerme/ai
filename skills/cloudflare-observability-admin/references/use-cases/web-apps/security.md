@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/web-apps/security/og.png?v=b9
 
 # Secure your application
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web applications face threats at every layer: unencrypted traffic, injection attacks, DDoS floods, credential stuffing bots, and malicious third-party scripts. Cloudflare provides defense in depth from automatic SSL/TLS encryption through application security, DDoS protection, bot scoring, and client-side script monitoring.
 
 ## Solutions

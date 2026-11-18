@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/version-management/how-to/environments/
 
 # Manage environments
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/how-to/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An environment is a place to test different versions of your zone configurations.
 
 ---

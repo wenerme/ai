@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/configuration-rules/examples/defi
 
 Create a configuration rule using Terraform to turn off Email Obfuscation and Browser Integrity Check for API requests in a given zone.
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/examples/define-single-configuration-terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Terraform code snippets below refer to the v4 SDK only.

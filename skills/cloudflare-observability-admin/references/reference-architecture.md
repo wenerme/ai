@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/og.png?v=83e2c60
 
 # Reference Architectures
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ![Hero image](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=389,height=238,format=svg/_astro/reference-architecture-hero.Eeeva8Wz.svg)
 
 All the documents in this section are designed to help you understand how Cloudflare and its products are designed and architected. These documents describe how you can leverage our platform to create solutions based on your business needs.

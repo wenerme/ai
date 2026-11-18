@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/reference/etag-headers/og.png?v=3
 
 # Using ETag Headers with Cloudflare
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/reference/etag-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ETag headers identify whether the version of a resource cached in the browser is the same as the resource at the origin web server. A visitor's browser stores ETags. When a visitor revisits a site, the browser compares each ETag to the one it stored. Matching values cause a `304 Not-Modified HTTP` response that indicates the cached resource version is current. Cloudflare supports both strong and weak ETags configured at your origin web server.
 
 ## Weak ETags

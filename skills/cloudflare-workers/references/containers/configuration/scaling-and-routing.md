@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/configuration/scaling-and-ro
 
 # Scaling and Routing
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/scaling-and-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Scale container instances with explicit names
 
 Each container instance belongs to one Durable Object. To run more container instances, address more Durable Objects by name with [`getByName()`](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname). Getting a Durable Object does not start its container. The container starts when the Durable Object calls [`ctx.container.start()`](https://developers.cloudflare.com/containers/api/durable-object-container/#start).

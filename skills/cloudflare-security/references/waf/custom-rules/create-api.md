@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/create-api/og.png?v=9b
 
 # Create a custom rule via API
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a custom rule via API at the zone level.
 
 You must deploy custom rules to the `http_request_firewall_custom` [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset).

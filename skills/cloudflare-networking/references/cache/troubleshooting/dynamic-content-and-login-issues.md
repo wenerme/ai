@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-a
 
 # Dynamic content and login issues
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Dynamic pages such as login forms, checkout flows, and authenticated application routes can break when they are cached too aggressively.
 
 Common symptoms include:

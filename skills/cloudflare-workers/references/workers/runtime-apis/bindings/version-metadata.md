@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/version-m
 
 # Version metadata
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The version metadata binding can be used to access metadata associated with a [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) from inside the Workers runtime.
 
 Worker version ID, version tag and timestamp of when the version was created are available through the version metadata binding. They can be used in events sent to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) or to any third-party analytics/metrics service in order to aggregate by Worker version.

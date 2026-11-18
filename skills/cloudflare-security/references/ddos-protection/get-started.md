@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/get-started/og.png?v=70
 
 # Get started
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Free, Pro, and Business plans
 
 The DDoS Attack Protection managed rulesets provided by Cloudflare are enabled by default on zones onboarded to Cloudflare, IP applications onboarded to Spectrum, and IP Prefixes onboarded to Magic Transit.

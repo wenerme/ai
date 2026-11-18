@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/github-sms-notificati
 
 # GitHub SMS notifications using Twilio
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.
 
 You will learn how to:

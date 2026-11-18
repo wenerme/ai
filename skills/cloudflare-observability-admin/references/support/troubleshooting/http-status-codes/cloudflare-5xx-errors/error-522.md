@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 522
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 522: connection timed out
 
 Error `522` occurs when Cloudflare times out contacting the origin web server.

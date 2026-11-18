@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-vitepre
 
 # VitePress
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vitepress-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [VitePress ↗︎](https://vitepress.dev/) is a [static site generator ↗︎](https://en.wikipedia.org/wiki/Static_site_generator) (SSG) designed for building fast, content-centric websites. VitePress takes your source content written in [Markdown ↗︎](https://en.wikipedia.org/wiki/Markdown), applies a theme to it, and generates static HTML pages that can be easily deployed anywhere.
 
 In this guide, you will create a new VitePress project and deploy it using Cloudflare Pages.

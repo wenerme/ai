@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/concepts/
 
 # Monitors and health checks
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/health-checks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 There's more to a load balancer than just distributing traffic, however.
 
 After all, what good would it be if your load balancer and pools send a request to a server that's offline? Or one that's already overloaded with traffic? Ideally, your load balancer should only forward requests that a server can take care of.

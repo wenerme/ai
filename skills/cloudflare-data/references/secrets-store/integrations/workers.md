@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/secrets-store/integrations/workers/og.p
 
 # Workers integration
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/integrations/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare Secrets Store](https://developers.cloudflare.com/secrets-store/) is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.
 
 Consider the steps below to learn how to use values from your account secrets store with [Cloudflare Workers](https://developers.cloudflare.com/workers/).

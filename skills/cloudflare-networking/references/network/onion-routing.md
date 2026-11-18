@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network/onion-routing/og.png?v=62d71faf
 
 # Onion Routing and Tor support
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/onion-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Improve the Tor user experience by enabling Onion Routing, which enables Cloudflare to serve your website’s content directly through the Tor network and without requiring exit nodes.
 
 ## Availability

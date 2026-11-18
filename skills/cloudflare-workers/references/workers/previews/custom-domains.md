@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/previews/custom-domains/og.png?
 
 # Custom domains
 
-Last updated Nov 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Preview URLs can use a custom domain, `workers.dev`, or both. Enable at least one host to get a Preview URL. If no host is enabled, the Preview has no URL, and [pull request comments](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment) show **No Preview URL**.
 
 | Host | Preview URL | Unique deployment URL |

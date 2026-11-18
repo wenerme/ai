@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/data-access-logs/og.png?v=70
 
 # Data Access Logs
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/data-access-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R2 Data Access Logs provide per-request records for object operations in a bucket. The logs are generally available for R2 buckets without a [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions).
 
 Data Access Logs differ from [Audit Logs](https://developers.cloudflare.com/r2/platform/audit-logs/), which record bucket configuration changes. They also differ from [R2 metrics](https://developers.cloudflare.com/r2/platform/metrics-analytics/), which provide aggregated request and storage data.

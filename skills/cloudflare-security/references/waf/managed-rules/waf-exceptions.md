@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/og.png
 
 # Create exceptions
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create an exception to skip the execution of WAF managed rulesets or some of their rules. The exception configuration includes an expression that defines the skip conditions, and the rules or rulesets to skip under those conditions.
 
 ## Types of exceptions

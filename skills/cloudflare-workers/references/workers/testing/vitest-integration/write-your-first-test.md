@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/writ
 
 # Write your first test
 
-Last updated Oct 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide explains how to get started with the `@cloudflare/vitest-plugin` package. For more complex examples of testing with `@cloudflare/vitest-plugin`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
 
 ## Prerequisites

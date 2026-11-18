@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate SvelteKit from Vercel to Cloudflare Workers
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/sveltekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide moves a [SvelteKit ↗︎](https://svelte.dev/docs/kit) application from Vercel to Cloudflare Workers. You replace `@sveltejs/adapter-vercel` or `@sveltejs/adapter-auto` with [`@sveltejs/adapter-cloudflare` ↗︎](https://svelte.dev/docs/kit/adapter-cloudflare).
 
 The adapter version depends on your SvelteKit major version:
@@ -152,7 +150,7 @@ When you finish, list the files you changed, behavior changes from any SvelteKit
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": ".svelte-kit/cloudflare/_worker.js",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"assets": {
    		"binding": "ASSETS",
    		"directory": ".svelte-kit/cloudflare",
@@ -168,7 +166,7 @@ When you finish, list the files you changed, behavior changes from any SvelteKit
    name = "<YOUR_PROJECT_NAME>"
    main = ".svelte-kit/cloudflare/_worker.js"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
 
    [assets]
    binding = "ASSETS"

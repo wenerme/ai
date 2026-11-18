@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-
 
 # Connectivity options
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One provides multiple connectivity options for your users, devices, and network infrastructure. Each option serves different use cases, from protecting individual devices to connecting entire data centers.
 
 This page helps you understand which connectivity options to use based on your requirements, and how to combine multiple options in a single deployment.

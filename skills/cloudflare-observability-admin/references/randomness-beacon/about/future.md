@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/randomness-beacon/about/future/og.png?v
 
 # Future of drand
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/randomness-beacon/about/future/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 As of spring 2020, the drand network is production-ready and can now be considered foundational Internet infrastructure, much like DNS or BGP.
 
 While the project has reached a mature state, we believe there are several ways for drand to continue to evolve.

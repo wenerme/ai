@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/data-location/og.p
 
 # Data location
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Queues stores and processes messages across Cloudflare's global network. You can restrict a queue to a jurisdiction to meet data residency requirements, such as the [General Data Protection Regulation (GDPR) ↗︎](https://gdpr-info.eu/) or [FedRAMP ↗︎](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).
 
 Workers can produce to and consume from a restricted queue from any location. The jurisdiction only restricts where Queues stores and processes messages.

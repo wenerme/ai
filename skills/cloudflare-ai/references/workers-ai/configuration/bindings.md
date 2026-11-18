@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/configuration/bindings/og.pn
 
 # Workers Bindings
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Workers
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones.

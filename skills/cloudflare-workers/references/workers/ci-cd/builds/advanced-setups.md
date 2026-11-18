@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/og
 
 # Advanced setups
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Monorepos
 
 A monorepo is a single repository that contains multiple applications. This setup can be useful for a few reasons:

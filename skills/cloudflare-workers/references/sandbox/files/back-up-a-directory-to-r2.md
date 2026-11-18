@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/files/back-up-a-directory-to-r2
 
 # Back up a directory to R2
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/back-up-a-directory-to-r2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `DirectoryBackup` class from `@cloudflare/sandbox` saves one directory as one object in your R2 bucket and restores it as ordinary files. A backup restores after the instance stops or after you deploy a new image. R2 keeps each backup until you delete it. In this example, the directory is a project in `/workspace/project`.
 
 ## Prerequisites

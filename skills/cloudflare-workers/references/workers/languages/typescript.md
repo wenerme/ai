@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/typescript/og.png?v=4
 
 # TypeScript
 
-Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/typescript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 TypeScript is a first-class language on Cloudflare Workers. All APIs provided in Workers are fully typed, and type definitions are generated directly from [workerd ↗︎](https://github.com/cloudflare/workerd), the open-source Workers runtime.
 
 We recommend you generate types for your Worker by running [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types). Cloudflare also publishes type definitions to [GitHub ↗︎](https://github.com/cloudflare/workers-types) and [npm ↗︎](https://www.npmjs.com/package/@cloudflare/workers-types) (`npm install -D @cloudflare/workers-types`).

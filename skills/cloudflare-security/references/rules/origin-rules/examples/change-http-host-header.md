@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/origin-rules/examples/change-http
 
 Create an origin rule to change the HTTP `Host` header and DNS record.
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/examples/change-http-host-header/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following origin rule overrides the HTTP `Host` header to `hr-server.example.com` for all requests with a URI path starting with `/hr-app/`. It also overrides the DNS record to the same hostname.
 
 The `Host` header override only updates the header value; the DNS record override will handle the rerouting of incoming requests. For more information on these overrides, refer to [Origin Rules settings](https://developers.cloudflare.com/rules/origin-rules/features/).

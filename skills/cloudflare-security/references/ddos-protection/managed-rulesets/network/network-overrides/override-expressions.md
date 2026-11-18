@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/networ
 
 # Override expressions
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Set an override expression for the Network-layer DDoS Attack Protection managed ruleset to define a specific scope for [sensitivity level](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/#sensitivity-level) or [action](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/#action) adjustments.
 
 When considering which, if any, expressions you should utilize, think of expressions as a tool to scope overrides to the specific service that the Network-layer DDoS Attack Protection managed ruleset is protecting. That is to say that most services are defined by their destination ports and IPs as opposed to source ports or IPs. Refer to [Important remarks](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-expressions/#important-remarks) for more information.

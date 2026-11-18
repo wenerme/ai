@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/durable-object-fa
 
 # Durable Object Facets
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Durable Object Facets let you load a [Durable Object](https://developers.cloudflare.com/durable-objects/) class from a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) and run it as a child of your own Durable Object. The child (the facet) gets its own isolated SQLite database, while your class acts as a supervisor that controls access.
 
 This is useful when you want dynamically-generated code — for example, code written by an AI agent — to have persistent storage, without giving it direct access to a Durable Object namespace. Your supervisor loads the code, creates the facet, and forwards requests into it. You stay in control of what the dynamic code can do.
@@ -38,7 +36,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "main": "src/index.ts",
   "upload_source_maps": true,
   "migrations": [
@@ -59,7 +57,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 main = "src/index.ts"
 upload_source_maps = true
 
@@ -129,7 +127,7 @@ export class AppRunner extends DurableObject {
 
 		return this.env.LOADER.get(codeId, async () => {
 			return {
-				compatibilityDate: "2026-10-13",
+				compatibilityDate: "2026-11-18",
 				mainModule: "worker.js",
 				modules: { "worker.js": AGENT_CODE },
 				globalOutbound: null, // block network access

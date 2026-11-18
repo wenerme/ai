@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/page-rules/reference/recommended-
 
 # Recommended page rules
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/page-rules/reference/recommended-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Cloudflare Page Rules to improve the user experience of your domain with hardened security and enhanced site performance, while increasing reliability and minimizing bandwidth usage for your origin server.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/advanced/context-enricher/og.png?
 
 # Context Enricher
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/context-enricher/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Zaraz Context Enricher is a tool to modify or enrich [the context](https://developers.cloudflare.com/zaraz/reference/context/) that is being used across Zaraz using a Cloudflare Worker. The Context Enricher allows you access to the client and system variables.
 
 ## Creating a Worker

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modul
 
 # Azure Managed HSM
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-managed-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial uses [Microsoft Azure’s Managed HSM ↗︎](https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/) — a FIPS 140-2 Level 3 certified implementation — to deploy a VM with the Keyless SSL daemon.
 
 ---

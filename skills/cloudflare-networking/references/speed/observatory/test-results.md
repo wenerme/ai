@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/observatory/test-results/og.png?v
 
 # Understand test results
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/observatory/test-results/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The test result page shows you how your website performed regarding several key industry metrics. Some of these metrics are presented for synthetic tests and the real user monitoring, and others only apply to synthetic tests or only to real user monitoring.
 
 ## Synthetic tests and real user monitoring metrics

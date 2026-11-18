@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/error-codes/og.png?v=9b68b04fe74
 
 # Error codes
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page documents error codes returned by R2 when using the [Workers API](https://developers.cloudflare.com/r2/api/workers/) or the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/), along with recommended fixes to help with troubleshooting.
 
 ## How errors are returned

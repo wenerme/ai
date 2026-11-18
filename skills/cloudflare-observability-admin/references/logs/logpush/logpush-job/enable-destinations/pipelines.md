@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable Basin Pipelines
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) ingests events, transforms them with [SQL](https://developers.cloudflare.com/basin-pipelines/sql-reference/), and delivers them to [R2](https://developers.cloudflare.com/r2/) as [Iceberg](https://developers.cloudflare.com/basin-catalog/) tables or as Parquet and JSON files. Logpush can write data to Basin Pipelines as a native destination.
 
 Instead of sending raw logs directly to a storage bucket as JSON, Logpush can route them to a pipeline to filter, enrich, and transform your data into Parquet or Apache Iceberg tables managed by [Basin Catalog](https://developers.cloudflare.com/basin-catalog/). This allows the data to be much more compact and optimized for analytics such as querying with [Basin SQL](https://developers.cloudflare.com/basin-sql/).

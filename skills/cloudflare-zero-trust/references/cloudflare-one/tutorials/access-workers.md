@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers
 
 # Create custom headers for Cloudflare Access-protected origins with Workers
 
-Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial covers how to use a [Cloudflare Worker](https://developers.cloudflare.com/workers/) to add custom HTTP headers to traffic, and how to send those custom headers to your origin services protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
 Some applications and networking implementations require specific custom headers to be passed to the origin, which can be difficult to implement for traffic moving through a Zero Trust proxy. You can configure a Worker to send the [user authorization headers](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/) required by Access.

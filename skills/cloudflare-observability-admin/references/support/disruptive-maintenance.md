@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/disruptive-maintenance/og.png?v
 
 # Disruptive Maintenance
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/disruptive-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Scheduled maintenance windows
 
 Planned maintenance is published on the [Cloudflare Status page ↗︎](https://www.cloudflarestatus.com/).

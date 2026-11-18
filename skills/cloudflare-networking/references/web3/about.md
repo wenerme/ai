@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/about/og.png?v=550a616ca71b138e
 
 # About
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Web3 gateways let your application interact with decentralized networks (IPFS and Ethereum) using standard HTTP requests. Instead of running your own IPFS or Ethereum node, you point your domain at Cloudflare and the gateway handles network communication on your behalf.
 
 When you [create a gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway), Cloudflare automatically creates and adds specific [DNS records](https://developers.cloudflare.com/web3/reference/gateway-dns-records/) to your Cloudflare account. When the hostname associated with your gateway receives requests, its DNS records route these requests to a Cloudflare Workers script that communicates with the underlying network.

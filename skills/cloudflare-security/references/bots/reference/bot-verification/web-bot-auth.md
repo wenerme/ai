@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/reference/bot-verification/web-bot
 
 # Web Bot Auth
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
 It relies on IETF drafts: a [directory draft ↗︎](https://datatracker.ietf.org/doc/html/draft-meunier-http-message-signatures-directory-03) allowing the crawler to share their public keys, and a [protocol draft ↗︎](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture-02) defining how these keys should be used to attach the crawler's identity to HTTP requests.

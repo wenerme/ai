@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/og.png?v=eae13500a17bb4d2
 
 # Additional tools
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare WAF offers the following additional tools:
 
 - [Lists](https://developers.cloudflare.com/waf/tools/lists/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate Nuxt from Vercel to Cloudflare Workers
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nuxt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide moves a [Nuxt ↗︎](https://nuxt.com/) application from Vercel to Cloudflare Workers. Nuxt selects its Vercel preset automatically on Vercel. On Workers, you set the Nitro `cloudflare_module` preset instead.
 
 Nuxt 3 and Nuxt 4 run on Nitro v2 (`nitropack`). Use the [Nitro v2 Cloudflare documentation ↗︎](https://github.com/nitrojs/nitro/blob/v2/docs/2.deploy/20.providers/cloudflare.md), not the Nitro v3 documentation.
@@ -97,7 +95,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "<YOUR_PROJECT_NAME>",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"observability": {
    		"enabled": true,
    	},
@@ -108,7 +106,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "<YOUR_PROJECT_NAME>"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
 
    [observability]
    enabled = true

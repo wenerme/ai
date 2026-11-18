@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/performance/web-assets/og.png
 
 # Optimize web assets
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/web-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Unoptimized HTML, CSS, and JavaScript increase page weight and slow down rendering. Cloudflare Speed automatically minifies and compresses these assets, while Zaraz loads third-party analytics and marketing tags server-side to avoid blocking page rendering.
 
 ## Solutions

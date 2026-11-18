@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/detection/monitor-
 
 # Monitor resources and cookies
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you [activate client-side security's resource monitoring](https://developers.cloudflare.com/client-side-security/get-started/), the main client-side resources dashboard will show which resources (scripts and connections) are running on your domain, as well as the cookies recently detected in HTTP traffic.
 
 If you notice unexpected scripts or connections on the dashboard, check them for signs of malicious activity. Customers with Client-Side Security Advanced will have their [connections and scripts classified as potentially malicious](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/) based on threat feeds. You should also check for any new or unexpected cookies.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Authorization cookie
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For browser-based sessions, Cloudflare Access uses a `CF_Authorization` cookie to validate the user's session on requests to a protected application. Cookies are not the only authentication method: non-browser clients can use [service credentials](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/) or [Managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/) when configured for the application.
 
 ## Access JWTs

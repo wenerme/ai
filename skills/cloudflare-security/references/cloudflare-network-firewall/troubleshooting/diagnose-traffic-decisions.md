@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/troubleshoo
 
 # Diagnose traffic decisions
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When traffic is unexpectedly blocked, multiple Cloudflare systems could be responsible. This guide walks you through identifying what is blocking your traffic and how to resolve it.
 
 Traffic passing through Cloudflare's network is evaluated by several independent security systems in the following sequence:

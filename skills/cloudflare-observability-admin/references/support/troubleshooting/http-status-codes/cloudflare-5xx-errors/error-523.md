@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 523
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-523/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 523: origin is unreachable
 
 This error occurs when Cloudflare cannot contact your origin web server.

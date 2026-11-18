@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/get-started/embed/og.png?v=95cdbc
 
 # Share a Radar chart
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/embed/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Radar allows you to download an image of a chart, as well as embed interactive cards of most charts into your own web pages.
 
 Charts supporting this feature will have a share icon next to its description.

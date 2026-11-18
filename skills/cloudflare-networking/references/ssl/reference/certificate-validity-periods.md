@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/reference/certificate-validity-peri
 
 # Validity periods and renewal
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For certificates managed by Cloudflare, attempts to renew start at the auto renewal period and continue up until 24 hours before expiration. The auto renewal period varies according to the certificate validity period, as explained in the sections below.
 
 If a certificate fails to renew and another valid certificate exists for the hostname, Cloudflare will deploy the valid certificate within the last 24 hours before expiration.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/targeting/operators/og.png?v=8
 
 # Operators
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/targeting/operators/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Flagship supports 13 comparison operators for targeting rule conditions. Each operator compares an attribute from the [evaluation context](https://developers.cloudflare.com/flagship/concepts/#evaluation-context) against a specified value.
 
 ## Operator reference

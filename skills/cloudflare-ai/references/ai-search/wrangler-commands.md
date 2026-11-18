@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/wrangler-commands/og.png?v=64
 
 # Wrangler CLI
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## `ai-search list`
 
 List all AI Search instances

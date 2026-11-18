@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/reference/reports/og.pn
 
 # Reports
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/reference/reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To download an ad-hoc DDoS report, generate a PDF report file by selecting **Print report** in your [analytics dashboard](https://developers.cloudflare.com/ddos-protection/reference/analytics/).
 
 WAF/CDN customers can download a monthly report in Account Home > **Security Center**, by selecting [Security Reports](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/) and downloading the desired monthly report.

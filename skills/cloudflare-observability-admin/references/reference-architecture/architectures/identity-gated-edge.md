@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/id
 
 # Identity-gated edge architecture
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/identity-gated-edge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An identity-gated edge authenticates and authorizes callers before their requests reach an application's HTTP interface. Cloudflare Access provides the identity gate. Cloudflare Tunnel or a restricted origin connection prevents callers from going around it. A connector, reverse proxy, or application can validate the Access assertion. Applications can also retain their own identity provider (IdP) sign-in.
 
 Use this architecture for self-hosted administration consoles, partner portals, file-transfer web interfaces, and remote-access web portals. It supports people, services, and compatible AI agents, with different credentials for each caller type.

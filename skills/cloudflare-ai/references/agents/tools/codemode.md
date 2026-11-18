@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/codemode/og.png?v=7917c0fd
 
 # Code Mode
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Code Mode is a tool-use pattern where a model writes code instead of requesting each operation separately. The model receives one code-execution tool. Its code becomes a compact plan that calls tools, processes results, and returns the information needed for a response.
 
 Code Mode exposes configured tools as typed methods. Models use those methods to express multi-step work with familiar programming constructs. Depending on the integration, tool definitions can be provided up front or discovered when needed.

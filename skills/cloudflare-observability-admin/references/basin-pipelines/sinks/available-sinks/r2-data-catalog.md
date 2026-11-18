@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/sinks/available-sinks/r
 
 # Basin Catalog
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sinks/available-sinks/r2-data-catalog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin Catalog sinks write processed data from pipelines as [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables to [Basin Catalog](https://developers.cloudflare.com/basin-catalog/). Iceberg tables provide ACID transactions, schema evolution, and time travel capabilities for analytics workloads.
 
 To create a Basin Catalog sink, run the `basin pipelines sinks create` command and specify the sink type, target bucket, namespace, and table name:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/og.
 
 # Manage tags
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 All tag operations use the Tagging API. Authentication requires an [account API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) or user API token with appropriate permissions.
 
 ## Set tags on a resource

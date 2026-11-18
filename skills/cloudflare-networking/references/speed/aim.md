@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/aim/og.png?v=a2e9effb49d900ce
 
 # Aggregated Internet Measurement
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/aim/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Aggregated Internet Measurement (AIM) helps you understand your Internet quality to identify scenarios that your Internet connection is good or bad for. Typically, an Internet speed test provides you with upload and download speeds, which may not always provide a holistic view of your Internet quality.
 
 AIM uses a scoring rubric that assigns point values based on speed tests to help you understand how your Internet quality will perform for streaming, gaming, and webchat/real-time communication (RTC).

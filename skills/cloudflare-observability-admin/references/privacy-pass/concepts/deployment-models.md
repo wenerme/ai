@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-pass/concepts/deployment-models
 
 # Deployment Models
 
-Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page covers how a deployment of Privacy Pass is structured: who operates each of the four roles, detailed example deployment models, which deployment models work for different customer needs, and Privacy Pass as a part of other products.
 
 ---

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/api-reference/og.png?v=
 
 # API reference
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page describes the Worker Loader binding API, assuming you have [configured a binding](https://developers.cloudflare.com/dynamic-workers/getting-started/#configure-worker-loader) as `env.LOADER`.
 
 ## `load`

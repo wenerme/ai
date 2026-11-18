@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/svelt
 
 # SvelteKit
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will create a new [SvelteKit ↗︎](https://svelte.dev/docs/kit/introduction) application and deploy to Cloudflare Workers.
 
 Already have a SvelteKit project?

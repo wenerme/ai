@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Observability
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers for Platforms provides you with logs and analytics that can be used to share data with end users.
 
 ## Logs

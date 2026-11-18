@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agent-lee/manage-access/og.png?v=e24dac
 
 # Manage access and permissions
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-lee/manage-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Control whether Agent Lee appears in the dashboard, choose what it is allowed to read and change, and review the API tokens it holds.
 
 Beta

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/sites/start-from-
 
 # Start from scratch
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Workers Static Assets Instead
 
 You should use [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) to host full-stack applications instead of Workers Sites. It has been deprecated in Wrangler v4, and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) does not support Workers Sites. Do not use Workers Sites for new projects.

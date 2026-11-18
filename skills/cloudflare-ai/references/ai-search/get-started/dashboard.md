@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/get-started/dashboard/og.png?
 
 # Dashboard
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide walks you through creating an AI Search instance using the Cloudflare dashboard.
 
 ## Create an AI Search instance

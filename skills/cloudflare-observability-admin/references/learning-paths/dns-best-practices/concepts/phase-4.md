@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/dns-best-practices/conce
 
 # Phase 4: Post-migration and DNSSEC Re-activation
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After the cutover, verify and stabilize.
 
 ## 1. Thorough testing and validation

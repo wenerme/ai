@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Configure Browser Isolation
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/browser-isolation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Browser Isolation seamlessly executes active webpage content in a secure isolated browser to protect users from zero-day attacks, malware, and phishing.
 
 Browser Isolation provides unique and transparent protection for your users using methods that surpass the capabilities of a traditional secure web gateway. This section focuses primarily on Browser Isolation for external services, assuming that most traffic from a device or a network is being forwarded to Cloudflare. For other applications of Browser Isolation, refer to the [Deploy clientless access](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/) guide.

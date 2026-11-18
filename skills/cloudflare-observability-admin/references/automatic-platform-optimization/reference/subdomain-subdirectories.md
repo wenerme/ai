@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/automatic-platform-optimization/referen
 
 # Subdomains and subdirectories
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/reference/subdomain-subdirectories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Run APO on a subdomain
 
 After you enable APO, you configure it to run on the subdomain that uses WordPress. For example, if you have a website called `www.mysite.com` which includes a subdomain running WordPress called `shop.mysite.com`, you would configure APO to run on the `shop.mysite.com` subdomain.

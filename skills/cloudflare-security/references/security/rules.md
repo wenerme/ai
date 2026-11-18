@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/rules/og.png?v=28208f8b98d2def
 
 # Security rules
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Security rules perform security-related actions on incoming requests that match specified filters. Rules are evaluated and executed in order, from first to last.
 
 You can create Security Rules from reviewed [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/use-attack-signatures-in-security-rules/) confidence, category, and Ref metadata.

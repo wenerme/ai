@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/platform/pricing/og.png?v=6c
 
 # Pricing
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Snapshots are available at no charge during the public beta. Cloudflare will share pricing details when snapshots reach general availability.
 
 ## vCPU, Memory and Disk

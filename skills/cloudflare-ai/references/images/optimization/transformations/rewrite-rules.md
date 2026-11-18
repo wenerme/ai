@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/transformations/rew
 
 # Set up rewrite rules
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use Transform Rules to rewrite URLs for every image that you transform through Images.
 
 This page covers examples for the following scenarios:

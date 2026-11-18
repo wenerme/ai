@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/sql-api/query-json/og.png?v=84d7799e
 
 # Query JSON
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/query-json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 has built-in support for querying and parsing JSON data stored within a database. This enables you to:
 
 - [Query paths](#extract-values) within a stored JSON object - for example, extracting the value of named key or array index directly, which is especially useful with larger JSON objects.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/rules/rule-notifications/o
 
 # Configure rule notifications
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/rule-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Network Flow (formerly Magic Network Monitoring) can notify you by email, webhook, or PagerDuty when a rule is triggered. When a rule detects a traffic anomaly, notifications alert your team so you can respond — or, if you use Magic Transit with auto-advertisement, Cloudflare can begin mitigating the attack automatically.
 
 For more information on the notification platform, refer to [Notifications documentation](https://developers.cloudflare.com/notifications/). You can also:

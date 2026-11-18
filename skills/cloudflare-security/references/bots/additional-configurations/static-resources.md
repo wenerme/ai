@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/static-r
 
 # Static resource protection
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/static-resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pro, Business, and Enterprise customers can use Cloudflare's bot solutions to protect their static resources from bots.
 
 Warning

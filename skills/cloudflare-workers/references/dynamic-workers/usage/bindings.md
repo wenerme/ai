@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/bindings/og.png?v
 
 # Bindings
 
-Last updated Oct 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bindings let you control what a Dynamic Worker can access. When you create a Dynamic Worker, you decide exactly what resources and operations it can use.
 
 This allows you to:

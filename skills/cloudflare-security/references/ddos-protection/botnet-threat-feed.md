@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/og.p
 
 # Botnet Threat Feed
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare DDoS Botnet Threat Feed is a threat intelligence feed for service providers (SPs) such as hosting providers and Internet service providers (ISPs) that provides information about their own IP addresses that have participated in HTTP DDoS attacks as observed from Cloudflare's global network. The feed aims to help service providers stop the abuse and reduce DDoS attacks originating from within their networks.
 
 Each offense is a mitigated HTTP request from the specific IP address. For example, if an IP has 3,000 offenses, it means that Cloudflare has mitigated 3,000 HTTP requests from that IP.

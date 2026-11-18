@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/reference/triggers/og.png?v=4bbc8
 
 # Triggers and rules
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/reference/triggers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Triggers define the conditions under which [a tool will start an action](https://developers.cloudflare.com/zaraz/custom-actions/). In most cases, your objective will be to create triggers that match specific website events that are relevant to your business. A trigger can be based on an event that happened on your website, like after selecting a button or loading a specific page.
 
 These website events can be passed to Cloudflare Zaraz in a number of ways. You can use the [Track](https://developers.cloudflare.com/zaraz/web-api/track/) method of the Web API or the [`dataLayer`](https://developers.cloudflare.com/zaraz/advanced/datalayer-compatibility/) call. Alternatively, if you do not want to write code to track events on your website, you can configure triggers to listen to browser-side website events, with different types of rules like click listeners or form submissions.

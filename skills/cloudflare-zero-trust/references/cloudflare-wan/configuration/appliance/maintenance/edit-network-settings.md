@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Edit network settings
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/edit-network-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. Go to the **Connectors** page.
 
 [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

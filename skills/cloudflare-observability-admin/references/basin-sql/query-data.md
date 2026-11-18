@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/query-data/og.png?v=babebcf96
 
 # Query data
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/query-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Query [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables managed by [Basin Catalog](https://developers.cloudflare.com/basin-catalog/). Basin SQL queries can be made via [Wrangler](https://developers.cloudflare.com/workers/wrangler/) or HTTP API.
 
 ## Get your warehouse name

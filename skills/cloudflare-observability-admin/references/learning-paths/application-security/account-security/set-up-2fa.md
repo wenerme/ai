@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/acc
 
 # Set-up 2FA
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/set-up-2fa/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Two-factor authentication (2FA) allows user account owners to add an additional layer of login security to Cloudflare accounts. This additional authentication step requires you to provide both something you know, such as a Cloudflare password, and something you have, such as an authentication code from a mobile device.
 
 Note

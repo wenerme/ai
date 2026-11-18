@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/queues/tutorials/web-crawler-with-brows
 
 Example of how to use Queues and Browser Run to power a web crawler.
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial explains how to build and deploy a web crawler with Queues, [Browser Run](https://developers.cloudflare.com/browser-run/), and [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/).
 
 Puppeteer is a high-level library used to automate interactions with Chrome/Chromium browsers. On each submitted page, the crawler will find the number of links to `cloudflare.com` and take a screenshot of the site, saving results to [Workers KV](https://developers.cloudflare.com/kv/).
@@ -277,7 +275,7 @@ Your final Wrangler file should look similar to the one below.
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"kv_namespaces": [
 		{
@@ -315,7 +313,7 @@ name = "web-crawler"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]

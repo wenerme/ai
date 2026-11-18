@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpull/additional-details/og.png?
 
 # Additional details
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpull/additional-details/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Estimating daily data volume
 
 To estimate the amount of data for a zone per day (the number of log lines and the amount of bytes they take up), request a 1% or 10% sample of data for a 1-hour period (use 10% if your volume is low). Note that `start=2018-12-15T00:00:00Z` and `end=2018-12-15T01:00:00Z` span a 1-hour period, and `sample=0.1`.

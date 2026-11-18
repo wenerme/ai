@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/secrets-store/manage-secrets/og.png?v=5
 
 # Manage account secrets
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/manage-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Secrets can be API tokens, public/private keys, authorization keys, passwords, or even code variables. The only limitation is that a secret must be a string that does not exceed 65,536 bytes.
 
 Once a secret is added to the Secrets Store, it can no longer be decrypted or accessed via API or on the dashboard. Only the service associated with a given secret will be able to access it.

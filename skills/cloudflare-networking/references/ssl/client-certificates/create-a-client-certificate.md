@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/client-certificates/create-a-client
 
 # Create a client certificate
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Cloudflare's public key infrastructure (PKI) to create client certificates issued from a Cloudflare-managed CA. You can then complete your mTLS configuration, as explained in [How mTLS works](https://developers.cloudflare.com/ssl/client-certificates/#how-it-works).
 
 Cloudflare-issued or BYOCA

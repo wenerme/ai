@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/reference/origin-parameters/og.p
 
 # Origin parameters
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/reference/origin-parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Origin parameters determine how `cloudflared` sends requests to the origin server of your [published application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/).
 
 Published applications and dual-layer timeouts

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/turnstile-analytics/token-val
 
 # Token validation
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/turnstile-analytics/token-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After a visitor successfully completes a Turnstile challenge, a token is generated and validated via the Siteverify API. Token validation data shows how many tokens your server validated successfully versus how many failed. A high rate of invalid tokens may indicate bot activity, expired tokens, or implementation issues.
 
 For example, the token validation values in your analytics may look like this:

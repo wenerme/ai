@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/platform/changelog/og.png
 
 # Changelog
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/email-service.xml)
 
 ## 2026-09-25
@@ -59,7 +57,7 @@ You can now manage Email Routing rules that route emails to Workers from your Wr
   "name": "invoice-handler",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-17",
+  "compatibility_date": "2026-11-18",
   "addresses": [
     "invoice@yourdomain.com"
   ]
@@ -70,7 +68,7 @@ You can now manage Email Routing rules that route emails to Workers from your Wr
 name = "invoice-handler"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-17"
+compatibility_date = "2026-11-18"
 addresses = ["invoice@yourdomain.com"]
 ```
 

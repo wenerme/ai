@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/logs/real-time-lo
 
 # Real-time logs
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Real-time logs, access all your log events in near real-time for log events happening globally. Real-time logs is helpful for immediate feedback, such as the status of a new deployment.
 
 Real-time logs captures [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs), [custom logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#custom-logs), errors, and uncaught exceptions. For high-traffic applications, real-time logs may enter sampling mode, which means some messages will be dropped and a warning will appear in your logs.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres
 
 # Database Providers
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Fly](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/fly/)
 - [Xata](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/xata/)
 - [Nile](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/nile/)

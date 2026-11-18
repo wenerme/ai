@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/origin-rules/examples/og.png?v=e9
 
 # Origin Rules examples
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [**Change the HTTP Host header and DNS record** Create an origin rule to change the HTTP `Host` header and the resolved DNS record.](https://developers.cloudflare.com/rules/origin-rules/examples/change-http-host-header/)
 
 [**Change the destination port** Create an origin rule to change the destination port.](https://developers.cloudflare.com/rules/origin-rules/examples/change-port/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-sw
 
 # Kill Switches
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/kill-switches/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When writing contracts, be especially careful to write secure code and include a kill switch to ensure that if any bugs do reside in the code, they can be squashed. If you do not include a kill switch and there are vulnerabilities in the smart contract that can be exploited, this can lead to the theft of resources from the smart contract or from other individuals.
 
 This was brought into sharp focus during the [infamous DAO incident ↗︎](<https://en.wikipedia.org/wiki/The_DAO_(organization)>). The DAO smart contract acted as a complex, decentralized venture capital fund and held Ether worth $250 million at its peak collected from a group of investors. Hackers exploited vulnerabilities in the smart contract, stealing $50 million worth of Ether.

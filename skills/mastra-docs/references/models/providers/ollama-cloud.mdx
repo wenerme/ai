@@ -5,7 +5,7 @@ description: "Browse Ollama Cloud model IDs, capabilities, context windows, and 
 
 # [Ollama Cloud logo]Ollama Cloud
 
-Access 26 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
+Access 27 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
 
 Learn more in the [Ollama Cloud documentation](https://docs.ollama.com/cloud).
 
@@ -59,7 +59,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 1048576,
+    "maxOutput": 65536,
     "inputCost": 0.66,
     "outputCost": 1.98
   },
@@ -71,7 +71,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 1048576,
+    "maxOutput": 65536,
     "inputCost": 0.66,
     "outputCost": 1.98
   },
@@ -155,7 +155,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -167,9 +167,21 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.07,
     "outputCost": 0.3
+  },
+  {
+    "model": "ollama-cloud/inkling-2-small",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1
   },
   {
     "model": "ollama-cloud/kimi-k2.6",
@@ -203,7 +215,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "maxOutput": 1048576,
     "inputCost": 3,
     "outputCost": 15
   },
@@ -215,7 +227,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "maxOutput": 1048576,
     "inputCost": 2,
     "outputCost": 10
   },

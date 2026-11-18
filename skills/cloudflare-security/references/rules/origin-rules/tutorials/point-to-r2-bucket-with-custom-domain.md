@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r
 
 # Point to R2 bucket with a custom domain
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial will instruct you how to configure an origin rule and a DNS record to point to an R2 bucket configured with a custom domain.
 
 The procedure will use the following example values:

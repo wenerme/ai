@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/traffi
 
 # Traffic steering
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When requests come to your load balancer, it distributes them across your pools and endpoints according to four factors:
 
 1. [Pool and endpoint health](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/): Traffic decisions start with which pools and endpoints are available and should receive traffic.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-tr
 
 # Analyze AI traffic
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Crawl Control metrics provide you with insight on how AI crawlers are interacting with your website ([Cloudflare zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones)).
 
 To view AI Crawl Control metrics:

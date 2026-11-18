@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/company-security/email-securi
 
 # Stop email phishing attacks
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/company-security/email-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email is the most common vector for phishing, Business Email Compromise (BEC), and malware delivery. Cloudflare Email Security scans inbound messages to block these threats before they reach the inbox, and DMARC management prevents domain spoofing.
 
 ## Solutions

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/web-assets/get-started/og.png?
 
 # Get started
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You do not need to complete a fixed setup flow before discovered operations can be used for protection. Use this page to choose the capability that matches your task.
 
 ## Review operations

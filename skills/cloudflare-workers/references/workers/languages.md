@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/og.png?v=3f28cf43de34
 
 # Languages
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers is a polyglot platform, and provides first-class support for the following programming languages:
 
 - [JavaScript](https://developers.cloudflare.com/workers/languages/javascript/)

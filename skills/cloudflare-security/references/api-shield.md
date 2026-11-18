@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/og.png?v=4def62fcf84999fc
 
 # Cloudflare API Shield
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Identify and address your API vulnerabilities.
 
 Enterprise-only paid add-on
@@ -59,11 +57,11 @@ Use API Shield for API inventory, OpenAPI governance, profile export, automation
 
 ## Availability
 
-Cloudflare API Security products are available to Enterprise customers only. Anyone can set up [Mutual TLS](https://developers.cloudflare.com/api-shield/security/mtls/) with a Cloudflare-managed certificate authority.
+Unless specified otherwise on a feature page, API Shield features require the paid API Shield add-on on an Enterprise plan. Anyone can set up [Mutual TLS](https://developers.cloudflare.com/api-shield/security/mtls/) with a Cloudflare-managed certificate authority.
 
-The full API Shield security suite is available as an Enterprise paid add-on. Refer to [API Shield plans](https://developers.cloudflare.com/api-shield/plans/) for feature-specific availability.
+Refer to [API Shield plans](https://developers.cloudflare.com/api-shield/plans/) for resource limits by zone plan.
 
-Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed beta access does not imply future plan availability or pricing.
+Customers with the API Security entitlement already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without the API Security entitlement. Interested customers can contact their account team to express interest. Closed beta access does not imply future plan availability or pricing.
 
 Note
 
@@ -84,5 +82,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/#page","headline":"Cloudflare API Shield","description":"Identify and address API vulnerabilities with discovery, schema validation, and abuse detection.","url":"https://developers.cloudflare.com/api-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/og.png?v=4def62fcf84999fc","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/#page","headline":"Cloudflare API Shield","description":"Identify and address API vulnerabilities with discovery, schema validation, and abuse detection.","url":"https://developers.cloudflare.com/api-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/og.png?v=4def62fcf84999fc","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

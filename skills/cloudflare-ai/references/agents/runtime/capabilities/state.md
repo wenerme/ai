@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/capabilities/state/og.pn
 
 # State
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/capabilities/state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `State` from `agents/state` stores one JSON value in the Durable Object's SQLite database. It loads the value on first read, caches it in memory, validates every change, and calls you back after each one. Combine it with [`WebSockets`](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/) to sync the value with connected clients.
 
 ## Install the capability

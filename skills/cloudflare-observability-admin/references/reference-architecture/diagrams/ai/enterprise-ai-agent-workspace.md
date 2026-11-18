@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ente
 
 # Enterprise AI agent workspace
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 An enterprise AI agent workspace gives employees a persistent environment for completing work with AI. It pairs that workspace with a curated library of organizational context and skills, so people do their best work using an organization's own knowledge and proven playbooks. Each workspace holds its own conversation state, files, enterprise tools, and isolated execution.

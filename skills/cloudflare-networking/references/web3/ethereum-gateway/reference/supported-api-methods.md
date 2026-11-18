@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ethereum-gateway/reference/support
 
 # Supported API methods
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The full list of API methods that are supported by an Ethereum Gateway is given below. The gateway returns a `403` if a method is specified that is not supported.
 
 For a full list of JSON-RPC API methods, refer to the [JSON-RPC specification ↗︎](https://github.com/ethereum/execution-apis).

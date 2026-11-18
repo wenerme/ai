@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/og.pn
 
 # Troubleshooting builds
 
-Last updated Nov 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide explains how to identify and resolve build errors, as well as troubleshoot common issues in the Workers Builds deployment process.
 
 To view your build history, go to your Worker project in the Cloudflare dashboard, select **Deployment**, select **View Build History** at the bottom of the page, and select the build you want to view. To retry a build, select the ellipses next to the build and select **Retry build**. Alternatively, you can select **Retry build** on the Build Details page.

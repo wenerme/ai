@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/service-bindings/og.png?v=bfc73f9
 
 # IP address service bindings
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In the context of BYOIP, service bindings map traffic destined for IP addresses to the Cloudflare service it should be routed through - such as Magic Transit, CDN, or Spectrum. A default binding covering the entire prefix is required when you first [onboard](https://developers.cloudflare.com/byoip/get-started/#2-create-service-bindings), and additional bindings can be created at any time to route specific IP addresses or CIDR ranges to a different service.
 
 For example, you could set Magic Transit as the default service for Layer 3 DDoS protection across the entire prefix, while directing specific IPs to the CDN for Layer 7 processing. Refer to [Scope](#scope) for the available combinations.

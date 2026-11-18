@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/c
 
 # Cursor
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/cursor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cursor ↗︎](https://cursor.com/) supports a custom OpenAI base URL for models that use a custom API key. Point it at AI Gateway's [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) to route Cursor chat and agent requests through AI Gateway. Cursor sends requests through its servers, so your AI Gateway endpoint must be publicly reachable.
 
 ## Prerequisites

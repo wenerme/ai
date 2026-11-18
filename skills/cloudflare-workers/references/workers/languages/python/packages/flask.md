@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/packages/flask
 
 # Flask
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/flask/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Flask ↗︎](https://flask.palletsprojects.com/) is supported in Python Workers.
 
 Flask applications rely on a protocol called the Web Server Gateway Interface (WSGI). This means that Flask never directly reads or writes to a socket, instead relying on the WSGI server to communicate.
@@ -51,7 +49,7 @@ Use this quick start to run a minimal Flask application.
      "name": "my-flask-worker",
      "main": "src/worker.py",
      // Set this to today's date
-     "compatibility_date": "2026-10-09",
+     "compatibility_date": "2026-11-18",
      "compatibility_flags": ["python_workers"]
    }
    ```
@@ -61,7 +59,7 @@ Use this quick start to run a minimal Flask application.
    name = "my-flask-worker"
    main = "src/worker.py"
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-11-18"
    compatibility_flags = [ "python_workers" ]
    ```
 
@@ -117,7 +115,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
   "name": "my-flask-worker",
   "main": "src/worker.py",
   // Set this to today's date
-  "compatibility_date": "2026-10-09",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": ["python_workers"],
   "assets": {
     "directory": "./public/",
@@ -132,7 +130,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
 name = "my-flask-worker"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-10-09"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

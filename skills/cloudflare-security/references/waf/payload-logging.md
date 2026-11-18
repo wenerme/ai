@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/payload-logging/og.png?v=df94312cd0
 
 # Log the payload of matched rules
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The WAF allows you to log the request information that triggered a managed rule or custom rule. This information is known as the payload. Payload information includes the specific string that triggered the rule, along with the text that appears immediately before and after the match.
 
 Payload logging is especially useful when diagnosing the behavior of WAF rules. Since the values that triggered a rule may contain sensitive data, they are encrypted with a customer-provided public key so that only you can examine them later.

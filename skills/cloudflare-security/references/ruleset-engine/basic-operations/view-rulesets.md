@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/basic-operations/view-ru
 
 # View rulesets
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page includes examples of the following API operations:
 
 - [View available rulesets](#view-available-rulesets)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/og.png?v=671f80b438177fe8
 
 # Cloudflare Realtime
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build live applications where people, AI systems, and devices communicate in real time over [Cloudflare's global network ↗︎](https://www.cloudflare.com/network/).
 
 ![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=799,format=webp/_astro/global-web-rtc-network.vo5ylKmC.png)![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=799,format=webp/_astro/global-web-rtc-network-dark.DktEEERJ.png)

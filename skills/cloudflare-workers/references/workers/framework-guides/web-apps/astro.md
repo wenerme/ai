@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/astro
 
 # Astro
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Start from CLI**: Scaffold an Astro project on Workers, and pick your template.
 
 npmyarnpnpm
@@ -164,7 +162,7 @@ If your Astro project is entirely pre-rendered, follow these steps:
    {
    	"name": "my-astro-app",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-06",
+   	"compatibility_date": "2026-11-18",
    	"assets": {
    		"directory": "./dist"
    	}
@@ -174,7 +172,7 @@ If your Astro project is entirely pre-rendered, follow these steps:
    ```toml
    name = "my-astro-app"
    # Set this to today's date
-   compatibility_date = "2026-11-06"
+   compatibility_date = "2026-11-18"
 
    [assets]
    directory = "./dist"
@@ -264,7 +262,7 @@ This command installs the Cloudflare adapter and makes the appropriate changes t
        "upload_source_maps": true,
    	// Update to today's date
    	// Set this to today's date
-   	"compatibility_date": "2026-11-06",
+   	"compatibility_date": "2026-11-18",
    	"assets": {
    		"binding": "ASSETS",
    		"directory": "./dist"
@@ -280,7 +278,7 @@ This command installs the Cloudflare adapter and makes the appropriate changes t
    main = "./dist/_worker.js/index.js"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-11-06"
+   compatibility_date = "2026-11-18"
 
    [assets]
    binding = "ASSETS"

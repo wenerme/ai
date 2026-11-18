@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-ht
 
 # Charge for HTTP content
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [mpp-proxy ↗︎](https://github.com/cloudflare/mpp-proxy) template is a Cloudflare Worker that sits in front of any HTTP backend. When a request hits a protected route, the proxy returns a `402` response with an MPP payment challenge. After the client pays, the proxy verifies the payment, forwards the request to your origin, and issues a 1-hour session cookie.
 
 Deploy the mpp-proxy template to your Cloudflare account:

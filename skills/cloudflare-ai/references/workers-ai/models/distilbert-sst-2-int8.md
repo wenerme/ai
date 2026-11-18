@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Classification • HuggingFace
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/huggingface/distilbert-sst-2-int8` Copy

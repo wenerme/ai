@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Signed AuthN requests (SAML)
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/signed_authn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In a SAML request flow, Cloudflare Access functions as the service provider (SP) to the identity provider (IdP). Cloudflare Access sends a SAML request to your IdP. The signing certificate that you upload from your SAML provider verifies the response.
 
 In some cases, administrators need to verify that the request from the SP is authentic. By validating both the requests from the SP and the responses from the IdP, teams can ensure that operations in the SAML relationship are signed in both directions.

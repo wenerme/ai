@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/conf
 
 # Configuration
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Workers Vitest integration provides additional configuration on top of Vitest's usual options using the `cloudflareTest()` Vite plugin.
 
 An example configuration for a project with a [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/) file would be:
@@ -77,7 +75,7 @@ export default defineConfig({
 
 ### `buildPagesASSETSBinding(assetsPath)`
 
-Exported from `@cloudflare/vitest-plugin/config`. Creates a Pages ASSETS binding that serves files inside the `assetsPath`. This is required if you use `createPagesEventContext()` to test your **Pages Functions**. Refer to the [Pages recipe](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) for a full example.
+Exported from `@cloudflare/vitest-plugin`. Creates a Pages ASSETS binding that serves files inside the `assetsPath`. This is required if you use `createPagesEventContext()` to test your **Pages Functions**. Refer to the [Pages recipe](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) for a full example.
 
 ```ts
 import path from "node:path";
@@ -103,7 +101,7 @@ export default defineConfig({
 
 ### `readD1Migrations(migrationsPath)`
 
-Exported from `@cloudflare/vitest-plugin/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [`applyD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗︎](https://vitest.dev/config/setupfiles) to apply migrations. Refer to the [D1 recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
+Exported from `@cloudflare/vitest-plugin`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [`applyD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗︎](https://vitest.dev/config/setupfiles) to apply migrations. Refer to the [D1 recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
 
 ```ts
 import path from "node:path";
@@ -226,5 +224,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-11-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

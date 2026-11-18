@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/concepts/lifetime/og.png?v=cd31
 
 # Sandbox lifetime
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/lifetime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Linux sandbox is a [Durable Object](https://developers.cloudflare.com/durable-objects/) that starts and stops a [container](https://developers.cloudflare.com/containers/). Your Worker reaches the Durable Object by name, for example a session ID, and the same name always reaches the same Durable Object. When work arrives, the Durable Object calls [`this.ctx.container.start()`](https://developers.cloudflare.com/containers/api/durable-object-container/#start), which starts a container instance: a Linux virtual machine that runs your image, with its own processes and its own disk.
 
 The Durable Object and the instance last for different lengths of time. The Durable Object keeps its storage, such as session details or a snapshot ID, until your code deletes it. An instance runs only until something stops it, and its processes and the files on its disk end with it. The next `start()` creates a new instance.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/python/bindings/og.png?v=6cff
 
 # Interact with a Workflow
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/python/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler config file.
@@ -30,7 +28,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 	"name": "workflows-starter",
 	"main": "src/index.py",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["python_workflows", "python_workers"],
 	"workflows": [
 		{
@@ -50,7 +48,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 name = "workflows-starter"
 main = "src/index.py"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "python_workflows", "python_workers" ]
 
 [[workflows]]

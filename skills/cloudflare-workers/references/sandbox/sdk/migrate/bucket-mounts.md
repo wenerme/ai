@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/bucket-mounts/og.pn
 
 # Move bucket mounts
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/bucket-mounts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Move your 0.12 bucket mounts to `S3Mount`, which mounts the same bucket prefix without bucket credentials in the container. `S3Gateway` in your Worker signs each storage request. In 0.12, `mountBucket()` put the credentials in the container, or mounted through an R2 binding.
 
 ## Before you start

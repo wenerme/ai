@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/mtls/concepts/benefits/o
 
 # Benefits of mTLS
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/concepts/benefits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - **Stronger authentication**: mTLS ensures mutual verification between the client and server, confirming that both parties are who they claim to be. This two-way authentication mechanism prevents impersonation and man-in-the-middle attacks, significantly enhancing the overall security.
 - **End-to-end encryption**: All communication between the client and server is encrypted, providing robust protection against eavesdropping and interception. Even if the data is captured by unauthorized parties, it remains secure and unreadable due to encryption.
 - **Preserved data integrity**: mTLS ensures that data remains unaltered during transit. The protocol verifies the integrity of transmitted information, protecting it from tampering or manipulation by malicious actors, ensuring the data's authenticity.

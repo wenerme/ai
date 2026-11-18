@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/og.png?v=d9b4c0d9dbab4986
 
 # Cloudflare AI Gateway
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Observe and control your AI applications.
 
 Available on all plans

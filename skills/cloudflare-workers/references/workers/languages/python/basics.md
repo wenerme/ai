@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/basics/og.png?
 
 # The Basics
 
-Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/basics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Fetch Handler
 
 As mentioned in the [introduction to Python Workers](https://developers.cloudflare.com/workers/languages/python/), a Python Worker can be as simple as four lines of code:
@@ -93,7 +91,7 @@ For example, let us try setting and using an environment variable in a Python Wo
 		"python_workers"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"vars": {
 		"API_HOST": "example.com"
 	}
@@ -106,7 +104,7 @@ name = "hello-python-worker"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [vars]
 API_HOST = "example.com"

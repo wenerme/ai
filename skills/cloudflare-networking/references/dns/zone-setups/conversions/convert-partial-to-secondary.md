@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/conversions/convert-par
 
 # Convert partial setup to secondary setup
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-secondary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you initially set up a [partial zone (CNAME setup)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) on Cloudflare, you can later convert it to use a [secondary setup](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/).
 
 Subdomain setup

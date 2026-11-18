@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/api/read-key-value-pairs/og.png?v=b0
 
 # Read key-value pairs
 
-Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/api/read-key-value-pairs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To get the value for a given key, call the `get()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
 ```js

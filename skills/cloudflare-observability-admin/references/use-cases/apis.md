@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/apis/og.png?v=94d9da93d006ac8
 
 # APIs and microservices
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build, secure, and manage Application Programming Interfaces (APIs) with rate limiting, authentication, and observability. Cloudflare Workers deploys API handlers globally with automatic scaling. API Shield validates requests against your OpenAPI specification. Rate Limiting prevents abuse. mTLS authenticates machine-to-machine communication. Cloudflare Tunnel and Access secure internal microservices. Logpush and Workers Analytics Engine provide monitoring.
 
 - [Deploy APIs at the edge](https://developers.cloudflare.com/use-cases/apis/deploy-apis/)

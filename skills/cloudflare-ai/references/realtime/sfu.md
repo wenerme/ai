@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/og.png?v=51fa06061870e6fd
 
 # Realtime SFU
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect devices, applications, and AI with real-time media and data.
 
 Cloudflare Realtime SFU (Selective Forwarding Unit) routes WebRTC audio, video, and DataChannels between your endpoints. Your application chooses who publishes, who subscribes, and who can send controls back.

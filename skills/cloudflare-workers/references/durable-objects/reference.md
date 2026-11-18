@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/reference/og.png?v=67f8
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [In-memory state in a Durable Object](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/)
 - [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/)
 - [Data security](https://developers.cloudflare.com/durable-objects/reference/data-security/)

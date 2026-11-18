@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/ap
 
 # API Routing
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Legacy feature
 
 API Routing is a legacy feature and is not available to new customers. Customers with existing access can continue to use the feature. Cloudflare will provide advance notice before deprecating API Routing.

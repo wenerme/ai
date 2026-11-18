@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/og.png?v=2c
 
 # Members and permissions
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 On any Cloudflare account, you can collaborate by adding members to your account and assigning them access via one or several policies.
 
 Configuring permissions for each member helps prevent accidental changes to your account. For example, you can scope a team member to only manage staging domains, so they do not accidentally modify a production site. Use policies to grant each member the minimum level of access they need.

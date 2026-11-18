@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/faq/wae-faqs/og.png?v=74097ee
 
 # Workers Analytics Engine FAQs
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/faq/wae-faqs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find answers to our most commonly asked questions.
 
 ## Sampling

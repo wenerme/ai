@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/debugging-and-logging/o
 
 # Debugging and logging
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/debugging-and-logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Access your Functions logs by using the Cloudflare dashboard or the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-tail).
 
 Logs are a powerful debugging tool that can help you test and monitor the behavior of your Pages Functions once they have been deployed. Logs are available for every deployment of your Pages project.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/rules/violations/o
 
 # Content security rule violations
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/rules/violations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Only available to customers with Client-Side Security Advanced.

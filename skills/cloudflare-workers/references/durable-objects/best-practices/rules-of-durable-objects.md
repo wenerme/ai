@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/best-practices/rules-of
 
 # Rules of Durable Objects
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Durable Objects provide a powerful primitive for building stateful, coordinated applications. Each Durable Object is a single-threaded, globally-unique instance with its own persistent storage. Understanding how to design around these properties is essential for building effective applications.
 
 This is a guidebook on how to build more effective and correct Durable Object applications.
@@ -153,7 +151,13 @@ export default {
 
 A common pattern is to use Workers as the stateless entry point that routes requests to Durable Objects when coordination is needed. The Worker handles authentication, validation, and response formatting, while the Durable Object handles the stateful logic.
 
+### Separate control-plane changes from resource traffic
+
+Durable Objects can serve both control-plane and data-plane roles. An account object can coordinate configuration and resource creation while separate objects handle each resource's traffic. Publish configuration outward, and avoid making routine resource requests write to or synchronously depend on a shared control-plane object. Refer to [Architecture guidance](https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/#control-plane) for the design principles and [Architecture examples](https://developers.cloudflare.com/durable-objects/best-practices/architecture-examples/#control-and-data-planes) for a worked topology.
+
 ## Design and sharding
+
+For in-depth guidance on choosing coordination boundaries, sizing workloads, naming objects, and scaling them, refer to [Architecture guidance](https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/). For worked designs that combine these decisions, refer to [Architecture examples](https://developers.cloudflare.com/durable-objects/best-practices/architecture-examples/).
 
 ### Model your Durable Objects around your "atom" of coordination
 
@@ -299,31 +303,25 @@ export default {
 		const id = env.CHAT_ROOM.idFromName("global");
 		const stub = env.CHAT_ROOM.get(id);
 
-    	await stub.sendMessage("room-123", "user-456", "Hello!");
-    	return new Response("Sent");
+	await stub.sendMessage("room-123", "user-456", "Hello!");
+	return new Response("Sent");
     },
 };
 ```
 
 ### Message throughput limits
 
-A single Durable Object can handle approximately **500-1,000 requests per second** for simple operations. This limit varies based on the work performed per request:
+Durable Objects have a documented [soft limit of 1,000 requests per second per object](https://developers.cloudflare.com/durable-objects/platform/limits/). This is not guaranteed throughput: the rate an object sustains depends on the work performed for each request, including CPU work, storage operations, and payload sizes.
 
-| Operation type | Throughput |
-| --- | --- |
-| Simple pass-through (minimal parsing) | \~1,000 req/sec |
-| Moderate processing (JSON parsing, validation) | \~500-750 req/sec |
-| Complex operations (transformation, storage writes) | \~200-500 req/sec |
+Load-test your workload to choose a target rate with headroom below both the soft limit and the rate your object sustains. Apply that target to one atom's traffic, not the application's total traffic. For example, game sessions already distribute player updates across separate objects; only a session that becomes too busy needs further partitioning.
 
-When modeling your "atom," factor in the expected request rate. If your use case exceeds these limits, shard your workload across multiple Durable Objects.
+For independently partitionable writes, use the measured target to estimate an initial shard count, then test the sharded design:
 
-For example, consider a real-time game with 50,000 concurrent players sending 10 updates per second. This generates 500,000 requests per second total. You would need 500-1,000 game session Durable Objects—not one global coordinator.
-
-Calculate your sharding requirements:
-
-```plaintext
-Required DOs = (Total requests/second) / (Requests per DO capacity)
+```txt
+Required shards = ceil(Peak requests/second for one atom / Target requests/second per shard)
 ```
+
+Refer to [Size each atom](https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/#step-2-size) for measurement guidance and [Scale a hot Durable Object](https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/#step-7-scale) for scale-out patterns.
 
 ### Use deterministic IDs for predictable routing
 
@@ -411,12 +409,8 @@ export class GameSession extends DurableObject {
 export default {
 	async fetch(request, env) {
 		// newUniqueId() creates a random ID - useful when creating new instances
-		// You must store this ID somewhere (e.g., D1) to find it again later
 		const id = env.GAME_SESSION.newUniqueId();
 		const stub = env.GAME_SESSION.get(id);
-
-		// Store the mapping: gameCode -> id.toString()
-		// await env.DB.prepare("INSERT INTO games (code, do_id) VALUES (?, ?)").bind(gameCode, id.toString()).run();
 
 		return Response.json({ gameId: id.toString() });
 	},
@@ -441,15 +435,11 @@ export class GameSession extends DurableObject<Env> {
 export default {
 	async fetch(request: Request, env: Env): Promise<Response> {
 		// newUniqueId() creates a random ID - useful when creating new instances
-		// You must store this ID somewhere (e.g., D1) to find it again later
 		const id = env.GAME_SESSION.newUniqueId();
 		const stub = env.GAME_SESSION.get(id);
 
-    	// Store the mapping: gameCode -> id.toString()
-    	// await env.DB.prepare("INSERT INTO games (code, do_id) VALUES (?, ?)").bind(gameCode, id.toString()).run();
-
-    	return Response.json({ gameId: id.toString() });
-    },
+		return Response.json({ gameId: id.toString() });
+	},
 };
 ```
 
@@ -651,11 +641,11 @@ export default {
 		const gameId = url.searchParams.get("game") ?? "default";
 		const region = url.searchParams.get("region") ?? "wnam"; // Western North America
 
-    	// Provide a location hint for where this Durable Object should be created
-    	const id = env.GAME_SESSION.idFromName(gameId);
-    	const stub = env.GAME_SESSION.get(id, { locationHint: region });
+	// Provide a location hint for where this Durable Object should be created
+	const id = env.GAME_SESSION.idFromName(gameId);
+	const stub = env.GAME_SESSION.get(id, { locationHint: region });
 
-    	return new Response("Connected to game session");
+	return new Response("Connected to game session");
     },
 };
 ```
@@ -917,7 +907,7 @@ Durable Objects provide multiple state management layers, each with different ch
 | --- | --- | --- | --- |
 | In-memory (class properties) | Fastest | Lost on eviction or crash | Caching, active connections |
 | SQLite storage | Fast | Durable across restarts | Primary data storage |
-| External (R2, D1) | Variable | Durable, cross-DO accessible | Large files, shared data |
+| External (R2) | Variable | Durable, cross-DO accessible | Large files, shared data |
 
 In-memory state is **not preserved** if the Durable Object is evicted from memory due to inactivity, or if it crashes from an uncaught exception. Always persist important state to SQLite storage.
 
@@ -2647,5 +2637,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/og.png?v=238433fba2f60d80","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/og.png?v=238433fba2f60d80","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

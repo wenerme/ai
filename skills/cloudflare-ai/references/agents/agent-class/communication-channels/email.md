@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/communication-channe
 
 # Email
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/communication-channels/email/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email is a communication channel for agents that need to interact with users or systems through inboxes instead of chat UIs. Agents can send outbound email, receive inbound email, route replies back to an existing session, and use email content as part of an agent workflow.
 
 Use email when you want an agent to:

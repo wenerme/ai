@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/examples/og.png?v=53f94ef9000b8f
 
 # Examples
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [**Queues - Publish Directly via HTTP** Publish to a Queue directly via HTTP and Workers.](https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/)
 
 [**Queues - Publish Directly via a Worker** Publish to a Queue directly from your Worker.](https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-workers/)

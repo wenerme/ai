@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkGridPaginatorView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/grid-paginator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A component which allows you to change the current page of the active participants grid.
 
 ## Methods

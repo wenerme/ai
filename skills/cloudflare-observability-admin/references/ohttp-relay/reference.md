@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ohttp-relay/reference/og.png?v=f7989ca3
 
 # Reference
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ohttp-relay/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare OHTTP Relay (formerly Privacy Gateway) reference documentation includes legal details, limitations, metrics, and product compatibility.
 
 - [Cloudflare OHTTP Relay metrics](https://developers.cloudflare.com/ohttp-relay/reference/metrics/)

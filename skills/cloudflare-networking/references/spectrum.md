@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/og.png?v=54074c351e3e3535
 
 # Cloudflare Spectrum
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spectrum provides security and acceleration for any [TCP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/) or [UDP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/) based application.
 
 Available on Paid plans

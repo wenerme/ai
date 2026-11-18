@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-pol
 
 # DNS policies
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DNS policies let you control which websites and services your users can reach by inspecting their DNS queries — the lookups that translate domain names into IP addresses. Because DNS policies act at the lookup stage, they work across all protocols and applications, not just web browsers.
 
 When a user makes a DNS request, [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) matches the request against the DNS policies you have set up for your organization. If the domain does not belong to any blocked categories, or if it matches an Allow or Override policy, the user's client receives an address based on DNS resolution from Cloudflare's public DNS resolver (1.1.1.1). You can also use a [resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) to redirect DNS requests to a custom server.

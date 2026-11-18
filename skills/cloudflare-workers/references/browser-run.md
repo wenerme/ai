@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/og.png?v=3bbb9fb2640f1748
 
 # Browser Run
 
-Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run headless Chrome on [Cloudflare's global network](https://developers.cloudflare.com/workers/) for browser automation, web scraping, testing, and content generation.
 
 Available on Free and Paid plans

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/prompt-caching/og.p
 
 # Prompt caching
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/prompt-caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Prompt caching (also called prefix caching) is a performance optimization that allows Workers AI to respond faster to requests with prompts that share common inputs. It reduces Time to First Token (TTFT) and increases Tokens Per Second (TPS) throughput by reusing previously computed input tensors instead of reprocessing them from scratch.
 
 Cached input tokens are billed at a discounted rate compared to regular input tokens. Workers AI enables prefix caching by default for select models. Compatibility and pricing details are listed on each [model page](https://developers.cloudflare.com/workers-ai/models/).

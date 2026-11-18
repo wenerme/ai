@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/setup/linux/og.png?v=9e9c33f94b
 
 # Linux
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/linux/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you begin, take note of any DNS addresses you might have set up, and save them in a safe place in case you need to use them later.
 
 You can configure 1.1.1.1 using the [command line](#use-command-line-interface-cli) or a [graphical interface](#use-graphical-user-interface-gui).

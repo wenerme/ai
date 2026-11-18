@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/lifecycle/api-reference/
 
 # Lifecycle API
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page lists every export of `agents/lifecycle`. For a guided introduction, refer to [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) and [Build a capability](https://developers.cloudflare.com/agents/runtime/capabilities/build-a-capability/).
 
 `agents/lifecycle` is stable.

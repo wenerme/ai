@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/
 
 # Device monitoring
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Monitor performance and network status for your organization's [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization) or individual [user devices](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#device-monitoring).
 
 Network and device performance data helps IT administrators troubleshoot performance issues, investigate network connectivity problems, and monitor device health.

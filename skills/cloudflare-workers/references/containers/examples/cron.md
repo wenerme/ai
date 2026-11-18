@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/containers/examples/cron/og.png?v=8aa94
 
 Running a container on a schedule using Cron Triggers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/cron/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run a short container task every two minutes with a Workers [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/). The task prints its scheduled time, then exits.
 
 ## Configure the schedule
@@ -27,7 +25,7 @@ Run a short container task every two minutes with a Workers [Cron Trigger](https
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "observability": {
     "enabled": true
   },
@@ -69,7 +67,7 @@ name = "cron-container"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [observability]
 enabled = true

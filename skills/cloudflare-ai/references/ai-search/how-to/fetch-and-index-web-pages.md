@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pa
 
 # Fetch and index single web pages
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide builds a Worker that fetches a single web page's rendered HTML with the [Browser Run](https://developers.cloudflare.com/browser-run/) [`/content` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) and uploads it to an [AI Search](https://developers.cloudflare.com/ai-search/) instance's [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/). AI Search then indexes the page so it is searchable, the same as any other uploaded document. The Worker also exposes a `/search` endpoint that queries the indexed pages, so one service both indexes and searches.
 
 ## When to use this pattern
@@ -89,7 +87,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -109,7 +107,7 @@ name = "fetch-and-index"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [browser]
 binding = "BROWSER"

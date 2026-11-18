@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/workers/examples/respond-with-another-s
 
 Respond to the Worker request with the response from another website (example.com in this example).
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/respond-with-another-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you want to get started quickly, click on the button below.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/docs-examples/tree/main/workers/respond-with-another-site)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/platform/changelog/og.png?v=c
 
 # Changelog
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/platform/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/vectorize/platform/changelog/index.xml)
 
 ## 2025-08-25

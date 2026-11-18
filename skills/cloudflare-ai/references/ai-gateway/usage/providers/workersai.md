@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/og
 
 # Workers AI
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use AI Gateway as a unified control layer for [Workers AI](https://developers.cloudflare.com/workers-ai/) requests, with analytics, logging, caching, security, and prepaid billing. To use prepaid [AI Gateway credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), set the gateway's [Workers AI billing setting](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#configure-workers-ai-billing) to **Unified billing**. Requests to frontier models billed with prepaid credits receive [higher rate limits](https://developers.cloudflare.com/workers-ai/platform/limits/#paid-models).
 
 ## REST API

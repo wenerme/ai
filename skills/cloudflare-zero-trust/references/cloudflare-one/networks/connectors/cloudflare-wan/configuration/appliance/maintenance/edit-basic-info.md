@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Edit basic information
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/edit-basic-info/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In **Basic information**, you can change the name and description of your Cloudflare One Appliance (formerly Magic WAN Connector).
 
 1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.

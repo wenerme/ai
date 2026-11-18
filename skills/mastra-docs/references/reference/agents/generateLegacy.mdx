@@ -5,7 +5,7 @@ packages:
   - "@mastra/core"
 ---
 
-# Agent.generateLegacy() (Legacy)
+# Agent.generateLegacy() (legacy)
 
 > **warning**: **Deprecated**: This method is deprecated and only works with legacy model adapters. For current model adapters, use [`.generate()`](./generate) instead.
 
@@ -409,9 +409,9 @@ Scorer judges with legacy model adapters call `generateLegacy()`. They don't rec
 
 > **note**: The new `.generate()` method offers enhanced capabilities including compatibility with AI SDK v5 and later, better structured output handling, and improved streaming support. See the [migration guide](/reference/migrations/vnext-to-standard-apis) for detailed migration instructions.
 
-### Quick Migration Example
+### Quick migration example
 
-#### Before (Legacy)
+#### Before (legacy)
 
 ```typescript
 const result = await agent.generateLegacy('message', {
@@ -420,7 +420,7 @@ const result = await agent.generateLegacy('message', {
 })
 ```
 
-#### After (New API)
+#### After (new API)
 
 ```typescript
 const result = await agent.generate('message', {

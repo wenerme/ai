@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-avatar
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-avatar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Avatar component which renders a participant's image or their initials.
 
 ## Properties

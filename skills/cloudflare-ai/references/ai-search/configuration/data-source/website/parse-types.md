@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/web
 
 # Parse types
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The parse type controls how AI Search finds the pages to index on a [website data source](https://developers.cloudflare.com/ai-search/configuration/data-source/website/). AI Search supports two parse types.
 
 | Parse type | Page discovery | Use when |

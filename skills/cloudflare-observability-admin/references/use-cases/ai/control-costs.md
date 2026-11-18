@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/ai/control-costs/og.png?v=202
 
 # Control costs and improve quality
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/ai/control-costs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI inference costs can grow unpredictably as your application scales, especially when using multiple providers. Cloudflare AI Gateway caches identical queries to avoid redundant inference calls, applies rate limits per user or API key, and provides unified analytics across all providers.
 
 ## Solutions

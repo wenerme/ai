@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/how-to/enable-magic-roles
 
 # Enable Magic user roles
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/enable-magic-roles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can determine which users have, or do not have, configuration edit access for Magic products, including Magic Transit, Cloudflare WAN (formerly Magic WAN), and Cloudflare Network Firewall.
 
 For example, if multiple teams manage different Cloudflare products on the same account, you can provide select users with edit access and other users with read-only access.

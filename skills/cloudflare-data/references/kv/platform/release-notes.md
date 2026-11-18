@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/platform/release-notes/og.png?v=3ff2
 
 # Release notes
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/platform/release-notes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/kv/platform/release-notes/index.xml)
 
 ## 2024-11-14

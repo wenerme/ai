@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/og.p
 
 # DLP
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
 
 ## DLP policy does not trigger or block content
 
-DLP not inspecting or blocking content is the most common issue reported. If you have configured a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/) but it fails to inspect or block traffic, the cause is almost always that the traffic is not being decrypted. To use DLP to scan the content of HTTPS requests, you must turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/).
+DLP not inspecting or blocking content is the most common issue reported. If you have configured a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/) but it fails to inspect or block traffic, the cause is almost always that the traffic is not being decrypted. To use DLP to scan the content of HTTPS requests, you must turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/).
 
 To turn on TLS decryption:
 
@@ -71,7 +69,7 @@ This policy only blocks uploads of financial data to file-sharing websites for a
 | DLP Profile | in | *Financial Information* | And | |
 | User Group Names | in | `Finance Team` |  | |
 
-You can also create policies that match trusted applications using the [**Do Not Scan** action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-scan).
+You can also create policies that match trusted applications using the [**Do Not Scan** action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-scan).
 
 ## DLP detections are inconsistent
 

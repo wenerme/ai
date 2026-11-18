@@ -5,7 +5,7 @@ description: "Browse Pareto Inference model IDs, capabilities, context windows, 
 
 # [Pareto Inference logo]Pareto Inference
 
-Access 1 Pareto Inference model through Mastra's model router. Authentication is handled automatically using the `PARETO_API_KEY` environment variable.
+Access 3 Pareto Inference models through Mastra's model router. Authentication is handled automatically using the `PARETO_API_KEY` environment variable.
 
 Learn more in the [Pareto Inference documentation](https://docs.paretoinference.com/).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "pareto/z-ai/glm-5.3-flash"
+  model: "pareto/deepseek/deepseek-v4.1-flash"
 });
 
 // Generate a response
@@ -39,6 +39,30 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "pareto/deepseek/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.105,
+    "outputCost": 0.42
+  },
+  {
+    "model": "pareto/xiaomi/mimo-v2.6-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.126,
+    "outputCost": 0.252
+  },
   {
     "model": "pareto/z-ai/glm-5.3-flash",
     "imageInput": true,
@@ -68,7 +92,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.paretoinference.com/v1",
-    id: "pareto/z-ai/glm-5.3-flash",
+    id: "pareto/deepseek/deepseek-v4.1-flash",
     apiKey: process.env.PARETO_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -89,7 +113,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "pareto/z-ai/glm-5.3-flash"
-      : "pareto/z-ai/glm-5.3-flash";
+      : "pareto/deepseek/deepseek-v4.1-flash";
   }
 });
 ```

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/o
 
 # Move sandboxes side by side
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run a Sandbox SDK 1.0 class next to your 0.12 class in the same Worker, and move each sandbox the first time a request reaches it. Commands and connections in sandboxes that have not moved keep running. When no sandbox needs the 0.12 class, delete it.
 
 ## Before you start

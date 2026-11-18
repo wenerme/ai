@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/commands/og.png?v=b1896115d4c01
 
 # Run commands in a sandbox
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Each of the following guides runs a command in a sandbox with `exec()`. They differ in how the output reaches the caller and in what ends the command:
 
 | Guide | How the output reaches the caller | The command runs until |

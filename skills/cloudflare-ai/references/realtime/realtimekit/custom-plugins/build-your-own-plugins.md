@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/bui
 
 # Build your own plugins
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide explains how to build a custom plugin and run it inside a meeting using the Cloudflare RealtimeKit Core SDK.
 
 A custom plugin is a DOM element that you register with the SDK. When a participant activates the plugin, RealtimeKit makes it active for everyone in the session and renders it in the meeting layout.

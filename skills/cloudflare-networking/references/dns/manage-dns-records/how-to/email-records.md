@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-rec
 
 # Set up email records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 There are three reasons to set up email records for your domain:
 
 - To make sure your domain can [receive email](#receive-email).

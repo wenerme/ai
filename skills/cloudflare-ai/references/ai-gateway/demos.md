@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/demos/og.png?v=e3cd353861817
 
 # Architectures
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how you can use AI Gateway within your existing architecture.
 
 ## Reference architectures

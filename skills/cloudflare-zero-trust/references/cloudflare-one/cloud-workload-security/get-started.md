@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Get started
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run a Cloud Workload Security (CWS) proxy locally and block requests that make an R2 bucket public. This walkthrough uses an empty test bucket in your Cloudflare account.
 
 The proxy and `cf` client run on the same Linux machine. For pipeline runners, application hosts, and shared proxies, refer to [Proxy deployment options](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/platform/#proxy-deployment-options).

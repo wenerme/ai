@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/configure-de
 
 # Resolve private DNS
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, all DNS requests on the user device are resolved by Cloudflare's [public DNS resolver](https://developers.cloudflare.com/1.1.1.1/) except for common top level domains used for local resolution (such as `localhost`). To allow users to connect to internal server names or domains that do not resolve on the public Internet, you have two options:
 
 - [Add internal domains to Local Domain Fallback](#local-domain-fallback)
@@ -144,7 +142,7 @@ Note
 
 Only available on Enterprise plans.
 
-[Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) provide similar functionality to Local Domain Fallback but occur in Cloudflare Gateway rather than on the local device. This option is recommended if you want more granular control over private DNS resolution. For example, you can ensure that all users in a specific geography use the private DNS server closest to them, ensure that specific conditions are met before resolving private DNS traffic, and apply [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) to private DNS traffic.
+[Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) provide similar functionality to Local Domain Fallback but occur in Cloudflare Gateway rather than on the local device. This option is recommended if you want more granular control over private DNS resolution. For example, you can ensure that all users in a specific geography use the private DNS server closest to them, ensure that specific conditions are met before resolving private DNS traffic, and apply [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) to private DNS traffic.
 
 ### Create a resolver policy
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/vite-envi
 
 # Vite Environments
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [Vite Environment API ↗︎](https://vite.dev/guide/api-environment), released in Vite 6, is the key feature that enables the Cloudflare Vite plugin to integrate Vite directly with the Workers runtime. It is not necessary to understand all the intricacies of the Environment API as an end user, but it is useful to have a high-level understanding.
 
 ## Default behavior
@@ -35,7 +33,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"main": "./src/index.ts",
 	"upload_source_maps": true
 }
@@ -45,7 +43,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 main = "./src/index.ts"
 upload_source_maps = true
 ```

@@ -44,6 +44,14 @@ tags:
     - [Group access tokens](https://docs.gitlab.com/user/group/settings/group_access_tokens/).
     - [Project access tokens](https://docs.gitlab.com/user/project/settings/project_access_tokens/).
     - [Impersonation tokens](https://docs.gitlab.com/api/rest/authentication/#impersonation-tokens).
+
+    To self-rotate a group or project access token, authenticate with that token and use the `self`
+    keyword in the request URL, for example `POST /projects/:id/access_tokens/self/rotate`. The token
+    must have the `api` or `self_rotate` scope.
+
+    When you rotate a token, GitLab links the new token to the previous one. These connected tokens form
+    a token family. If a rotation request authenticates with a token that was already revoked, all active
+    tokens in the same token family are revoked.
   x-displayName: Access tokens
   externalDocs:
     url: https://docs.gitlab.com/api/personal_access_tokens/
@@ -108,6 +116,8 @@ tags:
 
     > [!note]
     > You cannot use this API to manage group applications or individual user applications.
+
+    The `/applications` endpoints require administrator access to the instance.
   x-displayName: Applications
   externalDocs:
     url: https://docs.gitlab.com/api/applications/
@@ -118,12 +128,19 @@ tags:
 
     All endpoints require authentication. To manage the approval rules of an individual merge request,
     use the [merge request approvals API](https://docs.gitlab.com/api/merge_request_approvals/).
+
+    Group approval rules apply to all protected branches of projects in the group. The group approval
+    rules endpoints are behind a feature flag named `approval_group_rules`, disabled by default.
   x-displayName: Approval rules
   externalDocs:
     url: https://docs.gitlab.com/api/merge_request_approvals/
 - name: Attestations
   description: |-
     Use this API to retrieve and download [provenance attestations](https://docs.gitlab.com/ci/pipeline_security/slsa/level_3/provenance_v1/) for a project.
+
+    Some endpoints return [Sigstore bundles](https://docs.sigstore.dev/about/bundle/) in the response.
+    For attestations that use the `SIGSTORE` attestation method, you can verify these bundles with the
+    GitLab CLI (`glab`) or `cosign`.
 
     > [!note]
     > The availability of these endpoints is controlled by a feature flag. They are available for
@@ -135,6 +152,18 @@ tags:
   description: |-
     Use this API to list and retrieve the
     [audit events](https://docs.gitlab.com/user/compliance/audit_events/) recorded for an instance or a group.
+
+    > [!warning]
+    > Offset-based pagination for the audit event list endpoints was
+    > [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/186194) in GitLab 17.8 and is
+    > planned for removal in GitLab 20.0. Use keyset-based pagination instead. This change is a breaking change.
+
+    Instance audit event endpoints require administrator access. Group audit event endpoints return the
+    audit events of all users to users with the Owner role, and only the events of their own actions to
+    users with the Developer or Maintainer role.
+
+    Requests to these endpoints are subject to configurable rate limits: per user for instance audit
+    events, and per user and group for group audit events.
   x-displayName: Audit events
   externalDocs:
     url: https://docs.gitlab.com/api/audit_events/
@@ -158,6 +187,10 @@ tags:
     - [Merge requests](https://docs.gitlab.com/user/project/merge_requests/)
     - [Snippets](https://docs.gitlab.com/user/snippets/)
     - [Comments](https://docs.gitlab.com/user/emoji_reactions/#emoji-reactions-for-comments)
+
+    To react to a comment (also known as a note), use the emoji reaction endpoints for comments. They
+    work the same way for issues, merge requests, and snippets: use `issue_iid`, `merge_request_iid`,
+    or `snippet_id` in the path to identify the parent resource.
   x-displayName: Award emoji
   externalDocs:
     url: https://docs.gitlab.com/api/emoji_reactions/
@@ -238,7 +271,28 @@ tags:
     [job token](https://docs.gitlab.com/ci/jobs/ci_job_token/).
   x-displayName: CI catalog
 - name: CI jobs
-  description: Use this API to interact with [CI/CD jobs](https://docs.gitlab.com/ci/jobs/).
+  description: |-
+    Use this API to interact with [CI/CD jobs](https://docs.gitlab.com/ci/jobs/).
+
+    A job response includes `artifacts_file` while the artifacts archive is downloadable, even after
+    `artifacts_expire_at` has passed. Artifacts kept by the **Keep artifacts from most recent successful
+    jobs** setting do not expire.
+
+    The `status` field in job responses and the `scope` parameter for filtering jobs use these values:
+
+    - `canceled`: Job was manually canceled or automatically aborted.
+    - `canceling`: Job is being canceled but `after_script` is running.
+    - `created`: Job has been created but not yet processed.
+    - `failed`: Job execution failed.
+    - `manual`: Job requires manual action to start.
+    - `pending`: Job is in the queue waiting for a runner.
+    - `preparing`: Runner is preparing the execution environment.
+    - `running`: Job is executing on a runner.
+    - `scheduled`: Job has been scheduled but execution has not started.
+    - `skipped`: Job was skipped due to conditions or dependencies.
+    - `success`: Job completed successfully.
+    - `waiting_for_callback`: Job is waiting for a callback from an external service.
+    - `waiting_for_resource`: Job is waiting for resources to become available.
   x-displayName: CI jobs
   externalDocs:
     url: https://docs.gitlab.com/api/jobs/
@@ -269,6 +323,15 @@ tags:
     itself.
 
     To create a runner, or to manage runners that already exist, use the Runners endpoints.
+
+    A runner uses two tokens:
+
+    - A registration token (legacy) registers the runner. You get it from GitLab.
+    - An authentication token authenticates the runner with GitLab. Registering a runner with a
+      registration token returns its authentication token. You can also get one by creating a runner
+      with `POST /user/runners`, or by resetting the runner's authentication token.
+
+    After you register a runner, add its authentication token to the runner's configuration file.
   x-displayName: CI runners
   externalDocs:
     url: https://docs.gitlab.com/api/runners/
@@ -290,14 +353,19 @@ tags:
   externalDocs:
     url: https://docs.gitlab.com/api/project_level_variables/
 - name: Cluster agents
-  description: Use this API to interact with the [GitLab agent for Kubernetes](https://docs.gitlab.com/user/clusters/agent/).
+  description: |-
+    Use this API to interact with the [GitLab agent for Kubernetes](https://docs.gitlab.com/user/clusters/agent/).
+
+    Receptive agents let GitLab connect to Kubernetes clusters that cannot connect to the GitLab
+    instance. Receptive agents are available only on GitLab Ultimate for GitLab Self-Managed.
   x-displayName: Cluster agents
   externalDocs:
     url: https://docs.gitlab.com/api/cluster_agents/
 - name: Clusters
   description: |-
     > [!warning]
-    > These certificate-based cluster endpoints are [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/work_items/8).
+    > These certificate-based cluster endpoints were [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/work_items/8)
+    > in GitLab 14.5.
 
     Use this API to manage and discover the certificate-based Kubernetes clusters of an
     [instance](https://docs.gitlab.com/user/instance/clusters/), a
@@ -334,7 +402,15 @@ tags:
   externalDocs:
     url: https://docs.gitlab.com/api/commits/
 - name: Commits
-  description: Use this API to manage [Git commits](https://docs.gitlab.com/user/project/repository/commits/).
+  description: |-
+    Use this API to manage [Git commits](https://docs.gitlab.com/user/project/repository/commits/).
+
+    The `created_at` field exists for consistency with other GitLab APIs, and is always identical to
+    the `committed_date` field. The `committed_date` and `authored_date` fields come from different
+    sources, and might not be identical.
+
+    For performance reasons, the endpoints that list repository commits and the references a commit is
+    pushed to do not return the `x-total` and `x-total-pages` pagination headers.
   x-displayName: Commits
   externalDocs:
     url: https://docs.gitlab.com/api/commits/
@@ -362,6 +438,23 @@ tags:
     To authenticate with these endpoints from a CI/CD job, pass the [`$CI_JOB_TOKEN`](https://docs.gitlab.com/ci/jobs/ci_job_token/)
     variable as the `JOB-TOKEN` header. The job token only has access to the container registry
     of the project that created the pipeline.
+
+    When you delete tags in bulk with cURL, URL-encode any `+` character in a regular expression, for
+    example with `--data-urlencode`. Otherwise, the `+` is not processed correctly.
+
+    The container registry also has its own Docker Registry v2 endpoints, served by the registry and not
+    under `/api/v4`. They use a registry token, not a personal, project, or group access token. To get a
+    registry token, call `GET /jwt/auth?service=container_registry&scope=<scope>` on the GitLab instance.
+    The `scope` names the resource and the actions the token needs, for example
+    `repository:<project_path>:pull`, `push`, or `delete`. Pass the token to the registry in an
+    `Authorization: Bearer <token>` header.
+
+    - `DELETE /v2/<name>/manifests/<tag>` deletes an image tag by reference. A token requested with the
+      `CI_REGISTRY_USER` and `CI_REGISTRY_PASSWORD` variables can delete tags only in the project that
+      runs the job. The registry must have the `tag_delete` feature enabled. This endpoint was introduced
+      in GitLab 16.4 and replaces the deprecated `DELETE /v2/<name>/tags/reference/<tag>` endpoint.
+    - `GET /v2/_catalog` lists all container repositories on the instance. It requires a token with the
+      `registry:catalog:*` scope, which only administrators can get.
   x-displayName: Container registry
   externalDocs:
     url: https://docs.gitlab.com/api/container_registry/
@@ -380,6 +473,19 @@ tags:
     [GraphQL API](https://docs.gitlab.com/api/graphql/reference/).
 
     These endpoints require the Reporter, Developer, Maintainer, or Owner role.
+
+    The `value` field in the response depends on the `metric`:
+
+    - `deployment_frequency`: The total number of successful deployments during the time period.
+    - `change_failure_rate`: The number of incidents divided by the number of deployments during the
+      time period. Available only for the production environment.
+    - `lead_time_for_changes`: The median number of seconds between the merge of a merge request and the
+      deployment of its commits, for all merge requests deployed during the time period.
+    - `time_to_restore_service`: The median number of seconds an incident was open during the time
+      period. Available only for the production environment.
+
+    For the `monthly` and `all` intervals, the API calculates the median of the daily median values. This
+    can introduce a slight inaccuracy in the returned data.
   x-displayName: DORA metrics
   externalDocs:
     url: https://docs.gitlab.com/api/dora/metrics/
@@ -415,6 +521,14 @@ tags:
     authorized to read the [project security dashboard](https://docs.gitlab.com/user/application_security/security_dashboard/).
     To create or download a dependency list export, the user must have the `read_dependency` permission,
     and exports can be downloaded only by the user who created them.
+
+    Exports can be requested in different file formats. Some formats are only available for certain objects:
+
+    - `dependency_list`: A standard JSON object that lists the dependencies as key-value pairs. Available for projects.
+    - `sbom`: A CycloneDX 1.4 bill of materials. Available for pipelines.
+    - `cyclonedx_1_6_json`: A CycloneDX 1.6 bill of materials. Available for projects.
+    - `json_array`: A flat JSON array that contains component objects. Available for groups.
+    - `csv`: A comma-separated values (CSV) document. Available for projects and groups.
   x-displayName: Dependency management
   externalDocs:
     url: https://docs.gitlab.com/api/dependency_list_export/
@@ -430,6 +544,17 @@ tags:
     Use this API to manage [deploy keys](https://docs.gitlab.com/user/project/deploy_keys/),
     [deploy tokens](https://docs.gitlab.com/user/project/deploy_tokens/), and
     [code deployments](https://docs.gitlab.com/ci/environments/deployments/) to GitLab environments.
+
+    Project deploy token endpoints require the Maintainer or Owner role for the project. Listing group
+    deploy tokens requires the Maintainer or Owner role for the group. Creating and deleting group deploy
+    tokens requires the Owner role for the group.
+
+    Some deploy key endpoints return public key fingerprints. You can use these fingerprints with the
+    keys API to identify the user that created the deploy key. These attributes contain the fingerprint:
+
+    - `fingerprint`: Uses an MD5 hash. Not available on FIPS-enabled systems.
+    - `fingerprint_sha256`: Uses a SHA256 hash. Returned without the `SHA256:` prefix. To look up a key
+      by this fingerprint with the keys API, add the prefix.
   x-displayName: Deploy resources
   externalDocs:
     url: https://docs.gitlab.com/api/deploy_keys/
@@ -440,6 +565,45 @@ tags:
     (for example, when a milestone changes).
 
     To manage label notes, use the [resource label events API](https://docs.gitlab.com/api/resource_label_events/).
+
+    > [!warning]
+    > The epic discussion endpoints are part of the Epics REST API, which was
+    > [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/460668) in GitLab 17.0 and is planned
+    > for removal in v5 of the API. From GitLab 17.4 to 18.0, if the new look for epics is enabled, or in
+    > GitLab 18.1 and later, use the Work Items API instead. This change is a breaking change.
+
+    The API uses these note types:
+
+    - Note: a comment on the root of an issue, merge request, commit, or snippet.
+    - Discussion: a collection of discussion notes, often called a thread, in an issue, merge request,
+      commit, or snippet.
+    - Discussion note: an individual item in a discussion.
+
+    GitLab might change a note body before it saves it. For example, it runs and then removes
+    quick actions.
+
+    To create a thread on a merge request diff:
+
+    1. Get the latest merge request diff version. The latest version is listed first in the versions
+       response.
+    1. Use its `base_commit_sha`, `head_commit_sha`, and `start_commit_sha` as `position[base_sha]`,
+       `position[head_sha]`, and `position[start_sha]`.
+    1. Set `position[position_type]` to `text`.
+    1. Set both `position[old_path]` and `position[new_path]` to the file path before and after the change.
+    1. Set the line:
+       - For an added line, use `position[new_line]` and do not include `position[old_line]`.
+       - For a removed line, use `position[old_line]` and do not include `position[new_line]`.
+       - For an unchanged line, include both `position[new_line]` and `position[old_line]`. They might
+         differ if earlier changes in the file changed the line number.
+
+    Incorrect `base_sha`, `head_sha`, or `start_sha` values can trigger the bug described in
+    [issue 296829](https://gitlab.com/gitlab-org/gitlab/-/issues/296829).
+
+    A line code has the form `<SHA>_<old>_<new>`, like `adc83b19e793491b1c6ea0fd8b46cd9f32e292fc_5_5`:
+
+    - `<SHA>` is the SHA1 hash of the filename.
+    - `<old>` is the line number before the change.
+    - `<new>` is the line number after the change.
   x-displayName: Discussions
   externalDocs:
     url: https://docs.gitlab.com/api/discussions/
@@ -449,6 +613,8 @@ tags:
     Draft notes can start a discussion, or continue an existing discussion as a reply.
 
     Before publishing, draft notes are visible only to the author.
+
+    When you publish a draft note, GitLab might change its body.
   x-displayName: Draft notes
   externalDocs:
     url: https://docs.gitlab.com/api/draft_notes/
@@ -486,6 +652,14 @@ tags:
 
     Epics are available only in GitLab [Premium and Ultimate](https://about.gitlab.com/pricing/). If the
     Epics or Related Epics feature is not available, a `403` status code is returned.
+
+    The legacy epic ID is not the same as the work item ID. Only the `iid` matches. Epic responses include
+    `work_item_id`, the ID of the corresponding work item. In the Work Items GraphQL API, a `work_item_id`
+    of `123` is the Global ID `gid://gitlab/WorkItem/123`.
+
+    In epic responses, `end_date` is deprecated in favor of `due_date`, `start_date_from_milestones` in
+    favor of `start_date_from_inherited_source`, and `due_date_from_milestones` in favor of
+    `due_date_from_inherited_source`.
   x-displayName: Epics
   externalDocs:
     url: https://docs.gitlab.com/api/group_epic_boards/
@@ -523,11 +697,21 @@ tags:
     and cannot be used with anonymous or unauthenticated users. For experiments involving anonymous users,
     use the [`glex_force` query parameter](https://docs.gitlab.com/development/experiment_guide/implementing_experiments/#client-side-glex_force-query-parameter)
     instead.
+
+    Use the experiment assignment endpoints to force, read, and clear experiment variant assignments in
+    the GLEX Redis cache. This is useful for backend-only experiments that run outside of a
+    request/response cycle, where the `glex_force` query parameter is not available. The experiment must
+    declare `context_keys` in its experiment class in `app/experiments`.
   x-displayName: Experiments
   externalDocs:
     url: https://docs.gitlab.com/api/experiments/
 - name: External status checks
-  description: Use this API to manage [external status checks](https://docs.gitlab.com/user/project/merge_requests/status_checks/).
+  description: |-
+    Use this API to manage [external status checks](https://docs.gitlab.com/user/project/merge_requests/status_checks/).
+
+    When you retry a failed status check, a successful request returns `202 Accepted`. If the status
+    check is not failed, the request returns `422 Unprocessable Entity` with the message
+    `External status check must be failed`.
   x-displayName: External status checks
   externalDocs:
     url: https://docs.gitlab.com/api/status_checks/
@@ -545,8 +729,11 @@ tags:
   description: |-
     Use this API to manage the Flipper-based feature flags used in the development of GitLab itself.
 
-    These endpoints support only boolean and percentage-of-time gate values, and require administrator
-    authorization.
+    These endpoints support boolean, percentage-of-time, and percentage-of-actors gate values, and require
+    administrator authorization.
+
+    To roll out a feature to a percentage of actors, set `key` to `percentage_of_actors` and `value` to
+    the percentage when you create or update the feature flag.
   x-displayName: Features
   externalDocs:
     url: https://docs.gitlab.com/api/features/
@@ -555,6 +742,9 @@ tags:
     Use this API to manage [repository files](https://docs.gitlab.com/user/project/repository/).
     You can also [configure rate limits](https://docs.gitlab.com/administration/settings/files_api_rate_limits/)
     for this API.
+
+    Personal access tokens with the `api` scope have read-write access to repository files. Tokens with
+    the `read_api` or `read_repository` scope have read access.
   x-displayName: Files
   externalDocs:
     url: https://docs.gitlab.com/api/repository_files/
@@ -573,6 +763,38 @@ tags:
     The group or project must allow access to its data. For private groups and projects, you must
     authenticate with a [personal access token](https://docs.gitlab.com/user/profile/personal_access_tokens/)
     that has the appropriate permissions.
+
+    The `glql_yaml` parameter takes a GLQL query with optional YAML configuration. Set the `fields`
+    configuration option to a comma-separated list of [available GLQL fields](https://docs.gitlab.com/user/glql/fields/).
+
+    The GLQL API rate limits queries based on the SHA-256 hash of the query. Queries that time out are
+    tracked. If a query that times out is run too often, it is temporarily blocked, and the API returns
+    `429 Too Many Requests` with the error
+    `Query temporarily blocked due to repeated timeouts. Please try again later or narrow your search scope.`
+
+    `POST /glql` returns these status codes:
+
+    - `200 OK`: the query ran successfully.
+    - `400 Bad Request`: invalid query syntax, configuration that is not YAML key-value pairs, a `query`
+      value that is not a string, missing required parameters, or input that exceeds the size limit.
+      A project or group that does not exist or that you cannot access returns `400` with the error
+      `Project does not exist or you do not have access to it` or
+      `Group does not exist or you do not have access to it`. GraphQL bad request errors are passed
+      through to the `error` field with the `400` code, when applicable.
+    - `401 Unauthorized`: authentication is required or the credentials are invalid.
+    - `403 Forbidden`: insufficient permissions or a missing OAuth scope.
+    - `429 Too Many Requests`: the query rate limit is exceeded.
+    - `500 Internal Server Error`: an unexpected server error. This response uses the `message` key
+      instead of `error`.
+    - `503 Service Unavailable`: the query timed out. Narrow the query scope, for example with more
+      filters or a shorter time range, and try again.
+
+    Limits:
+
+    - The `glql_yaml` parameter has a maximum size of 10,000 bytes.
+    - A request returns at most 100 results. The default is 100 results.
+    - Only forward pagination is supported, with the `after` attribute set to the `endCursor` value
+      from a previous response.
   x-displayName: GLQL
   externalDocs:
     url: https://docs.gitlab.com/api/glql/
@@ -582,9 +804,12 @@ tags:
     endpoints require administrator access.
 
     > [!warning]
-    > The Geo Nodes endpoints are [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/369140) and
-    > are planned for removal in v5 of the API. Use the
+    > The Geo Nodes endpoints were [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/369140) in
+    > GitLab 16.0 and are planned for removal in v5 of the API. Use the
     > [Geo Sites API](https://docs.gitlab.com/api/geo_sites/) instead. This change is a breaking change.
+
+    In Geo node status responses, `health_status` is either `Healthy` or `Unhealthy`. `health` is empty,
+    `Healthy`, or contains the error message.
   x-displayName: Geo
   externalDocs:
     url: https://docs.gitlab.com/api/geo_nodes/
@@ -605,6 +830,41 @@ tags:
     [GitLab Duo Agent Platform](https://docs.gitlab.com/user/duo_agent_platform/).
     Flows are combinations of AI agents that work together to complete developer tasks,
     such as fixing bugs, writing code, or resolving vulnerabilities.
+
+    To get an `ai_catalog_item_consumer_id`, use the GraphQL API to retrieve the ID from the AI Catalog.
+    The item must already be enabled for the project:
+
+    ```graphql
+    query {
+      aiCatalogConfiguredItems(projectId: "gid://gitlab/Project/<project_id>") {
+        nodes {
+          id
+          item { name }
+        }
+      }
+    }
+    ```
+
+    The `id` field is a Global ID in the format `gid://gitlab/AiCatalogItemConsumer/<numeric_id>`.
+    Use the numeric suffix as the `ai_catalog_item_consumer_id` value.
+
+    To check the status of a flow after you create it, use the `duoWorkflowWorkflows` GraphQL query,
+    where `<flow_id>` is the `id` from the create response:
+
+    ```graphql
+    query {
+      duoWorkflowWorkflows(workflowId: "gid://gitlab/Ai::DuoWorkflows::Workflow/<flow_id>") {
+        nodes {
+          status
+          webUrl
+        }
+      }
+    }
+    ```
+
+    When the flow ends, `status` is `FINISHED`, `FAILED`, or `STOPPED`. The statuses `PAUSED`,
+    `INPUT_REQUIRED`, `PLAN_APPROVAL_REQUIRED`, and `TOOL_CALL_APPROVAL_REQUIRED` mean that the flow is
+    waiting for a user.
   x-displayName: GitLab Duo workflows
   externalDocs:
     url: https://docs.gitlab.com/api/duo_agent_platform_flows/
@@ -626,6 +886,10 @@ tags:
     personal access tokens, resource access tokens, and SSH keys. You can list these credentials, revoke
     them, and rotate the tokens. For more information, see
     [credentials inventory](https://docs.gitlab.com/administration/credentials_inventory/).
+
+    These endpoints are available on GitLab.com only. They cover the credentials of enterprise users and
+    service accounts, and the group and project access tokens in the group. You must be an administrator
+    or have the Owner role for the group.
   x-displayName: Group credentials inventory
   externalDocs:
     url: https://docs.gitlab.com/api/groups/
@@ -670,7 +934,13 @@ tags:
     of the authenticated user in the group. If a user isn't a member of a private group, requests to
     that group return a `404 Not Found` status code.
 
+    Every call to the group security settings endpoints must be authenticated.
+
     For project members, use the [project members API](https://docs.gitlab.com/api/project_members/).
+
+    Placeholder reassignment endpoints require the Owner role for the group. User contribution mapping is
+    not supported when you import projects to a personal namespace. In that case, all contributions are
+    assigned to the personal namespace owner and they cannot be reassigned.
   x-displayName: Groups
   externalDocs:
     url: https://docs.gitlab.com/api/groups/
@@ -688,6 +958,15 @@ tags:
     Managing project webhooks requires administrator access or the Maintainer or Owner role for the
     project. Managing group webhooks requires administrator access or the Owner role for the group.
     Managing system hooks requires administrator access.
+
+    Each system hook belongs to one organization, and the `organization_id` attribute shows which one.
+    System hook endpoints work only with the hooks of the current organization:
+
+    - Lists return only hooks in the current organization.
+    - New hooks are created in the current organization.
+    - Requests for a hook in another organization return `404 Not Found`. These requests include
+      retrieving, updating, deleting, and testing the hook and managing its URL variables and custom
+      headers.
   x-displayName: Hooks
   externalDocs:
     url: https://docs.gitlab.com/api/group_webhooks/
@@ -754,6 +1033,9 @@ tags:
     If a user is not a member of a private project, a `GET` request on that project results in a `404`
     status code.
 
+    To help avoid abuse, administrators can limit the number of requests each user can make each minute
+    to create an issue.
+
     > [!note]
     > The `references.relative` attribute is relative to the group or project of the issue being requested.
     > When an issue is fetched from its project, the `relative` format is the same as the `short` format.
@@ -790,7 +1072,17 @@ tags:
 - name: Jira forge user delegation
   description: Operations related to jira forge user delegation.
 - name: Job artifacts
-  description: Use this API to download, keep, and delete [job artifacts](https://docs.gitlab.com/ci/jobs/job_artifacts/).
+  description: |-
+    Use this API to download, keep, and delete [job artifacts](https://docs.gitlab.com/ci/jobs/job_artifacts/).
+
+    Merge request pipelines run on `refs/merge-requests/:iid/head`, not on the source branch. To download
+    artifacts from a merge request pipeline by reference name, use `refs/merge-requests/:iid/head` as the
+    `ref_name`. In merge request pipelines, the merge request ID is available in the
+    `$CI_MERGE_REQUEST_IID` variable and the full `ref_name` in the `$CI_MERGE_REQUEST_REF_PATH` variable.
+
+    Report artifacts are not included in the artifacts archive by default. To download a report, set
+    `file_type` when you download job artifacts by job ID, or add the report filename or
+    `gl-*-report.json` to `artifacts:paths` so the report is included in the archive.
   x-displayName: Job artifacts
   externalDocs:
     url: https://docs.gitlab.com/api/job_artifacts/
@@ -881,8 +1173,11 @@ tags:
   externalDocs:
     url: https://docs.gitlab.com/api/markdown/
 - name: Member roles
-  description: Use this API to interact with member roles for your GitLab.com groups
-    or entire GitLab Self-Managed instance.
+  description: |-
+    Use this API to interact with member roles for your GitLab.com groups or entire GitLab Self-Managed instance.
+
+    Instance member role endpoints require administrator access. Group member role endpoints require the
+    Owner role for the group.
   x-displayName: Member roles
   externalDocs:
     url: https://docs.gitlab.com/api/member_roles/
@@ -890,6 +1185,14 @@ tags:
   description: |-
     Use this API to manage the [members](https://docs.gitlab.com/user/project/members/) of a group or a
     project, including inherited memberships, membership approvals, and the billable members of a group.
+
+    Some member attributes are visible only to some users:
+
+    - The `group_saml_identity` and `group_scim_identity` attributes are visible only to group owners
+      for SSO-enabled groups.
+    - The `email` attribute is visible only to group owners for enterprise users of the group, when the
+      request is sent to the group itself, or to that group's subgroups or projects.
+    - The `two_factor_enabled` attribute is visible only to group owners and administrators.
   x-displayName: Members
   externalDocs:
     url: https://docs.gitlab.com/api/group_members/
@@ -901,6 +1204,19 @@ tags:
 
     Endpoints to approve, unapprove, reset approvals, and retrieve approval state are available on all
     tiers, including Free. All other endpoints require Premium or Ultimate, and each one shows its tier.
+
+    Group approval settings endpoints require the Owner role for the group. Project approval settings
+    endpoints require the Maintainer or Owner role for the project.
+
+    A project, group, or instance setting, or a merge request approval policy, can
+    [prevent editing approval rules in merge requests](https://docs.gitlab.com/user/project/merge_requests/approvals/settings/#prevent-editing-approval-rules-in-merge-requests).
+    When editing is prevented, open merge requests use the project approval rules instead of `regular`
+    and `any_approver` rules defined on the merge request. Rules of type `code_owner` and
+    `report_approver` on the merge request still apply. To get the rules that apply, use
+    `GET /projects/:id/merge_requests/:merge_request_iid/approval_state`. Requests to list or retrieve
+    the approval rules of a merge request return only rules stored on the merge request, such as
+    `code_owner` rules. Requests to create, update, or delete an approval rule for the merge request
+    return `403 Forbidden`.
 
     > [!note]
     > The `merge_request_iid` and `id` path parameters must each be a single value.
@@ -922,6 +1238,20 @@ tags:
     - Add [commits from previous merge requests](https://docs.gitlab.com/user/project/merge_requests/commits/#show-commits-from-previous-merge-requests) to a merge request for more context.
 
     All API calls to non-public information require authentication.
+
+    The `approvals_before_merge` attribute is deprecated and is scheduled for removal in API v5. Use the
+    merge request approvals API instead.
+
+    The mergeability (`merge_status`) of a merge request is checked asynchronously when you retrieve the
+    merge request. Poll the endpoint to get the updated status. The `has_conflicts` attribute depends on
+    `merge_status`, and is `false` unless `merge_status` is `cannot_be_merged`. Use
+    `detailed_merge_status` instead of `merge_status` to account for all potential statuses.
+
+    Listing merge requests might not update `merge_status` and `has_conflicts`, because the check is
+    expensive. To get current values from a list endpoint, set `with_merge_status_recheck` to `true`.
+
+    When you create a merge request, the `diff_refs` and `changes_count` attributes are empty. They
+    populate asynchronously after the merge request is created.
   x-displayName: Merge requests
   externalDocs:
     url: https://docs.gitlab.com/api/merge_requests/
@@ -942,6 +1272,9 @@ tags:
     - To group merge requests by train, use the `target_branch` attribute, or query the GraphQL API
       [`Project.mergeTrains`](https://docs.gitlab.com/api/graphql/reference/objects/#project) and
       [`MergeTrain.cars`](https://docs.gitlab.com/api/graphql/reference/objects/#mergetrain) fields.
+
+    To remove a merge request from a merge train, use the
+    `POST /projects/:id/merge_requests/:merge_request_iid/cancel_auto_merge` endpoint.
   x-displayName: Merge trains
   externalDocs:
     url: https://docs.gitlab.com/api/merge_trains/
@@ -957,6 +1290,8 @@ tags:
   description: |-
     Use this API to upload, list, update, and delete the metric images attached to an issue, such as the
     charts attached to an [incident](https://docs.gitlab.com/operations/incident_management/incidents/).
+
+    The metric image endpoints are available only for incidents.
   x-displayName: Metric images
   externalDocs:
     url: https://docs.gitlab.com/api/issues/
@@ -1001,6 +1336,26 @@ tags:
     - Retrieve [system-generated notes](https://docs.gitlab.com/user/project/system_notes/) about object changes.
     - Control visibility with confidential and internal flags.
 
+    Note creation is rate limited for each user. Administrators set the number of `Create` requests
+    allowed each minute with the `notes_create_limit` application setting. Default is `300`.
+
+    When you create or update a note on an issue, merge request, epic, or commit, GitLab normalizes the
+    body before it saves it. This applies to notes sent through any API, including the Discussions,
+    Draft notes, and Commits APIs. GitLab:
+
+    - Runs and then removes any quick actions.
+    - Removes carriage return characters (`\r`).
+    - Removes trailing whitespace, including trailing newlines.
+
+    As a result, the `body` returned by later requests might not match the `body` you sent. Notes on
+    snippets and wiki pages are saved as sent.
+
+    > [!warning]
+    > The epic notes endpoints are part of the Epics REST API, which was
+    > [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/460668) in GitLab 17.0 and is planned
+    > for removal in v5 of the API. From GitLab 17.4 to 18.0, if the new look for epics is enabled, or in
+    > GitLab 18.1 and later, use the Work Items API instead. This change is a breaking change.
+
     Some system-generated notes are tracked as separate resource events instead, including
     [label](https://docs.gitlab.com/api/resource_label_events/),
     [state](https://docs.gitlab.com/api/resource_state_events/),
@@ -1017,6 +1372,41 @@ tags:
   description: |-
     Use this API to retrieve and update [notification settings](https://docs.gitlab.com/user/profile/notifications/)
     globally for your account, or for an individual group or project, which overrides the global setting.
+
+    These notification levels are recognized:
+
+    - `disabled`: Turn off all notifications.
+    - `participating`: Receive notifications for threads you have participated in.
+    - `watch`: Receive notifications for most activity.
+    - `global`: Use your global notification settings.
+    - `mention`: Receive notifications when you are mentioned in a comment.
+    - `custom`: Receive notifications for selected events.
+
+    If you use the `custom` level, you can control specific email events. These events are recognized:
+
+    | Event                           | Description |
+    | ------------------------------- | ----------- |
+    | `approver`                      | A merge request you're eligible to approve is created. |
+    | `change_reviewer_merge_request` | A merge request's reviewer is changed. |
+    | `close_issue`                   | An issue is closed. |
+    | `close_merge_request`           | A merge request is closed. |
+    | `failed_pipeline`               | A pipeline fails. |
+    | `fixed_pipeline`                | A previously failed pipeline is fixed. |
+    | `issue_due`                     | An issue is due tomorrow. |
+    | `merge_merge_request`           | A merge request is merged. |
+    | `merge_when_pipeline_succeeds`  | A merge request is set to auto-merge. |
+    | `moved_project`                 | A project is moved. |
+    | `new_epic`                      | A new epic is created. Premium and Ultimate only. |
+    | `new_issue`                     | A new issue is created. |
+    | `new_merge_request`             | A new merge request is created. |
+    | `new_note`                      | Someone adds a comment. |
+    | `new_release`                   | A new release is published. |
+    | `push_to_merge_request`         | Someone pushes to a merge request. |
+    | `reassign_issue`                | An issue is reassigned. |
+    | `reassign_merge_request`        | A merge request is reassigned. |
+    | `reopen_issue`                  | An issue is reopened. |
+    | `reopen_merge_request`          | A merge request is reopened. |
+    | `success_pipeline`              | A pipeline completes successfully. |
   x-displayName: Notification settings
   externalDocs:
     url: https://docs.gitlab.com/api/notification_settings/
@@ -1029,6 +1419,66 @@ tags:
   description: |-
     Use this API to query [GitLab Orbit](https://docs.gitlab.com/orbit/),
     which indexes a group's software development lifecycle.
+    It runs queries and named queries, searches for entities, and retrieves entity context and skills.
+    This reference does not include `GET /orbit/grep` or `POST /orbit/mcp`.
+
+    ## Rate limits
+
+    The Orbit query rate limit allows 60 requests per minute for each user by default.
+    Administrators can change the limit and exclude users.
+
+    These requests count toward the limit:
+
+    - `GET /orbit/grep`
+    - `POST /orbit/context`
+    - `POST /orbit/query`
+    - `POST /orbit/query/:name`
+    - `GET /orbit/skills`, `GET /orbit/skills/:name`, and `GET /orbit/skills/:name/*path`, including `HEAD` requests
+    - The `query_graph` command on the MCP endpoint `POST /orbit/mcp`
+
+    When you exceed the limit, the endpoint returns `429 Too Many Requests` with a `Retry-After` header.
+
+    ## Endpoint status
+
+    Each endpoint has its own status. Experiment endpoints can change or be removed without notice.
+    `GET /orbit/grep` and `POST /orbit/context` are experiments. The query and skills endpoints are generally available.
+
+    ## Query errors
+
+    `POST /orbit/query` and `POST /orbit/query/:name` can return these errors.
+    When Orbit reports a query error, the body is JSON with `code` and `message`.
+
+    - `400 Bad Request`: The request is not valid, or the query does not compile or fails validation.
+      For a query error, `code` is `compile_error`, `validation_error`, or `invalid_request`.
+    - `401 Unauthorized`: The request has no valid token.
+    - `402 Payment Required`: Your Orbit credits are used up. The JSON body has `code` `quota_exhausted`,
+      `message`, and `reason` `GITLAB_CREDITS_EXHAUSTED`.
+    - `403 Forbidden`: Orbit is not available for you, or you have no Orbit-enabled group.
+    - `404 Not Found`: Orbit is not configured on the instance.
+    - `422 Unprocessable Entity`: On GitLab.com, you must select a default group for Orbit billing.
+      The JSON body has `code` `billing_namespace_required`, `message`, `deep_link` to your preferences,
+      and `candidates`, the groups you can select.
+    - `429 Too Many Requests`: You exceeded the Orbit query rate limit.
+    - `502 Bad Gateway`: Orbit could not run the query, or the connection to Orbit failed. The body is JSON
+      with `code` `execution_error` or `internal_error`, or plain text when the connection failed.
+    - `504 Gateway Timeout`: The query did not finish in time. `code` is `timeout` when Orbit reports it.
+
+    ## Skills
+
+    Skill endpoints require authentication with the `read_api` or `ai_workflows` scope.
+    They do not check the Orbit license, so unavailable skills return `404 Not Found` instead of `403 Forbidden`.
+    The response is `404 Not Found` with the message `Skills are not available` when:
+
+    - The Orbit service is an older version without skill RPCs.
+    - The Orbit service is not configured on the instance. On GitLab Self-Managed, this is
+      controlled by `orbit.enabled` in `gitlab.yml`.
+    - The current user does not have at least the Reporter role in a group whose top-level group has Orbit
+      turned on. Administrators in Admin Mode and auditors are exempt from this role requirement.
+
+    In these cases, the Orbit CLI uses its embedded local skill.
+
+    A skill name must start with a lowercase letter or digit, and contain only lowercase letters, digits, and hyphens.
+    Other values return `400 Bad Request`.
   x-displayName: Orbit
   externalDocs:
     url: https://docs.gitlab.com/api/orbit/
@@ -1832,7 +2282,8 @@ paths:
     post:
       operationId: postApiV4OrbitQuery
       summary: Execute a query
-      description: Executes a query against the Orbit gRPC service.
+      description: Executes a query against the Orbit gRPC service. For `response_format`
+        `llm` and `gql`, the response is `text/plain`.
       tags:
       - Orbit
       responses:
@@ -1856,8 +2307,14 @@ paths:
       operationId: postApiV4OrbitQueryName
       summary: Execute a named query
       description: 'Executes a server-defined named query against the Orbit gRPC service.
-        Requires a JSON request body: form encoding stringifies nested parameter values,
-        which the per-query parameter schemas reject.'
+        Orbit defines its named queries on the server, so they stay in step with the
+        query language and the schema. For programmatic use, this endpoint is preferred
+        over `POST /orbit/query`. The GraphQL field `Query.orbit.queryTemplates` lists
+        the named queries. Each query template has a `name`, a `description`, and
+        the GQL `query` it runs. The `name` of a query template is passed as `:name`
+        in the path. Requires a JSON request body: form encoding stringifies nested
+        parameter values, which the per-query parameter schemas reject. This endpoint
+        can return the same errors as `POST /orbit/query`.'
       tags:
       - Orbit
       responses:
@@ -1889,10 +2346,100 @@ paths:
     post:
       operationId: postApiV4OrbitContext
       summary: Get entity context
-      description: Resolves one Orbit token to a PostgreSQL summary and, optionally,
-        its graph neighborhood. Requests that reach token resolution count against
-        the orbit_query rate limit; with expand, they run at most one billable graph
-        query. Requires a JSON request body.
+      description: 'Resolves one Orbit token to a PostgreSQL summary and, optionally,
+        its graph neighborhood. The entity can be a merge request, work item, CI/CD
+        job, CI/CD pipeline, branch, or commit. Requests that reach token resolution
+        count against the orbit_query rate limit; with expand, they run at most one
+        billable graph query. Requires a JSON request body. The request and response
+        shape can change without notice. A `tokens` array that does not hold exactly
+        one string, or an `expand` value that is not the JSON boolean `true` or `false`,
+        returns `400 Bad Request`. With a fine-grained personal access token, the
+        `read_orbit` permission is not enough. The token also needs `read_merge_request`
+        or `read_work_item` on the project or group of the entity, `read_job` on the
+        project for a job and for job logs, `read_pipeline` for pipelines, `read_pipeline_test_report`
+        for failed tests, `read_pipeline_job` for pipeline jobs, `read_branch` or
+        `read_commit` for a branch or commit, `read_commit_diff` and `read_commit_merge_request`
+        for the changed files and merge requests of a commit, and `download_code`
+        for the changed files of a merge request. Without them, the entity is returned
+        as `not_found`. The pipeline status is `null`, and linked items the token
+        cannot read are left out of the summary. Discussions need `read_merge_request_discussion`
+        for a merge request, `read_epic_discussion` for an epic, and `read_issue_discussion`
+        for other work items. Without them, `discussions` is `null`. The project scope
+        of the token applies to the entity summary only. The graph expansion is filtered
+        by the access of the user, the same as for named queries. Token forms are:
+        `Type[id]`, for example `MergeRequest[123]`, where `id` is the global database
+        ID; `gid://gitlab/<Type>/<id>`; a merge request, issue, work item, job, pipeline,
+        or commit URL on this instance, including group work item URLs under `/groups/`;
+        `path!iid` for a merge request, for example `gitlab-org/gitlab!42`; `path#iid`
+        for a work item, for example `gitlab-org/gitlab#7`, where the path can also
+        be a group; `Epic[id]`, `gid://gitlab/Epic/<id>`, an epic URL such as `/groups/gitlab-org/-/epics/5`,
+        or `group&iid`, for example `gitlab-org&5`, where `id` is the epic ID; and
+        `path@ref` for a branch of the project at `path`, or for a commit SHA when
+        no branch has that name, for example `gitlab-org/gitlab@main`. The supported
+        types are `MergeRequest`, `WorkItem`, `Job`, `Pipeline`, `Branch`, and `Commit`.
+        `Issue` is an alias for `WorkItem`, and the response reports `WorkItem`. An
+        epic resolves to its work item in the same way: the response reports `WorkItem`,
+        the ID of the work item, and `work_item_type` `epic`, and the expansion runs
+        for the work item. Other types return `unsupported_type`. Summaries include
+        these fields. For a merge request: title, state, author, branches, head pipeline
+        status, merge commit, reviewers, linked issues, description, changed files
+        with their diffs, failed jobs, and discussions. For a work item: title, state,
+        labels, assignees, milestone, linked merge requests, description, and discussions.
+        For a job: name, status, stage, failure reason, ref, commit, pipeline, merge
+        request, failed tests, and log. For a pipeline: status, ref, commit, source,
+        merge request, jobs, and failed jobs. Jobs come from the pipeline itself,
+        not from its child pipelines. For a branch: head commit, its open or latest
+        merge request, and its latest pipeline with failed jobs. For a commit: title,
+        description, author, its latest pipeline, the merge requests that contain
+        it, and changed files. Failed tests come from the unit test report of the
+        job. The log of a job is its job script output, followed by its `after_script`
+        output, with lines longer than 500 characters cut. The log has a size limit
+        of 40 KB for a requested job and 6 KB for each failed job of a merge request,
+        pipeline, or branch, and `after_script` output gets at most a quarter of it.
+        When a part does not fit, runs of five or more lines that differ only in numbers
+        or hashes, such as progress output, are folded into their first and last line,
+        and only the end of that part that fits is kept. `...` marks where lines were
+        left out, and for a requested job `summary.truncated` then includes `log`.
+        Changed line ranges use new-file line numbers, so a deletion is reported at
+        the line after it, which can be one past the end of the file. A changed file
+        has no `lines` when it was deleted or its diff could not be read, and empty
+        `lines` when its diff has no text lines, such as for a binary or very large
+        file. The `diff` of a changed file has its first 40 diff lines, with 200 lines
+        shared across the merge request in file order. It is absent for deleted, generated,
+        binary, and very large files, and for files after the budget ran out. A cut
+        diff ends with `... N more diff lines`, and `summary.truncated` then includes
+        `diffs`. Lists are limited and contain only records the user can read. `summary.truncated`
+        is an array with the names of the lists that were cut, for example `["reviewers"]`.
+        It is empty when no list was cut. A failed job of a merge request whose failed
+        tests were cut has `truncated: ["failed_tests"]`. Entries in `linked_issues`
+        and `linked_merge_requests` are ordered by ID and have `type`, `id` (a string),
+        `token`, `relation` (`CLOSES`), `iid`, `project_path`, and `title`. Every
+        failure after a lookup starts returns the same `not_found` error, whether
+        the record is missing or the user cannot read it. With `expand`, the request
+        runs at most one graph query, using the `context_for_review`, `context_for_issue`,
+        or `context_for_job` named query. Other types return `expansion_unsupported_type`.
+        A request that runs one query is billed as one query. A failure of the expansion
+        never fails the summary. `expansion.query` has the `name` and `parameters`
+        of the query. It is present on a result and on every error except `expansion_unsupported_type`,
+        including when no query ran. After `outside_graph_scope`, a rerun is billed
+        and returns nothing. `expansion.error.code` is one of: `expansion_unsupported_type`,
+        when the type has no expansion query; `outside_graph_scope`, when the entity
+        is outside the part of the graph the user can query, which is a group where
+        the user is not at least a Reporter or a group where Orbit is not turned on,
+        and no query runs and nothing is billed; `billing_namespace_required`, with
+        `message`, `deep_link` to the preferences of the user, and `candidates`, the
+        groups the user can select, matching the `422` response of `POST /api/v4/orbit/query/:name`;
+        or `quota_exhausted`, `timeout`, or `execution_error`. If `pagination.truncated`
+        in the graph result is `false`, a missing center node means the entity has
+        no readable neighbors. Otherwise, the result is unknown. With `response_format=llm`,
+        the response is `text/plain`. Each entity starts with its scalar fields, then
+        its graph in TOON format under an indented `graph:` label, before longer blocks
+        such as the description. A graph with no nodes is left out, and a failed expansion
+        is a single `graph_error=<code>` line. When a list in an entity is cut, the
+        entity includes a `truncated=` line right after its scalar fields that names
+        the incomplete lists, for example `truncated=reviewers,changed_files`. A failed
+        job whose failed tests were cut has its own `truncated=failed_tests` line.
+        This feature was introduced in GitLab 19.6.'
       tags:
       - Orbit
       responses:
@@ -1925,7 +2472,11 @@ paths:
       operationId: getApiV4OrbitSkills
       summary: List deployed Orbit skills
       description: Lists the Orbit skills deployed with the connected knowledge graph
-        service.
+        service. The response includes an `ETag` header derived from the sorted skill
+        names and versions, and a `Cache-Control` header set to `private, max-age=0,
+        must-revalidate`. Sending the `ETag` value in the `If-None-Match` request
+        header revalidates the list. A matching value returns `304 Not Modified` with
+        no response body. This feature was introduced in GitLab 19.5.
       tags:
       - Orbit
       responses:
@@ -1944,7 +2495,11 @@ paths:
       operationId: getApiV4OrbitSkillsName
       summary: Retrieve a deployed Orbit skill
       description: Retrieves a complete deployed Orbit skill tree. HEAD requests retrieve
-        only skill metadata.
+        only skill metadata. The response includes a `Cache-Control` header set to
+        `private, max-age=0, must-revalidate`, and an `ETag` header set to `"<version>"`.
+        Sending the current `ETag` value in the `If-None-Match` request header revalidates
+        a cached skill tree. A matching value returns `304 Not Modified` with no response
+        body. This feature was introduced in GitLab 19.5.
       tags:
       - Orbit
       responses:
@@ -1973,6 +2528,20 @@ paths:
       operationId: getApiV4OrbitSkillsNamePath
       summary: Retrieve a deployed Orbit skill file
       description: Retrieves a UTF-8 file from a deployed Orbit skill as raw text.
+        It fetches `SKILL.md` directly or follows relative links to files in the same
+        skill tree. The response is the file content, not a JSON object. Markdown
+        files (`.md`) have the content type `text/markdown; charset=utf-8`. Other
+        files have the content type `text/plain; charset=utf-8`. The endpoint never
+        returns a skill file as HTML. Only exact paths listed in the skill manifest
+        are available. Unknown paths return `404 Not Found`. A path with a `.` segment
+        returns `404 Not Found`. A path with a `..` segment returns `400 Bad Request`.
+        Malformed paths can return `400 Bad Request`. API error responses are JSON,
+        rather than raw file content. Requests blocked by path traversal middleware
+        can return a plain-text error. The response includes a strong `ETag` from
+        the SHA-256 of the file and a `Cache-Control` header set to `private, max-age=0,
+        must-revalidate`. Sending the `ETag` in `If-None-Match` returns `304 Not Modified`
+        when the file is unchanged. `HEAD` returns the same headers without a body.
+        This feature was introduced in GitLab 19.5.
       tags:
       - Orbit
       responses:
@@ -2162,9 +2731,26 @@ paths:
     patch:
       operationId: patchApiV4ProjectsIdComplianceExternalControlsControlIdStatus
       summary: Set status of an external control
-      description: Sets the status of a specified external control. Use this operation
-        to inform GitLab that a control has passed or failed a check by an external
-        service.
+      description: |
+        Sets the status of a specified external control. Use this operation to inform GitLab that a control has
+        passed, failed, or does not apply to the project. Controls with the `not_applicable` status do not count as
+        passed or failed.
+
+        Requests must use HMAC, timestamp, and nonce authentication, with these headers:
+
+        | Header | Required | Description |
+        |--------|----------|-------------|
+        | `X-Gitlab-Timestamp` | Yes | Current Unix timestamp. Requests 15 seconds old or older are rejected. |
+        | `X-Gitlab-Nonce` | Yes | Random string of exactly 32 characters, to prevent replay attacks. |
+        | `X-Gitlab-Hmac-Sha256` | Yes | HMAC-SHA256 signature of the request. |
+
+        To compute the HMAC-SHA256 signature:
+
+        1. Concatenate these values in this order: the `X-Gitlab-Timestamp` value, the `X-Gitlab-Nonce` value,
+           the entire path of the request, and the `status` value formatted as `status=<status>`.
+        1. Compute the HMAC-SHA256 of the concatenated string with your secret key.
+
+        This feature was introduced in GitLab 17.11.
       tags:
       - Compliance policy settings
       responses:
@@ -2257,7 +2843,9 @@ paths:
     post:
       operationId: postApiV4ChatCompletions
       summary: Generate a Chat response
-      description: Generates a response for a GitLab Duo Chat question.
+      description: Generates a response for a GitLab Duo Chat question. Requests to
+        this endpoint are proxied to the AI Gateway. This feature was introduced in
+        GitLab 16.7.
       tags:
       - GitLab Duo
       responses:
@@ -2278,10 +2866,11 @@ paths:
       description: Issues a short-lived RS256 JWT scoped to one modular-service audience
         (such as the Artifact Registry). Claims include the requesting user id (sub),
         organization id, and deployment realm (saas / self-managed). When called with
-        a CI/CD ID token, the claims also carry its build metadata. Presented to the
-        corresponding backend and verified against the instance JWKS. The response
-        uses the RFC 8693 names. token and access_token have the same value, with
-        access_token preferred where possible.
+        a CI/CD ID token, the claims also carry its build metadata, and an ID token
+        older than 15 minutes is refused. Presented to the corresponding backend and
+        verified against the instance JWKS. The response uses the RFC 8693 names.
+        token and access_token have the same value, with access_token preferred where
+        possible.
       tags:
       - Token exchange
       responses:
@@ -3517,9 +4106,15 @@ paths:
     get:
       operationId: getApiV4AiDuoWorkflowsWorkflowsWorkflowIdTraceJsonl
       summary: Get workflow trace as JSONL
-      description: Returns the full trace of a workflow session as JSON Lines (JSONL).
-        Each line is a JSON object representing one checkpoint event in chronological
-        order.
+      description: Returns the trace of a workflow session as JSON Lines (JSONL),
+        with the `application/x-ndjson` content type. The first line holds the session
+        goal, if set. The other lines are entries from the `ui_chat_log`, `plan`,
+        and `status` channels. Each line is a JSON object with a `channel` key. A
+        `ui_chat_log` line also carries the fields of the entry, such as `message_type`,
+        `content`, and `status`. For workflows that use incremental checkpoint storage,
+        the default trace covers all threads of the session, including messages from
+        before any context compaction. Returns `403 Forbidden` if the user must complete
+        identity verification before using GitLab Duo Agent Platform.
       tags:
       - GitLab Duo workflows
       responses:
@@ -3565,12 +4160,23 @@ paths:
     post:
       operationId: postApiV4AiDuoWorkflowsWorkflows
       summary: Create a flow
-      description: Creates and starts a flow.
+      description: Creates and starts a flow. Returns `403 Forbidden` if the user
+        must complete identity verification before using GitLab Duo Agent Platform.
+        If `start_workflow` is `true` and the project has an empty repository, returns
+        `422 Unprocessable entity` with `reason` set to `repository_empty`. If `start_workflow`
+        is `true`, the flow must have a composite identity service account, either
+        configured for the flow in the AI Catalog or behind the request's composite
+        identity. This requirement is behind a feature flag named `enforce_composite_identity_for_api_started_workflows`,
+        disabled by default.
       tags:
       - GitLab Duo workflows
       responses:
         '201':
           description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesAiDuoWorkflowsWorkflow"
         '400':
           description: Validation failed
         '401':
@@ -3600,6 +4206,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesAiDuoWorkflowsWorkflowAgentPrivileges"
         '401':
           description: Unauthorized
   "/api/v4/ai/duo_workflows/workflows/{workflow_id}/execute":
@@ -3808,8 +4418,12 @@ paths:
       operationId: postApiV4AiDuoWorkflowsWorkflowsWorkflowIdRestart
       summary: Restart a failed or stopped workflow as a new session
       description: Creates and starts a new session with the flow, goal, noteable,
-        source, privileges and trigger of the given workflow. The original workflow
-        is not modified.
+        source, privileges and trigger of the given workflow. The new session runs
+        from the beginning. The original workflow is not modified and keeps its `failed`
+        or `stopped` status. Only project-level workflows with a `failed` or `stopped`
+        status can be restarted. Other workflows return `403 Forbidden`. Restarting
+        a workflow while a restart of it is in progress returns `409 Conflict`. The
+        response describes the new session, so `id` is the ID of the new session.
       tags:
       - GitLab Duo workflows
       responses:
@@ -4113,7 +4727,9 @@ paths:
       summary: Create a dependency list export
       description: Creates a CycloneDX JSON export for all the project dependencies
         detected in a pipeline. If an authenticated user does not have the read_dependency
-        permission, this request returns a `403 Forbidden` status code.
+        permission, this request returns a `403 Forbidden` status code. Only the author
+        of an export can access it. The export is automatically deleted at the time
+        specified in its `expires_at` field.
       tags:
       - Dependency management
       responses:
@@ -4145,7 +4761,9 @@ paths:
       summary: Create a dependency list export
       description: Creates a CycloneDX JSON export for all the project dependencies
         detected in a pipeline. If an authenticated user does not have the read_dependency
-        permission, this request returns a `403 Forbidden` status code.
+        permission, this request returns a `403 Forbidden` status code. Only the author
+        of an export can access it. The export is automatically deleted at the time
+        specified in its `expires_at` field.
       tags:
       - Dependency management
       responses:
@@ -4177,7 +4795,9 @@ paths:
       summary: Create a dependency list export
       description: Creates a CycloneDX JSON export for all the project dependencies
         detected in a pipeline. If an authenticated user does not have the read_dependency
-        permission, this request returns a `403 Forbidden` status code.
+        permission, this request returns a `403 Forbidden` status code. Only the author
+        of an export can access it. The export is automatically deleted at the time
+        specified in its `expires_at` field.
       tags:
       - Dependency management
       responses:
@@ -4231,7 +4851,9 @@ paths:
     get:
       operationId: getApiV4DependencyListExportsExportIdDownload
       summary: Download dependency list export
-      description: Downloads a dependency list export.
+      description: Downloads a dependency list export. In CycloneDX exports, a component
+        with an SPDX license expression, for example `MIT AND Zlib`, has the full
+        expression in `licenses[].license.name`, and that entry has no `id` field.
       tags:
       - Dependency management
       responses:
@@ -6376,6 +6998,10 @@ paths:
       summary: Create a project-level vulnerability export
       description: Creates a vulnerability export for a project. Returns status code
         `403` if the authenticated user does not have permission to create a vulnerability.
+        Each user can create only one vulnerability export at a time for a specific
+        project. Only the author of an export can access it. The created vulnerability
+        export is automatically deleted at the time specified in the `expires_at`
+        field.
       tags:
       - Vulnerabilities
       responses:
@@ -6411,6 +7037,10 @@ paths:
       summary: Create a group-level vulnerability export
       description: Creates a vulnerability export for a group. Returns status code
         `403` if the authenticated user does not have permission to create a vulnerability.
+        Each user can create only one vulnerability export at a time for a specific
+        group. Only the author of an export can access it. The created vulnerability
+        export is automatically deleted at the time specified in the `expires_at`
+        field.
       tags:
       - Vulnerabilities
       responses:
@@ -6493,7 +7123,11 @@ paths:
     get:
       operationId: getApiV4SecurityVulnerabilityExportsIdDownload
       summary: Download a vulnerability export
-      description: Downloads a specified vulnerability export.
+      description: 'Downloads a specified vulnerability export. A CSV export has these
+        columns: Group Name, Project Name, Tool, Scanner Name, Status, Vulnerability,
+        Details, Additional Info, Severity, CVE, CWE, Other Identifiers, Detected
+        At, Location, Activity, Comments, Full Path, CVSS Vectors, Dismissal Reason,
+        Vulnerability ID, and Tracked Context Name.'
       tags:
       - Vulnerabilities
       responses:
@@ -6522,7 +7156,8 @@ paths:
       summary: Create an export for archived vulnerabilities
       description: Creates an export for archived vulnerabilities in a specified project.
         If an authenticated user does not have permission to read vulnerabilities,
-        returns a `403 Forbidden` status code.
+        returns a `403 Forbidden` status code. The export file is deleted 24 hours
+        after the export finishes.
       tags:
       - Vulnerabilities
       responses:
@@ -6556,11 +7191,15 @@ paths:
     get:
       operationId: getApiV4SecurityVulnerabilityArchiveExportsId
       summary: Retrieve a vulnerability archive export
-      description: Retrieves the attributes for a specified vulnerability archive
+      description: 'Retrieves the attributes for a specified vulnerability archive
         export. You can use this endpoint to poll the export status until it is `finished`.
         Clients should use the `Poll-Interval` response header to determine how long
         to wait before sending the next poll. The `Poll-Interval` represents the time
-        in milliseconds.
+        in milliseconds. The `status` is one of: `created` (the export has not started
+        running yet), `running` (the export is being generated), `finished` (the export
+        is available for download), `failed` (there was an error while generating
+        the export and it could not be completed), or `purged` (the export is queued
+        for deletion and the file is no longer available for download).'
       tags:
       - Vulnerabilities
       responses:
@@ -6586,7 +7225,9 @@ paths:
     get:
       operationId: getApiV4SecurityVulnerabilityArchiveExportsIdDownload
       summary: Download a vulnerability archive export
-      description: Downloads a vulnerability archive export.
+      description: Downloads a vulnerability archive export. The export must have
+        the status `finished`. Before you call this endpoint, verify the export status
+        with the retrieve endpoint.
       tags:
       - Vulnerabilities
       responses:
@@ -7044,7 +7685,8 @@ paths:
       parameters:
       - name: id
         required: true
-        description: ID or URL-encoded path of the project.
+        description: ID or URL-encoded path of the project. The authenticated user
+          must be a member of the project.
         schema:
           oneOf:
           - type: string
@@ -7072,7 +7714,12 @@ paths:
     post:
       operationId: postApiV4ProjectsIdVulnerabilities
       summary: Create a new vulnerability
-      description: Creates a new vulnerability from a confirmed finding.
+      description: Creates a new vulnerability from a confirmed finding. The new vulnerability
+        takes its `title` from the `name` of the finding, and its `severity` from
+        the finding. Its author is the authenticated user. Returns status code `403`
+        if the authenticated user does not have permission to create a vulnerability.
+        Returns status code `400` if the finding is not found or is already attached
+        to a vulnerability.
       tags:
       - Vulnerabilities
       responses:
@@ -7089,7 +7736,8 @@ paths:
       parameters:
       - name: id
         required: true
-        description: ID or URL-encoded path of the project.
+        description: ID or URL-encoded path of the project. The authenticated user
+          must be a member of the project.
         schema:
           oneOf:
           - type: string
@@ -7106,7 +7754,12 @@ paths:
     get:
       operationId: getApiV4ProjectsIdGoogleCloudSetupIntegrationsSh
       summary: Retrieve setup script for Google Cloud integration
-      description: Retrieves the setup script for Google Cloud integration.
+      description: Retrieves the setup script for Google Cloud integration. You must
+        have the Maintainer or Owner role for the project. Only the Google Artifact
+        Management integration is supported. The script creates IAM policies to access
+        Google Artifact Registry. The Artifact Registry Reader role is granted to
+        members with at least the Reporter role. The Artifact Registry Writer role
+        is granted to members with at least the Developer role.
       tags:
       - Project Google Cloud integration
       responses:
@@ -7151,6 +7804,9 @@ paths:
       operationId: getApiV4ProjectsIdGoogleCloudSetupRunnerDeploymentProjectSh
       summary: Retrieve configuration script for Google Cloud runner provisioning
       description: Retrieves the configuration script for Google Cloud runner provisioning.
+        You must have the Maintainer or Owner role for the project. The script enables
+        required services in the specified Google Cloud project, and creates a `GRITProvisioner`
+        role and a `grit-provisioner` service account.
       tags:
       - Project Google Cloud integration
       responses:
@@ -13496,7 +14152,8 @@ paths:
       operationId: putApiV4GroupsIdSecuritySettings
       summary: Update group security settings
       description: Updates group security settings for a specified group. You must
-        have the Security Manager, Maintainer, or Owner role for the group.
+        have the Security Manager, Maintainer, or Owner role for the group. This feature
+        was introduced in GitLab 17.7.
       tags:
       - Groups
       responses:
@@ -13780,8 +14437,9 @@ paths:
       operationId: getApiV4ProjectsIdClusterAgentsAgentIdUrlConfigurations
       summary: List all agent URL configurations
       description: Lists all agent URL configurations for a specified agent. You must
-        have the Developer, Maintainer, or Owner role to use this endpoint. This feature
-        was introduced in GitLab 17.4.
+        have the Developer, Maintainer, or Owner role to use this endpoint. Either
+        `public_key` or `client_cert` is set, but never both. This feature was introduced
+        in GitLab 17.4.
       tags:
       - Cluster agents
       responses:
@@ -13818,7 +14476,9 @@ paths:
       summary: Create an agent URL configuration
       description: Creates an agent URL configuration. You must have the Maintainer
         or Owner role to use this endpoint. An agent can have only one URL configuration
-        at the time. This feature was introduced in GitLab 17.4.
+        at the time. If `client_cert` and `client_key` are not provided, a private-public
+        key pair is generated and JWT authentication is used instead of mTLS. This
+        feature was introduced in GitLab 17.4.
       tags:
       - Cluster agents
       responses:
@@ -13859,8 +14519,8 @@ paths:
       operationId: getApiV4ProjectsIdClusterAgentsAgentIdUrlConfigurationsUrlConfigurationId
       summary: Retrieve an agent URL configuration
       description: Retrieves an agent URL configuration. You must have the Developer,
-        Maintainer, or Owner role to use this endpoint. This feature was introduced
-        in GitLab 17.4.
+        Maintainer, or Owner role to use this endpoint. Either `public_key` or `client_cert`
+        is set, but never both. This feature was introduced in GitLab 17.4.
       tags:
       - Cluster agents
       responses:
@@ -14817,7 +15477,7 @@ paths:
       operationId: getApiV4AdminSecurityCompliancePolicySettings
       summary: Retrieve security policy settings
       description: Retrieves the current security policy settings for this GitLab
-        instance.
+        instance. This feature was introduced in GitLab 18.2.
       tags:
       - Compliance policy settings
       responses:
@@ -14838,6 +15498,7 @@ paths:
       operationId: putApiV4AdminSecurityCompliancePolicySettings
       summary: Update security policy settings
       description: Updates the security policy settings for this GitLab instance.
+        This feature was introduced in GitLab 18.2.
       tags:
       - Compliance policy settings
       responses:
@@ -19890,7 +20551,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesLicense"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesLicense"
         '400':
           description: Bad Request
       parameters:
@@ -19975,7 +20638,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesTemplatesList"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesTemplatesList"
         '400':
           description: Bad Request
       parameters:
@@ -20035,7 +20700,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesTemplatesList"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesTemplatesList"
         '400':
           description: Bad Request
       parameters:
@@ -20095,7 +20762,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesTemplatesList"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesTemplatesList"
         '400':
           description: Bad Request
       parameters:
@@ -31376,8 +32045,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdAttestationsSubjectDigest
       summary: List all attestations for a project
-      description: Lists all attestations for a specified project and artifact hash.
-        This feature was introduced in GitLab 18.7.
+      description: Lists all attestations for a specified project and artifact SHA-256
+        hash. This feature was introduced in GitLab 18.7.
       tags:
       - Attestations
       responses:
@@ -31412,7 +32081,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdAttestationsAttestationIidDownload
       summary: Retrieve an attestation bundle
-      description: This feature was introduced in GitLab 18.7
+      description: Retrieves a specified attestation provenance bundle. The Sigstore
+        bundle is returned in the response body. This feature was introduced in GitLab
+        18.7.
       tags:
       - Attestations
       responses:
@@ -33746,7 +34417,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesTreeObject"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesTreeObject"
         '400':
           description: Bad Request
         '404':
@@ -34004,7 +34677,10 @@ paths:
         can be accessed without authentication if the repository is publicly accessible.
         When `compare_timeout` is `true`, the comparison exceeded size limits: the
         `commits` array is still complete, but the `diffs` array might be incomplete,
-        and individual diff objects might have empty `diff` strings.'
+        and individual diff objects might have empty `diff` strings. This endpoint
+        is rate-limited for each authenticated user, and for each IP address for unauthenticated
+        requests. On GitLab Self-Managed and GitLab Dedicated, an administrator can
+        change these limits in the application settings.'
       tags:
       - Repositories
       responses:
@@ -34020,6 +34696,8 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
+        '429':
+          description: Too Many Requests
         '503':
           description: Service Unavailable
       parameters:
@@ -34131,7 +34809,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesContributor"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesContributor"
         '404':
           description: Not Found
         '400':
@@ -43513,6 +44193,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesPagesDomain"
         '404':
           description: Not Found
         '400':
@@ -43571,7 +44255,7 @@ paths:
       operationId: putApiV4ProjectsIdPagesDomainsDomainVerify
       summary: Verify Pages domain
       description: Verifies a specified Pages domain in a project. You must have permissions
-        to update Pages domains.
+        to update Pages domains. This feature was introduced in GitLab 17.7.
       tags:
       - GitLab Pages
       responses:
@@ -43604,8 +44288,8 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdPages
       summary: Unpublish Pages
-      description: Unpublishes Pages from a specified project. You must have the Maintainer
-        or Owner role for the project.
+      description: Unpublishes and removes Pages from a specified project. You must
+        have the Maintainer or Owner role for the project.
       tags:
       - GitLab Pages
       responses:
@@ -43636,6 +44320,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesPagesProjectSettings"
         '401':
           description: Unauthorized
         '404':
@@ -43667,6 +44355,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesPagesProjectSettings"
         '401':
           description: Unauthorized
         '404':
@@ -46741,6 +47433,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestDiffFull"
+        '429':
+          description: Too many requests
         '404':
           description: Not Found
         '400':
@@ -49270,6 +49964,8 @@ paths:
                 "$ref": "#/components/schemas/APIEntitiesMergeRequestChanges"
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       deprecated: true
@@ -49319,6 +50015,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -49377,6 +50075,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -49529,7 +50229,8 @@ paths:
         branches into the `refs/merge-requests/:iid/merge` ref, of the target project
         repository, if possible. This ref has the state the target branch would have
         if a regular merge action was taken. The ref is not always overwritten, but
-        it is kept at the latest possible state.
+        it is kept at the latest possible state. Requests are rate limited for each
+        user or IP address (`merge_requests_merge_ref_limit` application setting).
       tags:
       - Merge requests
       responses:
@@ -49537,6 +50238,8 @@ paths:
           description: OK
         '400':
           description: Bad request
+        '429':
+          description: Too many requests
         '404':
           description: Not Found
       parameters:
@@ -62448,12 +63151,13 @@ paths:
         administrator can change this limit in the application settings. The namespace
         set in `target_namespace` must exist, and must be your user namespace or a
         group you have the Maintainer or Owner role for. The `optional_stages` hash
-        accepts the keys `attachments_import`, to import Markdown attachments, and
-        `collaborators_import`, to import direct repository collaborators who are
-        not outside collaborators. A private GitHub repository is imported as a private
-        project. A public GitHub repository takes the visibility of the target namespace.
-        If that visibility level is restricted, the project uses the default project
-        visibility instead.
+        accepts the keys `attachments_import`, to import Markdown attachments, `collaborators_import`,
+        to import direct repository collaborators who are not outside collaborators,
+        and `continuous_sync`, to keep the project updated from GitHub after the import.
+        `continuous_sync` is only available for github.com. A private GitHub repository
+        is imported as a private project. A public GitHub repository takes the visibility
+        of the target namespace. If that visibility level is restricted, the project
+        uses the default project visibility instead.
       tags:
       - Project import
       responses:
@@ -62779,7 +63483,10 @@ paths:
     post:
       operationId: postApiV4Glql
       summary: Execute a GLQL query
-      description: Executes a GLQL query to search and filter GitLab resources.
+      description: Executes a GLQL query to search and filter GitLab resources. Queries
+        are rate limited by the SHA-256 hash of the query. Queries that time out are
+        tracked, and a query that times out too often is temporarily blocked. This
+        feature was introduced in GitLab 18.7.
       tags:
       - GLQL
       responses:
@@ -62813,7 +63520,19 @@ paths:
       summary: Retrieve the GLQL schema
       description: 'Retrieves the GLQL schema: data sources with their filter, display
         and sort fields, the operator, value kind and reference type vocabularies,
-        the available functions, and the display types a query can be rendered as.'
+        the available functions, and the display types a query can be rendered as.
+        The document describes the query language. A query against a data source that
+        is not available to the user fails at `POST /glql`. The document changes only
+        when GitLab is upgraded. It is served with an `ETag`, so clients can send
+        `If-None-Match` to revalidate and receive `304 Not Modified` instead of the
+        full document. The endpoint takes no parameters and returns the same document
+        for every user. Analytics modes list the arguments their dimensions and metrics
+        accept in `parameterized_fields`, so a query can set them explicitly rather
+        than relying on the default. Each entry has a `name` and a `parameters` array.
+        Each parameter has a `name` and a `kind`, and can have `values`, `min`, `max`,
+        `min_days`, `max_days`, `default`, `optional`, `required`, `requires`, `items`,
+        `min_length`, `max_length`, and `strictly_ascending`. This feature was introduced
+        in GitLab 19.3.'
       tags:
       - GLQL
       responses:
@@ -65084,7 +65803,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdFreezePeriods
       summary: List all freeze periods
-      description: Lists all freeze periods for a specified project.
+      description: Lists all freeze periods for a specified project, sorted by `created_at`
+        in ascending order. You must have the Reporter, Developer, Maintainer, or
+        Owner role for the project.
       tags:
       - Freeze periods
       responses:
@@ -65335,7 +66056,9 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesBlameRange"
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesBlameRange"
         '429':
           description: Too many requests
         '404':
@@ -66090,7 +66813,9 @@ paths:
     get:
       operationId: getApiV4ProjectsIdFeatureFlagsSettings
       summary: Retrieve feature flag settings
-      description: Retrieves the feature flag settings of a specified project.
+      description: Retrieves the feature flag settings of a specified project. Enforcement
+        of `minimum_role` is behind a feature flag named `feature_flag_management_permissions`,
+        disabled by default. This feature was introduced in GitLab 19.4.
       tags:
       - Feature flags
       responses:
@@ -66118,7 +66843,11 @@ paths:
     put:
       operationId: putApiV4ProjectsIdFeatureFlagsSettings
       summary: Update feature flag settings
-      description: Updates the feature flag settings of a specified project.
+      description: Updates the feature flag settings of a specified project. You must
+        have the Maintainer or Owner role for the project. To change `minimum_role`
+        from `owner` or `no_one_allowed`, you must have the Owner role. Enforcement
+        of `minimum_role` is behind a feature flag named `feature_flag_management_permissions`,
+        disabled by default. This feature was introduced in GitLab 19.4.
       tags:
       - Feature flags
       responses:
@@ -66821,16 +67550,13 @@ paths:
       tags:
       - Environments
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/APIEntitiesEnvironment"
+        '204':
+          description: No Content
         '401':
           description: Unauthorized
         '403':
-          description: Forbidden
+          description: Forbidden. The user cannot delete the environment, or the environment
+            is not stopped
         '404':
           description: Not found
         '409':
@@ -66894,9 +67620,9 @@ paths:
     delete:
       operationId: deleteApiV4ProjectsIdEnvironmentsReviewApps
       summary: Schedule multiple stopped review apps for deletion
-      description: Schedules multiple stopped review apps for deletion. The deletion
-        is performed after 1 week. By default, only environments 30 days or older
-        are deleted.
+      description: Schedules multiple stopped review apps for deletion. Only stopped
+        environments in the review app folder are scheduled. The deletion is performed
+        after 1 week. By default, only environments 30 days or older are deleted.
       tags:
       - Environments
       responses:
@@ -67293,7 +68019,13 @@ paths:
     get:
       operationId: getApiV4ProjectsIdDeployments
       summary: List all project deployments
-      description: Lists all deployments in a project.
+      description: Lists all deployments in a project. Some filters, sort orders,
+        and statuses work only in certain combinations. Returns `400 Bad Request`
+        when a request filters by `updated_after` or `updated_before` without `order_by=updated_at`,
+        filters by `finished_after` or `finished_before` without both `order_by=finished_at`
+        and `status=success`, sets `order_by=finished_at` without filtering by `finished_after`,
+        `finished_before`, or a `status` of `success`, `failed`, or `canceled`, or
+        combines `updated_after` or `updated_before` with `finished_after` or `finished_before`.
       tags:
       - Deploy resources
       responses:
@@ -67425,7 +68157,8 @@ paths:
     post:
       operationId: postApiV4ProjectsIdDeployments
       summary: Create a deployment
-      description: Creates a deployment.
+      description: Creates a deployment. The response includes the `approvals` and
+        `pending_approval_count` properties.
       tags:
       - Deploy resources
       responses:
@@ -67460,7 +68193,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdDeploymentsDeploymentId
       summary: Retrieve a deployment
-      description: Retrieves a specified deployment.
+      description: Retrieves a specified deployment. When multiple approval rules
+        are configured, the response includes the `approval_summary` property.
       tags:
       - Deploy resources
       responses:
@@ -67494,7 +68228,8 @@ paths:
     put:
       operationId: putApiV4ProjectsIdDeploymentsDeploymentId
       summary: Update a deployment
-      description: Updates a specified deployment.
+      description: Updates a specified deployment. The response includes the `approvals`
+        and `pending_approval_count` properties.
       tags:
       - Deploy resources
       responses:
@@ -67569,7 +68304,8 @@ paths:
     get:
       operationId: getApiV4ProjectsIdDeploymentsDeploymentIdMergeRequests
       summary: List all merge requests associated with a deployment
-      description: Lists all merge requests shipped with a specified deployment.
+      description: Lists all merge requests shipped with a specified deployment. Not
+        all deployments can be associated with merge requests.
       tags:
       - Deploy resources
       responses:
@@ -68098,7 +68834,8 @@ paths:
     get:
       operationId: getApiV4DeployTokens
       summary: List all deploy tokens
-      description: Lists all deploy tokens for the instance.
+      description: Lists all deploy tokens for the instance. Requires administrator
+        access.
       tags:
       - Deploy resources
       responses:
@@ -75166,7 +75903,8 @@ paths:
       operationId: getApiV4ProjectsIdClusterAgentsAgentIdTokens
       summary: List all agent tokens
       description: Lists all active tokens for an agent. You must have the Developer,
-        Maintainer, or Owner role to use this endpoint.
+        Maintainer, or Owner role to use this endpoint. The `last_used_at` field is
+        returned only when retrieving a single agent token.
       tags:
       - Cluster agents
       responses:
@@ -75220,7 +75958,8 @@ paths:
       summary: Create an agent token
       description: Creates a token for an agent. You must have the Maintainer or Owner
         role to use this endpoint. An agent can have only two active tokens at one
-        time.
+        time. The `token` value is returned only in this response and cannot be retrieved
+        later.
       tags:
       - Cluster agents
       responses:
@@ -75335,8 +76074,10 @@ paths:
     get:
       operationId: getApiV4DiscoverCertBasedClusters
       summary: List all certificate-based clusters
-      description: Lists all certificate-based clusters associated with a project.
-        This feature was introduced in GitLab 17.9.
+      description: Lists all certificate-based clusters registered to a group, its
+        subgroups, or its projects. Both enabled and disabled clusters are returned.
+        Only clusters in groups and projects where the user has at least the Maintainer
+        role are returned. This feature was introduced in GitLab 17.9.
       tags:
       - Clusters
       responses:
@@ -85670,6 +86411,60 @@ paths:
           type: integer
         in: path
         example: 42
+  "/api/v4/admin/token":
+    post:
+      operationId: postApiV4AdminToken
+      summary: Get information about a token.
+      description: This feature was introduced in GitLab 17.5.
+      tags:
+      - Access tokens
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable
+        '400':
+          description: Bad Request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/postApiV4AdminTokenRequest"
+    delete:
+      operationId: deleteApiV4AdminToken
+      summary: Revoke a token.
+      description: This feature was introduced in GitLab 17.7.
+      tags:
+      - Access tokens
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '422':
+          description: Unprocessable
+        '400':
+          description: Bad Request
+      parameters:
+      - name: token
+        required: true
+        description: The token to revoke. To avoid exposing the token in the URL,
+          send it in the JSON request body instead of as a query parameter.
+        schema:
+          type: string
+          nullable: true
+        in: query
   "/api/v4/application/plan_limits":
     get:
       operationId: getApiV4ApplicationPlanLimits
@@ -87018,32 +87813,52 @@ components:
       properties:
         token:
           type: string
+          description: Token as sent.
           example: MergeRequest[123]
         resolved_token:
           type: string
+          description: Token in `Type[id]` form, or `path@ref` for a branch or commit.
+            Present only when `found` is `true`.
           example: MergeRequest[123]
         type:
           type: string
+          description: 'Type of the entity. Possible values: `MergeRequest`, `WorkItem`,
+            `Job`, `Pipeline`, `Branch`, or `Commit`. `null` when `found` is `false`.'
           example: MergeRequest
         id:
           type: string
+          description: Global database ID, in the same form as the node IDs in the
+            graph result, or the branch name or commit SHA. For `iid` and `path@ref`
+            forms, `null` when `found` is `false`. For `Type[id]` and GID tokens,
+            the ID that was sent.
           example: '123'
         found:
           type: boolean
+          description: If `true`, the entity exists and the user can read it.
         summary:
           type: object
+          description: Summary of a found entity. Contains `namespace_path` and `project_path`.
+            `project_path` is `null` for group work items. Other fields can be added.
         error:
           type: object
+          description: 'Error with a `code`: `invalid_token`, `unsupported_type`,
+            or `not_found`. Present when `found` is `false`.'
         expansion:
           type: object
+          description: "`null` when `expand` is `false` or the token was not found.
+            Otherwise, `result` or `error` with a `code`, plus `query`: the named
+            query that ran or would have run, with `name` and `parameters` (`node_ids`
+            and `limit`). `query` is absent for `expansion_unsupported_type`."
     APIEntitiesOrbitContext:
       type: object
       properties:
         version:
           type: string
-          example: 1.3.0
+          description: Response contract version.
+          example: 1.4.0
         entities:
           type: array
+          description: One entry for the one token sent.
           items:
             "$ref": "#/components/schemas/APIEntitiesOrbitContextEntity"
     APIEntitiesOrbitSkillSummary:
@@ -87051,55 +87866,69 @@ components:
       properties:
         name:
           type: string
+          description: Skill name.
           example: orbit
         version:
           type: string
+          description: Skill version from the manifest.
           example: 0.29.0
         compatibility:
           type: string
+          description: Environment requirements from the skill manifest.
           example: Orbit CLI
         description:
           type: string
+          description: Description from the skill manifest.
           example: Use the glab orbit CLI.
     APIEntitiesOrbitSkillCollection:
       type: object
       properties:
         skills:
           type: array
+          description: Deployed skills.
           items:
             "$ref": "#/components/schemas/APIEntitiesOrbitSkillSummary"
         server_version:
           type: string
+          description: Version of the deployed Orbit service.
           example: 0.31.0
     APIEntitiesOrbitSkillFile:
       type: object
       properties:
         path:
           type: string
+          description: Normalized path relative to the skill root.
           example: SKILL.md
         sha256:
           type: string
+          description: SHA-256 hash of the file content.
           example: abc123
         content:
           type: string
+          description: UTF-8 file content.
           example: "# Orbit skill"
     APIEntitiesOrbitSkill:
       type: object
       properties:
         name:
           type: string
+          description: Skill name.
           example: orbit
         version:
           type: string
+          description: Skill version.
           example: 0.29.0
         compatibility:
           type: string
+          description: Environment requirements from the skill manifest.
           example: Orbit CLI
         server_version:
           type: string
+          description: Version of the deployed Orbit service.
           example: 0.31.0
         files:
           type: array
+          description: Files in the skill tree.
           items:
             "$ref": "#/components/schemas/APIEntitiesOrbitSkillFile"
     APIEntitiesSecurityVulnerabilityScanningSbomScan:
@@ -87247,53 +88076,80 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the flow.
         web_url:
           type: string
+          description: URL of the session in the GitLab UI. For a group session, the
+            URL is on the top-level group.
           example: https://gitlab.example.com/group/project/-/automate/agent-sessions/42
         project_id:
           type: integer
+          description: ID of the associated project. `null` if not set.
         namespace_id:
           type: integer
+          description: ID of the associated namespace. `null` if not set.
         agent_privileges:
           type: array
+          description: Privilege IDs assigned to the agent.
           items:
             type: integer
         agent_privileges_names:
           type: array
+          description: Names corresponding to `agent_privileges`.
           items:
             type: string
         pre_approved_agent_privileges:
           type: array
+          description: Privilege IDs the agent can use without asking for approval.
           items:
             type: integer
         pre_approved_agent_privileges_names:
           type: array
+          description: Names corresponding to `pre_approved_agent_privileges`.
           items:
             type: string
         workflow_definition:
           type: string
+          description: Flow type identifier.
         status:
           type: string
+          description: 'Current flow status. Possible values: `created`, `running`,
+            `paused`, `finished`, `failed`, `stopped`, `input_required`, `plan_approval_required`,
+            `tool_call_approval_required`, or `idle`. GitLab might add new values.'
         summary:
           type: string
+          description: Short text summary of the workflow.
         title:
           type: string
+          description: Title of the session.
         allow_agent_to_request_user:
           type: boolean
+          description: If `true`, the agent can pause for user input.
         image:
           type: string
+          description: Container image for CI pipeline execution. `null` if not set.
         environment:
           type: string
+          description: Execution environment. `null` if not set.
         ai_catalog_item_version_id:
           type: integer
+          description: ID of the AI Catalog item version. `null` if not set.
         workload:
           type: object
+          description: 'Information about the workload: its `id` and a status `message`.
+            The `id` is `null` if no workload was created, for example when `start_workflow`
+            is not `true`.'
         mcp_enabled:
           type: boolean
+          description: If `true`, MCP (Model Context Protocol) tools are enabled for
+            the flow.
         incremental_checkpoints_enabled:
           type: boolean
+          description: If `true`, the workflow stores checkpoints incrementally. `true`
+            for all new workflows. Older workflows can return `false`.
         gitlab_url:
           type: string
+          description: Base URL of the GitLab instance.
     APIEntitiesAiDuoWorkflowsBasicCheckpoint:
       type: object
       properties:
@@ -87358,6 +88214,16 @@ components:
           type: string
         message:
           type: string
+    APIEntitiesAiDuoWorkflowsWorkflowAgentPrivileges:
+      type: object
+      properties:
+        all_privileges:
+          type: array
+          description: All available agent privileges. Each has an `id`, a machine-readable
+            `name`, a human-readable `description`, and `default_enabled`, which is
+            `true` if the privilege is enabled by default.
+          items:
+            type: object
     APIEntitiesCustomAttribute:
       type: object
       properties:
@@ -89236,10 +90102,13 @@ components:
           - read_job
         project_id:
           type: integer
+          description: ID of the project when the scope targets a project, otherwise
+            `null`.
           format: int64
           example: 3
         group_id:
           type: integer
+          description: ID of the group when the scope targets a group, otherwise `null`.
           format: int64
           example: 5
     APIEntitiesPersonalAccessTokenWithToken:
@@ -90368,6 +91237,7 @@ components:
       properties:
         success:
           type: object
+          description: Whether the request succeeded.
     APIEntitiesGitlabLicense:
       type: object
       properties:
@@ -94425,22 +95295,30 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the URL configuration.
           format: int64
           example: 1
         agent_id:
           type: integer
+          description: ID of the agent the URL configuration belongs to.
           format: int64
           example: 1
         url:
           type: string
+          description: Agent URL for this URL configuration.
         public_key:
           type: string
+          description: Base64-encoded public key, if JWT authentication is used.
         client_cert:
           type: string
+          description: Client certificate in PEM format, if mTLS authentication is
+            used.
         ca_cert:
           type: string
+          description: CA certificate in PEM format to verify the agent endpoint.
         tls_host:
           type: string
+          description: TLS host name to verify the server name in the agent endpoint.
     APIEntitiesCiRunnerControllerToken:
       type: object
       properties:
@@ -94931,7 +95809,9 @@ components:
           description: Namespace information for the project.
           "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
         custom_attributes:
-          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         repository_storage:
           type: string
           description: Storage location for the project's repository. Returned only
@@ -97182,6 +98062,8 @@ components:
           type: string
         feature_flag_user_list_write_bytes_limit_per_user:
           type: string
+        merge_requests_merge_ref_limit:
+          type: string
         merge_requests_rebase_limit:
           type: string
         draft_notes_create_limit:
@@ -97191,6 +98073,8 @@ components:
         pages_domain_create_limit:
           type: string
         pages_domain_verify_limit:
+          type: string
+        merge_requests_read_diffs_limit:
           type: string
         members_delete_limit:
           type: string
@@ -97379,6 +98263,10 @@ components:
         project_repositories_blobs_batch_limit:
           type: string
         project_repository_commits_api_limit:
+          type: string
+        project_repositories_compare_limit:
+          type: string
+        project_repositories_compare_unauthenticated_limit:
           type: string
         projects_api_limit:
           type: string
@@ -97836,6 +98724,8 @@ components:
           type: string
         insights_query_limit:
           type: string
+        issues_analytics_limit:
+          type: string
         merge_train_removal_limit_per_user:
           type: string
         orbit_query_limit:
@@ -97857,6 +98747,10 @@ components:
         budget_cap_update_per_hour_limit:
           type: string
         budget_cap_update_per_day_limit:
+          type: string
+        subscriptions_payment_form_per_hour_limit:
+          type: string
+        subscriptions_validate_payment_method_per_hour_limit:
           type: string
         credits_usage_per_minute_limit:
           type: string
@@ -98903,49 +99797,64 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the attestation.
           format: int64
           example: 1
         iid:
           type: integer
+          description: Internal ID of the attestation in the project.
           example: 14
         created_at:
           type: string
+          description: Date and time the attestation was created.
           format: date-time
           example: '2025-09-17T02:26:10.898Z'
         updated_at:
           type: string
+          description: Date and time the attestation was last updated.
           format: date-time
           example: '2025-09-17T02:26:10.898Z'
         expire_at:
           type: string
+          description: Date and time the attestation expires.
           format: date-time
           example: '2025-09-17T02:26:10.898Z'
         project_id:
           type: integer
+          description: ID of the project.
           format: int64
         build_id:
           type: integer
+          description: ID of the CI/CD job that produced the attestation.
           format: int64
         status:
           type: string
+          description: Status of the attestation. One of `success` or `error`.
           example: success
         predicate_kind:
           type: string
+          description: Kind of predicate. One of `provenance` or `sbom`.
           example: provenance
         predicate_type:
           type: string
+          description: URI of the predicate type.
           example: https://slsa.dev/provenance/v1
         subject_digest:
           type: string
+          description: Hex-encoded SHA-256 hash of the artifact.
           example: 5db1fee4b5703808c48078a76768b155b421b210c0761cd6a5d223f4d99f1eaa
         signing_method:
           type: string
+          description: Method used to sign the attestation. If `ATTEST_METHOD` is
+            not set, defaults to `local_ca`, except for public projects on GitLab.com,
+            which default to `sigstore`.
           enum:
           - sigstore
           - local_ca
           example: local_ca
         download_url:
           type: string
+          description: URL to download the attestation bundle.
     APIEntitiesCommitStats:
       type: object
       properties:
@@ -100192,7 +101101,9 @@ components:
           description: Namespace information for the project.
           "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
         custom_attributes:
-          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         repository_storage:
           type: string
           description: Storage location for the project's repository. Returned only
@@ -100954,7 +101865,9 @@ components:
           description: Namespace information for the project.
           "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
         custom_attributes:
-          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         repository_storage:
           type: string
           description: Storage location for the project's repository. Returned only
@@ -101733,7 +102646,9 @@ components:
           description: Namespace information for the project.
           "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
         custom_attributes:
-          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         repository_storage:
           type: string
           description: Storage location for the project's repository. Returned only
@@ -102497,7 +103412,9 @@ components:
           description: Namespace information for the project.
           "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
         custom_attributes:
-          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         repository_storage:
           type: string
           description: Storage location for the project's repository. Returned only
@@ -104145,8 +105062,10 @@ components:
       properties:
         expired:
           type: boolean
+          description: If `true`, the SSL certificate has expired.
         expiration:
           type: string
+          description: Date and time when the SSL certificate expires.
           format: date-time
           example: '2025-01-01T00:00:00.000Z'
     APIEntitiesPagesDomainBasic:
@@ -104154,48 +105073,121 @@ components:
       properties:
         domain:
           type: string
+          description: Custom domain name of the Pages site.
         url:
           type: string
+          description: Full URL of the Pages site, including the protocol.
         project_id:
-          type: string
+          type: integer
+          description: ID of the project the Pages domain belongs to.
         verified:
-          type: string
+          type: boolean
+          description: If `true`, the domain is verified.
         verification_code:
           type: string
+          description: Unique record used to verify domain ownership.
         enabled_until:
           type: string
+          description: Date until which the domain is enabled. Updated periodically
+            as the domain is reverified.
+          format: date-time
         auto_ssl_enabled:
-          type: string
+          type: boolean
+          description: If `true`, automatic generation of SSL certificates with Let's
+            Encrypt is enabled for the domain.
         certificate_expiration:
+          description: Expiration of the SSL certificate. Returned only if the domain
+            has a certificate.
           "$ref": "#/components/schemas/APIEntitiesPagesDomainCertificateExpiration"
     APIEntitiesPagesDomainCertificate:
       type: object
       properties:
         subject:
           type: string
+          description: Subject of the SSL certificate, usually with information about
+            the domain.
         expired:
-          type: string
+          type: boolean
+          description: If `true`, the SSL certificate has expired.
         certificate:
           type: string
+          description: Full SSL certificate in PEM format.
         certificate_text:
           type: string
+          description: Human-readable text of the SSL certificate, with details such
+            as the issuer, validity period, and subject.
     APIEntitiesPagesDomain:
       type: object
       properties:
         domain:
           type: string
+          description: Custom domain name of the Pages site.
         url:
           type: string
+          description: Full URL of the Pages site, including the protocol.
         verified:
-          type: string
+          type: boolean
+          description: If `true`, the domain is verified.
         verification_code:
           type: string
+          description: Unique record used to verify domain ownership.
         enabled_until:
           type: string
+          description: Date until which the domain is enabled. Updated periodically
+            as the domain is reverified.
+          format: date-time
         auto_ssl_enabled:
-          type: string
+          type: boolean
+          description: If `true`, automatic generation of SSL certificates with Let's
+            Encrypt is enabled for the domain.
         certificate:
+          description: SSL certificate of the domain. Returned only if the domain
+            has a certificate.
           "$ref": "#/components/schemas/APIEntitiesPagesDomainCertificate"
+    APIEntitiesPagesDeployments:
+      type: object
+      properties:
+        created_at:
+          type: string
+          description: Date the deployment was created.
+          format: date-time
+          example: '2024-01-05T18:58:14.916Z'
+        url:
+          type: string
+          description: URL for this deployment.
+          example: http://group.example.com/project/
+        path_prefix:
+          type: string
+          description: Path prefix of this deployment when using parallel deployments.
+          example: mr3
+        root_directory:
+          type: string
+          description: Root directory of this deployment.
+          example: public
+    APIEntitiesPagesProjectSettings:
+      type: object
+      properties:
+        url:
+          type: string
+          description: URL to access the Pages site for this project.
+          example: http://group.example.com/project
+        deployments:
+          type: array
+          description: List of current active deployments.
+          items:
+            "$ref": "#/components/schemas/APIEntitiesPagesDeployments"
+        is_unique_domain_enabled:
+          type: boolean
+          description: If `true`, unique domain is enabled.
+          example: true
+        force_https:
+          type: boolean
+          description: If `true`, the project is set to force HTTPS.
+          example: false
+        pages_primary_domain:
+          type: string
+          description: Primary domain that all Pages requests are redirected to.
+          example: https://custom.example.com
     APIEntitiesPackageFile:
       type: object
       properties:
@@ -104692,8 +105684,10 @@ components:
           example: '2022-06-18'
         billable_members_count:
           type: integer
-          description: Number of billable members in the namespace. `null` unless
-            the user has the Owner role, is an auditor, or is an administrator.
+          description: Number of billable members in the namespace. `null` if the
+            user does not have permission to view billing for the namespace. If the
+            `skip_subgroup_billable_members_count` feature flag is enabled, also `null`
+            for subgroups.
           example: 2
         seats_in_use:
           type: integer
@@ -106485,11 +107479,15 @@ components:
           description: Error message if query failed
         fields:
           type: array
-          description: Field definitions for the query results
+          description: Field definitions for the query results. Each `parameters`
+            value is a string, or an array of strings for list parameters. For an
+            aliased parameterized field, `name` is the generated response key, like
+            `durationQuantile_quantile_0_d5`.
           items:
             "$ref": "#/components/schemas/APIEntitiesGlqlField"
         success:
           type: boolean
+          description: Indicates if the query was successful.
           example: true
     APIEntitiesCiVariable:
       type: object
@@ -107117,21 +108115,27 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the agent.
           format: int64
           example: 1
         name:
           type: string
+          description: Name of the agent.
         config_project:
+          description: Project the agent is configured in.
           "$ref": "#/components/schemas/APIEntitiesProjectIdentity"
         created_at:
           type: string
+          description: Timestamp when the agent was created.
           format: date-time
         created_by_user_id:
           type: integer
+          description: ID of the user who created the agent.
           format: int64
           example: 1
         is_receptive:
           type: boolean
+          description: If `true`, the agent is a receptive agent.
     APIEntitiesEnvironment:
       type: object
       properties:
@@ -107315,12 +108319,18 @@ components:
           example: created
         pending_approval_count:
           type: integer
+          description: Number of approvals the deployment still needs. Is `0` unless
+            the environment is protected. Premium and Ultimate only.
           example: 0
         approvals:
           type: array
+          description: Approvals and rejections of the deployment. Premium and Ultimate
+            only.
           items:
             "$ref": "#/components/schemas/APIEntitiesDeploymentsApproval"
         approval_summary:
+          description: Approval status of the deployment for each approval rule of
+            the protected environment. Premium and Ultimate only.
           "$ref": "#/components/schemas/APIEntitiesDeploymentsApprovalSummary"
     APIEntitiesDeployToken:
       type: object
@@ -107646,23 +108656,30 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the token.
           format: int64
           example: 1
         name:
           type: string
+          description: Name of the token.
         description:
           type: string
+          description: Description of the token.
         agent_id:
           type: integer
+          description: ID of the agent the token belongs to.
           format: int64
           example: 1
         status:
           type: string
+          description: Status of the token. Either `active` or `revoked`.
         created_at:
           type: string
+          description: Timestamp when the token was created.
           format: date-time
         created_by_user_id:
           type: integer
+          description: ID of the user who created the token.
           format: int64
           example: 1
     APIEntitiesClustersAgentToken:
@@ -107670,57 +108687,75 @@ components:
       properties:
         id:
           type: integer
+          description: ID of the token.
           format: int64
           example: 1
         name:
           type: string
+          description: Name of the token.
         description:
           type: string
+          description: Description of the token.
         agent_id:
           type: integer
+          description: ID of the agent the token belongs to.
           format: int64
           example: 1
         status:
           type: string
+          description: Status of the token. Either `active` or `revoked`.
         created_at:
           type: string
+          description: Timestamp when the token was created.
           format: date-time
         created_by_user_id:
           type: integer
+          description: ID of the user who created the token.
           format: int64
           example: 1
         last_used_at:
           type: string
+          description: Timestamp when the token was last used.
           format: date-time
     APIEntitiesClustersAgentTokenWithToken:
       type: object
       properties:
         id:
           type: integer
+          description: ID of the token.
           format: int64
           example: 1
         name:
           type: string
+          description: Name of the token.
         description:
           type: string
+          description: Description of the token.
         agent_id:
           type: integer
+          description: ID of the agent the token belongs to.
           format: int64
           example: 1
         status:
           type: string
+          description: Status of the token. Either `active` or `revoked`.
         created_at:
           type: string
+          description: Timestamp when the token was created.
           format: date-time
         created_by_user_id:
           type: integer
+          description: ID of the user who created the token.
           format: int64
           example: 1
         last_used_at:
           type: string
+          description: Timestamp when the token was last used.
           format: date-time
         token:
           type: string
+          description: Secret value of the token. Returned only when the token is
+            created.
     APIEntitiesDiscoveredClusters:
       type: object
       properties:
@@ -109901,7 +110936,9 @@ components:
           default: raw
         source_type:
           type: string
-          description: Optional frontend source subtype (e.g. code_intelligence)
+          description: Subtype of a request from the GitLab UI. Only `code_intelligence`
+            has an effect. The API ignores the attribute for requests that do not
+            come from a GitLab UI session.
           nullable: true
       required:
       - query
@@ -109924,7 +110961,9 @@ components:
           default: raw
         source_type:
           type: string
-          description: Optional frontend source subtype (e.g. code_intelligence)
+          description: Subtype of a request from the GitLab UI. Only `code_intelligence`
+            has an effect. The API ignores the attribute for requests that do not
+            come from a GitLab UI session.
           nullable: true
     postApiV4OrbitContextRequest:
       type: object
@@ -109941,7 +110980,7 @@ components:
           - type: boolean
             nullable: true
             default: false
-          description: Attach the graph neighborhood of the entity
+          description: Attach the graph neighborhood of the entity. Default is `false`.
         response_format:
           type: string
           enum:
@@ -110138,12 +111177,14 @@ components:
                 maxLength: 255
               content:
                 type: string
-                description: Content of the additional context.
+                description: Content of the additional context. The value depends
+                  on `category`.
                 minLength: 1
                 maxLength: 1000
               metadata:
                 type: object
-                description: Metadata of the additional context.
+                description: Metadata of the additional context. The value depends
+                  on `category`.
                 nullable: true
             required:
             - category
@@ -110890,7 +111931,8 @@ components:
         ai_catalog_item_consumer_id:
           type: integer
           description: The ID of AI Catalog ItemConsumer that configures which catalog
-            item to execute.
+            item to execute. Requires `project_id`. If `workflow_definition` is also
+            set, `ai_catalog_item_consumer_id` takes precedence.
           example: 1
           nullable: true
         start_workflow:
@@ -110919,7 +111961,8 @@ components:
           nullable: true
         workflow_definition:
           type: string
-          description: workflow type based on its capability
+          description: workflow type based on its capability. If `ai_catalog_item_consumer_id`
+            is also set, `ai_catalog_item_consumer_id` takes precedence.
           example: software_developer
           nullable: true
         allow_agent_to_request_user:
@@ -110932,15 +111975,18 @@ components:
         image:
           type: string
           description: Container image to use for the flow. Applies only when the
-            flow runs in a CI pipeline.
+            flow runs in a CI pipeline. Must meet the custom image requirements for
+            flows.
           example: registry.gitlab.com/gitlab-org/duo-workflow/custom-image:latest
           nullable: true
         source_branch:
           type: string
           description: Source branch for the flow. When not specified, a flow whose
             goal names a pipeline or merge request, such as fix_pipeline/v1, uses
-            its branch, and other flows use the default branch. Applies only when
-            the flow runs in a CI pipeline.
+            its branch, and other flows use the default branch. For a flow whose goal
+            names a pipeline, the `merge_request` and `pipeline` entries in `additional_context`
+            are also filled in from the pipeline. Applies only when the flow runs
+            in a CI pipeline.
           example: main
           nullable: true
         environment:
@@ -111009,7 +112055,10 @@ components:
           - web_chat
           - vulnerability_leaked_token_rotation
           - mobile_chat
-          description: Where the session was triggered from in the UI.
+          description: 'Where the session was triggered from: a GitLab feature entry
+            point, such as `merge_request_code_conflict`, or the client surface that
+            created the session, such as `duo_cli_run` or `ide_extension`. Stored
+            as the session `source_type`.'
           nullable: true
     postApiV4AiDuoWorkflowsWorkflowsWorkflowIdExecuteRequest:
       type: object
@@ -111894,7 +112943,8 @@ components:
           enum:
           - csv
           - pdf
-          description: Format of the generated report
+          description: Format of the generated report. `pdf` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/524058)
+            in GitLab 18.1.
           nullable: true
           default: csv
         send_email:
@@ -112146,7 +113196,8 @@ components:
           enum:
           - csv
           - pdf
-          description: Format of the generated report
+          description: Format of the generated report. `pdf` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/524058)
+            in GitLab 18.1.
           nullable: true
           default: csv
         send_email:
@@ -112321,7 +113372,8 @@ components:
           enum:
           - csv
           - pdf
-          description: Format of the generated report
+          description: Format of the generated report. `pdf` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/524058)
+            in GitLab 18.1.
           nullable: true
           default: csv
         send_email:
@@ -112336,12 +113388,14 @@ components:
         start_date:
           type: string
           format: date
-          description: Start of the date range
+          description: Start of the date range. Date in `dd/mm/yyyy` format. Vulnerabilities
+            that were archived on or after this date are included in the export.
           nullable: true
         end_date:
           type: string
           format: date
-          description: End of the date range
+          description: End of the date range. Date in `dd/mm/yyyy` format. Vulnerabilities
+            that were archived on or before this date are included in the export.
           nullable: true
         export_format:
           type: string
@@ -117590,8 +118644,7 @@ components:
         discussions_resolve_limit:
           type: integer
           description: 'Maximum number of thread resolve and unresolve requests per
-            minute for each user. Default: `120`. Set to `0` to disable the rate limit.
-            [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606720)
+            minute for each user. Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606720)
             in GitLab 19.6.'
           nullable: true
         draft_notes_create_limit:
@@ -117866,11 +118919,25 @@ components:
             Default: `0`, which disables the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606714)
             in GitLab 19.6.'
           nullable: true
+        merge_requests_merge_ref_limit:
+          type: integer
+          description: 'Maximum number of merge ref requests per minute for each user
+            or IP address. Default: `0`, which disables the rate limit. Introduced
+            in GitLab 19.7.'
+          nullable: true
         merge_requests_rebase_limit:
           type: integer
           description: 'Maximum number of merge request rebases per minute for each
             user. Default: `30`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606716)
             in GitLab 19.6.'
+          nullable: true
+        merge_requests_read_diffs_limit:
+          type: integer
+          description: 'Maximum number of merge request changes, diffs, raw diffs,
+            and diff version API requests per minute for each user, or for each IP
+            address for unauthenticated requests. Default: `300`. Set to `0` to disable
+            the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717)
+            in GitLab 19.7.'
           nullable: true
         metrics_method_call_threshold:
           type: integer
@@ -119837,6 +120904,13 @@ components:
             user or IP address, for each group or project. Default: `0`, which disables
             the rate limit. GitLab.com uses `60`.'
           nullable: true
+        issues_analytics_limit:
+          type: integer
+          description: 'Maximum number of issue analytics chart requests a user can
+            make every minute in a group or project. For unauthenticated requests,
+            the limit applies to each IP address. Default: `60`. Set to `0` to disable
+            the rate limit.'
+          nullable: true
         merge_train_removal_limit_per_user:
           type: integer
           description: 'Maximum number of merge requests a user can remove from merge
@@ -119897,6 +120971,18 @@ components:
           description: 'Maximum number of `upsertUserBudgetCapOverrides` and `upsertFlatUserCap`
             GraphQL mutation calls per day per user. Default: `20000`. Set to `0`
             to disable the rate limit.'
+          nullable: true
+        subscriptions_payment_form_per_hour_limit:
+          type: integer
+          description: 'Maximum number of payment form requests per hour per authenticated
+            user, or per IP address during identity verification. Default: `20`. Set
+            to `0` to disable the rate limit.'
+          nullable: true
+        subscriptions_validate_payment_method_per_hour_limit:
+          type: integer
+          description: 'Maximum number of payment method validation requests per hour
+            per authenticated user, or per IP address during identity verification.
+            Default: `10`. Set to `0` to disable the rate limit.'
           nullable: true
         credits_usage_per_minute_limit:
           type: integer
@@ -120685,6 +121771,12 @@ components:
           type: string
           nullable: true
         project_repository_commits_api_limit:
+          type: string
+          nullable: true
+        project_repositories_compare_limit:
+          type: string
+          nullable: true
+        project_repositories_compare_unauthenticated_limit:
           type: string
           nullable: true
         projects_api_limit:
@@ -123677,8 +124769,8 @@ components:
       properties:
         commit_message:
           type: string
-          description: Custom commit message to use instead of the default generated
-            message or the project's default message.
+          description: Custom commit message to use instead of the generated message
+            or the project's commit message for applied suggestions.
           nullable: true
     putApiV4SuggestionsBatchApplyRequest:
       type: object
@@ -139248,14 +140340,23 @@ components:
       properties:
         glql_yaml:
           type: string
-          description: GLQL query that may include YAML configuration. Maximum size
+          description: 'GLQL query that may include YAML configuration. Maximum size
             is 10,000 bytes. See [query formats](https://docs.gitlab.com/api/glql/#query-formats)
-            for details.
+            for details. Pass a plain GLQL query, or YAML with the query in the `query`
+            key and the configuration options as other top-level keys. The YAML configuration
+            accepts these options: `fields`, a comma-separated list of GLQL fields
+            to return, default `title`; `group`, the group to scope the query to,
+            which cannot be used with `project`; `project`, the project to scope the
+            query to, in the format `group/project`; `limit`, the maximum number of
+            results from 1 to 100, default `100`; and `sort`, the sort order in the
+            format `field direction`, such as `created desc`. A `group` or `project`
+            set in the query takes precedence over the option.'
           minLength: 1
         after:
           type: string
           description: Cursor for pagination. Use the `data.pageInfo.endCursor` value
-            from a previous query to fetch the next page of results.
+            from a previous query to fetch the next page of results. Only forward
+            pagination is supported.
           nullable: true
       required:
       - glql_yaml
@@ -139300,7 +140401,8 @@ components:
           default: env_var
         environment_scope:
           type: string
-          description: The environment scope of the variable
+          description: The environment scope of the variable. Premium and Ultimate
+            only.
           nullable: true
         description:
           type: string
@@ -139339,7 +140441,8 @@ components:
           nullable: true
         environment_scope:
           type: string
-          description: The environment scope of the variable
+          description: The environment scope of the variable. Premium and Ultimate
+            only.
           nullable: true
         description:
           type: string
@@ -140933,8 +142036,8 @@ components:
           nullable: true
         flux_resource_path:
           type: string
-          description: Flux resource path to associate with the environment, for example
-            `helm.toolkit.fluxcd.io/v2/namespaces/gitlab-agent/helmreleases/gitlab-agent`.
+          description: Flux resource path to associate with the environment. Must
+            be the full resource path, for example `helm.toolkit.fluxcd.io/v2/namespaces/gitlab-agent/helmreleases/gitlab-agent`.
             When updating an environment, set to `null` to remove it.
           nullable: true
         description:
@@ -140946,7 +142049,8 @@ components:
           enum:
           - always
           - with_action
-          description: Auto stop setting for the environment.
+          description: Auto stop setting for the environment. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/428625)
+            in GitLab 17.8.
           nullable: true
       required:
       - name
@@ -140979,8 +142083,8 @@ components:
           nullable: true
         flux_resource_path:
           type: string
-          description: Flux resource path to associate with the environment, for example
-            `helm.toolkit.fluxcd.io/v2/namespaces/gitlab-agent/helmreleases/gitlab-agent`.
+          description: Flux resource path to associate with the environment. Must
+            be the full resource path, for example `helm.toolkit.fluxcd.io/v2/namespaces/gitlab-agent/helmreleases/gitlab-agent`.
             When updating an environment, set to `null` to remove it.
           nullable: true
         description:
@@ -140992,7 +142096,8 @@ components:
           enum:
           - always
           - with_action
-          description: Auto stop setting for the environment.
+          description: Auto stop setting for the environment. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/428625)
+            in GitLab 17.8.
           nullable: true
     postApiV4ProjectsIdEnvironmentsEnvironmentIdStopRequest:
       type: object
@@ -143665,7 +144770,6 @@ components:
         duo_code_review_level_allowed:
           type: boolean
           description: "[Beta] Allow Standard reviews by GitLab Duo Code Review Flow"
-          nullable: true
         duo_code_review_default_level:
           type: string
           enum:
@@ -143673,7 +144777,7 @@ components:
           - standard
           description: "[Beta] Default review level for GitLab Duo Code Review Flow.
             One of `lite` or `standard`"
-          nullable: true
+          minLength: 1
         ai_audit_events_storage_enabled:
           type: boolean
           description: Indicates whether AI audit events are stored for the group.
@@ -144291,6 +145395,15 @@ components:
           description: A description of the image or URL
           example: An example metric
           nullable: true
+    postApiV4AdminTokenRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: The token that information is requested about.
+          nullable: true
+      required:
+      - token
     putApiV4ApplicationPlanLimitsRequest:
       type: object
       properties:

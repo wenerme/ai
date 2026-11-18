@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/reference/og.png?v=b14c385a99
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Vector databases](https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/)
 - [Vectorize API](https://developers.cloudflare.com/vectorize/reference/client-api/)
 - [Metadata filtering](https://developers.cloudflare.com/vectorize/reference/metadata-filtering/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/su
 
 # Supported options
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/supported-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Available regions
 
 For customers with Geo Key Manager v2, you can use the `policy` parameter to specify following regions using the **Region code**:

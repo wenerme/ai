@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/reference/egress/og.png?v
 
 # Egress traffic
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/egress/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you have implemented Magic Transit with egress traffic, consider the following technical aspects to create a successful connection to Cloudflare.
 
 - The source IP for [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) you send to Cloudflare must come from your Magic Transit prefix. If you have Magic Transit [leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/) or [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/) prefixes, you can choose whether to implement a Network Address Translation (NAT) on your edge device, or use the prefix as a routed Local Area Network (LAN) interface on your side.

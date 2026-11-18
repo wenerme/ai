@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/platform/changelog/og.png?v=e
 
 # Changelog
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/platform/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/artifacts.xml)
 
 ## 2026-11-16
@@ -33,7 +31,7 @@ To use local repos when you run your Worker locally, add an Artifacts binding to
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-16",
+  "compatibility_date": "2026-11-18",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -47,7 +45,7 @@ To use local repos when you run your Worker locally, add an Artifacts binding to
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-16"
+compatibility_date = "2026-11-18"
 
 [[artifacts]]
 binding = "ARTIFACTS"

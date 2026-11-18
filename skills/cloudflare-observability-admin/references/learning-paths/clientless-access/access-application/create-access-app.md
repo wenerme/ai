@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/access
 
 # Create an Access application
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/access-application/create-access-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access allows you to securely publish internal tools and applications to the Internet by providing an authentication layer between the end user and your origin server. You can use signals from your existing identity providers (IdPs), device posture providers, and [other rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) to control who can access your application.
 
 Each application can have multiple policies with different constraints depending on what user group is accessing the application. For example, you can create one policy that requires corporate users to present specific device posture checks or mutual TLS authentication events, and a second policy for contractors which does not require these attributes.

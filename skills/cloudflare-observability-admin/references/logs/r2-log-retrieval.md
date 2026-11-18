@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/r2-log-retrieval/og.png?v=b23c9cff
 
 # Logs Engine
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/r2-log-retrieval/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Logs Engine gives you the ability to store your logs in R2 and query them directly.
 
 Note

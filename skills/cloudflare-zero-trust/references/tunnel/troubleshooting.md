@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/troubleshooting/og.png?v=bbf58d2
 
 # Troubleshooting
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this page to diagnose and resolve common issues with Cloudflare Tunnel. Many issues are resolved by upgrading to the latest version of `cloudflared` — refer to [Update cloudflared](https://developers.cloudflare.com/tunnel/guides/update-cloudflared/) before investigating further.
 
 For tunnel health monitoring, logs, and metrics, refer to [Observability](https://developers.cloudflare.com/tunnel/observability/).

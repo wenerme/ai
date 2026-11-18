@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/g
 
 # Gemini CLI
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/gemini-cli/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Gemini CLI ↗︎](https://github.com/google-gemini/gemini-cli) supports a custom Google Gemini API base URL. Point it at an AI Gateway [custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/) protected by Cloudflare Access. Use `cloudflared` to generate a short-lived Access token before you start Gemini CLI.
 
 Gemini CLI does not support an API key helper. You must refresh the token when the Access session expires.

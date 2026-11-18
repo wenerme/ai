@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # Modify HTTP request headers in Gateway
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tenant-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Gateway HTTP policies with Allow actions can modify the headers of matching requests before they reach their destination. You can add dynamic values to set headers to forward information like user identity, source IP, and other inputs to upstream services, enforce SaaS tenant control, strip internal headers, override header content.
 
 Header manipulation requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/), because HTTP headers are only visible on traffic which Gateway can decrypt.

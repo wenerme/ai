@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/platform/limits/og.png?v=b288d91aa78
 
 # Limits
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 | Feature | Limit |
 | --- | --- |
 | Databases per account | Workers Paid: 1,000,000. The first 100,000 databases are included. Each database above 100,000 costs [$0.10 per month](https://developers.cloudflare.com/d1/platform/pricing/#billing-metrics). Free: 10. |

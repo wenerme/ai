@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/reference/migration-guides/og.png?v
 
 # Migration guides
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These guides walk you through the migration processes associated with various changes in Cloudflare's SSL/TLS infrastructure.
 
 - [Entrust distrust by major browsers](https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/)

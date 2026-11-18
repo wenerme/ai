@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/data-center-protection/c
 
 # Configure DDoS protection
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-ddos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare DDoS protection automatically detects and mitigates Distributed Denial of Service (DDoS) attacks using its Autonomous Edge. Magic Transit customers have access to additional features, such as:
 
 - [Advanced TCP protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/) (disabled by default)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/manage-subd
 
 # Manage subdomains
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/manage-subdomains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you have [added your domain to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [updated your nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/), you also might want to set up a subdomain.
 
 Most subdomains serve a specific purpose within the overall context of your website. For example, `blog.example.com` might be your blog, `support.example.com` could be your customer help portal, and `store.example.com` would be your e-commerce site.

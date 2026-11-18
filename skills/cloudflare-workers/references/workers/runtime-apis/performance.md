@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/performance/og.png
 
 # Performance and timers
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Background
 
 The Workers runtime supports a subset of the [`Performance` API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance), used to measure timing and performance, as well as timing of subrequests and other operations.

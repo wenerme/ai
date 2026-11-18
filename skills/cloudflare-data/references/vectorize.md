@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/og.png?v=8ae170b0ccff3d67
 
 # Cloudflare Vectorize
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build full-stack AI applications with Vectorize, Cloudflare's powerful vector database.
 
 Vectorize is a globally distributed vector database that enables you to build full-stack, AI-powered applications with [Cloudflare Workers](https://developers.cloudflare.com/workers/). Vectorize makes querying embeddings — representations of values or objects like text, images, audio that are designed to be consumed by machine learning models and semantic search algorithms — faster, easier and more affordable.

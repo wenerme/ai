@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/upstream-resolution/og.png?v=cb
 
 # Upstream resolution
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/upstream-resolution/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When 1.1.1.1 does not have an answer in its cache, it contacts authoritative nameservers on your behalf. Authoritative nameservers are the DNS servers that hold the actual records for a domain. This page describes how 1.1.1.1 selects which nameserver to query, what happens when a nameserver is unreachable, and how the final response is determined.
 
 ## Query name minimization

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/o
 
 # Create a durable Code Mode runtime
 
-Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide adds a durable Code Mode runtime to an Agents SDK application. The runtime stores execution history, pending approvals, and snippets across Durable Object hibernation.
 
 Caution
@@ -50,7 +48,7 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
    {
      "$schema": "./node_modules/wrangler/config-schema.json",
      // Set this to today's date
-     "compatibility_date": "2026-10-09",
+     "compatibility_date": "2026-11-18",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -64,7 +62,7 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
 
    ```toml
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-11-18"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]

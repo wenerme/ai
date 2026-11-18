@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/se
 
 # Cloudflare Security Architecture
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Today, everything and everyone needs to be connected to everything everywhere, all the time, and everything must be secure. However, many businesses are not built on infrastructure that supports this reality. Historically, employees worked in an office where most business systems (file servers, printers, applications) were located on and accessible only from the private office network. A security perimeter was created around the network to protect against outsider threats, most of which came from the public Internet.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoint
 
 # Endpoints
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To invoke a Cloudflare Firewall Rules API operation, append the endpoint to the Cloudflare API base URL:
 
 ```txt

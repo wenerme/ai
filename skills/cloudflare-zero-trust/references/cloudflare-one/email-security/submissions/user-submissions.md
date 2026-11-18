@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/submissio
 
 # User submissions
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/user-submissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 User submissions are the emails your users submitted for submission. User submissions help enhance our detection model, but can be escalated for human review.
 
 Any email that is reported as [phish](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/#reclassify-an-email) will be displayed under **User submissions**.

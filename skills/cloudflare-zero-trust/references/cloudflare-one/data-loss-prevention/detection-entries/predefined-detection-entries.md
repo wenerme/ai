@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/det
 
 # Predefined detection entries
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Predefined detection entries are Cloudflare-managed detections for specific types of sensitive content. You can review these entries from the **Predefined** view in **Detection entries**.
 
 You can add any predefined detection entry directly to a custom [DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) or [data class](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/). Use the following reference to review all predefined detection entries currently supported by Cloudflare DLP.

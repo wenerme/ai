@@ -16,8 +16,6 @@ u
 
 Text Generation • unbiased
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/unbiased/pareto/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `unbiased/pareto` Copy

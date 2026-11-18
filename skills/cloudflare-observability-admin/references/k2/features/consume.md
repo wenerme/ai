@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/k2/features/consume/og.png?v=347ebe1831
 
 # Consume records
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/features/consume/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consumers read records from a K2 stream through a [subscription](https://developers.cloudflare.com/k2/concepts/#subscriptions), which tracks which records have been processed. Each subscription on a stream reads independently, meaning multiple applications can read the same records.
 
 To consume records:

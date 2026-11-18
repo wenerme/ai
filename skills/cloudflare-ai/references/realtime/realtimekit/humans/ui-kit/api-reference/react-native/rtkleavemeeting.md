@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkLeaveMeeting
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkleavemeeting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Leave meeting confirmation dialog with options to leave or end the meeting for all (if host).
 
 ## Properties

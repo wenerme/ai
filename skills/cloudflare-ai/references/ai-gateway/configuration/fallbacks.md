@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/og.p
 
 # Fallbacks
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Specify model or provider fallbacks with your [Universal endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) to handle request failures and ensure reliability.
 
 Cloudflare can trigger your fallback provider in response to [request errors](#request-failures) or [predetermined request timeouts](https://developers.cloudflare.com/ai-gateway/configuration/request-handling#request-timeouts). The [response header `cf-aig-step`](#response-headercf-aig-step) indicates which step successfully processed the request.

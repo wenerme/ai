@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/api/id/og.png?v=80ff7e3
 
 # Durable Object ID
 
-Last updated May 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Description
 
 A Durable Object ID is a 64-digit hexadecimal number used to identify a Durable Object. Not all 64-digit hex numbers are valid IDs. Durable Object IDs are constructed indirectly via the [`DurableObjectNamespace`](https://developers.cloudflare.com/durable-objects/api/namespace) interface.

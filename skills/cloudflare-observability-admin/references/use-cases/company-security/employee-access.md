@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/company-security/employee-acc
 
 # Access internal applications securely
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/company-security/employee-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Traditional VPNs grant broad network access, create bottlenecks, and are difficult to scale. Cloudflare replaces VPNs with Zero Trust access — verifying identity and device posture on every request — using Cloudflare Tunnel, Access, and the Cloudflare One client.
 
 ## Solutions

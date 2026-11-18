@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-
 
 # Astro
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Astro ↗︎](https://astro.build) is an all-in-one web framework for building fast, content-focused websites. By default, Astro builds websites that have zero JavaScript runtime code.
 
 Refer to the [Astro Docs ↗︎](https://docs.astro.build/) to learn more about Astro or for assistance with an Astro project.

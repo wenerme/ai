@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/monito
 
 # Monitor your email activity
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To access an overview of your account, the total number of emails processed, a breakdown of types of threads detected, and other useful information:
 
 1. Log in to [Zero Trust. ↗︎](https://one.dash.cloudflare.com/)

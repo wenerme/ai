@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/troubleshooting/og.png
 
 # Troubleshooting
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## The token is not verified
 
 Ensure the token has been verified by running the following `curl` command and confirming that the response returns `"status": "active"`.

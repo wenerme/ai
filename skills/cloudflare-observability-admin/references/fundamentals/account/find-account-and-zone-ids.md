@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/find-account-and-z
 
 # Find account and zone IDs
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you [set up a new account](https://developers.cloudflare.com/fundamentals/account/) and [add your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, you may need access to your zone and account IDs for API operations.
 
 ## Copy your account ID

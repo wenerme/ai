@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-meth
 
 # Domain control validation (DCV)
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before a certificate authority (CA) will issue a certificate for a domain, the requester must prove they have control over that domain. This process is known as domain control validation (DCV).
 
 If DCV is not completed, the CA cannot issue or renew the certificate, and visitors to your site will see SSL/TLS errors.

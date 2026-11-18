@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/reference/pathing-status/og.png?v=
 
 # Pathing status
 
-Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/reference/pathing-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Understand pathing
 
 Cloudflare issues the following **Edge Pathing Statuses**:

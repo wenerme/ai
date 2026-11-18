@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Copyrights
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/copyrights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ---
 
 [https://github.com/BurntSushi/toml ↗︎](https://github.com/BurntSushi/toml)

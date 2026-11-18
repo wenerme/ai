@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/apis/clie
 
 # MCP Client
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect your agent to external [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) servers to use their tools, resources, and prompts. Agents SDK v0.20.0 uses `@modelcontextprotocol/client` and negotiates stateless or legacy behavior automatically. The MCP client does not need `@modelcontextprotocol/sdk` or `@modelcontextprotocol/server`.
 
 Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for package, type, OAuth provider, and rollout changes.

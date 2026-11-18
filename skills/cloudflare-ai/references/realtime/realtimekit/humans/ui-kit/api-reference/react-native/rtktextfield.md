@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkTextField
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtktextfield/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A themed text input field component.
 
 ## Properties

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network/websockets/og.png?v=156b6bfabf2
 
 # WebSockets
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/websockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare supports proxied WebSocket connections without additional configuration.
 
 ## Background

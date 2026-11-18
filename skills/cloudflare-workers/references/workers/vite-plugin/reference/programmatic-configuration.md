@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/programma
 
 # Programmatic configuration
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Wrangler configuration file is optional when using the Cloudflare Vite plugin. Without one, the plugin uses default values. You can customize Worker configuration programmatically with the `config` option. This is useful when the Cloudflare plugin runs inside another plugin or framework.
 
 Note

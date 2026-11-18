@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Trusted domains
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/trusted-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security allows you to exempt known partner and internal domains from typical detection scanning. Adding trusted domains helps to reduce false positives on malicious, suspicious, and spoof [dispositions](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/). Email security only checks the date when the domain is created.
 
 ## How trusted domains work

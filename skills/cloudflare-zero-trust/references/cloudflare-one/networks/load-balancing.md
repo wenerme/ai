@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/load-balancing/
 
 # Load balance private network traffic
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connectors such as Cloudflare Tunnel and Cloudflare Mesh make a private network reachable, but they do not let you control how traffic is spread across servers and sites. To do that, put a [private load balancer](https://developers.cloudflare.com/load-balancing/private-network/) in front of your private services.
 
 A private load balancer gets an IP address that users reach through Cloudflare One. When a user connects to that IP, Cloudflare picks a healthy endpoint (a private IP address and its [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)) based on your [steering policy](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/), and sends the traffic to it through whichever connector routes that endpoint.

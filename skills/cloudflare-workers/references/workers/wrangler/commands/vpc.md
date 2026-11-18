@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/vpc/og.png?v=
 
 # VPC
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/vpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage [Workers VPC](https://developers.cloudflare.com/workers-vpc/) services using Wrangler. VPC services allow your Workers to connect to private services on your network through Cloudflare Tunnels.
 
 ## `vpc service create`

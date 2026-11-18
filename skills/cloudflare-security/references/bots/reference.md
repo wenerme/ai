@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/reference/og.png?v=abe72ad5367a648
 
 # Reference
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the following pages for more information on Cloudflare's bot solutions:
 
 - [Bot verification methods](https://developers.cloudflare.com/bots/reference/bot-verification/)

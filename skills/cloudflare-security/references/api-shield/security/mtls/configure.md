@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/mtls/configure/og.p
 
 # Configure mTLS
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/mtls/configure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you configure [mTLS authentication](https://developers.cloudflare.com/api-shield/security/mtls/) for API hosts, Cloudflare can block requests that do not have a [client certificate](https://developers.cloudflare.com/ssl/client-certificates/) for mTLS authentication. Blocking applies only to requests that match the hostname and path conditions in your mTLS rule.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/rules/og.png?v=ec6aab61f01
 
 # Rules
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Network Flow (formerly Magic Network Monitoring) rules monitor your network traffic for Distributed Denial of Service (DDoS) attacks targeting specific IP addresses or prefixes. When traffic exceeds a rule's threshold or matches a known DDoS attack fingerprint, you receive an alert.
 
 ## Rule types

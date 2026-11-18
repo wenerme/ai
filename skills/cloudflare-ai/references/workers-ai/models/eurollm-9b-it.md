@@ -16,8 +16,6 @@ u
 
 Text Generation • utter-project
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/eurollm-9b-it/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/utter-project/eurollm-9b-it` Copy

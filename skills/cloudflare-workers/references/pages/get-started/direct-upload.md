@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/get-started/direct-upload/og.png?
 
 # Direct Upload
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/get-started/direct-upload/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Direct Upload enables you to upload your prebuilt assets to Pages and deploy them to the Cloudflare global network. You should choose Direct Upload over Git integration if you want to [integrate your own build platform](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/) or upload from your local computer.
 
 This guide will instruct you how to upload your assets using Wrangler or the drag and drop method.

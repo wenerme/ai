@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/deploy-api/og.png?v=6
 
 # Deploy a WAF managed ruleset via API (zone)
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/deploy-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to deploy a managed ruleset at the zone level.
 
 Deploy WAF managed rulesets to the `http_request_firewall_managed` phase. Other managed rulesets, like DDoS Attack Protection managed rulesets, must be deployed to a different phase. Refer to the specific managed ruleset documentation for details.

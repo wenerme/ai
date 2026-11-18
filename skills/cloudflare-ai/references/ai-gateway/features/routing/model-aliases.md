@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/routing/model-alias
 
 # Model aliases
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/routing/model-aliases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A model alias is a pool of models that your application calls by a single name, such as `custom/support-fast`. For each request, AI Gateway picks a model from the pool in one of two ways:
 
 - **Default order**: Try the models in the order you set, and fall back to the next model if one fails.

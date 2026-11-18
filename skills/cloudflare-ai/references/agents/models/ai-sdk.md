@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce1
 
 # AI SDK
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `agents/models/ai-sdk` is an [AI SDK ↗︎](https://ai-sdk.dev/) provider for Workers AI and AI Gateway. `createAI` returns a full `ProviderV4`, so its models work anywhere the AI SDK takes a model: `generateText`, `streamText`, tools, structured output, and [Think](https://developers.cloudflare.com/agents/harnesses/think/).
 
 The provider takes two kinds of model. Both go through the `AI` binding, or over HTTP with an [account id and API token](#use-an-account-id-and-api-token):

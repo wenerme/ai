@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/reference/context/og.png?v=39fa48
 
 # Zaraz Context
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/reference/context/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Zaraz Context is a versatile object that provides a set of configurable properties for Zaraz, a web analytics tool for tracking user behavior on websites. These properties can be accessed and utilized across various components, including [Worker Variables](https://developers.cloudflare.com/zaraz/variables/worker-variables/) and [JSONata expressions](https://developers.cloudflare.com/zaraz/advanced/using-jsonata/).
 
 System properties, which are automatically collected by Zaraz, provide insights into the user's environment and device, while Client properties, obtained through [Zaraz Web API](https://developers.cloudflare.com/zaraz/web-api/) calls like zaraz.track(), offer additional information on user behavior and actions.

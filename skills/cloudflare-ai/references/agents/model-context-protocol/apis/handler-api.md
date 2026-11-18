@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/apis/hand
 
 # MCP Server
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `createMcpHandler` from `agents/mcp/server` serves an MCP SDK v2 server from a Worker. The handler is stateless: it builds a fresh server for every request, so you do not need a Durable Object, protocol session, or WebSocket.
 
 To move an existing `McpAgent` server, refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/). The deprecated API is documented in the [`McpAgent` reference](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/).

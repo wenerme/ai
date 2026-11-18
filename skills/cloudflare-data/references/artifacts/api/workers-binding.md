@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/api/workers-binding/og.png?v=
 
 # Workers binding
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/api/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Artifacts Workers binding to create, import, inspect, fork, and delete repos directly from your Worker. The Artifacts binding returns disposable repository capabilities that support metadata lookup, token management, Git object inspection, path-based file reads, commit history, and forking.
 
 Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/) first, then choose the namespace name you will bind here.

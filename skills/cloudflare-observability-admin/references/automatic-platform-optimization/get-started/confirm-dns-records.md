@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/automatic-platform-optimization/get-sta
 
 # Confirm DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you change your nameservers, confirm your DNS records are displaying correctly.
 
 1. In the Cloudflare dashboard, go to the DNS **Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

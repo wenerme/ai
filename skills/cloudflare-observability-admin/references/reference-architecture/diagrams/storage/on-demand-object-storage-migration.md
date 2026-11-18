@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/storage
 
 # On-demand Object Storage Data Migration
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Migrating data between cloud object storage providers can be challenging and expensive. You need to ensure no objects are missed, especially when new data is coming in during your migration. Additionally, there may be a significant one-time data transfer fee to consider.

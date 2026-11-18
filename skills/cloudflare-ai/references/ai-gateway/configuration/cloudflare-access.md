@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-acc
 
 # Cloudflare Access
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Protect your gateway with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) so users authenticate with your identity provider before they can send requests. Putting AI Gateway behind Access gives you identity-aware control over your AI traffic: you decide who can reach the gateway, tie each request to a verified user, and govern usage per user without building your own authentication layer or passing user IDs from the client application.
 
 To put AI Gateway behind Access, you must first [set a custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/) on your gateway and have [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) enabled on your account.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-
 
 # Access authentication logs
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Access authentication logs help you track who accessed your protected applications, when they accessed them, and whether they were allowed in. Use these logs to investigate suspicious login attempts, audit user activity, or troubleshoot access issues.
 
 Cloudflare Access generates two types of audit logs:

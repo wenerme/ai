@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/og.
 
 # Bulk Redirects
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bulk Redirects allow you to define a large number of URL redirects at the account level, which can apply across domains in your account. These redirects navigate the user from a source URL to a target URL using a given HTTP status code. URL redirection is also known as URL forwarding.
 
 Unlike dynamic URL redirects created in [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), Bulk Redirects are essentially static. They do not support string replacement operations or regular expressions. However, you can configure URL redirect parameters that affect how source URLs are matched and how the redirect is performed.

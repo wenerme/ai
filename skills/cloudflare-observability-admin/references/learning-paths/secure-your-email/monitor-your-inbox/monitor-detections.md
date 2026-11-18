@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/monito
 
 # Monitor detections
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spam and Malicious emails are blocked outright by Email security, but Suspicious and Spoof dispositions should be monitored. Suspicious messages should be investigated by a security analyst to determine the legitimacy of the message.
 
 [PhishGuard](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/) (Cloudflare's managed email security service) can review these messages for you and move them from the end user inbox if they are deemed malicious.

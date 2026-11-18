@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/transform/examples/rewrite-archiv
 
 Create a transform rule to rewrite the URL format `/posts/<YYYY>-<MM>-<DD>-<TITLE>` to the new format `/posts/<YYYY>/<MM>/<DD>/<TITLE>`.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-archive-urls-new-format/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To rewrite the URLs of a blog archive that follow the URL format `/posts/<YYYY>-<MM>-<DD>-<TITLE>` to the new format `/posts/<YYYY>/<MM>/<DD>/<TITLE>`, create the following URL rewrite rule:
 
 Text in **Expression Editor**:

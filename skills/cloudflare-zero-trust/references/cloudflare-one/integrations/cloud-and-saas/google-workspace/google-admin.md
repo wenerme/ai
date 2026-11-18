@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-s
 
 # Google Admin
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-admin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Google Admin integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Google Workspace account that could leave you and your organization vulnerable.
 
 ## Integration prerequisites
@@ -37,8 +35,8 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 | --- | --- | --- | --- |
 | Google Workspace: Admin user with two-factor authentication disabled | `5f7c1f62-0ac6-4422-b3d3-d0566dd4e3f2` | Critical | An administrator in Google Workspace does not have two-factor authentication enabled. |
 | Google Workspace: User with two-factor authentication disabled | `739e1965-2ab4-4946-8a56-73fd75154efa` | High | A user in Google Workspace does not have two-factor authentication enabled. |
-| Google Workspace: Admin user with Gemini license with two-factor authentication disabled | `27a0a9a0-13c6-4d8f-a67c-b455dd213cb9` | High | An administrator with a Gemini for Google Workspace license does not have two-factor authentication enabled. |
-| Google Workspace: User with Gemini license with two-factor authentication disabled | `c82024dc-b836-4b86-8c90-ab07971474e4` | Medium | A user with a Gemini for Google Workspace license does not have two-factor authentication enabled. |
+| Google Workspace: Admin user with Gemini license with two-factor authentication disabled | `4d179f48-ab14-4f20-a45c-2bcf8228d95d` | High | An administrator with a Gemini for Google Workspace license does not have two-factor authentication enabled. |
+| Google Workspace: User with Gemini license with two-factor authentication disabled | `1b33c200-c0cc-4c55-99fa-92c16a98976e` | Medium | A user with a Gemini for Google Workspace license does not have two-factor authentication enabled. |
 | Google Workspace: User without recovery email | `2e2383bb-51e8-47fc-8ba7-2dd255c2545f` | Low | A user in Google Workspace does not have a recovery email set. |
 | Google Workspace: User without recovery phone number | `ec326c68-f331-4597-9ec4-43dc197c86f4` | Low | A user in Google Workspace does not have a recovery phone number set. |
 
@@ -50,8 +48,8 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 | Google Workspace: Suspended admin user | `31e02a11-aa3b-4278-97d3-9c0f7e8fd2c7` | Medium | An administrator account in Google Workspace is suspended. |
 | Google Workspace: Inactive user | `7c098546-2e67-4f01-9fb7-bd48412bd178` | Low | A user account in Google Workspace has not logged in for 30 days. |
 | Google Workspace: Suspended user | `84f514e3-f12d-49e5-bdfe-9073e336d89e` | Low | A user account in Google Workspace is suspended. |
-| Google Workspace: Admin user suspended with AI Ultra license | `ee7d4ed6-479f-404f-8dbd-f82dce2a0f66` | Low | An administrator account in Google Workspace with an AI Ultra (Gemini for Workspace) license is suspended. |
-| Google Workspace: User suspended with AI Ultra license | `cf20e808-29ad-4026-a8f9-6ec3e069376c` | Low | A user account in Google Workspace with an AI Ultra (Gemini for Workspace) license is suspended. |
+| Google Workspace: Admin user suspended with AI Ultra license | `0d19a636-e4ca-4ab1-b590-7e0ff19c7fef` | Low | An administrator account in Google Workspace with an AI Ultra (Gemini for Workspace) license is suspended. |
+| Google Workspace: User suspended with AI Ultra license | `e642db61-dc20-4742-89c4-b8041ed237cb` | Low | A user account in Google Workspace with an AI Ultra (Gemini for Workspace) license is suspended. |
 
 ### Third-party apps
 

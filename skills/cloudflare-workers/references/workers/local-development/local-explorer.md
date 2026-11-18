@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/local-development/local-explore
 
 # Local Explorer
 
-Last updated Oct 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Local Explorer is a browser-based interface for viewing and editing the data in your local [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and debugging Worker invocations during development. It is available at `/cdn-cgi/local/explorer` on your local development server.
 
 Instead of running CLI commands or writing throwaway code to inspect local state, you can open Local Explorer in your browser to work with your data, view traces, and search logs. This is useful when you want to seed test data, verify what your Worker wrote, debug a failing request, or run SQL queries against a local [D1](https://developers.cloudflare.com/d1/) database.

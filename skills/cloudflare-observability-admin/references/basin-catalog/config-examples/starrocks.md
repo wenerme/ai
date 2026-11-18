@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/config-examples/starrocks
 
 # StarRocks
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/config-examples/starrocks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is an example of using [StarRocks ↗︎](https://docs.starrocks.io/docs/data_source/catalog/iceberg/iceberg_catalog/#rest) to connect, query, modify data from Basin Catalog (read-write).
 
 ## Prerequisites

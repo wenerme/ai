@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-suppo
 
 # PQC support
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The sections below summarize third-party software support for the post-quantum algorithms Cloudflare has deployed, organized by software category. [Contributions](https://developers.cloudflare.com/style-guide/contributions/) to keep the listing up-to-date are welcome.
 
 Two classes of algorithm are tracked:

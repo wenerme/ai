@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/limits/og.png?v=b40d5ba27
 
 # Limits
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare limits the number of sites for which you can track web analytics, as well as the number of rules allowed for each plan type. Refer to the following tables for more information.
 
 ## Site limits

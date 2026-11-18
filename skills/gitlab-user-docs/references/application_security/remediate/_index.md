@@ -36,7 +36,7 @@ organization's risk management framework to guide your decision. The guidance he
 it to your organization's risk profile.
 
 If available, use the
-[Security Analyst Agent](../../duo_agent_platform/agents/foundational_agents/security_analyst_agent.md)
+[Security Analyst Agent](../security_analyst_agent.md)
 to accelerate vulnerability remediation. The agent triages, assesses, and
 remediates security findings by providing insights, risk assessments, and remediation guidance.
 

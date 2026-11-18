@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/cl
 
 # SentinelOne and Cloudflare — An AI-driven security ecosystem for autonomous, risk-based protection
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Abstract
 
 This reference architecture outlines how Cloudflare and SentinelOne solutions integrate to create an AI-driven security ecosystem that combines autonomous endpoint protection with Zero Trust network access, shared risk intelligence, and automated remediation and recovery workflows. Organizations can leverage this integration to enforce risk-based access policies, accelerate threat hunting with generative AI, and orchestrate autonomous responses across both platforms.

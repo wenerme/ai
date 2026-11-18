@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/general/og.pn
 
 # General commands
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/general/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 General Wrangler commands for authentication, telemetry, and shell completions.
 
 ## `docs`

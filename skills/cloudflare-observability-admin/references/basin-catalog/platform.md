@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/platform/og.png?v=62ec4e4
 
 # Platform
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Was this helpful?
 
 YesNo

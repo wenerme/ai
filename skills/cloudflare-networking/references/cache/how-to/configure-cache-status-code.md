@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/configure-cache-status-cod
 
 # Cache by status code
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Customers can set cache time-to-live (TTL) based on the response status from the origin web server. Cache TTL refers to the duration of a resource in the Cloudflare network before being marked as `STALE` or discarded from cache. Status codes are returned by a resource's origin.
 
 Setting cache TTL based on response status overrides the [default cache behavior (standard caching)](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) for static files and overrides cache instructions sent by the origin web server. To cache non-static assets, set a [Cache Level of Cache Everything using a Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/#example-requests). Setting `no-store` **Cache-Control** or a low TTL (using `max-age`/`s-maxage`) increases requests to origin web servers and decreases performance.

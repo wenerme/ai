@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/page-rules/troubleshooting/og.png
 
 # Troubleshooting
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/page-rules/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the following resources to help you troubleshoot issues with Page Rules.
 
 - [Troubleshoot Page Rules - General](https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/)

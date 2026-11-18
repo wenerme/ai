@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/p
 
 # Parent zone on partial setup
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When the parent zone is using a [CNAME setup (partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)<sup>[1](#user-content-fn-2)</sup>, the steps to set up your child zone depend on whether the subdomain already exists in the parent domain.
 
 ## Subdomain does not exist

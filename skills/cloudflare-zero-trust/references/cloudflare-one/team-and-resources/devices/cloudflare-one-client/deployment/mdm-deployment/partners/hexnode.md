@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Hexnode
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/hexnode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Windows
 
 1. Create a script file with `.bat`, `.cmd`, and `.ps1` file formats to download, install and configure the Cloudflare One Client (formerly WARP) Windows application on the device. Listed below is a sample script with all of the configurable parameters:

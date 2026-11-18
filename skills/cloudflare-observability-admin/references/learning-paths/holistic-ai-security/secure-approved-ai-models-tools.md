@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/sec
 
 # Secure approved AI models and tools
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Manage posture and use within trusted AI tools
 
 As you decide which AI tools to sanction within your organization, you can develop security controls with the expectation of consistent use.

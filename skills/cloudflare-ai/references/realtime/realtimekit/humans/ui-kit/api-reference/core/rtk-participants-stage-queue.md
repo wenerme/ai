@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-participants-stage-queue
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-participants-stage-queue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Displays participants who have requested access to the stage. The list includes controls for accepting or denying their requests.
 
 ## Properties

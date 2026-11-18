@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending
 
 # Zone stuck in Pending Nameserver Update
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A zone stays in **Pending Nameserver Update** when Cloudflare cannot confirm that your domain is delegated to the Cloudflare nameservers assigned to it.
 
 The most common reasons are that the nameserver change was not fully published at the registrar, that the domain is not using the exact nameservers assigned to it, or that stale DNSSEC records at the registrar are blocking the delegation.

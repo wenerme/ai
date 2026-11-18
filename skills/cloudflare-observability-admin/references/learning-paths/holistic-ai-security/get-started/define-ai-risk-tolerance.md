@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/get
 
 # Define your company's AI risk tolerance and strategy
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you can secure AI, you need to understand your organization's goals and concerns for your users and data. This first step is crucial for anyone new to AI security because it helps you align on your overall risk tolerance for generative AI.
 
 The level of risk you are willing to accept will determine how quickly you need to act and how deeply you need to implement security measures. Your specific concerns will then guide the exact security approaches you take to monitor and control AI usage.

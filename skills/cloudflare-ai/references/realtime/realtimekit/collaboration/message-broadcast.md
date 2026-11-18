@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/collaboration/mess
 
 # Message broadcast
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/collaboration/message-broadcast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The broadcast APIs allow a user to send custom messages to all other users in a meeting.
 
 WebMobile

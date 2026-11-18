@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/how-to-use/og.pn
 
 # How to use
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/how-to-use/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The reference architecture content in our documentation is designed to help you understand how Cloudflare has been designed and built, and how our products and services integrate with your current IT architecture.
 
 Below are the different types of architecture content and information is organized from high level reference architectures, to design guides with best practices and guidelines to implementation guides which provide detailed steps to deploy a specific solution.

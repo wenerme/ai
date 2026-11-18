@@ -5,7 +5,7 @@ description: "Browse OpenCode model IDs, capabilities, context windows, and pric
 
 # [OpenCode logo]OpenCode
 
-Access 138 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 142 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode documentation](https://opencode.ai/v2/docs/console/models/).
 
@@ -400,6 +400,18 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
+    "model": "opencode/gemini-4-hydrogen",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.5,
+    "outputCost": 7.5
+  },
+  {
     "model": "opencode/glm-5",
     "imageInput": false,
     "audioInput": false,
@@ -458,18 +470,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.5
-  },
-  {
-    "model": "opencode/glm-5.3-flash-free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 32000,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "opencode/gpt-5",
@@ -760,6 +760,30 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
+    "model": "opencode/gpt-6.2-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 8,
+    "outputCost": 40
+  },
+  {
+    "model": "opencode/gpt-6.2-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
     "model": "opencode/grok-4.5",
     "imageInput": true,
     "audioInput": false,
@@ -806,6 +830,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 1,
     "outputCost": 2
+  },
+  {
+    "model": "opencode/hy4-flash-free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "opencode/iceman-free",
@@ -875,7 +911,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "maxOutput": 1048576,
     "inputCost": 3,
     "outputCost": 15
   },
@@ -938,18 +974,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.3,
     "outputCost": 1.2
-  },
-  {
-    "model": "opencode/minimax-m3.1-flash-free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 512000,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "opencode/mistral-large-4",

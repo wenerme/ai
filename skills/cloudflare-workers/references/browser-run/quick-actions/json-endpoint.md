@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint
 
 # /json - Capture structured data using AI
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `/json` endpoint extracts structured data from a webpage. You can specify the expected output using either a `prompt` or a `response_format` parameter which accepts a JSON schema. The endpoint returns the extracted data in JSON format.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/observability/metrics/og.png
 
 # Metrics and analytics
 
-Last updated May 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/observability/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hyperdrive exposes analytics that allow you to inspect query volume, query latency, cache hit ratios, and connection pool metrics for each Hyperdrive configuration in your account.
 
 ## Metrics

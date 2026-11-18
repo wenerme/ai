@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Register a hardware Cloudflare One Appliance
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/register-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To set up and use the hardware version of Cloudflare One Appliance (formerly Magic WAN Connector), you first need to register it with your account. This is not applicable to Virtual Cloudflare One Appliance.
 
 1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

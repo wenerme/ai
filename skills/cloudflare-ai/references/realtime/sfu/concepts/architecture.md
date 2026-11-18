@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/concepts/architecture/og.p
 
 # Application architecture
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Realtime SFU forwards media tracks and DataChannels between endpoints. Your application supplies the signaling, state, and permissions around those connections.
 
 An endpoint can be a browser, embedded device, native process, or server with a WebRTC implementation. Endpoints publish media, subscribe to media, or do both.

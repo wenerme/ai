@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/og.png?v=
 
 # Reference
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [API](https://developers.cloudflare.com/workers/vite-plugin/reference/api/)
 - [Static Assets](https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/)
 - [Debugging](https://developers.cloudflare.com/workers/vite-plugin/reference/debugging/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/get-started/og.png?v=dd8170
 
 # Get started
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Browser Run (formerly Browser Rendering) allows you to programmatically control a headless browser, enabling you to do things like take screenshots, generate PDFs, and perform automated browser tasks. This guide will help you choose the right integration method and get you started with your first project.
 
 Browser Run offers two categories of integration methods:
@@ -98,7 +96,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-14",
+  "compatibility_date": "2026-11-18",
   "browser": {
     "binding": "BROWSER"
   }
@@ -110,7 +108,7 @@ name = "browser-quick-action"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-14"
+compatibility_date = "2026-11-18"
 
 [browser]
 binding = "BROWSER"
@@ -312,7 +310,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-14",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -333,7 +331,7 @@ name = "browser-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-14"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

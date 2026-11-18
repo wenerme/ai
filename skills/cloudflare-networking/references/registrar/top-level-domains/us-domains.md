@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/top-level-domains/us-domains/
 
 # .US domains
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/top-level-domains/us-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Registration requirements for .US domains
 
 If you want to register a `.us` domain, you must have a genuine connection to the United States as described in the [usTLD Nexus Policy ↗︎](https://www.about.us/policies). When registering a domain name, registrants must identify the category under which they qualify for the usTLD Nexus Requirement:

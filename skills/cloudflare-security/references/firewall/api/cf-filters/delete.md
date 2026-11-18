@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-filters/delete/og.png?v
 
 # DELETE examples
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/delete/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Delete multiple filters
 
 This example deletes filters with IDs `{filter_id_1}` and `{filter_id_2}`.

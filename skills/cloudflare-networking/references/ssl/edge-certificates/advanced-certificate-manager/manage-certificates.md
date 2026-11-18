@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/advanced-certific
 
 # Manage advanced certificates
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Create a certificate
 
 If you are using an existing [Universal SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), Cloudflare will automatically replace this certificate once you finish ordering your advanced certificate.

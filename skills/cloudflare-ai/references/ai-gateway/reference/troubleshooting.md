@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/og
 
 # Troubleshooting
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page covers common issues when using AI Gateway. For provider-specific troubleshooting, refer to the relevant provider documentation.
 
 ## Authentication errors

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Configure hardware Appliance
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this page you will find instructions on how to configure Cloudflare One Appliance. This guide provides a step-by-step guide for Cloudflare One Appliance initial setup. You can either return here after setting up your Cloudflare One Appliance, or refer to the [Maintenance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/) section where you will find instructions on how to update your settings.
 
 ## Prerequisites

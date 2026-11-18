@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/concepts/best-practices/og.pn
 
 # Best practices for Artifacts
 
-Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/concepts/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Artifacts works best when you isolate work, scope access narrowly, keep metadata separate, and partition storage deliberately.
 
 Use these patterns to structure repos for agents, automation, and shared systems.

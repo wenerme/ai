@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/regional-services/spe
 
 # Regionalized Spectrum Applications
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/spectrum-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Regionalized Spectrum Applications are configured with the help of your account team. Contact your account team to enable Regional Services and Spectrum for your account.

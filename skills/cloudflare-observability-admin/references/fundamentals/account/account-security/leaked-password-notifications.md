@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/l
 
 # Leaked Password Notifications
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare automatically checks if your password has been compromised when you log in to the Cloudflare dashboard. Every time you log in to your account, we will securely verify through threat intelligence sources to confirm if your password has been leaked in a past data breach.
 
 Refer to the [blog post ↗︎](https://blog.cloudflare.com/helping-keep-customers-safe-with-leaked-password-notification/) for more information on how Cloudflare checks for leaked credentials.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # authentik (SAML)
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/authentik-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect authentik to Cloudflare Access with Security Assertion Markup Language (SAML) 2.0.
 
 ## Prerequisites

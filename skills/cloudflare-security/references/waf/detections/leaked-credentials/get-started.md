@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/leaked-credentials/get-s
 
 # Get started
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 1. Turn on the detection
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
@@ -215,21 +213,41 @@ For more examples of custom detection locations for different request types, ref
 
 ## Test your configuration
 
-Cloudflare provides a special set of case-sensitive credentials for testing the configuration of the leaked credentials detection.
+Cloudflare provides case-sensitive credential pairs with predefined test results. After turning on and configuring leaked credentials detection, send each username with its matching password in your test HTTP requests.
 
-After enabling and configuring the detection, you can use the credentials mentioned in this section in your test HTTP requests.
+The following pairs trigger these signals, subject to plan availability:
 
-Test credentials for users on a Free plan (will also work in paid plans):
+| Username | Password | Test result |
+| --- | --- | --- |
+| `CF_LEAKED_USERNAME_FREE` | `CF_LEAKED_PASSWORD` | Password Leaked |
+| `CF_EXPOSED_USERNAME`, `CF_EXPOSED_USERNAME@example.com`, or `CF_EXPOSED_USERNAME@cloudflare.com` | `CF_EXPOSED_PASSWORD` | User and Password Leaked, Username Leaked, and Password Leaked |
+| `CF_LEAKED_USERNAME`, `CF_LEAKED_USERNAME@example.com`, or `CF_LEAKED_USERNAME@cloudflare.com` | `CF_LEAKED_PASSWORD` | User and Password Leaked, Username Leaked, and Password Leaked |
 
-- Username: `CF_LEAKED_USERNAME_FREE`
-- Password: `CF_LEAKED_PASSWORD`
+Use the `@cloudflare.com` variants if your application rejects `@example.com` addresses.
 
-Test credentials for users on paid plans (will not work on Free plans):
+The test pairs are accepted on all plans. The fields you can use depend on your plan:
 
-- Username: `CF_EXPOSED_USERNAME` or `CF_EXPOSED_USERNAME@example.com`
-- Password: `CF_EXPOSED_PASSWORD`
+| Test result | Rules language field | Availability |
+| --- | --- | --- |
+| Password Leaked | [`cf.waf.credential_check.password_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.password_leaked/) | All plans |
+| User and Password Leaked | [`cf.waf.credential_check.username_and_password_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_and_password_leaked/) | Pro plan and above |
+| Username Leaked | [`cf.waf.credential_check.username_leaked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_leaked/) | Enterprise plan |
 
-Cloudflare considers these specific credentials as having been previously leaked. Use them in your tests to check the behavior of your current configuration.
+To test only the **Password Leaked** signal on any plan, use `CF_LEAKED_USERNAME_FREE` with `CF_LEAKED_PASSWORD`.
+
+### Test individual credential signals
+
+Use the exact listed username/password combinations to reproduce the predefined results. Substituting your own username does not trigger the predefined password-leaked result, even when you use `CF_LEAKED_PASSWORD` or `CF_EXPOSED_PASSWORD`. This limitation applies to the test credentials. For real credentials, password-only detection checks the password independently of the username.
+
+On Enterprise plans, a recognized test username with a different password still triggers **Username Leaked**. Mixing test and non-test values therefore does not always produce a clean result.
+
+### Check results at your origin server
+
+To inspect test results at your origin server, turn on the [**Add Leaked Credentials Checks Header** managed transform](https://developers.cloudflare.com/rules/transform/managed-transforms/configure/). Inspect the `Exposed-Credential-Check` request header received by your origin, not the response headers returned to your client.
+
+For the password-only test pair, expect `Exposed-Credential-Check: 4`. For a matching username/password-pair test on a paid plan, expect `Exposed-Credential-Check: 1`.
+
+Multiple leaked credentials fields can be `true`, but the header reports a single result. It does not list a separate value for every matching field. For header values and plan availability, refer to [Add leaked credentials checks header](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/#add-leaked-credentials-checks-header).
 
 Was this helpful?
 
@@ -240,5 +258,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#page","headline":"Get started","description":"Enable leaked credentials detection and configure custom or managed detections.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/og.png?v=c1fc951010425434","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#page","headline":"Get started","description":"Enable leaked credentials detection and configure custom or managed detections.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/og.png?v=c1fc951010425434","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover","Authentication"]}
 ```

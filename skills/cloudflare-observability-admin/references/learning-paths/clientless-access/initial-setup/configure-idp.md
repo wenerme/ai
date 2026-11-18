@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/initia
 
 # Configure an identity provider (recommended)
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/configure-idp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An [identity provider (IdP)](https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider/) stores and manages users' digital identities. You can integrate your existing identity provider with Cloudflare Zero Trust in order to manage user access to your private network. This requires configuration both in Cloudflare and with the identity provider itself.
 
 Note

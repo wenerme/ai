@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # DLP settings
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DLP settings allow you to configure account-level settings that apply across all DLP profiles and policies. These settings are located in **Zero Trust** > **Data loss prevention** > **DLP settings** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 ## Optical Character Recognition (OCR)

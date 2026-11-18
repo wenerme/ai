@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-eg
 
 # Setup
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use the [Edit Zone Settings API endpoint](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) to set up Dedicated CDN Egress IPs (formerly known as Aegis). If you are not familiar with how Cloudflare API works, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/api/).
 
 Enterprise-only

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/dns-p
 
 # DNS persistence
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide explains how to achieve DNS persistence when using Cloudflare Load Balancing, similar to functionality provided by traditional DNS-based load balancers.
 
 DNS persistence ensures that subsequent DNS requests from the same local DNS server receive the same IP address. This is useful for applications that require session consistency, such as VPN connections or authentication systems.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/concepts/prefix-delegations/og.pn
 
 # Prefix delegations
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/prefix-delegations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Prefix delegations allow a prefix owner (Account A) to grant another Cloudflare account (Account B) permission to use all or part of their BYOIP prefix. The original prefix remains managed by Account A, but Account B can use the delegated IPs with CDN services (including Cloudflare for SaaS) or Spectrum. Refer to [service bindings](https://developers.cloudflare.com/byoip/service-bindings/) for more information on the services an IP can be bound to.
 
 ## CDN

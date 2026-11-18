@@ -11,8 +11,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RealtimeKitClient
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/realtimekitclient/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The RealtimeKitClient class is the main class of the web core library. An object of the RealtimeKitClient class can be created using `await RealtimeKitClient.init({ ... })`. Typically, an object of `RealtimeKitClient` is named `meeting`.
 
 - [RealtimeKitClient](#module_RealtimeKitClient)

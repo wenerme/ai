@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-meth
 
 # Validation backoff schedule
 
-Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Domain control validation (DCV) has to happen before a certificate authority (CA) will issue a certificate for a domain. If DCV fails during issuance or renewal, Cloudflare automatically retries it on a schedule.
 
 If you use [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) or if [Cloudflare automatically performs DCV for you](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/), this page is only informational. If you have to manually perform DCV, consider the following sections about the validation schedule and remember that DCV tokens have a [fixed validity period](#dcv-tokens-validity).

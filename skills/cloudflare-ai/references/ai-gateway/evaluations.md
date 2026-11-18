@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/evaluations/og.png?v=3a2b975
 
 # Evaluations
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deprecated
 
 Evaluations are deprecated and no longer supported for new accounts.

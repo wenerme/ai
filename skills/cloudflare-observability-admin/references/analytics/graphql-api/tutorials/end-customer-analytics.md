@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/end-cus
 
 # Querying HTTP events by hostname with GraphQL
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/end-customer-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Aggregated HTTP metrics by hostname over time
 
 In this example, we are going to use the GraphQL Analytics API to query aggregated metrics about HTTP events by hostname over a specific period of time.

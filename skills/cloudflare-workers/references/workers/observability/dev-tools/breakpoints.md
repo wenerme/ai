@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/dev-tools/breakpo
 
 # Breakpoints
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Debug via breakpoints
 
 When developing a Worker locally using Wrangler or Vite, you can debug via breakpoints in your Worker. Breakpoints provide the ability to review what is happening at a given point in the execution of your Worker. Breakpoint functionality exists in both DevTools and VS Code.

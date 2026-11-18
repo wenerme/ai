@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/og.png?v=6d9268a63
 
 # Client-side security
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Ensures the safety and privacy of your website visitors' browsing environment.
 
 Available on all plans

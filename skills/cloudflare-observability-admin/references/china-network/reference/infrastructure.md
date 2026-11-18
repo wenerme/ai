@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/reference/infrastructure/
 
 # Infrastructure
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/reference/infrastructure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## China data centers
 
 For up-to-date information, refer to the [Cloudflare China Network ↗︎](https://www.cloudflare.com/china-network/) page.

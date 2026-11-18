@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/performa
 
 # Logs
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Logpush
 
 Use [Logpush](https://developers.cloudflare.com/logs/logpush/) to push your request or event logs to your cloud service provider using Logpush, which can be configured via the Cloudflare dashboard or API.

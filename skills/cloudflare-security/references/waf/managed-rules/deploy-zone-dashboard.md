@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard
 
 # Deploy a WAF managed ruleset in the dashboard
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The instructions in this page provide general guidance for deploying and configuring a managed ruleset for a zone.
 
 For more specific instructions, refer to the following pages:

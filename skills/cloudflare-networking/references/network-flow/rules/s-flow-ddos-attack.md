@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/o
 
 # sFlow DDoS attack rule
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An sFlow DDoS attack rule (beta) alerts you when a DDoS attack is detected in your network traffic. Network Flow (formerly Magic Network Monitoring) uses the same DDoS detection rules that protect Cloudflare's global network to identify these attacks.
 
 To use sFlow DDoS attack rules, you must send sFlow data to Cloudflare. You can only configure these rules through the [Network Flow Rules API](https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/) — they are not available in the dashboard.

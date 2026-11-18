@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • MiniMax
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/h3-lite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `minimax/h3-lite` Copy

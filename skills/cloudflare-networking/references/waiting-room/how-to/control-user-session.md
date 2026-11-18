@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/how-to/control-user-sessio
 
 # Control user session settings
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/control-user-session/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Adjust these settings to control how long a user can hold their place on your site after leaving the waiting room.
 
 ## Session duration

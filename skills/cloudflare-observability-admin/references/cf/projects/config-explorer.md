@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cf/projects/config-explorer/og.png?v=88
 
 # Configuration explorer
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/config-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `cloudflare.config.ts` is a TypeScript file, so every field has a type and a description. Use the configuration explorer to see how the file describes the main parts of an application: project settings, the Worker, bindings, triggers, and exports.
 
 Select a category, then select a highlighted field to see its type, description, default value, and accepted options. Editors with TypeScript support show the same information in autocomplete and hover text as you write the file, and type checking flags values that do not match.

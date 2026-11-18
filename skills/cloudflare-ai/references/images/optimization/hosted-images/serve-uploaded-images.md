@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/serve
 
 # Serve uploaded images
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To serve images uploaded to Cloudflare Images, you must have:
 
 - Your Images account hash

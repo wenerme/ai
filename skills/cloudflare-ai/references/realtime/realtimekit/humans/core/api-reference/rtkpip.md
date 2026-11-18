@@ -11,8 +11,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKPip
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkpip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Modules
 
 <dl><dt><a href="#module_RTKPip">RTKPip</a></dt>

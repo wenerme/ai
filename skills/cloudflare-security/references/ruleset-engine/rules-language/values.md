@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/values/og
 
 # Values
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/values/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When an HTTP request reaches the Cloudflare global network, Cloudflare creates a table of field–value pairs against which to match expressions. This table exists for as long as the current request is being processed.
 
 The values that populate the lookup tables of the Rules language are drawn from a variety of sources:

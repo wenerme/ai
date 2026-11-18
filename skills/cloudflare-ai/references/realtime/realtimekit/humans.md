@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/og.png?v=cb
 
 # Build for humans
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A human participant joins a RealtimeKit meeting from a browser or mobile app using the RealtimeKit SDKs. Choose the prebuilt UI Kit for a ready-made meeting interface, or the Core SDK to build your own.
 
 To add a server-side agent to a meeting instead, refer to [Agent Participant](https://developers.cloudflare.com/realtime/realtimekit/agents/).

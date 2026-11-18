@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/transformations/ove
 
 # Overview
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/overview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Transformations are requests to optimize and manipulate remote images that are stored outside of Images.
 
 When you ship applications on Cloudflare, you can use Images to automatically optimize and cache your images from any origin.

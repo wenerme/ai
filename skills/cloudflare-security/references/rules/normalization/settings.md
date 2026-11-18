@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/normalization/settings/og.png?v=6
 
 # URL normalization settings
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/normalization/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare dashboard provides the following settings to manage URL normalization:
 
 ## Normalization type

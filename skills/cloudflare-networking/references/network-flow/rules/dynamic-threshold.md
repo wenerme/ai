@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/rules/dynamic-threshold/og
 
 # Dynamic threshold rule
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/dynamic-threshold/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A dynamic threshold rule (beta) monitors your network traffic patterns and automatically adjusts the Distributed Denial of Service (DDoS) threshold based on traffic history. Network Flow (formerly Magic Network Monitoring) compares total traffic across all IP prefixes and addresses in the rule against the dynamic threshold, measured in bits or packets per second. If traffic exceeds the threshold, Network Flow sends an alert.
 
 To use dynamic threshold rules, you must send NetFlow or sFlow data to Cloudflare. You can only configure dynamic threshold rules through the [Network Flow Rules API](https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/) — they are not available in the dashboard.

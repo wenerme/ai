@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/troubleshooting/dns-issues/og.png?v
 
 # General DNS issues
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/troubleshooting/dns-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In web browsers such as Safari or Chrome, there are several commonly observable DNS errors:
 
 - `This site can't be reached`

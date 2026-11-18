@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/how-to/control-api-acc
 
 # Control API Access
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Super administrators of an Enterprise account are capable of selectively scoping the API access. API access can be restricted for the entire account or only for specified account members.
 
 Note that the feature does not disable API calls not related to the Enterprise account.

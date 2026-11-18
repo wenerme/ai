@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/upload-images/upload-url
 
 # Upload via URL
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/upload-url/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you upload an image, check the list of [supported formats and dimensions](https://developers.cloudflare.com/images/get-started/limits) to confirm your image will be accepted.
 
 You can use the Images API to use a URL of an image instead of uploading the data.

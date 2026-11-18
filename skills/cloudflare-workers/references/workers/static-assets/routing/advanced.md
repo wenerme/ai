@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/routing/advanced/
 
 # Advanced
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/advanced/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to configure advanced routing options for the static assets of your Worker.
 
 - [Deployments and version skew](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/)

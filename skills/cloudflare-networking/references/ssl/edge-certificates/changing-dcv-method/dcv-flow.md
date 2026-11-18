@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-meth
 
 # Domain control validation flow
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To obtain [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), and [Custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/) certificates, Cloudflare partners with different publicly trusted [certificate authorities (CAs)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/).
 
 However, every time a CA is requested to issue or renew a certificate, the requester must prove that they have control over the domain. That is when the DCV process takes place, with the proof usually consisting of placing an HTTP token at a standard URL path (`/.well-known/pki-validation`), or placing a TXT record at the authoritative DNS provider.

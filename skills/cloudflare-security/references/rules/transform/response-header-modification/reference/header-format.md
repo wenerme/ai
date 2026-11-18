@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/response-header-modific
 
 # Format of HTTP response header names and values
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/response-header-modification/reference/header-format/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The **name** of the HTTP response header you want to set or remove can only contain:
 
 - Alphanumeric characters: `a`- `z`, `A`- `Z`, and `0`- `9`

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/observability/og.png?v=
 
 # Observability
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Metrics and analytics](https://developers.cloudflare.com/basin-pipelines/observability/metrics/)
 
 Was this helpful?

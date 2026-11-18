@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/private-network/og.png?v
 
 # Private Network Load Balancing
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Private Network Load Balancing enables you to load balance traffic between servers within a data center ([endpoint steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/)) and between private applications. This helps you eliminate the need for hardware appliances and facilitates the migration of your infrastructure to the cloud, providing advantages such as elastic scalability and enhanced reliability.
 
 Private Network Load Balancing supports not only public IPs but also virtual IPs and private IPs as endpoint values.

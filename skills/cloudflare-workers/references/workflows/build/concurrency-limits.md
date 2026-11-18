@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/concurrency-limits/og.p
 
 # Concurrency limits
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/concurrency-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Per-Workflow concurrency limits
 
 By default, instances of a Workflow can run concurrently up to your account's [concurrency limit](https://developers.cloudflare.com/workflows/reference/limits/), which is shared by every Workflow in the account. A per-Workflow concurrency limit caps how many instances of a single Workflow run at the same time. Instances above the limit are not rejected. They are queued and start automatically as running instances finish.

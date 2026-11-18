@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Google Workspace
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/google-workspace-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Google Workspace ↗︎](https://support.google.com/a/topic/7579248?ref_topic=7556686&sjid=14539485562330725560-NA) as a SAML application in Cloudflare One.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/local-uploads/og.png?v=0e29d
 
 # Local uploads
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/local-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can enable Local Uploads on your bucket to improve the performance of upload requests when clients upload data from a different region than your bucket. Local Uploads writes object data to a nearby location, then asynchronously copies it to your bucket. Data is available immediately and remains strongly consistent.
 
 ## How it works

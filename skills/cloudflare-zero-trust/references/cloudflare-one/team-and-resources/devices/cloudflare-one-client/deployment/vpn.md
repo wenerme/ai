@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Cloudflare One Client with legacy VPNs
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/vpn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare One Client (formerly WARP) can run alongside most legacy third-party VPNs. However, both the Cloudflare One Client and your VPN try to control the same things on the device: which traffic goes where (routing), which DNS server answers queries, and which firewall rules apply. To prevent conflicts, you must split these responsibilities between the two products:
 
 - IP traffic is split tunneled between the Cloudflare One Client and the VPN. All VPN traffic must bypass the Cloudflare One Client and vice versa.

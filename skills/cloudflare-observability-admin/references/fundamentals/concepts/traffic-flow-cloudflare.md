@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-clou
 
 # Traffic flow through Cloudflare
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Internet traffic is made up of people, services, and agents requesting online resources from wherever they are hosted. Your resources may be publicly available, like a website or application that anyone on the Internet can access. Or your resources may be privately available, like an internal app or network that only your employees and partners should be able to access.
 
 Both public and private resources can be connected to the Cloudflare network to ensure only good actors can access what they are supposed to be able to access with high performance.

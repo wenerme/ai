@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/
 
 # Create tokens via API
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Generate new API tokens on the fly via the API. Before you can do this, you must create an API token in the Cloudflare dashboard that can create subsequent tokens.
 
 Note

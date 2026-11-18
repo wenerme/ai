@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/og.pn
 
 # Additional configuration
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Beyond [creating a simple load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/), you may want to further customize how your load balancer routes traffic or integrate your load balancer with other Cloudflare products.
 
 ## Customize load balancer behavior

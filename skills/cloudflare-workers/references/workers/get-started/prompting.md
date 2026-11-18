@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/get-started/prompting/og.png?v=
 
 # Prompting
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/get-started/prompting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can create Workers applications from simple prompts in your favorite agent or editor, including Cursor, Windsurf, VS Code, Claude Code, Codex, and OpenCode.
 
 ## Teach your agent about Workers

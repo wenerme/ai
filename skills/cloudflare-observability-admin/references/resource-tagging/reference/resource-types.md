@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/resource-tagging/reference/resource-typ
 
 # Supported resource types
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/resource-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Tagging API supports the following resource types across account-level and zone-level scopes.
 
 ## Account-level resources

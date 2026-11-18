@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/reference/range-requests/og.png?v
 
 # Range request behavior
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/reference/range-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare can serve HTTP range requests from complete or partial cached files. [Origin Range Requests](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-range-requests) let Cloudflare fetch eligible files from your origin in cache-aligned byte ranges.
 
 ## Request eligibility

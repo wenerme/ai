@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/ref
 
 # Supported URL components in Bulk Redirects
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/url-components/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The source and target URLs of a URL redirect support different URL components.
 
 The provided URL component examples in the reference table are based on the following URL:

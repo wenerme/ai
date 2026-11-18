@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-
 
 # View test results
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the results of a Digital Experience Monitoring (DEX) test to monitor availability and performance for a specific application. DEX stores test results for 7 days on all plans, according to the [log retention policy](https://developers.cloudflare.com/cloudflare-one/insights/logs/#log-retention).
 
 ## Prerequisites

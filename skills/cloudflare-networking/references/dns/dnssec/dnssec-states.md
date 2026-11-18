@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/dnssec/dnssec-states/og.png?v=c7102
 
 # DNSSEC states
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/dnssec-states/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page describes different DNSSEC states and how they relate to the responses you get from the [DNSSEC details API endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/).
 
 | State | API response | Description |

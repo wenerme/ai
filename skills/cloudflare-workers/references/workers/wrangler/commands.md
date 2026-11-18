@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/og.png?v=68af
 
 # Commands
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/) offers a number of commands to manage your Cloudflare Workers.
 
 ## Workers commands

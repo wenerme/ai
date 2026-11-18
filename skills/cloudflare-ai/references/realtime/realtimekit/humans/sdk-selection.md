@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/sdk-selecti
 
 # Select SDK(s)
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/sdk-selection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 If you have not already, we recommend trying out our [demo app ↗︎](https://examples.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.

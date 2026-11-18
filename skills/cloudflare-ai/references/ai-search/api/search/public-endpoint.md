@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/api/search/public-endpoint/og
 
 # Public endpoint
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/public-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Search public endpoints allow you to expose AI Search capabilities without requiring authentication. This enables you to integrate AI Search into public-facing applications or share it with external users.
 
 For pre-built search and chat components you can embed on your website using the public endpoints, refer to [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/embed-search-snippets/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/s3/conditional-operations/og.png
 
 # Conditional operations
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/conditional-operations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R2 supports conditional headers on S3 API write operations. A conditional write only commits if the current state of the destination key matches the conditions you specify. For example, use `If-None-Match: *` to create an object only if its key does not exist yet.
 
 ## Supported operations

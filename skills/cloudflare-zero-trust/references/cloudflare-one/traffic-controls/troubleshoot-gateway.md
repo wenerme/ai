@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/trouble
 
 # Troubleshoot Gateway
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshoot-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies. The issues are ordered by the most frequent problems.
 
 ## Egress policies do not work as expected

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion
 
 # Conversion Options
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, the `toMarkdown` service extracts text content from your files. To further extend the capabilities of the conversion process, you can pass options to the service to control how specific file types are converted.
 
 Options are organized by file type and are all optional.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-emberj
 
 # Ember
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-emberjs-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Ember.js ↗︎](https://emberjs.com) is a productive, battle-tested JavaScript framework for building modern web applications. It includes everything you need to build rich UIs that work on any device.
 
 ## Install Ember

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/best-practi
 
 # Minimal ruleset
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/minimal-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The suggested minimal ruleset blocks some known common vectors for DDoS attacks and permits all other ESP, TCP, UDP, GRE and ICMP traffic.
 
 This is a suggested list and not an exhaustive list. Review your environment and add more rules as necessary.

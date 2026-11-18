@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/nex
 
 # Next steps
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/next-steps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Your load balancer should be receiving production traffic (and you can confirm this by reviewing the [analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/)).
 
 Though your product is officially set up, you may want to consider the following suggestions.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generat
 
 # Bring your own generation model
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, AI Search uses a Workers AI model to generate responses. To use a model outside of Workers AI, use AI Search for `search` and pass the retrieved content to a different model for generation. This guide uses an OpenAI model.
 
 Note

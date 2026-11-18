@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/plans/og.png?v=e352dcd51569d5
 
 # Plans
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/plans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Turnstile is available on the following plans:
 
 <details>

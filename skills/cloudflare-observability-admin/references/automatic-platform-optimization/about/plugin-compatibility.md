@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/automatic-platform-optimization/about/p
 
 # Plugin compatibility
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/about/plugin-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Currently, WordPress offers over 50,000 plugins for download. As a result, testing the compatibility between APO and every available plugin is impossible. However, Cloudflare has a list of officially supported plugins and a list of plugins known to cause issues when APO is enabled.
 
 For questions about a specific plugin not shown in the list, create a thread in the [Cloudflare Community ↗︎](https://community.cloudflare.com/) to begin the conversation.

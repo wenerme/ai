@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/reference/cloud-networki
 
 # Cloud networking
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/cloud-networking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect your cloud networks to [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) using Internet Protocol Security (IPsec) tunnels or Cloud Interconnect. Use Border Gateway Protocol (BGP) to exchange routes dynamically, or configure static routes.
 
 ## Choose a connection

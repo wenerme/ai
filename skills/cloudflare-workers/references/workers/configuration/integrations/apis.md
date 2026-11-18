@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/integrations/apis
 
 # APIs
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/integrations/apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To integrate with third party APIs from Cloudflare Workers, use the [fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/) to make HTTP requests to the API endpoint. Then use the response data to modify or manipulate your content as needed.
 
 For example, if you want to integrate with a weather API, make a fetch request to the API endpoint and retrieve the current weather data. Then use this data to display the current weather conditions on your website.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # DLP profiles
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A DLP profile defines what sensitive data Cloudflare detects in your traffic. A profile combines one or more of the following building blocks:
 
 - **[Detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/)** — reusable detection logic that identifies sensitive content, such as patterns, datasets, document fingerprints, predefined detections, and AI prompt topics.

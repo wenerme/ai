@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/nanocode/og.png?v=43b4
 
 # Nanocode
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/nanocode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Nanocode ↗︎](https://github.com/gakonst/nanocode) is an SDK for embedding Codex and Claude agents in your application. It brings both harnesses behind one runtime, with shared tools, subagents, and session storage. Use it when you want their prompt and tool conventions with control over your application's UI, tools, and execution environment.
 
 On Cloudflare, its Rust engine runs as [WebAssembly](https://developers.cloudflare.com/workers/runtime-apis/webassembly/) inside a [Durable Object](https://developers.cloudflare.com/durable-objects/). Its [Code Mode ↗︎](https://nanocode.xyz/docs/guides/code-mode) lets agents combine tool calls in JavaScript, while [remote hands ↗︎](https://nanocode.xyz/docs/guides/remote-hands) let them run code on a laptop, build machine, or sandbox while keeping the agent session on Cloudflare.

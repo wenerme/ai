@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/changelog/audit-logs/og.png?v=ab99
 
 # Audit Logs
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/changelog/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 
 ## 2026-10-30

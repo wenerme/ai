@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/costs/og.png?v
 
 # Costs
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/costs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cost metrics are only available for endpoints where the models return token data and the model name in their responses.
 
 ## Track costs across AI providers

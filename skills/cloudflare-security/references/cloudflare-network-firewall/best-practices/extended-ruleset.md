@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/best-practi
 
 # Extended ruleset
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/best-practices/extended-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you are unable to export your current perimeter firewall rules, consider identifying categories of systems or user groups that reside on your Magic Transit prefixes. For example:
 
 - [Endpoints (user devices)](#endpoints-user-devices)

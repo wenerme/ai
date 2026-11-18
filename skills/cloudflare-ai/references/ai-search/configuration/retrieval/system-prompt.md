@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/syste
 
 # System prompt
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 System prompts allow you to guide the behavior of the text-generation models used by AI Search at query time. AI Search supports system prompt configuration in two steps:
 
 - **Query rewriting**: Reformulates the original user query to improve semantic retrieval. A system prompt can guide how the model interprets and rewrites the query.

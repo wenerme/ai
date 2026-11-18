@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/manage
 
 # Manage Participants in a Session
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/manage-participants-in-a-session/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Prerequisites
 
 The local participant (for example, a host or moderator) must have the required **Host Controls** permissions enabled in their preset. For details, refer to [Preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).

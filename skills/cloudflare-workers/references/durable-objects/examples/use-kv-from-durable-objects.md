@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/durable-objects/examples/use-kv-from-du
 
 Read and write to/from Workers KV within a Durable Object
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following Worker script shows you how to configure a Durable Object to read from and/or write to a [Workers KV namespace](https://developers.cloudflare.com/kv/concepts/how-kv-works/). This is useful when using a Durable Object to coordinate between multiple clients, and allows you to serialize writes to KV and/or broadcast a single read from KV to hundreds or thousands of clients connected to a single Durable Object [using WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
 
 Prerequisites:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/o
 
 # OpenCode
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [OpenCode ↗︎](https://opencode.ai/) is an open source coding agent that supports custom provider configuration. Point its built-in providers at AI Gateway to observe and control model requests from OpenCode.
 
 Note

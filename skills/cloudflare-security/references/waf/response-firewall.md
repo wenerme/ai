@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/response-firewall/og.png?v=5a72527e
 
 # Response firewall
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/response-firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The response firewall applies security rules to HTTP responses. Cloudflare turns on default protections for everyone, on every plan.
 
 You can create response custom rules to block responses or log matches. These rules run in the `http_response_firewall_custom` [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/).

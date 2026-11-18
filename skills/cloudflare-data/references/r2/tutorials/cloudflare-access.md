@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/tutorials/cloudflare-access/og.png?v
 
 # Protect an R2 Bucket with Cloudflare Access
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can secure access to R2 buckets using [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
 
 Access allows you to only allow specific users, groups or applications within your organization to access objects within a bucket, or specific sub-paths, based on policies you define.

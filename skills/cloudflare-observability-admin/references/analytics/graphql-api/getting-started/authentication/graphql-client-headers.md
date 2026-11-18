@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/a
 
 # Configure GraphQL client endpoint and HTTP headers
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. Launch [GraphiQL ↗︎](https://www.gatsbyjs.com/docs/how-to/querying-data/running-queries-with-graphiql/).
 2. Select **Edit HTTP Headers**. ![Clicking Edit HTTP Headers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1018,height=721,format=webp/_astro/GraphiQL-edit-http-headers.Cc0SaBrH.png) The **Edit HTTP Headers** window appears. ![Editing HTTP Headers Window](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=921,height=212,format=webp/_astro/GraphiQL-edit-http-headers-window.D6rNIUCL.png)
 3. Select **Add Header** to configure authentication. You can use Cloudflare Analytics API token authentication (recommended) or Cloudflare API key authentication.
@@ -23,8 +21,8 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
    - **Key authentication**:
 
      Enter `X-AUTH-EMAIL` in the **Header name** field and your email address registered with Cloudflare in the **Header value** field, and select **Save**.
-     Select **Add Header** to add a second header. Enter `X-AUTH-KEY` in the **Header Name** field, and paste your Global API Key in the **Header value** field, then select **Save**.
 
+     Select **Add Header** to add a second header. Enter `X-AUTH-KEY` in the **Header Name** field, and paste your Global API Key in the **Header value** field, then select **Save**.
 4. Select anywhere outside the **Edit HTTP Headers** window in GraphiQL to close it and return to the main GraphiQL display.
 5. Enter `https://api.cloudflare.com/client/v4/graphql` in the **GraphQL Endpoint** field. ![Editing GraphQL Endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1007,height=712,format=webp/_astro/GraphiQL-response-pane.jm8FGlXL.png)
 

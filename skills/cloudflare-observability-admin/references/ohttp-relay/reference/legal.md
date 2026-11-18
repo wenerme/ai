@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ohttp-relay/reference/legal/og.png?v=80
 
 # Legal
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ohttp-relay/reference/legal/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare OHTTP Relay (formerly Privacy Gateway) is a managed gateway service deployed on Cloudflare’s global network that implements the Oblivious HTTP IETF standard to improve client privacy when connecting to an application backend.
 
 OHTTP introduces a trusted third party (Cloudflare in this case), called a relay, between client and server. The relay’s purpose is to forward requests from client to server, and likewise to forward responses from server to client. These messages are encrypted between client and server such that the relay learns nothing of the application data, beyond the server the client is interacting with.

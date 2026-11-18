@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb8
 
 # Debugging
 
-Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/debugging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If caching is not behaving the way you expect, the `Cf-Cache-Status` response header is the first place to look. Every response carries it, and its value tells you exactly what happened for that request.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/notifications/monitors/og.png?v=9bd3fad
 
 # Monitors
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/monitors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Monitors evaluate a [SQL API](https://developers.cloudflare.com/analytics/sql-api/) query on a schedule. Cloudflare sends a notification when the query result meets your detection criteria. You can create monitors from the Cloudflare dashboard under **Alerts** > **Monitors**.
 
 ![Monitor creation showing the detection method choice: Threshold, Anomaly detection, or SLO.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=567,format=webp/_astro/monitors-detection-choice.DEk3poNv.png)

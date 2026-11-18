@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/ref
 
 # URL redirect parameters
 
-Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A URL redirect has a source URL, a target URL, a status code, and some additional parameters that affect its URL matching behavior and runtime behavior.
 
 ## Source URL

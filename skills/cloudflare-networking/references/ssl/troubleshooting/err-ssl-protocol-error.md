@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-er
 
 # ERR\_SSL\_PROTOCOL\_ERROR
 
-Last updated Jun 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/troubleshooting/err-ssl-protocol-error/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If visitors to your site experience SSL protocol errors such as:
 
 - `ERR_SSL_PROTOCOL_ERROR` (Chrome)

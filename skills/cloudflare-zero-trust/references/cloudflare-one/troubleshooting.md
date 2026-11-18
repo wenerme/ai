@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/og.png?v
 
 # Troubleshooting
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One provides troubleshooting guides to help you diagnose and resolve common connectivity, configuration, and security issues across your Zero Trust organization.
 
 If you cannot resolve an issue using these guides, you can collect diagnostic information and [contact Cloudflare Support](https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/).

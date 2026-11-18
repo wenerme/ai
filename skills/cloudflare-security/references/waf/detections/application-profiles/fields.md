@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/application-profiles/fie
 
 # Fields
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Schema Profile detections populate these fields after an applicable profile becomes available:
 
 | Field | Type | Source | Meaning | Available in |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/og.png?v=1cfb901cc6d3
 
 # Managed Rules
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare provides pre-configured managed rulesets that protect against web application exploits such as the following:
 
 - Zero-day vulnerabilities

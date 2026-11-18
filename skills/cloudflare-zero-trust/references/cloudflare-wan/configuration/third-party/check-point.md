@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Check Point
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/check-point/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide describes how to turn off IPsec anti-replay protection on a Check Point Security Gateway for use with Cloudflare WAN anycast IPsec tunnels, and how to validate, troubleshoot, and roll back the change.
 
 Note

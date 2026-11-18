@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/og.p
 
 # Manage sinks
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sinks/manage-sinks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to:
 
 - Create and configure sinks for data storage

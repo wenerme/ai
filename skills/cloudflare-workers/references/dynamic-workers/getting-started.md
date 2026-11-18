@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/getting-started/og.png?
 
 # Getting started
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/getting-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can create a Worker that spins up other Workers, called Dynamic Workers, at runtime to execute code on-demand in a secure, sandboxed environment. You provide the code, choose which bindings the Dynamic Worker can access, and control whether the Dynamic Worker can reach the network.
 
 Dynamic Workers support two loading modes:
@@ -69,7 +67,7 @@ export default {
 	async fetch(request, env) {
 		// Load a worker.
 		const worker = env.LOADER.load({
-			compatibilityDate: "2026-10-13",
+			compatibilityDate: "2026-11-18",
 
 			mainModule: "src/index.js",
 			modules: {
@@ -148,7 +146,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
 	// Return the same format as `env.LOADER.load()` accepts.
 	return {
-		compatibilityDate: "2026-10-13",
+		compatibilityDate: "2026-11-18",
 		mainModule: "index.js",
 		modules: { "index.js": code },
 		globalOutbound: null,
@@ -188,7 +186,7 @@ To run Python code in a Dynamic Worker, you must include the `python_workers` co
 
 ```js
 const worker = env.LOADER.load({
-	compatibilityDate: "2026-10-13",
+	compatibilityDate: "2026-11-18",
 	compatibilityFlags: ["python_workers"],
 	mainModule: "worker.py",
 	modules: {
@@ -244,7 +242,7 @@ const worker = env.LOADER.get("my-worker", async () => {
 		},
 	});
 
-	return { mainModule, modules, compatibilityDate: "2026-10-13" };
+	return { mainModule, modules, compatibilityDate: "2026-11-18" };
 });
 ```
 

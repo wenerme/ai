@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/reference/faq/og.png?v=241e5
 
 # FAQ
 
-Last updated Jul 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/reference/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find answers to our most commonly asked questions regarding Hyperdrive.
 
 ## Connectivity

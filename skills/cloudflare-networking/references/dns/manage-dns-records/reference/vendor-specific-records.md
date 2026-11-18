@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor
 
 # Vendor-specific DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This article requires prior knowledge of DNS record management via the Cloudflare dashboard. To learn more, refer to Cloudflare's article on [managing DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 ## Google

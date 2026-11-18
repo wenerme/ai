@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-eg
 
 # Use with other Cloudflare products
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/other-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Dedicated CDN Egress IPs in combination with different Cloudflare products.
 
 ## Access and CNI

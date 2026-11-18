@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/more-
 
 # Docusaurus
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Start from CLI**: Scaffold a Docusaurus project on Workers, and pick your template.
 
 npmyarnpnpm
@@ -111,7 +109,7 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
    		"name": "my-docusaurus-app",
    		// Update to today's date
    		// Set this to today's date
-   		"compatibility_date": "2026-10-09",
+   		"compatibility_date": "2026-11-18",
    		"assets": {
    			"directory": "./build"
    		}
@@ -121,7 +119,7 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
    ```toml
    name = "my-docusaurus-app"
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-11-18"
 
    [assets]
    directory = "./build"

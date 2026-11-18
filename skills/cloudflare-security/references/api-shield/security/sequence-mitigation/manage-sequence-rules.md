@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/sequence-mitigation
 
 # Manage sequence rules
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare recommends creating sequence rules using WAF custom rules. Refer to the [sequence custom rules documentation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/) for more information.
 
 Note

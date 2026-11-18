@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/platform/pricing/og.png?v=c0
 
 # Pricing
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Workers AI has updated pricing to be more granular, with per-model unit-based pricing presented, but still billing in neurons in the back end.

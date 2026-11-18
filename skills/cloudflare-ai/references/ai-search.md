@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/og.png?v=174c444ef16de8d7
 
 # Overview
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The search primitive for your applications and agents.
 
 Available on all plans

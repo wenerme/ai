@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboar
 
 # Gateway connection methods
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-connection-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 There are various methods to onboard your traffic and your method will be determined based on your individual or organizational requirements. In this learning path, we will focus on an [**Agentless (DNS only) deployment method**](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/).
 
 Protecting more than DNS, such as network packets, HTTP requests, or egress traffic is possible, but requires a more advanced deployment method such as [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/).

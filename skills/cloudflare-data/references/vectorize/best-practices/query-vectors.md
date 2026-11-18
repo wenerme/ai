@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/best-practices/query-vectors/
 
 # Query vectors
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/query-vectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Querying an index, or vector search, enables you to search an index by providing an input vector and returning the nearest vectors based on the [configured distance metric](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics).
 
 Optionally, you can apply [metadata filters](https://developers.cloudflare.com/vectorize/reference/metadata-filtering/) or a [namespace](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#namespaces) to narrow the vector search space.

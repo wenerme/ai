@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-prot
 
 # Privacy Pass Protocol
 
-Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Privacy Pass splits responsibility across four roles so that no single party knows everything about user's identity and activity. This page explains the information flow of the protocol. For who operates each role and the privacy properties this design provides, refer to [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/).
 
 ---

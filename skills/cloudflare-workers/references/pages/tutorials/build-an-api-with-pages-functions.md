@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages
 
 # Build an API for your front end using Pages Functions
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will build a full-stack Pages application. Your application will contain:
 
 - A front end, built using Cloudflare Pages and the [React framework](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/).

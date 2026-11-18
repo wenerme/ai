@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/routing/og.png?v=ee61d8
 
 # Routing
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Functions utilize file-based routing. Your `/functions` directory structure determines the designated routes that your Functions will run on. You can create a `/functions` directory with as many levels as needed for your project's use case. Review the following directory:
 
 - ...

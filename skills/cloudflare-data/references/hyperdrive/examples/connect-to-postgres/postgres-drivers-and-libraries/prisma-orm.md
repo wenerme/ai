@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres
 
 # Prisma ORM
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Prisma ORM ↗︎](https://www.prisma.io/docs/orm) is a Node.js and TypeScript ORM with a focus on type safety and developer experience. This example demonstrates how to use Prisma ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
 ## Prerequisites
@@ -52,7 +50,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your Wran
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-10",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -65,7 +63,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your Wran
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-10"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

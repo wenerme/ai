@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/address-maps/og.png?v=254e8d979ef
 
 # About address maps
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/address-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Address map is a data structure enabling customers with BYOIP prefixes or account-level static IPs to specify which IP addresses should be mapped to DNS records when they are proxied through Cloudflare.
 
 By default, Cloudflare responds to DNS queries for proxied hostnames with Cloudflare-owned [anycast IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/). Address maps allow you to override this behavior — when a zone or account is associated with an address map, Cloudflare responds with the IP addresses you specify instead.

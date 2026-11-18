@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/og.png?v=704bcb57b659d3
 
 # Keyless SSL
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Keyless SSL allows security-conscious clients to upload their own custom certificates and benefit from Cloudflare, but without exposing their TLS private keys.
 
 

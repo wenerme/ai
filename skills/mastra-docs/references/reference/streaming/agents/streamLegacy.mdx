@@ -5,7 +5,7 @@ packages:
   - "@mastra/core"
 ---
 
-# Agent.streamLegacy() (Legacy)
+# Agent.streamLegacy() (legacy)
 
 > **warning**: **Deprecated**: This method is deprecated and only works with V1 models. For V2 models, use the new [`.stream()`](./stream) method instead. See the [migration guide](/reference/migrations/vnext-to-standard-apis) for details on upgrading.
 
@@ -483,9 +483,9 @@ await agent.streamLegacy('message for agent', {
 
 > **note**: The new `.stream()` method offers enhanced capabilities including AI SDK v5+ compatibility, better structured-output handling, and improved callback system. See the [migration guide](/reference/migrations/vnext-to-standard-apis) for detailed migration instructions.
 
-### Quick Migration Example
+### Quick migration example
 
-#### Before (Legacy)
+#### Before (legacy)
 
 ```typescript
 const result = await agent.streamLegacy('message', {
@@ -495,7 +495,7 @@ const result = await agent.streamLegacy('message', {
 })
 ```
 
-#### After (New API)
+#### After (new API)
 
 ```typescript
 const result = await agent.stream('message', {

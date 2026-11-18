@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Jamf Pro
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/jamf-pro-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Jamf Pro ↗︎](https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/Single_Sign-On.html) as a SAML application in Cloudflare One.
 
 ## Prerequisites

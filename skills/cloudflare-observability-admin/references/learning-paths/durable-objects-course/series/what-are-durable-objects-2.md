@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/durable-objects-course/s
 
 # What are Durable Objects?
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/what-are-durable-objects-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this video, we show how Durable Objects work and start building a video call app together.
 
 **Related content**

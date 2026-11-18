@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/how-to/og.png?v=90713
 
 # Configuration guides
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to configure Cloudflare products with the Data Localization Suite, including Regional Services (which controls where traffic is decrypted and processed) and Customer Metadata Boundary (which controls where logs are stored).
 
 - [Data residency for Cloudflare One](https://developers.cloudflare.com/data-localization/how-to/zero-trust/)

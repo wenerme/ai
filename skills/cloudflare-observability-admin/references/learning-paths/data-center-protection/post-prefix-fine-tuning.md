@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/data-center-protection/p
 
 # Post prefix advertisement monitoring and fine tuning
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 On this page, you can find suggestions to monitor your prefix advertisements and fine-tune them.
 
 ## DDOS Managed Rules

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/addit
 
 # Additional DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In addition to load balancing between DNS records used for IP resolution — `A`, `AAAA`, and `CNAME` records — Enterprise customers can also load balance between **MX** and **SRV** records.
 
 ## MX records

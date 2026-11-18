@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/reference/limits/og.png?v=ebfe8c77
 
 # Limits
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following limits apply to users of the Cloudflare Web3 Gateways.
 
 Note

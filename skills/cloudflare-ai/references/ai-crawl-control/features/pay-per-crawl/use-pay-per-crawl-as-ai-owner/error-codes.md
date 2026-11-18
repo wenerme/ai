@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl
 
 # Error codes
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pay per crawl error responses include a `crawler-error` header with a specific error code. The following table provides a complete reference of all possible error codes:
 
 | Error Code | HTTP Status | What to do |

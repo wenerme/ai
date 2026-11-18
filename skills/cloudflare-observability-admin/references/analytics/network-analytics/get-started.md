@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/network-analytics/get-started
 
 # Get started
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Requirements
 
 Network Analytics requires the following:

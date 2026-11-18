@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/t
 
 # Troubleshooting Advanced TCP Protection
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Mode transition behavior
 
 Advanced TCP Protection rules have three execution modes: **Disabled**, **Monitoring** (logs only, no drops), and **Mitigation (Enabled)** (active mitigation).

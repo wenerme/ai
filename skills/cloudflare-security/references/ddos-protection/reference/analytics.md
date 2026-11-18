@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/reference/analytics/og.
 
 # Analytics
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/reference/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can view DDoS analytics in different dashboards, depending on your service and plan:
 
 - The [Security Events dashboard](https://developers.cloudflare.com/waf/analytics/security-events/) provides you with visibility into L7 security events that target your zone, including HTTP DDoS attacks and TCP attacks. The dashboard displays mitigations of HTTP DDoS attacks as HTTP DDoS events. These events are also available via [Cloudflare Logs](https://developers.cloudflare.com/logs/).

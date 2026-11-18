@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/web-fetch/og.png?v=876c4e9
 
 # Web fetch
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/web-fetch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Give your agent a `web_fetch` tool to read a URL. The Agents SDK handles the work around the HTTP request: converting documents into readable text, splitting long pages into smaller results, and controlling which URLs the model can fetch.
 
 Use the supplied adapters with [Pi Durable](https://developers.cloudflare.com/agents/harnesses/pi/), the AI SDK, or TanStack AI. For another harness, use the public fetch, pagination, and formatting functions in `agents/webfetch`.

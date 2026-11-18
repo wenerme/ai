@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/customize-ac
 
 # Profile settings
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 From your Profile, you can modify settings that affect the Cloudflare dashboard.
 
 ## Language

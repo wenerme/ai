@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Form expressions
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/form-expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Rules are written using the Cloudflare Rules language - a domain-specific language (DSL) intended to mimic Wireshark semantics. For more information, refer to the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) documentation.
 
 To start with a simple case, review below how you would match a source IP. In this expression, `ip.src` refers to the source IP address of the incoming packet, and `==` means "equals":

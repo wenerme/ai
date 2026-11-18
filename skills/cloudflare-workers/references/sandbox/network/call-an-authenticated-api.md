@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/network/call-an-authenticated-a
 
 # Call an authenticated API from a sandbox
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Let code in a sandbox call an API that needs a token, while the token stays in your Worker. Requests from the sandbox reach an entrypoint in your Worker, which allows only the requests you choose and adds the token. In this example, the code reads your profile from the GitHub API.
 
 ## Prerequisites

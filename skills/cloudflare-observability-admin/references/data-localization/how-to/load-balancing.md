@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/how-to/load-balancing
 
 # Load Balancing
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following sections describe how to configure Load Balancing with Regional Services and Customer Metadata Boundary to control where load balancing decisions and traffic processing occur.
 
 ## Regional Services

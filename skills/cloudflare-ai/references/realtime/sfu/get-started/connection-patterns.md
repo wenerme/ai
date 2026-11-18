@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/get-started/connection-pat
 
 # Connection patterns
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Choose the task for your endpoint. Each initial setup recipe starts with a new browser connection and matching SFU session. Your application can combine these endpoints into rooms, broadcasts, and device interfaces.
 
 Create the SFU session when ready to begin that connection's SDP exchange.

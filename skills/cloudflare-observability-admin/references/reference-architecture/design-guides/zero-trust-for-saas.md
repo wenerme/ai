@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/design-guides/ze
 
 # Using a zero trust framework to secure SaaS applications
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 SaaS applications have become crucial in today's business landscape, particularly with the rise of hybrid workforces. As organizations adopt flexible working models, the ability of SaaS apps to provide seamless, global access is essential for maintaining productivity and fostering collaboration across distributed teams.
@@ -83,7 +81,7 @@ Note a section later in this document will cover how to gain visibility into, an
 
 One simple method for securing access to SaaS applications, is to only allow access from a specific set of IP addresses. This forces users to have to connect to, and have their traffic exit from a specific network and therefore ensure whatever access controls are in place on that network are applied to that traffic.
 
-Organizations that already use IP allow lists to secure access to SaaS applications can easily migrate to Cloudflare using [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/). User traffic egresses from Cloudflare to the Internet and onto the SaaS application, sourced from a set of IP addresses unique to the organization. This approach supports various ways in which users access Cloudflare before gaining access to the SaaS application:
+Organizations that already use IP allow lists to secure access to SaaS applications can easily migrate to Cloudflare using [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/). User traffic egresses from Cloudflare to the Internet and onto the SaaS application, sourced from a set of IP addresses unique to the organization. This approach supports various ways in which users access Cloudflare before gaining access to the SaaS application:
 
 - **Hybrid employees:** Connecting to Cloudflare using our Zero Trust client, [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
 - **Office-based users:** Connecting to a local network which routes Internet bound traffic to Cloudflare through GRE or IPsec [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) tunnels.
@@ -93,9 +91,9 @@ Organizations add the new dedicated egress IPs to the existing SaaS IP allow lis
 
 There are several advantages to using Cloudflare's dedicated egress IPs when compared with using IPs from on-prem infrastructure:
 
-- [Dedicated egress IPs can be geolocated](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#ip-geolocation) to one or more Cloudflare data centers in a geography of your choosing, instead of being restricted to the geographic locations of your existing Internet breakout data centers.
-- Users will always connect to Cloudflare [through the closest Cloudflare Data Center and Cloudflare will optimize the path towards the SaaS application](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#egress-location).
-- Dedicated egress IPs are assigned to user traffic using policies that follow zero trust principles. [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) can be defined that will only assign a dedicated egress IP to a user if they belong to the correct IdP group and/or pass [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) checks. Otherwise, traffic will be sourced from Cloudflare's public IP range, which may not be part of the SaaS IP allowlist, preventing access to the SaaS application while still allowing Internet usage.
+- [Dedicated egress IPs can be geolocated](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/#ip-geolocation) to one or more Cloudflare data centers in a geography of your choosing, instead of being restricted to the geographic locations of your existing Internet breakout data centers.
+- Users will always connect to Cloudflare [through the closest Cloudflare Data Center and Cloudflare will optimize the path towards the SaaS application](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/#egress-location).
+- Dedicated egress IPs are assigned to user traffic using policies that follow zero trust principles. [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/) can be defined that will only assign a dedicated egress IP to a user if they belong to the correct IdP group and/or pass [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) checks. Otherwise, traffic will be sourced from Cloudflare's public IP range, which may not be part of the SaaS IP allowlist, preventing access to the SaaS application while still allowing Internet usage.
 - Dedicated egress IPs imply that traffic needs to flow through Cloudflare before reaching the SaaS application. This makes it easy to add secure web gateway policies to protect data in the SaaS applications once users have authenticated.
 
 ![Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted by the SaaS application.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=621,height=472,format=svg/_astro/zero-trust-saas-image-03.DmqMPB93.svg "Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted by the SaaS application.")
@@ -142,9 +140,9 @@ To mitigate these risks, controls should be implemented for both data in transit
 
 #### Data in transit
 
-As mentioned before, all traffic can be forced through Cloudflare using the device agent, Cloudflare WAN (CWAN) tunnels, or the remote browser. This allows [secure web gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies to manage and protect data as it is uploaded or downloaded from SaaS applications. Common use cases include:
+As mentioned before, all traffic can be forced through Cloudflare using the device agent, Cloudflare WAN (CWAN) tunnels, or the remote browser. This allows [secure web gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) policies to manage and protect data as it is uploaded or downloaded from SaaS applications. Common use cases include:
 
-- Restricting the ability to download [all](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#block-google-drive-downloads) or a [subset of files](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#block-file-types) from managed SaaS applications to specific groups of users within the organization.
+- Restricting the ability to download [all](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies/#block-google-drive-downloads) or a [subset of files](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies/#block-file-types) from managed SaaS applications to specific groups of users within the organization.
 - Using [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#_top) profiles to limit the download of data containing sensitive information from managed SaaS applications.
 
 For more information about securing data in transit, refer to our [reference architecture center](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/).
@@ -175,7 +173,7 @@ As described already, implementing ZTNA to secure your email platform offers num
 
 #### Tenant control
 
-Organizations with stringent requirements about email communications for compliance or regulatory reasons, operational control or accountability, or to reduce the potential for data leaks can block access to email tenants other than the organization's own. This can be achieved by using [Cloudflare Gateway SaaS tenant controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/). Cloudflare injects custom HTTP headers into the traffic flow, informing Microsoft 365 and Google Workspace of the specific tenant users are allowed to authenticate into and blocking any access attempts to any other tenant.
+Organizations with stringent requirements about email communications for compliance or regulatory reasons, operational control or accountability, or to reduce the potential for data leaks can block access to email tenants other than the organization's own. This can be achieved by using [Cloudflare Gateway SaaS tenant controls](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tenant-control/). Cloudflare injects custom HTTP headers into the traffic flow, informing Microsoft 365 and Google Workspace of the specific tenant users are allowed to authenticate into and blocking any access attempts to any other tenant.
 
 ![Figure 7: Cloudflare can enforce access to only specific cloud email tenants.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1139,height=317,format=svg/_astro/zero-trust-saas-image-07.Dp1tEZPu.svg "Figure 7: Cloudflare can enforce access to only specific cloud email tenants.")
 
@@ -247,7 +245,7 @@ In addition to these measures, [remote browser isolation](https://developers.clo
 
 Many SaaS applications offer a free version as part of their business model to encourage users to integrate them into their work. This helps demonstrate the application's usefulness and facilitates its adoption at the corporate level ([Cloudflare follows this model as well ↗︎](https://www.cloudflare.com/en-gb/plans/zero-trust-services/)). When a previously unmanaged SaaS application is officially adopted by the organization, IT teams take over its management to ensure proper support and adherence to best practices. This involves aligning the new SaaS application with all the aspects discussed in the Securing Managed SaaS Applications section.
 
-After fully adopting the new SaaS application, access to the consumer version may be restricted. If the corporate SaaS version has a unique domain, access to other tenant domains or the consumer domain can be blocked using Cloudflare DNS and/or HTTP policies. Some SaaS solutions offer [native tenant control](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/) through HTTP headers, which can be enforced by injecting these headers for data in transit using Cloudflare Gateway HTTP policies.
+After fully adopting the new SaaS application, access to the consumer version may be restricted. If the corporate SaaS version has a unique domain, access to other tenant domains or the consumer domain can be blocked using Cloudflare DNS and/or HTTP policies. Some SaaS solutions offer [native tenant control](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tenant-control/) through HTTP headers, which can be enforced by injecting these headers for data in transit using Cloudflare Gateway HTTP policies.
 
 ## Summary
 

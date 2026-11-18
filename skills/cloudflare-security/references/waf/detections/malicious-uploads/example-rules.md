@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/malicious-uploads/exampl
 
 # Example rules
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/malicious-uploads/example-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Log requests with an uploaded content object
 
 This [custom rule](https://developers.cloudflare.com/waf/custom-rules/) example logs all requests with at least one uploaded content object:

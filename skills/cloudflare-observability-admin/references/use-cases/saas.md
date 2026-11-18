@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/saas/og.png?v=8da3568cee86f18
 
 # SaaS platforms
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build multi-tenant platforms with custom domains, isolated compute, and per-customer configuration. Cloudflare SSL for SaaS provisions and renews SSL certificates for every customer hostname. Workers for Platforms runs customer code in isolated V8 environments. D1, KV, and R2 provide per-tenant data storage. Workers Analytics Engine and Logpush track usage for billing and compliance.
 
 - [Customer domains with SSL for SaaS](https://developers.cloudflare.com/use-cases/saas/custom-domains/)

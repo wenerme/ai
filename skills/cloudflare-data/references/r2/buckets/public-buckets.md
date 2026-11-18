@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/public-buckets/og.png?v=9537
 
 # Public buckets
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/public-buckets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Public Bucket is a feature that allows users to expose the contents of their R2 buckets directly to the Internet. By default, buckets are never publicly accessible and will always require explicit user permission to enable.
 
 Public buckets can be set up in either of two ways:

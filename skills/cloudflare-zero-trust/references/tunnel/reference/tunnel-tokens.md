@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/reference/tunnel-tokens/og.png?v
 
 # Tunnel tokens
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/reference/tunnel-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A remotely-managed tunnel only requires a token to run. Anyone with the token can run the tunnel.
 
 ## Get the token

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/attack-score/og.png?v=72
 
 # WAF attack score
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/attack-score/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The attack score [traffic detection](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation) classifies each request using a machine learning algorithm, assigning a score from 1 to 99 based on the likelihood that the request is malicious. This detection complements [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
 [Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) match requests against known attack signatures — specific patterns of established attack vectors. They have a very low rate of false positives. However, attackers can modify known payloads, for example by using fuzzing techniques (a testing technique that sends modified inputs to find vulnerabilities), to evade exact signature matches.

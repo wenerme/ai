@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudfla
 
 # Proxy traffic
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you set up [incoming zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) on a secondary zone, you cannot enable the proxy on any transferred DNS records by default.
 
 With Secondary DNS override, you can use Cloudflare as your secondary DNS provider but still get the [performance and security benefits](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy) of Cloudflare's proxy. Additionally it lets you override any A and AAAA records on your zone apex with a CNAME record.

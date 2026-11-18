@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/time-services/nts/og.png?v=f5b833a6c797
 
 # Network Time Security
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/nts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Network Time Security ↗︎](https://datatracker.ietf.org/doc/html/rfc8915) (NTS) provides cryptographic security for the client-server mode of the Network Time Protocol (NTP). This allows users to obtain time in an authenticated manner.
 
 ## Background

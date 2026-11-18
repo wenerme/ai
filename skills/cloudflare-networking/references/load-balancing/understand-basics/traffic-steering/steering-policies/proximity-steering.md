@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/traffi
 
 # Proximity
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/proximity-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Proximity steering** routes visitors or internal services to the closest physical data center.
 
 To use proximity steering on a load balancer, you first need to add GPS coordinates to each pool.

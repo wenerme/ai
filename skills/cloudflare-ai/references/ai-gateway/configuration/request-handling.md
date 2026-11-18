@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/request-handli
 
 # Request handling
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 [Dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/) also offer timeouts and retries per model, along with conditional routing, rate limiting, and budget limiting through a visual interface. This page documents request-handling configuration available through per-request `cf-aig-*` headers that work with any provider endpoint. You can also configure retries at the [gateway level](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#retry-requests).

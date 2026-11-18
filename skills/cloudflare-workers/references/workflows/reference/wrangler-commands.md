@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/reference/wrangler-commands/o
 
 # Wrangler commands
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## `workflows list`
 
 List Workflows associated to account

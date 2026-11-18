@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkImageViewer
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkimageviewer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Image viewer with fullscreen toggle and download functionality for chat images.
 
 ## Properties

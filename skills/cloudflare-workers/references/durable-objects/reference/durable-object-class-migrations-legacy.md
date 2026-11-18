@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/reference/durable-objec
 
 # Durable Object class migrations (legacy)
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Prefer declarative exports for new Workers
 
 For new Workers, use the declarative [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field instead of the `migrations` array described on this page. The `migrations` array remains fully supported for existing Workers and continues to work as documented here.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/og.png?v=2845ed87dc8cac
 
 # Cloudflare DDoS Protection
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Detect and mitigate distributed denial-of-service (DDoS) attacks automatically.
 
 Available on all plans

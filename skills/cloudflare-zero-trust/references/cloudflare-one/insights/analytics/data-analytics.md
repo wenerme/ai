@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-
 
 # Data security analytics
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Data security analytics dashboard reports security issues and sensitive data found within your SaaS applications, cloud environments, and HTTP traffic. It combines Cloud Access Security Broker (CASB) findings with activity from Data Loss Prevention (DLP) policies. If neither DLP policies nor CASB integrations are configured in your account, the dashboard appears empty.
 
 To view the Data security analytics dashboard:

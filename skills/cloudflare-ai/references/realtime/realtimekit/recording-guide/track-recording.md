@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/tr
 
 # Track recording
 
-Last updated May 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Track recording lets you record participant audio as separate WebM files instead of one composite meeting recording. Use it when you need speaker-level control over what you store, process, or review.
 
 With track recording, you can record specific participant tracks by passing `user_ids`, which is useful for content-sensitive or regulated workflows where recording every participant is unnecessary. If you do not provide `user_ids`, RealtimeKit will record all participant audio tracks as separate WebM files by default.

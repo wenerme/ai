@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-age
 
 # Pay from Agents SDK
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Agents SDK includes an MCP client that can pay for x402-protected tools. Use it from your Agents or any MCP client connection.
 
 `agents/x402` needs `@modelcontextprotocol/sdk`, which is an optional peer dependency of `agents`. It does not load the package at runtime, but its types refer to MCP SDK v1. Add the exact version your Agents release expects, such as `@modelcontextprotocol/sdk@1.32.1`, to your `package.json`.

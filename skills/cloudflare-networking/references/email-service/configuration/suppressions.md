@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/configuration/suppression
 
 # Manage suppressions
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage recipients that Email Service must not contact. For suppression scope, triggers, and expiration rules, refer to [Suppression lists](https://developers.cloudflare.com/email-service/concepts/suppressions/).
 
 Each suppression has a scope. An `account` suppression applies to every sending domain and subdomain in the account. A `sending_domain` suppression applies to one sending domain only. For details, refer to [Suppression scope](https://developers.cloudflare.com/email-service/concepts/suppressions/#suppression-scope).

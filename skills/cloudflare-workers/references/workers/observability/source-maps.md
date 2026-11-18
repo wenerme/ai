@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/source-maps/og.pn
 
 # Source maps and stack traces
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Stack traces ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
 
 Most JavaScript code is first bundled, often transpiled, and then minified before being deployed to production. This process creates smaller bundles to optimize performance and converts code from TypeScript to Javascript if needed.

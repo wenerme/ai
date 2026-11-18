@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl
 
 # Enable in account settings
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/enable-in-account-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ```
 graph LR
 A[Enable in<br>account settings]:::highlight --> B[Set a pay per <br/>crawl price ]

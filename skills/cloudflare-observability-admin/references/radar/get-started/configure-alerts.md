@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/get-started/configure-alerts/og.p
 
 # Configure alerts
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/configure-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure alerts to receive notifications when Radar detects changes impacting countries, regions, or autonomous systems.
 
 <details>

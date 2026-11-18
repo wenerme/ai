@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/og.png?v=51a25a49ca35a1
 
 # Dynamic Workers
 
-Last updated Oct 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spin up Workers at runtime to execute code on-demand in a secure, sandboxed environment.
 
 Dynamic Workers let you spin up an unlimited number of Workers to execute arbitrary code specified at runtime. Use Dynamic Workers as a lightweight alternative to containers for securely sandboxing code you do not trust.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/reference/og.png?v=89e7
 
 # Reference
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) reference documentation:
 
 - [Legacy pipelines](https://developers.cloudflare.com/basin-pipelines/reference/legacy-pipelines/)

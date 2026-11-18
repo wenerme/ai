@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-d
 
 # Example diagram
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With CNAME flattening, Cloudflare returns an IP address instead of the target hostname that a CNAME record points to. This process supports a few features and delivers better performance and flexibility, as mentioned in the [CNAME flattening concept page](https://developers.cloudflare.com/dns/cname-flattening/).
 
 Consider the diagram below to have an overview of the steps that may be involved in CNAME flattening.

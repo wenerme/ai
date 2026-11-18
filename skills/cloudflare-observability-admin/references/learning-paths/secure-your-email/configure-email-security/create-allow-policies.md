@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/config
 
 # Create allow policies
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/create-allow-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security allows you to configure allow policies. An allow policy exempts messages that match certain patterns from normal detection scanning.
 
 You can choose how Email security will handle messages that match your criteria:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/og.p
 
 # Migrate an existing zone with DNSSEC enabled
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.
 
 Caution

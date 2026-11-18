@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/monito
 
 # PhishGuard
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phishguard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [PhishGuard](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/) serves as an extension of your Security Operations team with dedicated Email security technical resources providing real-time monitoring of your email environment. The Active Defense Service provides:
 
 - Customized notification and responses for fraud and insider threats.

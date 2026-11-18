@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/og.png?v
 
 # Query D1 using Prisma ORM
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## What is Prisma ORM?
 
 [Prisma ORM ↗︎](https://www.prisma.io/orm) is a next-generation JavaScript and TypeScript ORM that unlocks a new level of developer experience when working with databases thanks to its intuitive data model, automated migrations, type-safety and auto-completion.
@@ -177,7 +175,7 @@ Copy the last part of the command output and paste it into your Wrangler file. I
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -200,7 +198,7 @@ name = "prisma-d1-example"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [observability]

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-s
 
 # Session management
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A user session determines how long a user can access an Access application without re-authenticating.
 
 ## Session durations

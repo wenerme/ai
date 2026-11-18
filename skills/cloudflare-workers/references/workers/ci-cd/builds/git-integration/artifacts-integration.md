@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/ar
 
 # Cloudflare Artifacts integration
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/artifacts-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare Artifacts](https://developers.cloudflare.com/artifacts/) provides Git-compatible storage within Cloudflare. Workers Builds can build and deploy a Worker directly from an Artifacts repository.
 
 With Artifacts and Workers Builds, you can host source code, run builds, test changes with Worker Previews, and deploy Workers entirely within Cloudflare.

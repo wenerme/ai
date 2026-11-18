@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollbac
 
 # Rollback
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the following process to understand how you can rollback a [subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) and recreate the corresponding subdomain DNS records in an existing parent zone within Cloudflare.
 
 ## Before you begin

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/investigate/application-layer-att
 
 # Application layer attacks
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/application-layer-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 While in [HTTP requests](https://developers.cloudflare.com/radar/investigate/http-requests) you can examine all kinds of web requests, in application layer attacks you have access only to mitigated HTTP requests. These requests can be mitigated by one of several Cloudflare products, like [WAF](https://developers.cloudflare.com/waf/), [Cloudflare DDoS Protection](https://developers.cloudflare.com/ddos-protection/), [Cloudflare bot solutions](https://developers.cloudflare.com/bots/) and others.
 
 Mitigated traffic

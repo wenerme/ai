@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Connect to RDP using the Cloudflare One Client
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-device-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) allows users to connect to RDP servers using their preferred RDP client. Cloudflare Tunnel creates a secure, outbound-only connection from your RDP server to Cloudflare's global network; this requires running the `cloudflared` daemon on the server (or any other host machine within the private network). Users install the Cloudflare One Client on their device and enroll in your Zero Trust organization. Remote devices will be able to connect as if they were on your private network. By default, all devices enrolled in your organization can connect to the RDP server unless you build policies to allow or block specific users.
 
 This example walks through how to set up an RDP server on a Google Cloud Platform (GCP) virtual machine (VM), but you can use any machine that supports RDP connections.

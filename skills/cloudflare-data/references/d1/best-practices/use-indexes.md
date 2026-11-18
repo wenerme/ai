@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/best-practices/use-indexes/og.png?v=
 
 # Use indexes
 
-Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/use-indexes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Indexes enable D1 to improve query performance over the indexed columns for common (popular) queries by reducing the amount of data (number of rows) the database has to scan when running a query.
 
 ## When is an index useful?

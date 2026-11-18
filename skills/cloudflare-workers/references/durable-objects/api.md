@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/api/og.png?v=6249e03d94
 
 # Workers Binding API
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Durable Object Base Class](https://developers.cloudflare.com/durable-objects/api/base/)
 - [Durable Object Namespace](https://developers.cloudflare.com/durable-objects/api/namespace/)
 - [Durable Object ID](https://developers.cloudflare.com/durable-objects/api/id/)

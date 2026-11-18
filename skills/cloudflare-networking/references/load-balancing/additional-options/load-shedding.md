@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/load-
 
 # Load shedding
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use load shedding to prevent an at-risk endpoint from [becoming unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/) and starting the failover process.
 
 Once you configure load shedding on a pool, that pool will begin diverting traffic to other pools according to your load shedding settings and the load balancer's [steering policy](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/).

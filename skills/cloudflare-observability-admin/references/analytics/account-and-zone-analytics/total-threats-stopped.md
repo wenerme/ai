@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/to
 
 # Total threats stopped
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/total-threats-stopped/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Total Threats Stopped measures the number of 'suspicious' and 'bad' requests that were aimed at your site. Requests receive these labels as they enter Cloudflare's network:
 
 - **Legitimate:** Request passed directly to your site.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/about/ftp/og.png?v=b156b890016
 
 # FTP
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/about/ftp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Enabling Spectrum for FTP is not straightforward due to the implementation of the protocol. This guide gives an overview of the intricacies of FTP and under which circumstances you can enable Spectrum for your FTP service.
 
 Note

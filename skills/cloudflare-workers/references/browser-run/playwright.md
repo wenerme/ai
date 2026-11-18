@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6
 
 # Playwright
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Playwright ↗︎](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
 The Workers team forked a [version of Playwright ↗︎](https://github.com/cloudflare/browser-run/tree/main/packages/playwright-cloudflare) that was modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Run](https://developers.cloudflare.com/browser-run/).
@@ -64,7 +62,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-11-11",
+	"compatibility_date": "2026-11-18",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -79,7 +77,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-11"
+compatibility_date = "2026-11-18"
 upload_source_maps = true
 
 [browser]
@@ -250,7 +248,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 	"upload_source_maps": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-11-11",
+	"compatibility_date": "2026-11-18",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -269,7 +267,7 @@ main = "src/index.ts"
 upload_source_maps = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-11"
+compatibility_date = "2026-11-18"
 
 [browser]
 binding = "MYBROWSER"

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/kitesurf/og.png?v=813c3d122
 
 # Kitesurf
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/kitesurf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Kitesurf ↗︎](https://blog.cloudflare.com/kitesurf) is Cloudflare's stateless, highly scalable browser that runs entirely on top of [Workers](https://developers.cloudflare.com/workers/) and is designed for AI agents. Instead of shipping a full desktop browser engine like Chromium, Kitesurf focuses on what matters to an agent — token count, context windows, scalability, performance, and cost — while trading away features that only humans need, such as tabs, themes, extensions, and pixel-perfect rendering.
 
 For common agentic tasks like screenshots and HTML extraction, Kitesurf uses significantly less CPU and memory than Chromium, which means you can run more sessions and scale better for bursty, AI-driven workloads.

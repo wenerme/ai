@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/security-insights/how-it-works
 
 # How it works
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/security-insights/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
 
 Each scan compares your current configuration against a set of ideal product configurations that indicate a strong security posture. When your configuration does not match an ideal configuration for one or more checks, the scan produces a **Security Insight** — a finding that represents a potential risk.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dn
 
 # Public DNS
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you cannot use a [Cloudflare Tunnel setup](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/), you can also create a public DNS record for your key server.
 
 This setup option is not ideal as the DNS record cannot be [proxied](https://developers.cloudflare.com/dns/proxy-status/) and - as a result - will expose the origin IP address of your key server.

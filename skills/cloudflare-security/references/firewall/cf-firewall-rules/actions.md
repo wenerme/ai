@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/og.p
 
 # Firewall rules actions
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The action of a firewall rule tells Cloudflare how to handle HTTP requests that have matched the rule expression.
 
 Deprecation notice

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how
 
 # How Bulk Redirects work
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a request reaches Cloudflare, Bulk Redirects are evaluated before the request is sent to your origin server. Cloudflare checks all URL redirects of each Bulk Redirect List that is enabled by a Bulk Redirect Rule.
 
 If there is a match for a URL redirect according to the [URL matching algorithm](#url-matching-algorithm), the redirect action is performed immediately according to the URL redirect configuration parameters. Cloudflare performs no further processing once a redirect action has been executed.

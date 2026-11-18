@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/meetin
 
 # Meeting Metadata
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 All metadata pertaining to a meeting is stored in `meeting.meta`. This includes important information about the meeting state, type, and connections.
 
 WebMobile

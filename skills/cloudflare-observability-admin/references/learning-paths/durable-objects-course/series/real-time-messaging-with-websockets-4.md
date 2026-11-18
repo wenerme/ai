@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/durable-objects-course/s
 
 # Real-time messaging with WebSockets
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/real-time-messaging-with-websockets-4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Now, we'll take it a step further by enabling our server to receive and broadcast messages. In this video, you'll learn how to route and broadcast incoming messages from WebSocket connections and implement error handling such as closed WebSocket connections. By the end, you will have completed the backend for our video call app.
 
 **Related content**

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/understand/billing-policy/og.pn
 
 # Billing policy
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/billing-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare plans are billed per domain on your account. Monthly plans are billed every 30 days and annual plans are billed yearly. Add-on services (also referred to as subscriptions) are billed monthly only.
 
 Cloudflare also collects sales tax as governed by local laws. Sales taxes are computed based on the nine (9) digit postal code of either the shipping or billing address on file for your Cloudflare account where applicable.

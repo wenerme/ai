@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/conversation-state-and-
 
 # Conversation state and memory
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agents need memory to be useful over time. Without it, every conversation starts from zero. The agent forgets who the user is, what it learned, and what it was doing. Memory is what turns a stateless LLM call into a persistent, context-aware agent.
 
 The [Session API](https://developers.cloudflare.com/agents/runtime/capabilities/sessions/) provides the memory layer for agents built on the Cloudflare Agents SDK. It manages two kinds of memory: **conversation history** (the messages and tool calls that make up a session) and **context memory** (persistent blocks injected into the system prompt that the agent can read, write, and search).

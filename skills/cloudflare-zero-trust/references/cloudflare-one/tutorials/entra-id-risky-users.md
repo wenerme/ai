@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky
 
 # Isolate risky Entra ID users
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Microsoft Entra ID (formerly Azure Active Directory) calculates a user's [risk level ↗︎](https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk) based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.
 
 This tutorial demonstrates how to automatically redirect users to a remote browser when they are deemed risky by Entra ID.
@@ -88,7 +86,7 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    	"$schema": "./node_modules/wrangler/config-schema.json",
    	"name": "risky-users",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-13",
+   	"compatibility_date": "2026-11-18",
    	"main": "src/index.js",
        "upload_source_maps": true,
    	"workers_dev": false,
@@ -107,7 +105,7 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    "$schema" = "./node_modules/wrangler/config-schema.json"
    name = "risky-users"
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-18"
    main = "src/index.js"
    upload_source_maps = true
    workers_dev = false

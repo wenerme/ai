@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/malicious-uploads/og.png
 
 # Malicious uploads detection
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/malicious-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The malicious uploads detection is a [traffic detection](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation) that scans files and other content uploaded to your application for malware.
 
 When you turn on this detection, the WAF inspects incoming uploads and checks them for malicious signatures. The scan results are available as [fields](#content-scanning-fields) you can use in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to act on requests containing malicious content.

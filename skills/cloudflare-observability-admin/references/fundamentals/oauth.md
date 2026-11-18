@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/oauth/og.png?v=27a5b42c7ab
 
 # OAuth Applications on Cloudflare
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Availability
 
 |  | Free | Pro | Business | Enterprise |

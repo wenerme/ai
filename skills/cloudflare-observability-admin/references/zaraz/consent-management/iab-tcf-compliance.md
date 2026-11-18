@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/consent-management/iab-tcf-compli
 
 # IAB TCF Compliance
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/consent-management/iab-tcf-compliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Zaraz Consent Management Platform is compliant with the IAB Transparency & Consent Framework. Enabling this feature [could be required ↗︎](https://blog.google/products/adsense/new-consent-management-platform-requirements-for-serving-ads-in-the-eea-and-uk/) in order to serve Google Ads in the EEA and the UK.
 
 The CMP ID of the approval is 433 and be can seen in the [IAB Europe ↗︎](https://iabeurope.eu/cmp-list/) website.

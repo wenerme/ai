@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
 ![MCP clients connect through an MCP portal to access internal MCP servers and SaaS MCP servers.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1034,height=600,format=webp/_astro/mcp-portal.B5web1ii.png)

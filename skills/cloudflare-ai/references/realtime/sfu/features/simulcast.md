@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/features/simulcast/og.png?
 
 # Simulcast
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/simulcast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Simulcast lets a publisher send multiple encodings of one video source. Subscribers can select different quality levels for their display and network conditions.
 
 **Publisher**

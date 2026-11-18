@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-
 
 # Strict (SSL-Only Origin Pull)
 
-Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This method is only available for Enterprise zones.

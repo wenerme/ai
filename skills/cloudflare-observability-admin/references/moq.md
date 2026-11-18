@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/moq/og.png?v=a38785c613daaafb
 
 # Media over QUIC at Cloudflare
 
-Last updated Nov 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/moq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 MoQ (Media over QUIC) is a protocol for delivering live media content using QUIC transport. It provides efficient, low-latency media streaming by leveraging QUIC's multiplexing and connection management capabilities.
 
 MoQ is designed to be an Internet infrastructure level service that provides media delivery to applications, similar to how HTTP provides content delivery and WebRTC provides real-time communication.

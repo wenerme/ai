@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/client-certificates/client-certific
 
 # Client certificate variables
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a request includes a client certificate for [mTLS authentication](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/), Cloudflare exposes certificate details as variables in the Ruleset Engine and as properties on the Workers `request.cf` object.
 
 ## Ruleset Engine fields

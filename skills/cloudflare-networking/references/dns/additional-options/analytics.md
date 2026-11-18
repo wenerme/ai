@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/additional-options/analytics/og.png
 
 # Analytics and logs
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/additional-options/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you use Cloudflare DNS, you can access data about DNS queries through a variety of sources.
 
 ---

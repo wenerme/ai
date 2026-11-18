@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/
 
 # HTTP Requests by Colo Groups to HTTP Requests by Adaptive Groups
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/graphql-api-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide shares considerations when migrating from the deprecated `httpRequests1mByColoGroups` and `httpRequests1dByColoGroups` GraphQL API nodes to the `httpRequestsAdaptiveGroups` GraphQL API node.
 
 For example, if you wanted to see which five data centers had the most number of requests, the total number of those requests, and the total amount of data transfer, in the past you used the `httpRequests1mByColoGroups` GraphQL API node as in the following example:

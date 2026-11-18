@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Troubleshoot tunnels
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Explore resources to help you resolve issues with Cloudflare Tunnel connectivity and configuration.
 
 - [Private network connectivity](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/private-networks/)

@@ -1,6 +1,6 @@
 # AI Catalog
 
-Discover, enable, and manage agents and flows from a central catalog.
+Discover, turn on, and manage agents and flows from a central catalog.
 
 - Tier: [Free](../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
@@ -23,7 +23,7 @@ Use the AI Catalog to:
 
 - Discover agents and flows created by the GitLab team and community members.
 - Create custom agents and flows, and share them with other users.
-- Enable agents and flows in your projects to use them across the GitLab Duo Agent Platform.
+- Turn on agents and flows in your projects to use them across the GitLab Duo Agent Platform.
 
 ## View the AI Catalog
 
@@ -34,7 +34,7 @@ Prerequisites:
 - Meet the [GitLab Duo Agent Platform prerequisites](_index.md#prerequisites).
 - Have the [Agent Platform turned on](turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
 - On GitLab Self-Managed, have [GitLab Duo turned on for the instance](turn_on_off.md#for-an-instance).
-- To enable agents and flows from the AI Catalog:
+- To turn on agents and flows from the AI Catalog:
   - In a group, you must have the Maintainer or Owner role.
   - In a project, you must have the Maintainer or Owner role.
 
@@ -135,7 +135,7 @@ To ensure consistent behavior, versions are immutable.
 
 - Project that manages an agent or flow always on the latest version of that item [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/583024) in GitLab 18.10.
 
-When you enable an AI Catalog item:
+When you turn on an AI Catalog item:
 
 - In a group, GitLab pins the latest version.
 - In a project that does not manage that item, GitLab pins the same version as the project's top-level group.
@@ -148,10 +148,10 @@ Version pinning means:
 
 This approach provides stability and predictability for your AI-powered workflows.
 
-When you enable an AI Catalog item in the project that manages the item, GitLab does not pin a version.
+When you turn on an AI Catalog item in the project that manages the item, GitLab does not pin a version.
 Instead, that project always uses the latest version of the item.
 
-If you enabled an agent or flow in the project that manages it before GitLab 18.10, your configuration remains at the pinned version.
+If you turned on an agent or flow in the project that manages it before GitLab 18.10, your configuration remains at the pinned version.
 
 After you update to the latest version for the first time, GitLab automatically uses the latest version from then onwards.
 
@@ -224,7 +224,7 @@ To resolve the error, reduce the size of your configuration.
 
 When you create an agent or flow, you select a project to manage it and choose whether the item is
 public, private, or restricted.
-Visibility controls who can view, enable, and run the item.
+Visibility controls who can view, turn on, and run the item.
 These rules apply to custom agents, external agents, and flows.
 They also apply when a custom flow uses an agent as a subagent.
 The agent must be at least as visible as the flow that references it.
@@ -258,10 +258,10 @@ top-level group.
 
 GitLab lets you [share a project or group](../project/members/sharing_projects_groups.md) into another
 project or group.
-The restricted visibility rules around enablement consider only the actual top-level group of the managing project.
+The restricted visibility rules for turning on items consider only the actual top-level group of the managing project.
 It does not consider shared project or group relationships.
 
-A collaborator who gains access to a project or group through a share can view, enable, and run restricted
+A collaborator who gains access to a project or group through a share can view, turn on, and run restricted
 items only while working inside that shared container.
 The share does not extend restricted access into the collaborator's own top-level group.
 
@@ -272,7 +272,7 @@ The share does not extend restricted access into the collaborator's own top-leve
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594617) in GitLab 19.0.
 
 In a top-level group, you can confine the AI Catalog so that, for a project in that group hierarchy, users can
-see, enable, and run only:
+see, turn on, and run only:
 
 - Foundational agents and flows maintained by GitLab.
 - Public agents and flows owned by projects in the same top-level group hierarchy.
@@ -281,8 +281,8 @@ see, enable, and run only:
 Agents and flows owned by projects outside the hierarchy are:
 
 - Hidden from the AI Catalog.
-- Blocked from being enabled.
-- Blocked from running, even if a project previously enabled them.
+- Blocked from being turned on.
+- Blocked from running, even if a project previously turned them on.
 
 You can configure this setting only on a top-level group. It applies to all projects
 in that hierarchy. Changes to this setting are recorded in the audit log.
@@ -304,7 +304,7 @@ To confine the AI Catalog to your group hierarchy:
 When you delete an agent or flow, GitLab removes it from the instance.
 If a project other than the managing project has turned on the item,
 or a custom flow uses the item as a subagent, GitLab hides the item instead.
-The item is no longer listed in the AI Catalog, and no project can enable it.
+The item is no longer listed in the AI Catalog, and no project can turn it on.
 For the steps, see
 [delete an agent](agents/custom.md#delete-an-agent) and [delete a flow](flows/custom.md#delete-a-flow).
 

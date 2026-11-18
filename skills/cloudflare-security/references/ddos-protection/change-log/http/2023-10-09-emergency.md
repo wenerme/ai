@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/change-log/http/2023-10
 
 # 2023-10-09 - Emergency
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/2023-10-09-emergency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 | Rule ID | Description | Previous Action | New Action | Notes |
 | --- | --- | --- | --- | --- |
 | ...02bbdce1 | HTTP requests with unusual HTTP headers or URI path (signature #47). | N/A | block | |

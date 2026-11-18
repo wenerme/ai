@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/previews/resources/og.png?v=a51
 
 # Resources and isolation
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Binding reference
 
 Two Previews bound to the same account-level resource ID or name share its data or instances. Bind a Preview to a different resource to isolate it.
@@ -62,7 +60,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-09",
+	"compatibility_date": "2026-11-18",
 	"migrations": [
 		{ "tag": "v1", "new_classes": ["Counter"] }
 	],
@@ -72,7 +70,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-09"
+compatibility_date = "2026-11-18"
 previews = { }
 
 [[migrations]]
@@ -152,7 +150,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-09",
+	"compatibility_date": "2026-11-18",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -179,7 +177,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-09"
+compatibility_date = "2026-11-18"
 
 [[migrations]]
 tag = "v1"
@@ -212,7 +210,7 @@ return container.fetch(request);
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-09",
+	"compatibility_date": "2026-11-18",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -249,7 +247,7 @@ return container.fetch(request);
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-09"
+compatibility_date = "2026-11-18"
 
 [[migrations]]
 tag = "v1"

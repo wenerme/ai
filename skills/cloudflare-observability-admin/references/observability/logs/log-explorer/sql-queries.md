@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/sql-que
 
 # SQL queries supported
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/sql-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page outlines the SQL features supported by Log Explorer, including common aggregation functions, expressions, and query clauses.
 
 The following diagram illustrates the general shape of a valid query on these datasets. It shows how standard SQL clauses — such as `SELECT`, `WHERE`, `GROUP BY`, and `ORDER BY` — can be composed to form supported queries.

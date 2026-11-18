@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/response-header-modific
 
 # Response Header Transform Rules
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/response-header-modification/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Response Header Transform Rules to manipulate the headers of HTTP responses sent to website visitors.
 
 ```

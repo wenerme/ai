@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/bui
 
 # Build security policies for general AI use
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once your monitoring tools have given you a clear picture of AI usage in your organization, you can begin building security policies to meet your objectives. The Gateway policy builder offers extensive options for both application categorization and function granularity to help you create policies that achieve your goals.
 
 You should build security policies based on the perceived risk level, potential for data leaks, and your organization's confidence in a tool. For instance, if you approved Google Gemini for your corporate use, you may apply different policies to it than you would to other AI applications. This section will detail the types of policies Cloudflare recommends for securing AI tools in your organization.

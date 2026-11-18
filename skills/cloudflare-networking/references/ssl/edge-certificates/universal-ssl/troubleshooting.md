@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/tro
 
 # Troubleshooting
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Resolve a timed out state
 
 If a certificate issuance times out, Cloudflare tells you where in the chain of issuance the timeout occurred: Initializing, Validation, Issuance, Deployment, or Deletion.

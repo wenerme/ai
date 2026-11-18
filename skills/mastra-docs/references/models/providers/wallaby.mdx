@@ -5,7 +5,7 @@ description: "Browse Wallaby model IDs, capabilities, context windows, and prici
 
 # [Wallaby logo]Wallaby
 
-Access 1 Wallaby model through Mastra's model router. Authentication is handled automatically using the `WALLABY_API_KEY` environment variable.
+Access 3 Wallaby models through Mastra's model router. Authentication is handled automatically using the `WALLABY_API_KEY` environment variable.
 
 Learn more in the [Wallaby documentation](https://wallabytoken.com/docs).
 
@@ -47,9 +47,33 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": 2.7,
-    "outputCost": 13.5
+    "maxOutput": 1048576,
+    "inputCost": 2.55,
+    "outputCost": 12.75
+  },
+  {
+    "model": "wallaby/moonshotai/kimi-k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 1.8,
+    "outputCost": 9
+  },
+  {
+    "model": "wallaby/moonshotai/kimi-k3.1-pro-highspeed",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 3.6,
+    "outputCost": 18
   }
 ]}
 />
@@ -88,7 +112,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "wallaby/moonshotai/kimi-k3"
+      ? "wallaby/moonshotai/kimi-k3.1-pro-highspeed"
       : "wallaby/moonshotai/kimi-k3";
   }
 });

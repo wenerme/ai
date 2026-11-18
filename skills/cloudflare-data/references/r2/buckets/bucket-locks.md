@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/bucket-locks/og.png?v=eafbff
 
 # Bucket locks
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/bucket-locks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bucket locks prevent the deletion and overwriting of objects in an R2 bucket for a specified period — or indefinitely. When enabled, bucket locks enforce retention policies on your objects, helping protect them from accidental or premature deletions.
 
 ## Get started with bucket locks

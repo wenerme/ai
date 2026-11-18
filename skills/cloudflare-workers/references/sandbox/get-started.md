@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/get-started/og.png?v=af1e982b53
 
 # Run a Linux command
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You will POST `uname -a` to a Worker and read stdout that contains `Linux`.
 
 ## Prerequisites
@@ -65,7 +63,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	"name": "sandbox-linux",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-23",
+   	"compatibility_date": "2026-11-18",
    	"observability": {
    		"enabled": true,
    	},
@@ -98,7 +96,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    name = "sandbox-linux"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-23"
+   compatibility_date = "2026-11-18"
    upload_source_maps = true
 
    [observability]

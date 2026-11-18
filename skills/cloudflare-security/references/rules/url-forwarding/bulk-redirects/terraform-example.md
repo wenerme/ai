@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/ter
 
 # Configure Bulk Redirects using Terraform
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Terraform code snippets below refer to the v4 SDK only.

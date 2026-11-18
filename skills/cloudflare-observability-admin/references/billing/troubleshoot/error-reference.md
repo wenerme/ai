@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/troubleshoot/error-reference/og
 
 # Billing error reference
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/error-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the tables below to find common billing error messages, understand what they mean, and go to the right solution.
 
 When troubleshooting, start with the exact error message. Then confirm whether the account has an unpaid balance, an active subscription, a pending cancellation, or a pending payment transaction.

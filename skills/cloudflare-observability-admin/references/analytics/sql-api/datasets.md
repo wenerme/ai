@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/sql-api/datasets/og.png?v=496
 
 # Datasets
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sql-api/datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Each SQL API dataset has a schema-qualified name. The prefix identifies what one row represents and how you should interpret the data:
 
 | Prefix | Row meaning |

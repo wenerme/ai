@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/reference/gateway-dns-records/og.p
 
 # Gateway DNS records
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/reference/gateway-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you [create a gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway), Cloudflare automatically creates and adds records to your Cloudflare DNS so your gateway can receive and route traffic appropriately:
 
 - **Ethereum gateways**: Creates a [proxied](https://developers.cloudflare.com/dns/proxy-status/) `CNAME` record pointing your hostname to `ethereum.cloudflare.com`.

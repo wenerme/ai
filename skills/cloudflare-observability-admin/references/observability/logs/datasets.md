@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/datasets/og.png?v=d0
 
 # Datasets
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Observability supports logs from the products listed in the table. Turn on each dataset in the location shown under **Enablement**. [Log Explorer (Legacy)](https://developers.cloudflare.com/observability/logs/log-explorer/) datasets appear in Logs once your account has the Log Explorer add-on and the dataset is turned on. Event sizes are estimates and vary by record.
 
 You can also query [sampled analytics datasets](#sampled-analytics-datasets) for your zones in Logs without turning anything on.

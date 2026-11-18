@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/reference/load-balancing
 
 # Analytics
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Using load balancing analytics, you can:
 
 - Evaluate traffic flow.

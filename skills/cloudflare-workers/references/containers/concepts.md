@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/concepts/og.png?v=23cdeac259
 
 # Container Fundamentals
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Cloudflare Container runs your container image in a full Linux environment on Cloudflare's network, alongside a Worker. The Worker handles incoming HTTP requests, while the Container provides the runtime, binaries, and languages your application needs. Together, they let you run Linux workloads without managing the underlying infrastructure.
 
 ## The Container runtime

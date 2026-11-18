@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-pol
 
 # Maximum DNS TTL
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/maximum-dns-ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Set a maximum time-to-live (TTL) for DNS responses returned by Gateway. When an upstream DNS record has a TTL that exceeds the configured maximum, Gateway caps the TTL to the value you specify. Lower values ensure that DNS policy changes - such as blocking a newly identified malicious domain - take effect faster across all clients, at the cost of increased query volume from reduced caching.
 
 The maximum TTL cap only applies to upstream-derived DNS answers for allowed queries. Gateway-generated responses (blocks, overrides, safe-search answers) are not affected because they already use a short default TTL.

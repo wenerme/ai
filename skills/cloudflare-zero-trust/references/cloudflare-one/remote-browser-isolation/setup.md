@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation
 
 # Set up Browser Isolation
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Browser Isolation is enabled through [Secure Web Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/). By default, no traffic is isolated until you have added an Isolate policy to your HTTP policies.
 
 ## 1. Connect devices to Cloudflare

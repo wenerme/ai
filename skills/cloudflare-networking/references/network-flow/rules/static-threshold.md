@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/rules/static-threshold/og.
 
 # Static threshold rule
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/static-threshold/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A static threshold rule monitors your network traffic against a fixed threshold you define, measured in bits or packets per second. Network Flow (formerly Magic Network Monitoring) compares total traffic across all IP prefixes and addresses in the rule against this threshold. If traffic exceeds the threshold for the configured duration, Network Flow sends an alert.
 
 To use static threshold rules, you must send NetFlow or sFlow data to Cloudflare.

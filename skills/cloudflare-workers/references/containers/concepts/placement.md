@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/concepts/placement/og.png?v=
 
 # Placement
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/placement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, containers run in the location nearest to the incoming request with a pre-fetched image. Use placement constraints to restrict where your containers run for data residency, compliance, or latency requirements.
 
 ## Regional constraints

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/protocol/troubleshoo
 
 # Troubleshoot protocol issues
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers common HTTP/2 and HTTP/3 issues, including origin incompatibility, multiplexing errors, and browser errors, with steps to diagnose and resolve them.
 
 ## H2 to Origin - Origin incompatibility

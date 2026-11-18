@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/ai/build-and-run/og.png?v=59f
 
 # Build and run AI applications
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/ai/build-and-run/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To build and deploy an AI application, you need compute for application logic, a way to run inference, and a gateway to manage costs across providers. Cloudflare Workers hosts your application logic and serves your frontend. Workers AI runs inference at the edge with pay-per-use pricing. AI Gateway adds caching, rate limiting, and observability across OpenAI, Anthropic, and other providers. Durable Objects coordinate stateful workflows and multi-turn conversations.
 
 ## Solutions

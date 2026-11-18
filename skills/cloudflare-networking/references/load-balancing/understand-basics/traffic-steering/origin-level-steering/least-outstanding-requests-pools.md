@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/traffi
 
 # Least Outstanding Requests
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/least-outstanding-requests-pools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Least Outstanding Requests steering** allows you to route traffic to endpoints that currently have the lowest number of outstanding requests.
 
 This steering policy selects an endpoint by taking into consideration endpoint weights, as well as each endpoint's number of in-flight requests. Endpoints with more pending requests are weighted proportionately less in relation to others.

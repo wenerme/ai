@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/test-harness/configure/
 
 # Configure the test harness
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/configure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `createTestHarness()` runs one or more Workers in a single local server. Each Worker can come from a Wrangler project or a Vite project that uses the Cloudflare Vite plugin.
 
 ## Configure Worker projects

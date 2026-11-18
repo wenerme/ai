@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Alibaba
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/wan-2.6-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `alibaba/wan-2.6-image` Copy

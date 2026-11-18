@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # Cloudflare traffic not being sent to the geographically closest data center
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/geographic-traffic-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Due to the way routing on [Cloudflare's anycast network ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) works, requests may be sent to data centers that are not the closest geographically. Cloudflare continuously adds capacity to its global network and improves its automated traffic engineering systems to manage congestion and other network events. Cloudflare aims to serve traffic from the closest location for the best performance, but reliability takes priority.
 
 When performance and reliability conflict, Cloudflare's systems prioritize a stable connection over a local one.

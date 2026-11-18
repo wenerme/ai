@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/advanced/logpush/og.png?v=3c17370
 
 # Send Zaraz logs to Logpush
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send Zaraz logs to an external storage provider like R2 or S3.
 
 This is an Enterprise only feature.

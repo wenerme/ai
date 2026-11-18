@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/reference/best-practices/o
 
 # Best practices
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/reference/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow these best practices to avoid potential issues and improve the visitor experience.
 
 ## Total active users

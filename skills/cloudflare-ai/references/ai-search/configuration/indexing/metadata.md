@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/metada
 
 # Metadata attributes
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use metadata attributes to organize your indexed documents and provide context to guide AI responses. This page covers built-in metadata attributes and custom metadata schemas. To filter search results by these attributes at query time, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
 ## Built-in metadata attributes

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/reference/certificate-authorities/o
 
 # Certificate authorities
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-authorities/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For publicly trusted certificates, Cloudflare partners with different certificate authorities (CAs). Refer to this page to check what CAs are used for each Cloudflare offering and for more details about the CAs [features, limitations, and browser compatibility](#features-limitations-and-browser-compatibility).
 
 ## Availability per certificate type and encryption algorithm

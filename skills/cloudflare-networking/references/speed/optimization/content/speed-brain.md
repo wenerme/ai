@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/content/speed-brain/
 
 # Speed Brain
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/speed-brain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Speed Brain is a tool for improving web page performance by prefetching the most likely next navigation.
 
 ---

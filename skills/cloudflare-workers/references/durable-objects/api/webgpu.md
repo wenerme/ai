@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/api/webgpu/og.png?v=18f
 
 # WebGPU
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/webgpu/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 The WebGPU API is only available in local development. You cannot deploy Durable Objects to Cloudflare that rely on the WebGPU API. See [Workers AI](https://developers.cloudflare.com/workers-ai/) for information on running machine learning models on the GPUs in Cloudflare's global network.

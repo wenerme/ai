@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 524
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 524: a timeout occurred
 
 Error `524` indicates that Cloudflare successfully connected to the origin web server, but the origin did not provide an HTTP response before the default 125 seconds [Proxy Read Timeout](https://developers.cloudflare.com/fundamentals/reference/connection-limits/).

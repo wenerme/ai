@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/set-caching-levels/og.png?
 
 # Caching levels
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/set-caching-levels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caching levels determine how much of your website’s static content Cloudflare should cache. Cloudflare’s CDN caches static content according to the levels below.
 
 - **No Query String**: Delivers resources from cache when there is no query string. Example URL: `example.com/pic.jpg`

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/databases/third-party-integrati
 
 # Supabase
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Supabase ↗︎](https://supabase.com/) is an open source Firebase alternative and a PostgreSQL database service that offers real-time functionality, database backups, and extensions. With Supabase, developers can quickly set up a PostgreSQL database and build applications.
 
 Note
@@ -150,7 +148,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"main": "src/index.ts",
    	"upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-10-13",
+   	"compatibility_date": "2026-11-18",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -170,7 +168,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-18"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -237,7 +235,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -250,7 +248,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

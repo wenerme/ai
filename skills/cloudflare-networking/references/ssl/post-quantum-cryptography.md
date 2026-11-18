@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/post-quantum-cryptography/og.png?v=
 
 # Post-quantum cryptography (PQC)
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Post-quantum cryptography (PQC) refers to cryptographic algorithms that have been designed to resist attacks from [quantum computers ↗︎](https://www.cloudflare.com/learning/ssl/quantum/what-is-quantum-computing/). Cloudflare has been researching and [writing about post-quantum ↗︎](https://blog.cloudflare.com/tag/post-quantum/) since 2017, and is targeting 2029 to be fully post-quantum secure across its entire product suite — refer to [Cloudflare targets 2029 for full post-quantum security ↗︎](https://blog.cloudflare.com/post-quantum-roadmap/) for the full roadmap.
 
 To protect you against the risk of [harvest-now, decrypt-later attacks ↗︎](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later), and considering all the [connections](#three-connections-in-the-life-of-a-request) that take place when your website or application is on Cloudflare, we have deployed and are actively expanding the use of [post-quantum hybrid key agreement](#hybrid-key-agreement). In parallel, Cloudflare is beginning to deploy [post-quantum signatures](#post-quantum-signatures) to protect authentication against future quantum attacks.

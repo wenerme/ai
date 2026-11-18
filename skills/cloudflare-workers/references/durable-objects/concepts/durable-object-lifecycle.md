@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/concepts/durable-object
 
 # Lifecycle of a Durable Object
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This section describes the lifecycle of a [Durable Object](https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/).
 
 To use a Durable Object you need to create a [Durable Object Stub](https://developers.cloudflare.com/durable-objects/api/stub/). Simply creating the Durable Object Stub does not send a request to the Durable Object, and therefore the Durable Object is not yet instantiated. A request is sent to the Durable Object and its lifecycle begins only once a method is invoked on the Durable Object Stub.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/flagship/og.p
 
 # Flagship
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/flagship/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `wrangler flagship` to manage [Flagship](https://developers.cloudflare.com/flagship/) apps and feature flags from the command line.
 
 `wrangler flagship` is available in Wrangler v4.107.0 and later.

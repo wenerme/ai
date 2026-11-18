@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-
 
 Create a redirect rule to redirect all requests to a different domain, maintaining all functionality, except for the discontinued HTTP service (port 80).
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-another-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this example the original domain was replaced with a different domain. All functionality was maintained, except for the HTTP service (port 80) which was discontinued.
 
 [Create a redirect rule](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) with the following configuration:

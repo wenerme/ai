@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/addo
 
 # UI Kit Addons
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/addons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A collection of UI Kit addons that extend RealtimeKit's prebuilt UI Kit capabilities with additional interactive components and controls for enhanced meeting experiences.
 
 This page is not available for the **iOS, Android, React Native**platform.

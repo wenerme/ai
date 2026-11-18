@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/queues/examples/send-messages-from-dash
 
 Use the dashboard to send messages to a queue.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/examples/send-messages-from-dash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Sending messages from the dashboard allows you to debug Queues or queue consumers without a producer Worker.
 
 To send messages from the dashboard:

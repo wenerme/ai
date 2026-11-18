@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-guard-3-8b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/meta/llama-guard-3-8b` Copy

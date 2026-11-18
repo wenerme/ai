@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/additional-options/create-
 
 # Create scheduled events
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/create-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you want to customize the behavior of a waiting room for a specific period of time — such as changing the queueing method or increasing the total active users — set up a **scheduled event**. You can do this from the dashboard or via the API.
 
 Any properties set on the event will override the default property on the waiting room for the duration of the event.

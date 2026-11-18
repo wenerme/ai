@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/cloudflar
 
 # Cloudflare Community MCP Server
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/community-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The MCP server for the [Cloudflare Community forum ↗︎](https://community.cloudflare.com) lets AI agents search topics, read posts, look up users, and filter content.
 
 The server is powered by [`@discourse/mcp` ↗︎](https://www.npmjs.com/package/@discourse/mcp), the official Discourse MCP server.

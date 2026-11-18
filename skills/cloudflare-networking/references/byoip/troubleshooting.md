@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/troubleshooting/og.png?v=ca408031
 
 # Troubleshooting
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following topics are useful for troubleshooting BYOIP issues.
 
 ## uRPF filtering and packet loss

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth
 
 # Query Magic Transit tunnel bandwidth analytics with GraphQL
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example uses the GraphQL Analytics API to query Magic Transit ingress tunnel traffic over a specified time period.
 
 The following API call requests Magic Transit ingress tunnel traffic over a one-hour period and outputs the requested fields. Replace `<CLOUDFLARE_ACCOUNT_TAG>` with your account ID, `<EMAIL>`, `<API_KEY>`<sup>[1](#user-content-fn-1)</sup> (legacy), or `<API_TOKEN>`<sup>[2](#user-content-fn-2)</sup> (preferred) with your API credentials, and adjust the `datetime_geq` and `datetime_leq` values as needed.

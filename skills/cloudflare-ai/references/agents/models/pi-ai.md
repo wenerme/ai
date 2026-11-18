@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab6
 
 # Pi AI
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `agents/models/pi-ai` is a [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai) provider for Workers AI and AI Gateway. It has the same `createAI` factory and options as the [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/), and returns Pi AI `Model` objects. Use it with Pi AI's `stream` and `complete`, with [Pi Durable ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable), with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), or with any framework built on a Pi AI `Models` registry.
 
 ## Install

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/get-started/og.png?v=8fe96c60
 
 # Getting started
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will instruct you through:
 
 - Creating your first [R2 bucket](https://developers.cloudflare.com/r2/buckets/) and enabling its [data catalog](https://developers.cloudflare.com/basin-catalog/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-h
 
 # Oblivious DNS over HTTPS
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With standard [DNS over HTTPS (DoH)](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/), your DNS queries are encrypted, but the resolver still sees both your IP address and the domain you are looking up. Oblivious DNS over HTTPS (ODoH) adds a privacy layer so that no single entity can see both pieces of information at the same time.
 
 Caution

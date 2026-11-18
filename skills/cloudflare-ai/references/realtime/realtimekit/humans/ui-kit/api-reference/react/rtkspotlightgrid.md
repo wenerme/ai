@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkSpotlightGrid
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkspotlightgrid/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A grid component that renders two lists of participants: `pinnedParticipants` and `participants`. You can customize the layout to a `column` view, by default is `row`.
 
 - Participants from `pinnedParticipants[]` are rendered inside a larger grid.

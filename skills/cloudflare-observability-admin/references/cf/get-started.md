@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cf/get-started/og.png?v=cd76c898b43a26f
 
 # Get started
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Every `cf` workflow starts the same way: install the CLI, sign in, and run a command. The reference sections at the end of this page explain how `cf` chooses credentials, accounts, and zones.
 
 ## Requirements

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/local-development/
 
 # Local Development
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Queues support local development workflows using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers. Wrangler runs the same version of Queues as Cloudflare runs globally.
 
 ## Prerequisites

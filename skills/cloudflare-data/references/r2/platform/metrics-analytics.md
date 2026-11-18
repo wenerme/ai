@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/platform/metrics-analytics/og.png?v=
 
 # Metrics and analytics
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/metrics-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [R2](https://developers.cloudflare.com/r2/) exposes analytics for requests, storage, and bandwidth usage across your buckets.
 
 The metrics displayed for a bucket in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.

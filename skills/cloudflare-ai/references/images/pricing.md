@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/pricing/og.png?v=a34632d306ff834
 
 # Pricing
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, all users are on the Images Free plan. The Free plan includes access to the transformations feature, which lets you optimize images stored outside of Images, like in [R2](https://developers.cloudflare.com/r2/).
 
 The Paid plan allows transformations, as well as access to storage in Images.

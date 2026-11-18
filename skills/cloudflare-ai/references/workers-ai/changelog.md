@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/changelog/og.png?v=1d28cd044
 
 # Changelog
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/workers-ai/changelog/index.xml)
 
 ## 2026-06-16

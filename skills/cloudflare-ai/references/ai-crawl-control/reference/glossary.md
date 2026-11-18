@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/reference/glossary/og.
 
 # Glossary
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the definitions for terms used across Cloudflare's AI Crawl Control documentation.
 
 | Term | Definition |

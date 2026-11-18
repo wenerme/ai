@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/email-security
 
 # Next steps
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/email-security-onboarding/email-security-next-steps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Now that you have learned how Email security can protect your inbox from phishing attacks, refer to the following resources to onboard and enhance your email security posture:
 
 | Resource | Description |

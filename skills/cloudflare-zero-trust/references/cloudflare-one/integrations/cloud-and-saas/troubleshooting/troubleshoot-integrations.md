@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-s
 
 # Troubleshoot integrations
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare CASB detects when integrations are unhealthy or outdated.
 
 Common integration issues include changes to SaaS app or cloud environment configurations, user access, or permission scope. Integrations may need to be updated to support new features or permissions.

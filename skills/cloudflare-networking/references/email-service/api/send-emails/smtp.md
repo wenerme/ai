@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/api/send-emails/smtp/og.p
 
 # SMTP
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/smtp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Email Service exposes an authenticated SMTP submission endpoint so you can send emails from any application, framework, or off-the-shelf mail client that speaks SMTP. Use SMTP when the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) and the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) are not a good fit — for example, when integrating an existing application that already speaks SMTP, or a language-native SMTP library (Nodemailer, `smtplib`, PHPMailer, JavaMail).
 
 Emails submitted over SMTP enter the same delivery pipeline as the REST API and the Workers binding: they are subject to the same [limits](https://developers.cloudflare.com/email-service/platform/limits/), receive the same DKIM and ARC signing, and produce the same delivery logs.

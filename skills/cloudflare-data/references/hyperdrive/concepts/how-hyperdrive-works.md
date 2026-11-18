@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-work
 
 # How Hyperdrive works
 
-Last updated Jul 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connecting to traditional centralized databases from Cloudflare's global network which consists of over [300 data center locations ↗︎](https://www.cloudflare.com/network/) presents a few challenges as queries can originate from any of these locations.
 
 If your database is centrally located, queries can take a long time to get to the database and back. Queries can take even longer in situations where you have to establish new connections from stateless environments like Workers, requiring multiple round trips for each Worker invocation.

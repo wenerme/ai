@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/packages/fasta
 
 # FastAPI
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [FastAPI ↗︎](https://fastapi.tiangolo.com/) is supported in Python Workers.
 
 FastAPI applications use a protocol called the [Asynchronous Server Gateway Interface (ASGI) ↗︎](https://asgi.readthedocs.io/en/latest/). This means that FastAPI never reads from or writes to a socket itself. An ASGI application expects to be hooked up to an ASGI server, typically [uvicorn ↗︎](https://uvicorn.dev/). The ASGI server handles all of the raw sockets on the application’s behalf.
@@ -47,7 +45,7 @@ Default = asgi.entrypoint(app)
 	"name": "my-fastapi-app",
 	"main": "src/main.py",
 	// Set this to today's date
-	"compatibility_date": "2026-10-09",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["python_workers"],
 }
 ```
@@ -57,7 +55,7 @@ Default = asgi.entrypoint(app)
 name = "my-fastapi-app"
 main = "src/main.py"
 # Set this to today's date
-compatibility_date = "2026-10-09"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "python_workers" ]
 ```
 
@@ -112,7 +110,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 	"name": "my-fastapi-app",
 	"main": "src/worker.py",
 	// Set this to today's date
-	"compatibility_date": "2026-10-09",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["python_workers"],
 	"assets": {
 		"directory": "./public/",
@@ -126,7 +124,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 name = "my-fastapi-app"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-10-09"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

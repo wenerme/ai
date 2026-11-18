@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkPipToggle
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkpiptoggle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A button to turn Picture-in-Picture mode on or off when available. For example, a participant can keep the meeting video visible while using another app.
 
 ## Properties

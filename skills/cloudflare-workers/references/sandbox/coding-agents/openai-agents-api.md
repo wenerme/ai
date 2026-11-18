@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api
 
 # Run Codex with the OpenAI Agents API in a sandbox
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [OpenAI Agents API ↗︎](https://developers.openai.com/api/docs/guides/agents-api/overview) runs the Codex agent loop at OpenAI. With a self-hosted environment, Codex runs commands and edits files in your Cloudflare account instead. The Cloudflare template runs the Codex executor of each session in its own Linux sandbox: a [Container](https://developers.cloudflare.com/containers/) that one Durable Object starts for that session.
 
 ![Architecture showing an application creating an OpenAI task, webhooks starting a Cloudflare container, and the application fetching the result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=4160,height=4000,format=webp/_astro/openai-agents-api-arch.CCqSDnZe.jpg)

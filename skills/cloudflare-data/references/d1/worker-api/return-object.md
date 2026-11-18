@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/worker-api/return-object/og.png?v=bb
 
 # Return objects
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/worker-api/return-object/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Some D1 Worker Binding APIs return a typed object.
 
 | D1 Worker Binding API | Return object |

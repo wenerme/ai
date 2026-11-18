@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/troubleshooting/routing-a
 
 # Troubleshoot routing and BGP
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide helps you diagnose and resolve common routing and BGP issues with Magic Transit. These issues can affect traffic delivery, cause unexpected latency, or result in connectivity loss.
 
 ## Quick diagnostic checklist

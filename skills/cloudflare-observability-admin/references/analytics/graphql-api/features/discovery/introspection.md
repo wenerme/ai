@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/discover
 
 # Introspection
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare GraphQL API has a dynamic schema and exposes more than 70 datasets across zone and account scopes. We constantly expand the list and replace existing ones with more capable alternatives.
 
 To tackle the schema question, GraphQL provides an [introspection ↗︎](https://graphql.org/learn/introspection/) mechanism. It is part of the GraphQL specification and allows you to explore the graph of the datasets and fields.

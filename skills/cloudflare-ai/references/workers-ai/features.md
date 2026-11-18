@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/og.png?v=fbf6c6a891
 
 # Features
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Asynchronous Batch API](https://developers.cloudflare.com/workers-ai/features/batch-api/)
 - [Function calling](https://developers.cloudflare.com/workers-ai/features/function-calling/)
 - [JSON Mode](https://developers.cloudflare.com/workers-ai/features/json-mode/)

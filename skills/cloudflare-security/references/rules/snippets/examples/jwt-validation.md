@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/
 
 Extract a JWT from the Authorization header, verify its HMAC-SHA256 signature using the WebCrypto API, and validate its claims.
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution when using in production
 
 The example code contains a placeholder HMAC secret of `"mysecretsymmetrickey"`. To best protect your resources, change the secret to a strong, unique value in the Snippets editor before saving your code.

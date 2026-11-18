@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/changelog/og.png?v=e0fd8a
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare occasionally updates the `beacon.min.js` file to improve Web Analytics functionality. The table below includes a log of what changed in the `beacon.min.js` file and when.
 
 [Subscribe to RSS](https://developers.cloudflare.com/web-analytics/changelog/index.xml)

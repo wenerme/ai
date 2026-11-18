@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/query-builder/og.
 
 # Query Builder
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/query-builder/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Query Builder helps you write structured queries to investigate and visualize your telemetry data. The Query Builder searches the Workers Observability dataset, which currently includes all logs stored by [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/).
 
 You can also run the same queries programmatically using the [Workers Observability REST API](https://developers.cloudflare.com/api/resources/workers/subresources/observability/), which exposes endpoints to list dataset keys, run a query, and list the values for a key.

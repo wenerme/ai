@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-error-logging/og.png?v=a95cce77
 
 # Network Error Logging
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-error-logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Network Error Logging (NEL) is a browser-based reporting system that allows users to report their own failures to an external endpoint. You can use Network Error Logging to gain insight into connectivity issues on the Internet to learn when and where an incident is happening, who is impacted, and how they are being impacted.
 
 ## The last mile

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/platform/limits/og.png?v=227b6bb
 
 # Limits
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Limits that apply to authoring, deploying, and running Agents are detailed below.
 
 Many limits are inherited from those applied to Workers scripts and/or Durable Objects, and are detailed in the [Workers limits](https://developers.cloudflare.com/workers/platform/limits/) documentation.

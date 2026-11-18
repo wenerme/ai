@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/analytics/gatew
 
 # Gateway analytics (DNS, HTTP, network sessions)
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Gateway analytics include three separate dashboards:
 
 - HTTP request analytics.
@@ -30,9 +28,9 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 ## HTTP request analytics
 
-Your [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) power the HTTP request analytics dashboard. If you are not using Gateway HTTP policies, the dashboard will appear empty.
+Your [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) power the HTTP request analytics dashboard. If you are not using Gateway HTTP policies, the dashboard will appear empty.
 
-The HTTP request analytics dashboard helps you identify trends in how your HTTP policies apply over time. By visualizing allowed, [isolated](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) (rendered in a remote browser), and [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) (bypassing TLS decryption) requests, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
+The HTTP request analytics dashboard helps you identify trends in how your HTTP policies apply over time. By visualizing allowed, [isolated](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) (rendered in a remote browser), and [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) (bypassing TLS decryption) requests, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
 
 To review a detailed description of an HTTP request and its associated policy:
 
@@ -54,7 +52,7 @@ To review a detailed description of an HTTP request and its associated policy:
 
 ## DNS query analytics
 
-Your [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) power the DNS query analytics dashboard. If you are not using Gateway DNS policies, the dashboard will appear empty.
+Your [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) power the DNS query analytics dashboard. If you are not using Gateway DNS policies, the dashboard will appear empty.
 
 The DNS query analytics dashboard helps you identify trends in how your DNS policies apply over time. By visualizing allowed, blocked, and overridden (DNS response replaced by a policy-defined address) queries, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
 
@@ -77,7 +75,7 @@ To review a detailed description of a DNS query and its associated policy:
 
 ## Network policy analytics
 
-Your [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) power the Network policy analytics dashboard. If you are not using Gateway network policies, the dashboard will appear empty.
+Your [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) power the Network policy analytics dashboard. If you are not using Gateway network policies, the dashboard will appear empty.
 
 The Network policy analytics dashboard helps you identify trends in how your Gateway network policies apply over time. By visualizing allowed, blocked, and overridden (traffic rerouted by a policy-defined rule) sessions, the dashboard provides insights into traffic behavior and policy trends, making it easier to spot anomalies or shifts in usage patterns.
 
@@ -112,7 +110,7 @@ You can use the [GraphQL Analytics API](https://developers.cloudflare.com/analyt
 | `gatewayResolverQueriesAdaptiveGroups` | Metrics for Gateway DNS queries with adaptive sampling. |
 | `gatewayResolverByRuleExecutionPerformanceAdaptiveGroups` | Time to execute Gateway DNS policies on the Cloudflare global network. |
 | `gatewayResolverByCustomResolverGroups` | Metrics for Gateway DNS queries resolved using custom resolvers. |
-| `gatewayResolverByCategoryAdaptiveGroups` | Metrics for Gateway DNS queries sorted by [domain category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) with adaptive sampling. |
+| `gatewayResolverByCategoryAdaptiveGroups` | Metrics for Gateway DNS queries sorted by [domain category](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) with adaptive sampling. |
 
 To explore the schema, you can use a GraphQL client such as [GraphiQL ↗︎](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) or [Altair ↗︎](https://altairgraphql.dev/).
 
@@ -154,5 +152,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/#page","headline":"Gateway analytics (DNS, HTTP, network sessions)","description":"Reference information for Gateway analytics (DNS, HTTP, network sessions) in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/og.png?v=6b3c34e64c2936ce","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/#page","headline":"Gateway analytics (DNS, HTTP, network sessions)","description":"Reference information for Gateway analytics (DNS, HTTP, network sessions) in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/og.png?v=6b3c34e64c2936ce","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}
 ```

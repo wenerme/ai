@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/o
 
 # IDS
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Unified Routing availability
 
 IDS is beta for Cloudflare WAN accounts using Unified Routing and is not available for Magic Transit accounts using Unified Routing. Review feature availability for [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#check-feature-availability-before-upgrading) and [Magic Transit](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#check-feature-availability-before-upgrading).

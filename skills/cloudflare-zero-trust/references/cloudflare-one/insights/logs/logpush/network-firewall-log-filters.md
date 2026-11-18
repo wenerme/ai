@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/ne
 
 # Network Firewall log filters
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can apply [Log filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) to your Logpush job to export only specific Cloudflare Network Firewall events. The examples below show common filter configurations using the Logpush API. Each filter uses a JSON structure with `where` clauses containing `key` (the log field to filter on), `operator` (the comparison, such as `eq` for equals or `!eq` for not equals), and `value` (the value to match).
 
 The filters in this guide use the following log fields:

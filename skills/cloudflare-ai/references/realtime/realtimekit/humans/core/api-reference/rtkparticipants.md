@@ -11,8 +11,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKParticipants
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This module represents all the participants in the meeting (except the local user). It consists of 4 maps:
 
 - `joined`: A map of all participants that have joined the meeting.

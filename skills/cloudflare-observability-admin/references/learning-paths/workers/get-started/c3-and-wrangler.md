@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workers/get-started/c3-a
 
 # C3 & Wrangler
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/get-started/c3-and-wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before deploying your first Worker, learn about the CLI tools you will use to build and deploy your Worker project.
 
 ## Cloudflare dashboard

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Useful terms
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/tunnel-useful-terms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review terminology for Cloudflare Tunnels.
 
 ## Tunnel

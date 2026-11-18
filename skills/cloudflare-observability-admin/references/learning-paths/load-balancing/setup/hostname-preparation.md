@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/hos
 
 # Hostname preparation
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/hostname-preparation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before setting up anything related to your load balancer, make sure you test that production hostnames meet the following criteria:
 
 - Based on the [priority order](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#priority-order) of DNS records, they will receive the intended amount of traffic.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/initia
 
 # Add a site
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/add-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In clientless access deployments, users connect to internal applications via public hostnames. You will need to own a domain, add it to Cloudflare, and configure Cloudflare as the [authoritative DNS provider](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#34-update-your-registrar) for that domain. Enterprise customers who cannot change their authoritative DNS provider have the option to configure a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
 
 You only need to add one domain to Cloudflare, since you can create an infinite number of subdomains to manage all of your private applications.

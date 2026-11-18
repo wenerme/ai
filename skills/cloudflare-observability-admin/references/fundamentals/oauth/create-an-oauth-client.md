@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-clie
 
 # Create your OAuth client
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Prerequisites
 
 To create an OAuth client, you must have one of these roles for the associated account: Super Administrator, Administrator, or OAuth Client Write.

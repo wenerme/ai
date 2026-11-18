@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/og.png?v=7c3fc7bbb49ac09c
 
 # Cloudflare Zaraz
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Offload third-party tools and services to the cloud and improve the speed and security of your website.
 
 Available on all plans

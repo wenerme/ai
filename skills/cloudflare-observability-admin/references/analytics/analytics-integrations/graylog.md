@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-integrations/graylo
 
 # Graylog
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/graylog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial explains how to analyze [Cloudflare Logs ↗︎](https://www.cloudflare.com/products/cloudflare-logs/) using [Graylog ↗︎](https://github.com/Graylog2/graylog-s3-lambda/blob/master/content-packs/cloudflare/cloudflare-logpush-content-pack.json).
 
 ## Overview

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Request Validation
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/concepts/request-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloud Workload Security (CWS) uses workloads and policies to validate API requests. Workloads define request scope. Policies define the checks, and policy sets connect scope to checks. A deployment selects the policy sets to apply.
 
 For a definition of each resource, refer to [CWS entities](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/#cws-entities).

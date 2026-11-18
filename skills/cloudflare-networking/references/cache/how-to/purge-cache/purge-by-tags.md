@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/
 
 # Purge cache by cache-tags
 
-Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cache-tag purging makes multi-file purging easier because you can instantly bulk purge by adding cache-tags to your assets, such as webpages, image files, and more.
 
 ## General workflow for cache-tags

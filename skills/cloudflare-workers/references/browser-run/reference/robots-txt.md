@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/reference/robots-txt/og.png
 
 # robots.txt and sitemaps
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/robots-txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides general guidance on configuring `robots.txt` and sitemaps for websites you plan to access with Browser Run.
 
 robots.txt is advisory, not enforceable

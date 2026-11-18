@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-si
 
 # Enforce HTTPS and encrypt all traffic (Free, Pro, and Business)
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/solutions/encrypt-all-keep-site-secure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 HTTPS on Cloudflare involves two separate connections: visitor to Cloudflare, and Cloudflare to your origin server. Both must be encrypted for end-to-end security. This guide walks through five stages:
 
 1. Configure your SSL/TLS encryption mode.

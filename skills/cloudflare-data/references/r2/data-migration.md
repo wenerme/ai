@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/data-migration/og.png?v=3486cf36edd9
 
 # Data migration
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/data-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Quickly and easily migrate data from other cloud providers to R2. Explore each option further by navigating to their respective documentation page.
 
 Name | | | | | Description | | | | | When to use | | | |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/skills/sources/code/og.png?v=b6c
 
 # Code
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/skills/sources/code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `skills.manifest()` creates a source from [Agent Skills](https://developers.cloudflare.com/agents/skills/) defined in code. It needs no Workspace or bucket, which suits tests and small sets of skills that ship with your Worker.
 
 ## Define skills

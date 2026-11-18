@@ -16,8 +16,6 @@ a
 
 Text Generation • aisingapore
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/aisingapore/gemma-sea-lion-v4-27b-it/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/aisingapore/gemma-sea-lion-v4-27b-it` Copy

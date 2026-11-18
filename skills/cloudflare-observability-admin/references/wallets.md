@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/wallets/og.png?v=517c328dbcd42788
 
 # Cloudflare Wallets
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/wallets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A programmable wallet that gives eligible Cloudflare accounts and AI agents a stable identity and a way to pay for APIs and content.
 
 Note

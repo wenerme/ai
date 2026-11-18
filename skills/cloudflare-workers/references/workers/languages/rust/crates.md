@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/rust/crates/og.png?v=
 
 # Supported crates
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/rust/crates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Background
 
 Learn about popular Rust crates which have been confirmed to work on Workers when using [`workers-rs` ↗︎](https://github.com/cloudflare/workers-rs) (or in some cases just `wasm-bindgen`), to write Workers in WebAssembly. Each Rust crate example includes any custom configuration that is required.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/cache-rules/order/og.png?v
 
 # Order and priority
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/order/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cache rules affect requests differently from Page Rules. This is how they are applied:
 
 1. Cache Rules are stackable. This means that multiple matching rules can be combined and applied to the same request. For example, if multiple cache rules match the same URL, then the features set in those cache rules will all be applied in order. If several matching rules set a value for the same setting, the value in the last matching rule wins. For an example of a similar scenario where multiple rules match, refer to the [Origin Rules FAQ](https://developers.cloudflare.com/rules/origin-rules/faq/#what-happens-if-more-than-one-origin-rule-matches-the-current-request).

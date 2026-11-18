@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/previews/og.png?v=a671b00fd45ff
 
 # Preview a web application
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/previews/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use a browser to open a web server that runs in a sandbox. The server has no public port, so your Worker forwards requests to it. In this example, the Worker forwards each request under `/previews/<NAME>/` to the sandbox named `<NAME>`.
 
 ## Prerequisites

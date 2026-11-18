@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/gradua
 
 # Gradual deployments
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Gradual deployments let you incrementally deploy new [versions](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker by splitting traffic across versions. Instead of shifting all traffic to a new version at once, you can route a percentage of requests to the new version while the rest continue to be handled by the previous version.
 
 ![Gradual Deployments](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1260,height=590,format=webp/_astro/gradual-deployments.C6F9MQ6U.png)

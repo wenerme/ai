@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/lim
 
 # Limitations
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Universal SSL certificates present some limitations.
 
 ## Proxy status

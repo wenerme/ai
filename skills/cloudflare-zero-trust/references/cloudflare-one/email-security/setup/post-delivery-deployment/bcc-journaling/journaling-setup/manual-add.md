@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pos
 
 # Manually add domains
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/manual-add/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page will teach you how to manually add domains via BCC/Journaling on the Cloudflare dashboard.
 
 This setup is ideal if your email provider is not Microsoft 365 or Google Workspace, or you do not want to directly integrate your account. Beware that manually add does not support [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) or [directory synchronization](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/).

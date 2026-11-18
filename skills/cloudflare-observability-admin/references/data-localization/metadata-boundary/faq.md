@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/metadata-boundary/faq
 
 # FAQs
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## What data is covered by the Customer Metadata Boundary?
 
 Nearly all end user metadata is covered by the Customer Metadata Boundary. This includes all of the end user data for which Cloudflare is a processor, as defined in the [Cloudflare Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/). Cloudflare is a data processor of Customer Logs, which are defined as end user logs that we make available to our customers via the dashboard or other online interfaces. End users are those who access or use our customers' domains, networks, websites, application programming interfaces, and applications.

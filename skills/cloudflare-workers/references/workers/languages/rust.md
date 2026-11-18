@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/rust/og.png?v=b1c2c49
 
 # Rust
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/rust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Workers provides support for Rust via the [`workers-rs` crate ↗︎](https://github.com/cloudflare/workers-rs), which makes [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to developer platform products, such as [Workers KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [R2](https://developers.cloudflare.com/r2/), and [Queues](https://developers.cloudflare.com/queues/), available directly from your Rust code.
 
 By following this guide, you will learn how to build a Worker entirely in the Rust programming language.

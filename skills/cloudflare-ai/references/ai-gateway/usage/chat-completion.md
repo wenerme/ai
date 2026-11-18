@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/chat-completion/og.png
 
 # Unified API (OpenAI compat)
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deprecated for single-model calls
 
 For standard single-model chat completions, this endpoint is deprecated. Use the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) instead, which provides OpenAI-compatible endpoints at `api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/v1/chat/completions`. The `/compat/chat/completions` endpoint will continue to work for existing integrations.

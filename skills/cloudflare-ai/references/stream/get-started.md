@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/get-started/og.png?v=cca869b4b7a
 
 # Get started
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Stream Live WebRTC is now GA:
 
 Billing for WebRTC delivery began on October 15th, 2026.

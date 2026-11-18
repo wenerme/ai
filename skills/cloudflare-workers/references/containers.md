@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/og.png?v=9068707d88e89d36
 
 # Containers
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Enhance your Workers with serverless containers
 
 Available on Workers Paid plan
@@ -188,7 +186,7 @@ export async function startAndWaitForPort(
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-09",
+	"compatibility_date": "2026-11-18",
 	"containers": [
 		{
 			"class_name": "MyContainer",
@@ -218,7 +216,7 @@ name = "container-starter"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-09"
+compatibility_date = "2026-11-18"
 
 [[containers]]
 class_name = "MyContainer"

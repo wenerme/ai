@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/pricing/og.png?v=6c826
 
 # Pricing
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, users have access to the Workers Free plan. The Workers Free plan includes limited usage of Workers, Pages Functions, Workers KV and Hyperdrive. Read more about the [Free plan limits](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits).
 
 The Workers Paid plan includes Workers, Pages Functions, Workers KV, Hyperdrive, and Durable Objects usage for a minimum charge of $5 USD per month for an account. The plan includes increased initial usage allotments, with clear charges for usage that exceeds the base plan. There are no additional charges for data transfer (egress) or throughput (bandwidth).

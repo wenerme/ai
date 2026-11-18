@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/manage/run-code-when-a-sandbox-
 
 # Run code when a sandbox stops
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/manage/run-code-when-a-sandbox-stops/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The runtime does not wake a Durable Object when its container stops. Your Durable Object watches the container while the Durable Object is in memory, and checks for a missed stop on every command and alarm. In this example, the Durable Object also stops idle sandboxes itself, so the record shows why each one stopped.
 
 ## Prerequisites

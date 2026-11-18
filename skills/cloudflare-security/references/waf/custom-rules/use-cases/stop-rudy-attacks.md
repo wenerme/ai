@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/stop-rudy-at
 
 # Stop R-U-Dead-Yet? (R.U.D.Y.) attacks
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/stop-rudy-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R-U-Dead-Yet (R.U.D.Y.) attacks accomplish denial of service (DoS) by submitting long form fields. Use custom rules to stop these attacks by blocking requests that do not have a legitimate session cookie.
 
 This example combines three expressions to target HTTP `POST` requests that do not contain a legitimate authenticated session cookie:

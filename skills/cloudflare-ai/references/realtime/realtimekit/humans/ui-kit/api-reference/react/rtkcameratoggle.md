@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkCameraToggle
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkcameratoggle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A button which toggles your camera.
 
 ## Properties

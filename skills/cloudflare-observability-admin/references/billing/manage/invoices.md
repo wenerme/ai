@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/invoices/og.png?v=a2206b
 
 # Invoices
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/invoices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You will receive an invoice in the **Billing** section of your Cloudflare account when you:
 
 - Change your Cloudflare plan type.

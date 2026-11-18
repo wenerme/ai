@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/additional-configurations/og.
 
 # Additional configurations
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/)
 - [DDoS managed rulesets configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/)
 - [Rate limiting rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/)

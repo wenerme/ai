@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkParticipantsFragment
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/participants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A component which lists all participants, with the ability to run privileged actions on each participant according to your permissions.
 
 ## Methods

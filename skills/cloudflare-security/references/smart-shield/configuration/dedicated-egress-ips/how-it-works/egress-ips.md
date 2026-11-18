@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-eg
 
 # Egress IPs
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you use Cloudflare [as a reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy), [Cloudflare's global network ↗︎](https://www.cloudflare.com/network/) sits between client requests and your origin servers.
 
 ```

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/concepts/bot-score/og.png?v=9d963a
 
 # Bot scores
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-score/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A bot score is a score from *1* to *99* that indicates how likely that request came from a bot.
 
 For example, a score of 1 means Cloudflare is quite certain the request was automated, while a score of 99 means Cloudflare is quite certain the request came from a human.

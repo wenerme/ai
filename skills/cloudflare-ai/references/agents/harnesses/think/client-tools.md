@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/client-tools/og.
 
 # Client tools
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/client-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Think supports tools that execute in the browser. The client sends serializable tool schemas in the chat request body, Think merges them with server tools, and when the LLM calls a client tool, the call is routed to the client for execution.
 
 ## Defining client tools

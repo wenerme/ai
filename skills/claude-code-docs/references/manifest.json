@@ -67,9 +67,9 @@
   },
   "auto-mode-config.md": {
     "url": "https://code.claude.com/docs/en/auto-mode-config",
-    "lastModified": "Wed, 18 Nov 2026 02:19:30 GMT",
-    "size": 35612,
-    "updatedAt": "2026-11-18T07:01:55.274Z"
+    "lastModified": "Wed, 18 Nov 2026 17:19:56 GMT",
+    "size": 35569,
+    "updatedAt": "2026-11-18T18:48:19.608Z"
   },
   "best-practices.md": {
     "url": "https://code.claude.com/docs/en/best-practices",
@@ -289,9 +289,9 @@
   },
   "cross-session-messaging.md": {
     "url": "https://code.claude.com/docs/en/cross-session-messaging",
-    "lastModified": "Tue, 10 Nov 2026 06:22:37 GMT",
-    "size": 36437,
-    "updatedAt": "2026-11-10T06:59:34.331Z"
+    "lastModified": "Wed, 18 Nov 2026 17:19:33 GMT",
+    "size": 36463,
+    "updatedAt": "2026-11-18T18:48:33.543Z"
   },
   "data-usage.md": {
     "url": "https://code.claude.com/docs/en/data-usage",
@@ -601,9 +601,9 @@
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
-    "lastModified": "Tue, 17 Nov 2026 19:05:55 GMT",
-    "size": 92659,
-    "updatedAt": "2026-11-17T19:05:55.376Z"
+    "lastModified": "Wed, 18 Nov 2026 17:11:39 GMT",
+    "size": 92417,
+    "updatedAt": "2026-11-18T18:48:53.049Z"
   },
   "platforms.md": {
     "url": "https://code.claude.com/docs/en/platforms",
@@ -775,9 +775,9 @@
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
-    "lastModified": "Tue, 17 Nov 2026 03:15:56 GMT",
-    "size": 27984,
-    "updatedAt": "2026-11-17T07:40:35.384Z"
+    "lastModified": "Wed, 18 Nov 2026 17:14:36 GMT",
+    "size": 27938,
+    "updatedAt": "2026-11-18T18:49:15.608Z"
   },
   "third-party-integrations.md": {
     "url": "https://code.claude.com/docs/en/third-party-integrations",
@@ -823,9 +823,9 @@
   },
   "web-quickstart.md": {
     "url": "https://code.claude.com/docs/en/web-quickstart",
-    "lastModified": "Tue, 10 Nov 2026 23:48:37 GMT",
-    "size": 26529,
-    "updatedAt": "2026-11-11T05:51:41.869Z"
+    "lastModified": "Wed, 18 Nov 2026 17:19:22 GMT",
+    "size": 26538,
+    "updatedAt": "2026-11-18T18:49:18.626Z"
   },
   "workflows.md": {
     "url": "https://code.claude.com/docs/en/workflows",

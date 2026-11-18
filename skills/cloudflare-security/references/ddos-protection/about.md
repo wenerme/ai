@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/about/og.png?v=cffcfc91
 
 # About
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare provides unmetered and unlimited [distributed denial-of-service (DDoS)](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) protection at layers 3, 4, and 7 to all customers on all plans and services.
 
 The protection is enabled by Cloudflare's [Autonomous DDoS Protection Edge](https://developers.cloudflare.com/ddos-protection/about/components/#autonomous-edge), which automatically detects and mitigates DDoS attacks.

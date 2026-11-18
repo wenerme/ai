@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/partners/og.png?
 
 # Partners
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/partners/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare Technology Partners ↗︎](https://www.cloudflare.com/partners/technology-partners/) offer purpose-built integrations with our products, providing expanded functionality for our users. Learn how to configure these integrations with our tutorials and how-to guides.
 
 ## Analytics integrations

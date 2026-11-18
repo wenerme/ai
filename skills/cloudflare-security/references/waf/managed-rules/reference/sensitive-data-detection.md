@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-d
 
 # Cloudflare Sensitive Data Detection
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This feature requires an Enterprise plan.

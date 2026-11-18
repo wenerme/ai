@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/confiden
 
 # Confidence Intervals
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Confidence intervals help assess accuracy and quantify uncertainty in results from sampled datasets. When querying sum or count fields on adaptive datasets, you can request a confidence interval to understand the possible range around an estimate. For example, specifying a confidence level of `0.95` returns the estimate, along with the range of values that likely contains the true value 95% of the time.
 
 ## Availability

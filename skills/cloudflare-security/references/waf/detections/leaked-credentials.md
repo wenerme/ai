@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/leaked-credentials/og.pn
 
 # Leaked credentials detection
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The leaked credentials [traffic detection](https://developers.cloudflare.com/waf/detections/) scans incoming requests for credentials (usernames and passwords) previously leaked from [data breaches ↗︎](https://www.cloudflare.com/learning/security/what-is-a-data-breach/).
 
 Note

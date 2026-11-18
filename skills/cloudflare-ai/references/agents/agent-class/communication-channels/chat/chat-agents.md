@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/communication-channe
 
 # Chat agents
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build AI-powered chat interfaces with `AIChatAgent` and `useAgentChat`. Messages are automatically persisted to SQLite, streams resume on disconnect, and tool calls work across server and client.
 
 ## Overview

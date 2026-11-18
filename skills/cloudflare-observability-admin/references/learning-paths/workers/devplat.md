@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workers/devplat/og.png?v
 
 # Learn about Cloudflare's Developer Platform
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/devplat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Build applications with Cloudflare's Developer Platform
 
 The Cloudflare Developer Platform allows you to build full-stack applications with Workers.

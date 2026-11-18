@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/scope/og.pn
 
 # Role scopes
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/scope/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Scopes are one of three constituent parts of a policy that allows granting of access to users.
 
 To allow for flexible combinations of access to users, Cloudflare currently has account-level scopes, domain scopes, and resource-specific scopes. Each scope is associated with a different set of [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/).

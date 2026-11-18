@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/compatibility-fla
 
 # Compatibility flags
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/compatibility-flags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Compatibility flags enable specific features. They can be useful if you want to help the Workers team test upcoming changes that are not yet enabled by default, or if you need to hold back a change that your code depends on but still want to apply other compatibility changes.
 
 Compatibility flags will often have a date in which they are enabled by default, and so, by specifying a [`compatibility_date`](https://developers.cloudflare.com/workers/configuration/compatibility-dates) for your Worker, you can quickly enable all of these various compatibility flags up to, and including, that date.
@@ -295,6 +293,20 @@ For compatibility dates on or after November 17, 2026, incoming [`Request`](http
 For earlier compatibility dates, add `enable_request_signal` to opt in. Add `disable_request_signal` to opt out, including with later compatibility dates.
 
 This flag does not change `request_signal_passthrough`. Pass `request.signal` explicitly to APIs that accept a signal, such as [`fetch()`](https://developers.cloudflare.com/workers/runtime-apis/fetch/), to cancel that work when the client disconnects.
+
+### `WebSocket` follows the spec for its URL and `extensions`
+
+| **Flag to enable** | `websocket_standard_url_and_extensions` |
+| --- | --- |
+| **Flag to disable** | `websocket_legacy_url_and_extensions` |
+
+This flag makes [the `WebSocket` API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) follow the [WebSockets standard ↗︎](https://websockets.spec.whatwg.org/#the-websocket-interface) in three places:
+
+- `new WebSocket(url)` accepts `http:` and `https:` URLs and connects to them as `ws:` and `wss:`. It used to throw a `SyntaxError` for any scheme other than `ws:` or `wss:`.
+- `url` returns the URL as parsed by the [URL standard ↗︎](https://url.spec.whatwg.org/), so `new WebSocket("https://EXAMPLE.com")` has the `url` `"wss://example.com/"`. It used to return the string passed to the constructor. The URL the connection requests is built from that parsed form, so its path is normalized the same way.
+- Once the connection is open, `protocol` and `extensions` are the empty string when the server selected no subprotocol or extension. They used to be `null`.
+
+Workers have no base URL, so a relative URL still throws a `SyntaxError`.
 
 ### Durable Object I/O tasks prevent eviction
 

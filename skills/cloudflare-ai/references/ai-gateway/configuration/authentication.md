@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/authentication
 
 # Authenticated Gateway
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 New AI Gateways require authentication. Existing gateways with authentication turned off can continue without it or turn it on. Once authentication is on, you cannot turn it off. Authentication prevents unauthorized access and protects against invalid requests that can inflate log storage usage.
 
 When using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), pass your Cloudflare API token in the standard `Authorization` header. When using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, use the `cf-aig-authorization` header instead.

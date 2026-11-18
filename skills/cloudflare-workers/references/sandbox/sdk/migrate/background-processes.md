@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/background-processe
 
 # Move background processes
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In Sandbox SDK 0.12, `startProcess()` returns a `Process` object, and the container keeps a table of processes that later requests query. In 1.0, your Durable Object keeps a directory in the container for each process. Each `Process` method becomes a Durable Object method that takes the process ID.
 
 ## Before you start

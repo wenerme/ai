@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/examples/og.png?v=9acc8
 
 # Transform Rules examples
 
-Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [**Add a wildcard CORS response header** Create a CORS response header transform rule to add an `Access-Control-Allow-Origin` HTTP header to the response with wildcard as static value. (`cookiename=value`).](https://developers.cloudflare.com/rules/transform/examples/add-cors-header/)
 
 [**Add a request header with the current bot score** Create a request header transform rule to add a `X-Bot-Score` HTTP header to the request with the current bot score.](https://developers.cloudflare.com/rules/transform/examples/add-request-header-bot-score/)

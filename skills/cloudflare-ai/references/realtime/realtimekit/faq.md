@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2
 
 # FAQ
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ### API token
 
 <details>

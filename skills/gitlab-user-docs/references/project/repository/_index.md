@@ -132,6 +132,22 @@ To change this behavior and include additional file types in the default setting
 This feature can use excessive CPU. If you experience an issue, see the
 [excessive CPU use](files/_index.md#repository-languages-excessive-cpu-use) troubleshooting section.
 
+## Repository license
+
+GitLab detects the license for a project from a file such as `LICENSE` or
+`COPYING` in the root of the default branch.
+When the root has more than one license file, GitLab prefers `LICENSE`, `COPYING`,
+and their `.md` or `.txt` versions over a variant such as `LICENSE-3RD-PARTY.md`.
+GitLab displays the detected license on the
+[project overview](../working_with_projects.md#project-overview) and when you view the license file.
+
+GitLab compares the license text against the SPDX License List.
+If the text does not match a license in that list, the project overview shows `LICENSE`,
+and the license file view shows `Other`.
+
+[License templates](web_editor.md#from-a-template), including custom instance and group templates,
+do not affect license detection.
+
 ## Repository contributor analytics
 
 You can view a line chart with the number of commits to the selected project branch over time,

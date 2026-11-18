@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # Package registry security
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/package-registry-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Package registry security requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) to be turned on for the traffic you want to inspect.

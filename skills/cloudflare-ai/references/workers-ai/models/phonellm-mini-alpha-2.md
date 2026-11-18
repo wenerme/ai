@@ -16,8 +16,6 @@ d
 
 Text Generation • daily-co
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/phonellm-mini-alpha-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/daily-co/phonellm-mini-alpha-2` Copy

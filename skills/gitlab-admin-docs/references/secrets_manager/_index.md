@@ -158,8 +158,19 @@ The OpenBao Helm chart configures these PostgreSQL connection pool defaults:
 |------------------------------------------------------|---------------|
 | `config.storage.postgresql.maxParallel`              | 5             |
 | `config.storage.postgresql.maxIdleConnections`       | 2             |
+| `config.storage.postgresql.transactionMaxParallel`   | 3             |
 
 Do not increase these values unless you observe database connection wait time in your monitoring.
+
+`transactionMaxParallel` limits how many storage transactions OpenBao runs at once.
+It must be lower than `maxParallel`, so that OpenBao can always renew its high availability lock.
+If transactions use every connection, the lock renewal times out and the active node steps down.
+If you set `maxParallel` without setting `transactionMaxParallel`:
+
+- `maxParallel` must be at least 3.
+- `transactionMaxParallel` is set to `maxParallel` minus 2, and at least 2.
+
+If you set `transactionMaxParallel`, it must be at least 2.
 
 #### Database storage
 

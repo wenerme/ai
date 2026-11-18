@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/google-tag-gateway/og.png?v=6b1b19e3e16
 
 # Google tag gateway for advertisers
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/google-tag-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Google tag gateway for advertisers allows website owners using Cloudflare as a CDN to get the most out of ad measurement tools with just a few clicks. It allows you to deploy Google scripts using your own domain, enhancing data privacy and improving signal measurement recovery. Unlike standard setups where tags are requested from a Google domain, Google tag gateway for advertisers loads the tag from your domain and sends measurement events to your domain, where they are forwarded to Google.
 
 Learn more about why we built it and how it works in our [blog post ↗︎](https://blog.cloudflare.com/google-tag-gateway-for-advertisers/).

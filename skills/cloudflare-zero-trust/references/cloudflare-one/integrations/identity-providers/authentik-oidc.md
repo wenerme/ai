@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # authentik (OIDC)
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/authentik-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect authentik to Cloudflare Access with OpenID Connect (OIDC). OIDC is the recommended protocol when your identity provider supports both OIDC and SAML.
 
 ## Prerequisites

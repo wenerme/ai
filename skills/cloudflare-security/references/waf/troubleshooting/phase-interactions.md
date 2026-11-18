@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/
 
 # Rule phase interactions
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare evaluates request processing features in [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/). A rule that appears correct in isolation can behave differently when another product has already modified or terminated the request.
 
 ## Custom rules are evaluated against the rewritten URL

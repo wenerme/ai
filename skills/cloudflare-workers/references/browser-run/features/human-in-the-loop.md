@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/human-in-the-loop/
 
 # Human in the Loop
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Some browser automation workflows require manual intervention. A login page may need multi-factor authentication, a form may require sensitive credentials you do not want to pass to an automation script, or a task may be too complex to fully automate. Human in the Loop lets a human step into a live browser session through [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) to handle what automation cannot, then hand control back to the script.
 
 ## Use cases

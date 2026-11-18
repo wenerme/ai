@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/sub-agents/og.pn
 
 # Sub-agent RPC and programmatic turns
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Think works as both a top-level agent and a sub-agent. When used as a sub-agent, the `chat()` method runs a full turn and streams events via a callback.
 
 Note

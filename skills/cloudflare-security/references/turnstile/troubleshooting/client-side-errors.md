@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/troubleshooting/client-side-e
 
 # Client-side errors
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 There are instances where Turnstile may encounter problems, invoking the `error-callback`.
 
 These problems can range from network connectivity issues and browser compatibility problems to configuration errors and challenge failures.

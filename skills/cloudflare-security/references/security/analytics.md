@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/analytics/og.png?v=924fed89af9
 
 # Security Analytics (new dashboard)
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Security Analytics shows information about all incoming HTTP requests or only about requests mitigated by Cloudflare.
 
 Use Security Analytics as your starting point to understand and analyze traffic patterns, and to create security rules based on the filters you applied.

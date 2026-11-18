@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/time-services/roughtime/recipes/og.png?
 
 # Use Roughtime
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/roughtime/recipes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 There are various ways you can use Roughtime to keep your clock in sync. These recipes use [Cloudflare's Go package ↗︎](https://github.com/cloudflare/roughtime), which is based on Google's [Go client ↗︎](https://roughtime.googlesource.com/roughtime/+/master/go/client/).
 
 The protocol is also implemented in [C++ ↗︎](https://roughtime.googlesource.com/roughtime/+/master), [Rust ↗︎](https://github.com/int08h/roughenough), and [Java ↗︎](https://github.com/int08h/nearenough).

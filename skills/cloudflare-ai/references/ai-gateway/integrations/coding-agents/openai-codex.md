@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/o
 
 # OpenAI Codex
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [OpenAI Codex ↗︎](https://developers.openai.com/codex/) is a coding agent you run in your terminal. It supports [custom model providers ↗︎](https://developers.openai.com/codex/config-advanced#custom-model-providers) defined in `config.toml`. This configuration adds a provider that points at AI Gateway's [OpenAI endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/), so Codex sends its requests through AI Gateway. AI Gateway authenticates the model provider for you through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you pass a Cloudflare API token instead of an OpenAI API key. If your gateway is protected by Cloudflare Access, refer to [Use with Cloudflare Access](#use-with-cloudflare-access).
 
 Note

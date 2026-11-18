@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/mtls/og.png?v=230ff
 
 # Mutual TLS (mTLS)
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 While API Shield is not required to use mTLS, many teams may use mTLS to protect their APIs.

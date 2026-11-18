@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/partners/kentik/og.png?v=
 
 # Kentik
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/partners/kentik/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Kentik is a network observability company that helps detect attacks on your network and triggers Cloudflare's Magic Transit to begin advertisement. Together, Kentik and Magic Transit On Demand work to create a fully Software-as-a-Service (SaaS)-based, Distributed Denial of Service ([DDoS](https://developers.cloudflare.com/ddos-protection/)) protection solution to help you mitigate attacks and protect your network automatically.
 
 In this tutorial, the example scenario includes two mitigations, one which pulls the advertisement from the router and a second mitigation that makes an API call to Cloudflare to begin advertising the prefixes from Cloudflare's global network.

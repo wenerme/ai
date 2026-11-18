@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/automatic-conf
 
 # Deploy an existing project
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wrangler can automatically detect your framework and configure your project for Cloudflare Workers. This allows you to deploy existing projects with a single command, without manually setting up configuration files or installing adapters.
 
 Note
@@ -68,7 +66,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 	"main": "dist/_worker.js/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-06",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"binding": "ASSETS",
 		"directory": "dist",
@@ -85,7 +83,7 @@ name = "my-project"
 main = "dist/_worker.js/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-06"
+compatibility_date = "2026-11-18"
 
 [assets]
 binding = "ASSETS"

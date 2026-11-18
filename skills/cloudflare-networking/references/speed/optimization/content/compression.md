@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/content/compression/
 
 # Content compression
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/compression/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare compresses content in two ways: between Cloudflare and your website visitors and between Cloudflare and your origin server.
 
 ## Compression between Cloudflare and website visitors

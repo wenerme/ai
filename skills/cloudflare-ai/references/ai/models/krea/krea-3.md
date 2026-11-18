@@ -16,8 +16,6 @@ k
 
 Image-to-Image • krea
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/krea/krea-3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `krea/krea-3` Copy

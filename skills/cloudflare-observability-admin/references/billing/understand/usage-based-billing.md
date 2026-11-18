@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/understand/usage-based-billing/
 
 # Usage-based billing
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/usage-based-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For some Cloudflare subscriptions and services, Cloudflare charges you based on how much you used a feature during your previous billing period. This differs from other services, which are a prepaid flat fee for the upcoming month (for example, plans and page rules).
 
 For example, if your billing date is on the 15th of the month and you turn on Cloudflare Workers in the dashboard on the 1st, your next invoice includes the Workers charges from the 1st through the 15th. The following invoice includes charges for Workers usage during the full billing period.

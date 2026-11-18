@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/og.png?v=5f3790c1b824e669
 
 # Build Agents on Cloudflare
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build and host AI agents on Cloudflare. Connect chat, voice, email, Slack, and webhooks to a durable agent, and give it tools such as a workspace, a browser, web search, MCP servers, and payments.
 
 When you host agents on Cloudflare, each agent has a durable identity, local SQL storage, real-time connections, scheduled work, and recoverable execution.

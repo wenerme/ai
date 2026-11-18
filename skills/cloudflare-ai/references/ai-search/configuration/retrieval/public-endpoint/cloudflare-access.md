@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/publi
 
 # Cloudflare Access
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [public endpoint](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) is unauthenticated by design. Anyone who knows the URL can query your indexed content.
 
 Put a [custom domain](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/) in front of the public endpoint and protect it with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/). Users then authenticate with your identity provider before any request reaches AI Search. This turns a public knowledge base into an internal one without writing an authentication layer.

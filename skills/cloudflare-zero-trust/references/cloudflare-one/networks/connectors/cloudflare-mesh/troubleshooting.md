@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Troubleshoot Cloudflare Mesh connectivity
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this guide when a Mesh node or client device is offline, a Mesh IP does not respond, or traffic between private subnets fails. A participant marked **Online** is connected to Cloudflare. That status does not confirm the service or return path works.
 
 ## Identify the failing connection

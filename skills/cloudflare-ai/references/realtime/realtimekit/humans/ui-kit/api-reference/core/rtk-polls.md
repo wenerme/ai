@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-polls
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-polls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A component which lists all available plugins a user can access with the ability to enable or disable them as per their permissions.
 
 ## Properties

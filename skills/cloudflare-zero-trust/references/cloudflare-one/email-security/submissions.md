@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/submissio
 
 # Submissions
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Submitting messages allows you to choose the disposition of your messages if the disposition is incorrect. This helps improve Email security's detection accuracy and ensures proper handling of email threats.
 
 ## Submit messages for review

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/h
 
 # Create a filter
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/how-to/create-filter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A filter modifies Advanced TCP Protection's [execution mode](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#mode) — monitoring, mitigation (enabled), or disabled — for all incoming packets matching an expression.
 
 Each protection system component (SYN flood protection or out-of-state TCP protection) should have at least one [rule](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rule), but filters are optional.

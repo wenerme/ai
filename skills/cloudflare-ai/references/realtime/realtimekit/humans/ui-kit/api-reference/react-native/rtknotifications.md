@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkNotifications
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtknotifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Container that manages and displays meeting notifications (participant join/leave, chat messages, polls, network status) with sound effects.
 
 ## Properties

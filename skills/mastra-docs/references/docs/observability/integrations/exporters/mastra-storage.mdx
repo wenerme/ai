@@ -12,7 +12,7 @@ The `MastraStorageExporter` persists traces to your configured storage backend, 
 > **note**: `MastraStorageExporter` was previously called `DefaultExporter`. The original `DefaultExporter` class is still exported from `@mastra/observability` for backward compatibility, but it's deprecated. New code should use `MastraStorageExporter`.
 
 :::warning[Production Observability]
-Observability data can quickly overwhelm general-purpose databases in production. For high-traffic applications, route the observability storage domain to [ClickHouse](/integrations/databases/clickhouse) through [composite storage](/reference/storage/composite). See [Production Recommendations](#production-recommendations) for details.
+Observability data can overwhelm general-purpose databases in production. For high-traffic applications, route the observability storage domain to [ClickHouse](/integrations/databases/clickhouse) through [composite storage](/reference/storage/composite). See [Production Recommendations](#production-recommendations) for details.
 
 ## Configuration
 
@@ -21,7 +21,7 @@ Observability data can quickly overwhelm general-purpose databases in production
 1. **Storage Backend**: Configure a storage provider (libSQL, PostgreSQL, etc.)
 1. **Studio**: Install for viewing traces locally
 
-### Basic Setup
+### Basic setup
 
 ```typescript title="src/mastra/index.ts"
 import { Mastra } from '@mastra/core'
@@ -44,7 +44,7 @@ export const mastra = new Mastra({
 })
 ```
 
-### Recommended Configuration
+### Recommended configuration
 
 Include MastraStorageExporter in your observability configuration:
 
@@ -134,7 +134,7 @@ Access your traces through Studio:
 
 MastraStorageExporter automatically selects the optimal tracing strategy based on your storage provider. You can also override this selection if needed.
 
-### Available Strategies
+### Available strategies
 
 | Strategy | Description | Use Case |
 | - | - | - |
@@ -145,7 +145,7 @@ MastraStorageExporter automatically selects the optimal tracing strategy based o
 
 > **note**: `realtime` assumes one process owns a span from start to end, so it isn't supported with durable execution (durable agents, and Inngest, Temporal, or evented workflows). When any of these is registered, the exporter logs one warning and runs `batch-with-updates`.
 
-### Strategy Configuration
+### Strategy configuration
 
 ```typescript
 new MastraStorageExporter({
@@ -166,7 +166,7 @@ Different storage providers support different tracing strategies. Some providers
 
 If you set the strategy to `'auto'`, the `MastraStorageExporter` automatically selects the optimal strategy for the storage provider. If you set an explicit strategy that the storage provider doesn't support, the exporter logs a warning and falls back to the provider's preferred strategy.
 
-### Providers with Observability Support
+### Providers with observability support
 
 | Storage Provider | Preferred Strategy | Supported Strategies | Recommended Use |
 | - | - | - | - |
@@ -180,7 +180,7 @@ If you set the strategy to `'auto'`, the `MastraStorageExporter` automatically s
 
 > **note**: Under `insert-only`, only completed spans are persisted, and span start and update events are ignored. A trace therefore becomes visible in Studio only after its root span ends, and filtering traces by `status: 'running'` returns no results. `PostgresStoreVNext` uses `event-sourced` tracing instead, so in-progress traces remain visible while preserving append-only writes.
 
-### Providers without Observability Support
+### Providers without observability support
 
 The following storage providers **don't support** the observability domain. If you're using one of these providers and need observability, use [composite storage](/reference/storage/composite) to route observability data to a supported provider:
 
@@ -191,7 +191,7 @@ The following storage providers **don't support** the observability domain. If y
 - [Upstash](/integrations/databases/upstash)
 - [LanceDB](/integrations/databases/lancedb)
 
-### Strategy Benefits
+### Strategy benefits
 
 - **realtime**: Immediate visibility, best for debugging in a single process
 - **batch-with-updates**: 10-100x throughput improvement, full span lifecycle
@@ -200,9 +200,9 @@ The following storage providers **don't support** the observability domain. If y
 
 ## Production recommendations
 
-Observability data grows quickly in production environments. A single agent interaction can generate hundreds of spans, and high-traffic applications can produce thousands of traces per day. Most general-purpose databases aren't optimized for this write-heavy, append-only workload.
+Observability data grows fast in production environments. A single agent interaction can generate hundreds of spans, and high-traffic applications can produce thousands of traces per day. Most general-purpose databases aren't optimized for this write-heavy, append-only workload.
 
-### Recommended: ClickHouse for High-Volume Production
+### Recommended: ClickHouse for high-volume production
 
 [ClickHouse](/integrations/databases/clickhouse) is a columnar database designed for high-volume analytics workloads. It's the recommended choice for production observability because:
 
@@ -211,13 +211,13 @@ Observability data grows quickly in production environments. A single agent inte
 - **Fast queries**: Columnar storage enables quick trace lookups and aggregations
 - **Time-series native**: Built-in support for time-based data retention and partitioning
 
-### Using Composite Storage
+### Using composite storage
 
 If you're using a provider without observability support (like Convex or DynamoDB) or want to optimize performance, use [composite storage](/reference/storage/composite#specialized-storage-for-observability) to route observability data to ClickHouse while keeping other data in your primary database.
 
 ## Batching behavior
 
-### Flush Triggers
+### Flush triggers
 
 For both batch strategies (`batch-with-updates` and `insert-only`), traces are flushed to storage when any of these conditions are met:
 
@@ -316,6 +316,6 @@ new MastraStorageExporter({
 ## Related
 
 - [Traces usage](/docs/observability/tracing/overview)
-- [MastraPlatformExporter](/docs/mastra-platform/observability)
+- [MastraPlatformExporter](/docs/mastra-platform/observability/overview)
 - [Composite Storage](/reference/storage/composite): Combine multiple storage providers
 - [Storage Configuration](/docs/storage)

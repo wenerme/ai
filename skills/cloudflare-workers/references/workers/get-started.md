@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/get-started/og.png?v=dac0d7897d
 
 # Getting started
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build your first Worker.
 
 - [CLI](https://developers.cloudflare.com/workers/get-started/guide/)

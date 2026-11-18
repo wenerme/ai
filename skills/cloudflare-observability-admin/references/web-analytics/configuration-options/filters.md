@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/configuration-options/fil
 
 # Filters
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/configuration-options/filters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To filter the data shown on Web Analytics:
 
 1. In the Cloudflare dashboard, go to the **Web Analytics** page. [Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)

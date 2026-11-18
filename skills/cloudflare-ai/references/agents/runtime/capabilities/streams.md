@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/capabilities/streams/og.
 
 # Streams
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/capabilities/streams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Experimental
 
 The `{props.name}` capability is experimental. Everything exported from `{props.module}` may change between releases.

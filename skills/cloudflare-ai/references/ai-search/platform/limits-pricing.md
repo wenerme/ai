@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.pn
 
 # Limits & pricing
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Limits
 
 The following limits apply based on your [Workers plan](https://developers.cloudflare.com/workers/platform/pricing/):

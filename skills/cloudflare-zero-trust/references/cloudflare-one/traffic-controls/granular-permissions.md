@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/granula
 
 # Granular permissions for Gateway
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/granular-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can scope Cloudflare member permissions to individual Gateway [traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) and [lists](https://developers.cloudflare.com/cloudflare-one/traffic-controls/expression-syntax/#selectors-by-field-type), instead of granting account-wide access to every Gateway resource. For example, you can let a security analyst manage a specific set of HTTP policies without exposing DNS policies or account-wide configuration.
 
 Granular permissions are a parallel layer to [account-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles) and do not replace them. Members who already hold an account-level role like `Cloudflare Gateway` or `Cloudflare Zero Trust` continue to have write access to every Gateway resource in the account.

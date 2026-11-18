@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/reference/data-location/og.png?v=596
 
 # Data location
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how the location of data stored in Workers KV is determined, including how you can restrict a namespace to a specific jurisdiction.
 
 ## Standard (default)

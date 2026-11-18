@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/examples/python-workers/og.p
 
 # Python Workers
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/python-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use Hyperdrive with [Python Workers](https://developers.cloudflare.com/workers/languages/python/). To use Hyperdrive with Python Workers, set your compatibility date to `2026-09-08` or later.
 
 ## Supported drivers
@@ -47,7 +45,7 @@ Before you begin, [create a Python Worker](https://developers.cloudflare.com/wor
      "name": "python-hyperdrive",
      "main": "src/main.py",
      // Set this to today's date
-     "compatibility_date": "2026-10-09",
+     "compatibility_date": "2026-11-18",
      "compatibility_flags": [
        "python_workers"
      ],
@@ -64,7 +62,7 @@ Before you begin, [create a Python Worker](https://developers.cloudflare.com/wor
    name = "python-hyperdrive"
    main = "src/main.py"
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-11-18"
    compatibility_flags = ["python_workers"]
 
    [[hyperdrive]]

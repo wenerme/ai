@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/local-development/og.pn
 
 # Local development
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run your Pages application locally with our Wrangler Command Line Interface (CLI).
 
 ## Install Wrangler

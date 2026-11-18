@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # Common policies
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following policies are commonly used to secure HTTP traffic. HTTP policies are evaluated in order from top to bottom, and the first matching policy applies — except for [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) policies, which are always evaluated first.
 
 For a baseline set of recommended policies, refer to [Secure your Internet traffic and SaaS apps](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/).

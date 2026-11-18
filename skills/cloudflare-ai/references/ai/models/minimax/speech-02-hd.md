@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • MiniMax
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/speech-02-hd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `minimax/speech-02-hd` Copy

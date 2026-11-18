@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/
 
 # Lifecycle hooks
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Think owns the `streamText` call and provides hooks at each stage of the chat turn. Hooks fire on every turn regardless of entry path — WebSocket chat, sub-agent `chat()`, `saveMessages()`, durable `submitMessages()` execution, `continueLastTurn()`, and auto-continuation after tool results.
 
 ## Hook summary

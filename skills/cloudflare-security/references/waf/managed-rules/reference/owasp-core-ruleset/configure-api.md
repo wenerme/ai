@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-
 
 # Configure via API
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To enable the Cloudflare OWASP Core Ruleset for a given zone using the API, create a rule with `execute` action in the entry point ruleset for the `http_request_firewall_managed` phase. For more information on deploying a managed ruleset, refer to [Deploy a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/).
 
 To configure the Cloudflare OWASP Core Ruleset using the API, create [overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) using the Rulesets API. You can perform the following configurations:

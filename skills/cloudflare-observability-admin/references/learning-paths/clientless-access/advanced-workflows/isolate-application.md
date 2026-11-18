@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/advanc
 
 # Isolate Access applications
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Requires the Browser Isolation add-on.

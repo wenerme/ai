@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/account/og.png?v=32a83b453b7b7c30
 
 # Account-level WAF configuration
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The account-level Web Application Firewall (WAF) configuration allows you to define a configuration once and apply it to multiple Enterprise zones in your account. Instead of configuring each zone individually, you create rulesets at the account level and use expressions to control which zones and traffic they apply to.
 
 For example, you can deploy a single ruleset that applies to `/admin/*` URI paths across both `example.com` and `example.net`. Rulesets can target all incoming traffic or a specific subset.

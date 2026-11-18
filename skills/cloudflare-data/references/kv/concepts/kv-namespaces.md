@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/concepts/kv-namespaces/og.png?v=0441
 
 # KV namespaces
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/concepts/kv-namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A KV namespace is a key-value database replicated to Cloudflare’s global network.
 
 Bind your KV namespaces through Wrangler or via the Cloudflare dashboard.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/en
 
 # Endpoint Management
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Available on all plans
 
 Endpoint Management uses the [Web Assets](https://developers.cloudflare.com/security/web-assets/) dashboard. Go to **Web Assets** > **Operations** to manage API endpoints.

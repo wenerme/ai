@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/local-development/bindings-per-
 
 # Supported bindings per development mode
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/bindings-per-env/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Local development
 
 **Local simulations**: During local development, your Worker code always executes locally and bindings connect to locally simulated resources [by default](https://developers.cloudflare.com/workers/local-development/#remote-bindings). This is supported in [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).

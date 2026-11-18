@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-challenges/challenge-types/j
 
 # JavaScript Detections
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 JavaScript Detections is a type of challenge separate from Cloudflare’s Challenge Pages or Turnstile. JavaScript Detections helps Cloudflare's [bot solutions](https://developers.cloudflare.com/bots/) identify automated requests.
 
 While Challenge Pages and Turnstile rely on client-side signals to determine the authenticity of a request, Bot Management’s JavaScript Detections relies on client-side signals and runs on every single request made to your website.

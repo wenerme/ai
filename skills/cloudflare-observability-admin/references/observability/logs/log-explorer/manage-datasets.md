@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/manage-
 
 # Manage datasets
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/manage-datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can enable, disable, or delete the Log Explorer datasets available to query in [Logs](https://developers.cloudflare.com/observability/logs/).
 
 Note

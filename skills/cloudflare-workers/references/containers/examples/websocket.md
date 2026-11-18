@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/containers/examples/websocket/og.png?v=
 
 Forwarding a Websocket request to a Container
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/websocket/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Forward WebSocket upgrade requests through a Durable Object to a Container. This example runs an echo server with the `durable_object` scheduling policy.
 
 ## Configure the Worker
@@ -27,7 +25,7 @@ Forward WebSocket upgrade requests through a Durable Object to a Container. This
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "observability": {
     "enabled": true
   },
@@ -64,7 +62,7 @@ name = "websocket-container"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [observability]
 enabled = true

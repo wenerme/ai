@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/viewing-videos/using-own-player/
 
 # Use your own player
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Stream is compatible with all video players that support HLS and DASH, which are standard formats for streaming media with broad support across all web browsers, mobile operating systems and media streaming devices.
 
 Platform-specific guides:

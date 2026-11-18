@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/
 
 # Redirecting \*.pages.dev to a Custom Domain
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/redirect-to-custom-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to use [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) to redirect your `*.pages.dev` subdomain to your [custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/).
 
 You may want to do this to ensure that your site's content is served only on the custom domain, and not the `<project>.pages.dev` site automatically generated on your first Pages deployment.

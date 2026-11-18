@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/event-notifications/og.png?v
 
 # Event notifications
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/event-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Event notifications send messages to your [queue](https://developers.cloudflare.com/queues/) when data in your R2 bucket changes. You can consume these messages with a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker) or [pull over HTTP](https://developers.cloudflare.com/queues/configuration/pull-consumers/) from outside of Cloudflare Workers.
 
 ## Get started with event notifications

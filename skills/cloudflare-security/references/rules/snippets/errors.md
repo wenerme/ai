@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/snippets/errors/og.png?v=be5cb438
 
 # Troubleshoot Snippets
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 1201: Snippet tried to continue to origin multiple times
 
 This error occurs when a Snippet attempts to call `fetch(request)` more than once.

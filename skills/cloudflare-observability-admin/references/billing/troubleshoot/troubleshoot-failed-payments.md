@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-faile
 
 # Resolve a payment failure
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If a payment fails when purchasing a product, changing a subscription, or paying an invoice, you may see one of the following error messages:
 
 - "The payment has failed. Please contact your bank or use a different payment method."

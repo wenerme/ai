@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-ser
 
 # DEX MCP server
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The MCP server [(Model Context Protocol) ↗︎](https://cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) for Digital Experience Monitoring (DEX) is an AI tool that allows customers to ask a question like, "Show me the connectivity and performance metrics for the device used by carly‌@acme.com", and receive an answer that contains data from the DEX API.
 
 Any Cloudflare One customer using a Free, Pay-as-you-go, or Enterprise account can access the DEX MCP server.

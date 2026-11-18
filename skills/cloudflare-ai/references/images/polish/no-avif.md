@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/polish/no-avif/og.png?v=b05e3db7
 
 # AVIF may be skipped
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/polish/no-avif/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Polish avoids converting images to the AVIF format when such conversion would increase the file size. AVIF also has a few format-specific requirements, and capacity limits that can occasionally cause Polish to skip AVIF conversion for a particular request.
 
 ## Polish never makes files larger

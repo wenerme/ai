@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/migrations/migrating-from-workers
 
 # Migrating from Workers Sites to Pages
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to migrate an existing [Cloudflare Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/) application to Cloudflare Pages.
 
 As a prerequisite, you should have a Cloudflare Workers Sites project, created with [Wrangler ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler).

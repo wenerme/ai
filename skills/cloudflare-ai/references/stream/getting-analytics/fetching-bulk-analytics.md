@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-
 
 # GraphQL Analytics API
 
-Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Stream provides analytics about both live video and video uploaded to Stream, via the GraphQL API described below, as well as on the Stream **Analytics** page of the Cloudflare dashboard.
 
 [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/stream/analytics)

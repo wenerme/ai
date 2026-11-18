@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/bot-analytics/og.png?v=abee1e64435
 
 # Bot Analytics
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/bot-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Business and Enterprise
 
 Business and Enterprise customers without Bot Management can use **Bot Analytics** to dynamically examine bot traffic. These dashboards offer less functionality than Bot Management for Enterprise but still help you understand bot traffic on your domain.

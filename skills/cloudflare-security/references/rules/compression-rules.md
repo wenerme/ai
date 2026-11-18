@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/compression-rules/og.png?v=f1ef0d
 
 # Compression Rules
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/compression-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Compression Rules to customize the compression applied to responses from Cloudflare's global network to your website visitors, based on the file extension and content type. Compression Rules are powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
 
 Cloudflare [compresses some responses by default](https://developers.cloudflare.com/speed/optimization/content/compression/), based on the content type. With Compression Rules, you can customize the default behavior, which includes defining preferred compression algorithms for particular file types.

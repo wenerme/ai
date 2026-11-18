@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/protocol/
 
 # Authorization
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When building a [Model Context Protocol (MCP) ↗︎](https://modelcontextprotocol.io) server, you need both a way to allow users to login (authentication) and allow them to grant the MCP client access to resources on their account (authorization).
 
 The Model Context Protocol uses [a subset of OAuth 2.1 for authorization ↗︎](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). OAuth allows your users to grant limited access to resources, without them having to share API keys or other credentials.
@@ -198,7 +196,7 @@ The authorization server stores grants and tokens in a KV namespace bound as `OA
 	"name": "auth-server",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
 	"vars": {
 		"ISSUER": "https://auth-server.<your-subdomain>.workers.dev",
@@ -212,7 +210,7 @@ The authorization server stores grants and tokens in a KV namespace bound as `OA
 name = "auth-server"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat", "global_fetch_strictly_public" ]
 
 [vars]
@@ -342,7 +340,7 @@ The MCP server reaches the authorization server through a Service Binding, so to
 	"name": "mcp-server",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"vars": {
 		"AUTH_SERVER_URL": "https://auth-server.<your-subdomain>.workers.dev",
@@ -356,7 +354,7 @@ The MCP server reaches the authorization server through a Service Binding, so to
 name = "mcp-server"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/dns-firewall/og.png?v=f61e864d24beb
 
 # DNS Firewall
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Speed up and protect entire authoritative nameservers
 
 Enterprise-only paid add-on

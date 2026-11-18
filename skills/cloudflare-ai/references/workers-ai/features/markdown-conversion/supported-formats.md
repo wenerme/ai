@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion
 
 # Supported Formats
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/supported-formats/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This list shows all rich-content formats that are currently supported for Markdown conversion and is updated frequently:
 
 Format | | | | | File extensions | | | | | Mime Types | | | |

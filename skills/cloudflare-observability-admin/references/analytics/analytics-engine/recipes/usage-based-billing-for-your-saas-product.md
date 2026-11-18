@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/recipes/usag
 
 # Usage-based billing
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/recipes/usage-based-billing-for-your-saas-product/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Many Cloudflare customers run software-as-a-service products with multiple customers. A big concern for such companies is understanding the cost of each customer, and understanding customer behaviour more widely.
 
 Keeping data on every web request used by a customer can be expensive, as can attributing page views to customers. At Cloudflare we have solved this problem with the same in-house technologies now available to you through Analytics Engine.

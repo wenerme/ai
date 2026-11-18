@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # JumpCloud (SAML)
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/jumpcloud-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [JumpCloud ↗︎](https://jumpcloud.com/#platform) provides SSO identity management. Cloudflare Access integrates with JumpCloud as a SAML identity provider.
 
 The following steps are specific to setting up JumpCloud with Cloudflare Access. For more information on configuring JumpCloud SSO application, refer to the [JumpCloud documentation ↗︎](https://jumpcloud.com/support/integrate-with-cloudflare).

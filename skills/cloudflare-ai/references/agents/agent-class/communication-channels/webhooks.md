@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/communication-channe
 
 # Webhooks
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/communication-channels/webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Receive webhook events from external services and route them to dedicated agent instances. Each webhook source (repository, customer, device) can have its own agent with isolated state, persistent storage, and real-time client connections.
 
 ## Quick start

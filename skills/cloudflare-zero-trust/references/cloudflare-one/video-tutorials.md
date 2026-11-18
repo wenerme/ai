@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/video-tutorials/og.png?v
 
 # Videos
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/video-tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ### [Build and secure your SASE corporate network](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/)
 
 Dive into Cloudflare's Secure Access Service Edge (SASE) platform and learn how it's been designed to revolutionize the idea of the corporate network.

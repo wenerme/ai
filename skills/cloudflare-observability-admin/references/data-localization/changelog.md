@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/changelog/og.png?v=d1
 
 # Changelog
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/data-localization/changelog/index.xml)
 
 ## 2024-05-22

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/pricing/og.png?v=46c2776b14079b46
 
 # Pricing
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R2 charges based on the total volume of data stored, along with two classes of operations on that data:
 
 1. [Class A operations](#class-a-operations) which are more expensive and tend to mutate state.

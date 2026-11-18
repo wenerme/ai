@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/verify-email
 
 # Verify email address
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For security reasons, Cloudflare attempts to verify the email address associated with your account. You cannot perform certain tasks within the Cloudflare dashboard -- for example, [adding a new member](https://developers.cloudflare.com/fundamentals/manage-members/manage/#add-account-members), [changing your email address](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#change-email-address) or [updating your communication preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#notifications) -- without verifying your email.
 
 ## When creating your account

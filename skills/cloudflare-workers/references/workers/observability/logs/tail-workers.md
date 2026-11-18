@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/logs/tail-workers
 
 # Tail Workers
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/tail-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Tail Worker receives information about the execution of other Workers (known as producer Workers), such as HTTP statuses, data passed to `console.log()` or uncaught exceptions. Tail Workers can process logs for alerts, debugging, or analytics.
 
 Tail Workers are available to all customers on the Workers Paid and Enterprise tiers. Tail Workers are billed by [CPU time](https://developers.cloudflare.com/workers/platform/pricing/#workers), not by the number of requests.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security-center/investigate/og.png?v=5a
 
 # Investigate
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/investigate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 User permission
 
 Investigate is available to all users. Every user can view existing URL scanner reports and initiate new URL scans.

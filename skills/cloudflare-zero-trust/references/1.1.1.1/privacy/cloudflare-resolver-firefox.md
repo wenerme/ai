@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-fir
 
 # Cloudflare Resolver for Firefox
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Frequently asked questions about the Cloudflare resolver for Firefox
 
 ### What is the Cloudflare resolver for Firefox?

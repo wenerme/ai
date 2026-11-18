@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/authenti
 
 # Authenticate coding agents
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Coding agents such as Claude Code, OpenCode, and Windsurf often need to reach resources protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/). When a resource is behind Access, unauthenticated requests receive a redirect or `403` error instead of the expected response. Your agent needs a way to authenticate before it can reach the resource.
 
 This page covers two authentication methods:

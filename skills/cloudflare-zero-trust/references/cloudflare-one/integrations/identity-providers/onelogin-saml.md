@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # OneLogin (SAML)
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 OneLogin provides SSO identity management. Cloudflare Access supports OneLogin as an SAML identity provider.
 
 ## Set up OneLogin as a SAML provider

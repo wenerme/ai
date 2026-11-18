@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Enforce MFA
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):
 
 - **[Identity provider-based MFA](#identity-provider-based-mfa)** — Require specific MFA methods reported by your identity provider (IdP).

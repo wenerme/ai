@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/traffi
 
 # Pool sets
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/pool-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pool sets allow you to combine geographic steering with other traffic steering policies. For example, you can apply Dynamic Latency steering within a specific region or country. For load balancers managed through the API, pool sets can replace Geo steering.
 
 With pool sets you can:

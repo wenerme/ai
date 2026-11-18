@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-challenges/reference/private
 
 # Private Access Tokens (PAT)
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a visitor is presented with a Challenge Page, Cloudflare evaluates various signals - including the presence of a Private Access Token (PAT) - to decide which challenges to issue. If a visitor presents a valid token, certain challenges are not issued, which reduces the number of steps required to pass.
 
 A PAT does not automatically solve a challenge or let a visitor bypass the Challenge Page. The visitor still encounters the Challenge Page regardless of whether they have a valid PAT.

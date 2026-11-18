@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/concepts/og.png?v=c938c077dd21d
 
 # Choose a sandbox environment
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A sandbox runs code that you did not write and do not trust, such as code that a model generates or the test suite of a repository. Cloudflare runs it in one of two environments: a [Container](https://developers.cloudflare.com/containers/), which runs a Linux image, or a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/), which runs JavaScript against methods that your [Worker](https://developers.cloudflare.com/workers/) provides. Your Worker starts either one, and one Worker can use both.
 
 ## What the code can use

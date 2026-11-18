@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/what-are-agents/og.png?
 
 # What are agents?
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/what-are-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An agent is an AI system that can autonomously execute tasks by making decisions about tool usage and process flow. Unlike traditional automation that follows predefined paths, agents can dynamically adapt their approach based on context and intermediate results. Agents are also distinct from co-pilots (such as traditional chat applications) in that they can fully automate a task, as opposed to simply augmenting and extending human input.
 
 - **Agents** → non-linear, non-deterministic (can change from run to run)

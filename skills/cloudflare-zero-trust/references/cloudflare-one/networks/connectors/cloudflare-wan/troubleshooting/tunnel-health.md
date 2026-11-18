@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Troubleshoot tunnel health
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide helps you diagnose and resolve common tunnel health issues with Cloudflare WAN. Tunnel health checks monitor your GRE and IPsec tunnel endpoints (also called connectors in the Cloudflare dashboard) and steer traffic to the best available routes.
 
 ## Quick diagnostic checklist

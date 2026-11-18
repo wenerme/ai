@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/alerts/og.png?v=1c20c07de
 
 # Alerts
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure alerts to receive notifications for changes in your network.
 
 <details>
@@ -52,7 +50,7 @@ Network Flow - DDoS Attack
 
 **Who is it for?**
 
-<a href="https://developers.cloudflare.com/byoip/">BYOIP</a> and <a href="https://developers.cloudflare.com/spectrum/">Spectrum</a> customers with <a href="https://developers.cloudflare.com/analytics/network-analytics/">Network Analytics</a> who want to receive a notification when Cloudflare has mitigated attacks that generate an average of at least 12,000 packets per second over a five-second period, with a duration of one minute or more.
+<a href="https://developers.cloudflare.com/network-flow/">Network Flow</a> customers who export sFlow data to Cloudflare and want to receive a notification when one of their sFlow DDoS attack rules detects a DDoS attack in their network traffic.
 
 **Other options / filters**
 
@@ -60,11 +58,11 @@ None.
 
 **Included with**
 
-Purchase of Magic Transit and/or BYOIP.
+Purchase of Magic Transit and/or BYOIP. Requires an sFlow DDoS attack rule created through the <a href="https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/">Network Flow Rules API</a>.
 
 **What should you do if you receive one?**
 
-No action needed. Refer to <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/">DDoS alerts</a> for more information.
+Review the detected attack and the rule that triggered it. If the rule has auto-advertisement enabled, review the advertisement status for the affected prefixes. Refer to <a href="https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/">sFlow DDoS attack rules</a> and <a href="https://developers.cloudflare.com/network-flow/rules/rule-notifications/">Network Flow rule notifications</a> for more information.
 
 </details>
 

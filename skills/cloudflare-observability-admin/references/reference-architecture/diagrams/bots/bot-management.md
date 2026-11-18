@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/bots/bo
 
 # Bot management
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Cloudflare has bot management capabilities to help identify and mitigate automated traffic to protect domains from bad bots. [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) and [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) are options available on Free and Pro/Business accounts respectively. They offer a subset of features and capabilities available for Enterprise accounts. This reference architecture diagram focuses on [Enterprise Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) available for Enterprise customers.

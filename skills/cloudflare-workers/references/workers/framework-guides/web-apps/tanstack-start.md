@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/tanst
 
 # TanStack Start
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [TanStack Start ↗︎](https://tanstack.com/start) is a full-stack framework for building web applications with server-side rendering, streaming, server functions, and bundling.
 
 Already have a TanStack Start project?
@@ -163,7 +161,7 @@ Cloudflare does not support TanStack Start projects that use Rsbuild. If your ap
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "<YOUR_PROJECT_NAME>",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-06",
+   	"compatibility_date": "2026-11-18",
    	"main": "@tanstack/react-start/server-entry",
    	"observability": {
    		"enabled": true,
@@ -175,7 +173,7 @@ Cloudflare does not support TanStack Start projects that use Rsbuild. If your ap
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "<YOUR_PROJECT_NAME>"
    # Set this to today's date
-   compatibility_date = "2026-11-06"
+   compatibility_date = "2026-11-18"
    main = "@tanstack/react-start/server-entry"
 
    [observability]

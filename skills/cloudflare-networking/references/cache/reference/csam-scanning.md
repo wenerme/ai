@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/reference/csam-scanning/og.png?v=
 
 # CSAM Scanning Tool
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/reference/csam-scanning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Child Sexual Abuse Material (CSAM) Scanning Tool allows website owners to proactively identify and take action on CSAM located on their website. By enabling this tool, Cloudflare will compare content served for your website through the Cloudflare cache to known lists of CSAM. These lists are provided to Cloudflare by leading child safety advocacy groups such as the National Center for Missing and Exploited Children (NCMEC).
 
 Remember, by enabling the Service, you agree to the  [Service-Specific Terms ↗︎](https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms) for the CSAM Scanning Tool. You agree to use this tool solely for the purposes of preventing the spread of CSAM.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/warp-overview-course/ser
 
 # Understand Cloudflare WARP basics
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/warp-overview-course/series/warp-basics-1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this episode, we explain the core features of the Cloudflare WARP client and how to troubleshoot common issues. After watching, you will have an understanding of the GUI, the differences between the consumer and corporate WARP, device profiles, the various operating modes of WARP, split tunneling and more.
 
 <details>

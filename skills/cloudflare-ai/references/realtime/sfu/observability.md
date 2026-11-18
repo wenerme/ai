@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/observability/og.png?v=533
 
 # Observability
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Separate application requests, WebRTC connection state, and media delivery when diagnosing an SFU integration. A successful backend response does not by itself prove that media is arriving.
 
 For a returned API error, use the [Error codes reference](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/) to interpret the response and choose the next action.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/traces/spans/og.png?v=266
 
 # Spans
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/traces/spans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A span represents one operation within a trace. Each span records when an operation started and how long it took. Related spans form a hierarchy that shows how a request moved through Cloudflare.
 
 The spans in a trace depend on the products and request path involved. A span appears only when the corresponding operation runs.

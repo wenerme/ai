@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/operators
 
 # Operators and grouping symbols
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Rules language supports comparison and logical operators:
 
 - [Comparison operators](#comparison-operators) specify how values defined in an expression must relate to the actual HTTP request value for the expression to return `true`.

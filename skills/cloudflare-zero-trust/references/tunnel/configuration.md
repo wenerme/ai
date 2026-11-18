@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/configuration/og.png?v=14e1af8a3
 
 # Configuration
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page covers the most common configuration options for `cloudflared` tunnels, including high availability, firewall rules, and runtime parameters.
 
 ## Replicas and high availability

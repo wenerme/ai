@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modul
 
 # Google Cloud HSM
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial uses [Google Cloud HSM ↗︎](https://cloud.google.com/kms/docs/hsm) — a FIPS 140-2 Level 3 certified implementation.
 
 ---

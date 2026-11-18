@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/uploading-videos/og.png?v=6a137c
 
 # Upload videos
 
-Last updated Aug 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you upload your video, review the options for uploading a video, supported formats, and recommendations.
 
 ## Upload options

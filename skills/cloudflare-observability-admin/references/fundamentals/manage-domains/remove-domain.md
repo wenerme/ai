@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/remove-doma
 
 # Remove a domain
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consider the following sections on how you can remove domains from Cloudflare. Removing your domain cancels all active subscriptions on that domain, which will not be refunded per our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/). If you add this domain back to Cloudflare later, you will need to re-purchase all subscriptions. Removing your domain from Cloudflare does not change your domain registration.
 
 ## Before removing your domain

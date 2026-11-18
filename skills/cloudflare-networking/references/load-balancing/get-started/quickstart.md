@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/get-started/quickstart/o
 
 # Quickstart
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/get-started/quickstart/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Get up and running quickly with Load Balancing. For more in-depth explanations, refer to the [Learning path](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/).
 
 This guide assumes you are familiar with the Cloudflare [Load Balancing components](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/).

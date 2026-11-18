@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # User-side certificates
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Advanced security features such as [HTTPS traffic inspection](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/), [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/), [anti-virus scanning](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/antivirus-scanning/), [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/), and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) require users to install and trust a root certificate on their device. You can either install the certificate provided by Cloudflare (default option), or generate your own custom certificate and upload it to Cloudflare.
 
 Zero Trust [generates a unique root CA](#generate-a-cloudflare-root-certificate) for each account and deploys it across the Cloudflare global network. Alternatively, Enterprise users can upload and deploy their own [custom certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/).

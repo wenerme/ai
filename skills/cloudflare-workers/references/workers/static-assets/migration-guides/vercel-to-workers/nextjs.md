@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate Next.js from Vercel to Cloudflare Workers with vinext
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide moves a Next.js application from Vercel to Cloudflare Workers with [vinext ↗︎](https://github.com/cloudflare/vinext). vinext reimplements the Next.js API on Vite and deploys to Workers.
 
 Your `app/`, `pages/`, `next.config.*`, and `public/` directories stay the same. `next dev` and `next build` keep working after the migration.

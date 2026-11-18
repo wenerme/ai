@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/error-
 
 # Error Codes
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page describes RealtimeKit error codes to help you identify and troubleshoot issues.
 
 WebMobile

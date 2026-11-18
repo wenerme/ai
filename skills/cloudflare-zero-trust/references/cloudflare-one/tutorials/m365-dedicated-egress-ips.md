@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated
 
 # Protect access to Microsoft 365 with dedicated egress IPs
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Only available on Zero Trust Enterprise plans.
@@ -26,14 +24,14 @@ You can map a named location in Microsoft Entra ID to a location associated with
 
 Make sure you have:
 
-- In Cloudflare, a Zero Trust Enterprise plan with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/)
+- In Cloudflare, a Zero Trust Enterprise plan with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/)
 - In Microsoft 365, an organization managed with [Microsoft Entra ID ↗︎](https://learn.microsoft.com/en-us/entra/identity/)
 
 ## Create an egress policy in Cloudflare Gateway
 
 1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Egress policies**.
 2. Select **Add a policy**.
-3. Name your policy, then add conditions to check users are configured in Microsoft Entra ID. For example, you can check for [identity conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/):
+3. Name your policy, then add conditions to check users are configured in Microsoft Entra ID. For example, you can check for [identity conditions](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/):
 
    | Selector | Operator | Value |
    | --- | --- | --- |
@@ -88,5 +86,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/#page","headline":"Protect access to Microsoft 365 with dedicated egress IPs","description":"This tutorial covers how to secure access to your Microsoft 365 applications with Cloudflare Gateway dedicated egress IPs.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/og.png?v=70ccd05096641baf","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","IPv4","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/#page","headline":"Protect access to Microsoft 365 with dedicated egress IPs","description":"This tutorial covers how to secure access to your Microsoft 365 applications with Cloudflare Gateway dedicated egress IPs.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/og.png?v=70ccd05096641baf","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","IPv4","IPv6"]}
 ```

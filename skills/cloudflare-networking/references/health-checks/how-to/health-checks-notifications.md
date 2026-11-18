@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/health-checks/how-to/health-checks-noti
 
 # Health Checks notifications
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can [configure notification emails](https://developers.cloudflare.com/health-checks/how-to/health-checks-notifications/#configure-notifications) to be alerted when the Health Check detects that there is a change in the status of your origin server. Cloudflare will send you an email within seconds so you can take the necessary action before customers are impacted.
 
 The email provides information to determine what caused the health status change. You can evaluate when the change happened, the status of the origin server, if and why it is unhealthy, the expected response code, and the received response code.

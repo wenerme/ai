@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/previews/test-and-debug/og.png?
 
 # Test and debug
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/test-and-debug/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Previews support the same [Workers Observability](https://developers.cloudflare.com/workers/observability/) features as production — [logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/), [traces](https://developers.cloudflare.com/workers/observability/traces/), [metrics](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/), and [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) — configured independently so your Preview telemetry stays separate.
 
 ## Logs and traces

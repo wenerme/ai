@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/change-log/historical-2022/og.png?v
 
 # Historical (2022)
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/historical-2022/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 | Ruleset | Rule ID | Legacy Rule ID | Description | Change Date | Old Action | New Action |
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Specials | ...2aede3db | 100554 | Openam - Remote Code Execution - CVE:CVE-2021-35464 | 2022-12-12 | N/A | Disabled |

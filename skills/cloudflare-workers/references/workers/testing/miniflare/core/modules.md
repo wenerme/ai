@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/core/modules/
 
 # Modules
 
-Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/modules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Modules Reference](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/)
 
 ## Enabling Modules

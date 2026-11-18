@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/micro
 
 # Microfrontends
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Microfrontends let you split a single application into smaller, independently deployable units that render as one cohesive application. Different teams using different technologies can develop, test, and deploy each microfrontend.
 
 Use microfrontends when you want to:

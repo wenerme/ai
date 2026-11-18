@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Dedicated Egress IP for Logpush
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) and Logpush configuration and testing instructions to enable log delivery with a fixed, dedicated egress IP.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/og.png?v=066db
 
 # Configuration
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure your AI Gateway with multiple options and customizations.
 
 - [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/)

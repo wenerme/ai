@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/custom
 
 # Tags
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can label an Access application with up to 25 custom tags. End users can then filter the applications in their [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) by their tags.
 
 ### Create a tag

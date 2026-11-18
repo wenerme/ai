@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/examples/email-routing/em
 
 Store and process incoming emails using KV storage and queue systems for support tickets and workflow automation
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Store and process incoming emails with comprehensive storage, queue processing, and support ticket automation for streamlined email workflow management.
 
 ## Store emails in KV

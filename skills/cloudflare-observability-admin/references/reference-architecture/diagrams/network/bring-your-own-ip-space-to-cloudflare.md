@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/network
 
 # Bring your own IP space to Cloudflare
 
-Last updated Feb 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Cloudflare brings security and performance to our customers' digital estates. However, one of the characteristics of proxying services is that interactions on the web that go to Cloudflare (DNS queries or requests to SaaS providers, for example) will appear to the world as coming from the Cloudflare IP space. This can create challenges for some enterprises.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/og.p
 
 # Builds API reference
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide shows you how to use the [Workers Builds REST API](https://developers.cloudflare.com/api/resources/workers_builds/) to connect a Worker to a Git repository, manage build settings and [Previews](https://developers.cloudflare.com/workers/previews/), and monitor builds. The examples use `curl` commands that you can run directly in your terminal or adapt to your preferred programming language. Some examples pipe output through [`jq` ↗︎](https://jqlang.org/) to filter JSON responses.
 
 ## Before you start

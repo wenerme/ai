@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/upload-images/import-fro
 
 # Edit sources
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/edit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The **Import from S3** page lists your import jobs and sources. From this page, you can edit sources or abort running jobs.
 
 ## Edit source details

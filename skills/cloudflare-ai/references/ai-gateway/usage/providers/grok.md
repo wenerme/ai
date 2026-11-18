@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/providers/grok/og.png?
 
 # xAI
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/grok/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Endpoint
 
 ```txt

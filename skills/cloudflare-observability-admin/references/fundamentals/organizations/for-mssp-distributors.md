@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/organizations/for-mssp-dis
 
 # Organizations for MSSP and Distributors
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Organizations provides a multi-tier structure for MSSP (Managed Security Service Provider) and Distributor partners to manage customer accounts and create child partner Organizations.
 
 ## Who is this for?

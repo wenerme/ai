@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/media-
 
 # Media Acquisition Approaches
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/media-acquisition-approaches/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This guide assumes that you are already familiar with [initializing the RealtimeKit SDK](https://developers.cloudflare.com/realtime/realtimekit/humans/core/).

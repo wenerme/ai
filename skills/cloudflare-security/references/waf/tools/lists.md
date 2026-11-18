@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/lists/og.png?v=7c5d16c901e8aa
 
 # Lists
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Lists allow you to group items such as IP addresses, hostnames, or autonomous system numbers (ASNs), and reference them by name in Cloudflare [rule expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). Instead of adding each item individually to every rule that needs it, you define the group once and reuse it across rules and zones.
 
 You can create your own [custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/) or use [Managed Lists](https://developers.cloudflare.com/waf/tools/lists/managed-lists/) maintained by Cloudflare, such as Managed IP Lists that provide threat intelligence data.

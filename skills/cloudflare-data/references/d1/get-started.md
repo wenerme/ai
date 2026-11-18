@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/get-started/og.png?v=f4bd290d0b828d3
 
 # Getting started
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide instructs you through:
 
 - Creating your first database using D1, Cloudflare's native serverless SQL database.

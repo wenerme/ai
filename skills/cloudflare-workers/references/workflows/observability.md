@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/observability/og.png?v=107cc8
 
 # Observability
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Metrics and analytics](https://developers.cloudflare.com/workflows/observability/metrics-analytics/)
 
 Was this helpful?

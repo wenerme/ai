@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/response-header-modific
 
 # API parameter reference
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/response-header-modification/reference/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To set an HTTP response header, overwriting any headers with the same name, use the following parameters in the `action_parameters` field:
 
 - **operation**: `set`

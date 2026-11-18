@@ -16,8 +16,6 @@ p
 
 Text Generation • particle
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/particle/particle-1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `particle/particle-1` Copy

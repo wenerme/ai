@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/report-abuse/og.
 
 # Abuse
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare offers security and reliability services to millions of websites, helping prevent online abuse and make the Internet more secure.
 
 When it comes to reports of abuse on websites that use our services, our ability to respond depends on the type of Cloudflare service at issue. Most abuse reports we receive pertain to websites that use our pass-through security and content delivery network (CDN) services, while far fewer reports relate to websites using our registrar services or our services to host content at the edge. Because Cloudflare offers a variety of Internet infrastructure services to users, our abuse reporting system is designed with those different services in mind.

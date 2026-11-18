@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/dns-best-practices/conce
 
 # Phase 2: Preparation
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Careful preparation will minimize downtime and issues during the cutover.
 
 ## 1. Reduce DNS record TTLs (Time To Live)

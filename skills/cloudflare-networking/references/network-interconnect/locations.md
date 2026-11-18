@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-interconnect/locations/og.png?v
 
 # Direct CNI locations
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/locations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following facilities offer **Direct CNI**, a dedicated physical connection between your network equipment and Cloudflare hardware in a shared data center.
 
 Partner CNI and Cloud CNI

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/snippets/create-dashboard/og.png?
 
 # Create a snippet in the dashboard
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/create-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. In the Cloudflare dashboard, go to the **Snippets** page. [Go to **Snippets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets)
 2. (Optional) If you have not created any snippets yet, select one of the snippet templates that addresses a common use case. Then, review and adjust the proposed snippet code.
 

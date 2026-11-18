@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkLogo
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtklogo/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A component which loads the logo from your config, or via the `logo-url` attribute.
 
 ## Properties

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ethereum-gateway/og.png?v=847cf8f0
 
 # Ethereum Gateway
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's Ethereum Gateway gives you read and write access to the [Ethereum network](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/) without installing any software on your computer.
 
 In particular, users can read all information that has been agreed upon by the consensus of existing nodes in the network. In addition, they can write their own transactions and smart contracts to be stored by these nodes in a distributed manner. Anyone else on the network will be able to view these transactions, and even run your smart contracts using their own supply of the Ethereum currency.

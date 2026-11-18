@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/adapti
 
 # Adaptive DDoS Protection
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Adaptive DDoS Protection learns your unique traffic patterns and adapts to them to provide better protection against sophisticated DDoS attacks on layer 7 and layers 3/4, depending on your subscribed Cloudflare services.
 
 Adaptive DDoS Protection provides the following types of protection:

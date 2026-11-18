@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/environments/og.png?v=
 
 # Environments
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wrangler allows you to use environments to create different configurations for the same Worker application. Environments are configured in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 When you create an environment, Cloudflare effectively creates a new Worker with the name `<top-level-name>-<environment-name>`. For example, a Worker project named `my-worker` with an environment `dev` would deploy as a Worker named `my-worker-dev`.

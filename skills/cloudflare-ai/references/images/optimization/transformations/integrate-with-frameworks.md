@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/transformations/int
 
 # Integrate with frameworks
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Next.js
 
 Image transformations can be used automatically with the Next.js [`<Image />` component ↗︎](https://nextjs.org/docs/api-reference/next/image).

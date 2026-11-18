@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/configuration/og.p
 
 # Configuration
 
-Last updated Nov 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When connecting your Git repository to your Worker, you can customize the configurations needed to build and deploy your Worker.
 
 ## How Workers Builds works

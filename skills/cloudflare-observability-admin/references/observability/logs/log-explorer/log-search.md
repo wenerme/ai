@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/log-sea
 
 # Log Search
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/log-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Log Explorer (Legacy) lets you store and explore your Cloudflare logs directly within the Cloudflare dashboard or API, giving you visibility into your logs without the need to forward them to third-party services. Logs are stored on Cloudflare's global network using the R2 object storage platform and can be queried via the dashboard or SQL API.
 
 Log Search is now part of Observability Logs

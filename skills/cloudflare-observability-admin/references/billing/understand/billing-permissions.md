@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/understand/billing-permissions/
 
 # Billing permissions
 
-Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/billing-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Access to billing features in the Cloudflare dashboard depends on the role assigned to each account member. This page maps each billing action to the required role.
 
 ## Roles and billing capabilities

@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Qwen
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/qwen/qwen3-30b-a3b-fp8` Copy
@@ -33,7 +31,7 @@ Qwen3 is the latest generation of large language models in Qwen series, offering
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,768 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |

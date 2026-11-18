@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/time-services/roughtime/deprecation/og.
 
 # Server Deprecation
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/roughtime/deprecation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once their deprecation date has passed, both the port and public key associated to a server will become unavailable.
 
 | Server | Public Key | Deprecation date |

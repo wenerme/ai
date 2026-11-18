@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/reference/og.png?v=d6a1f9f97a804730
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Consistency model](https://developers.cloudflare.com/r2/reference/consistency/)
 - [Data location](https://developers.cloudflare.com/r2/reference/data-location/)
 - [Data security](https://developers.cloudflare.com/r2/reference/data-security/)

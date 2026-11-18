@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c
 
 # Purge and invalidate the cache
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Your Worker can delete its own cached responses at any time with `purge()`, or mark them stale with [`invalidate()`](#invalidate-cached-responses) so that the cache revalidates them with your Worker on the next request. Both are useful when data changes and the new value is more important than the performance benefit of continuing to serve the cached response — for example, after a content update, a user action, or a webhook from an upstream system.
 
 Because Workers Caching is **your Worker's cache**, purging and invalidating are scoped to the Worker that owns the cache. Within a Worker, both are further scoped to the [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) that called `purge()` or `invalidate()`. A Worker cannot reach into another Worker's cache, an entrypoint cannot reach into another entrypoint's cache, and no zone-level purge (via the dashboard, [API](https://developers.cloudflare.com/cache/how-to/purge-cache/), or Terraform) affects Workers Caching content.
@@ -331,7 +329,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true, "cross_version_cache": true },
 	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -342,7 +340,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true

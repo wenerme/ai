@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/tools/og.png?v=95e31e7f
 
 # Tools
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Tools let models retrieve information, process data, and perform actions. Each tool defines an interface that describes its inputs, outputs, and behavior.
 
 A travel agent might use tools to search flights, check hotel rates, process payments, and send confirmation emails. The tool interface lets the model understand when and how to use each capability.

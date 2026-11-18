@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/cursor/og.png?v=d
 
 # Run Cursor Cloud Agents in a sandbox
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/cursor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run Cursor Cloud Agents on Cloudflare through [self-hosted machines ↗︎](https://cursor.com/docs/cloud-agent/self-hosted). Each Cursor session assigned to the deployment runs in its own Linux sandbox: a [Container](https://developers.cloudflare.com/containers/) that one Durable Object starts for that session.
 
 Cursor hosts the agent loop, inference, and planning. Cloudflare runs commands, file edits, repository operations, and other tools inside infrastructure that you control.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/attack-signature-detecti
 
 # Analyze attack signatures
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/attack-signature-detection/analyze-attack-signatures/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use **Security Analytics** > **Attack Analysis** to investigate attack signature matches before applying mitigation.
 
 Note

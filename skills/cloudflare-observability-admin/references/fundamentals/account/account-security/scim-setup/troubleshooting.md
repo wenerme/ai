@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/s
 
 # SCIM troubleshooting
 
-Last updated Jul 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Restore Super Administrator after group misconfiguration
 
 If you have removed all Super Administrators mistakenly, you can restore the role to account member(s) using the Account API Token you created for SCIM provisioning.

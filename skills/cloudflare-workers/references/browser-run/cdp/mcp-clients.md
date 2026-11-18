@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/cdp/mcp-clients/og.png?v=1f
 
 # Using with MCP clients (CDP)
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use the CDP endpoints with AI coding agents through the [Model Context Protocol (MCP) ↗︎](https://modelcontextprotocol.io/). The [chrome-devtools-mcp ↗︎](https://github.com/ChromeDevTools/chrome-devtools-mcp) package provides an MCP server that allows AI assistants to control and inspect browser sessions.
 
 Before you begin, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Published applications
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Tunnel allows you to publish local applications to the Internet via a public hostname. For example, you can [add a published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application) that points `docs.example.com` to `https://localhost:8080`. Anyone can now view your application by going to `docs.example.com` in their web browser.
 
 Cloudflare can route traffic down your Cloudflare Tunnel using a [DNS record](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/dns/) or [Cloudflare Load Balancer](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/public-load-balancers/). You can configure either option from the Cloudflare dashboard by pointing a DNS `CNAME` record or a load balancer pool to your Cloudflare Tunnel subdomain (`<UUID>.cfargotunnel.com`, or `<UUID>.fed-cfargotunnel.com` on accounts in Cloudflare's FedRAMP High environment). You can also associate these records with your tunnel from `cloudflared` directly.

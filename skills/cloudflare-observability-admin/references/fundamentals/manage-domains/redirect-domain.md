@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/redirect-do
 
 # Redirect one domain to another
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you have an alias domain that only forwards traffic to another domain (that is, the domain does not have an associated origin server of its own), you can set up redirects directly within Cloudflare.
 
 1. [Add](https://developers.cloudflare.com/fundamentals/manage-domains/#add-a-domain-to-cloudflare) your alias domain (for example, `previous.com`) to Cloudflare.

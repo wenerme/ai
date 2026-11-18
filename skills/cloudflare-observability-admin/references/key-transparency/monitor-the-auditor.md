@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/key-transparency/monitor-the-auditor/og
 
 # Monitor the Auditor
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/key-transparency/monitor-the-auditor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's Key Transparency Auditor validates Log audit proofs and provides a signature for them. The Log can then distribute these signatures to its end-users, and provides users with confidence that keys have not been tampered with.
 
 In order to verify our work, you can use [Plexi ↗︎](https://github.com/cloudflare/plexi), a CLI tool that allows anyone to perform proof verification locally via a public [API](https://developers.cloudflare.com/key-transparency/api/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network/pseudo-ipv4/og.png?v=343c959580
 
 # Pseudo IPv4
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/pseudo-ipv4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare customers can use **Pseudo IPv4** if their origin web server only understands IPv4 formatted IP addresses (meaning it would not support Cloudflare's default [IPv6 compatibility](https://developers.cloudflare.com/network/ipv6-compatibility/)).
 
 Note

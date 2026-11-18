@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/get-started/error-codes/og.png?v=
 
 # Radar API error codes
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 | Error Code | HTTP Status Code | Description |
 | --- | --- | --- |
 | `2000` | 500 | Internal Error |

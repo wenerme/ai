@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/rest-api/og.png?v=e050
 
 # REST API
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The REST API lets you call any model — whether hosted on Cloudflare or by a third-party provider like OpenAI, Anthropic, or Google — through the same Cloudflare API, with all AI Gateway features — logging, caching, rate limiting, and more — applied automatically.
 
 No provider SDKs or API keys are needed. Authentication and billing are handled through your Cloudflare account. Third-party models are billed via [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/). Workers AI models can use prepaid AI Gateway credits or [Workers AI billing](https://developers.cloudflare.com/workers-ai/platform/pricing/).

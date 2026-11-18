@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/network-analytics/configure/o
 
 # Configure
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/configure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Adjust the time range](https://developers.cloudflare.com/analytics/network-analytics/configure/time-range/)
 - [Adjust the displayed data](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/)
 - [Share and export data](https://developers.cloudflare.com/analytics/network-analytics/configure/share-export/)

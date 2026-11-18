@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/queryin
 
 # Querying Containers metrics with GraphQL
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example uses the GraphQL Analytics API to query metrics for your [Containers](https://developers.cloudflare.com/containers/). Two endpoints are available:
 
 - `containersMetricsAdaptiveGroups` returns metrics for the code running inside your container, including every process inside it. Use this endpoint to inspect CPU, memory, disk, network, and uptime behavior for your own workload.

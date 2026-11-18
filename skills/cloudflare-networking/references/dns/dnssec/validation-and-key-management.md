@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/dnssec/validation-and-key-managemen
 
 # Validation and keys
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/validation-and-key-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the sections below for an overview of some technical concepts and how they apply to Cloudflare DNSSEC. For broader content on DNSSEC, refer to [How DNSSEC works ↗︎](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/).
 
 ## Chain of trust

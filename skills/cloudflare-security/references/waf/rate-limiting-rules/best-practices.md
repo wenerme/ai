@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/
 
 # Rate limiting best practices
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following sections cover typical rate limiting configurations for common use cases. You can combine the provided example rules and adjust them to your own scenario.
 
 Path matching and URL normalization

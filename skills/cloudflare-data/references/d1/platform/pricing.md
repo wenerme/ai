@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/platform/pricing/og.png?v=69a8a81ee0
 
 # Pricing
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 bills based on:
 
 - **Usage**: Queries you run against D1 will count as rows read, rows written, or both (for transactions or batches).

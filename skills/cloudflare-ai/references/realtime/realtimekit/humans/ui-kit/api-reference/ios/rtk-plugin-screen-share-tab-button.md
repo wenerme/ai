@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkPluginScreenShareTabButton
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-plugin-screen-share-tab-button/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A tab button used in the plugin and screen share tab selector. Represents a single tab in the `RtkActiveTabSelectorView`.
 
 ## Initializer parameters

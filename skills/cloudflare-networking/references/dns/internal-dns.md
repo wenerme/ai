@@ -12,15 +12,13 @@ image: https://developers.cloudflare.com/dns/internal-dns/og.png?v=82f546ce7f9eb
 
 # Internal DNS
 
-Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/internal-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Simplify private network management with Cloudflare DNS for your internal resources.
 
 Enterprise-only
 
-Manage DNS records that should only be accessible within your private network. Internal DNS [zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/) and [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) pair up with [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) so that you can control how a DNS query should be responded to according to query context, such as query source IP.
+Manage DNS records that should only be accessible within your private network. Internal DNS [zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/) and [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) pair up with [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) so that you can control how a DNS query should be responded to according to query context, such as query source IP.
 
-Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for Enterprise customers. There is no additional SKU or separate subscription required.
+Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) for Enterprise customers. There is no additional SKU or separate subscription required.
 
 ## Architecture overview
 
@@ -107,7 +105,7 @@ In this example, a query for `ghi.example.local` routed to view ID 111 would go 
 
 ## Related products
 
-[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 Set up policies to inspect DNS, Network, HTTP, and Egress traffic.
 
@@ -124,5 +122,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/internal-dns/#page","headline":"Internal DNS","description":"Resolve private hostnames within your network with Internal DNS.","url":"https://developers.cloudflare.com/dns/internal-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/internal-dns/og.png?v=82f546ce7f9eb9ea","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/internal-dns/#page","headline":"Internal DNS","description":"Resolve private hostnames within your network with Internal DNS.","url":"https://developers.cloudflare.com/dns/internal-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/internal-dns/og.png?v=82f546ce7f9eb9ea","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

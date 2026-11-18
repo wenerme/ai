@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/lis
 
 # Configurations
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/lists/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Both Custom and Managed Lists are located in the account settings. Refer to [Features by plan type](https://developers.cloudflare.com/learning-paths/application-security/lists/features/) for more information on plan eligibility.
 
 ## Custom Lists

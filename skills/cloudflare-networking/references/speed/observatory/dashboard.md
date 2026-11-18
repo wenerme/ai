@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/observatory/dashboard/og.png?v=21
 
 # Observatory dashboard
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/observatory/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Observatory overview dashboard provides a single view of your zone's performance over the past seven days. It combines synthetic monitoring, real user data, and Cloudflare's analysis to help you quickly identify performance bottlenecks and receive actionable recommendations.
 
 ## Suggestions

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/vector
 
 # Vector search
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Vector search converts your query into a vector embedding and finds chunks with similar meaning. It is enabled by default on all AI Search instances. For an overview of search modes, refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/).
 
 ## Built-in vector index

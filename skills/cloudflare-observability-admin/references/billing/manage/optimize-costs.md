@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/optimize-costs/og.png?v=
 
 # Optimize costs
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/optimize-costs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Reducing usage-based charges starts with understanding where your consumption comes from. Use the [billable usage dashboard](https://developers.cloudflare.com/billing/manage/billable-usage/) to identify which products are driving costs, then apply the strategies below.
 
 ## General strategies

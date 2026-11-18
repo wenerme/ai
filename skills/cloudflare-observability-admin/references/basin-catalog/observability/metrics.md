@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/observability/metrics/og.
 
 # Metrics and analytics
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/observability/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin Catalog exposes metrics that allow you to monitor Iceberg REST API requests and table maintenance jobs (compaction and snapshot expiration) across your warehouses.
 
 Legacy product names

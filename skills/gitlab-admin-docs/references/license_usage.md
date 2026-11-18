@@ -49,12 +49,13 @@ To export your license usage file:
 
 ## Usage report
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258909) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `billable_usage_export`. Disabled by default.
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258909) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `billable_usage_export`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
-> This feature is available for testing, but not ready for production use.
 
 If your instance is in an offline environment, it cannot send usage data to GitLab.
 You should export a usage report instead, and upload it to Customers Portal

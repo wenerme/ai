@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/websockets/og.png?v=
 
 # WebSockets
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/websockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `Agent` class installs the [`WebSockets` capability](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/) and calls your `onConnect()`, `onMessage()`, `onClose()`, and `onError()` methods. Connections hibernate when idle, and `useAgent` and `AgentClient` from the [client SDK](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/client-sdk/) connect to it. This page covers the `Agent` methods. For connection state, tags, readonly connections, and transports, refer to the [`WebSockets` capability](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/).
 
 ## Handle connections

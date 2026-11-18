@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/og.png?
 
 # Agents SDK
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/) lets you build stateful AI agents that run on Workers. This guide builds a chat agent that provisions its own AI Search instance, indexes a document, and then searches that content with a tool before it answers.
 
 This guide uses the recommended agent pattern, exposing AI Search's `search()` to the model as a tool. For more on this pattern, refer to [AI Search as an agent tool](https://developers.cloudflare.com/agents/tools/ai-search/).
@@ -105,7 +103,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "main": "src/server.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-27",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -143,7 +141,7 @@ name = "ai-search-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]

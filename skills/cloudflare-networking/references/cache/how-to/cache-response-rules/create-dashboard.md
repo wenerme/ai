@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/cache-response-rules/creat
 
 # Create a rule in the dashboard
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. In the Cloudflare dashboard, go to **Cache** > **Cache Rules**. [Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select the **Cache Response Rules** tab.
 3. Select **Create rule**.

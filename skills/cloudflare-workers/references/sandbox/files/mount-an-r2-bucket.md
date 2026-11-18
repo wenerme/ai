@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/og.png
 
 # Mount an R2 bucket
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `S3Mount` class from `@cloudflare/sandbox` mounts one prefix of a bucket as a directory with `s3fs`. Your Worker keeps the R2 credentials and signs each storage request. In this example, a command reads an input file from the mount and writes a digest next to it.
 
 ## Prerequisites

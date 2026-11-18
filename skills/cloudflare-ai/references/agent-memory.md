@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agent-memory/og.png?v=415d87bab4a80411
 
 # Agent Memory
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Persistent, scoped memory for agents that need to remember users, organizations, and domain-specific context across conversations.
 
 Note

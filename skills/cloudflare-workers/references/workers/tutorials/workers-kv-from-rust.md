@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/
 
 # Use Workers KV directly from Rust
 
-Last updated Jan 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial will teach you how to read and write to KV directly from Rust using [workers-rs ↗︎](https://github.com/cloudflare/workers-rs).
 
 ## Before you start

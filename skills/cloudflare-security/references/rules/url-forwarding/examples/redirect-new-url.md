@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-
 
 Create a redirect rule to redirect visitors from `/contact-us/` to the page's new path `/contacts/`.
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-new-url/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example static redirect for zone `example.com` will redirect visitors requesting the `/contact-us/` page to the new page URL `/contacts/`.
 
 **When incoming requests match**

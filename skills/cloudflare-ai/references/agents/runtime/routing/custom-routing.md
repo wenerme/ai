@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/routing/custom-routing/o
 
 # Custom routing
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/routing/custom-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `routeAgentRequest()` is optional. Any request that reaches a Lifecycle Durable Object through `fetch()` goes through the [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/), however your Worker found the object. Use custom routing when you want your own URLs, or when the server, not the client, decides which object a request goes to.
 
 ## Forward a request to a named object

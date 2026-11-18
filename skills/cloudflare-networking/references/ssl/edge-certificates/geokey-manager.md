@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/og
 
 # Geo Key Manager
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Restrict where the private keys used for TLS certificates are stored and managed.
 
 Geo Key Manager allows customers to store and manage the encryption keys for their domains in different geographic locations so they can meet compliance regulations and keep data secure.

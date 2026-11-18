@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/faq/about-analytics/og.png?v=
 
 # About Cloudflare Analytics
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/faq/about-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In an effort to make analytics an ubiquitous component of all Cloudflare's products, Cloudflare has implemented, and continues to evolve, several ways in which customers can access and gain insights from Internet properties on Cloudflare.
 
 You can access root-level analytics that give you an overview of metadata related to your Cloudflare account, analytics related to specific properties and products, and the GraphQL API that gives you more control over how you visualize the analytics and log information available on the Cloudflare dashboard.

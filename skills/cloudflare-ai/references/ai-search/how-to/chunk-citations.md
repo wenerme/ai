@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/chunk-citations/og.png
 
 # Show source citations in responses
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/chunk-citations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [AI Search](https://developers.cloudflare.com/ai-search/) returns the source chunks it uses to generate an answer. Use those chunks to show citations, references, or source links in your application.
 
 This guide shows how to build a [Cloudflare Worker](https://developers.cloudflare.com/workers/) that returns an AI-generated answer with the documents that informed it. Use this pattern when you want users to verify answers, inspect source material, or debug retrieval quality.
@@ -76,7 +74,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -91,7 +89,7 @@ name = "ai-search-citations"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"

@@ -170,6 +170,13 @@ To run a health check:
 1. In the upper-right corner, select **Run health check**.
 1. Optional. In GitLab 17.5 and later, after the health check is complete, you can select **Download report** to save a detailed report of the health check results.
 
+The health check runs automatically when you open the  page
+and each time you select .
+Each run sends one Code Suggestions request for the  test.
+If your subscription bills Code Suggestions with [GitLab Credits](../../../subscriptions/gitlab_credits.md),
+each run consumes credits for one Code Suggestions request.
+These credits are billed to the administrator who opened the page or ran the check.
+
 These tests are performed:
 
 | Test                      | Description |
@@ -179,7 +186,7 @@ These tests are performed:
 | Synchronization           | Tests whether your subscription: - Has been activated with an activation code and can be synchronized with `customers.gitlab.com`.- Has correct access credentials.- Has been synchronized recently. If it hasn't or the access credentials are missing or expired, you can [manually synchronize](../../../subscriptions/manage_subscription.md#manually-synchronize-subscription-data) your subscription data. |
 | Code Suggestions          | GitLab Duo Self-Hosted models only. Tests whether Code Suggestions is available: - Your license includes access to Code Suggestions.- You have the necessary permissions to use the feature. |
 | GitLab Duo Agent Platform | Tests whether the backend service is operational and accessible. This service is required for agentic features like the Agent Platform and GitLab Duo Agentic Chat.For GitLab Duo Self-Hosted, this test does not pass until you [select a self-hosted model for the GitLab Duo Agent Platform feature](../../gitlab_duo_self_hosted/configure_duo_features.md#select-a-self-hosted-model-for-a-feature).Also verifies the following foundational flows prerequisites:- The instance-level flow execution setting is enabled.- The instance-level foundational flows setting is enabled.- At least one active instance runner with the `gitlab--duo` tag is registered and connected, and uses a Docker-compatible executor.|
-| System exchange           | Tests whether Code Suggestions can be used in your instance. If the system exchange assessment fails, users might not be able to use GitLab Duo features. |
+| System exchange           | Tests whether Code Suggestions is available on your instance by sending one Code Suggestions request as the current user. This request consumes GitLab Credits if your subscription bills Code Suggestions with credits. If the system exchange assessment fails, users might not be able to use GitLab Duo features. |
 | Usage billing | Tests whether your instance can connect to usage billing endpoints, including Customers Portal, the AI Gateway, and GitLab Duo Workflow Service. |
 
 For GitLab instances earlier than version 17.10, if you are encountering any issues with the health check,

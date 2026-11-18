@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/concepts/og.png?v=ca919d628c1d5b5
 
 # Concepts
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the following topics to learn more about the basic concepts and components of Cloudflare Cache.
 
 - [CDN-Cache-Control](https://developers.cloudflare.com/cache/concepts/cdn-cache-control/)

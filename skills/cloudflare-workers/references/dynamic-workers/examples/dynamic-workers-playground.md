@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/examples/dynamic-worker
 
 # Dynamic Workers Playground
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Try the Dynamic Workers [playground ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground) to write or import code from GitHub, bundle it at runtime, execute it in a Dynamic Worker, and view real-time logs.
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-
 
 # Configure the Worker
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use a Worker to automatically keep your identity provider’s latest public key in the JWT validation configuration.
 
 ## Prerequisites

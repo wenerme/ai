@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/faq/other-faqs/og.png?v=cd096
 
 # Other FAQs
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/faq/other-faqs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Why do I see a large amount of traffic from CLOUDFLARENET ASN 13335 in Analytics? Does this indicate a DDoS attack?
 
 There is a number of different types of traffic which may originate from **CLOUDFLARENET ASN 13335**; just because there is a lot of traffic from this AS, it likely does not indicate a DDoS attack.

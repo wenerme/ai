@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/quick-actions/accessibility
 
 # /accessibilityTree - Capture accessibility tree
 
-Last updated Jul 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `/accessibilityTree` endpoint instructs the browser to navigate to a website and capture the page's accessibility tree after JavaScript execution. The accessibility tree includes accessibility-related information such as roles, names, values, states, and hierarchy.
 
 ## Endpoint

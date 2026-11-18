@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/og.p
 
 # Delete a ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use the API to delete all the versions of a ruleset or delete a specific version of a ruleset.
 
 - [Delete ruleset (all versions)](#delete-ruleset)

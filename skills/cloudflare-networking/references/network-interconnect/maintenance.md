@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-interconnect/maintenance/og.png
 
 # Maintenance
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Planned maintenance
 
 Routine CNI-disruptive maintenance is planned work that can interrupt traffic on an affected CNI connection. Cloudflare coordinates this work across resilient Cloudflare Network Interconnect (CNI) deployments, including across CNI locations.

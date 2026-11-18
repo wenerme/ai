@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/ter
 
 # Terraform configuration examples
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/terraform-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following Terraform configuration examples address common scenarios for managing, configuring, and using AI Security for Apps.
 
 For more information, refer to the [Terraform Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).

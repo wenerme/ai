@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/configure-de
 
 # Define Split Tunnel settings
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/split-tunnel-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Split tunnel settings determine which traffic the Cloudflare One Client does and does not proxy.
 
 The Cloudflare One Client offers two different split tunnel modes:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/og.png?v=7ad8af66e54bc44
 
 # Traffic detections
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Traffic detections check incoming requests for malicious, potentially malicious, or non-conforming activity. Each enabled detection scores or classifies requests by populating one or more fields. These fields appear as filters in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard, and you can use them in rule expressions.
 
 Detections are always on once enabled, even if you have not configured any security rules that use them. You can review detection results in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to identify traffic patterns and spot potentially malicious traffic. For example, you can analyze traffic based on [attack score](https://developers.cloudflare.com/waf/detections/attack-score/), [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/), [content scan results](https://developers.cloudflare.com/waf/detections/malicious-uploads/), or the [presence of personally identifiable information (PII)](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) in large language model (LLM) prompts.

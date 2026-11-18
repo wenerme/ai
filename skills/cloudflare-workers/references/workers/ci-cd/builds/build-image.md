@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/build-image/og.png
 
 # Build image
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Builds uses a build image with support for a variety of languages and tools such as Node.js, Python, PHP, Ruby, and Go.
 
 ## Supported Tooling

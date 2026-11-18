@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/glossary/og.png?
 
 # Glossary
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the definitions for terms used across Cloudflare's documentation.
 
 | Term | Definition | Product |

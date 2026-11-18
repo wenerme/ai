@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/og.png?v=293443b6d6cce5fe
 
 # Cloudflare Web Application Firewall
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Get automatic protection from vulnerabilities and the flexibility to create custom rules.
 
 Available on all plans

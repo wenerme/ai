@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # Predefined profiles
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Zero Trust provides predefined DLP profiles for common types of sensitive data, such as credit card numbers, national identifiers, and credentials. Each predefined profile groups related [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) which can be turned on or off individually.
 
 To use a predefined profile, [enable the detection entries you want](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#configure-a-predefined-profile) and add the profile to a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/). You can tune accuracy with [confidence thresholds](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#confidence-thresholds) and other [profile settings](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/).

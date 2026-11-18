@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-rea
 
 # Non-realtime WebSockets API
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Non-realtime WebSockets API allows you to establish persistent connections for AI requests without requiring repeated handshakes. This approach is ideal for applications that do not require real-time interactions but still benefit from reduced latency and continuous communication.
 
 ## Set up WebSockets API

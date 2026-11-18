@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/e-commerce/protect/og.png?v=f
 
 # Protect your store
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/protect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Online stores are targets for DDoS attacks, credential stuffing, payment fraud, and supply chain script injections. Cloudflare provides layered security — from SSL/TLS encryption and application security managed rulesets to bot detection and client-side script monitoring — that protects your store without adding friction for shoppers.
 
 ## Solutions

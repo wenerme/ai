@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-
 
 # Cloudflare Managed Ruleset
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Created by the Cloudflare security team, this ruleset provides fast and effective protection for all of your applications. The ruleset is updated frequently to cover new vulnerabilities and reduce false positives.
 
 Cloudflare recommends that you enable the rules whose tags correspond to your technology stack. For example, if you use WordPress, enable the rules tagged with `wordpress`.

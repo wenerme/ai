@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-firewall-rules/delete/o
 
 # DELETE examples
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/delete/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 The `DELETE` operation does not delete any filter related to the firewall rule. To delete the filter, use the [Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/).

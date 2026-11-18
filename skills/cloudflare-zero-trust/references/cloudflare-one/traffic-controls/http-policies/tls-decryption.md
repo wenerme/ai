@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # TLS decryption
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Gateway can perform [SSL/TLS decryption ↗︎](https://www.cloudflare.com/learning/security/what-is-https-inspection/) to inspect HTTPS traffic for malware and other security risks. TLS decryption is required for HTTP policies to inspect HTTPS traffic. Without it, information contained within HTTPS encryption, such as the full URL, headers, and request body, [will not be visible to Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect).
 
 When you turn on TLS decryption, Gateway will decrypt all traffic sent over HTTPS, apply your HTTP policies, and then re-encrypt the request with a [user-side certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/).

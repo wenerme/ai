@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/og.pn
 
 # Plan the move to Sandbox SDK 1.0
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page compares the two ways to move sandboxes from Sandbox SDK 0.12 to 1.0, and then moves every sandbox in one deploy. You cannot undo the deploy that switches your sandboxes to 1.0.
 
 ## Before you start
 
-- Your application runs `@cloudflare/sandbox` 0.12.13.
+- Your application runs `@cloudflare/sandbox` 0.12.14.
 - Your 1.0 class is written. For the class, refer to [Replace the Sandbox class](https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/).
 - You have a staging copy of the Worker with its own Wrangler configuration file. Set a different Worker `name` and a different `name` for each container in that file, because the `--name` option of `wrangler deploy` does not rename container applications.
 

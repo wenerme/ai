@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/guides/snapshots/og.png?v=74
 
 # Use snapshots
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/snapshots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Snapshots let you save point-in-time filesystem state from a running [Container](https://developers.cloudflare.com/containers/). The examples on this page use the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/).
 
 Container snapshots are in public beta.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/betas/og.png?v=9d2c2d2
 
 # Betas
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/betas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These are the current alphas and betas relevant to the Cloudflare Workers platform.
 
 - **Public alphas and betas are openly available**, but may have limitations and caveats due to their early stage of development.

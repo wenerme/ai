@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/a
 
 # JSON objects
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page contains examples of the JSON objects used in the Programmable Flow Protection API.
 
 ## Program

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/plans/biz-and-ent/og.png?v=be5d5ff
 
 # Business
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/plans/biz-and-ent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To learn more about features and functionality, select a plan.
 
 [Free](https://developers.cloudflare.com/bots/plans/free/) [Pro](https://developers.cloudflare.com/bots/plans/pro/) [Business](https://developers.cloudflare.com/bots/plans/biz-and-ent/) [Bot Management for Enterprise](https://developers.cloudflare.com/bots/plans/bm-subscription/)

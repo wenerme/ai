@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/a
 
 # Programmable Flow Protection
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Cloudflare API](https://developers.cloudflare.com/api/) to configure Programmable Flow Protection.
 
 For examples of API calls, refer to [Common API calls](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Worker Isolation
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ### Untrusted Mode (Default)
 
 By default, Workers inside of a dispatch namespace are considered "untrusted." This provides the strongest isolation between Workers and is best in cases where your customers have control over the code that's being deployed.

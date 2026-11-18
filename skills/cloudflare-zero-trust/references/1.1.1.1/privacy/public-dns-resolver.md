@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/og.
 
 # 1.1.1.1 Public DNS Resolver
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 *Last updated March 27, 2024*
 
 ## Cloudflare's commitment to privacy: 1.1.1.1 Public DNS Resolver

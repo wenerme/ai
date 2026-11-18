@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/platform/limits/og.png?v=d
 
 # Limits, timeouts, and quotas
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These limits apply to Realtime SFU resources. Application limits such as room admission or a device's viewer cap are separate policies.
 
 ## API and resource limits

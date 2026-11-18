@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/network
 
 # Protect hybrid cloud networks with Cloudflare Magic Transit
 
-Last updated Feb 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Protecting network infrastructure from DDoS attacks demands a unique combination of strength and speed. Volumetric attacks can easily overwhelm on-premise hardware-based DDoS protection appliances and their bandwidth-constrained Internet links.

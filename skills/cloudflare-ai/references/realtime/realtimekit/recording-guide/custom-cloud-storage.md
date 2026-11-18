@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/cu
 
 # Upload Recording to Your Cloud
 
-Last updated May 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can pass an optional object `storage_config` in the start recording request to publish the recording directly to your cloud provider. If a `path` is specified, the recorded video will be stored there, otherwise the default is the root of the directory.
 
 The filename for recording will be the same as given in `output_file_name`.

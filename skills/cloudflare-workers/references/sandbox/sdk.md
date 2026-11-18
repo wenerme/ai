@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/og.png?v=6d27845d4289e552
 
 # Sandbox SDK 0.x
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Available on Workers Paid plan
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Automatic HTTPS Rewrites
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Automatic HTTPS Rewrites prevents end users from seeing "mixed content" errors by rewriting URLs from `http` to `https` for resources or links on your web site that can be served with HTTPS.
 
 ## Availability

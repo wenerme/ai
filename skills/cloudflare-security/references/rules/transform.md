@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/og.png?v=660736d97caa60
 
 # Transform Rules
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Transform Rules allow you to adjust the URI path, query string, and HTTP headers of requests and responses on the Cloudflare global network.
 
 There are several types of Transform Rules:

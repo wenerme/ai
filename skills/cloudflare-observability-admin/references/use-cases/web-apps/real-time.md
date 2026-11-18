@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/web-apps/real-time/og.png?v=b
 
 # Add real-time features
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/real-time/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Real-time features, such as live chat, collaborative editing, and multiplayer interactions, require persistent connections and strongly consistent state. Cloudflare Durable Objects maintain WebSocket connections and coordinate shared state, while Queues handle background event processing.
 
 ## Solutions

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpull/understanding-the-basics/o
 
 # Understanding the basics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpull/understanding-the-basics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Access pattern
 
 The basic access pattern is *give me all the logs for zone Z for minute M* where the minute *M* refers to the time the log entries were written to disk in Cloudflare's log aggregation system.

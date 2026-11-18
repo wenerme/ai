@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/sase/ga
 
 # Protective DNS for governments
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-for-protective-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Protective DNS services are security services that analyze DNS queries and block access to malicious websites and other harmful online content. As technology becomes increasingly vital for public sector operations, government departments are looking to adopt these cybersecurity services to bolster incident detection and response, and to build more resilient enterprise networks. Traditionally, deploying this type of solution posed significant challenges due to the reliance on legacy systems that required costly on-premises hardware. This makes it difficult to deploy and manage, and introduces post-deployment struggles with scalability and availability.

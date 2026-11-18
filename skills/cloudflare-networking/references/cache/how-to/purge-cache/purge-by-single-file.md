@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-singl
 
 # Purge by single-file
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With purge by single-file, cached resources are instantly removed from the stored assets in your Content Delivery Network (CDN) across all data centers. New requests for the purged asset receive the latest version from your origin web server and add it back to your CDN cache within the specific Cloudflare data center that served the request.
 
 For information on single-file purge rate limits, refer to the [limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#single-file-purge-limits) section.

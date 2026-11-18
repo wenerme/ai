@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpull/og.png?v=cd522fed058f576e
 
 # Logpull
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpull/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Logpull is a REST API for consuming request logs over HTTP. These logs contain data related to the connecting client, the request path through the Cloudflare network, and the response from the origin web server. This data is useful for enriching existing logs on an origin server. Logpull is available to customers on the Enterprise plan.
 
 Caution

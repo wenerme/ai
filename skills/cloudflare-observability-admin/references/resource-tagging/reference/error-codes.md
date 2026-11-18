@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/resource-tagging/reference/error-codes/
 
 # Error codes
 
-Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error code reference
 
 | Code | HTTP status | Message | Likely cause | Resolution |

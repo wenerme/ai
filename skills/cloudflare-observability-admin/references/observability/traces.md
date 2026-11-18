@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/traces/og.png?v=2f14e97f9
 
 # Traces
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/traces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Traces show how production requests move through Cloudflare and record traces from actual traffic on your domain. Each trace contains [spans](https://developers.cloudflare.com/observability/traces/spans/) for supported steps in the request path, such as [Rules](https://developers.cloudflare.com/rules/), request routing, [Cache](https://developers.cloudflare.com/cache/), [Workers](https://developers.cloudflare.com/workers/), and origin connections. A span records how long an operation took, its outcome, and related attributes, which helps you see where a request slowed down or failed.
 
 ![A Cloudflare trace showing request processing spans, Worker and origin operations, timing, and details for a selected span.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2638,height=1124,format=webp/_astro/full-cloudflare-trace.BdBuHOv5.png)

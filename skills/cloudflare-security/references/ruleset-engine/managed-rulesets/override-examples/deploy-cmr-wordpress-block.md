@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/overrid
 
 # Set WordPress rules to Block
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/deploy-cmr-wordpress-block/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow the steps below to create a rule that executes a managed ruleset and defines an override for rules with a specific tag.
 
 1. [Add a rule](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/) to a phase entry point ruleset that executes a managed ruleset.

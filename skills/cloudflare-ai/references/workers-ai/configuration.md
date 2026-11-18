@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/configuration/og.png?v=b1244
 
 # Configuration
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Workers Bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/)
 - [OpenAI compatible API endpoints](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/)
 - [Pi AI](https://developers.cloudflare.com/workers-ai/configuration/pi-ai/)

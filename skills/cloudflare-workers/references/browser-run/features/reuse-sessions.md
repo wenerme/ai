@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/reuse-sessions/og.
 
 # Reuse sessions
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/reuse-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, each Browser Sessions request launches a new browser instance. Reusing sessions eliminates cold-start time and improves performance by reconnecting to an existing browser instead of launching a new one.
 
 This feature applies to Browser Sessions ([Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/)). [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) handle session lifecycle automatically.
@@ -91,7 +89,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER",
@@ -105,7 +103,7 @@ name = "browser-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

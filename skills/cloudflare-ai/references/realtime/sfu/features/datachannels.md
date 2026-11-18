@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/features/datachannels/og.p
 
 # DataChannels
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/datachannels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use DataChannels for application messages such as chat, sensor updates, and control events. Use media tracks for standard audio and video transport.
 
 A publisher creates a named channel. Multiple subscribers can receive its messages, and one selected subscriber can reply on that publisher channel.

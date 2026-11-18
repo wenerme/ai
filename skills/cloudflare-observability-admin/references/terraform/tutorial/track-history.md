@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/tutorial/track-history/og.png
 
 # 2 – Track your history
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/track-history/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In the [Initialize Terraform](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) tutorial, you created and applied basic Cloudflare configuration. Now you'll store this configuration in version control for tracking, peer review, and rollback capabilities.
 
 Note

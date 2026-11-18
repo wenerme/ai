@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/guides/authentication/og.png?
 
 # Authentication
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Artifacts uses a different authentication path for each interface. Choose auth based on how your code reaches the repo.
 
 Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/) first, then use one namespace name consistently across each interface.
@@ -41,7 +39,7 @@ Add the binding in your Wrangler config:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-16",
+  "compatibility_date": "2026-11-18",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -56,7 +54,7 @@ name = "artifacts-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-16"
+compatibility_date = "2026-11-18"
 
 [[artifacts]]
 binding = "ARTIFACTS"

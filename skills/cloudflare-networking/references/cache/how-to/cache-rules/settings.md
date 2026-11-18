@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/cache-rules/settings/og.pn
 
 # Available settings
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These are the settings that you can configure when creating a cache rule.
 
 ## Fields

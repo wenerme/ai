@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/storage/durab
 
 # Durable Objects
 
-Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Durable Objects Reference](https://developers.cloudflare.com/durable-objects/api/)
 - [Using Durable Objects](https://developers.cloudflare.com/durable-objects/)
 

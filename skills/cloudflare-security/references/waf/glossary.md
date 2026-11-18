@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/glossary/og.png?v=c638a051e557b4ee
 
 # Glossary
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the definitions for terms used across Cloudflare's WAF documentation.
 
 | Term | Definition |

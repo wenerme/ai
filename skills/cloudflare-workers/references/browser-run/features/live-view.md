@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/live-view/og.png?v
 
 # Live View
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/live-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Live View lets you see and interact with a remote Browser Run session in real time. This is useful for debugging automation scripts, monitoring what a browser is doing, or manually stepping in when a task requires human intervention (see [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)).
 
 Live View is available for any [Browser Session](https://developers.cloudflare.com/browser-run/#integration-methods), including sessions created with [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/) endpoints.

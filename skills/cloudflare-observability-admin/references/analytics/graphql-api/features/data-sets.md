@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/data-set
 
 # Datasets (tables)
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/data-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Analytics offers a range of datasets, including both general and product-specific ones. Datasets use a consistent naming scheme that explicitly identifies the type of data they return:
 
 - **Domain** - Each dataset is named after the field it describes and is associated with a set of nodes. Product-specific data nodes incorporate the name of the relevant product, for instance `loadBalancingRequests*` nodes.

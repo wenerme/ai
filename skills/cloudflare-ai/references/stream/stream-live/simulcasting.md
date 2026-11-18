@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/simulcasting/og.png?
 
 # Simulcast (restream) videos
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/simulcasting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Simulcasting lets you forward your live stream to third-party platforms such as Twitch, YouTube, Facebook, Twitter, and more. You can simulcast to up to 50 concurrent destinations from each live input. To begin simulcasting, select an input and add one or more Outputs.
 
 ## Add an Output using the API

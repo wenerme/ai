@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/reci
 
 # Recipes and examples
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Recipes are examples that demonstrate unit and integration tests for Workers projects using the [`@cloudflare/vitest-plugin` ↗︎](https://www.npmjs.com/package/@cloudflare/vitest-plugin) package.
 
 - [Basic unit and integration tests for Workers using `exports.default` ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/basics-unit-integration-self)

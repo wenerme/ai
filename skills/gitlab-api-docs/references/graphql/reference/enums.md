@@ -3128,6 +3128,8 @@ Type of budget cap that caused a user to be blocked.
 
 | Value | Description |
 | ----- | ----------- |
+| `DAILY_FLAT_USER_CAP` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Blocked by the flat per-user daily cap. |
+| `DAILY_USER_OVERRIDE_CAP` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Blocked by a per-user daily override cap. |
 | `FLAT_USER_CAP` | Blocked by the flat per-user cap. |
 | `USER_OVERRIDE_CAP` | Blocked by a per-user override cap. |
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/payload-logging/view/og.png?v=1921c
 
 # View the payload content in the dashboard
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 View the content of the matched rule payload in the dashboard by entering your private key.
 
 1. Open [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/):

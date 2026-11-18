@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/reference/sample-terms/og.png?v=a9
 
 # Sample terms
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/sample-terms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare recommends that customers consider updating their Terms of Service to address bots specifically related to Artificial Intelligence (AI) training and data scraping. The text below provides an informational example of the kind of language that could be added to a website's terms of use.
 
 > **Artificial Intelligence Restriction**

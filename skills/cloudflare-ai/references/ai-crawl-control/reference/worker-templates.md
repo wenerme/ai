@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/reference/worker-templ
 
 # Worker templates
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/worker-templates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use [AI Crawl Control analytics](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/) to identify which crawlers are accessing your site, then deploy Worker templates to customize how you handle that traffic.
 
 ## x402 Payment-Gated Proxy

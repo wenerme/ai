@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/openai/gpt-oss-120b` Copy

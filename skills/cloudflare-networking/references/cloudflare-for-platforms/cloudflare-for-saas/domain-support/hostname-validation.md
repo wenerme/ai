@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Hostname validation
 
-Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before Cloudflare can proxy traffic through a custom hostname, we need to verify your customer's ownership of that hostname.
 
 Note

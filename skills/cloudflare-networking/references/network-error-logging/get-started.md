@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-error-logging/get-started/og.pn
 
 # Get started
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-error-logging/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Network Error Logging is available to users on all plan types.
 
 To enable Network Error Logging for Free and Pro zones:

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/examples/email-sending/sm
 
 Send transactional emails over Cloudflare Email Service SMTP using curl, Nodemailer, Python smtplib, or PHPMailer.
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send transactional emails over Cloudflare Email Service [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) (`smtp.mx.cloudflare.net:465`) from any SMTP-capable language or client.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Certificate Transparency Monitoring
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Certificate Transparency (CT) Monitoring is an [opt-in](#opt-in-and-out) feature that lets you double-check any SSL/TLS certificates issued for your domain.
 
 CT Monitoring alerts are triggered whenever a certificate that covers your monitored domain is issued by a [Certificate Authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) and added to a public CT log. Alerts for certificates Cloudflare issues on your behalf, including backup certificates, are automatically filtered out. For more information, refer to [Certificate Transparency Monitoring filtering behavior ↗︎](https://blog.cloudflare.com/certificate-transparency-monitoring-ga), or to the [introductory blog post ↗︎](https://blog.cloudflare.com/introducing-certificate-transparency-monitoring/) to learn more about how CT Monitoring works.

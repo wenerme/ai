@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/
 
 # Access a private S3 bucket
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example demonstrates how to access a private S3 bucket that is not exposed to the public internet. In this guide, we will configure a Workers VPC Service for an internal S3-compatible storage service, create a Worker that makes requests to that bucket, and deploy the Worker to validate our changes.
 
 ## Prerequisites
@@ -107,7 +105,7 @@ Update your Wrangler configuration file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"vpc_services": [
 		{
 			"binding": "S3_STORAGE",
@@ -123,7 +121,7 @@ name = "private-s3-gateway"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[vpc_services]]
 binding = "S3_STORAGE"

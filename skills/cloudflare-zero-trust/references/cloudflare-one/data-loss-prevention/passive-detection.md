@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/pas
 
 # Passive Detection
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Availability
 
 The detection entries available to Passive Detection depend on your [Zero Trust plan](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
@@ -31,11 +29,11 @@ Passive Detection works without a Gateway DLP policy. It does not change how Gat
 To collect Passive Detection results:
 
 - Route HTTP traffic through Cloudflare Gateway.
-- Turn on [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
-- Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) for HTTPS traffic.
+- Turn on [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/).
+- Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) for HTTPS traffic.
 - Make sure each detection entry you want to scan is enabled in at least one [DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) in your account. Passive Detection scans entries enabled in any profile in your account, not just profiles selected for a policy.
 
-For uploaded or downloaded files, refer to the [supported file types](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types). Traffic that bypasses Gateway or matches a [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) policy cannot produce findings.
+For uploaded or downloaded files, refer to the [supported file types](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types). Traffic that bypasses Gateway or matches a [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) policy cannot produce findings.
 
 ### View Passive Detection
 
@@ -147,5 +145,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/#page","headline":"Passive Detection","description":"Discover sensitive data in sampled Gateway HTTP traffic before you create a DLP policy.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/og.png?v=a0ddb31c3f759d78","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/#page","headline":"Passive Detection","description":"Discover sensitive data in sampled Gateway HTTP traffic before you create a DLP policy.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/og.png?v=a0ddb31c3f759d78","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","Compliance"]}
 ```

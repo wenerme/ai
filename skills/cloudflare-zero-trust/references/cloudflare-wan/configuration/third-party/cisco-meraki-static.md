@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Cisco Meraki MX (static routing)
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-meraki-static/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide provides step-by-step instructions for configuring Cisco Meraki MX appliances to establish IPsec VPN tunnels to Cloudflare WAN. It is intended for network engineers who are familiar with Cisco Meraki administration and have an active Cloudflare WAN subscription.
 
 ## Test environment

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Webflow
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/webflow/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare partners with Webflow to provide Webflow customers’ websites with Cloudflare’s performance and security benefits.
 
 If you use Webflow and also have a Cloudflare plan, you can use your own Cloudflare zone to proxy web traffic to your zone first, then Webflow's (the SaaS Provider) zone second. This configuration option is called [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/).

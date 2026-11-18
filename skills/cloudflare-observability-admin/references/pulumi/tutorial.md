@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pulumi/tutorial/og.png?v=c7ec872ba3f54d
 
 # Tutorials
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you begin, make sure you [install Pulumi](https://developers.cloudflare.com/pulumi/installing/).
 
 1. [Add a Site](https://developers.cloudflare.com/pulumi/tutorial/add-site/)

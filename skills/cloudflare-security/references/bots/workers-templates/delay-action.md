@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/workers-templates/delay-action/og.
 
 # Delay action
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/workers-templates/delay-action/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Customers with a Bot Management and a [Workers](https://developers.cloudflare.com/workers/) subscription can use the template below to introduce a delay to requests that are likely from bots.
 
 The template sets a minimum and maximum delay, and delays requests where the bot score is less than 30 and the URI path starts with `/exampleURI`.

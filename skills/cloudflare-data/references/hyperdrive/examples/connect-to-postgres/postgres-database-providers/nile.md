@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres
 
 Connect Hyperdrive to a Nile Postgres database instance.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/nile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example shows you how to connect Hyperdrive to a [Nile ↗︎](https://thenile.dev) PostgreSQL database instance.
 
 Nile is PostgreSQL re-engineered for multi-tenant applications. Nile's virtual tenant databases provide you with isolation, placement, insight, and other features for your tenant's data and embedding. Refer to [Nile documentation ↗︎](https://www.thenile.dev/docs/getting-started/whatisnile) to learn more.
@@ -83,7 +81,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"main": "src/index.ts",
    	"upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-10-13",
+   	"compatibility_date": "2026-11-18",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -103,7 +101,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-18"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -170,7 +168,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -183,7 +181,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

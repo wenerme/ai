@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable SentinelOne
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The HTTP Event Collector (HEC) is a reliable method to send log data to SentinelOne Singularity Data Lake. Cloudflare Logpush supports pushing logs directly to SentinelOne HEC via the Cloudflare dashboard or API.
 
 ## Manage via the Cloudflare dashboard

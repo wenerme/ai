@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/sequence-analytics/
 
 # Sequence Analytics
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Sequence Analytics tracks the order of API endpoint requests over time, allowing you to discover how users interact with your API. Sequence Analytics groups and highlights important user journeys (sequences) across your API. You can enforce preferred sequences using [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/).
 
 ## Process

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkWaitingScreen
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkwaitingscreen/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Screen displayed while waiting to join (waitlist, kicked, disconnected states).
 
 ## Properties

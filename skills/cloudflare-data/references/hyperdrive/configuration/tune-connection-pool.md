@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/configuration/tune-connectio
 
 # Tune connection pooling
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hyperdrive maintains a pool of connections to your database that are shared across Worker invocations. You can configure the maximum number of these connections based on your database capacity and application requirements.
 
 Note

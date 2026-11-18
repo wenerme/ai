@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-su
 
 # SDK ecosystem support policy
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Lifecycle
 
 Unless otherwise stated in the code repository, Cloudflare only provides active support for the latest major version of a library or tool. The exception to this policy is for critical security fixes, which will be reviewed on a case-by-case basis and take the vulnerability, impact, and mitigation required into consideration.

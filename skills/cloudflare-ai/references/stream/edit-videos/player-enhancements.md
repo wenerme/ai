@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/edit-videos/player-enhancements/
 
 # Add player enhancements
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/edit-videos/player-enhancements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With player enhancements, you can modify your video player to incorporate elements of your branding such as your logo, and customize additional options to present to your viewers.
 
 The player enhancements are automatically applied to videos using the Stream Player, but you will need to add the details via the `publicDetails` property when using your own player.

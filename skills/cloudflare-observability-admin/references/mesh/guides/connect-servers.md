@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/mesh/guides/connect-servers/og.png?v=d8
 
 # Connect two servers with Cloudflare Mesh
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/guides/connect-servers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Install one Cloudflare Mesh node on each Linux server. Each server receives a private Mesh IP, so it can reach services on the other server through Cloudflare. Neither server needs a public IP address or a service exposed to the public Internet.
 
 This setup reaches services running **on the nodes themselves**. To connect hosts behind the nodes instead, follow [Connect two sites](https://developers.cloudflare.com/mesh/guides/connect-sites/).

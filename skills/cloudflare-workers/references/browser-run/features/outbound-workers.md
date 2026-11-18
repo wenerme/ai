@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/outbound-workers/o
 
 # Outbound Workers
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/outbound-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `outboundByHost` to send browser requests for selected hostnames through another Worker. The outbound Worker can reach a private service, add authentication, or transform the response before it reaches the browser.
 
 This feature is useful when the browser should request a hostname that has no public DNS record. Browser Run matches the hostname and sends the request to the Worker Fetcher instead of requiring public DNS resolution.
@@ -29,7 +27,7 @@ Declare a Browser Run binding and a service binding for the outbound Worker:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-10",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -50,7 +48,7 @@ name = "browser-runner"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-10"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [browser]

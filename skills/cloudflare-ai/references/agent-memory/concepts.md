@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agent-memory/concepts/og.png?v=f0228f82
 
 # Concepts
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [How Agent Memory works](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
 - [Namespaces and profiles](https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/)
 

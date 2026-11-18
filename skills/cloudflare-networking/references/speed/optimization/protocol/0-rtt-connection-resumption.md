@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-conne
 
 # 0-RTT Connection Resumption
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Zero round trip time resumption (0-RTT) improves performance for clients who have previously connected to your website, reducing latency for returning users. This feature is especially beneficial for those who frequently visit your application or connect over mobile networks.
 
 We support 0-RTT for GET, HEAD, and OPTIONS requests, facilitating faster responses for these types of requests. Note that 0-RTT is not supported for POST requests.

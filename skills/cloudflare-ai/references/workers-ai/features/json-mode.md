@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/json-mode/og.png?v=
 
 # JSON Mode
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/json-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When we want text-generation AI models to interact with databases, services, and external systems programmatically, typically when using tool calling or building AI agents, we must have structured response formats rather than natural language.
 
 Workers AI supports JSON Mode, enabling applications to request a structured output response when interacting with AI models.

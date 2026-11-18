@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/concepts/vary/og.png?v=e5273429d3
 
 # Vary
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/vary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [`Vary` ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) HTTP response header tells Cloudflare that an origin can serve different responses for the same URL depending on request headers. For example, an origin might serve different languages based on `Accept-Language`, or different content formats based on `Accept`.
 
 By default, Cloudflare's CDN constructs [cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/) from a request's URL and a handful of specific headers. [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) can add other request properties to the cache key ahead of time. The `Vary` response header lets the origin decide which request headers matter when Cloudflare receives the response.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-w
 
 # Create your first AI Gateway using Workers AI
 
-Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard. The intended audience is beginners who are new to AI Gateway and Workers AI. Creating an AI Gateway enables the user to efficiently manage and secure AI requests, allowing them to utilize AI models for tasks such as content generation, data processing, or predictive analysis with enhanced control and performance.
 
 ## Sign up and log in

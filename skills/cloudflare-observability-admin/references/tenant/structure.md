@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/structure/og.png?v=aaa07e23f5359
 
 # Tenant structure
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/structure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare helps Channel and Alliance partners manage their and their customers' accounts through a Tenant structure.
 
 ![Partner accounts contain a tenant, which is a container for customer accounts and zones. For more details, keep reading.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=5582,height=3855,format=webp/_astro/tenant-diagram.D0Hfc9bM.png)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/te
 
 # Test a Remote MCP Server
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Remote, authorized connections are an evolving part of the [Model Context Protocol (MCP) specification ↗︎](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). Not all MCP clients support remote connections yet.
 
 This guide will show you options for how to start using your remote MCP server with MCP clients that support remote connections. If you haven't yet created and deployed a remote MCP server, you should follow the [Build a Remote MCP Server](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) guide first.

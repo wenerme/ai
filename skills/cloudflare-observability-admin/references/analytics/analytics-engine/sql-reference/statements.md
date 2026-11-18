@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/sql-referenc
 
 # Statements
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## SHOW TABLES statement
 
 `SHOW TABLES` can be used to list the tables on your account. The table name is the name you specified as `dataset` when configuring the workers binding (refer to [Get started with Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/get-started/), for more information). The table is automatically created when you write event data in your worker.

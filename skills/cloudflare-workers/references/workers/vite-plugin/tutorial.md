@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/tutorial/og.png?v=1
 
 # Tutorial - React SPA with an API
 
-Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/tutorial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial takes you through the steps needed to adapt a Vite project to use the Cloudflare Vite plugin. Much of the content can also be applied to adapting existing Vite projects and to front-end frameworks other than React.
 
 Note
@@ -98,7 +96,7 @@ Create a `wrangler.jsonc` file in the root of your project:
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "assets": {
     "not_found_handling": "single-page-application"
   }
@@ -108,7 +106,7 @@ Create a `wrangler.jsonc` file in the root of your project:
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [assets]
 not_found_handling = "single-page-application"
@@ -216,7 +214,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "main": "./worker/index.ts",
   "upload_source_maps": true,
   "assets": {
@@ -228,7 +226,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 main = "./worker/index.ts"
 upload_source_maps = true
 
@@ -273,7 +271,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "main": "./worker/index.ts",
   "upload_source_maps": true,
   "assets": {
@@ -288,7 +286,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 ```toml
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 main = "./worker/index.ts"
 upload_source_maps = true
 

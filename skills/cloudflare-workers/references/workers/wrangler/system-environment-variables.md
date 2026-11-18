@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/system-environment-var
 
 # System environment variables
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 System environment variables are local environment variables that can change Wrangler's behavior. There are three ways to set system environment variables:
 
 1. Create an `.env` file in your project directory. Set the values of your environment variables in your [`.env`](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#example-env-file) file. This is the recommended way to set these variables, as it persists the values between Wrangler sessions.

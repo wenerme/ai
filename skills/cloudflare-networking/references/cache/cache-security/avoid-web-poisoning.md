@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/cache-security/avoid-web-poisonin
 
 # Avoid web cache poisoning
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A cache poisoning attack uses an HTTP request to trick an origin web server into responding with a harmful resource that has the same cache key as a clean request. As a result, the poisoned resource gets cached and served to other users.
 
 A Content Delivery Network (CDN) like Cloudflare relies on cache keys to compare new requests against cached resources. The CDN then determines whether the resource should be served from the cache or requested directly from the origin web server.

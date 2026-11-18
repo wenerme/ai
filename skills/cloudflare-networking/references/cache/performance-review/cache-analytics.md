@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/performance-review/cache-analytic
 
 # Cache Analytics
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/performance-review/cache-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cache Analytics shows how much of your site's traffic is served from Cloudflare's cache versus your origin server. When content is served from cache, visitors get faster page loads and your origin web server handles less traffic. Use Cache Analytics to identify resources that are [missing from cache](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss), [expired](https://developers.cloudflare.com/cache/concepts/cache-responses/#expired) (cached copy is outdated), or [ineligible for caching](https://developers.cloudflare.com/cache/concepts/cache-responses/#noneunknown) (not eligible for caching). You can filter by hostname, review the top URLs that miss cache, and query up to three days of data.
 
 ## Availability

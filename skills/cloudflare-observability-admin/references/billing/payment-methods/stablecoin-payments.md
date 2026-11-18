@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/payment-methods/stablecoin-paym
 
 # Stablecoin payments
 
-Last updated Jun 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can pay for Cloudflare services with USDC stablecoin at the checkout. Stablecoin payments support one-time charges and recurring billing, including usage-based products.
 
 ## How stablecoin payments work

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/saas/protect-platform/og.png?
 
 # Protect your platform
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/saas/protect-platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 SaaS platforms are high-value targets because a single breach can expose data across all tenants. Cloudflare's managed rulesets protect your platform and customer endpoints, rate limiting prevents any single tenant from degrading service for others, and Cloudflare One gates admin tools behind Zero Trust policies.
 
 ## Solutions

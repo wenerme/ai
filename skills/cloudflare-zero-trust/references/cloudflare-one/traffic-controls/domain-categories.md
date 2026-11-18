@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-
 
 # Domain categories
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Gateway allows you to block known and potential security risks on the public Internet, as well as specific categories of content. Domains are categorized by [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/), Cloudflare's threat intelligence solution. To review the categories for a specific domain, use [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).
 
 Cloudflare categorizes domains into content categories and security categories, which cover security risks and security threats:

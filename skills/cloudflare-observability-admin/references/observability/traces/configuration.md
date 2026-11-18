@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/traces/configuration/og.p
 
 # Configuration
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/traces/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure [Cloudflare Traces](https://developers.cloudflare.com/observability/traces/) separately for each domain. Choose how many requests to trace, where to save or send traces, and whether to connect them to traces from other systems.
 
 ![Trace settings for sampling, persistence, export destinations, trace rules, and trace context propagation.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1500,height=892,format=webp/_astro/trace-configuration.K-zGxXIJ.png)

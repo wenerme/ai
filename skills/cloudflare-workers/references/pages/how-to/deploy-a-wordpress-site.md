@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/og
 
 # Deploy a static WordPress site
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 In this guide, you will use a WordPress plugin, [Simply Static ↗︎](https://wordpress.org/plugins/simply-static/), to convert your existing WordPress site to a static website deployed with Cloudflare Pages.

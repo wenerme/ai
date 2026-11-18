@@ -18,8 +18,6 @@ Beta
 
 Text-to-Image • Stability.ai
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-base-1.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/stabilityai/stable-diffusion-xl-base-1.0` Copy
@@ -32,7 +30,7 @@ Diffusion-based text-to-image generative model by Stability AI. Generates and mo
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Terms and License | [link ↗](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md) |
 | More information | [link ↗](https://stability.ai/stable-diffusion) |
 | Zero data retention | Yes |

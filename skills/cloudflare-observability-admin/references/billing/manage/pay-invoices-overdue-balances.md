@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-bal
 
 # Pay an outstanding balance
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If automatic payment retries fail and you do not pay manually, your account accrues an overdue balance. While the balance is unpaid, you cannot purchase products, upgrade subscriptions, or update your billing profile. Attempts to do so return an error:
 
 **"You cannot add or modify subscriptions or services until the outstanding balance is paid."**

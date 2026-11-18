@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/polish/compression/og.png?v=6fcd
 
 # Polish compression
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/polish/compression/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Lossless and Lossy modes, Cloudflare attempts to strip as much metadata as possible. However, Cloudflare cannot guarantee stripping all metadata because other factors, such as caching status, might affect which metadata is finally sent in the response.
 
 Warning

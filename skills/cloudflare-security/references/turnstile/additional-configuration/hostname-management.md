@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/additional-configuration/host
 
 # Hostname management
 
-Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hostname management controls where your Turnstile widgets can be used by specifying which domains are authorized to load and execute your widgets. This security measure prevents unauthorized use of your widgets on domains that you do not control.
 
 You can associate hostnames with your widget to control where it can be used via Hostname Management. Managing your hostnames ensures that Turnstile works seamlessly with your setup, whether you add standalone hostnames or leverage zones registered to your Cloudflare account.

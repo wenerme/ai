@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/storage-options/og.png
 
 # Choose a data or storage product
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/storage-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide describes the storage & database products available as part of Cloudflare Workers, including recommended use-cases and best practices.
 
 ## Choose a storage product

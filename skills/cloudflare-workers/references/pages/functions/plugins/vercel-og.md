@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/vercel-og/og.pn
 
 # vercel/og
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/vercel-og/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `@vercel/og` Pages Plugin is a middleware which renders social images for webpages. It also includes an API to create arbitrary images.
 
 As the name suggests, it is powered by [`@vercel/og` ↗︎](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation). This plugin and its underlying [Satori ↗︎](https://github.com/vercel/satori) library was created by the Vercel team.

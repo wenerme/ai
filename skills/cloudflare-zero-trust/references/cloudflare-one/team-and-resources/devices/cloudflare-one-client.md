@@ -12,18 +12,16 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Cloudflare One Client
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## About the Cloudflare One Client
 
-The Cloudflare One Client (formerly WARP) securely and privately sends traffic from your devices to Cloudflare's global network, where [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) can apply advanced web filtering. The client also reports device health information — such as OS version, disk encryption status, and the presence of specific applications — so that you can enforce [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) in your Access and Gateway policies.
+The Cloudflare One Client (formerly WARP) securely and privately sends traffic from your devices to Cloudflare's global network, where [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) can apply advanced web filtering. The client also reports device health information — such as OS version, disk encryption status, and the presence of specific applications — so that you can enforce [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) in your Access and Gateway policies.
 
 ## How the Cloudflare One Client works
 
 The Cloudflare One Client creates encrypted connections between your device and Cloudflare's network. It does this in two ways:
 
 - **Proxy tunnel** — Encrypts and routes your device's internet and private network traffic through Cloudflare, using the [WireGuard ↗︎](https://www.wireguard.com/) or [MASQUE ↗︎](https://blog.cloudflare.com/zero-trust-warp-with-a-masque) protocol.
-- **DNS proxy** — Sends your device's DNS queries to Cloudflare over an encrypted channel ([DNS-over-HTTPS ↗︎](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/)), where [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) can filter them.
+- **DNS proxy** — Sends your device's DNS queries to Cloudflare over an encrypted channel ([DNS-over-HTTPS ↗︎](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/)), where [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) can filter them.
 
 The client runs on all major operating systems and can be deployed through common endpoint management tools (such as Intune, JAMF, or JumpCloud).
 
@@ -107,12 +105,12 @@ Along with the Cloudflare One Client GUI and daemon, `warp-cli` and `warp-diag` 
 
 Deploying the Cloudflare One Client significantly enhances your organization's security and visibility within Cloudflare Zero Trust:
 
-- **Unified security policies everywhere**: With the Cloudflare One Client deployed in the Traffic and DNS mode, [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) are not location-dependent — they can be enforced anywhere.
+- **Unified security policies everywhere**: With the Cloudflare One Client deployed in the Traffic and DNS mode, [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) are not location-dependent — they can be enforced anywhere.
 - **Advanced web filtering and threat protection**: Activate Gateway features for your device traffic, including:
-  - [Anti-Virus scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/)
-  - [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)
-  - [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#isolate)
-  - [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+  - [Anti-Virus scanning](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/antivirus-scanning/)
+  - [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/)
+  - [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#isolate)
+  - [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/)
 - **Application and device-specific insights**: View which SaaS applications your users are accessing and review their approval status on the [Shadow IT Discovery](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/) page. Monitor device and network performance with [Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) to detect connectivity or performance issues before users report them.
 - **Device posture checks**: The Cloudflare One Client provides advanced Zero Trust protection by making it possible to check for [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/). By setting up device posture checks, you can build Access or Gateway policies that check for a device's location, disk encryption status, OS version, and more.
 - **Secure private and infrastructure access**: Connect devices to internal networks and applications through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) without exposing them to the public internet. The client is also required for [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/), which provides SSH access using short-lived certificates and detailed audit logging.
@@ -130,7 +128,7 @@ Other modes (Traffic only, Local proxy, Posture only) are also available. For de
 
 - Review the [first-time setup](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/) guide to [install](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and [deploy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) the Cloudflare One Client on your corporate devices.
 - Review possible [client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) and [settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) to best suit your organization's needs.
-- Explore [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to enforce advanced DNS, network, HTTP, and egress policies with the Cloudflare One Client.
+- Explore [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) to enforce advanced DNS, network, HTTP, and egress policies with the Cloudflare One Client.
 
 Was this helpful?
 
@@ -141,5 +139,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/#page","headline":"Cloudflare One Client","description":"How Cloudflare One Client works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/og.png?v=ac442acb788a02de","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE","Video"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/#page","headline":"Cloudflare One Client","description":"How Cloudflare One Client works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/og.png?v=ac442acb788a02de","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE","Video"]}
 ```

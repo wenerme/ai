@@ -671,7 +671,7 @@ data: [DONE]
 
 Gemini models engage in dynamic thinking by default, automatically adjusting
 the amount of reasoning effort based on the complexity of the request. You can
-control this behavior using the `thinking_level` parameter.
+control this behavior using the `thinking_level` parameter. To compare models across reasoning depth, speed, and cost, see [Choosing a model](/docs/choosing-a-model).
 
 | Model | Default Thinking | Levels Supported |
 | --- | --- | --- |

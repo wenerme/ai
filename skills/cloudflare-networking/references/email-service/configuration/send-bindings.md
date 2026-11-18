@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/configuration/send-bindin
 
 # Send bindings
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/send-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you add a `send_email` binding to a Worker, you can restrict its sender and recipient addresses. The following Wrangler configuration variants apply these restrictions. For the binding API, refer to the [Email Sending Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/).
 
 ## Binding types

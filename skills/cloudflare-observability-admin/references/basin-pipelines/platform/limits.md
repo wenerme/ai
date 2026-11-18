@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/platform/limits/og.png?
 
 # Limits
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following limits are currently in effect:
 
 | Feature | Limit |

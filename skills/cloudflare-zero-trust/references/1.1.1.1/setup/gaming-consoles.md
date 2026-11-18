@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/setup/gaming-consoles/og.png?v=
 
 # Gaming consoles
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/gaming-consoles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The steps below configure your gaming console to use 1.1.1.1 instead of the default DNS resolver provided by your ISP.
 
 ## PS4

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/account-limits/og.png?v=
 
 # Account limits
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/account-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page lists the default account limits for rules, applications, fields, and other features. These limits may be increased on Enterprise accounts. To request a limit increase, contact your account team.
 
 ## Access

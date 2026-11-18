@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/reference/bot-verification/ip-vali
 
 # IP validation
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/bot-verification/ip-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The IP validation method aims to identify all of the IP addresses that a bot may use to send requests. IP validation is only used as a verification method for [verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
 Cloudflare can achieve this in two ways:

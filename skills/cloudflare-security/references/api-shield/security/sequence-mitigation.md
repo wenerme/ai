@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/sequence-mitigation
 
 # Sequence mitigation
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Sequence mitigation allows you to enforce request patterns for authenticated clients communicating with your API.
 
 You can use sequence rules to establish a set of known behavior for API clients or detect and mitigate malicious behavior.

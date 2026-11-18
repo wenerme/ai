@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/og.png?v=57363d946c6a43f9
 
 # Cloudflare Firewall Rules
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Firewall Rules allows you to create rules that inspect incoming traffic and block, challenge, log, or allow specific requests.
 
 Deprecation notice

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-s
 
 # Independent MFA
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Independent multi-factor authentication (MFA) allows you to enforce MFA requirements directly in Access without relying on your identity provider (IdP). Users authenticate with their IdP as usual, and Access prompts for an additional authentication method before granting access to the application.
 
 Because you can [configure MFA at the application and policy level](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you can enforce stricter authentication methods like hardware security keys on sensitive applications without requiring them across your entire organization. This allows you to add additional security where it matters most while avoiding MFA fatigue for your broader user population.

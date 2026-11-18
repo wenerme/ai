@@ -20,7 +20,7 @@ npm install @mastra/arize@latest
 
 ## Configuration
 
-### Phoenix Setup
+### Phoenix setup
 
 Phoenix is an open-source observability platform that can run locally or be self-hosted.
 
@@ -40,7 +40,7 @@ PHOENIX_API_KEY=your-api-key  # For authenticated Phoenix instances
 PHOENIX_PROJECT_NAME=mastra-service  # Defaults to 'mastra-service'
 ```
 
-#### Zero-Config Setup
+#### Zero-config setup
 
 With environment variables set, use the exporter with no configuration:
 
@@ -61,7 +61,7 @@ export const mastra = new Mastra({
 })
 ```
 
-#### Explicit Configuration
+#### Explicit configuration
 
 You can also pass credentials directly (takes precedence over environment variables):
 
@@ -100,7 +100,7 @@ docker run --pull=always -d --name arize-phoenix -p 6006:6006 \
 
 Set `PHOENIX_COLLECTOR_ENDPOINT=http://localhost:6006/v1/traces` and run your Mastra agent to see traces at [localhost:6006](http://localhost:6006).
 
-### Arize AX Setup
+### Arize AX setup
 
 Arize AX is a managed cloud and enterprise self-hosted observability platform with advanced features for production AI systems.
 
@@ -120,7 +120,7 @@ ARIZE_API_KEY=your-api-key
 ARIZE_PROJECT_NAME=mastra-service
 ```
 
-#### Zero-Config Setup
+#### Zero-config setup
 
 With environment variables set, use the exporter with no configuration:
 
@@ -141,7 +141,7 @@ export const mastra = new Mastra({
 })
 ```
 
-#### Explicit Configuration
+#### Explicit configuration
 
 You can also pass credentials directly (takes precedence over environment variables):
 
@@ -172,7 +172,7 @@ export const mastra = new Mastra({
 
 The Arize exporter supports advanced configuration for fine-tuning OpenTelemetry behavior:
 
-### Complete Configuration
+### Complete configuration
 
 ```typescript
 new ArizeExporter({
@@ -204,7 +204,7 @@ new ArizeExporter({
 })
 ```
 
-### Batch Processing Options
+### Batch processing options
 
 Control how traces are batched and exported:
 
@@ -219,7 +219,7 @@ new ArizeExporter({
 })
 ```
 
-### Resource Attributes
+### Resource attributes
 
 Add custom attributes to all exported spans:
 

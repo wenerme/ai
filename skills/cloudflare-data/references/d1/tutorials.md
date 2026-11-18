@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/d1/tutorials/og.png?v=d0efc620e0c9a78f
 
 # Tutorials
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 View tutorials to help you get started with D1.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 7 months ago | Intermediate |
+| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 8 months ago | Intermediate |
 | [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/) | last year | Beginner |
 | [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/) | last year | Beginner |
 | [Using D1 Read Replication for your e-commerce website](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com/) | 2 years ago | Beginner |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/reference/partners/snowflake-regions
 
 # Snowflake
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/partners/snowflake-regions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page details which R2 location or jurisdiction is recommended based on your Snowflake region.
 
 You have the following inputs to control the physical location where objects in your R2 buckets are stored (for more information refer to [data location](https://developers.cloudflare.com/r2/reference/data-location/)):

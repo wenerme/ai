@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkBreakoutRoomsManager
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkbreakoutroomsmanager/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Full-screen modal for managing breakout rooms. Hosts can create rooms, assign participants, rename rooms, shuffle participants randomly, and start, update, or close a breakout session. Participants without alter permissions see a simplified room-switcher view instead.
 
 The component is visibility-controlled by the `activeBreakoutRoomsManager` field in the UI state. Use `RtkBreakoutRoomsToggle` to open it, or set the state directly.

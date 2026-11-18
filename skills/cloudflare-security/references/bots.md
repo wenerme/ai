@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/og.png?v=160aef3c876fda07
 
 # Cloudflare bot solutions
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Identify and mitigate automated traffic to protect your domain from bad bots.
 
 Available on all plans

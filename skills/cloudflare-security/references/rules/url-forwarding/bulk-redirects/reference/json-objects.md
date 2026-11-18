@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/ref
 
 # Bulk Redirects API JSON objects
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Bulk Redirect Rule
 
 A fully populated Bulk Redirect Rule object has the following JSON structure:

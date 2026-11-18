@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-cha
 
 # Deploy a real-time chat application
 
-Last updated Jan 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will deploy a serverless, real-time chat application that runs using [Durable Objects](https://developers.cloudflare.com/durable-objects/).
 
 This chat application uses a Durable Object to control each chat room. Users connect to the Object using WebSockets. Messages from one user are broadcast to all the other users. The chat history is also stored in durable storage. Real-time messages are relayed directly from one user to others without going through the storage layer.

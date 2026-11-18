@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/binding/og.png?v=8621ceb4eb796
 
 # Binding API
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers access Flagship through a binding that you add to your Wrangler configuration file. The `binding` field sets the variable name you use in your Worker code.
 
 ```jsonc

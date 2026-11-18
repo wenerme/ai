@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-gener
 
 # Build a QR code generator
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will build and publish a Worker application that generates QR codes.
 
 If you would like to review the code for this tutorial, the final version of the codebase is [available on GitHub ↗︎](https://github.com/kristianfreeman/workers-qr-code-generator). You can take the code provided in the example repository, customize it, and deploy it for use in your own projects.

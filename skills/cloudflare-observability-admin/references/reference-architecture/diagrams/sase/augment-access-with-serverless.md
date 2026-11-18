@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/sase/au
 
 # Extend ZTNA with external authorization and serverless computing
 
-Last updated Mar 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Companies using Zero Trust Network Access (ZTNA) services build policies to determine if a user can access a protected resource such as a privately hosted Wiki server or source code repository. Policies typically use group membership, authentication methods, device security posture to determine which users can access which resources.

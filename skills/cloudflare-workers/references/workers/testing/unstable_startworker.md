@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/unstable_startworker/og
 
 # Wrangler's unstable\_startWorker()
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/unstable_startworker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 `unstable_startWorker()` is deprecated. Cloudflare recommends using the [`createTestHarness()`](https://developers.cloudflare.com/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.

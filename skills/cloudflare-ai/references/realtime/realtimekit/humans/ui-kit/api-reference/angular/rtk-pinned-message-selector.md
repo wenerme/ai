@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-pinned-message-selector
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-pinned-message-selector/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Properties
 
 | Property | Type | Required | Default | Description |

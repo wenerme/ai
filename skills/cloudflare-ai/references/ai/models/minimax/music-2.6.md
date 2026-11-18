@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Music Generation • MiniMax
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/music-2.6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `minimax/music-2.6` Copy

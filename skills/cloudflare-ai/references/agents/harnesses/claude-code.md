@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/claude-code/og.png?v=0
 
 # Claude Code
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/claude-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run [Claude Code ↗︎](https://docs.anthropic.com/en/docs/claude-code/overview) on Cloudflare, with its plugins, mods, and settings, the way it runs on your laptop.
 
 Claude Code runs in a [Cloudflare Container](https://developers.cloudflare.com/containers/), and a [Durable Object](https://developers.cloudflare.com/durable-objects/) drives it with `ContainerHarness` from `agents/harness/container`:

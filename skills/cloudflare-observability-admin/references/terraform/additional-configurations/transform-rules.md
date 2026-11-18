@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/additional-configurations/tra
 
 # Transform Rules configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides examples of creating [Transform Rules](https://developers.cloudflare.com/rules/transform/) in a zone using Terraform. The examples cover the following scenarios:
 
 - [Create a URL rewrite rule](#create-a-url-rewrite-rule)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/organizations/manage-organ
 
 # Manage organizations
 
-Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/manage-organization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Organization management (rename, edit settings, Terraform) is covered within each Organization type guide:
 
 - **[Organizations for Enterprise](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#manage-your-organization)** — Rename, edit customer identification data, and manage with Terraform for Enterprise Organizations.

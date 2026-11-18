@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/how-to/create-partial-zone/og
 
 # Create a partial zone using Terraform
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/how-to/create-partial-zone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [partial zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) lets you use Cloudflare for a subdomain while keeping your existing authoritative DNS provider for the parent domain. This guide shows how to automate the setup using the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 Caution

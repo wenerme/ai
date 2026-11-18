@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/fields/og
 
 # Fields
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Rules language supports different types of fields such as:
 
 - Request fields that represent the basic properties of incoming requests, including specific fields for accessing request headers, URI components, and the request body.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeser
 
 # Create a serverless, globally distributed time-series API with Timescale
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in [Timescale ↗︎](https://www.timescale.com/) (they make PostgreSQL faster in the cloud).
 
 You will create and deploy a Worker function that exposes API routes for ingesting data, and use [Hyperdrive ↗︎](https://developers.cloudflare.com/hyperdrive/) to proxy your database connection from the edge and maintain a connection pool to prevent us having to make a new database connection on every request.
@@ -155,7 +153,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -174,7 +172,7 @@ name = "timescale-api"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]

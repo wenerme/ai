@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/concepts/og.png?v=a4cff91286c
 
 # Concepts
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these concepts to understand namespaces, repos, versioning behavior, and the operating model for Artifacts.
 
 - [How Artifacts works](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/)

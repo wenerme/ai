@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Order of enforcement
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Gateway follows a specific order of enforcement as traffic travels through the Cloudflare global network to the Internet:
 
 ## Enforcement flowchart

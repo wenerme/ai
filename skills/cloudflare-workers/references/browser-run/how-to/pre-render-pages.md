@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/og.
 
 # Pre-render pages for crawlers
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pre-rendering generates the final HTML for a page before returning it to a client. For JavaScript-heavy applications, this means loading the page in a browser, waiting for client-side JavaScript to run, and returning the rendered HTML instead of the initial app shell.
 
 Pre-rendering is useful when search crawlers, social preview bots, AI indexing jobs, or partner integrations need HTML content that your application normally creates in the browser. With [Cloudflare Browser Run](https://developers.cloudflare.com/browser-run/) and [Cloudflare Workers](https://developers.cloudflare.com/workers/), you can render a public URL in managed headless Chrome and return the rendered HTML.
@@ -46,7 +44,7 @@ Add a Browser Run binding to your Wrangler configuration:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-14",
+  "compatibility_date": "2026-11-18",
   "browser": {
     "binding": "BROWSER"
   }
@@ -58,7 +56,7 @@ name = "my-prerender-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-14"
+compatibility_date = "2026-11-18"
 
 [browser]
 binding = "BROWSER"

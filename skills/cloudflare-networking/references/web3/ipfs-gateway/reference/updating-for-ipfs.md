@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-fo
 
 # Using IPFS with your website
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Though it is not required, it is strongly recommended that websites hosted on IPFS use only relative links, unless linking to a different domain. This is because data can be accessed in many different (but ultimately equivalent) ways:
 
 - From your custom domain: `https://ipfs.tech/index.html`

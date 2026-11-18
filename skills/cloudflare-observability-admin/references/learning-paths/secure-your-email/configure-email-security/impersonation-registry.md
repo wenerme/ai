@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/config
 
 # Add user to the impersonation registry
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/impersonation-registry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Attackers often try to impersonate executives within an organization when sending malicious emails (with requests about banking information, trade secrets, and more), which is known as a [Business Email Compromise (BEC) ↗︎](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/) attack.
 
 The impersonation registry protects against these attacks by looking for spoofs of known key users in an organization. Information about key users you either synced with your directory or entered manually in the dashboard is used by Email security to run enhanced scan techniques and find these spoofed emails.

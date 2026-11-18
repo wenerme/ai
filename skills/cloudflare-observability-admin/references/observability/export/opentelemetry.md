@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/export/opentelemetry/og.p
 
 # OpenTelemetry export
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/export/opentelemetry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare exports telemetry to destinations that support the OpenTelemetry Protocol (OTLP). Use these destinations with Cloudflare telemetry and your existing observability tools.
 
 ## Supported telemetry

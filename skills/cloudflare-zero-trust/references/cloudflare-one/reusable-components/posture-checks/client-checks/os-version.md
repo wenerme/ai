@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # OS version
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The OS Version device posture attribute checks whether the version of a device's operating system matches, is greater than or lesser than the configured value.
 
 ## Prerequisites

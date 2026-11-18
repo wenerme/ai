@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/
 
 # NS records already exist
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/existing-ns-record/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 As you try to create a new DNS record, Cloudflare displays the following error:
 
 ```txt

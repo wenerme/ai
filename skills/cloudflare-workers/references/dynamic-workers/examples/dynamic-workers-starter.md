@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/examples/dynamic-worker
 
 # Dynamic Workers Starter
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [starter template ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers) for deploying a Worker that loads and runs [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/).
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers)

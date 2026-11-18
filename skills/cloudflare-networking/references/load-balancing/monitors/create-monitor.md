@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/monitors/create-monitor/
 
 # Manage monitors
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a [pool](https://developers.cloudflare.com/load-balancing/pools/).
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.

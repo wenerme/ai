@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/o
 
 # Get started
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these articles to get started with the Cloudflare GraphQL API:
 
 - [Authentication](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/) - walks you through the options and the steps required to set up your access to Cloudflare API successfully,

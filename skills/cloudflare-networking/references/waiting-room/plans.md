@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/plans/og.png?v=29e1db98b8f
 
 # Plans
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/plans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The features available for a waiting room depend on your plan type. You can only have **one plan** per zone.
 
 One basic waiting room is included in all Business and Enterprise plans. On an Enterprise plan, you can purchase advanced waiting room(s) to unlock all of the additional advanced features.

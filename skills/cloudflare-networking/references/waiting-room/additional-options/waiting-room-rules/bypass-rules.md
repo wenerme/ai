@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/additional-options/waiting
 
 # Waiting Room Bypass Rules
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Waiting Room Bypass Rule is a type of Waiting Room Rule built on Cloudflare’s Ruleset Engine and managed via the Waiting Room API. A Waiting Room Bypass Rule allows you to indicate specific traffic or areas of your site or application that you do not want a waiting room to apply to. Each bypass rule is created and managed at the individual waiting room level for precise control over your waiting room traffic.
 
 To indicate where you want your bypass rules to apply, write [custom logic](https://developers.cloudflare.com/ruleset-engine/rules-language/) using the [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) available via the Cloudflare Ruleset Engine, except the following:

@@ -354,12 +354,14 @@ Input for a per-user budget cap override.
 
 ### `BudgetCapUserOverrideInput` arguments {.no_toc}
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `cap` | [`Float!`](scalars.md#float) | Budget cap amount for the user. |
-| `enabled` | [`Boolean!`](scalars.md#boolean) | Whether the budget cap is enabled for the user. |
-| `userId` | [`UserID`](scalars.md#userid) | Global ID of the user. Exactly one of `userId` or `username` must be provided. |
-| `username` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Username of the user. Exactly one of `userId` or `username` must be provided. |
+| Name | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
+| `cap` | [`Float`](scalars.md#float) | Budget cap amount for the user. At least one of `cap` or `dailyCap` must be provided. When omitted, the user's existing cap is left unchanged. |  |
+| `dailyCap` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Budget cap amount for the user per UTC calendar day. When omitted, the user's existing daily cap is left unchanged. |  |
+| `dailyEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates whether the daily budget cap is enabled for the user. Applies only together with `dailyCap`. | `true` |
+| `enabled` | [`Boolean`](scalars.md#boolean) | Whether the budget cap is enabled for the user. Applies only together with `cap`. | `true` |
+| `userId` | [`UserID`](scalars.md#userid) | Global ID of the user. Exactly one of `userId` or `username` must be provided. |  |
+| `username` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Username of the user. Exactly one of `userId` or `username` must be provided. |  |
 
 ## `BulkToolRuleInput`
 

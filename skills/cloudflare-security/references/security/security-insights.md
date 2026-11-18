@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/security-insights/og.png?v=b3f
 
 # Security Insights
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/security-insights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 User permission
 
 Ensure your user has one of the necessary roles to access Security Insights. Refer to [Roles and permissions](https://developers.cloudflare.com/security/security-insights/roles-and-permissions/) for more information.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # GRE and IPsec tunnels
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Tunnels and encapsulation
 
 To route traffic between Cloudflare's global network and your origin network, Cloudflare WAN wraps your original packets inside an outer packet — a process called encapsulation. The outer packet carries your traffic across the Internet to its destination, where it is unwrapped (decapsulated) and delivered.

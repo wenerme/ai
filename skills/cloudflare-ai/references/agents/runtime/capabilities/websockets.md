@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/capabilities/websockets/
 
 # WebSockets
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `WebSockets` from `agents/websockets` is a capability that makes WebSocket connections to a Durable Object simple. It accepts upgrades, lets idle connections hibernate, tracks and tags connections, and speaks the Agents protocol. That lets a plain Durable Object work with `useAgent` and `AgentClient` from the [client SDK](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/client-sdk/).
 
 ## Install the capability

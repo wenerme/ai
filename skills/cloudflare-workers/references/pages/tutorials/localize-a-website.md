@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/tutorials/localize-a-website/og.p
 
 # Localize a website with HTMLRewriter
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/tutorials/localize-a-website/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will build an example internationalization and localization engine (commonly referred to as **i18n** and **l10n**) for your application, serve the content of your site, and automatically translate the content based on your visitors’ location in the world.
 
 This tutorial uses the [`HTMLRewriter`](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) class built into the Cloudflare Workers runtime, which allows for parsing and rewriting of HTML on the Cloudflare global network. This gives developers the ability to efficiently and transparently customize their Workers applications.
@@ -286,7 +284,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 	"name": "i18n-example",
 	"pages_build_output_dir": "./public",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28"
+	"compatibility_date": "2026-11-18"
 }
 ```
 
@@ -295,7 +293,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:

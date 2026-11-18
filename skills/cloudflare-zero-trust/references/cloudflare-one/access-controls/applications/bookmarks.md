@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Add bookmarks
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Cloudflare One, you can show applications on the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) even if those applications are not secured behind Access. This way, users can access all the applications they need to work, all in one place — regardless of whether those applications are protected by Access.
 
 Links to applications not protected by Access can be added as bookmarks. You can assign [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to control which users see the bookmark in the App Launcher. Users who do not match an Allow policy will not see the bookmark tile. Unlike policies for other Access application types, bookmark policies only affect visibility in the App Launcher and do not control access to the destination URL.

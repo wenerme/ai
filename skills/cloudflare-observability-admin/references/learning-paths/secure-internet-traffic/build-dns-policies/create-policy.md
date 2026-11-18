@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Create your first DNS policy
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/create-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DNS policies determine how Gateway should handle a DNS request. When a user sends a DNS request, Gateway matches the request against your filters and either allows the query to resolve, blocks the query, or responds to the query with a different IP.
 
 You can filter DNS traffic based on query or response parameters (such as domain, source IP, or geolocation). You can also filter by user identity if you connect your devices to Gateway with the [Cloudflare One Client or Cloudflare One Agent](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/install-agent/).

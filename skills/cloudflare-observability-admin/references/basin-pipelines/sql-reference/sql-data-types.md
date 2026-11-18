@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/sql-reference/sql-data-
 
 # SQL data types
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sql-reference/sql-data-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin Pipelines supports a set of primitive and composite data types for SQL transformations. These types can be used in stream schemas and SQL literals with automatic type inference.
 
 ## Primitive types

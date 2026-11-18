@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/connection-limit
 
 # Connection limits
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When HTTP/HTTPS traffic is [proxied through Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy), there are often two established [TCP connections](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/): the first is between the requesting client to Cloudflare and the second is between Cloudflare and the origin server. Each connection has their own set of TCP and HTTP limits, which are documented below.
 
 ## Between client and Cloudflare

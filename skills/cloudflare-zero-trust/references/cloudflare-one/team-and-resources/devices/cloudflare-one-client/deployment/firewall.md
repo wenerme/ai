@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Cloudflare One Client with firewall
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your organization uses a firewall or other policies to restrict or intercept Internet traffic, you may need to exempt the following IP addresses and domains to allow the Cloudflare One Client (formerly WARP) to connect.
 
 ## Client orchestration API

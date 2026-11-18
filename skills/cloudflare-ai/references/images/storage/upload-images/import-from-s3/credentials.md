@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/upload-images/import-fro
 
 # Credentials
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To import images, Cloudflare Images requires access to your Amazon S3 bucket. You can use credentials for any AWS Identity and Access Management (IAM) user with the correct permissions.
 
 Cloudflare recommends creating a user with narrowly scoped permissions.

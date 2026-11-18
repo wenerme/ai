@@ -35,7 +35,7 @@ Tier availability varies by agent. For details, see each agent's page.
 | [Onboarding Agent](onboarding_guide.md) | Adopt the GitLab DevSecOps platform, from first repository import through security and compliance maturity. |
 | [Permissions Assistant](../../../../auth/tokens/permissions_assistant.md) | Select the correct permissions for a fine-grained personal access token. |
 | [Planner](planner.md) | Get assistance with product management and planning workflows. |
-| [Security Analyst](security_analyst_agent.md) | Get assistance with security analysis and vulnerability management. |
+| [Security Analyst](../../../application_security/security_analyst_agent.md) | Get assistance with security analysis and vulnerability management. |
 | [Support Assistant](support_assistant.md) | Diagnose and resolve GitLab product problems. |
 
 ## Duplicate an agent
@@ -60,7 +60,7 @@ To duplicate an agent:
 1. Optional. Edit any fields you want to change.
 1. Select **Create agent**.
 
-A custom agent is created. To use it, you must [enable it](../custom.md#enable-an-agent).
+A custom agent is created. To use it, you must [turn it on](../custom.md#turn-on-an-agent).
 
 ## Turn foundational agents on or off
 

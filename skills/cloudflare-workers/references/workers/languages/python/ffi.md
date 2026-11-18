@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/ffi/og.png?v=1
 
 # Foreign Function Interface (FFI)
 
-Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/ffi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Via [Pyodide ↗︎](https://pyodide.org/en/stable/), Python Workers provide a [Foreign Function Interface (FFI) ↗︎](https://en.wikipedia.org/wiki/Foreign_function_interface) to JavaScript. This allows you to:
 
 - Use [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to resources on Cloudflare, including [Workers AI](https://developers.cloudflare.com/workers-ai/), [Vectorize](https://developers.cloudflare.com/vectorize/), [R2](https://developers.cloudflare.com/r2/), [KV](https://developers.cloudflare.com/kv/), [D1](https://developers.cloudflare.com/d1/), [Queues](https://developers.cloudflare.com/queues/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) and more.

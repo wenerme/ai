@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/og.png?v=1e5f8c8a77bf6ad0
 
 # Images
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create scalable and reliable image pipelines without managing complex infrastructure.
 
 Available on Free and Paid plans

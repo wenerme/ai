@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/versio
 
 # Version skew and static assets
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Version skew** occurs when related requests use incompatible application versions. For example, a browser can receive HTML from one version, then request a JavaScript file from another version that does not contain it.
 
 This can happen during a deployment change or a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/). Older pages can also request assets after a deployment changes.

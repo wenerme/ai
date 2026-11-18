@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migration Guides
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Migrate your existing applications to Cloudflare Workers.
 
 Take advantage of Cloudflare's global network and migrate your existing applications to Workers.

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/transform/examples/rewrite-url-st
 
 Create a transform rule to rewrite the request path from `/blog` to `/blog?sort-by=date`.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-url-string-visitors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To rewrite a request to the `/blog` path to `/blog?sort-by=date`, create a URL rewrite rule with the following settings:
 
 Text in **Expression Editor**:

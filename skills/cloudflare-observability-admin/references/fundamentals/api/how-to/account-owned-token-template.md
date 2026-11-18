@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-t
 
 # API token template URLs
 
-Last updated Sep 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use template URLs to generate Cloudflare API tokens with pre-configured permissions. Template URLs allow you to share token requirements with users without manually selecting permissions in the dashboard.
 
 Template URLs use query parameters to pre-fill the API token creation page in the Cloudflare dashboard. When a user opens a template URL, the dashboard automatically configures the specified permissions and settings.

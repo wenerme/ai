@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/tra
 
 # Send traffic and review analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/traffic-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 As you send sample requests to your test domain, review the [load balancing analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/) page to make sure your load balancer is distributing requests like you were expecting.
 
 Was this helpful?

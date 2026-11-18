@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Inbound
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/)
 - [Trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/trusted-domains/)
 - [Blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/)

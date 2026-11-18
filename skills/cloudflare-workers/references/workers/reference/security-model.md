@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/reference/security-model/og.png
 
 # Security model
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/reference/security-model/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hosted Workers security model
 
 This page describes Workers deployed on Cloudflare. Local `workerd` processes do not include every defense-in-depth protection described here. For local execution guidance, refer to [Local development security considerations](https://developers.cloudflare.com/workers/local-development/#security-considerations).

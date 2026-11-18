@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/stagehand/og.png?v=ee4cde0c
 
 # Stagehand
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/stagehand/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Stagehand ↗︎](https://www.stagehand.dev/) is an open-source, AI-powered browser automation library. Stagehand lets you combine code with natural-language instructions powered by AI, eliminating the need to dictate exact steps or specify selectors. With Stagehand, your agents are more resilient to website changes and easier to maintain, helping you build more reliably and flexibly.
 
 This guide shows you how to deploy a [Worker](https://developers.cloudflare.com/workers/) that uses Stagehand, Browser Run, and [Workers AI](https://developers.cloudflare.com/workers-ai/) to automate a web task.
@@ -75,7 +73,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"upload_source_maps": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-11-11",
+	"compatibility_date": "2026-11-18",
 	"observability": {
 		"enabled": true
 	},
@@ -94,7 +92,7 @@ main = "src/index.ts"
 upload_source_maps = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-11"
+compatibility_date = "2026-11-18"
 
 [observability]
 enabled = true

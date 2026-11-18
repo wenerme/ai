@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/mesh/guides/connect-sites/og.png?v=092a
 
 # Connect two private networks with Cloudflare Mesh
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/guides/connect-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect two sites, offices, or cloud networks with [Cloudflare Mesh](https://developers.cloudflare.com/mesh/). A Linux Mesh node at each site carries traffic between the private subnets through Cloudflare. Hosts behind the nodes do not need the Cloudflare One Client.
 
 This example uses separate subnets and tests traffic in both directions:

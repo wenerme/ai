@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/reference
 
 # Reference
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [How Email security detects phish](https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/)
 - [Dispositions and attributes](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/)
 - [Regional processing](https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/)

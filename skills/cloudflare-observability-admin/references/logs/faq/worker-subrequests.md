@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/faq/worker-subrequests/og.png?v=f9
 
 # Worker subrequests
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/worker-subrequests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [❮ Back to FAQ](https://developers.cloudflare.com/logs/faq/)
 
 ### Why are the origin fields empty on the initial request when a Worker makes a subrequest?

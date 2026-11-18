@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/concep
 
 # What is a phishing attack?
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/what-is-phishing-attack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Phishing ↗︎](https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack/) is an attempt to steal sensitive data, typically in the form of usernames, passwords, or other important account information. The phisher either uses the stolen information themselves (for instance, to take over the user's accounts with their password), or sells the stolen information.
 
 Phishing attackers disguise themselves as a reputable source. With an enticing or seemingly urgent request, an attacker lures the victim into providing information, just as a person uses bait while fishing.

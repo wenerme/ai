@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • Kling AI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/klingai/kling-v4-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `klingai/kling-v4-flash` Copy

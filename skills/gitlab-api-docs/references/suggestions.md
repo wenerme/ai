@@ -38,7 +38,7 @@ Supported attributes:
 | Attribute        | Type    | Required | Description |
 |------------------|---------|----------|-------------|
 | `id`             | integer | Yes      | ID of a suggestion. |
-| `commit_message` | string  | No       | Custom commit message to use instead of the default generated message or the project's default message. |
+| `commit_message` | string  | No       | Custom commit message to use instead of the generated message or the project's commit message for applied suggestions. |
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:

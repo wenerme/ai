@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/planning/
 
 # Endpoint steering policies
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Endpoint steering customizes how each [pool](https://developers.cloudflare.com/load-balancing/pools/) distributes requests to its associated endpoints.
 
 These distributions are a combination of two properties:

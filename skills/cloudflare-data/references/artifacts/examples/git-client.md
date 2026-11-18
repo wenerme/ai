@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/examples/git-client/og.png?v=
 
 # Git client
 
-Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/git-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use a standard Git client to interact with Artifacts repos. This example walks through clone, but the same approach works for fetch, pull, push, and any other Git operation.
 
 To do this, you need to:

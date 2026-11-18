@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/how-to/workers/og.png
 
 # Workers
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To ensure that your Cloudflare Workers code runs only within a specific geographic region, configure Regional Services on the Workers custom domain. This restricts where TLS termination (traffic decryption) and code execution occur.
 
 ## Regional Services

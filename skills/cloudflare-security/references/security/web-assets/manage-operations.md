@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/web-assets/manage-operations/o
 
 # Manage operations
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/manage-operations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Operation states
 
 Each operation has one of the following states:

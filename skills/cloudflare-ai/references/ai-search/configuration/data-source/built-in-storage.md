@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/bui
 
 # Built-in storage
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Every AI Search instance comes with built-in storage and a built-in vector index, powered by [R2](https://developers.cloudflare.com/r2/) and [Vectorize](https://developers.cloudflare.com/vectorize/). You can upload files directly to an instance without setting up either service yourself.
 
 ## Upload and manage files

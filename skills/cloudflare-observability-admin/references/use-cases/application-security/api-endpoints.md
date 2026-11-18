@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/application-security/api-endp
 
 # Secure API endpoints
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/api-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 API endpoints are vulnerable to schema violations, abuse, and unauthorized access. Cloudflare API Shield validates requests against your OpenAPI specification, and mutual TLS (mTLS) authenticates known clients with certificates.
 
 ## Solutions

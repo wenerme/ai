@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Rule groups
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A rule group is a collection of Access rules that can be configured once and then quickly applied across many Access policies. Rule groups use the same [rule types](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) and [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) shown in the Access policy builder.
 
 Note

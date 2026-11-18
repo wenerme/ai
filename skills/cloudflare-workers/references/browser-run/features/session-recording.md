@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/session-recording/
 
 # Session recording
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Beta
 
 When browser automation fails or behaves unexpectedly, it can be difficult to understand what happened. Session recording captures DOM changes, mouse and keyboard events, and page navigation as structured JSON events — not a video — so it is lightweight and easy to inspect. Recordings are powered by [rrweb ↗︎](https://github.com/rrweb-io/rrweb) and are opt-in per session.

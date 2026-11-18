@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/troubleshooting/edge-vs-cache-res
 
 # edgeResponseBytes and cacheResponseBytes discrepancy
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/edge-vs-cache-response-bytes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In [HTTP request logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/), `cacheResponseBytes` and `edgeResponseBytes` both count the response body as Cloudflare delivered it to the client. They differ only in which response headers they count:
 
 - `cacheResponseBytes`: the response headers Cloudflare received from cache or origin, plus the response body as delivered to the client.

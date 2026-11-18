@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipeli
 
 # Manage pipelines
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/pipelines/manage-pipelines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to:
 
 - Create pipelines with SQL transformations

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/uploading-videos/upload-via-link
 
 # Upload with a link
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you have videos stored in a cloud storage bucket (R2, S3, GCS) or hosted by a service that exposes a download link, you can pass its URL. Stream will fetch the file on your behalf.
 
 Note

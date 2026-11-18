@@ -16,10 +16,12 @@ REST API to manage security policies stored in the policy store for organization
   - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/604367) to persist policies to the database in GitLab 19.4.
   - `policy_rego` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/616505) in GitLab 19.4.
   - `scope_dimensions` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/623359) in GitLab 19.4.
+  - `violation_details` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634898) in GitLab 19.7.
 - `lifecycle_state` filter [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253089) in GitLab 19.4.
 - Create and update policy endpoints:
   - Limits on `rules` and `actions` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/612905) in GitLab 19.4.
   - Rego validation [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/618556) in GitLab 19.5.
+  - Rule validation against the trigger's context [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634898) in GitLab 19.7.
 - Group endpoints [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254842) in GitLab 19.5.
 
 > [!flag]
@@ -229,6 +231,13 @@ already parsed on its own, a failure at this stage is treated as a fault in the
 Policy Engine: the request returns `500 Internal Server Error`,
 the policy is not stored, and the fault is reported to error tracking.
 
+GitLab also checks each `custom` and `setting_validation` rule against the context of the
+policy's `trigger_type`. A rule that constrains a path the context does not carry, or a value of
+the wrong type for that path, returns `400 Bad Request`. The error names the rule's position,
+for example `rules[0] is invalid: details path "project.settings.visibility" expected value ...`.
+An update that changes only `trigger_type` checks the stored rules against the new trigger's
+context, so it can be refused the same way.
+
 Send `rules` and `actions` as JSON with a `Content-Type: application/json` header.
 A form-encoded body can carry both arrays, but every value in one arrives as a string, so a
 `value` that is not a string cannot be expressed that way.
@@ -237,25 +246,26 @@ A form-encoded body can carry both arrays, but every value in one arrives as a s
 
 The policy endpoints return the following attributes:
 
-| Attribute         | Type            | Description |
-| ----------------- | --------------- | ----------- |
-| `actions`         | array           | Actions the policy takes. |
-| `created_at`      | string          | Date and time the policy was created. |
-| `description`     | string          | Description of the policy. |
-| `id`              | integer         | ID of the policy. |
-| `lifecycle_state` | string          | Either `active` or `disabled`. |
-| `mode`            | string          | One of `audit`, `warn`, or `enforce`. |
-| `name`            | string          | Name of the policy. |
-| `namespace_id`    | integer         | ID of the group that owns the policy. `null` for a policy created through an organization endpoint, because the organization owns that policy, or when you can't view the group. |
-| `organization_id` | integer         | ID of the organization the policy belongs to. |
-| `policy_rego`     | string          | The policy's rules, compiled to a single Rego module. `null` for a policy with no rules. |
-| `policy_scope`    | object          | Structured scope of the policy, or `null` when the Rego was authored directly. |
-| `rules`           | array           | Rules of the policy. |
-| `scope_dimensions`| array           | Dotted context paths `scope_rego` reads to decide whether the policy applies. GitLab derives this value, so it ignores any value you send for it. `null` when `scope_rego` was authored directly, otherwise an array, empty when the policy is unscoped. |
-| `scope_rego`      | string          | Scope of the policy, as a program in [Rego](https://www.openpolicyagent.org/docs/policy-language), the policy language of Open Policy Agent. Either written directly or compiled from `policy_scope`. Always present, because a policy with no scope compiles to a program that applies to every project. |
-| `trigger_type`    | string          | Trigger the policy responds to. |
-| `updated_at`      | string          | Date and time the policy was last changed. |
-| `version`         | integer         | Revision of the policy. An update that changes at least one value raises it by one. |
+| Attribute           | Type            | Description |
+| ------------------- | --------------- | ----------- |
+| `actions`           | array           | Actions the policy takes. |
+| `created_at`        | string          | Date and time the policy was created. |
+| `description`       | string          | Description of the policy. |
+| `id`                | integer         | ID of the policy. |
+| `lifecycle_state`   | string          | Either `active` or `disabled`. |
+| `mode`              | string          | One of `audit`, `warn`, or `enforce`. |
+| `name`              | string          | Name of the policy. |
+| `namespace_id`      | integer         | ID of the group that owns the policy. `null` for a policy created through an organization endpoint, because the organization owns that policy, or when you can't view the group. |
+| `organization_id`   | integer         | ID of the organization the policy belongs to. |
+| `policy_rego`       | string          | The policy's rules, compiled to a single Rego module. `null` for a policy with no rules. |
+| `policy_scope`      | object          | Structured scope of the policy, or `null` when the Rego was authored directly. |
+| `rules`             | array           | Rules of the policy. |
+| `scope_dimensions`  | array           | Dotted context paths `scope_rego` reads to decide whether the policy applies. GitLab derives this value, so it ignores any value you send for it. `null` when `scope_rego` was authored directly, otherwise an array, empty when the policy is unscoped. |
+| `scope_rego`        | string          | Scope of the policy, as a program in [Rego](https://www.openpolicyagent.org/docs/policy-language), the policy language of Open Policy Agent. Either written directly or compiled from `policy_scope`. Always present, because a policy with no scope compiles to a program that applies to every project. |
+| `trigger_type`      | string          | Trigger the policy responds to. |
+| `updated_at`        | string          | Date and time the policy was last changed. |
+| `version`           | integer         | Revision of the policy. An update that changes at least one value raises it by one. |
+| `violation_details` | array           | Context paths the policy's rules constrain, as `{ path, expected }` entries. `expected` is the compliant value, and is omitted when the rules name none. GitLab derives this value from `rules`, so it ignores any value you send for it. `null` when the details have not been derived yet, for example for a policy saved before GitLab 19.7. |
 
 ## Organization policies
 
@@ -331,6 +341,7 @@ Example response:
     "actions": [{ "type": "block" }],
     "policy_scope": null,
     "scope_dimensions": [],
+    "violation_details": [],
     "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
     "mode": "enforce",
     "lifecycle_state": "active",
@@ -383,6 +394,7 @@ Example response:
   "actions": [{ "type": "block" }],
   "policy_scope": null,
   "scope_dimensions": [],
+  "violation_details": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
@@ -425,6 +437,7 @@ The following conditions return `400 Bad Request`:
 - The `rules` compile to more than 65536 bytes of Rego.
 - `rules` or `actions` carries more than 5 entries.
 - An entry in `rules` or `actions` serializes to more than 4096 bytes.
+- A rule constrains a path or value the context of `trigger_type` does not allow.
 
 On GitLab.com, creating a policy in the default organization returns
 [`422 Unprocessable Entity`](rest/troubleshooting.md#status-codes). Groups without their own
@@ -462,6 +475,7 @@ Example response:
   "actions": [{ "type": "block" }],
   "policy_scope": { "compliance_frameworks": [{ "id": 5 }] },
   "scope_dimensions": ["compliance_frameworks"],
+  "violation_details": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "warn",
   "lifecycle_state": "active",
@@ -516,6 +530,8 @@ The following conditions return `400 Bad Request`:
 - The replacement `rules` compile to more than 65536 bytes of Rego.
 - The replacement `rules` or `actions` carries more than 5 entries.
 - An entry in the replacement `rules` or `actions` serializes to more than 4096 bytes.
+- The replacement `rules`, or the stored rules under a new `trigger_type`, constrain a path or
+  value the trigger's context does not allow.
 - The policy belongs to a group, and the new `trigger_type` is not one a group policy can use.
 
 Example request:
@@ -542,6 +558,7 @@ Example response:
   "actions": [{ "type": "block" }],
   "policy_scope": null,
   "scope_dimensions": [],
+  "violation_details": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
@@ -639,6 +656,7 @@ Example response:
     "actions": [{ "type": "block" }],
     "policy_scope": null,
     "scope_dimensions": [],
+    "violation_details": [],
     "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
     "mode": "enforce",
     "lifecycle_state": "active",
@@ -689,6 +707,7 @@ Example response:
   "actions": [{ "type": "block" }],
   "policy_scope": null,
   "scope_dimensions": [],
+  "violation_details": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
@@ -731,6 +750,7 @@ The following conditions return `400 Bad Request`:
 - The `rules` compile to more than 65536 bytes of Rego.
 - `rules` or `actions` carries more than 5 entries.
 - An entry in `rules` or `actions` serializes to more than 4096 bytes.
+- A rule constrains a path or value the context of `trigger_type` does not allow.
 - The `trigger_type` is not one a group policy can use.
 
 Example request:
@@ -764,6 +784,7 @@ Example response:
   "actions": [{ "type": "block" }],
   "policy_scope": { "compliance_frameworks": [{ "id": 5 }] },
   "scope_dimensions": ["compliance_frameworks"],
+  "violation_details": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "warn",
   "lifecycle_state": "active",
@@ -816,6 +837,8 @@ The following conditions return `400 Bad Request`:
 - The replacement `rules` compile to more than 65536 bytes of Rego.
 - The replacement `rules` or `actions` carries more than 5 entries.
 - An entry in the replacement `rules` or `actions` serializes to more than 4096 bytes.
+- The replacement `rules`, or the stored rules under a new `trigger_type`, constrain a path or
+  value the trigger's context does not allow.
 - The new `trigger_type` is not one a group policy can use.
 
 Example request:
@@ -842,6 +865,7 @@ Example response:
   "actions": [{ "type": "block" }],
   "policy_scope": null,
   "scope_dimensions": [],
+  "violation_details": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",

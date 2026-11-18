@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/examples/cache-api/og.png?v=105d9b20
 
 # Use the Cache API
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/cache-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) to store R2 objects in Cloudflare's cache.
 
 Note

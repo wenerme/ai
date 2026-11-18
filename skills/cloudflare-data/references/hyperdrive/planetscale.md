@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/planetscale/og.png?v=e4d0acb
 
 # PlanetScale Postgres & MySQL
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/planetscale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create PlanetScale Postgres or MySQL databases with globally distributed Workers applications.
 
 Cloudflare partners with [PlanetScale ↗︎](https://planetscale.com/) to provide PlanetScale-hosted Postgres and MySQL (Vitess) databases to Workers. [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) connects [Workers](https://developers.cloudflare.com/workers/) to PlanetScale databases with built-in database connection pooling and query caching for faster performance.

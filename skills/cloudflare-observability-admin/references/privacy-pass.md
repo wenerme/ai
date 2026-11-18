@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-pass/og.png?v=f0d3547dd70434d4
 
 # Privacy Pass
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Privacy Pass, an [IETF standard ↗︎](https://datatracker.ietf.org/doc/html/rfc9576) that Cloudflare helped pioneer in 2017, offers a way for users to prove something about themselves–that they have passed a CAPTCHA, are of age, are part of a subscription class–to the site they are accessing, without revealing an identifier. The main mechanic is Privacy Pass tokens, which are the cryptographic tool that lets a service provider verify information about a user without learning who that user is or being able to track them across requests.
 
 ---

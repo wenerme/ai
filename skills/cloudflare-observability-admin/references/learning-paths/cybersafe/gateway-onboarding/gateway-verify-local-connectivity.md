@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboar
 
 # Verify local connectivity
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-verify-local-connectivity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To verify that your DNS traffic is sent to Gateway:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.

@@ -317,6 +317,11 @@ Example response:
 Protect a single repository branch or several project repository
 branches using a wildcard protected branch.
 
+By default, GitLab protects a project's default branch when the branch is created,
+based on the [initial default branch protection](../user/project/repository/branches/default.md#protect-initial-default-branches) settings.
+If the branch or wildcard is already protected, the API returns `409 Conflict`.
+To change an existing protection, update the protected branch instead.
+
 ```plaintext
 POST /projects/:id/protected_branches
 ```

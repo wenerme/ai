@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Platform
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Availability
 
 Cloud Workload Security (CWS) is available in Beta. Manage CWS resources in the Cloudflare dashboard after selecting your account.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/best-practices/query-d1/og.png?v=67e
 
 # Query a database
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/query-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 is compatible with most SQLite's SQL convention since it leverages SQLite's query engine. You can use SQL commands to query D1.
 
 There are a number of ways you can interact with a D1 database:

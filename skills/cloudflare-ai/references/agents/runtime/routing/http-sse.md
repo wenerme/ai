@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/routing/http-sse/og.png?
 
 # HTTP and Server-Sent Events
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/routing/http-sse/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once a request reaches your Durable Object, the [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) offers it to your capabilities, then calls your `onRequest()`. Use it for an HTTP API, or to stream a response with Server-Sent Events (SSE).
 
 ## Handle HTTP requests

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Workers for Platforms
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build a multi-tenant platform that runs untrusted code in secure, isolated sandboxes.
 
 Workers for Platforms lets you run untrusted code written by your customers, or by AI, in a secure hosted sandbox. Each customer runs code in their own Worker, a secure and isolated environment.

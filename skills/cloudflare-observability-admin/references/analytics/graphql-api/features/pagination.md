@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/paginati
 
 # Pagination
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/pagination/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pagination – breaking up your query results into smaller parts – can be done using `limit`, `orderBy`, and filtering parameters. The GraphQL Analytics API does not support cursors for pagination.
 
 - `limit` (integer) defines how many records to return.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/data-migration/super-slurper/og.png?
 
 # Super Slurper
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/data-migration/super-slurper/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Super Slurper allows you to quickly and easily copy objects from other cloud providers to an R2 bucket of your choice.
 
 Migration jobs:

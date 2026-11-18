@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/setup/router/og.png?v=9cf0055cb
 
 # Router
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configuring 1.1.1.1 on your router applies the DNS setting to every device on your network. You do not need to change DNS settings on individual phones, computers, or other devices.
 
 1. Go to the **IP address** used to access your router's admin console in your browser.

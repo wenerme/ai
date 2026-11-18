@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gi
 
 # GitHub integration
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare supports connecting your GitHub repository to your Cloudflare Worker, and will automatically deploy your code every time you push a change.
 
 ## Features

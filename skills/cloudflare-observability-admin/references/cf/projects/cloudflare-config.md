@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cf/projects/cloudflare-config/og.png?v=
 
 # Programmatic configuration
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/cloudflare-config/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `cloudflare.config.ts` is the typed configuration file for a Workers project. Its default export can define a Worker, Container applications, and account settings. Because the file is a TypeScript module, it can use imports, functions, environment variables, and asynchronous values.
 
 Release candidate

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkIcon
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkicon/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Renders an SVG icon from an icon string, applying the current theme text color.
 
 ## Properties

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkGrid
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkgrid/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The main participant grid that automatically switches between simple, mixed, spotlight, and livestream layouts based on meeting state.
 
 ## Properties

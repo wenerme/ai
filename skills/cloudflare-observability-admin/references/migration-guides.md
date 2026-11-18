@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/migration-guides/og.png?v=336cda51e2c7c
 
 # Migration guides
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/migration-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Content designed to help you migrate from another provider to Cloudflare.
 
 This section is still in work. Expect more guides soon.

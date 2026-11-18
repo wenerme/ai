@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/models/og.png?v
 
 # Models
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Search uses models at multiple stages. You can configure which models are used, or let AI Search automatically select a smart default for you.
 
 ## Models usage

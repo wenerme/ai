@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/og.
 
 # Migrate from Wrangler v1 to v2
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide details how to migrate from Wrangler v1 to v2.
 
 - [1. Migrate webpack projects](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/)

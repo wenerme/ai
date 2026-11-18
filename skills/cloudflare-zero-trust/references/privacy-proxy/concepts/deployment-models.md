@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-proxy/concepts/deployment-model
 
 # Deployment models
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Privacy Proxy supports two deployment architectures: single-hop and double-hop. The right choice depends on your privacy requirements and operational preferences.
 
 ## Single-hop

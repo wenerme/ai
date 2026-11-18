@@ -1,11 +1,11 @@
 ---
-title: "Liquid Inference Models: IDs, Context & Usage"
-description: "Browse Liquid Inference model IDs, capabilities, and context windows. Learn how to use them in TypeScript with Mastra's model router."
+title: "Liquid Inference Models: IDs, Pricing & Usage"
+description: "Browse Liquid Inference model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [Liquid Inference logo]Liquid Inference
 
-Access 1 Liquid Inference model through Mastra's model router. Authentication is handled automatically using the `LIQUID_API_KEY` environment variable.
+Access 8 Liquid Inference models through Mastra's model router. Authentication is handled automatically using the `LIQUID_API_KEY` environment variable.
 
 Learn more in the [Liquid Inference documentation](https://inference.ai.exchange/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "liquid/liquid.auto"
+  model: "liquid/deepseek-v4.1-flash"
 });
 
 // Generate a response
@@ -40,6 +40,78 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
+    "model": "liquid/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.0868,
+    "outputCost": 0.21
+  },
+  {
+    "model": "liquid/deepseek-v4.1-flash-1017",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.059,
+    "outputCost": 0.206
+  },
+  {
+    "model": "liquid/glm-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.84,
+    "outputCost": 3.1
+  },
+  {
+    "model": "liquid/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.112,
+    "outputCost": 0.315
+  },
+  {
+    "model": "liquid/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 1.26,
+    "outputCost": 10.2
+  },
+  {
+    "model": "liquid/kimi-k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 2.18,
+    "outputCost": 5.46
+  },
+  {
     "model": "liquid/liquid.auto",
     "imageInput": true,
     "audioInput": true,
@@ -50,6 +122,18 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "liquid/qwen3.8-27b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.08,
+    "outputCost": 0.525
   }
 ]}
 />
@@ -68,7 +152,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://router.inference.ai.exchange/v1",
-    id: "liquid/liquid.auto",
+    id: "liquid/deepseek-v4.1-flash",
     apiKey: process.env.LIQUID_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -88,8 +172,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "liquid/liquid.auto"
-      : "liquid/liquid.auto";
+      ? "liquid/qwen3.8-27b"
+      : "liquid/deepseek-v4.1-flash";
   }
 });
 ```

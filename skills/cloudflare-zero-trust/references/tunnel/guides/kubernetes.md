@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/guides/kubernetes/og.png?v=ce77b
 
 # Kubernetes
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/kubernetes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Kubernetes ↗︎](https://kubernetes.io/) is a container orchestration tool that is used to deploy applications onto physical or virtual machines, scale the deployment to meet traffic demands, and push updates without downtime. The Kubernetes cluster, or environment, where the application instances are running is connected internally through a private network. You can install the `cloudflared` daemon inside of the Kubernetes cluster in order to connect applications inside of the cluster to Cloudflare.
 
 This guide will cover how to expose a Kubernetes service to the public Internet using a remotely-managed Cloudflare Tunnel. For the purposes of this example, we will deploy a basic web application alongside `cloudflared` in Google Kubernetes Engine (GKE). The same principles apply to any other Kubernetes environment (such as `minikube`, `kubeadm`, or a cloud-based Kubernetes service) where `cloudflared` can connect to Cloudflare's network.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/get-started/workers-api/og.png?v=549
 
 # Workers API
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/get-started/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Workers](https://developers.cloudflare.com/workers/) let you run code at the edge. When you bind an R2 bucket to a Worker, you can read and write objects directly using the [Workers API](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/).
 
 ## 1. Create a bucket

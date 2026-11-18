@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Useful commands
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/tunnel-useful-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page lists the most commonly used commands for managing local tunnels.
 
 To view all CLI commands, refer to the CLI help text in your terminal. For example, to view all options for the `cloudflared tunnel` subcommand, type `cloudflared tunnel help`.

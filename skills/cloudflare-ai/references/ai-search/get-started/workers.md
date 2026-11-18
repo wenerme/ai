@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/get-started/workers/og.png?v=
 
 # Workers binding
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide walks you through creating and querying an AI Search instance from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the Workers Binding. The Workers Binding uses a runtime [API](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) that runs inside a Worker and calls AI Search without managing API tokens.
 
 1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).

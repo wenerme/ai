@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/content/shared-dicti
 
 # Shared dictionaries
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/shared-dictionaries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Shared dictionaries ([RFC 9842 ↗︎](https://datatracker.ietf.org/doc/rfc9842/)) let your origin compress a response against a copy of the same — or a different — resource that the visitor's browser already has cached. Only the difference between the two resources travels over the wire.
 
 This is most effective for versioned assets that change incrementally between deploys, such as JavaScript bundles, CSS files, and framework chunks. After a deploy, returning visitors can receive the new asset as a small delta against the version they already have, instead of redownloading the full file.

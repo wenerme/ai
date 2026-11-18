@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/s3/api/og.png?v=073ff83b58b1dbf4
 
 # S3 API compatibility
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R2 implements the S3 API to allow users and their applications to migrate with ease. When comparing to AWS S3, Cloudflare has removed some API operations' features and added others. The S3 API operations are listed below with their current implementation status. Feature implementation is currently in progress. Refer back to this page for updates. The API is available via the `https://<ACCOUNT_ID>.r2.cloudflarestorage.com` endpoint. Find your [account ID in the Cloudflare dashboard](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 ## How to read this page

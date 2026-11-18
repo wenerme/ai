@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/custom-errors/reference/error-tok
 
 # Error tokens
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## For Error Pages
 
 Each custom error token provides diagnostic information or specific functionality that appears on the error page. Certain error pages require a page-specific custom error token.

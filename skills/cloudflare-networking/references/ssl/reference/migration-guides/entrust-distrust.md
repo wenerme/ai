@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-
 
 # Entrust distrust by major browsers
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Google Chrome and Mozilla have announced they will no longer trust certificates issued from Entrust's root CAs.
 
 Since Entrust is not within the [certificate authorities](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) used by Cloudflare, this change may only affect customers who upload [custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/) issued by Entrust.

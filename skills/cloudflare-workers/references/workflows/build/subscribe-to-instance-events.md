@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/subscribe-to-instance-e
 
 # Subscribe to instance events
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/subscribe-to-instance-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `WorkflowInstance.subscribe()` to receive events without polling [`status()`](https://developers.cloudflare.com/workflows/build/workers-api/#status). A subscription first delivers events recorded before you subscribed. After delivering these retained events, the subscription waits for new events as the instance runs.
 
 You can subscribe immediately after creating an instance. To subscribe later, retrieve the instance with [`get()`](https://developers.cloudflare.com/workflows/build/workers-api/#get). Subscriptions remain available during the [instance retention period](https://developers.cloudflare.com/workflows/reference/limits/).

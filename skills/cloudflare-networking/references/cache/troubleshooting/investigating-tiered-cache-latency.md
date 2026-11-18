@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/troubleshooting/investigating-tie
 
 # Investigate latency on tiered requests
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/investigating-tiered-cache-latency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Some requests for the same URL are slow while others are fast. If the slow requests have a `cf-cache-status` of `MISS` or `EXPIRED` and the fast requests have `HIT`, the difference may be explained by Tiered Cache: slow requests miss in the lower-tier data center and fetch through an upper-tier data center before reaching your origin. Fast requests are served directly from the lower-tier cache.
 
 This page describes how to use Log Explorer to confirm whether Tiered Cache is involved and how to collect the data needed before contacting Support.

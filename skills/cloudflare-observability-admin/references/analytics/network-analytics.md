@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/network-analytics/og.png?v=1d
 
 # Network analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Network Analytics (version 2) provides near real-time visibility into network and transport-layer traffic patterns and DDoS attacks. Network Analytics visualizes packet and bit-level data, the same data available via the Network Analytics dataset of the GraphQL Analytics API.
 
 Requirements

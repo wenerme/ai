@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-rou
 
 # Using a dynamic route
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 Ensure your gateway has [authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) turned on and you have your upstream providers keys stored with [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/get-started/og.png?v=35fb7f6
 
 # Get started with API Shield
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 API Shield protects your APIs by discovering endpoints, validating request schemas, and detecting abuse patterns. This guide walks through the initial setup from configuring session identifiers to enabling advanced protections.
 
 ## Session identifiers

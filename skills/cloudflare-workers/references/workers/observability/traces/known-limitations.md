@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/traces/known-limi
 
 # Known limitations
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/known-limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers tracing is currently in open beta. This page documents current limitations and any upcoming features on our roadmap.
 
 To provide more feedback and send feature requests, head to the [Workers tracing GitHub discussion ↗︎](https://github.com/cloudflare/workers-sdk/discussions/11062).

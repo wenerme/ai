@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Renew
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/renew-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom hostname certificates have a 90-day validity period and are available for renewal 30 days before their expiration.
 
 The validation method selected when you create a custom hostname applies to initial certificate issuance. During an Automated Certificate Management Environment (ACME) renewal, Cloudflare selects a method based on the hostname's current configuration and eligibility.

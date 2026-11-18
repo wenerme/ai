@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/www-redirect/og.png?v=5908
 
 # Redirecting www to domain apex
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/www-redirect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to redirect a `www` subdomain to your apex domain (`example.com`).
 
 This setup assumes that you already have a [custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/) attached to your Pages project.

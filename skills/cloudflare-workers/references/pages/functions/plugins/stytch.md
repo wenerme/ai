@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/stytch/og.png?v
 
 # Stytch
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/stytch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Stytch Pages Plugin is a middleware which validates all requests and their `session_token`.
 
 ## Installation

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/build-configuration
 
 # Build configuration
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/build-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You may tell Cloudflare Pages how your site needs to be built as well as where its output files will be located.
 
 ## Build commands and directories

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/reference/headers/og.png?
 
 Which email headers you can set, which are auto-generated, and how they are validated
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When sending emails with Cloudflare Email Service, you can set custom headers using the `headers` field in the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) or [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/). The Email Service uses a **allowlist-based approach** — only explicitly approved headers are accepted. Any header not on the allowlist (and not an `X-` prefixed custom header) is rejected at API time with a clear error.
 
 When sending over [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/), set headers directly in the MIME message rather than through a `headers` field. The same allowlist applies.

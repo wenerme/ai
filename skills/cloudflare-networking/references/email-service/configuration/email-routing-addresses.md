@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/configuration/email-routi
 
 # Email routing rules and addresses
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In Email Routing, a routing rule pairs an email pattern with a destination — either a verified email address or a Worker. You can route emails to either:
 
 - Verified email addresses
@@ -136,7 +134,7 @@ This feature requires Wrangler 4.113.0 or later.
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-16",
+  "compatibility_date": "2026-11-18",
   "addresses": [
     "support@example.com",
     "*@example.com"
@@ -149,7 +147,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-18"
 addresses = ["support@example.com", "*@example.com"]
 ```
 

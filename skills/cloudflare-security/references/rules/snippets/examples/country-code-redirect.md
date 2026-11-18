@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/country-code-re
 
 Redirect a response based on the country code in the header of a visitor.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/country-code-redirect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ```js
 export default {
 	async fetch(request) {

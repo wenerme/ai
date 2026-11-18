@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protec
 
 # Verify DDoS protection
 
-Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/verify-ddos-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After onboarding your IP prefixes to Magic Transit, verify that your DDoS protection layers are active and correctly configured. Magic Transit includes multiple mitigation systems that work together. For a description of each layer and the execution order, refer to [DDoS protection](https://developers.cloudflare.com/magic-transit/ddos/).
 
 ## Prerequisites

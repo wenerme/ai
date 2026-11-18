@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/og.png?v=778bde13a1780
 
 # Harnesses
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A harness is the loop that makes an agent behave like an agent instead of a single model call.
 
 For what a harness does and how to choose one, refer to [Harness](https://developers.cloudflare.com/agents/concepts/harness/) in Concepts.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/codemode/how-it-works/og.p
 
 # How Code Mode works
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Code Mode is a pattern where a model writes code to compose tools. The `@cloudflare/codemode` package implements that pattern with an isolated executor, service connectors, and a durable runtime.
 
 These parts have separate responsibilities. The executor runs code but stores no state. Connectors provide capabilities but do not manage replay. The runtime records execution and controls approvals, replay, rollback, and reuse.

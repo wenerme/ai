@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-creden
 
 # Authenticate against R2 with temporary credentials
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following examples show how to generate R2 [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) via both the Temporary Credentials API and local client-side signing, and how to use the resulting credentials with an S3 client.
 
 ## Prerequisites

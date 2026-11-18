@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/load-b
 
 # Load Balancing components
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides a simplified overview of the three main components of the Cloudflare Load Balancing solution and how they relate to one another.
 
 ## Load balancers

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/config-examples/spark-sca
 
 # Spark (Scala)
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/config-examples/spark-scala/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is an example of how you can build an [Apache Spark ↗︎](https://spark.apache.org/) application (with Scala) which connects to Basin Catalog. This application is built to run locally, but it can be adapted to run on a cluster.
 
 ## Prerequisites

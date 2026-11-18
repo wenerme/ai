@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/security
 
 # Block user agents and lock zones
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/block-agents-lock-zones/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [User Agent (UA) Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/) rules match against specific User-Agent request headers sent by the browser or application accessing your site. UA rules are applied against the entire domain, and after a rule is triggered, you can decide which action to take against the visitor.
 
 Actions:

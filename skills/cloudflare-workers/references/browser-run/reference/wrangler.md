@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/reference/wrangler/og.png?v
 
 # Wrangler
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/) is a command-line tool for building with Cloudflare developer products.
 
 Use Wrangler to deploy projects that use the Workers Browser Run API.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/core/queues/o
 
 # Queues
 
-Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/queues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Queues Reference](https://developers.cloudflare.com/queues/)
 
 ## Producers

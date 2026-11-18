@@ -4,7 +4,6 @@ Documentation for the REST API that exposes token information.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
-- Status: Experiment
 
 Use this API to retrieve details about arbitrary tokens and to revoke them. Unlike other APIs that expose token information, this API allows you to retrieve details or revoke tokens without knowing the specific type of token.
 
@@ -114,9 +113,8 @@ Example response:
 - [SCIM access tokens added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243804) in GitLab 19.3.
 
 > [!flag]
-> The availability of this feature is controlled by a feature flag.
+> The availability of revoking pipeline trigger tokens is controlled by a feature flag.
 > For more information, see the history.
-> This feature is available for testing, but not ready for production use.
 
 Revokes, resets, or deletes a specified token based on the token type. This endpoint supports the following token types:
 
@@ -145,7 +143,7 @@ Supported attributes:
 
 | Attribute    | Type    | Required | Description              |
 |--------------|---------|----------|--------------------------|
-| `token`      | string  | Yes      | Existing token to revoke. `Personal`, `project` or `group access` tokens must begin with `glpat` or the current [custom prefix](../../administration/settings/account_and_limit_settings.md#personal-access-token-prefix). |
+| `token`      | string  | Yes      | Existing token to revoke. `Personal`, `project` or `group access` tokens must begin with `glpat` or the current [custom prefix](../../administration/settings/account_and_limit_settings.md#personal-access-token-prefix). To avoid exposing the token in the URL, send it in the JSON request body instead of as a query parameter. |
 
 If successful, returns [`204`](../rest/troubleshooting.md#status-codes) without content.
 

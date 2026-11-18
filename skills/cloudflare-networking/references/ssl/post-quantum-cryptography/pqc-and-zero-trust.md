@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-z
 
 # Post-quantum cryptography in Cloudflare One
 
-Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) replaces legacy corporate security perimeters with Cloudflare's global network, making access to the Internet and to corporate resources faster and safer for teams around the world.
 
 Organizations can obtain end-to-end post-quantum encryption of their private network traffic by sending it over Cloudflare One's post-quantum on-ramps and off-ramps. This protects traffic against [harvest-now, decrypt-later ↗︎](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks even if the individual applications are not yet upgraded to post-quantum encryption.
@@ -29,7 +27,7 @@ And off-ramps:
 - [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) off-ramp (using `cloudflared`)
 - Cloudflare IPsec off-ramp
 
-For traffic that egresses to the public Internet, [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) also provides post-quantum encryption as a Secure Web Gateway (SWG).
+For traffic that egresses to the public Internet, [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) also provides post-quantum encryption as a Secure Web Gateway (SWG).
 
 These on-ramps and off-ramps all use [hybrid post-quantum key agreement](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement).
 
@@ -113,7 +111,7 @@ Cloudflare also supports downgrade protection for IPsec tunnels via the [`IKE_SA
 
 A [secure web gateway (SWG) ↗︎](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) is used to secure access to third-party websites on the public Internet by intercepting and inspecting TLS traffic.
 
-[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) [supports post-quantum cryptography for HTTPS traffic](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#post-quantum-support). As long as the third-party website that is being inspected supports post-quantum key agreement, Cloudflare's SWG also supports post-quantum key agreement.
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) [supports post-quantum cryptography for HTTPS traffic](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#post-quantum-support). As long as the third-party website that is being inspected supports post-quantum key agreement, Cloudflare's SWG also supports post-quantum key agreement.
 
 Cloudflare Gateway's HTTPS filtering feature involves two post-quantum connections, as follows:
 
@@ -134,5 +132,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#page","headline":"Post-quantum cryptography in Cloudflare One","description":"Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/og.png?v=b8e5f308bb6efe9f","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#page","headline":"Post-quantum cryptography in Cloudflare One","description":"Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/og.png?v=b8e5f308bb6efe9f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/api/storage/og.png?v=90099f
 
 # Storage
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/api/storage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Mount an R2 bucket](https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).

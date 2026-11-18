@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/artifacts/og.
 
 # Artifacts
 
-Last updated May 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/artifacts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage [Artifacts](https://developers.cloudflare.com/artifacts/) namespaces, repositories, and repo-scoped tokens using Wrangler. Private beta
 
 ## `artifacts namespaces list`

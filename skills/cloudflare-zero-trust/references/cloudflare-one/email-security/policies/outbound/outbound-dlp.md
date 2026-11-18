@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Outbound Data Loss Prevention (DLP)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Compatibility
 
 Outbound DLP is only compatible with Microsoft 365. You need to have Microsoft E3 or E5 license to enable Outbound DLP.

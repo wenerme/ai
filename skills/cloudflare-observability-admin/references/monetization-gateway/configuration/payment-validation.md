@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/monetization-gateway/configuration/paym
 
 # Payment validation
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/monetization-gateway/configuration/payment-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Your origin receives payment authorization in the `PAYMENT-CONTEXT` header. Validate this context before serving paid content.
 
 ## Validate the context

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/lifecycle/job-queue/og.p
 
 # Jobs and alarms
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/job-queue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Durable Object has one [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/). The [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) owns that alarm and sets it from a durable queue of jobs. The queue is the `cf_agents_jobs` table in the object's SQLite database. `Scheduler` and `PiHarness` store their future work as jobs, so they share the one alarm without overwriting each other.
 
 A job names a function, a due time, and an optional payload. When the job is due, the alarm wakes the object, and the Lifecycle calls the `onJob()` hook of the job's owner. The owner is the host or the capability that pushed the job.

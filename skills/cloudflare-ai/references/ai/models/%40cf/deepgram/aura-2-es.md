@@ -10,13 +10,11 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)
+![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DQ57H7UQ.svg)
 
 # aura-2-es
 
 Text-to-Speech • Deepgram
-
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepgram/aura-2-es/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Model ID
 

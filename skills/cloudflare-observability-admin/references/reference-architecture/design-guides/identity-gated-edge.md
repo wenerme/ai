@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/design-guides/id
 
 # Design an identity-gated edge
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/identity-gated-edge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide turns the [identity-gated edge architecture](https://developers.cloudflare.com/reference-architecture/architectures/identity-gated-edge/) into a deployment plan. It covers product selection, security settings, origin connectivity, and acceptance tests. Start with one HTTP application, then repeat the verified pattern.
 
 The target state has four requirements: authorized entry, no alternate origin path, validated identity at the application boundary, and tested configuration changes. Adding Access or changing DNS alone does not establish all four.

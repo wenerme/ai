@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/guides/local-dev/og.png?v=a2
 
 # Local Development
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/local-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can run both your container and your Worker locally by running [`npx wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#dev) (or `vite dev` for Vite projects using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)) in your project's directory.
 
 To develop Container-enabled Workers locally, you will need to first ensure that a Docker compatible CLI tool and Engine are installed. For instance, you could use [Docker Desktop ↗︎](https://docs.docker.com/desktop/) or [Colima ↗︎](https://github.com/abiosoft/colima).

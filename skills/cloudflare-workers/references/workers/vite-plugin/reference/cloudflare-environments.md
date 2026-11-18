@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflar
 
 # Cloudflare Environments
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
 ```jsonc
@@ -21,7 +19,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"vars": {
@@ -46,7 +44,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 main = "./src/index.ts"
 upload_source_maps = true
 
@@ -140,7 +138,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"vars": {
@@ -165,7 +163,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 main = "./src/index.ts"
 upload_source_maps = true
 

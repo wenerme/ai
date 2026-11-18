@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-proxy/concepts/authentication/o
 
 # Authentication
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/concepts/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Privacy Proxy requires clients to authenticate before proxying traffic. This page explains the supported authentication methods and when to use them.
 
 ## Authentication methods

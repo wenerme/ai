@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/understand/how-charges-accrue/o
 
 # How charges accrue
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/how-charges-accrue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Every request to a Cloudflare-proxied domain can touch multiple products, each with its own billing dimension. This page walks through a realistic request lifecycle and shows which products generate charges at each stage.
 
 Understanding this flow helps you predict costs, identify optimization opportunities, and make sense of your invoice.

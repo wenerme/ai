@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/commands/follow-a-background-pr
 
 # Follow a background process
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/follow-a-background-process/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Read the output of a background process while it runs, from a request other than the one that started it. A page can show each line as the process prints it, and your Worker can wait until a process prints a line, such as `ready` from a development server.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/monorepos/og.png?v=
 
 # Monorepos
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/monorepos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 While some apps are built from a single repository, Pages also supports apps with more complex setups. A monorepo is a repository that has multiple subdirectories each containing its own application.
 
 ## Set up

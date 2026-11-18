@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/payload-logging/configure/og.png?v=
 
 # Configure payload logging for Managed Rules
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/configure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Managed rules**.
 3. Search for the managed ruleset you want to configure. Look for a rule with an *Execute* action.

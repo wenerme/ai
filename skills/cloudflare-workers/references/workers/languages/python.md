@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/og.png?v=900a3
 
 # Python Workers
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Workers provides a first-class Python experience, including support for:
 
 - Easy to install and fast-booting [Packages](https://developers.cloudflare.com/workers/languages/python/packages), including [FastAPI ↗︎](https://fastapi.tiangolo.com/), [Langchain ↗︎](https://pypi.org/project/langchain/), [Pydantic ↗︎](https://docs.pydantic.dev/latest/) and more.

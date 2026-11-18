@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpull/requesting-logs/og.png?v=5
 
 # Requesting logs
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpull/requesting-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Endpoints
 
 The three endpoints supported by the Logpull API are:

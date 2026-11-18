@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/web-assets/define-security-pro
 
 # Define security protections
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/define-security-protections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web Assets provides application context to security detections. This helps detections inspect the right traffic and lets you create rules focusing on targeted protections.
 
 Use this guide to connect a Web Assets operation to a security detection and create a rule that logs, challenges, blocks, or rate limits risky traffic.

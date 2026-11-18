@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/observability/og.png?v=9
 
 # Observability
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Tracing](https://developers.cloudflare.com/agents/runtime/observability/tracing/)
 - [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/observability/diagnostics-channels/)
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/reference/change-notices/2023-02-0
 
 # 2023-02-01 - Updates to security fields
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare will deploy some updates to security-related fields in Cloudflare Logs. These updates will affect the following datasets:
 
 - [HTTP Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/spend-limits/og.png
 
 # Spend limits
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/spend-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spend limits let you set cost-based budgets on your AI Gateway. When cumulative spend reaches the limit within a time window, AI Gateway blocks further requests with a `429` response until the window resets.
 
 Unlike [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/), which caps the number of requests, spend limits track actual dollar cost per request based on model pricing. You can scope limits to any combination of model, provider, or [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) dimensions like user ID, team, or application.

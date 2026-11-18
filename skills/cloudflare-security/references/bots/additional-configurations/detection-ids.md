@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/detectio
 
 # Detection IDs
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Detection IDs are static rules that detect predictable bot behavior with no overlap with human traffic. Each ID maps to a specific [detection method](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/) such as heuristics, verified bot detections, or anomaly detections. For example, a detection ID can identify when a client sends headers in a different order than what its claimed browser would use.
 
 If you are having an issue with one of our heuristics, detection IDs allow you to decide which heuristics to enforce on your zones using customer configurable heuristics. You can choose unique actions for different bots, detected through Cloudflare’s heuristics engine. You can block, allow, or serve alternate content to specific bots to meet the unique needs of your site’s traffic.

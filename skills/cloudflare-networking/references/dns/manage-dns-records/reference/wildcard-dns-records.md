@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/reference/wildca
 
 # Wildcard DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Normal DNS records map a domain name to one or multiple IP addresses or other associated resources to a specific domain name (a one-to-many mapping). Wildcard DNS records allow you to have a many-to-many mapping, for example if you had hundreds or thousands of subdomains you wanted to point to the same resources.
 
 Within Cloudflare, wildcard DNS records can be either [proxied or DNS-only](https://developers.cloudflare.com/dns/proxy-status/).

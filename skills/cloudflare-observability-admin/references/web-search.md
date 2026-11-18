@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-search/og.png?v=698c83104f2059c1
 
 # Cloudflare Web Search API
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Give your agents real-time web context with a single API call.
 
 Available in open beta

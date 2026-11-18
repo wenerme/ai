@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/
 
 # Monitor Groups
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/monitor-groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Group multiple health monitors together to create sophisticated health checks for your applications, ensuring more intelligent and resilient traffic steering.
 
 You can group multiple health monitors to build sophisticated health checks that more accurately reflect your application's true health. A Monitor Group allows you to combine several independent monitors, define aggregation logic, and use the collective result to determine the health of an origin pool.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/o
 
 # mTLS with Application Security
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This implementation requires an active [Zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones), a valid [Edge Certificate](https://developers.cloudflare.com/ssl/edge-certificates/), and [proxied](https://developers.cloudflare.com/dns/proxy-status/) hostname.

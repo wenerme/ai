@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation
 
 # Browser Isolation with firewall
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/network-dependencies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your organization uses a firewall or other policies to restrict Internet traffic, you may need to make a few changes to allow Browser Isolation to connect.
 
 ## Remoting client

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/get-started/og.png?v=2866461d5bbec76
 
 # Get started
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare R2 Storage allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services.
 
 ## Before you begin

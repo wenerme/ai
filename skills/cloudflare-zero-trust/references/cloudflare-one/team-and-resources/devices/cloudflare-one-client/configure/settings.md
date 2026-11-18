@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Device client settings
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Device client settings (formerly WARP) allow you to customize the Cloudflare One Client modes and permissions available to end users.
 
 - [Global device client settings](#global-device-client-settings) are configurations which apply to all devices enrolled in your Zero Trust organization.

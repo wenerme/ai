@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin/get-started/guide/og.png?v=fc9094
 
 # CLI
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin/get-started/guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build a request analytics pipeline with Wrangler.
 
 Record requests to a Cloudflare Worker with Basin Pipelines, store them as an Apache Iceberg table in Basin Catalog, and count requests by path with Basin SQL.

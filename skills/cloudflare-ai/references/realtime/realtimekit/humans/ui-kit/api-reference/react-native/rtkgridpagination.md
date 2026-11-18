@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkGridPagination
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkgridpagination/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pagination controls for navigating between pages of participants in the grid. Shows page numbers and navigation arrows.
 
 ## Properties

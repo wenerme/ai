@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/cache/cache-keys/og.png?v=be4ec
 
 # Cache keys
 
-Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/cache-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Every cached response is stored under a **cache key**. When a request arrives, Cloudflare computes a cache key for it and looks it up — on a hit, the stored response is returned; on a miss, your Worker runs and its response is stored under that key for next time.
 
 Two requests that produce the same cache key share the same cached response. Two requests that produce different cache keys get independent cached entries.

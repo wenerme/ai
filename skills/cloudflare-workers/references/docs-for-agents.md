@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/docs-for-agents/og.png?v=dd887e171c76e4
 
 # Docs for agents
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/docs-for-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI agents — tools like Cursor, GitHub Copilot, and Claude Code — can answer questions about Cloudflare products, generate configuration, and call Cloudflare APIs on your behalf. Cloudflare documentation provides content in agent-friendly formats, agent skills, and MCP servers so your AI agent can look up documentation and interact with Cloudflare services directly.
 
 This page explains the available approaches and how to set them up.

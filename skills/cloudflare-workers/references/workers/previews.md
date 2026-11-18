@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/previews/og.png?v=22643d664d212
 
 # Previews
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Previews** give each branch an isolated, production-like environment under the same Worker. Each Preview is [configured with its own variables, secrets, and bindings](https://developers.cloudflare.com/workers/previews/configuration/), served on its own [URL](https://developers.cloudflare.com/workers/previews/custom-domains/), and has its own [observability](https://developers.cloudflare.com/workers/previews/test-and-debug/).
 
 Worker Previews requires `Wrangler 4.135.0` or later. Update the project dependency because project commands do not use a newer global installation.

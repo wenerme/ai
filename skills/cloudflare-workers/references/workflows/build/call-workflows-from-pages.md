@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/call-workflows-from-pag
 
 # Call Workflows from Pages
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/call-workflows-from-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Static Assets
 
 To call Workflows from Pages, you are required to deploy a separate Worker containing your Workflows. We recommend using [**Static Assets**](https://developers.cloudflare.com/workers/static-assets/) instead, as this allows you to add your Workflows directly to your Static Assets Worker.

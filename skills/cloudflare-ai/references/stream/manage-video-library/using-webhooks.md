@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/manage-video-library/using-webho
 
 # Use webhooks
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Webhooks notify your service when videos successfully finish processing and are ready to stream or if your video enters an error state.
 
 Note

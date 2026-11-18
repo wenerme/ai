@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkLeaveDialog
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-leave-dialog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A dialog that presents leave and end meeting options. Displays different options based on host permissions.
 
 ## Initializer parameters

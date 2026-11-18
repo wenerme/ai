@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/og.p
 
 # Add a custom domain to a branch
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will learn how to add a custom domain (`staging.example.com`) that will point to a specific branch (`staging`) on your Pages project.
 
 This will allow you to have a custom domain that will always show the latest build for a specific branch on your Pages project.

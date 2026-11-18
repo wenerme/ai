@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/commands/run-python-code/og.png
 
 # Run Python code
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-python-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run Python code in a sandbox and return its output. The image sets the Python version and the packages the code can import. Files that one run writes stay in the sandbox for the next run.
 
 ## Prerequisites

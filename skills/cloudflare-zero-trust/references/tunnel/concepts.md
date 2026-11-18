@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/concepts/og.png?v=75878c44ba6b5d
 
 # Tunnel fundamentals
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Cloudflare Tunnel is a secure link between Cloudflare's network and your infrastructure, with a stable identity in your Cloudflare account.
 
 Tunnel connections begin inside your network and remain open to Cloudflare, so the resources behind them do not need public IP addresses or open inbound ports. Traffic can reach those resources through the tunnel instead of connecting to them directly over the Internet.

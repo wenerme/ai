@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/faq/og.png?v=fb84b
 
 # Client-side security FAQ
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## What happens to CSP HTTP headers set by the origin server when I create a content security rule?
 
 When you create content security rules, Cloudflare will generate content security policy (CSP) directives from those rules based on their configuration:

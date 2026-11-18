@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/reference/gateway-status/og.png?v=
 
 # Gateway status
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/reference/gateway-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you [create a gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway), it can have one of several statuses.
 
 | Status | Definition |

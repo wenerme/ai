@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/reference/terraform/og.png?v
 
 # Terraform
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/reference/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Get started with API Shield using Terraform from the examples below. For more information on how to use Terraform with Cloudflare, refer to the [Terraform documentation](https://developers.cloudflare.com/terraform/).
 
 The following resources are available to configure through Terraform:

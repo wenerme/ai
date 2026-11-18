@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/service-pro
 
 # Service providers
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Service-to-service integrations allow the Cloudflare One Client to get device posture data from a third-party API. To use this feature, you must [deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) to your devices and enable the desired posture checks.
 
 ## Supported Client modes

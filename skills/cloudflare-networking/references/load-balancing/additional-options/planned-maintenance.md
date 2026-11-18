@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/plann
 
 # Perform planned maintenance
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you change application settings or add new assets, you will likely want to make these changes on one endpoint at a time. Going endpoint by endpoint reduces the risk of changes and ensures a more consistent user experience.
 
 To take endpoints out of rotation gradually (important for session-based load balancing), [enable endpoint drain](#gradual-rotation) on your load balancer. This option is only available for [proxied load balancers (orange-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/).

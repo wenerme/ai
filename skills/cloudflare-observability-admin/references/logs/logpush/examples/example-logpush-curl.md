@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/examples/example-logpush-c
 
 # Manage Logpush with cURL
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can manage your Cloudflare Logpush service from the command line using cURL.
 
 Before getting started, review the following documentation:

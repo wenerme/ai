@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/staging-environme
 
 # Staging environment
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use your certificate staging environment to test new custom (modern) certificates before pushing them to your production environment. This process helps you solve potential certificate problems **before** there's an incident, such as when:
 
 - You make a mistake when uploading a new custom certificate.

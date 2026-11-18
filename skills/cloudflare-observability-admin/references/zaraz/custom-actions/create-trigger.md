@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/og.
 
 # Create a trigger
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Triggers define the conditions under which a tool will start an action. Since a tool must have actions in order to work, and actions must have triggers, it is important to set up your website's triggers correctly. A trigger can be made out of one or more Rules. Zaraz supports [multiple types of Trigger Rules](https://developers.cloudflare.com/zaraz/reference/triggers/).
 
 1. In the Cloudflare dashboard, go to the **Tag setup** page. [Go to **Tag setup** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)

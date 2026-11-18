@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/traces/spans-and-
 
 # Spans and attributes
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Workers provides automatic tracing instrumentation **out of the box** - no code changes or SDK are required.
 
 ## Currently supported spans and attributes

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/publi
 
 # Public endpoint settings
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure public endpoints to expose your AI Search instance directly to users without requiring authentication. This enables you to share your AI Search functionality with external users, or to integrate it into public-facing applications.
 
 You can enable a public endpoint on a single instance or on a whole [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/), which searches across several instances and merges the results. Everything on this page applies to both. For what is specific to namespaces, such as choosing which instances the endpoint can reach, refer to [Namespace public endpoints](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/).

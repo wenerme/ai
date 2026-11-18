@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/og.p
 
 # Rate limiting parameters
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The available rate limiting rule parameters are described in the following sections.
 
 For more information on the current rule configuration restrictions, refer to [Configuration restrictions](#configuration-restrictions).

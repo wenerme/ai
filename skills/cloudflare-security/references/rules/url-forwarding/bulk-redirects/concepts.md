@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/con
 
 # Bulk Redirects concepts
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bulk Redirects involve the following elements:
 
 - **URL redirect**: An entry with a source URL, a target URL, a status code, and redirect parameters. URL redirects are the individual items in Bulk Redirect Lists.

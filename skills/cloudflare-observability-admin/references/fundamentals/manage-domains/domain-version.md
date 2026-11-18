@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/domain-vers
 
 # Change your domain version
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Version Management](https://developers.cloudflare.com/version-management/) is available for Enterprise customers and allows you to safely test, deploy, and roll back changes to your zone configurations.
 
 ## Enable versioning

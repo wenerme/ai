@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/o
 
 # Playwright MCP
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [`@cloudflare/playwright-mcp` ↗︎](https://github.com/cloudflare/browser-run/tree/main/packages/playwright-mcp-cloudflare) is a [Playwright MCP ↗︎](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
 
 This server enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models. Its key features are:
@@ -73,7 +71,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-11",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "BROWSER",
@@ -101,7 +99,7 @@ name = "playwright-mcp-example"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-11"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

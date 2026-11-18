@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/h
 
 # Configure via API
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure the HTTP DDoS Attack Protection managed ruleset by defining overrides using the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/).
 
 Each zone has the HTTP DDoS Attack Protection managed ruleset enabled by default. This means that you do not need to deploy the managed ruleset to the `ddos_l7` phase ruleset explicitly. You only have to create a rule in the phase ruleset to deploy the managed ruleset if you need to configure overrides.

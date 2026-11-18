@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/reference/og.png?v=ea06f8c4c6dd1e
 
 # Reference
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the reference content to learn more about specific caching functionality.
 
 - [CDN Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/cdn/)

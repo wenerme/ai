@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/routes/configur
 
 # Configure initial resolved IPs
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Initial resolved IPs (also called token IPs) are ephemeral addresses that Gateway assigns to DNS queries so it can associate hostname-based traffic with the correct policy or tunnel at the network layer, where hostname information is not usually available. Refer to [Gateway initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips) for a list of features that depend on this range.
 
 By default, initial resolved IPs are assigned from:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Ruleset logic
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/ruleset-logic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Network Firewall rules are performed after Cloudflare's DDoS mitigations have been applied. The two systems are independent, and therefore, permitting traffic inside Cloudflare Network Firewall does not allow it within our DDoS mitigations. Traffic can still be blocked by DDoS mitigations that are applied first in the flow through Cloudflare's systems.
 
 By default, Cloudflare Network Firewall policies allow all traffic until explicitly blocked by a rule. If no policy is configured, all traffic is permitted after DDoS mitigations have been applied.

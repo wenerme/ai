@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/demos/og.png?v=d52bc43ec6ea1b
 
 # Architectures
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how you can use Vectorize within your existing architecture.
 
 ## Reference architectures

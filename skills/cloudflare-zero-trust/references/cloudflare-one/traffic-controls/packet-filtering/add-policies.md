@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Add policies
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/add-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A root ruleset is the top-level container that holds all your firewall policies. You can check for an existing root ruleset from the dashboard or via the [Account rulesets API](https://developers.cloudflare.com/api/resources/rulesets/methods/list/). If you are a new Magic Transit customer, you may not have a root ruleset created for your account. To view examples for root rulesets, review the [Cloudflare Network Firewall Terraform documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/magic_firewall_ruleset).
 
 By default, you can create a maximum of 200 policies. Contact your account team to request a higher limit if needed. We recommend you create lists of IP addresses to reference within policies to streamline policy management.

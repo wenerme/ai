@@ -1314,6 +1314,113 @@ Use `MM:SS` format to reference specific sections:
 
 {% /tabs %}
 
+## Clip audio intervals  {% id="clipping-intervals" %}
+
+Pass `processing` (`{"type": "static", "start_offset": "...", "end_offset":
+"..."}`) on an `audio` block to inspect only a specific time range. Gemini bills
+tokens only for the clipped duration:
+
+* `start_offset` (string, optional): Start timestamp in seconds (such as
+  `"30s"` or `"12.5s"`). Defaults to `"0s"`. Values past the audio length return
+  `400 INVALID_ARGUMENT`.
+* `end_offset` (string, optional): End timestamp in seconds. Defaults to the end
+  of the file and clamps to the audio length if it exceeds the audio duration.
+  Must be greater than `start_offset`.
+
+{% tabs %}
+  {% tab filename="audio_clip.py" label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  uploaded_file = client.files.upload(file="interview.mp3")
+  
+  interaction = client.interactions.create(
+      model="gemini-4-hydrogen",
+      input=[
+          {
+              "type": "audio",
+              "uri": uploaded_file.uri,
+              "mime_type": uploaded_file.mime_type,
+              "processing": {
+                  "type": "static",
+                  "start_offset": "60s",
+                  "end_offset": "150s",
+              },
+          },
+          {"type": "text", "text": "Summarize the speaker's main points in this segment."},
+      ],
+  )
+  
+  print(interaction.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab filename="audio_clip.js" label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const ai = new GoogleGenAI({});
+  
+  const uploadedFile = await ai.files.upload({
+    file: "interview.mp3",
+    config: { mimeType: "audio/mpeg" },
+  });
+  
+  const interaction = await ai.interactions.create({
+    model: "gemini-4-hydrogen",
+    input: [
+      {
+        type: "audio",
+        uri: uploadedFile.uri,
+        mime_type: uploadedFile.mimeType,
+        processing: {
+          type: "static",
+          start_offset: "60s",
+          end_offset: "150s",
+        },
+      },
+      {
+        type: "text",
+        text: "Summarize the speaker's main points in this segment.",
+      },
+    ],
+  });
+  
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab filename="audio_clip.sh" label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "gemini-4-hydrogen",
+      "input": [
+        {
+          "type": "audio",
+          "uri": "https://generativelanguage.googleapis.com/v1beta/files/AUDIO_FILE_ID",
+          "mime_type": "audio/mpeg",
+          "processing": {
+            "type": "static",
+            "start_offset": "60s",
+            "end_offset": "150s"
+          }
+        },
+        {"type": "text", "text": "Summarize the speaker'\''s main points in this segment."}
+      ]
+    }'
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
 ## Count tokens  {% id="count-tokens" %}
 
 Count tokens in an audio file:

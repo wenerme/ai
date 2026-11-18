@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/em
 
 # Email security logs
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security allows you to configure Logpush to export two types of log data: detection logs (records of threats identified in email traffic) and user action logs (records of administrative actions taken via the API or the dashboard). Each log type requires separate configuration.
 
 ## Enable detection logs

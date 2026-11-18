@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/setup/secure-private-app
 
 # Clientless SSH
 
-Last updated Mar 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/clientless-ssh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Provide secure, in-browser command line access to an internal server without SSH client software on the user's device. This is useful when you need to give developers or IT staff remote access to servers for administration or troubleshooting from any browser.
 
 To explore other access scenarios, refer to [Secure private apps](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/).

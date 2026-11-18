@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/troubleshooting/mp4-videos-on-ios
 
 # Issues with MP4 videos on iOS and Safari
 
-Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/mp4-videos-on-ios-and-safari/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When traffic is proxied through Cloudflare, Safari on macOS and iOS devices may fail to load MP4 video files.
 
 This issue occurs because Safari handles HTTP range requests differently than other browsers, particularly in how it processes ETags during video streaming.

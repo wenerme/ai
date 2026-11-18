@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/performance/image-optimizatio
 
 # Optimize images
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/image-optimization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Images are often the largest assets on a page and the biggest contributor to slow load times. Cloudflare Images resizes and converts images on-the-fly to modern formats like WebP and AVIF, while Polish compresses existing images without visible quality loss.
 
 ## Solutions

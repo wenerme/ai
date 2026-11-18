@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/og.p
 
 # Geolocation
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Privacy Proxy preserves user geolocation without exposing real IP addresses. This ensures location-based services work correctly while maintaining privacy.
 
 ## Why geolocation matters

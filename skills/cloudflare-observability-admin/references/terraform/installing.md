@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/installing/og.png?v=9ec0e980c
 
 # Get started
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/installing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Install the latest version of the Terraform CLI from [HashiCorp's official installation guide ↗︎](https://developer.hashicorp.com/terraform/install).
 
 Caution

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/
 
 # Place a waiting room
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When [configuring a waiting room](https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/), you need to indicate which pages the waiting room will cover.
 
 Your waiting room requires at least one hostname and path in its configuration settings. There is an implied wildcard after the path, meaning the waiting room will also apply to any subpaths. When there is an active queue, all new users will enter the queue at any URLs covered by this hostname and path combination. If you have multiple waiting rooms, the waiting room with the most specific subpath takes precedence.

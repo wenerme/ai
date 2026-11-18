@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Okta (SAML)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One can integrate SAML with Okta as an identity provider.
 
 ## Set up Okta as a SAML provider

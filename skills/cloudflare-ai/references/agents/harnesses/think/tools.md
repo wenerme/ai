@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=9
 
 # Tools
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Think provides built-in workspace file tools on every turn, plus integration points for custom tools, code execution, and dynamic extensions.
 
 ## Tool merge order

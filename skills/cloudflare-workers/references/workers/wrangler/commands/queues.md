@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/queues/og.png
 
 # Queues
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/queues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage your Workers [Queues](https://developers.cloudflare.com/queues/) configurations using Wrangler.
 
 ## `queues list`

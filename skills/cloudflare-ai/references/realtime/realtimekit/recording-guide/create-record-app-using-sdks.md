@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/cr
 
 # Create Custom Recording App Using Recording SDKs
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkgrid/).
 
 If you wish to have a customized layout for your recording application, RealtimeKit's custom recording SDKs provide the flexibility to tailor the appearance of your recordings according to your preferences. You can choose from options like:

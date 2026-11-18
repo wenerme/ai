@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/reference/og.png?v=c5a7efd68
 
 # Reference
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Was this helpful?
 
 YesNo

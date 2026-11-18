@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/mesh/og.png?v=8d5812809f56150a
 
 # Cloudflare Mesh
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect services and devices with post-quantum encrypted private networking through Cloudflare.
 
 Cloudflare Mesh gives every enrolled server, laptop, and phone a private Mesh IP. Participants can communicate by IP over TCP, UDP, or ICMP, including device-to-device connections that do not require customer-managed networking infrastructure.
@@ -29,6 +27,10 @@ Note
 Cloudflare Mesh was previously known as WARP Connector and peer-to-peer connectivity. Existing WARP Connectors are now called Mesh nodes. Existing deployments continue to work without migration.
 
 For details about how Mesh works, protocol requirements, and Mesh IP assignment, refer to [Concepts](https://developers.cloudflare.com/mesh/concepts/).
+
+Choosing a connector
+
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) is the default connector for private access and private networks. To publish an HTTP application on the public Internet, use [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/). For code on Cloudflare, use [Workers VPC](https://developers.cloudflare.com/workers-vpc/). For whole sites, use [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/). To compare them, refer to [Connector selection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/choose-a-connector/).
 
 ## Use cases
 
@@ -56,6 +58,8 @@ Configure routes and high availability for Mesh nodes.
 Connect devices, servers, and sites, or deploy Mesh in containers.
 
 ## Mesh vs. Cloudflare Tunnel
+
+For a side-by-side guide to every connector, including Workers VPC and Cloudflare WAN, refer to [Connector selection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/choose-a-connector/).
 
 Use Mesh when participants need bidirectional private IP connectivity or when a workload requires stable, long-lived connections. Use [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) when you want to publish specific applications, hostnames, or IP routes through an outbound-only connector.
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigqu
 
 # Using BigQuery with Workers AI
 
-Last updated Jan 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The easiest way to get started with [Workers AI](https://developers.cloudflare.com/workers-ai/) is to try it out in the [Multi-modal Playground ↗︎](https://multi-modal.ai.cloudflare.com/) and the [LLM playground ↗︎](https://playground.ai.cloudflare.com/). If you decide that you want to integrate your code with Workers AI, you may then decide to use its [REST API endpoints](https://developers.cloudflare.com/workers-ai/get-started/rest-api/) or a [Worker binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
 
 But what about the data? What if you want these models to ingest data that is stored outside Cloudflare?

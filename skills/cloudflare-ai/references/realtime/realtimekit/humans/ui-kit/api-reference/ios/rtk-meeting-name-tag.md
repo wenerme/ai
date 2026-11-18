@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkMeetingNameTag
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-meeting-name-tag/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A name tag view that displays the participant name and a microphone status icon. Automatically updates when the participant's audio state changes.
 
 ## Initializer parameters

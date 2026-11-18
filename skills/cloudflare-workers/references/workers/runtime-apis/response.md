@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/response/og.png?v=
 
 # Response
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/response/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `Response` interface represents an HTTP response and is part of the Fetch API.
 
 ---
@@ -123,7 +121,7 @@ The Workers implementation of the `Response` interface includes several extensio
 
 TypeScript users
 
-Workers type definitions (from `@cloudflare/workers-types` or generated via [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types)) define a `Response` type that includes Workers-specific properties like `cf` and `webSocket`. This type is not directly compatible with the standard `Response` type from `lib.dom.d.ts`. If you are working with code that uses both Workers types and standard web types, you may need to use type assertions.
+Workers type definitions (from `@cloudflare/workers-types` or generated via [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types)) define a `Response` type that includes Workers-specific properties like `cf` and `webSocket`. This type is not directly compatible with the standard `Response` type from `lib.dom.d.ts`. If you are working with code that uses both Workers types and standard web types, you may need to use type assertions.
 
 ### The `cf` property
 
@@ -159,5 +157,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/response/#page","headline":"Response","description":"Interface that represents an HTTP response.","url":"https://developers.cloudflare.com/workers/runtime-apis/response/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/response/og.png?v=5a3e3f032dcd14c6","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/response/#page","headline":"Response","description":"Interface that represents an HTTP response.","url":"https://developers.cloudflare.com/workers/runtime-apis/response/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/response/og.png?v=5a3e3f032dcd14c6","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

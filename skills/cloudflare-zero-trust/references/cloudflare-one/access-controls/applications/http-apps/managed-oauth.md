@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Managed OAuth
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you protect an application with Cloudflare Access, by default non-browser clients — such as CLIs, AI agents, SDKs, and scripts — cannot complete the browser-based login redirect. They receive a `302` redirect with no usable token or authorization endpoint.
 
 Managed OAuth solves this by turning Access into a standard OAuth 2.0 authorization server for your application. Access enforces the same policies as a browser login, and your origin sees no difference.

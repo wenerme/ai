@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkLivestreamViewerCount
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/livestream-viewer-count/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Displays the current viewer count for a livestream.
 
 ## Methods

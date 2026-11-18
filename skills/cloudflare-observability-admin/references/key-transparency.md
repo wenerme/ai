@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/key-transparency/og.png?v=ca2f11507f7fa
 
 # Key Transparency Auditor
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/key-transparency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Secure the distribution of public keys in your end-to-end encrypted (E2EE) messaging systems
 
 Cloudflare's Key Transparency Auditor aims to secure the distribution of public keys for end-to-end encrypted (E2EE) messaging systems like [WhatsApp ↗︎](https://engineering.fb.com/2023/04/13/security/whatsapp-key-transparency/). It achieves this by building a verifiable append-only data structure called a Log, similar to [Certificate Transparency ↗︎](https://developer.mozilla.org/en-US/docs/Web/Security/Certificate_Transparency).

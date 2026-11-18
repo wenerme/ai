@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/og.png
 
 # Validate the Access token with FastAPI
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial covers how to validate that the [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) is on requests made to FastAPI apps.
 
 **Time to complete:** 15 minutes

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/build-your-own/og.png?
 
 # Build your own harness
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/build-your-own/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Experimental
 
 The building blocks on this page are experimental: the Sessions, Streams, and Tasks capabilities, and `HarnessStore` from `agents/harness/store`. Their APIs may change in any release. To run an agent loop on a stable API today, use the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/).

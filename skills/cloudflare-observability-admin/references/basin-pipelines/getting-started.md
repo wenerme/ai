@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/getting-started/og.png?
 
 # Getting started
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/getting-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will instruct you through:
 
 - Creating an [API token](https://developers.cloudflare.com/r2/api/tokens/) needed for pipelines to authenticate with your data catalog.

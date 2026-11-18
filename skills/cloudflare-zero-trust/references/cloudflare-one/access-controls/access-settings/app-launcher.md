@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-s
 
 # App Launcher
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With the Access App Launcher, users can open all applications that they have access to from a single dashboard.
 
 The App Launcher is available at a team domain unique to your Cloudflare Zero Trust account, for example `mycompany.cloudflareaccess.com`.

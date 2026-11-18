@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/examples/email-routing/og
 
 # Email routing
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Advanced patterns and examples for routing incoming emails with Cloudflare Email Service.
 
 - [Email storage and processing](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/)

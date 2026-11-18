@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # MeetingViewController
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/meeting-view-controller/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The main meeting screen view controller. Displays the participant grid, plugins, screen share, header, and control bar.
 
 ## Initializer parameters

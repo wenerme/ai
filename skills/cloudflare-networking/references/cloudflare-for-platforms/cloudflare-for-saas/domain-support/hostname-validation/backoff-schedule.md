@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Backoff schedule
 
-Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/backoff-schedule/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After you create a custom hostname, Cloudflare has to [validate that hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/).
 
 Attempts to validate a Custom Hostname are distributed over seven days (a total of 75 retries). At the end of this schedule, if the validation is unsuccessful, the custom hostname will be deleted. The function that determines the next check varies based on the number of attempts:

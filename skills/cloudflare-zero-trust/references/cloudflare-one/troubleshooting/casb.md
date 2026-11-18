@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/casb/og.
 
 # CASB
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/casb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this guide to troubleshoot common issues with Cloud Access Security Broker (CASB).
 
 ## Security findings

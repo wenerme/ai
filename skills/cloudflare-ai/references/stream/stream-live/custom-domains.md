@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/custom-domains/og.pn
 
 # Add custom ingest domains
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With custom ingest domains, you can configure your RTMPS feeds to use an ingest URL that you specify instead of using `live.cloudflare.com.`
 
 Note

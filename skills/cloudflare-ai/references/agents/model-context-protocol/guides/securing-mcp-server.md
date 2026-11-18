@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/se
 
 # Securing MCP servers
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 MCP servers, like any web application, need to be secured so they can be used by trusted users without abuse. The MCP specification uses OAuth 2.1 for authorization between MCP clients and servers.
 
 This guide covers what to get right when you protect an MCP server with [Workers OAuth Provider ↗︎](https://github.com/cloudflare/workers-oauth-provider): the authorization server's consent page, signing users in through a third-party provider, and the checks your MCP server makes on every request. Refer to [Authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/) to set up the authorization server and the MCP server first.

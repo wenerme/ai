@@ -16,8 +16,6 @@ x
 
 Text Generation • xiaomi
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xiaomi/mimo-v2.6-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `xiaomi/mimo-v2.6-pro` Copy

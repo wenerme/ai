@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/accou
 
 # Zero Trust Network Session Logs
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Network session logs are generated for all traffic proxied through Cloudflare Gateway across all supported [on-ramps](https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options/), such as the Cloudflare One Client (WARP), proxy endpoints (PAC files), Browser Isolation, and Cloudflare Tunnel.
 
 The descriptions below detail the fields available for `zero_trust_network_sessions`.

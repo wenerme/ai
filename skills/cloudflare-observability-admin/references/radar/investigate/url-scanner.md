@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/investigate/url-scanner/og.png?v=
 
 # URL Scanner
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/url-scanner/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To better understand Internet usage around the world, use Cloudflare's URL Scanner. With Cloudflare's URL Scanner, you have the ability to investigate the details of a domain, IP, URL, or ASN. Cloudflare's URL Scanner is available in the Security Center of the Cloudflare dashboard, [Cloudflare Radar ↗︎](https://radar.cloudflare.com/scan), and the Cloudflare [API](https://developers.cloudflare.com/api/resources/url_scanner/).
 
 ## Use the API

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/concepts/participa
 
 # Participant
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before a user can join a meeting through the RealtimeKit SDK, your backend must add that user as a participant to that meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/). In RealtimeKit, a **participant** represents a user who is allowed to join a specific meeting.
 
 You can think of this as enrolling a student into a classroom. The meeting is the classroom, and adding a participant is how you register a user so that they are allowed to attend.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/permissions/og.png?v=48e38
 
 # Permissions
 
-Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is a description of the available permissions for tokens and roles as they relate to Logs. For information about how to create an API token, refer to [Creating API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
 ## Tokens

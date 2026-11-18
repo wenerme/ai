@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/turn/analytics/og.png?v=a3f317
 
 # Analytics
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Realtime TURN service counts ingress and egress usage in bytes. You can access this real-time and historical data using the TURN analytics API. You can see TURN usage data in a time series or aggregate that shows traffic in bytes over time.
 
 Cloudflare TURN analytics is available over the GraphQL API only.

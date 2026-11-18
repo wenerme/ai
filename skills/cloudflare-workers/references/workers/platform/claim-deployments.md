@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/claim-deployments/og.p
 
 # Claim deployments (temporary accounts)
 
-Last updated Jul 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/claim-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Temporary preview accounts let you deploy and test [Workers](https://developers.cloudflare.com/workers/) before you authenticate with Cloudflare. You can then claim the account to keep its deployments and supported resources.
 
 [Cloudflare Drop ↗︎](https://www.cloudflare.com/drop/) demonstrates this preview-and-claim lifecycle for static sites. Platforms can use the REST API to offer a similar experience for generated applications.

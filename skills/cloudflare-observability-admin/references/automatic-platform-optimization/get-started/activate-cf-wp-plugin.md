@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/automatic-platform-optimization/get-sta
 
 # Activate the Cloudflare WordPress plugin
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After you [change your nameservers](https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/), activate the Cloudflare WordPress plugin.
 
 ## Prerequisites

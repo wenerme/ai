@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/version-management/troubleshooting/og.p
 
 # Troubleshooting
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this page to resolve common issues with Version Management. If the steps below do not solve your problem, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and include the details listed in [Information for Support](#information-for-support).
 
 ## Version Management is greyed out or unavailable

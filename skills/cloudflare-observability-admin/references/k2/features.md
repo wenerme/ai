@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/k2/features/og.png?v=978061b586fa0026
 
 # Features
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Produce records](https://developers.cloudflare.com/k2/features/produce/)
 - [Consume records](https://developers.cloudflare.com/k2/features/consume/)
 

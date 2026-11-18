@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/private-origins/og.png?v=66c53ac763
 
 # Cloudflare Services for Private Origins
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/private-origins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
 
 Connect Cloudflare's application services to origins in your private network. Traffic reaches the origin over your existing Cloudflare One connectivity: Cloudflare WAN (IPsec, GRE, or CNI), Cloudflare Tunnel, or Cloudflare Mesh. The CDN, WAF, Cache, and other proxied features apply to this traffic the same way they apply to traffic destined for public origins.

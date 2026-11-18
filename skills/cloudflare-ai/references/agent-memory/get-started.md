@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agent-memory/get-started/og.png?v=2a514
 
 # Get started
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Add Agent Memory to an agent so it can recall durable context across conversations.
 
 This guide uses the [Agents SDK](https://developers.cloudflare.com/agents/) to expose memory recall as a model-callable tool. The same pattern applies if you use another agent framework: store memories with `ingest()` or `remember()`, expose `recall()` through one of your agent's tools, and use the system prompt to tell the model when to search memory.
@@ -129,7 +127,7 @@ Add an `agent_memory` binding to your Wrangler configuration, and register your 
   "main": "src/server.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-30",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -166,7 +164,7 @@ name = "memory-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]

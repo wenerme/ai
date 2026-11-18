@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Third-party integrations
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/third-party/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Here you can find a list of partners that have developed integrations with Logpush and have instructions documented.
 
 - [Axiom](https://axiom.co/docs/apps/cloudflare-logpush)

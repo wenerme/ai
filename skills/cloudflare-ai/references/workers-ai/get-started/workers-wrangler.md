@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler
 
 # Workers Bindings
 
-Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will instruct you through setting up and deploying your first Workers AI project. You will use [Workers](https://developers.cloudflare.com/workers/), a Workers AI binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.
 
 1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).

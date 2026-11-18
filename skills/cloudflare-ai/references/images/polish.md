@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/polish/og.png?v=341eb292f6de71d1
 
 # Cloudflare Polish
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/polish/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Polish is a one-click image optimization product that automatically optimizes images in your site. Polish strips metadata from images and reduces image size through lossy or lossless compression to accelerate the speed of image downloads.
 
 When an image is fetched from your origin, our systems automatically optimize it in Cloudflare's cache. Subsequent requests for the same image will get the smaller, faster, optimized version of the image, improving the speed of your website.

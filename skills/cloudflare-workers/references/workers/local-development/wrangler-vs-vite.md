@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/local-development/wrangler-vs-v
 
 # Choosing between Wrangler & Vite
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wrangler and the Cloudflare Vite plugin both provide local development environments for Workers. Both support backend Workers, local and remote bindings, and multi-Worker applications.
 
 Choose based on the build tools your project uses. You can also use the Vite plugin for development and builds while using Wrangler for deployment and other Workers commands.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/queryin
 
 # Querying Magic Transit endpoint health check results with GraphQL
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-magic-transit-endpoint-healthcheck-results/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) to query endpoint health check results for your account. The `magicEndpointHealthCheckAdaptiveGroups` dataset returns probe results aggregated by the dimensions and time interval you specify.
 
 Send all GraphQL queries as HTTP `POST` requests to `https://api.cloudflare.com/client/v4/graphql`.

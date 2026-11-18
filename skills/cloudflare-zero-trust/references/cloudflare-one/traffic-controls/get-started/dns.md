@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-sta
 
 # DNS filtering
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Secure Web Gateway allows you to inspect DNS traffic — the queries your devices make to translate domain names like `example.com` into IP addresses — and control which websites users can visit. Because every connection starts with a DNS lookup, DNS filtering blocks threats at the earliest stage of a connection, before the device ever reaches the destination. Use DNS policies to block malware domains, phishing sites, or entire content categories across your organization.
 
 Note

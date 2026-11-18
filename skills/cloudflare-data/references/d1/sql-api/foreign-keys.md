@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/sql-api/foreign-keys/og.png?v=5be40d
 
 # Define foreign keys
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/sql-api/foreign-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 supports defining and enforcing foreign key constraints across tables in a database.
 
 Foreign key constraints allow you to enforce relationships across tables. For example, you can use foreign keys to create a strict binding between a `user_id` in a `users` table and the `user_id` in an `orders` table, so that no order can be created against a user that does not exist.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/load-
 
 # Load Balancing with the China Network
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Prerequisites
 
 To enable load balancers to be deployed to the [China Network](https://developers.cloudflare.com/china-network/), your zone will need to meet the following two criteria:

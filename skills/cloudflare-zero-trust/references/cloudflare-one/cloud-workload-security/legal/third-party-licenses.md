@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Third-party licenses
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/legal/third-party-licenses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloud Workload Security (CWS) proxy includes third-party Rust and Go dependencies. These notices cover the Linux ARM64 build with default Cargo features.
 
 ## License notices

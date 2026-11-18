@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/og.p
 
 # Build caching
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Improve Workers build times by caching dependencies and build output between builds with a project-wide shared cache.
 
 The first build to occur after enabling build caching on your Workers project will save relevant artifacts to cache. Every subsequent build will restore from cache unless configured otherwise.

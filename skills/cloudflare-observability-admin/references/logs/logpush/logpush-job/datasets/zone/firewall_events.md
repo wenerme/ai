@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/
 
 # Firewall Events
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The descriptions below detail the fields available for `firewall_events`.
 
 ## AISecurityCustomTopicCategories

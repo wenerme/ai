@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkMeeting
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkmeeting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The top-level meeting component that orchestrates the entire meeting UI. Manages meeting lifecycle (idle, setup, joined, ended, waiting states), applies design system, handles room join/leave events, and renders the appropriate screen. With this component, you do not have to handle all the states, dialogs, and other smaller bits of managing the application.
 
 ## Properties

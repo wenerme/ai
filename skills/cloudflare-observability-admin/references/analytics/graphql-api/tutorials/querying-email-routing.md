@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/queryin
 
 # Querying Email Routing events with GraphQL
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-email-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example uses the GraphQL Analytics API to query for Email Routing events over a specified time period.
 
 ## Activity logs API call

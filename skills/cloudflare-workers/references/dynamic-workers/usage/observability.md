@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/observability/og.
 
 # Observability
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Dynamic Workers capture logs from `console.log()` calls, exceptions, and request metadata during execution. To access these logs, attach a [Tail Worker](https://developers.cloudflare.com/workers/observability/logs/tail-workers/), a callback that runs after the Dynamic Worker finishes and passes along all the logs, exceptions, and metadata it collected.
 
 This guide will show you how to:

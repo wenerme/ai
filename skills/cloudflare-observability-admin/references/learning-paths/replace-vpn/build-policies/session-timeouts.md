@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/build-polici
 
 # Session timeouts
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/session-timeouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Most legacy VPNs have a global timeout setting that requires end users to log in every X hours or resets VPN profiles at a certain frequency. By doing continuous identity evaluation, a Zero Trust security model eliminates the need for most of the user-interrupting workflows triggered by session timeouts. However, there can still be valid reasons to want users to reauthenticate, either on a recurring basis or to access specific, highly-sensitive or regulated internal services.
 
 To enforce Cloudflare One Client reauthentication, you can configure the Cloudflare One Client session timeouts on a per-application basis in your Gateway network policies.

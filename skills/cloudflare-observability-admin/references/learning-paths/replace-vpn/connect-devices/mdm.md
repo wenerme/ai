@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devi
 
 # MDM deployment
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/mdm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Organizations can deploy and manage the Cloudflare One Client (formerly WARP) across their fleet of devices in two complementary ways:
 
 - **Through a mobility management solution (MDM)** — Push the client installer and its deployment parameters using a tool such as [Intune, JAMF, Kandji, or JumpCloud](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/), or by executing an `.msi` file on desktop machines. This page covers the MDM-driven workflow.

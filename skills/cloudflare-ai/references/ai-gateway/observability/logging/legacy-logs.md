@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/logging/legacy
 
 # Legacy Logs
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Account eligibility
 
 Legacy Logs applies only to AI Gateway customers who created a gateway before September 24, 2026. Customers who create their first gateway on or after that date use [AI Gateway logging](https://developers.cloudflare.com/ai-gateway/observability/logging/).

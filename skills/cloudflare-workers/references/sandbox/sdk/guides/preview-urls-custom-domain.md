@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/guides/preview-urls-custom-
 
 # Configure preview URLs on a custom domain
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/guides/preview-urls-custom-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Serve previews on their own hostnames](https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
@@ -71,7 +69,7 @@ Add a wildcard route to your Wrangler configuration:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"routes": [
 		{
 			"pattern": "*.yourdomain.com/*",
@@ -87,7 +85,7 @@ name = "my-sandbox-app"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[routes]]
 pattern = "*.yourdomain.com/*"

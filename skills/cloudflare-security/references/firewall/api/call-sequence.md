@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/call-sequence/og.png?v=e8e
 
 # Call sequence
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/call-sequence/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The API call examples in this site illustrate the **recommended sequence** of calling the two APIs (the [Cloudflare Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/) and the [Firewall Rules API](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/)).
 
 Deprecation notice

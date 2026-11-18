@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/reference/waf-fields/og.png?v=3eb7
 
 # WAF fields
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/reference/waf-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Web Application Firewall (WAF) contains rules managed by Cloudflare to block requests that contain malicious content.
 
 ## WAF Action

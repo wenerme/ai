@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/troubleshooting/client-side-e
 
 # Error codes
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 When an error code is marked with `*`, the remaining digits can vary and are for internal use.

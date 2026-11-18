@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/cdp/session-management/og.p
 
 # Session management (HTTP)
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the HTTP API to manage browser sessions and tabs without using WebSocket connections. This is useful for session lifecycle operations like creating sessions, listing tabs, and cleaning up resources.
 
 Before you begin, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.

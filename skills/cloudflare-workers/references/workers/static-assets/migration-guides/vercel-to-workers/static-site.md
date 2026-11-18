@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate a static site or SPA from Vercel to Cloudflare Workers
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/static-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide moves a static site or single-page application (SPA) from Vercel to Cloudflare Workers. Use it if your project does not render pages on the server. [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) serves your build output, so you do not need a framework adapter.
 
 ## Before you begin
@@ -31,7 +29,7 @@ Review the steps in [Before you begin](https://developers.cloudflare.com/workers
    {
    	"name": "<your-project-name>",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"assets": {
    		"directory": "<your-build-directory>",
    	},
@@ -41,7 +39,7 @@ Review the steps in [Before you begin](https://developers.cloudflare.com/workers
    ```toml
    name = "<your-project-name>"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
 
    [assets]
    directory = "<your-build-directory>"
@@ -53,7 +51,7 @@ Review the steps in [Before you begin](https://developers.cloudflare.com/workers
    {
    	"name": "<your-project-name>",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"assets": {
    		"directory": "<your-build-directory>",
    		"not_found_handling": "single-page-application",
@@ -64,7 +62,7 @@ Review the steps in [Before you begin](https://developers.cloudflare.com/workers
    ```toml
    name = "<your-project-name>"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
 
    [assets]
    directory = "<your-build-directory>"

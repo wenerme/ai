@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/
 
 Cache data or API responses in Workers KV to improve application performance
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/examples/cache-data-with-workers-kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers KV can be used as a persistent, single, global cache accessible from Cloudflare Workers to speed up your application. Data cached in Workers KV is accessible from all other Cloudflare locations as well, and persists until expiry or deletion.
 
 After fetching data from external resources in your Workers application, you can write the data to Workers KV. On subsequent Worker requests (in the same region or in other regions), you can read the cached data from Workers KV instead of calling the external API. This improves your Worker application's performance and resilience while reducing load on external resources.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encry
 
 # Configure DoH on your browser
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Several browsers support DNS over HTTPS (DoH), which encrypts your DNS queries to protect them from monitoring and tampering.
 
 Some browsers might already have this setting enabled.

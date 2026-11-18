@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/settings/og.png?v=14f099136a87
 
 # Security settings
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page describes the security settings available in the new security dashboard for a given domain.
 
 To access security settings in the new security dashboard, go to the **Settings** page.

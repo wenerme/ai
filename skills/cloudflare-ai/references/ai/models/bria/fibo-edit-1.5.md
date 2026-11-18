@@ -16,8 +16,6 @@ b
 
 Image-to-Image • bria
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bria/fibo-edit-1.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `bria/fibo-edit-1.5` Copy

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkPolls
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkpolls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Full polls panel showing all polls with voting and a create poll form for hosts.
 
 ## Properties

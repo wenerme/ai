@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/pricing/og.png?v=f75981
 
 # Pricing
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Requests to your Functions are billed as Cloudflare Workers requests. Workers plans and pricing can be found [in the Workers documentation](https://developers.cloudflare.com/workers/platform/pricing/).
 
 ## Paid Plans

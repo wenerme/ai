@@ -80,6 +80,10 @@ Some of the actions that add a to-do item to your To-Do List:
   - You're the author.
   - You're the user that set the merge request to automatically merge after a
     pipeline succeeds.
+- GitLab cancels [auto-merge](project/merge_requests/auto_merge.md) on your merge request
+  for one of these reasons:
+  - Its target branch was merged and deleted.
+  - Its target branch has new commits, and you must rebase your merge request.
 - A merge request is removed from a [merge train](../ci/pipelines/merge_trains.md), and you're the user that added it.
 - A member access request is raised for a group or project you're an owner of.
 

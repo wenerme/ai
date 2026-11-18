@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/compression-rules/examples/disabl
 
 Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following example rule will disable compression for AVIF images, based on either the content type or the file extension specified in the request.
 
 **When incoming requests match**

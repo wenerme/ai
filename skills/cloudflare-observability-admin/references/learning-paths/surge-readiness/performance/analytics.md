@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/performa
 
 # Analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Workers Analytics Engine
 
 Use the [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) to send unlimited-cardinality data from your Worker to a time-series database. Query it with SQL.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-poll-form
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-poll-form/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A component that lets you create a poll.
 
 ## Properties

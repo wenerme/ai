@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/troubleshooting/og.p
 
 # Troubleshooting a live stream
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In addition to following the live stream troubleshooting steps in this guide, make sure that your video settings align with [Cloudflare live stream recommendations](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations). If you use OBS, you can also check these [OBS-specific recommendations](https://developers.cloudflare.com/stream/examples/obs-from-scratch/#6-optional-optimize-settings).
 
 ## Buffering, freezing, and latency

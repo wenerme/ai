@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/configuration/open-ai-compat
 
 # OpenAI compatible API endpoints
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers AI provides OpenAI-compatible endpoints for [text generation](https://developers.cloudflare.com/workers-ai/models/) through Chat Completions (`/v1/chat/completions`) and for [text embedding models](https://developers.cloudflare.com/workers-ai/models/) (`/v1/embeddings`). The Responses API (`/v1/responses`) is available only for GPT-OSS models. Easily call Workers AI by swapping the `baseURL` in the standard OpenAI SDK.
 
 

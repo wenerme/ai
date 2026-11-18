@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/batch-api/og.png?v=
 
 # Asynchronous Batch API
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/batch-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Asynchronous batch processing lets you send a collection (batch) of inference requests in a single call. Instead of expecting immediate responses for every request, the system queues them for processing and returns the results later.
 
 Batch processing is useful for large workloads such as summarization or embeddings when there is no human interaction. Using the batch API will guarantee that your requests are fulfilled eventually, rather than erroring out if Cloudflare does not have enough capacity at a given time.

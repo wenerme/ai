@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/mon
 
 # Review inline AI use
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/monitor-ai-use/review-inline-ai-use/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To review how your organization uses AI apps, start with the Cloudflare [Shadow IT dashboard](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/). You can filter the dashboard by application type and sort by Artificial Intelligence, which allows you to take several valuable actions, such as:
 
 - Reviewing application usage: See which applications your users are engaging with and how often, based on traffic from connected devices or sites.

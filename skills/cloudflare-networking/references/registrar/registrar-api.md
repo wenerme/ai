@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/registrar-api/og.png?v=68a576
 
 # Registrar API
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/registrar-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Cloudflare Registrar API to search for domain names, check real-time availability and pricing, and register supported domains programmatically.
 
 This guide walks through the beta workflow using the Cloudflare API and `curl`. These same endpoints are in the official Cloudflare API reference and through Cloudflare MCP by default, which means they can be used from scripts, backend services, CI pipelines, and agent-driven tools without additional integration work.

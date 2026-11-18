@@ -11,8 +11,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKMeta
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkmeta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This consists of the metadata of the meeting, such as the room name and the title.
 
 - [RTKMeta](#module_RTKMeta)

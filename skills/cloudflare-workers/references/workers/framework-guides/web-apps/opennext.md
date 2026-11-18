@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/openn
 
 # OpenNext adapter
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Recommended path
 
 Cloudflare recommends [vinext](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) instead of OpenNext for new Next.js applications on Cloudflare Workers.
@@ -97,7 +95,7 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
      "main": ".open-next/worker.js",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-13",
+     "compatibility_date": "2026-11-18",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -116,7 +114,7 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    main = ".open-next/worker.js"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-18"
    compatibility_flags = ["nodejs_compat"]
 
    [assets]

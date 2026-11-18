@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/og.png?v=e63632964c63afad
 
 # Cloudflare Flagship
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Ship features safely with feature flags.
 
 Flagship is Cloudflare's feature flag service. It lets you control feature visibility in your applications without redeploying code. Define flags with targeting rules and percentage-based rollouts, then evaluate them directly inside your Workers through a [native binding](https://developers.cloudflare.com/flagship/binding/) or from server and browser applications with [OpenFeature SDKs](https://developers.cloudflare.com/flagship/sdk/).

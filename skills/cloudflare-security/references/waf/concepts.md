@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/concepts/og.png?v=4040395cc55a5b73
 
 # Concepts
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Web Application Firewall (Cloudflare WAF) checks incoming web and API requests and filters undesired traffic based on sets of rules called rulesets. The WAF uses the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/), a flexible expression syntax that lets you filter traffic by request properties such as IP address, URL path, headers, and body content.
 
 What is a Web Application Firewall?

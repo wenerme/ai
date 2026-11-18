@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/bas
 
 # Update TLS versions
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/tls-versions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In some circumstances - specifically when an application allows client-initiated SSL/TLS renegotiation - previous versions of SSL/TLS can be more vulnerable to DDoS attacks.
 
 When you use an SSL/TLS certificate issued by Cloudflare<sup>[1](#user-content-fn-1)</sup>, you can reduce the impact of this vulnerability by:

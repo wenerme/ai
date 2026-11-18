@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/transform/examples/rewrite-moved-
 
 Create a URL rewrite rule (part of Transform Rules) to rewrite everything under `/blog/<PATH>` to `/marketing/<PATH>`.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-moved-section/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To rewrite everything under `/blog/<PATH>` to `/marketing/<PATH>`, create a new URL rewrite rule and define a dynamic URL path rewrite using [wildcard pattern parameters](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#wildcard-pattern-parameters):
 
 **When incoming requests match**

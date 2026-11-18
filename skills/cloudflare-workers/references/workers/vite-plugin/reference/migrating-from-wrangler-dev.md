@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/migrating
 
 # Migrating from wrangler dev
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In most cases, migrating from [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) is straightforward and you can follow the instructions in [Get started](https://developers.cloudflare.com/workers/vite-plugin/get-started/). There are a few key differences to highlight:
 
 ## Input and output Worker config files

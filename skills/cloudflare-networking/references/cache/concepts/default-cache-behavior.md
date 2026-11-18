@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/concepts/default-cache-behavior/o
 
 # Default cache behavior
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare respects the origin web server’s cache headers in the following order unless an [Edge Cache TTL cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) overrides the headers. Refer to the [Edge TTL](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/#edge-ttl) section for details on default TTL behavior.
 
 - Cloudflare **does not** cache the resource when:

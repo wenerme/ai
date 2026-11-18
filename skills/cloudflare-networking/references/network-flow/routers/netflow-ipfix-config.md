@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/routers/netflow-ipfix-conf
 
 # Netflow/IPFIX configuration
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/routers/netflow-ipfix-config/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure your router to export flow data to Cloudflare's network for analysis in Network Flow (formerly Magic Network Monitoring). Network Flow supports the NetFlow v5, NetFlow v9, and IPFIX formats.
 
 ## Before you begin

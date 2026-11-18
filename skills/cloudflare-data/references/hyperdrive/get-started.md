@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/get-started/og.png?v=94c405f
 
 # Getting started
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hyperdrive accelerates access to your existing databases from Cloudflare Workers, making even single-region databases feel globally distributed.
 
 By maintaining a connection pool to your database within Cloudflare's network, Hyperdrive reduces seven round-trips to your database before you can even send a query: the TCP handshake (1x), TLS negotiation (3x), and database authentication (3x).

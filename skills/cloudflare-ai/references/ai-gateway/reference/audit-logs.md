@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/reference/audit-logs/og.png?
 
 # Audit logs
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to gateways in AI Gateway. This functionality is available on all plan types, free of charge, and is enabled by default.
 
 ## Viewing Audit Logs

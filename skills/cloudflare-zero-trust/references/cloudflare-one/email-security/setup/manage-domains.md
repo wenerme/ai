@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/man
 
 # Manage domains
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/manage-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you have deployed your domain, Email security allows you to add, filter and edit domains. You can also choose to stop a domain from being scanned.
 
 ## Add domains

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/config-examples/og.png?v=
 
 # Connect to Iceberg engines
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/config-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below are configuration examples to connect various Iceberg engines to [Basin Catalog](https://developers.cloudflare.com/basin-catalog/):
 
 - [DuckDB](https://developers.cloudflare.com/basin-catalog/config-examples/duckdb/)

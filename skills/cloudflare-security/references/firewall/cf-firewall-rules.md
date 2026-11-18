@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/cf-firewall-rules/og.png?v=c16
 
 # About
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/cf-firewall-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Firewall Rules is a flexible and intuitive framework for filtering HTTP requests. It gives you fine-grained control over which requests reach your applications, proactively inspecting incoming site traffic and automatically responding to threats.
 
 Deprecation notice

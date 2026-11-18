@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/application-security/og.png?v
 
 # Application security
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Protect your website or application from attacks, bots, and abuse. Cloudflare's application security (also known as Web Application Firewall or WAF) blocks SQL injection, XSS, and OWASP Top 10 vulnerabilities. DDoS Protection mitigates volumetric and application-layer attacks automatically. Bot Security uses machine learning to score every request. API Shield validates API traffic against your OpenAPI specification. Client-side security monitors third-party scripts for malicious behavior.
 
 - [Block application attacks](https://developers.cloudflare.com/use-cases/application-security/block-attacks/)

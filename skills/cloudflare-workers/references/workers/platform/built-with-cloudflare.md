@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/built-with-cloudflare/
 
 # Built with Cloudflare button
 
-Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/built-with-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you're building an application or website on Cloudflare, you can embed a Built with Cloudflare button in your README, blog post, or documentation.
 
 ![Built with Cloudflare](https://workers.cloudflare.com/built-with-cloudflare.svg)

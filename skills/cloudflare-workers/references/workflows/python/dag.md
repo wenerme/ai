@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/python/dag/og.png?v=677abb6a3
 
 # DAG Workflows
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/python/dag/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Python Workflows SDK supports DAG workflows in a declarative way, using `step.do` and parameter names to define dependencies (other steps that must complete before a step can run).
 
 ```python

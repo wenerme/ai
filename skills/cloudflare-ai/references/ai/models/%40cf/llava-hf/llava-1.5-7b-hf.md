@@ -18,8 +18,6 @@ Beta
 
 Image-to-Text • llava-hf
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/llava-hf/llava-1.5-7b-hf` Copy
@@ -32,7 +30,7 @@ LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-gener
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Zero data retention | Yes |
 | Beta | Yes |
 

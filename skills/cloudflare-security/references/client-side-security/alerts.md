@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/alerts/og.png?v=91
 
 # Alerts
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 New resource alerts require a Business plan or higher. Code change and malicious resource alerts require Client-Side Security Advanced. For details, refer to [Alert types](https://developers.cloudflare.com/client-side-security/alerts/alert-types/).

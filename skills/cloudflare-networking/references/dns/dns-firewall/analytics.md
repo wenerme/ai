@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/dns-firewall/analytics/og.png?v=736
 
 # Analytics and logs
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consider the sections below to learn how to access analytics and logs for your DNS Firewall.
 
 ## Analytics

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/bots/og
 
 # Bots
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Bot management](https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/)
 
 Was this helpful?

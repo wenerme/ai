@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Connect devices and networks to Cloudflare
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After setting up your Cloudflare account and Zero Trust organization, you can begin connecting your users' devices and networks to Cloudflare.
 
 ## Objectives

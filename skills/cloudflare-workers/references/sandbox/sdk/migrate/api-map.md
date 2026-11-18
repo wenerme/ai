@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/og.png?v=3a
 
 # Sandbox SDK 0.x API map
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page maps each public API of `@cloudflare/sandbox` 0.12 to its replacement: a 1.0 class, a platform API, another Cloudflare product, or code that you write. Some APIs are no longer needed. For the migration steps, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
 
 In the tables, `container` is `this.ctx.container` in your Durable Object, and `files` is a [`Files`](https://developers.cloudflare.com/sandbox/reference/files/) instance. The **Kind** column uses these values:

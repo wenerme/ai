@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/files/og.png?v=202a
 
 # Change file calls
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In Sandbox SDK 0.12, the SDK server in the container handled file calls. It created missing directories, returned binary files as base64, and hid dotfiles. In 1.0, [`Files`](https://developers.cloudflare.com/sandbox/reference/files/) runs a small helper in the container for each call, and does only what the call asks.
 
 ## Before you start

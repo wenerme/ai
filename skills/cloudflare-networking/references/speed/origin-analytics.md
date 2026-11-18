@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/origin-analytics/og.png?v=03fc2e6
 
 # Origin Analytics
 
-Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/origin-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Origin Analytics shows how your origin server responds to Cloudflare, using data collected at the edge without an agent on your origin.
 
 Use Origin Analytics to identify slow endpoints, monitor origin response times, and diagnose errors. When something goes wrong, Origin Analytics shows whether the source is your origin, the network path, or Cloudflare. For common error codes, refer to [Cloudflare 5xx errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/).

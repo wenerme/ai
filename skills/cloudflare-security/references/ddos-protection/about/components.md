@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/about/components/og.png
 
 # Main components
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/about/components/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ![Diagram with the main components providing protection against DDoS attacks at Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2495,height=1700,format=webp/_astro/ddos-diagram.DygBAs9m.png)
 
 ## Autonomous Edge

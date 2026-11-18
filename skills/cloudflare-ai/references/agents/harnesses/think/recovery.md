@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/recovery/og.png?
 
 # Durable recovery
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Think always wraps chat turns in recoverable [fibers](https://developers.cloudflare.com/agents/agent-class/durable-execution/). If the Durable Object is evicted mid-stream, Think reconstructs any buffered chunks. It persists partial output and schedules a continuation or retry.
 
 Note

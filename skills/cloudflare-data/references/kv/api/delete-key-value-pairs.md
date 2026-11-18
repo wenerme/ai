@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/api/delete-key-value-pairs/og.png?v=
 
 # Delete key-value pairs
 
-Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/api/delete-key-value-pairs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To delete a key-value pair, call the `delete()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
 ```js

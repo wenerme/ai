@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkMuteToggle
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkmutetoggle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Button to mute all participants' audio. Only visible for hosts with mute-all permissions.
 
 ## Properties

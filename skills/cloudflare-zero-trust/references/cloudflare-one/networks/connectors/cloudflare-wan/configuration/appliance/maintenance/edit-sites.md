@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Edit sites
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/edit-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) > **Insights**.
 2. Go to **Network visibility** > **Traffic overview**, and find the site you want to make changes on.
 3. Select the three dots next to it > **Edit**.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/javascript-apis/og
 
 # JavaScript APIs
 
-Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/javascript-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Queues is integrated with [Cloudflare Workers](https://developers.cloudflare.com/workers). To send and receive messages, you must use a Worker.
 
 A Worker that can send messages to a Queue is a producer Worker, while a Worker that can receive messages from a Queue is a consumer Worker. It is possible for the same Worker to be a producer and consumer, if desired.

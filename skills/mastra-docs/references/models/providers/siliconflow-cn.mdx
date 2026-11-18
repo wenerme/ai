@@ -5,7 +5,7 @@ description: "Browse SiliconFlow (China) model IDs, capabilities, context window
 
 # [SiliconFlow (China) logo]SiliconFlow (China)
 
-Access 45 SiliconFlow (China) models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_CN_API_KEY` environment variable.
+Access 46 SiliconFlow (China) models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_CN_API_KEY` environment variable.
 
 Learn more in the [SiliconFlow (China) documentation](https://cloud.siliconflow.com/models).
 
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 393000,
     "inputCost": 1.79336973,
     "outputCost": 3.58673947
+  },
+  {
+    "model": "siliconflow-cn/deepseek-ai/DeepSeek-V4.1-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "siliconflow-cn/inclusionAI/Ling-flash-2.0",

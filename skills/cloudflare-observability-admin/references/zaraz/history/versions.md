@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/history/versions/og.png?v=5a6af35
 
 # Versions
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/history/versions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Version History enables you to keep track of all the Zaraz configuration changes made in your website. With Version History you can also revert changes to previous settings should there be a problem.
 
 To access Version History you need to enable [Preview & Publish mode](https://developers.cloudflare.com/zaraz/history/preview-mode/) first. Then, you can access Version History under **Zaraz** > **History**.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/og.png?v=
 
 # aws-sdk-js-v3
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
 
@@ -28,7 +26,7 @@ The AWS SDK for JavaScript v3 works in [Workers](https://developers.cloudflare.c
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-10-27",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -40,7 +38,7 @@ The AWS SDK for JavaScript v3 works in [Workers](https://developers.cloudflare.c
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [alias]

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/an
 
 # Cloudflare analytics with Workers
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how Cloudflare analytics tracks requests made by [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
 ## What is a subrequest

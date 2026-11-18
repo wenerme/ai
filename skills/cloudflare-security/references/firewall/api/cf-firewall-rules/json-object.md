@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-firewall-rules/json-obj
 
 # JSON object
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/json-object/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Firewall rule example JSON response
 
 A JSON response for the [Firewall Rules API](https://developers.cloudflare.com/api/resources/firewall/subresources/rules/methods/list/) has this structure:

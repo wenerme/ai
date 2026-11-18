@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/build-commands-branches/og
 
 # Set build commands per branch
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/build-commands-branches/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will instruct you how to set build commands on specific branches. You will use the `CF_PAGES_BRANCH` environment variable to run a script on a specified branch as opposed to your Production branch. This guide assumes that you have a Cloudflare account and a Pages project.
 
 ## Set up

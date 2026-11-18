@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-
 
 # About
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Simple explanation
 
 When visitors request content from your domain, Cloudflare first attempts to serve content from the cache. If this attempt fails, Cloudflare sends a request — or an `origin pull` — back to your origin web server to get the content.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkTranscript
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtktranscript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A component which shows a transcript. You need to remove the element after you receive the `rtkTranscriptDismiss` event.
 
 ## Properties

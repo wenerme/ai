@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/creat
 
 # Create predefined variants
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Variants let you specify how images should be resized for different use cases. By default, images are served with a `public` variant, but you can create up to 100 variants to fit your needs. Follow these steps to create a variant.
 
 Note

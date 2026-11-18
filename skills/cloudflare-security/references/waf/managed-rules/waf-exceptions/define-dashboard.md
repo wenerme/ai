@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define
 
 # Add an exception in the dashboard
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 1. Go to the zone or account dashboard page
 
 To add an exception at the zone level:

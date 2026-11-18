@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # Profile settings
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Profile settings control detection behavior for an individual DLP profile. You configure these settings when you [build a custom profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) or edit an existing [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) or custom profile.
 
 Profile settings are distinct from [DLP settings](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-settings/), which are account-level settings that apply across all profiles and policies.

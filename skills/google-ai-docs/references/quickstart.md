@@ -233,9 +233,10 @@ Install the SDK and generate text with a single API call.
 While the SDKs expose the full response, they also provide convenience
 properties like `interaction.output_text` and `interaction.output_image` to
 access final outputs directly. Learn more about the response structure in the
-[Interactions overview](/docs/interactions-overview) or read the [text
+[Interactions overview](/docs/interactions-overview), read the [text
 generation guide](/docs/text-generation) for details on system instructions and
-generation config.
+generation config, or see [Choosing a model](/docs/choosing-a-model) to compare
+models for your task.
 
 ## 3. Stream the response  {% id="3-stream-the-response" %}
 

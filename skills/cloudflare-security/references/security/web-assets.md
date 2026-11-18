@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/web-assets/og.png?v=726814c6b3
 
 # Web Assets
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web Assets automatically discovers operations in web applications proxied through Cloudflare. Operation context helps you define security protections against application-specific functionalities.
 
 For example, discovering operations that receive LLM prompts so [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) can help you define targeted protections such as deterring prompt injections.

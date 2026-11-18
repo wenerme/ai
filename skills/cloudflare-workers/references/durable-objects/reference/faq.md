@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/reference/faq/og.png?v=
 
 # FAQs
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Pricing
 
 ### When does a Durable Object incur duration charges?

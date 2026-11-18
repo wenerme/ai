@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/og.png?v=cb72cd2cf018c537
 
 # Cloudflare Waiting Room
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A virtual waiting room to manage peak traffic.
 
 Business and above

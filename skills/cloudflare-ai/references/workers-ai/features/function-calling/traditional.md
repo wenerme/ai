@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/function-calling/tr
 
 # Traditional
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page shows how you can do traditional function calling, as defined by industry standards. Workers AI also offers [embedded function calling](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/), which is drastically easier than traditional function calling.
 
 With traditional function calling, you define an array of tools with the name, description, and tool arguments. The example below shows how you would pass a tool called `getWeather` in an inference request to a model.

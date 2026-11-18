@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/deleting-data/og.png?v=f8
 
 # Deleting data
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/deleting-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deleting data from Basin Catalog or any Apache Iceberg catalog requires that operations are done in a transaction through the catalog itself. Manually deleting metadata or data files directly can lead to data catalog corruption.
 
 ## Automatic table maintenance

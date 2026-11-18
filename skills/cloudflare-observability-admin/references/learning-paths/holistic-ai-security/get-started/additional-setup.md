@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/get
 
 # Additional setup for AI security solutions in Zero Trust
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/additional-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To use the recommended AI security solutions in this learning path, you will need to complete some additional setup for your Zero Trust deployment, such as turning on [Shadow IT Discovery](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/#turn-on-shadow-it-discovery).
 
 Note

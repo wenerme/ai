@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkParticipantTile
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkparticipanttile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A video tile for a single participant showing their video feed, name tag with audio indicator, avatar (when video is off), and pin indicator.
 
 ## Properties

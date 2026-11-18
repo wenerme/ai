@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-e
 
 # PAC file best practices
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A PAC file is a text file that specifies which traffic should redirect to the proxy server. When a browser makes a web request, it consults the PAC file's `FindProxyForURL()` function, which evaluates the request and returns routing instructions, such as a direct connection, proxy server, or failover sequence.
 
 ## PAC file format

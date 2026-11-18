@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/tutorial/og.png?v=670d746c306
 
 # Tutorials
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you begin, [install Terraform](https://developers.cloudflare.com/terraform/installing/). Each tutorial builds on the previous, so you should complete the tutorials in the order shown below.
 
 Note

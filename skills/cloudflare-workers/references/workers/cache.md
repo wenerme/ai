@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/cache/og.png?v=3615f4ac12f103bd
 
 # Workers Cache
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Cache lets Cloudflare return cached HTTP responses from your Worker without executing your Worker code. When an incoming request matches a cached response, Cloudflare serves the response directly from its edge cache — reducing latency and Workers CPU usage.
 
 Caching works for any `fetch()` invocation of the Worker — eyeball requests (requests from browsers and API clients), requests sent through [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/), and loopback `fetch()` calls between entrypoints via [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/). You control caching with standard HTTP `Cache-Control` directives on your responses.
@@ -136,7 +134,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "main": "src/index.ts",
  "upload_source_maps": true,
  // Set this to today's date
- "compatibility_date": "2026-10-31",
+ "compatibility_date": "2026-11-18",
  "cache": {
   "enabled": true,
  },
@@ -148,7 +146,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-31"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -344,7 +342,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-31",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -358,7 +356,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-31"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true

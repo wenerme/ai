@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/og.p
 
 # Build a Slackbot
 
-Last updated Apr 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will build a [Slack ↗︎](https://slack.com) bot using [Cloudflare Workers](https://developers.cloudflare.com/workers/). Your bot will make use of GitHub webhooks to send messages to a Slack channel when issues are updated or created, and allow users to write a command to look up GitHub issues from inside Slack.
 
 ![After following this tutorial, you will be able to create a Slackbot like the one in this example. Continue reading to build your Slackbot.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1222,height=384,format=webp/_astro/issue-command.BJRwbx5d.png)

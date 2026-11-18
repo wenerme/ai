@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/metadata-boundary/gra
 
 # GraphQL datasets
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) allows you to programmatically query your Cloudflare analytics data (such as request counts, security events, and performance metrics). When Customer Metadata Boundary (CMB) is enabled, not all analytics data fields are available in every region.
 
 The table below shows a non-exhaustive list of GraphQL Analytics API fields that respect CMB configuration. Fields marked "US and EU" return data regardless of your CMB region. Fields marked "US only" return data only when CMB is set to US — if your CMB is set to EU, queries for these fields will return empty results.

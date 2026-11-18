@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/resource-tagging/og.png?v=b3b5822836a6e
 
 # Resource Tagging
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Attach custom key-value metadata to Cloudflare resources for organization, access control, and billing attribution.
 
 Available on all plans

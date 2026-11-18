@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/troubleshooting/api-error-cod
 
 # API error codes
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a request to the AI Search API or a public endpoint fails, it returns one of the errors documented on this page.
 
 Errors that occur while an item is indexing are handled separately. See [Indexing error codes](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkMoreMenu
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-more-menu/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A bottom sheet menu that displays meeting action options such as chat, polls, and participant list.
 
 ## Initializer parameters

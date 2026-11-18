@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkAvatarView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-avatar-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A circular avatar view that displays a participant's profile image or name initials as a fallback.
 
 ## Initializer parameters

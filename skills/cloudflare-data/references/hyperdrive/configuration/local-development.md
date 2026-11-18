@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/configuration/local-developm
 
 # Local development
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hyperdrive can be used when developing and testing your Workers locally. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers, provides two options for local development:
 
 - **`wrangler dev`** (default): Runs your Worker code locally on your machine. You configure a `localConnectionString` to connect directly to a database (either local or remote). Hyperdrive query caching does not take effect in this mode.

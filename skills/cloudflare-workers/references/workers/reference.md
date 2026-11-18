@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/reference/og.png?v=1a7b572cf13e
 
 # Reference
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Conceptual knowledge about how Workers works.
 
 - [How the Cache works](https://developers.cloudflare.com/workers/reference/how-the-cache-works/)

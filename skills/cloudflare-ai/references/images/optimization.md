@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/og.png?v=45ca8ac451
 
 # Optimization
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Features](https://developers.cloudflare.com/images/optimization/features/)
 - [Remote images (transformations)](https://developers.cloudflare.com/images/optimization/transformations/)
 - [Hosted images](https://developers.cloudflare.com/images/optimization/hosted-images/)

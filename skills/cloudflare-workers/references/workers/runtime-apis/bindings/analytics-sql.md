@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/analytics
 
 # Analytics SQL binding
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/analytics-sql/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Analytics SQL binding to query analytics datasets from a Worker.
 
 ## Configure the binding

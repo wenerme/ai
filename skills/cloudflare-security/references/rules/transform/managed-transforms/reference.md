@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/managed-transforms/refe
 
 # Available Managed Transforms
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page lists the available Managed Transforms. They can modify HTTP request headers or response headers.
 
 For more complex and customized header modifications, consider using [Snippets](https://developers.cloudflare.com/rules/snippets/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/og.png?v=2e9d118d4986e946
 
 # Cloudflare Tenant
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Tenant API is a provisioning mechanism to help Channel and Alliance partners set up and manage Cloudflare accounts and services for their customers.
 
 These APIs are built into our Client v4 API library to provide a streamlined onboarding and setup experience.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/login/og.png
 
 # Log in to Cloudflare
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/login/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Go to the Cloudflare dashboard and choose your [sign-in option](#sign-in-options).
 
 [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)

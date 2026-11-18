@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-interconnect/og.png?v=1819c79e6
 
 # Cloudflare Network Interconnect
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect your network infrastructure directly to Cloudflare
 
 Enterprise-only

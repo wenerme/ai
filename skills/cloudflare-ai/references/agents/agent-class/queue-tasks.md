@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/queue-tasks/og.png?v
 
 # Queue tasks
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/queue-tasks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Agents SDK provides a built-in queue system that allows you to schedule tasks for asynchronous execution. This is useful for background processing, delayed operations, and managing workloads that do not need immediate execution.
 
 ## Overview

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-meth
 
 # Troubleshooting
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your certificate is stuck in **Pending Validation** or failing to issue, the certificate authority (CA) may be unable to complete [domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/). This page helps you identify and resolve common DCV issues.
 
 Note

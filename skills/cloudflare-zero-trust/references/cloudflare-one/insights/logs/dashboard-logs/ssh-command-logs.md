@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-
 
 # SSH command logs
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/ssh-command-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 SSH command logs record the commands that users run on infrastructure targets protected by [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/). Use these logs to audit user activity on your SSH servers and investigate specific sessions.
 
 To view SSH command logs, log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) and go to **Insights** > **Logs** > **SSH command logs**.

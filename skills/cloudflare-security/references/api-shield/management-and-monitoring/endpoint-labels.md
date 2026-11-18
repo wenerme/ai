@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/en
 
 # Endpoint labeling service
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 API Shield's labeling service helps you organize your endpoints and address vulnerabilities in your API. The labeling service includes managed and user-defined labels.
 
 Managed labels help you organize endpoints by use case. Cloudflare automatically applies selected managed labels based on observed endpoint use cases and risks that may need attention.

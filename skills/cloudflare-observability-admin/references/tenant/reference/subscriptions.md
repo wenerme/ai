@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/reference/subscriptions/og.png?v
 
 # Available subscriptions
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/reference/subscriptions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When [provisioning services for an account](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/), you need to include certain values with each API call to specify a particular service.
 
 The subscriptions available to you will vary depending on your current partner program ([Agency Partner Program ↗︎](https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/) or [Enterprise Resellers and MSP Program ↗︎](https://portal.cloudflarepartners.com)).
@@ -41,7 +39,7 @@ The following table lists sample values for various Zero Trust subscriptions.
 | Feature | Subscription IDs |
 | --- | --- |
 | [Access](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) | `PARTNERS_ACCESS_BASIC`, `PARTNERS_ACCESS_ENT`, `PARTNERS_ACCESS_PREMIUM`, `TEAMS_ACCESS_ENT`, `TEAMS_ACCESS` |
-| [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) | `TEAMS_GATEWAY_ENT`, `TEAMS_GATEWAY` |
+| [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) | `TEAMS_GATEWAY_ENT`, `TEAMS_GATEWAY` |
 | [Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/) | `TEAMS_ENT`, `TEAMS_FREE`, `TEAMS_STANDARD` |
 
 ### Developer subscriptions
@@ -104,5 +102,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/reference/subscriptions/#page","headline":"Available subscriptions","description":"Zone plan and account subscription values available to Cloudflare Tenant partners.","url":"https://developers.cloudflare.com/tenant/reference/subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/tenant/reference/subscriptions/og.png?v=1a7ee43d692b7c12","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/reference/subscriptions/#page","headline":"Available subscriptions","description":"Zone plan and account subscription values available to Cloudflare Tenant partners.","url":"https://developers.cloudflare.com/tenant/reference/subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/tenant/reference/subscriptions/og.png?v=1a7ee43d692b7c12","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

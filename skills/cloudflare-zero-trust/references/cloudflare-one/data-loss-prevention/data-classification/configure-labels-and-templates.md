@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dat
 
 # Configure labels and templates
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/configure-labels-and-templates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Labels and templates define the classification metadata you can apply to sensitive content in Cloudflare DLP.
 
 Use the **Labels** tab to create and manage sensitivity schemas, sensitivity levels, data tag groups, and data tags. Use the **Templates** tab to review Cloudflare-managed starting points for sensitivity schemas and data tag groups.

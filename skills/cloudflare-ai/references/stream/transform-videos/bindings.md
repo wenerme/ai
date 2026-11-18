@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/transform-videos/bindings/og.png
 
 # Bind to Workers API
 
-Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/transform-videos/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Media Transformations](https://developers.cloudflare.com/stream/transform-videos/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
 You can bind the Media Transformations API to your Worker to transform, resize, and extract content from videos without requiring them to be accessible through a URL.

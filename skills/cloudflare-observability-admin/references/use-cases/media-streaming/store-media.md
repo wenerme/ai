@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/media-streaming/store-media/o
 
 # Store media at scale
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/store-media/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Media files are large, and egress fees from traditional cloud storage can be significant at scale. Cloudflare R2 provides S3-compatible object storage with zero egress fees, and Workers lets you build custom processing pipelines for validation, transformation, and routing.
 
 ## Solutions

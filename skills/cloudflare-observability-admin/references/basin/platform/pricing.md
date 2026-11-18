@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin/platform/pricing/og.png?v=1e7f033
 
 # Pricing
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin pricing includes Pipelines processing, Catalog operations, and SQL queries. All included usage allocations on this page apply monthly.
 
 R2 storage, read, and write operations add separate charges. This page excludes R2 rates and costs from every table and example. Refer to [R2 pricing](https://developers.cloudflare.com/r2/pricing/).

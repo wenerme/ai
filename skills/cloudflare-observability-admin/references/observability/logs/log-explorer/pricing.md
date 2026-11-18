@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/pricing
 
 # Pricing and managing usage
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Log Explorer (Legacy) is billed on the volume of logs ingested and stored, measured in gigabytes (GB). Your charges scale with the amount of log data you choose to retain.
 
 Unlike query-based billing models, charges are not based on how often you search or scan your data. Once logs are ingested and stored, you can query them without additional cost.

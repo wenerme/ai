@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/meta/muse-ember-1.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `meta/muse-ember-1.0` Copy
@@ -95,7 +93,7 @@ Risk: Existing callers passing numeric IDs will break and need conversion to str
   "id": "resp_6af15b9fd8d1276417fe40de",
   "object": "response",
   "created_at": 1794202527,
-  "model": "frantic-ferret",
+  "model": "muse-ember-1.0",
   "output": [
     {
       "type": "reasoning",
@@ -189,7 +187,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   "id": "resp_6af15ba2d8c9dfbcd7de4788",
   "object": "response",
   "created_at": 1794202530,
-  "model": "frantic-ferret",
+  "model": "muse-ember-1.0",
   "output": [
     {
       "type": "reasoning",
@@ -291,7 +289,7 @@ Checking the latest Formula 1 results — I'll search for the most recent race w
   "id": "resp_6af15ba26c54eff387aa4131",
   "object": "response",
   "created_at": 1794202530,
-  "model": "frantic-ferret",
+  "model": "muse-ember-1.0",
   "output": [
     {
       "type": "reasoning",

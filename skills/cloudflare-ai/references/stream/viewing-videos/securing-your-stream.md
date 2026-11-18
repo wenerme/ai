@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/viewing-videos/securing-your-str
 
 # Secure your Stream
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Signed URLs / Tokens
 
 By default, videos on Stream can be viewed by anyone with just a video id. If you want to make your video private by default and only give access to certain users, you can use the signed URL feature. When you mark a video to require signed URL, it can no longer be accessed publicly with only the video id. Instead, the user will need a signed url token to watch or download the video.

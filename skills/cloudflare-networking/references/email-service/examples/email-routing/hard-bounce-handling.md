@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/examples/email-routing/ha
 
 Detect and handle hard bounce emails to maintain sender reputation and manage undeliverable addresses
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example detects hard bounce notifications and stores recipient addresses in Workers KV.
 
 ## Identify hard bounces
@@ -35,7 +33,7 @@ Configure your worker to handle bounce notifications:
 {
 	"name": "bounce-handler",
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-11-18",
 	"send_email": [{ "name": "EMAIL" }],
 	"kv_namespaces": [
 		{
@@ -49,7 +47,7 @@ Configure your worker to handle bounce notifications:
 ```toml
 name = "bounce-handler"
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-18"
 
 [[send_email]]
 name = "EMAIL"

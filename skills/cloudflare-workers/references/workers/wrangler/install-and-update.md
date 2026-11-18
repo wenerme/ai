@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/install-and-update/og.
 
 # Install/Update Wrangler
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wrangler is a command-line tool for building with Cloudflare developer products.
 
 ## Install Wrangler

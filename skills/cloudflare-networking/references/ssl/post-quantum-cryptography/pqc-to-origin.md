@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-or
 
 # Post-quantum between Cloudflare and origin servers
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page covers post-quantum cryptography on the TLS connection between Cloudflare's edge and your origin server. Cloudflare supports both [post-quantum key agreement](#post-quantum-key-agreement) (X25519MLKEM768) and [post-quantum signatures](#post-quantum-signatures) (ML-DSA via Authenticated Origin Pulls and Custom Origin Trust Store) on this connection.
 
 If you would prefer to connect your origin to Cloudflare without managing certificates on a publicly exposed TLS endpoint, [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is another option for post-quantum origin connections. Cloudflare Tunnel uses post-quantum key agreement on the TLS connection between `cloudflared` and Cloudflare's network. Post-quantum signatures are not yet used for authentication on that path.

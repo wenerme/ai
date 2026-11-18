@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-
 
 # Data origin and collection
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web Analytics relies on the `performance.getEntriesByType('navigation')` object to collect metrics about page load performance. If Navigation Timing Level 2 is not supported, then [`performance.timing` (Level 1) ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timing) is used.
 
 Refer to the [W3C Processing Model ↗︎](https://www.w3.org/TR/navigation-timing-2/#processing-model) for a visual depiction of the sequence of timing events for web page loads.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/performance-review/cache-performa
 
 # Cache performance
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/performance-review/cache-performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Optimize cache ratios
 
 Your cache ratio measures how often Cloudflare serves content from cache instead of contacting your origin server. A higher ratio means faster responses for visitors and less traffic to your origin.

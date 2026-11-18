@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/get-started/web-analytics
 
 # Web Analytics for SPAs
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Web Analytics automatically tracks user interactions on Single Page Applications (SPAs) via one of the following three methods, depending on which is supported:
 
 1. Using the [Soft Navigations API ↗︎](https://developer.chrome.com/docs/web-platform/soft-navigations)

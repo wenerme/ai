@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Microsoft Azure Virtual WAN
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-virtual-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial provides information on how to connect Cloudflare WAN (formerly Magic WAN) to a Microsoft Azure Virtual WAN hub.
 
 ## Prerequisites

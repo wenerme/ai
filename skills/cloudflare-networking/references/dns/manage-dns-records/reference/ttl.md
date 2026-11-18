@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/og
 
 # Time to Live (TTL)
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Time to Live (TTL)** is a field on [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) that controls how long each record is cached and — as a result — how long it takes for record updates to reach your end users.
 
 Longer TTLs speed up [DNS lookups ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) by increasing the chance of cached results, but a longer TTL also means that updates to your records take longer to go into effect.

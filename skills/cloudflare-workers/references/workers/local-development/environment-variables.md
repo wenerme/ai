@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/local-development/environment-v
 
 # Environment variables and secrets
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 Do not use `vars` to store sensitive information in your Worker's Wrangler configuration file. Use secrets instead.

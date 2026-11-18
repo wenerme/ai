@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/routing/advanced/
 
 # HTML handling
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Forcing or dropping trailing slashes on request paths (for example, `example.com/page/` vs. `example.com/page`) is often something that developers wish to control for cosmetic reasons. Additionally, it can impact SEO because search engines often treat URLs with and without trailing slashes as different, separate pages. This distinction can lead to duplicate content issues, indexing problems, and overall confusion about the correct canonical version of a page.
 
 The [`assets.html_handling` configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) determines the redirects and rewrites of requests for HTML content. It is used to specify the pattern for canonical URLs, thus where Cloudflare serves HTML content from, and additionally, where Cloudflare redirects non-canonical URLs to.
@@ -33,7 +31,7 @@ This will usually give you the desired behavior automatically: individual files 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "auto-trailing-slash"
@@ -44,7 +42,7 @@ This will usually give you the desired behavior automatically: individual files 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist/"
@@ -74,7 +72,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "force-trailing-slash"
@@ -85,7 +83,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist/"
@@ -115,7 +113,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "drop-trailing-slash"
@@ -126,7 +124,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist/"
@@ -156,7 +154,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "none"
@@ -167,7 +165,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist/"

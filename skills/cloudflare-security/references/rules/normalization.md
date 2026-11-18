@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/normalization/og.png?v=de9144df1e
 
 # URL normalization
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/normalization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare provides a URL normalization feature to modify the URLs of incoming requests so that they conform to a consistent formatting standard. This is important because the same resource can be requested using different URL formats (for example, `/hello` and `/%68ello` refer to the same path), and without normalization, security rules and other features might not match all variations of a URL.
 
 When you enable URL normalization, all incoming URLs are normalized before they pass to subsequent global network features that accept a URL input, such as WAF custom rules, Workers, and Access. Rule expressions that filter traffic based on URLs will therefore trigger correctly, regardless of the format of the incoming URL. When URL normalization is disabled, Cloudflare forwards the URL to origin in its original form.

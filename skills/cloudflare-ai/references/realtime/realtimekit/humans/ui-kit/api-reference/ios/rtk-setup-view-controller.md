@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkSetupViewController
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-setup-view-controller/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pre-meeting setup screen view controller. Provides video preview, audio and video toggles, and name entry before joining a meeting.
 
 ## Initializer parameters

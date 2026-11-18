@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/a
 
 # Authentication
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare separates service configuration by zone. When there are multiple accounts, each with many zones, it is important to restrict GraphQL Analytics API access to only those account and zone resources that are relevant for the task at hand.
 
 To secure access to your GraphQL Analytics data, use a Cloudflare API key or token to authenticate an API request.

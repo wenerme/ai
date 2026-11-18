@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/simulator/limitations/og.png?v=0a
 
 # Rules simulator limitations
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/simulator/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Automatic rule bypasses
 
 Rules simulator does not display rules that are automatically bypassed for operational reasons.

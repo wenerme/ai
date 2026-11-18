@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum
 
 # Ethereum network
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Ethereum network is a decentralized platform for running programs called smart contracts. A smart contract is a program stored at a unique address on the network that executes automatically when triggered by a transaction. Because smart contracts run on Ethereum, they can handle any computation that a general-purpose programming language can express.
 
 When a smart contract runs, every node in the network independently verifies the result. The network then reaches consensus — all nodes agree on the outcome — and the result becomes part of the permanent record.

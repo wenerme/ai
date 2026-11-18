@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/advanced-configuration/query-stri
 
 # Query String Sort
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Query String Sort** increases cache-hit rates by first sorting query strings into a consistent order before checking the Cloudflare cache.
 
 By default, Cloudflare’s cache treats resources as distinct if their URL query strings are in a different order. For instance, these resources are cached separately:

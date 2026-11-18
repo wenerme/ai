@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • NVIDIA
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/nemotron-3-120b-a12b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/nvidia/nemotron-3-120b-a12b` Copy
@@ -32,7 +30,7 @@ NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-ag
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 256,000 tokens |
 | Terms and License | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-
 
 # Create an exception
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) to skip the execution of a managed ruleset of some of its rules.
 
 The exception configuration includes an [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) that defines the skip conditions, and the rules or managed rulesets to skip under those conditions.

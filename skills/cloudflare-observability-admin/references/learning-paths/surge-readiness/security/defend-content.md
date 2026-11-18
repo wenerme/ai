@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/security
 
 # Defend content with Scrape Shield
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/defend-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Scrape Shield is a collection of settings meant to protect your site's content.
 
 ## Email Address Obfuscation

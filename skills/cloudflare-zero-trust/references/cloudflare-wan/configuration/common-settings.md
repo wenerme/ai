@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/common-set
 
 # Common settings
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This section covers common settings for both the Cloudflare One Appliance (formerly Magic WAN Connector) setup and the manual setup process.
 
 - [Set up a site](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/)

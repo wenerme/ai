@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/context/og.png?v=5
 
 # Context (ctx)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/context/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Context API provides methods to manage the lifecycle of your Worker or Durable Object.
 
 Context is exposed via the following places:
@@ -190,7 +188,7 @@ Note that `props` values specified in this way are allowed to contain any "persi
 
 ### TypeScript types for `ctx.exports` and `ctx.props`
 
-If using TypeScript, you should use [the `wrangler types` command](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) to auto-generate types for your project. The generated types will ensure `ctx.exports` is typed correctly.
+If using TypeScript, you should use [the `wrangler types` command](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types) to auto-generate types for your project. The generated types will ensure `ctx.exports` is typed correctly.
 
 When declaring an entrypoint class that accepts `props`, make sure to declare it as `extends WorkerEntrypoint<Env, Props>`, where `Props` is the type of `ctx.props`. See the example above.
 
@@ -305,5 +303,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx)","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/context/og.png?v=5118201fe7d8da21","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx)","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/context/og.png?v=5118201fe7d8da21","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

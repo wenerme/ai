@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/managed-
 
 # robots.txt setting
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI companies use crawlers to collect website content for training language models, generating search answers, and other purposes. A `robots.txt` file at the root of your domain tells these crawlers which content they should or should not access. Bot Preference Sync generates managed `robots.txt` directives from your Search, Agent, and Training policies when at least one policy is set to **Block**, **Block on pages with ads**, or, for Training, **Disallow**.
 
 `robots.txt` compliance is voluntary. The file expresses your preferences, but it does not prevent crawlers from accessing your content at a technical level. Some crawler operators may disregard your `robots.txt` directives (instructions like `Disallow: /`) and crawl your content regardless.

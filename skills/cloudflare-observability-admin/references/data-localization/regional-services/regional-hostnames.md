@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/regional-services/reg
 
 # Regional Hostnames
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Interested customers need to contact their account team to enable DNS Regionalisation.

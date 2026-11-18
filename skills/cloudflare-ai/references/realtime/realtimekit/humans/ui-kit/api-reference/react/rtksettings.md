@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkSettings
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtksettings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A settings component to see and change your audio/video devices as well as see your connection quality.
 
 ## Properties

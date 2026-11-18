@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/delet
 
 # Delete variants
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can delete variants via the Images dashboard or API. The only variant you cannot delete is public.
 
 Caution

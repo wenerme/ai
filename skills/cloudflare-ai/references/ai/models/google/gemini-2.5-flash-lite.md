@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `google/gemini-2.5-flash-lite` Copy

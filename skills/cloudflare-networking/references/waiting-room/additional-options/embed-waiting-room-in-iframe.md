@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/additional-options/embed-w
 
 # Embed in an iFrame
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/embed-waiting-room-in-iframe/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Because of how a waiting room [tracks visitor progress](#background), you need to [specify certain cookie attributes](#allow-cookies-to-pass-through-iframes) to properly embed a waiting room in an iFrame.
 
 ## Background

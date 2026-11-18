@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/vercel-ai-sdk/o
 
 # Vercel AI SDK
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/vercel-ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To call AI Gateway from the [AI SDK ↗︎](https://ai-sdk.dev/), use `createAI` from `agents/models/ai-sdk`. It calls models from the [model catalog](https://developers.cloudflare.com/ai/models/), [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/), and a vendor's own AI SDK models through your gateway. This page covers the AI Gateway features. For the full reference, refer to [AI SDK](https://developers.cloudflare.com/agents/models/ai-sdk/).
 
 The `ai-gateway-provider` package is deprecated. Use `createAI` instead.

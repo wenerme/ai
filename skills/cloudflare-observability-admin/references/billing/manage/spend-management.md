@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/spend-management/og.png?
 
 # Spending limits and alerts
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/spend-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Set spending limits for Workers and Durable Objects, or receive email alerts when spending reaches a threshold. Support for more products is coming soon.
 
 When a product reaches its spending limit, Cloudflare blocks supported operations until the next billing period or until you change the limit. Email alerts notify you without blocking usage.

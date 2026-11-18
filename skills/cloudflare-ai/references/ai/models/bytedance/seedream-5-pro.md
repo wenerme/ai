@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • ByteDance
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `bytedance/seedream-5-pro` Copy

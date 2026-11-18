@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/advanced-configuration/cache-rese
 
 # Cache Reserve
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Smart Shield
 
 This functionality is now offered as part of Cloudflare's origin server safeguard, Smart Shield. [Learn more](https://developers.cloudflare.com/smart-shield/).

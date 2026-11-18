@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/storage-classes/og.png?v=da8
 
 # Storage classes
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/storage-classes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Storage classes allow you to trade off between the cost of storage and the cost of accessing data. Every object stored in R2 has an associated storage class.
 
 All storage classes share the following characteristics:

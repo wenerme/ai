@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/og.png?v=b5017507340d020f
 
 # Cloudflare Observability
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare provides observability tools across its network and developer products. Use this page to find the documentation for your task.
 
 ## Explore observability tools

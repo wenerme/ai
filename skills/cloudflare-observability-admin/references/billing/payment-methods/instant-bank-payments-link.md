@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/payment-methods/instant-bank-pa
 
 # Instant Bank Payments via Link
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Instant Bank Payments (IBP) via [Link ↗︎](https://link.co/) lets you pay for Cloudflare services directly from your bank account. Link is a one-click checkout wallet that stores your payment details. If you already have a bank account saved in Link, it appears as a payment option at checkout. If not, you can connect one during the checkout flow.
 
 ## How Instant Bank Payments works

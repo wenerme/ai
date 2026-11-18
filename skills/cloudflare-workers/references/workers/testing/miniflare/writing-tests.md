@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/writing-tests
 
 # Writing tests
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 For most users, Cloudflare recommends using the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) for unit tests and [`createTestHarness()`](https://developers.cloudflare.com/workers/testing/test-harness/) for integration tests. Use Miniflare directly when you need low-level simulator control that is not exposed by those higher-level testing APIs.

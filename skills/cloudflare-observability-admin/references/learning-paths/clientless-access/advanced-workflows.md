@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/advanc
 
 # Advanced workflows
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure advanced Access policies to meet the specific requirements of your application or organization.
 
 ## Objectives

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/capabilities/og.png?v=eb
 
 # Capabilities
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/capabilities/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A capability adds a reusable feature to your agent, such as WebSocket connections, scheduled tasks, or an agent harness. You construct it as a field on your Durable Object and attach it to the [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) with `lifecycle.use()`. Install only the features your application needs.
 
 ## Why capabilities

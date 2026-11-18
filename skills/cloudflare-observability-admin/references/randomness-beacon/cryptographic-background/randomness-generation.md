@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/randomness-beacon/cryptographic-backgro
 
 # Randomness Generation
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/randomness-beacon/cryptographic-background/randomness-generation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this section, we describe how to use this collective key pair to generate publicly-verifiable, unbiasable, and unpredictable randomness in a distributed manner.
 
 First, we explain pairing-based cryptography (PBC), which has become quite popular, and is used in many modern consensus protocols or zero-knowledge proofs, such as zk-SNARKs. We will then show how drand uses PBC for the randomness beacon generation phase for threshold Boneh-Lynn-Shacham (BLS) signatures. Finally, we will discuss how drand links the generated threshold BLS signatures into a randomness chain.

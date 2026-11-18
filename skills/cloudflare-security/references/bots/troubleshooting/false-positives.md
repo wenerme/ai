@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/troubleshooting/false-positives/og
 
 # Handle False Positives from Bot Fight Mode or Super Bot Fight Mode
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/troubleshooting/false-positives/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Bot Fight Mode (BFM)](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) and [Super Bot Fight Mode (SBFM)](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) are designed to stop active attacks quickly. Due to their aggressive nature, false positives can occur where legitimate human or automated traffic is incorrectly challenged or blocked.
 
 When dealing with false positives, consider the following key differences and solutions:

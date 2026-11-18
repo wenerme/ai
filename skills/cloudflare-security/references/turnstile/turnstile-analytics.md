@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/turnstile-analytics/og.png?v=
 
 # Turnstile Analytics
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/turnstile-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Turnstile Analytics shows widget statistics across traffic dimensions like hostname, country, browser, and IP address. Use these metrics to identify where challenge activity is highest and whether specific sources are failing or bypassing challenges.
 
 ## Available statistics

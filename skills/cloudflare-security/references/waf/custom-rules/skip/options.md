@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/skip/options/og.png?v=
 
 # Available skip options
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/skip/options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following sections cover the available skip options in custom rules.
 
 ## Skip the remaining custom rules (current ruleset)

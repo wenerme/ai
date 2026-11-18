@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/jwt-validation/tran
 
 # Enhance Request Header Transform Rules
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can forward verified claims from a [JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/) to your origin in a header by creating a [Request Header Transform Rule](https://developers.cloudflare.com/rules/transform/request-header-modification/).
 
 Verified claims are available to Request Header Transform Rules through the `http.request.jwt.claims` fields. They are not available to [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/get-started/og.png?v=21ff698b
 
 # Get started
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Start here to create, inspect, and version Artifacts from Cloudflare developer workflows.
 
 Artifacts requires **[Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/)** (not available on Workers Free). Refer to [Artifacts pricing](https://developers.cloudflare.com/artifacts/platform/pricing/).

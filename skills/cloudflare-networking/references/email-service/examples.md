@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/examples/og.png?v=eeec1bf
 
 # Examples
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Practical code examples for sending and routing emails with Cloudflare Email Service.
 
 - [Email sending](https://developers.cloudflare.com/email-service/examples/email-sending/)

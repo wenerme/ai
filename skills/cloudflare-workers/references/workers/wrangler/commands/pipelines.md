@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/pipelines/og.
 
 # Basin Pipelines
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage your [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) resources using Wrangler.
 
 For `get` commands in the Basin Pipelines namespace (`basin pipelines get`, `basin pipelines streams get`, and `basin pipelines sinks get`), you can pass either a resource ID or resource name.

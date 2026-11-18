@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/
 
 # Off (no encryption)
 
-Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Setting your encryption mode to **Off (not recommended)** redirects any HTTPS request to plaintext HTTP.
 
 ```

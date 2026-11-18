@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/troubleshooting/always-online/og.
 
 # Always Online
 
-Last updated May 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/always-online/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Observe the following best practices when enabling Always Online with Internet Archive integration.
 
 - **Allow requests from the Internet Archive IP addresses.** Origin servers receive requests from the Internet Archive IPs. Make sure you are not blocking requests from the Internet Archive IP range: `207.241.224.0/20` and `208.70.24.0/21`.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/og.png
 
 # TCP sockets
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Workers runtime provides the `connect()` API for creating outbound [TCP connections ↗︎](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/) from Workers.
 
 Many application-layer protocols are built on top of the Transmission Control Protocol (TCP). These application-layer protocols, including SSH, MQTT, SMTP, FTP, IRC, and most database wire protocols including MySQL, PostgreSQL, MongoDB, require an underlying TCP socket API in order to work.

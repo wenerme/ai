@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/polls/
 
 # Polls
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/polls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide explains how to create, vote on, and interact with polls in a meeting using Cloudflare RealtimeKit.
 
 WebMobile

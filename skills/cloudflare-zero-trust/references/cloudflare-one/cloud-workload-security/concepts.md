@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Concepts
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Request Validation](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/concepts/request-validation/) explains how workload scope, policy filters, Rego checks, and enforcement settings determine request decisions.
 
 To configure these controls, follow [Configure policies](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/configure-policies/). To connect your first proxy, follow [Get started](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/).

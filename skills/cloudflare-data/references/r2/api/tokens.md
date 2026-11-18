@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/tokens/og.png?v=f9b82e479240edce
 
 # Authentication
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can generate an API token to serve as the Access Key for usage with existing S3-compatible SDKs or XML APIs.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/concepts/network-diagram/o
 
 # Network diagram
 
-Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/concepts/network-diagram/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The diagram below shows how requests flow through the Cloudflare network when Smart Shield is active, and where each feature applies along that path.
 
 ![Network diagram of requests being processed with all Smart Shield features](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=5596,height=4759,format=webp/_astro/network-diagram.PeUYDGK_.png)

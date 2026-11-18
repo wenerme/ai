@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-web
 
 # Add search to your website
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial creates an AI Search instance that indexes your website, then adds a working search bar, chat bubble, and search modal to your site's frontend. It uses the [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/embed-search-snippets/), pre-built web components that connect to your instance's public endpoint, so you add search with only a few lines of frontend code.
 
 **What you will build:** An AI Search instance that indexes your website, and a search bar, chat bubble, and search modal added to your site's frontend that query that content.

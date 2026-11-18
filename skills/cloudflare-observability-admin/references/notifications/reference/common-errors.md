@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/notifications/reference/common-errors/o
 
 # Common errors
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/reference/common-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Webhook test failed with status code 400 Bad Request
 
 This error can occur when you try to configure a webhook that is not currently supported, such as setting up a PagerDuty webhook. PagerDuty needs to be configured under [connected services](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/), not as a webhook.

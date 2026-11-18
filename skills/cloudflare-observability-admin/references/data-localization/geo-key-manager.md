@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/geo-key-manager/og.pn
 
 # Geo Key Manager
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/geo-key-manager/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Geo Key Manager offers enhanced control over the storage location of your private SSL/TLS keys — the cryptographic keys that Cloudflare uses to decrypt your HTTPS traffic. By restricting where these keys are stored, you can ensure compliance with regional data regulations and security requirements.
 
 ## Customize key storage

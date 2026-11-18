@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Qwen
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/qwen/qwen2.5-coder-32b-instruct` Copy

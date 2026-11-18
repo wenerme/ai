@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificat
 
 # Renewal and expiration
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Renew custom certificates
 
 Since Cloudflare cannot renew uploaded certificates, you should ensure that you replace or [update](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) an expiring custom certificate before it expires, otherwise your visitors may not be able to connect.

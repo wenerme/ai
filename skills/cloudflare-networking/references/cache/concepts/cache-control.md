@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/concepts/cache-control/og.png?v=2
 
 # Origin Cache Control
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/cache-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Origin Cache Control is a Cloudflare feature. When enabled on an Enterprise customer's website, it indicates that Cloudflare should strictly respect `Cache-Control` directives received from the origin server. Free, Pro and Business customers have this feature enabled by default.
 
 `Cache-Control` directives in the HTTP response from your origin server provide specific [caching instructions ↗︎](https://datatracker.ietf.org/doc/html/rfc7234) to intermediary services like Cloudflare.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whi
 
 # Add the Whiteboard plugin
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Whiteboard plugin is a collaborative whiteboard that Cloudflare hosts and operates. Participants draw, write, and diagram together on a shared board inside the meeting, and see each other's cursors and names as they work.
 
 You add the Whiteboard plugin with the same [plugins API](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) you use for your own plugins. There is nothing to deploy or operate.

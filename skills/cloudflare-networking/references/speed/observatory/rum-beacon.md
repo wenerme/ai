@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/observatory/rum-beacon/og.png?v=c
 
 # RUM beacon for Web Analytics
 
-Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/observatory/rum-beacon/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The RUM beacon is a JavaScript snippet that runs when a Cloudflare customer enables RUM through [Web Analytics](https://developers.cloudflare.com/web-analytics/) or [Observatory](https://developers.cloudflare.com/speed/observatory/). This script runs in users' browsers when they visit the customer's site, and its purpose is to collect performance-related data, for example, page load time, and send it to Cloudflare's systems for processing. This [data](https://developers.cloudflare.com/web-analytics/data-metrics/) is then presented to the customer, providing valuable insights into the website's performance and usage.
 
 The RUM beacon script can be enabled into a webpage in two ways:

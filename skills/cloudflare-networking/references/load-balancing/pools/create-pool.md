@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/pools/create-pool/og.png
 
 # Manage pools
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/pools/create-pool/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Within Cloudflare, pools represent your endpoints and how they are organized. As such, a pool can be a group of several endpoints, or you could also have only one endpoint (an origin server, for example) per pool.
 
 If you are familiar with DNS terminology, think of a pool as a “record set,” except Cloudflare only returns addresses that are considered healthy. You can attach health monitors to individual pools for customized monitoring. A pool can have either a single monitor or a monitor group attached — but not both.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/change-log/og.png?v=a77cdb457d77680
 
 # WAF changelog overview
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [WAF changelog](https://developers.cloudflare.com/waf/change-log/changelog/) provides information about changes to [managed rulesets](https://developers.cloudflare.com/waf/managed-rules/) and general updates to WAF protection.
 
 [View changelog](https://developers.cloudflare.com/waf/change-log/changelog/) [View scheduled changes](https://developers.cloudflare.com/waf/change-log/scheduled-changes/) [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/waiting-room-analytics/og.
 
 # Waiting Room Analytics
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Waiting Room Analytics gives you historical insights into the traffic going through your waiting room compared to your waiting room settings. Data is stored for the past 30 days.
 
 Using Waiting Room Analytics, you can:

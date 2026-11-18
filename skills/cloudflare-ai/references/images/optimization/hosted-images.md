@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/og.pn
 
 # Hosted images
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Serve uploaded images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/)
 - [Create predefined variants](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/)
 - [Enable flexible variants](https://developers.cloudflare.com/images/optimization/hosted-images/enable-flexible-variants/)

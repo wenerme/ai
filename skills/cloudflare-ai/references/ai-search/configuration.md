@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/og.png?v=2b15bd
 
 # Configuration
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can customize how your AI Search instance indexes your data, retrieves results, and generates responses. Some settings can be updated after the instance is created, while others are fixed at creation time.
 
 ## Data source

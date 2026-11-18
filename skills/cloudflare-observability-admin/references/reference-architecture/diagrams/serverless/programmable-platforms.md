@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/serverl
 
 # Programmable Platforms
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 A programmable platform allows customers to customize a product by writing code. Unlike traditional SaaS with fixed features, it enables users to extend functionality, deploy backend logic, and build full-stack experiences—all within the platform’s infrastructure.

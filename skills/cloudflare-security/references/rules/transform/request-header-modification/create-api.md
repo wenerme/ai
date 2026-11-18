@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/request-header-modifica
 
 # Create a request header transform rule via API
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create Request Header Transform Rules via API. Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Request+modification) for common use cases.
 
 If you are using Terraform, refer to [Transform Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#create-a-request-header-transform-rule).

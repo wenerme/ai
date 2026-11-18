@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/containers/examples/env-vars-and-secret
 
 Pass in environment variables and secrets to your container
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pass runtime environment variables through `env` in `ctx.container.start()`. Read Worker secrets, Secrets Store values, and KV data inside the Durable Object before starting its Container.
 
 This example passes four values to the container process: `ENV_VAR`, `WORKER_SECRET`, `SECRET_STORE_SECRET`, and `KV_VALUE`. The HTTP response includes only the two non-secret values.
@@ -31,7 +29,7 @@ Create a [KV namespace](https://developers.cloudflare.com/kv/get-started/) and a
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "observability": {
     "enabled": true
   },
@@ -84,7 +82,7 @@ name = "container-environment"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [observability]
 enabled = true

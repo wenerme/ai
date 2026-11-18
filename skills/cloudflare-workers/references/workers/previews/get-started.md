@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/previews/get-started/og.png?v=2
 
 # Get started
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can create a Preview for a new or existing Worker. You do not need to deploy a Worker to production before creating its first Preview.
 
 ## Before you begin

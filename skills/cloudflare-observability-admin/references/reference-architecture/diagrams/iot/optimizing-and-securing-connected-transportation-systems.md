@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/iot/opt
 
 # Optimizing and securing connected transportation systems
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A connected transport system is an integrated network of vehicles, infrastructure, and/or services that rely on constant data exchange in real-time to improve safety, efficiency, and mobility. Examples include public transportation (buses, trams, and trains), emergency vehicles (ambulances, fire trucks, and police cars), fleet management systems (logistics and delivery trucks), autonomous vehicles, connected infrastructure (traffic lights, road signs), platooning systems (truck convoys), drone delivery vehicles, and connected cars. They can be broadly categorized into:
 
 - **Fixed location devices**: Systems such as CCTV cameras, traffic signals, and roadside sensors that remain in fixed locations and push data through a central gateway.

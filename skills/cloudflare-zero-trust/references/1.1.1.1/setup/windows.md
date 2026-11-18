@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/setup/windows/og.png?v=0129f70c
 
 # Windows
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/windows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Windows 10
 
 Take note of any DNS addresses you might have set up, and save them in a safe place in case you need to use them later.

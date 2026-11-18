@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/migr
 
 # Migrate from unstable\_dev
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Cloudflare recommends using the [`createTestHarness()`](https://developers.cloudflare.com/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.

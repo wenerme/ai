@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Connect to SSH in the browser
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-browser-rendering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's browser-based terminal allows end users to connect to an SSH server without managing SSH keys or installing the Cloudflare One Client.
 
 This method requires routing SSH access to the server through a public hostname. The traffic is proxied over this connection, and the user logs in to the server with their Cloudflare Access credentials.

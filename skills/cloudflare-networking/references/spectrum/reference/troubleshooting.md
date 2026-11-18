@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/reference/troubleshooting/og.p
 
 # Troubleshooting
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To investigate issues with a Spectrum application, use the logs and diagnostics described on this page. For API validation errors returned when creating or updating an application, refer to [Error codes](https://developers.cloudflare.com/spectrum/reference/error-codes/).
 
 ## Spectrum event logs

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 407
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-407/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 407 Authentication Required
 
 The `407 Proxy Authentication Required` status code indicates that the client did not provide the necessary authentication credentials to access the requested resource through a proxy server. For more details, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.8).

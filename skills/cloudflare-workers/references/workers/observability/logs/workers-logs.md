@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/logs/workers-logs
 
 # Workers Logs
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Logs lets you automatically collect, store, filter, and analyze logging data emitted from Cloudflare Workers. Data is written to your Cloudflare Account, and you can query it in the dashboard for each of your Workers. All newly created Workers will come with the observability setting enabled by default.
 
 Logs include [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs), [custom logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#custom-logs), errors, and uncaught exceptions.
@@ -84,6 +82,61 @@ Access logs for your Worker from the Cloudflare dashboard:
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your **Worker**.
 3. Select **Observability**.
+
+## Alert on application events
+
+Use [Workers Issues](https://developers.cloudflare.com/workers/observability/issues/) for failure notifications. Use [Monitors](https://developers.cloudflare.com/notifications/monitors/) for alerts based on custom log queries, such as budget warnings.
+
+### Notify on failures with Issues
+
+[Turn on Issues](https://developers.cloudflare.com/workers/observability/issues/#enable-issues) to detect and group production failures. Issues detects uncaught exceptions, failed invocations, HTTP `5xx` responses, and console logs at error level or containing an `Error` object or stack trace. To report a handled failure, pass the caught error to `console.error(error)` before returning a fallback response.
+
+Create an [Issues automation](https://developers.cloudflare.com/workers/observability/issues/automations/) to send matching issues to a webhook, chat service, or incident-management tool. Set an occurrence threshold of `1` to notify on the first occurrence. Use a recurrence trigger to notify when an issue returns after inactivity.
+
+Occurrence thresholds run once when crossed. They do not count matching logs within a rolling time window. A plain `console.warn()` message without an error object or stack trace does not meet the documented [Issues detection criteria](https://developers.cloudflare.com/workers/observability/issues/investigate/#detected-failures).
+
+### Alert on warning queries with Monitors
+
+Monitors evaluate a SQL API query on a schedule. They can notify you when matching log counts exceed a threshold within a time window.
+
+The required log dataset must be available to your account. Dataset and field access depend on your plan and permissions. Use [SQL API dataset discovery](https://developers.cloudflare.com/analytics/sql-api/datasets/#discover-datasets) to inspect the dataset, columns, and attributes. The SQL API documents `logs.workersLogs` as a [log dataset](https://developers.cloudflare.com/analytics/sql-api/datasets/#log-datasets).
+
+For example, log a structured event when an application budget is exhausted:
+
+```js
+console.warn({
+	event: "budget_exhausted",
+	budget: "vector_search",
+	message: "Daily vector search budget exhausted",
+});
+```
+
+```ts
+console.warn({
+	event: "budget_exhausted",
+	budget: "vector_search",
+	message: "Daily vector search budget exhausted",
+});
+```
+
+To notify on this event, create a [threshold monitor](https://developers.cloudflare.com/notifications/monitors/#create-a-monitor) with these settings:
+
+| Setting | Example value |
+| --- | --- |
+| Dataset scope | Your account |
+| Dataset | Workers Logs, if available |
+| Metric | `COUNT`, returned as `value` |
+| Filters | Your Worker, warning-level logs, and the structured `event` value `budget_exhausted` |
+| Evaluation window | `15m` |
+| Comparison | Greater than `0` |
+| Execution interval | A dataset-supported interval no longer than the evaluation window |
+| Destination | Email, webhook, or PagerDuty, subject to destination availability |
+
+Use the column and attribute names discovered for your dataset when adding filters. Preview the query to verify that it matches your event before saving the monitor. For custom SQL requirements, refer to [Monitor query](https://developers.cloudflare.com/notifications/monitors/#custom-sql).
+
+Set the repeat notification interval to control reminders while the monitor remains active. A `24h` interval does not guarantee one notification per event kind per calendar day. For interval limits, refer to [Evaluation and notification frequency](https://developers.cloudflare.com/notifications/monitors/#evaluation-and-notification-frequency).
+
+Log-query alerts evaluate retained data. [Head-based sampling](#head-based-sampling) can omit individual warnings, so choose a sampling rate appropriate for the events you monitor.
 
 ## Best Practices
 
@@ -264,5 +317,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/og.png?v=e1cc88de13f81f13","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/og.png?v=e1cc88de13f81f13","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

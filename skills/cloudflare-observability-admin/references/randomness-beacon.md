@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/randomness-beacon/og.png?v=0a029898132a
 
 # Cloudflare Randomness Beacon
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/randomness-beacon/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 drand (pronounced "dee-rand") is a distributed randomness beacon daemon written in Golang. Servers running drand can be linked to each other to produce collective, publicly verifiable, unbiased, unpredictable random values at fixed intervals using bilinear pairings and threshold cryptography.
 
 drand is meant to be an Internet infrastructure level service that provides randomness to applications, similar to how NTP provides timing information and Certificate Transparency Logs provide certificate issuance information.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/reference/configuration-option
 
 # Configuration options
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/configuration-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spectrum is a global TCP and UDP proxy running on Cloudflare's edge nodes. It does not terminate the connection in the application-layer sense. However, at Layer 4, Spectrum does terminate the TCP and UDP sockets in both directions. The L4 payloads of TCP segments and UDP datagrams are passed back and forth as-is, without modifications.
 
 This means Spectrum does not inspect, modify, or upgrade application-layer protocols. For example, Spectrum cannot convert an HTTP connection to HTTPS, add HTTP headers, or apply WAF rules to TCP traffic. To add Layer 7 functionality such as CDN, Workers, or Bot Management, set the [application type](#application-type) to **HTTP/HTTPS**.

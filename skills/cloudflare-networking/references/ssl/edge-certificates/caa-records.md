@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/caa-records/og.pn
 
 # Add CAA records
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Certificate Authority Authorization (CAA) DNS record specifies which certificate authorities (CAs) are allowed to issue certificates for a domain. This record reduces the chance of unauthorized certificate issuance and promotes standardization across your organization.
 
 

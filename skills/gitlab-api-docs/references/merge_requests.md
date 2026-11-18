@@ -2179,13 +2179,20 @@ Example response:
 
 ## Retrieve merge request changes
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+
 > [!warning]
 > This endpoint was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/322117) in GitLab 15.7
 > and [is scheduled for removal](rest/deprecations.md) in API v5. Use the
 > [list merge request diffs](#list-merge-request-diffs) endpoint instead.
 >
 
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Retrieve information about a merge request, including its files and changes.
+
+Requests to this endpoint count toward the [merge request diff read rate limit](../rate_limits/_index.md#api-and-rails-console).
 
 ```plaintext
 GET /projects/:id/merge_requests/:merge_request_iid/changes
@@ -2321,8 +2328,14 @@ Example response:
 ## List merge request diffs
 
 - `collapsed` and `too_large` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/199633) in GitLab 18.4.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
 
 List diffs of the files changed in a merge request.
+
+Requests to this endpoint count toward the [merge request diff read rate limit](../rate_limits/_index.md#api-and-rails-console).
 
 ```plaintext
 GET /projects/:id/merge_requests/:merge_request_iid/diffs
@@ -2401,7 +2414,14 @@ Example response:
 
 ## Show merge request raw diffs
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Show raw diffs of the files changed in a merge request.
+
+Requests to this endpoint count toward the [merge request diff read rate limit](../rate_limits/_index.md#api-and-rails-console).
 
 ```plaintext
 GET /projects/:id/merge_requests/:merge_request_iid/raw_diffs
@@ -3109,6 +3129,8 @@ Example response:
 
 ## Merge to default merge ref path
 
+- [Rate limit](../rate_limits/_index.md) `merge_requests_merge_ref_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270070) in GitLab 19.7.
+
 Merge the changes between the merge request source and target branches into `refs/merge-requests/:iid/merge`
 ref, of the target project repository, if possible. This ref has the state the target branch would have if
 a regular merge action was taken.
@@ -3137,6 +3159,7 @@ This API returns specific HTTP status codes:
 | `400`       | `Merge request is not mergeable` | The merge request has conflicts. |
 | `400`       | `Merge ref cannot be updated`    |        |
 | `400`       | `Unsupported operation`          | The GitLab database is in read-only mode. |
+| `429`       | _(rate limit message)_           | The user or IP address exceeded the [merge ref rate limit](../rate_limits/_index.md). |
 
 Example response:
 
@@ -4215,8 +4238,14 @@ Example response:
 ## Retrieve a merge request diff version
 
 - `collapsed` and `too_large` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/199633) in GitLab 18.4.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606717) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_read_diffs_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
 
 Retrieve a specific diff version for a merge request.
+
+Requests to this endpoint count toward the [merge request diff read rate limit](../rate_limits/_index.md#api-and-rails-console).
 
 ```plaintext
 GET /projects/:id/merge_requests/:merge_request_iid/versions/:version_id

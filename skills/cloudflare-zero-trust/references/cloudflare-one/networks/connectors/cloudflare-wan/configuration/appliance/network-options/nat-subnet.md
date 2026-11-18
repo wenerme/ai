@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Enable NAT for a subnet
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/nat-subnet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 Every subnet in the Cloudflare WAN (formerly Magic WAN) overlay must have a unique address space — otherwise, Cloudflare cannot determine which site should receive traffic for a given IP address. In practice, many organizations reuse the same private address ranges (for example, `192.168.1.0/24`) at multiple sites. Rather than renumbering those subnets, you can enable static network address translation (NAT) for a subnet on a Cloudflare One Appliance (formerly Magic WAN Connector). NAT assigns each site a unique overlay-facing prefix while preserving the existing local addressing.

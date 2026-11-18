@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/
 
 # NAv1 to NAv2 schema map
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following table lists direct mappings between NAv1 and NAv2 fields, when available, and provides related fields when there is no direct mapping available.
 
 | ipFlows1mGroups | magicTransitNetworkAnalytics-AdaptiveGroups /<br> spectrumNetworkAnalytics-AdaptiveGroups | dosdNetworkAnalytics-AdaptiveGroups | dosdAttackAnalytics-Groups | flowtrackdNetworkAnalytics-AdaptiveGroups | magicFirewallNetworkAnalytics-AdaptiveGroups |

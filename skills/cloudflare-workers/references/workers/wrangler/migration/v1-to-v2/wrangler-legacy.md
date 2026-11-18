@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wra
 
 # Wrangler v1 (legacy)
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following documentation applied to Wrangler v1 usage.
 
 Caution

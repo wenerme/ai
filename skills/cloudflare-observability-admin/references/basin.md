@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin/og.png?v=4aac2174eba45ffc
 
 # Basin
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Collect, transform, manage, and query analytics data with a serverless platform built on [Apache Iceberg ↗︎](https://iceberg.apache.org/) and [R2](https://developers.cloudflare.com/r2/).
 
 Note

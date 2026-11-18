@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox
 
 # Replace the Sandbox class
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Replace the 0.12 `Sandbox` class with a Durable Object class that you write. In 0.12, your Worker calls package methods through `getSandbox()`. In 1.0, your class starts the container through `this.ctx.container`, and your Worker calls the methods that your class defines.
 
 ## Before you start
 
-Your application runs `@cloudflare/sandbox` 0.12.13. This page replaces the `Sandbox` class, whether you export it from the package or extend it. It also replaces `getSandbox()` and its options, class fields such as `sleepAfter` and `envVars`, and the hooks `onStart()`, `onStop()`, `onError()`, and `onActivityExpired()`.
+Your application runs `@cloudflare/sandbox` 0.12.14. This page replaces the `Sandbox` class, whether you export it from the package or extend it. It also replaces `getSandbox()` and its options, class fields such as `sleepAfter` and `envVars`, and the hooks `onStart()`, `onStop()`, `onError()`, and `onActivityExpired()`.
 
 The page ends with the Worker running under `wrangler dev`. You cannot undo the deploy that switches your sandboxes to 1.0. Before you deploy, follow [Plan the move to Sandbox SDK 1.0](https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/).
 

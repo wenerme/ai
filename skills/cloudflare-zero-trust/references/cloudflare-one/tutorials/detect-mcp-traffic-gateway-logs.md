@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-tra
 
 # Detect MCP traffic in Gateway logs
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
 As an IT administrator, you want to identify shadow MCP traffic to prevent unauthorized data exfiltration while still supporting governed use cases. In this tutorial, you will use the Cloudflare GraphQL Analytics API to scan Gateway HTTP logs for MCP traffic patterns, create DLP profiles that detect MCP JSON-RPC methods, and classify traffic to differentiate between authorized traffic sent to MCP server portals and traffic sent to "shadow" remote MCP servers.
@@ -21,7 +19,7 @@ As an IT administrator, you want to identify shadow MCP traffic to prevent unaut
 ## Prerequisites
 
 - A Cloudflare account with a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/)
-- [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) with HTTP filtering enabled and actively proxying user traffic
+- [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) with HTTP filtering enabled and actively proxying user traffic
 - An [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
   - Account-level `Zero Trust: Read`
   - Account-level `DLP: Write`
@@ -515,7 +513,7 @@ Replace the `portalDomains` array with the actual domains of your approved MCP S
 ## Related resources
 
 - [Zero Trust documentation](https://developers.cloudflare.com/cloudflare-one/)
-- [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+- [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 - [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 - [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/)
 - [Rules language and wirefilter expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/)
@@ -531,5 +529,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/og.png?v=820aa1d92e7b6e66","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/og.png?v=820aa1d92e7b6e66","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}
 ```

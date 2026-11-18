@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/local-development/local-data/og
 
 # Adding local data
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Whether you are using Wrangler or the [Cloudflare Vite plugin ↗︎](https://developers.cloudflare.com/workers/vite-plugin/), your workflow for **accessing** data during local development remains the same. However, you can only [populate local resources with data](https://developers.cloudflare.com/workers/local-development/local-data/#populating-local-resources-with-data) via the Wrangler CLI.
 
 ### How it works

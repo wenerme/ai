@@ -18,8 +18,6 @@ Beta
 
 Text Generation • Google
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/google/gemma-7b-it-lora/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/google/gemma-7b-it-lora` Copy
@@ -33,7 +31,7 @@ This is a Gemma-7B base model that Cloudflare dedicates for inference with LoRA 
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 3,500 tokens |
 | Zero data retention | Yes |
 | LoRA | Yes |

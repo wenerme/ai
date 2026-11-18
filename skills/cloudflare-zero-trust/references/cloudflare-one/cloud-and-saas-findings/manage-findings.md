@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/
 
 # Manage findings
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare CASB detects security issues involving users, stored files, and application settings. In Cloudflare One, you can review posture and content findings and take action on affected assets. For definitions of finding types, posture findings, and finding instances, refer to [Finding terminology](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/#finding-terminology).
 
 ## Prerequisites

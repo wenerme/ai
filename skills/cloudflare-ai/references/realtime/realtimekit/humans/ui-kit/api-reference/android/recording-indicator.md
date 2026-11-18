@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkRecordingIndicator
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/recording-indicator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A component which indicates the recording status of a meeting. It does not render anything if no recording is taking place.
 
 ## Methods

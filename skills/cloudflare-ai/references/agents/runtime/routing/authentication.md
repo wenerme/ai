@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/routing/authentication/o
 
 # Authentication
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/routing/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Anyone who knows an agent's URL can send it requests. Check the caller in your Worker, before the request reaches the Durable Object. The object then only sees requests you have already allowed.
 
 ## Use the routing hooks

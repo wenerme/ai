@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/grafana/og.p
 
 # Querying from Grafana
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/grafana/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Analytics Engine is optimized for powering time series analytics that can be visualized using tools like Grafana. Every event written from the runtime is automatically populated with a `timestamp` field.
 
 ## Grafana plugin setup

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priori
 
 # Order and priority
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Firewall Rules, now deprecated, is part of a larger evaluation chain for HTTP requests, as illustrated in the diagram below. For example, Firewall Rules only evaluates requests that first clear IP Access rules. If a request is blocked by a rule at any stage in the chain, Cloudflare does not evaluate the request further.
 
 ![Flow chart of request evaluation at Cloudflare for security products that are not powered by the Ruleset Engine](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=858,format=webp/_astro/firewall-rules-order-and-priority-1.DvL3658y.png)

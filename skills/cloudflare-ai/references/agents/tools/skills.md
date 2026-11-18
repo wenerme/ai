@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/skills/og.png?v=8c5679605e
 
 # Skills
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/skills/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Give your agent tools to use [Agent Skills](https://developers.cloudflare.com/agents/skills/): on-demand instructions, references, and scripts stored as `SKILL.md` folders. The model sees a short catalog of skill names and descriptions, then loads a skill only when a task matches it.
 
 Skills come from [sources](https://developers.cloudflare.com/agents/skills/sources/computer/): a Computer Workspace, an R2 bucket, or code. The tools are the same whichever source you use.

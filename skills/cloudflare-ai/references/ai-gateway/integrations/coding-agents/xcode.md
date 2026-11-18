@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/x
 
 # Xcode
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/xcode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Xcode ↗︎](https://developer.apple.com/xcode/) supports internet-hosted chat providers that use the OpenAI Chat Completions API. Point a chat provider at an AI Gateway [custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/) protected by Cloudflare Access. Xcode authenticates with an Access service token stored as its API key.
 
 This integration uses static credentials. Xcode cannot use `cloudflared` to generate short-lived Access tokens.

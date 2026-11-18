@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostn
 
 # ​Purge cache by hostname
 
-Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Purging by hostname means that all assets at URLs with a host that matches one of the provided values will be instantly purged from the cache.
 
 1. In the Cloudflare dashboard, go to the **Configuration** page. [Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)

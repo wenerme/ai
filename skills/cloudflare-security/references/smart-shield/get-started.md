@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/get-started/og.png?v=c9e92
 
 # Get started
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Smart Shield reduces the load on your origin server and improves content delivery by consolidating requests through Cloudflare's caching infrastructure. It is available to all customers as an opt-in configuration.
 
 ## Before you begin

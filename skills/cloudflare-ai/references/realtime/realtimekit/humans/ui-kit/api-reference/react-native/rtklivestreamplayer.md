@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkLiveStreamPlayer
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtklivestreamplayer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 IVS (Amazon Interactive Video Service) player for viewing livestream playback. Requires `amazon-ivs-react-native-player` peer dependency.
 
 ## Properties

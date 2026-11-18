@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/load-
 
 # Custom load balancing rules
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom load balancing rules let you customize the behavior of your load balancer based on the characteristics of a request.
 
 For example, you can use URL-based routing, or create a rule that selects a pool based on the URI path of an HTTP request.

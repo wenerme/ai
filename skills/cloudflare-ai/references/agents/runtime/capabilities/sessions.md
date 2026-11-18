@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/capabilities/sessions/og
 
 # Sessions
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/capabilities/sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `Sessions` is the session store that underpins the [Think harness](https://developers.cloudflare.com/agents/harnesses/think/). You can also use it to store the conversation when you [build your own harness](https://developers.cloudflare.com/agents/runtime/capabilities/build-a-capability/).
 
 Experimental

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-hono-si
 
 # Hono
 
-Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hono-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Hono ↗︎](https://honojs.dev/) is a small, simple, and ultrafast web framework for Cloudflare Pages and Workers, Deno, and Bun. Learn more about the creation of Hono by [watching an interview](#creator-interview) with its creator, [Yusuke Wada ↗︎](https://yusu.ke/).
 
 In this guide, you will create a new Hono application and deploy it using Cloudflare Pages.

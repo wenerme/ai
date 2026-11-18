@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/custom-errors/og.png?v=9d60eae85b
 
 # Custom Errors
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Custom Errors to replace default Cloudflare error pages with your own custom content. Custom error content is shown to visitors when an HTTP error occurs, whether the error comes from your origin server, a Cloudflare product (including [Cloudflare Workers](https://developers.cloudflare.com/workers/)), or a [security challenge](https://developers.cloudflare.com/cloudflare-challenges/).
 
 You can configure custom error content using the following methods:

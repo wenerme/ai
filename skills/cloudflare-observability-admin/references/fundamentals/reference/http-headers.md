@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/http-headers/og.
 
 # Cloudflare HTTP headers
 
-Last updated Nov 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/http-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Request headers
 
 Cloudflare passes all HTTP request headers to your origin web server and adds additional headers as specified below.

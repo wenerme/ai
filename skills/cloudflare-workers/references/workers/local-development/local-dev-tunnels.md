@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/local-development/local-dev-tun
 
 # Share a local dev server
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) when you need to share a preview, test a webhook, or access your app from another device.
 
 This page covers tunnel support in [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).

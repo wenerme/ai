@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/
 
 # Cloud and SaaS findings
 
-Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Availability
 
 Available for all Zero Trust users.

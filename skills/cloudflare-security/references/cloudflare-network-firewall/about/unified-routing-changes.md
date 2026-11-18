@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/about/unifi
 
 # Unified Routing behavior changes
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/unified-routing-changes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Network Firewall rules can behave differently depending on whether your account uses Legacy Routing or [Unified Routing](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#how-to-upgrade-to-unified-routing). Review the following changes before you upgrade to Unified Routing.
 
 ## `ip.geoip.country`

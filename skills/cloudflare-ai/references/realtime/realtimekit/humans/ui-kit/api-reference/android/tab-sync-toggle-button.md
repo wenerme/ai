@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkTabSyncToggleButton
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/tab-sync-toggle-button/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A toggle button for syncing plugin tabs.
 
 ## Methods

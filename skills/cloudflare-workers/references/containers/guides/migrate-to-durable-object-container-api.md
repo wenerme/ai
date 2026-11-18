@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/guides/migrate-to-durable-ob
 
 # Migrate from the Container class to the Durable Object Container API
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-container-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `@cloudflare/containers` package is deprecated. Its `Container` class wraps the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/) with lifecycle and routing helpers. Replace these helpers with application code that uses `this.ctx.container` inside a Durable Object.
 
 You can migrate the implementation without replacing the Durable Object. Keep the Worker name, exported class name, binding, container image, and existing migration tags unchanged. Changing the TypeScript base class does not require a new Durable Object migration.

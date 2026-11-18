@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/get-started/og.png?v=bfc8e4310
 
 # Get started
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will create a feature flag in Flagship and evaluate it inside a Cloudflare Worker.
 
 ## Create an app and a flag

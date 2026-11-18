@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # DesignLibrary
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/design-library/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The central design token library providing color, spacing, border width, and border radius tokens. Access through the `DesignLibrary.shared` singleton.
 
 ## Access

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/faq/og.png?v=f68926f369354439
 
 # FAQ
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Stream
 
 ### Can I download original video files from Stream?

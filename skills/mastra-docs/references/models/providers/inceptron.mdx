@@ -5,7 +5,7 @@ description: "Browse Inceptron model IDs, capabilities, context windows, and pri
 
 # [Inceptron logo]Inceptron
 
-Access 6 Inceptron models through Mastra's model router. Authentication is handled automatically using the `INCEPTRON_API_KEY` environment variable.
+Access 5 Inceptron models through Mastra's model router. Authentication is handled automatically using the `INCEPTRON_API_KEY` environment variable.
 
 Learn more in the [Inceptron documentation](https://docs.inceptron.io).
 
@@ -60,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.799,
-    "outputCost": 3.75
+    "inputCost": 0.7898,
+    "outputCost": 3.96
   },
   {
     "model": "inceptron/moonshotai/Kimi-K2.7-Code",
@@ -72,20 +72,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.6,
-    "outputCost": 3.5
-  },
-  {
-    "model": "inceptron/zai-org/GLM-5.2",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 1048576,
-    "inputCost": 1.4,
-    "outputCost": 4.4
+    "inputCost": 0.7,
+    "outputCost": 3.75
   },
   {
     "model": "inceptron/zai-org/GLM-5.3",
@@ -97,7 +85,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 1048576,
     "inputCost": 1,
-    "outputCost": 4.9
+    "outputCost": 3.85
   },
   {
     "model": "inceptron/zai-org/GLM-5.3-Flash",
@@ -109,7 +97,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 1048576,
     "inputCost": 0.175,
-    "outputCost": 0.45
+    "outputCost": 0.49
   }
 ]}
 />

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/sql-api/errors/og.png?v=0831a
 
 # Error responses
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sql-api/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The SQL API uses HTTP status codes to report errors. Errors returned by the SQL service usually have a `text/plain` body with a customer-safe description. Authentication errors rejected by the API gateway use the standard Cloudflare API JSON response envelope.
 
 | Status | Meaning | Action |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/zone
 
 # Set up zone custom nameservers
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/zone-custom-nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With zone custom nameservers (ZCNS), each custom nameserver name must be a subdomain of the zone where the custom nameservers are configured.
 
 For example, for a zone `domain.test`, the ZCNS can be `ns1.domain.test` and `ns2.domain.test` but they cannot use a different TLD (`ns1.domain.org`) nor a different domain (`ns1.example.com`).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/setup/og.png?v=54100f8fa987d39b
 
 # Set up
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, your devices use a [DNS server ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) provided by your Internet service provider (ISP). You can change this to use 1.1.1.1 instead, which gives you faster and more private DNS resolution. Some [ISPs and network equipment providers](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/) already partner with Cloudflare to offer this.
 
 If your provider does not use Cloudflare, follow the instructions for your device or router below.

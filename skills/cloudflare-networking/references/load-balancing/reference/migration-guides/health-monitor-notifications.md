@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/reference/migration-guid
 
 # Health monitor notifications
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare is migrating the notifications used by load balancing [health monitors](https://developers.cloudflare.com/load-balancing/monitors/) to use Cloudflare's centralized [Notifications Service](https://developers.cloudflare.com/notifications/).
 
 ## What is changing and why?

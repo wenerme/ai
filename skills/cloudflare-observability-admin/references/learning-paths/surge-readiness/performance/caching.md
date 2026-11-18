@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/performa
 
 # Caching
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Optimize caching
 
 By default, Cloudflare [caches static content](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) such as images, CSS, and JavaScript. However, you can extend Cloudflare caching to work with HTML by creating custom [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/).

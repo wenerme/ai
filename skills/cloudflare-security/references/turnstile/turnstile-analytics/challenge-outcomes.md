@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge
 
 # Challenge outcome
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge-outcomes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a visitor encounters Turnstile, it assesses whether they are human or bot-like based on various signals. These outcomes help you evaluate how effectively Turnstile is protecting your application.
 
 ## Metrics

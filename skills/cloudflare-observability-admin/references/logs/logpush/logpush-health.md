@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-health/og.png?v=93
 
 # Logpush Health Dashboards
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Logpush Health Dashboards give you a clear view into the performance and reliability of your Logpush jobs. You can monitor the status of log delivery, diagnose issues, and understand the volume of data being sent to your configured destinations. This helps you ensure that critical log data for security, compliance, and observability is always flowing as expected.
 
 ## Stay informed with health notifications

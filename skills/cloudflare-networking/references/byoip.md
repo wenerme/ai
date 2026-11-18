@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/og.png?v=9f1a399416bdc846
 
 # Cloudflare BYOIP
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Get Cloudflare's security and performance while using your own IPs.
 
 Enterprise-only

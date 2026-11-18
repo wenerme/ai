@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/og.png?v=77288c550541d4f8
 
 # Cloudflare Rules
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Available on all plans
 
 Cloudflare Rules allows you to control how Cloudflare handles traffic to your website. For example, redirecting visitors, rewriting URLs, overriding where requests are sent, or customizing Cloudflare settings for specific requests.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/sub-agents/og.png?v=
 
 # Sub-agents
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/sub-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spawn child agents as co-located Durable Objects with their own isolated SQLite storage. The parent gets a typed RPC stub for calling methods on the child — every public method on the child class is callable as a remote procedure call with Promise-wrapped return types.
 
 Use sub-agents when a single user or entity owns an open-ended set of long-lived agents, such as chats, documents, sessions, shards, or projects. Each sub-agent runs in parallel with its own state while the parent coordinates discovery, access control, and lifecycle.
@@ -66,7 +64,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-10-27",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -91,7 +89,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]

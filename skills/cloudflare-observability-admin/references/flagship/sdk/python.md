@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96
 
 # Python SDK
 
-Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Python SDK provides an OpenFeature-compatible `FlagshipServerProvider` for server-side Python applications. It evaluates flags over HTTP or locally from downloaded flag definitions. It does not support the Cloudflare Workers binding.
 
 ## Installation

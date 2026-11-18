@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/ai/og.png?v=91578cecc6804447
 
 # AI applications
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build and deploy AI applications on Cloudflare's global network with inference at the edge, vector databases, and model gateways. Workers AI runs Large Language Models (LLMs), text embeddings, image generation, and other models with pay-per-use pricing. AI Gateway proxies requests to OpenAI, Anthropic, and other providers with caching and unified analytics. Vectorize stores embeddings for Retrieval Augmented Generation (RAG) workflows.
 
 AI applications can present unique infrastructure challenges, such as unpredictable inference costs, latency-sensitive user experiences, and the need to work with multiple model providers. Cloudflare provides a complete platform for building AI applications that are fast, cost-effective, and globally distributed.

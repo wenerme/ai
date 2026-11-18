@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/og.png?v=95e31e7f8e5f6bfc
 
 # Tools
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Tools give agents capabilities such as [searching the web](https://developers.cloudflare.com/agents/tools/web-search/), [reading webpages and documents](https://developers.cloudflare.com/agents/tools/web-fetch/), browsing the web, processing payments, and running code. Agents can call tools in different ways. Use [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/) to let models discover and orchestrate multiple tools by writing code, or use direct tool calls for simple actions.
 
 - [File system](https://developers.cloudflare.com/agents/tools/filesystem/)

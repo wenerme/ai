@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/examples/og.png?v=9f9a3ed1
 
 # Examples
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Choose an application, run its example, and follow the SFU operations behind it. Each guide explains the topology, setup, adaptation points, and current limitations.
 
 ## Build an application

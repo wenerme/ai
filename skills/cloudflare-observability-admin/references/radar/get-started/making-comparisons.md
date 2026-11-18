@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/get-started/making-comparisons/og
 
 # Make comparisons
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/making-comparisons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When comparing time series, across locations/time ranges/etc., in endpoints that normalize values using [min-max](https://developers.cloudflare.com/radar/concepts/normalization), you must do so in the same request. This is done by asking for multiple series. All values will then be normalized using the same minimum and maximum value and can safely be compared against each other.
 
 [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows) values are normalized using [min0-max](https://developers.cloudflare.com/radar/concepts/normalization), so we will use it as an example. Refer to [Get NetFlow time series](https://developers.cloudflare.com/api/resources/radar/subresources/netflows/methods/timeseries/) for more information.

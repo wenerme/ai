@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/changelog/og.png?v=0e682d94f4e7c3
 
 # Rules changelog
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/rules.xml)
 
 ## 2026-11-12

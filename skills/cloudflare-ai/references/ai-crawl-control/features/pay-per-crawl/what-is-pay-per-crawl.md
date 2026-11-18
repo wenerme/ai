@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl
 
 # What is Pay Per Crawl?
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pay per crawl beta
 
 Pay per crawl is currently in closed beta.

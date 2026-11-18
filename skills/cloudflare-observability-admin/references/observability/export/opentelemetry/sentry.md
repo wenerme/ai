@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/export/opentelemetry/sent
 
 # Export to Sentry
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/export/opentelemetry/sentry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Sentry provides distributed tracing, logs, and application monitoring. Export Cloudflare telemetry to query data and create alerts or dashboards.
 
 ![Sentry trace view with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2474,height=862,format=webp/_astro/sentry-example.DU-HO2rh.png)

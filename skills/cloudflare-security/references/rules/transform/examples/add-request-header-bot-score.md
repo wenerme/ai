@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/transform/examples/add-request-he
 
 Create a request header transform rule to add a `X-Bot-Score` HTTP header to the request with the current bot score.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/add-request-header-bot-score/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following request header transform rule adds a header named `X-Bot-Score` with the current bot score to the HTTP request:
 
 Text in **Expression Editor**:

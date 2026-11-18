@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/upgrading-your-key-serv
 
 # Upgrade your key server
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/upgrading-your-key-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Periodically, you may need to update your key server when using Cloudflare's Keyless SSL.
 
 To upgrade your key server:

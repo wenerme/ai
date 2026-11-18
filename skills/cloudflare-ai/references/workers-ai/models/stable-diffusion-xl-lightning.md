@@ -18,8 +18,6 @@ Beta
 
 Text-to-Image • ByteDance
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/bytedance/stable-diffusion-xl-lightning` Copy
@@ -32,7 +30,7 @@ SDXL-Lightning is a lightning-fast text-to-image generation model. It can genera
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | More information | [link ↗](https://huggingface.co/ByteDance/SDXL-Lightning) |
 | Zero data retention | Yes |
 | Beta | Yes |

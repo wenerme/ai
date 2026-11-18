@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-
 
 # Stream Player API
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For further control and customization, we provide an additional JavaScript SDK that you can use to control video playback and listen for media events.
 
 To use this SDK, add an additional `<script>` tag to your website:

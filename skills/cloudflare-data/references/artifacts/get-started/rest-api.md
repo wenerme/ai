@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/get-started/rest-api/og.png?v
 
 # REST API
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create an Artifacts repo with the REST API, then use a regular Git client to push and pull content.
 
 By the end of this guide, you will create a repo inside a namespace, read back the repo remote URL, push a commit, and clone the same repo with a standard Git client.

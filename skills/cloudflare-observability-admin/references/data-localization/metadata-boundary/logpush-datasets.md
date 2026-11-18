@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/metadata-boundary/log
 
 # Logpush datasets
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Logpush](https://developers.cloudflare.com/logs/logpush/) is a service that automatically streams your Cloudflare log data to a storage destination you control (such as a cloud storage bucket or SIEM).
 
 The table below lists the Logpush [datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) (categories of log data) that support zones or accounts with Customer Metadata Boundary (CMB) enabled.

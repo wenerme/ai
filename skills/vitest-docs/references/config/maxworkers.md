@@ -6,8 +6,8 @@ title: maxWorkers | Config
 
 - **Type:** `number | string`
 - **Default:**
-  - if [`watch`](/config/watch) is disabled, uses all available parallelism
-  - if [`watch`](/config/watch) is enabled, uses half of all available parallelism
+  - if [`watch`](/config/watch) is disabled, uses all available parallelism minus one core for the main thread (minimum 1)
+  - if [`watch`](/config/watch) is enabled, uses half of all available parallelism (minimum 1)
 
 Defines the maximum concurrency for test workers. Accepts either a number or a percentage string.
 

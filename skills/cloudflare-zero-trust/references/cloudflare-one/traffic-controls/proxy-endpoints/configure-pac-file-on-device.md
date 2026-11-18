@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-e
 
 # Configure a PAC file on your device
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/configure-pac-file-on-device/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After you [create a proxy endpoint](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) and [create a PAC file](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#2-create-a-pac-file), configure your devices to use the PAC file URL. You can configure system-level proxy settings (which apply to most browsers) or configure individual browsers separately.
 
 Chromium-based browsers (Google Chrome, Microsoft Edge, Brave) use the operating system proxy settings. Firefox uses its own proxy settings by default and must be configured separately. Safari and iOS/iPadOS do not support the HTTPS proxy type required by proxy endpoints.

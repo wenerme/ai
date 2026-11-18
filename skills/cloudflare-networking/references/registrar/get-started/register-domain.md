@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/get-started/register-domain/o
 
 # Register a new domain
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/get-started/register-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Prerequisites and restrictions
 
 Cloudflare nameservers

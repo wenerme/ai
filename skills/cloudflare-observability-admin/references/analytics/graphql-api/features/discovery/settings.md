@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/discover
 
 # Settings node
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare GraphQL API exposes more than 70 datasets to its customers. These datasets represent different Cloudflare products with very different data shapes; thus, each has its configuration of [limits](https://developers.cloudflare.com/analytics/graphql-api/limits/).
 
 Although we allow access to ALL plans for the essential datasets (like `httpRequestsAdaptiveGroups`, `firewallEventsAdaptive`, etc), users on larger plans benefit from an extended set of datasets and wider query limits.

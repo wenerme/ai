@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/reference/settings
 
 # Configuration settings
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/reference/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Reporting endpoint
 
 When enabled, client-side security's resource monitoring uses a Content Security Policy (CSP) [report-only HTTP header](https://developers.cloudflare.com/client-side-security/reference/csp-header/) to gather information about all the scripts running on your application.

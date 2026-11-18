@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/concepts/icp/og.png?v=ba7
 
 # Internet Content Provider (ICP)
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/concepts/icp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To operate a website in China, you need government permission called an Internet Content Provider (ICP) number. Think of it as a permit — without one, your site can be shut down.
 
 The ICP system is a licensing regime established by the Telecommunications Regulations of the People's Republic of China (中华人民共和国电信条例), introduced in September 2000.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/tutorial/configure-https-sett
 
 # 3 – Configure HTTPS settings
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After setting up basic DNS records, you can configure zone settings using Terraform. This tutorial shows how to enable [TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/), [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/), and [Strict SSL mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) using the updated v5 provider.
 
 ## Prerequisites

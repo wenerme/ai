@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/compatibility/og.png?
 
 # Product compatibility
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Data Localization Suite (DLS) has three features, each controlling a different aspect of where your data is handled:
 
 - **Geo Key Manager**: Controls where your private TLS keys are stored.

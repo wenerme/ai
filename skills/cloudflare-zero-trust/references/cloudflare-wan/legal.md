@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/legal/og.png?v=418ced310
 
 # Legal
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/legal/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Third party licenses](https://developers.cloudflare.com/cloudflare-wan/legal/3rdparty/)
 
 Was this helpful?

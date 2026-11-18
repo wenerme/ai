@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-
 
 # Signals Intelligence
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/signals-intelligence/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bot Management customers can view aggregate intelligence data for each [JA4 fingerprint](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/) based on traffic across the Cloudflare network. Use this data to understand why a request received a specific bot score or to feed into your own machine learning models running in [Cloudflare Workers](https://developers.cloudflare.com/workers/) or at your origin.
 
 Specifically, for each JA4 fingerprint, you will be able to access the following information:

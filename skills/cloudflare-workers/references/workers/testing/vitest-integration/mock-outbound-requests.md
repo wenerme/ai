@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/mock
 
 # Mock outbound requests
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use [`@msw/cloudflare` ↗︎](https://github.com/mswjs/cloudflare) to mock outbound HTTP and WebSocket requests with `@cloudflare/vitest-plugin`. The integration supports unit tests that call your Worker's exported handler and integration tests that call `exports.default.fetch()`.
 
 ## Install dependencies

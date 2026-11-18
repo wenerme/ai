@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/transform-videos/troubleshooting
 
 # Troubleshooting
 
-Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/transform-videos/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you are using Media Transformations to transform your video and you experience a failure, the response body contains an error message explaining the reason, as well as the `Cf-Resized` header containing `err=code`:
 
 - 9401 — The required options are missing or are invalid. Refer to [Options](https://developers.cloudflare.com/stream/transform-videos/#options) for supported arguments.

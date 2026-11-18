@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/opencode/og.png?v
 
 # Run OpenCode in a sandbox
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run [OpenCode ↗︎](https://opencode.ai) in a Linux sandbox to edit a GitHub repository from a prompt, then read its changes as a diff. OpenCode calls models through [AI Gateway](https://developers.cloudflare.com/ai-gateway/). Your Worker adds the gateway token to those requests, and the sandbox can reach only your gateway and `github.com`.
 
 ## Prerequisites

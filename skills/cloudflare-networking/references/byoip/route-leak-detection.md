@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/route-leak-detection/og.png?v=8ca
 
 # Route Leak Detection
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/route-leak-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Route Leak Detection protects your routes on the Internet by notifying you when your traffic is routed somewhere it should not go, which could indicate a possible attack. Route Leak Detection also reduces the amount of time needed to mitigate leaks by providing you with timely notifications.
 
 Cloudflare detects route leaks by using several sources of routing data to create a synthesis of how the Internet sees routes to BYOIP users. Cloudflare then watches these views to track any sudden changes that occur on the Internet. If the changes can be correlated to actions Cloudflare has taken, no further action is required. However, if changes have not been made, Cloudflare notifies you to inform you that your routes and users may be at risk.

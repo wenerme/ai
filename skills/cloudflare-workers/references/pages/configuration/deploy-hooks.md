@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/deploy-hooks/og.png
 
 # Deploy Hooks
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/deploy-hooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Deploy Hooks, you can trigger deployments using event sources beyond commits in your source repository. Each event source may obtain its own unique URL, which will receive HTTP POST requests in order to initiate new deployments. This feature allows you to integrate Pages with new or existing workflows. For example, you may:
 
 - Automatically deploy new builds whenever content in a Headless CMS changes

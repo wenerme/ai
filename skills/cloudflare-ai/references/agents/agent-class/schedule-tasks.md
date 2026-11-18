@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/schedule-tasks/og.pn
 
 # Schedule tasks
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/schedule-tasks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `Agent` class installs the [`Scheduler` capability](https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/). Its scheduling methods call the scheduler, and a callback name is the name of a method on your Agent. Schedules are stored in SQLite and run from the Lifecycle's job queue, so they survive restarts and evictions. For schedule options, retries, limits, and natural-language parsing, refer to the [`Scheduler` capability](https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/).
 
 ## Schedule a callback

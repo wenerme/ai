@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/otel-integrati
 
 # OpenTelemetry
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/otel-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway supports exporting traces to OpenTelemetry-compatible backends, enabling you to monitor and analyze AI request performance alongside your existing observability infrastructure.
 
 ## Overview

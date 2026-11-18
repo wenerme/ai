@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/about/list-
 
 # List types
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Unified Routing availability
 
 GeoIP country rules, ASN lists, account IP lists, and Threat Intel Lists are beta for accounts using Unified Routing. Review feature availability for [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#check-feature-availability-before-upgrading) and [Magic Transit](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#check-feature-availability-before-upgrading).
@@ -26,7 +24,7 @@ The threat intelligence feed categories are described in [Managed IP Lists](http
 
 ## IP lists
 
-Use [IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) to group services in networks, like web servers, or for lists of known bad IP addresses to make managing good network endpoints easier. IP lists are helpful for users with very expansive firewall rules with many IP lists. By default, you can add up to 10,000 IPs across all lists. Refer to [Use an IP list](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/add-policies/#use-an-ip-list) to check an example of how to use an IP list.
+Use [IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) to group services in networks, like web servers, or for lists of known bad IP addresses to make managing good network endpoints easier. IP lists are helpful for users with very expansive firewall rules with many IP lists. By default, you can add up to 10,000 IPs across all lists. Refer to [Use an IP list](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/add-policies/#use-an-ip-list) to check an example of how to use an IP list.
 
 ## ASN lists
 
@@ -34,7 +32,7 @@ Use [custom ASN lists](https://developers.cloudflare.com/waf/tools/lists/custom-
 
 ## Geo-blocking
 
-Geo-blocking enables you to selectively allow or block traffic to any country. Refer to [Block a country](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/add-policies/#block-a-country) to check an example of how to block a country.
+Geo-blocking enables you to selectively allow or block traffic to any country. Refer to [Block a country](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/add-policies/#block-a-country) to check an example of how to block a country.
 
 Was this helpful?
 
@@ -45,5 +43,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/#page","headline":"List types","description":"IP list types available for Network Firewall policies.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/og.png?v=5cc79898337a681f","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/#page","headline":"List types","description":"IP list types available for Network Firewall policies.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-network-firewall/about/list-types/og.png?v=5cc79898337a681f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

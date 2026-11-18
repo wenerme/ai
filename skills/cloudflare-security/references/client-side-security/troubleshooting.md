@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/troubleshooting/og
 
 # Troubleshooting
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Cloudflare does not show any client-side resources after activation
 
 Cloudflare does not collect data on every single page view. Instead, it uses a sampling approach to gather information efficiently. This means that domains with lower traffic might take longer to generate initial reports, as these domains need more page views to accumulate enough samples. To speed up the reporting process, it is recommended that you actively generate traffic to your application after [activating client-side resource monitoring](https://developers.cloudflare.com/client-side-security/get-started/). This will provide Cloudflare with more data to work with, leading to faster report generation.

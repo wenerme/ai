@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-proxy/reference/metrics/og.png?
 
 # Observability
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Privacy Proxy provides two methods for accessing metrics and monitoring your proxy deployment. We recommend getting started with GraphQL as the default method for observability.
 
 - [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/)

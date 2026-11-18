@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkVideoButtonControlBar
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-video-button-control-bar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A control bar button that toggles the local camera on and off. Checks camera permissions before toggling.
 
 ## Initializer parameters

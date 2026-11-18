@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/previews/serve-previews-on-thei
 
 # Serve previews on their own hostnames
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Serve each sandbox preview from its own hostname, such as `ada.example-previews.com`. Code in a preview runs in the visitor's browser, and each preview hostname is a separate origin. Code in one preview cannot read your application pages or the storage of another preview. Paths reach the server unchanged, so applications do not need a base path.
 
 <dl>

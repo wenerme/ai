@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/example
 
 # Example SQL queries
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/example-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following examples show practical SQL queries you can use with the `http_requests` dataset in Log Explorer. For the full list of supported SQL syntax, refer to [SQL queries supported](https://developers.cloudflare.com/observability/logs/log-explorer/sql-queries/).
 
 Adjust the date ranges in each example to match the time period you want to query.

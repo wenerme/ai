@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/troubleshooting/indexing-erro
 
 # Indexing error codes
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After AI Search accepts an upload, sync, or crawl request, it processes your content in the background so it can be searched. When processing fails, AI Search records one of the error codes on this page. Some errors affect a single item, some end a sync job, and others pause the whole instance.
 
 Because this processing happens after the request succeeds, the errors are not returned in the original API response. To find them, check [item logs](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/logs/), item details, or instance stats. Errors returned immediately when a request fails are documented separately in [API error codes](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ethereum-gateway/concepts/node-typ
 
 # Node types
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/node-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Ethereum nodes are the computers that store blockchain data and process queries. There are three types, each with different trade-offs between storage requirements and query capabilities.
 
 ## Full nodes

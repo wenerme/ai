@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/investigate/netflows/og.png?v=c08
 
 # NetFlows
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/netflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [NetFlows ↗︎](https://en.wikipedia.org/wiki/NetFlow) shows network traffic data from end users collected from Cloudflare's edge routers. NetFlows' data also feeds the [Internet traffic change ↗︎](https://radar.cloudflare.com/) chart.
 
 NetFlows includes all types of traffic from Cloudflare's routers, not just traffic to websites served by Cloudflare's [CDN ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).

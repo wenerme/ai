@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/best-practices/insert-vectors
 
 # Insert vectors
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Vectorize indexes allow you to insert vectors at any point: Vectorize will optimize the index behind the scenes to ensure that vector search remains efficient, even as new vectors are added or existing vectors updated.
 
 Insert vs Upsert

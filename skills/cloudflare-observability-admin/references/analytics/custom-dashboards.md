@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=53
 
 # Custom dashboards
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/custom-dashboards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom dashboards allow you to build personalized views that highlight the metrics most critical to your infrastructure and security posture. Move beyond standard product dashboards and consolidate data from multiple Cloudflare products into a single, unified view.
 
 [Go to **Custom dashboards** ↗](https://dash.cloudflare.com/?to=/:account/analytics/dashboards)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/account-creati
 
 # Account Creation
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/account-creation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Get started by creating a Cloudflare account and initializing the Zero Trust and Area 1 dashboards.
 
 ## Objectives

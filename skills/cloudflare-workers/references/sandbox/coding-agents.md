@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/og.png?v=5789bc68
 
 # Run coding agents in a sandbox
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Coding agents such as Claude Code, Codex, and OpenCode can run a task on their own: they read a repository, edit files, and run commands until the task is done. Run the agent in a Linux sandbox so its commands stay inside a [Container](https://developers.cloudflare.com/containers/) that belongs to one task.
 
 ## The agent runs in your sandbox

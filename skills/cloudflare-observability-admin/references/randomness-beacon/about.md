@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/randomness-beacon/about/og.png?v=eb0350
 
 # About drand
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/randomness-beacon/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The drand project aims to address the current lack of services providing distributed public randomness. Distributed to increase the resilience and trustworthiness, drand provides a standalone randomness-as-a-service network that is application agnostic. This is similar to how NTP networks serve timing information across the globe.
 
 drand follows the [KISS principle ↗︎](https://en.wikipedia.org/wiki/KISS_principle). It relies on well-researched cryptographic building blocks and open-source software design principles and libraries, such as protobuf and gRPC, to ensure high performance and interoperability. drand also attempts to use sane security defaults, such as having TLS enabled by default.

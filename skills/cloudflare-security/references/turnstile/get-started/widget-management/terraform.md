@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/get-started/widget-management
 
 # Create and manage widgets using Terraform
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage Turnstile widgets as code using Terraform for version control and automated deployments.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/moq/use-the-api/og.png?v=08a67d272f91a3
 
 # Use the MoQ API
 
-Last updated Nov 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/moq/use-the-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Cloudflare API to provision relays and manage their configuration and connection tokens. Your application sends media through a MoQ client, rather than through the management API.
 
 ## Create a management API token

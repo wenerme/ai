@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/version-management/how-to/enable/og.png
 
 # Enable
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/how-to/enable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Version Management is not enabled on a zone.
 
 To enable [Version Management ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/versioning):

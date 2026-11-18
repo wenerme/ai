@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/calling-llms/og.png?v=0
 
 # Calling LLMs
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/calling-llms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agents change how you work with LLMs. In a stateless Worker, every request starts from scratch — you reconstruct context, call a model, return the response, and forget everything. An Agent keeps state between calls, stays connected to clients over WebSocket, and can call models on its own schedule without a user present.
 
 This page covers the patterns that become possible when your LLM calls happen inside a stateful Agent. For provider setup and code examples, refer to [Models](https://developers.cloudflare.com/agents/models/).

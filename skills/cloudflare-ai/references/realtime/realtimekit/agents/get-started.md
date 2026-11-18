@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/agents/get-started
 
 # Build an agent
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An agent is a meeting participant that your backend controls over a WebSocket. To add one, configure a preset, add the agent as a participant, and connect to the Websocket endpoint with the agent's participant token.
 
 **My Worker**
@@ -269,7 +267,7 @@ A Durable Object fits the agent: one instance per meeting, a long-lived outbound
    	"name": "meeting-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"vars": {
    		"ACCOUNT_ID": "<ACCOUNT_ID>",
    		"APP_ID": "<APP_ID>",
@@ -291,7 +289,7 @@ A Durable Object fits the agent: one instance per meeting, a long-lived outbound
    name = "meeting-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
 
    [vars]
    ACCOUNT_ID = "<ACCOUNT_ID>"

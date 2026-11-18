@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/more-
 
 # Hono
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Start from CLI** - scaffold a full-stack app with a Hono API, React SPA and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
 
 npmyarnpnpm

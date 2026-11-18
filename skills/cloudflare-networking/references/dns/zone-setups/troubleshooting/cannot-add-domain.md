@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-
 
 # Cannot add domain
 
-Last updated Sep 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you encounter issues [adding a domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, follow these troubleshooting steps.
 
 ## Disable DNSSEC

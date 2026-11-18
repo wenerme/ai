@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/adv
 
 # Augment default analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/advanced/improve-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare provides analytics for [security events](https://developers.cloudflare.com/waf/analytics/security-events/), [traffic patterns](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/), and more according to the level of your zone's plan.
 
 To augment these default analytics and gather more information about potential DDoS attacks, explore the following options.

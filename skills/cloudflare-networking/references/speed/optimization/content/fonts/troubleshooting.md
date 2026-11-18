@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/content/fonts/troubl
 
 # Troubleshooting
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/fonts/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Validate the Fonts feature is working
 
 To test that the Fonts feature is working correctly, follow these steps:

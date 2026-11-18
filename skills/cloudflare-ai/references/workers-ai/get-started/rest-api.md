@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/get-started/rest-api/og.png?
 
 # REST API
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/get-started/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will instruct you through setting up and deploying your first Workers AI project. You will use the Workers AI REST API to experiment with a large language model (LLM).
 
 ## Prerequisites

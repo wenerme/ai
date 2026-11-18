@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/rat
 
 # Configurations
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/rate-limiting/configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Let's step through an example. If your `/create-account` page is being attacked, you will create a rule to limit the amount of requests, per `counting characteristic`, that you feel comfortable permitting through to your origin.
 
 The rule below is being created on the `free` plan, which limits configuration options. The rule will trigger if the URI path matches `/create-account`, from the same IP address, *after* 5 requests and within a 10 second window, [within each Cloudflare datacenter](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/), globally.

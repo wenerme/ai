@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/api/search/mcp/og.png?v=a9272
 
 # MCP
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Model Context Protocol (MCP) endpoint allows AI agents to discover and interact with your AI Search content. This endpoint follows the [MCP specification ↗︎](https://modelcontextprotocol.io/) and provides tools for querying your indexed content.
 
 ## Prerequisites

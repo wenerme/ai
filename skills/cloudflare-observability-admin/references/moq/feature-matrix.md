@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/moq/feature-matrix/og.png?v=2db53333c1a
 
 # MoQ Feature Matrix
 
-Last updated Nov 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/moq/feature-matrix/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use draft-18 for new deployments. Draft-16 and draft-14 remain available for existing clients. A client's MoQ Transport draft version must match its endpoint.
 
 ## Draft-18 capabilities

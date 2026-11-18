@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/consumer-concurren
 
 # Consumer concurrency
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consumer concurrency allows a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#consumers) processing messages from a queue to automatically scale out horizontally to keep up with the rate that messages are being written to a queue.
 
 In many systems, the rate at which you write messages to a queue can easily exceed the rate at which a single consumer can read and process those same messages. This is often because your consumer might be parsing message contents, writing to storage or a database, or making third-party (upstream) API calls.

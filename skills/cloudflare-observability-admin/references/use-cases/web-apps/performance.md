@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/web-apps/performance/og.png?v
 
 # Optimize performance
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Slow page loads increase bounce rates and reduce conversions. Cloudflare accelerates your application with edge caching, Argo Smart Routing to avoid congested network paths, and automatic asset optimization that improves Core Web Vitals scores.
 
 ## Solutions

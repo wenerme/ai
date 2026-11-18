@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-filters/endpoints/og.pn
 
 # Endpoints
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To invoke a Cloudflare Filters API operation, append the endpoint to the Cloudflare API base URL:
 
 ```txt

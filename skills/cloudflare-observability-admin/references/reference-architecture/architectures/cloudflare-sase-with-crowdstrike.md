@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/cl
 
 # CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
 
-Last updated Mar 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Abstract
 
 This reference architecture outlines how Cloudflare and CrowdStrike solutions integrate to create a unified security ecosystem that combines endpoint protection with zero trust network access, threat intelligence sharing, and automated remediation workflows. Organizations can leverage this integration to implement risk-based access policies, improve threat detection, and orchestrate security responses across both platforms.

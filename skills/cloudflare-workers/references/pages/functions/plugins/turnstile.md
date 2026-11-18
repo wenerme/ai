@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/turnstile/og.pn
 
 # Turnstile
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/turnstile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Turnstile](https://developers.cloudflare.com/turnstile/) is Cloudflare's smart CAPTCHA alternative.
 
 The Turnstile Pages Plugin validates Cloudflare Turnstile tokens.

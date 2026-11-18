@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/reference/bots/og.png?
 
 # Bot reference
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A selection of crawlers from major AI operators. For an up-to-date list of verified bots, see the [Cloudflare Radar Bots Directory ↗︎](https://radar.cloudflare.com/bots/directory).
 
 | Crawler | Operator | Category | Detection IDs | User Agent |

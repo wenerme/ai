@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate React Router and Remix from Vercel to Cloudflare Workers
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/react-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide moves a Remix v2 or [React Router ↗︎](https://reactrouter.com/) v7 application from Vercel to Cloudflare Workers. React Router v7 framework mode is the successor to Remix. Cloudflare supports Remix applications through React Router and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 If your application uses Remix v2, upgrade to React Router v7 first. Ship that upgrade on Vercel, then switch hosting.
@@ -207,7 +205,7 @@ Skip this section if your application already uses React Router v7.
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "./workers/app.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"observability": {
    		"enabled": true,
    	},
@@ -220,7 +218,7 @@ Skip this section if your application already uses React Router v7.
    name = "<YOUR_PROJECT_NAME>"
    main = "./workers/app.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
    upload_source_maps = true
 
    [observability]

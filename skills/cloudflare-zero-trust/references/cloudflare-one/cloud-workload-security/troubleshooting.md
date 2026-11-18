@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Troubleshooting
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Diagnose Cloud Workload Security (CWS) proxy, client, and policy issues. This guide covers the proxy setup in [Get started](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/).
 
 Use the sections to identify your symptom and verify the fix. Read the logs from the terminal or service running the proxy. For the relevant fields, refer to [Read proxy logs](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/#read-proxy-logs).

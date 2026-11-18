@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/og.png
 
 # Build using Core SDK
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ### Initialize Core SDK
 
 To integrate the Core SDK, you will need to initialize it with a [participant's auth token](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/), and then use the provided SDK APIs to control the peer in the session.

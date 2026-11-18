@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkDialog
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkdialog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A modal dialog overlay component with optional close button.
 
 ## Properties

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # HTTP Status Codes
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find links to the relevant sections for HTTP Status Codes support-focused material.
 
 - [1xx Informational](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/)

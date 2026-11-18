@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/og.png?
 
 # Log Explorer (Legacy)
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Store and explore your Cloudflare logs directly within the Cloudflare dashboard or API.
 
 Log Explorer (Legacy) lets security teams and developers analyze, investigate, and monitor issues directly from the Cloudflare dashboard, without the expense and complexity of forwarding logs to third-party tools.

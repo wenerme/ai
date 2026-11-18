@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/concepts/suppressions/og.
 
 Suppression lists prevent Email Service from sending to recipients who should not receive mail. Cloudflare adds entries after eligible bounces and spam complaints. You can also add entries manually.
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An Email Sending suppression list contains recipients that Email Service does not contact. Suppressions protect your sender reputation and help prevent sending unwanted mail.
 
 Cloudflare creates suppressions after eligible delivery failures and spam complaints. You can also add entries for recipients who should not receive mail.

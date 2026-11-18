@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/changes-in-1-0/og.p
 
 # Changes in Sandbox SDK 1.0
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/changes-in-1-0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In Sandbox SDK 0.x, the `Sandbox` class from the package is your Durable Object. It starts the container, keeps it running, and sends each call to a server inside the container. In 1.0, you write the Durable Object class, and it calls the container directly through `this.ctx.container`.
 
 Sandbox SDK 0.12

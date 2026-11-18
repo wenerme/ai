@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/whoisrequests/og.png?v=650af4
 
 # WHOIS requests
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/whoisrequests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page describes the mechanism and process for submitting a disclosure request to Cloudflare for WHOIS data under Section 10 of the Internet Corporation for Assigned Names and Number's ("ICANN") [Registration Data Policy ↗︎](https://www.icann.org/en/contracted-parties/consensus-policies/registration-data-policy).
 
 Please read the following instructions carefully.

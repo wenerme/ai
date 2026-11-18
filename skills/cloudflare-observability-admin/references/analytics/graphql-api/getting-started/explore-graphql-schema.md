@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/e
 
 # Explore the GraphQL schema
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Many GraphQL clients support browsing the GraphQL schema by taking care of [introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/). In this page, we will cover GraphiQL and Altair clients.
 
 [GraphiQL ↗︎](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) and [Altair ↗︎](https://altairgraphql.dev/#download) are open-source GraphQL clients that provide a tool to compose a query, execute it, and inspect the results. And as a bonus, they also allow you to browse GraphQL schema.

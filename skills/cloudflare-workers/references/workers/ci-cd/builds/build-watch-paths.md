@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/
 
 # Build watch paths
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you connect a git repository to Workers, by default a change to any file in the repository will trigger a build. You can configure Workers to include or exclude specific paths to specify if Workers should skip a build for a given path. This can be especially helpful if you are using a monorepo project structure and want to limit the number of builds being kicked off.
 
 ## Configure Paths

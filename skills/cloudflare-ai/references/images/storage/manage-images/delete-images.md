@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/manage-images/delete-ima
 
 # Delete images
 
-Last updated Jun 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/manage-images/delete-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can delete an image from the Cloudflare Images storage using the dashboard, the API, or from a Worker via the [Images binding](https://developers.cloudflare.com/images/storage/binding/#imageimageiddelete).
 
 ## Delete images via the Cloudflare dashboard

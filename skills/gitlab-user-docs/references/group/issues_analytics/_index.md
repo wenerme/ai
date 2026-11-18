@@ -49,3 +49,22 @@ Enhanced issue analytics display the additional metric `Issues closed`, which re
 You can use this metric to improve the overall turn-around time and value delivered to your customers.
 
 [Enhanced issue analytics bar chart and table showing issues opened and closed in a group.]
+
+## Rate limit
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269532) in GitLab 19.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `issues_analytics_rate_limit_enforce`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+The issue analytics chart loads its data with a separate request.
+GitLab limits these requests to 60 every minute for each user in each group or project.
+For unauthenticated users, the limit applies to each IP address.
+When you reach the limit, the chart displays an error. Try again after a minute.
+
+The limit does not apply to the enhanced issue analytics chart in Ultimate,
+which uses the GraphQL API.
+
+On GitLab Self-Managed, administrators can change the limit with the `issues_analytics_limit`
+[application setting](../../../api/settings.md).

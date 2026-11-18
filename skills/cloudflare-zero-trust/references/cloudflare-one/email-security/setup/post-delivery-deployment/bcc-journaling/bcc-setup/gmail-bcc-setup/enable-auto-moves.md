@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pos
 
 # Enable auto-moves
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-auto-moves/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you do not have an integration:
 
 1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security**.

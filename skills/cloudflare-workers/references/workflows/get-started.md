@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/get-started/og.png?v=c20d961b
 
 # Get started
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Build your first Workflow](https://developers.cloudflare.com/workflows/get-started/guide/)
 - [Build a Durable AI Agent](https://developers.cloudflare.com/workflows/get-started/durable-agents/)
 

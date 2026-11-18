@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Firewall
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Firewall device posture attribute ensures that a firewall is running on a device.
 
 ## Prerequisites

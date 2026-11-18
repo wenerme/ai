@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/og.png?v=7891593910363aac
 
 # Logpush
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Logpush delivers logs in batches as quickly as possible, with no minimum batch size, potentially delivering files more than once per minute. This capability enables Cloudflare to provide information almost in real time, in smaller file sizes.
 
 The push frequency is automatic and cannot be adjusted—Cloudflare pushes logs in batches as soon as possible. However, users can configure the batch size [using the API](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#max-upload-parameters) for improved control in case the log destination has specific requirements.

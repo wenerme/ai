@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-fu
 
 # String functions
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/string/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 *Basin Pipelines scalar function implementations are based on [Apache DataFusion ↗︎](https://arrow.apache.org/datafusion/) (via [Arroyo ↗︎](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `ascii`

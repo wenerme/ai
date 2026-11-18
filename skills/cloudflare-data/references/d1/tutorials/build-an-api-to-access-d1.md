@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/
 
 # Build an API to access D1 using a proxy Worker
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to create an API that allows you to securely run queries against a D1 database.
 
 This is useful if you want to access a D1 database outside of a Worker or Pages project, customize access controls and/or limit what tables can be queried.

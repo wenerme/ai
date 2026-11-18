@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/
 
 # ERR\_TOO\_MANY\_REDIRECTS
 
-Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After you [add a new domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, your visitors' browsers might display `ERR_TOO_MANY_REDIRECTS` or `The page isn’t redirecting properly` errors.
 
 This error occurs when visitors get stuck in a redirect loop.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/servic
 
 # Service API token
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A service API token grants AI Search permission to access [R2](https://developers.cloudflare.com/r2/) buckets and [D1](https://developers.cloudflare.com/d1/) databases in your account. This token is only required if you connect an R2 bucket or a D1 database as a data source. If you use a website or upload files directly through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/), you do not need a service API token.
 
 ## When you need a service API token

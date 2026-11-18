@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device
 
 # Device to device
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create a secure connection between two devices so they can communicate directly through Cloudflare's network, without needing to be on the same physical network. This is useful when you need to remotely access a specific device, for example connecting to a home computer from a laptop at a coffee shop.
 
 To explore other connection scenarios, refer to [Replace your VPN](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/).

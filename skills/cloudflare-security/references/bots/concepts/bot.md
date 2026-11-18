@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/concepts/bot/og.png?v=b3fa9e233f54
 
 # Bots
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A **bot** is a software application programmed to do certain tasks.
 
 Bots can be used for good (chatbots, search engine crawlers) or for evil (inventory hoarding, credential stuffing).

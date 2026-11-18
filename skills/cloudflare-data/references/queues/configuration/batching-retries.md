@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/batching-retries/o
 
 # Batching, Retries and Delays
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/batching-retries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Batching
 
 When configuring a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works#consumers) for a queue, you can also define how messages are batched as they are delivered.

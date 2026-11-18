@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/investigate/dns/og.png?v=e57a4c46
 
 # DNS
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Access aggregated and anonymized DNS queries to Cloudflare's [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) public resolver service.
 
 ## List of endpoints

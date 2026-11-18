@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/og.
 
 # Universal SSL
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
 
 On a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/), Universal SSL certificates cover your root domain (for example, `example.com`) and first-level subdomains (for example, `www.example.com`). On a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), each proxied subdomain receives its own certificate regardless of depth. Cloudflare handles issuance, renewal, and deployment automatically.

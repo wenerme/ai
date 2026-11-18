@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/dns/internal-dns/get-started/og.png?v=c
 
 # Get started
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/internal-dns/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow this guide to get started with Internal DNS.
 
 ## Before you begin
 
-- Make sure you have an Enterprise account with access to [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) and [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
+- Make sure you have an Enterprise account with access to [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) and [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
 - Consider the different ways in which you can [connect to Gateway resolver](https://developers.cloudflare.com/dns/internal-dns/connectivity/).
 
   Caution
@@ -264,7 +262,7 @@ Besides selecting an internal DNS view when setting up your resolver policies, y
 
 1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Firewall policies** > **Resolver policies**.
 2. Select **Add a policy** and enter a name and description.
-3. Create an expression for the traffic you wish to route. For guidance about selectors, operators, and values, refer to [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#selectors).
+3. Create an expression for the traffic you wish to route. For guidance about selectors, operators, and values, refer to [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/#selectors).
 4. Select **Use Internal DNS**. Choose the view that queries matching the expression should be sent to.
 5. (Optional) Adjust the option to **Fallback through public DNS** according to your use case.
 
@@ -273,7 +271,7 @@ Besides selecting an internal DNS view when setting up your resolver policies, y
 
 6. Select **Create policy** to confirm.
 
-Use the API endpoints under [Zero Trust > Gateway > Rules](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/) to set up resolver policies. For guidance about selectors, operators, and values, refer to [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#selectors).
+Use the API endpoints under [Zero Trust > Gateway > Rules](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/) to set up resolver policies. For guidance about selectors, operators, and values, refer to [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/#selectors).
 
 Use the rule settings object to define `resolve_dns_internally`, specifying `view_id` and `fallback` option. The fallback options behave as follows:
 
@@ -297,5 +295,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/get-started/#page","headline":"Get started","description":"Set up Internal DNS for private name resolution.","url":"https://developers.cloudflare.com/dns/internal-dns/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/internal-dns/get-started/og.png?v=c1a12feb3125af18","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/get-started/#page","headline":"Get started","description":"Set up Internal DNS for private name resolution.","url":"https://developers.cloudflare.com/dns/internal-dns/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/internal-dns/get-started/og.png?v=c1a12feb3125af18","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

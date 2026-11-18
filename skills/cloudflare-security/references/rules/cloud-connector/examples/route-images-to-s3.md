@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/cloud-connector/examples/route-im
 
 Route requests with a URI path starting with `/images` to a specific AWS S3 bucket using Cloud Connector.
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/examples/route-images-to-s3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To route requests to `/images` on your domain to an AWS S3 bucket:
 
 1. In the Cloudflare dashboard, go to the **Cloud Connector** page. [Go to **Cloud Connector** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)

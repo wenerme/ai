@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/commands/stream-command-output/
 
 # Stream command output
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/stream-command-output/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Show the output of a command in a browser while the command runs. The Durable Object sends standard output and standard error as [server-sent events ↗︎](https://html.spec.whatwg.org/multipage/server-sent-events.html), reports the exit code, and signals the command to stop when the client disconnects.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-to
 
 # Configure token authentication
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Token authentication allows you to restrict access to documents, files, and media to select users without requiring them to register. This helps protect paid/restricted content from leeching and unauthorized sharing.
 
 There are two options to configure token authentication: via Cloudflare Workers or via custom rules.

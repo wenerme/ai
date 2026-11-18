@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/s3/extensions/og.png?v=892da17f0
 
 # Extensions
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R2 implements some extensions on top of the basic S3 API. This page outlines these additional, available features. Some of the functionality described in this page requires setting a custom header. For examples on how to do so, refer to [Configure custom headers](https://developers.cloudflare.com/r2/examples/aws/custom-header).
 
 ## Extended metadata using Unicode

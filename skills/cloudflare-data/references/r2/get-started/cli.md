@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/get-started/cli/og.png?v=c663f462045
 
 # CLI
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/get-started/cli/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage R2 buckets and objects directly from your terminal. Use CLI tools to automate tasks and manage objects.
 
 | Tool | Best for |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/pager
 
 # Integrate with PagerDuty
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To integrate Cloudflare health monitor notifications with PagerDuty, follow the steps outlined in PagerDuty’s [Email Integration Guide ↗︎](https://www.pagerduty.com/docs/guides/email-integration-guide/). If you do not have a PagerDuty account, you will first need to set that up.
 
 PagerDuty will generate an email address that will create incidents based on emails sent to that address. For help locating that email address, refer to the [PagerDuty documentation ↗︎](https://www.pagerduty.com/docs/guides/email-integration-guide/).

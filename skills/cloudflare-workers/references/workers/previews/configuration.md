@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/previews/configuration/og.png?v
 
 # Configuration
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Previews do not inherit production settings. Define them in the [`previews` block](#what-goes-in-the-previews-block) of your configuration file. For how bindings share or isolate data and state, refer to [Resources and isolation](https://developers.cloudflare.com/workers/previews/resources/).
 
 ## Setting your Previews Base configuration
@@ -145,7 +143,7 @@ If your Worker uses only top-level settings, include an empty `previews` block:
 ```jsonc
 {
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-11-18",
   "assets": {
     "directory": "./public"
   },
@@ -155,7 +153,7 @@ If your Worker uses only top-level settings, include an empty `previews` block:
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 previews = { }
 
 [assets]

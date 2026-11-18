@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/sdk/go/og.png?v=a3bb8c9370dc35
 
 # Go SDK
 
-Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Go SDK provides an OpenFeature-compatible server provider for Go applications. It evaluates flags over HTTP or locally from downloaded flag definitions. It does not support the Cloudflare Workers binding.
 
 ## Installation

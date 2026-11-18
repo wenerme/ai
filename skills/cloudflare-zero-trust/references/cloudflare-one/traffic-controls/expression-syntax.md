@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/express
 
 # Gateway policy expressions
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/expression-syntax/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Gateway policies use a wirefilter-based expression language to match traffic against selectors (criteria). This syntax is similar to, but distinct from, the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) used by WAF, Rules, and other Cloudflare products. Refer to [Gateway versus Ruleset Engine](#gateway-versus-ruleset-engine) for details on the differences.
 
 Important

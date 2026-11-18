@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/how-to/manage-accounts/og.png?v=
 
 # Manage accounts
 
-Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/how-to/manage-accounts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Each customer or team that uses Cloudflare should have their own account. This ensures proper security and access of resources. Each account acts as a container of zones and other resources. Depending on your needs, you may even provision multiple accounts for a single customer or team.
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.

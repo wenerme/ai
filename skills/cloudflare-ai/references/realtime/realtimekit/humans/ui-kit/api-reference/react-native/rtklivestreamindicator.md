@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkLiveStreamIndicator
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtklivestreamindicator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Displays a "Live" indicator when a livestream is active. Only visible in livestream mode for off-stage viewers.
 
 ## Properties

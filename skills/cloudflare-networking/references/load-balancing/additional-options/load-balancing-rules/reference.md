@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/load-
 
 # Supported fields and operators
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The fields that are supported by load balancing rules depend on whether Cloudflare proxies the traffic going through your load balancer or not.
 
 If you use the wrong set of fields, you might see unexpected behaviors. For best results, use the fields associated with your traffic's [proxy status](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/).

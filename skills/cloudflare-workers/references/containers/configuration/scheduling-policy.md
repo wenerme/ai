@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/configuration/scheduling-pol
 
 # Scheduling Policies
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/scheduling-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A scheduling policy determines where you configure a Container image and [instance size](https://developers.cloudflare.com/containers/platform/limits/#instance-types). It also determines how image updates and [rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/) apply. Choose the policy when you create the Container application.
 
 Default scheduling is deprecated
@@ -168,7 +166,7 @@ export class AgentComputer extends DurableObject {
 }
 ```
 
-`ctx.container.start()` initiates startup and returns before the Container is ready to accept requests. Add an application-specific readiness check before sending traffic or calling [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec).
+`ctx.container.start()` initiates startup and returns before the Container is ready to accept requests. [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec) waits for container startup, but does not check whether your application is ready. Add an application-specific readiness check before sending traffic to the application.
 
 The `durable_object` policy does not support `max_instances`. Running instances count toward your [account limits](https://developers.cloudflare.com/containers/platform/limits/#account-limits).
 
@@ -282,5 +280,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/#page","headline":"Scheduling Policies","description":"Choose whether Container configuration is managed centrally or by each Durable Object at runtime.","url":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/og.png?v=d30120184c1c529d","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/#page","headline":"Scheduling Policies","description":"Choose whether Container configuration is managed centrally or by each Durable Object at runtime.","url":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/scheduling-policy/og.png?v=d30120184c1c529d","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/compression-rules/examples/enable
 
 Create a compression rule to turn on Zstandard compression for response content types where Cloudflare applies compression by default.
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/enable-zstandard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following example rule will turn on Zstandard compression for response content types where [Cloudflare applies compression by default](https://developers.cloudflare.com/speed/optimization/content/compression/). If the client does not support Zstandard compression, it will use Brotli or Gzip compression as a fallback.
 
 **When incoming requests match**

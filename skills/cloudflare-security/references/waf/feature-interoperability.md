@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/feature-interoperability/og.png?v=3
 
 # Security features interoperability
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/feature-interoperability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare applies multiple security features to every incoming request. Each feature runs at a specific stage, and the order determines which feature acts first. Understanding this order helps you avoid conflicts and reduce false positives.
 
 ## Execution order

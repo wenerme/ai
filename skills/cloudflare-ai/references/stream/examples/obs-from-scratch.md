@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/stream/examples/obs-from-scratch/og.png
 
 Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/obs-from-scratch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 Stream empowers customers and their end-users to broadcast a live stream quickly and at scale. The player can be embedded in sites and applications easily, but not everyone knows how to make a live stream because it happens in a separate application. This walkthrough will demonstrate how to start your first live stream using OBS Studio, a free live streaming application used by thousands of Stream customers. There are five required steps; you should be able to complete this walkthrough in less than 15 minutes.

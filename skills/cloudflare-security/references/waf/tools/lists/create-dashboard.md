@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/lists/create-dashboard/og.png
 
 # Create a list in the dashboard
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/create-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To create a list, follow these steps:
 
 1. In the Cloudflare dashboard, go to the **Settings** page. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)

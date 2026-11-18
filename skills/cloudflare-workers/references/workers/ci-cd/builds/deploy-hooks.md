@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/og.pn
 
 # Deploy Hooks
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Workers Builds triggers a build when you push a commit to your [connected Git repository](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/). Deploy Hooks provide another way to trigger a build. Each hook is a unique URL that triggers a manual build for one branch when it receives an HTTP POST request. Use Deploy Hooks to connect Workers Builds with workflows such as:
 
 - Rebuild automatically when content changes in a headless CMS

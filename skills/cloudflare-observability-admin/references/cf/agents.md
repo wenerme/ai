@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803
 
 # Use cf with coding agents
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Coding agents can use `cf` to work with your Cloudflare account. Commands return JSON and describe their own inputs, so an agent can find and run the right command without prior knowledge of `cf`.
 
 ## Set up `cf` for your agent

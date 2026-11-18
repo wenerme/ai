@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/threat-intelligence/fiel
 
 # Threat intelligence fields
 
-Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The threat intelligence detection populates the following fields when the client IP address is found in the threat intelligence database. If the IP address is not found, the fields are empty.
 
 All fields are arrays. Use the [`any()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#any) function with the `[*]` wildcard to match values.

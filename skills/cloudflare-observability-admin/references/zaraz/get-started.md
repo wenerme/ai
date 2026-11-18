@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/get-started/og.png?v=34da774437ef
 
 # Get started
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before being able to use Zaraz, it is recommended that you proxy your website through Cloudflare. Refer to [Set up Cloudflare](https://developers.cloudflare.com/fundamentals/account/) for more information. If you do not want to proxy your website through Cloudflare, refer to [Use Zaraz on domains not proxied by Cloudflare](https://developers.cloudflare.com/zaraz/advanced/domains-not-proxied/).
 
 ## Add a third-party tool to your website

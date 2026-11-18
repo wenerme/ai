@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/changelog/gateway/og.png
 
 # Gateway
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
 ## 2026-11-16

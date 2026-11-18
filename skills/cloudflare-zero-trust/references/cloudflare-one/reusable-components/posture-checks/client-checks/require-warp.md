@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Require WARP
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This device posture attribute will check for all versions of WARP, including the consumer version.

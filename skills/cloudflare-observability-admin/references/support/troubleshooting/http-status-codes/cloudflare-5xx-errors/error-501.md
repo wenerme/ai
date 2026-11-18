@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 501
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-501/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 501: not implemented
 
 Cloudflare Workers returns a `501` error when a request uses an HTTP method that is not supported by the Workers Runtime.

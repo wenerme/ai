@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/investigate/domain-ranking-datase
 
 # Domains ranking
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/domain-ranking-datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare regularly generates a domain ranking based on DNS queries to [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/), Cloudflare's public DNS resolver. Refer to the [blog post ↗︎](https://blog.cloudflare.com/radar-domain-rankings/) for a deep dive. In short, Cloudflare generates two types of listings:
 
 - An ordered list of the top 100 most popular domains globally and per country. This includes the last 24 hours and is updated daily.

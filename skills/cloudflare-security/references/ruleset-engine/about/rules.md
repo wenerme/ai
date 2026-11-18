@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/about/rules/og.png?v=36a
 
 # Rules
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/about/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A rule defines a filter and an action to perform on the incoming requests that match the filter.
 
 - The rule [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/), also called filter expression, defines the scope of the rule.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # SentinelOne
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/sentinel-one/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One can check if [SentinelOne ↗︎](https://www.sentinelone.com/) is running on a device to determine if a request should be allowed to reach a protected resource.
 
 ## Prerequisites

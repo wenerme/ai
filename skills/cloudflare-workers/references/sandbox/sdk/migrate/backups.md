@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/backups/og.png?v=96
 
 # Move backups
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/backups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Replace 0.12 `createBackup()` and `restoreBackup()` with Durable Object methods of the same names, built on `DirectoryBackup`. Your Worker calls them with the same options, and backups keep the 0.12 time to live. `DirectoryBackup` saves the directory to the same `BACKUP_BUCKET` binding as a compressed archive, and restores it as ordinary files. 0.12 saved a SquashFS image and mounted it over the directory. Backups that 0.12 created convert to 1.0 backups the first time you restore them.
 
 To save the whole filesystem instead of one directory, use a Container snapshot. For more information, refer to [Save and restore a sandbox with snapshots](https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/).

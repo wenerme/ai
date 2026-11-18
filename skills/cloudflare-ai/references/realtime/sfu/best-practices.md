@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/best-practices/og.png?v=99
 
 # Best practices
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Your application owns identity, state, and lifecycle around the SFU's media transport. Preserve these boundaries when adapting an example.
 
 ## Keep credentials on the backend

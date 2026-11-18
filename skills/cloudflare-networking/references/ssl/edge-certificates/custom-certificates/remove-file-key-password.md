@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificat
 
 # Remove key file password
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You cannot upload a custom certificate with a password-protected key file.
 
 The process for removing the password depends on your operating system. The following examples remove the password from `example.com.key`.

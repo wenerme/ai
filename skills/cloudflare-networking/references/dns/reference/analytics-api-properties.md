@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/reference/analytics-api-properties/
 
 # Analytics API properties
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/reference/analytics-api-properties/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page describes API properties that you can use in requests to the [DNS analytics API](https://developers.cloudflare.com/api/resources/dns/subresources/analytics/subresources/reports/methods/get/).
 
 Warning

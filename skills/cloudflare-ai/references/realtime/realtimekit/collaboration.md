@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/collaboration/og.p
 
 # Collaboration
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/collaboration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these APIs to build shared, interactive experiences on top of a RealtimeKit meeting. Sync state across participants with a key-value store, or send custom events to everyone in the meeting.
 
 - [Meeting key-value store](https://developers.cloudflare.com/realtime/realtimekit/collaboration/meeting-key-value-store/)

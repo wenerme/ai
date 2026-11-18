@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/troubleshooting/load-bal
 
 # FAQs
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 For more detailed information about Load Balancing — including how-to guides, tutorials, and other reference information — check out our [product documentation](https://developers.cloudflare.com/load-balancing/).

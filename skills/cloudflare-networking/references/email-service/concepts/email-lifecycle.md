@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/concepts/email-lifecycle/
 
 Understand the complete email processing lifecycle from request received through final delivery status with Cloudflare Email Service
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/email-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The email lifecycle describes the complete journey of an email through Cloudflare Email Service. Understanding this process helps you optimize your email implementation and troubleshoot delivery issues.
 
 Email Sending and Email Routing follow distinct processing pipelines. The outbound flow covers emails you send through the service; the inbound flow covers emails received on domains configured with Email Routing.
