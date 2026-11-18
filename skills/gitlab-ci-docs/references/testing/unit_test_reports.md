@@ -140,6 +140,9 @@ ruby:
       junit: rspec.xml
 ```
 
+For examples in other languages, including Go, Java, JavaScript, PHP, and Python,
+see [unit test report examples](unit_test_report_examples.md).
+
 You can view test results:
 
 - In the **Tests** tab of pipeline details after your test job completes.

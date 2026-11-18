@@ -134,6 +134,7 @@ them a notification email.
 
 - **Assign reviewers** drawer [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/185795) in GitLab 17.11 [with a feature flag](../../../../administration/feature_flags/_index.md) named `improved_review_experience`. Disabled by default.
 - **Assign reviewers** drawer [enabled by default](https://gitlab.com/gitlab-org/gitlab/-/issues/535461) in GitLab 18.1.
+- **Assign reviewers** drawer [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/535461) in GitLab 18.2. Feature flag `improved_review_experience` removed.
 
 When reviewing a merge request, follow the review process instead of leaving individual
 comments. When you select **Start a review**, the **Reviewers** section of the right sidebar updates

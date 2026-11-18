@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb8
 
 # Debugging
 
-Last updated Oct 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/debugging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/debugging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If caching is not behaving the way you expect, the `Cf-Cache-Status` response header is the first place to look. Every response carries it, and its value tells you exactly what happened for that request.
 
@@ -155,7 +155,13 @@ For per-plan response size limits, refer to [Cacheable size limits](https://deve
 
 ## I need more visibility
 
-At launch, the primary debugging surfaces are the `Cf-Cache-Status` response header and per-invocation cache-hit information in the [Workers observability dashboard](https://developers.cloudflare.com/workers/observability/).
+Beyond the `Cf-Cache-Status` response header and per-invocation cache-hit information in the [Workers observability dashboard](https://developers.cloudflare.com/workers/observability/), you can review aggregate cache analytics for your Worker in the Cloudflare dashboard:
+
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select your Worker.
+3. Go to **Metrics** and find the cache analytics.
+
+Cache analytics show how your Worker's cached traffic behaves over time, which helps you confirm whether caching is working across all requests rather than one request at a time. Refer to [Workers metrics](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#workers-metrics) for more on the **Metrics** page.
 
 Was this helpful?
 
@@ -166,5 +172,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/debugging/#page","headline":"Debugging","description":"Diagnose why Workers Caching is not behaving the way you expect.","url":"https://developers.cloudflare.com/workers/cache/debugging/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb85e9cced0d1","dateModified":"2026-10-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/debugging/#page","headline":"Debugging","description":"Diagnose why Workers Caching is not behaving the way you expect.","url":"https://developers.cloudflare.com/workers/cache/debugging/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb85e9cced0d1","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -8,9 +8,9 @@ Business logic scanning uses an AI agent, the Business Logic Security Analyzer (
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment) [with a feature flag](../../../administration/feature_flags/_index.md) named `bl_security_analyzer`. Disabled by default.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264192) from experiment to beta in GitLab 19.6.
-- [Available on GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262270) in GitLab 19.6.
+- [Available on GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262270) for instances that GitLab enables in GitLab 19.6.
 - [Available on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269040) in GitLab 19.6.
-- [Enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270207) in GitLab 19.6. Feature flags `bl_security_analyzer` and `agentic_analyzer_security_ingestion` enabled by default.
+- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270207) in GitLab 19.6. Feature flags `bl_security_analyzer` and `agentic_analyzer_security_ingestion` enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -42,7 +42,7 @@ They differ in scope, how they start, where results appear, and whether findings
 |                            | Security Review Flow                                                         | Business logic scanning                                                                                              |
 |----------------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | Scope                      | The merge request diff and its surrounding context.                          | The files a merge request changes (partial scan), or the whole repository on the default branch.                     |
-| How it starts              | You manually assign the **Duo Security Review** reviewer to a merge request. | Automatically on merge requests when the scan profile is attached. For a full scan, from GitLab Duo Chat or the API. |
+| How it starts              | You manually assign the **Duo Security Review** reviewer to a merge request. | Automatically on merge requests when the scan profile is applied. For a full scan, from GitLab Duo Chat or the API. |
 | Where results appear       | Threaded diff comments with suggested fixes, and an internal note. On public projects, only the internal note. | Merge request scans: the merge request security widget. Full scans: the vulnerability report. |
 | Tracked as vulnerabilities | No. | Yes, for full scans of the default branch. |
 
@@ -60,7 +60,7 @@ A scan starts in one of these ways:
 
 | How the scan starts | What it scans | How to turn it on |
 |---------------------|---------------|-------------------|
-| [Automatically on merge requests](#automatic-merge-request-scans) | The files the merge request adds or modifies. A partial scan. | Attach the business logic scan profile to the project. |
+| [Automatically on merge requests](#automatic-merge-request-scans) | The files the merge request adds or modifies. A partial scan. | Apply the business logic scan profile to the project. |
 | [From GitLab Duo Chat](#start-a-scan-from-gitlab-duo-chat) | The whole repository, on the default branch. The recommended way to scan the whole repository. | Send the flow command in GitLab Duo Chat. |
 | [With the API](#start-a-scan-with-the-api) | The whole repository, on the default branch. | Send an API request. |
 | [On a schedule](#scheduled-default-branch-scans) | Not available yet. | Not available yet. |
@@ -78,6 +78,7 @@ Prerequisites:
 - On GitLab Self-Managed and GitLab Dedicated:
   - Experiment and beta features turned on for the instance.
   - GitLab must turn on business logic scanning for your instance. Contact your account team.
+- On GitLab Dedicated, scans run on GitLab-hosted runners. You do not configure a runner.
 - On GitLab Self-Managed:
   - GitLab Duo Agent Platform turned on for the instance.
   - An instance runner, or a group runner assigned to the top-level group,
@@ -95,13 +96,21 @@ To turn on business logic scanning:
 1. As a user with the Owner role for the top-level group,
    [turn on foundational flows](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off),
    including the **Business Logic Security Scan** flow.
-1. [Attach the business logic scan profile](../configuration/security_configuration_profiles.md#business-logic-profile)
-   to each project you want to scan, by
-   [applying the profile with the GraphQL API](../configuration/security_configuration_profiles.md#apply-profiles-with-the-graphql-api).
+1. [Apply the business logic scan profile](../configuration/security_configuration_profiles.md#business-logic-profile)
+   to each project you want to scan:
+   1. In the project, in the left sidebar, select **Secure** > **Security configuration**.
+   1. Under ,
+      select  for
+      .
+
+You can also apply the profile:
+
+- [From the security inventory](../configuration/security_configuration_profiles.md#apply-profiles-in-the-ui)
+- [With the GraphQL API](../configuration/security_configuration_profiles.md#apply-profiles-with-the-graphql-api)
 
 ## Automatic merge request scans
 
-When a project has the business logic scan profile attached, a scan runs on each merge request:
+When the business logic scan profile is applied to a project, a scan runs on each merge request:
 
 - The scan runs on the merge request's head pipeline: either a merge request pipeline or a branch pipeline
   of an open merge request.
@@ -220,10 +229,13 @@ the `*` environment scope.
 The scan reads these variables from the project's CI/CD settings when it starts. Variables set in
 `.gitlab-ci.yml` or when you run a pipeline do not apply.
 
-On GitLab.com, the scan uses the model set for **Business Logic Security Scan** in the top-level group.
-To change it, [select a model for a feature](../../duo_agent_platform/model_selection.md#select-a-model-for-a-feature).
-On GitLab Self-Managed and GitLab Dedicated, the scan uses the model set for the instance.
-To change it, [select a model for the instance](../../../administration/gitlab_duo/model_selection.md#select-a-model-for-the-instance).
+- On GitLab.com, the scan uses the model set for **Business Logic Security Scan** in the top-level group.
+  To change it,
+  [select a model for a feature](../../duo_agent_platform/model_selection.md#select-a-model-for-a-feature).
+  Claude Mythos models are available only for top-level groups that GitLab has enabled.
+- On GitLab Self-Managed and GitLab Dedicated, the scan uses the model set for the instance.
+  To change it,
+  [select a model for the instance](../../../administration/gitlab_duo/model_selection.md#select-a-model-for-the-instance).
 
 ## Known issues
 
@@ -258,3 +270,9 @@ Business logic scanning has the following known issues:
 Each scan is a GitLab Duo Agent Platform session, and consumes
 [GitLab Credits](../../../subscriptions/gitlab_credits.md). A scan of a large merge request, or of a
 whole repository, uses more than a scan of a small change.
+
+## Feedback
+
+Business logic scanning is in beta. To report a finding that was wrong or missing, a scan that
+failed, or anything else about the feature, comment on
+[feedback issue 640466](https://gitlab.com/gitlab-org/gitlab/-/issues/640466).

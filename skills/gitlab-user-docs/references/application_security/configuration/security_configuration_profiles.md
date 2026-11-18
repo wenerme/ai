@@ -7,7 +7,8 @@
 - Secret detection profile [added](https://gitlab.com/groups/gitlab-org/-/epics/19903) in GitLab 18.10.
 - SAST profile [added](https://gitlab.com/groups/gitlab-org/-/epics/19951) in GitLab 18.11.
 - Dependency scanning profile [introduced](https://gitlab.com/groups/gitlab-org/-/epics/19952) in GitLab 19.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_scan_profiles_dependency_scanning`. Enabled by default.
-- Feature flag `security_scan_profiles_feature` removed in GitLab 19.4.
+- Feature flag `security_scan_profiles_dependency_scanning` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/593778) in GitLab 19.1.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250556) in GitLab 19.4. Feature flag `security_scan_profiles_feature` removed.
 
 Security configuration profiles are centralized settings that define how and when security scanners run across your projects.
 Use security configuration profiles to manage security scanners across your organization efficiently. A profile-based approach applies best practices with minimal manual setup.
@@ -234,7 +235,7 @@ triage, and remediation with minimal configuration.
 | [Dependency scanning](#dependency-scanning-profile) | Scans dependencies with the recommended configuration. | [UI](#apply-profiles-in-the-ui), [wizard](#apply-profiles-with-the-scanner-enablement-wizard), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Dependency scanning auto-remediation](#dependency-scanning-auto-remediation-profile) | Opens merge requests that upgrade vulnerable dependencies. | [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Automated triage and remediation](#automated-triage-and-remediation-profile) | Turns on GitLab Duo triage flows and dependency scanning auto-remediation. | [UI](#apply-profiles-in-the-ui), [wizard](#apply-an-automated-triage-and-remediation-profile-with-the-triage-and-remediation-wizard), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
-| [Business logic](#business-logic-profile) | Uses an AI agent to find business logic vulnerabilities. | [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
+| [Business logic](#business-logic-profile) | Uses an AI agent to find business logic vulnerabilities. | [UI](#apply-profiles-in-the-ui), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Security Review](#security-review-profile) | Posts review threads on merge requests instead of running the business logic scan. | [API](#apply-profiles-with-the-graphql-api) |
 | [SkillGuard](#skillguard-profile) | Uses an AI agent to find security risks in AI agent skill files. | [API](#apply-profiles-with-the-graphql-api) |
 

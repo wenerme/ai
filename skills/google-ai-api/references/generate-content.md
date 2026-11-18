@@ -1193,6 +1193,144 @@ the message turn.
 
   {% details %}
   {% summary %}
+  **metadata**: `Union type`
+
+  Controls extra preprocessing of data. Set this when `inline_data` or `file_data` is present to configure per-part static media preprocessing.
+
+  {% /summary %}
+
+  Union field `metadata` can be only one of the following:
+
+  {% details %}
+  {% summary %}
+  **videoMetadata**: `VideoMetadata`
+
+  Optional. Video metadata. The metadata should only be specified while the video data is presented in inline_data or file_data.
+
+  {% /summary %}
+
+  **startOffset**: `string`
+
+  Optional. The start offset of the video.
+
+  **endOffset**: `string`
+
+  Optional. The end offset of the video.
+
+  **fps**: `number`
+
+  Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
+
+  {% details %}
+  {% summary %}
+  **contentLayers**: `string enum array`
+
+  Optional. Content layers to return. If empty, defaults to [FRAMES, AUDIO].
+
+  {% /summary %}
+
+  Possible values:
+
+  - `CONTENT_LAYER_UNSPECIFIED`: Default value.
+  - `FRAMES`: Extract video frames.
+  - `AUDIO`: Extract audio track.
+  - `TRANSCRIPT`: Extract audio transcript.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **documentMetadata**: `DocumentMetadata`
+
+  Optional. Document metadata. The metadata should only be specified while the document data is presented in inline_data or file_data.
+
+  {% /summary %}
+
+  **startPage**: `integer`
+
+  Optional. 1-indexed inclusive start page.
+
+  **endPage**: `integer`
+
+  Optional. 1-indexed inclusive end page.
+
+  {% details %}
+  {% summary %}
+  **contentLayers**: `string enum array`
+
+  Optional. Content layers to return. If empty, defaults to [PAGE_IMAGE] when DocumentMetadata is set. When DocumentMetadata is not set, default document processing is used (for example, page images for PDFs).
+
+  {% /summary %}
+
+  Possible values:
+
+  - `CONTENT_LAYER_UNSPECIFIED`: Default value.
+  - `PAGE_IMAGE`: Rendered page images.
+  - `PAGE_TEXT`: Extracted page text.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **spreadsheetMetadata**: `SpreadsheetMetadata`
+
+  Optional. Spreadsheet metadata. The metadata should only be specified while the spreadsheet data is presented in inline_data or file_data.
+
+  {% /summary %}
+
+  **visibleCells**: `string`
+
+  Optional. The range of cells to extract, in A1 notation (e.g. "A1:D10"). If not set, the full occupied area of the sheet is used.
+
+  **sheetIndex**: `integer`
+
+  Optional. The 1-indexed index of the sheet to extract, in workbook order. If not set, all sheets are extracted.
+
+  {% details %}
+  {% summary %}
+  **contentLayers**: `string enum array`
+
+  Optional. Content layers to return. If empty, defaults to [DATA, FORMULAS] when SpreadsheetMetadata is set.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `CONTENT_LAYER_UNSPECIFIED`: Default value.
+  - `DATA`: Cell values, merges, and formats.
+  - `FORMULAS`: Formula expressions and their computed results.
+  - `VISUAL`: A rendered image of the sheet.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **audioMetadata**: `AudioMetadata`
+
+  Optional. Audio metadata. The metadata should only be specified while the audio data is presented in inline_data or file_data.
+
+  {% /summary %}
+
+  **startOffset**: `string`
+
+  Optional. The start offset of the audio, relative to the start of the audio stream.
+
+  **endOffset**: `string`
+
+  Optional. The end offset of the audio, relative to the start of the audio stream.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
   **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
@@ -1204,6 +1342,46 @@ the message turn.
   - `MEDIA_PROCESSING_UNSPECIFIED`: Defaults to model-specific processing.
   - `STATIC`: Fixed-rate frame extraction. All frames placed in context.
   - `AGENTIC`: Model-driven dynamic navigation. Recommended for most use cases.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **mediaResolution**: `V1mainMediaResolution`
+
+  Optional. Media resolution for the input media.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **value**: `Union type`
+
+  The media resolution level.
+
+  {% /summary %}
+
+  Union field `value` can be only one of the following:
+
+  {% details %}
+  {% summary %}
+  **level**: `string enum`
+
+  The tokenization quality used for given media. for Gemini API support .
+
+  {% /summary %}
+
+  Possible values:
+
+  - `MEDIA_RESOLUTION_UNSPECIFIED`: Media resolution has not been set.
+  - `MEDIA_RESOLUTION_LOW`: Media resolution set to low.
+  - `MEDIA_RESOLUTION_MEDIUM`: Media resolution set to medium.
+  - `MEDIA_RESOLUTION_HIGH`: Media resolution set to high.
+  - `MEDIA_RESOLUTION_ULTRA_HIGH`: Media resolution set to ultra high.
+
+  {% /details %}
+
+  {% /details %}
 
   {% /details %}
 
@@ -1433,6 +1611,110 @@ the message turn.
   **fps**: `number`
 
   Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
+
+  {% details %}
+  {% summary %}
+  **contentLayers**: `string enum array`
+
+  Optional. Content layers to return. If empty, defaults to [FRAMES, AUDIO].
+
+  {% /summary %}
+
+  Possible values:
+
+  - `CONTENT_LAYER_UNSPECIFIED`: Default value.
+  - `FRAMES`: Extract video frames.
+  - `AUDIO`: Extract audio track.
+  - `TRANSCRIPT`: Extract audio transcript.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **documentMetadata**: `DocumentMetadata`
+
+  Optional. Document metadata. The metadata should only be specified while the document data is presented in inline_data or file_data.
+
+  {% /summary %}
+
+  **startPage**: `integer`
+
+  Optional. 1-indexed inclusive start page.
+
+  **endPage**: `integer`
+
+  Optional. 1-indexed inclusive end page.
+
+  {% details %}
+  {% summary %}
+  **contentLayers**: `string enum array`
+
+  Optional. Content layers to return. If empty, defaults to [PAGE_IMAGE] when DocumentMetadata is set. When DocumentMetadata is not set, default document processing is used (for example, page images for PDFs).
+
+  {% /summary %}
+
+  Possible values:
+
+  - `CONTENT_LAYER_UNSPECIFIED`: Default value.
+  - `PAGE_IMAGE`: Rendered page images.
+  - `PAGE_TEXT`: Extracted page text.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **spreadsheetMetadata**: `SpreadsheetMetadata`
+
+  Optional. Spreadsheet metadata. The metadata should only be specified while the spreadsheet data is presented in inline_data or file_data.
+
+  {% /summary %}
+
+  **visibleCells**: `string`
+
+  Optional. The range of cells to extract, in A1 notation (e.g. "A1:D10"). If not set, the full occupied area of the sheet is used.
+
+  **sheetIndex**: `integer`
+
+  Optional. The 1-indexed index of the sheet to extract, in workbook order. If not set, all sheets are extracted.
+
+  {% details %}
+  {% summary %}
+  **contentLayers**: `string enum array`
+
+  Optional. Content layers to return. If empty, defaults to [DATA, FORMULAS] when SpreadsheetMetadata is set.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `CONTENT_LAYER_UNSPECIFIED`: Default value.
+  - `DATA`: Cell values, merges, and formats.
+  - `FORMULAS`: Formula expressions and their computed results.
+  - `VISUAL`: A rendered image of the sheet.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **audioMetadata**: `AudioMetadata`
+
+  Optional. Audio metadata. The metadata should only be specified while the audio data is presented in inline_data or file_data.
+
+  {% /summary %}
+
+  **startOffset**: `string`
+
+  Optional. The start offset of the audio, relative to the start of the audio stream.
+
+  **endOffset**: `string`
+
+  Optional. The end offset of the audio, relative to the start of the audio stream.
 
   {% /details %}
 

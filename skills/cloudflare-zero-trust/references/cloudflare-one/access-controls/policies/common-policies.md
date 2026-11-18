@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Common policies
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following Cloudflare Access policies are commonly used to secure applications.
 
@@ -92,7 +92,7 @@ You can add multiple email domains to the Include rule if your organization uses
 
 ## Allow employees from specific countries
 
-Organizations that operate in specific regions or need to comply with data residency requirements can restrict application access to users in approved countries. This policy is useful when you want to limit where employees can connect from, while still allowing exceptions for individual users such as traveling executives.
+This policy allows corporate users from approved countries, except for the email addresses in the Exclude rule. Excluded users do not match this policy, even when they connect from an approved country. To allow specific users outside the approved countries, create a separate Allow policy for those users.
 
 Because Require rules use AND logic, you cannot add multiple countries directly to a single Require rule — that would require the user to be in all countries simultaneously. Instead, first create a [rule group](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/) that lists the approved countries:
 
@@ -613,7 +613,7 @@ To configure the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https
 
 Caution
 
-Adding `Login Methods: One-time PIN` as an Include rule without restricting email domains allows anyone with any email address to receive a code and access the application. Always pair OTP with specific email domains or an email list in the Include rule.
+Adding `Login Methods: One-time PIN` as an Include rule allows anyone who authenticates with that login method to match the policy. Adding email restrictions as more Include rules does not narrow access, because Include rules use OR logic. Put the allowed email domains or addresses in Include and the One-time PIN login method in Require, as shown above.
 
 ## Isolate contractor access to internal applications
 
@@ -751,7 +751,7 @@ resource "cloudflare_zero_trust_access_policy" "isolate_contractor_access" {
 }
 ```
 
-To restrict what users can do inside the isolated session, create a companion [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) that matches traffic to the application domain. Set the action to **Isolate** and disable interactive controls in the [policy settings](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#policy-settings).
+To restrict what users can do inside the isolated session, create a companion [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) that matches traffic to the application domain. Set the action to **Isolate** and disable interactive controls in the [policy settings](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#policy-settings).
 
 <details>
 
@@ -875,7 +875,7 @@ Block policies are best used together with [Allow policies](#allow-employees-by-
 
 ## Exclude high-risk users
 
-If your organization uses [Cloudflare User Risk Scores](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) to flag users with anomalous behavior, you can exclude high-risk users from accessing sensitive applications. This is useful as a dynamic safeguard that automatically restricts access when a user's behavior triggers a risk level change, without requiring manual intervention.
+If your organization uses [Cloudflare User Risk Scores](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/), you can exclude high-risk users from an Allow policy. This prevents that policy from granting access when it evaluates a user as high risk. Another Allow policy can still grant access. To deny high-risk users regardless of other Allow policies, use a Block policy evaluated before those Allow policies.
 
 | Action | Rule type | Selector | Value |
 | --- | --- | --- | --- |
@@ -958,7 +958,7 @@ resource "cloudflare_zero_trust_access_policy" "exclude_high_risk_users" {
 }
 ```
 
-In this example, any user scored as high risk is excluded even if they match the Include rule. To learn how risk scores are calculated and how to configure risk behaviors, refer to [User risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
+In this example, users scored as high risk do not match this policy, even if they match the Include rule. To learn how risk scores are calculated and how to configure risk behaviors, refer to [User risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
 
 ## Authenticate a service using a service token
 
@@ -1381,5 +1381,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/#page","headline":"Common policies","description":"Commonly used Cloudflare Access policies for securing applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/og.png?v=db862f7c011c0758","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/#page","headline":"Common policies","description":"Commonly used Cloudflare Access policies for securing applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/og.png?v=db862f7c011c0758","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

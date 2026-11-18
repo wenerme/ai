@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/service-
 
 # Mutual TLS
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -25,7 +25,7 @@ This page covers Access mTLS for Service Auth policies. [Zone-level mTLS](https:
 - **Authenticate devices that do not use an identity provider** — Automated systems and IoT devices can prove their identity by presenting a client certificate instead of logging in through an IdP.
 - **Add a second authentication factor** — Team members who log in through an IdP can also be required to present a valid client certificate, providing an additional layer of security.
 
-When you upload a root certificate authority (CA) to Access, only requests from devices with a matching client certificate are allowed through. When a request reaches the application, Access asks the client to present a certificate. If the client cannot present a valid certificate, the request is blocked. If the client presents a valid certificate, Access completes a key exchange to verify.
+Uploading a certificate authority (CA) configures client certificate validation for its associated hostnames. To require a valid client certificate for an application, you must also create and attach an Access policy with a **Valid Certificate** or **Common Name** rule. Uploading the CA alone does not create a policy or prevent another policy from allowing access without a certificate.
 
 ![mTLS handshake diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=865,height=1146,format=webp/_astro/mtls.BbZYLY1o.png)
 
@@ -83,7 +83,7 @@ The mTLS certificate is used only to verify the client certificate. It does not 
 5. In **Associated hostnames**, enter the fully-qualified domain names (FQDN) that will use this certificate.
 
    These FQDNs will be the hostnames used for the resources being protected in the [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). You must associate the Root CA with the FQDN that the application being protected uses.
-6. Save the policy.
+6. Save the certificate configuration.
 7. Go to **Access controls** > **Policies**.
 8. [Create an Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy) using one of the following [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors):
    - **Valid Certificate**: Any client certificate that can authenticate with the Root CA will be allowed to proceed.
@@ -255,10 +255,10 @@ This guide uses [Cloudflare's PKI toolkit ↗︎](https://github.com/cloudflare/
 
 The process requires two packages from Cloudflare's PKI toolkit:
 
-- `cf-ssl`
+- `cfssl`
 - `cfssljson`
 
-You can install these packages from the [Cloudflare SSL GitHub repository ↗︎](https://github.com/cloudflare/cfssl). You will need a working installation of Go, version 1.12 or later. Alternatively, you can [download the packages ↗︎](https://github.com/cloudflare/cfssl) directly. Use the instructions under Installation to install the toolkit, and ensure that you install all of the utility programs in the toolkit.
+You can install these packages from the [Cloudflare SSL GitHub repository ↗︎](https://github.com/cloudflare/cfssl). To build from source, use the Go version required by the release you are installing. Alternatively, download prebuilt binaries from the repository's releases. Use the instructions under Installation to install the toolkit, and ensure that you install all of the utility programs in the toolkit.
 
 #### 2. Generate the root CA
 
@@ -602,5 +602,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/og.png?v=4995f0947e238005","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/og.png?v=4995f0947e238005","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

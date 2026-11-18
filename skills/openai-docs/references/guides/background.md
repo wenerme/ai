@@ -35,6 +35,7 @@ eligible request, including follow-ups. In this example, both requests qualify f
 
 Set `background` to `true` and save the response ID returned by the API. Use a
 webhook to learn when the request finishes and retrieve the response by ID.
+This example uses the default completion window (`soonest`).
 
 Generate a response in the background
 
@@ -157,10 +158,10 @@ puts(response.status)
 
 Background mode temporarily stores response data even when you set `store` to
   `false` or use Zero Data Retention. The API uses this data to run the request
-  and make the result available for retrieval. For `2h` and `8h` requests, the
-  API encrypts temporarily stored request content at rest. See [Data
-  controls](https://developers.openai.com/api/docs/guides/your-data#v1responses) for details on temporary
-  storage.
+  and make the result available for retrieval. The API encrypts temporarily
+  stored request content at rest for all completion windows (`soonest`, `2h`,
+  and `8h`). See [Data controls](https://developers.openai.com/api/docs/guides/your-data#v1responses) for
+  details on temporary storage.
 
 ## Receive results with webhooks
 
@@ -203,6 +204,10 @@ set it to `false`. See
 Discounted windows require Standard processing. Set `service_tier` to `default`
 to select Standard. With `auto`, the request qualifies only if the API selects
 Standard.
+
+Standard requests outside the discounted completion windows can’t reuse prompt
+cache entries created by `2h` or `8h` background requests, even when the prompt
+is identical.
 
 For a single overnight document review, send an `8h` request to
 [`POST /v1/responses`](https://developers.openai.com/api/reference/resources/responses/methods/create) with
@@ -509,14 +514,20 @@ puts(response.status)
 
 
 Canceling twice is idempotent. Later calls return the final `Response` object.
+For a synchronous response, close the connection instead.
 
 ## Streaming a background response
 
-With the default completion window, you can create a background Response and start streaming events from it right away. This may be helpful if you expect the client to drop the stream and want the option of picking it back up later. To do this, create a Response with both `background` and `stream` set to `true`. You will want to keep track of a "cursor" corresponding to the `sequence_number` you receive in each streaming event.
+To stream a background response, use the default completion window (`soonest`)
+and set `stream: true` when you create it. For `2h` and `8h` requests, omit
+`stream` or set it to `false`.
 
-Currently, the time to first token you receive from a background response is
-  higher than what you receive from a synchronous one. We are working to reduce
-  this latency gap in the coming weeks.
+If the connection drops, resume the stream by passing the last event's
+`sequence_number` as `starting_after`. You can't stream a response later if
+it was created without streaming.
+
+Time to first token can be higher for a background response than for a
+  synchronous response.
 
 Generate and stream a background response
 
@@ -531,7 +542,7 @@ curl https://api.openai.com/v1/responses \
   "stream": true
 }'
 
-// To resume:
+# To resume:
 curl "https://api.openai.com/v1/responses/resp_123?stream=true&starting_after=42" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -875,9 +886,3 @@ puts("response #{response_id} last cursor #{last_sequence_number}")
 #   puts(event.type)
 # end
 ```
-
-
-## Limits
-
-1. To cancel a synchronous response, close the connection.
-2. You can only start a new stream from a background response if you created it with `stream=true`.

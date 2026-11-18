@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/spectrum/reference/limitations/og.png?v
 
 # Limitations
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following limitations apply to Spectrum applications.
 
@@ -77,9 +77,11 @@ Spectrum will only ever proxy traffic to an origin if there is a Spectrum applic
 
 ## IP access control
 
-Currently, [custom rules](https://developers.cloudflare.com/waf/custom-rules/) do not work with Spectrum applications. Use [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/) to allowlist, block, and challenge traffic for Spectrum applications based on the request's IP address, Autonomous System Number (ASN), or country.
+For **TCP/UDP** Spectrum applications, [custom rules](https://developers.cloudflare.com/waf/custom-rules/) are not supported. Use [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/) to allowlist, block, and challenge traffic based on the request's IP address, Autonomous System Number (ASN), or country.
 
-Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) for more information.
+For **HTTP/HTTPS** Spectrum applications, [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and other WAF features are fully supported. Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type) for more information on application types.
+
+Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) for more information on enabling IP Access rules for TCP/UDP applications.
 
 Was this helpful?
 
@@ -90,5 +92,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/limitations/#page","headline":"Limitations","description":"Limitations that apply to Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/limitations/og.png?v=e84cde46b655df7c","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/limitations/#page","headline":"Limitations","description":"Limitations that apply to Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/limitations/og.png?v=e84cde46b655df7c","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

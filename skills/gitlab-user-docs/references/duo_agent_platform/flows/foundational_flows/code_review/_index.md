@@ -130,6 +130,8 @@ GitLab Duo can approve or request changes on a merge request based on its review
 
 - When GitLab Duo finds nothing to comment on, it approves the merge request.
   An approval from GitLab Duo does not count toward required approvals.
+  If the merge request changes while GitLab Duo reviews the merge request, GitLab Duo does not approve.
+  To get an approval for the latest changes, request a new review.
 
 - When GitLab Duo finds something to comment on, it requests changes. If a user's request for
   changes blocks a merge request on your project, a request from GitLab Duo has the same effect.

@@ -12,19 +12,18 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # CORS
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cross-Origin Resource Sharing ([CORS ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) is a mechanism that uses HTTP headers to grant a web application running on one origin permission to reach selected resources in a different origin. The web application executes a cross-origin HTTP request when it requests a resource that has a different origin from its own, including domain, protocol, or port.
 
-For a CORS request to reach a site protected by Access, the request must include a valid `CF-Authorization` cookie. This may require additional configuration depending on the type of request:
+For a browser to authenticate a CORS request with an Access session, the request must include a valid `CF_Authorization` cookie. This may require additional configuration depending on the type of request:
 
 - [Simple requests ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests) are sent directly to the origin, without triggering a preflight request. For configuration instructions, refer to [Allow simple requests](#allow-simple-requests).
 - [Preflighted requests ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#preflighted_requests) cause the browser to send an OPTIONS request before sending the actual request. The OPTIONS request checks which methods and headers are allowed by the origin. For configuration instructions, refer to [Allow preflighted requests](#allow-preflighted-requests).
 
 Important
 
-- Do not troubleshoot CORS in Incognito mode, as this will cause disruptions with Access due to `CF-Authorization` being blocked as a third-party cookie on cross origin requests.
-- Safari, in particular Safari 13.1, handles cookies in a unique format. In some cases, this can cause CORS to fail. This will be dependent on Apple releasing a patch for handling cookies. This is known to impact macOS 10.15.4 when running Safari 13.1 (15609.1.20.111.8).
+Browser privacy settings can block third-party cookies, especially in private browsing. Check whether the browser permits the `CF_Authorization` cookie for your application. Refer to [Allow third-party cookies in the browser](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#allow-third-party-cookies-in-the-browser).
 
 ## Allow simple requests
 
@@ -36,8 +35,9 @@ If you make a simple CORS request to an Access-protected domain and have not yet
 ### Authenticate manually
 
 1. Visit the target domain in your browser. You will see the Access login page.
-2. Log in to the target domain. This generates a `CF-Authorization` cookie.
-3. Refresh the page that made the CORS request. The refresh resends the request with the newly generated cookie.
+2. Log in to the target domain. This generates a `CF_Authorization` cookie.
+3. Configure cross-origin `fetch` requests with `credentials: "include"`, or set `withCredentials = true` on `XMLHttpRequest` instances. The target must allow credentialed requests from your page's origin.
+4. Refresh the page that made the CORS request. If browser cookie settings permit it, the request includes the cookie.
 
 ## Allow preflighted requests
 
@@ -194,7 +194,10 @@ export default {
 		const newRequest = new Request(url.toString(), request);
 
 		newRequest.headers.set("cf-access-client-id", env.CF_ACCESS_CLIENT_ID);
-		newRequest.headers.set("cf-access-client-secret", env.CF_ACCESS_CLIENT_SECRET);
+		newRequest.headers.set(
+			"cf-access-client-secret",
+			env.CF_ACCESS_CLIENT_SECRET,
+		);
 		try {
 			const response = await fetch(newRequest);
 
@@ -245,12 +248,12 @@ HTTP requests should now work seamlessly between two different Access-protected 
 In general, we recommend the following steps when troubleshooting CORS issues:
 
 1. Capture a HAR file with the issue described, as well as the JS console log output recorded simultaneously. This is because the HAR file alone will not give full visibility on the reason behind cross-origin issues.
-2. Ensure that the application has set `credentials: 'same-origin'` in all fetch or XHR requests.
+2. For cross-origin requests that use cookies, set `credentials: "include"` in `fetch` or `withCredentials = true` in `XMLHttpRequest`. `credentials: "same-origin"` does not send cookies to a different origin. Verify that the response includes `Access-Control-Allow-Credentials: true` and an `Access-Control-Allow-Origin` value matching the requesting origin, not `*`.
 3. If you are using the [cross-origin setting ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) on script tags, these must be set to "use-credentials".
 
 CORS is failing on the same domain
 
-CORS checks do not occur on the same domain. If this error occurs, it is likely the request is being sent without the `CF-Authorization` cookie.
+CORS checks do not apply to same-origin requests. Requests to the same hostname can still be cross-origin if the scheme or port differs. Check the request URL, redirects, and whether the request includes the `CF_Authorization` cookie.
 
 Was this helpful?
 
@@ -261,5 +264,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/#page","headline":"CORS","description":"CORS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/og.png?v=d3f5cf363616cf60","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/#page","headline":"CORS","description":"CORS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/og.png?v=d3f5cf363616cf60","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS"]}
 ```

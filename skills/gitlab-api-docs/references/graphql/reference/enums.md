@@ -2641,15 +2641,6 @@ GitLab Duo availability states for an admin-locked namespace override.
 | `DEFAULT_ON` | Duo is on by default but group Owners can turn it off. |
 | `NEVER_ON` | Duo is off and group Owners cannot turn it on. |
 
-## `DuoCodeReviewDepth`
-
-Depth of a GitLab Duo Code Review. Use `DuoCodeReviewLevel`.
-
-| Value | Description |
-| ----- | ----------- |
-| `LITE` | Lite review. |
-| `STANDARD` | Standard review. |
-
 ## `DuoCodeReviewLevel`
 
 Level of a review by GitLab Duo Code Review Flow.
@@ -2668,6 +2659,18 @@ List of GitLab Duo licensed features.
 | `AGENTIC_CHAT` | Agentic Chat feature. |
 | `AI_CATALOG` | AI Catalog feature. |
 | `AI_FEATURES` | AI features. |
+
+## `DuoMessageKind`
+
+Kind of a message in a GitLab Duo Agent Platform session chat log.
+
+| Value | Description |
+| ----- | ----------- |
+| `PROMPT` | Prompt the user sent, including the goal a flow was started with. |
+| `RESPONSE` | Response from the agent, including requests for approval and clarification questions. |
+| `STEP` | Intermediate step: a delegation to a subagent or a system message. |
+| `TOOL` | Tool call. |
+| `UNKNOWN` | Message type the classifier does not recognize yet. |
 
 ## `DuoWorkflowDropReason`
 

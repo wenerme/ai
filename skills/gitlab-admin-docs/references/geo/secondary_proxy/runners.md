@@ -5,6 +5,7 @@
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/9779) in GitLab 16.8 [with a feature flag](../../feature_flags/_index.md) named `geo_proxy_check_pipeline_refs`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/issues/434041) in GitLab 16.9.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/434041) in GitLab 16.10. Feature flag `geo_proxy_check_pipeline_refs` removed.
 
 With [Geo proxying for secondary sites](_index.md), it is possible to register a `gitlab-runner` with a secondary site. This offloads load from the primary instance.
 
@@ -15,7 +16,7 @@ With [Geo proxying for secondary sites](_index.md), it is possible to register a
 
 - Offering: GitLab Self-Managed
 
-Using [Location-Aware DNS](_index.md#configure-location-aware-dns), with the feature flag enabled works with no extra configuration. After you install and register a runner in the same location as a secondary site, it automatically talks to the closest site, and only proxies to the primary if the secondary is out of date.
+Using [Location-Aware DNS](_index.md#configure-location-aware-dns) works with no extra configuration. After you install and register a runner in the same location as a secondary site, it automatically talks to the closest site, and only proxies to the primary if the secondary is out of date.
 
 ## Use secondary runners with separate URLs
 

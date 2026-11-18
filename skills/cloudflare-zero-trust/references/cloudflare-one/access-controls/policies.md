@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Policies
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access determines who can reach your application by applying the Access policies you configure.
 
@@ -37,7 +37,7 @@ The following table shows an example Cloudflare Access Allow policy that lets an
 | --- | --- | --- | --- |
 | Allow | Include | Emails ending in | `@example.com` |
 
-You can add a Require rule in the same policy action to enforce additional checks. Finally, if the policy contains an Exclude rule, users meeting that definition are prevented from reaching the application.
+Add Require rules to enforce additional checks. Users who match an Exclude rule do not match this policy, but another Allow policy can still grant them access.
 
 For example, the following table shows an Allow policy with Require and Exclude rules. This configuration lets any user from Portugal with an `@team.com` email address, as validated against an IdP, reach the application, except for `user-1` and `user-2`:
 
@@ -111,7 +111,7 @@ The Include rule in Cloudflare Access is similar to an OR logical operator. In c
 
 ### Exclude
 
-The Exclude rule in Cloudflare Access works like a NOT logical operator. A user meeting any Exclusion criteria will not be allowed access to the application.
+The Exclude rule works like a NOT logical operator. A user who matches any Exclude rule does not match that policy. Access continues evaluating other policies, which may still grant access. To deny access explicitly, use a [Block policy](#block) and place it before the Allow policies it must override.
 
 ### Require
 
@@ -233,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#page","headline":"Policies","description":"Configure Policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/og.png?v=a88226e7c0356f58","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#page","headline":"Policies","description":"Configure Policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/og.png?v=a88226e7c0356f58","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

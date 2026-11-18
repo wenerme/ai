@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Validate JWTs
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When Cloudflare sends a request to your origin, the request will include an [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) as a `Cf-Access-Jwt-Assertion` request header. Requests made through a browser will also pass the token as a `CF_Authorization` cookie.
 
@@ -82,10 +82,10 @@ To verify the token manually:
 2. Go to [jwt.io ↗︎](https://jwt.io/).
 3. Select the RS256 algorithm.
 4. Paste the JWT into the **Encoded** box.
-5. In the **Payload** box, ensure that the `iss` field points to your team domain ( `https://<your-team-name>.cloudflareaccess.com`). `jwt.io` uses the `iss` value to fetch the public key for token validation.
+5. In the **Payload** box, confirm that `iss` matches your expected team domain ( `https://<your-team-name>.cloudflareaccess.com`). Do not trust a domain solely because it appears in the token.
 6. Ensure that the page says **Signature Verified**.
 
-You can now trust that this request was sent by Access.
+Also confirm that `aud` contains your application's [AUD tag](#get-your-aud-tag), `exp` is in the future, and `nbf` is not in the future. A valid signature alone does not establish that the token is valid for your application. Use [programmatic verification](#programmatic-verification) to enforce these checks on incoming requests.
 
 ## Programmatic verification
 
@@ -170,7 +170,11 @@ interface Env {
 }
 
 export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+	async fetch(
+		request: Request,
+		env: Env,
+		ctx: ExecutionContext,
+	): Promise<Response> {
 		// Verify the POLICY_AUD environment variable is set
 		if (!env.POLICY_AUD) {
 			return new Response("Missing required audience", {
@@ -193,7 +197,7 @@ export default {
 		try {
 			// Create JWKS from your team domain
 			const JWKS = createRemoteJWKSet(
-				new URL(`${env.TEAM_DOMAIN}/cdn-cgi/access/certs`)
+				new URL(`${env.TEAM_DOMAIN}/cdn-cgi/access/certs`),
 			);
 
 			// Verify the JWT
@@ -203,12 +207,9 @@ export default {
 			});
 
 			// Token is valid, proceed with your application logic
-			return new Response(
-				`Hello ${payload.email || "authenticated user"}!`,
-				{
-					headers: { "Content-Type": "text/plain" },
-				}
-			);
+			return new Response(`Hello ${payload.email || "authenticated user"}!`, {
+				headers: { "Content-Type": "text/plain" },
+			});
 		} catch (error) {
 			// Token verification failed
 			const message = error instanceof Error ? error.message : "Unknown error";
@@ -327,7 +328,8 @@ def _get_public_keys():
     Returns:
         List of RSA public keys usable by PyJWT.
     """
-    r = requests.get(CERTS_URL)
+    r = requests.get(CERTS_URL, timeout=10)
+    r.raise_for_status()
     public_keys = []
     jwk_set = r.json()
     for key_dict in jwk_set['keys']:
@@ -340,15 +342,12 @@ def verify_token(f):
     Decorator that wraps a Flask API call to verify the CF Access JWT
     """
     def wrapper():
-				# Check for the POLICY_AUD environment variable
-				if not POLICY_AUD:
-					return "missing required audience", 403
+        if not POLICY_AUD or not TEAM_DOMAIN:
+            return "missing required Access configuration", 403
 
-        token = ''
-        if 'CF_Authorization' in request.cookies:
-            token = request.cookies['CF_Authorization']
-        else:
-            return "missing required cf authorization token", 403
+        token = request.headers.get('Cf-Access-Jwt-Assertion')
+        if not token:
+            return "missing required cf access jwt", 403
         keys = _get_public_keys()
 
         # Loop through the keys since we can't pass the key set to the decoder
@@ -356,10 +355,17 @@ def verify_token(f):
         for key in keys:
             try:
                 # decode returns the claims that has the email when needed
-                jwt.decode(token, key=key, audience=POLICY_AUD, algorithms=['RS256'])
+                jwt.decode(
+                    token,
+                    key=key,
+                    audience=POLICY_AUD,
+                    issuer=TEAM_DOMAIN,
+                    algorithms=['RS256'],
+                    options={"require": ["exp", "iss", "aud"]},
+                )
                 valid_token = True
                 break
-            except:
+            except jwt.PyJWTError:
                 pass
         if not valid_token:
             return "invalid token", 403
@@ -449,5 +455,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#page","headline":"Validate JWTs","description":"Validate JWTs in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/og.png?v=bb99deebca504cac","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#page","headline":"Validate JWTs","description":"Validate JWTs in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/og.png?v=bb99deebca504cac","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

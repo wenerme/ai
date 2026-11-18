@@ -576,7 +576,7 @@ Define tenancy OpenAICSG as ocid1.tenancy.oc1..aaaaaaaa4kzwe5jdr4gsxft7dfnwbnp3a
 Define group OpenAICSGProduction as ocid1.group.oc1..aaaaaaaanuot5i5kooasr6qh6qo4ohqljrrxx3javkl2tkedb7ljsluq62sa
 Admit group OpenAICSGProduction of tenancy OpenAICSG to {OBJECTSTORAGE_NAMESPACE_READ} in tenancy
 Admit group OpenAICSGProduction of tenancy OpenAICSG to {BUCKET_READ} in tenancy where target.bucket.name = 'CUSTOMER_BUCKET_NAME'
-Admit group OpenAICSGProduction of tenancy OpenAICSG to {OBJECT_READ, OBJECT_CREATE, OBJECT_OVERWRITE} in tenancy where all {target.bucket.name = 'CUSTOMER_BUCKET_NAME', target.object.name = 'openai/CUSTOMER_ORG_ID/CUSTOMER_PROJECT_ID/*'}
+Admit group OpenAICSGProduction of tenancy OpenAICSG to {OBJECT_READ, OBJECT_CREATE, OBJECT_OVERWRITE, OBJECT_DELETE} in tenancy where all {target.bucket.name = 'CUSTOMER_BUCKET_NAME', target.object.name = 'openai/CUSTOMER_ORG_ID/CUSTOMER_PROJECT_ID/*'}
 Allow service objectstorage-CUSTOMER_OCI_REGION to {BUCKET_INSPECT, BUCKET_READ, OBJECT_INSPECT, OBJECT_DELETE} in tenancy where target.bucket.name = 'CUSTOMER_BUCKET_NAME'
 ```
 

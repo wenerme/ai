@@ -188,6 +188,11 @@ was listed.
 
 #### Always Ask
 
+> [!note]
+> When a client uses a GitLab MCP server tool, **Always Ask** rules come from your default
+> GitLab Duo namespace, not from the group or project the tool acts on.
+> To enforce a rule for the group or project, use **Always Deny**.
+
 **Always Ask** is not enforced by the GitLab MCP server. Tools set to **Always Ask**
 are listed with an annotation that asks the client to confirm with you first.
 The client's implementation determines if the rule is applied.

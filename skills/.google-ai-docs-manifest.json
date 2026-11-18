@@ -8,20 +8,20 @@
   "google-ai-api/generate-content.md": {
     "url": "https://ai.google.dev/api/generate-content",
     "skill": "google-ai-api",
-    "size": 96048,
-    "updatedAt": "2026-11-16T20:26:56.009Z"
+    "size": 103162,
+    "updatedAt": "2026-11-18T07:10:23.125Z"
   },
   "google-ai-api/caching.md": {
     "url": "https://ai.google.dev/api/caching",
     "skill": "google-ai-api",
-    "size": 55097,
-    "updatedAt": "2026-11-16T20:26:56.705Z"
+    "size": 69325,
+    "updatedAt": "2026-11-18T07:10:23.786Z"
   },
   "google-ai-api/embeddings.md": {
     "url": "https://ai.google.dev/api/embeddings",
     "skill": "google-ai-api",
-    "size": 29647,
-    "updatedAt": "2026-11-16T20:26:57.352Z"
+    "size": 36761,
+    "updatedAt": "2026-11-18T07:10:24.447Z"
   },
   "google-ai-api/files.md": {
     "url": "https://ai.google.dev/api/files",

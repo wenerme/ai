@@ -1091,10 +1091,10 @@ puts(response.output_text)
 ## Optimize prompt caching
 
 [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) automatically reduces latency
-and cost when requests reuse the same long prefix. Put stable instructions,
-examples, and reference material first, followed by dynamic user-specific
-content. Keep tool definitions and ordering stable, and append new conversation
-turns without rewriting earlier context.
+and cost when requests reuse the same long prefix. Put stable instructions in
+the first `developer` message in `input`. Place shared examples and reference
+material before user-specific content. Keep tool definitions and ordering stable,
+and append new conversation turns without rewriting earlier context.
 
 GPT-5.6 introduced explicit prompt caching. Implicit caching remains the
 default, but GPT-5.6 models and later model families also support explicit
@@ -1143,8 +1143,13 @@ const instructions = [
 const response = await openai.responses.create({
   model: "gpt-6.2-astra",
   prompt_cache_key: "tenant-acme-support-agent",
-  instructions,
-  input: "Summarize the current escalation for the on-call lead.",
+  input: [
+    { role: "developer", content: instructions },
+    {
+      role: "user",
+      content: "Summarize the current escalation for the on-call lead.",
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -1164,8 +1169,13 @@ Use the same tone, safety rules, and tool plan for each ticket.
 response = client.responses.create(
     model="gpt-6.2-astra",
     prompt_cache_key="tenant-acme-support-agent",
-    instructions=instructions,
-    input="Summarize the current escalation for the on-call lead.",
+    input=[
+        {"role": "developer", "content": instructions},
+        {
+            "role": "user",
+            "content": "Summarize the current escalation for the on-call lead.",
+        },
+    ],
 )
 
 print(response.output_text)
@@ -1193,8 +1203,12 @@ func main() {
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
 		Model:          "gpt-6.2-astra",
 		PromptCacheKey: openai.String("tenant-acme-support-agent"),
-		Instructions:   openai.String(instructions),
-		Input:          responses.ResponseNewParamsInputUnion{OfString: openai.String("Summarize the current escalation for the on-call lead.")},
+		Input: responses.ResponseNewParamsInputUnion{
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(instructions, responses.EasyInputMessageRoleDeveloper),
+				responses.ResponseInputItemParamOfMessage("Summarize the current escalation for the on-call lead.", responses.EasyInputMessageRoleUser),
+			},
+		},
 	})
 	if err != nil {
 		panic(err)
@@ -1206,16 +1220,30 @@ func main() {
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.responses.EasyInputMessage;
 import com.openai.models.responses.ResponseCreateParams;
+import com.openai.models.responses.ResponseInputItem;
+import java.util.List;
 
+String instructions =
+    "You are the support agent for Acme.\n"
+        + "Follow the Acme support policy and escalation rubric.\n"
+        + "Use the same tone, safety rules, and tool plan for each ticket.";
 ResponseCreateParams params =
     ResponseCreateParams.builder()
         .model("gpt-6.2-astra")
-        .instructions(
-            "You are the support agent for Acme.\n"
-                + "Follow the Acme support policy and escalation rubric.\n"
-                + "Use the same tone, safety rules, and tool plan for each ticket.")
-        .input("Summarize the current escalation for the on-call lead.")
+        .inputOfResponse(
+            List.of(
+                ResponseInputItem.ofEasyInputMessage(
+                    EasyInputMessage.builder()
+                        .role(EasyInputMessage.Role.DEVELOPER)
+                        .content(instructions)
+                        .build()),
+                ResponseInputItem.ofEasyInputMessage(
+                    EasyInputMessage.builder()
+                        .role(EasyInputMessage.Role.USER)
+                        .content("Summarize the current escalation for the on-call lead.")
+                        .build())))
         .promptCacheKey("tenant-acme-support-agent")
         .build();
 
@@ -1237,8 +1265,8 @@ CreateResponseOptions options = new()
 {
     Model = "gpt-6.2-astra",
     PromptCacheKey = "tenant-acme-support-agent",
-    Instructions = "Follow the Acme support policy and escalation rubric.",
 };
+options.InputItems.Add(ResponseItem.CreateDeveloperMessageItem("Follow the Acme support policy and escalation rubric."));
 options.InputItems.Add(
     ResponseItem.CreateUserMessageItem("Summarize the current escalation for the on-call lead.")
 );
@@ -1260,8 +1288,16 @@ INSTRUCTIONS
 response = client.responses.create(
   model: "gpt-6.2-astra",
   prompt_cache_key: "tenant-acme-support-agent",
-  instructions: instructions,
-  input: "Summarize the current escalation for the on-call lead."
+  input: [
+    {
+      role: :developer,
+      content: instructions
+    },
+    {
+      role: :user,
+      content: "Summarize the current escalation for the on-call lead."
+    }
+  ]
 )
 
 puts(response.output_text)

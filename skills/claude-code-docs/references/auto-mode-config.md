@@ -282,7 +282,7 @@ Claude Code shows entries from [managed settings](https://code.claude.com/docs/e
 
 ## Suspend shell allow rules
 
-By default, narrow Bash and PowerShell allow rules such as `Bash(npm test)` stay in effect in auto mode. Claude Code resolves them before the classifier runs, unless the command carries [per-command allowed domains](https://code.claude.com/docs/en/sandboxing.md#per-command-allowed-domains-in-auto-mode). Claude Code suspends only the broad rules that grant arbitrary code execution, such as `Bash(*)` or wildcarded interpreters, together with every rule that names [`Monitor`](https://code.claude.com/docs/en/tools-reference#monitor-tool), because Monitor commands run through the shell. This means a narrow rule can still let a destructive argument through without the classifier seeing it, for example a script path or flag the rule's prefix didn't anticipate.
+In auto mode, Claude Code drops [broad allow rules](https://code.claude.com/docs/en/permission-modes.md#how-the-classifier-evaluates-actions) such as `Bash(*)`. By default, narrow Bash and PowerShell allow rules such as `Bash(npm test)` stay in effect. Claude Code resolves them before the classifier runs, unless the command carries [per-command allowed domains](https://code.claude.com/docs/en/sandboxing.md#per-command-allowed-domains-in-auto-mode). A narrow rule can still let a destructive argument through without the classifier seeing it, for example a script path or flag the rule's prefix didn't anticipate.
 
 Set `autoMode.classifyAllShell` to `true` to suspend your Bash and PowerShell allow rules while auto mode is active, and in [plan mode while the classifier reviews commands](https://code.claude.com/docs/en/permission-modes.md#analyze-before-you-edit-with-plan-mode). In a [Code Mode](https://code.claude.com/docs/en/code-mode.md#permission-checks) session, the classifier reviews the code that runs the commands, even with this setting on.
 
@@ -412,6 +412,23 @@ Otherwise, a `Blocked by auto mode` line means the classifier judged the call un
 You can add the environment entry or `allow` rule from the `/permissions` dialog's [**Auto mode** tab](#edit-rules-from-permissions).
 
 The text in square brackets names what the classifier matched. If it's a rule built into Claude Code, pass its name without the brackets to [`claude auto-mode defaults --label`](#inspect-the-defaults-and-your-effective-config) to read the full wording.
+
+### Fix `Destructive or Unwanted Actions` and other policy denials
+
+If a denial shows one of these names, the [server-side classifier](https://code.claude.com/docs/en/permission-modes.md#server-side-classifier-review) blocked the call and gave a broad policy as its reason:
+
+* `[Destructive or Unwanted Actions]`
+* `[Unauthorized Access]`
+* `[Undermining Oversight]`
+* `[Unsanctioned Communication]`
+
+The policy name is only a category, and `claude auto-mode defaults` doesn't list its wording. Read the blocked call in the conversation, or run `/permissions` in your terminal session and look under **Recently blocked**. If it's what you meant Claude to do, give the classifier more context:
+
+* **For this call only**: tell Claude to do it, naming the action and its target, such as "overwrite `data/seed.json`"
+* **For a destination you trust, such as a package registry**: add it to [`autoMode.environment`](#define-trusted-infrastructure)
+* **For a routine action you want allowed from now on**: describe it in an [`autoMode.allow`](#override-the-block-and-allow-rules) entry
+
+After you add an entry, ask Claude to retry so the classifier checks the call again.
 
 ### Fix repeated denials
 

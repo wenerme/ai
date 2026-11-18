@@ -9198,7 +9198,6 @@ Triggers a re-evaluation of the security approval policies applicable to the mer
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `duoCodeReviewDepth` | [`DuoCodeReviewDepth`](enums.md#duocodereviewdepth) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Depth of the GitLab Duo Code Review to run. Use `duoCodeReviewLevel`. |
 | `duoCodeReviewLevel` | [`DuoCodeReviewLevel`](enums.md#duocodereviewlevel) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Level of the GitLab Duo Code Review Flow review to run when the user is the GitLab Duo Code Review bot. Ignored for other users, and where Standard reviews are not available for the project. |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
