@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Enforce MFA
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):
 
@@ -73,7 +73,7 @@ You can configure MFA requirements at three levels:
 | [Application](#configure-independent-mfa-for-an-application) | Require or turn off MFA for a specific application. |
 | [Policy](#configure-independent-mfa-for-a-policy) | Require or turn off MFA for users who match a specific policy. |
 
-MFA settings use this precedence: **Policy** > **Application** > **Organization**.
+Allowed authenticators and MFA session durations use this precedence: **Policy** > **Application** > **Organization**. For browser-based applications, selecting **Disable MFA** at either the application or matching policy level skips independent MFA. A custom policy MFA configuration does not re-enable MFA on an application where it is disabled.
 
 ### Prerequisites
 
@@ -81,7 +81,7 @@ Before you configure independent MFA on applications or policies, you must [turn
 
 Tip
 
-At the organization level, you can also [restrict which authenticators can be enrolled using AAGUIDs](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) and \[skip independent MFA when the identity provider already performed MFA](/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa.
+At the organization level, you can also [restrict which authenticators can be enrolled using AAGUIDs](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) and [skip independent MFA when the identity provider already performed MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa).
 
 ### Configure independent MFA for an application
 
@@ -108,7 +108,7 @@ To configure MFA for an infrastructure application, refer to [Infrastructure app
 
 ### Configure independent MFA for a policy
 
-Each policy has the same three MFA options described in [Configure independent MFA for an application](#configure-independent-mfa-for-an-application). Policy-level settings override application-level settings.
+Each policy has the same three MFA options described in [Configure independent MFA for an application](#configure-independent-mfa-for-an-application). Policy-level allowed authenticators and session durations override inherited values, but do not re-enable MFA when the application has **Disable MFA** selected.
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Choose an **Allow** policy and select **Edit**.
@@ -186,7 +186,7 @@ In this example:
 
 - Users who access Application A and match Policy 1 must use a security key and re-authenticate every hour.
 - Users who access Application A and match Policy 2 are not prompted for MFA.
-- Users who access Application A and match neither policy must use an authenticator application or a security key, with a 24-hour session.
+- Users allowed by another policy on Application A that inherits MFA settings must use an authenticator application or a security key, with a 24-hour session. Users who do not match any Allow policy are denied access.
 - Users who access Application B are not prompted for MFA.
 
 ## Infrastructure applications
@@ -358,5 +358,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/og.png?v=61e0d7bebea2f7d2","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/og.png?v=61e0d7bebea2f7d2","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
 ```

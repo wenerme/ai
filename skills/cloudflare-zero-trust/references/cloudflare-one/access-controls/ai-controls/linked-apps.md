@@ -89,7 +89,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of the MCP server application:<details><summary>
+2. Create a reusable Access policy, replacing the `app_uid` value with the `uid` of the MCP server application:<details><summary>
 
    Required API token permissions</summary>
 
@@ -120,6 +120,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    Note
 
    The `linked_app_token` rule type only works with [`non_identity` decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
+3. Add the returned policy `id` to the downstream application using the [Update an Access application API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/update/). Include the policy ID in the application's `policies` array. Retrieve the application's current configuration first and preserve its other settings and existing policies when updating it. Creating the reusable policy alone does not apply it to the application.
 
 ### 2. Configure your MCP server
 
@@ -204,7 +205,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of the MCP server application:<details><summary>
+2. Create a reusable Access policy, replacing the `app_uid` value with the `uid` of the MCP server application:<details><summary>
 
    Required API token permissions</summary>
 
@@ -235,6 +236,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    Note
 
    The `linked_app_token` rule type only works with [`non_identity` decisions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), similar to service token rules.
+3. Add the returned policy `id` to the downstream application using the [Update an Access application API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/update/). Include the policy ID in the application's `policies` array. Retrieve the application's current configuration first and preserve its other settings and existing policies when updating it. Creating the reusable policy alone does not apply it to the application.
 
 ### 2. Configure your MCP server
 

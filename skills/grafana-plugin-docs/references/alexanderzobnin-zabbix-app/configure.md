@@ -130,7 +130,7 @@ Expand table
 
 ## Configure Direct DB Connection
 
-Direct DB Connection lets the plugin query history and trend data directly from the Zabbix database through an existing Grafana SQL or InfluxDB data source. This bypasses the Zabbix API for historical data, which is faster on wide time ranges and reduces the amount of data transferred.
+Direct DB Connection lets the plugin query history and trend data directly from the Zabbix database through an existing Grafana SQL, InfluxDB, or ClickHouse data source. This bypasses the Zabbix API for historical data, which is faster on wide time ranges and reduces the amount of data transferred.
 
 Find these settings under **Additional settings** &gt; **Direct DB Connection**.
 
@@ -139,22 +139,28 @@ Expand table
 | Setting                         | Description                                                                                                                             |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | **Enable Direct DB Connection** | Toggle to enable direct database queries for history data.                                                                              |
-| **Data Source**                 | Select an existing MySQL, PostgreSQL, or InfluxDB data source configured in Grafana that points to your Zabbix database.                |
+| **Data Source**                 | Select an existing MySQL, PostgreSQL, InfluxDB, or ClickHouse data source configured in Grafana that points to your Zabbix database.    |
 | **Retention Policy**            | (InfluxDB only) The retention policy name for fetching long-term stored data. Leave blank if you use only the default retention policy. |
 
 ### Set up a database data source
 
-Before enabling Direct DB Connection, you need a MySQL, PostgreSQL, or InfluxDB data source in Grafana that connects to your Zabbix database. The plugin uses this data source to execute history and trend queries.
+Before enabling Direct DB Connection, you need a MySQL, PostgreSQL, InfluxDB, or ClickHouse data source in Grafana that connects to your Zabbix database. The plugin uses this data source to execute history and trend queries.
 
 To add a database data source:
 
 1. Click **Connections** in the left-side menu.
 2. Click **Add new connection**.
-3. Select **MySQL**, **PostgreSQL**, or **InfluxDB**.
+3. Select **MySQL**, **PostgreSQL**, **InfluxDB**, or **ClickHouse**.
 4. Configure the connection to your Zabbix database. The database name is typically `zabbix`.
 5. Click **Save &amp; test**.
 
-For detailed configuration, refer to the [MySQL](https://grafana.com/docs/grafana/latest/datasources/mysql/), [PostgreSQL](https://grafana.com/docs/grafana/latest/datasources/postgres/), or [InfluxDB](https://grafana.com/docs/grafana/latest/datasources/influxdb/) data source documentation.
+For detailed configuration, refer to the [MySQL](https://grafana.com/docs/grafana/latest/datasources/mysql/), [PostgreSQL](https://grafana.com/docs/grafana/latest/datasources/postgres/), [InfluxDB](https://grafana.com/docs/grafana/latest/datasources/influxdb/), or [ClickHouse](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/) data source documentation.
+
+### ClickHouse history storage
+
+Zabbix 8.0 and later can use ClickHouse as the history storage backend. To query it with Direct DB Connection, select a [ClickHouse data source](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/) (`grafana-clickhouse-datasource`) that points to the Zabbix ClickHouse database. Set the **Default database** of the ClickHouse data source to the Zabbix history database (`zabbix` by default), because the plugin doesn’t qualify table names with a database name.
+
+Zabbix stores only history data in ClickHouse – trends are not calculated or stored. The plugin therefore serves all queries, including those over wide time ranges that would normally use trends, from the history tables. ClickHouse aggregates this data efficiently, but make sure the ClickHouse tables’ TTL retains data long enough to cover the time ranges you want to query.
 
 ### Database security
 

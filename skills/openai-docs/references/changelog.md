@@ -14,7 +14,7 @@ Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · API: v1/responses · AP
 
 Use [GPT-6.2 Astra](https://developers.openai.com/api/docs/models/gpt-6.2-astra) for demanding reasoning and coding tasks, or [GPT-6.2 Sol](https://developers.openai.com/api/docs/models/gpt-6.2-sol) for everyday coding and agent workflows. Both models support the Responses API and Chat Completions. Tool calling requires the Responses API.
 
-See the [GPT-6.2 migration guide](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6.2-astra#gpt-6.2-astra-migration-quickstart) to update an existing integration.
+GPT-6.2 changes how the Responses API preserves reasoning when you edit a conversation’s prefix and how it handles the top-level `instructions` field. See the [GPT-6.2 migration guide](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6.2-astra#gpt-6.2-astra-migration-quickstart) for details and recommended updates to your integration.
 
 ### Nov 17
 

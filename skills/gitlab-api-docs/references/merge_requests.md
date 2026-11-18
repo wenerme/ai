@@ -3171,7 +3171,7 @@ This API returns specific HTTP status codes:
 | HTTP status | `status`  | Reason |
 |-------------|-----------|--------|
 | `201`       | `success` | The auto-merge was canceled. |
-| `201`       | `error`   | The merge request is not set to auto-merge. |
+| `201`       | `error`   | The merge request is not set to auto-merge, or you exceeded the merge train removal rate limit. |
 | `401`       | _(none)_  | You do not have permission to cancel the auto-merge for this merge request. |
 | `404`       | _(none)_  | The merge request does not exist, or you do not have permission to access it. |
 
@@ -3204,6 +3204,7 @@ The `http_status` field of that response is not the status code of the response,
 ## Cancel auto merge
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/255702) in GitLab 19.5.
+- `429` response for merge requests on a merge train [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271199) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_merge_train_removal`. Disabled by default.
 
 Cancel an active auto-merge for a merge request. If the merge request is on a
 [merge train](../ci/pipelines/merge_trains.md), this also removes it from the train.
@@ -3229,6 +3230,7 @@ This API returns specific HTTP status codes:
 | `201`       | _(none)_                           | Success. Returns the merge request. |
 | `403`       | `403 Forbidden`                    | You do not have permission to cancel the auto-merge for this merge request. |
 | `409`       | `Can't cancel the automatic merge` | The merge request is not set to auto-merge. |
+| `429`       | `This endpoint has been requested too many times. Try again later.` | The merge request is on a merge train and you exceeded the [merge train removal rate limit](../administration/cicd/limits.md#merge-train-removal-rate-limits). The response includes a `Retry-After` header. |
 
 For important notes on response data, see [single merge request response notes](#single-merge-request-response-notes).
 

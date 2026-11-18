@@ -121,9 +121,10 @@ To add a GPG key to your user settings:
 
 GitLab shows the key's fingerprint, email address, and creation date.
 If you revoke a user ID in your GPG key, GitLab does not show its email address.
-Commits that use that address as the committer email are marked as unverified.
+Commits that use that address as the committer email are marked as unverified when
+GitLab checks them.
 
-After you add a key, you cannot edit it. Instead, remove the offending key and re-add it.
+To change a key after you add it, [update the key](#update-a-gpg-key).
 
 ### Associate your GPG key with Git
 
@@ -244,6 +245,68 @@ you can sign your tags:
    git config --global tag.gpgsign true
    ```
 
+## Update a GPG key
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/296977) in GitLab 19.7.
+
+Update your GPG key in GitLab after you use GnuPG to:
+
+- Extend the expiration date of the key or of a subkey.
+- Add a subkey or a user ID.
+- Revoke a subkey or a user ID.
+
+You cannot update a key with the [REST API](../../../../api/user_keys.md#add-a-gpg-key).
+
+GitLab merges the new version into the key it already has, as `gpg --import` does.
+GitLab keeps what the new version adds and does not remove anything.
+For example, a subkey or user ID that you delete with GnuPG stays in GitLab.
+To stop GitLab from using a subkey or user ID, revoke it with GnuPG, then update the key.
+If you remove the key and add it again without the subkey, a later update from an older
+copy can add the subkey back.
+
+You cannot update a key if the new version revokes the key itself, or if the key is
+still expired after the update.
+To stop GitLab from verifying commits signed with a key,
+[revoke the key](#revoke-a-gpg-key) in GitLab.
+
+To update a GPG key:
+
+1. To show the new version of your public key, run this command, replacing `<ID>`
+   with the GPG key ID:
+
+   ```shell
+   gpg --armor --export <ID>
+   ```
+
+1. Copy the public key, including the `BEGIN PGP PUBLIC KEY BLOCK` and
+   `END PGP PUBLIC KEY BLOCK` lines.
+1. In the upper-right corner, select your avatar.
+1. Select .
+1. In the left sidebar, select  > .
+1. Select .
+1. In , paste the public key.
+1. Select .
+
+GitLab shows
+If the new version adds nothing to the key, GitLab shows
+
+After the update, GitLab checks these commits again in the background:
+
+- Commits signed with the primary key that are not verified.
+- Every commit signed with a subkey of the key.
+
+Commits signed with the primary key that are already verified keep their status.
+Commits signed with a subkey that expired after they were signed are marked as unverified,
+even when they were verified before.
+Commits signed with a subkey that you revoked are marked as unverified.
+GitLab shows that they were signed with a revoked key, or with an expired key if that
+subkey has also expired.
+
+When you revoke a user ID, commits signed with the primary key that are already verified
+with that user ID's email address keep their status.
+To check them again, remove the key and add it again.
+GitLab then checks every commit signed with the key again.
+
 ## Revoke a GPG key
 
 If a GPG key becomes compromised, revoke it. Revoking a key changes both future and past commits:
@@ -253,8 +316,9 @@ If a GPG key becomes compromised, revoke it. Revoking a key changes both future 
 
 Revoking a key in GitLab is not the same as revoking one of the key's user IDs
 with GnuPG.
-If you revoke a user ID, only the commits that use that user ID's
+If you revoke a user ID and [update the key](#update-a-gpg-key), commits that use its
 email address as the committer email are marked as unverified.
+This applies only to the commits that GitLab checks after the update.
 
 To revoke a GPG key:
 

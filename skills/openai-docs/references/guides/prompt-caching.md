@@ -26,7 +26,7 @@ The prompt cache stores key-value (KV) tensors, not the tokens themselves.
 
 Ask ChatGPT for a deeper explanation
 
-OpenAI caches the model's full rendered context including OpenAI-provided instructions, [developer messages](https://developers.openai.com/api/docs/guides/prompt-engineering#message-roles-and-instruction-following), [tool definitions](https://developers.openai.com/api/docs/guides/function-calling), and [conversation history](https://developers.openai.com/api/docs/guides/conversation-state) containing [text](https://developers.openai.com/api/docs/guides/text), [images](https://developers.openai.com/api/docs/guides/images-vision), [documents](https://developers.openai.com/api/docs/guides/file-inputs), and supported [audio](https://developers.openai.com/api/docs/guides/audio).
+An eligible prefix of the model's rendered context can include OpenAI-provided instructions, [developer messages](https://developers.openai.com/api/docs/guides/prompt-engineering#message-roles-and-instruction-following), [tool definitions](https://developers.openai.com/api/docs/guides/function-calling), and [conversation history](https://developers.openai.com/api/docs/guides/conversation-state) containing [text](https://developers.openai.com/api/docs/guides/text), [images](https://developers.openai.com/api/docs/guides/images-vision), [documents](https://developers.openai.com/api/docs/guides/file-inputs), and supported [audio](https://developers.openai.com/api/docs/guides/audio).
 
 Cache reuse requires the entire rendered prefix to match. If content or a relevant setting changes before a breakpoint, the prefix after that change cannot match the existing cache entry.
 
@@ -130,6 +130,10 @@ For GPT-5.6 and later, the cache lookup boundaries in the incoming request are:
 
 - **Explicit-only mode:** The first 2 and latest 50 explicit breakpoints.
 - **Implicit mode:** The first 2 and latest 50 explicit breakpoints, the implicit breakpoint, up to 20 earlier eligible message endings, and the endpoint of the initial consecutive block of developer messages. This lets implicit mode reuse a prefix ending at an earlier message without explicit breakpoints there.
+
+Use top-level `instructions` for developer guidance that applies only to the current request. For example, you can ask the model to summarize findings on the final turn of a workflow. Models starting with GPT-6.2, including Astra and Sol, append these instructions after `input`, beyond eligible cache breakpoints. You can change them between turns while keeping the earlier prefix eligible for cache reuse. They do not carry over with `previous_response_id`.
+
+OpenAI bills those instruction tokens at the uncached input-token rate on every request, even if you repeat identical instructions. To make reusable instructions eligible for caching, put them in a `developer` message at the beginning of `input`. That message remains in the conversation history when you use `previous_response_id`. Implicit mode can reuse the prefix ending at the initial developer messages. To choose a boundary explicitly, mark an `input_text` block in the developer message with `prompt_cache_breakpoint: { "mode": "explicit" }`.
 
 ## Cache lifetime
 
@@ -307,6 +311,8 @@ Using separate keys can make cached token usage and billing easier to explain fo
 | Cache lifetime control     | `prompt_cache_options.ttl`                                                                 | `prompt_cache_retention`                                    | `prompt_cache_retention`                                                        |
 | Supported retention values | `"30m"` (default), or `"12h"` in the Responses API                                         | `"24h"` only                                                | `"in_memory"` or `"24h"`<sup>[\*](#extended-retention-models)</sup>             |
 | Cache lifetime             | Minimum lifetime of 30 minutes or 12 hours; see [refresh behavior](#cache-lifetime)        | Typically around 30 minutes, up to 24 hours                 | Typically 5 to 10 minutes inactive for `in_memory`, or up to 24 hours for `24h` |
+
+In the Responses API, models starting with GPT-6.2 append top-level `instructions` after `input` and bill those tokens at the uncached input rate, even on a cache hit. Put reusable instructions in the first `developer` message in `input`.
 
 <a id="extended-retention-models"></a>
 

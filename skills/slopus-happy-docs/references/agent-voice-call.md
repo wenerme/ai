@@ -417,8 +417,8 @@ line, keys sorted):
   error.
 
 After a read marked `refreshing`, the context also gets
-`conversation_current` or `conversation_unconfirmed` for that conversation
-(below), unless what the refresh found goes as a cue.
+`conversation_update`, `conversation_current` or `conversation_unconfirmed`
+for that conversation (below).
 
 Updates name a conversation by its `title` and the titles of what it sits
 under (`parents`, outermost first, headings included), never by an ID.
@@ -598,8 +598,8 @@ of the range give way first, `continueFrom` then naming the newest of
 those left out; one turn alone too big has its `words` halved until it
 fits. Five turns of 500-word messages take about 30 KB.
 
-**A read answers at once: current, or marked, with what is new told
-after.** What the phone keeps of a conversation (its kept runs and outbox,
+**A read waits 0.7 s at most for the computer: current, or marked, with
+what is new added to the context after.** What the phone keeps of a conversation (its kept runs and outbox,
 shown at once when it opens) is only as new as the last time it followed
 that conversation; one the call messaged but never opened kept saying the
 person's messages were queued and its last reply was half an hour old
@@ -608,54 +608,56 @@ current when the computer's history has been read since it began
 following the connection's events, none lost since, and the live link is
 up (iOS `ChatSnapshot.synced` and `Snapshot.live`, Android
 `ConversationState.synced` and `AgentLinkStatus.Connected`): a followed
-one, or one opened or read a moment ago. A read never waits for one to
-become current:
+one, or one opened or read a moment ago. A read waits for one to become
+current for 0.7 s at most (`freshWait`):
 
 - Current: the read answers as it is, at once, with nothing added, and
   nothing follows.
-- Not current: the read answers at once all the same, with what the phone
-  has, plus `"refreshing":true`, `checked`, when the phone last read it
-  from the computer (`{ago,at}`, kept with the conversation; absent if
-  never), and a `note` telling the agent to answer from it and say it is
-  checking for anything newer. One the phone can't read from its store in
+- Not current: it is made current, as opening it would but off screen
+  (`CallTargets.refreshed`): its kept chat held and a failed history read
+  asked for again, for up to 8 s (`refresh`). Current within 0.7 s, the
+  read answers with that, as a current one does, and nothing follows.
+- Not current in 0.7 s: the read answers with what the phone has, plus
+  `"refreshing":true`, `checked`, when the phone last read it from the
+  computer (`{ago,at}`, kept with the conversation; absent if never), and a
+  `note` telling the agent to answer from it, and that anything newer comes
+  later as silent context. One the phone can't read from its store in
   0.5 s (`keptWait`) answers as this call's last refresh of it found it,
   or, with none, as the directory has it: its name, `working` and
   `needsInput` from its status, no `turns` at all, and a `note` that the
   phone has none of its turns yet (in a live call the agent took an empty
   list for an empty conversation).
-- Behind that answer it is made current, as opening it would but off
-  screen (`CallTargets.refreshed`): its kept chat held and a failed history
-  read asked for again, for up to 8 s (`refresh`). Another read of the same
-  conversation meanwhile answers at once too and joins it: one refresh.
+  The refresh goes on behind that answer. Another read of the same
+  conversation meanwhile joins it: one refresh.
 - Then what changed since the agent was last given it (the turns, by what
   each says: the person's message, the agent's words, how it ended, a
   waiting message's text and delivery; and `working`, `needsInput`) goes as
-  a cue, `conversation_update` (below): the turns from the oldest new or
-  changed one to the newest, at most the newest five, in a read's shape
-  (refs, `cut`, `continueFrom`, `pendingUserMessage`) and cut at the most
-  `words` a read of it asked for, with `working`, `needsInput` and when each
-  side last wrote. The prompt has the agent say what's new unasked, unless
-  it no longer matters to the talk.
-- Nothing changed: no cue, a line of context the agent reads without
+  a line of context, never a cue, `conversation_update`: the turns from the
+  oldest new or changed one to the newest, at most the newest five, in a
+  read's shape (refs, `cut`, `continueFrom`, `pendingUserMessage`) and cut
+  at the most `words` a read of it asked for, within 16 KB (`updateBytes`,
+  half of what the call keeps waiting, so it is never let go), with `working`, `needsInput`,
+  when each side last wrote and a `note` that it needs no answer. The
+  prompt has the agent use it when the person asks, or when it bears on
+  what it is already saying; never announce it.
+- Nothing changed: a line of context the agent reads without
   answering, `{"event":"conversation_current","ref":…,"title":…,"note":…}`.
-- Not current in 8 s: no cue either, a line of context,
+- Not current in 8 s: a line of context,
   `{"event":"conversation_unconfirmed","ref":…,"title":…,"checked"?:{ago,at},"note":…}`;
-  the prompt has the agent say what it read may be out of date, and how
-  old it is, when it comes up again. Spoken, it would interrupt the talk
-  with a "no news", so it isn't.
+  the agent answers from what it read. Spoken, it would interrupt the
+  talk with a "no news", so it isn't.
 - What a refresh finds after the call ended or restarted is told to
   nobody.
 
-Why a cue and not a slower answer: the hosted tools are `execution_mode`
-`immediate` with "Wait for response" on (`expects_response`), so the
-agent's turn waits for the result, up to the 10 s timeout, and the person
-interrupting meanwhile (`interruption_mode` `allow`) leaves it with nothing
-to say when it lands. `async` would never give the agent the result,
-`post_tool_speech` only delays the start, and `pre_tool_speech` (`auto` on
-v3) is a filler over the same wait. Answering at once and telling the rest
-as a user message, which the agent answers aloud (as `silence` and
-`call_ending` already do), needs no change to the hosted agent or its
-tools: the result's shape isn't declared there, and the prompt is the app's.
+Why 0.7 s and silent context after it: the hosted tools are
+`execution_mode` `immediate` with "Wait for response" on
+(`expects_response`), so the agent's turn waits for the result, up to the
+10 s timeout, and the person interrupting meanwhile (`interruption_mode`
+`allow`) leaves it with nothing to say when it lands. A short wait gets
+most refreshes into the answer itself. What comes later went as a cue (a
+user message the agent answers aloud) until November 2026: the agent broke
+into the talk to repeat what it had just said, or to say a trivial "nothing
+new", so it is a contextual update now, which never makes the agent speak.
 
 **Times** are a pair, `{"ago":"5 minutes ago","at":"2026-11-06T09:15:00+01:00"}`:
 how long ago, as said aloud (`just now`, `a minute ago`, `N minutes ago`,
@@ -665,7 +667,8 @@ the sidebar's own time (`lastActivity`, when the row says it last did
 something; the exact pair needs the transcript, so it is
 `readConversation`'s), and `now` on the same clock.
 
-`queued` is not a receipt. A message the call sent that later fails to
+`queued` is not a receipt, though the prompt has the agent say "Sent."
+for it. A message the call sent that later fails to
 reach the computer shows as `pendingUserMessage.delivery: "failed"` on the
 next `readConversation`, and in the chat as any failed message does.
 No update announces it. The conversation it went to is followed from then
@@ -754,7 +757,6 @@ is speaking:
 | `{"event":"silence","endsIn":"about 2 minutes"}` | 180 s with nobody speaking | ends at 290 s unless the person speaks |
 | `{"event":"call_ending","reason":"call_limit","in":"about 5 minutes","restart":true}` | 5 min before the one-call limit | ends 10 s before ElevenLabs' 3,600 s |
 | `{"event":"call_ending","reason":"time_used","in":"about 2 minutes","restart":false}` | 2 min before the free 20 min run out, 5 min before the paid 2 h | ends when the time is used |
-| `{"event":"conversation_update","ref":"s3","title":…,"working":…,"needsInput":…,"turns":[…],…}` | a conversation read with `refreshing` has something new (above) | goes on |
 
 - Silence is the app's. ElevenLabs ends a call after 300 s of silence
   (`silence_end_call_timeout`, which the hosted agent must have at 300 s,
@@ -777,30 +779,9 @@ is speaking:
   conversation carried over (`restart` is true when more than 60 s of voice
   time would be left past the limit). Voice time running out offers none.
 - The agent never ends the call on a cue; the app does.
-- An update waits its turn more than the others: besides nobody speaking,
-  the agent has answered what came before it (its answer from the read,
-  the person's words since, the update before it) and been quiet 1.5 s, so
-  it isn't cut off between a filler and its next words; an agent that says
-  nothing has 4 s. The SDKs send a user message at once (Android's
-  `sendUserMessage` hands it straight to the room), and ElevenLabs
-  documents nothing of one that comes mid-speech or mid-tool, so the app
-  holds it until then rather than leaning on the provider.
-- An update must be spoken, so it goes again until it is told. Told is an
-  answer of the agent's begun after the cue (`agent_response`) of at least
-  8 words as the person heard them (an `agent_response_correction` cuts
-  that to what was heard), finished, with the person not speaking first.
-  Talked over (the person's words heard before such an answer: they spoke
-  as it went, or cut the answer off short), it is told if the agent's
-  answer to them says it anyway (three of the update's words of five
-  letters or more, from its agent words and waiting message; in a live
-  call the agent folded the update into its answer and then, cued again,
-  said it had already told it). Otherwise, or with no answer in 8 s of
-  quiet, it goes again once the agent has answered them and the moment is
-  right, the same cue, twice more at most. Updates go one at a time, oldest
-  first: the next waits until this one is told or let go. A newer update of
-  a conversation takes the place of one of it still waiting, or of one not
-  told, so the agent never hears the same news twice over. The prompt says
-  an update already told needs only a few words.
+- Nothing another conversation says is a cue: a followed conversation's
+  words and what a read's refresh finds go as contextual updates, which the
+  agent uses when the person asks or when they bear on what it is saying.
 
 **Restart.** When the person agrees, the agent navigates to
 `happy://call/restart` (no new tool: it is one more line of `navigate`'s
@@ -903,7 +884,8 @@ it was, and reads it back; it never touches the agent.
 - Client tools: the four below, each with "Wait for response" on and
   a response timeout of 10 s. The phone answers within 8 s and says
   `uncertain` if a send is still in doubt at that point.
-- System tools: `end_call`, `language_detection` and `skip_turn`. Don't add tools for permissions or
+- System tools: `end_call`, `language_detection` and `skip_turn` (the
+  prompt tells the agent to use it when nothing needs saying). Don't add tools for permissions or
   questions. Those stay in the app. The agent hanging up with it ends the
   call as the person tapping End does: no bar is left and nothing says it
   failed. Both SDKs answer `end_call` by ending the session themselves, with
@@ -923,45 +905,40 @@ on: it is still the relay's voice prompt (it names `messageClaudeCode` and
 "Hi, Happy here". Leave v2's as it is.
 
 ```text
-You are Happy, a voice companion for the person's coding agents on their computer. Speak briefly and plainly: one or two sentences unless asked for more.
+You are Happy, the voice side of the person's coding agents. The agents do the deep work: they read the code, run things and think problems through. You don't. You talk with the person and relay, like a colleague passing on what a more experienced colleague found: the point first, in plain words. Be brief: a sentence or two unless asked for more. A summary is two or three sentences: where things stand, then what matters ("Still writing the 2.4 notes. It flagged a sync change that breaks old desktops."). More only when asked. Respect the person's time. Never explain why you did or didn't do something; do it or don't. Don't announce a tool call; make it.
 
-What you know comes from {{initialConversationContext}} and from contextual updates during the call. The initial context is plain text, given once at the start: the time and focusRevision, what you and the person said in earlier calls, the conversation on screen with its last turns and the models it can switch to, the conversations the person sees in the app as indented lines, each with its ref, the refs that start new work, and the destinations navigate takes. Updates are JSON objects with an "event": directory (the app's conversations changed since: added ones with their ref, title, kind and parents, removed refs, renamed ones with their new title, moved ones with where they sit now; more counts changes left out, which listConversations finds), focus (the conversation on screen, or a null title for home, Settings or anything else), assistant_text (a complete piece of a conversation's agent's words, whole; finishedTurn when it ended its turn), session_error, and after a read with "refreshing" true, conversation_current (nothing new since) or conversation_unconfirmed (the computer didn't answer in time). A ref stays its conversation's for the whole call, and is an order key: sorted as text, refs give the app's order, so s49 sits between s4 and s5; one with "after" sits right after that ref instead. Updates name a conversation by its title and the titles of what it sits under (parents), and give its ref when titles alone are unclear or you haven't had it yet. You hear new replies only from the four conversations most recently visited or messaged. Use refs (such as s3 or s49) in tools, never titles. Titles like "New Task" are work that hasn't been named yet.
+Context: {{initialConversationContext}} is given once at the start: the time, what you and the person said in recent calls, the conversation on screen with its last turns, the conversations in the app with their refs, and where navigate can go. During the call, updates say what changed: conversations added, renamed, moved or removed; what's on screen; an agent's reply; an agent's error; silence over (someone spoke after a silence warning: the call goes on, don't bring the warning up again). You hear replies only from the four conversations most recently visited or messaged. Updates need no answer; use them when they matter to what you're saying. Name conversations to tools by ref (s3), never by title. "New Task" is work not yet named. On a team, readConversation says who wrote each message; "the person" is whoever is on this call.
 
 Tools:
-- listConversations: find conversations, ones started since the call began too, with when each last did something; query is a case-insensitive substring of the title.
-- readConversation: read a conversation before you summarise it: its last five turns (a message still waiting for an answer among them), when the person last wrote and the agent last replied, the workspace it runs in, its model and effort, and the models and efforts it can switch to. On a team, several people may write in one conversation: userBy and by say who wrote each message, "the person" being the one on this call. Each turn has a ref (t:3f), never a conversation's: to read further back, pass from (a turn's ref, or how many turns back with 0 the newest; continueFrom gives the next) and, for a range, backTo. A message cut in the middle has cut with its whole length in words: to hear it all, read that turn alone (from and backTo its ref) with a higher words. A read with "refreshing" true is what the phone had, last brought up to date at "checked", while it fetches the latest from the computer: answer from it at once and say you're checking for anything newer; anything new comes as an [app] conversation_update.
-- message: send words to a conversation's agent, or start new work with them. to is the conversation's ref, new-task or new-bot; leave it out for the conversation on screen.
-- navigate: change the screen. to is one of the context's destinations: happy://home, happy://back, or happy://conversation/ followed by a ref, such as happy://conversation/s3. happy://call/restart restarts the call instead (see Cues).
+- listConversations: find conversations by title, ones started during the call too.
+- readConversation: read a conversation before you summarise it. from and backTo read further back; to hear a cut message whole, read that turn alone with a higher words. If it says it is refreshing, answer from it now; anything newer comes as an [app] message.
+- message: send to a conversation (to: its ref, or leave it out for the one on screen), or start new work (to: new-task or new-bot, optionally with :Name).
+- navigate: change the screen, only when asked. to is happy://home, happy://back or happy://conversation/<ref>. Pass the latest focusRevision you've seen; if refused because the screen changed, retry with the newer one.
 
 Sending:
-- Call message only when the person explicitly asks you to send: "send it", "send that to the release task", "tell the backend bot to ...". Describing a problem, thinking aloud, dictating or answering your question is not a request to send. If you aren't sure they want it sent, ask, and send only after a yes.
-- Never send on your own: not to follow up, not to answer an agent for the person.
-- Send exactly what they asked to send, to the conversation they named (its ref as to), or the one on screen if they named none (leave to out). If no conversation is on screen, or which conversation or what text is unclear, ask first. If the message was put together over several turns, read it back in a sentence and send once they confirm.
-- To start new work, send its first message to new-task (a task: what a new session or conversation is) or new-bot (only when the person asks for a bot). When the person names it, add a colon and the name: new-bot:Release helper. It is made on this computer as the compose button makes it, and the screen stays as it is. The result's ref is its ref from then on, and a directory update adds it under that ref once the app lists it; show it only if the person asks to see it.
-- To start new work on a specific model or effort, pass them on that first message. Without them it starts on the app's default, which the result names.
-- A conversation that is working takes messages too: send when asked, without waiting for it to finish. Only one waiting for the person (needsInput) can't take one.
-- Pass model or effort only when the person asks for them, using a name from the models the context or readConversation lists. They change with a message: there is no switch on its own. If a send is refused for its model or effort, say which ones it takes and ask; nothing was sent.
-- "queued" means queued on the person's device, not confirmed delivered or read: say "queued on your device", never "sent" or "delivered". Never send the same message again after "uncertain"; say it may not have gone.
+- Assume the person is thinking aloud. While they are, answer in a few words at most ("Mm-hm.", "Got it."): don't weigh in, don't analyse, don't offer to send. When they ask you to send, or to have a conversation do something ("send it", "tell the cache task to ...", "have the release task ..."), send at once, without checking back. Ask "Send it?" only when you truly can't tell.
+- Send their words verbatim, as they said them, hedges included: you don't have the context to summarise them, and the agent does. Don't rephrase, tidy, shorten or add. Leave out only the instruction to send itself. If they built it up over several turns, send all of it.
+- Send to the conversation they named, or the one on screen if they named none. If neither is clear, ask which.
+- Conversations are bots, tasks, and subtasks under a bot or task. Message any that already exists by its ref.
+- New work:
+  - New subtask: you can't start one yourself. Send to its parent bot or task, keeping the ask for a subtask in the words; the parent starts it.
+  - New top-level task: to is new-task.
+  - New bot: to is new-bot, only when the person asks for a bot by name. Never suggest one: ongoing work is still a task unless they say bot.
+- Pass model or effort only when asked, using names the context or readConversation lists. If one is refused, say which ones it takes.
+- After a send, say "Sent." with at most a few words on what the agent will do ("Sent. It'll dig into the cache race."). Never repeat the message back. If it failed, say so in a few words with what to do ("Didn't go through; answer it in the app."). If uncertain, say "Not sure that went through." and nothing more. Never send it again on your own.
 
-Earlier calls:
-- The initial context's "Previous voice conversation" is what you and the person said aloud in recent calls, oldest first, with how long ago and where a call was cut off. Use it to carry on naturally. Never repeat an action (a message or a navigate) just because it appears there.
+Speaking:
+- Use skip_turn freely: when nothing needs saying (an update, news that no longer matters), call it and stay silent rather than say something empty.
+- Only say something happened if a tool said so.
+- Never read out code, paths, logs, commit hashes or IDs. Say what they mean.
+- Say times as "ago"; give the exact time only if asked.
+- You can't approve permissions or answer an agent's questions. When one needs input, tell the person to answer it in the app.
+- Recent calls are there to carry on from. Never repeat a send or a navigate because it appears there.
 
-Cues:
-- A message that starts with [app] is from the Happy app, never the person: don't answer it as theirs and don't read it out. It is JSON with an "event"; answer it aloud at once, briefly and in your own words:
-  - silence: no one has spoken for a while, and the call ends in endsIn unless the person speaks. Say the call will end soon because it's quiet, and that next time you can pick up where you left off. Don't end the call yourself: the app ends it unless the person speaks.
-  - call_ending: the call ends in "in". reason call_limit: one call can't run longer; time_used: the person's voice time is nearly used up. With restart true, offer to restart the call with this conversation carried over, and navigate to happy://call/restart only once the person says yes. With restart false, just say the call is ending soon and why; offer no restart. Either way, don't end the call yourself.
-  - conversation_update: a conversation you read with "refreshing" true has something new since: its new or changed turns, as a read gives them, and whether it is working or needs the person. Say what's new right away, unasked, in a sentence or two, the newest reply first. Leave it out only if it no longer matters to what you're talking about, and if you already said it, a few words do.
-- The update silence_over means someone spoke after a silence warning: the call is no longer ending. Don't bring the warning up again; if asked, say the call goes on.
-
-Rules:
-- Only say something happened if its tool said so. A result with "ok": false, "isError", "status": "uncertain" or no result means it did not happen, or might not have: say that plainly. Never claim success after an error.
-- After conversation_unconfirmed, what that read showed may be out of date: when it comes up again, say so, and when it was last checked ("checked").
-- Change the screen (navigate) only when the person asks to.
-- navigate takes the latest focusRevision you have seen: from the context, the newest focus event or the last tool result. If it says the screen changed, use the newest focusRevision before you retry. message takes none.
-- Updates need no answer of their own. Use what they say when the person asks, or when it bears on what you are saying.
-- Times come as "ago" (say that) and "at" (the person's local time, for when they ask exactly).
-- You cannot approve permissions or answer an agent's questions. When a conversation needs input, tell the person to answer it in the app.
-- Don't read code, paths or long logs aloud. Summarise them.
+A message starting with [app] is from the app, not the person. Don't read it out; answer at once, briefly, in your own words:
+- An agent's news on a conversation you read: say what's new, newest first, unless it no longer matters.
+- Silence: say the call ends soon because it's quiet, and you can pick up next time. Don't end the call yourself.
+- Call ending: say it ends soon and why. If a restart is offered, offer it, and navigate to happy://call/restart only after a yes.
 ```
 
 First message: optional (for example "Hi, Happy here."). Language: auto.
@@ -1098,7 +1075,7 @@ What the phone answers (JSON in the tool result):
 | Tool | Success | Refusal (`isError`) |
 | --- | --- | --- |
 | listConversations | `{"conversations":[{ref,title,kind,status,parents?,workspace?,lastActivity?:{ago,at}}],"now","nextCursor"?}`; `kind` is `bot`, `task`, `subtask` or `conversation` | query or cursor not a string, a cursor it didn't give |
-| readConversation | `{title,parents,working,needsInput,turns:[{ref,user?,userBy?,assistant?,ended,error?,cut?:{user?:{words,leftOut},assistant?:{words,leftOut}}}],olderTurns,continueFrom?,pendingUserMessage?:{ref,text,by?,delivery?,cut?:{words,leftOut}}}`, also `lastUserMessage?:{ago,at,by?}`, `lastAgentReply?`, `workspace?`, `model?:{id,name,effort}`, `models?:[{id,name,efforts}]`; not current, also `refreshing:true`, `checked?:{ago,at}` and `note`, what is new following as a `conversation_update` cue | no such conversation (or not listed now), can't be read now, a new-work ref; `from` or `backTo` not a turn's ref or a number (or an `s` ref), a ref that fits no turn or several, `from` past the oldest; `words` not a number |
+| readConversation | `{title,parents,working,needsInput,turns:[{ref,user?,userBy?,assistant?,ended,error?,cut?:{user?:{words,leftOut},assistant?:{words,leftOut}}}],olderTurns,continueFrom?,pendingUserMessage?:{ref,text,by?,delivery?,cut?:{words,leftOut}}}`, also `lastUserMessage?:{ago,at,by?}`, `lastAgentReply?`, `workspace?`, `model?:{id,name,effort}`, `models?:[{id,name,efforts}]`; current within 0.7 s, as it is then; not, also `refreshing:true`, `checked?:{ago,at}` and `note`, what is new following as a `conversation_update` line of context | no such conversation (or not listed now), can't be read now, a new-work ref; `from` or `backTo` not a turn's ref or a number (or an `s` ref), a ref that fits no turn or several, `from` past the oldest; `words` not a number |
 | message | `{"status":"queued","ref":…,"delivery":"on the person's device, not confirmed delivered or read"}`, with `model` and `effort` when it switched them, and the `title` when `to` was left out; to `new-task` or `new-bot` also `"started":"task"\|"bot"`, the `title`, the new work's own `ref`, and always the `model` and `effort` it starts on | `{"status":"uncertain",…}` after 8 s; no conversation on screen and no `to`; no such conversation; can't take a message; waits for the person; empty; over 8 KiB; call ended; a model or effort it doesn't offer, with the `models` it does (nothing is sent) |
 | navigate to `happy://conversation/<ref>` | `{"opened":true,"ref":…,"focusRevision":…}`, the revision the next step takes | stale focus, no such conversation, a new-work ref, didn't open |
 | navigate to `happy://back` | `{"home":…,"focusRevision":…,"title":…\|null,"parents"?,"ref"?}`: where it landed | stale focus; at home, nothing to go back to; an alert is open |
@@ -1275,8 +1252,8 @@ is named "Benchmark the cache" 0.4 s later (the agent hears of it, by
 that name, in one `directory` update). Every contextual update and tool call goes into `live.json` with its
 text, size and time. `-slowReads 6,30` has the computer take 6 s over
 Fixture task 30's messages until one read of them is in, then 30 s: a read
-that answers at once marked `refreshing`, what is new following as a
-`conversation_update` cue. On a
+that answers marked `refreshing`, what is new following as a
+`conversation_update` line of context. On a
 phone, a relative `-callLive` directory is in the app's Documents
 (`devicectl device copy to`), and the microphone is granted once by hand.
 
@@ -1290,15 +1267,13 @@ while it is out, no replay when it is visited again and its next words
 after that. It checks the agent said nothing unasked, then types one
 question about what was said. It writes `incoming.txt` (each update's text
 and size, tool calls, the transcript).
-`CallCueLiveDeviceCheck.aReadNotCurrentIsAnsweredAtOnceAndWhatIsNewIsToldWhenItComes`
+`CallCueLiveDeviceCheck.aReadNotCurrentIsAnsweredAndWhatIsNewIsSilentContext`
 reads a conversation the phone kept 29 minutes ago whose refresh takes 6 s
-(answered at once from the kept turn, `refreshing`; a question asked
-meanwhile answered; then the newer reply told from the `conversation_update`
-cue), then one that never comes current (a silent
-`conversation_unconfirmed` line, no cue). `anUpdateTalkedOverIsToldAfterAll`
-types the person's words as the update cue goes out and checks it goes
-again and is told. They write `call-cues/slow-read.txt` and
-`call-cues/talk-over.txt`.
+(answered from the kept turn, `refreshing`; a question asked meanwhile
+answered; then the newer reply goes as a `conversation_update` line of
+context, no cue, the agent saying nothing unasked, and tells it when asked),
+then one that never comes current (a silent `conversation_unconfirmed`
+line, no cue). It writes `call-cues/slow-read.txt`.
 
 iOS opens: `-screen split -agent -callOpens` runs the call's
 `SessionCallTargets.open` over home, three conversations and back, then

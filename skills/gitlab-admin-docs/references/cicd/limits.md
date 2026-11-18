@@ -304,6 +304,33 @@ You can also use the [Plan Limits API](../../api/plan_limits.md).
 
 You can set a different value [for a specific project](../../ci/pipelines/merge_trains.md#merge-train-parallel-pipeline-limit).
 
+## Merge train removal rate limits
+
+- Tier: Premium, Ultimate
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271199) in GitLab 19.7 [with a feature flag](../feature_flags/_index.md) named `rate_limit_merge_train_removal`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
+
+When a merge request is removed from a merge train, the pipelines for all merge requests
+queued after it restart. Repeated removals from one user can add up to excessive load on
+your instance. You can limit how often a user can remove merge requests from merge trains
+to protect against this.
+
+This rate limit applies to removals made in the GitLab UI, with the
+[cancel auto-merge REST API endpoints](../../api/merge_requests.md#cancel-auto-merge),
+or with the `mergeTrainsDeleteCar` GraphQL mutation.
+
+GitLab limits each user to a configurable number of removals each minute across all projects,
+with a default of `30`. Set the limit to `0` to disable rate limiting for removals.
+When a user exceeds the limit, the merge request stays on the merge train.
+While the feature flag is disabled, GitLab logs removals over the limit but does not block them.
+
+To configure the limit, set `merge_train_removal_limit_per_user` with the
+[application settings API](../../api/settings.md#update-application-settings).
+
 ## Maximum time jobs can run
 
 The default maximum time that jobs can run for is 60 minutes. Jobs that run for
@@ -346,8 +373,9 @@ To change this limit on your GitLab Self-Managed instance:
 
 ## Pipeline creation rate limits
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362475) in GitLab 15.0 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_throttle_pipelines_creation`. Disabled by default. Enabled on GitLab.com
-- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/196545) in 18.3.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362475) in GitLab 15.0 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_throttle_pipelines_creation`. Disabled by default. Enabled on GitLab.com.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/366925) in 18.3.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/366925) in GitLab 18.4. Feature flag `ci_enforce_throttle_pipelines_creation` removed.
 - CI Lint rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/599486) in GitLab 19.2 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_ci_lint_rate_limit`. Disabled by default.
 - `ci_lint_limit_per_user` [reset to `0`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256176) on all instances in GitLab 19.5.
 - CI Lint rate limit [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264018) in GitLab 19.6. Feature flag `ci_enforce_ci_lint_rate_limit` removed.

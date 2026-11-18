@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/workers/languages/typescript/og.png?v=4
 
 # TypeScript
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/typescript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/typescript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 TypeScript is a first-class language on Cloudflare Workers. All APIs provided in Workers are fully typed, and type definitions are generated directly from [workerd ↗︎](https://github.com/cloudflare/workerd), the open-source Workers runtime.
 
-We recommend you generate types for your Worker by running [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types). Cloudflare also publishes type definitions to [GitHub ↗︎](https://github.com/cloudflare/workers-types) and [npm ↗︎](https://www.npmjs.com/package/@cloudflare/workers-types) (`npm install -D @cloudflare/workers-types`).
+We recommend you generate types for your Worker by running [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types). Cloudflare also publishes type definitions to [GitHub ↗︎](https://github.com/cloudflare/workers-types) and [npm ↗︎](https://www.npmjs.com/package/@cloudflare/workers-types) (`npm install -D @cloudflare/workers-types`).
 
 Version 5 and later
 
-`@cloudflare/workers-types` version 5 exposes only the latest runtime types. The dated entrypoints, such as `@cloudflare/workers-types/2022-11-30`, are removed. Import from `@cloudflare/workers-types` for the latest stable types, or from `@cloudflare/workers-types/experimental` for APIs behind experimental compatibility flags. To match types to a specific compatibility date and flags, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
+`@cloudflare/workers-types` version 5 exposes only the latest runtime types. The dated entrypoints, such as `@cloudflare/workers-types/2022-11-30`, are removed. Import from `@cloudflare/workers-types` for the latest stable types, or from `@cloudflare/workers-types/experimental` for APIs behind experimental compatibility flags. To match types to a specific compatibility date and flags, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types).
 
 ### Generate types that match your Worker's configuration
 
@@ -51,7 +51,7 @@ yarn wrangler types
 pnpm wrangler types
 ```
 
-See [the `wrangler types` command docs](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) for more details.
+Refer to [the `wrangler types` command docs](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types) for more details.
 
 Note
 
@@ -240,5 +240,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"TypeScript","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/languages/typescript/og.png?v=4357577e18058c65","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"TypeScript","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/languages/typescript/og.png?v=4357577e18058c65","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

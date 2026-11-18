@@ -22,7 +22,7 @@ The Responses API contains several benefits over Chat Completions:
 - **An agentic loop by default**: The model can call multiple tools, like `web_search`, `image_generation`, `file_search`, `code_interpreter`, remote MCP servers, as well as your own custom functions, within the span of one API request.
 - **Lower costs**: Results in lower costs due to improved cache utilization (40% to 80% improvement when compared to Chat Completions in internal tests).
 - **Stateful context**: Use `store: true` to maintain state from turn to turn, preserving reasoning and tool context from turn-to-turn.
-- **Flexible inputs**: Pass a string with input or a list of messages; use instructions for system-level guidance.
+- **Flexible inputs**: Pass a string or a list of messages in `input`. Use a `developer` message for standing rules and top-level `instructions` for guidance specific to one response.
 - **Encrypted reasoning**: Use advanced reasoning without storing state.
 - **Future-proof**: Future-proofed for upcoming models.
 
@@ -558,7 +558,7 @@ curl https://api.openai.com/v1/chat/completions \
     
 Responses
 
-    With Responses, you can separate `instructions` and `input` at the top level
+    With Responses, you can use top-level `instructions` to guide this reply
     and read generated text from `response.output_text`.
     Generate text from a model
 
@@ -684,7 +684,7 @@ Chat Completions uses `messages` as both input and output. Responses uses `input
 | Chat Completions concept      | Responses mapping                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------ |
 | `messages[]`                  | `input`, as a string or an array of input Items                                                        |
-| System or developer guidance  | Top-level `instructions`, or compatible message Items when you need to preserve an existing transcript |
+| System or developer guidance  | First `developer` message in `input` for standing rules, or top-level `instructions` for a single turn |
 | User message                  | An input message Item with `role: "user"`                                                              |
 | Assistant message             | An output message Item in `response.output`; pass it back in `input` if you manually manage state      |
 | Tool or function call         | A `function_call` output Item                                                                          |
@@ -697,7 +697,7 @@ When you only need the final text, use the SDK `output_text` helper. When your f
 
 If you have multi-turn conversations in your application, update your context logic. Responses gives you three common state-management options:
 
-- Use `previous_response_id` when you want OpenAI to manage prior response context. Resend stable `instructions` on each request, because `previous_response_id` does not carry over the previous response's top-level `instructions`.
+- Use `previous_response_id` when you want OpenAI to manage prior response context. Put standing rules in the first `developer` message in `input` on the initial request. Later responses in the chain inherit that message. Use top-level `instructions` for guidance that applies only to the current turn.
 - Pass prior `output` Items back into the next request when you need to manage or trim context yourself.
 - Use the [Conversations API](https://developers.openai.com/api/docs/guides/conversation-state?api-mode=responses#using-the-conversations-api) when you need a persistent conversation object.
 

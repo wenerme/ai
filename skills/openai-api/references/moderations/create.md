@@ -65,6 +65,7 @@ Content type: `application/json`
   The content moderation model you would like to use. Learn more in
   [the moderation guide](/api/docs/guides/moderation), and learn about
   available models [here](/api/docs/guides/moderation).
+  Approved organizations can use `omni-moderation-csam-latest` with a single `image_url` input.
 
   - `string`
 
@@ -82,227 +83,279 @@ Content type: `application/json`
 
 ### Returns
 
-- `id: string`
+- `CreateModerationResponse object { id, model, results }`
 
-  The unique identifier for the moderation request.
+  Represents if a given text input is potentially harmful.
 
-- `model: string`
+  - `id: string`
 
-  The model used to generate the moderation results.
+    The unique identifier for the moderation request.
 
-- `results: array of Moderation`
+  - `model: string`
 
-  A list of moderation objects.
+    The model used to generate the moderation results.
 
-  - `categories: object { harassment, "harassment/threatening", hate, 10 more }`
+  - `results: array of Moderation`
 
-    A list of the categories, and whether they are flagged or not.
+    A list of moderation objects.
 
-    - `harassment: boolean`
+    - `categories: object { harassment, "harassment/threatening", hate, 10 more }`
 
-      Content that expresses, incites, or promotes harassing language towards any target.
+      A list of the categories, and whether they are flagged or not.
 
-    - `"harassment/threatening": boolean`
+      - `harassment: boolean`
 
-      Harassment content that also includes violence or serious harm towards any target.
+        Content that expresses, incites, or promotes harassing language towards any target.
 
-    - `hate: boolean`
+      - `"harassment/threatening": boolean`
 
-      Content that expresses, incites, or promotes hate based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste. Hateful content aimed at non-protected groups (e.g., chess players) is harassment.
+        Harassment content that also includes violence or serious harm towards any target.
 
-    - `"hate/threatening": boolean`
+      - `hate: boolean`
 
-      Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste.
+        Content that expresses, incites, or promotes hate based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste. Hateful content aimed at non-protected groups (e.g., chess players) is harassment.
 
-    - `illicit: boolean or null`
+      - `"hate/threatening": boolean`
 
-      Content that includes instructions or advice that facilitate the planning or execution of wrongdoing, or that gives advice or instruction on how to commit illicit acts. For example, "how to shoplift" would fit this category.
+        Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste.
 
-    - `"illicit/violent": boolean or null`
+      - `illicit: boolean or null`
 
-      Content that includes instructions or advice that facilitate the planning or execution of wrongdoing that also includes violence, or that gives advice or instruction on the procurement of any weapon.
+        Content that includes instructions or advice that facilitate the planning or execution of wrongdoing, or that gives advice or instruction on how to commit illicit acts. For example, "how to shoplift" would fit this category.
 
-    - `"self-harm": boolean`
+      - `"illicit/violent": boolean or null`
 
-      Content that promotes, encourages, or depicts acts of self-harm, such as suicide, cutting, and eating disorders.
+        Content that includes instructions or advice that facilitate the planning or execution of wrongdoing that also includes violence, or that gives advice or instruction on the procurement of any weapon.
 
-    - `"self-harm/instructions": boolean`
+      - `"self-harm": boolean`
 
-      Content that encourages performing acts of self-harm, such as suicide, cutting, and eating disorders, or that gives instructions or advice on how to commit such acts.
+        Content that promotes, encourages, or depicts acts of self-harm, such as suicide, cutting, and eating disorders.
 
-    - `"self-harm/intent": boolean`
+      - `"self-harm/instructions": boolean`
 
-      Content where the speaker expresses that they are engaging or intend to engage in acts of self-harm, such as suicide, cutting, and eating disorders.
+        Content that encourages performing acts of self-harm, such as suicide, cutting, and eating disorders, or that gives instructions or advice on how to commit such acts.
 
-    - `sexual: boolean`
+      - `"self-harm/intent": boolean`
 
-      Content meant to arouse sexual excitement, such as the description of sexual activity, or that promotes sexual services (excluding sex education and wellness).
+        Content where the speaker expresses that they are engaging or intend to engage in acts of self-harm, such as suicide, cutting, and eating disorders.
 
-    - `"sexual/minors": boolean`
+      - `sexual: boolean`
 
-      Sexual content that includes an individual who is under 18 years old.
+        Content meant to arouse sexual excitement, such as the description of sexual activity, or that promotes sexual services (excluding sex education and wellness).
 
-    - `violence: boolean`
+      - `"sexual/minors": boolean`
 
-      Content that depicts death, violence, or physical injury.
+        Sexual content that includes an individual who is under 18 years old.
 
-    - `"violence/graphic": boolean`
+      - `violence: boolean`
 
-      Content that depicts death, violence, or physical injury in graphic detail.
+        Content that depicts death, violence, or physical injury.
 
-  - `category_applied_input_types: object { harassment, "harassment/threatening", hate, 10 more }`
+      - `"violence/graphic": boolean`
 
-    A list of the categories along with the input type(s) that the score applies to.
+        Content that depicts death, violence, or physical injury in graphic detail.
 
-    - `harassment: array of "text"`
+    - `category_applied_input_types: object { harassment, "harassment/threatening", hate, 10 more }`
 
-      The applied input type(s) for the category 'harassment'.
+      A list of the categories along with the input type(s) that the score applies to.
 
-      - `"text"`
+      - `harassment: array of "text"`
 
-    - `"harassment/threatening": array of "text"`
+        The applied input type(s) for the category 'harassment'.
 
-      The applied input type(s) for the category 'harassment/threatening'.
+        - `"text"`
 
-      - `"text"`
+      - `"harassment/threatening": array of "text"`
 
-    - `hate: array of "text"`
+        The applied input type(s) for the category 'harassment/threatening'.
 
-      The applied input type(s) for the category 'hate'.
+        - `"text"`
 
-      - `"text"`
+      - `hate: array of "text"`
 
-    - `"hate/threatening": array of "text"`
+        The applied input type(s) for the category 'hate'.
 
-      The applied input type(s) for the category 'hate/threatening'.
+        - `"text"`
 
-      - `"text"`
+      - `"hate/threatening": array of "text"`
 
-    - `illicit: array of "text"`
+        The applied input type(s) for the category 'hate/threatening'.
 
-      The applied input type(s) for the category 'illicit'.
+        - `"text"`
 
-      - `"text"`
+      - `illicit: array of "text"`
 
-    - `"illicit/violent": array of "text"`
+        The applied input type(s) for the category 'illicit'.
 
-      The applied input type(s) for the category 'illicit/violent'.
+        - `"text"`
 
-      - `"text"`
+      - `"illicit/violent": array of "text"`
 
-    - `"self-harm": array of "text" or "image"`
+        The applied input type(s) for the category 'illicit/violent'.
 
-      The applied input type(s) for the category 'self-harm'.
+        - `"text"`
 
-      - `"text"`
+      - `"self-harm": array of "text" or "image"`
 
-      - `"image"`
+        The applied input type(s) for the category 'self-harm'.
 
-    - `"self-harm/instructions": array of "text" or "image"`
+        - `"text"`
 
-      The applied input type(s) for the category 'self-harm/instructions'.
+        - `"image"`
 
-      - `"text"`
+      - `"self-harm/instructions": array of "text" or "image"`
 
-      - `"image"`
+        The applied input type(s) for the category 'self-harm/instructions'.
 
-    - `"self-harm/intent": array of "text" or "image"`
+        - `"text"`
 
-      The applied input type(s) for the category 'self-harm/intent'.
+        - `"image"`
 
-      - `"text"`
+      - `"self-harm/intent": array of "text" or "image"`
 
-      - `"image"`
+        The applied input type(s) for the category 'self-harm/intent'.
 
-    - `sexual: array of "text" or "image"`
+        - `"text"`
 
-      The applied input type(s) for the category 'sexual'.
+        - `"image"`
 
-      - `"text"`
+      - `sexual: array of "text" or "image"`
 
-      - `"image"`
+        The applied input type(s) for the category 'sexual'.
 
-    - `"sexual/minors": array of "text"`
+        - `"text"`
 
-      The applied input type(s) for the category 'sexual/minors'.
+        - `"image"`
 
-      - `"text"`
+      - `"sexual/minors": array of "text"`
 
-    - `violence: array of "text" or "image"`
+        The applied input type(s) for the category 'sexual/minors'.
 
-      The applied input type(s) for the category 'violence'.
+        - `"text"`
 
-      - `"text"`
+      - `violence: array of "text" or "image"`
 
-      - `"image"`
+        The applied input type(s) for the category 'violence'.
 
-    - `"violence/graphic": array of "text" or "image"`
+        - `"text"`
 
-      The applied input type(s) for the category 'violence/graphic'.
+        - `"image"`
 
-      - `"text"`
+      - `"violence/graphic": array of "text" or "image"`
 
-      - `"image"`
+        The applied input type(s) for the category 'violence/graphic'.
 
-  - `category_scores: object { harassment, "harassment/threatening", hate, 10 more }`
+        - `"text"`
 
-    A list of the categories along with their scores as predicted by model.
+        - `"image"`
 
-    - `harassment: number`
+    - `category_scores: object { harassment, "harassment/threatening", hate, 10 more }`
 
-      The score for the category 'harassment'.
+      A list of the categories along with their scores as predicted by model.
 
-    - `"harassment/threatening": number`
+      - `harassment: number`
 
-      The score for the category 'harassment/threatening'.
+        The score for the category 'harassment'.
 
-    - `hate: number`
+      - `"harassment/threatening": number`
 
-      The score for the category 'hate'.
+        The score for the category 'harassment/threatening'.
 
-    - `"hate/threatening": number`
+      - `hate: number`
 
-      The score for the category 'hate/threatening'.
+        The score for the category 'hate'.
 
-    - `illicit: number`
+      - `"hate/threatening": number`
 
-      The score for the category 'illicit'.
+        The score for the category 'hate/threatening'.
 
-    - `"illicit/violent": number`
+      - `illicit: number`
 
-      The score for the category 'illicit/violent'.
+        The score for the category 'illicit'.
 
-    - `"self-harm": number`
+      - `"illicit/violent": number`
 
-      The score for the category 'self-harm'.
+        The score for the category 'illicit/violent'.
 
-    - `"self-harm/instructions": number`
+      - `"self-harm": number`
 
-      The score for the category 'self-harm/instructions'.
+        The score for the category 'self-harm'.
 
-    - `"self-harm/intent": number`
+      - `"self-harm/instructions": number`
 
-      The score for the category 'self-harm/intent'.
+        The score for the category 'self-harm/instructions'.
 
-    - `sexual: number`
+      - `"self-harm/intent": number`
 
-      The score for the category 'sexual'.
+        The score for the category 'self-harm/intent'.
 
-    - `"sexual/minors": number`
+      - `sexual: number`
 
-      The score for the category 'sexual/minors'.
+        The score for the category 'sexual'.
 
-    - `violence: number`
+      - `"sexual/minors": number`
 
-      The score for the category 'violence'.
+        The score for the category 'sexual/minors'.
 
-    - `"violence/graphic": number`
+      - `violence: number`
 
-      The score for the category 'violence/graphic'.
+        The score for the category 'violence'.
 
-  - `flagged: boolean`
+      - `"violence/graphic": number`
 
-    Whether any of the below categories are flagged.
+        The score for the category 'violence/graphic'.
+
+    - `flagged: boolean`
+
+      Whether any of the below categories are flagged.
+
+- `CsamModerationResponse object { id, model, results }`
+
+  - `id: string`
+
+  - `model: "omni-moderation-csam-latest"`
+
+    - `"omni-moderation-csam-latest"`
+
+  - `results: array of CsamModeration`
+
+    `minItems: 1`, `maxItems: 1`
+
+    - `categories: object { "likely-csam", "likely-csam/gen-ai" }`
+
+      Whether the image was flagged in each category.
+
+      - `"likely-csam": boolean`
+
+      - `"likely-csam/gen-ai": boolean`
+
+    - `category_applied_input_types: object { "likely-csam", "likely-csam/gen-ai" }`
+
+      The input types evaluated for each category.
+
+      - `"likely-csam": array of "image"`
+
+        `minItems: 1`, `maxItems: 1`
+
+        - `"image"`
+
+      - `"likely-csam/gen-ai": array of "image"`
+
+        `minItems: 1`, `maxItems: 1`
+
+        - `"image"`
+
+    - `category_scores: object { "likely-csam", "likely-csam/gen-ai" }`
+
+      The classifier score for each category.
+
+      - `"likely-csam": number`
+
+      - `"likely-csam/gen-ai": number`
+
+    - `flagged: boolean`
+
+      Whether either CSAM category was flagged.
 
 ### Example
 

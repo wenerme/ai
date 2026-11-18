@@ -283,6 +283,8 @@ When rendered, the example looks similar to:
 >
 > Strikethrough with double tildes. ~~Scratch this.~~
 
+A single tilde (`~Scratch this.~`) also creates strikethrough.
+
 ### Mid-word emphasis
 
 Avoid italicizing a portion of a word, especially when you're
@@ -610,6 +612,10 @@ To create a task list, follow the format of an ordered or unordered list:
 
 You can also add task lists to [table cells](#task-lists-in-tables).
 
+To mark a task complete, use `x` or `X` in the brackets.
+To mark a task inapplicable, use `~`.
+Put a space after the closing bracket, or the item renders as plain text.
+
 ## Links
 
 You can create links in multiple ways:
@@ -684,9 +690,11 @@ When rendered, the example looks similar to:
 
 > - <https://example.com>
 > - <ftp://ftp.us.debian.org/debian/>
-> - <a href="smb://foo/bar/baz/">smb://foo/bar/baz</a>
-> - <a href="irc://irc.freenode.net">irc://irc.freenode.net</a>
+> - <a href="smb://foo/bar/baz">smb://foo/bar/baz</a>
+> - <a href="irc://irc.freenode.net/">irc://irc.freenode.net/</a>
 > - <http://localhost:3000>
+
+Punctuation at the end of a URL, like a period or comma, is not part of the link.
 
 ## GitLab-specific references
 
@@ -821,15 +829,18 @@ When creating tables:
 
 - The first line contains the headers, separated by pipe characters (`|`).
 - The second line separates the headers from the cells.
-  - The cells can contain only empty spaces, hyphens, and (optionally) colons for horizontal alignment.
+  - The cells can contain only hyphens, with an optional colon at the start, the end, or both,
+    for horizontal alignment.
+    Spaces are allowed before and after the hyphens, but not between them.
   - Each cell must contain at least one hyphen, but adding more hyphens to a cell does not change the cell's rendering.
-  - Any content other than hyphens, whitespace, or colons is not allowed
+  - The number of cells must match the header row.
+    Otherwise, the table renders as plain text.
 - The third, and any following lines, contain the cell values.
   - You cannot have cells separated over many lines in the Markdown, they must be kept to single lines, but they can be very long. You can also include HTML `` tags to force newlines if needed.
   - The cell sizes do not have to match each other. They are flexible, but must be separated by pipes (`|`).
   - You can have blank cells.
 - Column widths are calculated dynamically based on the content of the cells.
-- To use the pipe character (`|`) in the text and not as table delimiter, you must [escape](#escape-characters) it with a backslash (`\|`).
+- To use the pipe character (`|`) in the text and not as table delimiter, you must [escape](#escape-characters) it with a backslash (`\|`), including inside code spans.
 
 Example:
 
@@ -2539,3 +2550,7 @@ HTML comments inside code blocks are treated as literal text and are displayed:
 <div>Content</div>
 ```
 ````
+
+## Related topics
+
+- [Comrak Markdown extension specifications](https://comrak.ee/docs.html)

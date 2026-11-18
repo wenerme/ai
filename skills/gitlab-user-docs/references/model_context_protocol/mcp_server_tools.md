@@ -260,12 +260,16 @@ Update merge request 42 in project gitlab-org/gitlab to add the "bug" label and 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201838) in GitLab 18.4.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/605878) to accept `url` and return associated data facets in GitLab 19.3.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/639870) to return reviewers, labels, `diffHeadSha`, and `detailedMergeStatus` in the base response, in GitLab 19.7.
 
 This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves a merge request and, optionally, its diffs, commits, notes, pipelines, discussions, approvals, or
 conflicts.
-Only the base merge request is returned unless you request associated data with the `include` parameter.
+The base response includes reviewers, labels, `diffHeadSha`, and `detailedMergeStatus`.
+Labels retain the raw GraphQL connection shape, with `nodes` containing each label's `id`
+and `title`. In contrast, `list_merge_requests` returns labels as a flat list of titles.
+Additional associated data is returned when you request it with the `include` parameter.
 
 | Parameter           | Type    | Required | Description |
 |---------------------|---------|----------|-------------|
@@ -543,10 +547,12 @@ Reject the plan for Duo session 42 and ask it to also add tests
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246413) in GitLab 19.3.
 - `group_id` parameter and group scope [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/606934) in GitLab 19.4.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/639870) to return reviewers, labels, draft status, and timestamps, and to accept `reviewer_wildcard_id`, in GitLab 19.7.
 
 This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
-Lists or searches merge requests in a GitLab project or group, returning compact merge request metadata.
+Lists or searches merge requests in a GitLab project or group, returning compact merge request metadata,
+including reviewers, labels, draft status, and creation and update timestamps.
 Group scope always includes merge requests from every project in the group and its subgroups, but excludes
 merge requests from archived projects.
 A group result also includes the owning project path of each merge request, for use with `get_merge_request`.
@@ -559,6 +565,7 @@ A group result also includes the owning project path of each merge request, for 
 | `author_username`   | string  | No       | Filter by the username of the merge request author. |
 | `assignee_username` | string  | No       | Filter by the username of an assignee. |
 | `reviewer_username` | string  | No       | Filter by the username of a reviewer. |
+| `reviewer_wildcard_id` | string | No      | Filter by reviewer presence: `NONE` returns merge requests with no reviewer; `ANY` returns merge requests with at least one reviewer. Cannot be combined with `reviewer_username` or `scope: review_requested`. |
 | `state`             | string  | No       | Filter by state. One of `opened`, `closed`, `merged`, `locked`, or `all`. Omit to include any state. |
 | `scope`             | string  | No       | Filter relative to the authenticated user. One of `created_by_me`, `assigned_to_me`, or `review_requested`. An explicit username wins for that field. |
 | `milestone`         | string  | No       | Filter by the title of the milestone. |

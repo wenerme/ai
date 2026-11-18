@@ -20,7 +20,7 @@ Setting `comparison_response_id` only requests diagnostics. It does not load the
 
 ### Example usage
 
-The following example sends two requests with the same model, instructions, and input, but changes a function tool's name from `get_time` to `get_date`. The second request compares cache reuse against the first.
+Both requests put the same support policy in the first `developer` message in `input`. The second request changes the function name from `get_time` to `get_date` and compares cache reuse against the first.
 
 Use your own policy document in `support-policy.txt`. The reusable prefix must meet the model's [minimum cacheable length](https://developers.openai.com/api/docs/guides/prompt-caching#summary-of-model-differences), which is 1,024 tokens for GPT-5.6 and later.
 
@@ -34,17 +34,20 @@ from openai import OpenAI
 client = OpenAI()
 policy = Path("support-policy.txt").read_text()  # At least 1,024 tokens.
 
+messages = [
+    {"role": "developer", "content": policy},
+    {"role": "user", "content": "Reply with exactly OK."},
+]
+
 first = client.responses.create(
     model="gpt-6-astra",
-    instructions=policy,
-    input="Reply with exactly OK.",
+    input=messages,
     tools=[{"type": "function", "name": "get_time"}],
 )
 
 second = client.responses.create(
     model="gpt-6-astra",
-    instructions=policy,
-    input="Reply with exactly OK.",
+    input=messages,
     tools=[{"type": "function", "name": "get_date"}],
     prompt_cache_options={"comparison_response_id": first.id},
 )
@@ -62,10 +65,20 @@ require "openai"
 client = OpenAI::Client.new
 policy = File.read("support-policy.txt") # At least 1,024 tokens.
 
+messages = [
+  {
+    role: :developer,
+    content: policy
+  },
+  {
+    role: :user,
+    content: "Reply with exactly OK."
+  }
+]
+
 first = client.responses.create(
   model: "gpt-6-astra",
-  instructions: policy,
-  input: "Reply with exactly OK.",
+  input: messages,
   tools: [
     {
       type: :function,
@@ -76,8 +89,7 @@ first = client.responses.create(
 
 second = client.responses.create(
   model: "gpt-6-astra",
-  instructions: policy,
-  input: "Reply with exactly OK.",
+  input: messages,
   tools: [
     {
       type: :function,
@@ -142,6 +154,8 @@ Read `prompt_cache_diagnostics.type` to determine the comparison outcome.
 
 A `cache_hit` means no cache miss was detected for the comparison. New input can still require processing. For example, a request with 2,500 input tokens can report `cache_hit` when it reuses the comparison response’s 2,000-token prefix and processes 500 new tokens.
 
+Models starting with GPT-6.2 can report `cache_hit` when they reuse the eligible prefix and still bill top-level `instructions` at the uncached input rate. Check `usage.input_tokens_details.cached_tokens` for the number of tokens that received the cached-input rate.
+
 For a `cache_miss`:
 
 - `comparison_reusable_tokens`, when present, is the raw token count of the comparison response’s reusable prefix.
@@ -168,7 +182,7 @@ Some changes, such as switching models or compacting a conversation, are intenti
 | `reasoning_effort_changed` | The reasoning effort changed.                                                                                                                       | On supported GPT-6 and later models, append a `configuration_update` input item to [change reasoning effort during a conversation](https://developers.openai.com/api/docs/guides/reasoning?api-mode=responses#change-reasoning-mid-conversation) while preserving the earlier cached prefix.<br />On older models, keep `reasoning.effort` consistent across requests intended to share a prefix.                                                       |
 | `verbosity_changed`        | The response verbosity changed.                                                                                                                     | Keep `text.verbosity` consistent across requests intended to share a prefix. See [cache-affecting settings](https://developers.openai.com/api/docs/guides/prompt-caching#which-settings-affect-the-cached-prefix).                                                                                                                                                                                                                                      |
 | `context_compacted`        | Compaction replaced earlier conversation content.                                                                                                   | Preserve stable instructions and let later turns build on the compacted context. Compare total input cost: fewer input tokens can still save money despite lower cache reuse. See [Compaction](https://developers.openai.com/api/docs/guides/compaction).                                                                                                                                                                                               |
-| `input_changed`            | Earlier input changed, for example because instructions contain a timestamp or request ID, or previous messages were edited, reordered, or removed. | Move changing content after the reusable prefix and its cache breakpoint. Preserve earlier messages and tool results, and append new turns. See [Preserve conversation history](https://developers.openai.com/api/docs/guides/prompt-caching#preserve-conversation-history).                                                                                                                                                                            |
+| `input_changed`            | Earlier input changed, for example because you added a timestamp or request ID to a `developer` message or edited, reordered, or removed old turns. | Move changing content after the reusable prefix and its cache breakpoint. Preserve earlier messages and tool results, and append new turns. See [Preserve conversation history](https://developers.openai.com/api/docs/guides/prompt-caching#preserve-conversation-history).                                                                                                                                                                            |
 
 
 

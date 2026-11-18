@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/cache-keys/og.png?v=be4ec
 
 # Cache keys
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/cache-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/cache-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every cached response is stored under a **cache key**. When a request arrives, Cloudflare computes a cache key for it and looks it up — on a hit, the stored response is returned; on a miss, your Worker runs and its response is stored under that key for next time.
 
@@ -45,7 +45,7 @@ Notably, the cache key does **not** include:
 - **The request's host.** The Worker's cache is keyed by path and query string, not the full URL. See [The cache belongs to the Worker, not to a domain](#the-cache-belongs-to-the-worker-not-to-a-domain).
 - **The request body.** Since only `GET` and `HEAD` are cacheable, this is rarely relevant — but worth noting if your Worker reads `request.body` on a cacheable method, the body does not partition the cache.
 
-At launch, you cannot inspect the exact cache key Cloudflare computed for a request. The primary signals you have for understanding cache behavior are the `Cf-Cache-Status` response header and per-invocation cache-hit information in the [Workers observability dashboard](https://developers.cloudflare.com/workers/observability/). See [Inspecting the cache key](#inspecting-the-cache-key).
+At launch, you cannot inspect the exact cache key Cloudflare computed for a request. The primary signals you have for understanding cache behavior are the `Cf-Cache-Status` response header, per-invocation cache-hit information in the [Workers observability dashboard](https://developers.cloudflare.com/workers/observability/), and cache analytics on your Worker's **Metrics** page (refer to [I need more visibility](https://developers.cloudflare.com/workers/cache/debugging/#i-need-more-visibility)). See [Inspecting the cache key](#inspecting-the-cache-key).
 
 ## The cache belongs to the Worker, not to a domain
 
@@ -303,7 +303,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -317,7 +317,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -358,5 +358,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/cache-keys/og.png?v=be4ec8a6bbecd55f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/cache-keys/#page","headline":"Cache keys","description":"How Workers Caching builds cache keys, with guidance for service bindings, multi-tenant Workers, and gradual deployments.","url":"https://developers.cloudflare.com/workers/cache/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/cache-keys/og.png?v=be4ec8a6bbecd55f","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

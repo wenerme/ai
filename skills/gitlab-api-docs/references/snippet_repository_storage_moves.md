@@ -43,7 +43,8 @@ are [paginated](rest/_index.md#pagination).
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/snippet_repository_storage_moves"
 ```
 
@@ -94,7 +95,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/snippets/1/repository_storage_moves"
 ```
 
@@ -142,7 +144,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/snippet_repository_storage_moves/1"
 ```
 
@@ -189,7 +192,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/snippets/1/repository_storage_moves/1"
 ```
 

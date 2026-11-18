@@ -82,6 +82,7 @@ This table lists the models you can select for Code Review Flow.
 - Claude Fable 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7916) as a supported model for GitLab Duo Agentic Chat and all other agents on November 9, 2026.
 - Claude Mythos 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7949) as a supported model for Business Logic Security Scan on November 12, 2026.
 - Gemini 4 Carbon and Gemini 4 Hydrogen [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8014) as supported models for GitLab Duo Agentic Chat and all other agents on November 12, 2026.
+- GPT-6.2 Astra and GPT-6.2 Sol [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8107) as supported models for GitLab Duo Agentic Chat and all other agents on November 17, 2026.
 
 This table lists the models you can select for Agentic Chat and other features in the Agent Platform.
 For Code Review Flow, see the previous table.
@@ -131,6 +132,8 @@ For Code Review Flow, see the previous table.
 | GPT-6 Luna[^model-subject-limited]     | Yes             | No           | No                   | Yes              | Yes      |
 | GPT-6.1 Sol[^model-subject-limited]    | Yes             | No           | No                   | No               | Yes      |
 | GPT-6.1 Terra[^model-subject-limited]  | Yes             | No           | No                   | No               | Yes      |
+| GPT-6.2 Astra[^model-subject-limited]  | Yes             | No           | No                   | No               | Yes      |
+| GPT-6.2 Sol[^model-subject-limited]    | Yes             | No           | No                   | No               | Yes      |
 | Kimi K3                     | Yes             | No           | No                   | No               | Yes      |
 | Kimi K3.1 Pro               | Yes             | No           | No                   | No               | Yes      |
 | MiniMax M3                  | Yes             | No           | No                   | No               | Yes      |

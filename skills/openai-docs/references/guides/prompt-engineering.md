@@ -177,7 +177,7 @@ When in doubt, [`gpt-6.2-astra`](https://developers.openai.com/api/docs/models/g
 
 Because the content generated from a model is non-deterministic, prompting to get your desired output is a mix of art and science. However, you can apply techniques and best practices to get good results consistently.
 
-Some prompt engineering techniques work with every model, like using message roles. But different model types (like reasoning versus GPT models) might need to be prompted differently to produce the best results. Even different snapshots of models within the same family could produce different results. So as you build more complex applications, we strongly recommend:
+Some prompt engineering techniques work with every model, like using message roles. But different model types (like reasoning versus GPT models) might need to be prompted differently to produce the best results. Even different snapshots of models within the same family could produce different results. As you build more complex applications, we strongly recommend:
 
 - Pinning your production applications to specific [model snapshots](https://developers.openai.com/api/docs/models) (like `gpt-4.1-2025-04-14` for example) to ensure consistent behavior
 - Building tests and evaluation suites that measure prompt behavior so you can monitor performance as you iterate, or when you change and upgrade model versions
@@ -190,7 +190,7 @@ Now, let's examine some tools and techniques available to you to construct promp
 
 You can provide instructions to the model with [differing levels of authority](https://model-spec.openai.com/2025-02-12.html#chain_of_command) using the `instructions` API parameter or **message roles**.
 
-The `instructions` parameter gives the model high-level instructions on how it should behave while generating a response, including tone, goals, and examples of correct responses. Any instructions provided this way will take priority over a prompt in the `input` parameter.
+The `instructions` parameter gives the model high-level instructions on how it should behave while generating a response, including tone, goals, and examples of correct responses. These instructions take priority over user messages in `input`.
 
 Generate text with instructions
 
@@ -333,7 +333,7 @@ curl "https://api.openai.com/v1/responses" \
 ```
 
 
-The example above is roughly equivalent to using the following input messages in the `input` array:
+To use the same guidance across turns, put it in the first `developer` message in `input`.
 
 Generate text with messages using different roles
 
@@ -526,7 +526,7 @@ curl "https://api.openai.com/v1/responses" \
 ```
 
 
-Note that the `instructions` parameter only applies to the current response generation request. If you are [managing conversation state](https://developers.openai.com/api/docs/guides/conversation-state) with the `previous_response_id` parameter, the `instructions` used on previous turns will not be present in the context.
+Use top-level `instructions` for a single turn. When you [chain responses](https://developers.openai.com/api/docs/guides/conversation-state#passing-context-from-the-previous-response) with `previous_response_id`, the initial `developer` message stays in the conversation.
 
 
 
@@ -559,7 +559,7 @@ For new prompt-engineering work:
 
 - Keep prompt builders in a small module near the feature they support.
 - Use typed function arguments or schemas for dynamic values such as customer data, files, or task options.
-- Pass the generated `instructions` and `input` directly to the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create).
+- Pass reusable guidance as the first `developer` message in `input` and use `instructions` for turn-specific guidance in the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create).
 - Add representative fixtures, tests, and evaluation checks before changing production prompts.
 - Roll out prompt changes through your deployment system, using feature flags or configuration when you need staged releases.
 
@@ -620,6 +620,8 @@ var first_name = "Anna";
     
 API request
 
+    Save the example prompt as `prompt.txt`. Install `jq` before running the
+    curl example.
     Send a prompt to generate code through the API
 
 ```typescript
@@ -631,8 +633,13 @@ const instructions = await fs.readFile("fixtures/prompt.txt", "utf-8");
 
 const response = await client.responses.create({
   model: "gpt-6.2-astra",
-  instructions,
-  input: "How would I declare a variable for a last name?",
+  input: [
+    { role: "developer", content: instructions },
+    {
+      role: "user",
+      content: "How would I declare a variable for a last name?",
+    },
+  ],
 });
 
 console.log(response.output_text);
@@ -648,8 +655,10 @@ with open("prompt.txt", "r", encoding="utf-8") as f:
 
 response = client.responses.create(
     model="gpt-6.2-astra",
-    instructions=instructions,
-    input="How would I declare a variable for a last name?",
+    input=[
+        {"role": "developer", "content": instructions},
+        {"role": "user", "content": "How would I declare a variable for a last name?"},
+    ],
 )
 
 print(response.output_text)
@@ -676,10 +685,12 @@ func main() {
 	}
 
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model:        "gpt-6.2-astra",
-		Instructions: openai.String(string(instructions)),
+		Model: "gpt-6.2-astra",
 		Input: responses.ResponseNewParamsInputUnion{
-			OfString: openai.String("How would I declare a variable for a last name?"),
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(string(instructions), responses.EasyInputMessageRoleDeveloper),
+				responses.ResponseInputItemParamOfMessage("How would I declare a variable for a last name?", responses.EasyInputMessageRoleUser),
+			},
 		},
 	})
 	if err != nil {
@@ -693,14 +704,28 @@ func main() {
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.responses.EasyInputMessage;
 import com.openai.models.responses.ResponseCreateParams;
+import com.openai.models.responses.ResponseInputItem;
+import java.util.List;
 
+String instructions =
+    "You are a coding assistant. Answer with concise JavaScript examples and use semicolons.";
 ResponseCreateParams params =
     ResponseCreateParams.builder()
         .model("gpt-6.2-astra")
-        .instructions(
-            "You are a coding assistant. Answer with concise JavaScript examples and use semicolons.")
-        .input("How would I declare a variable for a last name?")
+        .inputOfResponse(
+            List.of(
+                ResponseInputItem.ofEasyInputMessage(
+                    EasyInputMessage.builder()
+                        .role(EasyInputMessage.Role.DEVELOPER)
+                        .content(instructions)
+                        .build()),
+                ResponseInputItem.ofEasyInputMessage(
+                    EasyInputMessage.builder()
+                        .role(EasyInputMessage.Role.USER)
+                        .content("How would I declare a variable for a last name?")
+                        .build())))
         .build();
 
 client.responses().create(params).output().stream()
@@ -721,8 +746,8 @@ string instructions = await File.ReadAllTextAsync("prompt.txt");
 CreateResponseOptions options = new()
 {
     Model = "gpt-6.2-astra",
-    Instructions = instructions,
 };
+options.InputItems.Add(ResponseItem.CreateDeveloperMessageItem(instructions));
 options.InputItems.Add(
     ResponseItem.CreateUserMessageItem("How would I declare a variable for a last name?")
 );
@@ -738,29 +763,45 @@ client = OpenAI::Client.new
 instructions = File.read(File.join(__dir__, "prompt.txt"))
 response = client.responses.create(
   model: "gpt-6.2-astra",
-  instructions: instructions,
-  input: "How would I declare a variable for a last name?"
+  input: [
+    {
+      role: :developer,
+      content: instructions
+    },
+    {
+      role: :user,
+      content: "How would I declare a variable for a last name?"
+    }
+  ]
 )
 
 puts(response.output_text)
 ```
 
 ```bash
-curl https://api.openai.com/v1/responses \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-6.2-astra",
-    "instructions": "'"$(< prompt.txt)"'",
-    "input": "How would I declare a variable for a last name?"
-  }'
+set -euo pipefail
+
+request=$(jq -n --rawfile instructions prompt.txt '
+  {
+    model: "gpt-6.2-astra",
+    input: [
+      {role: "developer", content: $instructions},
+      {role: "user", content: "How would I declare a variable for a last name?"}
+    ]
+  }')
+
+curl --fail-with-body --silent --show-error https://api.openai.com/v1/responses \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d "$request" |
+  jq -er '[.output[]? | select(.type == "message") | .content[]? | select(.type == "output_text") | .text] | join("")'
 ```
 
 
 
 #### Save on cost and latency with prompt caching
 
-When constructing a message, you should try and keep content that you expect to use over and over in your API requests at the beginning of your prompt, **and** among the first API parameters you pass in the JSON request body to [Chat Completions](https://developers.openai.com/api/reference/resources/chat) or [Responses](https://developers.openai.com/api/reference/resources/responses). This enables you to maximize cost and latency savings from [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
+Put reusable instructions in the first `developer` message in the Responses `input` array or the Chat Completions `messages` array. Put examples and reference material you reuse before the user’s changing input. This keeps the shared prefix eligible for [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
 
 ## Few-shot learning
 

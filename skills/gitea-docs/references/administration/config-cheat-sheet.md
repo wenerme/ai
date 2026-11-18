@@ -767,6 +767,7 @@ And the following unique queues:
 - `ALLOWED_USER_VISIBILITY_MODES`: **public,limited,private**: Set which visibility modes a user can have
 - `DEFAULT_ORG_VISIBILITY`: **public**: Set default visibility mode for organisations, either "public", "limited" or "private".
 - `DEFAULT_ORG_MEMBER_VISIBLE`: **false** True will make the membership of the users visible when added to the organisation.
+- `DEFAULT_TEAM_VISIBILITY`: **private**: Sets the default visibility for newly created teams within an organization, either "public", "limited" or "private".
 - `ALLOW_ONLY_INTERNAL_REGISTRATION`: **false** Set to true to force registration only via Gitea.
 - `ALLOW_ONLY_EXTERNAL_REGISTRATION`: **false** Set to true to force registration only using third-party services.
 - `NO_REPLY_ADDRESS`: **_empty_**: Value for the domain part of the user's email address in the git log if user has set KeepEmailPrivate to true. The user's email will be replaced with a concatenation of the user name in lower case, "@" and NO_REPLY_ADDRESS. Default value is "noreply." + the domain part of ROOT_URL

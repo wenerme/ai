@@ -712,6 +712,8 @@ puts(second.output_text)
 ```
 
 
+A `developer` message in the initial `input` stays in the chained history. Top-level `instructions` apply only to the request that supplies them, so you can give a follow-up response its own guidance.
+
 #### `previous_response_id` in WebSocket mode
 
 If you are using [the Responses API WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode), continuation uses the same `previous_response_id` semantics as HTTP mode, but over a persistent socket with repeated `response.create` events.
