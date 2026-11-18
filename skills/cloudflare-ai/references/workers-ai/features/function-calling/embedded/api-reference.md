@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/function-calling/em
 
 # API Reference
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn more about the API reference for [embedded function calling](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded).
 
 ## runWithTools

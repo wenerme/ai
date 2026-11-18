@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/og.png?v=af6fb4911e3b6284
 
 # Cloudflare China Network
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Delivering content quickly and securely to users in Mainland China requires infrastructure within China itself. Traffic routed through servers outside the country faces significant latency and reliability issues due to China's network boundaries.
 
 The [Cloudflare China Network ↗︎](https://www.cloudflare.com/application-services/products/china-network/) solves this by running selected Cloudflare performance and security products on data centers located in Mainland China, operated by Cloudflare's partner JD Cloud. The data centers cover most populated regions in China.

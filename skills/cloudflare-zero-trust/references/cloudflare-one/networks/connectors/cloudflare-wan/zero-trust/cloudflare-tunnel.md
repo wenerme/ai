@@ -12,11 +12,9 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Cloudflare Tunnel
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare WAN (formerly Magic WAN) can work together with [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to provide easy access between your networks and applications.
 
-By default, [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) proxies and filters TCP, UDP, and ICMP traffic routed through IPsec/GRE tunnels and destined to routes behind Cloudflare Tunnel.
+By default, [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) proxies and filters TCP, UDP, and ICMP traffic routed through IPsec/GRE tunnels and destined to routes behind Cloudflare Tunnel.
 
 ## Route evaluation and precedence
 
@@ -38,7 +36,7 @@ Cloudflare reserves the following IP ranges for Zero Trust services:
 | --- | --- |
 | `100.64.0.0/12` | [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) |
 | `100.96.0.0/12` | [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) |
-| `172.64.128.0/20` | [Initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) |
+| `172.64.128.0/20` | [Initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/host-selectors/) |
 | `100.112.0.0/16` | [Private Load Balancers](https://developers.cloudflare.com/load-balancing/private-network/) |
 
 Do not configure routes that overlap with these reserved ranges.
@@ -67,7 +65,7 @@ ARR requires Unified Routing mode. For more information, refer to [Automatic Ret
 
 ### Hostname Routes (Initial resolved IPs)
 
-[Hostname-based routing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) uses Gateway DNS to resolve hostnames to Initial resolved IPs, which then map to specific next hops.
+[Hostname-based routing](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/host-selectors/) uses Gateway DNS to resolve hostnames to Initial resolved IPs, which then map to specific next hops.
 
 When Hostname Routes are enabled:
 
@@ -101,5 +99,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel","description":"Reference information for Cloudflare Tunnel in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/og.png?v=cd1ba19f8454ac06","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel","description":"Reference information for Cloudflare Tunnel in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/og.png?v=cd1ba19f8454ac06","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

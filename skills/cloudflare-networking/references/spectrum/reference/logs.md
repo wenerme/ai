@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/reference/logs/og.png?v=a82885
 
 # Event logs
 
-Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spectrum logs the entire lifecycle of every client that connects through it. These event logs are available through Logpush as a separate category (dataset type `spectrum_events`); they are not part of HTTP log events.
 
 For each connection, Spectrum logs a connect event and either a disconnect or error event. Details on status codes can be found below.

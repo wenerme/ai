@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # HubSpot
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/hubspot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare partners with HubSpot to provide HubSpot customers’ websites with Cloudflare’s performance and security benefits.
 
 If you use HubSpot and also have a Cloudflare plan, you can use your own Cloudflare zone to proxy web traffic to your zone first, then HubSpot's (the SaaS Provider) zone second. This configuration option is called [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/).

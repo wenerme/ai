@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/users
 
 # Users
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage users in your Zero Trust organization.
 
 - [Seat management](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/)

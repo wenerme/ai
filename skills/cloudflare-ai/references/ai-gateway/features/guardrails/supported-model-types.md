@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/guardrails/supporte
 
 # Supported model types
 
-Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/guardrails/supported-model-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway's Guardrails detects the type of AI model being used and applies safety checks accordingly:
 
 - **Text generation models**: Both prompts and responses are evaluated.

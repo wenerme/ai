@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/payments/og.png?v=7605a8d2
 
 # Agentic Payments
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI agents need to discover, pay for, and consume resources and services programmatically. Traditional onboarding requires account creation, a payment method, and an API key before an agent can pay for a service. Agentic payments let AI agents purchase resources and services directly through the HTTP `402 Payment Required` response code.
 
 Cloudflare's [Agents SDK](https://developers.cloudflare.com/agents/) supports agentic payments through two protocols built on the HTTP `402 Payment Required` status code: **x402** and **Machine Payments Protocol (MPP)**. Both follow the same core flow:

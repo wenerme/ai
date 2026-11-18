@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloud
 
 # PQC in Cloudflare products
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare is [targeting 2029 ↗︎](https://blog.cloudflare.com/post-quantum-roadmap/) to be fully post-quantum secure across its entire product suite.
 
 This page shows the status of the migration. Each section below groups Cloudflare products by the underlying secure communication channel. Once a channel supports PQC, every product built on top inherits PQC support.

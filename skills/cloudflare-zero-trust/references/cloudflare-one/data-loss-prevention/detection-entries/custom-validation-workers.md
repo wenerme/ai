@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/det
 
 # Validate data loss prevention matches with Cloudflare Workers
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/custom-validation-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Data loss prevention (DLP) can run a Cloudflare Worker in your account when a pattern matches. Use your Worker to apply organization-specific checks, adjust confidence, or reject the match.
 
 Custom functions appear in the entry editor when this feature is available for your account. You can attach them to custom pattern entries.

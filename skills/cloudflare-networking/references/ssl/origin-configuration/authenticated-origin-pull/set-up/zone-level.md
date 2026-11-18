@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-
 
 # Zone-level
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you enable zone-level Authenticated Origin Pulls (AOP), all proxied traffic to your zone is authenticated at the origin web server using a certificate that you upload. Unlike [global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), which uses a Cloudflare-provided certificate shared across all accounts, zone-level AOP uses your own certificate for stricter security.
 
 [Global](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), zone-level, and [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP are independent configurations. Enabling or disabling one does not affect the others.

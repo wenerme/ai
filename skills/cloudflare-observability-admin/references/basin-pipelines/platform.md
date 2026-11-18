@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/platform/og.png?v=5f368
 
 # Platform
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Pricing](https://developers.cloudflare.com/basin-pipelines/platform/pricing/)
 - [Limits](https://developers.cloudflare.com/basin-pipelines/platform/limits/)
 

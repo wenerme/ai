@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # Application Granular Controls
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/granular-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Application Granular Controls, you can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) to control specific user actions within supported SaaS applications. This allows you to give users access to an application while restricting the actions that they can take within the application.
 
 ## Prerequisites

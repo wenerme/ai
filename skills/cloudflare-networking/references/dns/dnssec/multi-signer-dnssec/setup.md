@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/og
 
 # Set up multi-signer DNSSEC
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page explains how you can enable [multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/) with Cloudflare, using the [model 2](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/#model-2) as described in [RFC 8901 ↗︎](https://www.rfc-editor.org/rfc/rfc8901.html).
 
 ## Before you begin

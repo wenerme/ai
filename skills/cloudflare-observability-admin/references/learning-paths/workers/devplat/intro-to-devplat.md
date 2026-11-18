@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workers/devplat/intro-to
 
 # Cloudflare Developer Platform
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/devplat/intro-to-devplat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [Cloudflare Developer Platform ↗︎](https://www.cloudflare.com/developer-platform/products/) offers various services to empower developers to build full-stack applications, including: [compute ↗︎](https://www.cloudflare.com/developer-platform/products/#compute), [storage ↗︎](https://www.cloudflare.com/developer-platform/products/#storage), [web development, image optimization, video streaming ↗︎](https://www.cloudflare.com/developer-platform/products/#webdev) and [AI ↗︎](https://ai.cloudflare.com/).
 
 It is important to note that the developer platform product offering is growing with new releases and features updates. To review a list of product documentation related to Cloudflare Developer Platform:

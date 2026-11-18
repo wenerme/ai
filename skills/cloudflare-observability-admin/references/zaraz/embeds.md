@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/embeds/og.png?v=b3f2795974c57a23
 
 # Embeds
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/embeds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Embeds are tools for incorporating external content, like social media posts, directly onto webpages, enhancing user engagement without compromising site performance and security.
 
 Cloudflare Zaraz introduces server-side rendering for embeds, avoiding third-party JavaScript to improve security, privacy, and page speed. This method processes content on the server side, removing the need for direct communication between the user's browser and third-party servers.

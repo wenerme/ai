@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/git-integration/tro
 
 # Troubleshooting builds
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your git integration is experiencing issues, you may find the following banners in the Deployment page of your Pages project.
 
 ## Project creation

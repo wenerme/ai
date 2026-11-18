@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/mysql/og.png?v=401544
 
 # Connect to a MySQL database with Cloudflare Workers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/mysql/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a MySQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of MySQL.
 
 Note
@@ -111,7 +109,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -131,7 +129,7 @@ name = "hyperdrive-example"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -174,7 +172,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -187,7 +185,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

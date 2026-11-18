@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Create a locally-managed tunnel
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow this step-by-step guide to get your first tunnel up and running using the CLI.
 
 Tip

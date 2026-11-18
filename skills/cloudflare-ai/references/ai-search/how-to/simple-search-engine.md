@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/o
 
 # Create a simple search engine
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide builds a search engine that returns the file names matching a query, using the `search()` method on the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/). You can adapt it to use the [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/) instead.
 
 For the best results with this pattern:

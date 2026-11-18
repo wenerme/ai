@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/o
 
 # Sleeping and retrying
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide details how to sleep a Workflow and/or configure retries for a Workflow step.
 
 ## Sleep a Workflow

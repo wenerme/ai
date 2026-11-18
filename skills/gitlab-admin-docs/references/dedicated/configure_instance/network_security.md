@@ -783,6 +783,104 @@ To delete a VPC endpoint:
    **Delete** ().
 1. Select **Delete**.
 
+## Static IP addresses
+
+- Tier: Ultimate
+- Offering: GitLab Dedicated for Government
+
+By default, your GitLab Dedicated for Government instance is reachable through IP addresses
+that Cloudflare shares across many customers. These addresses can change. To allow access
+with an IP-based allowlist, you would have to allow all of the IP ranges that Cloudflare publishes.
+
+If your network perimeter requires IP-based allowlists, you can request a pair of static
+IP addresses reserved for your instance. With static IP addresses:
+
+- Your instance hostname, container registry, and GitLab agent server for Kubernetes (KAS)
+  resolve only to two IPv4 addresses that are reserved for your instance.
+- Traffic continues to pass through Cloudflare Web Application Firewall (WAF).
+- The addresses do not change unless GitLab coordinates the change with you first.
+
+Static IP addresses are available only for GitLab Dedicated for Government.
+
+### Hostnames that use static IP addresses
+
+The following hostnames resolve only to your static IP addresses, on TCP ports 22, 80, and 443:
+
+- Your instance hostname, which serves the web interface, the API, Git over HTTPS, and
+  Git over SSH. This includes traffic to the
+  [OpenID Connect](#enable-openid-connect-for-your-ip-allowlist) and
+  [SCIM](#enable-scim-provisioning-for-your-ip-allowlist) endpoints, if you have turned on
+  access to them.
+- `registry.<instance hostname>`, the container registry.
+- `kas.<instance hostname>`, the GitLab agent server for Kubernetes.
+
+If you use a [custom domain](#custom-domains), the hostnames are your custom domain
+hostnames, for example `gitlab.company.com`, `registry.company.com`, and `kas.company.com`.
+Connections to the default `<tenant>.gitlab-dedicated.us` hostnames are no longer available
+after you configure a custom domain.
+
+### Traffic that does not use static IP addresses
+
+The following traffic does not use your static IP addresses at this time:
+
+- Object storage downloads, including CI/CD job artifacts, Git LFS objects, packages,
+  user uploads, Dependency Proxy files, and container image layers. By default, your
+  browser or client downloads these objects directly from Amazon S3. If these downloads
+  must also come from your static IP addresses, contact your Customer Success Manager.
+  To keep this traffic on the AWS network instead, see
+  [private S3 access for object storage](#private-s3-access-for-object-storage).
+- GitLab Pages.
+- [Inbound PrivateLink connections](#inbound-privatelink-connections). PrivateLink
+  traffic stays on the AWS network and never passes through Cloudflare.
+- Outbound connections from your instance, such as email sent through Amazon SES, webhooks,
+  and GitLab Duo requests. Outbound connections use your
+  [NAT gateway IP addresses](#nat-gateway-ip-addresses).
+
+Your [IP allowlist](#ip-allowlist) continues to apply to traffic that arrives on the
+static IP addresses, apart from any endpoints you have opened to the internet, such as
+OpenID Connect or SCIM.
+
+### Request static IP addresses
+
+Static IP addresses are an optional add-on to your GitLab Dedicated for Government subscription.
+
+GitLab applies the change during a [maintenance window](../maintenance.md#maintenance-windows).
+While the change is applied, your instance is unreachable for a few seconds. Because of DNS
+caching, clients might take up to five minutes to resolve the new addresses. No data is affected.
+
+Prerequisites:
+
+- Your instance must use the default Git SSH port (22).
+- If you use a custom domain, it must use the
+  [Cloudflare security configuration](#cloudflare-security-configuration) and its DNS
+  delegation must be complete. The custom domain must also include hostnames for the
+  container registry and the GitLab agent server for Kubernetes.
+
+To request static IP addresses:
+
+1. Contact your Customer Success Manager.
+1. When GitLab provides your addresses, add both IPv4 addresses to your network allowlists
+   for TCP ports 22, 80, and 443. If IPv6 connectivity is turned on for your instance,
+   also add both IPv6 addresses. Complete this step before the scheduled maintenance window
+   so that access continues when the change is applied.
+1. After the maintenance window, verify from inside your network that you can connect to
+   your instance over SSH and HTTPS. Also verify that the container registry and the
+   GitLab agent server for Kubernetes work.
+
+### Changes to static IP addresses
+
+The following actions affect your static IP addresses and allowlists.
+GitLab applies them during a maintenance window, and they cause a brief interruption:
+
+- Turn on [IPv6 connectivity](#ipv6-connectivity). Your IPv4 addresses do not change.
+  GitLab provides a pair of static IPv6 addresses for you to add to your allowlists.
+- Add a custom domain. Static IP addresses are applied to the new domain only after its
+  DNS delegation is complete. Until then, your instance resolves to shared Cloudflare IP
+  addresses, and allowlists that contain only the static IP addresses do not match. Plan
+  this change with your Customer Success Manager.
+- Turn off static IP addresses. Your instance returns to shared Cloudflare IP addresses,
+  and the static IP addresses are no longer associated with your instance.
+
 ## IPv6 connectivity
 
 IPv6 connectivity lets clients reach your GitLab Dedicated instance over IPv6, in addition to IPv4.
@@ -809,6 +907,10 @@ and confirm you want IPv6 connectivity turned on for HTTPS and SSH access to you
 After IPv6 is turned on, the public IP addresses for your instance change for both IPv4 and IPv6.
 If you've allowlisted these addresses in firewalls, DNS records, or monitoring systems, update
 those configurations after the change is applied. Turning off IPv6 changes the IP addresses again.
+
+If your GitLab Dedicated for Government instance uses [static IP addresses](#static-ip-addresses),
+your IPv4 addresses do not change when you turn IPv6 on or off. GitLab provides a pair of static
+IPv6 addresses for you to add to your allowlists.
 
 The configuration is applied during the next maintenance window.
 

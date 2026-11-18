@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/concepts/og.png?v=4b7889d92e13
 
 # Concepts
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Flagship organizes feature flags into apps. You define flags with variants and targeting rules, then evaluate them within Cloudflare's global network.
 
 ## Overview

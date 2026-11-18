@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/configuration-rules/create-api/og
 
 # Create a configuration rule via API
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create configuration rules via API.
 
 ## Basic rule settings

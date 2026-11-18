@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agen
 
 # Build a coding agent runner
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will build a Worker that runs a coding agent on a GitHub repository in a Linux sandbox. You send a prompt, the agent edits the repository inside the sandbox, and you read its changes as a diff. The runner uses [Claude Code ↗︎](https://code.claude.com/docs/en/overview). The pages in [Coding agents](https://developers.cloudflare.com/sandbox/coding-agents/) switch it to other agents.
 
 Claude Code calls Anthropic models through [AI Gateway](https://developers.cloudflare.com/ai-gateway/). Your Worker adds the gateway token to those requests, so the token never enters the sandbox. The sandbox can reach only your gateway and `github.com`.
@@ -140,7 +138,7 @@ You also need:
    	"name": "sandbox-coding-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-23",
+   	"compatibility_date": "2026-11-18",
    	"compatibility_flags": ["nodejs_compat"],
    	"observability": {
    		"enabled": true,
@@ -187,7 +185,7 @@ You also need:
    name = "sandbox-coding-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-23"
+   compatibility_date = "2026-11-18"
    compatibility_flags = [ "nodejs_compat" ]
    upload_source_maps = true
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/logs/og.png?v=4631949cc5d
 
 # Logs
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Logs to query structured events from supported Cloudflare products and services. Filter by time range and field values, then chart or inspect matching events.
 
 You can use Logs to:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/streams/og.png?v=7bd7ec
 
 # Streams
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/streams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Streams are durable, buffered queues that receive and store events for processing in [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/). They provide reliable data ingestion via HTTP endpoints and Worker bindings, ensuring no data loss even during downstream processing delays or failures.
 
 A single stream can be read by multiple pipelines, allowing you to route the same data to different destinations or apply different transformations. For example, you might send user events to both a real-time analytics pipeline and a data warehouse pipeline.

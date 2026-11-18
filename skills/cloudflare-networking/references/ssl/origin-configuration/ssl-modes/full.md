@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full
 
 # Full
 
-Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you set your encryption mode to **Full**, Cloudflare allows HTTPS connections between your visitor and Cloudflare and makes connections to the origin using the scheme requested by the visitor. If your visitor uses `http`, then Cloudflare connects to the origin using plaintext HTTP and vice versa.
 
 ## Use when

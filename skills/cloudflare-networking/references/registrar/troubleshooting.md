@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/troubleshooting/og.png?v=2824
 
 # Troubleshoot failed domain transfers
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After you start the transfer process to Cloudflare Registrar, your previous registrar has five days to release the domain after a successful transfer request. If your transfer has not been completed within that time frame, something has likely gone wrong.
 
 Most issues with a stalled transfer can be solved by checking the following details and [restarting the transfer](#restart-your-transfer).

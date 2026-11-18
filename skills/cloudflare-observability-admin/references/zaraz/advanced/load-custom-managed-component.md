@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-comp
 
 # Custom Managed Components
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Zaraz supports loading custom third-party tools using [Managed Components ↗︎](https://managedcomponents.dev/). These can be Managed Components that you have developed yourself or that were developed by others. Using Custom Managed Components with Zaraz is done by converting them into a Cloudflare Worker running in your account.
 
 If you are new to Managed Components, we recommend you get started with [creating your own Managed Component ↗︎](https://managedcomponents.dev/getting-started/quickstart) or check out [our demo Managed Component ↗︎](https://github.com/managed-components/demo).

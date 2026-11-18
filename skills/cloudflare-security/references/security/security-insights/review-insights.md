@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/security-insights/review-insig
 
 # Review Security Insights
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/security-insights/review-insights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Check the **Security Insights** tab for a list of detected insights that you should address.
 
 For each detected insight, you can resolve it or archive it, after understanding its risks.

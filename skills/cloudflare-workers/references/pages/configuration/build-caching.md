@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/build-caching/og.pn
 
 # Build caching
 
-Last updated May 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/build-caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Improve Pages build times by caching dependencies and build output between builds with a project-wide shared cache.
 
 The first build to occur after enabling build caching on your Pages project will save to cache. Every subsequent build will restore from cache unless configured otherwise.

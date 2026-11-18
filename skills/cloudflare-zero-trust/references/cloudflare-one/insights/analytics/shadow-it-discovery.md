@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/analytics/shado
 
 # Shadow IT SaaS analytics
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Shadow IT SaaS analytics provides visibility into the SaaS applications your users are visiting. The dashboard aggregates data from Gateway HTTP traffic to track application usage across your organization. This information allows you to create identity and device-driven Cloudflare One policies to secure your users and data.
 
 To access Shadow IT SaaS analytics:

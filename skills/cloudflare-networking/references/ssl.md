@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/og.png?v=4d6b48f11e9c8b59
 
 # Cloudflare SSL/TLS
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Encrypt your web traffic to prevent data theft and other tampering.
 
 Available on all plans

@@ -1,5 +1,5 @@
 ---
-description: "You can now manage AI Security for Apps with Terraform. Version 5.29.0 of the Terraform Cloudflare provider adds two resources:"
+description: This release introduces 6 new malformed base64 Cloudflare Managed Ruleset detections for Java4Shell CVE-2026-114938. The rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden if needed with supplementary information around the same available through blog post How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938).
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -8,9 +8,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-11-18
+
+
+**WAF Emergency Release - 2026-11-18**
+
+This release introduces 6 new malformed base64 Cloudflare Managed Ruleset detections for Java4Shell CVE-2026-114938. The rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden if needed with supplementary information around the same available through blog post [How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938) ↗︎](https://blog.cloudflare.com/java4shell-waf-protection/).
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...4d718bf4 | N/A | Java4Shell - Malformed Base64 Header - CVE-2026-114938 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...2337b51d | N/A | Java4Shell - Malformed Base64 Query Value - CVE-2026-114938 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e5e5836c | N/A | Java4Shell - Malformed Base64 Body Value - CVE-2026-114938 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...6fd6f152 | N/A | Java4Shell - Malformed Base64 Path Segment - CVE-2026-114938 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...5a25d991 | N/A | Java4Shell - Malformed Base64url JWT Component - CVE-2026-114938 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...67d74ebb | N/A | Java4Shell - Malformed Base64 WebAuthn Value - CVE-2026-114938 | N/A | Log | This is a new detection. |
 
 ## 2026-11-12
 
@@ -446,22 +460,8 @@ This release introduces new threat detections to enhance protection against Serv
 | Cloudflare Managed Ruleset | ...75cd912a | N/A | SSRF - Local non-standard IP notation | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...a1ba83f6 | N/A | SSTI - Jinja Dangerous Globals Chain | Log | Block | This is a new detection. |
 
-## 2026-09-15
-
-
-**WAF Release - 2026-09-15**
-
-This release introduces new threat detections to enhance protection against command injection attempts, Server-Side Request Forgery (SSRF) targeting cloud metadata, and information disclosure within version control history.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...ca453d31 | N/A | SSRF - Cloud - 3 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...e540f17f | N/A | Version Control - Information Disclosure - Beta | Log | Block | This rule is merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529). |
-| Cloudflare Managed Ruleset | ...ba458b4b | N/A | Command Injection - Generic 10 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...7b58420b | N/A | XSS, HTML Injection - Script Tag | Block | Block | Reverts the detection changes introduced on August 25, 2026 |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"You can now manage AI Security for Apps with Terraform. Version 5.29.0 of the Terraform Cloudflare provider adds two resources:","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces 6 new malformed base64 Cloudflare Managed Ruleset detections for Java4Shell CVE-2026-114938. The rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden if needed with supplementary information around the same available through blog post How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938).","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

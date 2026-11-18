@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # 2xx Success
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/2xx-success/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 2xx status codes indicate success, meaning that the client's request was received, understood, and accepted by the server.
 
 ## 200 OK

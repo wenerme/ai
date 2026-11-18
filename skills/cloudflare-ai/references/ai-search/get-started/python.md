@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/get-started/python/og.png?v=f
 
 # Python SDK
 
-Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide walks you through creating an AI Search instance, uploading content, and querying it from a Python application using the [Cloudflare Python SDK ↗︎](https://github.com/cloudflare/cloudflare-python).
 
 ## Prerequisites

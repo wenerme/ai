@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/dns-best-practices/conce
 
 # Phase 3: Execution (Migration window)
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Phase 3 is when you make the actual switch to Cloudflare.
 
 ## 1. Final verification

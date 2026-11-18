@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ohttp-relay/reference/metrics/og.png?v=
 
 # Cloudflare OHTTP Relay metrics
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ohttp-relay/reference/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare OHTTP Relay (formerly Privacy Gateway) now supports enhanced monitoring through our GraphQL API, providing detailed insights into your gateway traffic and performance. To access these metrics, ensure you have:
 
 - A relay gateway proxy implementation where Cloudflare acts as the oblivious relay party.

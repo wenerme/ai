@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/mesh/guides/connect-client-devices/og.p
 
 # Connect two devices privately with Cloudflare Mesh
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/guides/connect-client-devices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect two laptops, phones, or desktops by enrolling both devices in Cloudflare Mesh. Each device receives a private [Mesh IP](https://developers.cloudflare.com/mesh/concepts/#mesh-ips) and can reach the other device without a Mesh node.
 
 ## Prerequisites

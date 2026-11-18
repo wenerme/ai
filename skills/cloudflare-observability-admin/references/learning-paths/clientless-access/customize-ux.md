@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/custom
 
 # Customize the end user experience
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/customize-ux/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access offers several ways to customize the look and feel of the user login experience.
 
 ## Objectives

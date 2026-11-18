@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/reference/durability/og.png?v=354812
 
 # Durability
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/durability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R2 is designed to provide 99.999999999% (eleven 9s) of annual durability. This means that if you store 10,000,000 objects on R2, you can expect to lose an object once every 10,000 years on average.
 
 ## How R2 achieves eleven-nines durability

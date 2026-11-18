@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/get-started/og.png?v=055a53
 
 # Get started
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will walk you through creating your first Workers VPC Service, allowing your Worker to access resources in your private network.
 
 You will create a Workers application, create a Tunnel in your private network to connect it to Cloudflare, and then configure VPC Services for the services on your private network you want to access from Workers.
@@ -171,7 +169,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-17",
+	"compatibility_date": "2026-11-18",
 	"vpc_services": [
 		{
 			"binding": "VPC_SERVICE",
@@ -188,7 +186,7 @@ name = "workers-vpc-app"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-17"
+compatibility_date = "2026-11-18"
 
 [[vpc_services]]
 binding = "VPC_SERVICE"

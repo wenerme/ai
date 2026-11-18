@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/reference/og.png?v=aa5d44
 
 # Reference
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Available products and features](https://developers.cloudflare.com/china-network/reference/available-products/)
 - [Infrastructure](https://developers.cloudflare.com/china-network/reference/infrastructure/)
 

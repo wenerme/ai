@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/leaked-credentials/api-c
 
 # Common API calls
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following examples address common scenarios of using the Cloudflare API to manage and configure leaked credentials detection.
 
 If you are using Terraform, refer to [Terraform configuration examples](https://developers.cloudflare.com/waf/detections/leaked-credentials/terraform-examples/).

@@ -6,6 +6,8 @@
 
 If you're not sure where to start, use [GPT-6.2 Astra](/api/docs/models/gpt-6.2-astra), our flagship model for complex reasoning and coding. Choose [GPT-6.2 Sol](/api/docs/models/gpt-6.2-sol) to balance intelligence and cost, or [GPT-6 Luna](/api/docs/models/gpt-6-luna) for cost-sensitive, high-volume workloads.
 
+[Learn more in our model selection guide](/api/docs/guides/model-selection)
+
 All latest OpenAI models support text and image input, text output, multilingual capabilities, and vision. Models are available via the [Responses API](/api/reference/resources/responses/methods/create) and our [Client SDKs](/api/docs/libraries).
 
 ## Featured models

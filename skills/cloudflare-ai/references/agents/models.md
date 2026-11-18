@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/models/og.png?v=dd8074fab97f2bb3
 
 # Models
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Agents SDK includes model providers for [Workers AI](https://developers.cloudflare.com/workers-ai/) and [AI Gateway](https://developers.cloudflare.com/ai-gateway/). Each provider is one `createAI` factory over the Worker's `AI` binding, or an account id and API token. There are two, one per framework:
 
 | Import | Framework | Use it with |

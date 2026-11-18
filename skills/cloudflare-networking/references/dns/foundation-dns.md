@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/foundation-dns/og.png?v=5d87162f2c9
 
 # Foundation DNS
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Foundation DNS is the Cloudflare DNS offering for enterprise customers.
 
 With Foundation DNS, you get access to increased reliability, security, and insights. Features include the following:

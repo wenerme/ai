@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/reference/metadata-filtering/
 
 # Metadata filtering
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/reference/metadata-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In addition to providing an input vector to your query, you can also filter by [vector metadata](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#metadata) associated with every vector. Query results will only include vectors that match the `filter` criteria, meaning that `filter` is applied first, and the `topK` results are taken from the filtered set.
 
 By using metadata filtering to limit the scope of a query, you can filter by specific customer IDs, tenant, product category or any other metadata you associate with your vectors.

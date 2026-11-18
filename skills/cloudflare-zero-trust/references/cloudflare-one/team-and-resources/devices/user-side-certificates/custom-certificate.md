@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Deploy custom certificate
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Only available on Enterprise plans.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/mcp/og.png?v=45c87f178d287
 
 # MCP
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agents can use [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) as clients. Connect an agent to external MCP servers, discover the tools those servers expose, and pass those tools into model calls.
 
 Use MCP when you want an agent to:

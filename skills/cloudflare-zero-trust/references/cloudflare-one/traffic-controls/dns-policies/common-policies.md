@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-pol
 
 # Common policies
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/common-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following Cloudflare Gateway DNS policies are commonly used to secure DNS traffic. Each example includes both dashboard and API instructions that you can adapt for your organization.
 
 For a baseline set of recommended policies, refer to [Secure your Internet traffic and SaaS apps](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/).

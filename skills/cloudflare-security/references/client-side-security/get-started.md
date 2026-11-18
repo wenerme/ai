@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/get-started/og.png
 
 # Get started with client-side security
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 1. Activate client-side resource monitoring
 
 To enable client-side resource monitoring:

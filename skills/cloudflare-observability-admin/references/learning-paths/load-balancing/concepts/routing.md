@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/concepts/
 
 # Routing traffic
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before, we covered how requests move from load balancers to pools and then from pools to individual servers.
 
 What we did not mention, however, was *how* the load balancer and pools make those decisions.

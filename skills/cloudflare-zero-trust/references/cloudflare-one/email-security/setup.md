@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/og.
 
 # Before you begin
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you start the onboarding process, you will have to:
 
 1. Choose a deployment path: Email security provides two deployment modes, [post-delivery](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/) for API and BCC/Journaling and [pre-delivery](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/) for MX/Inline.

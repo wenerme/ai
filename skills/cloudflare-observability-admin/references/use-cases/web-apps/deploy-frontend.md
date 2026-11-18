@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/og.p
 
 # Deploy frontend applications
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deploying a frontend application with React, Vue, Astro, or any other framework requires a platform that handles builds, previews, and global distribution. Cloudflare Workers deploys your frontend to 300+ edge locations with automatic builds triggered on push to GitHub or GitLab.
 
 ## Solutions

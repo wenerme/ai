@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modul
 
 # IBM Cloud HSM
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The example below was tested using [IBM Cloud HSM 7.0 ↗︎](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/about.html#about-ibm-cloud-hsm), a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a750.
 
 ---

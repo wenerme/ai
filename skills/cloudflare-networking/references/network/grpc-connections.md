@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network/grpc-connections/og.png?v=d18ef
 
 # gRPC connections
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/grpc-connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare offers support for gRPC to protect your APIs on any [proxied gRPC endpoints](https://developers.cloudflare.com/dns/proxy-status/). The gRPC protocol helps build efficient APIs with smaller payloads for reduced bandwidth usage, decreased latency, and faster implementations.
 
 Note

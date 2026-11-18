@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/limits/og.pn
 
 # Limits
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following limits apply to Workers Analytics Engine:
 
 - Analytics Engine will accept up to twenty blobs, twenty doubles, and one index per call to `writeDataPoint`.

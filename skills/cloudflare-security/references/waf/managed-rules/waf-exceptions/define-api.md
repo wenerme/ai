@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define
 
 # Add an exception via API
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To add a managed rules exception using the API, create a rule with `skip` action in a [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) of the `http_request_firewall_managed` phase. You can define exceptions at the account level and at the zone level. Exceptions are also called skip rules.
 
 To configure the exception, define the `action_parameters` object according to the exception type. Refer to the following examples:

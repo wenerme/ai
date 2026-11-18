@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/web-api/track/og.png?v=53b6c92abe
 
 # Track
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/web-api/track/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use `zaraz.track()` anywhere inside the `<body>` tag of a page.
 
 `zaraz.track()` allows you to track custom events on your website, that might happen in real time. It is an `async` function, so you can choose to `await` it if you would like to make sure it completed before running other code.

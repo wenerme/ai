@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/og.png
 
 # Connect through Cloudflare Access using kubectl
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can connect to machines over `kubectl` using Cloudflare's Zero Trust platform.
 
 **This walkthrough covers how to:**

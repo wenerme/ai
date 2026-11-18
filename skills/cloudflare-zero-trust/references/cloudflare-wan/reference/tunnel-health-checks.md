@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-
 
 # Tunnel health checks
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare continuously monitors whether each tunnel connecting your network to Cloudflare is reachable and performing well. When a tunnel becomes unhealthy, Cloudflare automatically steers traffic to an alternate path — without requiring manual intervention. This monitoring relies on tunnel health check probes.
 
 A tunnel health check probe consists of an [ICMP (Internet Control Message Protocol) ↗︎](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/) payload encapsulated in the protocol of the tunnel being tested. For example, if the tunnel is an Internet Protocol Security (IPsec) tunnel, the ICMP [packet ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) is encrypted within the Encapsulating Security Payload (ESP) packet of the tunnel.

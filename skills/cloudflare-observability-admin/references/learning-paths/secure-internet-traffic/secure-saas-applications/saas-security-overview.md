@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # SaaS security overview
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/saas-security-overview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The concept of SaaS (software-as-a-service) security is top of mind for many security organizations but is not explicitly defined. When organizations approach Cloudflare for help securing their SaaS apps, it can mean a number of different things with a number of ideal outcomes. Cloudflare distills SaaS security into three key concepts:
 
 1. Better protection for the front door of your SaaS applications with considerations for both managed and unmanaged endpoint access.

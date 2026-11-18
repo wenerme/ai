@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Atlassian Cloud
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/atlassian-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Atlassian Cloud ↗︎](https://support.atlassian.com/security-and-access-policies/docs/configure-saml-single-sign-on-with-an-identity-provider/) as a SAML application in Cloudflare One.
 
 ## Prerequisites

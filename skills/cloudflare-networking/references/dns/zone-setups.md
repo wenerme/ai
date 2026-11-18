@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/og.png?v=d20f77cb46006d
 
 # DNS setups
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When using Cloudflare DNS, you have a few options for your DNS zone setup:
 
 - [Primary setup (Full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) (most common): Use Cloudflare as your primary DNS provider and manage your DNS records on Cloudflare.

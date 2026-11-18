@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/guides/demos-architectures/o
 
 # Demos and architectures
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/demos-architectures/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers AI can be used to build dynamic and performant services. The following demo applications and reference architectures showcase how to use Workers AI optimally within your architecture.
 
 ## Reference architectures

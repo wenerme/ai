@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/che
 
 # Check pool health
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/check-pool-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be *unknown* until the results of the first check are available.
 
 To confirm pool health using the dashboard:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/o
 
 # Dimensions
 
-Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Dimensions are the labels used to describe different types of metrics or data. For example, **Referer** is the data collected from external links referring visits to a page, while **Browser** shows which browsers accessed your website.
 
 Below you can find a list of the different dimensions you can use to filter Web Analytics:

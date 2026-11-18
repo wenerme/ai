@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Common policies
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/common-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following Cloudflare Access policies are commonly used to secure applications.
 
 Refer to the [Access policies page](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for a comprehensive list of available actions, rule types, and selectors. To learn how to create and manage policies, refer to [Manage Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/).

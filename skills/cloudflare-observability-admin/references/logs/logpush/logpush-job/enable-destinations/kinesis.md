@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable Amazon Kinesis
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/kinesis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Logpush supports [Amazon Kinesis ↗︎](https://aws.amazon.com/kinesis/) as a destination for all datasets. Each Kinesis record that Logpush sends will contain a batch of GZIP-compressed data in newline-delimited JSON format (by default), or in the format specified in the [`output_options`](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/) parameter when the job was created.
 
 ## Configure Kinesis using STS Assume Role (recommended)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/metrics-and-analy
 
 # Metrics and analytics
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 There are two graphical sources of information about your Workers traffic at a given time: Workers metrics and zone-based Workers analytics.
 
 Workers metrics can help you diagnose issues and understand your Workers' workloads by showing the performance and usage of your Workers. If your Worker runs on a route on a zone, or on a few zones, Workers metrics will show how much traffic your Worker is handling on a per-zone basis, and how many requests your site is getting.

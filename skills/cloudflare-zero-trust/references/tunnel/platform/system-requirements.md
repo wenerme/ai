@@ -12,13 +12,24 @@ image: https://developers.cloudflare.com/tunnel/platform/system-requirements/og.
 
 # System requirements
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/platform/system-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `cloudflared` is lightweight enough to run on a Raspberry Pi or a data center server. Tunnel throughput is primarily limited by the number of ports configured in system software, not hardware.
 
 ## Baseline recommendations
 
 Run a `cloudflared` [replica](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability) on two dedicated hosts per location with a minimum of 4 GB RAM and 4 CPU cores. Allocate 50,000 ports per host.
+
+## Throughput
+
+On a host that meets the baseline recommendations, one `cloudflared` replica typically carries:
+
+- About 750 Mbps of public Internet traffic to published applications.
+- 350 to 500 Mbps of private traffic from Cloudflare One Client users.
+
+Use these figures for planning. They are not guarantees, because your traffic and network path also affect throughput.
+
+A host with fewer resources delivers less throughput. At this time, a host with more resources does not raise one replica above these values. To add capacity, run more replicas on identical hosts. For sustained throughput above 1 Gbps at a site, use [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/).
+
+To compare throughput across connectors, refer to [Connector selection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/choose-a-connector/#throughput).
 
 ## Port configuration
 
@@ -117,5 +128,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/platform/system-requirements/#page","headline":"System requirements","description":"System requirements for running cloudflared.","url":"https://developers.cloudflare.com/tunnel/platform/system-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/platform/system-requirements/og.png?v=3515c014872b40cd","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/platform/system-requirements/#page","headline":"System requirements","description":"System requirements for running cloudflared.","url":"https://developers.cloudflare.com/tunnel/platform/system-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/platform/system-requirements/og.png?v=3515c014872b40cd","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

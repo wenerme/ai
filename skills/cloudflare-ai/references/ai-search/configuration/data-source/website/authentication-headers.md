@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/web
 
 # Authentication headers
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can only crawl domains that you have onboarded onto the same Cloudflare account. Refer to [Onboard a domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) for more information on adding a domain to your Cloudflare account.
 
 If your website has pages behind authentication or pages that are only visible to logged-in users, you can configure custom HTTP headers to allow the AI Search crawler to access this protected content. You can add up to five custom HTTP headers to the requests AI Search sends when crawling your site.

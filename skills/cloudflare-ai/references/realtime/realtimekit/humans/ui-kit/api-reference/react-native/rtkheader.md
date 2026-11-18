@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkHeader
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkheader/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The meeting header bar that renders logo, title, participant count, clock, and other header elements using the declarative UI config system.
 
 ## Properties

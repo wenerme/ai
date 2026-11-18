@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-acti
 
 # GitHub Actions
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can deploy Workers with [GitHub Actions ↗︎](https://github.com/marketplace/actions/deploy-to-cloudflare-workers-with-wrangler). Here is how you can set up your GitHub Actions workflow.
 
 ## 1. Authentication

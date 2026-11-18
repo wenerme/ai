@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/publi
 
 # Namespace public endpoints
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) can expose its own public endpoint. A single URL then searches across several instances in that namespace and merges the results. Use one when a single search experience covers content that lives in several instances, such as documentation, a blog, and a support portal.
 
 A namespace endpoint serves the same paths and takes the same settings as an instance endpoint, including [custom domains](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/) and [Cloudflare Access](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/cloudflare-access/). Refer to [Public endpoint settings](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/). This page covers what is specific to namespaces.

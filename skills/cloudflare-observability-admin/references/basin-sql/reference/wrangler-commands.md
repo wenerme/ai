@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/reference/wrangler-commands/o
 
 # Wrangler commands
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the `basin sql` command family to query a warehouse:
 
 npmyarnpnpm

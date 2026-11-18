@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/ad
 
 # Add Watermark
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/add-watermark/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 RealtimeKit's watermark feature enables you to include an image as a watermark in your recording. To add watermark, configure the following parameters to video\_config in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/).
 
 | **Parameter** | **Description** |

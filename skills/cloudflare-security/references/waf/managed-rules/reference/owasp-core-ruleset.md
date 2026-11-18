@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-
 
 # Cloudflare OWASP Core Ruleset
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the [OWASP ModSecurity Core Rule Set ↗︎](https://owasp.org/www-project-modsecurity-core-rule-set/) (CRS) version 3.3.0.
 
 The Cloudflare OWASP Core Ruleset is designed to work as a single entity to calculate a [threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score) and execute an action based on that score. When a rule in the ruleset matches a request, the threat score increases according to the rule score. If the final threat score is greater than the configured [score threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold), Cloudflare executes the action configured in the last rule of the ruleset.

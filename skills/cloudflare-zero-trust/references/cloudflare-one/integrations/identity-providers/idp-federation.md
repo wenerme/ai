@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # IdP federation
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 IdP federation allows organizations with multiple Cloudflare accounts to use a single identity provider (IdP) configuration across accounts. Instead of configuring the same IdP (for example, Okta or Entra ID) separately in every account, you configure it once in a source account and share it with the other accounts in your organization.
 
 Each recipient account gets a read-only IdP connection that routes authentication back to the source account through a bridge — a hidden application in the source account that brokers the cross-account login. End users sign in with their existing IdP credentials, and each account's Access policies evaluate the resulting identity just like any other IdP login.

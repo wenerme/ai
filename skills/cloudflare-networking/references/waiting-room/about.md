@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/about/og.png?v=3f3ba7ed090
 
 # About
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Waiting Room queues visitors when your traffic approaches a previously defined threshold that might otherwise bring an application down.
 
 ![Waiting Room process flow showing how a request is managed by Cloudflare and placed in a waiting room before reaching the origin website](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1892,height=1226,format=webp/_astro/waiting-room-process-flow.BQ9hOmEi.png)

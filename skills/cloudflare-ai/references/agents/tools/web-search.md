@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/web-search/og.png?v=d32bfe
 
 # Web search
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/web-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Give your agent a `web_search` tool to find pages on the Internet. The tool calls the [Cloudflare Web Search API](https://developers.cloudflare.com/web-search/) through [AI Gateway](https://developers.cloudflare.com/ai-gateway/), via the Workers AI binding.
 
 The `web_search` tool works with any harness. The Agents SDK provides built-in adapters for [Pi Durable](https://developers.cloudflare.com/agents/harnesses/pi/), the AI SDK, or TanStack AI. If you're using a different harness, or need to use the `web_search` tool without calling a model, use the search sources and renderer in [`agents/websearch` ↗︎](https://github.com/cloudflare/agents/tree/main/packages/agents/src/web/search).

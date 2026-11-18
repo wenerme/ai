@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # One-time PIN login
 
-Last updated Aug 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access can send a one-time PIN (OTP) to approved email addresses as an alternative to integrating an identity provider. You can simultaneously configure OTP login and the identity provider of your choice to allow users to select their own authentication method.
 
 New Zero Trust organizations use the [Cloudflare identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) as their default login method. OTP is no longer added automatically, but you can set it up at any time using the following steps.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ohttp-relay/reference/product-compatibi
 
 # Product compatibility
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ohttp-relay/reference/product-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When [using Cloudflare OHTTP Relay (formerly Privacy Gateway)](https://developers.cloudflare.com/ohttp-relay/get-started/), the majority of Cloudflare products will be compatible with your application.
 
 However, the following products are not compatible:

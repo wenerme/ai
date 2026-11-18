@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/rate-limiting-rules/og.png?v=55b209
 
 # Rate limiting rules
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Rate limiting rules allow you to define rate limits for requests matching an expression, and the action to perform when those rate limits are reached. Use rate limiting rules to prevent abuse of your websites and APIs — for example, to protect a login endpoint from brute-force attacks or to cap how many API calls a single client can make in a given time window.
 
 Were you blocked from accessing a website?

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-cod
 
 # Explore Code Generation Using DeepSeek Coder Models
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗︎](https://jupyter.org/).
 
 You can [download the DeepSeek Coder notebook](https://developers.cloudflare.com/workers-ai/static/documentation/notebooks/deepseek-coder-exploration.ipynb) or view the embedded notebook below.

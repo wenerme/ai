@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/observability/find-expensive-queries
 
 # Find slow and expensive queries
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/find-expensive-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A small number of databases and queries usually cause most of the rows read and written in an account. These rows are what you pay for, and these queries make your databases slow. A query is usually slow when it reads many more rows than it returns. A read query that runs many times also puts load on a database. Many small queries that your Worker sends one after another also make a request slow, because each query is a separate round trip to D1.
 
 To find these databases and queries, use the [`cf sql query`](https://developers.cloudflare.com/analytics/sql-api/get-started/#use-the-cloudflare-cli) command of the Cloudflare CLI, or `wrangler d1 insights`. `cf sql query` sends SQL to the [SQL API](https://developers.cloudflare.com/analytics/sql-api/). You can change the SQL in the examples to get different results. `wrangler d1 insights` returns the top queries from the GraphQL Analytics API. For all its options, refer to [Query `insights`](https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/troubleshoot/resolve-cannot-rem
 
 # Resolve "cannot remove payment method"
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/resolve-cannot-remove-payment-method/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When attempting to remove a payment method, you may see one of the following error messages:
 
 - "You can't remove this payment method while it's linked to active subscriptions. Go to Billing to manage subscriptions."

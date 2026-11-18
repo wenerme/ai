@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Active Directory (SAML)
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 Microsoft recommends migrating your Active Directory Federation Service (AD FS) SSO to Microsoft Entra ID. For more information, refer to [Microsoft Learn ↗︎](https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview).

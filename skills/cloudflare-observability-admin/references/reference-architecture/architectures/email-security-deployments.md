@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/em
 
 # Understanding Email Security Deployments
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Email continues to be a mission critical method for communication between people and organizations. This also makes email an ideal channel for attackers to exploit in their attempts to take over accounts, steal data, and gain access to internal systems. Being able to reduce spam, defeat phishing, and malware attacks is critical for the security of your organization. Over 90% of cybersecurity incidents begin with an email attack.

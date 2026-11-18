@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/bundling/og.png?v=c66f
 
 # Bundling
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/bundling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Wrangler bundles your Worker code using [`esbuild` ↗︎](https://esbuild.github.io/). This means that Wrangler has built-in support for importing modules from [npm ↗︎](https://www.npmjs.com/) defined in your `package.json`. To review the exact code that Wrangler will upload to Cloudflare, run `npx wrangler deploy --dry-run --outdir dist`, which will show your Worker code after Wrangler's bundling.
 
 <details>

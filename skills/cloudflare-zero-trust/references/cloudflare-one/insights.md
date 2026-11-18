@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/og.png?v=f6aab8
 
 # Insights
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One offers observability tools to monitor and troubleshoot your environment:
 
 - [Analytics Overview](https://developers.cloudflare.com/cloudflare-one/insights/analytics-overview/) to monitor overall Cloudflare One usage.

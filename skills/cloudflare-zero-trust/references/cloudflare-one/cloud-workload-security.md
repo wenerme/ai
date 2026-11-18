@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Cloud Workload Security
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloud Workload Security (CWS) helps you prevent risky cloud changes. Apply policy controls to API requests before they reach your cloud provider.
 
 Zero Trust subscription required

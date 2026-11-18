@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/adapti
 
 # Adaptive routing
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Adaptive routing controls features that modify the routing of requests to pools and endpoints in response to dynamic conditions, such as during the interval between active health monitoring requests.
 
 Zero-downtime failover will trigger a single retry only if there is another healthy endpoint in the pool and a [521, 522, 523, 525 or 526 error code](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-521/) is occurring. No other error codes will trigger a zero-downtime failover operation.

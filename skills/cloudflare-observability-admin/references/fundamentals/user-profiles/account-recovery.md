@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/account-reco
 
 # Account recovery
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you do not have access to your 2FA account or backup codes and cannot currently generate a 2FA code, use a verified device that you have logged in from before to request a temporary access code.
 
 1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login). [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/cloudflare-ips/og.png?v=c
 
 # Cloudflare IPs
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/cloudflare-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To use Magic Transit, you need to own a publicly routable IP address block with a minimum size of `/24`. If you do not own a `/24` address block, you can use Magic Transit with a Cloudflare-owned IP address. This option is helpful if you do not meet the `/24` prefix length requirements or want to protect a smaller network.
 
 To protect your network with a Cloudflare IP address, contact your account manager. After you receive your IP address:

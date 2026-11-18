@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkControlBarButton
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-control-bar-button/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Base button class for control bar items. Supports normal and selected states, notification badges, and theming through appearance configuration.
 
 ## Initializer parameters

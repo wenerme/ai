@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-at
 
 # Connect to a MongoDB database with Cloudflare Workers
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a MongoDB database using the native Node.js driver. You will start with a direct connection from a Worker, then use a [Durable Object](https://developers.cloudflare.com/durable-objects/) to persist connections and reduce latency.
 
 Note
@@ -344,7 +342,7 @@ Configure the Durable Object binding and migration in your Wrangler file:
   "name": "mongodb-tutorial",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-10-17",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -371,7 +369,7 @@ Configure the Durable Object binding and migration in your Wrangler file:
 name = "mongodb-tutorial"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-17"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]

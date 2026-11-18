@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-cre
 
 # Upgrade to leaked credentials detection
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/upgrade-to-leaked-credentials-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide describes the general steps to upgrade your [Exposed Credentials Check](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/) configuration to the new [leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/).
 
 Cloudflare recommends that customers update their configuration to use the new leaked credentials detection, which offers the following advantages:

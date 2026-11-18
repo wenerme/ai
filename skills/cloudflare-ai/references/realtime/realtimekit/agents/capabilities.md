@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/agents/capabilitie
 
 # Capability matrix
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/capabilities/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A human participant joins a meeting with the [RealtimeKit SDKs](https://developers.cloudflare.com/realtime/realtimekit/humans/sdk-selection/). An agent joins with the [Agent WebSocket](https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/). The table compares what each can do once it is in the meeting.
 
 | Capability | Human | Agent |

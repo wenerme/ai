@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/examples/video-room/og.png
 
 # Custom video room
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/examples/video-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build a browser room where participants publish camera and microphone tracks and receive each other's media. The example exposes the SFU operations and the application state that connects them.
 
 [Run the quickstart](https://developers.cloudflare.com/realtime/sfu/get-started/) [Open the source](https://github.com/cloudflare/realtime-examples/tree/main/video-room)

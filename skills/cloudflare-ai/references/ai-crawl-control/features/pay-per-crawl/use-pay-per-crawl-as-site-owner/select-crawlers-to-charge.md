@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl
 
 # Select crawlers to charge
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/select-crawlers-to-charge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ```
 graph LR
 A[Enable in<br>account settings] --> B[Set a pay per <br/>crawl price ]

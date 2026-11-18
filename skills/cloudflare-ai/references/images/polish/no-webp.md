@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/polish/no-webp/og.png?v=25acca09
 
 # WebP may be skipped
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/polish/no-webp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Polish avoids converting images to the WebP format when such conversion would increase the file size, or significantly degrade image quality. Polish also optimizes JPEG images, and the WebP format is not always better than a well-optimized JPEG.
 
 To enhance the use of WebP in Polish, enable the [Lossy option](https://developers.cloudflare.com/images/polish/compression/#lossy). When you create new JPEG images, save them with a slightly higher quality than usually necessary. We recommend JPEG quality settings between 85 and 95, but not higher. This gives Polish enough headroom for lossy conversion to WebP and optimized JPEG.

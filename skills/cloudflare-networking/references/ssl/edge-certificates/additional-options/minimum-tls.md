@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Minimum TLS Version
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Minimum TLS Version only allows HTTPS connections from visitors that support the selected TLS protocol version or newer.
 
 For example, if TLS 1.1 is selected, visitors attempting to connect using TLS 1.0 will be rejected. Visitors attempting to connect using TLS 1.1, 1.2, or 1.3 ([if enabled](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/)) will be allowed to connect.

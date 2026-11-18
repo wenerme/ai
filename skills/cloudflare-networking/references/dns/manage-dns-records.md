@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/og.png?v=ffb273d
 
 # DNS records
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DNS records contain information about your domain and are used to make your website or application available to visitors and other web services.
 
 Each DNS record belongs to a different type, and each type serves a different purpose. For background about the different types of DNS records, refer to the [Learning Center ↗︎](https://www.cloudflare.com/learning/dns/dns-records/). To quickly find reference information about a specific type, refer to [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/).

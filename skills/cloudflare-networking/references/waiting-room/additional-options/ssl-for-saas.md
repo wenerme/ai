@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/additional-options/ssl-for
 
 # Combine with Cloudflare for SaaS
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/ssl-for-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your application is using a custom hostname — meaning your SaaS provider is using [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/) — your application can support a waiting room.
 
 ## Applications on Cloudflare

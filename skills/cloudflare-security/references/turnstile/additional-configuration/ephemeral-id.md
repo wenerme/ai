@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/additional-configuration/ephe
 
 # Ephemeral IDs
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Ephemeral IDs are short-lived device identifiers that Turnstile generates for each visitor interaction. Unlike IP-based detection, Ephemeral IDs link visitor behavior to a specific client device without relying on cookies or client-side storage. This makes them effective against attackers who change IP addresses between requests.
 
 ## How Ephemeral IDs work

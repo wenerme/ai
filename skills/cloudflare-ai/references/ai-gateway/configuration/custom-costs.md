@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/custom-costs/o
 
 # Custom costs
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/custom-costs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway allows you to set custom costs at the request level. Custom costs can reflect your negotiated input, output, cache-read, and cache-write rates. They override the default or public model costs.
 
 Note

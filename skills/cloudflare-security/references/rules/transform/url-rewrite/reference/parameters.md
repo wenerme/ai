@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/url-rewrite/reference/p
 
 # URL rewrite parameters
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/url-rewrite/reference/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Static and dynamic URL rewrites have different parameters:
 
 - A static URL rewrite requires a static value for the target URL.

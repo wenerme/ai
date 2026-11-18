@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Troubleshooting
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you encounter issues with edge certificate cipher suites, refer to the following scenarios.
 
 ## Compatibility with Minimum TLS Version

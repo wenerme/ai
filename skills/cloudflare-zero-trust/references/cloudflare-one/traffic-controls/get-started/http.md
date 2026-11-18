@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-sta
 
 # HTTP filtering
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Secure Web Gateway allows you to inspect HTTP traffic and control which websites users can visit. DNS filtering can only block or allow entire domains (for example, all of `dropbox.com`). HTTP filtering goes deeper — it inspects full URLs and request content, so you can block a specific page like `dropbox.com/shared-folder`, scan file uploads for sensitive data, or enforce acceptable use policies based on what users are actually doing on a site.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Secure WAN traffic
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/security-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A key benefit of routing your network traffic through Cloudflare is that you can apply security policies without deploying additional hardware at each site. Once traffic reaches Cloudflare through WAN on-ramps (IPsec tunnels, GRE tunnels, CNI, or Appliance), multiple security services inspect it inline at the nearest Cloudflare data center. This page explains which services apply to WAN traffic, when to use each one, and how they work together.
 
 ## Traffic types
@@ -28,7 +26,7 @@ Cloudflare WAN carries three types of traffic, and different security services a
 
 ### Cloudflare Network Firewall
 
-[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/) provides packet-level filtering at layers 3 and 4. You define allow or block rules based on IP addresses, ports, and protocols.
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/network-firewall-overview/) provides packet-level filtering at layers 3 and 4. You define allow or block rules based on IP addresses, ports, and protocols.
 
 - **Applies to**: inbound, outbound, and east-west traffic
 - **Included with**: Cloudflare WAN by default for [standard features](https://developers.cloudflare.com/cloudflare-network-firewall/plans/)
@@ -37,7 +35,7 @@ Use Network Firewall when you need to control traffic at the packet level — fo
 
 ### Gateway (Secure Web Gateway)
 
-[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) inspects traffic at layers 4 through 7 and supports three policy types:
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) inspects traffic at layers 4 through 7 and supports three policy types:
 
 - **DNS policies**: Filter and log DNS queries from your sites. You configure the DNS resolver for your WAN networks to point to Gateway's resolver IPs.
 - **Network policies**: Filter TCP, UDP, and ICMP traffic based on IP, port, protocol, and identity attributes.
@@ -109,7 +107,7 @@ This means you can layer multiple security services on the same traffic flow wit
 ## Next steps
 
 - [Connect to Cloudflare Gateway with Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-gateway/): Detailed setup guide for Gateway integration with WAN traffic.
-- [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/): Configure packet-level filtering rules.
+- [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/network-firewall-overview/): Configure packet-level filtering rules.
 - [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/): Explore the full architecture of Cloudflare One as a SASE platform.
 - [WAN transformation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/wan-transformation/): Plan your migration from traditional WAN to Cloudflare.
 
@@ -122,5 +120,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/security-services/#page","headline":"Secure WAN traffic","description":"Which security services apply to WAN traffic and when to use them.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/security-services/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/security-services/og.png?v=85263fbf0e44590b","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/security-services/#page","headline":"Secure WAN traffic","description":"Which security services apply to WAN traffic and when to use them.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/security-services/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/security-services/og.png?v=85263fbf0e44590b","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

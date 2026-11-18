@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Early Hints for SaaS
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/) allows the browser to begin loading resources while the origin server is compiling the full response. This improves webpage’s loading speed for the end user. As a SaaS provider, you may prioritize speed for some of your custom hostnames. Using custom metadata, you can [enable Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/#enable-early-hints) per custom hostname.
 
 ---

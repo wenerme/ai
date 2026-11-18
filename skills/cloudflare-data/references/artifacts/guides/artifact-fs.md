@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/guides/artifact-fs/og.png?v=6
 
 # ArtifactFS
 
-Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/artifact-fs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ArtifactFS mounts a Git repository as a local filesystem without waiting for a full clone. It works well when your environment needs a working tree quickly and can tolerate file contents hydrating on demand.
 
 Use ArtifactFS for large repos in sandboxes, containers, and virtual machines. For smaller repos, a regular `git clone` is usually simpler.

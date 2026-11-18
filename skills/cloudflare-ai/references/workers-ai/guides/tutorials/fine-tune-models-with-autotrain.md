@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-m
 
 # Fine Tune Models With AutoTrain from HuggingFace
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Fine tuning an AI model gives you the opportunity to add additional training data to the model. Workers AI allows for [Low-Rank Adaptation, LoRA, adapters](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/) that will allow you to finetune our models.
 
 In this tutorial, we will explore how to create our own LoRAs. We will focus on [LLM Finetuning using AutoTrain ↗︎](https://huggingface.co/docs/autotrain/llm_finetuning).

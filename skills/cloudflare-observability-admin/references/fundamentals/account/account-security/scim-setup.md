@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/s
 
 # SCIM provisioning
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare supports bulk provisioning of users into the Cloudflare dashboard by using the System for Cross-domain Identity Management (SCIM) protocol. This allows you to connect an external identity provider (IdP) to Cloudflare, quickly onboard and manage user permissions. Currently, SCIM provisioning has been integrated with Okta, Microsoft Entra, and Authentik.
 
 Note

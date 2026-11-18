@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/get-started/og.png?v=60a1
 
 # Get started
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 1. Contract required services and agree to supplemental terms
 
 1. Ensure that you have a Cloudflare Enterprise plan. If you do not have an Enterprise plan yet, you must upgrade.

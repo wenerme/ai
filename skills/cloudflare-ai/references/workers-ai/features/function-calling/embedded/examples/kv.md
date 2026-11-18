@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/function-calling/em
 
 # Use KV API
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Interact with persistent storage to retrieve or store information enables for powerful use cases.
 
 In this example we show how embedded function calling can interact with other resources on the Cloudflare Developer Platform with a few lines of code.

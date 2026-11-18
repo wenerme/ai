@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/faq/og.png?v=54d27de1bf2e71b
 
 # Frequently Asked Questions
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## How do Container logs work?
 
 To get logs in the Dashboard, including live tailing of logs, turn on observability in your Wrangler config.

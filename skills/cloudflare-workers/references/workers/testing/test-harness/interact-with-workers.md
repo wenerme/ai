@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/test-harness/interact-w
 
 # Interact with Workers
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/interact-with-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the test harness to send requests through configured routes or target a specific Worker directly. You can also dispatch events like scheduled events.
 
 ## Test route dispatch across Workers

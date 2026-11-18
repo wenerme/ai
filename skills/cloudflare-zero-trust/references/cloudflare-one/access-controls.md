@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/og.png?v
 
 # Access controls
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to secure your self-hosted and SaaS applications with Zero Trust policies.
 
 - [Applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/)
 - [Policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
-- [AI controls](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/)
+- [MCP portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/)
 - [Service credentials](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/)
 - [Access settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/)
 - [Authenticate coding agents](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/)

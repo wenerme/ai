@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/troubleshooting/og.png?v=f00f78b812
 
 # Troubleshooting
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Bing's Site Scan blocked by a managed rule](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/)
 - [Fake bot detection blocking legitimate requests](https://developers.cloudflare.com/waf/troubleshooting/fake-bot-managed-rules/)
 - [Issues sharing to Facebook](https://developers.cloudflare.com/waf/troubleshooting/facebook-sharing/)

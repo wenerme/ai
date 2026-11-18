@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Create your first network policy
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/create-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can control network-level traffic by filtering requests by selectors such as IP addresses and ports. You can also integrate network policies with an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) to apply identity-based filtering.
 
 To create a new network policy:
@@ -71,7 +69,7 @@ To create a new network policy:
 
 The API will respond with a summary of the policy and the result of your request.
 
-For more information, refer to [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/).
+For more information, refer to [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/).
 
 Was this helpful?
 

@@ -16,8 +16,6 @@ r
 
 Text Generation • reflection-ai
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/reflection-ai/beam-1.0-501b-a23b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `reflection-ai/beam-1.0-501b-a23b` Copy

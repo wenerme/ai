@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/reference/supported-languages
 
 # Supported languages
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/reference/supported-languages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Turnstile supports `auto` (default), which uses the visitor's browser language if it is supported. You can also explicitly set the widget's language using the [client-side configuration attribute](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations) to one listed on the table below:
 
 Note

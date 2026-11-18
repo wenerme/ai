@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/workflows/examples/backup-d1/og.png?v=f
 
 Export a D1 database into R2 storage with Workflows
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/backup-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this example, we implement a Workflow that runs on a schedule using the `schedules` field on the Workflow binding. That Workflow initiates a backup for a D1 database using the REST API, and then stores the SQL dump in an [R2](https://developers.cloudflare.com/r2) bucket.
 
 When the Workflow is triggered, it fetches the REST API to initiate an export job for a specific database. Then it fetches the same endpoint to check if the backup job is ready and the SQL dump is available to download.
@@ -128,7 +126,7 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -159,7 +157,7 @@ name = "backup-d1"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]

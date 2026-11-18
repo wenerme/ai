@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/s
 
 # Provision with Authentik
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/authentik/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 **Important Update:** Cloudflare User Groups replace the older Virtual Groups model that mapped IdP groups directly to Cloudflare roles (identified by the pattern `CF-<accountID> - <Role Name>`). Virtual Groups are deprecated. Migrate to SCIM User Groups to keep group-based provisioning support in the Cloudflare dashboard. For migration steps, refer to [SCIM v1 to v2 Migration](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/).

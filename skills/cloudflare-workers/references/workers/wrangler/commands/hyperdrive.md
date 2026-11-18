@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/og
 
 # Hyperdrive
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) database configurations using Wrangler.
 
 To manage mTLS client certificates and CA chain certificates used by Hyperdrive, refer to [Certificate commands](https://developers.cloudflare.com/workers/wrangler/commands/certificates/).

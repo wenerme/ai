@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/upload-images/configure-
 
 # Configure webhooks
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/configure-webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Webhooks are available on all plans. Accounts without a paid zone can configure up to 100 webhook destinations.

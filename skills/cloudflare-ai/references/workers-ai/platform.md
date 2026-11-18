@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/platform/og.png?v=d0b466c653
 
 # Platform
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/)
 - [Data usage](https://developers.cloudflare.com/workers-ai/platform/data-usage/)
 - [Limits](https://developers.cloudflare.com/workers-ai/platform/limits/)

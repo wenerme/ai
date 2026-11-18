@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Virtual networks
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 <details>
 
 <summary>

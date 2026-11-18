@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dmarc-management/og.png?v=afb6ffb9d37c3
 
 # Cloudflare DMARC Management
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dmarc-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Stop brand impersonation.
 
 Available on all plans

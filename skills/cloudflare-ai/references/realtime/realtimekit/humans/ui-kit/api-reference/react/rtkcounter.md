@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkCounter
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkcounter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A number picker with increment and decrement buttons.
 
 ## Properties

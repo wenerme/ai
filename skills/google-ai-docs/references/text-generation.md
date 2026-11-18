@@ -6,7 +6,7 @@
 # Text generation
 
 The Gemini API can generate text output from text, images, video, and audio
-inputs.
+inputs. For guidance on picking the right model for your task, see [Choosing a model](/docs/choosing-a-model).
 
 Here's a basic example:
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Blocked content
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Blocked content policies are only available on Enterprise plans and Enterprise + [PhishGuard](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/) plans.
 
 Email security allows you to configure blocked content policies. A blocked content policy marks all messages containing specific words or phrases with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/).

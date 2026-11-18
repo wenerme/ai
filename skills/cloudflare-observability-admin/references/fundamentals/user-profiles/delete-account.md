@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/delete-accou
 
 # Delete your Cloudflare account
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 These steps do not apply to accounts under contract. Contact your account team for more information.

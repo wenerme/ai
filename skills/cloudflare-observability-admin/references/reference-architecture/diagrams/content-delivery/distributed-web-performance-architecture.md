@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/content
 
 # Designing a distributed web performance architecture
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 This guide describes a comprehensive layer 7 (L7) Application Performance strategy for architects and developers. In today's competitive digital landscape, **application performance is a critical business differentiator**. However, the ultimate objective is finding the performance-security equilibrium point.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-integrations/splunk
 
 # Troubleshooting
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this guide to resolve common issues when analyzing [Cloudflare Logs ↗︎](https://www.cloudflare.com/products/cloudflare-logs/) through the [Cloudflare App for Splunk](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
 
 Support scope

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/re
 
 # Build a Remote MCP server
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide shows how to deploy a remote MCP server on Cloudflare using [Streamable HTTP transport](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/). You have two options:
 
 - **Without authentication** — anyone can connect and use the server (no login required).

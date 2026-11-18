@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/config-examples/snowflake
 
 # Snowflake
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/config-examples/snowflake/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is an example of using [Snowflake ↗︎](https://docs.snowflake.com/en/user-guide/tables-iceberg-configure-catalog-integration-rest) to connect and query data from Basin Catalog (read-only).
 
 ## Prerequisites

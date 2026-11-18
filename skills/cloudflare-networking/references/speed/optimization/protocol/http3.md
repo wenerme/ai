@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/protocol/http3/og.pn
 
 # HTTP/3 (with QUIC)
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 HTTP/3 uses QUIC, which is a secure-by-default transport protocol. HTTP/3 improves page load times in a similar way to HTTP/2. However, the QUIC transport protocol solves TCP's head-of-line blocking problem, meaning that performance over lossy networks can be better.
 
 Note

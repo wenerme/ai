@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/glossary/og.png?v=42e693fb1cc4e9
 
 # Glossary
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following terms are used throughout the Tenant API docs. For more details on how these concepts interact with each other, refer to [Tenant structure](https://developers.cloudflare.com/tenant/structure/).
 
 ## Tenant

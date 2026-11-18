@@ -4421,7 +4421,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
 
 **post** `/agents/sessions/{session_id}`
 
-Updates session tools, metadata, model, reasoning effort, service tier, or the default prompt cache lifetime. Model settings apply to subsequent turns. Omitted fields are unchanged. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
+Updates session tools, vaults, metadata, model, reasoning effort, service tier, or the default prompt cache lifetime. Model settings apply to subsequent turns. Omitted fields are unchanged. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
 
 ### Path Parameters
 
@@ -4796,6 +4796,12 @@ Content type: `application/json`
   - `"auto_review"`
 
     Review eligible actions automatically. Deny manual approval fallbacks.
+
+- `vault_ids: optional array of string or null`
+
+  Replaces the session's referenced vaults. Omit to retain them; null or [] clears them.
+
+  `minItems: 0`, `maxItems: 16384`
 
 ### Returns
 

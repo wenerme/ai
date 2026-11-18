@@ -352,10 +352,11 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 - `collapsed` and `too_large` response attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/199633) in GitLab 18.4.
 - Limit of 100 commits for unauthenticated requests [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268855) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `compare_api_anonymous_commits_limit`. Disabled by default.
 - `503 Service Unavailable` response after a comparison times out [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268448) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `compare_api_diff_timeout_cache`. Disabled by default.
+- Rate limits [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268459) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `compare_api_rate_limit`. Disabled by default.
 
 > [!flag]
-> The limit on commits for unauthenticated requests is controlled by a feature flag.
-> The `503 Service Unavailable` response after a timeout is controlled by a feature flag.
+> The limit on commits for unauthenticated requests, the `503 Service Unavailable` response after a
+> timeout, and the rate limits are controlled by feature flags.
 > For more information, see the history.
 
 Retrieves the differences between two branches, tags, or commits in a specified project.
@@ -377,6 +378,11 @@ If computing the diff times out in Gitaly, the endpoint returns
 [`503 Service Unavailable`](rest/troubleshooting.md#status-codes) with a `Retry-After`
 header. Requests for the same comparison return `503` without recomputing the diff
 until the `Retry-After` period has passed.
+
+This endpoint is [rate limited](../rate_limits/api/projects.md#configure-rate-limits-on-comparing-repository-refs).
+On GitLab.com, each user can make 2,000 requests every minute.
+Unauthenticated requests are limited to 100 requests every minute for each IP address.
+On GitLab Self-Managed and GitLab Dedicated, the limits are off by default.
 
 ```plaintext
 GET /projects/:id/repository/compare

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/brea
 
 # Breakout Rooms
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/breakout-rooms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ### Code Examples
 
 If you prefer to learn by seeing examples, please check out the respective example repositories.

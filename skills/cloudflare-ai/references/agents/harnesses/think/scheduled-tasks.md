@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/
 
 # Scheduled tasks
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `getScheduledTasks()` when code should create recurring Think turns or deterministic scheduled handlers. Think reconciles the declarations on startup, stores a durable one-shot schedule for the next occurrence, and re-arms the next occurrence after each run.
 
 ```js

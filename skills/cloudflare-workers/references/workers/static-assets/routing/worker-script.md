@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/routing/worker-sc
 
 # Worker script
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, if you configure static assets and a Worker script, Cloudflare checks for a matching asset first. It uses the assets belonging to the selected Worker version. For how paths match assets, refer to [HTML handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
 
 If no asset matches, Cloudflare invokes that version's `fetch()` handler. Your handler decides what response to return. A missing asset does not automatically produce a `404` response. Calling `env.ASSETS.fetch(request)` from the handler still uses the same version's assets.
@@ -46,7 +44,7 @@ If you need to always run your Worker script before serving static assets (for e
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -60,7 +58,7 @@ If you need to always run your Worker script before serving static assets (for e
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 main = "./worker/index.ts"
 upload_source_maps = true
 
@@ -136,7 +134,7 @@ You can also configure selective Worker-first routing using an array of route pa
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"main": "./worker/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -151,7 +149,7 @@ You can also configure selective Worker-first routing using an array of route pa
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 main = "./worker/index.ts"
 upload_source_maps = true
 

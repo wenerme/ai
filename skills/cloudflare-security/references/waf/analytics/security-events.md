@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/analytics/security-events/og.png?v=
 
 # Security Events
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/analytics/security-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Security Events allows you to review mitigated requests and helps you tailor your security configurations. Use Security Events to investigate requests that Cloudflare security products acted on or flagged, identify false positives, and fine-tune your security rules.
 
 If you want to analyze all incoming traffic, including requests that Cloudflare did not act on, refer to [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) instead.

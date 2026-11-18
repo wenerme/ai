@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/configuration/data-location/og.png?v
 
 # Data location
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/configuration/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how the location of data stored in D1 is determined, including where the database runs and how you optimize that location based on your needs.
 
 ## Automatic (recommended)

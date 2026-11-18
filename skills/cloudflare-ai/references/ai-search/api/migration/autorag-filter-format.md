@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-
 
 # Metadata filter (legacy)
 
-Last updated Jun 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page documents the filter format used by the legacy AutoRAG REST API. For the new AI Search REST API filter syntax, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
 ## Comparison filter

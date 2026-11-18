@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/chat
 
 # Build a Chat Panel
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/chat-panel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Prerequisite
 
 This guide builds on top of the [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/build-your-own-ui/). It is recommended to read that guide first. Portions of the code will not be repeated here for brevity.

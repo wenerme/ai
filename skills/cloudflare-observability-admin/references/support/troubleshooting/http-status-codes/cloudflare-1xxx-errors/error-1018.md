@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 1018
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1018/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 1018: Could not find host
 
 This error indicates that the host could not be found.

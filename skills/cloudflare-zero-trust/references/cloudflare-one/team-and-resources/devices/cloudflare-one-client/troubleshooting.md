@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Troubleshoot the Cloudflare One Client
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Explore guides to resolve common connectivity and configuration issues with the Cloudflare One Client (formerly WARP).
 
 - [Cloudflare One Client troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/)

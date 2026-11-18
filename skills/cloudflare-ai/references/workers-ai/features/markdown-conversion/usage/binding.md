@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion
 
 # Workers Binding
 
-Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare’s serverless platform allows you to run code at the edge to build full-stack applications with [Workers](https://developers.cloudflare.com/workers/). A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Worker or Pages Function to interact with resources on the Cloudflare Developer Platform.
 
 To use our Markdown Conversion service directly from your Workers, create an AI binding either in the Cloudflare dashboard (refer to [AI bindings](https://developers.cloudflare.com/pages/functions/bindings/#workers-ai) for instructions), or you can update your [Wrangler file](https://developers.cloudflare.com/workers/wrangler/configuration/). Add the following to your Wrangler file:

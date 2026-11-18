@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/getting-started/quick-start/og.p
 
 # Build your first Durable Agent
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/getting-started/quick-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Durable Agent is a [Durable Object](https://developers.cloudflare.com/durable-objects/) with the Agents SDK [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) installed. The Lifecycle starts the [capabilities](https://developers.cloudflare.com/agents/runtime/capabilities/) you add to the object. The most important one is the harness: the agent loop that calls the model, runs tools, and decides when the agent is done.
 
 In this guide, you build an agent that:
@@ -81,7 +79,7 @@ Add the `AI` binding and a SQLite-backed Durable Object to your Wrangler configu
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-03",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -100,7 +98,7 @@ name = "my-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-03"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

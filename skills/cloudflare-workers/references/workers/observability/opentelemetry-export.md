@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/opentelemetry-exp
 
 # OpenTelemetry export
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/opentelemetry-export/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers can export OpenTelemetry-compliant logs and traces to external destinations. First, [create a destination and configure your provider](https://developers.cloudflare.com/observability/export/opentelemetry/).
 
 ## Supported telemetry

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/api/og.png?v=8c0c314aa68c
 
 # API
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send and route email with Cloudflare Email Service. Use the Workers binding from Workers, the REST API from any platform, or SMTP from any mail client.
 
 - [Send emails](https://developers.cloudflare.com/email-service/api/send-emails/)

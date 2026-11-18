@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres
 
 Connect Hyperdrive to ClickHouse Managed Postgres.
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/clickhouse-managed-postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example connects Hyperdrive to a [ClickHouse Managed Postgres ↗︎](https://clickhouse.com/cloud/postgres) database in ClickHouse Cloud. ClickHouse Managed Postgres is a managed PostgreSQL service with local NVMe storage and built-in ClickHouse integration for analytics.
 
 Note
@@ -135,7 +133,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-28",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -148,7 +146,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-28"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

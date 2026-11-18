@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens
 
 # Authenticate against R2 API using auth tokens
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following example shows how to authenticate against R2 using the S3 API and an API token.
 
 Note

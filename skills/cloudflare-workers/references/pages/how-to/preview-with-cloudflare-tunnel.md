@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tu
 
 # Preview Local Projects with Cloudflare Tunnel
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) runs a lightweight daemon (`cloudflared`) in your infrastructure that establishes outbound connections between your origin web server and the Cloudflare global network. You can use a [Quick Tunnel](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/) to provide temporary access to services running on your local machine.
 
 Cloudflare Pages provides unique [deploy preview URLs](https://developers.cloudflare.com/pages/configuration/preview-deployments/) for new branches and commits. To share a locally running application during development, install `cloudflared` and start a Quick Tunnel. You do not need a Cloudflare account.

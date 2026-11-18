@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/og.png
 
 # Set up a primary zone (Full setup)
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare DNS offers a few different [setup options](https://developers.cloudflare.com/dns/zone-setups/). A primary setup (also known as full) is the most common and the only one available for Free or Pro plans. For details, refer to [About](https://developers.cloudflare.com/dns/zone-setups/full-setup/). For more introductory context, refer to [Concepts](https://developers.cloudflare.com/dns/concepts/).
 
 ## Before you begin

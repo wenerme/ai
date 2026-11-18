@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/api/namespace/og.png?v=
 
 # Durable Object Namespace
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/namespace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Description
 
 A Durable Object namespace is a set of Durable Objects that are backed by the same Durable Object class. There is only one Durable Object namespace per class. A Durable Object namespace can contain any number of Durable Objects.

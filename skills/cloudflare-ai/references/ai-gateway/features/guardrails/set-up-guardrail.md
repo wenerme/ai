@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-g
 
 # Set up Guardrails
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-guardrail/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Add Guardrails to any gateway to start evaluating and potentially modifying responses.
 
 1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.

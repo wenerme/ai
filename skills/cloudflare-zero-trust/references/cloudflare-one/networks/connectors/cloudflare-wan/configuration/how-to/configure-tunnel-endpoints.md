@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Configure tunnel endpoints
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
 
 Cloudflare handles failures on its network automatically by advertising your endpoint IP from multiple nodes across many globally distributed data centers. To handle failures on your network, configure two tunnels from separate routers.

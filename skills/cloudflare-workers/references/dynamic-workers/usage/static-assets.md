@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/static-assets/og.
 
 # Static assets
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Dynamic Workers can serve static assets like HTML pages, JavaScript bundles, images, and other files alongside your Worker code. This is useful when you need a Dynamic Worker to serve a full-stack application.
 
 Static assets for Dynamic Workers work differently from [static assets in regular Workers](https://developers.cloudflare.com/workers/static-assets/). Instead of uploading assets at deploy time, you provide them at runtime through the Worker Loader `get()` callback, sourcing them from R2, KV, or another storage backend.
@@ -220,7 +218,7 @@ export default {
 				modules: {
 					"index.js": { js: serverCode },
 				},
-				compatibilityDate: "2026-09-28",
+				compatibilityDate: "2026-11-18",
 				env: {
 					ASSETS: ctx.exports.AssetBinding({
 						props: { projectId },

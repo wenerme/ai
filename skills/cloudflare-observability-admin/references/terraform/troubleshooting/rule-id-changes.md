@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/troubleshooting/rule-id-chang
 
 # Rule IDs change when I modify a ruleset
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources, the Cloudflare provider may delete a rule and create a new one when you modify a ruleset in your Terraform configuration. This happens because the API cannot match rules in your new Terraform configuration with existing rules in your Cloudflare configuration. Modifying a ruleset in your Terraform configuration and applying the changes will create new rules with different rule IDs in your Cloudflare account or zone.
 
 This behavior may have an impact on any automation or monitoring systems you may have configured that rely on having immutable rule IDs between rule modifications.

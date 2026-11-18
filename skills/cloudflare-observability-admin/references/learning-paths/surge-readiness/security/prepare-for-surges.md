@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/security
 
 # Prepare for surges and mitigate DDoS attacks
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/prepare-for-surges/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Reduce server strain
 
 Utilize Cloudflare's [caching](https://developers.cloudflare.com/cache/) to enhance load times and reduce server strain. Also, features like the [Waiting Room](https://developers.cloudflare.com/waiting-room) and [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) can be used to effectively manage excess demand and ensure a stable user experience.

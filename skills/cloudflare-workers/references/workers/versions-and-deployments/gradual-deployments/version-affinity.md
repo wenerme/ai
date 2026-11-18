@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/gradua
 
 # Version affinity
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 During a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/), each request has a random chance of routing to either version based on the specified percentages. This means the same user can be served content from a different version every time a request is made, which can cause **version skew** issues.
 
 Version affinity sends requests with the same key to the same version. This applies while the deployment configuration stays the same. Changing the deployment can move a browser's requests to another version.
@@ -118,7 +116,7 @@ Configure these page routes to run your Worker first. Otherwise, matching static
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"directory": "./dist",
 		"binding": "ASSETS",
@@ -131,7 +129,7 @@ Configure these page routes to run your Worker first. Otherwise, matching static
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist"

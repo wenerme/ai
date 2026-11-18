@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/get-started/key-concepts/og.png?
 
 # Key concepts
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/get-started/key-concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Here is a summary of the key terms that we use throughout our guides.
 
 | Term | What this means |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/best-practices/import-export-data/og
 
 # Import and export data
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/import-export-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 allows you to import existing SQLite tables and their data directly, enabling you to migrate existing data into D1 quickly and easily. This can be useful when migrating applications to use Workers and D1, or when you want to prototype a schema locally before importing it to your D1 database(s).
 
 D1 also allows you to export a database. This can be useful for [local development](https://developers.cloudflare.com/d1/best-practices/local-development/) or testing.

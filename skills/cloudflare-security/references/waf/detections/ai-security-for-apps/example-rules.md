@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/exa
 
 # Example mitigation rules
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/example-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Return a custom error for violent or hateful content
 
 A customer support chatbot should not engage with prompts about violence or hate speech. This [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks the request and returns a JSON response that your application can parse and display to the user.

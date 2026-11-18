@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-anything/
 
 # Static HTML
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare supports deploying any static HTML website to Cloudflare Pages. If you manage your website without using a framework or static site generator, or if your framework is not listed in [Framework guides](https://developers.cloudflare.com/pages/framework-guides/), you can still deploy it using this guide.
 
 ## Before you continue

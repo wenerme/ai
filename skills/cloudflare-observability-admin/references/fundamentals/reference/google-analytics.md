@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/google-analytics
 
 # Cloudflare and Google Analytics
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/google-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Using Cloudflare does not affect Google Analytics (GA) tracking if it is added to the website [in one of ways recommended by Google ↗︎](https://support.google.com/analytics/answer/9304153#add-tag).
 
 ## Standard GA setup

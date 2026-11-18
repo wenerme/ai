@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/event-subscriptions/events-schem
 
 # Events & schemas
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides a comprehensive reference of available event sources and their corresponding events with schemas for [event subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/). All events include common metadata fields and follow a consistent structure.
 
 ## Sources

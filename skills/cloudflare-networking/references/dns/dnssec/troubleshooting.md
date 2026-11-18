@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/dnssec/troubleshooting/og.png?v=21a
 
 # Troubleshooting
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn more about how to troubleshoot issues with DNSSEC.
 
 ## Test DNSSEC with Dig

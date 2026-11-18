@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/pull-consumers/og.
 
 # Pull consumers
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/pull-consumers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A pull-based consumer allows you to pull from a queue over HTTP from any environment and/or programming language outside of Cloudflare Workers. A pull-based consumer can be useful when your message consumption rate is limited by upstream infrastructure or long-running tasks.
 
 ## How to choose between push or pull consumer

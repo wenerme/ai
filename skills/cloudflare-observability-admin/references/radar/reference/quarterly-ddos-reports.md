@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/
 
 # Quarterly DDoS threat reports
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Quarterly DDoS threat reports provide a comprehensive overview of DDoS attack insights and trends over a three-month period.
 
 Thanks to our vast network, Cloudflare provides insights on the evolving threat landscape, including variations in attack sizes, techniques, top source countries, top targeted countries and targeted industries. Each report presents a global outlook, dives into significant attacks and campaigns, and explores shifts in DDoS tactics, offering a blend of data analysis and insights to better understand the cyber threat environment.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable HTTP destination
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Logpush now supports the ability to send logs to configurable HTTP endpoints.
 
 Note that when using Logpush to HTTP endpoints, Cloudflare customers are expected to perform their own authentication of the pushed logs. For example, customers may specify a secret token in the URL or an HTTP header of the Logpush destination.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/graphql-protection/
 
 # GraphQL malicious query protection
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/graphql-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 GraphQL is a query language for APIs. In addition to protecting RESTful APIs, Cloudflare can also protect GraphQL APIs.
 
 GraphQL malicious query protection scans your GraphQL traffic for queries that could overload your origin and result in a denial of service. Query size is the number of terminal fields, or leaves, in a query. You can build rules that limit the query depth and size of incoming GraphQL queries in order to block suspiciously large or complex queries.

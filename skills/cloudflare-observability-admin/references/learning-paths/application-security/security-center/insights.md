@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/sec
 
 # Security Insights
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/security-center/insights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Security Insights provides you with a list of insights, covering different areas of your Cloudflare environment, such as: Cloudflare account settings, DNS record configurations, SSL/TLS certificates configurations, Cloudflare Access configurations and Cloudflare WAF configurations.
 
 ## Dashboard analytics

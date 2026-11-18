@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-setup-screen
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-setup-screen/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A screen shown before joining the meeting, where you can edit your display name, and media settings.
 
 ## Properties

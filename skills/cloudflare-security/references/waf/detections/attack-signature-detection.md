@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/attack-signature-detecti
 
 # Attack Signature Detection
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/attack-signature-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Attack Signature Detection evaluates requests against Cloudflare attack signatures. It records match metadata without applying an action by itself.
 
 Note

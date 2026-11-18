@@ -14440,7 +14440,7 @@ Deletes an upload.
 
 ## `upsertFlatUserCap`
 
-Update the flat per-user budget cap for a subscription.
+Update the flat per-user budget caps for a subscription. Arguments that are not passed are left unchanged.
 
 **Input type:** `UpsertFlatUserCapInput`
 
@@ -14448,8 +14448,10 @@ Update the flat per-user budget cap for a subscription.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `flatUserCap` | [`Float!`](scalars.md#float) | Default per-user budget cap applied to all users. |
-| `flatUserCapEnabled` | [`Boolean!`](scalars.md#boolean) | Whether the flat per-user budget cap is enabled. |
+| `dailyCap` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Default per-user budget cap per UTC calendar day, applied to all users. |
+| `dailyCapEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates whether the default per-user daily budget cap is enabled. |
+| `flatUserCap` | [`Float`](scalars.md#float) | Default per-user budget cap applied to all users. |
+| `flatUserCapEnabled` | [`Boolean`](scalars.md#boolean) | Whether the flat per-user budget cap is enabled. |
 | `namespacePath` | [`String`](scalars.md#string) | Path of the top-level group namespace. Omit for self-managed instance scope. |
 | `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Global ID of the organization. |
 
@@ -14457,6 +14459,8 @@ Update the flat per-user budget cap for a subscription.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `dailyCap` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Updated default per-user daily budget cap. |
+| `dailyCapEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates whether the default per-user daily budget cap is enabled. |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `flatUserCap` | [`Float`](scalars.md#float) | Updated flat per-user budget cap. |
 | `flatUserCapEnabled` | [`Boolean`](scalars.md#boolean) | Whether the flat per-user budget cap is enabled. |

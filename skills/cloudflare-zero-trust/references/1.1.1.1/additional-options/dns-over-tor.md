@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-tor
 
 # DNS over Tor
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-tor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 The hidden resolver (Cloudflare's DNS resolver accessible through Tor) is still an experimental service and should not be used in production or for other critical uses.

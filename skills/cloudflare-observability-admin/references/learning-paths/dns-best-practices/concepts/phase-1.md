@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/dns-best-practices/conce
 
 # Phase 1: Planning & Inventory
 
-Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/phase-1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Detailed planning is the cornerstone of a successful DNS migration.
 
 ## 1. Understand your current BIND setup

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries
 
 # Replace insecure JS libraries
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This feature, when turned on, automatically rewrites URLs to external JavaScript libraries to point to Cloudflare-hosted libraries instead. This change improves security and performance, and reduces the risk of malicious code being injected.
 
 This rewrite operation currently supports the `polyfill` JavaScript library hosted in `polyfill.io`.

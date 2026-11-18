@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agent-lee/take-home-code/og.png?v=dffe0
 
 # Export generated code
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-lee/take-home-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Take the source code Agent Lee generates with you by exporting it to a temporary, Git-cloneable repository.
 
 Beta

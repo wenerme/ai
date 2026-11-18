@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/ipse
 
 # IPsec
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/ipsec/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide helps you diagnose IPsec tunnel issues (also called connectors in the Cloudflare dashboard), from initial establishment through ongoing operation. Use the following sections to identify your symptom and find the appropriate solution.
 
 ## Tunnel never establishes (IKE negotiation fails)

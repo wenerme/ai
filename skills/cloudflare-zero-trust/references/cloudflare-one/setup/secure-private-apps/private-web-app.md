@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/setup/secure-private-app
 
 # Private web application
 
-Last updated Mar 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/private-web-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect a self-hosted web application to Cloudflare so authorized users can access it from a browser without a VPN. This is useful when you need to give employees or contractors secure access to applications like company intranets, internal wikis, or admin panels.
 
 To explore other access scenarios, refer to [Secure private apps](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/).

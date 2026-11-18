@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/platform/release-notes/og.png?v=08d1
 
 # Release notes
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/platform/release-notes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/d1/platform/release-notes/index.xml)
 
 ## 2025-11-05

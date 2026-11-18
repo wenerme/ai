@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/getting-started/og.png?v=96bbb02
 
 # Getting started
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/getting-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An agent on Cloudflare is a Durable Object with the Agents SDK [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) installed. The Lifecycle starts the [capabilities](https://developers.cloudflare.com/agents/runtime/capabilities/) you add to it, such as [`WebSockets`](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/), [`State`](https://developers.cloudflare.com/agents/runtime/capabilities/state/), and [`Scheduler`](https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/). A harness is the capability that runs the agent loop. Pick the path that matches where you are starting from.
 
 ## Choose a path

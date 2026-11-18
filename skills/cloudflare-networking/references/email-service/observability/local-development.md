@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/observability/local-devel
 
 # Local development
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Test Email Service sending and routing Workers locally with Wrangler before you deploy.
 
 - [Test email sending locally](https://developers.cloudflare.com/email-service/observability/local-development/sending/)

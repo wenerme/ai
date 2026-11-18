@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-
 
 Create a redirect rule to redirect all website visitors from the United Kingdom to a different domain, maintaining the current functionality in the same paths.
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-country/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this example, all website visitors from the United Kingdom will be redirected to a different domain, but maintaining current functionality in the same paths.
 
 1. Create a Bulk Redirect List named `uk_redirect_list` with the following URL redirect:

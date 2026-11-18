@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/detectio
 
 # Account takeover detections
 
-Last updated Aug 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Using the detection IDs below, you can detect and mitigate account takeover attacks. You can monitor the number of login requests for a given software and network combination, as well as the percentage of login errors. When it reaches a suspicious level, you can prevent these attacks by using [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), and [Workers](https://developers.cloudflare.com/workers/).
 
 | Detection ID | Description |

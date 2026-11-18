@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/concepts/og.png?v=5c9dbce3f6
 
 # Concepts
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Extraction models](https://developers.cloudflare.com/workers-ai/concepts/extraction-models/)
 
 Was this helpful?

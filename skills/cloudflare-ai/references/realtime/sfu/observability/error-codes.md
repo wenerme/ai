@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/observability/error-codes/
 
 # Error codes
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this reference when the [Connection API](https://developers.cloudflare.com/realtime/sfu/api/) returns an `errorCode`. Read its `errorDescription` for the specific failure. The operation, response placement, and connection state help determine the next action.
 
 For a symptom without an API error, such as connected video that does not play, start with [troubleshooting](https://developers.cloudflare.com/realtime/sfu/observability/#check-the-failing-layer).

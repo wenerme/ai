@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/web-api/set/og.png?v=624b021521d1
 
 # Set
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/web-api/set/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use `zaraz.set()` anywhere inside the `<body>` tag of a page:
 
 ```js

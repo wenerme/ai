@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-integrations/splunk
 
 # Splunk
 
-Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial explains how to analyze [Cloudflare Logs ↗︎](https://www.cloudflare.com/products/cloudflare-logs/) using the [Cloudflare App for Splunk ↗︎](https://splunkbase.splunk.com/app/4501/).
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/examples/aws/aws4fetch/og.png?v=5ee0
 
 # aws4fetch
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws4fetch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
 

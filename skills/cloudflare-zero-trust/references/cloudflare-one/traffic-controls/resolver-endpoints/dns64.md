@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolve
 
 # DNS64
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns64/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Gateway supports DNS64 for IPv6-only networks. DNS64 synthesizes `AAAA` records from `A` records when no `AAAA` records are available.
 
 Gateway uses the well-known prefix `64:ff9b::/96` for DNS64. Your network must provide network address translation from IPv6 to IPv4 (NAT64) for this prefix.

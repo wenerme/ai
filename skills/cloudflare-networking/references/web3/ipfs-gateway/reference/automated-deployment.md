@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-d
 
 # Automated deployments
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Static sites are easy to deploy automatically. The code of the site is usually kept in a Git repository and deployed by pushing the latest commit to a repository that's connected to a Continuous Integration service like [Travis CI ↗︎](https://travis-ci.org/), or by pushing to a repository directly on the server and activating a post-receive hook. Either way, the production version of the site is built and then copied into the serving path of an Apache or NGINX instance.
 
 IPFS usually fits into these systems: instead of copying the production version of a website into the serving path of an HTTP server, you would upload the same files to an IPFS node and update your DNS records with the new hash. There are several tools that help with different parts of this:

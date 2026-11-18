@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-proxy/reference/proxy-status/og
 
 # Proxy status reference
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/proxy-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `proxyStatus` dimension provides proxy-level error classification. This field is available in both [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) and [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/) metrics. The value is an empty string when no proxy-level error occurred.
 
 ---

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens
 
 # Restrict tokens
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 API tokens can be restricted at runtime in two ways:
 
 - [Client IP address range filtering](#client-ip-address-range-filtering)

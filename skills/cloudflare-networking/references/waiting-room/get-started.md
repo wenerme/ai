@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/get-started/og.png?v=487e1
 
 # Get started
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ---
 
 ## Before you begin

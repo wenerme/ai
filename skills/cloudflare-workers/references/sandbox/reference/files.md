@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/reference/files/og.png?v=41b41c
 
 # Files API
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `Files` reads and changes files and directories in a running container. It does not start or stop the container.
 
 Each method runs the `sandbox-shim` helper binary in the container through [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec). Every method except `readFile()` waits for the helper to finish; `readFile()` returns once the file is open and streams its contents. Paths follow Linux rules, and `Files` does not restrict which paths a caller can open.

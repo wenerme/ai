@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/dead-letter-queues
 
 # Dead Letter Queues
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/dead-letter-queues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Dead Letter Queue (DLQ) is a common concept in a messaging system, and represents where messages are sent when a delivery failure occurs with a consumer after `max_retries` is reached. A Dead Letter Queue is like any other queue, and can be produced to and consumed from independently.
 
 With Cloudflare Queues, a Dead Letter Queue is defined within your [consumer configuration](https://developers.cloudflare.com/queues/configuration/configure-queues/). Messages are delivered to the DLQ when they reach the configured retry limit for the consumer. Without a DLQ configured, messages that reach the retry limit are deleted permanently.

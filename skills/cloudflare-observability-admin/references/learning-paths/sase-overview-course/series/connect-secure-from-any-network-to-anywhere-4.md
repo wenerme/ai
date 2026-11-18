@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/sase-overview-course/ser
 
 # Connect and secure from any network to anywhere
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video you will learn all the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
 
 <details>

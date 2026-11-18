@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/subrequests/og
 
 # Subrequests
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/subrequests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a Cloudflare Worker intercepts a visitor request, it can dispatch additional outbound fetch calls called subrequests. By default, each subrequest generates its own log entry in Logpush, resulting in multiple log lines for a single visitor-facing request.
 
 Each request stage can be identified by its log fields. You can also opt in to subrequest merging, which aggregates subrequest log entries into their parent request so that your Logpush job delivers one log line per visitor request.

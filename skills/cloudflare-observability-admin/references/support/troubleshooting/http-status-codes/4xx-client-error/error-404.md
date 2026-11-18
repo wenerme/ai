@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 404
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-404/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 404 Not Found
 
 The `404 Not Found` status code indicates that the origin server was unable to locate the requested resource. Typically, this means the host server could not find the resource. For a more permanent version of this error, the 410 Gone status code should be used.

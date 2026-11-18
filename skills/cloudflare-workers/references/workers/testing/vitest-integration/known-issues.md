@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/know
 
 # Known issues
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Workers Vitest plugin has the following known issues:
 
 ### Coverage

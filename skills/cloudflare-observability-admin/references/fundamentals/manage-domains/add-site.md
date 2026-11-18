@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/add-site/og
 
 # Onboard a domain
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After you onboard your domain, Cloudflare will act as the [reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy) and [DNS provider](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-dns-provider) for your site.
 
 This guide applies to existing domains that were purchased from another provider, and will use a [full DNS setup](https://developers.cloudflare.com/dns/zone-setups/full-setup), which is the most common configuration. To set this up, you will have to complete a few steps at Cloudflare, but also update some settings at your domain registrar<sup>[1](#user-content-fn-1)</sup>, and at your previous DNS provider (if you were using one).

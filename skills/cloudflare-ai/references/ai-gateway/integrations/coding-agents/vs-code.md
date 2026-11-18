@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/v
 
 # Visual Studio Code
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/vs-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Visual Studio Code ↗︎](https://code.visualstudio.com/) supports custom endpoint models for chat. Point a custom endpoint at an AI Gateway [custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/) protected by Cloudflare Access. Visual Studio Code authenticates with an Access service token stored in its secret storage.
 
 This integration uses static credentials. Visual Studio Code cannot use `cloudflared` to generate short-lived Access tokens.

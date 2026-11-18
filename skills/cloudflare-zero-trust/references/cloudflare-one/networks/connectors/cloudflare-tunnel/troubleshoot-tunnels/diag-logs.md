@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Tunnel diagnostic logs
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Tunnel generates a set of diagnostic logs that can be used to troubleshoot issues with `cloudflared`. A diagnostic report collects data from a single instance of `cloudflared` running on the local machine.
 
 ## Get diagnostic logs

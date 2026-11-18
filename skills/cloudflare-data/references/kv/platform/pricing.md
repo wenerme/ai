@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/platform/pricing/og.png?v=8264485810
 
 # Pricing
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers KV is included in both the Free and Paid [Workers plans](https://developers.cloudflare.com/workers/platform/pricing/).
 
 |  | Free plan<sup>1</sup> | Paid plan |

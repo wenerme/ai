@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/troubleshooting/bot-management-ski
 
 # Bot Management skips
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/troubleshooting/bot-management-skips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 There are instances in which Bot Management does not run and certain fields, such as the [JA3/JA4 field](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/), are not populated because it has been determined that running Bot Management would not be necessary.
 
 Refer to [bot scores](https://developers.cloudflare.com/bots/concepts/bot-score/#not-computed) for more information about why a request is not scored.

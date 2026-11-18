@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedba
 
 # Add Human Feedback using API
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will walk you through the steps of adding human feedback to an AI Gateway request using the Cloudflare API. You will learn how to retrieve the relevant request logs, and submit feedback using the API.
 
 If you prefer to add human feedback via the dashboard, refer to [Add Human Feedback](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback/).

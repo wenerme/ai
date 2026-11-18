@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/transformations/sou
 
 # Define source origins
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/sources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When optimizing remote images, you can specify which origins can be used as the source for transformed images. By default, Cloudflare accepts only source images from the zone where your transformations are served.
 
 On this page, you will learn how to define and manage the origins for the source images that you want to optimize.

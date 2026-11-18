@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Smartsheet
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/smartsheet-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Smartsheet ↗︎](https://help.smartsheet.com/articles/2483123-domain-level-saml-configuration) as a SAML application in Cloudflare One.
 
 ## Prerequisites

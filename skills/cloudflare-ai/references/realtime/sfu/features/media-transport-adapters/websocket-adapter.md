@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/features/media-transport-a
 
 # WebSocket adapter
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The WebSocket adapter connects an SFU media track to your service without requiring it to implement WebRTC. Use it to send or receive audio, or receive video as JPEG frames.
 
 The WebSocket adapter is generally available. Each adapter connects one SFU track to your service in one direction.

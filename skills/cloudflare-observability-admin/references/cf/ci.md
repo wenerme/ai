@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15
 
 # Use cf in CI
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/ci/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Release candidate
 
 `cf` 1.0 is in release candidate. The configuration format, Build Output, and the commands that develop and deploy projects are stable. A small number of less commonly used API commands can still change before 1.0.
@@ -68,7 +66,7 @@ This workflow builds the project once for every pull request and every push to `
          - uses: actions/checkout@v6
          - uses: actions/setup-node@v6
            with:
-             node-version: 22
+             node-version: 24
              cache: npm
          - run: npm ci
          - run: npx cf build
@@ -249,5 +247,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/ci/#page","headline":"Use cf in CI","description":"Run the Cloudflare CLI in continuous integration with an API token, predictable non-interactive behavior, and a build that you deploy once.","url":"https://developers.cloudflare.com/cf/ci/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/ci/#page","headline":"Use cf in CI","description":"Run the Cloudflare CLI in continuous integration with an API token, predictable non-interactive behavior, and a build that you deploy once.","url":"https://developers.cloudflare.com/cf/ci/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

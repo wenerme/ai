@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Cloudflare error diagnostic headers
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-error-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When Cloudflare generates an error page (as opposed to forwarding an error from your origin server), the response includes two diagnostic headers:
 
 - **`cf-error-type`**: Identifies the error category. Common values:

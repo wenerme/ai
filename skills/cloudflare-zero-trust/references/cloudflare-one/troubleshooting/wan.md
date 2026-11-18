@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/og.p
 
 # Cloudflare WAN
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Explore resources to help you resolve issues with Cloudflare WAN (formerly Magic WAN) connectivity, routing, and tunnel health.
 
 - [IPsec](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/ipsec/)

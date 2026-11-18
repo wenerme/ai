@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/web
 
 # Content selectors
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Content selectors let you control which parts of a crawled page are indexed. Each entry pairs a URL glob pattern with a CSS selector. When a page URL matches a glob pattern, only the elements matching the corresponding CSS selector, and their descendants, are extracted and converted to Markdown for indexing.
 
 The list is ordered and the **first matching path wins**. If a page URL matches multiple glob patterns, only the selector from the first match is applied. Order your entries from most specific to least specific.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/og.pn
 
 # Rules
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DEX rules allow you to create and manage testing policies for targeted user groups within your [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization). After creating a rule, you can use it to define the scope of a [test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to specific groups such as departments (like finance or sales), devices, and/or users. You can apply and reuse rules on your desired tests.
 
 Use DEX rules to scope a test to a specific group within your fleet for more precise problem detection and resolution.
@@ -36,14 +34,14 @@ Review the available selectors and their scope in the following list.
 
 | Selector | Description |
 | --- | --- |
-| **User email** | For specifying [user emails](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-email). |
-| **User group emails** | For specifying [group emails](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-email). |
-| **User group IDs** | For specifying [group IDs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-ids). |
-| **User group names** | For specifying a [group name](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-names). |
+| **User email** | For specifying [user emails](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#user-email). |
+| **User group emails** | For specifying [group emails](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#user-group-email). |
+| **User group IDs** | For specifying [group IDs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#user-group-ids). |
+| **User group names** | For specifying a [group name](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#user-group-names). |
 | **Operating systems** | For specifying operating systems. |
 | **Operating system version** | For specifying an operating system version (use Operator `in`) or versions (use Operator `is`). |
 | **Managed network** | For specifying users accessing the network from the office (managed network) compared to those accessing remotely. |
-| **SAML attributes** | For specifying a value from the [SAML Attribute Assertion](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#saml-attributes). |
+| **SAML attributes** | For specifying a value from the [SAML Attribute Assertion](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#saml-attributes). |
 | **Colos** | For specifying a Cloudflare data center (colocation) that users are connected to. |
 
 ## Add a rule to a test
@@ -97,5 +95,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/#page","headline":"Rules","description":"Reference information for Rules in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/og.png?v=f177e975223ef593","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/#page","headline":"Rules","description":"Reference information for Rules in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/og.png?v=f177e975223ef593","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

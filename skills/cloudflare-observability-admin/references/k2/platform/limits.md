@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/k2/platform/limits/og.png?v=ac2d822337a
 
 # Limits
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Need a higher limit?
 
 To request an adjustment to a limit, complete the [Limit Increase Request Form ↗︎](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.

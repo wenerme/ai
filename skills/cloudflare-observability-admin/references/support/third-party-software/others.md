@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/third-party-software/others/og.
 
 # Others
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/others/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find links to the relevant sections for Others support-focused material.
 
 - [Configure Cloudflare and Heroku over HTTPS](https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/advanced-certific
 
 # Advanced certificates
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use advanced certificates when you want something more customizable than [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) but still want the convenience of SSL certificate issuance and renewal.
 
 

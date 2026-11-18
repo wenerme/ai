@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-filters/og.png?v=4bd390
 
 # Cloudflare Filters API
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Cloudflare Filters** is an API-only component of firewall rules for designing complex criteria that rely on boolean operators and other logic to examine incoming HTTP traffic and look for a match.
 
 Deprecation notice

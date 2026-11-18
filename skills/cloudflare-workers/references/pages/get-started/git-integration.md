@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/get-started/git-integration/og.pn
 
 # Git integration
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/get-started/git-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will get started with Cloudflare Pages and deploy your first website to the Pages platform through Git integration. The Git integration enables automatic builds and deployments every time you push a change to your connected [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/) or [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/) repository.
 
 You cannot switch to Direct Upload later

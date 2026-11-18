@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Custom hostnames
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare for SaaS allows you, as a SaaS provider, to extend the benefits of Cloudflare products to custom domains by adding them to your zone as custom hostnames. We support adding hostnames that are a subdomain of your zone (for example, `sub.serviceprovider.com`) and vanity domains (for example, `customer.com`) to your SaaS zone.
 
 ## Resources

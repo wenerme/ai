@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Client architecture
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide explains how the Cloudflare One Client (formerly WARP) interacts with a device's operating system to route traffic in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) mode.
 
 In [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) mode, the IP traffic information does not apply. In [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode) mode, the DNS traffic information does not apply.

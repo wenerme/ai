@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/users
 
 # SCIM provisioning
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 System for Cross-domain Identity Management (SCIM) is an open standard protocol that allows identity providers to synchronize user identity information with cloud applications and services. After configuring SCIM, user identities that you create, edit, or delete in the identity provider are automatically updated across all supported applications. This makes it easier for IT admins to onboard new users, update their groups and permissions, and revoke access in the event of an employee termination or security breach.
 
 Note

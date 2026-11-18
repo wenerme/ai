@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/migrations/fr
 
 # Migrating from Version 2
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Miniflare v3 now uses [`workerd` ↗︎](https://github.com/cloudflare/workerd), the open-source Cloudflare Workers runtime. This is the same runtime that's deployed on Cloudflare's network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. Refer to the [Miniflare v3 ↗︎](https://blog.cloudflare.com/miniflare-and-workerd/) and [Wrangler v3 announcements ↗︎](https://blog.cloudflare.com/wrangler3/) for more information.
 
 ## CLI Changes

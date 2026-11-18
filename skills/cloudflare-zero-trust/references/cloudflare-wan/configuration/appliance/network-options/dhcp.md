@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # DHCP options
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [DHCP relay](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/)
 - [DHCP server](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/)
 - [DHCP server options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/)

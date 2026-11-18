@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/reference/kv-commands/og.png?v=e0da0
 
 # Wrangler KV commands
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/reference/kv-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## `kv namespace`
 
 Manage Workers KV namespaces.

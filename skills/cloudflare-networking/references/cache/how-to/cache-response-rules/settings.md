@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/cache-response-rules/setti
 
 # Available settings
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These are the settings that you can configure when creating a Cache Response Rule. Because Cache Response Rules execute after Cloudflare receives the origin response, both request and response fields are available for rule matching.
 
 Note

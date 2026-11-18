@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/network-ports/og
 
 # Network ports
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/network-ports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn which network ports Cloudflare proxies by default and how to enable Cloudflare's proxy for additional ports.
 
 ## Network ports compatible with Cloudflare's proxy

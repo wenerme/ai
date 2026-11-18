@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/investigate/bgp-anomalies/og.png?
 
 # BGP anomalies
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/bgp-anomalies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To access Cloudflare Radar BGP Anomaly Detection results, you will first need to create an API token that includes a `Account:Radar` permission. All the following examples should work with a free-tier Cloudflare account.
 
 ## Search BGP hijack events
@@ -220,7 +218,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"triggers": {
 		"crons": [
 			"*/5 * * * *"
@@ -235,7 +233,7 @@ name = "hijack-alerts"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [triggers]
 crons = [ "*/5 * * * *" ]

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/generate-youtube-thum
 
 # Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers and Cloudflare Image Resizing. You may want to generate a custom YouTube thumbnail to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
 
 This tutorial will help you understand how to work with [Images](https://developers.cloudflare.com/images/), [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) and [Cloudflare Workers](https://developers.cloudflare.com/workers/).

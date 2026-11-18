@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/notificatio
 
 # Notifications
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Administrators can receive alerts when Cloudflare detects connectivity issues with the Cloudflare One Client or degraded application performance. Notifications can be delivered via email, webhook, and third-party services.
 
 ## Manage notifications

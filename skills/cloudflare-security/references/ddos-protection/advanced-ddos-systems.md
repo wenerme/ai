@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/o
 
 # Advanced DDoS systems
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the following pages for more information on Cloudflare's Advanced DDoS systems:
 
 - [General settings](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-
 
 # Preact
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Preact ↗︎](https://preactjs.com) is a popular, open-source framework for building modern web applications. Preact can also be used as a lightweight alternative to React because the two share the same API and component model.
 
 In this guide, you will create a new Preact application and deploy it using Cloudflare Pages. You will use [`create-preact` ↗︎](https://github.com/preactjs/create-preact), a lightweight project scaffolding tool to set up a new Preact app in seconds.

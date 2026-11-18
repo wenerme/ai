@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/application-profiles/og.
 
 # Application Profiles
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Application Profiles define application-specific expectations and classify requests against them. They add a positive-security model to your existing protections.
 
 Schema Profile is the only current profile type. It models supported request fields, types, formats, ranges, and values.

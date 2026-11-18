@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/sdk/client-provider/og.png?v=8
 
 # TypeScript Client SDK
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/client-provider/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `FlagshipClientProvider` implements the OpenFeature web provider interface for browser applications. It pre-fetches a declared set of flag values on initialization and resolves evaluations synchronously from an in-memory cache.
 
 This makes the provider suitable for client-side rendering where synchronous access to flag values is required.

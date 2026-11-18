@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/det
 
 # Detection entries
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Detection entries are the reusable detection logic that Cloudflare DLP uses to identify sensitive content in your web traffic and SaaS applications. You can create and manage detection entries independently of DLP profiles, then add the same entry to one or more custom profiles.
 
 Use the following pages to configure detection entries and review Cloudflare-managed predefined detections.

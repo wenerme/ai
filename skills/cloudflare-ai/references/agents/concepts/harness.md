@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/harness/og.png?v=f19334
 
 # Harness
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/harness/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A harness is a model in a loop. It sends the conversation to the model, runs the tools the model asks for, feeds the results back, and repeats until the model is done. Everything that makes an agent more than a single model call lives in the harness, or is reached through it.
 
 On Cloudflare, the harness is the [capability](https://developers.cloudflare.com/agents/runtime/capabilities/) that runs the agent loop inside a [Durable Agent](https://developers.cloudflare.com/agents/getting-started/quick-start/). It is the unit of compute for an agent, and the Agents SDK exists to make harnesses run well on Cloudflare.

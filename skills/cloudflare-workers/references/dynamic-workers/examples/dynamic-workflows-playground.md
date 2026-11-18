@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workfl
 
 # Dynamic Workflows Playground
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workflows-playground/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Try the [dynamic workflows playground ↗︎](https://github.com/cloudflare/dynamic-workflows/tree/main/examples/basic), write workflow logic in JavaScript, execute it from a Dynamic Worker, and log every step in real time.
 
 This example shows you how to run [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) from a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) to get full durable execution, including step retries, sleep, hibernation, and `waitForEvent`, for any workflow you need to run on demand.

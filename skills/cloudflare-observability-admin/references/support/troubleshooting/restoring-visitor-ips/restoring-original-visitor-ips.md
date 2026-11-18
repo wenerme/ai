@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/restoring-visit
 
 # Restoring original visitor IPs
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When your [website traffic is routed through the Cloudflare network](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), we act as a reverse proxy. This allows Cloudflare to speed up page load time by routing packets more efficiently and caching static resources (images, JavaScript, CSS, etc.). As a result, when responding to requests and logging them, your origin server returns a [Cloudflare IP address ↗︎](https://www.cloudflare.com/ips/).
 
 For example, if you install applications that depend on the incoming IP address of the original visitor, a Cloudflare IP address is logged by default. The original visitor IP address appears in an appended HTTP header called [`CF-Connecting-IP`](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip). By following our [web server instructions](#web-server-instructions), you can log the original visitor IP address at your origin server. If this HTTP header is not available when requests reach your origin server, check your [Transform Rules](https://developers.cloudflare.com/rules/transform/) and [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/) configuration.

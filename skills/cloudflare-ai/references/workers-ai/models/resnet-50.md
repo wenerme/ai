@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image Classification • Microsoft
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/resnet-50/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/microsoft/resnet-50` Copy

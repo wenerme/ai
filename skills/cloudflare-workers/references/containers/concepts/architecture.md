@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/concepts/architecture/og.png
 
 # Lifecycle of a Container
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Deployment
 
 How images and running Container instances update depends on the [scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/) for the application.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/company-security/og.png?v=904
 
 # Company security
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/company-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Protect employees, devices, and data with Zero Trust access, secure web gateway, and email security. Cloudflare Access and Tunnel replace VPNs with identity-verified, per-request access to internal applications. Gateway filters DNS and HTTP traffic to block threats. DLP prevents sensitive data from leaving your network. Email Security stops phishing, BEC, and malware. DMARC management prevents domain spoofing.
 
 - [Access internal applications securely](https://developers.cloudflare.com/use-cases/company-security/employee-access/)

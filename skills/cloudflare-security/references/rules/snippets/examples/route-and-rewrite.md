@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/route-and-rewri
 
 Reroute a request to a different origin and modify the URL path.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/route-and-rewrite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example demonstrates how to use Cloudflare Snippets to:
 
 - Reroute incoming requests to a different origin.

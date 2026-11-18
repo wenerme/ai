@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/pricing/og.png?v=d9d578
 
 # Pricing
 
-Last updated Jun 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Dynamic Workers pricing is based on three dimensions: Dynamic Workers created daily, requests, and CPU time.
 
 Dynamic Workers are currently only available on the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/).

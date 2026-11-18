@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/site-admin-o
 
 # Require known IP addresses in site admin area
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/site-admin-only-known-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If an attack compromises the administrative area of your website, the consequences can be severe. With custom rules, you can protect your site's admin area by blocking requests for access to admin paths that do not come from a known IP address.
 
 This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) limits access to the WordPress admin area, `/wp-admin/`, by blocking requests that do not originate from a specified set of IP addresses:

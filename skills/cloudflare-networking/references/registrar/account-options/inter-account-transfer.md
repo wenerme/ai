@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/account-options/inter-account
 
 # Move a Cloudflare Registrar domain registration between accounts
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare supports the move (transfer) of domain registrations between Cloudflare accounts when the source and target account both confirm the move. The move will result in the loss of all configurations and settings for the domain in the source account.
 
 Important

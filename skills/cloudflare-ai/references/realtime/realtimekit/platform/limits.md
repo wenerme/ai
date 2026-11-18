@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/platform/limits/og
 
 # Limits
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 RealtimeKit applies limits to API requests and SDK operations. Use these values when designing your application.
 
 ## API rate limits

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # TLS 1.3
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 TLS 1.3 enables the latest version of the TLS protocol (when supported) for improved security and performance.
 
 ## What is TLS 1.3?

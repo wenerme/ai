@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-
 
 # OWASP evaluation example
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following example calculates the OWASP request threat score for an incoming request. The OWASP managed ruleset configuration is the following:
 
 - OWASP Anomaly Score Threshold: *High - 25 and higher*

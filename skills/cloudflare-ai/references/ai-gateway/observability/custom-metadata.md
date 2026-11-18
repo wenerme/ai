@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/custom-metadat
 
 # Custom metadata
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom metadata in AI Gateway allows you to tag requests with user IDs or other identifiers, enabling better tracking and analysis of your requests. Metadata values can be strings, numbers, or booleans, and will appear in your logs, making it easy to search and filter through your data.
 
 ## Key Features

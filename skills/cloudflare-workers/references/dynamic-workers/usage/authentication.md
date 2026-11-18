@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/authentication/og
 
 # Authentication and authorization
 
-Last updated Oct 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you build a platform that runs customer apps, you need to control who can use each app and which data they can access. An app may have both public and private endpoints.
 
 Customers can add routes and change app code independently of your platform. Enforce permissions for routes and data operations in platform-owned code.
@@ -221,7 +219,7 @@ After the gate succeeds, load and invoke the app with the [Worker Loader](https:
 
 ```js
 const app = env.LOADER.load({
-	compatibilityDate: "2026-10-31",
+	compatibilityDate: "2026-11-18",
 	mainModule: "app.js",
 	modules: { "app.js": deployment.code },
 	globalOutbound: null,
@@ -233,7 +231,7 @@ return app.getEntrypoint(undefined, { props: { identity } }).fetch(appRequest);
 
 ```ts
 const app = env.LOADER.load({
-	compatibilityDate: "2026-10-31",
+	compatibilityDate: "2026-11-18",
 	mainModule: "app.js",
 	modules: { "app.js": deployment.code },
 	globalOutbound: null,

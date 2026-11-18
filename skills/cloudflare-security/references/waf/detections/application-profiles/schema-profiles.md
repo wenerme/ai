@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/application-profiles/sch
 
 # Schema Profiles
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Schema Profile models expected request fields and their constraints. You can learn one from traffic or supply an uploaded schema.
 
 After a profile becomes available, Cloudflare runs an **always-on detection**. Detection does not mitigate requests by itself.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefi
 
 # ​Purge cache by prefix (URL)
 
-Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can instantly purge their cache by URL prefix or path separators in their URL. For an example URL like `https://www.example.com/foo/bar/baz/qux.jpg`, valid purge requests include:
 
 - `www.example.com`

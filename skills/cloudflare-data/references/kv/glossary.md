@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/glossary/og.png?v=2b20e1c21a974e3e
 
 # Glossary
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the definitions for terms used across Cloudflare's KV documentation.
 
 | Term | Definition |

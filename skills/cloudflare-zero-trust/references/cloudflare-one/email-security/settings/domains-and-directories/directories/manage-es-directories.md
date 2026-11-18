@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/
 
 # Manage Email security directories
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-es-directories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can manage your Email security directory by editing and deleting added users.
 
 Registered users

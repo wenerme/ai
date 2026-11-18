@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/lists/custom-lists/og.png?v=6
 
 # Custom lists
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/custom-lists/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A custom list contains one or more items of the same type (for example, IP addresses, hostnames, or ASNs) that you can reference collectively, by name, in rule expressions.
 
 Cloudflare supports the following custom list types:

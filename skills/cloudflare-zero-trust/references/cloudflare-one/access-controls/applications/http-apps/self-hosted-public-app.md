@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Publish a self-hosted application to the Internet
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can securely publish internal tools and applications by adding Cloudflare Access as an authentication layer between the end user and your origin server.
 
 This page describes how to make a web application accessible to anyone on the Internet via a public hostname. To make the application available over a private IP or hostname, refer to [Add a self-hosted private application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).

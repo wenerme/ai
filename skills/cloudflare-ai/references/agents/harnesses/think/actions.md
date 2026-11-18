@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/actions/og.png?v
 
 # Actions
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Experimental
 
 The Actions API surface may evolve before Think graduates out of experimental.

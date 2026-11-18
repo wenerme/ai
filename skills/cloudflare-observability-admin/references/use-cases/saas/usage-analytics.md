@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/saas/usage-analytics/og.png?v
 
 # Observe customer usage and billing
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/saas/usage-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Usage-based billing and per-tenant performance monitoring require detailed analytics broken down by customer. Cloudflare Workers Analytics Engine tracks request counts, latency, and bytes per tenant ID, while Logpush exports detailed logs for compliance and audit trails.
 
 ## Solutions

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-v
 
 # Automatic captioning for video uploads
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-video-caption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Automatic Speech Recognition (ASR) models have revolutionized the accessibility of video content by enabling the generation of subtitles and translations. These models utilize advanced algorithms to transcribe spoken words into text with high accuracy. By integrating ASR technology into video platforms, content creators, publishers, and distributors can reach a broader audience, including individuals with hearing impairments or those who prefer to consume content in different languages.

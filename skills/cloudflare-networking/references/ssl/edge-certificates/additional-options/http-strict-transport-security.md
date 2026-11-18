@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # HTTP Strict Transport Security (HSTS)
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 HSTS protects HTTPS web servers from downgrade attacks. These attacks redirect web browsers from an HTTPS web server to an attacker-controlled server, allowing bad actors to compromise user data and cookies.
 
 HSTS adds an HTTP header that directs [compliant web browsers](https://developers.cloudflare.com/ssl/reference/browser-compatibility/) to:

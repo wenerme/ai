@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-brunch-
 
 # Brunch
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-brunch-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Brunch ↗︎](https://brunch.io/) is a fast front-end web application build tool with simple declarative configuration and seamless incremental compilation for rapid development.
 
 ## Install Brunch

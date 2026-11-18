@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-eg
 
 # How it works
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the pages below to understand how Dedicated CDN Egress IPs work.
 
 - [Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/egress-ips/)

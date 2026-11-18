@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-angula
 
 # Angular
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-angular-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Angular ↗︎](https://angular.io/) is an incredibly popular framework for building reactive and powerful front-end applications.
 
 In this guide, you will create a new Angular application and deploy it using Cloudflare Pages.

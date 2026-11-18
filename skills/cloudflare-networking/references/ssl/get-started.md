@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/get-started/og.png?v=6a02d6022be5c6
 
 # Get started
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Set up encrypted connections for your domain by choosing a certificate, selecting an encryption mode, and enforcing HTTPS.
 
 ## Before you begin

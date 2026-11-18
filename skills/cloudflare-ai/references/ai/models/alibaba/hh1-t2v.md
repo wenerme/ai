@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • Alibaba
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/hh1-t2v/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `alibaba/hh1-t2v` Copy

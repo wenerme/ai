@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/examples/private-database/o
 
 # Connect to a private database
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/private-database/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example demonstrates how to query a private PostgreSQL database from a Worker using [Workers VPC](https://developers.cloudflare.com/workers-vpc/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.
 
 ## Prerequisites
@@ -181,7 +179,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-17",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -194,7 +192,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-17"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

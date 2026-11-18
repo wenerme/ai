@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/replay-recordings/og
 
 # Record and replay live streams
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/replay-recordings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Live streams are automatically recorded, and available instantly once a live stream ends. To get a list of recordings for a given input ID, make a [`GET` request to `/live_inputs/<UID>/videos`](https://developers.cloudflare.com/api/resources/stream/subresources/live_inputs/methods/get/) and filter for videos where `state` is set to `ready`:
 
 *Requestbash*

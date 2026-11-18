@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/versio
 
 # Version URLs
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Version URLs, previously called preview URLs, let you access an uploaded version of your Worker before deploying it to production. A Version URL uses that Worker version's existing configuration and resources instead of creating a separate environment.
 
 This is useful for testing a specific version directly. To test the version with your zone's performance or security settings, use [version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/).
@@ -63,7 +61,7 @@ npx wrangler versions upload
 
 ## Aliased Version URLs
 
-Aliased Version URLs let you assign a readable alias to a specific Worker version. This can be useful when you want a stable URL for a manually uploaded version.
+Aliased Version URLs let you assign a readable alias to a specific Worker version. This can be useful when you want a readable URL for a manually uploaded version. An aliased Version URL stops working when its version is deleted under [version retention](https://developers.cloudflare.com/workers/versions-and-deployments/#version-retention). For a URL that keeps working as you deploy new changes, use [Previews](https://developers.cloudflare.com/workers/previews/).
 
 Create an alias during version upload with `--preview-alias`:
 
@@ -142,10 +140,11 @@ If `preview_urls` is omitted, Wrangler does not change an existing Version URL s
 - Aliases must begin with a lowercase letter.
 - The alias and Worker name combined with a dash must not exceed 63 characters due to DNS label limits.
 - Only the 1000 most recently deployed aliases are retained. When a new alias is created beyond this limit, the least recently deployed alias is deleted.
+- A Version URL and any aliases pointing to it stop working when the version is deleted under [version retention](https://developers.cloudflare.com/workers/versions-and-deployments/#version-retention). An alias does not prevent its version from being deleted. For URLs that keep working, use [Previews](https://developers.cloudflare.com/workers/previews/compare-workflows/#migrate-from-aliased-version-urls-to-previews).
 
 ## Limitations
 
-- Version URLs are not generated for Workers that implement a [Durable Object](https://developers.cloudflare.com/durable-objects/), including [Containers](https://developers.cloudflare.com/containers/) and [Sandbox](https://developers.cloudflare.com/sandbox/) Workers. For Containers testing options, refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
+- Version URLs are not generated for Workers that implement a [Durable Object](https://developers.cloudflare.com/durable-objects/), including [Containers](https://developers.cloudflare.com/containers/) and [Sandbox](https://developers.cloudflare.com/sandbox/) Workers. To test Durable Objects in isolation, use [Previews](https://developers.cloudflare.com/workers/previews/). For Containers testing options, refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
 - Version URLs are not generated for [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) [user Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers).
 - You cannot configure Version URLs to run on a subdomain other than [`workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/).
 - You cannot view logs for Version URLs with Workers Logs, Wrangler tail, or Logpush.
@@ -159,5 +158,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/#page","headline":"Version URLs","description":"Test a specific Worker version uploaded with wrangler versions upload.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/og.png?v=b7754afab13e256b","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/#page","headline":"Version URLs","description":"Test a specific Worker version uploaded with wrangler versions upload.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/og.png?v=b7754afab13e256b","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

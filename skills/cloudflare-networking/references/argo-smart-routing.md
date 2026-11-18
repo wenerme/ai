@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/argo-smart-routing/og.png?v=af13db92b73
 
 # Argo Smart Routing
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/argo-smart-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Speed up your global traffic with a single click
 
 Add-on feature

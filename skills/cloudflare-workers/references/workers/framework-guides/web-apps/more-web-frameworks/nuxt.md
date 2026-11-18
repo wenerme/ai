@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/more-
 
 # Nuxt
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will create a new [Nuxt ↗︎](https://nuxt.com/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
 
 Already have a Nuxt project?

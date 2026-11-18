@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • IBM
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/ibm-granite/granite-4.0-h-micro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/ibm-granite/granite-4.0-h-micro` Copy

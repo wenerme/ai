@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Furukawa Electric FITELnet
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial describes how to configure the Furukawa Electric's FITELnet F220 and F70 devices to connect to Cloudflare WAN (formerly Magic WAN) via IPsec (Internet Protocol Security) tunnels. The use cases described in this tutorial are for both east-west (branch to branch) and north-south (Internet-bound).
 
 ## Testing environment

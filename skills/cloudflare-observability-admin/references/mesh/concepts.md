@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/mesh/concepts/og.png?v=c018353ab5f2cff6
 
 # How Cloudflare Mesh works
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Mesh is a private network for services and devices in your Cloudflare account. It gives each enrolled participant a private address and carries traffic between participants through Cloudflare.
 
 Participants can be Linux servers, laptops, phones, or desktops. They communicate over TCP, UDP, or Internet Control Message Protocol (ICMP) without public IP addresses or services exposed to the public Internet. Host firewalls on each participant still control which Mesh traffic it accepts.
@@ -102,6 +100,8 @@ High availability protects routed prefixes, not direct access to a replica's Mes
 Mesh uses the [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) protocol by default. Hostname routes, IPv6 CIDR routes, and high availability require MASQUE. If a Mesh node device profile uses WireGuard, only direct participant connectivity and IPv4 CIDR routes work.
 
 ## Mesh vs. Cloudflare Tunnel
+
+To compare Mesh with every other connector, and get a recommendation for your use case, refer to [Connector selection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/choose-a-connector/).
 
 Mesh and [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) both connect private infrastructure to Cloudflare. They use different connection models:
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/q
 
 # Querying basics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Structure of a GraphQL query
 
 GraphQL structures data as a graph. GraphQL uses a schema to define the objects and their hierarchy in your data graph. You can explore the edges of the graph by using queries to get the needed data. These queries must respect the structure of the schema.

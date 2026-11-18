@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/ddos/og.png?v=ad35a1664b3
 
 # DDoS protection
 
-Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/ddos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare [DDoS protection](https://developers.cloudflare.com/ddos-protection/) automatically detects and mitigates DDoS attacks using the [Autonomous Edge](https://developers.cloudflare.com/ddos-protection/about/components/#autonomous-edge). Magic Transit customers get multiple layers of protection, from always-on managed rulesets to advanced systems that you can configure for your specific traffic patterns.
 
 ## Mitigation layers

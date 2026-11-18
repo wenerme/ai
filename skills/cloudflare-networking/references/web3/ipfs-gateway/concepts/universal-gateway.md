@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-ga
 
 # Universal Path gateway
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Universal Path gateway is a gateway without a DNSLink record. It allows users to access any content hosted on the IPFS network by specifying a CID or IPNS path in the URL.
 
 This differs from a [restricted gateway](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/), which limits the gateway to a single piece of content (a specific CID or IPNS hostname).

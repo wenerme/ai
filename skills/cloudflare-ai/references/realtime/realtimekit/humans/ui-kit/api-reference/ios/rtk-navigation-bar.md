@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkNavigationBar
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-navigation-bar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A navigation bar with a title label and a close or back button. Used for modal screens such as chat, polls, and participant lists.
 
 ## Initializer parameters

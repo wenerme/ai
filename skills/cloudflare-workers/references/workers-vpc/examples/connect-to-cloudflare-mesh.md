@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudfl
 
 # Connect Workers to Cloudflare Mesh
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example uses a VPC Network binding with [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector) to connect through your account's default [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/). It does not require pre-registering individual hosts or specifying a Cloudflare Tunnel UUID.
 
 The `cf1:network` selector uses your account's default virtual network. Your Worker can reach destinations routed through that network, including Mesh nodes, client devices, subnet or hostname routes announced through Cloudflare Tunnel or Cloudflare Mesh, and destinations connected through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI). To select another configured virtual network, refer to [VPC Networks configuration](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/).
@@ -34,7 +32,7 @@ Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wr
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-30",
+	"compatibility_date": "2026-11-18",
 	"vpc_networks": [
 		{
 			"binding": "MESH",
@@ -51,7 +49,7 @@ name = "mesh-gateway"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-11-18"
 
 [[vpc_networks]]
 binding = "MESH"

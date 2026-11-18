@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/warp-overview-course/ser
 
 # Overview
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/warp-overview-course/series/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Was this helpful?
 
 YesNo

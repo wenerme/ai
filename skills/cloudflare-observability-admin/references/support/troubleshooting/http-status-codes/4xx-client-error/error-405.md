@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 405
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-405/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 405 Method Not Allowed
 
 The 405 Method Not Allowed status code indicates that the origin server recognizes the requested resource but does not support the HTTP method used in the request.

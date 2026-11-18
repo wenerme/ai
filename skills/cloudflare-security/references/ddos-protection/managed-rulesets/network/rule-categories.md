@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/networ
 
 # Rule categories
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/rule-categories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The main categories (or tags) of Network-layer DDoS Attack Protection managed rules are the following:
 
 | Name | Description |

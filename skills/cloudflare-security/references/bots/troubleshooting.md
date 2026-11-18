@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/troubleshooting/og.png?v=e1cb50096
 
 # Troubleshooting
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the following pages to troubleshoot issues with Cloudflare's bot solutions:
 
 - [Bot Management skips](https://developers.cloudflare.com/bots/troubleshooting/bot-management-skips/)

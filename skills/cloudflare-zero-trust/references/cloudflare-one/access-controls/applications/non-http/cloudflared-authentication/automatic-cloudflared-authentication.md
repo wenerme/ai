@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Enable automatic cloudflared authentication
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/automatic-cloudflared-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When users connect to an Access application through `cloudflared`, the browser prompts them to allow access by displaying this page:
 
 ![Access request prompt page displayed after logging in with cloudflared.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1362,height=1016,format=webp/_astro/access-screen.BXZJ23p9.png)

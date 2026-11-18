@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/api/state/og.png?v=0898
 
 # Durable Object State
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Description
 
 The `DurableObjectState` interface is accessible as an instance property on the Durable Object class. This interface encapsulates methods that modify the state of a Durable Object, for example which WebSockets are attached to a Durable Object or how the runtime should handle concurrent Durable Object requests.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/by-solution/og.p
 
 # Find by solution
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/by-solution/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the list below for reference architecture documentation that relates to a solution area you are interested in.
 
 ### Cloudflare Connectivity Cloud

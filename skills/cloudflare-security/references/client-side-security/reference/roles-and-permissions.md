@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/reference/roles-an
 
 # Roles and permissions
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/reference/roles-and-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare users with the following [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) have access to client-side security in the Cloudflare dashboard:
 
 - Administrator

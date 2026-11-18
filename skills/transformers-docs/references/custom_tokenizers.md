@@ -113,6 +113,7 @@ Tokenizers supports four different [backends](./fast_tokenizers#backends). Gener
 
 1. Subclass the [`TokenizersBackend`] with class attributes like padding side and the tokenization algorithm to use.
 2. Define the tokenization pipeline in the `__init__`. This includes the tokenization algorithm to use, how to split the raw text before the algorithm, and how to decode the tokens back to text.
+3. Accept `**kwargs` in `__init__` and pass them to `super().__init__()`. `TokenizersBackend` adds `backend` to the init arguments. [`~PreTrainedTokenizerBase.from_pretrained`] and [`~TokenizersBackend.train_new_from_iterator`] pass those arguments back to your class, along with extras like `vocab` and `merges`.
 
 ```py
 from tokenizers import Tokenizer, decoders, pre_tokenizers
@@ -131,6 +132,7 @@ class NewTokenizer(TokenizersBackend):
         bos_token="<s>",
         eos_token="</s>",
         pad_token="<pad>",
+        **kwargs,
     ):
         self._vocab = vocab or {
             str(unk_token): 0,
@@ -151,6 +153,7 @@ class NewTokenizer(TokenizersBackend):
             bos_token=bos_token,
             eos_token=eos_token,
             pad_token=pad_token,
+            **kwargs,
         )
 ```
 

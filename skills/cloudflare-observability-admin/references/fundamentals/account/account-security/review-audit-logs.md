@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/r
 
 # Review audit logs - v1
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Audit Logs version 2 is available. Refer to the [Audit Logs v2 documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/) for more details.

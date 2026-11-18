@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/cache-response-rules/og.pn
 
 # Cache Response Rules
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-response-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cache Response Rules allow you to configure cache settings based on request and response attributes. These rules execute prior to caching in the `http_response_cache_settings` phase, which runs after Cloudflare receives the origin response.
 
 Note

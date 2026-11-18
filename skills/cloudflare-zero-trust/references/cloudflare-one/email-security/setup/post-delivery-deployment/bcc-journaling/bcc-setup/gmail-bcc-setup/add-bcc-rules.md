@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pos
 
 # Add BCC rules
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/add-bcc-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page will show you how to add BCC rules in the Google Admin Console.
 
 BCC stands for Blind Carbon Copy. A BCC rule is a Google Workspace feature that allows you to create a secure copy of all selected outbound and inbound emails. When you allow Email security to receive a copy of your emails, Cloudflare can perform post-delivery analysis to protect your email inbox.

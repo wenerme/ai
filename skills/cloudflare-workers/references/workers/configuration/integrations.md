@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/integrations/og.p
 
 # Integrations
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 One of the key features of Cloudflare Workers is the ability to integrate with other services and products. In this document, we will explain the types of integrations available with Cloudflare Workers and provide step-by-step instructions for using them.
 
 ## Types of integrations

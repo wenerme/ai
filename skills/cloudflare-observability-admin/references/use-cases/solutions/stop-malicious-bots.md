@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots
 
 # Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The right defense against malicious bot traffic depends on the traffic patterns on your site and your plan. This guide covers a layered approach using [Cloudflare Bots](https://developers.cloudflare.com/bots/), [Cloudflare Application Security](https://developers.cloudflare.com/waf/) (also known as Web Application Firewall or WAF), and [Turnstile](https://developers.cloudflare.com/turnstile/), from baseline protection to targeted custom rules. The core workflow uses features on Free, Pro, and Business plans, with callouts for Enterprise options.
 
 Note

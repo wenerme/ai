@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/advanced-topics/best-practice
 
 # Best practices
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Though all Terraform deployments are unique, follow these best practices to set yourself up for success.
 
 ## Manage Terraform resources in Terraform

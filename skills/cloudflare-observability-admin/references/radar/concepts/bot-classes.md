@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/concepts/bot-classes/og.png?v=934
 
 # Bot classes
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/concepts/bot-classes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A bot class in Radar is a grouping of [bot scores](https://developers.cloudflare.com/bots/concepts/bot-score).
 
 Scores between 1 and 29 are classified as bot traffic. Scores equal or above 30 are classified as non-bot/human traffic.

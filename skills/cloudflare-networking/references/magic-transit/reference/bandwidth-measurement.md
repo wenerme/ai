@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/reference/bandwidth-measu
 
 # Bandwidth measurement
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare measures Magic Transit usage based on the 95th percentile of clean bandwidth for your network. "Clean bandwidth" refers to the egress traffic Cloudflare routes to your network after applying all Distributed Denial of Service ([DDoS](https://developers.cloudflare.com/ddos-protection/)) mitigation and firewall functions. The usage measurement explicitly excludes attack traffic we block at our global network.
 
 To measure 95th percentile bandwidth, Cloudflare records clean bandwidth leaving our global network at five-minute intervals, sorts these measurements in descending order, and discards the top 5% of measurements it recorded. The highest remaining value constitutes the 95th percentile bandwidth measurement for that time period.

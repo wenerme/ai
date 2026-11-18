@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/concepts/search-modes/og.png?
 
 # Search modes
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/search-modes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Search supports three search modes: [vector](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/), [keyword](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/), and [hybrid](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/). New instances use hybrid search by default.
 
 To opt out, set `index_method` to `{ vector: true, keyword: false }`. Refer to [Hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) for configuration details.

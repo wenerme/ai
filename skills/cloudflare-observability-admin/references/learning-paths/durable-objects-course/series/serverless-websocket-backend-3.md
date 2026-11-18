@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/durable-objects-course/s
 
 # Create a serverless websocket 'backend'
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/serverless-websocket-backend-3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this video, we'll create a WebSocket backend using serverless technology, making the process simpler than ever before. You'll learn how to create your first Durable Object, set up a WebSocket server to coordinate connections, and keep track of connected clients.
 
 **Related content**

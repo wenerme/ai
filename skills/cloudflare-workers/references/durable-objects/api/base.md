@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/api/base/og.png?v=94c0d
 
 # Durable Object Base Class
 
-Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
 ```js

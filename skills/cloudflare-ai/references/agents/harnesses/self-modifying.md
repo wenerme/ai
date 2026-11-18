@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/self-modifying/og.png?
 
 # Self-modifying
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/self-modifying/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [self-modifying harness example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/next/harnesses/self-modifying) lets an agent edit its own TypeScript loop and custom tools. Source files persist in a [Cloudflare Computer Workspace](https://developers.cloudflare.com/agents/tools/filesystem/). A Durable Object coordinates turns and revisions, while fresh [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/) execute the editable code.
 
 `SelfModifyingHarness` is local to this experimental example. It uses internal SDK APIs and is not an exported Agents SDK harness.

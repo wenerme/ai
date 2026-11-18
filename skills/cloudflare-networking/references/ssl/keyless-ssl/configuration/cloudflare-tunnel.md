@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflar
 
 # Cloudflare Tunnel
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Through an integration with [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you can send traffic to a key server through a secure channel and avoid exposing your key server to the public Internet.
 
 ---

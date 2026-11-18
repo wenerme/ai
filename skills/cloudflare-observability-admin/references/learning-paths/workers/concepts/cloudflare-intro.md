@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workers/concepts/cloudfl
 
 # Introduction to Cloudflare
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare ↗︎](https://www.cloudflare.com/learning/what-is-cloudflare/) is a global network of [servers ↗︎](https://www.cloudflare.com/learning/cdn/glossary/edge-server/). It is one of the largest [networks ↗︎](https://www.cloudflare.com/network/) on the Internet.
 
 Cloudflare's product offering is composed of [SASE and SSE services ↗︎](https://www.cloudflare.com/zero-trust/), [application ↗︎](https://www.cloudflare.com/application-services/) and [infrastructure services ↗︎](https://www.cloudflare.com/network-services/), and [Developer Platform ↗︎](https://www.cloudflare.com/developer-platform/solutions/).

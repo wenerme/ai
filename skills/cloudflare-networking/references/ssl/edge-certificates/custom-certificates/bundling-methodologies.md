@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificat
 
 # Bundle methodologies
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When an SSL certificate is deployed to Cloudflare's global network, it may be augmented with intermediate and root certificates to assist the user agent in finding a chain to a publicly trusted root.
 
 You can control the mechanics of how certificates are bundled by specifying a bundling methodology.

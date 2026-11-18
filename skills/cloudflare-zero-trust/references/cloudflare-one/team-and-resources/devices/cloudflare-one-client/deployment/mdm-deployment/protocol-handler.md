@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Register the Cloudflare One Client with minimal user interaction
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Administrators can automate Cloudflare One Client (formerly WARP) registration on managed devices and minimize the number of clicks required from an end user.
 
 During the default Cloudflare One Client enrollment process, end users typically need to complete several steps in order to login:

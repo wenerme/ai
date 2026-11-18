@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/custom-errors/api-calls/og.png?v=
 
 # Common API calls for Custom Errors
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following sections provide examples of common API calls for managing custom error assets and Error Pages at the zone level.
 
 To perform the same operations at the account level, use the corresponding account-level API endpoints.

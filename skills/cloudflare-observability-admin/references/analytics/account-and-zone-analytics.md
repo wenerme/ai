@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/og
 
 # Account and zone analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Visit the following pages to learn more about account and zone analytics:
 
 - [Zone Analytics](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/)

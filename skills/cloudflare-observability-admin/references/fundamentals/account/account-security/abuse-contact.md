@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/a
 
 # Add abuse contact
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/abuse-contact/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Enter an abuse contact email address to ensure you are receiving communications regarding potential abuse on your websites.
 
 To update your abuse contact email address:

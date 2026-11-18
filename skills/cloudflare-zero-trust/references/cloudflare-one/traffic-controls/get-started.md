@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-sta
 
 # Get started
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This section covers best practices for setting up the following Gateway policy types:
 
 - [DNS filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/dns/)

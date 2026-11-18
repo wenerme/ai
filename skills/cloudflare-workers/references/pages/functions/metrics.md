@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/metrics/og.png?v=870914
 
 # Metrics
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Functions metrics can help you diagnose issues and understand your workloads by showing performance and usage data for your Functions.
 
 ## Functions metrics

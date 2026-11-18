@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Configure a tunnel
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After [creating your Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/), you can configure various aspects of how `cloudflared` runs and connects your infrastructure to Cloudflare's network. This section covers advanced configuration options to optimize tunnel performance, security, and availability.
 
 - [Tunnel with firewall](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/): Configure firewall rules to allow `cloudflared` egress traffic while blocking all ingress, implementing a positive security model.

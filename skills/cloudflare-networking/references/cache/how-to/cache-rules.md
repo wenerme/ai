@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/cache-rules/og.png?v=660fb
 
 # Cache Rules
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Cache Rules to customize cache settings on Cloudflare. Cache Rules allows you to make adjustments to what is eligible to cache, how long it should be cached and where, as well as trigger specific interactions with Cloudflare's cache and other Rules products for matching requests.
 
 Cache Rules can be created in the [dashboard](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/), via [API](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/) or [Terraform](https://developers.cloudflare.com/cache/how-to/cache-rules/terraform-example/).

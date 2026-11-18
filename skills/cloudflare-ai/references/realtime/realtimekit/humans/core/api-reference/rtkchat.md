@@ -11,8 +11,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKChat
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkchat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This is the chat module, which can be used to send and receive messages from the meeting.
 
 - [RTKChat](#module_RTKChat)

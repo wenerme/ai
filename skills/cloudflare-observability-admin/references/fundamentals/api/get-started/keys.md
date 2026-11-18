@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/get-started/keys/og.pn
 
 # Get Global API key (legacy)
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Global API key is the previous authorization scheme for interacting with the Cloudflare API. When possible, use [API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) instead of Global API key.
 
 New and rolled Global API Keys use the `cfk_` prefixed [scannable format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which allows credential scanning tools to detect leaked keys.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/examples/og.png?v=69dbb4f9d
 
 # Examples
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Quick Actions examples
 
 Use these [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) examples to perform common tasks with a single HTTP request.

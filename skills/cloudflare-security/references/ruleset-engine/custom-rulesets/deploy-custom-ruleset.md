@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-c
 
 # Deploy a custom ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To deploy a custom ruleset, add a rule with `execute` action to the list of rules of a phase [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) at the account or zone level. The expression of the new rule will define when the custom ruleset will run.
 
 You can only deploy custom rulesets in an entry point ruleset with the same scope. For example, a custom ruleset defined at the account level can only be deployed at the account level.

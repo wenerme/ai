@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/platform/errors/og.png?v=e11
 
 # Errors
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/platform/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is a list of Workers AI errors.
 
 | **Name** | **Internal Code** | **HTTP Code** | **Description** |

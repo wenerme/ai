@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/get-started/wrangler/og.png?v
 
 # CLI
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide walks you through creating an AI Search instance using the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/).
 
 ## 1. Install Wrangler

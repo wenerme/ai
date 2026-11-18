@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Client-side cloudflared
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Cloudflare Zero Trust, users can connect to non-HTTP applications via a public hostname without installing the Cloudflare One Client. This method requires you to onboard a domain to Cloudflare and install `cloudflared` on both the server and the user's device.
 
 Users log in to the application by running a `cloudflared access` command in their terminal. `cloudflared` will launch a browser window and prompt the user to authenticate with your identity provider.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/og.
 
 # Custom Plugins
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Plugins are interactive real-time applications that run inside a meeting, such as a shared whiteboard or a document viewer. RealtimeKit lets you build your own plugins and render them alongside the meeting UI.
 
 Cloudflare also hosts ready-made plugins that you can add without building or deploying anything. To add a collaborative whiteboard to your meetings, refer to [Add the Whiteboard plugin](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/).

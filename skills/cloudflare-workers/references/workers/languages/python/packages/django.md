@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/packages/djang
 
 # Django
 
-Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/django/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Django ↗︎](https://www.djangoproject.com/) is supported in Python Workers.
 
 Django applications use protocols called the [Web Server Gateway Interface (WSGI) ↗︎](https://peps.python.org/pep-3333/) or [Asynchronous Server Gateway Interface (ASGI) ↗︎](https://asgi.readthedocs.io/en/latest/).

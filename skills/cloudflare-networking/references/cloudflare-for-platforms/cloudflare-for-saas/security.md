@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Security
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare for SaaS provides increased security per custom hostname through:
 
 - [Certificate management](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/)

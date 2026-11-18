@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/content/rocket-loade
 
 # Rocket Loader
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Rocket Loader prioritizes your website's content (text, images, fonts, and more) by deferring the loading of all of your JavaScript until after rendering.
 
 This type of loading (known as asynchronous loading) leads to earlier rendering of your page content. Rocket Loader handles both inline and external scripts, while maintaining order of execution. Cloudflare will detect incompatible browsers and disable Rocket Loader.

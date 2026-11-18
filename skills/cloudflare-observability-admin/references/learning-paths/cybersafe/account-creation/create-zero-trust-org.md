@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/account-creati
 
 # Create a Zero Trust organization
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/account-creation/create-zero-trust-org/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To set up a Zero Trust organization:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select **Zero Trust**.

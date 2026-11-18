@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/databases/third-party-integrati
 
 # Upstash
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Upstash ↗︎](https://upstash.com/) is a serverless database with Redis\* and Kafka API. Upstash also offers QStash, a task queue/scheduler designed for the serverless.
 
 ## Upstash for Redis

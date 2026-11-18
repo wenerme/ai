@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/og.png?v
 
 # Features
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The GraphQL Analytics API offers the following features:
 
 - [Confidence Intervals](https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/)

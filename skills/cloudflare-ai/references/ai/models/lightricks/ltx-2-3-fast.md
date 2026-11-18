@@ -16,8 +16,6 @@ l
 
 Text-to-Video • lightricks
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-3-fast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `lightricks/ltx-2-3-fast` Copy

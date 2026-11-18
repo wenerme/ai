@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/multipart-upload-
 
 # Multipart upload metadata
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 There is a new API for uploading Workers. Refer to [these docs](https://developers.cloudflare.com/workers/platform/infrastructure-as-code#cloudflare-rest-api) for more information.

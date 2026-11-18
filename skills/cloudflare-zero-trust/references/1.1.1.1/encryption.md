@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/encryption/og.png?v=9c310b1ce18
 
 # Encryption
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you visit a website, your device first sends a DNS query to translate the domain name (for example, `example.com`) into an IP address. Traditionally, these queries are sent in plaintext — unencrypted and readable by anyone on the network path.
 
 Unencrypted DNS queries can be monitored, modified, or used for tracking by ISPs, network operators, or malicious actors.

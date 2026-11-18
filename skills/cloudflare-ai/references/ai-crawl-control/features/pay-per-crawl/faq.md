@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl
 
 # Pay Per Crawl FAQ
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Frequently asked questions for site owners
 
 ### Can I set different prices for different AI crawlers?

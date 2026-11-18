@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/concepts/how-kv-works/og.png?v=06773
 
 # How KV works
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/concepts/how-kv-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 KV is a global, low-latency, key-value data store. It stores data in a small number of centralized data centers, then caches that data in Cloudflare's data centers after access.
 
 KV supports exceptionally high read volumes with low latency, making it possible to build dynamic APIs that scale thanks to KV's built-in caching and global distribution. Requests which are not in cache and need to access the central stores can experience higher latencies.

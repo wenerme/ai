@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/get-started/og.png?v=b568e0776ed
 
 # Get started
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Having access to Cloudflare’s provisioning capabilities allows you to more easily create and manage Cloudflare accounts. The following steps will get you started on making API calls to provision accounts, users, and services.
 
 ## Before you begin

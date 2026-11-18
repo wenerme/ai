@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/o
 
 # Proxy
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can forward [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/) and [network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/network/) traffic to Gateway for logging and filtering. Gateway can proxy both outbound traffic and traffic directed to resources connected via a Cloudflare Tunnel, Generic Routing Encapsulation (GRE) tunnel, or IPsec tunnel. When a user connects to the Gateway proxy, Gateway will accept the connection and establish a new, separate connection to the origin server.
 
 The Gateway proxy is required for filtering HTTP and network traffic via the Cloudflare One Client in Traffic and DNS mode. To proxy HTTP traffic without deploying the Cloudflare One Client, you can configure [PAC files](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) on your devices.

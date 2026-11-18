@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/how-to/og.png?v=c0a270f0e7eb1849
 
 # Cache configuration
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to complete different configuration options to customize your cache behavior.
 
 - [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/)

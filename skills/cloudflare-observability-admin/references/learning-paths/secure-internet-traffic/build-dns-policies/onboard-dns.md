@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Onboard DNS for a network
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/onboard-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The fastest way to start filtering DNS queries is to change your DNS resolver to use a specific Gateway endpoint. You can make this change at the browser, OS, or router level.
 
 Choose this option if:

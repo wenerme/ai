@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/og.png?v=15a28c7def4c62
 
 # Testing
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Workers platform provides complementary tools for testing different parts of your application. For most projects, use the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) for unit tests and the [`createTestHarness()`](https://developers.cloudflare.com/workers/testing/test-harness/) API for integration tests.
 
 Miniflare is not a hardened sandbox

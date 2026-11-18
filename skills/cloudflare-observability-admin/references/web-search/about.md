@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-search/about/og.png?v=ba4b309ce28e5
 
 # About Web Search API
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-search/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI models are only as good as the context you give them. Models are trained and then frozen at a point in time, so they only know about information that existed before their knowledge cutoff date. This makes it difficult to work with models on recent events, changing APIs, or fast-moving news.
 
 Without web search, an agent that needs live information usually guesses the URL of a page and fetches it directly. When the guess is wrong, the request returns a `404 Not Found` and the agent has to try again.

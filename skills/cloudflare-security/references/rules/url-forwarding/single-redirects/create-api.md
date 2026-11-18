@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/single-redirects/c
 
 # Create a redirect rule via API
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a redirect rule via API.
 
 Add redirect rules to the entry point ruleset of the `http_request_dynamic_redirect` phase at the zone level. Refer to the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) documentation for more information on [creating a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/) and supplying a list of rules for the ruleset.

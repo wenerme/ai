@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/application-security/bots/og.
 
 # Stop malicious bots
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Malicious bots perform credential stuffing, content scraping, and inventory hoarding. Cloudflare provides multiple tools to detect and block automated threats while allowing legitimate bots like search engine crawlers.
 
 For a step-by-step workflow that combines these tools into a layered defense, refer to [Stop malicious bots while allowing legitimate traffic](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/).

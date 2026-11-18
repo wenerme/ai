@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/regional-tie
 
 # Regional Tiered Cache
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Availability
 
 Regional Tiered Cache is included with Enterprise plans. Smart Shield Advanced, which includes Regional Tiered Cache, is currently only available to Enterprise customers. If you are interested in Smart Shield Advanced, contact our [Enterprise Sales team ↗︎](https://www.cloudflare.com/resource/contact-enterprise-sales/).

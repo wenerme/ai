@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-eg
 
 # IPs utilization
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/) to get aggregate data and monitor your dedicated IPs capacity (formerly known as Aegis).
 
 Each Dedicated CDN Egress IP can support 40,000 concurrent connections per origin IP port. For example, if you have one dedicated IP and two origins (A and B), this single IP can support 40,000 concurrent connections to origin A, while simultaneously supporting 40,000 concurrent connections to origin B.

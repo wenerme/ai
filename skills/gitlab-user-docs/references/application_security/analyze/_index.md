@@ -29,7 +29,7 @@ already using a risk assessment framework, consider the following:
 - [OWASP Threat and Safeguard Matrix (TaSM)](https://owasp.org/www-project-threat-and-safeguard-matrix/)
 
 If available, use the
-[Security Analyst Agent](../../duo_agent_platform/agents/foundational_agents/security_analyst_agent.md)
+[Security Analyst Agent](../security_analyst_agent.md)
 to accelerate your vulnerability analysis. The agent efficiently triages, assesses, and remediates
 security findings by providing insights, risk assessments, and remediation guidance.
 

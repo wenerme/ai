@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-interconnect/monitoring-and-ale
 
 # Monitoring and alerts
 
-Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Monitoring
 
 The Cloudflare dashboard shows a list of all previously created interconnects, as well as useful information such as IP addresses, speed, type of interconnect, and status. In the Cloudflare dashboard, go to **Interconnects**.

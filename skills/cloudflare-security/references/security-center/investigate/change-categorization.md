@@ -12,11 +12,9 @@ image: https://developers.cloudflare.com/security-center/investigate/change-cate
 
 # Change categorization
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/investigate/change-categorization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare sorts domains into categories based on their content and security type. You can request categorization changes via the [dashboard](#via-the-cloudflare-dashboard), [Cloudflare Radar](#via-cloudflare-radar), or the [API](#via-the-api).
 
-For a detailed list of categories, refer to [Domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/).
+For a detailed list of categories, refer to [Domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/).
 
 ## Via the Cloudflare dashboard
 
@@ -25,7 +23,7 @@ To request a categorization change via the Cloudflare dashboard:
 1. In the Cloudflare dashboard, go to the **Investigate** page. [Go to **Investigate** ↗](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
 2. Search for the domain you want to change.
 3. In **Domain overview**, select **Request to change categorization**.
-4. Choose whether to change a [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) or a [content category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories).
+4. Choose whether to change a [security category](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-categories) or a [content category](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#content-categories).
 5. Choose which categories you want to add or remove from the domain.
 
    Content category limit
@@ -92,5 +90,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/investigate/change-categorization/#page","headline":"Change categorization","description":"Request domain categorization changes via the dashboard, Radar, or the API.","url":"https://developers.cloudflare.com/security-center/investigate/change-categorization/","inLanguage":"en","image":"https://developers.cloudflare.com/security-center/investigate/change-categorization/og.png?v=e994fe7713e97327","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/investigate/change-categorization/#page","headline":"Change categorization","description":"Request domain categorization changes via the dashboard, Radar, or the API.","url":"https://developers.cloudflare.com/security-center/investigate/change-categorization/","inLanguage":"en","image":"https://developers.cloudflare.com/security-center/investigate/change-categorization/og.png?v=e994fe7713e97327","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

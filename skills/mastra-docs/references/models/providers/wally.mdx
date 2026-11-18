@@ -5,7 +5,7 @@ description: "Browse Wally model IDs, capabilities, context windows, and pricing
 
 # [Wally logo]Wally
 
-Access 8 Wally models through Mastra's model router. Authentication is handled automatically using the `WALLY_API_KEY` environment variable.
+Access 9 Wally models through Mastra's model router. Authentication is handled automatically using the `WALLY_API_KEY` environment variable.
 
 Learn more in the [Wally documentation](https://docs.runanywhere.ai).
 
@@ -48,8 +48,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.44,
-    "outputCost": 1.32
+    "inputCost": 0.293,
+    "outputCost": 0.88
   },
   {
     "model": "wally/deepseek-v4-pro-fast",
@@ -60,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.91,
-    "outputCost": 3.83
+    "inputCost": 1.68,
+    "outputCost": 3.38
   },
   {
     "model": "wally/deepseek-v4.1-flash",
@@ -72,8 +72,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.3,
+    "inputCost": 0.275,
     "outputCost": 1.2
+  },
+  {
+    "model": "wally/deepseek-v4.1-flash-1017",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.195,
+    "outputCost": 1
   },
   {
     "model": "wally/deepseek-v4.1-flash-fast",
@@ -84,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.6,
-    "outputCost": 2.4
+    "inputCost": 0.275,
+    "outputCost": 1.2
   },
   {
     "model": "wally/glm-5.3-fast",
@@ -96,8 +108,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 2.1,
-    "outputCost": 6.6
+    "inputCost": 1.4,
+    "outputCost": 4.4
   },
   {
     "model": "wally/glm-5.3-flash",
@@ -108,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.272,
-    "outputCost": 0.65
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "wally/kimi-k3",
@@ -120,7 +132,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 3,
+    "inputCost": 2.925,
     "outputCost": 15
   },
   {
@@ -132,8 +144,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 524287,
     "maxOutput": 131072,
-    "inputCost": 0.33,
-    "outputCost": 1.32
+    "inputCost": 0.3,
+    "outputCost": 1.2
   }
 ]}
 />

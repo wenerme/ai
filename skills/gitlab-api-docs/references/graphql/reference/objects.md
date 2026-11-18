@@ -634,7 +634,7 @@ An AI catalog agent.
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalAgentReference` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Foundational agent reference. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
-| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot read the group's item configurations, or the group is not a top-level group.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -720,7 +720,7 @@ An AI catalog flow.
 | `effectiveVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
-| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot read the group's item configurations, or the group is not a top-level group.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -927,7 +927,7 @@ An AI catalog skill. The repository pointer fields resolve against the latest it
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
 | `gitRef` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Git reference the skill was published from. |
-| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot read the group's item configurations, or the group is not a top-level group.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -993,7 +993,7 @@ An AI catalog third party flow.
 | `effectiveVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
-| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot read the group's item configurations, or the group is not a top-level group.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -1651,6 +1651,7 @@ Model offered for Model Selection.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `costIndicator` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Presentational cost indicator for model usage, e.g "$", "$$", "$$$". |
+| `effortLevels` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Reasoning effort levels the model accepts, lowest first. The `duo_chat_effort_selection` feature flag controls whether this field returns effort levels. Returns an empty list when the flag is disabled or the model offers no effort choice. |
 | `modelDescription` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Brief description of the model, e.g "Fast, cost-effective responses". |
 | `modelProvider` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.Provider for the model, e.g "OpenAI". |
 | `name` | [`String!`](scalars.md#string) | Humanized name for the offered model, e.g "Chat GPT 4o". |
@@ -10168,9 +10169,11 @@ Per-user budget cap override.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `cap` | [`Float!`](scalars.md#float) | Budget cap amount for the user. |
+| `cap` | [`Float!`](scalars.md#float) | Budget cap amount for the user. `0` when the override only sets a daily cap, in which case `capEnabled` is `false`. |
 | `capEnabled` | [`Boolean!`](scalars.md#boolean) | Whether the budget cap is enabled for the user. |
 | `createdAt` | [`Time`](scalars.md#time) | When the override was created. |
+| `dailyCap` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Budget cap amount for the user per UTC calendar day. |
+| `dailyCapEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates whether the daily budget cap is enabled for the user. Independent of `capEnabled`. |
 | `updatedAt` | [`Time`](scalars.md#time) | When the override was last updated. |
 | `user` | [`UserCore`](#usercore) | GitLab user the override applies to. |
 
@@ -10186,6 +10189,8 @@ Budget cap controls for a subscription.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `dailyCap` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Default per-user budget cap per UTC calendar day, applied to all users. |
+| `dailyCapEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates whether the default per-user daily budget cap is enabled. |
 | `flatUserCap` | [`Float`](scalars.md#float) | Default per-user budget cap applied to all users. |
 | `flatUserCapEnabled` | [`Boolean`](scalars.md#boolean) | Whether the flat per-user budget cap is enabled. |
 | `subscriptionCap` | [`Float`](scalars.md#float) | Maximum budget cap for the subscription. |
@@ -10636,6 +10641,7 @@ Policy stored in the policy store.
 | `triggerType` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Trigger the policy responds to. |
 | `updatedAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Timestamp of when the policy was last updated. |
 | `version` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Version of the policy. |
+| `violationDetails` | [`[GovernPolicyViolationDetail!]`](#governpolicyviolationdetail) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Context paths the rules of the policy constrain. Null when the details have not been derived yet, for example for a policy saved before 19.7. |
 
 ## `GovernPolicyConnection`
 
@@ -10685,6 +10691,17 @@ Violation a policy evaluation produced.
 | `createdAt` | [`Time!`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Timestamp of when the violation was recorded. |
 | `details` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Details of the violation. |
 | `id` | [`GovernPolicyViolationID!`](scalars.md#governpolicyviolationid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Global ID of the violation. |
+
+## `GovernPolicyViolationDetail`
+
+Context path a policy rule constrains.
+
+### `GovernPolicyViolationDetail` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `expected` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Compliant value for the path. Null when the rule names none. |
+| `path` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Dotted context path the rule checks. |
 
 ## `GpgSignature`
 
@@ -11933,7 +11950,7 @@ Paginated collection of [`IssuableResourceLink`](#issuableresourcelink). See [St
 | `reference` | [`String!`](scalars.md#string) | Internal reference of the issue. Returned in shortened format by default.  <strong>Arguments for `reference`:</strong> <dl><dt>`full` ([`Boolean`](scalars.md#boolean))</dt><dd>Boolean option specifying whether the reference should be returned in full.</dd></dl> |
 | `relatedMergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests related to the issue. This field can only be resolved for one issue in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `relatedVulnerabilities` | [`VulnerabilityConnection`](#vulnerabilityconnection) | Related vulnerabilities of the issue. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `relativePosition` | [`Int`](scalars.md#int) | Relative position of the issue (used for positioning in epic tree and issue boards). |
+| `relativePosition` | [`Int`](scalars.md#int) | Deprecated in GitLab 19.7. Returns `null` if the position is outside the `Int` range. Rely on the order in which issues are returned. |
 | `severity` | [`IssuableSeverity`](enums.md#issuableseverity) | Severity level of the incident. |
 | `slaDueAt` | [`Time`](scalars.md#time) | Timestamp of when the issue SLA expires. |
 | `startDate` | [`Time`](scalars.md#time) | Start date of the issue. |

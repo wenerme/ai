@@ -123,7 +123,7 @@ In GitLab Duo Agentic Chat, you can start a flow with a slash command. Use a flo
 Prerequisites:
 
 - You must have Chat open in a project. Flow commands are not available outside a project.
-- The flow must be [enabled in the project](../duo_agent_platform/flows/custom.md#enable-a-flow).
+- The flow must be [turned on in the project](../duo_agent_platform/flows/custom.md#turn-on-a-flow).
 
 > [!warning]
 > If you trigger a flow with a slash command, it has write access to the GitLab API and to Git.
@@ -475,8 +475,8 @@ you can select a specific agent for Chat to use.
 
 Prerequisites:
 
-- In your project, [an agent from the AI Catalog must be enabled](../duo_agent_platform/agents/custom.md#enable-an-agent).
-- You must be a member of the project the agent is enabled in.
+- In your project, [an agent from the AI Catalog must be turned on](../duo_agent_platform/agents/custom.md#turn-on-an-agent).
+- You must be a member of the project the agent is turned on in.
 - For VS Code, [install and configure the GitLab for VS Code extension](../../editor_extensions/visual_studio_code/setup.md) version 6.49.12 or later.
 - For a JetBrains IDE, [install and configure the GitLab Duo plugin for JetBrains IDEs](../../editor_extensions/jetbrains_ide/setup.md) version 3.22.0 or later.
 
@@ -503,6 +503,7 @@ After you create a conversation with an agent:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250665) in GitLab 19.5 as an [experiment](../../policy/development_stages_support.md#experiment) with a [feature flag](../../administration/feature_flags/_index.md) named `dap_web_chat_file_attachments`. Disabled by default.
 - Instance setting to allow file attachments [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269169) in GitLab 19.6.
+- Group setting to allow file attachments [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268362) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -554,10 +555,36 @@ To allow file attachments for an instance:
 You can also use the [application settings API](../../api/settings.md#update-application-settings)
 to set the `duo_workflow_file_attachments_enabled` attribute.
 
+### Allow file attachments for a group
+
+- Offering: GitLab.com
+
+Allow file attachments for a top-level group so users in the group can attach images to Chat messages.
+The setting applies to all subgroups and projects in the group.
+
+Prerequisites:
+
+- You must have the Owner role for the top-level group.
+
+To allow file attachments for a group:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Settings** > **GitLab Duo**.
+1. Select **Change configuration**.
+1. In the **Data and privacy** section, under **File attachments**, select the **Allow file attachments** checkbox.
+1. Select **Save changes**.
+
+To allow file attachments for a group, you can also [use the API](../../api/groups.md#options-for-ai_settings_attributes)
+to set the `duo_workflow_file_attachments_enabled` attribute.
+
+When a user changes the **Allow file attachments** setting for a group,
+GitLab creates a `duo_workflow_file_attachments_enabled_updated` audit event.
+
 ### Attach an image to a message
 
 Prerequisites:
 
+- On GitLab.com, a group Owner must [allow file attachments for the top-level group](#allow-file-attachments-for-a-group).
 - On GitLab Self-Managed and GitLab Dedicated, an administrator must
   [allow file attachments for the instance](#allow-file-attachments-for-an-instance).
 

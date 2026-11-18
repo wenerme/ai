@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/additional-configurations/waf
 
 # WAF Managed Rules configuration using Terraform
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides examples of deploying and configuring [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) in your zone or account using Terraform. It covers the following configurations:
 
 - [Deploy managed rulesets at the zone level](#deploy-managed-rulesets-at-the-zone-level)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-visio
 
 # Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Prerequisites
 
 Before you begin, ensure you have the following:

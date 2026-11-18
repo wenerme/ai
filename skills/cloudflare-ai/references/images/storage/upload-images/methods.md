@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/upload-images/methods/og
 
 # Methods
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare gives you the option to [transform remote images](https://developers.cloudflare.com/images/optimization/transformations/overview), or upload into Images storage.
 
 If you have a [paid Images plan](https://developers.cloudflare.com/images/pricing#images-paid), you can upload an image using the following methods:

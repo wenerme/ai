@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/web-search/og.png?v=6f
 
 # Web Search
 
-Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/web-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway proxies native web search tools from supported providers so models can answer questions about events after their training cutoff. Search runs on the upstream provider; AI Gateway applies its standard features — logging, caching, rate limiting, and guardrails — to the request.
 
 How you enable web search depends on the provider. Activation is either a tool entry on a `tools` array or a top-level flag on the request body. The table below points you to the right section.

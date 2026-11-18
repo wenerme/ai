@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs
 
 # MkDocs
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [MkDocs ↗︎](https://www.mkdocs.org/) is a modern documentation platform where teams can document products, internal knowledge bases and APIs.
 
 ## Install MkDocs

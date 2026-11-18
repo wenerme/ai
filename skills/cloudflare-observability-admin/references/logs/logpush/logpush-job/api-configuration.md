@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/api-configurat
 
 # API configuration
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Endpoints
 
 The table below summarizes the job operations available for both Logpush and Edge Log Delivery jobs. Account-scoped datasets use `/accounts/{account_id}`, and zone-scoped datasets use `/zones/{zone_id}`. For more information, refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/tunnel/og.png
 
 # Tunnel
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manage [Cloudflare Tunnels](https://developers.cloudflare.com/tunnel/) directly from Wrangler. Create, run, and manage tunnels that securely connect your local services to Cloudflare's network — no public IPs required.
 
 Note

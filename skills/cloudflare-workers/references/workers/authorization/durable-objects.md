@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/authorization/durable-objects/o
 
 # Durable Objects roles and permissions
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/authorization/durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Durable Objects do not have separate roles or permissions. Access to a Durable Object is determined by your access to the Worker that implements it.
 
 To give a member, User Group, or API token access to a Durable Object, assign the appropriate Workers role at either the individual Worker scope or the Workers product scope. Refer to [Workers roles and permissions](https://developers.cloudflare.com/workers/authorization/workers/) for available roles and scopes.

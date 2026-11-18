@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/og.p
 
 # DNSLink gateways
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you set up a gateway with a DNSLink record, that gateway is restricted to a particular piece of content — either a specific Content Identifier (CID) or an Interplanetary Name Service (IPNS) hostname. This is called a restricted gateway.
 
 A restricted gateway differs from a [universal gateway](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/), which allows users to access any content hosted on the IPFS network.

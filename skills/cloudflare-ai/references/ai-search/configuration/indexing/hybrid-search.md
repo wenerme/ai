@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid
 
 # Hybrid search
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hybrid search runs vector and keyword search in parallel and merges the results. It requires [keyword search](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) to be enabled. For an overview of search modes, refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/).
 
 Hybrid search is enabled by default.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/reference/data-location
 
 # Data location
 
-Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Restrict Durable Objects to a jurisdiction
 
 Jurisdictions are used to create Durable Objects that only run and store data within a region to comply with local regulations such as the [GDPR ↗︎](https://gdpr-info.eu/) or [FedRAMP ↗︎](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).

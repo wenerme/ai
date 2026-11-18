@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/o
 
 # Coding agents
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Coding agents send model requests to a provider on your behalf. By pointing the agent at AI Gateway instead of the provider, you observe and control that traffic without changing how you work.
 
 ## Why route a coding agent through AI Gateway

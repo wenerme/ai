@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/cache-security/cache-deception-ar
 
 # Cache Deception Armor
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Web Cache Deception attacks
 
 A Web Cache Deception attack tricks a user into visiting a URL that appears to point to a static asset but actually returns dynamic, personalized content from the origin.

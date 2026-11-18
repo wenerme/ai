@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/og.png?v=f5e
 
 # Common use cases
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following common use cases illustrate how to secure web traffic to your sites and applications with custom rules:
 
 - [Allow traffic from IP addresses in allowlist only](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-ips-in-allowlist/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-f
 
 # Protect your forms from spam and abuse (Free, Pro, and Business)
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/solutions/protect-sensitive-forms-fraud-abuse/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Contact, registration, and checkout forms are common targets for automated abuse. This guide covers form protection: verifying that visitors are human, limiting repeated submissions, and blocking known attack patterns. The core workflow uses features available on all plans. Pro and Business plan features are included as callouts.
 
 Note

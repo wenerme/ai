@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/data-center-protection/c
 
 # What is Magic Transit?
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/what-is-magic-transit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Magic Transit is a network security and performance solution that offers Distributed Denial-of-Service (DDoS) protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks.
 
 Magic Transit works at Layer 3 of the [OSI model ↗︎](https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi/), protecting entire IP networks from DDoS attacks. Instead of relying on local infrastructure that can be overwhelmed by large DDoS attacks, Magic Transit uses the [global Cloudflare Network ↗︎](https://www.cloudflare.com/network/) to ingest and mitigate attacks close to their source.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Private network applications (legacy)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 The Private Network application type can no longer be created from the dashboard. If you do not already have a legacy private network application, use a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) to secure a private IP address instead.

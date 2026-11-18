@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
 
 # Configuration
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/wrangler-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 If your project contains an existing Wrangler file that you [previously used for local development](https://developers.cloudflare.com/pages/functions/local-development/), make sure you verify that it matches your project settings in the Cloudflare dashboard before opting-in to deploy your Pages project with the Wrangler configuration file. Instead of writing your Wrangler file by hand, Cloudflare recommends using [`npx wrangler pages download config`](#projects-without-existing-wrangler-file) to download your current project settings into a Wrangler file.
@@ -178,7 +176,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 	"name": "my-pages-app",
 	"pages_build_output_dir": "./dist",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -196,7 +194,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 name = "my-pages-app"
 pages_build_output_dir = "./dist"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]

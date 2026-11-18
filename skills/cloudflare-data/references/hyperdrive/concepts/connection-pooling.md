@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/
 
 # Connection pooling
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hyperdrive maintains a pool of connections to your database. These are optimally placed to minimize the latency for your applications. You can configure the amount of connections your Hyperdrive configuration uses to connect to your origin database. This enables you to right-size your connection pool based on your database capacity and application requirements.
 
 For instance, if your Worker makes many queries to your database (which cannot be resolved by Hyperdrive's caching), you may want to allow Hyperdrive to make more connections to your database. Conversely, if your Worker makes few queries that actually need to reach your database or if your database allows a small number of database connections, you can reduce the amount of connections Hyperdrive will make to your database.

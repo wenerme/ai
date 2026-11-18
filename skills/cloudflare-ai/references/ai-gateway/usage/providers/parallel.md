@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/og.
 
 # Parallel
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Parallel ↗︎](https://parallel.ai/) is a web API purpose-built for AIs, providing production-ready outputs with minimal hallucination and evidence-based results.
 
 ## Endpoint

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/streams/transforms
 
 # TransformStream
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Background
 
 A transform stream consists of a pair of streams: a writable stream, known as its writable side, and a readable stream, known as its readable side. Writes to the writable side result in new data being made available for reading from the readable side.

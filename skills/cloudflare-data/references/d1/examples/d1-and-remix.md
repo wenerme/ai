@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/d1/examples/d1-and-remix/og.png?v=a5309
 
 Query your D1 database from a Remix application.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/examples/d1-and-remix/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Remix is no longer recommended for new projects. For new applications, use [React Router](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router) instead. If you have an existing Remix application, consider [migrating to React Router ↗︎](https://reactrouter.com/upgrading/remix).

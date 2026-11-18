@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/og.png?v=
 
 # Pi AI
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To call AI Gateway from [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai), use `createAI` from `agents/models/pi-ai`. It calls models from the [model catalog](https://developers.cloudflare.com/ai/models/), [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/), and Pi AI's own model objects through your gateway. This page covers the AI Gateway features. For the full reference, refer to [Pi AI](https://developers.cloudflare.com/agents/models/pi-ai/).
 
 ## Installation

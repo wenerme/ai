@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dat
 
 # Build a data class
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Data classes are reusable classification rules built from detection entries, other data classes, sensitivity levels, and data tags.
 
 Use a data class when you want to combine multiple signals into a single reusable classification rule that can then be added to custom DLP profiles.

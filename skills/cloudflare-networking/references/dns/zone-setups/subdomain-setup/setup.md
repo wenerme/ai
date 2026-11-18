@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/o
 
 # Setup
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Availability
 
 Subdomain setup is only available for Enterprise accounts. If you only want to create a subdomain for your site in Cloudflare, refer to [Create a subdomain record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/).

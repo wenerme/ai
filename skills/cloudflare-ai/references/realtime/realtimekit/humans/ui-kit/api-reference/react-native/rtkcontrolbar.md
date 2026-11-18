@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkControlbar
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkcontrolbar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The main control bar container that renders meeting controls (mic, camera, leave, and more) using the declarative UI config system.
 
 ## Properties

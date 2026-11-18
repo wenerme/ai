@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/webassembly/javasc
 
 # Wasm in JavaScript
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wasm can be used from within a Worker written in JavaScript or TypeScript by importing a Wasm module, and instantiating an instance of this module using [`WebAssembly.instantiate()` ↗︎](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiate). This can be used to accelerate computationally intensive operations which do not involve significant I/O.
 
 This guide demonstrates the basics of Wasm and JavaScript interoperability.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network/ip-geolocation/og.png?v=6b985d2
 
 # IP geolocation
 
-Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/ip-geolocation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 IP geolocation adds the [`CF-IPCountry` header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ipcountry) to all requests to your origin server.
 
 ## Availability

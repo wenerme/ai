@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/ip-addresses/og.png?v=164b36bf2
 
 # IP addresses
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/ip-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the addresses below to configure your device or router. Two addresses are provided for each resolver for redundancy.
 
 For step-by-step instructions, refer to [Set up](https://developers.cloudflare.com/1.1.1.1/setup/).

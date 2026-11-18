@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/objects/delete-objects/og.png?v=0250
 
 # Delete objects
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/objects/delete-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can delete objects from R2 using the dashboard, Workers API, S3 API, or command-line tools. To empty or delete an entire bucket, refer to [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/).
 
 ## Delete via dashboard

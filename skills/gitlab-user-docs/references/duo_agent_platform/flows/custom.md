@@ -13,7 +13,7 @@
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/569060) in GitLab 18.8.
 - Feature flag `ai_catalog_flows` [enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216969) in GitLab 18.8.
 - Pipeline events trigger [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/212797) in GitLab 18.9 as an [experiment](../../../policy/development_stages_support.md) with a [flag](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_pipeline_hooks`. Disabled by default.
-- Enabling directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
+- Turning on flows directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
 - Feature flag `ai_catalog_project_level_enablement` removed in GitLab 18.11.
 - **Merge request ready** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592454) in GitLab 19.0 with a [flag](../../../administration/feature_flags/_index.md) named `merge_request_ready_flow_trigger`. Disabled by default.
@@ -45,7 +45,7 @@ When you create a custom flow, you select a project to manage it and choose whet
 
 Public flows:
 
-- Can be viewed by anyone on the instance and can be enabled in any project that meets the prerequisites.
+- Can be viewed by anyone on the instance and can be turned on in any project that meets the prerequisites.
 
 Restricted flows:
 
@@ -63,7 +63,7 @@ Private flows:
   - Members of the managing project who have the Guest, Planner, Reporter, Developer,
     Maintainer, or Owner role.
   - Users with the Owner role for the top-level group.
-- Cannot be enabled in projects other than the managing project, or in groups
+- Cannot be turned on in projects other than the managing project, or in groups
   other than the top-level group.
 
 You cannot make a public or restricted flow private if the flow has been turned on by a project other than the managing project.
@@ -78,7 +78,7 @@ To view a list of flows associated with your project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
-   - To view flows enabled in the project, select the **Enabled** tab.
+   - To view flows turned on in the project, select the **Enabled** tab.
    - To view flows managed by the project, select the **Managed** tab.
 
 Select a flow to view its details.
@@ -172,27 +172,27 @@ In VS Code, you can use the GitLab flow builder to create a custom flow.
    fields.
 
 > [!note]
-> The GitLab flow builder can publish a flow to the AI Catalog, but enabling a flow in a project
+> The GitLab flow builder can publish a flow to the AI Catalog, but turning on a flow in a project
 > and attaching automations is done in the GitLab UI only.
 
 The flow appears in the AI Catalog.
 
-## Enable a flow
+## Turn on a flow
 
-- Enabling a public flow for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
+- Turning on a public flow for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
 - Feature flag `ai_catalog_bulk_item_consumer_create` removed in GitLab 19.4.
-- Enabling a flow for all projects in a top-level group [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627512) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_group_inherited_consumers`. Disabled by default.
+- Turning on a flow for all projects in a top-level group [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627512) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_group_inherited_consumers`. Disabled by default.
 
-Enable a flow to trigger it from an issue, merge request, or discussion.
+Turn on a flow to trigger it from an issue, merge request, or discussion.
 
-When you enable a flow in a project:
+When you turn on a flow in a project:
 
-- The flow is enabled in the top-level group for that project at the same time.
+- The flow is turned on in the top-level group for that project at the same time.
 - You add an [automation](../automations/_index.md) to specify which events trigger the
   flow. Some of the events involve the service account user. For more
   information, see [composite identity](../composite_identity.md).
 
-You can enable a flow or agent up to 30 times per minute.
+You can turn on a flow or agent up to 30 times per minute.
 
 ### From the managing project
 
@@ -200,11 +200,11 @@ Prerequisites:
 
 - Have the Maintainer or Owner role for the project.
 
-To enable a flow:
+To turn on a flow:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Flows**.
-1. Select the **Managed** tab, then select the flow you want to enable.
+1. Select the **Managed** tab, then select the flow you want to turn on.
 1. In the upper-right corner, select **Enable**.
 1. Optional. In the **Instructions** field, enter what the flow should do each time it runs.
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
@@ -220,20 +220,20 @@ To enable a flow:
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
-When you enable a flow in a top-level group, the flow is enabled for all projects in the group.
+When you turn on a flow in a top-level group, the flow is turned on for all projects in the group.
 Projects that you create in or transfer to the group later also get the flow.
-You do not have to enable the flow in each project.
+You do not have to turn on the flow in each project.
 
 Prerequisites:
 
 - Have the Maintainer or Owner role for the top-level group.
 - The flow is public, or restricted to the same top-level group.
 
-To enable a flow for all projects in a top-level group:
+To turn on a flow for all projects in a top-level group:
 
 1. In the top bar, select **Search or go to** and find your top-level group.
 1. In the left sidebar, select **AI** > **Flows**.
-1. Select the flow you want to enable.
+1. Select the flow you want to turn on.
 1. In the upper-right corner, select **Enable for all projects**.
 1. Under **Conditions**, review the [events](../automations/_index.md#event-types) that trigger the flow.
    By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
@@ -260,17 +260,17 @@ Prerequisites:
 
 - You must have the Maintainer or Owner role for the project.
 
-To enable a flow:
+To turn on a flow:
 
 1. In the top bar, select **Search or go to** > **Explore**.
 1. Select **AI Catalog**, then select the **Flows** tab.
-1. Select the flow you want to enable.
+1. Select the flow you want to turn on.
 1. In the upper-right corner, select **Enable**.
-1. Under **Select projects**, select the project you want to enable the flow in.
+1. Under **Select projects**, select the project you want to turn on the flow in.
 
-   To enable a public or restricted flow for multiple projects, select the relevant projects.
+   To turn on a public or restricted flow for multiple projects, select the relevant projects.
    You can select up to 100 projects.
-   You can enable a flow for multiple projects up to 10 times per minute.
+   You can turn on a flow for multiple projects up to 10 times per minute.
 
 1. Under **Conditions**, review the [events](../automations/_index.md#event-types) that trigger the flow.
    By default, the flow runs on **Mention**, **Assign**, and **Assign reviewer**.
@@ -281,8 +281,8 @@ To enable a flow:
 1. Select **Enable**.
 
 The flow appears in the group and project **AI** > **Flows** pages.
-If you enabled the flow in a project, maintainers of other projects in the top-level group
-can also enable the flow in their projects by using the **From the AI Catalog** tab.
+If you turned on the flow in a project, maintainers of other projects in the top-level group
+can also turn on the flow in their projects by using the **From the AI Catalog** tab.
 
 A service account is created in the group. The name of the account
 follows this naming convention: `ai-<flow>-<group>`.
@@ -347,14 +347,14 @@ You can disable a flow or agent up to 30 times per minute.
 Prerequisites:
 
 - You must have the Developer, Maintainer, or Owner role for the project.
-- The flow must be enabled in the project.
+- The flow must be turned on in the project.
 
 To use a flow:
 
 1. In your project, open an issue, merge request, or epic.
 1. To trigger the flow, mention, assign, or request a review from the flow service account user. By default, the user has the name `ai-<flow>-<group>`.
 
-   For example, if you enable a flow called `Security scanner` in the `GitLab Duo` group, the service account user is `ai-security-scanner-gitlab-duo`.
+   For example, if you turn on a flow called `Security scanner` in the `GitLab Duo` group, the service account user is `ai-security-scanner-gitlab-duo`.
 1. After the flow has completed the task, you see a confirmation, and either a ready-to-merge change or an inline comment.
 
 You can also start a flow from a [GitLab Duo Agentic Chat slash command](../../gitlab_duo_chat/agentic_chat.md#trigger-a-flow-with-a-slash-command) if the flow has been turned on for the project.
@@ -423,7 +423,7 @@ Prerequisites:
 
 Hide a flow to remove it from the AI Catalog.
 
-After you hide a flow, users can't enable it. However, they can still trigger it in the groups and projects it is already enabled in.
+After you hide a flow, users can't turn it on. However, they can still trigger it in the groups and projects it is already turned on in.
 
 Prerequisites:
 
@@ -469,10 +469,10 @@ The flow's built-in tools and the `glab` CLI call the API correctly.
 
 ## Group sharing and flows
 
-When you enable a flow in a group, a related service account is automatically created. The service account:
+When you turn on a flow in a group, a related service account is automatically created. The service account:
 
 - Uses [composite identity authentication](../composite_identity.md) to ensure that the flow can never access more than the user who runs the flow.
-- Is added as a member to any project under the top-level group that enables the flow, so the flow can't access resources outside that group.
+- Is added as a member to any project under the top-level group that turns on the flow, so the flow can't access resources outside that group.
 - Is granted access to any additional groups that are shared with the top-level group. The service account is treated like any other group member for group sharing.
 
 > [!note]
@@ -488,7 +488,7 @@ You can turn them on or off for a top-level group or for an instance.
 
 When custom flows are turned off:
 
-- Users cannot create, enable, disable, or execute custom flows.
+- Users cannot create, turn on, turn off, or execute custom flows.
 - Existing custom flows are no longer visible
   in the project under **AI** > **Flows** > **Enabled**.
 - Custom flows created in the project appear

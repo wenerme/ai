@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/payload-logging/command-line/decryp
 
 # Decrypt the payload content
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/command-line/decrypt-payload/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the `matched-data-cli` tool to decrypt a payload in the command line.
 
 1. [Download ↗︎](https://github.com/cloudflare/matched-data-cli/releases) the `matched-data-cli` tool for your platform from the **Releases** page on GitHub, under **Assets**.

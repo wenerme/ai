@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/reference/migration-guides/digicert
 
 # DigiCert Legacy Root (G1) distrust by major browsers
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Browsers and operating systems are completing the removal of DigiCert's legacy G1 root certificates from their trust stores, effective **April 15, 2026**.
 
 DigiCert announced this planned deprecation in 2023 and has been issuing certificates from their newer G2 roots since 2020.

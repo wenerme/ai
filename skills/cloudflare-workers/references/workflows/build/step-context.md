@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/step-context/og.png?v=8
 
 # Step context
 
-Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/step-context/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Every `step.do` callback receives a **context object** (`WorkflowStepContext`) as its first argument. The context gives your step code runtime information about the step itself, the current retry attempt, and the resolved configuration for that step.
 
 ## WorkflowStepContext

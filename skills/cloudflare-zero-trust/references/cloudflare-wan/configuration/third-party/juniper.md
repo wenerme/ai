@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # HPE Juniper Networking SRX Series Firewalls
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 This guide provides step-by-step instructions for configuring HPE Juniper Networking SRX Series Firewalls to establish IPsec VPN tunnels to Cloudflare WAN. It is intended for network engineers who are familiar with HPE Juniper Networking SRX Series Firewalls administration and have an active Cloudflare WAN subscription.
@@ -470,7 +468,7 @@ Commit changes, then test traffic from a host on the 192.168.125.0/24 subnet to 
 
 Note
 
-If you have Cloudflare One configured to perform [HTTPS traffic inspection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/), ensure that you [install the Root CA certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) prior to testing connectivity to any HTTPS-based sites, otherwise you will receive untrusted certificate warning messages.
+If you have Cloudflare One configured to perform [HTTPS traffic inspection](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/), ensure that you [install the Root CA certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) prior to testing connectivity to any HTTPS-based sites, otherwise you will receive untrusted certificate warning messages.
 
 ## Troubleshooting
 
@@ -810,5 +808,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/#page","headline":"HPE Juniper Networking SRX Series Firewalls","description":"Connect HPE Juniper SRX to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/og.png?v=0c37195c3d52a33b","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/#page","headline":"HPE Juniper Networking SRX Series Firewalls","description":"Connect HPE Juniper SRX to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/juniper/og.png?v=0c37195c3d52a33b","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

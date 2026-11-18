@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/get-started/og.png?v=97d8eac534bef
 
 # Get started
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this tutorial to set up a Cloudflare Web3 gateway, which gives your application HTTP access to the IPFS or Ethereum network without running your own node.
 
 ## Before you begin

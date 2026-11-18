@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/og.p
 
 # How to
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the content below to learn how to complete tasks using Cloudflare Network Firewall (formerly Magic Firewall).
 
 - [Form expressions](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/form-expressions/)

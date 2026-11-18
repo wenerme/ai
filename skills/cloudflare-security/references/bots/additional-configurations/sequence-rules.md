@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/sequence
 
 # Sequence rules
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Sequence rules](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/) uses cookies to track the order of requests a user has made and the time between requests and makes them available via [Cloudflare Rules](https://developers.cloudflare.com/rules/). This allows you to write rules that match valid or invalid sequences. The specific cookies used to validate sequences are called sequence cookies.
 
 \`431\` error

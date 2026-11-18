@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-proxy/reference/og.png?v=1d2ffd
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Technical reference documentation for Privacy Proxy configuration and monitoring.
 
 - [HTTP headers](https://developers.cloudflare.com/privacy-proxy/reference/http-headers/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/spin/og.png?v=73d0422760495ee
 
 # Turnstile Spin
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/spin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Turnstile Spin is a setup flow for Cloudflare Turnstile. It creates the widget for you, then provides the sitekey, secret, and a curated prompt to embed the widget on the right forms and wire canonical server-side siteverify into your existing backend. The prompt does not contain the secret. Spin runs three ways:
 
 - **From the Cloudflare dashboard.** Enter your domains, select **Set up**, and Spin creates the widget server-side. You receive the sitekey, the secret, and a prompt for your AI coding agent.

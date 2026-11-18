@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Cisco SD-WAN
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/viptela/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare partners with Cisco's SD-WAN solution to provide users with an integrated SASE solution. The Cisco SD-WAN appliances (physical and virtual) manage subnets associated with branch offices and cloud instances. Anycast tunnels are set up between these SD-WAN edge devices and Cloudflare to securely route Internet-bound traffic. This tutorial describes how to configure the Cisco Catalyst 8000 Edge Platforms (physical or virtual) in the SD-WAN mode for north-south (Internet-bound) use cases.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/proxy-status/og.png?v=9516888b00ca0
 
 # Proxy status
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/proxy-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 While your [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/) contain information about your domain, the proxy status controls whether HTTP/HTTPS traffic for that record routes through Cloudflare's network or goes directly to your origin server.
 
 When a record is **Proxied**, Cloudflare sits between your visitors and your server — optimizing, caching, and protecting traffic along the way. When a record is **DNS-only**, Cloudflare responds with your server's actual IP address and does not route HTTP/HTTPS traffic through its network.

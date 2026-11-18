@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/concepts/confidence-levels/og.png
 
 # Confidence levels
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/concepts/confidence-levels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `result.meta.confidenceInfo.level` in the response provides an indication of how much confidence Cloudflare has in the data. Confidence levels can be affected either by internal issues affecting data quality or by not having a lot of data for a given location (like Antarctica) or Autonomous System (AS).
 
 | Level | Description |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/response-header-modific
 
 # Available fields and functions
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/response-header-modification/reference/fields-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The available fields when setting an HTTP response header value using an expression are the following:
 
 - `cf.bot_management.*`

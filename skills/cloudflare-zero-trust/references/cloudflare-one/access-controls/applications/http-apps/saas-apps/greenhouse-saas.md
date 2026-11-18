@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Greenhouse Recruiting
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/greenhouse-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Greenhouse Recruiting ↗︎](https://support.greenhouse.io/hc/en-us/articles/360040753811-Configure-single-sign-on-SSO-for-Greenhouse-Recruiting) as a SAML application in Cloudflare One.
 
 ## Prerequisites

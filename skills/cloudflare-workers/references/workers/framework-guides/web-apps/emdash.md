@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/emdas
 
 # EmDash
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/emdash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [EmDash ↗︎](https://emdashcms.com/) is an open-source, full-stack content management system (CMS) for [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/). An EmDash site runs on Workers, stores content in [D1](https://developers.cloudflare.com/d1/), and stores media in [R2](https://developers.cloudflare.com/r2/). It includes an admin panel, a plugin system, and a Model Context Protocol (MCP) server for editing content from AI tools.
 
 The source code is available on [GitHub ↗︎](https://github.com/emdash-cms/emdash).
@@ -87,7 +85,7 @@ The template configures the D1, R2, and Cron Trigger bindings in `wrangler.jsonc
   "name": "my-emdash-site",
   "main": "./src/worker.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-06",
+  "compatibility_date": "2026-11-18",
   "d1_databases": [
     {
       "binding": "DB",
@@ -112,7 +110,7 @@ The template configures the D1, R2, and Cron Trigger bindings in `wrangler.jsonc
 name = "my-emdash-site"
 main = "./src/worker.ts"
 # Set this to today's date
-compatibility_date = "2026-11-06"
+compatibility_date = "2026-11-18"
 
 [[d1_databases]]
 binding = "DB"

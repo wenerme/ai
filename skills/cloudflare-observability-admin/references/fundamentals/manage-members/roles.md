@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/roles/og.pn
 
 # Roles
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/roles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Whenever you [add a new member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) to your account, you can assign policies to those users and make use of the available roles. Roles can only ever be assigned to their given scope and multiple roles can be assigned to a given policy.
 
 ## Account-scoped roles

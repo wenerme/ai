@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/rat
 
 # Use cases
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/rate-limiting/use-cases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The most common uses cases are:
 
 - [Enforce granular access control](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#enforcing-granular-access-control) to resources. Includes access control based on criteria such as user agent, IP address, referrer, host, country, and world region.

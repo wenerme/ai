@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Disk encryption
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/disk-encryption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Disk Encryption device posture attribute ensures that disks are encrypted on a device.
 
 ## Prerequisites

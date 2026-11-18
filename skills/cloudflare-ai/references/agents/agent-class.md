@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/og.png?v=b105b2adcb7
 
 # Agent class
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides an overview of the Agents SDK. For detailed documentation on each feature, refer to the linked reference pages.
 
 ## Overview

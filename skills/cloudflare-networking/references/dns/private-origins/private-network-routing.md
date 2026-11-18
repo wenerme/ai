@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/private-origins/private-network-rou
 
 # Private network routing
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/private-origins/private-network-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Private network routing allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network. When you enable this setting on a DNS record, Cloudflare reaches the origin over your private network connectivity instead of the public Internet.
 
 For end-to-end setup, refer to the guide for your connectivity type: [Cloudflare WAN](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/), [Cloudflare Tunnel](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-tunnel/), or [Cloudflare Mesh](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-mesh/).

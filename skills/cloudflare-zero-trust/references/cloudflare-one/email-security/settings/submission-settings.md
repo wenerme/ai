@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/
 
 # Submission settings
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 As part of your continuous email security posture, administrators and security analysts need to submit missed phishing samples to Email security, so Cloudflare can process them and take necessary action.
 
 Submitting missed phish samples to Cloudflare is of paramount importance and necessary for continuous protection. Submitting missed phish samples helps Cloudflare improve our machine learning (ML) models, and alerts us of new attack vectors before they become prevalent.

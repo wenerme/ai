@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/og.png?v=ea
 
 # Integrations
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Integrate third-party applications and services with Cloudflare One.
 
 - [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Identity providers
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One integrates with your organization's identity provider to apply Cloudflare One and Secure Web Gateway policies. If you work with partners, contractors, or other organizations, you can integrate multiple identity providers simultaneously.
 
 When you create a new Zero Trust organization, Cloudflare automatically configures the [Cloudflare identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) as your default login method. Your users can authenticate with their existing Cloudflare account credentials without any additional setup, and you can add more identity providers at any time.

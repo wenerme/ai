@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/account-options/transfer-out-
 
 # Transfer domain out from Cloudflare
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Registrar makes it easy to transfer your domain to another registrar. Be aware that ICANN rules prohibit a domain from being transferred if:
 
 - The domain has been transferred within the last 60 days;

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-challenges/reference/support
 
 # Supported browsers
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare uses browser-based challenges across [Challenge Pages](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/), [Turnstile](https://developers.cloudflare.com/turnstile/), [JavaScript Detections (JSD) in Bot Management](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/), and [Precursor](https://developers.cloudflare.com/cloudflare-challenges/precursor/). This page describes the browser environments that support these checks.
 
 ## Browser support

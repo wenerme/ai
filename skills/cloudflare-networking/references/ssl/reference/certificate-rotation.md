@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/reference/certificate-rotation/og.p
 
 # Rotate ACM certificate packs
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-rotation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Advanced Certificate Manager (ACM) certificate packs cannot be updated in place. To replace an existing pack - for example, to change the certificate authority, add hostnames, or change validation method - you create a new pack, wait for it to reach **Active** status, and then delete the old one.
 
 The key principle is to ensure the new certificate pack reaches **Active** before removing the old one. This avoids any gap in coverage and means there is no downtime for your users.

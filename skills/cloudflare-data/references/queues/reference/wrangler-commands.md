@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/reference/wrangler-commands/og.p
 
 # Wrangler commands
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Queues Wrangler commands use REST APIs to interact with the control plane. This page lists the Wrangler commands for Queues.
 
 ## `queues list`

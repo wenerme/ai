@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/private-network/public-t
 
 # Set up Private Network Load Balancing for Public traffic to Tunnel
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consider the following steps to learn how to configure Private Network Load Balancing solution, using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) as the off-ramp to securely connect to your private or internal services.
 
 ## 1. Configure a Cloudflare tunnel with an assigned virtual network

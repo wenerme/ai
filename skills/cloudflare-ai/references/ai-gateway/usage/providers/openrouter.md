@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/providers/openrouter/o
 
 # OpenRouter
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/openrouter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [OpenRouter ↗︎](https://openrouter.ai/) is a platform that provides a unified interface for accessing and using large language models (LLMs).
 
 ## Endpoint

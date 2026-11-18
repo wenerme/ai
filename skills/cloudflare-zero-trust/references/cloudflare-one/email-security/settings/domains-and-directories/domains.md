@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/
 
 # Domains
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you configure your domain, the Cloudflare dashboard will display you the following fields:
 
 - **Domain**: Domain name. Refer to [Manage domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/manage-domains/) to learn how to add, filter, and delete domains.

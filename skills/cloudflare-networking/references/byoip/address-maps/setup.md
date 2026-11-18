@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/address-maps/setup/og.png?v=29a85
 
 # Set up address maps
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/address-maps/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consider the sections below to learn how to set up address maps.
 
 Note

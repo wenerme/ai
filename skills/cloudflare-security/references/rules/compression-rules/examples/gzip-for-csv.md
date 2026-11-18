@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/compression-rules/examples/gzip-f
 
 Create a compression rule to set Gzip compression as the preferred compression method for CSV files.
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/gzip-for-csv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following example rule will configure Gzip compression as the preferred compression method for CSV files. If the visitor does not support this algorithm, Cloudflare will try to compress the response using a different algorithm supported by the visitor.
 
 **When incoming requests match**

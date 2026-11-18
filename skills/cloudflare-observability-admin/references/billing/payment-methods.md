@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/payment-methods/og.png?v=48e469
 
 # Payment methods
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/payment-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these pages to understand payment method behavior and payment options for Cloudflare services.
 
 ### [Additional payment method auto-retry](https://developers.cloudflare.com/billing/payment-methods/additional-payment-method-auto-retry/)

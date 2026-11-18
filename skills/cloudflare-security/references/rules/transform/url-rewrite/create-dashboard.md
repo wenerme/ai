@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/url-rewrite/create-dash
 
 # Create a URL rewrite rule in the dashboard
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Rewrite+URL) for examples of rule definitions.
 
 To create a rule:

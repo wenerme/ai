@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/examples/cloud-gaming/og.p
 
 # Cloud gaming
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/examples/cloud-gaming/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run Freedoom in a Cloudflare Container, stream its audio and video through Realtime SFU, and send browser input back over DataChannels. Multiple viewers can watch while one browser tab controls the game.
 
 This experimental example demonstrates a native publisher and browser receivers. The same media-and-control topology can inform remote application and device interfaces.

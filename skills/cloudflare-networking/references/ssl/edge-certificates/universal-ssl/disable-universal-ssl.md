@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/dis
 
 # Disable Universal SSL certificates
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Some customers may need to manage their own SSL certificates or rely on specific Certificate Authorities.
 
 If you disable your domain's Universal SSL certificate, Cloudflare removes that certificate from our network and will not order or renew any additional Universal SSL certificates.

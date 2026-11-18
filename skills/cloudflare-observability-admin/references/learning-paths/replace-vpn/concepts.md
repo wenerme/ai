@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/og.
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Concepts explain the basic ideas behind how Cloudflare Zero Trust works.
 
 ## Objectives

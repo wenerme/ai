@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-integrations/promet
 
 # Prometheus
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial explains how to export Cloudflare metrics to [Prometheus ↗︎](https://prometheus.io/) using the [Cloudflare Prometheus Exporter ↗︎](https://github.com/cloudflare/cloudflare-prometheus-exporter), an open-source tool built on Cloudflare Workers with Durable Objects.
 
 ## Overview

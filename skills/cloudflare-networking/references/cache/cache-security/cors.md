@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/cache-security/cors/og.png?v=8b3d
 
 # Cross-Origin Resource Sharing (CORS)
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/cache-security/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A cross-origin request occurs when a webpage on one origin (for example, `a.example.com`) requests a resource from a different origin (for example, `b.secondexample.com`). Cross-Origin Resource Sharing (CORS) is a mechanism that uses HTTP headers to let the server at `b.secondexample.com` indicate whether `a.example.com` is allowed to access its resources. Browsers enforce these headers and block access to responses that are not permitted.
 
 Cloudflare supports CORS by:

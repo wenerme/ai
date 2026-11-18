@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/reference/s3-mounts/og.png?v=fe
 
 # S3Mount API
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/s3-mounts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `S3Mount` mounts an S3-compatible bucket, or a prefix in one, at a path in a running container. The container runs `s3fs`, which sends storage requests to `S3Gateway` in your Worker. `S3Gateway` checks each request and signs it with credentials that the container never receives. `S3Mount` does not start or stop the container.
 
 ```js

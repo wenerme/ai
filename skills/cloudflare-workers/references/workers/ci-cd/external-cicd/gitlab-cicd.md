@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd
 
 # GitLab CI/CD
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can deploy Workers with [GitLab CI/CD ↗︎](https://docs.gitlab.com/ee/ci/pipelines/index.html). Here is how you can set up your Gitlab CI/CD pipeline.
 
 ## 1. Authentication

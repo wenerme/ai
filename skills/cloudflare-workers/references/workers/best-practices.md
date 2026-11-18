@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/best-practices/og.png?v=0d807ac
 
 # Best practices
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/)
 
 Was this helpful?

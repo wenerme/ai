@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Connect an IP/CIDR
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to enable secure remote access to private IP addresses using `cloudflared` and the Cloudflare One Client. You can connect an entire private network, a subnet, or an application defined by a static IP.
 
 ## 1. Connect the server to Cloudflare
@@ -69,7 +67,7 @@ By default, all devices enrolled in your Zero Trust organization can connect to 
 
 ### Enable the Gateway proxy
 
-1. Go to **Traffic policies** > **Traffic settings**.
+1. Go to **Traffic controls** > **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
 3. Select **TCP**.
 4. Select **UDP** (required to proxy traffic to internal DNS resolvers).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/og.p
 
 # Use lists in expressions
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In the Cloudflare dashboard, there are two options for editing [expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/):
 
 - [Expression Builder](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-builder): Allows you to create expressions using drop-down lists, emphasizing a visual approach to defining an expression.

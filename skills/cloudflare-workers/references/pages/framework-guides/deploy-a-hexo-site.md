@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-si
 
 # Hexo
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Hexo ↗︎](https://hexo.io/) is a tool for generating static websites, powered by Node.js. Hexo's benefits include speed, simplicity, and flexibility, allowing it to render Markdown files into static web pages via Node.js.
 
 In this guide, you will create a new Hexo application and deploy it using Cloudflare Pages. You will use the `hexo` CLI to create a new Hexo site.

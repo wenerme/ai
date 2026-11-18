@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-si
 
 # Qwik
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Qwik ↗︎](https://github.com/builderio/qwik) is an open-source, DOM-centric, resumable web application framework designed for best possible time to interactive by focusing on [resumability ↗︎](https://qwik.builder.io/docs/concepts/resumable/), server-side rendering of HTML and [fine-grained lazy-loading ↗︎](https://qwik.builder.io/docs/concepts/progressive/#lazy-loading) of code.
 
 In this guide, you will create a new Qwik application implemented via [Qwik City ↗︎](https://qwik.builder.io/qwikcity/overview/) (Qwik's meta-framework) and deploy it using Cloudflare Pages.

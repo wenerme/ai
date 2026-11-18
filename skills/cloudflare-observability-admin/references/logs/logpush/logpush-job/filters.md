@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/filters/og.png
 
 # Filters
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following table represents the comparison operators that are supported and example values. Filters are added as escaped JSON strings formatted as `{"key":"<field>","operator":"<comparison_operator>","value":"<value>"}`.
 
 - Refer to the [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) page for a list of fields related to each dataset.

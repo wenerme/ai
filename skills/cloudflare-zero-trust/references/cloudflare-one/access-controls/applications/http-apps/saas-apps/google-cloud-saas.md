@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Google Cloud
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/google-cloud-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Google Cloud ↗︎](https://support.google.com/cloudidentity/topic/7558767) as a SAML application in Cloudflare One.
 
 Caution

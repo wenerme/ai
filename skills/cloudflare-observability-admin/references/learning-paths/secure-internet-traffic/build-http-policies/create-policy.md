@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Create your first HTTP policy
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/create-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Now that you have considered which devices and applications TLS inspection should and should not apply to, it is time to create your first HTTP policy.
 
 ## Create your first policy

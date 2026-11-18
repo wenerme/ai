@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/middleware/og.png?v=75b
 
 # Middleware
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/middleware/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Middleware is reusable logic that can be run before your [`onRequest`](https://developers.cloudflare.com/pages/functions/api-reference/#onrequests) function. Middlewares are typically utility functions. Error handling, user authentication, and logging are typical candidates for middleware within an application.
 
 ## Add middleware

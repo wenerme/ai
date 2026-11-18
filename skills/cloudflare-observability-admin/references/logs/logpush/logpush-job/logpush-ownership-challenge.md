@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-owners
 
 # Ownership challenge FAQ
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The ownership challenge is a one-time verification that proves you have read access to a destination bucket before Cloudflare pushes logs to it. This mechanism prevents you from accidentally configuring a Logpush job that pushes data to a bucket you do not control.
 
 ## How it works

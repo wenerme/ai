@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/additional-configurations/rat
 
 # Rate limiting rules configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/rate-limiting-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides examples of creating [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) in a zone or account using Terraform.
 
 If you are using the Cloudflare API, refer to the following resources:

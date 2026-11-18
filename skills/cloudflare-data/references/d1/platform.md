@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/platform/og.png?v=94edae9b579c8bf5
 
 # Platform
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Pricing](https://developers.cloudflare.com/d1/platform/pricing/)
 - [Limits](https://developers.cloudflare.com/d1/platform/limits/)
 - [Alpha database migration guide](https://developers.cloudflare.com/d1/platform/alpha-migration/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/platform/pricing/og.png?v=
 
 # Pricing
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Realtime billing is based on data sent from Cloudflare to your application. The SFU and TURN services cost $0.05 per GB of egress.
 
 The first 1,000 GB each month is free. SFU and TURN share this allowance; they do not have independent free tiers. Realtime usage appears as a single line item on your Cloudflare bill.

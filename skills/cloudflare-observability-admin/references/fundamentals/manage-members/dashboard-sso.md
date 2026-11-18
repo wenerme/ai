@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/dashboard-s
 
 # Set up dashboard SSO
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare offers single sign-on (SSO) for all customers who log in with a custom email domain. By creating a Cloudflare SSO connector, you can enforce SSO to the Cloudflare dashboard with the identity provider (IdP) of your choice. SSO will be enforced for every user in your email domain.
 
 ## Availability

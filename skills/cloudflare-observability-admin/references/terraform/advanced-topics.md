@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/advanced-topics/og.png?v=6406
 
 # Advanced topics
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Best practices](https://developers.cloudflare.com/terraform/advanced-topics/best-practices/)
 - [Import Cloudflare resources](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/)
 - [Provider customization](https://developers.cloudflare.com/terraform/advanced-topics/provider-customization/)

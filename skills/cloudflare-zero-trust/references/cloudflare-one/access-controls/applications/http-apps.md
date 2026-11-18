@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Add web applications
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access allows you to secure your web applications by acting as an identity-aware proxy. Access sits in front of your application and checks each request against your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) before allowing it through. You can use signals from your existing identity providers (IdPs), device posture providers, and [other selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) to control who can reach the application.
 
 ![Cloudflare Access verifies a user's identity before granting access to your application.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3791,height=1399,format=webp/_astro/diagram-saas.BmFlwn8e.jpg)

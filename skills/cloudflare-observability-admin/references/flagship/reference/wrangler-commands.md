@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/reference/wrangler-commands/og
 
 # Wrangler commands
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `wrangler flagship` to manage Flagship apps and feature flags from the command line. Every `wrangler flagship flags` command takes the app ID as the first argument. Most subcommands then take a flag key, for example `wrangler flagship flags get <APP_ID> <KEY>`. List-style commands, such as `wrangler flagship flags list <APP_ID>`, take only the app ID.
 
 ## Before you begin

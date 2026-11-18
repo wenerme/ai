@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/reference/faq/og.png?v=5a01407e5f410
 
 # FAQ
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/reference/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Frequently asked questions regarding Workers KV.
 
 ## General

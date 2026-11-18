@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/third-party-software/content-ma
 
 # Cloudflare WordPress Plugin Automatic Cache Management
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/cloudflare-wordpress-plugin-automatic-cache-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 The Cloudflare WordPress plugin contains a feature called Automatic Cache Management. When a user adds, edits, or deletes a post, page, attachment, or comment - any associated URLs are purged from the Cloudflare cache.

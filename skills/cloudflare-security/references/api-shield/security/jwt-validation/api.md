@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/jwt-validation/api/
 
 # Configure JWT validation via the API
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/). A token configuration defines how Cloudflare finds and validates JWTs. You then use a WAF custom rule or a token validation rule to [act on the results](#act-on-validation-results).
 
 ## Token configurations

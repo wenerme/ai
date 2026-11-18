@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/con
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The goal of this learning path is to provide Cloudflare One users with the strategy and tools to securely adopt generative AI within their organizations. This guide will help address new security challenges and mitigate risks like shadow AI and data loss.
 
 ## Objectives

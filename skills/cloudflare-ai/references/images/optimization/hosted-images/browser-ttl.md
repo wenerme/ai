@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/brows
 
 # Browser TTL
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Browser TTL controls how long an image stays in a browser's cache and specifically configures the `cache-control` response header.
 
 ### Default TTL

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/user-insights/
 
 # User Insights
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/user-insights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The User Insights dashboard shows how much your organization spends on AI, which identities are responsible for that spend, and which users deviate from their typical usage. It uses the traffic already flowing through your gateway, so there is no additional setup.
 
 ## Attribute usage to identities

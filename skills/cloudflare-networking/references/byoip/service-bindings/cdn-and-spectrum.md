@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum
 
 # Use BYOIP with CDN and Spectrum
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With [service bindings](https://developers.cloudflare.com/byoip/service-bindings/), CDN<sup>[1](#user-content-fn-1)</sup> customers using BYOIP can take the same prefix they have onboarded to Cloudflare and use it to selectively route traffic on a per-IP address basis to [Spectrum](https://developers.cloudflare.com/spectrum/)<sup>[2](#user-content-fn-2)</sup>, or vice versa. This means:
 
 - You can upgrade individual IPs within a CDN prefix to a Spectrum IP. For example, if you have a CDN prefix 203.0.113.0/24, you can upgrade 203.0.113.1 to Spectrum.

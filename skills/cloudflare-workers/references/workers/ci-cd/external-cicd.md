@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/external-cicd/og.png?v=28
 
 # External CI/CD
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/external-cicd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deploying Cloudflare Workers with CI/CD ensures reliable, automated deployments for every code change.
 
 If you prefer to use your existing CI/CD provider instead of [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), this section offers guides for popular providers:

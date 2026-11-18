@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/advanced-mode/og.png?v=
 
 # Advanced mode
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/advanced-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Advanced mode allows you to develop your Pages Functions with a `_worker.js` file rather than the `/functions` directory.
 
 In some cases, Pages Functions' built-in file path based routing and middleware system is not desirable for existing applications. You may have a Worker that is complex and difficult to splice up into Pages' file-based routing system. For these cases, Pages offers the ability to define a `_worker.js` file in the output directory of your Pages project.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/change-log/og.png?v=dbf
 
 # Changelog
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare has a regular cadence of releasing updates and new rules to the DDoS managed rulesets. The updates either improve a rule's accuracy, lower false positives rates, or increase the protection due to a change in the threat landscape.
 
 The release cycle for a new rule within the regular cadence follows this process:

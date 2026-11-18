@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/databases/third-party-integrati
 
 # Xata
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/xata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Xata ↗︎](https://xata.io) is a PostgreSQL database platform designed to help developers operate and scale databases with enhanced productivity and performance. Xata provides features like instant copy-on-write database branches, zero-downtime schema changes, data anonymization, AI-powered performance monitoring, and BYOC.
 
 Note
@@ -81,7 +79,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"main": "src/index.ts",
    	"upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-10-13",
+   	"compatibility_date": "2026-11-18",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -101,7 +99,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-18"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -168,7 +166,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -181,7 +179,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-
 
 # Deploy rulesets
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to deploy a ruleset. To deploy a ruleset, add a rule with `"action": "execute"` to a [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset), specifying the ruleset ID to execute as an action parameter. Use a separate rule for each ruleset you want to deploy.
 
 A rule that executes a ruleset consists of:

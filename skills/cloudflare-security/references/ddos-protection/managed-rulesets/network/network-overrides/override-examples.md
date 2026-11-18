@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/networ
 
 # Override examples
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Use cases
 
 The following scenarios detail how you can make use of override rules as a solution to common Network DDoS Protection issues.

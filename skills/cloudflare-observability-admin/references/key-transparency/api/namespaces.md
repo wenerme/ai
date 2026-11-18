@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/key-transparency/api/namespaces/og.png?
 
 # Namespaces
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/key-transparency/api/namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Key Transparency API is organized in namespaces, each one representing a Log monitored by Cloudflare Auditor. If you want to register a namespace, contact us.
 
 ## Create a namespace

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/og.png?v=8b2b61c7a71f27e4
 
 # API
 
-Last updated Jun 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 R2 provides three API surfaces for interacting with your data:
 
 - **[Workers API](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/):** An in-Worker API accessed by binding an R2 bucket to a [Worker](https://developers.cloudflare.com/workers/). Use the Workers API to read, write, and list objects from within a Worker.

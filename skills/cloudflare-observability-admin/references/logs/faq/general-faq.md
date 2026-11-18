@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/faq/general-faq/og.png?v=c89229b91
 
 # General FAQ
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/general-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [❮ Back to FAQ](https://developers.cloudflare.com/logs/faq/)
 
 ### Once a request has passed through the Cloudflare network, how soon are the logs available?

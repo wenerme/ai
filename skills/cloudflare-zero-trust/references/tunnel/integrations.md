@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/integrations/og.png?v=80f29302ed
 
 # Integrations
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Tunnel integrates with other Cloudflare products to extend connectivity, security, and availability for your applications.
 
 ## Cloudflare One (private networking)
@@ -22,7 +20,7 @@ Beyond publishing public applications, Cloudflare Tunnel is the connectivity lay
 
 - **Private applications** — Expose internal web apps, SSH servers, RDP hosts, and other services to authenticated users without making them publicly reachable.
 - **Private networks** — Route entire IP ranges (RFC 1918, custom CIDRs) through a tunnel, replacing site-to-site VPNs. Users on Cloudflare One Client-enrolled devices reach private IPs as if they were on your private network.
-- **Network traffic filtering** — Apply DNS, HTTP, and network-level policies through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to all traffic flowing through the tunnel.
+- **Network traffic filtering** — Apply DNS, HTTP, and network-level policies through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) to all traffic flowing through the tunnel.
 
 If you are using Cloudflare Tunnel for Zero Trust network access, VPN replacement, or private network connectivity, refer to the [Cloudflare One Tunnel documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) for setup and configuration.
 
@@ -91,5 +89,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/integrations/#page","headline":"Integrations","description":"Use Cloudflare Tunnel with Cloudflare One, Workers VPC, Load Balancing, Access, Spectrum, and other Cloudflare services.","url":"https://developers.cloudflare.com/tunnel/integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/integrations/og.png?v=80f29302ed87e705","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/integrations/#page","headline":"Integrations","description":"Use Cloudflare Tunnel with Cloudflare One, Workers VPC, Load Balancing, Access, Spectrum, and other Cloudflare services.","url":"https://developers.cloudflare.com/tunnel/integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/integrations/og.png?v=80f29302ed87e705","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration","Private networks"]}
 ```

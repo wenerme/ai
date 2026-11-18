@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-r
 
 # Run tests from a Git repository
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run the tests of a repository in a fresh sandbox. In this example, the Durable Object clones the repository, installs its dependencies, runs its test script, returns the result, and stops the instance.
 
 ## Prerequisites

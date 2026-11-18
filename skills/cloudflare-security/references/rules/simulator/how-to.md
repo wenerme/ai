@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/simulator/how-to/og.png?v=1f45bc9
 
 # Use Rules simulator
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/simulator/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Use Rules simulator in the dashboard
 
 ### 1. Configure one or more Cloudflare products

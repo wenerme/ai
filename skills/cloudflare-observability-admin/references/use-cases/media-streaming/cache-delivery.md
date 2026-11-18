@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/media-streaming/cache-deliver
 
 # Cache and accelerate media delivery
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/cache-delivery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Streaming video and serving images to a global audience requires low-latency delivery from locations close to each viewer. Cloudflare Cache serves media globally, and Argo Smart Routing ensures cache misses take the fastest path back to your origin.
 
 ## Solutions

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/how-to/json-response/og.pn
 
 # Get JSON response for mobile and other non-browser traffic
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/json-response/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you need to manage traffic in a non-browser environment such as a mobile app or web app, Cloudflare provides a JSON-friendly waiting room that can be consumed via your API endpoints:
 
 1. When a user is queued, we return our own JSON response.

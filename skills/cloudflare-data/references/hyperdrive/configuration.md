@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/configuration/og.png?v=3a2db
 
 # Configuration
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Connect to a private database using Workers VPC (Recommended)](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/)
 - [Connect to a private database using Tunnel](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/)
 - [Local development](https://developers.cloudflare.com/hyperdrive/configuration/local-development/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Enable Managed Rulesets
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/enable-managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With [managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/), you can quickly deploy pre-built firewall rules maintained by Cloudflare. You use Cloudflare Network Firewall to control which managed rules are enabled.
 
 In addition to enabling managed rulesets, you can also add and enable custom policies. Refer to [add policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/add-policies/).

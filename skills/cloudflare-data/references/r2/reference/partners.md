@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/reference/partners/og.png?v=b4fa7274
 
 # Partners
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/partners/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Was this helpful?
 
 YesNo

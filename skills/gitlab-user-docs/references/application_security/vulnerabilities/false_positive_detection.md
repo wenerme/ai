@@ -81,10 +81,7 @@ The analysis happens in the background and results appear in the vulnerability r
 
 - Support for tracked branches [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258183) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `fp_detection_non_default_branches`. Enabled by default.
 - Support for tracked tags [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262141) in GitLab 19.6.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268778) in GitLab 19.7. Feature flag `fp_detection_non_default_branches` removed.
 
 The flow also runs automatically for SAST vulnerabilities that are new on another
 [tracked branch or tag](../vulnerability_report/_index.md#tracking-vulnerabilities-across-contexts).

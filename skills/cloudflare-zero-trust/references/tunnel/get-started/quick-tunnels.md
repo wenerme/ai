@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/og.png
 
 # Quick Tunnels
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Quick Tunnels create a temporary `trycloudflare.com` URL for a local service. You do not need a Cloudflare account or domain.
 
 Note

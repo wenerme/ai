@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/time-services/roughtime/og.png?v=ce09ce
 
 # Roughtime
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/roughtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Roughtime ↗︎](https://roughtime.googlesource.com/roughtime) is a simple, flexible, and secure authenticated time protocol developed by Google.
 
 ## Background

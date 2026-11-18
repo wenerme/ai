@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf
 
 # Browser
 
-Last updated Nov 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Give your agent a browser it can return to on later turns. [Browser Run](https://developers.cloudflare.com/browser-run/) keeps the remote browser open, so your agent can continue from the same page with its tabs, cookies, and login session intact while the browser session remains alive.
 
 Use browser tools to interact with websites, inspect pages rendered with JavaScript, or capture screenshots. With [internal hostnames](#internal-hostnames), the browser can also open sites that only your agent serves, such as a dev server in its sandbox or a folder in its workspace.

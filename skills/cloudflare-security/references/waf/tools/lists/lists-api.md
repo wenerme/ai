@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/lists/lists-api/og.png?v=cded
 
 # Lists API
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/lists-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [Lists API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/) provides an interface for programmatically managing the following types of lists:
 
 - [Custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/): Contain one or more strings of the same type (such as IP addresses or hostnames) that you can reference collectively, by name, in rule expressions.

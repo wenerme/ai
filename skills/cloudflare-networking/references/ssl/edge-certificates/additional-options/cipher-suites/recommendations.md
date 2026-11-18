@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Security levels
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the sections below for three different security levels and how Cloudflare recommends that you set them up if you need to restrict the [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/) used between Cloudflare and clients that access your website or application.
 
 Refer to [Customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) to learn how to specify cipher suites at zone level or per hostname.

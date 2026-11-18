@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Blocked senders
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security marks all messages from these senders with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/).
 
 ## How blocked senders work

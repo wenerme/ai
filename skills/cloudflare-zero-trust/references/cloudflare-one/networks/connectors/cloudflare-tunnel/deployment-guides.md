@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Environments
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deploy Cloudflare Tunnel in your environment — from cloud VMs to Kubernetes clusters, with Infrastructure as Code support.
 
 - [Ansible](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/ansible/)

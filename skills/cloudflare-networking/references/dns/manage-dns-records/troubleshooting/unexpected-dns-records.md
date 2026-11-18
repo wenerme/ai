@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/
 
 # Unexpected DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Additional records after import
 
 You find several unexpected DNS records after adding your domain to Cloudflare.

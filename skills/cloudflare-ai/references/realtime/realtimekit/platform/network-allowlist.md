@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/platform/network-a
 
 # Network allowlist
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your network restricts outbound traffic, allow the following RealtimeKit domains and ports. These requirements apply to Web Core SDK 2.1.0 or later and Web UI Kit SDK 2.1.0 or later.
 
 ## Allow service domains

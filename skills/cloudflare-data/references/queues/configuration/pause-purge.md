@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/configuration/pause-purge/og.png
 
 # Pause and Purge
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/pause-purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Pause Delivery
 
 You can pause delivery of messages from your queue to any connected consumers. Pausing a queue is useful when managing downtime (for example, if your consumer Worker is unhealthy) without losing any messages.

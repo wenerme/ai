@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/search-multiple-source
 
 # Search across multiple instances
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/search-multiple-sources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Search can query several instances in one request, merge the results, and tag each result with the instance it came from. This guide uses that to search two knowledge bases together: a shared **general** knowledge base that every user can search, plus a **tenant-specific** knowledge base that holds one customer's private content. A single query returns relevant content from both.
 
 Keeping each tenant's content in its own instance is the recommended way to isolate tenants (refer to [Multi-tenant search isolation](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)). Searching across instances then lets you combine a tenant's instance with shared content at query time, so you do not have to copy the shared content into every tenant's instance.
@@ -87,7 +85,7 @@ Add an [AI Search namespace binding](https://developers.cloudflare.com/ai-search
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-13",
+  "compatibility_date": "2026-11-18",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -103,7 +101,7 @@ name = "multi-source-search"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-13"
+compatibility_date = "2026-11-18"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"

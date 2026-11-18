@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Outbound Workers
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Outbound Workers sit between your customer's Workers and the public Internet. They give you visibility into outgoing requests that user Workers make with the global `fetch()`. Requests made through bindings are not intercepted. Refer to [Requests that Outbound Workers do not intercept](#requests-that-outbound-workers-do-not-intercept).
 
 ![Outbound Workers diagram information](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1100,height=400,format=webp/_astro/outbound-worker-diagram.BSvN4KG0.png)

@@ -11,8 +11,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKPolls
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkpolls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The RTKPolls module consists of the polls that have been created in the meeting.
 
 - [RTKPolls](#module_RTKPolls)

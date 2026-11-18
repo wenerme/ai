@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/version-management/reference/og.png?v=c
 
 # Reference
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Available configurations](https://developers.cloudflare.com/version-management/reference/available-configurations/)
 - [Traffic filters](https://developers.cloudflare.com/version-management/reference/traffic-filters/)
 - [Read-only environments](https://developers.cloudflare.com/version-management/reference/read-only-environments/)

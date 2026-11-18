@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workers/get-started/firs
 
 # First Worker
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/get-started/first-worker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Build and deploy your first Worker
 
 You can deploy your first Worker via the Cloudflare dashboard or programmatically using your terminal.

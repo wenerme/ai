@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/apis/deploy-apis/og.png?v=b5b
 
 # Deploy APIs at the edge
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/apis/deploy-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deploying APIs on traditional infrastructure means managing servers, configuring regions, and provisioning for traffic spikes. Cloudflare Workers runs your API handlers in 300+ locations worldwide with automatic scaling and fast startup times.
 
 ## Solutions

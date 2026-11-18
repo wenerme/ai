@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # How it works
 
-Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 O2O is a specific traffic routing configuration where traffic routes through two Cloudflare zones: the first Cloudflare zone is owned by customer 1 and the second Cloudflare zone is owned by customer 2, who is considered a SaaS provider.
 
 If one or more hostnames are onboarded to a SaaS Provider that uses Cloudflare products as part of their platform - specifically the [Cloudflare for SaaS product](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) - those hostnames will be created as [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) in the SaaS Provider's zone.

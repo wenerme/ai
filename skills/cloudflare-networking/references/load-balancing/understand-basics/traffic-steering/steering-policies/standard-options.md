@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/traffi
 
 # Standard
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 **Standard steering** policies include **Off - Failover** and **Random**.
 
 These are the only steering policies available to non-Enterprise customers who have not purchased **Traffic steering**.

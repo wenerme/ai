@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/observability/og.png?v=24
 
 # Observability
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Monitor Email Service with metrics, activity logs, and audit logs. Test Workers locally before you deploy.
 
 - [Metrics and analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/)

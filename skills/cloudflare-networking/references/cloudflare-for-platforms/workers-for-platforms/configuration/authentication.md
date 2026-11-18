@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Authentication and authorization
 
-Last updated Oct 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you build a platform that runs customer apps, you need to control who can use each app and which data they can access. An app may have both public and private endpoints.
 
 Customers can add routes and change app code independently of your platform. Enforce permissions for routes and data operations in platform-owned code.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/reference/how-the-cache-works/o
 
 # How the Cache works
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/reference/how-the-cache-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers was designed and built on top of Cloudflare's global network to allow developers to interact directly with the Cloudflare cache. The cache can provide ephemeral, data center-local storage, as a convenient way to frequently access static or dynamic content.
 
 By allowing developers to write to the cache, Workers provide a way to customize cache behavior on Cloudflare’s CDN. To learn about the benefits of caching, refer to the Learning Center’s article on [What is Caching? ↗︎](https://www.cloudflare.com/learning/cdn/what-is-caching/).

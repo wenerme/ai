@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ente
 
 # Enterprise AI Vibe Coding Platform
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 [Vibe coding ↗︎](https://www.cloudflare.com/learning/ai/ai-vibe-coding/) is a software development practice that uses large language models (LLMs) to generate applications from natural language descriptions. An enterprise AI vibe coding platform is an internal tool where employees describe what they want to build in natural language, and the platform generates working code, shows a live preview, and publishes it, all within an environment the organization controls.

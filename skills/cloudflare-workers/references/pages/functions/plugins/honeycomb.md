@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/honeycomb/og.pn
 
 # Honeycomb
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/honeycomb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Honeycomb Pages Plugin automatically sends traces to Honeycomb for analysis and observability.
 
 ## Installation

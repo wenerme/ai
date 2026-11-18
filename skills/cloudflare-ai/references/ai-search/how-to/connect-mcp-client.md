@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/og.
 
 # Connect your AI Search to an MCP client
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/connect-mcp-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Every AI Search instance can expose a built-in [Model Context Protocol (MCP) ↗︎](https://modelcontextprotocol.io/) endpoint. The endpoint provides a `search` tool over your indexed content, so any MCP client or agent, such as an AI assistant or IDE, can search your knowledge base without any code.
 
 This guide creates an AI Search instance that indexes a documentation site, then exposes it as a search tool that any MCP client can call.

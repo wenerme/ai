@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-search/providers/og.png?v=5d5d95a47
 
 # Providers
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-search/providers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web Search API supports the following search providers. Set the `provider` parameter in your request to choose one. If you do not set a provider, Web Search API uses Ceramic.ai as default.
 
 When you pay with [AI Gateway credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), each search is billed at the provider's list API price, with no additional markup. If you [bring your own key](https://developers.cloudflare.com/web-search/how-to-use/#bring-your-own-key-byok), the provider bills you directly under your own agreement with them.

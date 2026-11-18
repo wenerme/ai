@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/concepts/
 
 # Components of a load balancer
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/load-balancer-components/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 At it's most basic, load balancing is made up of three components:
 
 - **Pools**: Which contain one or more endpoints.

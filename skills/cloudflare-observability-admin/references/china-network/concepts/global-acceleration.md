@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/concepts/global-accelerat
 
 # Global Acceleration
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/concepts/global-acceleration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Global Acceleration is a service offering that can be an add-on to China Network and also extends Zero Trust services into China.

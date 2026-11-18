@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/custom-domains
 
 # Custom domains
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom domains let you send AI Gateway requests through a hostname that you own, such as `ai.example.com`, instead of the default `gateway.ai.cloudflare.com` endpoint.
 
 The hostname identifies your account and gateway, so you can omit the account ID and gateway ID from request URLs. Requests go directly to AI Gateway provider-native routes and OpenAI-compatible `compat` routes.

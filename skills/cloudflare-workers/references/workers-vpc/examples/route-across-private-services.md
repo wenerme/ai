@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/examples/route-across-priva
 
 # Route to private services from Workers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example shows how to use Workers VPC to create a centralized gateway that routes requests based on URL paths, provides authentication and rate limiting, and load balances across internal services.
 
 ## Prerequisites
@@ -53,7 +51,7 @@ Update your Wrangler configuration file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"vpc_services": [
 		{
 			"binding": "USER_SERVICE",
@@ -73,7 +71,7 @@ name = "api-gateway"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[vpc_services]]
 binding = "USER_SERVICE"

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/get-started/guide/og.png?v=b582
 
 # CLI
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/get-started/guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Set up and deploy your first Worker with Wrangler, the Cloudflare Developer Platform CLI.
 
 This guide will instruct you through setting up and deploying your first Worker.

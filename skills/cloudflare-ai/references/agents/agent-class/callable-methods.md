@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/callable-methods/og.
 
 # Callable methods
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/callable-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Callable methods let your frontend call methods on an Agent. Mark a method with `@callable()`, and a client connected with `useAgent` or `AgentClient` calls it through a typed stub, as if it were a local async function. Use them for actions a user takes, such as adding an item, approving a step, or stopping a run.
 
 `@callable()` is the `Agent` class's way to declare [callables](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/#callables) on the `WebSockets` capability. Calls travel over the client's WebSocket connection. For timeouts, errors, and transports, refer to [Callables](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/#callables).

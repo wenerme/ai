@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/examples/slack-agent/og.png?v=6b
 
 # Slack agent
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/slack-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Deploy your first Slack Agent
 
 This guide will show you how to build and deploy an AI-powered Slack bot on Cloudflare Workers that can:
@@ -139,7 +137,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -169,7 +167,7 @@ name = "my-slack-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]

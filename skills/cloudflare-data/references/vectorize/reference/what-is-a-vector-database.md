@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-da
 
 # Vector databases
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Vector databases are a key part of building scalable AI-powered applications. Vector databases provide long term memory, on top of an existing machine learning model.
 
 Without a vector database, you would need to train your model (or models) or re-run your dataset through a model before making a query, which would be slow and expensive.

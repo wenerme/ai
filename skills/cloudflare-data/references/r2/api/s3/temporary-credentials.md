@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/s3/temporary-credentials/og.png?
 
 # Temporary credentials
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Temporary credentials are short-lived, scoped S3 credentials derived from an existing [R2 API token](https://developers.cloudflare.com/r2/api/tokens/). They authenticate with AWS Signature Version 4, the same as a long-lived token, but include a session token and expire automatically. The session token is sent with every request via the `X-Amz-Security-Token` header; all S3-compatible clients expose this as a standard session token credential field.
 
 Use temporary credentials to delegate access without issuing a long-lived token. For example, granting a mobile client read access to a single prefix for 15 minutes, or issuing per-request upload credentials scoped to one object.

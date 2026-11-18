@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Thinking Machines
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `thinkingmachines/inkling` Copy

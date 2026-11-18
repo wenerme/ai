@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/og
 
 # Add a rule to a ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Adds a single rule to an existing ruleset. Use this endpoint to add a rule without having to include all the existing ruleset rules in the request.
 
 Use one of the following API endpoints:

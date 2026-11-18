@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/url-rewrite/og.png?v=52
 
 # URL Rewrite Rules
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/url-rewrite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can manipulate the URL of a request through different operations, namely rewrites and redirects:
 
 - **URL rewrite**: A server-side operation that converts a source URL into a target URL. It occurs before a web server has fully processed a request. A rewrite is not visible to website visitors, since the URL displayed in the browser does not change. Configure URL Rewrite Rules to perform rewrites on the Cloudflare global network without reaching your web server.

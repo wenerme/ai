@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/gran
 
 # Granular permissions for Tunnels and Mesh nodes
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can scope Cloudflare member permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances and [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) nodes, instead of granting account-wide access to every Tunnel and Mesh node. This enables least-privilege delegation for private networking operations — for example, letting a support operator stream logs from a single Tunnel without exposing the rest of your account.
 
 Granular permissions are a parallel layer to [account-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles) — they do not replace them. Members who already hold an account-level role like `Cloudflare Access` or `Cloudflare Zero Trust` continue to have write access to every Tunnel and Mesh node in the account.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-paginated-list
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-paginated-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Properties
 
 | Property | Type | Required | Default | Description |

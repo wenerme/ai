@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/reference/supported-fonts/o
 
 # Supported fonts
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/supported-fonts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Browser Run uses a managed Chromium environment that includes a standard set of fonts. When you generate a screenshot or PDF, text is rendered using the fonts available in this environment.
 
 If your webpage specifies a font that is not supported yet, Chromium will automatically fall back to a similar supported font. If you would like to use a font that is not currently supported, refer to [Custom fonts](https://developers.cloudflare.com/browser-run/features/custom-fonts/).

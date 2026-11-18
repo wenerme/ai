@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/transformations/con
 
 # Control origin access
 
-Last updated May 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can serve resized images without giving access to the original image. Images can be hosted on another server outside of your zone, and the true source of the image can be entirely hidden. The origin server may require authentication to disclose the original image, without needing visitors to be aware of it. Access to the full-size image may be prevented by making it impossible to manipulate resizing parameters.
 
 All these behaviors are completely customizable, because they are handled by custom code of a script running [on the edge in a Cloudflare Worker](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/).

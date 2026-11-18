@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/interaction-cloudflare-products/w
 
 # How Workers interact with Cache Rules
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers-cache-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you use both [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) and [Workers](https://developers.cloudflare.com/workers/) on the same request, the Worker's cache settings take priority — but only when the required [compatibility flags](#compatibility-flags) are enabled.
 
 Your Workers script can override Cache Rules behavior, whether the request is for a domain proxied through Cloudflare or a domain that is not. For example, if a Cache Rule is configured to bypass cache for `example.com/foo`, but your Workers script sets `cacheEverything: true` in the [`cf` object](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) of a `fetch()` request, the Worker's setting takes precedence and the response is cached.

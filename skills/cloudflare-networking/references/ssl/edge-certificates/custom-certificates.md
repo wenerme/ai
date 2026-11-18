@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificat
 
 # Custom certificates
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom certificates are meant for Business and Enterprise customers who want to use their own SSL certificates.
 
 

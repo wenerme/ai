@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/authorization/og.png?v=806bc6f0
 
 # Roles and permissions
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/authorization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can control who can access your Developer Platform resources and what they can do with them by assigning [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) and [scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/) through [permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/). Each policy combines a role, which defines the actions allowed, with a scope, which defines where those actions apply.
 
 For Developer Platform products, scopes can be set at three levels:

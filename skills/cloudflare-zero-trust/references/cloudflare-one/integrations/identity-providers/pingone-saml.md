@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # PingOne (SAML)
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingone-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The PingOne cloud platform from PingIdentity provides SSO identity management. Cloudflare Access supports PingOne as a SAML identity provider.
 
 ## Set up PingOne as a SAML provider

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/cloudflare-acce
 
 # Cloudflare Access
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Access Pages Plugin is a middleware to validate Cloudflare Access JWT assertions. It also includes an API to lookup additional information about a given user's JWT.
 
 ## Installation

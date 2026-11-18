@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/data-center-protection/g
 
 # Get started
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Scope your configuration
 
 Magic Transit is not a self-serve product. Start by [engaging with our team ↗︎](https://www.cloudflare.com/network-services/products/magic-transit/) to assess your needs and implementation timeline. During this assessment, Cloudflare reviews specific requirements such as your prefix count and how fast you can go through the necessary steps to implement Magic Transit on your network.

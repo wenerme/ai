@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/get-started/durable-agents/og
 
 # Build a Durable AI Agent
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will build an AI agent that researches GitHub repositories. Give it a task like "Compare open-source LLM projects" and it will:
 
 1. Search GitHub for relevant repositories
@@ -445,7 +443,7 @@ export class ResearchAgent extends Agent<Env, State> {
    	"main": "src/index.ts",
        "upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-10-27",
+   	"compatibility_date": "2026-11-18",
    	"observability": {
    		"enabled": true
    	},
@@ -479,7 +477,7 @@ export class ResearchAgent extends Agent<Env, State> {
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-27"
+   compatibility_date = "2026-11-18"
 
    [observability]
    enabled = true

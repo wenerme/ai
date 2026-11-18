@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/cdp/og.png?v=475bc76d869390
 
 # Chrome DevTools Protocol (CDP)
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `/devtools` endpoints provide session management capabilities that follow the [Chrome DevTools Protocol (CDP) ↗︎](https://chromedevtools.github.io/devtools-protocol/). These endpoints allow you to create persistent browser sessions, manage multiple tabs, and interact with browsers using CDP commands. This is useful for advanced automation, debugging, and remote browser control.
 
 CDP endpoints can be accessed from any environment that supports WebSocket connections, including local development machines, external servers, and CI/CD pipelines. This means you can connect to Browser Run from Node.js scripts, Puppeteer, Playwright, or any CDP-compatible client.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/test-harness/integratio
 
 # Integrations
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use `createTestHarness()` with existing tools in the Node.js ecosystem. The examples on this page show common integration patterns that you can adapt to your test setup.
 
 ## Mock Service Worker

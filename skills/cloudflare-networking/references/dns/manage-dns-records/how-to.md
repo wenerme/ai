@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/og.png?v=
 
 # How to
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the following resources for more information about creating and maintaining DNS records:
 
 - [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)

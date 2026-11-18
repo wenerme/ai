@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-o
 
 # Order of enforcement
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Cloudflare Gateway, you can [enable and configure](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/) any combination of DNS, network, and HTTP policies.
 
 ## Enforcement flowchart

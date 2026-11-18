@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/secrets-store/access-control/og.png?v=4
 
 # Secrets Store access control
 
-Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/access-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Secrets Store allows security administrators to have more control by implementing role-based access. For details about roles at Cloudflare, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/manage-members/).
 
 Availability

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-fu
 
 # JSON functions
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin Pipelines provides two set of JSON functions, the first based on PostgreSQL's SQL functions and syntax, and the second based on the [JSONPath ↗︎](https://jsonpath.com/) standard.
 
 ## SQL functions

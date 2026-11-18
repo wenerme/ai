@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/resource-tagging/reference/limits/og.pn
 
 # Limits and validation
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## API limits
 
 | Limit | Value | Error code |

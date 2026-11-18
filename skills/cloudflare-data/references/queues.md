@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/og.png?v=55ff5e5b2163fab3
 
 # Cloudflare Queues
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send and receive messages with guaranteed delivery and no charges for egress bandwidth.
 
 Available on Free and Paid plans

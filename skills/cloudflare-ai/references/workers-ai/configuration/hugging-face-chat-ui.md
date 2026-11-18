@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/configuration/hugging-face-c
 
 # Hugging Face Chat UI
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Workers AI with [Chat UI ↗︎](https://github.com/huggingface/chat-ui?tab=readme-ov-file#text-embedding-models), an open-source chat interface offered by Hugging Face.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/best-practices/remote-development/og
 
 # Remote development
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/remote-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 supports remote development using the [dashboard playground](https://developers.cloudflare.com/workers/playground/#use-the-playground). The dashboard playground uses a browser version of Visual Studio Code, allowing you to rapidly iterate on your Worker entirely in your browser.
 
 ## 1. Bind a D1 database to a Worker

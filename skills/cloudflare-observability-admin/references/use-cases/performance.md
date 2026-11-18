@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/performance/og.png?v=c4f5efea
 
 # Performance
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Accelerate websites and applications with Cloudflare CDN (Content Delivery Network) caching, image optimization, smart routing, load balancing, and web analytics.
 
 - [Cache content globally](https://developers.cloudflare.com/use-cases/performance/caching/)

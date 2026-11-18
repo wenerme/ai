@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/platform/known-issues/o
 
 # Known issues
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Durable Objects is generally available. However, there are some known issues.
 
 ## Global uniqueness

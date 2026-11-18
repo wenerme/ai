@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certif
 
 # SSL/TLS certificates
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/tls-ssl-certificates-for-hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hyperdrive provides additional ways to secure connectivity to your database. Hyperdrive supports:
 
 1. **Server certificates** for TLS (SSL) modes such as `verify-ca`/ `VERIFY_CA` and `verify-full`/ `VERIFY_IDENTITY` for increased security. When configured, Hyperdrive will verify that the certificates have been signed by the expected certificate authority (CA) to avoid man-in-the-middle attacks.

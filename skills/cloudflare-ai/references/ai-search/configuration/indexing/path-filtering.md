@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/path-f
 
 # Path filtering
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Path filtering allows you to control which files or URLs are indexed by defining include and exclude patterns. Use this to limit indexing to specific content or to skip files you do not want searchable.
 
 Path filtering works with [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/), [R2](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), and [D1](https://developers.cloudflare.com/ai-search/configuration/data-source/d1/) data sources. For D1 data sources, rules match the item key of each row, such as `42.md`.

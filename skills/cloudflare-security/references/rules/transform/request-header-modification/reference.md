@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/request-header-modifica
 
 # Reference
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This section contains reference information for Request Header Transform Rules.
 
 - [Format of HTTP request header names and values](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/header-format/)

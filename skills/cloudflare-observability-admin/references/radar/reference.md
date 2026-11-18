@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/reference/og.png?v=79a7ca5809ee95
 
 # Reference
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review reference information related to Cloudflare Radar:
 
 - [Quarterly DDoS threat reports](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/)

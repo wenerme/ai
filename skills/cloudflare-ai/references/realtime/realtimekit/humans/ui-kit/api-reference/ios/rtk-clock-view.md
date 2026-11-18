@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkClockView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-clock-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A label that displays the elapsed meeting time in `HH:MM:SS` format. Updates every second while the meeting is active.
 
 ## Initializer parameters

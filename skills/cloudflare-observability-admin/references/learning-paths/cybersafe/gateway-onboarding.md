@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboar
 
 # Onboarding Cloudflare Gateway
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Now that your Cloudflare environment is ready and you have established a foundation of the technical concepts behind Project Cybersafe Schools, you are ready to test and onboard your DNS traffic.
 
 ## Objectives

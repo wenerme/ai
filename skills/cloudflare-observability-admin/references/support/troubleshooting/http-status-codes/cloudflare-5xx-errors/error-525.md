@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 525
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-525/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 525: SSL handshake failed
 
 This error indicates that the SSL handshake between Cloudflare and the origin web server failed.

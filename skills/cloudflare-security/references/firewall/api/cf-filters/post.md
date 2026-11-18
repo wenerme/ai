@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-filters/post/og.png?v=0
 
 # POST example
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/post/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example creates several filters using a single API call.
 
 *Requestbash*

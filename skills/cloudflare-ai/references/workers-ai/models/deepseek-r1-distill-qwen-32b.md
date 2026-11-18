@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • DeepSeek
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/deepseek-ai/deepseek-r1-distill-qwen-32b` Copy
@@ -31,7 +29,7 @@ DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens |
 | Terms and License | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
 | Reasoning | Yes |

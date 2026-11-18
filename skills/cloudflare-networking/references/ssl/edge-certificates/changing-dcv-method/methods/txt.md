@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-meth
 
 # TXT
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 TXT record validation requires the creation of a TXT record in the hostname's authoritative DNS.
 
 

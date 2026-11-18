@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/examples/og.png?v=e9cf0d7d69
 
 # Examples
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build with Containers using the `durable_object` scheduling policy. Each example configures a named image and starts it from a Durable Object with the [Container API](https://developers.cloudflare.com/containers/api/durable-object-container/).
 
 Start with [Stateless instances](https://developers.cloudflare.com/containers/examples/stateless/) for HTTP routing, or [Cron container](https://developers.cloudflare.com/containers/examples/cron/) for a scheduled task.

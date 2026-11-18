@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/accou
 
 # AI Gateway Events
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ai_gateway_events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The descriptions below detail the fields available for `ai_gateway_events`.
 
 ## Cached

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/configuration/environments/og.png?v=
 
 # Environments
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/configuration/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) are different contexts that your code runs in. Cloudflare Developer Platform allows you to create and manage different environments. Through environments, you can deploy the same project to multiple places under multiple names.
 
 To specify different D1 databases for different environments, use the following syntax in your Wrangler file:

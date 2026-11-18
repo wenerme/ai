@@ -192,6 +192,58 @@ When you use merge request pipelines, you can use:
 - [Additional predefined variables](../variables/predefined_variables.md#predefined-variables-for-merge-request-pipelines)
   available only to jobs in merge request pipelines.
 
+### Compare the changes of a merge request
+
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637722) in GitLab 19.7 as an [experiment](../../policy/development_stages_support.md#experiment) [with a feature flag](../../administration/feature_flags/_index.md) named `ci_merge_request_pipeline_base_sha`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+> This feature is available for testing, but not ready for production use.
+
+To get the changes of the merge request in a job, compare the `CI_MERGE_REQUEST_PIPELINE_BASE_SHA`
+predefined variable with `CI_COMMIT_SHA`.
+The variable is similar in merge request pipelines, merged results pipelines, and merge train pipelines:
+
+- In merge request pipelines, the value is the base commit of the merge request diff.
+- In merged results and merge train pipelines, the value is the first parent of the merge commit.
+  This value matches `ORIG_HEAD` if you merge the source branch into the target branch locally.
+- If the merge request has no changes, the value is the same as `CI_COMMIT_SHA`.
+
+For example:
+
+```yaml
+check-changes:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  variables:
+    GIT_DEPTH: 1
+  script:
+    - git fetch --depth=1 origin "$CI_MERGE_REQUEST_PIPELINE_BASE_SHA"
+    - git diff --name-only "$CI_MERGE_REQUEST_PIPELINE_BASE_SHA..$CI_COMMIT_SHA"
+```
+
+The example uses two dots (`..`) in the diff, not three. A three-dot diff needs the history
+between the two commits, which a shallow clone does not contain.
+
+#### Choose a commit SHA variable
+
+Several predefined variables contain a commit SHA. Each variable answers a different question.
+
+| Variable                             | Usage | Notes |
+|--------------------------------------|-------|-------|
+| `CI_MERGE_REQUEST_PIPELINE_BASE_SHA` | Use with `CI_COMMIT_SHA` to get the changes of the merge request. | Available only when the `ci_merge_request_pipeline_base_sha` feature flag is enabled. |
+| `CI_COMMIT_SHA`                      | Use with `CI_MERGE_REQUEST_PIPELINE_BASE_SHA` to get the changes of the merge request. Use to get the commit that the pipeline runs on. Use to get the latest commit of the source branch in merge request pipelines. | In merged results and merge train pipelines, this commit is the merge commit. |
+| `CI_MERGE_REQUEST_DIFF_BASE_SHA`     | Use to get the base of the diff that reviewers see in the merge request, for example to post comments on lines of the merge request diff. | Do not use to get the changes of the merge request, because in merged results pipelines it also includes changes from other merge requests. |
+| `CI_MERGE_REQUEST_SOURCE_BRANCH_SHA` | Use to get the latest commit of the source branch in merged results and merge train pipelines. | None |
+| `CI_MERGE_REQUEST_EVENT_TYPE`        | Use to get the type of merge request pipeline. | None |
+
+Do not use `CI_MERGE_REQUEST_TARGET_BRANCH_SHA` to get the changes of the merge request, because it is empty in merge request pipelines.
+
 ## Control access to protected variables and runners
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/188008) in GitLab 18.1

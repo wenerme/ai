@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/optimization/protocol/http2/og.pn
 
 # HTTP/2
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 HTTP/2 uses the TCP transport protocol and TLS to secure communications and improves page load times.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/og.png?
 
 # Tutorials
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following resources will help you start exploring your data and creating analytics dashboards:
 
 - [Use GraphQL to create widgets](https://developers.cloudflare.com/analytics/graphql-api/tutorials/use-graphql-create-widgets/)

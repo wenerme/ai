@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/application-profiles/enf
 
 # Enforce profiles with Custom Rules
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/enforce-profiles-with-custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Application Profiles separate detection from mitigation. Cloudflare runs an **always-on detection** after a profile becomes available.
 
 A violation does not block a request automatically. Use a [Custom Rule](https://developers.cloudflare.com/waf/custom-rules/) when you are ready to mitigate traffic.

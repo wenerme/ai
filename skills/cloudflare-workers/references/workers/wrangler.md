@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/og.png?v=c466a5d29c445
 
 # Wrangler
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wrangler, the Cloudflare Developer Platform command-line interface (CLI), allows you to manage Worker projects.
 
 Wrangler commands use the permissions of the authenticated member or API token. Refer to [Workers roles and permissions](https://developers.cloudflare.com/workers/authorization/workers/#wrangler) for the minimum role required by common Wrangler commands.

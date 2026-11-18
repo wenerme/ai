@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/moq/demo-streams/og.png?v=0984ff2423dcf
 
 # Demo streams
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/moq/demo-streams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare publishes long-running streams on the public [MoQ](https://developers.cloudflare.com/moq/) relays. Use these streams to test client implementations without setting up your own publisher.
 
 ## Available namespaces

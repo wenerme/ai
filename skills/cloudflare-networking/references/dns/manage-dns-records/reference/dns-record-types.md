@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-re
 
 # DNS record types
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides information about some of the different types of DNS records that you can manage on Cloudflare. For guidance on how to add, edit, or delete DNS records, refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 Note

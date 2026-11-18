@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Configure policies
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/configure-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use workloads to select requests and policies to check them. Group policies in a policy set, then attach that set to a deployment.
 
 You need access to manage Cloud Workload Security in your account. Before attaching a policy set, [create a deployment](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/#create-a-deployment). To connect a proxy, follow [Get started](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/deploy-buttons/og.png?
 
 # Deploy to Cloudflare buttons
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/deploy-buttons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you're building a Workers application and would like to share it with other developers, you can embed a Deploy to Cloudflare button in your README, blog post, or documentation to enable others to quickly deploy your application on their own Cloudflare account. Deploy to Cloudflare buttons eliminate the need for complex setup, allowing developers to get started with your public GitHub or GitLab repository in just a few clicks.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/saas-admin-template)
@@ -69,7 +67,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
   "main": "./src/index.ts",
   "upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
   "vars": {
     "API_HOST": "https://example.com",
   },
@@ -81,7 +79,7 @@ name = "my-worker"
 main = "./src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [vars]
 API_HOST = "https://example.com"
@@ -103,7 +101,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
   "main": "./src/index.ts",
   "upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"secrets_store_secrets": [
 		{
 			"binding": "API_KEY",
@@ -119,7 +117,7 @@ name = "my-worker"
 main = "./src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[secrets_store_secrets]]
 binding = "API_KEY"

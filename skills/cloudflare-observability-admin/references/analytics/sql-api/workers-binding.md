@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/sql-api/workers-binding/og.pn
 
 # Workers binding
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sql-api/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Analytics SQL binding lets a Cloudflare Worker query SQL API datasets without making an HTTP request or managing an API token. Each binding is scoped to the Cloudflare account that owns the Worker.
 
 ## Configure the binding

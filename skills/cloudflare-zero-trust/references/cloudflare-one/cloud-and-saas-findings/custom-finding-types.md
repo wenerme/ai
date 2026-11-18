@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/
 
 # Custom finding types
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In addition to providing predefined finding types to detect security issues within SaaS and cloud applications, Cloudflare CASB allows custom finding types to be defined from scratch, providing full control over the security conditions CASB detects.
 
 ## Prerequisites

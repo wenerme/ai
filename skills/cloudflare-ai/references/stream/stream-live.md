@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/og.png?v=e3ae63f9281
 
 # Stream live video
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Stream lets you or your users [stream live video ↗︎](https://www.cloudflare.com/learning/video/what-is-live-streaming/), and play live video in your website or app, without managing and configuring any of your own infrastructure.
 
 ## How Stream works

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/custom-errors/create-rules/og.png
 
 # Create custom error rules
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/create-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## In the dashboard
 
 ### Create a custom error rule

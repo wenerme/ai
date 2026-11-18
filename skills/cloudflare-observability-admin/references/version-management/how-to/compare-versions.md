@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/version-management/how-to/compare-versi
 
 # Compare versions
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/how-to/compare-versions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Quickly view differences between versions to make sure your configurations are correct before [promoting a version](https://developers.cloudflare.com/version-management/how-to/environments/#change-environment-version) to a new environment.
 
 A common use case would be to compare the versions in staging and production to verify the changes before promoting the staging version to production.

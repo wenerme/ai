@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Hardware-backed registration
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 <details>
 
 <summary>

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/o
 
 # Endpoints
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For some operations, you can use specific endpoints provided by the Rulesets API for managing phase entry point rulesets. These endpoints include the phase name in the endpoint instead of the ruleset ID.
 
 For example, instead of using the following endpoint:

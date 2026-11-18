@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resol
 
 # DNS resolution
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)), Cloudflare handles DNS records a bit differently from primary zones (full setup) in order to internally resolve the origin server where proxied HTTP requests are sent to.
 
 ## Records within the same zone

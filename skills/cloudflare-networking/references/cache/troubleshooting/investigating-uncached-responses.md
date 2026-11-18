@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/troubleshooting/investigating-unc
 
 # Investigate uncached responses
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/investigating-uncached-responses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If a URL you expected to be cached is served from the origin every time, the `cf-cache-status` response header identifies which cache decision Cloudflare made. Fetch the URL, inspect the header, and follow the section that matches the value you see:
 
 - `DYNAMIC` — Cloudflare decided the request was not eligible for cache before it looked in the cache. Refer to [DYNAMIC — request not eligible for cache](#dynamic--request-not-eligible-for-cache).

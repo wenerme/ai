@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-
 
 # JA3/JA4 fingerprint
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [**JA3** ↗︎](https://github.com/salesforce/ja3) and [**JA4** ↗︎](https://github.com/FoxIO-LLC/ja4) **fingerprints** identify TLS clients based on how they initiate connections. Each client type (browser, bot, or application) has distinct connection characteristics, so the resulting fingerprint acts as a stable identifier across different destination IPs, ports, and certificates.
 
 JA4 improves on JA3 by sorting ClientHello extensions, which reduces the number of unique fingerprints for modern browsers and makes grouping easier.

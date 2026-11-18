@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/run-workflows/og.png
 
 # Run Workflows
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/run-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Integrate [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) with Agents for durable, multi-step background processing while Agents handle real-time communication.
 
 Agents vs. Workflows
@@ -172,7 +170,7 @@ export class MyAgent extends Agent {
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-10",
+	"compatibility_date": "2026-11-18",
 	"durable_objects": {
 		"bindings": [{ "name": "MY_AGENT", "class_name": "MyAgent" }],
 	},
@@ -192,7 +190,7 @@ name = "my-app"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-10"
+compatibility_date = "2026-11-18"
 
 [[durable_objects.bindings]]
 name = "MY_AGENT"

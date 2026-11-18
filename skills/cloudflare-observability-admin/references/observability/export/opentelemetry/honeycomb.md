@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/export/opentelemetry/hone
 
 # Export to Honeycomb
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/export/opentelemetry/honeycomb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Honeycomb is an observability platform for high-cardinality telemetry data. Export Cloudflare telemetry to Honeycomb to query logs, inspect traces, and create dashboards.
 
 ![Trace view including POST request, fetch operations, durable object subrequest, and queue send, with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2196,height=704,format=webp/_astro/honeycomb-example.cEkEF1c4.png)

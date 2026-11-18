@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/custom-actions/create-action/og.p
 
 # Create an action
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/custom-actions/create-action/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you have your triggers ready, you can use them to configure your actions. An action defines a specific task that your tool will perform.
 
 To create an action, first [add a third-party tool](https://developers.cloudflare.com/zaraz/get-started/). If you have already added a third-party tool, follow these steps to create an action.

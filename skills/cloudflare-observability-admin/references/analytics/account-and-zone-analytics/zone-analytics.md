@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/zo
 
 # Zone Analytics
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare zone analytics is a major component of the overall Cloudflare Analytics product line.  Specifically, this app gives you access to a wide range of metrics, collected at the website or domain level.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/mi
 
 # Migrate to MCP SDK v2
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers the [MCP SDK v2 ↗︎](https://github.com/modelcontextprotocol/typescript-sdk) upgrade in Agents SDK v0.20.0. It explains how to move servers to `@modelcontextprotocol/server`, use a temporary legacy lane only when sessionful features require it, and update MCP clients.
 
 ## Choose a server path

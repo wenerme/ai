@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/data-metrics/high-level-m
 
 # High-level metrics
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Understanding the key metrics in web analytics is essential for optimizing your website’s performance and user experience. Here are the high-level metrics tracked by Cloudflare Web Analytics:
 
 - **Visits** - A page view that originated from a different website or direct link. Cloudflare checks where the HTTP referer does not match the hostname. One visit can consist of multiple page views.

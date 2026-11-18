@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoin
 
 # /crawl - Crawl web content
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
 
 The `/crawl` endpoint is available via the REST API. [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the `Browser Run - Edit` permission.

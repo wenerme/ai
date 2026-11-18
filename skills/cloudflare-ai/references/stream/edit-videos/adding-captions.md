@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/edit-videos/adding-captions/og.p
 
 # Add captions
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/edit-videos/adding-captions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Adding captions and subtitles to your video library.
 
 ## Add or modify a caption

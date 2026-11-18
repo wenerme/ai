@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/examples/codemode/og.pn
 
 # Code Mode Example
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/codemode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example shows how to use the [`@cloudflare/codemode` ↗︎](https://www.npmjs.com/package/@cloudflare/codemode) library with the [Agents SDK ↗︎](https://www.npmjs.com/package/agents) to build an agent where the LLM writes code to orchestrate tool calls, instead of calling them one at a time. This approach, called [Code Mode ↗︎](https://blog.cloudflare.com/code-mode/), reduces tokens spent by up to 80%, returns better results, and avoids bloating the context window.
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/codemode)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkSettings
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtksettings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Settings dialog with audio device selection, video device selection, and network connection status.
 
 ## Properties

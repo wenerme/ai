@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/exo/og.png?v=eaec0d557
 
 # Exo
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/exo/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Exo ↗︎](https://github.com/exoharness/exo) is an open-source runtime for hosting agents behind an API. You define an agent in a Markdown file, choose its harness and model, and configure its tools, sandbox, and credentials. Exo separates the agent loop from the infrastructure that stores conversations and manages its working environment.
 
 Use it when you want to build a hosted coding assistant or task-specific agent with control over its infrastructure and a choice of harnesses. Exo handles durable conversations, sandbox files, and credential access around the harness you select.

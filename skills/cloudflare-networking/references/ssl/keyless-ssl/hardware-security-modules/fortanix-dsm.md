@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modul
 
 # Fortanix Data Security Manager
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/fortanix-dsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use Cloudflare Keyless SSL with [Fortanix Data Security Manager (DSM) ↗︎](https://www.fortanix.com/platform/data-security-manager), a FIPS 140-2 Level 3 certified implementation.
 
 You must have a [Data Security Manager Enterprise Tier ↗︎](https://www.fortanix.com/start-your-free-trial) and set up a group and an application assigned to the group.

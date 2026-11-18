@@ -523,7 +523,7 @@ To add instructions to an existing automation:
 
 You can also add instructions when you [create an event-based automation](#create-an-event-based-automation),
 [create a scheduled automation](#create-a-scheduled-automation), or
-[enable a flow](../flows/custom.md#enable-a-flow).
+[turn on a flow](../flows/custom.md#turn-on-a-flow).
 
 ### Write instructions
 

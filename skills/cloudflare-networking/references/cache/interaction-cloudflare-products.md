@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/interaction-cloudflare-products/o
 
 # Interaction with Cloudflare products
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare caches content at data centers close to your visitors so your origin server handles fewer requests. The pages below explain how caching works when you also use Workers, R2 storage, or WAF security rules, and what to watch out for when combining them.
 
 - [Customize cache behavior with Workers](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/)

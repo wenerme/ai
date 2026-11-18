@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-ru
 
 # WAF managed rules upgrade
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 On 2022-05-04, Cloudflare started the upgrade from the [previous version of WAF managed rules](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/) to the new [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), allowing a first set of eligible zones to migrate. Currently, all zones can upgrade to WAF Managed Rules, including partner accounts.
 
 Cloudflare is gradually upgrading all zones to the new version of WAF Managed Rules. You can also start the upgrade process manually for a zone in the Cloudflare dashboard or via API. **The upgrade is irreversible** — once you upgrade to the new WAF Managed Rules, you cannot go back to the previous version.

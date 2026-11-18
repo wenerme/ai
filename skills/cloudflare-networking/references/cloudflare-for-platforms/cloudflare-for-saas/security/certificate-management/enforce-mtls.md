@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # TLS Management
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Mutual TLS (mTLS) ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) adds an extra layer of protection to application connections by validating certificates on the server and the client. When building a SaaS application, you may want to enforce mTLS to protect sensitive endpoints related to payment processing, database updates, and more.
 
 [Minimum TLS Version](#minimum-tls-version) only allows HTTPS connections from visitors that support the selected TLS protocol version or newer. Cloudflare recommends TLS 1.2 to comply with the Payment Card Industry (PCI) Security Standards Council. As a SaaS provider, you can control the Minimum TLS version for your zone as a whole, as well as for individual custom hostnames.

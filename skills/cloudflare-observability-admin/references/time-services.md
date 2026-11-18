@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/time-services/og.png?v=1cd6d5b4aa23d90d
 
 # Cloudflare Time Services
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn more about Cloudflare’s suite of time services.
 
 - [Network Time Protocol](https://developers.cloudflare.com/time-services/ntp/)

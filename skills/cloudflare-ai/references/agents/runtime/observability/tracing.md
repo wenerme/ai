@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/observability/tracing/og
 
 # Tracing
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/observability/tracing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agent tracing helps you understand what an agent did at every turn, including its model calls, tool runs, and approval requests. Use traces to investigate unexpected behavior, find slow operations, and review token usage.
 
 Agent activity appears alongside runtime events such as fetch calls, KV reads, and D1 queries in [Workers traces](https://developers.cloudflare.com/workers/observability/traces/).

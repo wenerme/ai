@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/nested-s
 
 # Nested Structures
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Two kinds of nested structures that are supported: **arrays** and **maps**. Fields of either of these types are arrays; when they are part of a query result, which is already an array of objects, they become nested arrays.
 
 ## Arrays

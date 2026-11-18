@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/agent-sdks/og.png?v=5531aefcf
 
 # Agents
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These guides show how to use AI Search from agent and application frameworks. Each guide starts from an empty project and ends with a working integration that queries an AI Search instance.
 
 These pages cover how to *use* an AI Search instance from a framework. To create and manage instances themselves, refer to the [REST API](https://developers.cloudflare.com/ai-search/api/), the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/), or [Wrangler commands](https://developers.cloudflare.com/ai-search/wrangler-commands/).

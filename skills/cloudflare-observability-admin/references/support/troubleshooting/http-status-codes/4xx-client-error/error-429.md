@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 429
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-429/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 429 Too Many Requests
 
 The `429 Too Many Requests` status code indicates that the client has sent too many requests in a specified amount of time, as determined by the server's rate-limiting rules. The server may include a `Retry-After` header in the response to specify when the client can try again.

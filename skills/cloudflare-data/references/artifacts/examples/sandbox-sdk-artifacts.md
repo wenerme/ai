@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifact
 
 # Sandbox SDK + Artifacts
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example uses the `git-repo-per-sandbox` Sandbox SDK template and highlights the Artifacts-specific pieces.
 
 Start from the template with `create cloudflare`, as shown in [Create your project](#create-your-project). Then adapt the Artifacts flow with the snippets in steps 1 to 3.

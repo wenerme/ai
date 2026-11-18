@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/demos/og.png?v=fc3162fbfbb60439
 
 # Demos and architectures
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how you can use D1 within your existing application and architecture.
 
 ## Featured Demos

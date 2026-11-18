@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/fir
 
 # Custom rules
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/firewall/custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom rules allow you to control incoming traffic by filtering requests to a zone. They work as customized web application firewall (WAF) rules that you can use to perform actions like *Block* or *Managed Challenge* on incoming requests. You can also use the *Skip* action in a custom rule to [skip one or more Cloudflare security features](https://developers.cloudflare.com/waf/custom-rules/skip/).
 
 In the [new security dashboard](https://developers.cloudflare.com/security/), custom rules are one of the available types of [security rules](https://developers.cloudflare.com/security/rules/). Security rules perform security-related actions on incoming requests that match specified filters.

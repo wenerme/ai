@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-cli
 
 # Cloudflare One Client
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide helps you diagnose and resolve common issues with the Cloudflare One Client (formerly WARP). It covers how to troubleshoot the Cloudflare One Client on desktop operating systems, including Windows, macOS, and Linux.
 
 1. **Before you start**: [Prerequisites](#prerequisites), permissions, [version control](#check-your-client-version), and client basics.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/data-migration/sippy/og.png?v=f55250
 
 # Sippy
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/data-migration/sippy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Sippy is a data migration service that allows you to copy data from other cloud providers to R2 as the data is requested, without paying unnecessary cloud egress fees typically associated with moving large amounts of data.
 
 Migration-specific egress fees are reduced by leveraging requests within the flow of your application where you would already be paying egress fees to simultaneously copy objects to R2.

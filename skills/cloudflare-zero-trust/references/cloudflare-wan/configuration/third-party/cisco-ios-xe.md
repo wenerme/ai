@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Cisco IOS XE
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial provides a comprehensive configuration example for establishing a secure Internet Protocol Security (IPsec) tunnel between Cisco IOS XE and Cloudflare using Post-Quantum Cryptography (PQC).
 
 Interconnecting your Cisco IOS XE infrastructure with Cloudflare Anycast IPsec tunnels delivers a highly resilient connectivity solution with two primary benefits:

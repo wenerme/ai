@@ -253,7 +253,7 @@ Writes made by other sandboxes to the same Volume are only visible after a reloa
 await sandbox.reloadVolumes()
 ```
 
-> **note**: Keep the working directory outside every Volume mount (for example `/workspace`). Modal can't reload a Volume that is the current working directory, so `ModalSandbox` throws if `workingDirectory` is at or inside a mount path.
+> **note**: Keep the working directory outside every Volume mount (for example `/workspace`). Modal can't reload a Volume that's the current working directory, so `ModalSandbox` throws if `workingDirectory` is at or inside a mount path.
 
 ## Background processes
 

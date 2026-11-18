@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Create Rate Limiting policies (beta)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/create-rate-limiting-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Rate limiting policies (beta) allow you to set maximum traffic thresholds - measured in packets or bits per second — for incoming traffic destined for your network as it arrives at specific Cloudflare data centers. When traffic to a location exceeds your defined limit, the policy takes action.
 
 This guide walks you through creating a policy that matches incoming packets and triggers when the traffic rate exceeds your configured threshold.

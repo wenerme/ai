@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/og.png?v=a9e8ea8c4285a41d
 
 # Hyperdrive (Postgres & MySQL)
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Turn your existing regional database into a globally distributed database.
 
 Available on Free and Paid plans

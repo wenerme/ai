@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/backup-certificat
 
 # Backup certificates
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If Cloudflare is providing [authoritative DNS](https://developers.cloudflare.com/dns/zone-setups/full-setup/) for your domain, Cloudflare will issue a backup [Universal SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) for every standard Universal certificate issued.
 
 Backup certificates are wrapped with a different private key and issued from a different Certificate Authority — either Google Trust Services, Let's Encrypt, Sectigo, or SSL.com — than your domain's primary Universal SSL certificate.

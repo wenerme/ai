@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9c
 
 # Puppeteer
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Puppeteer ↗︎](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
 
 Puppeteer typically connects to a local Chrome or Chromium browser using the DevTools port. Refer to the [Puppeteer API documentation on the `Puppeteer.connect()` method ↗︎](https://pptr.dev/api/puppeteer.puppeteer.connect) for more information.

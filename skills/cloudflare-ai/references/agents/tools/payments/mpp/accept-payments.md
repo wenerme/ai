@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/payments/mpp/accept-paymen
 
 # Accept payments with MPP
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Cloudflare Workers to accept Machine Payments Protocol (MPP) payments. Choose an integration based on the service you want to protect:
 
 - [`mpp-proxy` ↗︎](https://github.com/cloudflare/mpp-proxy) — Charge for HTTP content without changing your origin code. Refer to [Charge for HTTP content](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/).
@@ -177,7 +175,7 @@ Charge for a tool call from an MCP server on Workers. `mppx` reads payment crede
      "main": "src/index.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-27",
+     "compatibility_date": "2026-11-18",
      "compatibility_flags": [
        "nodejs_compat"
      ]
@@ -189,7 +187,7 @@ Charge for a tool call from an MCP server on Workers. `mppx` reads payment crede
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-27"
+   compatibility_date = "2026-11-18"
    compatibility_flags = ["nodejs_compat"]
    ```
 

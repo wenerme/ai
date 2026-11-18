@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-
 
 # Add custom policies
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, you can create a maximum of 200 policies. We recommend you create lists of IP addresses to reference within policies to streamline policy management.
 
 ## Add a policy

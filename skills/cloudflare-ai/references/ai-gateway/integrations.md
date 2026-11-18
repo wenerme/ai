@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/og.png?v=840304
 
 # Integrations
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Was this helpful?
 
 YesNo

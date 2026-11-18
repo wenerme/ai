@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-
 
 # Use Pages Functions for A/B testing
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will learn how to use [Pages Functions](https://developers.cloudflare.com/pages/functions/) for A/B testing in your Pages projects. A/B testing is a user experience research methodology applied when comparing two or more versions of a web page or application. With A/B testing, you can serve two or more versions of a webpage to users and divide traffic to your site.
 
 ## Overview

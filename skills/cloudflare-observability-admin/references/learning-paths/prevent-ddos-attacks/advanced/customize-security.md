@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/adv
 
 # Customize Cloudflare security
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/advanced/customize-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Another way of reducing origin traffic is customizing the Cloudflare WAF and other security features. The fewer malicious requests that reach your application, the fewer that could reach (and overwhelm) your origin.
 
 To reduce incoming malicious requests, you could:

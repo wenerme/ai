@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/examples/og.png?v=631bb
 
 # Examples
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These examples show how teams use Dynamic Workers to run code safely, bundle dependencies, and return results to an application or agent.
 
 - [Dynamic Workers Starter](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/)

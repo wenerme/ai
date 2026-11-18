@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/
 
 # Percentage rollouts
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Percentage rollouts let you gradually release a feature to a fraction of your users. Any [targeting rule](https://developers.cloudflare.com/flagship/targeting/) can include a rollout percentage between 0 and 100.
 
 Use percentage rollouts when you want to limit blast radius, run an experiment, or sample requests without deploying new code.

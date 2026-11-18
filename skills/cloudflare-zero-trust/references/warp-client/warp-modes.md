@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/warp-client/warp-modes/og.png?v=7dc736a
 
 # WARP modes
 
-Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/warp-modes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The WARP client has several modes to better suit different connection needs.
 
 ## DNS only
@@ -57,7 +55,7 @@ Because this feature restricts WARP to just applications configured to use the l
 
 This will enable the **Local proxy** option in the **WARP Settings** menu.
 
-If you enable [FIPS compliance](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#fips-compliance) for TLS decryption, you must [disable QUIC](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/#force-http2-traffic) in your users' browsers. Otherwise, HTTP/3 traffic will bypass inspection by the WARP client.
+If you enable [FIPS compliance](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#fips-compliance) for TLS decryption, you must [disable QUIC](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/http3/#force-http2-traffic) in your users' browsers. Otherwise, HTTP/3 traffic will bypass inspection by the WARP client.
 
 ## WARP+ Unlimited
 
@@ -89,5 +87,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/warp-modes/#page","headline":"WARP modes","description":"Available WARP connection modes and their behavior.","url":"https://developers.cloudflare.com/warp-client/warp-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/warp-client/warp-modes/og.png?v=7dc736a04c4bc94e","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/warp-modes/#page","headline":"WARP modes","description":"Available WARP connection modes and their behavior.","url":"https://developers.cloudflare.com/warp-client/warp-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/warp-client/warp-modes/og.png?v=7dc736a04c4bc94e","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

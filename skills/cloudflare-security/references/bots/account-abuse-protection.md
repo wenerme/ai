@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=
 
 # Account Abuse Protection (Early Access)
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Identify and mitigate attacks on your customer and user accounts.
 
 Account abuse — bulk account creation and account takeover attacks — can cause financial losses and erode user trust. Fraud detection allows you to detect and mitigate these attacks among your traffic. You can use fraud signals to [update or create new rules](https://developers.cloudflare.com/waf/custom-rules/) for suspicious account activity, or pass signals to your origin to integrate into authentication and authorization systems.

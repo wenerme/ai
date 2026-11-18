@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/draw-overlays/og.pn
 
 # Draw overlays and watermarks
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/draw-overlays/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use [Workers](https://developers.cloudflare.com/workers/) to draw text, watermarks, and logos over other images. Overlays support transparency, positioning, and compositing modes.
 
 You can draw overlays in a Worker using two approaches:

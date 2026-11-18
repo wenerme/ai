@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/traces/og.png?v=5
 
 # Traces
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ### What is Workers tracing?
 
 Tracing gives you end-to-end visibility into the life of a request as it travels through your Workers application and connected services. This helps you identify performance bottlenecks, debug issues, and understand complex request flows. With tracing you can answer questions such as:

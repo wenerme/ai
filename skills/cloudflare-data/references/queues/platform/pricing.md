@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/platform/pricing/og.png?v=f8e8dd
 
 # Pricing
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Queues charges for operations and for queues above the included amount on the Workers Paid plan.
 
 - An operation is counted for each 64 KB of data that is written, read, or deleted.

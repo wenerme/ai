@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/prompting/og.png?v=
 
 # Prompting
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/prompting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Part of getting good results from text generation models is asking questions correctly. LLMs are usually trained with specific predefined templates, which should then be used with the model's tokenizer for better results when doing inference tasks.
 
 There are two ways to prompt text generation models with Workers AI:

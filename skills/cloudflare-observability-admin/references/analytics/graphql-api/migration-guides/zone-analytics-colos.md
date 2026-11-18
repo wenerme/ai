@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/
 
 # Zone Analytics Colos Endpoint to GraphQL Analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide shows how you might migrate from the deprecated (and soon to be sunset) zone analytics API to the GraphQL API. It provides an example for a plausible use-case of the colos endpoint, then shows how that use-case is translated to the GraphQL API. It also explores features of the GraphQL API that make it more powerful than the API it replaces.
 
 In this example, we want to calculate the number of requests for a particular colo, broken down by the hour in which the requests occurred. Referring to the zone analytics colos endpoint, we can construct a curl which retrieves the data from the API.

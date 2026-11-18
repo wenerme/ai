@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/workflows/og.png?v=e3ae
 
 # Using Agents with Workflows
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## What are Workflows?
 
 [Cloudflare Workflows](https://developers.cloudflare.com/workflows/) provide durable, multi-step execution for tasks that need to survive failures, retry automatically, and wait for external events. When integrated with Agents, Workflows handle long-running background processing while Agents manage real-time communication.

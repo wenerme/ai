@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-interconnect/changelog/og.png?v
 
 # Changelog
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/network-interconnect.xml)
 
 ## 2026-03-24

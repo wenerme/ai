@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/function-calling/em
 
 # Examples
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Use fetch() handler](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/fetch/)
 - [Tools based on OpenAPI Spec](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/openapi/)
 - [Use KV API](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/kv/)

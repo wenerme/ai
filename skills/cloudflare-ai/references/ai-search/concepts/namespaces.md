@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/concepts/namespaces/og.png?v=
 
 # Namespaces
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Every AI Search instance belongs to a **namespace**. A namespace is a logical grouping of instances within your account.
 
 [Tenant A](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [Tenant B](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [Tenant C](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)

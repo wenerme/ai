@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 503
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-503/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 503: service temporarily unavailable
 
 HTTP error 503 occurs when your origin web server is overloaded.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/og.png?v=4641fbe0c519dbe8
 
 # Web3
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Develop Web3 applications without having to worry about running infrastructure
 
 Add-on feature

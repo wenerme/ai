@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/features/media-transport-a
 
 # Media transport adapters
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Media transport adapters connect WebRTC tracks to services that exchange media over another transport. The WebSocket adapter supports audio ingest, audio egress, and video egress as JPEG frames.
 
 An external service can process or generate audio without implementing a WebRTC peer. Your backend creates the adapter and manages its lifetime.

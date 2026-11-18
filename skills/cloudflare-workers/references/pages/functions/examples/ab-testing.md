@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/pages/functions/examples/ab-testing/og.
 
 Set up an A/B test by controlling what page is served based on cookies. This version supports passing the request through to test and control on the origin.
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/examples/ab-testing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ```js
 const cookieName = "ab-test-cookie";
 const newHomepagePathName = "/test";

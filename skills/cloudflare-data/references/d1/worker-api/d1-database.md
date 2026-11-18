@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/worker-api/d1-database/og.png?v=7da9
 
 # D1 Database
 
-Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/worker-api/d1-database/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
 ```js

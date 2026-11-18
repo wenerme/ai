@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/
 
 # URL forwarding with Page Rules
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Page Rules allow you to forward or redirect traffic to a different URL, though they are just one of the [options provided by Cloudflare](https://developers.cloudflare.com/fundamentals/reference/redirects/).
 
 Note

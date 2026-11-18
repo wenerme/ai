@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/users
 
 # View SCIM users and groups
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim-population-viewer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The SCIM population viewer shows users and groups provisioned through an identity provider (IdP). Use it to check which resources Cloudflare has received, inspect their attributes, and investigate provisioning issues.
 
 Each view belongs to one identity provider. Its resource counts describe that provider's SCIM population, not your account's active users or occupied seats. For user activity and identity history, refer to the [User Registry](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/).

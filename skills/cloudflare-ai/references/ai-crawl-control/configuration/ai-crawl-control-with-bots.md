@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl
 
 # AI Crawl Control with Cloudflare Bots
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Crawl Control works alongside other Cloudflare products, such as Cloudflare [bot solutions](https://developers.cloudflare.com/bots/). Bot solutions identifies traffic matching patterns of known bots, and can challenge or block the bots as you wish.
 
 ## Order of precedence

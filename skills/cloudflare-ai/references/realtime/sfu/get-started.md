@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/get-started/og.png?v=41344
 
 # Get started
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run a browser video room that publishes camera and microphone tracks through Realtime SFU. Open a second participant to receive the first participant's media and send media back.
 
 This quickstart uses a Worker for signaling and a Durable Object for room state. SFU credentials stay on the backend. The [video-room guide](https://developers.cloudflare.com/realtime/sfu/examples/video-room/) explains how to adapt the application.

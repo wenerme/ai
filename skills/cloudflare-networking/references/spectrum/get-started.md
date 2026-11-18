@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/get-started/og.png?v=610a7c261
 
 # Get started
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Spectrum is available on all paid plans. Pro and Business support selected protocols only, whereas Enterprise supports all TCP and UDP based traffic. Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/) for more configuration details.
 
 To create a Spectrum application, you can either use an IP address, a CNAME Record or a load balancer. Independently of the method you use, you can create the application through the dashboard or via [API](https://developers.cloudflare.com/api/resources/spectrum/subresources/apps/methods/list/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/plans/og.png?v=261ae43b8dc50
 
 # Plans
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/plans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Unless a feature page states otherwise, API Shield features require the paid API Shield add-on on an Enterprise plan.

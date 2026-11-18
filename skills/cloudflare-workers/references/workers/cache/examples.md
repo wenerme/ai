@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/cache/examples/og.png?v=e7b4e19
 
 # Examples
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Caching is **a cache that is itself a Worker primitive**. It sits in front of every Worker entrypoint — the default export and every named [`WorkerEntrypoint`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) — and it also sits in front of `fetch()` calls between entrypoints in the same Worker via [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/). That second fact is the one that makes the rest of this page possible.
 
 When one entrypoint invokes another's `fetch()` via `ctx.exports`, the cache evaluates that call the same way it would evaluate a request from a browser. A hit returns the cached response without the callee running. A miss runs the callee and stores the response under its own cache key, keyed by the callee's entrypoint, path, query string, and [`ctx.props`](https://developers.cloudflare.com/workers/cache/cache-keys/#multi-tenant-safety-with-ctxprops). The caller still runs on every request — but anything the caller hands off to the callee is cacheable independently.
@@ -38,7 +36,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true },
 	"exports": {
 		// The gateway runs on every request — no caching in front of it.
@@ -54,7 +52,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -98,7 +96,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -112,7 +110,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -383,7 +381,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -397,7 +395,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -557,7 +555,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -571,7 +569,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -818,7 +816,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -832,7 +830,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/configuration/pi-ai/og.png?v
 
 # Pi AI
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To use Workers AI with [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai), use `createAI` from `agents/models/pi-ai`. It returns Pi AI `Model` objects, so Workers AI models work with Pi AI's `stream` and `complete`, with [Pi Durable ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable), and with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/). This page covers Workers AI models. For AI Gateway catalog models, fallback, gateway options, and the full reference, refer to [Pi AI](https://developers.cloudflare.com/agents/models/pi-ai/).
 
 ## Setup

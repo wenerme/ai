@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/troubles
 
 # Troubleshoot Access
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review common troubleshooting scenarios for Cloudflare Access.
 
 ## Authentication and login

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/retries/og.png?v=059
 
 # Retries
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/retries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Retry failed operations with exponential backoff and jitter. The Agents SDK provides built-in retry support for scheduled tasks, queued tasks, and a general-purpose `this.retry()` method for your own code.
 
 ## Overview

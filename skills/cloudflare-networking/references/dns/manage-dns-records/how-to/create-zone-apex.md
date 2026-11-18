@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zo
 
 # Create zone apex record
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you add a domain to Cloudflare, you may also need to create or review the DNS record on your zone apex. Zone apex refers to the domain (`example.com`) or subdomain (`blog.example.com`) that you are [adding to Cloudflare](https://developers.cloudflare.com/dns/concepts/#zone).
 
 Usually, the zone apex record makes your domain accessible by visitors. In this case, the necessary record type ([A, AAAA, or CNAME](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution)) and its content will depend on the provider that [hosts](https://developers.cloudflare.com/fundamentals/manage-domains/#host-your-domain) your website or application. If you are using Cloudflare Pages, refer to [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/). If you are using other providers, look for their guidance on how to connect domains managed on external DNS services.

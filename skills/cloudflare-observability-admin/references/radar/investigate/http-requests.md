@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/investigate/http-requests/og.png?
 
 # HTTP requests
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/http-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 While in [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) we can inspect bytes and packets reaching Cloudflare's edge routers, in HTTP requests we are a layer above in the [OSI model ↗︎](https://en.wikipedia.org/wiki/OSI_model). HTTP requests examines complete HTTP requests from end users that reach websites served by Cloudflare's [CDN ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).
 
 Note

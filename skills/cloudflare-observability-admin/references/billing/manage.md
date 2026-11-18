@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/og.png?v=59dd6e6e7b3e691
 
 # Manage
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these guides to manage invoices, subscriptions, payment status, and usage-based spend.
 
 ### [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/)

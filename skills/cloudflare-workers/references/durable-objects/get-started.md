@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/get-started/og.png?v=ab
 
 # Getting started
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will instruct you through:
 
 - Writing a JavaScript class that defines a Durable Object.

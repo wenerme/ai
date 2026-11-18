@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/reference/directory-backups/og.
 
 # DirectoryBackup API
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/directory-backups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `DirectoryBackup` saves a directory from a running container to an R2 bucket and restores it later into a container, including a container that runs a newer image. The container sends the backup through `DirectoryBackupGateway` in your Worker, so the container needs no Internet access and no R2 credentials. The gateway lets the container reach only the object that the operation needs. `DirectoryBackup` does not start or stop the container.
 
 ```js

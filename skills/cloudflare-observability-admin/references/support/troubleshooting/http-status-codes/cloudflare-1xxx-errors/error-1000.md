@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 1000
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1000/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 1000: DNS points to prohibited IP
 
 This error indicates that a Cloudflare DNS record points to a prohibited IP, blocking access to the requested domain.

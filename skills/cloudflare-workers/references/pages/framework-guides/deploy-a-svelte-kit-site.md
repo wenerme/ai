@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-
 
 # SvelteKit
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 SvelteKit is the official framework for building modern web applications with [Svelte ↗︎](https://svelte.dev), an increasingly popular open-source tool for creating user interfaces. Unlike most frameworks, SvelteKit uses Svelte, a compiler that transforms your component code into efficient JavaScript, enabling SvelteKit to deliver fast, reactive applications that update the DOM surgically as the application state changes.
 
 In this guide, you will create a new SvelteKit application and deploy it using Cloudflare Pages. You will use [`SvelteKit` ↗︎](https://kit.svelte.dev/), the official Svelte framework for building web applications of all sizes.

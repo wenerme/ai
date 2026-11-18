@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/og.pn
 
 # Retrieval
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Reranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)
 - [System prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)
 - [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)

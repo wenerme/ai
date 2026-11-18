@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/capabilities/build-a-cap
 
 # Build a capability
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/capabilities/build-a-capability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build a capability to reuse a feature that participates in your agent's startup, request handling, or background work. The [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) starts the capability and calls the hooks it implements.
 
 This guide builds an `UptimeMonitor` capability. It checks a URL periodically, saves each result, and serves the history over HTTP. When a check fails, it notifies your agent through a callback.

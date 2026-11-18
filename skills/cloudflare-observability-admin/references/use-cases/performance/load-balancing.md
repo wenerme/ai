@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/performance/load-balancing/og
 
 # Balance traffic across origins
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If a single origin server handles all your traffic, any failure or overload takes your application offline. Cloudflare's load balancing distributes traffic across multiple origins with health checks and automatic failover.
 
 ## Solutions

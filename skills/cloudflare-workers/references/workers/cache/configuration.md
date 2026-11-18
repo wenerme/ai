@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/cache/configuration/og.png?v=75
 
 # Configuration
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Caching is configured per Worker, in your Wrangler configuration file. When enabled, caching applies to every `fetch()` invocation — eyeball requests, service binding `fetch()` calls, and loopback `fetch()` calls between entrypoints via [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) — unless you [disable it for a specific entrypoint](#per-entrypoint-caching). Custom [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) bypass the cache.
 
 This is **your Worker's cache** — configured through your Worker's code and Wrangler file. Your Worker controls its cache entirely through:
@@ -38,7 +36,7 @@ Add a `cache` block to your Wrangler configuration:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-31",
+	"compatibility_date": "2026-11-18",
 	"cache": {
 		"enabled": true,
 	},
@@ -50,7 +48,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-31"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -70,7 +68,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-31",
+	"compatibility_date": "2026-11-18",
 	"cache": {
 		"enabled": false,
 	},
@@ -82,7 +80,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-31"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = false
@@ -104,7 +102,7 @@ Requires Wrangler 4.107.0 or above.
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-31",
+	"compatibility_date": "2026-11-18",
 	"cache": {
 		"enabled": true,
 	},
@@ -122,7 +120,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-31"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -197,7 +195,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-31",
+	"compatibility_date": "2026-11-18",
 	"cache": {
 		"enabled": true,
 		"cross_version_cache": true,
@@ -210,7 +208,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-31"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = true
@@ -231,7 +229,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-31",
+	"compatibility_date": "2026-11-18",
 	"cache": {
 		"enabled": false,
 	},
@@ -250,7 +248,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-31"
+compatibility_date = "2026-11-18"
 
 [cache]
 enabled = false

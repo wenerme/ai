@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/workers/workers-api-reference/og
 
 # Workers API reference
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The in-Worker R2 API is accessed by binding an R2 bucket to a [Worker](https://developers.cloudflare.com/workers). The Worker you write can expose external access to buckets via a route or manipulate R2 objects internally.
 
 The R2 API includes some extensions and semantic differences from the S3 API. If you need S3 compatibility, consider using the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/).

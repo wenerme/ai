@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 1005
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1005/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Errors 1005 Access Denied: Autonomous System Number (ASN) banned
 
 This error indicates that access to the website is denied due to the banning of the Autonomous System Number (ASN).

@@ -16,8 +16,6 @@ t
 
 video-to-video • topaz
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/topaz/starlight-precise-2-6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `topaz/starlight-precise-2-6` Copy

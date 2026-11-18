@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-meeting-title
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-meeting-title/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Displays the title of the meeting.
 
 ## Properties

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/containers/examples/durable-object-inte
 
 Various examples calling Containers directly from Durable Objects
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/durable-object-interface/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Explore more ways to control a Container from its Durable Object:
 
 - [Execute commands](https://developers.cloudflare.com/containers/guides/execute-commands/): Run a process and read its output.

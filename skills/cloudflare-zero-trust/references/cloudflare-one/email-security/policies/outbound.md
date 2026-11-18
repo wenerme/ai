@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Outbound
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Outbound Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/)
 
 Was this helpful?

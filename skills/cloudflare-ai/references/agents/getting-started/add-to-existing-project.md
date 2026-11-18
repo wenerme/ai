@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/getting-started/add-to-existing-
 
 # Add to an existing project
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Any Cloudflare Workers project can host an agent. Add a [Durable Object](https://developers.cloudflare.com/durable-objects/), or use one you already have, and install the Agents SDK [lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) on it. Then add the capabilities you need from the Agents SDK, such as state, WebSockets, scheduling, MCP clients, or a [harness](https://developers.cloudflare.com/agents/harnesses/).
 
 You do not need to change your Worker's existing routes or rewrite your Durable Object as a subclass of a framework class. The Lifecycle runs inside your `DurableObject` class.

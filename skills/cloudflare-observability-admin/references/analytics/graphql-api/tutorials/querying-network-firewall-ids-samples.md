@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/queryin
 
 # Querying Cloudflare Network Firewall Intrusion Detection System (IDS) samples with GraphQL
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-network-firewall-ids-samples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this example, we are going to use the GraphQL Analytics API to query for IDS samples over a specified time period.
 
 The following API call will request IDS samples over a one hour period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ACCOUNT_TAG>` and `<API_TOKEN>`<sup>[1](#user-content-fn-1)</sup> with your account tag and API credentials, and adjust the `datetime_geg` and `datetime_leq` values to your liking.

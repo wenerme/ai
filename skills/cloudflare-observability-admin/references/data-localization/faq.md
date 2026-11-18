@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/faq/og.png?v=507ba3c4
 
 # FAQs
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Are DLP and DLS the same?
 
 No, they are not. DLP stands for [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/), and it is part of Cloudflare's Zero Trust offering (requiring Gateway, Cloudflare's secure web gateway for filtering outbound internet traffic). DLP allows you to scan web traffic and SaaS applications for sensitive data like secret keys, financial information (credit card numbers), and other keywords.

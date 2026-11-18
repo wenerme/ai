@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/stream/examples/test-webhooks-locally/o
 
 Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Stream cannot send [webhook notifications](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/) to `localhost` or local IP addresses. To test webhooks during local development, you need a publicly accessible URL that forwards requests to your local machine.
 
 Note

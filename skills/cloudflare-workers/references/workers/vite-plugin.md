@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/og.png?v=e1b8c6ccd3
 
 # Vite plugin
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Vite plugin enables a full-featured integration between [Vite ↗︎](https://vite.dev/) and the [Workers runtime](https://developers.cloudflare.com/workers/runtime-apis/). Your Worker code runs inside a local [`workerd` ↗︎](https://github.com/cloudflare/workerd) process, which closely matches the runtime APIs and behavior of deployed Workers.
 
 For new Workers and supported Vite-based apps, use [Vite+](https://developers.cloudflare.com/workers/vite-plugin/vite-plus/) for development, builds, formatting, linting, type checking, and testing.

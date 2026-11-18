@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin/tutorials-and-examples/og.png?v=e
 
 # Tutorials and examples
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin/tutorials-and-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these guides to build workflows or connect existing tools.
 
 ## Build streaming workflows

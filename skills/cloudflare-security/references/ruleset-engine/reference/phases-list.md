@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/reference/phases-list/og
 
 # Phases list
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following tables list the [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/) of Cloudflare products powered by the Ruleset Engine, in the order those phases are executed. Some products such as the Cloudflare Web Application Firewall have more than one associated phase.
 
 ## Network layer

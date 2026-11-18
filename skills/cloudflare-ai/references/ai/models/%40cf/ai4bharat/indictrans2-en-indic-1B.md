@@ -16,8 +16,6 @@ a
 
 Translation • ai4bharat
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/ai4bharat/indictrans2-en-indic-1B` Copy

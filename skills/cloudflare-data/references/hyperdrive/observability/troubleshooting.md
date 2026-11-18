@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/observability/troubleshootin
 
 # Troubleshoot and debug
 
-Last updated Jul 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Troubleshoot and debug errors commonly associated with connecting to a database with Hyperdrive.
 
 ## Configuration errors

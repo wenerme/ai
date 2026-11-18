@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/organizations/manage-membe
 
 # Manage members
 
-Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/manage-members/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Member management is covered within each Organization type guide:
 
 - **[Organizations for Enterprise](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#manage-members)** — Invite members, manage Organization Super Administrators, and understand implicit access for Enterprise Organizations.

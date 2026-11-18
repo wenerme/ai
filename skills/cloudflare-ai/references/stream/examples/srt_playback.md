@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/stream/examples/srt_playback/og.png?v=2
 
 Example of sub 1s latency video playback using SRT and ffplay
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/srt_playback/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Before you can play live video, you must first be [actively streaming to a live input](https://developers.cloudflare.com/stream/stream-live/start-stream-live).

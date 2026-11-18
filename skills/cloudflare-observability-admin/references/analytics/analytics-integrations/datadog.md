@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-integrations/datado
 
 # Datadog
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/datadog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial explains how to analyze Cloudflare metrics using the [Cloudflare Integration tile for Datadog ↗︎](https://docs.datadoghq.com/integrations/cloudflare/).
 
 ## Overview

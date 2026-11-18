@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/additional-configurations/ddo
 
 # DDoS managed rulesets configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides examples of configuring [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) in your zone or account using Terraform. It covers the following configurations:
 
 - [Example: Configure HTTP DDoS Attack Protection](#example-configure-http-ddos-attack-protection)

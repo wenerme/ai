@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # Secure MCP servers
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can secure [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) with Cloudflare Access. Choose an approach based on who manages the MCP server code and hostname:
 
 | Approach | Best for | Auth handled by |

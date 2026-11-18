@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Custom origin server
 
-Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A **custom origin server** lets you send traffic from one or more custom hostnames to somewhere besides your default proxy fallback, such as:
 
 - `soap.stores.com` goes to `origin1.com`

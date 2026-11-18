@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/
 
 # Auto-move events
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Auto-moves allow you to automatically move emails out of your inbox based on a [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/) that Email security assigns to each message (for example, malicious, spam, or spoof).
 
 Use auto-moves to enforce email security policy without relying on end users to identify and act on threats themselves. After you configure auto-moves, Email security handles flagged messages according to the action you choose for each disposition.

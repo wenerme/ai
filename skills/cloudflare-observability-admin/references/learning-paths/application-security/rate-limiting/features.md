@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/rat
 
 # Features
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/rate-limiting/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Rate limiting is composed of the following parameters:
 
 - An [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) that specifies the criteria you are matching traffic on using the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/).

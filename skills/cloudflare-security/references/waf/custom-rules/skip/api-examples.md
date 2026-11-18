@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/og.p
 
 # API examples
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure custom rules via API.
 
 The `skip` action supports different [skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/), according to the security features or products that you wish to skip.

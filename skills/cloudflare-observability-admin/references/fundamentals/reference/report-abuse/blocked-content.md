@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/report-abuse/blo
 
 # Blocked Content
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your domain has content that has been blocked, Blocked Content on the dashboard gives you the ability to request the Trust and Safety team to remove a block.
 
 To view Blocked Content on the dashboard:

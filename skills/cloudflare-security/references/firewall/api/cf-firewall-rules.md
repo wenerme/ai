@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-firewall-rules/og.png?v
 
 # Firewall Rules API
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Firewall Rules API to programmatically manage your rules.
 
 Deprecation notice

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/core/standard
 
 # Web Standards
 
-Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/standards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Web Standards Reference](https://developers.cloudflare.com/workers/runtime-apis/web-standards)
 - [Encoding Reference](https://developers.cloudflare.com/workers/runtime-apis/encoding)
 - [Fetch Reference](https://developers.cloudflare.com/workers/runtime-apis/fetch)

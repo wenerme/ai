@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/examples/private-api/og.png
 
 # Access a private API or website
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/private-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example demonstrates how to access a private REST API that is not exposed to the public internet. In this guide, we will configure a VPC Service for an internal API, create a Worker that makes requests to that API, and deploy the Worker to validate our changes.
 
 ## Prerequisites
@@ -68,7 +66,7 @@ Update your Wrangler configuration file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"vpc_services": [
 		{
 			"binding": "INTERNAL_API",
@@ -85,7 +83,7 @@ name = "private-api-gateway"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[vpc_services]]
 binding = "INTERNAL_API"

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/bas
 
 # Baseline DDoS protection
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Get world-class DDoS protection with a few simple steps.
 
 ## Objectives

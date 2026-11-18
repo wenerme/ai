@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Configure Cloudflare source IPs
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure the source IP address range used by Cloudflare whenever a Cloudflare service, such as Cloudflare Load Balancing, sends traffic to a Cloudflare One private network. This address range is referred to as the Cloudflare Source IP Prefix (or `cloudflare_source` subnet type in the API).
 
 - IPv4 traffic is sourced from `100.64.0.0/12`. This range is configurable.

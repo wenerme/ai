@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-pass/concepts/og.png?v=cef55518
 
 # Concepts
 
-Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Understand the key concepts behind Privacy Pass, including the protocol's four roles, the issuance and redemption flow, and how Privacy Pass deployments are structured.
 
 - [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/)

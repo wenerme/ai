@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/og.png?v=1e03ec1436193a0d
 
 # Billing
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare bills on a recurring cycle for each domain on your account — every 30 days for monthly plans or annually for yearly plans. Plans and add-on services are billed separately, and some products use [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/). You can pay with Visa, Mastercard, American Express, Discover, PayPal, Apple Pay, Google Pay, Stripe Link, or UnionPay.
 
 ## Get started

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/issues/investigat
 
 # Investigate issues
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/issues/investigate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can investigate an issue by comparing its occurrences and reviewing the available diagnostic context.
 
 ## Detected failures

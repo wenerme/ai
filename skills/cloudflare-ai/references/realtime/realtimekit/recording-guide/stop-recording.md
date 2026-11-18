@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/st
 
 # Stop Recording
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/stop-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 RealtimeKit recordings can be stopped in any of the following ways:
 
 1. **Automatic Stop (Empty meeting)**: A RealtimeKit recording will automatically stop if the meeting has no participants for a duration of 1 minute or more. This wait time can be customized by contacting RealtimeKit's support team to configure a custom value for your app.

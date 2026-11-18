@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-b
 
 # Scaling and benchmarking
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/reference/scaling-and-benchmarking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's Keyless SSL technology was designed to scale to accommodate any sized workload using vertical and horizontal scaling, and pre-computation techniques wherever possible, such as ECDSA. The goals of the architectural design of the key server are to minimize latency while maximizing signing operations per second.
 
 Each key server uses a worker pool model, with incoming client connections handled by its own pair of reader/writer goroutines and cryptographic work done in separate worker goroutines pulled from a global pool.

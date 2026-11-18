@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/normalization/examples/og.png?v=f
 
 # URL normalization examples
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/normalization/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following table shows how different [URL normalization settings](https://developers.cloudflare.com/rules/normalization/settings/) affect request URLs before they pass to other Cloudflare features and to the origin server:
 
 | Incoming URL | Normalization type | Normalize incoming URLs | Normalize URLs to origin | URL at Cloudflare's network | URL passed to origin server |

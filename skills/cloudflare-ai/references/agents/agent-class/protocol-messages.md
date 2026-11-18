@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/protocol-messages/og
 
 # Protocol messages
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/protocol-messages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a client connects, an Agent sends it JSON protocol frames: its identity (`cf_agent_identity`), its state (`cf_agent_state`), and its MCP servers (`cf_agent_mcp_servers`). It sends state and MCP frames again whenever they change. `useAgent` and `AgentClient` read these frames for you.
 
 Some clients cannot handle JSON text frames, such as IoT devices or MQTT clients. Return `false` from `shouldSendProtocolMessages()` to turn the frames off for them:

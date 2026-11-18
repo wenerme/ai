@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/getting-analytics/og.png?v=dae1d
 
 # Analytics
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/getting-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Stream provides server-side analytics that can be used to:
 
 - Identify most viewed video content in your app or platform.

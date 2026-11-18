@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/auth-with-heade
 
 Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the [WebCrypto API](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/).
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/auth-with-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution when using in production
 
 The example code contains a generic header key and value of `X-Custom-PSK` and `mypresharedkey`. To best protect your resources, change the header key and value in the Snippets editor before saving your code.

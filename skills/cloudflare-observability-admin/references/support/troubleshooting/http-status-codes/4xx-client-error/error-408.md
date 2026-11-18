@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 408
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-408/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 408 Request Timeout
 
 The `408 Request Timeout` status code indicates that the origin server did not receive the complete request within a reasonable time frame and does not wish to continue waiting for the connection. This response is not commonly used, as servers often prefer to use the "close" connection option to terminate idle connections

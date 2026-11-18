@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/databases/og.png?v=d5c90ba21df1
 
 # Databases
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Explore database integrations for your Worker projects.
 
 - [Connect to databases](https://developers.cloudflare.com/workers/databases/connecting-to-databases/)

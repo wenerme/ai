@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/og.png?v=07d4b5a5ae45d7a
 
 # Cloudflare Load Balancing
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Maximize application performance and availability
 
 Add-on feature

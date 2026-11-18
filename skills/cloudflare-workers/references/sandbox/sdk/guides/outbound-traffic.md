@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/guides/outbound-traffic/og.
 
 # Handle outbound traffic
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/guides/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Call an authenticated API from a sandbox](https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).

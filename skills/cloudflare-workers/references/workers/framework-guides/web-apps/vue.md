@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/o
 
 # Vue
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will create a new [Vue ↗︎](https://vuejs.org/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
 
 ## 1. Set up a new project

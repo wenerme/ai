@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modul
 
 # Hardware security modules
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In addition to private keys stored on disk, Keyless SSL supports keys stored in a Hardware Security Module (HSM) via the PKCS#11 standard. Keyless uses PKCS#11 for signing and decrypting payloads without having direct access to the private keys.
 
 ---

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/connec
 
 # Best practices
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/connect-private-applications/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 We recommend following these best practices when you deploy Cloudflare Tunnel for clientless access.
 
 ## Deploy another instance of cloudflared

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/changelog/og.png?v=c368404
 
 # Changelog
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/network-flow.xml)
 
 ## 2026-02-17

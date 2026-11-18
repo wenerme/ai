@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network/true-client-ip-header/og.png?v=
 
 # Understanding the True-Client-IP Header
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/true-client-ip-header/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Enabling the True-Client-IP Header adds the [`True-Client-IP` header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#true-client-ip-enterprise-plan-only) to all requests to your origin server, which includes the end user's IP address.
 
 ## Availability

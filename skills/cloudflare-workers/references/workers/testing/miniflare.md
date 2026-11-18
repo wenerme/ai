@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/og.png?v=0e9f
 
 # Miniflare
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Wrangler for most projects
 
 This documentation describes the Miniflare API, which is only relevant for advanced use cases. Most users should use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to build, run, and deploy their Workers.

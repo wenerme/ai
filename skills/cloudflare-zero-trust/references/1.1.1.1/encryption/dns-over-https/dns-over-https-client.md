@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-o
 
 # Connect to 1.1.1.1 using DoH clients
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A DoH client is a software that runs on your device and sends DNS queries to a resolver like 1.1.1.1 over an encrypted HTTPS connection. Once configured, the client handles DNS resolution for your device or network.
 
 ## Cloudflare WARP client

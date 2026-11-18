@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/saas/data-isolation/og.png?v=
 
 # Store and isolate customer data
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/saas/data-isolation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Multi-tenant platforms need to store customer data with appropriate isolation — per-tenant databases, separate object storage, or row-level separation. Cloudflare provides serverless storage options that support tenant isolation at the database, bucket, or key-prefix level.
 
 ## Solutions

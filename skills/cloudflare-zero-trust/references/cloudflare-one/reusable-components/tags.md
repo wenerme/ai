@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/tags
 
 # Tags
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/tags/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can label an Access application with up to 25 custom tags. End users can then filter the applications in their [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) by their tags.
 
 ### Create a tag

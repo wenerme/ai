@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/volumetric-abuse-de
 
 # Volumetric Abuse Detection
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Volumetric Abuse Detection generates adaptive, per-session rate limit recommendations for individual operations as traffic patterns change.
 
 Cloudflare looks for endpoint abuse based on user traffic to individual endpoints.

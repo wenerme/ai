@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/concepts/routing/og.png?v=77cf48
 
 # Routing
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/concepts/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Tunnel routes traffic from Cloudflare's network to services running behind `cloudflared`. When you [publish an application](https://developers.cloudflare.com/tunnel/get-started/#publish-an-application), you map a public hostname to a local service — for example, `app.example.com` to `http://localhost:8080` — and Cloudflare applies CDN caching, WAF, and DDoS protection before forwarding the request to your origin.
 
 ![Multiple outbound connections from cloudflared are spread across Cloudflare data centers for reliability and failover.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1485,height=734,format=svg/_astro/cf1-ref-arch-7.B8tc4zlE.svg)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/concepts/cache-behavior/og.png?v=
 
 # Head Requests and Set-Cookie Headers
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/cache-behavior/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page describes how Cloudflare's cache system behaves in interaction with:
 
 - `HEAD` requests

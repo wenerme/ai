@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkDialogManager
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkdialogmanager/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Manages and renders modal dialogs for leave confirmation, settings, join stage confirmation, and permissions messages.
 
 ## Properties

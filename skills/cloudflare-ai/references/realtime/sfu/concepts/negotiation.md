@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/og.pn
 
 # Negotiation and session lifecycle
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Realtime SFU session has one WebRTC PeerConnection and one offer/answer state machine. Session Description Protocol (SDP) is the setup text that describes the connection's media and transport settings. It does not carry the media itself.
 
 Your endpoint creates or applies SDP. Your backend carries the descriptions between the endpoint and the [SFU API](https://developers.cloudflare.com/realtime/sfu/api/).

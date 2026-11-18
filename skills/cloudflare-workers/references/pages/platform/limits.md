@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf3130
 
 # Limits
 
-Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below are limits observed by the Cloudflare Free plan. For more details on removing these limits, refer to the [Cloudflare plans ↗︎](https://www.cloudflare.com/plans) page.
 
 Need a higher limit?
@@ -38,6 +36,27 @@ Based on your Cloudflare plan type, a Pages project is limited to a specific num
 | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- |
 | 100 | 250 | 500 | 500<sup>[1](#user-content-fn-1)</sup> |
+
+## Deployments
+
+| Limit | Value |
+| --- | --- |
+| Stored deployments per project | 100 |
+
+Cloudflare deletes a deployment only when all of the following are true:
+
+- It is not one of the project's 100 most recent deployments. Both production and preview deployments count.
+- It is not your current production deployment.
+
+For example, a project has 250 deployments. Deployments 151–250 are its 100 most recent, so Cloudflare keeps them. Deployments 1–150 are deleted unless one of them is your current production deployment.
+
+A project can store up to 100 deployments. When a project reaches this limit, a new deployment automatically deletes the oldest deployment that is not your current production deployment. The new deployment is not rejected.
+
+When a deployment is deleted:
+
+- It no longer appears in your project's deployment list in the dashboard or API.
+- Its unique preview URL, such as `<hash>.<project>.pages.dev`, stops working.
+- You cannot [roll back](https://developers.cloudflare.com/pages/configuration/rollbacks/) to it.
 
 ## Files
 
@@ -67,7 +86,7 @@ An individual header in a `_headers` file can have a maximum of 2,000 characters
 
 ## Preview deployments
 
-You can have an unlimited number of [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) active on your project at a time.
+Preview deployments count toward the deployments that Cloudflare keeps for each project. Preview deployments outside the 100 most recent are automatically deleted. For more information, refer to [Deployments](#deployments).
 
 ## Redirects
 
@@ -106,5 +125,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/limits/#page","headline":"Limits","description":"Build, deployment, and custom domain limits for Cloudflare Pages by plan type.","url":"https://developers.cloudflare.com/pages/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf313015aa08a9","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/limits/#page","headline":"Limits","description":"Build, deployment, and custom domain limits for Cloudflare Pages by plan type.","url":"https://developers.cloudflare.com/pages/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf313015aa08a9","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

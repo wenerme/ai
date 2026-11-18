@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos
 
 # Simulating test DDoS attacks
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After onboarding to Cloudflare, you may want to simulate DDoS attacks against your Internet properties to test the protection, [reporting](https://developers.cloudflare.com/ddos-protection/reference/reports/), and [alerting](https://developers.cloudflare.com/ddos-protection/reference/alerts/) mechanisms. Follow the guidelines in this section to simulate a DDoS attack.
 
 You can only launch DDoS attacks against your own Internet properties — your zone, Spectrum application, or IP range (depending on your Cloudflare services) — and provided that:

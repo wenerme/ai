@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Download and install the Cloudflare One Client
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/install-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Most admins test by manually downloading the Cloudflare One Client and enrolling in your organization's Cloudflare Zero Trust instance.
 
 ## Install the Cloudflare One Client

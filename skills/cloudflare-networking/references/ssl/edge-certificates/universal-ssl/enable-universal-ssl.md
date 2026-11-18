@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/ena
 
 # Enable Universal SSL certificates
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Cloudflare issues — and [renews](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#universal-ssl) — free, unshared, publicly trusted SSL certificates to all domains [added to](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and [activated on](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) Cloudflare.
 
 ---

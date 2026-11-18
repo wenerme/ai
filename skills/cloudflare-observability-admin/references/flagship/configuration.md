@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/configuration/og.png?v=ef67fa3
 
 # Configuration
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler configuration file. The binding gives your Worker access to `env.FLAGS`, which provides methods to evaluate feature flags.
 
 ## Add the binding

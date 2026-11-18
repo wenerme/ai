@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/get-started/workers/og.png?v=
 
 # Workers
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create an Artifacts repo from a Worker and use a standard Git client to push and pull content.
 
 By the end of this guide, you will create a Worker, bind it to Artifacts, create a repo through the Workers binding, push a commit, and clone the same repo back with a standard Git client.
@@ -95,7 +93,7 @@ Open your Wrangler config file and add the Artifacts binding:
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-16",
+  "compatibility_date": "2026-11-18",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -110,7 +108,7 @@ name = "artifacts-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-16"
+compatibility_date = "2026-11-18"
 
 [[artifacts]]
 binding = "ARTIFACTS"

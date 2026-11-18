@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/reference/content-security-po
 
 # Content Security Policy
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/reference/content-security-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your website uses a [Content Security Policy (CSP) ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) header, you must configure it to allow Turnstile's scripts and iframes. Without the correct CSP directives, Turnstile may fail to load.
 
 Cloudflare recommends using the nonce-based approach documented with [CSP3 ↗︎](https://w3c.github.io/webappsec-csp/#framework-directive-source-list). Include your nonce in the `api.js` script tag and Turnstile will propagate it to dynamically loaded resources. Turnstile works with [`strict-dynamic` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy#strict-dynamic).

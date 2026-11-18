@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/packages/langc
 
 # Langchain
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/langchain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [LangChain ↗︎](https://www.langchain.com/) is the most popular framework for building AI applications powered by large language models (LLMs).
 
 LangChain publishes multiple Python packages. The following are provided by the Workers runtime:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-interconnect/get-started/og.png
 
 # Get started
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 BGP architecture and resiliency
 
 CNI supports BGP peering with the Cloudflare Virtual Network routing table. BGP over CNI is in closed beta and is not currently available to new customers. If you are interested in BGP peering over CNI, contact your account team.

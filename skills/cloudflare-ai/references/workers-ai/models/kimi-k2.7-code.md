@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Moonshot AI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/kimi-k2.7-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/moonshotai/kimi-k2.7-code` Copy
@@ -37,7 +35,7 @@ This model is not available through standard Workers Free billing. To use it, up
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Terms and License | [link ↗](https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |

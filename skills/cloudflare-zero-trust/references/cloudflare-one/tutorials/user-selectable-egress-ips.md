@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectabl
 
 # Use virtual networks to change user egress IPs
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Only available on Enterprise plans.
@@ -31,7 +29,7 @@ Make sure you have:
   - Created two tunnels [through the dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
   - Routed `10.0.0.0/8` through one tunnel.
   - Routed `192.168.88.0/24` through the other tunnel.
-- Received multiple [dedicated egress IP addresses](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/).
+- Received multiple [dedicated egress IP addresses](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/).
 
 ## Create a virtual network for each egress route
 
@@ -244,5 +242,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/#page","headline":"Use virtual networks to change user egress IPs","description":"This tutorial gives administrators an easy way to allow their users to change their egress IP address between any of your assigned dedicated egress IP addresses.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/og.png?v=4bacf9e9102fae9d","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/#page","headline":"Use virtual networks to change user egress IPs","description":"This tutorial gives administrators an easy way to allow their users to change their egress IP address between any of your assigned dedicated egress IP addresses.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/og.png?v=4bacf9e9102fae9d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6","Private networks"]}
 ```

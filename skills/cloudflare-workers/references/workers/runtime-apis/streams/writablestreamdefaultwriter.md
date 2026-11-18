@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/streams/writablest
 
 # WritableStream DefaultWriter
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestreamdefaultwriter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Background
 
 A writer is used when you want to write directly to a [`WritableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/), rather than piping data to it from a [`ReadableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/). For example:

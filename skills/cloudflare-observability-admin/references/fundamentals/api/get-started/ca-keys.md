@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/og
 
 # Get Origin CA keys
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deprecated
 
 Origin CA keys (Service Keys) are deprecated and will be removed on September 30, 2026. Use an [API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Zone`-`SSL and Certificates`-`Edit` permissions instead. For more information, refer to [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/).

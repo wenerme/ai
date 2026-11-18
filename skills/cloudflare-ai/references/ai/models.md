@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai/models/og.png?v=bb7974aa265b08c2
 
 # Models
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model not available
 
 is deprecated, removed, or not found. Choose an available model from the catalog below.

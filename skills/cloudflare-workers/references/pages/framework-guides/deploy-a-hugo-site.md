@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-si
 
 # Hugo
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Hugo ↗︎](https://gohugo.io/) is a tool for generating static sites, written in Go. It is incredibly fast and has great high-level, flexible primitives for managing your content using different [content formats ↗︎](https://gohugo.io/content-management/formats/).
 
 In this guide, you will create a new Hugo application and deploy it using Cloudflare Pages. You will use the `hugo` CLI to create a new Hugo site.

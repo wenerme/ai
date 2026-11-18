@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/reference/how-queues-works/og.pn
 
 # How Queues Works
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/reference/how-queues-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Queues is a flexible messaging queue that allows you to queue messages for asynchronous processing. Message queues are great at decoupling components of applications, like the checkout and order fulfillment services for an e-commerce site. Decoupled services are easier to reason about, deploy, and implement, allowing you to ship features that delight your customers without worrying about synchronizing complex deployments. Queues also allow you to batch and buffer calls to downstream services and APIs.
 
 There are four major concepts to understand with Queues:

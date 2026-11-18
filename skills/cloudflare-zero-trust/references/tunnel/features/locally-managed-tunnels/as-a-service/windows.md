@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels
 
 # Windows
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/as-a-service/windows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can install `cloudflared` as a system service on Windows.
 
 ## Configure `cloudflared` as a service

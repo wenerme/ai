@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Apex proxying
 
-Last updated Jun 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Apex proxying allows your customers to use their apex domains (`example.com`) with your SaaS application.
 
 Note

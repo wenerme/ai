@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/sinks/available-sinks/o
 
 # Available sinks
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sinks/available-sinks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) supports the following sink types:
 
 - [R2](https://developers.cloudflare.com/basin-pipelines/sinks/available-sinks/r2/)

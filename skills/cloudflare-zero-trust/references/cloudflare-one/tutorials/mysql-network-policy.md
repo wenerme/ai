@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-
 
 # Access and secure a MySQL database using Cloudflare Tunnel and network policies
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Using Cloudflare Tunnel's private networks, users can connect to arbitrary non-browser based TCP/UDP applications, like databases. You can set up network policies that implement zero trust controls to define who and what can access those applications using the Cloudflare One Client.
 
 By the end of this tutorial, users that pass network policies will be able to access a remote MySQL database available through a Cloudflare Tunnel on TCP port 3306.
@@ -23,7 +21,7 @@ By the end of this tutorial, users that pass network policies will be able to ac
 Make sure you have:
 
 - A MySQL database listening for remote connections and configured with users that can connect remotely
-- (Optional) [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) enabled on your account
+- (Optional) [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) enabled on your account
 
 ## Create a Cloudflare Tunnel
 
@@ -47,7 +45,7 @@ The application and (optional) DNS server are now connected to Cloudflare.
 ## Create a Gateway network policy
 
 1. Go to **Traffic policies** > **Network policies**.
-2. Add a [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) that targets the private IP address and the port of the MySQL database (port 3306 by default). The following example allows access to the database to the users that enrolled into the Cloudflare One Client using an `@example.com` email address. The network policies can also take into consideration [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
+2. Add a [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) that targets the private IP address and the port of the MySQL database (port 3306 by default). The following example allows access to the database to the users that enrolled into the Cloudflare One Client using an `@example.com` email address. The network policies can also take into consideration [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 | Selector | Operator | Value | Logic | Action |
 | --- | --- | --- | --- | --- |
@@ -65,7 +63,7 @@ To allow users to access the MySQL database using an internal hostname instead o
 
 1. Go to **Traffic policies** > **Resolver policies**.
 2. Select **Add a policy**.
-3. Create an expression to match against the private [domain](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#domain) or [hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#host) of the application, like in the following example:
+3. Create an expression to match against the private [domain](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/#domain) or [hostname](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/#host) of the application, like in the following example:
 
    | Selector | Operator | Value |
    | --- | --- | --- |
@@ -91,5 +89,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/#page","headline":"Access and secure a MySQL database using Cloudflare Tunnel and network policies","description":"Using Cloudflare Tunnel's private networks, users can connect to arbitrary non-browser based TCP/UDP applications, like databases. You can set up network policies that implement zero trust controls to define who and what can access those applications using the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/og.png?v=059675fab18c359d","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MySQL","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/#page","headline":"Access and secure a MySQL database using Cloudflare Tunnel and network policies","description":"Using Cloudflare Tunnel's private networks, users can connect to arbitrary non-browser based TCP/UDP applications, like databases. You can set up network policies that implement zero trust controls to define who and what can access those applications using the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/og.png?v=059675fab18c359d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MySQL","Private networks"]}
 ```

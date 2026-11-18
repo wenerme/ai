@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/k2/reference/og.png?v=eb084251ddeb9db1
 
 # Reference
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Delivery guarantees](https://developers.cloudflare.com/k2/reference/delivery-guarantees/)
 
 Was this helpful?

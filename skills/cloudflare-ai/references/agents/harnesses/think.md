@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/think/og.png?v=e3ee81d
 
 # Think
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `@cloudflare/think` lets you build a stateful AI chat agent — one that streams replies, remembers the conversation, and calls tools — by extending a single base class. You provide a model with `getModel()`, and Think wires up the rest of the chat lifecycle for you: the agentic loop (the model calls tools, reads the results, and keeps going until it has an answer), message persistence, streaming, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
 
 Think works as both a **top-level agent** (WebSocket chat to browser clients via `useAgentChat`) and a **sub-agent** (a child agent that another agent drives over RPC via `chat()`).
@@ -172,7 +170,7 @@ function Chat() {
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-11-09",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -200,7 +198,7 @@ function Chat() {
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-09"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]

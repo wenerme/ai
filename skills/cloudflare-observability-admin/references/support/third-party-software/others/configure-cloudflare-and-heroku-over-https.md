@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/third-party-software/others/con
 
 # Configure Cloudflare and Heroku over HTTPS
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 Heroku is a cloud PaaS that supports several pre-configured programming languages. Heroku deals with all your infrastructure so you can focus on your application without having to work at the command line.

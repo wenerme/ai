@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/
 
 # Verify a domain with CNAME
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/cname-domain-verification/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When configuring services from external providers - such as email services, for example - it is possible that they require you to verify your domain by placing a CNAME record at your zone, similar to the following:
 
 ```txt

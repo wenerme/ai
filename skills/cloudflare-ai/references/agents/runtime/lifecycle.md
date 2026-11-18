@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/lifecycle/og.png?v=844b4
 
 # Lifecycle
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `Lifecycle` from `agents/lifecycle` coordinates startup and incoming events for a [Durable Object](https://developers.cloudflare.com/durable-objects/). It also stores pending jobs in SQLite and manages the object's single alarm. Multiple features can schedule work without replacing each other's wake-up time.
 
 `agents/lifecycle` is stable.

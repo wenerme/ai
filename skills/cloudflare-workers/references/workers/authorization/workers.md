@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/authorization/workers/og.png?v=
 
 # Workers roles and permissions
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/authorization/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers permissions control who or what can view, deploy, and manage Workers in your Cloudflare account. Access is granted by assigning a Workers role to a member, User Group, or API token at a specific scope.
 
 Workers roles define what actions are allowed. Scopes define where those actions apply: across all Workers in the account or only to selected Workers.

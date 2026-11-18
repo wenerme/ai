@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vit
 
 # Core Web Vitals
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Core Web Vitals ↗︎](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/) are high-level metrics designed to measure the perceived performance of websites and web applications.
 
 Three core Web Vitals metrics are measured: Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift. Each of these metrics is automatically assigned a rating of Good, Needs Improvement, or Poor based on the thresholds defined by Google.

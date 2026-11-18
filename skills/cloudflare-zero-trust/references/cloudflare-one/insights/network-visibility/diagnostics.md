@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/network-visibil
 
 # Diagnostics
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Packet captures allow you to record raw network traffic data passing through Cloudflare's network so you can inspect it offline in tools like Wireshark. This is useful for diagnosing connectivity issues, verifying firewall rules, or investigating unexpected traffic patterns.
 
 Cloudflare supports two types of packet captures: full and sample. Full packet captures are the default behavior.

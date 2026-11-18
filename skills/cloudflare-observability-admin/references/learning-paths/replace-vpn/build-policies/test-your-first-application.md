@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/build-polici
 
 # Test your first application
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/test-your-first-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You have now set up your [Zero Trust organization](https://developers.cloudflare.com/learning-paths/replace-vpn/get-started/), [configured the Cloudflare One Client](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/), [installed it on devices](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-devices/), and created your [Access and Gateway policies](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/). The next step is to test those policies.
 
 ## 1. Manually test your policies

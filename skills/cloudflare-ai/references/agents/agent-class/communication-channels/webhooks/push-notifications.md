@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/communication-channe
 
 # Push notifications
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/communication-channels/webhooks/push-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send browser push notifications from your agent — even when the user has closed the tab. By combining the agent's persistent state (for storing push subscriptions), scheduling (for timed delivery), and the [Web Push API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Push_API), you can reach users who are completely offline.
 
 ## How it works

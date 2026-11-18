@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/o
 
 # Enable Proxy protocol
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Because Cloudflare intercepts packets before forwarding them to your server, if you were to look up the client IP, you would see Cloudflare's IP rather than the true client IP.
 
 Some services you run may require knowledge of the true client IP. In those cases, you can use a proxy protocol for Cloudflare to pass on the client IP to your service. Sending proxy information along is dependent on whether TCP or UDP is used. For TCP, Spectrum supports adding [Proxy Protocol v1 ↗︎](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt), which is the human readable version supported by Amazon ELB and [NGINX ↗︎](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/). For UDP applications, Cloudflare has developed a custom proxy protocol called Simple Proxy Protocol. Be aware that Proxy Protocol is not supported for Spectrum egresses to Cloudflare WAN (formerly Magic WAN).

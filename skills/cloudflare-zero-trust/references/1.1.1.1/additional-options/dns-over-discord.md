@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-dis
 
 # DNS over Discord
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The 1.1.1.1 DNS over Discord bot allows you to run DNS lookups and WHOIS queries directly inside Discord, which is useful when you are debugging DNS issues collaboratively or need quick record checks without switching to a terminal.
 
 [Invite the bot to your Discord server ↗︎](https://cfl.re/3nM6VfQ) to make it available in that server's channels, or [add the bot to your Discord account ↗︎](https://dns-over-discord.v4.wtf/invite/user) to use it anywhere in Discord.

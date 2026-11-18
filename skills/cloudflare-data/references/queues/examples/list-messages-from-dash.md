@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/queues/examples/list-messages-from-dash
 
 Use the dashboard to fetch and acknowledge the messages currently in a queue.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/examples/list-messages-from-dash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## List messages from the dashboard
 
 Listing messages from the dashboard allows you to debug Queues or queue producers without a consumer Worker. Fetching a batch of messages to preview will not acknowledge or retry the message or affect its position in the queue. The queue can still be consumed normally by a consumer Worker.

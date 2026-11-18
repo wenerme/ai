@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/resul
 
 # Result controls
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These settings control how many results are returned and the minimum score required. To filter results by metadata attributes like folder or category, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
 ## Match threshold

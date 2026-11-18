@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/get-started/send-emails/o
 
 Send your first email using the Workers binding, the REST API, or SMTP.
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/get-started/send-emails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send emails from your applications using Cloudflare Email Service. You can use the **Workers binding** for applications built on Cloudflare Workers, the **REST API** from any platform, or **SMTP** from any SMTP-capable application or mail client.
 
 Note

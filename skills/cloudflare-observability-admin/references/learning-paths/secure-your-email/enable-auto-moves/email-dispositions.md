@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/enable
 
 # Email dispositions
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/email-dispositions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security returns five potential verdicts for every email it scans. Review the detections and consider how you would treat them once an auto-move is enabled. Below is an overview of the disposition and recommendation actions by Cloudflare:
 
 | Disposition | Description | Recommendation | |

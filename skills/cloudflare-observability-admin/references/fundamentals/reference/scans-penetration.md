@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/scans-penetratio
 
 # Scans and penetration testing policy
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/scans-penetration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Customers may conduct scans and penetration tests (with certain restrictions) on application and network-layer aspects of their own assets, such as their [zones](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) within their Cloudflare accounts, provided they adhere to Cloudflare's policy.
 
 ## Permitted targets

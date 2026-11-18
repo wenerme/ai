@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/serverl
 
 # Serverless global APIs
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Serverless APIs represent a modern approach to building and deploying scalable and reliable application programming interfaces (APIs) without the need to manage traditional server infrastructure. These APIs are designed to handle incoming requests from users or other systems, execute the necessary logic or operations, and return a response, all without the need for developers to provision or manage underlying servers.

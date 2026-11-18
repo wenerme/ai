@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pos
 
 # Enable Gmail BCC integration
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide describes the process for enabling Email security with Google Workspace. It requires setting up a [service account ↗︎](https://docs.cloud.google.com/iam/docs/service-account-overview) and a JSON key in Google Cloud Platform (GCP), followed by configuring domain-wide delegation in the Google Workspace Admin Console to authorize the integration.
 
 ## Prerequisites

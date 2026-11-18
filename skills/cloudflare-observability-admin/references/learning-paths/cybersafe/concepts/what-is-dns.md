@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-
 
 # What is DNS?
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Domain Name System (DNS) is the phonebook of the Internet. DNS translates the domain name that you type in the browser (such as `www.example.com`) to a computer-friendly IP address (`93.184.216.34`), similar to how a phonebook translates a person's name to a phone number. The IP address identifies the server where the website data is stored, allowing the browser to contact the server and load the page.
 
 ## Life of a DNS query

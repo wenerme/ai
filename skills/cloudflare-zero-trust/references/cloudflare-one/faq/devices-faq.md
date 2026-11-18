@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/faq/devices-faq/og.png?v
 
 # Devices FAQ
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/devices-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)
 
 ## Why does my Windows device appear to switch from Wi-Fi to Ethernet when I enable the Cloudflare One Client?

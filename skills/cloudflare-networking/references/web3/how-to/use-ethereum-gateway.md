@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/og.png
 
 # Use Ethereum gateway
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you have an Ethereum gateway — meaning that you [create a new gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway) with a `target` of **Ethereum** — you can interact with [different Ethereum networks](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/) by specifying the correct JSON blob for your query.
 
 ## Read from the network

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/get-started/og.png?v=cb452fc4
 
 # Get started
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Turnstile protects your website forms from bots. It works in two steps: a JavaScript widget runs challenges in the visitor's browser and produces a token, then your server sends that token to Cloudflare to confirm it is valid. This guide covers how to set up both steps.
 
 ## Prerequisites

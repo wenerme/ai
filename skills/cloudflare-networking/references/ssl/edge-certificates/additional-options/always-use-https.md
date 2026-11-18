@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Always Use HTTPS
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Always Use HTTPS redirects all your visitor requests from `http` to `https`, for all subdomains and hosts in your application.
 
 Note

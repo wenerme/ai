@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/workflows/examples/trigger-from-webhook
 
 Receive a signed webhook in a Worker and start one Workflow instance per event, with idempotent instance IDs.
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/trigger-from-webhook/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can [trigger](https://developers.cloudflare.com/workflows/build/trigger-workflows/) a Workflow from a Worker binding, the REST API, Wrangler, or a cron schedule. When the event that should start a Workflow happens in a system outside Cloudflare, that system sends you a webhook and you connect it to the Workflow yourself. For example, a tenant pushes new code to storage you manage, a row changes in your own database, or a third-party service reports a change.
 
 This example shows how to do that. You will build:
@@ -207,7 +205,7 @@ export default defineConfig({
   worker: {
   	name: "external-event-trigger",
   	// Set this to today's date
-  	compatibilityDate: "2026-11-12",
+  	compatibilityDate: "2026-11-18",
   	entrypoint: "src/index.ts",
   	observability: {
   		enabled: true,
@@ -248,7 +246,7 @@ Wrangler
 	"name": "external-event-trigger",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"observability": { "enabled": true },
 	"workflows": [
 		{
@@ -277,7 +275,7 @@ Wrangler
 name = "external-event-trigger"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 
 [observability]
 enabled = true

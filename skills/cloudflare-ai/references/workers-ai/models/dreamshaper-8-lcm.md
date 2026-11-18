@@ -16,8 +16,6 @@ l
 
 Text-to-Image • lykon
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/dreamshaper-8-lcm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/lykon/dreamshaper-8-lcm` Copy
@@ -30,7 +28,7 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | More information | [link ↗](https://huggingface.co/Lykon/DreamShaper) |
 | Zero data retention | Yes |
 

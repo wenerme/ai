@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/account/custom-rulesets/og.png?v=68
 
 # Custom rulesets (account level)
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/account/custom-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Custom rulesets are collections of custom rules that you can deploy at the account or [zone level](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/).
 
 Like [custom rules](https://developers.cloudflare.com/waf/custom-rules/) at the zone level, custom rulesets allow you to control incoming traffic by filtering requests.

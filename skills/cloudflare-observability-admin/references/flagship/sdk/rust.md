@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/sdk/rust/og.png?v=fb104a61ba49
 
 # Rust SDK
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/rust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Rust SDK provides an OpenFeature-compatible server provider for async Rust applications. It evaluates flags over HTTP or locally from downloaded flag definitions. It does not support the Cloudflare Workers binding.
 
 The SDK requires Rust 1.88 or later and a [Tokio ↗︎](https://tokio.rs/) runtime.

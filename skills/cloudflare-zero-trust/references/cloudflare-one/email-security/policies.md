@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Policies
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Inbound](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/)
 - [Outbound](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/)
 

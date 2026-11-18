@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/traces/custom-spa
 
 # Custom spans
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/custom-spans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Workers [automatically instruments](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/) platform operations like fetch calls, KV reads, and D1 queries. Custom spans let you extend this visibility into your own application logic, so you can trace custom code paths alongside the built-in instrumentation.
 
 The custom spans API is available in two ways — both provide the same methods and behave identically:

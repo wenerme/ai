@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-mixed-grid
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/core/rtk-mixed-grid/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A grid component which handles screenshares, plugins and participants.
 
 ## Properties

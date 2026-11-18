@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/reference/browser-compatibility/og.
 
 # Browser compatibility
 
-Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/browser-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare attempts to provide compatibility for as wide a range of user agents (browsers, API clients, etc.) as possible. However, the specific set of supported clients can vary depending on the different SSL/TLS certificate types, your visitor's [browser version](#non-sni-support), and the [certificate authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) that issues the certificate.
 
 ## Universal SSL

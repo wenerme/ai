@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/claude-managed-ag
 
 # Run Claude Managed Agents in a sandbox
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/claude-managed-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Claude Managed Agents ↗︎](https://platform.claude.com/docs/en/managed-agents/overview) runs its agent loop on the Anthropic platform. A self-managed environment runs the actions of the agent in your Cloudflare account instead. Cloudflare publishes an open-source template for that environment. Fork it, deploy it to your account, and change it as you need.
 
 [Get the template](https://github.com/cloudflare/claude-managed-agents)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/spect
 
 # Spectrum
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure [Spectrum](https://developers.cloudflare.com/spectrum/) with Load Balancing to bring resiliency to your TCP or UDP based applications.
 
 Leverage health monitors, failover, and traffic steering by selecting a load balancer as **Origin** when creating your Spectrum application.

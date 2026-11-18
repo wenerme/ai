@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/examples/voice-agent/og.png?v=3f
 
 # Voice agent
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/voice-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build a voice agent that listens to users, thinks with an LLM, and speaks back — all in real-time over WebSocket. Beta
 
 By the end of this guide you will have:
@@ -48,7 +46,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 {
 	"name": "voice-agent",
 	// Set this to today's date
-	"compatibility_date": "2026-10-30",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "src/server.ts",
 	"upload_source_maps": true,
@@ -75,7 +73,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 ```toml
 name = "voice-agent"
 # Set this to today's date
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 main = "src/server.ts"
 upload_source_maps = true

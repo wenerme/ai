@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/nameservers/update-nameservers/og.p
 
 # Update nameservers
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/update-nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To use Cloudflare DNS as an authoritative DNS provider - be it in a [primary (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) setup -, your domain nameservers must point to nameservers that you get from your Cloudflare account. Updating your nameservers is required to activate your domain on Cloudflare and use most of our [application services](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
 
 Cloudflare Registrar

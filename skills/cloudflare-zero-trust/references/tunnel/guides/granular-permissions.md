@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/guides/granular-permissions/og.p
 
 # Granular permissions
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/granular-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can scope Cloudflare member permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances instead of granting account-wide access. This lets you delegate management of specific Tunnels — for example, letting an application team manage one Tunnel for its service without exposing every Tunnel in the account.
 
 Granular permissions are a parallel layer to account-level roles — they do not replace them. Members who already hold an account-level role like `Cloudflare Access` retain write access to every Tunnel in the account.

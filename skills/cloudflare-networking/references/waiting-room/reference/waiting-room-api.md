@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/reference/waiting-room-api
 
 # API commands
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/reference/waiting-room-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Waiting Room redirect visitors to virtual waiting rooms when they are trying to access web pages that have high volumes of traffic.
 
 The [Cloudflare Waiting Room API](https://developers.cloudflare.com/api/resources/waiting_rooms/methods/list/) provides an interface for programmatically managing waiting rooms.

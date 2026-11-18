@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-fu
 
 # Scalar functions
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) scalar functions:
 
 - [Math functions](https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/math/)

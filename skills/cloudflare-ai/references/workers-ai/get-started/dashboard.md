@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/get-started/dashboard/og.png
 
 # Dashboard
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/get-started/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow this guide to create a Workers AI application using the Cloudflare dashboard.
 
 ## Prerequisites

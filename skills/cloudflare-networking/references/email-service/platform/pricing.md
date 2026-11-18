@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/platform/pricing/og.png?v
 
 # Pricing
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Email Service pricing is based on your Cloudflare plan and email usage.
 
 ## Plan pricing

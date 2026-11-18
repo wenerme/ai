@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modul
 
 # Entrust nShield Connect
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/entrust-nshield-connect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This example assumes you have already configured the nShield Connect device and generated or imported your private keys.

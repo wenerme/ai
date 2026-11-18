@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/guides/image-management/og.p
 
 # Image Management
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/image-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Container applications manage images differently based on their [scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/). With the `durable_object` policy, Durable Object code selects an image each time it starts a Container. With the `default` policy, Wrangler configuration sets one image for the application.
 
 ## Use images with the `durable_object` scheduling policy

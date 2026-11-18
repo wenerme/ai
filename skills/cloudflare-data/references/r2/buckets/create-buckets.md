@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/create-buckets/og.png?v=fc18
 
 # Create new buckets
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/create-buckets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can create a bucket from the Cloudflare dashboard or using Wrangler.
 
 Note

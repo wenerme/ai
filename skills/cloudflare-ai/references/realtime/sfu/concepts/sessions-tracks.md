@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/o
 
 # Sessions and tracks
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Applications group your SFU resources. Sessions represent WebRTC connections. Media tracks carry audio or video, and DataChannels carry application messages.
 
 ## Applications

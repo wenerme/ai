@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/object-lifecycles/og.png?v=8
 
 # Object lifecycles
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/object-lifecycles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Object lifecycles determine the retention period of objects uploaded to your bucket and allow you to specify when objects should transition from Standard storage to Infrequent Access storage.
 
 A lifecycle configuration is a collection of lifecycle rules that define actions to apply to objects during their lifetime.

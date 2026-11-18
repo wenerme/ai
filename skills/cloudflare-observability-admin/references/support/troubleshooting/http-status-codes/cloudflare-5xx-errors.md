@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Cloudflare 5xx errors
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When troubleshooting most `5XX` errors, the correct course of action is to first contact your hosting provider or site administrator to troubleshoot and gather data. The following sections outline:
 
 - The [information](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to provide your hosting provider to help resolve the errors

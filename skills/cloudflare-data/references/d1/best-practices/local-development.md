@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/best-practices/local-development/og.
 
 # Local development
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 has fully-featured support for local development, running the same version of D1 as Cloudflare runs globally. Local development uses [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers, to manage local development sessions and state.
 
 ## Start a local development session

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/og.
 
 Store routing data in Workers KV to route requests across various web servers with Workers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Using Workers KV to store routing data to route requests across various web servers with Workers is an ideal use case for Workers KV. Routing workloads can have high read volume, and Workers KV's low-latency reads can help ensure that routing decisions are made quickly and efficiently.
 
 Routing can be helpful to route requests coming into a single Cloudflare Worker application to different web servers based on the request's path, hostname, or other request attributes.

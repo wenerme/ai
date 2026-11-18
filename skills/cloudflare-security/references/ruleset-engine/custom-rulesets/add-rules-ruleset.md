@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rule
 
 # Add rules to a custom ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To add rules to an existing custom ruleset, use the [Update an account or zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation and pass the rules in an array. Each rule has an expression and an action.
 
 Choose the appropriate API method

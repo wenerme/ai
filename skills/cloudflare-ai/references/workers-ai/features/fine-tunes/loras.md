@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/og
 
 # Using LoRA adapters
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers AI supports fine-tuned inference with adapters trained with [Low-Rank Adaptation ↗︎](https://blog.cloudflare.com/fine-tuned-inference-with-loras). This feature is in open beta and free during this period.
 
 ## Limitations

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/containers/og
 
 # Containers
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Interact with [Containers](https://developers.cloudflare.com/containers/) using Wrangler.
 
 ### `build`

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-
 
 # How Agent Memory works
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agent Memory is a managed service that gives your applications persistent, AI-powered memory. It automatically turns raw conversations into structured knowledge and retrieves the right context when you need it.
 
 ## Memory types

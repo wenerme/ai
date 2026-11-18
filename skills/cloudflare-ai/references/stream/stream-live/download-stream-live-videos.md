@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/download-stream-live
 
 # Download live stream videos
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/download-stream-live-videos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can enable downloads for live stream videos from the Cloudflare dashboard. Videos are available for download after they enter the **Ready** state.
 
 Note

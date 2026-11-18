@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-
 
 # Deploy a managed ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/deploy-managed-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can deploy a managed ruleset at the zone level or at the account level. To deploy a managed ruleset to a phase, use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/).
 
 If you are using Terraform, refer to [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/) for more information.

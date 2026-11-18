@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/observability/og.png?v=cd04315d7
 
 # Observability
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Metrics](https://developers.cloudflare.com/queues/observability/metrics/)
 
 Was this helpful?

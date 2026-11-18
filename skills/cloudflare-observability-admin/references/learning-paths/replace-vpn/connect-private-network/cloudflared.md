@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/connect-priv
 
 # Connect with Cloudflare Tunnel
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any host machine and proxies local traffic once validated from the Cloudflare network. User traffic initiated from the Cloudflare One Client onramps to Cloudflare, passes down your Cloudflare Tunnel connections, and terminates automatically in your local network. Traffic reaching your internal applications or services will carry the local source IP address of the host machine running the `cloudflared` daemon.
 
 ## Create a tunnel

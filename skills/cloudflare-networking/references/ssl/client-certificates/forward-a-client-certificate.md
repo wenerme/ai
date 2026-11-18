@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/client-certificates/forward-a-clien
 
 # Forward certificate to server
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Add Client-Cert and Client-Cert-Chain headers (RFC 9440)
 
 [RFC 9440 ↗︎](https://datatracker.ietf.org/doc/html/rfc9440) defines the `Client-Cert` and `Client-Cert-Chain` HTTP header fields for passing client certificate information to origin servers. You can construct these headers using [request header modification rules](https://developers.cloudflare.com/rules/transform/request-header-modification/) with the following Ruleset Engine fields:

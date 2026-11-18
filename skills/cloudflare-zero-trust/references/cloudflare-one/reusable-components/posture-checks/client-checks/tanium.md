@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Tanium (legacy)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/tanium/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Not recommended for new deployments. We recommend using the [Tanium service-to-service integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/taniums2s/) to get device posture signals from Tanium.

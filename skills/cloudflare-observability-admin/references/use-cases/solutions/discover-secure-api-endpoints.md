@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/solutions/discover-secure-api
 
 # Discover and secure your API endpoints (Free, Pro, and Business)
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once your API is in production and receiving traffic, you need to decide which endpoints to protect first, what restrictions to apply, and how to monitor for abuse without blocking legitimate clients. This guide walks through that process in five stages: inventory your endpoints, enforce encrypted connections, restrict access to expected traffic patterns, block automated abuse, and monitor the results.
 
 The core workflow uses [Cloudflare Application Security](https://developers.cloudflare.com/waf/) (also known as Web Application Firewall or WAF) features, [SSL/TLS](https://developers.cloudflare.com/ssl/) settings, and [bot detection](https://developers.cloudflare.com/bots/), all available on Free, Pro, and Business plans. Enterprise callouts cover [API Shield](https://developers.cloudflare.com/api-shield/) capabilities for teams that need schema validation, JSON Web Token (JWT) validation, and sequence analysis.

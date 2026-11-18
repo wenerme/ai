@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre
 
 # 2 - Junk email and user managed quarantine
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/m365-email-security-mx/use-cases/two-junk-user-quarantine/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to deliver `BULK` messages to the user's junk folder, and `SPAM` and `SPOOF` messages to the user managed quarantine.
 
 ## Create quarantine policies

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 520
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 520: web server returns an unknown error
 
 This error occurs when the origin server returns an empty, unknown, or unexpected response to Cloudflare.

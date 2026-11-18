@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/og.png?v=e3f428ae726f24ee
 
 # Artifacts
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Versioned storage that speaks Git.
 
 Cloudflare Artifacts allows developers to store and version files, code, and projects behind a Git-compatible interface. Create repositories programmatically, import existing repositories, and connect using Workers, the REST API, or standard Git clients.

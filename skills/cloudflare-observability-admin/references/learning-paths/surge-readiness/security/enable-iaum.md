@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/security
 
 # What to do when under attack
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/enable-iaum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Enable "I'm Under Attack" mode (IAUM)
 
 If you are under attack and have this feature enabled during the attack, visitors will receive an interstitial page for about five seconds while the traffic is analyzed to make sure it is a legitimate human visitor. The vast majority of Layer 7 attack scripts are defeated by IUAM and can be honed via Page Rules.

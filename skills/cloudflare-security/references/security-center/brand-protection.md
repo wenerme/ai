@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security-center/brand-protection/og.png
 
 # Brand Protection
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/brand-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Brand Protection allows you to proactively identify and mitigate domain impersonation and phishing attacks. By monitoring newly registered domains and visual assets across the Internet, Cloudflare helps protect your brand's reputation and prevents your customers or employees from submitting sensitive information to fraudulent sites.
 
 Common threats include:

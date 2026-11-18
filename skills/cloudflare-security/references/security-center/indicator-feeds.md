@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security-center/indicator-feeds/og.png?
 
 # Custom Indicator Feeds
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/indicator-feeds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's threat intelligence team crowdsources attack trends and protects users automatically, such as from zero-day vulnerabilities like the [HTTP/2 Rapid Reset attack ↗︎](https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack/). However, in some cases, Cloudflare will partner with external entities that have their own feeds which can be shared with eligible Cloudflare users.
 
 With Custom Indicator Feeds, Cloudflare provides a threat intelligence feed based on data received from various Cyber Defense Collaboration groups. The security filtering capabilities are available to eligible public and private sector organizations.

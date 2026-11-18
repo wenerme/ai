@@ -5,7 +5,7 @@ description: "Browse Eden AI model IDs, capabilities, context windows, and prici
 
 # [Eden AI logo]Eden AI
 
-Access 387 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
+Access 395 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
 
 Learn more in the [Eden AI documentation](https://docs.edenai.co).
 
@@ -119,7 +119,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.09,
     "outputCost": 0.29
   },
@@ -131,7 +131,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.09,
     "outputCost": 0.29
   },
@@ -143,7 +143,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.23,
     "outputCost": 0.38
   },
@@ -155,7 +155,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.23,
     "outputCost": 0.38
   },
@@ -167,7 +167,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.04,
     "outputCost": 0.08
   },
@@ -179,7 +179,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.04,
     "outputCost": 0.08
   },
@@ -263,7 +263,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 262144,
+    "maxOutput": 256000,
     "inputCost": 0.6,
     "outputCost": 2.5
   },
@@ -287,7 +287,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.07,
     "outputCost": 0.2
   },
@@ -299,7 +299,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 131072,
+    "maxOutput": 128000,
     "inputCost": 0.07,
     "outputCost": 0.2
   },
@@ -599,7 +599,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 32768,
-    "maxOutput": 262144,
+    "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 0.15
   },
@@ -611,7 +611,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 262144,
+    "maxOutput": 256000,
     "inputCost": 0.4,
     "outputCost": 0.8
   },
@@ -635,7 +635,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -731,7 +731,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 40960,
     "inputCost": 0.35,
     "outputCost": 0.75
   },
@@ -803,7 +803,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 80000,
-    "maxOutput": 131072,
+    "maxOutput": 80000,
     "inputCost": 0.0509,
     "outputCost": 0.335
   },
@@ -839,7 +839,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 32768,
+    "maxOutput": 16384,
     "inputCost": 0.35,
     "outputCost": 0.75
   },
@@ -851,7 +851,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 32768,
+    "maxOutput": 16384,
     "inputCost": 0.2,
     "outputCost": 0.3
   },
@@ -865,6 +865,18 @@ for await (const chunk of stream) {
     "contextWindow": 32768,
     "maxOutput": 8192,
     "inputCost": 0.66,
+    "outputCost": 1
+  },
+  {
+    "model": "edenai/cloudflare/@cf/thinkingmachines/inkling-2-small",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
     "outputCost": 1
   },
   {
@@ -947,9 +959,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.15001,
-    "outputCost": 0.59997
+    "maxOutput": 25000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "edenai/databricks/databricks-gpt-oss-120b@eu",
@@ -959,9 +971,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.15001,
-    "outputCost": 0.59997
+    "maxOutput": 25000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "edenai/databricks/databricks-gpt-oss-20b",
@@ -971,9 +983,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 25000,
     "inputCost": 0.07,
-    "outputCost": 0.30002
+    "outputCost": 0.3
   },
   {
     "model": "edenai/databricks/databricks-gpt-oss-20b@eu",
@@ -983,9 +995,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 25000,
     "inputCost": 0.07,
-    "outputCost": 0.30002
+    "outputCost": 0.3
   },
   {
     "model": "edenai/databricks/databricks-qwen3-next-80b-a3b-instruct",
@@ -996,8 +1008,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.15001,
-    "outputCost": 1.20001
+    "inputCost": 0.15,
+    "outputCost": 1.2
   },
   {
     "model": "edenai/databricks/databricks-qwen3-next-80b-a3b-instruct@eu",
@@ -1008,8 +1020,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.15001,
-    "outputCost": 1.20001
+    "inputCost": 0.15,
+    "outputCost": 1.2
   },
   {
     "model": "edenai/deepinfra/ByteDance/Seed-2.0-code",
@@ -1022,18 +1034,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.5,
     "outputCost": 3
-  },
-  {
-    "model": "edenai/deepinfra/ByteDance/Seed-2.0-mini",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 32000,
-    "inputCost": 0.1,
-    "outputCost": 0.4
   },
   {
     "model": "edenai/deepinfra/deepseek-ai/DeepSeek-R1",
@@ -1403,7 +1403,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 16384,
     "inputCost": 0.037,
     "outputCost": 0.17
   },
@@ -1415,7 +1415,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 16384,
     "inputCost": 0.03,
     "outputCost": 0.14
   },
@@ -1583,9 +1583,21 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 524288,
-    "maxOutput": 1048576,
+    "maxOutput": 524288,
     "inputCost": 0.95,
     "outputCost": 4.05
+  },
+  {
+    "model": "edenai/deepinfra/thinkingmachines/Inkling-2-Small",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1
   },
   {
     "model": "edenai/deepinfra/thinkingmachines/Inkling-Small",
@@ -1595,7 +1607,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 524288,
-    "maxOutput": 1048576,
+    "maxOutput": 524288,
     "inputCost": 0.45,
     "outputCost": 1.2
   },
@@ -1612,18 +1624,6 @@ for await (const chunk of stream) {
     "outputCost": 0.4
   },
   {
-    "model": "edenai/deepseek-v4-flash-vision-exp",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": 0.15,
-    "outputCost": 0.6
-  },
-  {
     "model": "edenai/deepseek/deepseek-chat",
     "imageInput": false,
     "audioInput": false,
@@ -1631,7 +1631,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 384000,
+    "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -1691,7 +1691,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -1727,7 +1727,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -1740,8 +1740,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.119,
-    "outputCost": 0.238
+    "inputCost": 0.13,
+    "outputCost": 0.26
   },
   {
     "model": "edenai/flexai/DeepSeek-V4-Flash-0731@eu",
@@ -1752,8 +1752,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.119,
-    "outputCost": 0.238
+    "inputCost": 0.13,
+    "outputCost": 0.26
   },
   {
     "model": "edenai/flexai/DeepSeek-V4.1-Flash-1017",
@@ -1764,8 +1764,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.15,
-    "outputCost": 0.6
+    "inputCost": 0.08,
+    "outputCost": 0.605
   },
   {
     "model": "edenai/flexai/gpt-oss-120b",
@@ -1775,9 +1775,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.05,
-    "outputCost": 0.25
+    "maxOutput": 131072,
+    "inputCost": 0.03,
+    "outputCost": 0.15
   },
   {
     "model": "edenai/flexai/gpt-oss-20b",
@@ -1787,9 +1787,21 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.02,
-    "outputCost": 0.1
+    "maxOutput": 131072,
+    "inputCost": 0.018,
+    "outputCost": 0.09
+  },
+  {
+    "model": "edenai/flexai/gpt-oss-20b@eu",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.018,
+    "outputCost": 0.09
   },
   {
     "model": "edenai/flexai/Muse-Glimmer-30B",
@@ -1800,20 +1812,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 131072,
-    "inputCost": 0.3,
-    "outputCost": 1.2
-  },
-  {
-    "model": "edenai/flexai/Step-3.7-Flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 256000,
-    "inputCost": 0.2,
-    "outputCost": 1.15
+    "inputCost": 0.35,
+    "outputCost": 1.5
   },
   {
     "model": "edenai/google/deep-research-max-preview-04-2026",
@@ -2052,8 +2052,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 2,
-    "outputCost": 10
+    "inputCost": 4,
+    "outputCost": 20
+  },
+  {
+    "model": "edenai/google/gemini-4-hydrogen",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.5,
+    "outputCost": 7.5
   },
   {
     "model": "edenai/google/gemini-flash-latest",
@@ -2111,7 +2123,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.009,
     "outputCost": 0.045
   },
@@ -2124,8 +2136,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.156996,
-    "outputCost": 0.39249
+    "inputCost": 0.153846,
+    "outputCost": 0.384615
   },
   {
     "model": "edenai/greenpt/deepseek-v4.1-flash",
@@ -2136,8 +2148,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.246708,
-    "outputCost": 1.233541
+    "inputCost": 0.241758,
+    "outputCost": 1.20879
   },
   {
     "model": "edenai/greenpt/gpt-oss-120b",
@@ -2147,9 +2159,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 32768,
-    "inputCost": 0.22428,
-    "outputCost": 0.78498
+    "maxOutput": 128000,
+    "inputCost": 0.21978,
+    "outputCost": 0.76923
   },
   {
     "model": "edenai/greenpt/llama-3.3-70b-instruct",
@@ -2160,8 +2172,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 1.233541,
-    "outputCost": 1.233541
+    "inputCost": 1.20879,
+    "outputCost": 1.20879
   },
   {
     "model": "edenai/greenpt/qwen3-235b-a22b-instruct-2507",
@@ -2172,8 +2184,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 250000,
     "maxOutput": 16384,
-    "inputCost": 1.009261,
-    "outputCost": 3.027782
+    "inputCost": 0.98901,
+    "outputCost": 2.96703
   },
   {
     "model": "edenai/groq/meta-llama/llama-prompt-guard-2-22m",
@@ -2207,7 +2219,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 65536,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -2219,7 +2231,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 65536,
     "inputCost": 0.075,
     "outputCost": 0.3
   },
@@ -2243,9 +2255,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 100000,
-    "maxOutput": 262144,
-    "inputCost": 0.33642,
-    "outputCost": 0.44856
+    "maxOutput": 100000,
+    "inputCost": 0.32967,
+    "outputCost": 0.43956
   },
   {
     "model": "edenai/ionos/meta-llama/Llama-3.3-70B-Instruct",
@@ -2256,8 +2268,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 0.72891,
-    "outputCost": 0.72891
+    "inputCost": 0.714285,
+    "outputCost": 0.714285
   },
   {
     "model": "edenai/ionos/openai/gpt-oss-120b",
@@ -2267,9 +2279,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 32768,
-    "inputCost": 0.16821,
-    "outputCost": 0.72891
+    "maxOutput": 128000,
+    "inputCost": 0.164835,
+    "outputCost": 0.714285
   },
   {
     "model": "edenai/ionos/Qwen/Qwen3-Coder-Next",
@@ -2280,8 +2292,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 65536,
-    "inputCost": 0.16821,
-    "outputCost": 0.89712
+    "inputCost": 0.164835,
+    "outputCost": 0.87912
   },
   {
     "model": "edenai/meta/muse-spark-1.1",
@@ -2339,7 +2351,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 8191,
-    "maxOutput": 8192,
+    "maxOutput": 8191,
     "inputCost": 30,
     "outputCost": 60
   },
@@ -2424,8 +2436,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 512000,
-    "inputCost": 0.075,
-    "outputCost": 0.3
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "edenai/mistral/codestral-2508",
@@ -2686,7 +2698,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262144,
+    "contextWindow": 1048576,
     "maxOutput": 262144,
     "inputCost": 2,
     "outputCost": 6
@@ -2698,34 +2710,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262144,
+    "contextWindow": 1048576,
     "maxOutput": 262144,
     "inputCost": 2.2,
     "outputCost": 6.6
-  },
-  {
-    "model": "edenai/mistral/mistral-medium-2505",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
-    "inputCost": 0.4,
-    "outputCost": 2
-  },
-  {
-    "model": "edenai/mistral/mistral-medium-2505@eu",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
-    "inputCost": 0.44,
-    "outputCost": 2.2
   },
   {
     "model": "edenai/mistral/mistral-medium-2604",
@@ -2760,8 +2748,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 104857,
-    "inputCost": 0.4,
-    "outputCost": 2
+    "inputCost": 0.44,
+    "outputCost": 2.2
   },
   {
     "model": "edenai/mistral/mistral-medium-3-5",
@@ -2796,8 +2784,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 104857,
-    "inputCost": 0.44,
-    "outputCost": 2.2
+    "inputCost": 0.484,
+    "outputCost": 2.42
   },
   {
     "model": "edenai/mistral/mistral-medium-latest",
@@ -2939,7 +2927,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "maxOutput": 1048576,
     "inputCost": 3,
     "outputCost": 15
   },
@@ -2951,7 +2939,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "maxOutput": 1048576,
     "inputCost": 2,
     "outputCost": 10
   },
@@ -2987,7 +2975,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 110000,
-    "maxOutput": 131072,
+    "maxOutput": 110000,
     "inputCost": 0.1,
     "outputCost": 0.3
   },
@@ -3035,7 +3023,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 8192,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -3062,6 +3050,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.1,
     "outputCost": 0.3
+  },
+  {
+    "model": "edenai/nebius/thinkingmachines/Inkling-2-Small",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1
   },
   {
     "model": "edenai/openai/gpt-4.1",
@@ -3412,6 +3412,30 @@ for await (const chunk of stream) {
     "outputCost": 5
   },
   {
+    "model": "edenai/openai/gpt-6.2-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 8,
+    "outputCost": 40
+  },
+  {
+    "model": "edenai/openai/gpt-6.2-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
     "model": "edenai/openai/gpt-latest",
     "imageInput": true,
     "audioInput": false,
@@ -3479,7 +3503,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.09,
     "outputCost": 0.47
   },
@@ -3491,7 +3515,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.05,
     "outputCost": 0.18
   },
@@ -3611,7 +3635,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 4096,
-    "maxOutput": 8192,
+    "maxOutput": 4096,
     "inputCost": 2.46,
     "outputCost": 7.37
   },
@@ -3700,6 +3724,18 @@ for await (const chunk of stream) {
     "outputCost": 0.47
   },
   {
+    "model": "edenai/qwen/qwen4-max",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 262144,
+    "inputCost": 1.5,
+    "outputCost": 4.5
+  },
+  {
     "model": "edenai/scaleway/deepseek-v4-flash-0731",
     "imageInput": false,
     "audioInput": false,
@@ -3707,9 +3743,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 384000,
-    "inputCost": 0.44856,
-    "outputCost": 0.89712
+    "maxOutput": 256000,
+    "inputCost": 0.43956,
+    "outputCost": 0.87912
   },
   {
     "model": "edenai/scaleway/deepseek-v4.1-flash",
@@ -3719,7 +3755,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 384000,
+    "maxOutput": 256000,
     "inputCost": 0.669,
     "outputCost": 2.007
   },
@@ -3731,9 +3767,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 384000,
-    "inputCost": 0.67284,
-    "outputCost": 2.018521
+    "maxOutput": 256000,
+    "inputCost": 0.65934,
+    "outputCost": 1.97802
   },
   {
     "model": "edenai/scaleway/gemma-3-27b-it",
@@ -3743,7 +3779,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 40000,
-    "maxOutput": 131072,
+    "maxOutput": 40000,
     "inputCost": 0.287125,
     "outputCost": 0.57425
   },
@@ -3755,9 +3791,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 32768,
-    "inputCost": 0.16821,
-    "outputCost": 0.67284
+    "maxOutput": 128000,
+    "inputCost": 0.164835,
+    "outputCost": 0.65934
   },
   {
     "model": "edenai/scaleway/llama-3.3-70b-instruct",
@@ -3768,8 +3804,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 1.009261,
-    "outputCost": 1.009261
+    "inputCost": 0.98901,
+    "outputCost": 0.98901
   },
   {
     "model": "edenai/scaleway/qwen3-235b-a22b-instruct-2507",
@@ -3780,8 +3816,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 250000,
     "maxOutput": 16384,
-    "inputCost": 0.84105,
-    "outputCost": 2.523151
+    "inputCost": 0.824175,
+    "outputCost": 2.472525
   },
   {
     "model": "edenai/scaleway/qwen3-coder-30b-a3b-instruct",
@@ -3816,8 +3852,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.5,
-    "outputCost": 1.5
+    "inputCost": 0.35,
+    "outputCost": 1.32
   },
   {
     "model": "edenai/tencent/deepseek-v4-pro-0813",
@@ -4031,7 +4067,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
+    "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.6
   },
@@ -4055,9 +4091,33 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 524288,
-    "maxOutput": 1048576,
+    "maxOutput": 524288,
     "inputCost": 1,
     "outputCost": 4.05
+  },
+  {
+    "model": "edenai/together_ai/thinkingmachines/Inkling-2-Small",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1
+  },
+  {
+    "model": "edenai/tsystems/gpt-oss-120b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.21978,
+    "outputCost": 0.714285
   },
   {
     "model": "edenai/vertex/gemini-2.5-flash-image",
@@ -4140,8 +4200,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.25,
-    "outputCost": 1.5
+    "inputCost": 0.275,
+    "outputCost": 1.65
   },
   {
     "model": "edenai/vertex/gemini-3.1-flash-lite@us",
@@ -4152,8 +4212,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.25,
-    "outputCost": 1.5
+    "inputCost": 0.275,
+    "outputCost": 1.65
   },
   {
     "model": "edenai/vertex/gemini-3.1-pro-preview",
@@ -4200,8 +4260,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.3,
-    "outputCost": 2.5
+    "inputCost": 0.33,
+    "outputCost": 2.75
   },
   {
     "model": "edenai/vertex/gemini-3.5-flash-lite@us",
@@ -4212,8 +4272,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.3,
-    "outputCost": 2.5
+    "inputCost": 0.33,
+    "outputCost": 2.75
   },
   {
     "model": "edenai/vertex/gemini-3.5-flash@eu",
@@ -4224,8 +4284,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 9
+    "inputCost": 1.65,
+    "outputCost": 9.9
   },
   {
     "model": "edenai/vertex/gemini-3.5-flash@us",
@@ -4236,8 +4296,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 9
+    "inputCost": 1.65,
+    "outputCost": 9.9
   },
   {
     "model": "edenai/vertex/gemini-3.6-flash",
@@ -4260,8 +4320,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.75,
-    "outputCost": 3.75
+    "inputCost": 0.825,
+    "outputCost": 4.125
   },
   {
     "model": "edenai/vertex/gemini-3.6-flash@us",
@@ -4272,8 +4332,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.75,
-    "outputCost": 3.75
+    "inputCost": 0.825,
+    "outputCost": 4.125
   },
   {
     "model": "edenai/vertex/gemini-3.7-flash",
@@ -4296,8 +4356,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 1.65,
+    "outputCost": 8.25
   },
   {
     "model": "edenai/vertex/gemini-3.7-flash@us",
@@ -4308,8 +4368,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 1.65,
+    "outputCost": 8.25
   },
   {
     "model": "edenai/vertex/gemini-3.8-flash",
@@ -4332,8 +4392,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 1.65,
+    "outputCost": 8.25
   },
   {
     "model": "edenai/vertex/gemini-3.8-flash@us",
@@ -4344,8 +4404,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 1.65,
+    "outputCost": 8.25
   },
   {
     "model": "edenai/vertex/gemini-4-argon",
@@ -4368,8 +4428,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 4,
-    "outputCost": 20
+    "inputCost": 4.4,
+    "outputCost": 22
   },
   {
     "model": "edenai/vertex/gemini-4-argon@us",
@@ -4380,8 +4440,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 4,
-    "outputCost": 20
+    "inputCost": 4.4,
+    "outputCost": 22
   },
   {
     "model": "edenai/vertex/gemini-4-carbon",
@@ -4404,8 +4464,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 4,
-    "outputCost": 20
+    "inputCost": 4.4,
+    "outputCost": 22
   },
   {
     "model": "edenai/vertex/gemini-4-carbon@us",
@@ -4416,8 +4476,44 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 4,
-    "outputCost": 20
+    "inputCost": 4.4,
+    "outputCost": 22
+  },
+  {
+    "model": "edenai/vertex/gemini-4-hydrogen",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.5,
+    "outputCost": 7.5
+  },
+  {
+    "model": "edenai/vertex/gemini-4-hydrogen@eu",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.65,
+    "outputCost": 8.25
+  },
+  {
+    "model": "edenai/vertex/gemini-4-hydrogen@us",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.65,
+    "outputCost": 8.25
   },
   {
     "model": "edenai/vertex/gemini-flash-latest",

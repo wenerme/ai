@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/faq/og.png?v=f531be134c5f6763
 
 # FAQ
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find answers to the most commonly asked questions regarding Cloudflare Logs. If you cannot find the answer you are looking for, go to the [community page ↗︎](https://community.cloudflare.com/) and post your question there.
 
 ---

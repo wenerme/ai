@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-more-toggle
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-more-toggle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A button which toggles visibility of a more menu. When clicked it emits a `rtkStateUpdate` event with the data:
 
 ```ts

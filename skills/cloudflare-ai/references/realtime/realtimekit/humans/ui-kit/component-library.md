@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/comp
 
 # Component Library
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/component-library/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The UI Kit components library provides a comprehensive set of pre-built, customizable components that you can use to build your own custom meeting interface.
 
 WebMobile

@@ -194,6 +194,8 @@ To discard your changes, select .
 
 ## Regenerate a workplan
 
+- Regenerating from the  widget [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268677) in GitLab 19.7.
+
 Regenerate a workplan to replace its content with a new version from GitLab Duo.
 
 Prerequisites:
@@ -203,8 +205,10 @@ Prerequisites:
 
 To regenerate a workplan:
 
-1. On the work item, in the  widget, select .
-1. In the panel, select  () > .
+1. On the work item, in the  widget, use one of the following methods:
+   - Next to , select the down arrow () > .
+   - Select .
+     Then, in the panel, select  () > .
 1. If GitLab Duo asks questions, answer them in the comment threads on the work item.
    Then, in the  widget, select .
 

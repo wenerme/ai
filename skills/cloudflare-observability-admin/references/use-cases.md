@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/og.png?v=3d222356fb1066c2
 
 # Use cases
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Select a category below to find the Cloudflare solutions, features, and architecture patterns that apply to your use case.
 
 ## Build something new

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels
 
 # Create a locally-managed tunnel
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/create-local-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow this step-by-step guide to get your first tunnel up and running using the CLI.
 
 ## Prerequisites

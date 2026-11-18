@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/best-practices/read-replication/og.p
 
 # Global read replication
 
-Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/read-replication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 read replication can lower latency for read queries and scale read throughput by adding read-only database copies, called read replicas, across regions globally closer to clients.
 
 To use read replication, you must use the [D1 Sessions API](https://developers.cloudflare.com/d1/worker-api/d1-database/#withsession), otherwise all queries will continue to be executed only by the primary database.

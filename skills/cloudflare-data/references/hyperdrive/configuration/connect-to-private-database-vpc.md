@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/configuration/connect-to-pri
 
 # Connect to a private database using Workers VPC (Recommended)
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Workers VPC](https://developers.cloudflare.com/workers-vpc/) provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) that points to your database and pass its service ID to Hyperdrive.
 
 For the Tunnel and Access approach, refer to [Connect to a private database using Tunnel](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/).
@@ -279,7 +277,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-17",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -292,7 +290,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-17"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -380,7 +378,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-17",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -393,7 +391,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-17"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/routers/og.png?v=2e0cbf0f5
 
 # Routers
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/routers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Supported routers](https://developers.cloudflare.com/network-flow/routers/supported-routers/)
 - [Recommended sampling rate](https://developers.cloudflare.com/network-flow/routers/recommended-sampling-rate/)
 - [Netflow/IPFIX configuration](https://developers.cloudflare.com/network-flow/routers/netflow-ipfix-config/)

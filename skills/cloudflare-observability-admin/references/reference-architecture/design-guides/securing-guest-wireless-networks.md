@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/design-guides/se
 
 # Securing guest wireless networks
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Many organizations and businesses offer free wireless Internet access to their customers, clients, patients, students, and visitors. In industries like hospitality, providing guest Wi-Fi is often essential. For colleges and universities, having a reliable and secure Wi-Fi service can be a significant factor in attracting potential students and visitors.

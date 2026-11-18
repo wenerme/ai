@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/turn/generate-credentials/og.p
 
 # Generate Credentials
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/generate-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare will issue TURN keys, but these keys cannot be used as credentials with `turn.cloudflare.com`. To use TURN, you need to create credentials with a expiring TTL value.
 
 ## Create a TURN key

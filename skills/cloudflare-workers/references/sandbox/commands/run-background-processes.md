@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/commands/run-background-process
 
 # Run background processes
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-background-processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Start a process that keeps running after the request ends, such as a build, a test suite, or an agent task. The process object that `exec()` returns belongs to the request that started it, so later requests manage the process through files in the sandbox. The process writes its process ID, output, and exit code to those files.
 
 For a process that runs until the container stops, such as a development server or a tunnel, refer to [Run a server in the background](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/).

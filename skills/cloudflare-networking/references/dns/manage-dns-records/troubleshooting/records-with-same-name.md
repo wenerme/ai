@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/
 
 # Records with the same name
 
-Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/records-with-same-name/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Occasionally, Cloudflare will not allow you to [create new DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) with the same value in the **Name** field.
 
 This error can occur due to the special requirements of CNAME records<sup>[1](#user-content-fn-1)</sup>.

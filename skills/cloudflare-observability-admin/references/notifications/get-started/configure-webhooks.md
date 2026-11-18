@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/notifications/get-started/configure-web
 
 # Configure webhooks
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Webhooks let you deliver Cloudflare alerts to any service that accepts HTTP callbacks. You can connect to [popular services](#popular-webhook-services) like Slack, Google Chat, and PagerDuty, or configure a [generic webhook](#generic-webhooks) for any custom endpoint.
 
 Note

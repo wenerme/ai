@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/web-assets/label-operations/og
 
 # Label operations
 
-Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/label-operations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Labels add use-case context to operations. Security detections can use labels to extend relevant focus on traffic with a specific application use case.
 
 ## Managed labels

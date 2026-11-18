@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-
 
 # Human-in-the-loop patterns
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Human-in-the-loop (HITL) patterns add approval or input at different layers of an Agent. You can respond to an MCP server request, hold application work in a durable Workflow, or approve a connector call before model-generated code invokes a tool.
 
 ## Why human-in-the-loop?
@@ -477,7 +475,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "EXPENSE_AGENT", "class_name": "ExpenseAgent" }],
@@ -498,7 +496,7 @@ name = "expense-approval"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]

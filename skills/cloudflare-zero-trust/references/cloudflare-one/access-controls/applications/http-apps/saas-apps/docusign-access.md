@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # DocuSign
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/docusign-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Docusign ↗︎](https://support.docusign.com/s/document-item?bundleId=rrf1583359212854&topicId=ozd1583359139126.html) as a SAML application in Cloudflare One.
 
 ## Prerequisites

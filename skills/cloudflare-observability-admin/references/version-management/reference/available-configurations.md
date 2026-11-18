@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/version-management/reference/available-
 
 # Available configurations
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/reference/available-configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you use Version Management, you can edit various configurations, such as [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [Cache](https://developers.cloudflare.com/cache/).
 
 Generally, you are allowed to edit all zone-level configurations except for the following:

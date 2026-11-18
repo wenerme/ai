@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/managed-rules/troubleshooting/og.pn
 
 # Troubleshoot managed rules
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, WAF's managed rulesets are compatible with most websites and web applications. However, false positives and false negatives may occur:
 
 - **False positives**: Legitimate requests detected and mitigated as malicious.

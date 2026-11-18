@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/test-harness/og.png?v=5
 
 # Integration test harness
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/test-harness/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [`createTestHarness()`](https://developers.cloudflare.com/workers/wrangler/api/#createtestharness) is a Wrangler API for integration testing from any Node.js test runner. It runs one or more Workers from [Wrangler](https://developers.cloudflare.com/workers/wrangler/) projects or Vite projects that use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 [Get started](https://developers.cloudflare.com/workers/testing/test-harness/get-started/) [View complete example](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/create-test-harness-example)

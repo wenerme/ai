@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Get started with Zero Trust
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/initial-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Start securing your users and networks with Cloudflare Zero Trust.
 
 ## Objectives

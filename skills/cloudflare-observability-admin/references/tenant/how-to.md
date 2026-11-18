@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/how-to/og.png?v=6ceb987cfbb353a9
 
 # How to
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Manage accounts](https://developers.cloudflare.com/tenant/how-to/manage-accounts/)
 - [Manage subscriptions](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/)
 - [Get account details](https://developers.cloudflare.com/tenant/how-to/get-account-details/)

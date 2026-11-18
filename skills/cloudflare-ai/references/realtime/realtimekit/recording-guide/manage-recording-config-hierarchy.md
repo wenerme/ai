@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/ma
 
 # Manage Recording Config Precedence Order
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/manage-recording-config-hierarchy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This document provides an overview of the precedence structure for managing recording configurations within our system. It explains how various configuration levels interact and prioritize settings. The recording configuration can be defined at three different levels:
 
 - [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/)

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/durable-objects/examples/readable-strea
 
 Stream ReadableStream from Durable Objects.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/readable-stream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example demonstrates:
 
 - A Worker receives a request, and forwards it to a Durable Object `my-id`.

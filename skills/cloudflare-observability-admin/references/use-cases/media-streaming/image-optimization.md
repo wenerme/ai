@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/media-streaming/image-optimiz
 
 # Optimize and transform images for the web
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Serving images at multiple sizes and formats traditionally requires pre-generating variants for every resolution and device. Cloudflare Images transforms images on-the-fly via URL parameters — resizing, cropping, and converting to WebP or AVIF — while Polish compresses originals without visible quality loss.
 
 ## Solutions

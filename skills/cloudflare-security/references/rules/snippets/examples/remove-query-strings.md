@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/remove-query-st
 
 Remove certain query strings from a request before passing to the origin.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/remove-query-strings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ```js
 export default {
 	async fetch(request) {

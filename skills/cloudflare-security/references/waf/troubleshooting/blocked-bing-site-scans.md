@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-s
 
 # Bing's Site Scan blocked by a managed rule
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Microsoft [Bing Webmaster Tools ↗︎](https://www.bing.com/webmaster/tools) provides a Site Scan feature that crawls your website searching for possible SEO improvements.
 
 Site Scan does not use the same IP address range as Bingbot (Bing's website crawler). Additionally, the [Verify Bingbot ↗︎](https://www.bing.com/toolbox/verify-bingbot) tool does not recognize Site Scan's IP addresses as Bingbot. Due to this reason, the WAF managed rule that blocks fake Bingbot requests may trigger for Site Scan requests. This is a known issue of Bing Webmaster Tools.

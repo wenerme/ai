@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Adobe Acrobat Sign
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/adobe-sign-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Adobe Acrobat Sign ↗︎](https://helpx.adobe.com/sign/using/enable-saml-single-sign-on.html) as a SAML application in Cloudflare One.
 
 ## Prerequisites

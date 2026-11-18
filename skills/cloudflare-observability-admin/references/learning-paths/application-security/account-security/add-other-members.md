@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/acc
 
 # Add and manage other members
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/account-security/add-other-members/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to add new account members, edit or revoke their permissions and access, and resend verifications emails.
 
 Note

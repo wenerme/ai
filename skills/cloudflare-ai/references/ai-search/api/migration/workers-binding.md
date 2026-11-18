@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/api/migration/workers-binding
 
 # Workers binding migration
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [`env.AI.autorag()` binding](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/) is the legacy API for AI Search. It will continue to work, but all new features and improvements are only available through the new AI Search bindings.
 
 ## What changed

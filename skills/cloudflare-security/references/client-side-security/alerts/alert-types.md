@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/alerts/alert-types
 
 # Alert types
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/alerts/alert-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure alerts for resources detected in your domain. Refer to [Alerts](https://developers.cloudflare.com/client-side-security/alerts/) for more information.
 
 ## New resource alerts

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # pfSense
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/pfsense/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial includes the steps required to configure IPsec tunnels to connect a pfSense firewall to Cloudflare WAN (formerly Magic WAN).
 
 ## Software tested

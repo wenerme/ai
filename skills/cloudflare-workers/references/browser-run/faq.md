@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/faq/og.png?v=8335e3383e7053
 
 # FAQ
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find answers to our most commonly asked questions about Browser Run (formerly Browser Rendering).
 
 For pricing questions, visit the [pricing FAQ](https://developers.cloudflare.com/browser-run/pricing/#pricing-faq). For usage limits questions, visit the [limits FAQ](https://developers.cloudflare.com/browser-run/limits/#faq). If you cannot find the answer you are looking for, join us on [Discord ↗︎](https://discord.cloudflare.com).

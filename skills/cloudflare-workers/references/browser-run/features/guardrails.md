@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/guardrails/og.png?
 
 # Guardrails
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/guardrails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Guardrails limit a Browser Run session's HTTP and HTTPS requests to permitted hostnames.
 
 This allows you to:

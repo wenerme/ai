@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/partners/og.png?v=95cc5b9
 
 # Partners
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/partners/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Kentik](https://developers.cloudflare.com/magic-transit/partners/kentik/)
 
 Was this helpful?

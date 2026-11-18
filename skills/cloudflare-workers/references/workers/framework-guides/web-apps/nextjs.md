@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/nextj
 
 # Next.js
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use vinext to create or migrate a Next.js application and deploy it to Cloudflare Workers.
 
 Cloudflare recommends [vinext ↗︎](https://vinext.dev/) as the default way to run Next.js applications on Cloudflare Workers. vinext gives you two starting points: scaffold a new Workers-ready app with `create-vinext-app`, or add vinext to an existing Next.js app with a single non-destructive `vinext init` (your existing `next dev` keeps working). You do not need a Cloudflare-specific template either way.

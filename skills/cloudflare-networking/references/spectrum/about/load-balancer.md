@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/about/load-balancer/og.png?v=d
 
 # Cloudflare Load Balancing
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/about/load-balancer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure Spectrum with Cloudflare [Load Balancing](https://developers.cloudflare.com/load-balancing/) to provide TCP healthchecks, failover, and traffic steering, bringing resiliency to your Spectrum applications.
 
 For an overview of how Cloudflare Load Balancing works refer to [Load Balancing components](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/). For setup guidance refer to [Add load balancing to Spectrum applications](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/).

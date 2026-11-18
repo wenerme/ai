@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/consent-management/enable-consent
 
 # Enable Consent Management
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/consent-management/enable-consent-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. In the Cloudflare dashboard, go to the **Consent** page. [Go to **Consent** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/consent)
 2. Turn on **Enable Consent Management**.
 3. In **Consent modal text** fill in any legal information required in your country. Use HTML code to format your information as you would in any other HTML editor.

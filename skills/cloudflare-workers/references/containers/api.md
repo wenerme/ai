@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/api/og.png?v=b5325a11e1e8cc4
 
 # API
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Durable Object controls its container through `ctx.container`. Use the Durable Object Container API to start, stop, monitor, and connect to the container. Use Durable Object storage and alarms in the same class to keep state and schedule work.
 
 ### [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/)

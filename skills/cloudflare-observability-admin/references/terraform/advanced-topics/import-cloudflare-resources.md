@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/advanced-topics/import-cloudf
 
 # Import Cloudflare resources
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An important point to understand about Terraform is that it can only manage configuration it created or was explicitly told about after the fact. The reason for this limitation is that Terraform expects to be authoritative for the resources it manages. It relies on two types of files to understand what resources it controls and what state they are in. Terraform determines when and how to make changes from the following:
 
 - A [configuration file ↗︎](https://developer.hashicorp.com/terraform/language) (ending in `.tf`) that defines the configuration of resources for Terraform to manage. This is what you worked with in the tutorial steps.

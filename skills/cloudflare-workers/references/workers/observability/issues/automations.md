@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/issues/automation
 
 # Set up an automation
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/issues/automations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can set up automations that send issues to a configured destination when matching issues meet a trigger condition. Configure automations and destinations in the dashboard or with the Cloudflare CLI (`cf`).
 
 ## Trigger types

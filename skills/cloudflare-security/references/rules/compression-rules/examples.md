@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/compression-rules/examples/og.png
 
 # Compression Rules examples
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [**Disable Brotli compression** Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.](https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/)
 
 [**Disable compression for AVIF images** Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.](https://developers.cloudflare.com/rules/compression-rules/examples/disable-compression-avif/)

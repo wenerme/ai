@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/
 
 # Migration guides
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## GraphQL migrations
 
 If you are currently using the deprecated `httpRequests1mByColoGroups` or `httpRequests1dByColoGroups` GraphQL API nodes, the [HTTP Requests by Colo Groups to HTTP Requests by Adaptive Groups](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/graphql-api-analytics/) guide will help you migrate your queries to use the `httpRequestsAdaptiveGroups` node.

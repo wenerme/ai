@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Amazon Cognito
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/awscognito-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Amazon Cognito provides SSO identity management for end users of web and mobile apps. You can integrate Amazon Cognito as an OIDC identity provider for Cloudflare One.
 
 ## Prerequisites

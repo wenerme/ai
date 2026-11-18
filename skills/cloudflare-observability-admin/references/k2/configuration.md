@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/k2/configuration/og.png?v=b5ec4eb736074
 
 # Configuration
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 K2 streams can be created, updated, and deleted with the REST API.
 
 To create, update, or delete streams, your API token needs the `K2 Config Write` permission. To get or list streams, it needs the `K2 Config Read` permission.

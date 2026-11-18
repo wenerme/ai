@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable destinations
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Enable pushing logs to your storage service, SIEM solution, or log management provider.
 
 Note

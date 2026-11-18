@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/reference/community-projects/og.png?
 
 # Community projects
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/community-projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Members of the Cloudflare developer community and broader developer ecosystem have built and/or contributed tooling — including ORMs (Object Relational Mapper) libraries, query builders, and CLI tools — that build on top of D1.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/community-resources/og.png?v=
 
 # Community resources
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/community-resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Community resources for our customers to help them integrate Turnstile.
 
 Caution

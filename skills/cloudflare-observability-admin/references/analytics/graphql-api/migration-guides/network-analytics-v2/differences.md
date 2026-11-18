@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/
 
 # Main differences
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/differences/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Aggregated roll-ups versus Adaptive Bit Rate
 
 In Network Analytics v1 (NAv1), the data is rolled up into one minute roll-up tables, then one hour roll-ups, and finally one day roll-ups. Users can then query either the `ipFlows1mGroups` node for high-resolution data on traffic and attacks in the past 30 days, or query the `ipFlows1hGroups` or `ipFlows1dGroups` nodes for historical data. However, the data available through these nodes is aggregate data, and that means that the accuracy and cardinality of the results are limited. For example, short traffic spikes will not be visible in the data obtained from these nodes due to the aggregation of samples in the roll-ups.

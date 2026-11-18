@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkMeetingHeaderView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/meeting-header/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A pre-built meeting header that contains meeting title, clock, recording indicator, participant count, grid paginator, and switch camera button.
 
 ## Methods

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/sec
 
 # Security Center
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/security-center/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Security Center brings together your Cloudflare security products, threat intelligence from Cloudflare's global network, and configuration analysis into a unified security intelligence solution. Security Center enables you to strengthen your security posture by:
 
 - **Mapping your attack surface** — identifying the Internet-facing assets (domains, DNS records, and IP addresses) associated with your Cloudflare account

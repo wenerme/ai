@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-know
 
 # Human-in-the-loop knowledge base updates
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial builds an agent that searches a knowledge base and adds to it, with a human approving every write. Letting an agent modify your data is risky, so each save pauses for approval before it runs, and you can roll back a save that turned out wrong.
 
 ## What you will build
@@ -137,7 +135,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "main": "src/server.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-27",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -180,7 +178,7 @@ name = "kb-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]

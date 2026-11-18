@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/concepts/cdn-cache-control/og.png
 
 # CDN-Cache-Control
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/cdn-cache-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `CDN-Cache-Control` is a response header field set on the origin to separately control the behavior of CDN caches from other intermediaries that might handle a response. You can set the `CDN-Cache-Control` or `Cloudflare-CDN-Cache-Control` response header using the same directives used with the [Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/).
 
 ## Header precedence

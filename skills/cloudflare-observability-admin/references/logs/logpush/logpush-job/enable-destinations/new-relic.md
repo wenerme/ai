@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable New Relic
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/new-relic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Logpush supports pushing logs directly to New Relic via the Cloudflare dashboard or via API.
 
 ## Manage via the Cloudflare dashboard

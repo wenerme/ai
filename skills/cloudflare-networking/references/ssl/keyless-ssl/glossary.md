@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/glossary/og.png?v=06ac4
 
 # Glossary
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Cloudflare Keyless SSL key server (“key server”)
 
 The key server is a daemon that you run on your own infrastructure. The key server receives inbound requests from Cloudflare's keyless client on TCP port `2407` (by default) so you must make sure that your firewall and other access control lists permit these requests from [Cloudflare's IP ranges ↗︎](https://www.cloudflare.com/ips/).

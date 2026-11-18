@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/examples/og.png?v=82b6114346627d
 
 # Examples
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [**Shaka Player** Example of video playback with Cloudflare Stream and Shaka Player](https://developers.cloudflare.com/stream/examples/shaka-player/)
 
 [**RTMPS playback** Example of sub 1s latency video playback using RTMPS and ffplay](https://developers.cloudflare.com/stream/examples/rtmps_playback/)

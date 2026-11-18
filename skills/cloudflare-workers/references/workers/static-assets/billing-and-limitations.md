@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/billing-and-limit
 
 # Billing and Limitations
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Billing
 
 Requests to a project with static assets can either return static assets or invoke the Worker script, depending on if the request [matches a static asset or not](https://developers.cloudflare.com/workers/static-assets/routing/).

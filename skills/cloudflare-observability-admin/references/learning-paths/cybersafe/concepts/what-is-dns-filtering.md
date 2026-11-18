@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-
 
 # What is DNS filtering?
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-dns-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DNS filtering is a technique to block access to websites or online content. DNS filtering is implemented by specialized DNS resolvers (such as Cloudflare Gateway) that allow you to define a blocklist of domains or content categories. The DNS resolver acts as a filter by refusing to resolve queries for domains on the blocklist, thus preventing users from loading those websites.
 
 ## Purpose of DNS filtering

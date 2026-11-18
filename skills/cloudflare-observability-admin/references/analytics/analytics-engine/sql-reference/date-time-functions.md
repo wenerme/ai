@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/sql-referenc
 
 # Date and Time functions
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## formatDateTime
 
 Usage:

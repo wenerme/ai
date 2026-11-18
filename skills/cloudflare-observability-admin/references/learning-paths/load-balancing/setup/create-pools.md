@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/cre
 
 # Create pools
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/setup/create-pools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Instead of starting on your production domain, you likely should create a load balancer on a test or staging domain. This may involve temporary changes to your monitors and pools, depending on your infrastructure setup.
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.

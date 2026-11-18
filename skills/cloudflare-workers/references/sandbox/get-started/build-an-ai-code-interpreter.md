@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-in
 
 # Build an AI code interpreter
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will build a Worker that answers questions by running code. A [Workers AI](https://developers.cloudflare.com/workers-ai/) model writes JavaScript, a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) runs it without network access, and the model uses the result in its answer.
 
 When you finish, the Worker answers a question about prime numbers and returns the code the model ran:
@@ -103,7 +101,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	"name": "sandbox-code-interpreter",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-21",
+   	"compatibility_date": "2026-11-18",
    	"observability": {
    		"enabled": true,
    	},
@@ -124,7 +122,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    name = "sandbox-code-interpreter"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-21"
+   compatibility_date = "2026-11-18"
    upload_source_maps = true
 
    [observability]
@@ -163,7 +161,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env, code) {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-10-21",
+		compatibilityDate: "2026-11-18",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `
@@ -224,7 +222,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env: Env, code: string): Promise<Output> {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-10-21",
+		compatibilityDate: "2026-11-18",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `

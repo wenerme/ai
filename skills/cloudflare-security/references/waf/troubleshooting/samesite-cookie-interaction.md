@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-int
 
 # SameSite cookie interaction with Cloudflare
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Google Chrome enforces SameSite cookie behavior ↗︎](https://www.chromium.org/updates/same-site) to protect against marketing cookies that track users and Cross-site Request Forgery (CSRF) that allows attackers to steal or manipulate your cookies.
 
 The `SameSite` cookie attribute has three different modes:

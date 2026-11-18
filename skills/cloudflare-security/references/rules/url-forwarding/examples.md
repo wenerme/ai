@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/og.png?v=
 
 # Redirect examples
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [**Perform mobile redirects** Create a redirect rule to redirect visitors using mobile devices to a different hostname.](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/)
 
 [**Redirect admin area requests to HTTPS** Create a redirect rule to redirect requests for the administration area of `store.example.com` to HTTPS, keeping the original path and query string.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/)

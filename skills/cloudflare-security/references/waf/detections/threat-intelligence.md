@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/threat-intelligence/og.p
 
 # Threat intelligence
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/threat-intelligence/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The threat intelligence detection matches incoming requests against indicators in the [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/) threat intelligence database. The detection matches on client IP address. If the IP was involved in threat activity in the past seven days, Cloudflare populates [threat intelligence fields](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/) you can use in WAF rule expressions.
 
 You can use these fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to match on:

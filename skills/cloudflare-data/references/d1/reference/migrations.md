@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/reference/migrations/og.png?v=448eb0
 
 # Migrations
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/migrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Database migrations are a way of versioning your database. Each migration is stored as an `.sql` file in your `migrations` folder. The `migrations` folder is created in your project directory when you create your first migration. This enables you to store and track changes throughout database development.
 
 ## Features

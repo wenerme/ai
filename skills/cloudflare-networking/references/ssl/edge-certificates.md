@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/og.png?v=061a2874
 
 # Edge certificates
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Edge certificates are the SSL/TLS certificates that Cloudflare presents to visitors connecting to your domain. These certificates secure the encrypted connection between your visitors and Cloudflare.
 
 Use the guidance below to choose the right certificate type for your use case. If you are not familiar with SSL/TLS certificates, refer to [Concepts](https://developers.cloudflare.com/ssl/concepts/).

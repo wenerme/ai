@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/devin/og.png?v=cb
 
 # Run Devin in a sandbox
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/devin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Devin ↗︎](https://docs.devin.ai/cloud/outposts/overview) runs its agent loop in its own service. Each session works on a machine where Devin runs commands, edits files, and opens a browser. A Devin Outpost moves that machine to infrastructure that you choose. The Devin Outpost template runs each session in its own Linux sandbox: a [Container](https://developers.cloudflare.com/containers/) that one Durable Object starts for that session.
 
 ## Prerequisites

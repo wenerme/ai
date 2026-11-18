@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/retro-sca
 
 # Retro Scan
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/retro-scan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Retro Scan to check whether your current email security provider has missed any threats. Cloudflare scans up to 14 days of emails in your Microsoft 365 mailbox and generates a report of malicious messages. Once the scan is complete, you will receive an email notification with a link to the report.
 
 Note

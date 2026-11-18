@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/network/clone-a-private-reposit
 
 # Clone a private repository
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Clone a private repository into a sandbox while the access token stays in your Worker. If the clone URL contains the token, every command in the sandbox can read it. Instead, the Durable Object intercepts HTTPS requests from Git to `github.com`. An entrypoint in your Worker receives each request, checks it, and adds the token.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/connect-to-turso-usin
 
 # Connect to and query your Turso database using Workers
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and [Turso ↗︎](https://chiselstrike.com/), an edge-hosted distributed database based on libSQL. By using Workers and Turso, you can create applications that are close to your end users without having to maintain or operate infrastructure in tens or hundreds of regions.
 
 Note

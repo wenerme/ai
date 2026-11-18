@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/star-zones/
 
 # Star domains
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/star-zones/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For quick access to commonly configured domains (also known as "zones"), star up to ten domains per account in the Cloudflare dashboard.
 
 ## Star a domain

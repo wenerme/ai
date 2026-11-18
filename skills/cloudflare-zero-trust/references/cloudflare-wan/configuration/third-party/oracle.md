@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Oracle Cloud
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/oracle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial shows how to configure IPsec (Internet Protocol Security) between Cloudflare WAN (formerly Magic WAN) and an Oracle Cloud Site-to-site VPN.
 
 ## Prerequisites

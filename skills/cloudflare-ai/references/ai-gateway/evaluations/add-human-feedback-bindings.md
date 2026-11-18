@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedba
 
 # Add human feedback using Worker Bindings
 
-Last updated Jun 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide explains how to provide human feedback for AI Gateway evaluations using Worker bindings.
 
 ## 1. Run an AI Evaluation

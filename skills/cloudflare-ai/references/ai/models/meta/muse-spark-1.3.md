@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/meta/muse-spark-1.3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `meta/muse-spark-1.3` Copy

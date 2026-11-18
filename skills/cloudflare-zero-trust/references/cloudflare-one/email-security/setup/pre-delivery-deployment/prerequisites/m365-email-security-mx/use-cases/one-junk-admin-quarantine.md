@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre
 
 # 1 - Junk email and Email security Admin Quarantine
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/m365-email-security-mx/use-cases/one-junk-admin-quarantine/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to deliver emails to the Microsoft 365 junk email folder and the Admin Quarantine in Email security.
 
 ## Create quarantine policies

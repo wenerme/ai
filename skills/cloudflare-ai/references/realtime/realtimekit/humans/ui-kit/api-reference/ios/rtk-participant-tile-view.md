@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkParticipantTileView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-participant-tile-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A complete participant tile view that displays video, avatar, name tag, and pin indicator. Combines `RtkVideoView`, `RtkAvatarView`, and `RtkMeetingNameTag` into a single composable view.
 
 ## Initializer parameters

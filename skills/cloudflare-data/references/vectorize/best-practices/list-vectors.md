@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/best-practices/list-vectors/o
 
 # List vectors
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/list-vectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The list-vectors operation allows you to enumerate all vector identifiers in a Vectorize index using paginated requests. This guide covers best practices for efficiently using this operation.
 
 Python SDK availability

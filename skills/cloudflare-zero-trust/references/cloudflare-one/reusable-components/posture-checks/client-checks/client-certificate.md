@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Client certificate
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/client-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Client Certificate device posture attribute checks if the device has a valid client certificate signed by a trusted certificate. The trusted certificate is uploaded to Cloudflare and specified as part of the posture check rule. The client certificate posture check can be used in Gateway and Access policies to ensure that the user is connecting from a managed device.
 
 <details>

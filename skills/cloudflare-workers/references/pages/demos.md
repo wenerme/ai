@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/demos/og.png?v=d70b63affa3fbd25
 
 # Demos and architectures
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how you can use Pages within your existing application and architecture.
 
 ## Reference architectures

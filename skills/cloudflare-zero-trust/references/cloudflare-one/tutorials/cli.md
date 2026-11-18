@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/cli/og.png?v=3
 
 # Connect through Cloudflare Access using a CLI
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/cli/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's `cloudflared` command-line tool allows you to interact with endpoints protected by Cloudflare Access. You can use `cloudflared` to interact with a protected application's API.
 
 These instructions are not meant for configuring a service to run against an API. The token in this example is tailored to user identity and intended only for an end user interacting with an API via a command-line tool.

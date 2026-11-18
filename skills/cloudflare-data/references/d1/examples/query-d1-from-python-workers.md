@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/d1/examples/query-d1-from-python-worker
 
 Learn how to query D1 from a Python Worker
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Workers platform supports [multiple languages](https://developers.cloudflare.com/workers/languages/), including TypeScript, JavaScript, Rust and Python. This guide shows you how to query a D1 database from [Python](https://developers.cloudflare.com/workers/languages/python/) and deploy your application globally.
 
 ## Prerequisites
@@ -69,7 +67,7 @@ In your Wrangler file, create a new `[[d1_databases]]` configuration block and s
 		"python_workers"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"d1_databases": [
 		{
 			"binding": "DB", // This will be how you refer to your database in your Worker
@@ -86,7 +84,7 @@ name = "python-and-d1"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [[d1_databases]]
 binding = "DB"

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security-center/cloudforce-one/open-por
 
 # Open Port Scanning
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/cloudforce-one/open-port-scanning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Open Port Scanning allows [Magic Transit](https://developers.cloudflare.com/magic-transit/) and [Bring your Own IPs](https://developers.cloudflare.com/byoip/) users to efficiently monitor IP ranges for security vulnerabilities. This API enables users to scan their designated IP ranges, detect any open ports, and receive daily notifications regarding newly opened ports.
 
 You can access this feature via the [API](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/scans/subresources/config/).

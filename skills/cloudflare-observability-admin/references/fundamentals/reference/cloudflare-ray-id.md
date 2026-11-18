@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-i
 
 # Cloudflare Ray ID
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A **Cloudflare Ray ID** is an identifier given to every request that goes through Cloudflare.
 
 Ray IDs are particularly useful when evaluating Security Events for patterns or false positives or more generally understanding your application traffic.

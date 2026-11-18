@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/manage-video-library/searching/o
 
 # Search for videos
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/manage-video-library/searching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can search for videos by name through the Stream API by adding a `search` query parameter to the [list media files](https://developers.cloudflare.com/api/resources/stream/methods/list/) endpoint.
 
 ## What you will need

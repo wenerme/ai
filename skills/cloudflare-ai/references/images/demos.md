@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/demos/og.png?v=de118ab4906497ca
 
 # Demos and architectures
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how you can use Images within your existing architecture.
 
 ## Reference architectures

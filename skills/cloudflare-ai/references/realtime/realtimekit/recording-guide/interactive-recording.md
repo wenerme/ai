@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/in
 
 # Interactive Recordings with Timed Metadata
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 RealtimeKit's interactive recording feature allows you to add timed metadata to your video stream. Timed metadata serves as cue points for clients to display information and trigger time-aligned actions. The metadata is available to clients in the form of [ID3 ↗︎](https://en.wikipedia.org/wiki/ID3) tags on the playback timeline.
 
 ## What is interactive recording?

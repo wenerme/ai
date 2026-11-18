@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dmarc-management/statistics/og.png?v=fd
 
 # Statistics and details
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dmarc-management/statistics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DMARC Management (beta) allows you to review whether emails sent on your behalf passed or failed DMARC, SPF, and DKIM authentication checks.
 
 1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.

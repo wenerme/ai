@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/release-notes/og.png?v=545a018553
 
 # Release notes
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/release-notes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/radar/release-notes/index.xml)
 
 ## 2026-10-26

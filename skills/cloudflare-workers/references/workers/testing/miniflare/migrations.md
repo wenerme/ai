@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/migrations/og
 
 # Migrations
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/migrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Migrating from Version 2](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/)
 
 Was this helpful?

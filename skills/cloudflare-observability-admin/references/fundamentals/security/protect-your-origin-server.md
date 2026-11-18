@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/security/protect-your-orig
 
 # Protect your origin server
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Your [origin server ↗︎](https://www.cloudflare.com/learning/cdn/glossary/origin-server) is a physical or virtual machine that is not owned by Cloudflare and hosts your application content (data, webpages, etc.).
 
 Receiving too many requests can be bad for your origin. These requests might increase latency for visitors, incur higher costs — particularly for cloud-based machines — and could knock your application offline.

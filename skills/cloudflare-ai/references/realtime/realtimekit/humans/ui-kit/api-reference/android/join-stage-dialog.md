@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkJoinStageDialog
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/join-stage-dialog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A confirmation dialog screen shown when the user's request to join stage is approved or when the host invites the local user to join stage.
 
 ## Methods

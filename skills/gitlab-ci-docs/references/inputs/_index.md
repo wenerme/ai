@@ -950,10 +950,8 @@ which is assigned to `tags` as an array.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/578504) in GitLab 19.6
   [with a feature flag](../../administration/feature_flags/_index.md) named `ci_interpolation_default_function`.
   Enabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/578504) in GitLab 19.7.
+  Feature flag `ci_interpolation_default_function` removed.
 
 Use `default` to replace an empty value with a fallback value. A value is empty
 when it is `null` or an empty string. `false`, `0`, and empty arrays are not empty values.

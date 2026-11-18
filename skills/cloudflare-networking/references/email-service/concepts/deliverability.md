@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/concepts/deliverability/o
 
 Understand bounce handling and reputation management for optimal email delivery.
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/deliverability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you send an email, there is no guarantee it reaches the recipient's inbox. Inbox providers like Gmail, Yahoo, Outlook, and iCloud invest heavily in filtering out unwanted email. If you send poorly targeted emails, have high bounce rates, or trigger spam complaints, these providers may flag your domain as untrustworthy. Once that happens, even your legitimate emails can end up in spam or be blocked outright.
 
 This concept is referred to as email deliverability: maintaining a healthy sending reputation so that inbox providers trust your emails. Cloudflare Email Service helps with this by automatically handling bounces, managing suppression lists, and authenticating your emails through SPF, DKIM, and DMARC.

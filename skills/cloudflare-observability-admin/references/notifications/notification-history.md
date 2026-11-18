@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/notifications/notification-history/og.p
 
 # Alert history
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/notification-history/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Alert history is a log of alerts that have been sent to your account. Each record includes the alert itself, when it was sent, and who it was delivered to.
 
 ## Access alert history

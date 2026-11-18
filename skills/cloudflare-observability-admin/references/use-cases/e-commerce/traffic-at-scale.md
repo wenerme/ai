@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/o
 
 # Handle traffic at scale
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/traffic-at-scale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Flash sales, seasonal peaks, and viral moments can overwhelm your origin infrastructure. Cloudflare Load Balancing distributes traffic across multiple origins with automatic failover, Waiting Room queues excess visitors to prevent overload, and Argo Smart Routing reduces latency between edge and origin.
 
 ## Solutions

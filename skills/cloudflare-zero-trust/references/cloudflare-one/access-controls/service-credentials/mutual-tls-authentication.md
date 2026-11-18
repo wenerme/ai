@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/service-
 
 # Mutual TLS
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Availability
 
 Access mTLS is available with Enterprise and pay-as-you-go Zero Trust plans. It is not included in the Free plan. Free customers can use [service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) to authenticate automated systems.

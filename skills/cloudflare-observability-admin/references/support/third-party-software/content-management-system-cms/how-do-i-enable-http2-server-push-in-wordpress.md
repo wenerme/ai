@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/third-party-software/content-ma
 
 # How do I enable HTTP2 Server Push in WordPress
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/how-do-i-enable-http2-server-push-in-wordpress/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 HTTP/2 Server Push allows a website to push content to a browser, without having to wait for the HTML of one page to render first. In conjunction with the concurrency support built into HTTP/2, Server Push is able to dramatically reduce the amount of requests needed to load your website.
 
 ![Old URL: https://support.cloudflare.com/hc/en-us/article\_attachments/115005733367/http2-server-push-2.png

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-l
 
 # Public LoRA adapters
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare offers a few public LoRA adapters that can immediately be used for fine-tuned inference. You can try them out immediately via our [playground ↗︎](https://playground.ai.cloudflare.com).
 
 Public LoRAs will have the name `cf-public-x`, and the prefix will be reserved for Cloudflare.

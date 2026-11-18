@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/tutorials/og.png?v=30eea3405733e2
 
 # Tutorials
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 View tutorials to help you get started with Pages.
 
 | Name | Last Updated | Difficulty |
@@ -23,7 +21,7 @@ View tutorials to help you get started with Pages.
 | [Build an API for your front end using Pages Functions](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/) | 2 years ago | Intermediate |
 | [Use R2 as static asset storage with Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/) | 2 years ago | Intermediate |
 | [Use Pages as an origin for Load Balancing](https://developers.cloudflare.com/load-balancing/pools/cloudflare-pages-origin/) | 2 years ago | Beginner |
-| [Localize a website with HTMLRewriter](https://developers.cloudflare.com/pages/tutorials/localize-a-website/) | 2 years ago | Intermediate |
+| [Localize a website with HTMLRewriter](https://developers.cloudflare.com/pages/tutorials/localize-a-website/) | 3 years ago | Intermediate |
 | [Build a Staff Directory Application](https://developers.cloudflare.com/d1/tutorials/build-a-staff-directory-app/) | 3 years ago | Intermediate |
 | [Deploy a static WordPress site](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/) | 4 years ago | Intermediate |
 | [Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/) | 4 years ago | Intermediate |

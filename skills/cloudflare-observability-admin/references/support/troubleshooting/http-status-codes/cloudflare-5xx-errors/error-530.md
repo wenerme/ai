@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 530
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-530/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 530
 
 This error indicates that Cloudflare is unable to resolve the origin hostname, preventing it from establishing a connection to the origin server.

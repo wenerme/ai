@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-
 
 # Deploy the Cloudflare One Client on headless Linux machines
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial explains how to deploy the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on Linux devices using a service token and an installation script. This deployment workflow is designed for headless servers - that is, servers which do not have access to a browser for identity provider logins - and for situations where you want to fully automate the onboarding process. Because devices will not register through an identity provider, [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/) and logging will be unavailable.
 
 Note

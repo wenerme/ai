@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/report-abuse/com
 
 # Complaint types
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Cloudflare's [online abuse form ↗︎](https://abuse.cloudflare.com/) to report different types of abuse.
 
 ---

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudfla
 
 # DNSSEC options
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [DNS Security Extensions (DNSSEC) ↗︎](https://www.cloudflare.com/learning/dns/dns-security/) increase security by adding cryptographic signatures to DNS records. When you use multiple providers and Cloudflare is secondary, you have a few options to enable DNSSEC for records served by Cloudflare.
 
 - **[Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/)**: Both Cloudflare and your primary DNS provider know the signing keys of each other and perform their own live-signing of DNS records, in accordance with [RFC 8901 ↗︎](https://www.rfc-editor.org/rfc/rfc8901.html).

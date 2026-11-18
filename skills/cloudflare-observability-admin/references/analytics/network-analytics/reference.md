@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/network-analytics/reference/o
 
 # Reference
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review reference information about Cloudflare Network Analytics:
 
 - [Data collection](https://developers.cloudflare.com/analytics/network-analytics/reference/data-collection/)

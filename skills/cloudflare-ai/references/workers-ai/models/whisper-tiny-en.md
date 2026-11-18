@@ -18,8 +18,6 @@ Beta
 
 Automatic Speech Recognition • OpenAI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/whisper-tiny-en/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/openai/whisper-tiny-en` Copy
@@ -32,7 +30,7 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Zero data retention | Yes |
 | Beta | Yes |
 

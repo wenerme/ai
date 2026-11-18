@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/reference/og.png?v=257cc07fb6b7
 
 # @cloudflare/sandbox
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `@cloudflare/sandbox` works with a container you start from a Durable Object. Its classes run helper processes in the running container through [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec). The package does not start, stop, or monitor the container.
 
 For `start()`, `exec()`, snapshots, and the other methods of the container itself, refer to the [Durable Object container API](https://developers.cloudflare.com/containers/api/durable-object-container/).
@@ -76,7 +74,7 @@ The Wrangler configuration sets `nodejs_compat`, builds the `Dockerfile` as the 
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-23",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"containers": [
 		{
@@ -112,7 +110,7 @@ name = "sandbox-files"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-23"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[containers]]

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/platform/pricing/og.png
 
 # Pricing
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Basin Pipelines charges based on two dimensions:
 
 1. **SQL transforms**: The volume of data processed by stateless SQL.

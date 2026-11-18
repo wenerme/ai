@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/change-log/http/2022-09
 
 # 2022-09-19 - Emergency
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/2022-09-19-emergency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 | Rule ID | Description | Previous Action | New Action | Notes |
 | --- | --- | --- | --- | --- |
 | ...c4bef55c | HTTP requests from known botnet (signature #5). | ddos\_dynamic | ddos\_dynamic | Update the rule to target previously missed attacks. |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkParticipant
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkparticipant/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A participant list item card showing avatar, name, audio/video status icons, and host control options (pin, kick, mute, stage management).
 
 ## Properties

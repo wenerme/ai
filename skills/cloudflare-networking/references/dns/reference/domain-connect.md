@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/reference/domain-connect/og.png?v=f
 
 # Domain Connect
 
-Last updated Sep 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/reference/domain-connect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you are a service provider, consider this page for information on how Cloudflare supports [Domain Connect ↗︎](https://www.domainconnect.org/) and how you can onboard your template.
 
 ## What is Domain Connect

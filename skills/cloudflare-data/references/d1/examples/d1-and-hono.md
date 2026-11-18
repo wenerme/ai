@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/d1/examples/d1-and-hono/og.png?v=cbb98b
 
 Query D1 from the Hono web framework
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/examples/d1-and-hono/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Hono is a fast web framework for building API-first applications, and it includes first-class support for both [Workers](https://developers.cloudflare.com/workers/) and [Pages](https://developers.cloudflare.com/pages/).
 
 When using Workers:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/webmcp/og.png?v=d5
 
 # WebMCP
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/webmcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [WebMCP ↗︎](https://developer.chrome.com/blog/webmcp-epp) (Web Model Context Protocol) is a browser API that lets websites expose structured tools for AI agents to discover and execute directly. Instead of slow screenshot-analyze-click loops, agents can call website functions like `searchFlights()` or `bookTicket()` with typed parameters, making browser automation faster, more reliable, and less fragile.
 
 Browser Run supports WebMCP through two browser backends:

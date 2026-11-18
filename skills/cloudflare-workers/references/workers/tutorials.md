@@ -12,14 +12,12 @@ image: https://developers.cloudflare.com/workers/tutorials/og.png?v=5dfc402ec1d8
 
 # Tutorials
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 13 days ago | Beginner |
-| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 14 days ago | Beginner |
+| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 16 days ago | Beginner |
+| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 17 days ago | Beginner |
 | [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 2 months ago | Intermediate |
 | [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 2 months ago | Intermediate |
 | [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 5 months ago | Beginner |

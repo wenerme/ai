@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing
 
 # Limits & pricing
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Builds has the following limits.
 
 | Metric | Free plan | Paid plans |

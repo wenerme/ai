@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-cra
 
 # Manage AI crawlers
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Crawl Control enables you to take specific action for each AI crawler.
 
 To manage AI crawlers:

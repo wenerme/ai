@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/service-bindings/magic-transit-wi
 
 # Use BYOIP with Magic Transit and CDN
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Magic Transit](https://developers.cloudflare.com/magic-transit/) customers using BYOIP can also benefit from the performance, reliability, and security that Cloudflare offers for HTTP-based applications. [Service bindings](https://developers.cloudflare.com/byoip/service-bindings/) allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline (which includes [Cache](https://developers.cloudflare.com/cache/), [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), and more).
 
 This guide covers using the Cloudflare API to configure Magic Transit with CDN. It is also possible to define service bindings to route traffic to the Spectrum pipeline selectively. Refer to [scope](https://developers.cloudflare.com/byoip/service-bindings/#scope) for the full list of possible configurations and other available guides.

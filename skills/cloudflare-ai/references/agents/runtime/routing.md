@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/routing/og.png?v=4f8fb77
 
 # Routing
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Each agent is a named [Durable Object](https://developers.cloudflare.com/durable-objects/). Routing is how a request in your Worker reaches the right one. `routeAgentRequest()` reads the Durable Object binding and the object's name from the URL, and forwards the request to that object. Inside the object, the [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) takes over and offers the request to its capabilities, then to your `onRequest()` hook.
 
 ```txt

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/platform/audit-logs/og.png?v=ababc43
 
 # Audit Logs
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to R2 buckets. This functionality is available on all plan types, free of charge, and is always enabled.
 
 ## Viewing audit logs

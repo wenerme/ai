@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate Astro from Vercel to Cloudflare Workers
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide moves an [Astro ↗︎](https://astro.build/) application from Vercel to Cloudflare Workers. You replace `@astrojs/vercel` with [`@astrojs/cloudflare` ↗︎](https://docs.astro.build/en/guides/integrations-guide/cloudflare/).
 
 A fully static Astro site does not need an adapter. A Wrangler configuration file that points to `./dist` is enough. Refer to [Migrate a static site or SPA from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/static-site/).
@@ -140,7 +138,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "@astrojs/cloudflare/entrypoints/server",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"compatibility_flags": ["global_fetch_strictly_public"],
    	"assets": {
    		"binding": "ASSETS",
@@ -157,7 +155,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    name = "<YOUR_PROJECT_NAME>"
    main = "@astrojs/cloudflare/entrypoints/server"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
    compatibility_flags = [ "global_fetch_strictly_public" ]
 
    [assets]

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/bindings/og.png?v=3a2a6
 
 # Bindings
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Pages Functions to interact with resources on the Cloudflare developer platform. Use bindings to integrate your Pages Functions with Cloudflare resources like [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1](https://developers.cloudflare.com/d1/). You can set bindings for both production and preview environments.
 
 This guide will instruct you on configuring a binding for your Pages Function. You must already have a Cloudflare Developer Platform resource set up to continue.
@@ -586,14 +584,14 @@ PostgreSQL drivers like [`Postgres.js` ↗︎](https://github.com/porsager/postg
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-12"
+	"compatibility_date": "2026-11-18"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.

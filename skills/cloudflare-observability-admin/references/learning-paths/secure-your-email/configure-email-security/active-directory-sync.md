@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/config
 
 # Manage your active directory
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/active-directory-sync/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Directories are folders to store user data. Email security allows you to manage directories from the Cloudflare dashboard.
 
 ### Manage your Microsoft 365 directory

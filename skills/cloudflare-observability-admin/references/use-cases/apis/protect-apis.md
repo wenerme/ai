@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/apis/protect-apis/og.png?v=34
 
 # Protect your APIs
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/apis/protect-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 APIs are exposed to abuse, injection attacks, and unauthorized access. Cloudflare provides defense in depth with API Shield schema validation, per-endpoint rate limiting, mutual TLS (mTLS) client authentication, and security rules.
 
 ## Solutions

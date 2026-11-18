@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/get-started/mobile-implementa
 
 # Mobile implementation
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Turnstile requires a browser environment because it runs JavaScript challenges in the visitor's browser. On mobile devices, Turnstile works in mobile browsers without additional configuration.
 
 For native mobile applications, Turnstile does not run natively. Instead, you use a WebView — a browser component embedded inside your native app — to load a webpage that contains the Turnstile widget.

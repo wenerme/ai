@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/tutorials/mastodon/og.png?v=2ea7537c
 
 # Mastodon
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/tutorials/mastodon/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Mastodon ↗︎](https://joinmastodon.org/) is a popular [fediverse ↗︎](https://en.wikipedia.org/wiki/Fediverse) software. This guide will explain how to configure R2 to be the object storage for a self hosted Mastodon instance, for either [a new instance](#set-up-a-new-instance) or [an existing instance](#migrate-to-r2).
 
 ## Set up a new instance

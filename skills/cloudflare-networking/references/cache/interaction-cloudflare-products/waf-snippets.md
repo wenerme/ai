@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/interaction-cloudflare-products/w
 
 # Control cache access with WAF and Snippets
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/waf-snippets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you make an R2 bucket publicly accessible for caching (via a [Custom Domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains)), anyone who knows the URL can access the content. To restrict access, you can use Cloudflare's [WAF](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/) to validate requests before they reach the cache or your bucket.
 
 The following diagram illustrates the flow of a request through WAF, Cache, and R2. WAF custom rules run before cache rules in the [request pipeline](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/), so invalid requests are blocked before consuming cache resources.

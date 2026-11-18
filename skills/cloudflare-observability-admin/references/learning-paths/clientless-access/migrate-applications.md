@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/migrat
 
 # Migrate applications
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Publish internal applications that users currently access from a traditional corporate network.
 
 Note

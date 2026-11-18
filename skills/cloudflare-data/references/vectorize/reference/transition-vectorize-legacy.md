@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/reference/transition-vectoriz
 
 # Transition legacy Vectorize indexes
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024. Your Vectorize index may be a legacy index if it fulfills any of the following crieria:
 
 1. Was created with a Wrangler version lower than `v3.71.0`.

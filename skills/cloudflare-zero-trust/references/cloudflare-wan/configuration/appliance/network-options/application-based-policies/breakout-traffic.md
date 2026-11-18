@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Breakout traffic
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Breakout traffic allows you to define which applications should bypass Cloudflare's security filtering, and go directly to the Internet. It works via DNS requests inspection. This means that if your network is caching DNS requests, Breakout traffic will only take effect after you cache entries expire and your client issues a new DNS request that Cloudflare One Appliance (formerly Magic WAN Connector) can detect. This can take several minutes.
 
 Caution

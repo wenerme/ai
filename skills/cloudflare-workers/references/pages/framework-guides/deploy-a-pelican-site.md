@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican
 
 # Pelican
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-pelican-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Pelican ↗︎](https://docs.getpelican.com) is a static site generator, written in Python. With Pelican, you can write your content directly with your editor of choice in reStructuredText or Markdown formats.
 
 ## Create a Pelican project

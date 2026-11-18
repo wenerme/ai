@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/og
 
 # Troubleshoot HTTPS origins with Cloudflare Tunnel
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) is `Healthy` but `app.example.com` fails, check the route's `Service URL`, origin certificate, and [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).
 
 A `Healthy` status confirms only that `cloudflared` connects to Cloudflare. It does not test the route's service or the local origin.

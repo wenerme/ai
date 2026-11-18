@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workflows-course/series/
 
 # Introduction to Workflows
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Workflows provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background. Workflows are designed to resume execution even if the underlying compute fails, ensuring that tasks complete eventually. They are built on top of Cloudflare Workers and handle scaling and provisioning automatically.
 
 Workflows are triggered by events, such as Event Notifications consumed from a Queue, HTTP requests, another Worker, or even scheduled timers. Individual steps within a Workflow are designed as retryable units of work. The state is persisted between steps, allowing workflows to resume from the last successful step after failures. Workflows automatically generate metrics for each step, aiding in debugging and observability.

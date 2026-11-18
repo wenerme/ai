@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/get-started/o
 
 # Get Started
 
-Last updated Apr 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Miniflare API allows you to dispatch events to workers without making actual HTTP requests, simulate connections between Workers, and interact with local emulations of storage products like [KV](https://developers.cloudflare.com/workers/testing/miniflare/storage/kv), [R2](https://developers.cloudflare.com/workers/testing/miniflare/storage/r2), and [Durable Objects](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects). This makes it great for writing tests, or other advanced use cases where you need finer-grained control.
 
 ## Installation

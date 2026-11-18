@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/h
 
 # Override expressions
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Only available to Enterprise customers with the Advanced DDoS Protection subscription.

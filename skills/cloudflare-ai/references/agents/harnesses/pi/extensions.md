@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v
 
 # Extensions
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Both tools and system prompt sections are provided to the Pi `Harness` via extensions. An extension is Pi Durable's own: a plain object with a `name`, `tools`, and `sections`, installed on the registry you pass to `Harness.open()`. [`PiHarness`](https://developers.cloudflare.com/agents/harnesses/pi/) does not wrap them, so every Pi Durable extension feature works.
 
 ## Install an extension

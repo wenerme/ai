@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/og.p
 
 # Manage subscriptions
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once your customer has a zone provisioned, you can add zone and account-level subscriptions.
 
 ## Zone subscriptions

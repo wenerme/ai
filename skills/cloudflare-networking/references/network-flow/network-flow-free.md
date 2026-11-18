@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/network-flow-free/og.png?v
 
 # Free version
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/network-flow-free/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The free version of Network Flow (formerly Magic Network Monitoring) is available to all Cloudflare accounts.
 
 Join [Cloudflare's Discord server ↗︎](https://discord.com/invite/cloudflaredev) to discuss Network Flow use cases, configuration, and troubleshooting. The Network Flow product and engineering team regularly engages with the community.

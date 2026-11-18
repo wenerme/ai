@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/og.png?v=b41739
 
 # Snippets examples
 
-Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Refer to the following examples to get started creating your snippet code.
 
 Refer to [How Snippets work](https://developers.cloudflare.com/rules/snippets/how-it-works/) and [Create a snippet in the dashboard](https://developers.cloudflare.com/rules/snippets/create-dashboard/) for overall guidance.

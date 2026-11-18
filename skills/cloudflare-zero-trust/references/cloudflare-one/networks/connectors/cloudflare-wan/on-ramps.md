@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # On-ramps
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/on-ramps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To on-ramp your network traffic to Cloudflare WAN (formerly Magic WAN), you can use [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/), a lightweight software package you can install in corporate network locations to automatically connect and steer any IP traffic.
 
 You can also use any device that supports [GRE or IPsec](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/) tunnels with the supported configuration parameters.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/turn/faq/og.png?v=786a2d2ed91c
 
 # FAQ
 
-Last updated Jul 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## General
 
 ### What is Cloudflare Realtime TURN pricing? How exactly is it calculated?

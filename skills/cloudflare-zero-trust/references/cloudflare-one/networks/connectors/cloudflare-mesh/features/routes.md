@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Routes
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/features/routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, a Mesh node is reachable only by its own [Mesh IP](https://developers.cloudflare.com/mesh/concepts/#mesh-ips). To make other devices on the subnet behind the node reachable — servers, databases, printers, IoT devices that cannot run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) — add a route to the node. A Mesh node supports two types of routes:
 
 - **CIDR routes** — forward traffic for an IP range — private (for example, `10.0.0.0/24`) or public — through the node.
@@ -253,7 +251,7 @@ For a deeper look at the packet flow behind hostname routing, refer to the [anno
 - **Run a supported Mesh node version.** Hostname routing requires the Mesh node to run Linux Cloudflare One Client version `2026.6.822.0` or newer.
 - **Configure the Mesh node's [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol).** Hostname routing does not work if the device profile uses WireGuard instead.
 - **Enable the Gateway proxy** with TCP, UDP, and ICMP:
-  1. Go to **Traffic policies** > **Traffic settings**.
+  1. Go to **Traffic controls** > **Traffic settings**.
   2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
   3. Select **TCP**.
   4. Select **UDP** (required to proxy traffic to internal DNS resolvers).

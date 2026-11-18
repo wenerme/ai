@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Alibaba
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen-image-3.0-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `alibaba/qwen-image-3.0-pro` Copy

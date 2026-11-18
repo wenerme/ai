@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/warp-client/legal/3rdparty/og.png?v=856
 
 # Third party licenses
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/legal/3rdparty/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Following is the third party license information for our desktop applications. License information for our iOS and Android clients can be found in-app.
 
 ## Windows

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/faq/og.png?v=796c8e7c41a6
 
 # FAQ
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Prerequisites and onboarding
 
 ### What are the requirements to enable Cloudflare China Network service from Cloudflare?

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Configure Virtual Appliance
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Virtual Appliance is a virtual device alternative to the hardware based Cloudflare One Appliance. These two versions of Cloudflare One Appliance are identical otherwise.
 
 Currently, you can set up Virtual Appliance on VMware ESXi and Proxmox Virtual Environment. Support for Proxmox is in beta.

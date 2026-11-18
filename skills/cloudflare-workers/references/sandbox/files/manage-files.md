@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/files/manage-files/og.png?v=145
 
 # Move files in and out of a sandbox
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/manage-files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide streams an uploaded file into a sandbox, compresses it with `gzip`, and streams the compressed file back to the caller.
 
 The `Files` class from `@cloudflare/sandbox` reads and writes files in a running Linux instance, and [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec) runs the command. `Files` does not start the instance, so your Durable Object starts it before each file operation.

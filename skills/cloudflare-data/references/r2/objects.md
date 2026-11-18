@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/objects/og.png?v=643412d9c37f9ac0
 
 # Objects
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Objects are individual files or data that you store in an R2 bucket. Each object is identified by its key, a string like `images/photo.png`.
 
 ## Prefixes and folders

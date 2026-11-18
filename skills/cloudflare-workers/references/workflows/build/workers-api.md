@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=08
 
 # Workers API
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
 ## WorkflowEntrypoint
@@ -469,7 +467,7 @@ Key each entry by the name of the class that extends `WorkflowEntrypoint`. Set `
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"exports": {
 		"MyWorkflow": {
 			"type": "workflow",
@@ -486,7 +484,7 @@ name = "billing-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 
 [exports.MyWorkflow]
 type = "workflow"
@@ -611,7 +609,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"workflows": [
 		{
 			// name of your workflow
@@ -631,7 +629,7 @@ name = "workflows-starter"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 
 [[workflows]]
 name = "workflows-starter"
@@ -658,7 +656,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"workflows": [
 		{
 			// name of your workflow
@@ -681,7 +679,7 @@ name = "web-api-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 
 [[workflows]]
 name = "billing-workflow"
@@ -690,7 +688,7 @@ class_name = "MyWorkflow"
 script_name = "billing-worker"
 ```
 
-If you're using TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
+If you're using TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
 ## Workflow
 
@@ -698,7 +696,7 @@ Note
 
 Ensure you have a compatibility date `2024-10-22` or later installed when binding to Workflows from within a Workers project.
 
-The `Workflow` type provides methods that allow you to create, inspect the status, and manage running Workflow instances from within a Worker script. It is part of the generated types produced by [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
+The `Workflow` type provides methods that allow you to create, inspect the status, and manage running Workflow instances from within a Worker script. It is part of the generated types produced by [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types).
 
 *./worker-configuration.d.tsts*
 
@@ -1341,5 +1339,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-11-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

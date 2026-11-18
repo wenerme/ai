@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc
 
 # Get started
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests. In this example, each container runs a small webserver written in Go.
 
 This example Worker should give you a sense for simple Container use, and provide a starting point for more complex use cases.

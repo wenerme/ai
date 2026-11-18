@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/accou
 
 # Audit Logs
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The descriptions below detail the fields available for `audit_logs`.
 
 ## ActionResult

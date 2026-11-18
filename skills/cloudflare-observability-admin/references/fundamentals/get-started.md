@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/get-started/og.png?v=7a666
 
 # Get started
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Before you can begin using Cloudflare products, first [create an account](https://developers.cloudflare.com/fundamentals/account/create-account/). If multiple people manage your Cloudflare account, [set up member permissions](https://developers.cloudflare.com/fundamentals/manage-members/) to control which resources each person can access.
 
 ## Learn about Cloudflare's offerings

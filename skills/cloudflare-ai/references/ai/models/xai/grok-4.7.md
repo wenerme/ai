@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • xAI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.7/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `xai/grok-4.7` Copy

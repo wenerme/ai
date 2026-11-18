@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Error messages
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To help avoid [`ERR_SSL_VERSION_OR_CIPHER_MISMATCH`](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/) errors, Cloudflare automatically shows an error message - `This hostname is not covered by a certificate` - on proxied DNS records not covered by a TLS certificate.
 
 ## Pending domains

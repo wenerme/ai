@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/communication-channe
 
 # Autonomous responses
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/autonomous-responses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send messages and trigger LLM responses from the server without a human action. Use this for scheduled follow-ups, queue processing, email-triggered responses, and autonomous agent workflows.
 
 ## Overview

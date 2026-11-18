@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/monetization-gateway/og.png?v=a348e152d
 
 # Monetization Gateway
 
-Last updated Nov 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/monetization-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Closed beta
 
 Monetization Gateway is in closed beta. Request access in the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/monetize/monetization-gateway).

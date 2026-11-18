@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/proxy-status/use-cases/og.png?v=aa8
 
 # Use cases
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/proxy-status/use-cases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page lists common scenarios where DNS records should be proxied or set to DNS only, and describes aspects to keep in mind depending on your configuration. For background on how proxy status works, refer to [Proxy status](https://developers.cloudflare.com/dns/proxy-status/).
 
 ## Proxied records

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/a
 
 # Advanced TCP Protection
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can configure Advanced TCP Protection using the Advanced TCP Protection API.
 
 The Advanced TCP Protection API only supports [API token authentication](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).

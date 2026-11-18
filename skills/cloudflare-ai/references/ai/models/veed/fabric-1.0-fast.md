@@ -16,8 +16,6 @@ v
 
 Image-to-Video • veed
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/veed/fabric-1.0-fast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `veed/fabric-1.0-fast` Copy

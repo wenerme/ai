@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Manage Access policies
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Access policies define the users who can log in to your Access applications. You can create, edit, or delete policies at any time and reuse policies across multiple applications.
 
 ## Create a policy

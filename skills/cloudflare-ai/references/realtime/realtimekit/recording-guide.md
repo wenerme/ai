@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/og
 
 # Recording
 
-Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how RealtimeKit records meetings as a single composite file or as separate participant audio tracks.
 
 Visit the following pages to learn more about recording meetings:

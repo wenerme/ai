@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/secrets-store
 
 # Secrets Store
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Interact with [Secrets Store](https://developers.cloudflare.com/secrets-store/) using Wrangler.
 
 ## `secrets-store secret`

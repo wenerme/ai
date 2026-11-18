@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/codemode/browser/og.png?v=
 
 # Browser integration
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `@cloudflare/codemode/browser` when your browser owns the tools that the model must orchestrate. For example, these tools might read page state, access browser APIs, or update data held by your application.
 
 Code Mode is useful when the model must call several client tools with loops, conditions, or intermediate results. For a single browser action, use a standard client-side tool instead.

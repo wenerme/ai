@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Define device enrollment permissions
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/device-enrollment-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Device enrollment permissions determine which users can connect new devices to your organization's Cloudflare Zero Trust instance. Once the user registers their device, the Cloudflare One Client will store their identity token and use it to authenticate to services in your private network.
 
 ## Set device enrollment permissions

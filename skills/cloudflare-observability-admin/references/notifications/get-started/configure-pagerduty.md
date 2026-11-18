@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/notifications/get-started/configure-pag
 
 # Configure PagerDuty
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 PagerDuty is available if your account has at least one zone on a Business or higher plan.

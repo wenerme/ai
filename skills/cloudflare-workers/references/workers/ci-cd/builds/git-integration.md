@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/og
 
 # Git integration
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare supports connecting your [Cloudflare Artifacts](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/artifacts-integration/), [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/), [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/), or [Cursor Origin](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cursor-origin-integration/) (Cursor's Git hosting platform) repository to your Cloudflare Worker, and will automatically deploy your code every time you push a change.
 
 Adding a Git integration also lets you monitor build statuses directly in your Git provider. [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#features) and [Cursor Origin](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cursor-origin-integration/#features) use pull request comments and check runs, while [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/#features) uses commit statuses, so you can manage deployments without leaving your workflow.

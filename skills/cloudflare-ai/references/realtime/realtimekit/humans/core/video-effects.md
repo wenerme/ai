@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/video-
 
 # Video Effects
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/video-effects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Add video background effects and blur to participant video feeds in your RealtimeKit meetings using the Core SDK.
 
 Note

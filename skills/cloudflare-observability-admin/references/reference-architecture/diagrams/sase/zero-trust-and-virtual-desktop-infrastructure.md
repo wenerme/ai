@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/sase/ze
 
 # Zero Trust and Virtual Desktop Infrastructure
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Virtual Desktop Infrastructure (VDI) is old, costly, and clunky for a number of reasons including poor user experience, high upfront investments, ongoing operational costs, and many others of which you can read about in detail [here ↗︎](https://blog.cloudflare.com/decommissioning-virtual-desktop/). We recognize and empathize with the challenges many organizations face that result in continued reliance on this approach. This reference architecture describes how Cloudflare's Zero Trust solution can help organizations secure their virtual desktop infrastructure (VDI) and in most cases offload it entirely. Many organizations use expensive and poor performing VDI only to provide a secure web browser to their remote users. In these cases, Cloudflare can help offload the use of VDI entirely for web-based applications or SaaS apps.

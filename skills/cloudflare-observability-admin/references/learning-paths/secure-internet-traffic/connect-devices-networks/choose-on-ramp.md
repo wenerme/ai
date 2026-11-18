@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Choose an on-ramp
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/connect-devices-networks/choose-on-ramp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Similar to the network onboarding practices in the [Replace your VPN](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/) implementation guide, there are a number of ways to on-ramp your network traffic to the Cloudflare global network. This guide will quickly explore all of the options to on-ramp traffic to Cloudflare Gateway to inspect, apply policies, and filter.
 
 Note

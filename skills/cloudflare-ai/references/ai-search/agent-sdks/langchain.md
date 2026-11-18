@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/agent-sdks/langchain/og.png?v
 
 # LangChain
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/langchain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [LangChain ↗︎](https://python.langchain.com/) is a framework for building applications with large language models. The [`langchain-cloudflare` ↗︎](https://pypi.org/project/langchain-cloudflare/) package provides `CloudflareAISearchRetriever`, a standard LangChain retriever backed by AI Search.
 
 The retriever only searches. To create an instance and upload content, pair it with the [Cloudflare Python SDK ↗︎](https://github.com/cloudflare/cloudflare-python). This guide uses the Python SDK to create an AI Search instance, index a file, and use the LangChain retriever as a search tool. New instances use hybrid search by default.

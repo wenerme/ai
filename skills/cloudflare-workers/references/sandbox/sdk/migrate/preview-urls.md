@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/og.png
 
 # Move preview URLs
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In Sandbox SDK 0.12, `exposePort()` stores a token for each port in Durable Object storage. `proxyToSandbox()` routes hostnames such as `8080-ada-<TOKEN>.example.com` to the server on that port. In 1.0, your Worker routes those hostnames, and your Durable Object checks the token and forwards the request with `getTcpPort()`. The code on this page reads the tokens where 0.12 stored them, so the preview URLs that your users already have keep working.
 
 ## Before you start

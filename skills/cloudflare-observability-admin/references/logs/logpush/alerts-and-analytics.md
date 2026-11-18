@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/og.pn
 
 # Logpush alerts and analytics
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Logpush jobs may fail for a few reasons, for instance because the destination is unreachable, because of a change in permissions at the customers’ origin, or because a Logpush job did not complete at least one successful push in the last 24 hour.
 
 With analytics and alerting, you can monitor your Logpush job health and find out for yourself when a job fails. You can get alerted and you can also get analytics about your Logpush jobs health via GraphQL.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/troubleshoot/og.png?v=721677286
 
 # Troubleshoot
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these guides to diagnose billing errors, payment failures, invoice discrepancies, and subscription changes.
 
 ### [Billing error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/)

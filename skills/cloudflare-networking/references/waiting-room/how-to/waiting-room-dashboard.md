@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/how-to/waiting-room-dashbo
 
 # Access Waiting Room
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/waiting-room-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Cloudflare Waiting Room to create a holding area where users can queue to access a high-traffic area of your enterprise website. For an introduction, refer to the [Overview](https://developers.cloudflare.com/waiting-room/) page.
 
 To access Waiting Room on the Cloudflare dashboard, go to the **Waiting Room** page.

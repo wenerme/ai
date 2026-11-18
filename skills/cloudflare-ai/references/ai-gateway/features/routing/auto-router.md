@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/routing/auto-router
 
 # Auto Router
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/routing/auto-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway Auto Router automatically selects an AI model for each request. It helps reduce costs while maintaining the quality of responses by matching requests with the model best suited to the task.
 
 ## How it works

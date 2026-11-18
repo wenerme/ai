@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/remove-lo
 
 Create a redirect rule to redirect visitors from an old URL format with locale information to a new URL format.
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example single redirect for zone `example.com` will redirect visitors from an old URL format that included the locale (for example, `/en-us/<page_name>`) to the new format `/<page_name>`.
 
 **When incoming requests match**

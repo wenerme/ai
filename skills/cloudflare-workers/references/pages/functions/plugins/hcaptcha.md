@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/og.png
 
 # hCaptcha
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/hcaptcha/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The hCaptcha Pages Plugin validates hCaptcha tokens.
 
 ## Installation

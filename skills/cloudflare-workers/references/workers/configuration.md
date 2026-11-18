@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/og.png?v=757cd9bb
 
 # Configuration
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Worker configuration defines project settings, bindings, and deployment options. Use [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/) for typed, programmatic configuration. This configuration format is in open beta.
 
 You can also use a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with Wrangler and supported build tools.

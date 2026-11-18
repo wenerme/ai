@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-appli
 
 # Authorizing an application
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 When you authorize a third-party OAuth application, you grant it permission to access specific Cloudflare resources on your behalf. Cloudflare provides tools to view, manage, and revoke these authorizations at any time.

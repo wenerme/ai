@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/python/og.png?v=69ce2605c3c89
 
 # Python Workflows SDK
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workflow entrypoints can be declared using Python. To achieve this, you can export a `WorkflowEntrypoint` that runs on the Cloudflare Workers platform. Refer to [Python Workers](https://developers.cloudflare.com/workers/languages/python) for more information about Python on the Workers runtime.
 
 ## Get Started
@@ -67,7 +65,7 @@ You must add both `python_workflows` and `python_workers` compatibility flags to
 		"python_workflows"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"workflows": [
 		{
 			"name": "workflows-demo",
@@ -84,7 +82,7 @@ name = "hello-python"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers", "python_workflows" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [[workflows]]
 name = "workflows-demo"

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/limits/og.png?v=d
 
 # Limits
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare GraphQL API exposes more than 70 datasets representing products with different configurations and data availability for different zones and accounts plans.
 
 To support this variety of products, Cloudflare GraphQL API has three layers of limits:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/configuration/wrangler/og.p
 
 # Wrangler configuration
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/configuration/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Sandboxes](https://developers.cloudflare.com/sandbox/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
@@ -28,7 +26,7 @@ The minimum required configuration for using Sandbox SDK:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"containers": [
 		{
@@ -58,7 +56,7 @@ name = "my-sandbox-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[containers]]

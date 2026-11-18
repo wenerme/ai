@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboar
 
 # Create CIPA policy
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-create-cipa-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Create CIPA policy
 
 1. Go to **Traffic policies** > **Firewall policies**.

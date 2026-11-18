@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Device serial numbers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One allows you to build Zero Trust rules based on device serial numbers. You can create these rules so that access to applications is granted only to users connecting from company devices.
 
 ## Prerequisites

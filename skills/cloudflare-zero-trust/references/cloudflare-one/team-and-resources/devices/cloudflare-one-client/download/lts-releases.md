@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Download Cloudflare One Client LTS releases
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Long-Term Support (LTS) releases are stable releases that are guaranteed to continue receiving security bug fixes for at least 12 months or 90 days after the next LTS release, whichever is greater.
 
 For more details on Cloudflare One Client support timelines and end-of-life (EOL) policies, refer to the [Support lifecycle](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/) page.

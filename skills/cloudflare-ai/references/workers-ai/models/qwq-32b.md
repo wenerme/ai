@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Qwen
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwq-32b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/qwen/qwq-32b` Copy
@@ -32,7 +30,7 @@ QwQ is the reasoning model of the Qwen series. Compared with conventional instru
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens |
 | Reasoning | Yes |
 | Zero data retention | Yes |

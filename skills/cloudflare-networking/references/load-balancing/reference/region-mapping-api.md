@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/reference/region-mapping
 
 # Regions API
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare’s Load Balancing Regions API has several uses:
 
 - Identify which countries/areas (states/provinces in the case of the U.S. and Canada) are part of a specific Cloudflare Load Balancer region.

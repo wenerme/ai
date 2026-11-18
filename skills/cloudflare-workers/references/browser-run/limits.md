@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/limits/og.png?v=44b84e37b66
 
 # Limits
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Browser Run limits are based on your [Cloudflare Workers plan](https://developers.cloudflare.com/workers/platform/pricing/).
 
 For pricing information, refer to [Browser Run pricing](https://developers.cloudflare.com/browser-run/pricing/).
@@ -70,13 +68,13 @@ If you are still running into concurrency limits you can [request a higher limit
 
 ### Can I increase the browser timeout?
 
-By default, a browser instance will time out after 60 seconds of inactivity. If you want to keep the browser open longer, you can use the [`keep_alive` option](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive), which allows you to extend the timeout to up to 10 minutes.
+By default, a browser instance will time out after 60 seconds of inactivity. If you want to keep the browser open longer, you can use the [`keep_alive` option](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive), which allows you to extend the timeout to up to 20 minutes.
 
 ### Is there a maximum session duration?
 
-There is no fixed maximum lifetime for a browser session as long as it remains active. By default, Browser Run closes sessions after one minute of inactivity to prevent unintended usage. You can [increase this inactivity timeout](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive) to up to 10 minutes.
+There is no fixed maximum lifetime for a browser session as long as it remains active. By default, Browser Run closes sessions after one minute of inactivity to prevent unintended usage. You can [increase this inactivity timeout](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive) to up to 20 minutes.
 
-If you need sessions to remain open longer, keep them active by sending a command at least once within your configured inactivity window (for example, every 10 minutes). Sessions also close when Browser Run rolls out a new release.
+If you need sessions to remain open longer, keep them active by sending a command at least once within your configured inactivity window (for example, every 20 minutes). Sessions also close when Browser Run rolls out a new release.
 
 ### I upgraded from the Workers Free plan, but I'm still hitting the 10-minute per day limit. What should I do?
 
@@ -84,7 +82,7 @@ If you recently upgraded to the [Workers Paid plan](https://developers.cloudflar
 
 ### Why is my browser usage higher than expected?
 
-If you are hitting the daily limit or seeing higher usage than expected, the most common cause is browser sessions that are not being closed properly. When a browser session is not explicitly closed with `browser.close()`, it remains open and continues to consume browser time until it times out (60 seconds by default, or up to 10 minutes if you use the `keep_alive` option).
+If you are hitting the daily limit or seeing higher usage than expected, the most common cause is browser sessions that are not being closed properly. When a browser session is not explicitly closed with `browser.close()`, it remains open and continues to consume browser time until it times out (60 seconds by default, or up to 20 minutes if you use the `keep_alive` option).
 
 To minimize usage:
 
@@ -165,7 +163,7 @@ If you recently upgraded but still encounter the 10-minute per day limit, redepl
 ## Footnotes
 
 1. Browsers close upon task completion or sixty seconds of inactivity (if you do not [extend your browser timeout](#can-i-increase-the-browser-timeout)). Therefore, in practice, many workflows do not require a high number of concurrent browsers. [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2)
-2. By default, a browser will time out after 60 seconds of inactivity. You can extend this to up to 10 minutes using the [`keep_alive` option](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive). Call `browser.close()` to release the browser instance immediately. [↩](#user-content-fnref-2) [↩<sup>2</sup>](#user-content-fnref-2-2)
+2. By default, a browser will time out after 60 seconds of inactivity. You can extend this to up to 20 minutes using the [`keep_alive` option](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive). Call `browser.close()` to release the browser instance immediately. [↩](#user-content-fnref-2) [↩<sup>2</sup>](#user-content-fnref-2-2)
 3. If you exceed the per-second rate limit, you will receive a `429` response. Refer to [troubleshooting the `429 Too many requests` error](#error-429-too-many-requests). [↩](#user-content-fnref-3) [↩<sup>2</sup>](#user-content-fnref-3-2)
 
 Was this helpful?
@@ -177,5 +175,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/limits/#page","headline":"Limits","description":"Learn about the limits associated with Browser Run.","url":"https://developers.cloudflare.com/browser-run/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/limits/og.png?v=44b84e37b667d122","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/limits/#page","headline":"Limits","description":"Learn about the limits associated with Browser Run.","url":"https://developers.cloudflare.com/browser-run/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/limits/og.png?v=44b84e37b667d122","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

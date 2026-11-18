@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/reference/og.png?v=75400a5125fbe95
 
 # Reference
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 These reference resources are useful for gaining a more in-depth understanding of the terminology and status codes that are part of the Cloudflare Logs data. This information is especially important when integrating your data with third-party tools:
 
 - [Pathing status](https://developers.cloudflare.com/logs/reference/pathing-status/)

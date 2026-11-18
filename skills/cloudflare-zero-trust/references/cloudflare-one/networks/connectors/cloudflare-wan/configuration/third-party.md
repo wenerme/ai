@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Third-party integration
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Alibaba Cloud VPN Gateway](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/)
 - [Amazon AWS Transit Gateway](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/)
 - [Aruba EdgeConnect Enterprise](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aruba-edgeconnect/)

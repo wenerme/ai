@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/load-
 
 # Actions
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Add **actions** to customize how your load balancer responds to certain HTTP requests.
 
 Each load balancing rule includes one or more actions.

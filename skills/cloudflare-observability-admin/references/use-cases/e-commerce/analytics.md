@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/e-commerce/analytics/og.png?v
 
 # Observe traffic patterns and analytics
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Understanding how shoppers experience your store — page load times, security events, and traffic patterns — requires analytics that do not slow down your site. Cloudflare Web Analytics collects real user metrics without cookies, Security Analytics shows WAF and bot activity, and Logpush exports logs for compliance.
 
 ## Solutions

@@ -16,8 +16,6 @@ b
 
 Image-to-Image • bria
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bria/remove-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `bria/remove-background` Copy

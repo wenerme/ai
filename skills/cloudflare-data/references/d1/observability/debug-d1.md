@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a4
 
 # Debug D1
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when [debugging Workers](https://developers.cloudflare.com/workers/observability/).
 
 D1's [`stmt.`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) and [`db.`](https://developers.cloudflare.com/d1/worker-api/d1-database/) methods throw an [Error object ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whenever an error occurs. To capture exceptions, log the `e.message` value.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enab
 
 # Enable Managed Rulesets
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With [managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/), you can quickly deploy rules maintained by Cloudflare, and you can use Cloudflare Network Firewall (formerly Magic Firewall) to control which rules are enabled.
 
 Note:

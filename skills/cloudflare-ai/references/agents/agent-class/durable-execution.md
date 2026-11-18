@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/durable-execution/og
 
 # Durable execution with fibers
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/durable-execution/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Run work that survives Durable Object eviction. `runFiber()` registers a task in SQLite, keeps the agent alive during execution, lets you checkpoint intermediate state with `stash()`, and calls `onFiberRecovered()` on the next activation if the agent was evicted mid-task.
 
 Use `startFiber()` when a caller needs to durably accept background work, return quickly, safely dedupe retries, inspect status later, or cancel a running job.

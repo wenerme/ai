@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/guides/update-cloudflared/og.png
 
 # Update cloudflared
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/update-cloudflared/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Updates will cause `cloudflared` to restart which will impact traffic currently being served. You can perform zero-downtime upgrades by using Cloudflare's [Load Balancer product](#update-with-cloudflare-load-balancer) or by using [multiple `cloudflared` instances](#update-with-multiple-cloudflared-instances).
 
 ## Update the `cloudflared` service

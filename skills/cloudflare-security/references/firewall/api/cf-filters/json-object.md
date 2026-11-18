@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-filters/json-object/og.
 
 # JSON object
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/json-object/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Filter object structure and properties
 
 A JSON response for the [Filters API](https://developers.cloudflare.com/api/resources/filters/methods/list/) has this structure:

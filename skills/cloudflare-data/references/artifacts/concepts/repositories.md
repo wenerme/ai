@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/concepts/repositories/og.png?
 
 # Repositories
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/concepts/repositories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Artifacts stores work in repositories. A repository is one isolated Git service with its own history, refs, remote URL, tokens, and durable state.
 
 Every repo lives inside one namespace. If the namespace does not exist yet, Artifacts creates it when you create the first repo in it.

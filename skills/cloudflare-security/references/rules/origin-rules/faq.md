@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/origin-rules/faq/og.png?v=b71beab
 
 # Origin Rules FAQ
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find answers to the most commonly asked questions regarding Origin Rules.
 
 ## What happens if I use both an origin rule and a page rule to perform a Host header/DNS record override?

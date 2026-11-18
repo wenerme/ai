@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/roles-permissions/og.png
 
 # Roles and permissions
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/roles-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When creating a Cloudflare Zero Trust account, you will be given the Super Administrator role. As a Super Administrator, you can invite members to join your Zero Trust account and assign them different roles. There is no limit to the number of members which can be added to a given account. Any members with the proper permissions will be able to make configuration changes while actively logged into Zero Trust (unless [read-only mode](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only) is enabled).
 
 To check the list of members in your account, or to manage roles and permissions, refer to our [Account setup](https://developers.cloudflare.com/fundamentals/manage-members/) documentation.

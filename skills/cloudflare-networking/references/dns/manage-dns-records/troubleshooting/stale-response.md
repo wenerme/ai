@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/
 
 # Stale response for upstream DNS resolution
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/stale-response/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In one of the scenarios below, you notice that stale DNS responses are used. Depending on the scenario and other aspects of your configuration, this can cause wrong content or no content to be returned.
 
 - A proxied CNAME record ([flattened by default](https://developers.cloudflare.com/dns/cname-flattening/)).

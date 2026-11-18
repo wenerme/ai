@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Choose an application type
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access sits in front of your applications and checks every request against your Access policies before letting users through. It supports several application types, each designed for a different use case. Your choice depends on where your application is hosted, how users connect to it, and what level of control you need over sessions and authorization.
 
 Most teams start with self-hosted applications and expand to SaaS applications, infrastructure targets, or a combination over time.

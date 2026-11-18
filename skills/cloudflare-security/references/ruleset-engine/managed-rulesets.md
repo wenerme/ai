@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/og.png?
 
 # Work with managed rulesets
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Managed rulesets are preconfigured rulesets provided by Cloudflare that you can deploy. Only Cloudflare can modify these rulesets.
 
 The rules in a managed ruleset have a default configuration. However, you can define [overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) that change this default configuration.

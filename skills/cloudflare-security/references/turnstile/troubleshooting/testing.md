@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/troubleshooting/testing/og.pn
 
 # Test your Turnstile implementation
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/testing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use dummy sitekeys and secret keys to test your Turnstile implementation without triggering real challenges that would interfere with automated testing suites.
 
 Automated testing suites (like Selenium, Cypress, or Playwright) are detected as bots by Turnstile, which can cause:

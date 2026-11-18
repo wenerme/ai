@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/sql-referenc
 
 # SQL Reference
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Reference documentation describing the SQL supported by Workers Analytics Engine:
 
 - [Statements](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/routing/advanced/
 
 # Serving a subdirectory
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Set `assets.base_path` to serve static assets from a URL subpath. The files remain at the root of `assets.directory`.
 
 Note

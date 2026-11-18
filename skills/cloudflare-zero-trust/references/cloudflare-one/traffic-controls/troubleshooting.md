@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/trouble
 
 # Troubleshooting
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies.
 
 ## Blocked websites and connectivity

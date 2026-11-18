@@ -11,8 +11,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-re
 
 # RTKStore
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkstore/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This module represents a single global store. The store can be accessed from the `meeting.stores` module.
 
 **Returns**: An instance of RTKStore.

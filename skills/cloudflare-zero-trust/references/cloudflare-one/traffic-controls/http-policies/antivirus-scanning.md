@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # AV scanning
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/antivirus-scanning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Gateway can scan files for malware as users upload or download them. Anti-virus (AV) scanning runs inline — Gateway inspects files as they pass through the proxy and blocks any file that contains a known malicious payload.
 
 In addition to AV scanning, Gateway can quarantine previously unseen files into a sandbox to detect zero-day threats not yet in anti-virus databases. For more information, refer to [File sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/file-sandboxing/).

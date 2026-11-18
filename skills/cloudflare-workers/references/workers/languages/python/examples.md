@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/examples/og.pn
 
 # Examples
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare has a wide range of Python examples in the [Workers Example gallery](https://developers.cloudflare.com/workers/examples/?languages=Python).
 
 In addition to those examples, consider the following ones that illustrate Python-specific behavior.

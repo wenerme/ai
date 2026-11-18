@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/og.png?v=42dcc327de648b
 
 # Cloudflare Durable Objects
 
-Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create AI agents, collaborative applications, real-time interactions like chat, and more without needing to coordinate state, have separate storage, or manage infrastructure.
 
 Available on Free and Paid plans

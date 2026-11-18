@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/troubleshooting/facebook-sharing/og
 
 # Issues sharing to Facebook
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/facebook-sharing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare does not block or challenge requests from Facebook by default. However, a post of a website to Facebook returns an *Attention Required* error in the following situations:
 
 - You have globally [enabled Under Attack mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/).

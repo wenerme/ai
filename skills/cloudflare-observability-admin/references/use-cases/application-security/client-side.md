@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/application-security/client-s
 
 # Protect against client-side threats
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/client-side/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Third-party scripts on your site can be compromised to exfiltrate data or inject malicious code. Cloudflare's client-side security (previously known as Page Shield) monitors every JavaScript resource loading on your pages, detects suspicious behavior, and helps you manage Content Security Policies (CSPs).
 
 ## Solutions

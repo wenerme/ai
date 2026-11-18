@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cf/og.png?v=54b5e0417cfb98d9
 
 # Cloudflare CLI
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare CLI, `cf`, is one command-line interface for the public Cloudflare API and for Workers projects. Use it to manage zones, DNS, storage, and security settings, and to create, develop, and deploy Workers. Coding agents run the same commands you do.
 
 Release candidate

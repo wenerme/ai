@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/cybersafe/concepts/cipa-
 
 # Project Cybersafe Schools and CIPA
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/cipa-overview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Project Cybersafe Schools (PCS) grants eligible schools free access to Cloudflare’s Email security and Gateway products.
 
 Like other under-resourced organizations, schools face cyber attacks from malicious actors that can impact schools’ ability to safely perform a basic function – teach children. Schools face email, phishing, and ransomware attacks that slow access and threaten leaks of confidential student data.
@@ -41,7 +39,7 @@ CIPA mandates that K-12 schools and libraries adopt Internet safety policies tha
 
 ### Configuration
 
-To facilitate compliance with CIPA requirements, administrators can [enable a single filtering policy option](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/common-policies/#turn-on-cipa-filter). This includes applying the required filter categories to block access to unwanted or harmful online content.
+To facilitate compliance with CIPA requirements, administrators can [enable a single filtering policy option](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/common-policies/#turn-on-cipa-filter). This includes applying the required filter categories to block access to unwanted or harmful online content.
 
 Note
 
@@ -79,7 +77,7 @@ Cloudflare’s recommended CIPA rule blocks the following content subcategories:
 - Violence
 - Weapons
 
-Review the [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) for more information.
+Review the [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) for more information.
 
 Was this helpful?
 

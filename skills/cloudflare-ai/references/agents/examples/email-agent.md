@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/examples/email-agent/og.png?v=ca
 
 # Email agent
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/email-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agents can send and receive email with Cloudflare [Email Service](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/). This guide shows how to send outbound email with the Workers binding, route inbound mail into Agents, and handle follow-up replies securely.
 
 ## Prerequisites

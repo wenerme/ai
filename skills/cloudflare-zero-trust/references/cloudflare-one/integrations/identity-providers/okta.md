@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Okta
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Okta provides cloud software that helps companies manage and secure user authentication to modern applications, and helps developers build identity controls into applications, website web services, and devices. You can integrate Okta with Cloudflare One and build rules based on user identity and group membership. Cloudflare One supports Okta integrations using either the OIDC (default) or [SAML](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/) protocol.
 
 Additionally, you can configure Okta to use risk information from Cloudflare One [user risk scores](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) to create SSO-level policies. For more information, refer to [Send risk score to Okta](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/#send-risk-score-to-okta).

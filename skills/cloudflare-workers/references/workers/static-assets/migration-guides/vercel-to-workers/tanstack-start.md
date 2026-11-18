@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate TanStack Start from Vercel to Cloudflare Workers
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide moves a [TanStack Start ↗︎](https://tanstack.com/start) application from Vercel to Cloudflare Workers. On Vercel, TanStack Start runs through the Nitro Vite plugin. On Workers, the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) replaces it.
 
 Server functions, server routes, and client-only routes work without code changes.
@@ -122,7 +120,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    	"name": "<YOUR_PROJECT_NAME>",
    	"main": "@tanstack/react-start/server-entry",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-12",
+   	"compatibility_date": "2026-11-18",
    	"observability": {
    		"enabled": true,
    	},
@@ -134,7 +132,7 @@ When you finish, list the files you changed, the Vercel features without an equi
    name = "<YOUR_PROJECT_NAME>"
    main = "@tanstack/react-start/server-entry"
    # Set this to today's date
-   compatibility_date = "2026-11-12"
+   compatibility_date = "2026-11-18"
 
    [observability]
    enabled = true

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/known-issues/og.png?v=
 
 # Known issues
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below are some known bugs and issues to be aware of when using Cloudflare Workers.
 
 ## Route specificity

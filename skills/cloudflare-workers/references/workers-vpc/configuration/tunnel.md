@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/configuration/tunnel/og.png
 
 # Cloudflare Tunnel
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Tunnel creates secure connections from your infrastructure to Cloudflare's global network, providing the network connectivity that allows Workers to access your private resources.
 
 When you create a VPC Service, you specify a tunnel ID and target service. Workers VPC then routes requests from your Worker to the specified tunnel, which establishes a connection to the specified hostname or IP address, such that the target service receives the request and returns a response back to your Worker.

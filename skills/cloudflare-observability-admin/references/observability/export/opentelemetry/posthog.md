@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/observability/export/opentelemetry/post
 
 # Export to PostHog
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/export/opentelemetry/posthog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 PostHog provides product analytics, logs, and error tracking. Export Cloudflare logs to correlate them with sessions and events.
 
 ![PostHog logs view with attributes expanded and a timeline view at the top](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2580,height=1702,format=webp/_astro/posthog-example.DhJh65s7.png)

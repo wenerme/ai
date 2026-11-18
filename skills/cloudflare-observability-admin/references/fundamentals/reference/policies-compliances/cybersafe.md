@@ -12,9 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/reference/policies-complia
 
 # Project Cybersafe Schools
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
-Project Cybersafe Schools grants eligible schools with free access to Cloudflare's [Email security](https://developers.cloudflare.com/email-security/) and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) products.
+Project Cybersafe Schools grants eligible schools with free access to Cloudflare's [Email security](https://developers.cloudflare.com/email-security/) and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) products.
 
 ## School Eligibility
 
@@ -35,7 +33,7 @@ CIPA mandates that K-12 schools and libraries adopt Internet safety policies tha
 
 ### Configuration
 
-To facilitate compliance with CIPA requirements, administrators can [enable a single filtering policy option](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/common-policies/#turn-on-cipa-filter). This includes applying the required filter categories to block access to unwanted or harmful online content.
+To facilitate compliance with CIPA requirements, administrators can [enable a single filtering policy option](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/common-policies/#turn-on-cipa-filter). This includes applying the required filter categories to block access to unwanted or harmful online content.
 
 Note
 
@@ -73,7 +71,7 @@ Cloudflare’s recommended CIPA rule blocks the following content subcategories:
 - Violence
 - Weapons
 
-Review the [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) for more information.
+Review the [domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) for more information.
 
 ### Onboarding Guide
 
@@ -88,5 +86,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/#page","headline":"Project Cybersafe Schools","description":"Project Cybersafe Schools provides eligible schools with free Cloudflare Email Security and Gateway products to meet CIPA requirements.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/og.png?v=8540bc2067b87ea8","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/#page","headline":"Project Cybersafe Schools","description":"Project Cybersafe Schools provides eligible schools with free Cloudflare Email Security and Gateway products to meet CIPA requirements.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/og.png?v=8540bc2067b87ea8","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

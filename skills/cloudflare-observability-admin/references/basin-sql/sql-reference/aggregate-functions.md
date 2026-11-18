@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/sql-reference/aggregate-funct
 
 # Aggregate functions
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/sql-reference/aggregate-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Aggregate functions collapse multiple rows into a single result. They are used with `GROUP BY` to compute summaries per group, or without `GROUP BY` to compute a single result across all rows.
 
 Most aggregates accept a `DISTINCT` modifier, for example `COUNT(DISTINCT customer_id)` or `SUM(DISTINCT total_amount)`.

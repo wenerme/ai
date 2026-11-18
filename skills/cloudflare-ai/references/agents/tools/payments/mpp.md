@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/payments/mpp/og.png?v=cf3e
 
 # MPP (Machine Payments Protocol)
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Machine Payments Protocol (MPP) ↗︎](https://mpp.dev) is an open protocol for machine-to-machine payments. It standardizes the HTTP `402 Payment Required` status code with a formal authentication scheme proposed to the [IETF ↗︎](https://paymentauth.org). MPP gives agents, applications, and people one interface to pay for a service in the same HTTP request.
 
 MPP is payment-method agnostic. It supports stablecoins, cards through Stripe, and custom payment methods. A service can offer more than one method.

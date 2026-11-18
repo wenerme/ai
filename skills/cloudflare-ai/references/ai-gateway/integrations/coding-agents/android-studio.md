@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/a
 
 # Android Studio
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/android-studio/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Android Studio ↗︎](https://developer.android.com/studio) supports custom model providers through its built-in AI assistant and the [GitHub Copilot plugin ↗︎](https://plugins.jetbrains.com/plugin/17718-github-copilot). Point a provider at AI Gateway's [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) to route requests through your gateway. Authenticate with a Cloudflare API token and use [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) or a stored [provider key](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) to authenticate with the model provider.
 
 Configure the assistant you use. The built-in AI assistant and GitHub Copilot Chat have separate provider settings.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/private-network/cloudfla
 
 # Set up Private Network Load Balancing with Cloudflare WAN
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consider the following steps to learn how to configure Private Network Load Balancing solution, using [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) as the on-ramp and off-ramp to securely connect to your private or internal services.
 
 One of the pre-requisites to using Private Network Load Balancing (PNLB) with Cloudflare WAN is having Cloudflare WAN set up in your account and having completed onboarding. You can connect with a Cloudflare One Appliance, or your own hardware via an IPsec or GRE tunnel. Check out the [Cloudflare WAN documentation](https://developers.cloudflare.com/cloudflare-wan/get-started/) for more details or to get started.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-pu
 
 # Build and deploy Artifacts repos
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Artifacts events can build and deploy projects stored in Artifacts repos. When a user or agent pushes a commit, the event triggers a [Workflow instance](https://developers.cloudflare.com/workflows/build/trigger-workflows/).
 
 If you want standard build-and-deploy behavior for a Worker, use the [Workers Builds Artifacts integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/artifacts-integration/). Workers Builds runs the configured build and deploy commands when you push to the repository, and supports Worker Previews for non-production branches.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolve
 
 # DNS over HTTPS (DoH)
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Cloudflare Gateway, you can filter DNS over HTTPS (DoH) requests by [DNS location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) or by user without needing to install the Cloudflare One Client on your devices.
 
 Location-based policies require that you send DNS requests to a [location-specific DoH endpoint](#filter-doh-requests-by-location), while identity-based policies require that requests include a [user-specific DoH token](#filter-doh-requests-by-user).

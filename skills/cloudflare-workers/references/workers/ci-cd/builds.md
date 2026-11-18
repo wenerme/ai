@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1e
 
 # Builds
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a repository hosted by Artifacts, GitHub, or GitLab, enabling automated builds and deployments for your Worker on push.
 
 ## Get started

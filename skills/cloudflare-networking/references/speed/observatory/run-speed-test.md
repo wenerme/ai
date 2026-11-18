@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/observatory/run-speed-test/og.png
 
 # Run test
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/observatory/run-speed-test/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Run Synthetic test
 
 1. In the Cloudflare dashboard, go to the **Synthetic Monitoring** page. [Go to **Synthetic monitoring** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/test)

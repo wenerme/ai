@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network/ipv6-compatibility/og.png?v=7a7
 
 # IPv6 compatibility
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/ipv6-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare enables IPv6 on all domains without requiring additional configuration or hardware (as long as your host provides IPv6 support).
 
 When IPv6 compatibility is turned on, Cloudflare auto generates [`AAAA` DNS records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#a-and-aaaa) to allow IPv6 clients to connect. On the other hand, when IPv6 compatibility is turned off, Cloudflare does not automatically generate and advertise `AAAA` DNS for the zone. Client software will determine whether to use IPv4 or IPv6 to connect to a hostname that supports both methods.

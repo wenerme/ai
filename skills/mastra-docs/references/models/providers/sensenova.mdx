@@ -1,6 +1,6 @@
 ---
-title: "SenseNova (China) Models: IDs, Context & Usage"
-description: "Browse SenseNova (China) model IDs, capabilities, and context windows. Learn how to use them in TypeScript with Mastra's model router."
+title: "SenseNova (China) | Models"
+description: "Browse SenseNova (China) model IDs and capabilities. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [SenseNova (China) logo]SenseNova (China)
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "sensenova/deepseek-v4-flash"
+  model: "sensenova/deepseek-flash"
 });
 
 // Generate a response
@@ -38,83 +38,8 @@ for await (const chunk of stream) {
 ## Models
 
 <ProviderModelsTable
-  models={[
-  {
-    "model": "sensenova/deepseek-v4-flash",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "sensenova/deepseek-v4-pro",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "sensenova/deepseek-v4.1-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "sensenova/glm-5.2",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "sensenova/kimi-k3",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "sensenova/sensenova-6.8-flash-lite",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  }
-]}
+  models={[]}
 />
-
-Model availability, capabilities, context windows, and pricing are sourced from [models.dev](https://models.dev) and may change.
 
 ## Advanced configuration
 
@@ -128,7 +53,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://token.sensenova.cn/v1",
-    id: "sensenova/deepseek-v4-flash",
+    id: "sensenova/deepseek-flash",
     apiKey: process.env.SENSENOVA_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -149,7 +74,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "sensenova/sensenova-6.8-flash-lite"
-      : "sensenova/deepseek-v4-flash";
+      : "sensenova/deepseek-flash";
   }
 });
 ```

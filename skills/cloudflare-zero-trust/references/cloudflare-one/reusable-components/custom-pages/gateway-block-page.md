@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/cust
 
 # Block page
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When Gateway blocks traffic with a [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#block) or [HTTP Block policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#block), you can configure a block page to display in your users' browsers. You can provide a descriptive reason for blocking traffic and contact information, or you can redirect your users' browsers to another page. You can apply these customizations globally for every Block policy, or override the settings on a per-policy basis.
 
 ## Prerequisites

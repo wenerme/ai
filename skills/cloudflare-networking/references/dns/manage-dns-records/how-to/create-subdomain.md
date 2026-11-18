@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-su
 
 # Create subdomain records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Most subdomains serve a specific purpose within the overall context of your website. For example, `blog.example.com` might be your blog, `support.example.com` could be your customer help portal, and `store.example.com` would be your e-commerce site.
 
 Even if you do not require specific subdomains, you might want to set up at least a subdomain record on `www`. It will usually point to the same content as what you have on the apex domain (`example.com`) or use a [redirect](https://developers.cloudflare.com/fundamentals/manage-domains/manage-subdomains/#redirect-a-subdomain-to-the-apex-domain). Having a subdomain DNS record on `www` helps guarantee that a visitor who types `www.` in front of your domain address can still find your website or application.

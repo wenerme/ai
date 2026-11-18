@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/platform/audit-logs/og.png?v=307
 
 # Audit Logs
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to Queues. This functionality is always enabled.
 
 ## Viewing audit logs

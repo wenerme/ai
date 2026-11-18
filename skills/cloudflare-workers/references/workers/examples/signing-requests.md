@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/workers/examples/signing-requests/og.pn
 
 Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/signing-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you want to get started quickly, click on the button below.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/docs-examples/tree/main/workers/signing-requests)

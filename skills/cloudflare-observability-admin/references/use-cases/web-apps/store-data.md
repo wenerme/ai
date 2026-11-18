@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/web-apps/store-data/og.png?v=
 
 # Store application data
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/store-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web applications need different storage types for different workloads — relational data, key-value lookups, file uploads, and real-time state. Cloudflare provides serverless storage options including D1 (SQL), KV (key-value), R2 (object storage), and Durable Objects (strongly consistent state).
 
 ## Solutions

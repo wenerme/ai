@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/data-center-protection/e
 
 # Enable Cloudflare Network Firewall
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/enable-network-firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Magic Transit customers are automatically provided with the [standard features](https://developers.cloudflare.com/cloudflare-network-firewall/plans/#standard-features) of Cloudflare Network Firewall, Cloudflare's firewall-as-a-service product.
 
 Cloudflare recommends creating a ruleset customized to your environment and needs. Without any rules configured, Cloudflare Network Firewall will pass on all traffic after mitigations are applied to your tunnels.

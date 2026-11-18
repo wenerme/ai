@@ -12,9 +12,24 @@ image: https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/og.
 
 # Risk score
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/risk-score.xml)
+
+## 2026-11-17
+
+
+**Investigate user risk events in a timeline**
+
+User Risk Scoring now groups risk behavior instances in a timeline. Each group highlights its trigger and shows later detections in time order.
+
+![User risk timeline showing a trigger, subsequent detections, and a date range selector](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1440,height=1200,format=webp/_astro/timeline-risk-score.UH2i7HUL.png)
+
+Customize the date range to focus on the events you want to investigate. Select a timeline marker to view its events. The sequence helps security teams follow how risk events relate during investigations.
+
+Switch to **Table** to return to the existing table view whenever you prefer.
+
+User Risk Scoring is available on Enterprise plans.
+
+For more information, refer to [User risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
 
 ## 2026-04-08
 

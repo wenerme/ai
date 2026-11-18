@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/third-party-software/content-ma
 
 # WordPress Jetpack and Cloudflare
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpress-jetpack-and-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 Cloudflare and Jetpack for WordPress should require no additional configuration to operate together. However we do have some security features designed to protect your Jetpack installation, read on below to learn more.

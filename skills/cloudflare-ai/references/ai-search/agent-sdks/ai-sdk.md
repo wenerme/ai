@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/og.png?v=8f
 
 # AI SDK
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The [Vercel AI SDK ↗︎](https://sdk.vercel.ai/) is a TypeScript toolkit for building applications with large language models. The [`ai-search-provider` ↗︎](https://www.npmjs.com/package/ai-search-provider) package connects AI Search to the AI SDK, so you can generate responses grounded in your indexed content, retrieve chunks, and manage documents from the same API.
 
 This guide builds a Worker that creates an AI Search instance, uploads and indexes a document, and then queries it with the AI SDK.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/og.p
 
 # Vitest integration
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For most users, Cloudflare recommends using the Workers Vitest integration for unit testing Workers and [Pages Functions](https://developers.cloudflare.com/pages/functions/) projects. [Vitest ↗︎](https://vitest.dev/) is a popular JavaScript testing framework featuring a fast watch mode, Jest compatibility, and default TypeScript support. Cloudflare provides the `@cloudflare/vitest-plugin` Vite plugin, which runs your Vitest tests inside the Workers runtime.
 
 The Workers Vitest integration:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/understand/preview-services/og.
 
 # Preview services
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/preview-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Contracted customers can try certain products and features for 30 days.
 
 After you turn on the product or feature, it is not an officially contracted service until you purchase it. Cloudflare may reach out if you have questions or feedback and can provide a sales quote if the product is a fit for your business.

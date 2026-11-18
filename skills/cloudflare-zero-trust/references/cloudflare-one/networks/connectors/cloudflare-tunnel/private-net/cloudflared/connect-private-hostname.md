@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Connect a private hostname
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Instead of managing static IP lists and routes, you can connect users to private HTTP and non-HTTP applications using their hostnames (for example, `wiki.internal.local`). Private hostname routes are especially useful when the application has an unknown or ephemeral IP, which often occurs when infrastructure is provisioned by a third-party cloud provider.
 
 1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -100,7 +98,7 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-1. Go to **Traffic policies** > **Traffic settings**.
+1. Go to **Traffic controls** > **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
 3. Select **TCP**.
 4. Select **UDP** (required to proxy traffic to internal DNS resolvers).

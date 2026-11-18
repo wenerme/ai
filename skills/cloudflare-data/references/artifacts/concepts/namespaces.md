@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/concepts/namespaces/og.png?v=
 
 # Namespaces
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/concepts/namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Artifacts uses namespaces as top-level containers for repositories. Use them to separate repositories by environment, such as `prod`, `staging`, and `dev`, by tenant, or shard.
 
 You can create a namespace explicitly or let Artifacts create one automatically. If you create a repo under a namespace name that does not exist, Artifacts creates the namespace automatically.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/mesh/guides/og.png?v=f47253a4437bcc4a
 
 # Guides
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Connect two devices privately with Cloudflare Mesh](https://developers.cloudflare.com/mesh/guides/connect-client-devices/)
 - [Connect two servers with Cloudflare Mesh](https://developers.cloudflare.com/mesh/guides/connect-servers/)
 - [Connect two private networks with Cloudflare Mesh](https://developers.cloudflare.com/mesh/guides/connect-sites/)

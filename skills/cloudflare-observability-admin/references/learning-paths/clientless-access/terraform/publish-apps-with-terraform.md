@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/terraf
 
 # Publish applications with Terraform
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to use the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) to quickly publish and secure a private application. In the following example, we will add a new published application to an existing Cloudflare Tunnel, configure how `cloudflared` proxies traffic to the application, and secure the application with Cloudflare Access.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/understand/sales-tax/og.png?v=e
 
 # Sales tax
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/sales-tax/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To adhere to tax laws in specific geographies, Cloudflare collects sales tax on sales of our services based on your billing address.
 
 To avoid unwanted charges, ensure your billing address and payment method are accurate within your Cloudflare account.

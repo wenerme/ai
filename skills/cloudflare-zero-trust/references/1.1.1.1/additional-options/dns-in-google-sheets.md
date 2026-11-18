@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-googl
 
 # DNS in Google Sheets
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Create a function
 
 This tutorial creates a custom Google Sheets function that queries Cloudflare's 1.1.1.1 DNS resolver using DNS over HTTPS (DoH) — a protocol that encrypts DNS lookups over HTTPS. Once set up, you can type a formula like `=NSLookup("A", "example.com")` in any cell to retrieve DNS records without leaving your spreadsheet. This is useful for bulk domain audits, migration planning, or monitoring DNS changes across many domains at once.

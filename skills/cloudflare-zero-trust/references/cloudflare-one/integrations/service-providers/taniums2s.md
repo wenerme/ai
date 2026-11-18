@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/service-pro
 
 # Tanium
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/taniums2s/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One can integrate with Tanium to require that users connect to certain applications from managed devices. This service-to-service posture check uses the Cloudflare One Client to read endpoint data from Tanium. Devices are identified by their serial numbers. If multiple devices have the same serial number, Cloudflare cannot accurately match a device with a third-party provider device. You must ensure that each of your devices has a unique serial number.
 
 ## Prerequisites

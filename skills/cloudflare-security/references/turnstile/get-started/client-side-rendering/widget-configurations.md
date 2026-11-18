@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/get-started/client-side-rende
 
 # Widget configurations
 
-Last updated Jun 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure your Turnstile widget's appearance, behavior, and functionality using data attributes or JavaScript render parameters.
 
 ## Rendering methods

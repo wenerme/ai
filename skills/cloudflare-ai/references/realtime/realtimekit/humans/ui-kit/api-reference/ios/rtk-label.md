@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkLabel
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-label/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A themed label that uses design token colors and fonts from the RTK Design System.
 
 ## Initializer parameters

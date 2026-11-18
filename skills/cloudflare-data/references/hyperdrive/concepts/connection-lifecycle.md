@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycl
 
 # Connection lifecycle
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Understanding how connections work between Workers, Hyperdrive, and your origin database is essential for building efficient applications with Hyperdrive.
 
 By maintaining a connection pool to your database within Cloudflare's network, Hyperdrive reduces seven round-trips to your database before you can even send a query: the TCP handshake (1x), TLS negotiation (3x), and database authentication (3x).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/og.png?v=19731b13ef08ad5e
 
 # Cloudflare Smart Shield
 
-Last updated Jun 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Protect your origin server, reduce load, and improve content delivery performance.
 
 Every request that reaches your origin server costs resources — bandwidth, compute, and connections. When traffic spikes or your content is requested from many locations simultaneously, your origin can become a bottleneck. Smart Shield is a bundle of origin protection and performance features that reduce the number of requests and connections between Cloudflare's network and your origin server.

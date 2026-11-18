@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Applications
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access protects applications through several application types. Not sure which to use? Refer to [Choose an application type](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/).
 
 - [Choose an application type](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/deployments/og.png?v=e0
 
 # Deployments
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Durable Objects code updates](https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/)
 - [Gradual Deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#gradual-deployments-for-durable-objects)
 

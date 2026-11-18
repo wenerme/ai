@@ -16,8 +16,6 @@ d
 
 Text Generation • deepseek
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `deepseek/deepseek-v4-pro` Copy

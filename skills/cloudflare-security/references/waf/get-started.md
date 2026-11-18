@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/get-started/og.png?v=c1fc9510104254
 
 # Get started
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Web Application Firewall (Cloudflare WAF) checks incoming web and API requests and filters undesired traffic based on sets of rules called rulesets.
 
 This page will guide you through the recommended initial steps for configuring the WAF to get immediate protection against the most common attacks.

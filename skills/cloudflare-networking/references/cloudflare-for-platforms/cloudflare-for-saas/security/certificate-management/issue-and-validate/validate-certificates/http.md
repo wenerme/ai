@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # HTTP
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 HTTP validation involves adding a DCV token to your customer's origin.
 
 You choose one certificate validation method when you [create a custom hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/). The API accepts one `ssl.method` value: `http`, `txt`, or `email`.

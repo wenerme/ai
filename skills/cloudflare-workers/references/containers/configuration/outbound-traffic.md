@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/configuration/outbound-traff
 
 # Handle outbound traffic
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Outbound intercepts let you intercept and modify HTTP traffic from a container with trusted code.
 
 Use them to:

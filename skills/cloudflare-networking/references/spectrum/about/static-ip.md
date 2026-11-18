@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/about/static-ip/og.png?v=2cba8
 
 # Static IP
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/about/static-ip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you create a Spectrum application, you are assigned an IP. These IPs are normally dynamic, meaning that they will change over time. But, for instance, if you want to set up WAF custom rules for specific IPs, you may want to use static IPs.
 
 A static IP, like a physical street address can tell other computers or servers on the Internet where a specific computer is located or connected. This makes the device easier to find on the network, since the IP will not change.

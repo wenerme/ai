@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/compression-rules/create-dashboar
 
 # Create a compression rule in the dashboard
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/compression-rules/create-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. In the Cloudflare dashboard, go to the Rules **Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** > **Compression Rule**.
 3. (Optional) Select one of the rule templates that address common use cases. Then, review and adjust the proposed rule configuration.

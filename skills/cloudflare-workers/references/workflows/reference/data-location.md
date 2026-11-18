@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/reference/data-location/og.pn
 
 # Data location
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Restrict Workflows to a jurisdiction
 
 Jurisdictions are used to create Workflows whose instances only run and store data within a region to comply with data localization regulations such as [GDPR ↗︎](https://gdpr-info.eu/) or [FedRAMP ↗︎](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).

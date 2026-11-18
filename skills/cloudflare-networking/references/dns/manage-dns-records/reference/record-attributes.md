@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/reference/record
 
 # Record attributes
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use DNS record comments and tags to categorize and clarify the purpose of DNS records within Cloudflare.
 
 Comments provide a unique descriptions for specific records, whereas tags group similar records into categories.

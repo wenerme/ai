@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-rou
 
 # JSON Configuration
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/json-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Instead of using the **dashboard editor UI** to define the route graph, you can do it using the REST API. Routes are internally represented using a simple JSON structure:
 
 ```json

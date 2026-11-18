@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/languages/python/packages/og.pn
 
 # Packages
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Pywrangler ↗︎](https://github.com/cloudflare/workers-py?tab=readme-ov-file#pywrangler) is a CLI tool for managing packages and Python Workers. It is meant as a wrapper for wrangler that sets up a full environment for you, including bundling your packages into your worker bundle on deployment.
 
 To get started, create a pyproject.toml file with the following contents:

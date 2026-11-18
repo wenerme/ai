@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-rob
 
 # Round-robin DNS
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To randomly distribute traffic across multiple servers, set up multiple DNS `A` or `AAAA` records for the same hostname.
 
 Use this setup for simple, [round-robin load balancing ↗︎](https://www.cloudflare.com/learning/dns/glossary/round-robin-dns/). If you need more fine-grained control over traffic distribution — including automatic failover, intelligent routing, and more — set up our [add-on load balancing service](https://developers.cloudflare.com/load-balancing/).

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/og.
 
 # Protect access to Amazon S3 buckets with Cloudflare Zero Trust
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet. You can combine Cloudflare Access and AWS VPC endpoints. Enterprise may also use Cloudflare Gateway egress policies with dedicated egress IPs.
 
 ## Method 1: Via Cloudflare Access and VPC endpoints
@@ -144,7 +142,7 @@ flowchart TB
 
 ### Prerequisites
 
-- Cloudflare Zero Trust account with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/)
+- Cloudflare Zero Trust account with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/)
 - S3 bucket to be protected by Cloudflare Zero Trust
 
 ### 1. Set up a bucket policy to restrict access to a specific IP address
@@ -191,7 +189,7 @@ A bucket website endpoint will be available at `http://<your-S3-bucket02>.s3-web
 ### 3. Setup a dedicated egress IP policy
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Egress policies**. Select **Add a policy**.
-2. Create a policy that specifies which proxied traffic Gateway should assign a [dedicated egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) to. For more information, refer to [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/).
+2. Create a policy that specifies which proxied traffic Gateway should assign a [dedicated egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/) to. For more information, refer to [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/).
 3. In **Select an egress IP**, choose *Use dedicated Cloudflare egress IPs*. Select the dedicated egress IP defined in your bucket policy.
 4. Select **Create policy**.
 
@@ -206,5 +204,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/#page","headline":"Protect access to Amazon S3 buckets with Cloudflare Zero Trust","description":"This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/og.png?v=de1e7947eab69dc1","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/#page","headline":"Protect access to Amazon S3 buckets with Cloudflare Zero Trust","description":"This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/og.png?v=de1e7947eab69dc1","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}
 ```

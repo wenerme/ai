@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Google
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can integrate Google authentication with Cloudflare Access without a Google Workspace account. The integration allows any user with a Google account to log in (if the [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) allows them to reach the resource). Unlike the instructions for [Google Workspace](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/), the steps below will not allow you to pull group membership information from a Google Workspace account.
 
 You do not need to be a Google Cloud Platform user to integrate Google as an identity provider with Cloudflare One. You will only need to open the Google Cloud Platform to configure IdP integration settings.

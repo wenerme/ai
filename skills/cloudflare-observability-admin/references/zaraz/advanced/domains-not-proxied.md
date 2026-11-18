@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/advanced/domains-not-proxied/og.p
 
 # Domains not proxied by Cloudflare
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/domains-not-proxied/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can load Zaraz on domains that are not proxied through Cloudflare. However, you will need to create a separate domain, or subdomain, proxied by Cloudflare (also [known as orange-clouded ↗︎](https://community.cloudflare.com/t/step-3-enabling-the-orange-cloud/52715) domains), and load the script from it:
 
 1. Create a new subdomain like `my-subdomain.example.com` and proxy it through Cloudflare. Refer to [Enabling the Orange Cloud ↗︎](https://community.cloudflare.com/t/step-3-enabling-the-orange-cloud/52715) for more information.

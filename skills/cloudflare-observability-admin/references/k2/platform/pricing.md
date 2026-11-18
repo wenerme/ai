@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/k2/platform/pricing/og.png?v=d6262c6af7
 
 # Pricing
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pricing availability
 
 K2 is in public beta and billing is not enabled at this time. We will provide at least 30 days notice before billing begins. Pricing may change and is shared in advance so that you can estimate what your costs will be once Cloudflare starts billing for usage.

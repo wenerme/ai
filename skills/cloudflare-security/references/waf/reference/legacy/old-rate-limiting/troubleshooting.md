@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/
 
 # Troubleshoot Rate Limiting (previous version)
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A few common rate limiting configuration issues prevent proper request matches:
 
 - **Including HTTP or HTTPS protocol schemes in rule patterns** (such as `https://example.com/*`). To restrict rules to match only HTTP or HTTPS traffic, use the schemes array in the request match. For example, `"schemes": [ "HTTPS" ]`.

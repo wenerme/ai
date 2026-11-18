@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/lis
 
 # Use cases
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/lists/use-cases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The most common uses cases are:
 
 - When creating a rule, using a list is easier and less error-prone than adding a long list of items such as IP addresses to a rule expression.

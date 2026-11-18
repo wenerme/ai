@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/concepts/revalidation/og.png?v=77
 
 # Revalidation
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/revalidation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare revalidates cached content with your origin after the content expires. To revalidate cached content before it expires, [invalidate it](https://developers.cloudflare.com/cache/guides/invalidate-cache/).
 
 ## Stale-while-revalidate

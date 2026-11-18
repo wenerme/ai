@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log
 
 # Log mode versus production mode
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Security for Apps can operate in two distinct modes. Understanding the trade-offs between them helps you choose the right approach for your stage of deployment.
 
 ## Comparison

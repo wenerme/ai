@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/function-calling/og
 
 # Function calling
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Function calling enables people to take Large Language Models (LLMs) and use the model response to execute functions or interact with external APIs. The developer usually defines a set of functions and the required input schema for each function, which we call `tools`. The model then intelligently understands when it needs to do a tool call, and it returns a JSON output which the user needs to feed to another function or API.
 
 In essence, function calling allows you to perform actions with LLMs by executing code or making additional API calls.

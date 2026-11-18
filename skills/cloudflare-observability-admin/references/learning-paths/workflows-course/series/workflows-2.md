@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workflows-course/series/
 
 # Monitor and batch your website data
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution. This section demonstrates processing a batch of puns using the Punderful application as an example.
 
 **Related content**

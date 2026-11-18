@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/conversions/og.png?v=47
 
 # DNS setup conversions
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/conversions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can perform the following DNS setup conversions:
 
 - [Convert full setup to partial setup](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/)

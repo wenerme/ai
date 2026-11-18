@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/containers/examples/r2-fuse-mount/og.pn
 
 Mount R2 buckets as filesystems using FUSE in Containers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Mount an [R2 bucket](https://developers.cloudflare.com/r2/) with Filesystem in Userspace (FUSE). This example starts a Container, mounts the bucket read-only, lists its contents, and exits. The Durable Object awaits completion with `monitor()`.
 
 FUSE provides filesystem access to object storage. It does not provide local-disk performance or full POSIX filesystem semantics. It is useful for reading datasets, models, and shared assets.
@@ -31,7 +29,7 @@ Create a bucket and [R2 API credentials](https://developers.cloudflare.com/r2/ap
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "observability": {
     "enabled": true
   },
@@ -72,7 +70,7 @@ name = "r2-fuse-container"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [observability]
 enabled = true

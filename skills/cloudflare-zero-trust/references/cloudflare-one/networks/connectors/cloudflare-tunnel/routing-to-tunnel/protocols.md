@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Protocols for published applications
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you [add a published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application) to a Cloudflare Tunnel, you are instructing Cloudflare to proxy requests for your public hostname to a service running privately behind `cloudflared`.
 
 The table below lists the service types you can route to a public hostname. Non-HTTP services require [installing `cloudflared` on the client](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/) for end users to connect.

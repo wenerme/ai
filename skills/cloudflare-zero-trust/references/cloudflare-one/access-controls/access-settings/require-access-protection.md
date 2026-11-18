@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-s
 
 # Require Access protection
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Access allows you to require Access protection for all hostnames in your account. When this setting is turned on, traffic to any hostname without a matching [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/) is automatically blocked.
 
 This deny-by-default approach prevents accidental exposure of internal resources to the public Internet. Without this setting, a developer could deploy a new application or create a DNS record and inadvertently expose the resource before configuring an Access application.

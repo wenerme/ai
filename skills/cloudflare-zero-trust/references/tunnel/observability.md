@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/observability/og.png?v=b6362e17d
 
 # Observability
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monitor tunnel health and resolve issues.
 
 ## Tunnel health

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to
 
 # Migrate from Wrangler v3 to v4
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wrangler v4 is a major release focused on updates to underlying systems and dependencies, along with improvements to keep Wrangler commands consistent and clear. Unlike previous major versions of Wrangler, which were [foundational rewrites ↗︎](https://blog.cloudflare.com/wrangler-v2-beta/) and [rearchitectures ↗︎](https://blog.cloudflare.com/wrangler3/) — Version 4 of Wrangler includes a much smaller set of changes. If you use Wrangler today, your workflow is very unlikely to change.
 
 While many users should expect a no-op upgrade, the following sections outline the more significant changes and steps for migrating where necessary.

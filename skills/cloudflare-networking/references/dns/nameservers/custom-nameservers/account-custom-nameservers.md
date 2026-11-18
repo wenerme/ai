@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/acco
 
 # Set up account custom nameservers
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Account custom nameservers (ACNS) allow you to define account-level custom nameservers and use them for different zones within a Cloudflare account.
 
 ACNS are organized in different sets (`ns_set`) and ACNS names can be provided by any domain, even if the domain does not exist as a zone in Cloudflare.

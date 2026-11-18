@@ -22,7 +22,7 @@ check whether its toolset is enabled.
 |---------|-------|
 | `meta` | [`get_mcp_server_version`](#get_mcp_server_version) |
 | `core` | [`get_project`](#get_project), [`save_project`](#save_project), [`get_user`](#get_user), [`get_group`](#get_group), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`list_user_events`](#list_user_events), [`list_milestones`](#list_milestones), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
-| `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
+| `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request), [`apply_suggestion`](#apply_suggestion) |
 | `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`list_work_item_saved_views`](#list_work_item_saved_views), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
 | `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`list_pipeline_schedules`](#list_pipeline_schedules), [`save_pipeline`](#save_pipeline), [`save_pipeline_job`](#save_pipeline_job), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
@@ -261,6 +261,7 @@ Update merge request 42 in project gitlab-org/gitlab to add the "bug" label and 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/605878) to accept `url` and return associated data facets in GitLab 19.3.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/639870) to return reviewers, labels, `diffHeadSha`, and `detailedMergeStatus` in the base response, in GitLab 19.7.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/640199) to return the suggestions on each note in GitLab 19.7.
 
 This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -302,6 +303,11 @@ call returns an error. Each note returns its `position` (the file and line of a 
 its `discussion` (the thread it belongs to, and whether the thread is resolved). The response also
 includes `resolvedDiscussionsCount` and `resolvableDiscussionsCount`.
 
+In the `notes` and `discussions` facets, each note also lists up to 20 of its suggestions.
+Each suggestion has a numeric `id`, `toContent` (the suggested text), and `applied` (whether the
+suggestion is applied). Pass the `id` to
+[`apply_suggestion`](#apply_suggestion) to apply that suggestion.
+
 The `conflicts` facet returns raw conflict file content, including Git conflict markers. It is
 available only when the merge request cannot be merged and you can push to the source branch, and
 is `null` until mergeability has been checked. Read the base `conflicts` field to determine the state.
@@ -315,6 +321,7 @@ Get merge request 15 in project gitlab-org/gitlab with its commits
 ## `list_duo_agents_and_flows`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617173) in GitLab 19.5.
+- `include_triggers` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/640203) in GitLab 19.7.
 
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -346,12 +353,13 @@ name `GitLab Duo`; entries configured in the project have `workflow_definition` 
 Foundational chat agents are governed by the project's top-level group on GitLab.com, and by the
 organization on GitLab Self-Managed, rather than by the project.
 
-| Parameter    | Type    | Required | Description |
-|--------------|---------|----------|-------------|
-| `project_id` | string  | Yes      | Numeric ID or full path of the project to list agents and flows for. |
-| `item_type`  | string  | No       | Return only `agent`, `flow` or `third_party_flow` entries. All kinds are returned when omitted. |
-| `after`      | string  | No       | Cursor for forward pagination. |
-| `first`      | integer | No       | Number of agents and flows to return for forward pagination. Default is 20, maximum is 100. |
+| Parameter          | Type    | Required | Description |
+|--------------------|---------|----------|-------------|
+| `project_id`       | string  | Yes      | Numeric ID or full path of the project to list agents and flows for. |
+| `item_type`        | string  | No       | Return only `agent`, `flow` or `third_party_flow` entries. All kinds are returned when omitted. |
+| `include_triggers` | boolean | No       | Return the triggers of each entry, and keep disabled entries in the list. Default is `false`. |
+| `after`            | string  | No       | Cursor for forward pagination. |
+| `first`            | integer | No       | Number of agents and flows to return for forward pagination. Default is 20, maximum is 100. |
 
 Each call returns a single page of results.
 If more pages exist, the response includes `pageInfo.endCursor` that you can pass as `after`.
@@ -360,10 +368,31 @@ Items that are configured but disabled are dropped after the page is fetched, so
 hold fewer entries than `first`, or none at all, while `pageInfo.hasNextPage` is still `true`.
 Keep paging until `hasNextPage` is `false` instead of stopping at an empty page.
 
-Example:
+When `include_triggers` is `true`, disabled entries are kept, because a disabled flow does not
+run when its triggers fire. Each entry then also includes:
+
+- `enabled`: whether the entry is enabled in the project.
+- `triggers`: the [triggers](../duo_agent_platform/triggers/_index.md) that start the entry, each with:
+  - `id`: numeric ID of the trigger.
+  - `description`: description of the trigger.
+  - `event_types`: the events that start the trigger, such as `mention`, `assign`, or `scheduled`.
+  - `kind`: `event` or `scheduled`. Security policy triggers have no kind.
+  - `active`: whether the trigger is active.
+  - `last_run`: the `status`, `started_at`, `finished_at`, and `error` of the most recent run,
+    or `null` if the trigger has never run.
+
+`triggers` is `null` if you or your token do not have permission to view the entry's triggers.
+For an entry inherited from the top-level group, those are the group's triggers.
+Foundational chat agents have no triggers.
+
+Examples:
 
 ```plaintext
 Which Duo flows can I run in gitlab-org/gitlab?
+```
+
+```plaintext
+Why didn't the review flow run on my merge request in gitlab-org/gitlab?
 ```
 
 ## `start_duo_session`
@@ -742,6 +771,7 @@ Examples:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597494) in GitLab 19.2.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by the `notes` facet of [`get_merge_request`](#get_merge_request).
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/640199) to return the suggestions on each note in GitLab 19.7.
 
 This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -761,6 +791,8 @@ Retrieves the notes (comments and system notes) for a specific GitLab merge requ
 | `last`              | integer | No       | Number of notes to return for backward pagination.                                             |
 
 Each returned note includes its discussion ID, so related notes can be grouped into threads.
+Each note also lists up to 20 of its suggestions. Each suggestion has a numeric `id`, `toContent`
+(the suggested text), and `applied` (whether the suggestion is applied).
 
 Example:
 
@@ -994,6 +1026,50 @@ Example:
 
 ```plaintext
 Merge merge request 42 in project gitlab-org/gitlab once its checks pass, and remove the source branch
+```
+
+## `apply_suggestion`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/640199) in GitLab 19.7.
+
+Prerequisites:
+
+- You must have permission to push to the source branch of the merge request.
+
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Applies a code review suggestion as a commit on the source branch of its merge request.
+
+To get the ID of a suggestion, use `get_merge_request` with `include` set to `notes` or `discussions`.
+Each note lists up to 20 of its suggestions with their IDs.
+
+The response contains the suggestion with the following fields:
+
+- `id`
+- `from_line`
+- `to_line`
+- `appliable`
+- `applied`
+- `from_content`
+- `to_content`
+
+The call fails with one of the following statuses:
+
+- `404` when the suggestion doesn't exist.
+- `403` when you don't have permission to apply the suggestion, or when the suggestion
+  is on a file that the project excludes from GitLab Duo context.
+- `400` when the suggestion can't be applied, for example because the line changed in
+  a more recent version of the merge request.
+
+| Parameter        | Type    | Required | Description |
+|------------------|---------|----------|-------------|
+| `id`             | integer | Yes      | ID of the suggestion. |
+| `commit_message` | string  | No       | Custom commit message. Replaces the generated message or the project's [commit message for applied suggestions](../project/merge_requests/reviews/suggestions.md#configure-the-commit-message-for-applied-suggestions). |
+
+Example:
+
+```plaintext
+Apply suggestion 123
 ```
 
 ## `add_branch`

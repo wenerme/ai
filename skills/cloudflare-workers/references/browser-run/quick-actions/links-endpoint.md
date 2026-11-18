@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/quick-actions/links-endpoin
 
 # /links - Retrieve links from a webpage
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `/links` endpoint retrieves all links from a webpage. It can be used to extract all links from a page, including those that are hidden.
 
 You can use this endpoint in two ways:
@@ -89,7 +87,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 		"https://developers.cloudflare.com/products/?product-group=AI",
 		"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/",
 		"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/",
-		"https://developers.cloudflare.com/cloudflare-one/traffic-policies/",
+		"https://developers.cloudflare.com/cloudflare-one/traffic-controls/",
 		"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/",
 		"https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/",
 		"https://developers.cloudflare.com/products/?product-group=Cloudflare+One",
@@ -216,7 +214,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 		"https://developers.cloudflare.com/products/?product-group=AI",
 		"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/",
 		"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/",
-		"https://developers.cloudflare.com/cloudflare-one/traffic-policies/",
+		"https://developers.cloudflare.com/cloudflare-one/traffic-controls/",
 		"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/",
 		"https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/",
 		"https://developers.cloudflare.com/products/?product-group=Cloudflare+One",
@@ -314,5 +312,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/#page","headline":"/links - Retrieve links from a webpage","description":"Extract all links from a webpage, including hidden ones, using the Browser Run /links endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/og.png?v=32fd75d1ed3ecd8f","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/#page","headline":"/links - Retrieve links from a webpage","description":"Extract all links from a webpage, including hidden ones, using the Browser Run /links endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/og.png?v=32fd75d1ed3ecd8f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

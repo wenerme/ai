@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/warp-client/get-started/og.png?v=f6b256
 
 # Get started
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Looking for Zero Trust?
 
 This documentation is for the consumer version of WARP (1.1.1.1 with WARP). If you are using WARP for Zero Trust security, refer to the [Cloudflare One Client documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).

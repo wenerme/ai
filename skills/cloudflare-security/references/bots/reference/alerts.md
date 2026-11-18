@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/reference/alerts/og.png?v=670d79cf
 
 # Bot Detection Alerts
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bot alerts inform you when Cloudflare detects spikes in your traffic with any of the following characteristics:
 
 - A global spike in traffic that has a bot score of less than 30.

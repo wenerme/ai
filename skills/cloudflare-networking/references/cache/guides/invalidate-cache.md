@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/guides/invalidate-cache/og.png?v=
 
 # Invalidate cached content
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/guides/invalidate-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Invalidation marks cached content as stale. On the next request, Cloudflare revalidates the content with your origin. If your origin responds with `304 Not Modified`, Cloudflare reuses the cached content instead of downloading it again.
 
 Invalidation is sometimes called soft purge.

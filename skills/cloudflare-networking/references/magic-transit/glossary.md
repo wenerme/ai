@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/glossary/og.png?v=4060764
 
 # Glossary
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the definitions for terms used across Cloudflare's Magic Transit documentation.
 
 | Term | Definition |

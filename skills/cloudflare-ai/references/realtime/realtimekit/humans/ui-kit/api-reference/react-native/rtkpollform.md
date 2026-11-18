@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkPollForm
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkpollform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Form for creating a new poll with question, dynamic options, anonymous voting, and hide results toggles.
 
 ## Properties

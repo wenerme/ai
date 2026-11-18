@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/og.png?v=f9aea71fc48f322
 
 # Cloudflare Ruleset Engine
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets in different Cloudflare products using the same basic syntax.
 
 ## Main features

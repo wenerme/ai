@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Cloudflare 1xxx errors
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The errors covered in this document may occur when accessing a website proxied by Cloudflare. For issues related to the Cloudflare API or dashboard, refer to our [Cloudflare API documentation](https://developers.cloudflare.com/api/).
 
 HTTP errors such as `409`, `530`, `403`, and `429` are returned in the HTTP status header of a response, while 1XXX errors appear in the HTML body of the response.

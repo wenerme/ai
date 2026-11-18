@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # Supported cipher suites
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare supports the following cipher suites by default. If needed, you can [restrict your website or application](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) to only use specific cipher suites.
 
 | Cipher name | Minimum protocol | [Security recommendation](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/) | Cipher suite | IANA name |

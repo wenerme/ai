@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/organizations/for-enterpri
 
 # Organizations for Enterprise
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Organizations provides a single-tier structure for Enterprise customers to manage multiple Cloudflare accounts from one unified dashboard.
 
 ## Who is this for?

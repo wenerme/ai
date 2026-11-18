@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/api/rest-api/og.png?v=203efb7
 
 # REST API
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/api/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Artifacts REST API to manage repos, remotes, forks, imports, and tokens from external systems.
 
 Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/) first, then choose the namespace name you will use in these API paths.

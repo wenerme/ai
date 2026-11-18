@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cf/wrangler/migrate/og.png?v=28973f624b
 
 # Migrate a Wrangler project
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/wrangler/migrate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `cf migrate` converts a Wrangler configuration file to `cloudflare.config.ts` and adds `cf` to your project. It handles most of the conversion, then lists the items that you finish by hand. This page covers the whole migration: preview, run, resolve follow-up items, finish the project, validate, and deploy.
 
 Release candidate

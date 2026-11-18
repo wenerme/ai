@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/interaction-cloudflare-products/w
 
 # Customize cache behavior with Workers
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use [Workers](https://developers.cloudflare.com/workers/) to customize cache behavior on Cloudflare's network. Workers run as middleware in the request lifecycle — a single Worker handles both the request and response phases. When a request arrives, it hits the Worker before the cache is checked. The Worker can modify the incoming request (for example, rewrite the URL or add headers), then call `fetch()` to continue the request through the cache. When the response comes back — whether from cache or from the origin server — the Worker can also modify the response before it is sent to the visitor.
 
 Note

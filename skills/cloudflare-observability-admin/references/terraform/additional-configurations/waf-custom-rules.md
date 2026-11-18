@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/additional-configurations/waf
 
 # WAF custom rules configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page provides examples of creating [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) in a zone or account using Terraform. The examples cover the following scenarios:
 
 - [Add a custom rule to a zone](#add-a-custom-rule-to-a-zone)

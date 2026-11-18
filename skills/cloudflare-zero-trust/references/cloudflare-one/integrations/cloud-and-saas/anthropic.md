@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-s
 
 # Anthropic
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Anthropic integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Anthropic account that could leave you and your organization vulnerable.
 
 This integration covers the following Anthropic products:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/migration/hcaptcha/og.png?v=8
 
 # Migrate from hCaptcha
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/migration/hcaptcha/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you are using hCaptcha today, you can switch seamlessly to Cloudflare Turnstile by following the step-by-step guide below to assist with the upgrade process.
 
 To complete the migration, you must obtain the [sitekey and secret key](https://developers.cloudflare.com/turnstile/get-started/widget-management/).

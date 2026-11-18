@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/media-streaming/secure-conten
 
 # Secure your content
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/secure-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Media assets are vulnerable to hotlinking, unauthorized downloads, and piracy. Cloudflare Hotlink Protection blocks other sites from embedding your media, Stream signed URLs provide time-limited access tokens, and Access gates premium content behind identity policies.
 
 ## Solutions

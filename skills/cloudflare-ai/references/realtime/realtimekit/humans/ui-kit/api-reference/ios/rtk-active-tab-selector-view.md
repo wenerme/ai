@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkActiveTabSelectorView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-active-tab-selector-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A horizontally scrollable tab selector for switching between plugins and screen shares.
 
 ## Properties

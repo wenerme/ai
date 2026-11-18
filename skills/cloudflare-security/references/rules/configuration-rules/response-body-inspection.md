@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/configuration-rules/response-body
 
 # Response body inspection
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When no enabled feature needs response content, Cloudflare can send data to the client as it arrives. Some features inspect or change response content at the edge.
 
 Inspection can hold part of a response at the edge. This may increase time to first byte (TTFB) or delay incremental delivery. The amount of data held depends on the feature and response.

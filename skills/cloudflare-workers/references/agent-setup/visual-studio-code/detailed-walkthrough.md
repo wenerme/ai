@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agent-setup/visual-studio-code/detailed
 
 # Visual Studio Code detailed walkthrough
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-setup/visual-studio-code/detailed-walkthrough/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This walkthrough connects Visual Studio Code directly to the Cloudflare API using the [Cloudflare MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). By the end, you can create a DNS record by typing a sentence, without leaving the editor.
 
 The Cloudflare MCP server at `mcp.cloudflare.com` exposes the Cloudflare API to any MCP-capable agent. The Visual Studio Code Copilot agent connects to it, and you run API calls from natural language.

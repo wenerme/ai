@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Configure Virtual Appliance
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Register a virtual appliance and generate a license key
 
 You can register a Cloudflare One Virtual Appliance instance and generate its license key yourself, from either the dashboard or the API — no account team involvement required. Each create or rotate request returns a license key that you use to activate the deployed VM.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/smart-placement/og.png?
 
 # Smart Placement
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/smart-placement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Functions](https://developers.cloudflare.com/pages/functions/) are invoked in a data center closest to where the request was received. If you are running back-end logic in a Pages Function, it may be more performant to run that Pages Function closer to your back-end infrastructure rather than the end user. Smart Placement (beta) automatically places your workloads in an optimal location that minimizes latency and speeds up your applications.
 
 ## Background

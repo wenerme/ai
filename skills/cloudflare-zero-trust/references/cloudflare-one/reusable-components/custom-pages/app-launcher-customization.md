@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/cust
 
 # App Launcher customization
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Only available on Pay-as-you-go and Enterprise plans.

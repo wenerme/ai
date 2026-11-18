@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/security-header
 
 Set common security headers such as X-XSS-Protection, X-Frame-Options, and X-Content-Type-Options.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/security-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ```js
 export default {
 	async fetch(request) {

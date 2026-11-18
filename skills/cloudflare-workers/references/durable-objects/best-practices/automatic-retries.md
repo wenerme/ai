@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/best-practices/automati
 
 # Automatic retries
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/automatic-retries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The runtime retries some failed calls to a Durable Object. This covers `fetch()` and RPC method calls through a stub, whether the caller is a Worker or another Durable Object. You do not need to change your code to get these retries.
 
 ## Which failures the runtime retries

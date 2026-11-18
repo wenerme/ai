@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/additional-options/dns-zone-default
 
 # Configure DNS zone defaults
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 While there are default values for DNS settings that Cloudflare applies to all new zones, Enterprise accounts have the option to configure their own DNS zone defaults according to their preference.
 
 Caution

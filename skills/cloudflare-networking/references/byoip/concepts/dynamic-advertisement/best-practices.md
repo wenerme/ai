@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/be
 
 # Best practices
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Prerequisites
 
 To prevent issues and simplify the advertisement process during an attack scenario, complete the following tasks.

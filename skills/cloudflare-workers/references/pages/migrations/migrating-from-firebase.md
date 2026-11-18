@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/migrations/migrating-from-firebas
 
 # Migrating from Firebase
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-firebase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to migrate an existing Firebase application to Cloudflare Pages. You should already have an existing project deployed on Firebase that you would like to host on Cloudflare Pages.
 
 ## Finding your build command and build directory

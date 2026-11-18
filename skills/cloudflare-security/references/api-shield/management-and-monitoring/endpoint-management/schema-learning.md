@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/en
 
 # Learn request schemas
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Schema Learning is the learned source for a Schema Profile. For the shared detection and mitigation model, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).

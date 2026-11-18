@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/sql-referenc
 
 # Encoding functions
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/encoding-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## bin New
 
 Usage:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-
 
 # Global
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you enable global Authenticated Origin Pulls (AOP), Cloudflare uses a Cloudflare-provided client certificate for all proxied traffic to your zone. This certificate is shared across all Cloudflare accounts and guarantees that the request is coming from the Cloudflare network.
 
 Global, [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/), and [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP are independent configurations. Enabling or disabling one does not affect the others.

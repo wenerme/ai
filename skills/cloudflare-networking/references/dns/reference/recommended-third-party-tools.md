@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/reference/recommended-third-party-t
 
 # Recommended third-party tools
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use the third-party tools listed below to test and troubleshoot DNS settings.
 
 - [DNSViz ↗︎](https://dnsviz.net): A web-based tool for visualizing the status of a DNS zone to understand and troubleshoot the deployment of DNS Security Extensions (DNSSEC).

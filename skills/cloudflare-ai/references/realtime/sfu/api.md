@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/api/og.png?v=e297f2705ac92
 
 # Connection API
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Connection API to manage a Realtime SFU application's media resources. Your backend sends authenticated HTTPS requests, while endpoints exchange media and DataChannels with the SFU over WebRTC.
 
 Base URL:

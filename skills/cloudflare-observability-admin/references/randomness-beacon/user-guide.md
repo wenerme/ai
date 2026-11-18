@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/randomness-beacon/user-guide/og.png?v=a
 
 # User Guide
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/randomness-beacon/user-guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For the most up-to-date user documentation, please visit [drand.love/developer ↗︎](https://drand.love/developer/).
 
 Was this helpful?

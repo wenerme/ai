@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/custom-actions/additional-fields/
 
 # Additional fields
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/custom-actions/additional-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Some tools supported by Zaraz let you add fields in addition to the required field. Fields can usually be added either to a specific action, or to all the action within a tool, by adding the field as a **Default Field**.
 
 ## Add an additional field to a specific action

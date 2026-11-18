@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/storage/kv/og
 
 # KV
 
-Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/storage/kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [KV Reference](https://developers.cloudflare.com/kv/api/)
 
 ## Namespaces

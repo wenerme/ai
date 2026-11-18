@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/reference/consistency/og.png?v=024d7
 
 # Consistency model
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/consistency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page details R2's consistency model, including where R2 is strongly, globally consistent and which operations this applies to.
 
 R2 can be described as "strongly consistent", especially in comparison to other distributed object storage systems. This strong consistency ensures that operations against R2 see the latest (accurate) state: clients should be able to observe the effects of any write, update and/or delete operation immediately, globally.

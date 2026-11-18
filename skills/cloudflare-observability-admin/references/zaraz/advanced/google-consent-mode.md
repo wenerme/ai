@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/og.p
 
 # Google Consent Mode
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/google-consent-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Background
 
 [Google Consent Mode ↗︎](https://developers.google.com/tag-platform/security/concepts/consent-mode) is used by Google tools to manage consent regarding the usage of private data and Personally Identifiable Information (PII). Zaraz provides automatic support for Consent Mode v2, as well as manual support for Consent Mode v1.

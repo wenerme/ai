@@ -5,7 +5,7 @@ description: "Browse Ambient model IDs, capabilities, context windows, and prici
 
 # [Ambient logo]Ambient
 
-Access 10 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
+Access 11 Ambient models through Mastra's model router. Authentication is handled automatically using the `AMBIENT_API_KEY` environment variable.
 
 Learn more in the [Ambient documentation](https://ambient.xyz).
 
@@ -64,6 +64,18 @@ for await (const chunk of stream) {
     "outputCost": 0.001
   },
   {
+    "model": "ambient/deepseek/deepseek-v4.1-flash-1017",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.098,
+    "outputCost": 0.294
+  },
+  {
     "model": "ambient/minimax/minimax-m3",
     "imageInput": false,
     "audioInput": false,
@@ -71,7 +83,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 131702,
+    "maxOutput": 131072,
     "inputCost": 0.23,
     "outputCost": 0.96
   },

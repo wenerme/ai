@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/zone-lockdown/og.png?v=9c6be6
 
 # Zone Lockdown
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Zone Lockdown specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL. You can configure multiple destinations, including IPv4/IPv6 addresses, in a single zone lockdown rule.
 
 All IP addresses not specified in the zone lockdown rule will not have access to the specified resources. Requests from those IP addresses will receive an `Access Denied` response.

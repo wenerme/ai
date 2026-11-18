@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/block-ms-exc
 
 # Block Microsoft Exchange Autodiscover requests
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-ms-exchange-autodiscover/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In some cases, Microsoft Exchange Autodiscover service requests can be "noisy", triggering large numbers of `HTTP 404` (`Not found`) errors.
 
 This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests for `autodiscover.xml` and `autodiscover.src`:

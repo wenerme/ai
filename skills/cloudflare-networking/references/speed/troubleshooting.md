@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/troubleshooting/og.png?v=2f44e8b3
 
 # Troubleshooting
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following topics are useful for troubleshooting Speed issues.
 
 Filter resources...

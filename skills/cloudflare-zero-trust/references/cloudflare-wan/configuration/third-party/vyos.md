@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # VyOS
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/vyos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial provides configuration information and a sample template for using a VyOS device with an IPsec configuration.
 
 ## Notes

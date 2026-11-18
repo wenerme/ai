@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/service-
 
 # Service tokens
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can provide automated systems with service tokens to authenticate against your Cloudflare One policies. Cloudflare Access will generate service tokens that consist of a Client ID and a Client Secret. Automated systems or applications can then use these values to reach an application protected by Access.
 
 This section covers how to create, tag, rotate, renew, disable, and revoke a service token. You can also configure Access to manage inactive service tokens automatically.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/attack-signature-detecti
 
 # Use attack signatures in Security Rules
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/attack-signature-detection/use-attack-signatures-in-security-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Attack Signature Detection fields let Security Rules act on matching traffic. The detection fields do not apply actions by themselves.
 
 Note

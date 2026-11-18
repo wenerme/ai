@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-
 
 # Authenticated Origin Pulls (mTLS)
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Authenticated Origin Pulls (AOP) helps ensure requests to your origin server come from the Cloudflare network, which provides an additional layer of security on top of [Full](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) or [Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) encryption modes.
 
 Check your encryption mode

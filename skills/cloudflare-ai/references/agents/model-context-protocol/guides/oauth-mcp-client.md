@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/oa
 
 # Handle OAuth with MCP servers
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When connecting to OAuth-protected MCP servers (like Slack or Notion), your users need to authenticate before your Agent can access their data. This guide covers implementing OAuth flows for seamless authorization.
 
 ## How it works

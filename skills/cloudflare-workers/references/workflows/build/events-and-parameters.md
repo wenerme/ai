@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/events-and-parameters/o
 
 # Events and parameters
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/events-and-parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a Workflow is triggered, it can receive an optional event. This event can include data that your Workflow can act on, including request details, user data fetched from your database (such as D1 or KV) or from a webhook, or messages from a Queue consumer.
 
 Events are a powerful part of a Workflow, as you often want a Workflow to act on data. Because a given Workflow instance executes durably, events are a useful way to provide a Workflow with data that should be immutable (not changing) and/or represents data the Workflow needs to operate on at that point in time.

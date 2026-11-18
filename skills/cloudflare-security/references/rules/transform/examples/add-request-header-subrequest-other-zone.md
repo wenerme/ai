@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/transform/examples/add-request-he
 
 Create a request header transform rule to add an HTTP header when the Workers subrequest comes from a different zone.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/add-request-header-subrequest-other-zone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following request header transform rule adds an HTTP header to Workers subrequests coming from a different zone:
 
 Text in **Expression Editor** (replace `myappexample.com` with your domain):

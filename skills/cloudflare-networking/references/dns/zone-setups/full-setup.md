@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/full-setup/og.png?v=d70
 
 # Primary setup (Full)
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare DNS offers a few different [setup options](https://developers.cloudflare.com/dns/zone-setups/). A primary setup (also known as full) is the most common and the only one available for Free or Pro plans.
 
 In a primary setup, Cloudflare is your primary authoritative DNS provider, which means that, when a visitor tries to access your website or application, DNS resolvers will consider the [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/) that you have on Cloudflare.

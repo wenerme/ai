@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # General Troubleshooting
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find links to the relevant sections for General Troubleshooting support-focused material.
 
 - [Cannot locate dashboard account](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/)

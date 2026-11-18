@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloud
 
 # Use mTLS with Cloudflare protected resources
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this implementation guide we will be focusing on the L7 / Application Layer security for HTTP/S requests targeting [proxied](https://developers.cloudflare.com/dns/proxy-status/) hostnames, including the [first connection](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) between client and Cloudflare.
 
 Some common mTLS use cases are:

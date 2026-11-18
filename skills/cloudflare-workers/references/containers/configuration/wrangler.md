@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/configuration/wrangler/og.pn
 
 # Wrangler configuration
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Define Containers in the Wrangler configuration file for your Worker. Each Container is associated with a Durable Object class, which provides access to the Container at runtime.
 
 ## Minimal configuration
@@ -27,7 +25,7 @@ A new Container application requires a Container definition, a Durable Object bi
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"containers": [
 		{
 			"class_name": "MyContainer",
@@ -58,7 +56,7 @@ name = "my-container-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[containers]]
 class_name = "MyContainer"

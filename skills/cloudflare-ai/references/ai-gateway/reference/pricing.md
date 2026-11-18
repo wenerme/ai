@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/reference/pricing/og.png?v=e
 
 # Pricing
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway is available to use on all plans.
 
 AI Gateway's core features available today are offered for free, and all it takes is a Cloudflare account and one line of code to [get started](https://developers.cloudflare.com/ai-gateway/get-started/). Core features include: dashboard analytics, caching, and rate limiting.

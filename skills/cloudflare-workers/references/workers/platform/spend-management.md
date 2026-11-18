@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/spend-management/og.pn
 
 # Spending limits
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/spend-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Set a spending limit](https://developers.cloudflare.com/billing/manage/spend-management/) on Workers usage charges. The limit covers requests and CPU time across all Workers in your account, after included usage. It excludes the monthly subscription fee.
 
 To configure a limit, follow [Set a spending limit in the dashboard](https://developers.cloudflare.com/billing/manage/spend-management/#set-a-spending-limit-in-the-dashboard) or [Manage spending limits and alerts with the cf CLI](https://developers.cloudflare.com/billing/manage/spend-management/cli/).

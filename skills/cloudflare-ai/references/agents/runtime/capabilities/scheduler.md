@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/o
 
 # Scheduler
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `Scheduler` from `agents/schedules` runs registered callbacks in the future: after a delay, at a date, from a cron expression, or at a fixed interval. Schedules are stored as jobs in the [Lifecycle job queue](https://developers.cloudflare.com/agents/runtime/lifecycle/job-queue/), so they survive eviction and share the object's alarm with other capabilities.
 
 ## Install the capability

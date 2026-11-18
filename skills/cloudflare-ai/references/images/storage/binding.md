@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/binding/og.png?v=5aa2b6e
 
 # Manage hosted images with Workers
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
 When managing hosted images, the Images binding lets your Worker upload, list, retrieve, update, and delete hosted images without calling the REST API directly. The `hosted` namespace exposes storage and management operations. This binding can also be used to [optimize hosted images](https://developers.cloudflare.com/images/optimization/binding/).

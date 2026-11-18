@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/automatic-platform-optimization/referen
 
 # Query parameters and cached responses
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/reference/query-parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Query parameters often signal the presence of dynamic content. As a result, if there are query parameters in the URL, APO bypasses the cache and attempts to get a new version of the page from the origin by default. Because query parameters are also often used for marketing attribution, like UTMs, quick loading times are especially important for users.
 
 To add a query parameter to our allowlist, [create a post in the community ↗︎](https://community.cloudflare.com/) for consideration.

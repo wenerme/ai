@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/og.png?v=51bf2fd0ad41c6
 
 # Basin Pipelines
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Ingest, transform, and load streaming data into Apache Iceberg or Parquet in R2.
 
 Available on Workers Paid plan

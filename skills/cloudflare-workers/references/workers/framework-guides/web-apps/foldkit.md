@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/foldk
 
 # Foldkit
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/foldkit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Foldkit ↗︎](https://foldkit.dev/) supports single-page applications (SPA), static site generation (SSG), and server-side rendering (SSR). Each mode uses [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) to serve browser files. SSR also runs a Worker `fetch` handler.
 
 You need Node.js 22.22.2 or newer and a Cloudflare account.
@@ -54,7 +52,7 @@ The SPA build writes `index.html` and browser assets to `dist`. The `single-page
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-foldkit-app",
   // Set this to today's date
-  "compatibility_date": "2026-11-13",
+  "compatibility_date": "2026-11-18",
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
@@ -65,7 +63,7 @@ The SPA build writes `index.html` and browser assets to `dist`. The `single-page
 ```toml
 name = "my-foldkit-app"
 # Set this to today's date
-compatibility_date = "2026-11-13"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist"
@@ -81,7 +79,7 @@ The SSG build uses a server bundle to prerender routes, then writes HTML and bro
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-foldkit-app",
   // Set this to today's date
-  "compatibility_date": "2026-11-13",
+  "compatibility_date": "2026-11-18",
   "assets": {
     "directory": "./dist/client"
   }
@@ -91,7 +89,7 @@ The SSG build uses a server bundle to prerender routes, then writes HTML and bro
 ```toml
 name = "my-foldkit-app"
 # Set this to today's date
-compatibility_date = "2026-11-13"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist/client"
@@ -107,7 +105,7 @@ The SSR build writes a Web `fetch` handler to `dist/server/fetch.js` and browser
   "name": "my-foldkit-app",
   "main": "./dist/server/fetch.js",
   // Set this to today's date
-  "compatibility_date": "2026-11-13",
+  "compatibility_date": "2026-11-18",
   "assets": {
     "directory": "./dist/client"
   }
@@ -118,7 +116,7 @@ The SSR build writes a Web `fetch` handler to `dist/server/fetch.js` and browser
 name = "my-foldkit-app"
 main = "./dist/server/fetch.js"
 # Set this to today's date
-compatibility_date = "2026-11-13"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist/client"

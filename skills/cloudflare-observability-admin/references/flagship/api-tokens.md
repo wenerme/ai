@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/api-tokens/og.png?v=ac6d8e2d9f
 
 # API tokens
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/api-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Flagship supports two kinds of API tokens. Both use the same [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) flow. The difference is the resource the permission policy applies to.
 
 | Token type | Resource | What it can access |

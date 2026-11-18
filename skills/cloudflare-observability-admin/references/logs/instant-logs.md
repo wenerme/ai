@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/instant-logs/og.png?v=991df745a081
 
 # Instant Logs
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/instant-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Instant Logs allows Cloudflare customers to access a live stream of the traffic for their domain from the Cloudflare dashboard or from a command-line interface (CLI). Seeing data in real time allows you to investigate an attack, troubleshoot, debug or test out changes made to your network. Instant Logs is lightweight, simple to use and does not require any additional setup.
 
 ## Availability

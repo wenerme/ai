@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b
 
 # Cloudflare Email Service
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Send transactional email and route incoming email with Cloudflare Email Service. Arbitrary-recipient sending requires Workers Paid, while routing supports Workers Free and Paid.
 
 Cloudflare Email Service sends transactional email and handles incoming email.

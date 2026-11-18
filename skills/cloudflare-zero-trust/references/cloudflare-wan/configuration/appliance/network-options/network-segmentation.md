@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Network segmentation
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can define policies in your Cloudflare One Appliance (formerly Magic WAN Connector) to either allow traffic to flow between your LANs without it leaving your local premises or to forward it via the Cloudflare network where you can add additional security features. The default behavior is to drop all LAN-to-LAN traffic. These policies can be created for specific subnets, and link two LANs.
 
 ```

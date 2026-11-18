@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/get-started/bot-management/og.png?
 
 # Bot Management
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/get-started/bot-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Bot Management for Enterprise is a paid add-on that provides sophisticated bot protection for your domain. Customers can identify automated traffic, take appropriate action, and view detailed analytics within the dashboard.
 
 This Enterprise product provides the most flexibility to customers by:

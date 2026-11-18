@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/reference/migration-guid
 
 # Migrate to new GraphQL nodes
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/reference/migration-guides/load-balancing-graphql-nodes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After 30 September 2021, Cloudflare will make the following changes to the Load Balancing GraphQL schema:
 
 - Deprecate nodes:

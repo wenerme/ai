@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/concepts/og.png?v=748652c
 
 # Concepts
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Core concepts behind how Cloudflare Email Service handles deliverability, authentication, and the email lifecycle.
 
 - [Email lifecycle](https://developers.cloudflare.com/email-service/concepts/email-lifecycle/)

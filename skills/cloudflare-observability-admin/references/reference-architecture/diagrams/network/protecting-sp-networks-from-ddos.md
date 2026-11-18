@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/network
 
 # Protect ISP and telecommunications networks from DDoS attacks
 
-Last updated Feb 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) are vulnerable to network DDoS attacks, which are often focused on the end customer - for example, trying to attack a company or remote worker connected to the internet via a broadband internet service provider. Historically to protect these customers, service providers have relied on hosting their own on-premises mitigation systems. This approach necessitates significant investment to effectively combat the constantly evolving attacks, with capacity being finite in the face of escalating attack sizes.

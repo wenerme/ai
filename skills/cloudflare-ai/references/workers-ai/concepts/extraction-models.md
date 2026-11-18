@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/concepts/extraction-models/o
 
 # Extraction models
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/concepts/extraction-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Extraction models turn information into specific values your application can use, such as an invoice total, a due date, or an estimated payment amount. They return typed values rather than choosing from a fixed set of options or producing open-ended content. This helps you connect AI predictions to application logic.
 
 You provide an input state and define the values you want the model to return, including each value's type and any additional constraints. The model uses these definitions and the input state to produce a corresponding typed result for each value. Typed results provide a predictable structure but do not guarantee correctness.

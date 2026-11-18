@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/tutorials/conditionally-enfor
 
 # Conditionally enforce Turnstile
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Sometimes you may want to show Turnstile only for certain requests. For example, you might let an approved agent use a form without completing Turnstile. Here are two ways to conditionally render it: use a Transform Rule to pass request information to your site in a header, or use HTMLRewriter in a Worker to remove the widget from the response.
 
 ## Overview

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/how-to/durable-object
 
 # Durable Objects
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following sections describe how to configure Durable Objects with Regional Services and Customer Metadata Boundary to control where your Durable Objects run, persist data, and where logs are stored.
 
 ## Regional Services

@@ -18,8 +18,6 @@ Beta
 
 Text-to-Image • RunwayML
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-v1-5-inpainting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/runwayml/stable-diffusion-v1-5-inpainting` Copy
@@ -32,7 +30,7 @@ Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Terms and License | [link ↗](https://github.com/runwayml/stable-diffusion/blob/main/LICENSE) |
 | More information | [link ↗](https://huggingface.co/runwayml/stable-diffusion-inpainting) |
 | Zero data retention | Yes |

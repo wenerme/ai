@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-sta
 
 # Network filtering
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Secure Web Gateway allows you to apply policies at the network level to control which websites and non-HTTP applications users can access. This is useful when you need to control traffic that is not web browsing — for example, blocking remote desktop connections or restricting file-transfer tools across your organization.
 
 Network policies inspect individual TCP and UDP packets (the low-level data units that carry all Internet traffic), which means you can filter traffic that [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/dns/) and [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/) policies cannot reach. DNS policies only see domain lookups, and HTTP policies only see web requests — network policies go deeper and can catch protocols like SSH (remote terminal access), RDP (remote desktop), and custom applications running on non-standard ports.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/og.p
 
 # Move other 0.x features
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page replaces or removes the Sandbox SDK 0.12 features that have no class in 1.0. Each section stands alone. Follow only the sections for the features that your application uses.
 
 ## Before you start

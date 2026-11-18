@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/og.png?v=9e2a7a29666c5402
 
 # Application security dashboard
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The application security dashboard is your starting point to better understand the security posture of your web applications, and to configure rules to protect them.
 
 ### New dashboard experience

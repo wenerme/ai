@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl
 
 # Verify your AI crawler
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/verify-ai-crawler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ```
 graph LR
 A[Set up your<br>Cloudflare Account] --> B[Verify your<br>AI crawler]:::highlight

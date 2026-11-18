@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/concepts/og.png?v=1687b68c4170f465
 
 # Concepts
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page defines and articulates key concepts that are relevant to Cloudflare SSL/TLS and are used in this documentation. For more concepts and broader descriptions, check out the [Cloudflare Learning Center ↗︎](https://www.cloudflare.com/learning/ssl/what-is-ssl/).
 
 ## SSL/TLS certificate

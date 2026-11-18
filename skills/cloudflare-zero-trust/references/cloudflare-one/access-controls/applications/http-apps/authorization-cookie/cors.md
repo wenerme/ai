@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # CORS
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cross-Origin Resource Sharing ([CORS ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) is a mechanism that uses HTTP headers to grant a web application running on one origin permission to reach selected resources in a different origin. The web application executes a cross-origin HTTP request when it requests a resource that has a different origin from its own, including domain, protocol, or port.
 
 For a browser to authenticate a CORS request with an Access session, the request must include a valid `CF_Authorization` cookie. This may require additional configuration depending on the type of request:

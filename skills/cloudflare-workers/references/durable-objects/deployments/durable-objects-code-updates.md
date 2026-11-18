@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/deployments/durable-obj
 
 # Durable Objects code updates
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Durable Objects defer code updates for up to 300 seconds (5 minutes) to give in-flight requests time to finish. An active object can keep running its current code until it hibernates or reaches this delay. Deferral is best effort and does not guarantee that every operation finishes.
 
 Deploy a Worker with `--durable-objects-code-update-mode immediate` to apply a code update right away instead of waiting. For more information on when an object hibernates, refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/).

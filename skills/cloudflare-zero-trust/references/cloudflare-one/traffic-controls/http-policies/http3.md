@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # HTTP/3 inspection
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/http3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 HTTP/3 uses the QUIC protocol over UDP instead of TCP. Because Gateway's default proxy only handles TCP traffic, HTTP/3 inspection requires turning on the UDP proxy. Without it, HTTP/3 traffic bypasses HTTP inspection. [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) still apply to the underlying UDP traffic.
 
 Gateway applies HTTP policies to HTTP/3 traffic last. For more information, refer to the [order of enforcement](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/#http3-traffic).

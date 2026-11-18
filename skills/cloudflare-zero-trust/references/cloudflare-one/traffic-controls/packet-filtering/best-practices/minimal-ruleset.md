@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Minimal ruleset
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/minimal-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The suggested minimal ruleset blocks some known common vectors for DDoS attacks and permits all other ESP (Encapsulating Security Payload, used in IPsec VPNs), TCP, UDP, GRE (Generic Routing Encapsulation, used for tunnels), and ICMP traffic.
 
 This is a suggested list and not an exhaustive list. Check which ports and protocols your infrastructure uses (for example, VPN, NTP, or database services) and ensure they are not blocked by these rules.

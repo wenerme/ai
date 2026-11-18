@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolve
 
 # DNS resolver IPs and hostnames
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-resolver-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you create a DNS location, Gateway assigns IPv4/IPv6 addresses and DoT/DoH hostnames to that location. These are the IP addresses and hostnames you send your DNS queries to for Gateway to resolve.
 
 To view the resolver endpoint IP addresses and hostnames for a DNS location:

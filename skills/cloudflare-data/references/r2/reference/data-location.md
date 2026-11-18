@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/reference/data-location/og.png?v=553
 
 # Data location
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how the location of data stored in R2 is determined and about the different available inputs that control the physical location where objects in your buckets are stored.
 
 ## Automatic (recommended)

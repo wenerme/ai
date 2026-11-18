@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 403
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-403/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 403 Forbidden
 
 The `403 Forbidden` status code indicates that the client's request was understood by the server but cannot be fulfilled due to insufficient permissions to access the requested resource. For more details, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.4).

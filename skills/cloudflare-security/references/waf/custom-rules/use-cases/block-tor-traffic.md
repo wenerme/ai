@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/block-tor-tr
 
 # Block Tor traffic
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-tor-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare identifies requests coming from Tor exit nodes with the continent code `T1`. If you do not want Tor traffic on your zone, this example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests from the Tor network using the [`ip.src.continent`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.continent/) field.
 
 - **When incoming requests match**:

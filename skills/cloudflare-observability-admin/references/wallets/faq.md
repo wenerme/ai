@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/wallets/faq/og.png?v=44c60228988bad0e
 
 # FAQ
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/wallets/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Common questions about Cloudflare Wallet handles.
 
 ## Where can I reserve a Cloudflare Wallet handle?

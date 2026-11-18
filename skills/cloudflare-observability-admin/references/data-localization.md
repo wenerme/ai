@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/og.png?v=a420bb7a3a97
 
 # Data Localization Suite
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Enterprise-only paid add-on
 
 The Data Localization Suite (DLS) is a collection of tools that enable customers to choose the location where Cloudflare inspects and stores data, while maintaining the security and performance benefits of our global network. Organizations subject to data residency regulations such as [GDPR ↗︎](https://www.cloudflare.com/trust-hub/gdpr/) can use DLS to control where their encryption keys are stored, where traffic metadata and logs are kept, and where HTTPS traffic is decrypted and processed.

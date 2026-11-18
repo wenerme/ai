@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/cryptographic-pe
 
 # Cryptographic Attestation of Personhood
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare developed an [alternative ↗︎](https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/) to CAPTCHA authentication, the Cryptographic Attestation of Personhood (CAP).
 
 CAP lets you prove that you are a legitimate website visitor by touching a hardware key, instead of solving a CAPTCHA puzzle.

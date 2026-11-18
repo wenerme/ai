@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/og.
 
 # Run Docker-in-Docker
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Sandboxes](https://developers.cloudflare.com/sandbox/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
@@ -38,12 +36,12 @@ Create a custom Dockerfile that combines the sandbox binary with Docker. The Doc
 FROM docker:dind
 
 # Use the musl build so it runs on Alpine-based docker:dind
-COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /container-server/sandbox /sandbox
-COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
-COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
-COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /bin/bash /bin/bash
-COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libreadline.so.8 /usr/lib/libreadline.so.8
-COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libreadline.so.8.2 /usr/lib/libreadline.so.8.2
+COPY --from=docker.io/cloudflare/sandbox:0.12.14-musl /container-server/sandbox /sandbox
+COPY --from=docker.io/cloudflare/sandbox:0.12.14-musl /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
+COPY --from=docker.io/cloudflare/sandbox:0.12.14-musl /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
+COPY --from=docker.io/cloudflare/sandbox:0.12.14-musl /bin/bash /bin/bash
+COPY --from=docker.io/cloudflare/sandbox:0.12.14-musl /usr/lib/libreadline.so.8 /usr/lib/libreadline.so.8
+COPY --from=docker.io/cloudflare/sandbox:0.12.14-musl /usr/lib/libreadline.so.8.2 /usr/lib/libreadline.so.8.2
 
 # Start dockerd without iptables or IP forwarding, wait up to 60 seconds
 # for it to accept connections, then keep running
@@ -179,5 +177,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/#page","headline":"Run Docker-in-Docker","description":"Run Docker commands inside a Sandbox SDK 0.x container.","url":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/og.png?v=a9338674365fe277","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/#page","headline":"Run Docker-in-Docker","description":"Run Docker commands inside a Sandbox SDK 0.x container.","url":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/og.png?v=a9338674365fe277","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

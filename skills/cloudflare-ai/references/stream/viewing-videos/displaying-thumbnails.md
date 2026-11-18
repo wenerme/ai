@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbn
 
 # Display thumbnails
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Stream thumbnails are not supported for videos with non-square pixels.

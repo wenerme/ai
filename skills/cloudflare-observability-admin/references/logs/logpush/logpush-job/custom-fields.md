@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/
 
 # Custom fields
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The HTTP requests dataset includes most standard log information by default. However, if you need to capture additional request or response headers or cookies, you can use custom fields to tailor the logs to your specific needs
 
 Custom fields are configured per zone. They apply to all HTTP requests Logpush jobs that process the zone, including account-scoped jobs. The job must include the request headers, response headers, or cookie fields. You can log these fields in their raw form or as transformed values.

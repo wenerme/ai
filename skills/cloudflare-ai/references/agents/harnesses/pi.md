@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/pi/og.png?v=6a341e286a
 
 # Pi
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Pi ↗︎](https://pi.dev/) is a minimal, extensible agent harness. The Agents SDK provides first-class support for building agents using the Pi harness, and this page shows how to run [Pi Durable ↗︎](https://earendil.com/posts/pi-durable/) in a Cloudflare Durable Object with `PiHarness` from the Agents SDK.
 
 Pi runs the agent loop: the transcript, the inbox of follow-ups and steers, model calls, tools, retries, and crash recovery. `PiHarness` gives Pi storage in the Durable Object's SQLite database, and wakes the object when Pi has work to finish.
@@ -67,7 +65,7 @@ The `agents/models/pi-ai` entry point supports AI Gateway and Workers AI models,
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-03",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -84,7 +82,7 @@ name = "pi-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-03"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

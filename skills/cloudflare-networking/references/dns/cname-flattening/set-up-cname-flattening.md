@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flatt
 
 # Setup
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 If the CNAME target is on the same zone as the CNAME record, Cloudflare proceeds with CNAME flattening and ignores the **CNAME Flattening** setting.

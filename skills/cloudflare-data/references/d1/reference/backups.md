@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/reference/backups/og.png?v=933af3ced
 
 # Backups (Legacy)
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/backups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 has built-in support for creating and restoring backups of your databases with wrangler v3, including support for scheduled automatic backups and manual backup management.
 
 Planned removal

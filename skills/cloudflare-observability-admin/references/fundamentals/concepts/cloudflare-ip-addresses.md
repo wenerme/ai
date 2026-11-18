@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-add
 
 # Cloudflare IP addresses
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you add a domain to Cloudflare and [proxy its DNS records](https://developers.cloudflare.com/dns/proxy-status/), visitors who look up your domain receive a Cloudflare IP address instead of your origin server's real IP address. This hides your origin server's IP address and allows Cloudflare to optimize, cache, and protect all requests before forwarding them to you.
 
 Cloudflare has several [IP address ranges ↗︎](https://www.cloudflare.com/ips/) which are shared by all proxied hostnames. Together, these IP addresses form the backbone of Cloudflare's anycast network — a routing method where the same IP address is announced from data centers worldwide, so each visitor's request is routed to a nearby data center.

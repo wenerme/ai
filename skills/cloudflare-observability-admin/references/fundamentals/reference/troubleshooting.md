@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/troubleshooting/
 
 # Troubleshooting
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you [set up Cloudflare](https://developers.cloudflare.com/fundamentals/account/), you may experience the following issues or error messages.
 
 ## Error messages

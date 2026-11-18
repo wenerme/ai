@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/regional-services/ip-
 
 # Regionalized IP Bindings
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Regionalized IP Bindings requires the Regional Services and Regional Services for BYOIP entitlements. Contact your account team to enable them.

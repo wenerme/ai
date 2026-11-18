@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/users
 
 # Seat management
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One subscriptions consist of seats that active users in your account consume. Active users are added to Cloudflare One through any [authentication event](#authentication-events).
 
 The amount of seats available in your Cloudflare One account depends on the amount of users you purchase. If you want to increase the number of seats available, you will have to purchase more users. Learn more about adding and removing seats from your account in the [Cloudflare One FAQ](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#how-do-i-change-my-subscription-plan).

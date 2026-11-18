@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/china-network/concepts/china-dns/og.png
 
 # China Authoritative DNS
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/concepts/china-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, Cloudflare China Network resolves each DNS request at the data center closest to the client. For clients outside of Mainland China, the closest global Cloudflare data center handles the request. For clients in Mainland China, a JD Cloud data center handles the request.
 
 ## In-China Nameserver

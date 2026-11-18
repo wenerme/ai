@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/pages/og.png?
 
 # Pages
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure [Cloudflare Pages](https://developers.cloudflare.com/pages/) using Wrangler.
 
 ## `pages dev`

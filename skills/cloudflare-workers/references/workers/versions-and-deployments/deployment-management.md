@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/versions-and-deployments/deploy
 
 # Deployment management
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, these operations create a version and deploy it to 100% of traffic:
 
 - [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)

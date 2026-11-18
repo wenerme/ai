@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/guardrails/usage-co
 
 # Usage considerations
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/guardrails/usage-considerations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Guardrails currently uses [Llama Guard 3 8B ↗︎](https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/) on [Workers AI](https://developers.cloudflare.com/workers-ai/) to perform content evaluations. The underlying model may be updated in the future, and we will reflect those changes within Guardrails.
 
 Since Guardrails runs on Workers AI, enabling it incurs usage on Workers AI. You can monitor usage through the Workers AI Dashboard.

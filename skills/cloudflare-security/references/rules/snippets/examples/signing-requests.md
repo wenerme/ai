@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/snippets/examples/signing-request
 
 Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/signing-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following Snippet will:
 
 - For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.

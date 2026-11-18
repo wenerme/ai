@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 411
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-411/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 411 Length Required
 
 The `411 Length Required` status code indicates that the client did not specify the `Content-Length` of the request body in the headers, and this information is required to obtain the resource. The client may resend the request after adding the required header field.

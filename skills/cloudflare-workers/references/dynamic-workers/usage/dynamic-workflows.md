@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows
 
 # Dynamic Workflows
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can run a Workflow inside a Dynamic Worker to get durable execution for code that is loaded at runtime. Each step in the Workflow survives failures, can sleep for hours or days, can wait for external events, and resumes exactly where it left off — even if the isolate is recycled between steps.
 
 Because Dynamic Workers are created on-demand, you do not have to register each Workflow up front or manage them individually. Load the code when it is needed, and the Workflows engine handles persistence and retries behind the scenes. This works equally well for one-time executions as it does for long-running, multi-step processes.
@@ -86,7 +84,7 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "worker_loaders": [
     {
       "binding": "LOADER"
@@ -107,7 +105,7 @@ name = "my-worker-loader"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[worker_loaders]]
 binding = "LOADER"

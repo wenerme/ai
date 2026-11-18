@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/configuration/subdomains/
 
 # Configure subdomains
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/subdomains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email Routing is a zone-level feature that applies to the apex domain (for example, `example.com`) by default. Email Sending treats each domain separately and is onboarded per domain. You can extend either service to subdomains of the same zone, such as `mail.example.com` or `corp.example.com`, but the onboarding flow differs between the two.
 
 A zone can have up to 30 domains configured for Email Routing or Email Sending combined, including the apex domain. Refer to [Limits](https://developers.cloudflare.com/email-service/platform/limits/) for the full list of platform limits.

@@ -500,7 +500,7 @@ To subscribe to a label:
 - Minimum role to set label priority [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) from Reporter to Planner in GitLab 17.7.
 
 Labels can have relative priorities, which are used when you sort issue and merge request lists
-by [label priority](issues/sorting_issue_lists.md#sorting-by-label-priority) and [priority](issues/sorting_issue_lists.md#sorting-by-priority).
+by [label priority](issues/sorting_issue_lists.md#sort-by-label-priority) and [priority](issues/sorting_issue_lists.md#sort-by-priority).
 
 When prioritizing labels, you must do it from a project.
 It's not possible to do it from the group label list.

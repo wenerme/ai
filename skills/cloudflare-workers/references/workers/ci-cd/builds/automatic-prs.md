@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/og.p
 
 # Automatic pull requests
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Builds can automatically create pull requests in your repository to configure your project or resolve deployment issues. Automatic pull requests are not supported for Artifacts repositories.
 
 ## Configuration PR

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/redirects/og.png?
 
 # Redirects
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/redirects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To apply custom redirects on a Worker with static assets, declare your redirects in a plain text file called `_redirects` without a file extension, in the static asset directory of your project. This file will not itself be served as a static asset, but will instead be parsed by Workers and its rules will be applied to static asset responses.
 
 If you are using a framework, you will often have a directory named `public/` or `static/`, and this usually contains deploy-ready assets, such as favicons, `robots.txt` files, and site manifests. These files get copied over to a final output directory during the build, so this is the perfect place to author your `_redirects` file. If you are not using a framework, the `_redirects` file can go directly into your [static assets directory](https://developers.cloudflare.com/workers/static-assets/binding/#directory).

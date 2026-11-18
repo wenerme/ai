@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/table-maintenance/og.png?
 
 # Table maintenance
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/table-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Table maintenance encompasses a set of operations that keep your Apache Iceberg tables performant and cost-efficient over time. As data is written, updated, and deleted, tables accumulate metadata and files that can degrade query performance over time.
 
 Basin Catalog automates two critical maintenance operations:

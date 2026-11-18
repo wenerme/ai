@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/detection/review-m
 
 # Review resources considered malicious
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Domain-based threat intelligence is available to all customers. Malicious code analysis and URL-based threat intelligence require Client-Side Security Advanced.

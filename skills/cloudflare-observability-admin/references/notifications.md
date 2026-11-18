@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/notifications/og.png?v=53368d19a966bd60
 
 # Alerts
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Alerts is part of [Cloudflare Observability](https://developers.cloudflare.com/observability/). In the dashboard, you can find it under **Observability** > **Alerts**.
 
 Alerts are organized into two categories: **Monitors** that you define yourself, and **Platform Notifications** that Cloudflare evaluates automatically.

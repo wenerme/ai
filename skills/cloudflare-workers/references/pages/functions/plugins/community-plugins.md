@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/community-plugi
 
 # Community Plugins
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/community-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following are some of the community-maintained Pages Plugins. If you have created a Pages Plugin and would like to share it with developers, create a PR to add it to this alphabetically-ordered list using the link in the footer.
 
 - [pages-plugin-asset-negotiation ↗︎](https://github.com/Cherry/pages-plugin-asset-negotiation)

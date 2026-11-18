@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/transform-videos/og.png?v=df2510
 
 # Transform videos
 
-Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/transform-videos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can optimize and manipulate videos stored *outside* of Cloudflare Stream with Media Transformations. Transformed videos and images are served from one of your zones on Cloudflare.
 
 To transform a video or image, you must [enable transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) for your zone. If your zone already has Image Transformations enabled, you can also optimize videos with Media Transformations.

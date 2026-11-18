@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # How Cloudflare calculates tunnel health alerts
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Tunnel health alerts notify you when the reliability of your tunnel connections drops below an acceptable threshold. Understanding how Cloudflare calculates these alerts helps you interpret notifications and distinguish between brief, recoverable issues and sustained problems that require attention.
 
 Cloudflare uses a multi-window approach that combines short-term and long-term metrics to avoid alerting on transient issues while still detecting real degradation. The following sections explain the key concepts behind this process.

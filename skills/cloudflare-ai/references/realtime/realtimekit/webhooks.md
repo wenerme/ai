@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/webhooks/og.png?v=
 
 # Webhooks
 
-Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Webhooks let your backend receive RealtimeKit events as they happen. RealtimeKit sends an HTTP `POST` request to your configured endpoint with a JSON payload when a subscribed event occurs, such as when a meeting starts, a participant joins, or a recording is uploaded.
 
 Use webhooks for backend workflows that depend on asynchronous events, such as starting post-meeting processing, downloading transcripts, tracking recording status, or updating your own session records.

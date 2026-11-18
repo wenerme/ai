@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/og.
 
 Example of how to use Queues to handle rate limits of external APIs.
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial explains how to use Queues to handle rate limits of external APIs by building an application that sends email notifications using [Resend ↗︎](https://www.resend.com/). However, you can use this pattern to handle rate limits of any external API.
 
 Resend is a service that allows you to send emails from your application via an API. Resend has a default [rate limit ↗︎](https://resend.com/docs/api-reference/introduction#rate-limit) of two requests per second. You will use Queues to handle the rate limit of Resend.
@@ -147,7 +145,7 @@ Your final Wrangler file should look similar to the example below.
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -176,7 +174,7 @@ name = "resend-rate-limit-queue"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.producers]]

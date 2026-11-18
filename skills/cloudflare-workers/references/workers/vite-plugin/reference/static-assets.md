@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/static-as
 
 # Static Assets
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide focuses on the areas of working with static assets that are unique to the Vite plugin. For more general documentation, see [Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 
 ## Configuration

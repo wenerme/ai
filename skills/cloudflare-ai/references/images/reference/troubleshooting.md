@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/reference/troubleshooting/og.png
 
 # Troubleshooting
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Requests without resizing enabled
 
 Does the response have a `Cf-Resized` header? If not, then resizing has not been attempted. Possible causes:

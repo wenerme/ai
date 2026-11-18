@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/ech/og.png?v=1ec3
 
 # ECH Protocol
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/ech/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ECH stands for [Encrypted Client Hello ↗︎](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/16/). It is a protocol extension in the context of Transport Layer Security (TLS). ECH encrypts part of the handshake and masks the Server Name Indication (SNI) that is used to negotiate a TLS session. This means that whenever a user visits a website on Cloudflare that has ECH enabled, intermediaries will be able to see that you are visiting a website on Cloudflare, but they will not be able to determine which one.
 
 ## What ECH does

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/multi-factor
 
 # Multi-Factor Email Authentication
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/multi-factor-email-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 Cloudflare uses a Multi-Factor Email Authentication (MFA) method for increased account security. MFA prevents customer account takeovers when attackers gain unauthorized access to an account due to an exposed or easily guessed password.

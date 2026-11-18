@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/saas/code-deployment/og.png?v
 
 # Enable customer code deployment
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/saas/code-deployment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 SaaS platforms often need to let customers run their own code — custom logic, integrations, webhooks — without compromising tenant isolation or platform stability. Cloudflare Workers for Platforms runs each customer's code in a separate V8 isolate with dispatch routing based on hostname, path, or header.
 
 ## Solutions

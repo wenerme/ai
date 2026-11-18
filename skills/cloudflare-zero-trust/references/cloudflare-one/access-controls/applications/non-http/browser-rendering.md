@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Browser-rendered terminal
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare can render SSH, VNC, and RDP applications in a browser without the need for client software or end-user configuration changes. For SSH and VNC, user email prefixes must match their username on the server. RDP leverages your existing Windows usernames and passwords for authenticating to the Windows server; Cloudflare does not manage any credentials on the Windows server.
 
 ## Limitations

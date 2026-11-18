@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/o
 
 # Programmable Flow Protection (Beta)
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Programmable Flow Protection is a DDoS protection system that protects against DDoS attacks over custom or standardized Layer 7 UDP-based protocols, such as gaming protocols, financial services protocols, VoIP, telecom, and streaming. In terms of topology, it supports both asymmetric and symmetric configurations, but it will only inspect ingress traffic.
 
 Programmable Flow Protection is currently in closed beta and available as an add-on for the [Magic Transit](https://developers.cloudflare.com/magic-transit/) ([BYOIP](https://developers.cloudflare.com/byoip/) or Cloudflare-leased IPs) service only. If you would like to enable the system, contact your account team or fill out this [form ↗︎](https://www.cloudflare.com/lp/programmableddosprotection/).

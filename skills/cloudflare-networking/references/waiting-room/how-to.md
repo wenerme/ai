@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waiting-room/how-to/og.png?v=cbc88773f1
 
 # How to
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When working with Cloudflare Waiting Room, you will commonly perform the following tasks:
 
 - [Access Waiting Room](https://developers.cloudflare.com/waiting-room/how-to/waiting-room-dashboard/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/event-subscriptions/manage-event
 
 # Manage event subscriptions
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/event-subscriptions/manage-event-subscriptions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to:
 
 - Create event subscriptions to receive messages from Cloudflare services.

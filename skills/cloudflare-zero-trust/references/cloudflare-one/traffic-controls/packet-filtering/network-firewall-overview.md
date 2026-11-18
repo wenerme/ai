@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Overview
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/network-firewall-overview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Protect your cloud infrastructure or network offices with advanced, scalable firewall-as-a-service protection.
 
 Enterprise-only

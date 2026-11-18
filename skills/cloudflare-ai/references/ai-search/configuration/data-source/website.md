@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/web
 
 # Website
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can connect a website you own as a data source for your AI Search instance. AI Search crawls and indexes the pages automatically.
 
 You can only crawl domains that you have onboarded onto the same Cloudflare account. Refer to [Onboard a domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) for more information on adding a domain to your Cloudflare account.

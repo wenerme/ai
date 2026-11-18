@@ -12,13 +12,11 @@ image: https://developers.cloudflare.com/turnstile/tutorials/og.png?v=ce5c4ce967
 
 # Tutorials
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 View tutorials to help you get started with Turnstile.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/) | yesterday | Intermediate |
+| [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/) | 2 days ago | Intermediate |
 | [Fraud detection with Ephemeral IDs](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/) | 10 months ago | Advanced |
 | [Protect your forms](https://developers.cloudflare.com/turnstile/tutorials/login-pages/) | last year | Beginner |
 | [Exclude Turnstile from E2E tests](https://developers.cloudflare.com/turnstile/tutorials/excluding-turnstile-from-e2e-tests/) | 2 years ago | Intermediate |

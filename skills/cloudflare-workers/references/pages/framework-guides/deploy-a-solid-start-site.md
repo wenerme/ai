@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-s
 
 # SolidStart
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-start-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Solid ↗︎](https://www.solidjs.com/) is an open-source web application framework focused on generating performant applications with a modern developer experience based on JSX.
 
 In this guide, you will create a new Solid application implemented via [SolidStart ↗︎](https://start.solidjs.com/getting-started/what-is-solidstart) (Solid's meta-framework) and deploy it using Cloudflare Pages.

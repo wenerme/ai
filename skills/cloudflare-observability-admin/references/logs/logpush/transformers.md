@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/transformers/og.png?v=2cd4
 
 # Transformers
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Transformers let you run a SQL query against each batch of records before Logpush delivers them to your destination. Use them to filter records you do not want to store, reshape fields to match a downstream schema, redact sensitive values, compute new fields, or add static metadata.
 
 You write the logic as a single SQL query, attach it to a Logpush job, and Cloudflare runs it on every batch. The `FROM` clause names the Logpush dataset (for example, `http_requests` or `audit_logs_v2`) and field names come from that dataset's schema.

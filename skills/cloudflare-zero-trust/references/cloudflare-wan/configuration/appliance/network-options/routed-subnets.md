@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Routed subnets
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Each LAN interface (physical port + VLAN tag) on Cloudflare One Appliance (formerly Magic WAN Connector) is part of a *directly-attached subnet* — a subnet that the Appliance connects to directly. When you specify a static address for the LAN interface, you indicate both the interface's address and the subnet it attaches to. For example, `192.168.100.13/24` means the LAN interface has the IP address `192.168.100.13`, and is part of the subnet `192.168.100.0/24`.
 
 Some LANs have additional subnets behind Layer 3 routers that sit between those subnets and the Cloudflare One Appliance. These are routed subnets — the Appliance does not connect to them directly but can reach them through a next-hop router. You need to configure routed subnets so that Cloudflare installs the correct routes to forward traffic to the right Appliance and LAN interface.

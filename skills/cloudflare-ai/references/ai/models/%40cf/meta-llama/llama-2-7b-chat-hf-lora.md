@@ -18,8 +18,6 @@ Beta
 
 Text Generation • Meta
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta-llama/llama-2-7b-chat-hf-lora/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/meta-llama/llama-2-7b-chat-hf-lora` Copy
@@ -33,7 +31,7 @@ This is a Llama2 base model that Cloudflare dedicated for inference with LoRA ad
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
 | Zero data retention | Yes |
 | LoRA | Yes |

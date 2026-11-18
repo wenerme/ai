@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/change-log/http/2023-05
 
 # 2023-05-02 - Emergency
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/2023-05-02-emergency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 | Rule ID | Description | Previous Action | New Action | Notes |
 | --- | --- | --- | --- | --- |
 | ...d2f294d7 | HTTP requests trying to impersonate browsers. | ddos\_dynamic | ddos\_dynamic | Improve our capability to efficiently identify some attacks. |

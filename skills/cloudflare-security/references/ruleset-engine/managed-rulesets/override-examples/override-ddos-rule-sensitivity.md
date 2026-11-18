@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/overrid
 
 # Adjust the sensitivity of an HTTP DDoS rule to Low
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/override-ddos-rule-sensitivity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Follow the steps below to override the sensitivity of a specific rule of the Cloudflare HTTP DDoS Attack Protection managed ruleset.
 
 1. [Add a rule](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/) to a phase to deploy the Cloudflare HTTP DDoS Attack Protection managed ruleset. You only need to deploy this specific ruleset when you wish to define one or more overrides, since it is enabled by default.

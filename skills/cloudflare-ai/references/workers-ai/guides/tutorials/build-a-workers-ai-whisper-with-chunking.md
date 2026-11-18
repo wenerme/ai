@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-wor
 
 # Whisper-large-v3-turbo with Cloudflare Workers AI
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial you will learn how to:
 
 - **Transcribe large audio files:** Use the [Whisper-large-v3-turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/) model from Cloudflare Workers AI to perform automatic speech recognition (ASR) or translation.
@@ -110,14 +108,14 @@ In your wrangler file, add or update the following settings to enable Node.js AP
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-12"
+	"compatibility_date": "2026-11-18"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-11-18"
 ```
 
 ## 4. Handle large audio files with chunking

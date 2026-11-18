@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-s
 
 # Outlook (FedRAMP)
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Availability
 
 The Outlook (FedRAMP) CASB integration requires a special entitlement on your account. To request access, contact your account team.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eje
 
 # 1. Migrate webpack projects
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide describes the steps to migrate a webpack project from Wrangler v1 to Wrangler v2. After completing this guide, [update your Wrangler version](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/update-v1-to-v2/).
 
 Previous versions of Wrangler offered rudimentary support for [webpack ↗︎](https://webpack.js.org/) with the `type` and `webpack_config` keys in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Starting with Wrangler v2, Wrangler no longer supports the `type` and `webpack_config` keys, but you can still use webpack with your Workers.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/guides/migrate-to-durable-ob
 
 # Migrate to the Durable Object scheduling policy
 
-Last updated Nov 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You cannot change the scheduling policy of an existing Container application. To move from the `default` policy to the `durable_object` policy, create a replacement Container application and cut traffic over to it.
 
 The replacement application must use a new Durable Object class and namespace. The old and replacement applications cannot attach to the same Durable Object namespace.

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/platform/limits/og.png?v=
 
 Email sending quotas, rate limits, and how to request higher limits for production use
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Email Service has the following limits to ensure optimal performance and prevent abuse. These limits apply to emails sent via the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), and [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) unless noted otherwise.
 
 ## Daily sending limits

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/client-certificates/og.png?v=c59ced
 
 # Client certificates (mTLS)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Standard TLS verifies the server's identity to the client. Mutual TLS (mTLS) adds a second check: the server also verifies the client's identity using a client certificate. This allows you to restrict access to devices or services that present a valid certificate.
 
 Use Cloudflare's public key infrastructure (PKI) to create client certificates, or [bring your own CA (BYOCA)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).

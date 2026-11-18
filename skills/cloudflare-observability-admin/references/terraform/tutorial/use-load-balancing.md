@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/o
 
 # 4 – Improve performance
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will add a second origin for some basic round robining, and then use the [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/) product to fail traffic over as needed. You will also enhance your load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.
 
 ## Prerequisites

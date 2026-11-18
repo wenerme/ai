@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/account-based-rat
 
 # Account-based rate limiting
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/account-based-rate-limiting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, the GraphQL Analytics API applies rate limits per user or per API token. As you grow — adding more zones and accounts — all of your analytics traffic competes for that single per-credential quota.
 
 **Account-based rate limiting** applies limits per account and per zone instead. Each account and zone gets its own independent budget, so a single user or token can query many resources at once without exhausting one shared quota. This is the recommended model if you query analytics across multiple zones or accounts.

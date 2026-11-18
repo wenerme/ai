@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-ba
 
 # Run a server in the background
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Start a server that runs until the container stops, such as a development server, a tunnel, or a code kernel. Unlike a job, nothing waits for the server to exit. Your Durable Object starts it on first use, waits until it answers, and starts it again in each new container.
 
 For a process that runs until it finishes, such as a build or an agent task, refer to [Run background processes](https://developers.cloudflare.com/sandbox/commands/run-background-processes/). If the sandbox runs one server and keeps no files that you need, you can make the server the main process instead, as in [Preview a web application](https://developers.cloudflare.com/sandbox/previews/). When the main process exits, the instance stops, and its files end with it.

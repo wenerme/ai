@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full
 
 # Full (strict)
 
-Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you set your encryption mode to **Full (strict)**, Cloudflare does everything in [Full mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) but also enforces more stringent requirements for origin certificates.
 
 ```

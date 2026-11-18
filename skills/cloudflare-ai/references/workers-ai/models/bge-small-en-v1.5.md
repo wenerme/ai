@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Embeddings • BAAI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/baai/bge-small-en-v1.5` Copy

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/turnstile/extensions/google-firebase/og
 
 # Implement Turnstile with Google Firebase
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/extensions/google-firebase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Turnstile is [available as an extension ↗︎](https://extensions.dev/extensions/cloudflare/cloudflare-turnstile-app-check-provider) with [Google's Firebase ↗︎](https://firebase.google.com/) platform as an [App Check ↗︎](https://firebase.google.com/docs/app-check) provider. You can leverage Cloudflare Turnstile's bot detection and challenge capabilities to ensure that requests to your Firebase backend services are verified and only authentic human visitors can interact with your application.
 
 Google Firebase is a comprehensive app development platform that provides a variety of tools and services to help developers build, improve, and grow their mobile and web applications.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/analytics/acces
 
 # Access event analytics
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Access event analytics allows you to review login attempts to the applications you protect behind [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). Access event analytics are powered by [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/).
 
 To view Access event analytics:

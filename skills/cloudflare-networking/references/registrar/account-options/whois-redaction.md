@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/account-options/whois-redacti
 
 # WHOIS redaction
 
-Last updated Oct 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/whois-redaction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Registrar provides personal data redaction on WHOIS information, if permitted by the registry.
 
 WHOIS is a standard for publishing the contact and nameserver information for all registered domains. Each registrar maintains their own WHOIS service. Anyone can query the registrar’s WHOIS service to reveal the data behind a given domain.

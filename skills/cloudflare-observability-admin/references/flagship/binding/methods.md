@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/binding/methods/og.png?v=d5780
 
 # Methods
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/binding/methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Flagship binding provides the following methods for evaluating feature flags. All methods are asynchronous and return a `Promise`. For known evaluation failures, typed methods return the `defaultValue` you provide.
 
 Refer to the [types reference](https://developers.cloudflare.com/flagship/binding/types/) for the definitions of `FlagshipEvaluationContext` and `FlagshipEvaluationDetails`.

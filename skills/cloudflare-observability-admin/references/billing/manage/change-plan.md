@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/change-plan/og.png?v=1c2
 
 # Change domain plan
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/change-plan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Occasionally, you may want to upgrade or downgrade the plan associated with a specific Cloudflare domain.
 
 ## Limitations

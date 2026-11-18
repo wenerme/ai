@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/overrid
 
 # Enable only selected rules
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/enable-selected-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use a ruleset override and a rule override in a phase entry point ruleset to execute only selected rules in a managed ruleset.
 
 1. [Add a rule](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/) to a phase entry point ruleset that executes a managed ruleset.

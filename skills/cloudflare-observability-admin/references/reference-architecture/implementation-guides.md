@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/implementation-g
 
 # Implementation Guides
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/implementation-guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Implementation guides provide [step-by-step instructions](https://developers.cloudflare.com/reference-architecture/implementation-guides/) and practical guidance for how to effectively deploy and configure specific solutions or services. Implementation guides are focused on a specific implementation goal.
 
 ## Zero Trust

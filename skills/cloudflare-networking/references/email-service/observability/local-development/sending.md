@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/observability/local-devel
 
 Test email sending Workers locally using wrangler dev with simulated email delivery
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/local-development/sending/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Test email sending functionality locally using `wrangler dev` to simulate email delivery and verify your sending logic before deploying.
 
 Note
@@ -49,7 +47,7 @@ Configure your Wrangler file with the email binding:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-11-18",
 	"send_email": [{ "name": "EMAIL" }],
 }
 ```
@@ -57,7 +55,7 @@ Configure your Wrangler file with the email binding:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-18"
 
 [[send_email]]
 name = "EMAIL"
@@ -75,7 +73,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-11-18",
 	"send_email": [
 		{
 			"name": "EMAIL",
@@ -88,7 +86,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-18"
 
 [[send_email]]
 name = "EMAIL"

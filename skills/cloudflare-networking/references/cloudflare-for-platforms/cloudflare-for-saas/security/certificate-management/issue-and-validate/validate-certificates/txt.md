@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # TXT
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 TXT record validation requires the creation of a TXT record in the hostname's authoritative DNS.
 
 

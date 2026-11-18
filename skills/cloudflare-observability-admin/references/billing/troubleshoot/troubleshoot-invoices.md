@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoi
 
 # Troubleshoot invoices
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this page when invoice information is missing, invoice amounts differ from the Cloudflare dashboard, or company details do not appear as expected.
 
 ## Change in billing contact information

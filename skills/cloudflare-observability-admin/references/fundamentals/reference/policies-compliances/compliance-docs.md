@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/policies-complia
 
 # Compliance documentation
 
-Last updated Apr 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Super Administrators can access common compliance documentation, such as PCI, SOC 2, ISO, and more, through the Cloudflare dashboard.
 
 To access compliance documentation:

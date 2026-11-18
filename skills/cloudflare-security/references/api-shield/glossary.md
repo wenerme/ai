@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/glossary/og.png?v=c2b1d99180
 
 # Glossary
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the definitions for terms used across Cloudflare's API Shield documentation.
 
 | Term | Definition |

@@ -8,12 +8,12 @@
 - Available on [GitLab Duo with self-hosted models](../../../administration/gitlab_duo_self_hosted/_index.md)
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/549914) in GitLab 18.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `global_ai_catalog`. Enabled on GitLab.com.
-- Enabling in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/580307) in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_agents`. Enabled on GitLab.com.
+- Turning on agents in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/580307) in GitLab 18.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_agents`. Enabled on GitLab.com.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/568176) to beta in GitLab 18.7.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
 - Feature flag `ai_catalog_agents` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217802) in GitLab 18.9.
 - Feature flag `global_ai_catalog` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223135) in 18.10.
-- Enabling directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
+- Turning on agents directly in projects as a maintainer [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20743) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_project_level_enablement`. Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated by default.
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
 - Feature flag `ai_catalog_project_level_enablement` removed in GitLab 18.11.
 
@@ -22,7 +22,7 @@ custom agents to accomplish specific tasks, like creating merge
 requests or reviewing code. Or, use the AI Catalog to discover agents
 created by GitLab.
 
-When you're ready to interact with an agent, enable it and start using it
+When you're ready to interact with an agent, turn it on and start using it
 with GitLab Duo Chat in the GitLab UI, VS Code, and JetBrains IDEs.
 
 ## Prerequisites
@@ -40,12 +40,12 @@ When you create a custom agent, you select a project to manage it and choose whe
 
 Public agents:
 
-- Can be viewed by anyone and can be enabled in any project that meets the prerequisites.
+- Can be viewed by anyone and can be turned on in any project that meets the prerequisites.
 
 Restricted agents:
 
 - Can be viewed and used by members of any project in the top-level group of the managing project.
-- Can be enabled in other projects in the same top-level group.
+- Can be turned on in other projects in the same top-level group.
 - Cannot be viewed or turned on outside that top-level group.
 - Cannot be viewed in the AI Catalog in Explore.
 - Can be created only from a project, not from the AI Catalog in Explore.
@@ -55,7 +55,7 @@ You cannot make a public agent restricted if the agent has been turned on by a p
 Private agents:
 
 - Can be viewed only by members of the managing project who have the Guest, Planner, Reporter, Developer, Maintainer, or Owner role.
-- Cannot be enabled in projects other than the managing project.
+- Cannot be turned on in projects other than the managing project.
 
 You cannot make a public or restricted agent private if the agent has been turned on by a project other than the managing project.
 
@@ -69,7 +69,7 @@ To view a list of agents associated with your project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Agents**.
-   - To view agents enabled in the project, select the **Enabled** tab.
+   - To view agents turned on in the project, select the **Enabled** tab.
    - To view agents managed by the project, select the **Managed** tab.
 
 Select an agent to view its details.
@@ -131,18 +131,18 @@ To create an agent:
    > For more information, see the list of [agent tools](tools.md).
 1. Select **Create agent**.
 
-The agent appears in the AI Catalog. To use the agent with Chat, you must enable it.
+The agent appears in the AI Catalog. To use the agent with Chat, you must turn it on.
 
-## Enable an agent
+## Turn on an agent
 
-- Enabling a public agent for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
+- Turning on a public agent for multiple projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600526) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_bulk_item_consumer_create`. Enabled by default.
 - Feature flag `ai_catalog_bulk_item_consumer_create` removed in GitLab 19.4.
-- Enabling an agent for all projects in a top-level group [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627512) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_group_inherited_consumers`. Disabled by default.
+- Turning on an agent for all projects in a top-level group [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627512) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_group_inherited_consumers`. Disabled by default.
 
-Enable an agent to use it with Chat.
+Turn on an agent to use it with Chat.
 
-When you enable an agent in a project, it is enabled in the top-level group for that project at the same time.
-You can enable an agent or flow up to 30 times per minute.
+When you turn on an agent in a project, it is turned on in the top-level group for that project at the same time.
+You can turn on an agent or flow up to 30 times per minute.
 
 ### From the managing project
 
@@ -150,13 +150,13 @@ Prerequisites:
 
 - Have the Maintainer or Owner role for the project.
 
-To enable an agent:
+To turn on an agent:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Agents**.
-1. Select the **Managed** tab, then select the agent you want to enable.
+1. Select the **Managed** tab, then select the agent you want to turn on.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to enable the agent in.
+1. Under **Project**, select the project you want to turn on the agent in.
 1. Select **Enable**.
 
 ### From the top-level group
@@ -165,20 +165,20 @@ To enable an agent:
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
-When you enable an agent in a top-level group, the agent is enabled for all projects in the group.
+When you turn on an agent in a top-level group, the agent is turned on for all projects in the group.
 Projects that you create in or transfer to the group later also get access to the agent.
-You do not have to enable the agent in each project.
+You do not have to turn on the agent in each project.
 
 Prerequisites:
 
 - Have the Maintainer or Owner role for the top-level group.
 - The agent is public, or restricted to the same top-level group.
 
-To enable an agent for all projects in a top-level group:
+To turn on an agent for all projects in a top-level group:
 
 1. In the top bar, select **Search or go to** and find your top-level group.
 1. In the left sidebar, select **AI** > **Agents**.
-1. Select the agent you want to enable.
+1. Select the agent you want to turn on.
 1. In the upper-right corner, select **Enable for all projects**.
 1. Select **Enable for all projects**.
 
@@ -197,23 +197,23 @@ Prerequisites:
 
 - Have the Maintainer or Owner role for the project.
 
-To enable an agent:
+To turn on an agent:
 
 1. In the top bar, select **Search or go to** > **Explore**.
 1. Select **AI Catalog**, then select the **Agents** tab.
-1. Select the agent you want to enable.
+1. Select the agent you want to turn on.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to enable the agent in.
+1. Under **Project**, select the project you want to turn on the agent in.
 
    To turn on a public or restricted agent for multiple projects, from the **Project** dropdown list,
    select the relevant projects. You can select up to 100 projects.
-   You can enable an agent for multiple projects up to 10 times per minute.
+   You can turn on an agent for multiple projects up to 10 times per minute.
 
 1. Select **Enable**.
 
 The agent appears in the group and project **AI** > **Agents** pages.
-If you enabled the agent in a project, maintainers of other projects in the top-level group
-can also enable the agent in their projects following the steps above.
+If you turned on the agent in a project, maintainers of other projects in the top-level group
+can also turn on the agent in their projects following the steps above.
 
 In the project, you can start a new chat with the agent.
 For more information, see [select an agent](../../gitlab_duo_chat/agentic_chat.md#select-an-agent).
@@ -226,7 +226,7 @@ You can use a custom agent in the GitLab UI, VS Code, JetBrains IDEs, and as a s
 
 Prerequisites:
 
-- Enable the agent in the project you want to use it in.
+- Turn on the agent in the project you want to use it in.
 
 To use a custom agent in the GitLab UI:
 
@@ -242,7 +242,7 @@ To use a custom agent in the GitLab UI:
 
 Prerequisites:
 
-- Enable the agent in the project you want to use it in.
+- Turn on the agent in the project you want to use it in.
 - Install and configure [GitLab for VS Code](../../../editor_extensions/visual_studio_code/setup.md)
   version 6.47.0 or later.
 - Set a [default GitLab Duo namespace](../../profile/preferences.md#set-a-default-gitlab-duo-namespace).
@@ -259,12 +259,12 @@ To use a custom agent in VS Code:
 
 Prerequisites:
 
-- Enable the agent in the project you want to use it in.
+- Turn on the agent in the project you want to use it in.
 - Install and configure the [GitLab Duo plugin for JetBrains IDEs](../../../editor_extensions/jetbrains_ide/setup.md)
   version 3.19.0 or later.
 - Set a [default GitLab Duo namespace](../../profile/preferences.md#set-a-default-gitlab-duo-namespace).
 
-First, enable the GitLab Duo Agent Platform:
+First, turn on the GitLab Duo Agent Platform:
 
 1. In your JetBrains IDE, go to **Settings** > **Tools** > **GitLab Duo**.
 1. Under **GitLab Duo Agent Platform**, select the **Enable GitLab Duo Agent Platform** checkbox.
@@ -284,7 +284,7 @@ A custom flow can use the agent as a subagent.
 This feature is in [beta](../../../policy/development_stages_support.md#beta).
 The flow lists the agent by item ID and exact version in its YAML, and a component of the flow
 delegates tasks to it.
-The agent does not have to be enabled in the project of the flow.
+The agent does not have to be turned on in the project of the flow.
 For the YAML, the rules, and the flag, see [`include`](../flows/custom_flows_schema.md#include).
 
 When the agent is a subagent, the model that runs the flow reads its name and its description.
@@ -345,7 +345,7 @@ Prerequisites:
 
 Hide an agent to remove it from the AI Catalog.
 
-After you hide an agent, users can't enable it. However, they can still interact with the agent in the groups and projects it is already enabled in.
+After you hide an agent, users can't turn it on. However, they can still interact with the agent in the groups and projects it is already turned on in.
 
 When a custom flow uses the agent as a subagent, hiding the agent stops that flow.
 The flow stops at run time because the subagent can no longer be used.
@@ -399,7 +399,7 @@ You can turn them on or off for a top-level group or for an instance.
 
 When custom agents are turned off:
 
-- Users cannot create, enable, disable, or execute custom agents.
+- Users cannot create, turn on, turn off, or execute custom agents.
 - Existing custom agents are no longer visible
   in the project under **AI** > **Agents** > **Enabled**.
 - Custom agents created in the project appear

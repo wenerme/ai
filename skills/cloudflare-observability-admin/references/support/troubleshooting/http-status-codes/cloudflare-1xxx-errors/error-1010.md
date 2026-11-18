@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 1010
 
-Last updated Oct 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 1010: The owner of this website has banned your access based on your browser's signature
 
 This error indicates that access to the website is denied based on your browser's signature.

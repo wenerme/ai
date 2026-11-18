@@ -20,6 +20,12 @@ You can use the Files API to upload a media file. Always use the Files API when
 the total request size (including the files, text prompt, system instructions,
 etc.) is larger than 100 MB. For PDF files, the limit is 50 MB.
 
+{% callout type="note" %}
+  File URIs returned by `files.upload` and `files.get` (`/v1/files/<id>` and
+  `/v1beta/files/<id>`) work interchangeably across `v1` and `v1beta` requests.
+
+{% /callout %}
+
 The following code uploads a file and then uses the file in a call to
 `interactions.create`.
 

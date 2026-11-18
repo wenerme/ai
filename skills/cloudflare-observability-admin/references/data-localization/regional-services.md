@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/regional-services/og.
 
 # Regional Services
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Regional Services gives you the ability to accommodate regional restrictions by choosing which subset of data centers decrypt and service HTTPS traffic.
 
 Regional Services receives and processes traffic within designated regions for customers who need to meet regional compliance requirements or have preferences for maintaining regional control over their data. Examples of use cases include accommodating regional restrictions like [GDPR ↗︎](https://www.cloudflare.com/trust-hub/gdpr/) (General Data Protection Regulation), or fulfilling contractual agreements with customers that include geographic restrictions on data flows or data processing.

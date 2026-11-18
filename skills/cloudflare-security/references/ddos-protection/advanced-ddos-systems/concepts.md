@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/c
 
 # Concepts
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Prefixes
 
 Advanced DDoS Protection protects the IP prefixes you select from sophisticated DDoS attacks. A prefix can be an IP address or an IP range in CIDR format. You must add prefixes to Advanced DDoS Protection so that Cloudflare can analyze incoming packets and offer protection against sophisticated TCP DDoS attacks.

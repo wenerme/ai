@@ -14,7 +14,11 @@ Model changes come from the GitLab AI Gateway and take effect regardless of your
 
 If you do not want to use the default model for each feature, or have specific requirements, you can choose from an array of other available supported models.
 
-If you select a specific model for a feature, the feature uses that model until you select another.
+If you select a model for a feature, the feature uses that model
+until you select another or GitLab removes it from the feature.
+In that case, the feature uses its default model.
+For more information, see removed models for [GitLab Duo](../../user/gitlab_duo/model_selection.md#removed-models)
+and [GitLab Duo Agent Platform](../../user/duo_agent_platform/model_selection.md#removed-models).
 
 ## Select a model for the instance
 

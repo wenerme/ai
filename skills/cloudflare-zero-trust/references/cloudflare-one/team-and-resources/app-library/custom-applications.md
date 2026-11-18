@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-l
 
 # Custom applications
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create a custom application to identify an internal service or an application that is not in the Cloudflare-managed catalog. Custom applications belong to your account and appear alongside Cloudflare-managed applications in the App Library. You can use them in [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#application), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#application), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/#application) policies with the existing **Application** selector.
 
 ## Create a custom application

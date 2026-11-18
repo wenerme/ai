@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/og.png?v=5592f94a3e6cac43
 
 # Network Flow
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Improve your network and cloud traffic visibility. Customers with public IPs can also detect DDoS attacks based on their traffic flows. Formerly Magic Network Monitoring.
 
 Available on all plans

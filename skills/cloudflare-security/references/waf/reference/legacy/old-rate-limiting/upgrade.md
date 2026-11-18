@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/
 
 # Rate limiting (previous version) upgrade
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare has upgraded all rate limiting rules created in the [previous version](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/) to the [new version of rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
 The Cloudflare dashboard now shows all your rate limiting rules in a single list.

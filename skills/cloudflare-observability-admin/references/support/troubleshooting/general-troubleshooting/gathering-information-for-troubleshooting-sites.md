@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # Gathering information for troubleshooting sites
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## About this guide
 
 It is important to capture as much information as possible to diagnose an issue and to [provide adequate details to Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/). This article explains how to gather troubleshooting information commonly requested by Cloudflare Support.

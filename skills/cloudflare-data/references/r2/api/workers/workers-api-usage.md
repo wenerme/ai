@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/api/workers/workers-api-usage/og.png
 
 # Use R2 from Workers
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 1. Create a new application with C3
 
 C3 (`create-cloudflare-cli`) is a command-line tool designed to help you set up and deploy Workers & Pages applications to Cloudflare as fast as possible.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 1037
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1037/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Error 1037: Invalid rewrite rule (failed to evaluate expression)
 
 This error indicates that the rewrite rule expression could not be evaluated.

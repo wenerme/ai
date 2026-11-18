@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/
 
 # VPC Networks
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
 At runtime, the URL you pass to `fetch()` or the address you pass to `connect()` determines the destination — any hostname or IP address reachable through the bound Cloudflare Tunnel or through Cloudflare Mesh. Use `fetch()` for HTTP traffic, and [`connect()`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) for raw TCP connections (Redis, MQTT, custom protocols, and other non-HTTP services). This differs from [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), which require you to create a separate binding for each target host and port combination.

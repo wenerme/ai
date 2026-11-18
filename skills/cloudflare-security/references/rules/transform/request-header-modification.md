@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/request-header-modifica
 
 # Request Header Transform Rules
 
-Last updated Nov 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Request Header Transform Rules to manipulate the headers of HTTP requests sent to your origin server (the server where your website or application is hosted).
 
 ```

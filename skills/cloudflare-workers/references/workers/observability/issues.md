@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/issues/og.png?v=7
 
 # Issues
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Issues provides built-in error monitoring for Cloudflare Workers. It detects production failures and groups related failures into issues without an SDK or application wrapper.
 
 ![Issues overview showing occurrence totals and active and resolved issues.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1856,height=864,format=webp/_astro/issues-overview.Dim3BiE9.png)

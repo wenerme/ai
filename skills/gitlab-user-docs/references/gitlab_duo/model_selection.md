@@ -9,7 +9,8 @@ Configure large language models for GitLab Duo features.
 Every GitLab Duo feature uses a default model. GitLab might update default models to optimize performance.
 Model changes come from the GitLab AI Gateway and take effect regardless of your GitLab version.
 
-You can select a different model for a feature, which persists until you change it.
+You can select a different model for a feature, which persists until you change it
+or GitLab [removes the model](#removed-models) from the feature.
 
 ## Default models
 
@@ -142,6 +143,19 @@ You can use this approach for the following:
 - Applications with strict latency requirements
 - Cost-sensitive implementations
 
+## Removed models
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271376) in GitLab 19.7.
+
+A deprecated model works until GitLab removes it from the feature.
+To see when GitLab deprecated or removed a model, see the history of [supported models](#supported-models).
+
+When GitLab removes a model from a feature, any group or instance
+that selected the model uses the default model of the feature instead.
+To use a different model, select it from the dropdown list.
+
+For Code Suggestions, GitLab might use a replacement model instead of the default model.
+
 ## Troubleshooting
 
 When selecting models other than the default, you might encounter the following issues.
@@ -150,7 +164,8 @@ When selecting models other than the default, you might encounter the following 
 
 If you are using the default GitLab model for a GitLab Duo AI-native feature, GitLab might change the default model to maintain optimal performance and reliability, without notifying you.
 
-If you have selected a specific model for a GitLab Duo AI-native feature, and that model is not available, there is no automatic fallback. The feature that uses this model is unavailable.
+If GitLab removes a model you selected for a feature, the feature uses its default model.
+For more information, see [removed models](#removed-models).
 
 ### No default GitLab Duo namespace
 

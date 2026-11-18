@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-pipelines/reference/terraform/og.
 
 # Terraform
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/reference/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example shows how to configure [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) and [Basin Catalog](https://developers.cloudflare.com/basin-catalog/) with Terraform using the [Cloudflare provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (v5.19.0+).
 
 Legacy product names

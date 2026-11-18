@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-meth
 
 # Delegated
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Delegated DCV allows zones with [partial DNS setups](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) - meaning authoritative DNS is not provided by Cloudflare - to delegate the DCV process to Cloudflare.
 
 DCV Delegation requires you to place a one-time record that allows Cloudflare to auto-renew all future certificate orders, so that there’s no manual intervention at the time of the renewal.

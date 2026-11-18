@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/apis/og.png?v=
 
 # APIs
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create full-stack applications deployed to Cloudflare Workers using APIs.
 
 - [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)

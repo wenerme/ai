@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/reference/deprecations
 
 # API deprecations
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare occasionally makes updates to our APIs that result in behavior changes or deprecations. When this happens, we will communicate when the API will no longer be available and whether there will be a replacement.
 
 Note

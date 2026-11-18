@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/guardrails/og.png?v
 
 # Guardrails
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/guardrails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Guardrails help you deploy AI applications safely by intercepting and evaluating both user prompts and model responses for harmful content. Acting as a proxy between your application and [model providers](https://developers.cloudflare.com/ai-gateway/usage/providers/) (such as OpenAI, Anthropic, DeepSeek, and others), AI Gateway's Guardrails ensure a consistent and secure experience across your entire AI ecosystem.
 
 Guardrails proactively monitor interactions between users and AI models, giving you:

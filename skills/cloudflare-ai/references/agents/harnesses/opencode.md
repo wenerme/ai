@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290
 
 # OpenCode
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [OpenCode ↗︎](https://opencode.ai/v2/docs/build/sdk/) is an extensible agent harness. The Agents SDK's `OpenCodeHarness` runs its Workerd SDK inside a plain Durable Object. Refer to [OpenCode's Cloudflare SDK documentation ↗︎](https://opencode.ai/v2/docs/build/sdk/cloudflare/) for the embedded host API.
 
 OpenCode owns the agent loop, transcript, tools, and session recovery. `OpenCodeHarness` supplies SQLite storage and wakes the object after an interrupted run. The `agents/models/opencode` provider connects OpenCode to Workers AI models, [AI Gateway](https://developers.cloudflare.com/ai-gateway/) catalog models, and dynamic routes through your `AI` binding.
@@ -84,7 +82,7 @@ Add the `AI` binding, a SQLite-backed Durable Object, and `nodejs_compat` to you
 	"name": "opencode-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-09",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI", "remote": true },
 	"durable_objects": {
@@ -98,7 +96,7 @@ Add the `AI` binding, a SQLite-backed Durable Object, and `nodejs_compat` to you
 name = "opencode-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-09"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

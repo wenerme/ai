@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-wo
 
 # How Cloudflare DNS works
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To optimize your website or web application, Cloudflare provides [DNS ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) and [CDN ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) services, so we can [reverse proxy ↗︎](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/) the web traffic to and from your domain.
 
 ## DNS explained

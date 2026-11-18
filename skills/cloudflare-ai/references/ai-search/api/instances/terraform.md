@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/api/instances/terraform/og.pn
 
 # Terraform
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) to create, update, import, and read AI Search instances as code. Namespace support for instances is available from provider v5.29.0.
 
 To manage the namespaces themselves, refer to [Namespaces with Terraform](https://developers.cloudflare.com/ai-search/api/namespaces/terraform/).

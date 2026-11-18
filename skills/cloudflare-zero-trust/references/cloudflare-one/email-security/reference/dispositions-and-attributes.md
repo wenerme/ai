@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/reference
 
 # Dispositions and attributes
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security uses a variety of factors to determine whether a given email message, domain, URL, or packet is part of a phishing campaign. These small pattern assessments are dynamic in nature and — in many cases — no single pattern will determine the final verdict.
 
 Detection vs. disposition

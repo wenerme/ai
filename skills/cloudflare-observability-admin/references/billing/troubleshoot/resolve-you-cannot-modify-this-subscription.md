@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot
 
 # Resolve "you cannot modify this subscription"
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When attempting to cancel or modify a subscription, you may see the following error message:
 
 - "This subscription is scheduled to be cancelled at the end of the billing period. To make changes or purchase more, please click 'Cancel Downgrade' on the Subscriptions page."

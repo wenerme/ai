@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/cf-dashboard/og.png?v=a8bf8e92
 
 # Manage rules in the dashboard
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/cf-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To configure firewall rules in the Cloudflare dashboard, open **Firewall rules** in **Security** > **WAF**.
 
 Deprecation notice

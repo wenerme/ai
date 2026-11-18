@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-sql/sql-reference/scalar-function
 
 # Scalar functions
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/sql-reference/scalar-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Scalar functions transform individual values and can be used in `SELECT`, `WHERE`, `GROUP BY`, `HAVING`, and `ORDER BY` clauses.
 
 ---

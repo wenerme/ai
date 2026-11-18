@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/reference/error-codes/og.png?v
 
 # Error codes
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page documents error codes returned by the [Spectrum API](https://developers.cloudflare.com/api/resources/spectrum/subresources/apps/), along with recommended fixes to help with troubleshooting.
 
 ## How errors are returned

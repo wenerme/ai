@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/reference/shadow
 
 # Shadowed records
 
-Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you add an `NS` record to your zone, you create a **subdomain delegation**: you delegate authority for that subdomain (and everything below it) to another set of nameservers. Any record you keep at or below that delegation point is **shadowed**. It stays stored in your zone, but the delegation places authority for that name with the delegated nameservers, so the record is not part of the authoritative data your zone is meant to serve.
 
 Shadow metadata tells you which records are shadowed, which `NS` records do the shadowing, and how many records each delegation shadows. It is exposed as fields on API responses and as warnings in the Cloudflare dashboard, and is not returned unless you explicitly request it.

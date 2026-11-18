@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/config-examples/pyiceberg
 
 # PyIceberg
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/config-examples/pyiceberg/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is an example of using [PyIceberg ↗︎](https://py.iceberg.apache.org/) to connect to Basin Catalog.
 
 ## Prerequisites

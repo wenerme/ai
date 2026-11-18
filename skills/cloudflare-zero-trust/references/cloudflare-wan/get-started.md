@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/get-started/og.png?v=e1c
 
 # Get started
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare WAN (formerly Magic WAN) allows you to achieve any-to-any connectivity across branch and retail sites and data centers, with the Cloudflare connectivity cloud.
 
 If you are migrating from MPLS or a traditional WAN, refer to [WAN transformation](https://developers.cloudflare.com/cloudflare-wan/wan-transformation/) to compare approaches and plan an incremental migration.

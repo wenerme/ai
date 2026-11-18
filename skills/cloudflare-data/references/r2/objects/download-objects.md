@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/objects/download-objects/og.png?v=71
 
 # Download objects
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/objects/download-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can download objects from R2 using the dashboard, Workers API, S3 API, or command-line tools.
 
 ## Download via dashboard

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/custom-domains/og.p
 
 # Custom domains
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When deploying your Pages project, you may wish to point custom domains (or subdomains) to your site.
 
 ## Add a custom domain

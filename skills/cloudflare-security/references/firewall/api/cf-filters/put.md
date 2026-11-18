@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/api/cf-filters/put/og.png?v=f7
 
 # PUT examples
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/put/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Update multiple filters
 
 This example updates two filters with IDs `<FILTER_ID_1>` and `<FILTER_ID_2>` using a single API call.

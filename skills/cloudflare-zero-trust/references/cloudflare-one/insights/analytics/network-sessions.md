@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/analytics/netwo
 
 # Network session analytics
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Network session analytics dashboard provides visibility into your Cloudflare One traffic patterns. This dashboard helps you understand how traffic flows through your network, including on-ramps (how traffic enters Cloudflare, such as the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), [proxy endpoints (PAC files)](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/), [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/), [Workers VPC](https://developers.cloudflare.com/workers-vpc/), or Cloudflare Tunnel) and off-ramps (how traffic exits Cloudflare, such as the public Internet, a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), or a Mesh node).
 
 The dashboard is based on the [Zero Trust network sessions Logpush dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/). For definitions on any field, refer to the dataset schema documentation.

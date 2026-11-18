@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/getting-started/learn-the-runtim
 
 # Learn the runtime
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/getting-started/learn-the-runtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An agent on Cloudflare runs in a [Durable Object](https://developers.cloudflare.com/durable-objects/). The Agents SDK [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) runs inside that Durable Object and starts the capabilities you add to it. A harness, such as the Pi harness in [Build your first Durable Agent](https://developers.cloudflare.com/agents/getting-started/quick-start/), is one of those capabilities.
 
 This guide leaves the harness out so you can see the runtime on its own. You build a counter on a Durable Object and add two capabilities, [`State`](https://developers.cloudflare.com/agents/runtime/capabilities/state/) and [`WebSockets`](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/). Then you call it over HTTP and connect a client that stays in sync over WebSockets. Everything here works the same way on an object that also runs a harness.
@@ -73,7 +71,7 @@ Add a SQLite-backed Durable Object to your Wrangler configuration file:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-30",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "Counter", "class_name": "Counter" }],
@@ -89,7 +87,7 @@ name = "my-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]

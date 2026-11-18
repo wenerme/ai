@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/web-apps/serverless-backends/
 
 # Build serverless backends
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/serverless-backends/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Running backend code on traditional servers requires provisioning capacity, managing scaling, and accepting cold starts. Cloudflare Workers runs your server-side code at the edge with fast startup, automatic scaling, and global distribution across 300+ locations.
 
 ## Solutions

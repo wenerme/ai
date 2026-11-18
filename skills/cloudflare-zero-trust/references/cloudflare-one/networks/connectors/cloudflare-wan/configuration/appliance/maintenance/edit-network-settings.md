@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Edit network settings
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/edit-network-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Find the Appliance that you want to edit > select the three dots next to it > **Edit**.

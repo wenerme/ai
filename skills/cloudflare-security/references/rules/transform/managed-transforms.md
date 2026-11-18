@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/transform/managed-transforms/og.p
 
 # Managed Transforms
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/managed-transforms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Managed Transforms allow you to perform common adjustments to HTTP request and response headers with pre-built, one-step configurations. The available adjustments include:
 
 - Add bot protection request headers.

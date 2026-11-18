@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/reference/time-travel/og.png?v=ffc54
 
 # Time Travel and backups
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/time-travel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Time Travel is D1's approach to backups and point-in-time-recovery, and allows you to restore a database to any minute within the last 30 days.
 
 - You do not need to enable Time Travel. It is always on.

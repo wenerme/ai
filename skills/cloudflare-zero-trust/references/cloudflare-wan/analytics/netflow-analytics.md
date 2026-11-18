@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analyt
 
 # NetFlow statistics
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## NetFlow exports from Cloudflare One Appliance to Network Flow
 
 You can configure your Cloudflare One Appliance (formerly Magic WAN Connector) to export Netflow statistics for [local breakout traffic](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/) to [Network Flow](https://developers.cloudflare.com/network-flow) (formerly Magic Network Monitoring). This provides insights into traffic that leaves your site directly, bypassing the Cloudflare network.

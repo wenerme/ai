@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/browser-
 
 # Browser Isolation
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/browser-isolation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review common troubleshooting scenarios for Cloudflare Browser Isolation.
 
 ## Connectivity and sessions
@@ -62,7 +60,7 @@ To resolve this, add a generic fallback family (such as `sans-serif` or `serif`)
 
 ### Rendering issues (CSS/Images)
 
-If a website displays incorrectly (for example, broken CSS or missing images), it may indicate that the remote browser is unable to fetch specific resources from the origin server. Check your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/) for any blocked subresources that might be required by the page.
+If a website displays incorrectly (for example, broken CSS or missing images), it may indicate that the remote browser is unable to fetch specific resources from the origin server. Check your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/) for any blocked subresources that might be required by the page.
 
 ---
 

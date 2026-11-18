@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-an
 
 # Import and export records
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use import and export to have more control over your DNS records and make processes like migrating a domain or bulk editing [record comments](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) easier.
 
 ## Import records

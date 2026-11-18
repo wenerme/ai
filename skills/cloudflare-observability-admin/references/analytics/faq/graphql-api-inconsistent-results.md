@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-
 
 # GraphQL API inconsistent results
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you run the same GraphQL Analytics API query multiple times and receive slightly different results, this is caused by Adaptive Bit Rate (ABR) sampling. ABR dynamically adjusts data resolution based on query complexity and timing, which can result in slight variations between query runs.
 
 To reduce variation, query shorter timeframes (daily or weekly instead of monthly), use aggregated datasets (nodes with the `Groups` suffix), and request confidence intervals to understand data quality. For more information, refer to [Sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/).

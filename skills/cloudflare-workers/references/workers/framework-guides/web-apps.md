@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/og.pn
 
 # Web applications
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Create full-stack web applications deployed to Cloudflare Workers.
 
 - [React + Vite](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)

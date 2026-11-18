@@ -1422,7 +1422,7 @@ If successful, returns [`204 No Content`](rest/troubleshooting.md#status-codes).
 
 ## Reorder an issue
 
-Reorders a specified issue in a project. You can see the results when [sorting issues manually](../user/project/issues/sorting_issue_lists.md#manual-sorting).
+Reorders a specified issue in a project. You can see the results when [sorting issues manually](../user/project/issues/sorting_issue_lists.md#sort-manually).
 
 ```plaintext
 PUT /projects/:id/issues/:issue_iid/reorder

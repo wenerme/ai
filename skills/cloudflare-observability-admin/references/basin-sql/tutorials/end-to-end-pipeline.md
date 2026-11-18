@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/basin-sql/tutorials/end-to-end-pipeline
 
 Learn how to create an end-to-end data pipeline using Basin Pipelines, Basin Catalog, and Basin SQL for real-time transaction analysis.
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/tutorials/end-to-end-pipeline/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to build a complete data pipeline using Basin Pipelines, Basin Catalog, and Basin SQL. This also includes a sample Python script that creates and sends financial transaction data to your Pipeline that can be queried by Basin SQL or any Apache Iceberg-compatible query engine.
 
 This tutorial demonstrates how to:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Limits
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Script limits
 
 Cloudflare provides an unlimited number of scripts for Workers for Platforms customers.

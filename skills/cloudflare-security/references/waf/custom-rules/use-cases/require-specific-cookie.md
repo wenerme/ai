@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/custom-rules/use-cases/require-spec
 
 # Require a specific cookie
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/require-specific-cookie/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To secure a sensitive area such as a development area, you can share a cookie with trusted individuals and then filter requests so that only users with that cookie can access your site.
 
 Use the [`http.cookie`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.cookie/) field to target requests based on the presence of a specific cookie.

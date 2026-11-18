@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/security/under-ddos-attack
 
 # Under a DDoS attack?
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/security/under-ddos-attack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A distributed denial-of-service (DDoS) attack is where a large number of computers or devices, usually controlled by a single attacker, attempt to access a website or online service all at once. This flood of traffic can overwhelm the website's origin servers, causing the site to slow down or even crash.
 
 ```

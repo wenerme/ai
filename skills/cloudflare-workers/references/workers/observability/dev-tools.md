@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/dev-tools/og.png?
 
 # DevTools
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Using DevTools
 
 When running your Worker locally using the [Wrangler CLI ↗︎](https://developers.cloudflare.com/workers/wrangler/) (`wrangler dev`) or using [Vite ↗︎](https://vite.dev/) with the [Cloudflare Vite plugin ↗︎](https://developers.cloudflare.com/workers/vite-plugin/), you automatically have access to [Cloudflare's implementation ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/chrome-devtools-patches) of [Chrome DevTools ↗︎](https://developer.chrome.com/docs/devtools/overview).

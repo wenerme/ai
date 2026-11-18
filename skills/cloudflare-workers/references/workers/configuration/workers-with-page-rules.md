@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/workers-with-page
 
 # Page Rules
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Page Rules trigger certain actions whenever a request matches one of the URL patterns you define. You can define a page rule to trigger one or more actions whenever a certain URL pattern is matched. Refer to [Page Rules](https://developers.cloudflare.com/rules/page-rules/) to learn more about configuring Page Rules.
 
 ## Page Rules with Workers

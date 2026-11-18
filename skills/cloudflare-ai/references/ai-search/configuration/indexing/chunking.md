@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/chunki
 
 # Chunking
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Chunking is the process of splitting large data into smaller segments before embedding them for search. AI Search uses **recursive chunking**, which breaks your content at natural boundaries (like paragraphs or sentences), and then further splits it if the chunks are too large.
 
 ## What is recursive chunking

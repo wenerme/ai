@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dn
 
 # Manage DNS records
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Consider the sections below for step-by-step instructions on managing DNS records at Cloudflare.
 
 To better understand what DNS records are, refer to [Overview](https://developers.cloudflare.com/dns/manage-dns-records/). For context around common records you want to review when getting started at Cloudflare, refer to [review DNS records](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#2-review-your-dns-records).

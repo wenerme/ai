@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl
 
 # Use pay per crawl as a site owner
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Enable in account settings](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/enable-in-account-settings/)
 - [Set a pay per crawl price](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/set-a-pay-per-crawl-price/)
 - [Select crawlers to charge](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/select-crawlers-to-charge/)

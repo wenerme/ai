@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workers/concepts/workers
 
 # Cloudflare Workers
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/workers-concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Workers gives developers the power to deploy serverless code instantly to Cloudflare's global network.
 
 Cloudflare Workers significantly differs from other serverless computing providers in its execution model and architecture.

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/basin-pipelines/examples/bluesky-fireho
 
 Consume the Bluesky Jetstream firehose in a Durable Object, ingest it into a single Basin Pipelines stream, and use one pipeline with multiple SQL statements to route events into separate Basin Catalog tables by type.
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this example, you will consume the public [Bluesky Jetstream ↗︎](https://github.com/bluesky-social/jetstream) firehose, a live WebSocket stream of every post, like, repost, follow, and block on the network, and land it in [Basin Catalog](https://developers.cloudflare.com/basin-catalog/) as queryable Apache Iceberg tables.
 
 You will learn a core Basin Pipelines pattern: send every event to one stream, then use a single pipeline with multiple SQL statements to route ("fan out") that stream into several destination tables, one per event type, without running a separate pipeline for each.
@@ -315,7 +313,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -351,7 +349,7 @@ name = "bluesky-pipeline"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[pipelines]]
 binding = "BSKY_STREAM"

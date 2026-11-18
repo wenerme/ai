@@ -16,8 +16,6 @@ m
 
 Image-to-Text • moondream
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/moondream3.1-9B-A2B/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/moondream/moondream3.1-9B-A2B` Copy

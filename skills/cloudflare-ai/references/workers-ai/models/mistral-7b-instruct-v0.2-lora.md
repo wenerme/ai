@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • MistralAI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/mistral/mistral-7b-instruct-v0.2-lora` Copy

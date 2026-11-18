@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/start-stream-live/og
 
 # Start a live stream
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 After you subscribe to Stream, you can create Live Inputs in Dash or via the API. Broadcast to your new Live Input using RTMPS or SRT. SRT supports newer video codecs and makes using accessibility features, such as captions and multiple audio tracks, easier.
 
 Note

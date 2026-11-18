@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/concepts/security/og.png?v=2ade
 
 # Sandbox security
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A sandbox runs code you do not trust, such as code that a model generates, a user writes, or a dependency brings in. Cloudflare isolates the sandbox from your Worker and from other sandboxes. For more information about that isolation, refer to [Sandboxes on Cloudflare](https://developers.cloudflare.com/sandbox/).
 
 Isolation does not limit what the code does inside its own sandbox. Assume that the code uses everything it can reach there, including the files, credentials, and network access that your Worker provides.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # rtk-network-indicator
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-network-indicator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Properties
 
 | Property | Type | Required | Default | Description |

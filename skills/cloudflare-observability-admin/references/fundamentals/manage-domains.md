@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/og.png?v=d3
 
 # Domains
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A *domain* or *domain name* (also known as a *zone*) is the location of a website or application, or what an end user types into their browser to get to your website (`example.com`).
 
 ## Get a domain name

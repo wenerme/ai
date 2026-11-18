@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/cloudflare-access
 
 # Cloudflare Access
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Cloudflare Access, you can restrict who is authorized to access your application. You decide who is approved, and every request is checked before your Worker runs. Approved visitors are let through, while everyone else is shown a login page or blocked.
 
 You can protect:

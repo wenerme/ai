@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/debugging-pages/og.
 
 # Debugging Pages
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/debugging-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When setting up your Pages project, you may encounter various errors that prevent you from successfully deploying your site. This guide gives an overview of some common errors and solutions.
 
 ## Check your build log

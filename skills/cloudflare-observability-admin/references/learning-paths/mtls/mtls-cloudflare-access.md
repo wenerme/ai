@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/mtls/mtls-cloudflare-acc
 
 # mTLS with Cloudflare Access
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/mtls-cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This requires an active Enterprise [Account](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/) with Cloudflare Access enabled.

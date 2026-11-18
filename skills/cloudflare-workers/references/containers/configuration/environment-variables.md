@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/configuration/environment-va
 
 # Environment Variables
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Runtime environment variables
 
 The container runtime automatically sets the following variables:

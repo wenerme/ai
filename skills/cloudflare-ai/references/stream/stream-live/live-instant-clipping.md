@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/live-instant-clippin
 
 # Live Instant Clipping
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Stream supports generating clips of live streams and recordings so creators and viewers alike can highlight short, engaging pieces of a longer broadcast or recording. Live instant clips can be created by end users and do not result in additional storage fees or new entries in the video library.
 
 Note:

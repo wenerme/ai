@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/api/route-emails/og.png?v
 
 API reference for routing incoming emails with Cloudflare Email Service using the email() handler and email routing Workers.
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/route-emails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Reference for processing incoming emails with the `email()` handler in Cloudflare Workers.
 
 - [Workers API](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)

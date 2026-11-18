@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # Cannot locate dashboard account
 
-Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/cannot-locate-dashboard-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 We are making some improvements to our support experience. This could be causing a temporary issue linking your [dashboard account ↗︎](https://dash.cloudflare.com) and your Cloudflare [Help Center My Activities sign-on information ↗︎](https://support.cloudflare.com/hc/requests).
 
 ## Accounts with paid services

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/sql-referenc
 
 # Operators
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/operators/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following operators are supported:
 
 ## Arithmetic operators

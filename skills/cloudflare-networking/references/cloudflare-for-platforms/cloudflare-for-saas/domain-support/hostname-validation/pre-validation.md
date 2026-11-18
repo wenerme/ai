@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Pre-validation
 
-Last updated Jun 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Pre-validation methods help verify domain ownership before your customer's traffic is proxying through Cloudflare.
 
 Not supported for O2O custom hostnames

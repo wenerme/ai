@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudfla
 
 # Set up a private origin via Cloudflare WAN
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide walks you through proxying public hostnames to origins on a private network. The private network is reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) IPsec tunnel. The CDN, WAF, Cache, and other proxied features apply to this traffic the same way they apply to traffic destined for public origins.
 
 This guide uses IPsec. The same flow works over [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) and [CNI](https://developers.cloudflare.com/network-interconnect/). Configure the on-ramp using those docs, then continue from [step 2](#2-create-a-dns-record-with-private-network-routing).

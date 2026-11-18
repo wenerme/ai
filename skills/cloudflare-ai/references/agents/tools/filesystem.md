@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/filesystem/og.png?v=d015b7
 
 # File system
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/filesystem/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare Computer ↗︎](https://github.com/cloudflare/computer) gives an agent a persistent working directory backed by SQLite, along with the standard set of tools for working with the file system, including `read`, `write`, `edit`, and `grep`. An optional `exec` tool lets the agent manipulate the file system and run tools programmatically.
 
 Use a file system when an agent needs to:
@@ -132,7 +130,7 @@ Configure the Durable Object binding and a SQLite migration in your Wrangler con
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-06",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [
@@ -153,7 +151,7 @@ Configure the Durable Object binding and a SQLite migration in your Wrangler con
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-06"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -534,7 +532,7 @@ The backend needs a [Worker Loader binding](https://developers.cloudflare.com/dy
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-06",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"worker_loaders": [
 		{
@@ -546,7 +544,7 @@ The backend needs a [Worker Loader binding](https://developers.cloudflare.com/dy
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-06"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[worker_loaders]]

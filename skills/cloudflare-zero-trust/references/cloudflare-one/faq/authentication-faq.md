@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/faq/authentication-faq/o
 
 # Identity FAQ
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/authentication-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)
 
 ## Can Access work with multiple identity providers at the same time?

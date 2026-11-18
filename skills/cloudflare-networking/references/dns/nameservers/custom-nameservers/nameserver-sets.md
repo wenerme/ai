@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/name
 
 # Nameserver sets
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A nameserver set is an account-level group of up to five custom nameserver names, together with the IP addresses that Cloudflare assigns to those names. You create a set once and then assign it to zones in the same account. Each set has a name to identify it.
 
 Nameserver sets are a separate configuration from [zone](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/zone-custom-nameservers/), [account](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/), and [tenant](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/tenant-custom-nameservers/) custom nameservers. A zone uses either a nameserver set or one of those configurations, never both. Existing configurations cannot be converted into nameserver sets.

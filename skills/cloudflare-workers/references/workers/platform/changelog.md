@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/platform/changelog/og.png?v=1a7
 
 # Changelog
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This changelog details meaningful changes made to Workers across the Cloudflare dashboard, Wrangler, the API, and the workerd runtime. These changes are not configurable.
 
 This is *different* from [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) and [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/), which let you explicitly opt-in to or opt-out of specific changes to the Workers Runtime.

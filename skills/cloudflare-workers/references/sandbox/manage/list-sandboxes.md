@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/manage/list-sandboxes/og.png?v=
 
 # List a user's sandboxes
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/manage/list-sandboxes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Each user gets a registry, a Durable Object that records the sandboxes of that user. In this example, the Worker adds a sandbox to the registry when the sandbox first runs a command. To report which sandboxes are running, the Worker asks the Durable Object of each sandbox whether its container is running.
 
 ## Prerequisites

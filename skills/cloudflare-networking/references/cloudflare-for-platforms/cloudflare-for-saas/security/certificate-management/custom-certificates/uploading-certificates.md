@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Manage custom certificates
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/uploading-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to manage custom certificates for your Cloudflare for SaaS custom hostnames. For use cases and limitations, refer to [custom certificates](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/).
 
 ## Upload certificates

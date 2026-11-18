@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/configuration/serving-pages/og.pn
 
 # Serving Pages
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/serving-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Pages includes a number of defaults for serving your Pages sites. This page details some of those decisions, so you can understand how Pages works, and how you might want to override some of the default behaviors.
 
 ## Route matching

@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/workers/examples/geolocation-app-weathe
 
 Fetch weather data from an API using the user's geolocation data.
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/geolocation-app-weather/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you want to get started quickly, click on the button below.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/docs-examples/tree/main/workers/geolocation-app-weather)

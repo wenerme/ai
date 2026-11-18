@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/agents/og.png?v=c6
 
 # Agent Participant
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agent Participant adds a server-side agent to a RealtimeKit meeting. Any backend that can open a WebSocket — a Cloudflare Worker, a Durable Object, or your own server — can connect to it. No client SDK or browser is required.
 
 An agent receives live meeting activity, such as transcripts, participant presence, chat, polls, and broadcasts. It can also send chat messages, run polls, and send broadcasts. Working with meeting media is planned.

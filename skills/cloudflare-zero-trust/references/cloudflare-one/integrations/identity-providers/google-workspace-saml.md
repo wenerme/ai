@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Google Workspace (SAML/SCIM)
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Connect Google Workspace to Cloudflare One using a custom SAML app. You can send group membership during authentication and configure System for Cross-domain Identity Management (SCIM) to synchronize user updates and deprovision users.
 
 This setup uses the **SAML** identity provider in Cloudflare One. The dedicated [Google Workspace integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/) does not support SCIM.

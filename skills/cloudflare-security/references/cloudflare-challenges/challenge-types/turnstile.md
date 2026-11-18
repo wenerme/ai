@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-challenges/challenge-types/t
 
 # Turnstile
 
-Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Turnstile](https://developers.cloudflare.com/turnstile/) is Cloudflare's CAPTCHA-alternative solution. You can embed Turnstile as a widget on your website or application, where it runs a client-side challenge directly in the background of the visitor's browser.
 
 Turnstile differs from Challenges Pages in that the challenge does not pause the request or interrupt the user's experience. Since the widget is embedded onto the webpage and only runs on a specific part of the HTML, the visitor will have already arrived at the destination URL and is viewing the page when they encounter a Turnstile widget. Instead of blocking the visitor from accessing the entire website, the Turnstile widget prevents the visitor from certain actions such as completing login or sign up forms, and more, until the widget is solved.

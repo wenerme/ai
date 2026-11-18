@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/analytics/og.p
 
 # Analytics
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, and cost. You can filter these metrics by time, provider, model, cost, token counts, and a custom metadata key or value. To break metrics down by the values of one metadata key, such as a team or user ID, use [GraphQL](#group-by-a-custom-metadata-key). These analytics help you understand traffic patterns, token consumption, and potential issues across AI providers. You can view the following analytics:
 
 - **Requests**: Track the total number of requests processed by AI Gateway.

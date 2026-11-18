@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/troubleshooting/domain-
 
 # Domain deleted from Cloudflare
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/domain-deleted/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Domain deletion commonly occurs for the following reasons:
 
 - A user with access to the domain removed it.

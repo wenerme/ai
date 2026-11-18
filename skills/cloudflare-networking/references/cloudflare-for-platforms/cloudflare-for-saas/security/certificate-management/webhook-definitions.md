@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Webhook definitions
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/webhook-definitions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you [create a webhook notification](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/) for **SSL for SaaS Custom Hostnames**, you may want to automate responses to specific events (certificate issuance, failed validation, etc.).
 
 The following section details the data Cloudflare sends to a webhook destination.

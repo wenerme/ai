@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloud
 
 # Pause Cloudflare
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To troubleshoot your site, you can pause Cloudflare globally. This will send traffic directly to your origin web server instead of Cloudflare's reverse proxy. Paused domains also cannot use Cloudflare services like [Rules](https://developers.cloudflare.com/rules/), [WAF](https://developers.cloudflare.com/waf/), and [SSL/TLS certificates](https://developers.cloudflare.com/ssl/edge-certificates/). Consider turning on [Development Mode](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/#enable-development-mode) to bypass caching while preserving protection.
 
 1. In the Cloudflare dashboard, go to the **Account home** page and select your account and domain. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)

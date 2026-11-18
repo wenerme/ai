@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/best-practices/con
 
 # Content hints
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/best-practices/content-hints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `MediaStreamTrack.contentHint` to describe the content of local media tracks. The browser can use this hint to guide media processing and encoding.
 
 This guide applies to the RealtimeKit Web SDKs, including applications that use Web UI Kit.

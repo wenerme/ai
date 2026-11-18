@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/custom-fonts/og.pn
 
 # Custom fonts
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/custom-fonts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Browser Run uses a managed Chromium environment that includes a [standard set of pre-installed fonts](https://developers.cloudflare.com/browser-run/reference/supported-fonts/). When you generate a screenshot or PDF, text is rendered using the fonts available in this environment. If your page specifies a font that is not pre-installed, Chromium will automatically fall back to a similar supported font.
 
 If you need a specific font that is not pre-installed, you can inject it into the page at render time. You can load fonts from an external URL or embed them directly as a Base64 string.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/simulator/og.png?v=2dfb29b27626e8
 
 # Rules simulator
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/simulator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Available on all plans
 
 Rules simulator (Beta) simulates an HTTP/S request through Cloudflare's network to your origin server. Use this tool to understand how your Cloudflare configurations (such as rules, caching, and security settings) would affect a specific request. If the hostname you are testing is not [proxied by Cloudflare](https://developers.cloudflare.com/dns/proxy-status/), Rules simulator will still return all the configurations that Cloudflare would have applied to the request.

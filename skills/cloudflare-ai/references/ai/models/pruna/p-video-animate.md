@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image-to-Video • Pruna AI
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-video-animate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `pruna/p-video-animate` Copy

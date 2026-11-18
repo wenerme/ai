@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/state/og.png?v=88656
 
 # Store and sync state
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `Agent` class installs the [`State` capability](https://developers.cloudflare.com/agents/runtime/capabilities/state/) and wires it to its WebSocket connections. State is one value per Agent: it is stored in SQLite, survives restarts and hibernation, and syncs to every connected client. This page covers the `Agent` API. For how state is stored and synced, refer to the [`State` capability](https://developers.cloudflare.com/agents/runtime/capabilities/state/).
 
 ## Initial state

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/surge-readiness/security
 
 # Control domain access
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-domain-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [IP Access Rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/) specify an action based on the origin of your user across a single domain or all of the domains in your account.
 
 IP Access Rules can be applied based on:

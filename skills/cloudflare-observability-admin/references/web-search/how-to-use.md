@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-search/how-to-use/og.png?v=d825d667
 
 # How to use Web Search API
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-search/how-to-use/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can call Web Search API from any backend with the REST API, or from a Worker with the AI binding. Both methods route requests through an [AI Gateway](https://developers.cloudflare.com/ai-gateway/).
 
 ## Prerequisites
@@ -63,7 +61,7 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
      "main": "src/index.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-13",
+     "compatibility_date": "2026-11-18",
      "ai": {
        "binding": "AI"
      }
@@ -75,7 +73,7 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-18"
 
    [ai]
    binding = "AI"

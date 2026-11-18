@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkText
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtktext/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Themed text component that applies the design system's colors, font family, and font size.
 
 ## Properties

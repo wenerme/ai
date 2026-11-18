@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Hostname routing
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use [dynamic dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) Workers to route millions of vanity domains or subdomains to Workers without hitting traditional [route limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains). These hostnames can be subdomains under your managed domain (e.g. `customer1.saas.com`) or vanity domains controlled by your end customers (e.g. `mystore.com`), which can be managed through [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/).
 
 ## (Recommended) Wildcard route with a dispatch Worker

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/network-analytics/configure/s
 
 # Share and export data
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/configure/share-export/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Share Network Analytics filters
 
 When you add filters and specify a time range in Network Analytics, the URL changes to reflect those parameters.

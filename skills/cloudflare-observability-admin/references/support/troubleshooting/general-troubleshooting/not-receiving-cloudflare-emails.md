@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # Not receiving emails from Cloudflare
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/not-receiving-cloudflare-emails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This article may help if you are unable to receive transactional emails from Cloudflare. These types of email include:
 
 - email verification

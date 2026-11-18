@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/og.pn
 
 # Synthetic tests
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Digital Experience Monitoring (DEX), you can test if your devices can connect to a private or public endpoint through the Cloudflare One Client. Tests allow you to monitor availability for a given application and investigate performance issues reported by your end users.
 
 Cloudflare One Client devices automatically send device-state telemetry to DEX. Synthetic tests are separate, optional checks that administrators create for specific public or private endpoints.

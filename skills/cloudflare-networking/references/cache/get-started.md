@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/get-started/og.png?v=e825d083ecdd
 
 # Get started
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare speeds up your website by caching content across globally distributed data centers.
 
 Content can be static or dynamic. Static content — such as images, CSS, and JavaScript files — is [cacheable](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions) by default. Dynamic content, such as HTML pages, is not cached by default, but you can use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to cache it.

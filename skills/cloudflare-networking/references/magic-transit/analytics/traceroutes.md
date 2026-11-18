@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/analytics/traceroutes/og.
 
 # Traceroutes
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/analytics/traceroutes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can run traceroutes to analyze the hop-by-hop Internet path and latency between Cloudflare's network and your network.
 
 To run a traceroute from a specific Cloudflare data center to your network:

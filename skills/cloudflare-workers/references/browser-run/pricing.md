@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/pricing/og.png?v=20d0624221
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Available on Free and Paid plans
 
 Billing depends on how you use Browser Run:

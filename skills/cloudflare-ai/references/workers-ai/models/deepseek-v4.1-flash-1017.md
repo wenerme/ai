@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • DeepSeek
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/deepseek-v4.1-flash-1017/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/deepseek-ai/deepseek-v4.1-flash-1017` Copy

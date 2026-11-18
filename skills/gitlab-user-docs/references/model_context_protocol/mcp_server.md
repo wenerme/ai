@@ -168,7 +168,8 @@ and [how to turn GitLab Duo Agent Platform on or off](../duo_agent_platform/turn
 
 When you have access to GitLab Duo Agent Platform, the GitLab MCP server also sends server
 instructions when your client connects. The instructions tell your AI tool to propose a matching
-GitLab Duo flow, and to confirm with you before it starts one. The server sends them even when
+GitLab Duo flow, and to confirm with you before it starts one. They also tell it to check that no
+flow trigger already runs that flow. The server sends them even when
 the header leaves out the `duo_agent_platform` toolset.
 
 The `code_security` tools are listed only when the feature behind each tool is available for you.

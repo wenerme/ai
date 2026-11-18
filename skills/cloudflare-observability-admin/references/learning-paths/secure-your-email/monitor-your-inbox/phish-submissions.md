@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-your-email/monito
 
 # Phish submissions
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phish-submissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 While Email security offers industry leading detection efficacy due to Cloudflare's Threat Intelligence, Preemptive Threat Hunting (actor and campaign infrastructure hunting with 8B, plus campaign threat signals assessed every day) and ML-Based Detection Models (Trust Graphs Computer Vision, Sentiment/Thread/Structural Analysis, Industry/Natural Language Understanding Modeling) false negatives and false positive can occur.
 
 There are two different ways to [submit a phish](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/) sample:

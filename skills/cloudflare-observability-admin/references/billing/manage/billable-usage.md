@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/billable-usage/og.png?v=
 
 # Monitor billable usage
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/billable-usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The billable usage dashboard gives you daily visibility into usage-based costs across your Cloudflare account. The data comes from the same system that generates your monthly invoice, so the figures match your bill.
 
 The dashboard shows usage-based overage charges only. Fixed-fee plan subscriptions (for example, a Pro plan) are not included.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-eg
 
 # Connection forwarding
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/connection-forwarding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Since IPv6 address ranges are deployed globally, no forwarding is needed.
 
 For IPv4 traffic, based on [IPs allocation](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/egress-ips/#ips-allocation), not all egress data centers will have access to an applicable dedicated CDN egress IP.

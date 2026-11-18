@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-
 
 # Set up Workers AI with AI Gateway
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will walk you through setting up and deploying a Workers AI project. You will use [Workers](https://developers.cloudflare.com/workers/), an AI Gateway binding, and a large language model (LLM), to deploy your first AI-powered application on the Cloudflare global network.
 
 ## Prerequisites

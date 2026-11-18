@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/additional-configurations/detectio
 
 # Scraping detections
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Scraping behavioral detection IDs allow you to better protect your website from volumetric scraping attacks by identifying anomalous behavior. The detection IDs below are specifically designed to catch suspicious scraping activity at the zone level.
 
 | Detection ID | Description |

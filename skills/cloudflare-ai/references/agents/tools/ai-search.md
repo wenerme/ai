@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/ai-search/og.png?v=ed66c81
 
 # AI Search
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/ai-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Agents can use [AI Search](https://developers.cloudflare.com/ai-search/) to retrieve relevant information from indexed content and use it to augment [calls to AI models](https://developers.cloudflare.com/agents/models/). AI Search manages the retrieval pipeline for you, including indexing, search, and optional chat completions over your content.
 
 Use AI Search when you want an agent to:

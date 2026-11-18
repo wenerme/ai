@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai/related-products/og.png?v=e2eabf2d33
 
 # Related products
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/related-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 Run machine learning models on Cloudflare's GPU-powered infrastructure with serverless inference.

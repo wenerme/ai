@@ -22,8 +22,9 @@ just text extraction, allowing Gemini to:
 
 
 You can also pass Microsoft Office and OpenDocument files, such as Word
-documents, PowerPoint presentations, and Excel spreadsheets. For details, see
-[Office and OpenDocument files](/docs/document-processing#office-documents).
+documents, PowerPoint presentations, and Excel spreadsheets. To inspect specific
+pages, sheets, or content layers instead of a whole file, see
+[Customize document, presentation, and spreadsheet processing](/docs/document-processing#customize-document-processing).
 Other non-PDF documents, such as TXT, Markdown, or HTML files, are processed as
 plain text, which eliminates context like charts or formatting.
 
@@ -174,7 +175,7 @@ The following example shows you how to pass PDF data inline:
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
               Model: interactions.Model("gemini-4-hydrogen"),
-              Input: interactions.NewInteractionsInput([]interactions.Content{
+              Input: genai.Ptr(interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       Data:     genai.Ptr(base64Pdf),
                       MimeType: interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
@@ -182,7 +183,7 @@ The following example shows you how to pass PDF data inline:
                   interactions.NewContent(interactions.TextContent{
                       Text: "Summarize this document",
                   }),
-              }),
+              })),
           }),
       })
       if err != nil {
@@ -365,7 +366,7 @@ You can also upload a local PDF file for processing:
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
               Model: interactions.Model("gemini-4-hydrogen"),
-              Input: interactions.NewInteractionsInput([]interactions.Content{
+              Input: genai.Ptr(interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(uploadedFile.URI),
                       MimeType: interactions.DocumentContentMimeType(uploadedFile.MIMEType).ToPointer(),
@@ -373,7 +374,7 @@ You can also upload a local PDF file for processing:
                   interactions.NewContent(interactions.TextContent{
                       Text: "Summarize this document",
                   }),
-              }),
+              })),
           }),
       })
       if err != nil {
@@ -600,7 +601,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
               Model: interactions.Model("gemini-4-hydrogen"),
-              Input: interactions.NewInteractionsInput([]interactions.Content{
+              Input: genai.Ptr(interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(sampleDoc.URI),
                       MimeType: interactions.DocumentContentMimeType(sampleDoc.MIMEType).ToPointer(),
@@ -608,7 +609,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
                   interactions.NewContent(interactions.TextContent{
                       Text: prompt,
                   }),
-              }),
+              })),
           }),
       })
       if err != nil {
@@ -847,7 +848,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
               Model: interactions.Model("gemini-4-hydrogen"),
-              Input: interactions.NewInteractionsInput([]interactions.Content{
+              Input: genai.Ptr(interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(sampleFile.URI),
                       MimeType: interactions.DocumentContentMimeType(sampleFile.MIMEType).ToPointer(),
@@ -855,7 +856,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
                   interactions.NewContent(interactions.TextContent{
                       Text: "Summarize this document",
                   }),
-              }),
+              })),
           }),
       })
       if err != nil {
@@ -1280,7 +1281,7 @@ the text prompt stays within the model's context window.
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
               Model: interactions.Model("gemini-4-hydrogen"),
-              Input: interactions.NewInteractionsInput([]interactions.Content{
+              Input: genai.Ptr(interactions.NewInteractionsInput([]interactions.Content{
                   interactions.NewContent(interactions.DocumentContent{
                       URI:      genai.Ptr(samplePdf1.URI),
                       MimeType: interactions.DocumentContentMimeType(samplePdf1.MIMEType).ToPointer(),
@@ -1292,7 +1293,7 @@ the text prompt stays within the model's context window.
                   interactions.NewContent(interactions.TextContent{
                       Text: prompt,
                   }),
-              }),
+              })),
           }),
       })
       if err != nil {
@@ -1407,9 +1408,9 @@ the text prompt stays within the model's context window.
 
 ## Office and OpenDocument files  {% id="office-documents" %}
 
-Gemini models can process Microsoft Office and OpenDocument files. Pass them
-the same way as PDFs, either inline or with the Files API, using a `document`
-content block and one of the following MIME types:
+Gemini models process Microsoft Office and OpenDocument files the same way as
+PDFs. Pass them inline or with the Files API using a `document` content block
+and one of these MIME types:
 
 | File type | Extension | MIME type |
 | --- | --- | --- |
@@ -1424,27 +1425,14 @@ content block and one of the following MIME types:
 |  | `.xls` | `application/vnd.ms-excel` |
 |  | `.ods` | `application/vnd.oasis.opendocument.spreadsheet` |
 
-These files are processed as follows:
+When you omit `processing` options, Gemini ingests the full file using these defaults:
 
-* **DOCX, DOTX, ODT, and PPTX files**: The model receives the text of the
-  whole file, plus embedded images for DOCX and PPTX files. Pages and slides
-  aren't rendered as images, so page layout and visual elements such as
-  charts might not be preserved.
-* **DOC, PPT, and ODP files**: Each page or slide is rendered as an image,
-  so the model can interpret layouts, charts, and images. The whole file is
-  processed.
-* **XLSX and XLS files**: Only the **first sheet** is read. Its contents are
-  converted to CSV, so the model receives the cell values but not formulas or
-  formatting.
-* **ODS files**: Only the **first sheet** is read. The model receives its cell
-  data and formulas.
-
-Other sheets in a workbook are ignored. To analyze a different sheet, move it to
-the first position or save it as a separate file.
-
-Files are processed the same way whether you pass them in a request or a tool
-returns them in a [function response](/docs/function-calling#multimodal).
-The existing file size and page limits apply to the whole file.
+| Extensions | Gemini 4+ | Gemini 3 & 2.5 |
+| :--- | :--- | :--- |
+| `.docx`, `.dotx`, `.odt`, `.pptx` | Page/slide images (medium res, ~560 tokens/page) | Extracted text (+ embedded images) |
+| `.doc`, `.ppt`, `.odp` | Page/slide images (medium res, ~560 tokens/page) | Page/slide images |
+| `.xlsx`, `.xls` | All sheets: values, formulas, sheet names | All sheets as CSV (values only) |
+| `.ods` | All sheets: values, formulas, sheet names | All sheets: values, formulas, sheet names |
 
 The following example uploads a PowerPoint presentation with the Files API and
 asks the model to summarize it:
@@ -1483,21 +1471,22 @@ asks the model to summarize it:
   const ai = new GoogleGenAI({});
   
   async function main() {
-      const deck = await ai.files.upload({
-          file: "quarterly_review.pptx",
-          config: {
-              mimeType: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-          },
-      });
+    const deck = await ai.files.upload({
+      file: "quarterly_review.pptx",
+      config: {
+        mimeType:
+          "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      },
+    });
   
-      const interaction = await ai.interactions.create({
-          model: "gemini-4-hydrogen",
-          input: [
-              { type: "document", uri: deck.uri, mime_type: deck.mimeType },
-              { type: "text", text: "Summarize the key takeaways from each slide." }
-          ]
-      });
-      console.log(interaction.output_text);
+    const interaction = await ai.interactions.create({
+      model: "gemini-4-hydrogen",
+      input: [
+        { type: "document", uri: deck.uri, mime_type: deck.mimeType },
+        { type: "text", text: "Summarize the key takeaways from each slide." },
+      ],
+    });
+    console.log(interaction.output_text);
   }
   
   main();
@@ -1536,70 +1525,605 @@ asks the model to summarize it:
 
 {% /tabs %}
 
-Tools can also return these files to the model. For details, see
-[Multimodal function responses](/docs/function-calling#multimodal).
+Tools can also return these files or sliced selections in a
+[function response](/docs/function-calling#multimodal). Existing file size and
+page limits apply to the whole file.
+
+## Customize document, presentation, and spreadsheet processing  {% id="customize-document-processing" %}
+
+You can pass `processing` (`{"type": "static", ...}`) on a `document` block to
+select page ranges, worksheet tabs, cell ranges, content layers, and rendering
+resolution. These options work across all Gemini 3 and Gemini 4+ models in user
+`input` and inside `function_result.result`.
+
+Gemini counts and bills tokens only for the sliced output sent to the model. The
+model also receives total page counts and worksheet names automatically so it
+can request follow-up ranges across turns.
+
+### Slice pages and select content layers  {% id="page-options" %}
+
+For PDFs (`.pdf`), documents (`.docx`, `.doc`, `.dotx`, `.odt`), and
+presentations (`.pptx`, `.ppt`, `.odp`), set `processing.page_options`:
+
+* `start_page` (integer, optional): 1-indexed inclusive start page. Defaults to
+  `1` when `end_page` is set. Values `<= 0` return `400 INVALID_ARGUMENT`.
+  Values past the page count return an empty slice.
+* `end_page` (integer, optional): 1-indexed inclusive end page. Defaults to the
+  last page when `start_page` is set, and clamps to the last page if it exceeds
+  the page count. Must be `>= start_page`.
+* `content_layers` (list of strings, optional): Choose `"page_image"` (rendered
+  page images), `"page_text"` (extracted text), or both. Defaults to
+  `["page_image"]` when `processing` is set.
+* `resolution` (string, optional): Set on the outer `document` block (`"low"`,
+  `"medium"`, or `"high"`). Defaults to `"medium"` (~560 tokens per page;
+  `"low"` uses ~280 and `"high"` uses ~1,120).
+
+{% callout type="note" %}
+  For large Office documents and presentations, scan the file with
+  `content_layers: ["page_text"]` first, then request `"page_image"` at `"high"`
+  resolution only for pages or slides with charts or dense layouts.
+
+{% /callout %}
+
+{% tabs %}
+  {% tab filename="page_options.py" label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  uploaded_doc = client.files.upload(file="quarterly_report.pdf")
+  
+  interaction = client.interactions.create(
+      model="gemini-4-hydrogen",
+      input=[
+          {
+              "type": "document",
+              "uri": uploaded_doc.uri,
+              "mime_type": "application/pdf",
+              "resolution": "high",
+              "processing": {
+                  "type": "static",
+                  "page_options": {
+                      "start_page": 3,
+                      "end_page": 7,
+                      "content_layers": ["page_image"],
+                  },
+              },
+          },
+          {
+              "type": "text",
+              "text": "Summarize the revenue bridge chart and footnotes on pages 3 through 7.",
+          },
+      ],
+  )
+  
+  print(interaction.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab filename="page_options.js" label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const ai = new GoogleGenAI({});
+  
+  const uploadedDoc = await ai.files.upload({
+    file: "quarterly_report.pdf",
+    config: { mimeType: "application/pdf" },
+  });
+  
+  const interaction = await ai.interactions.create({
+    model: "gemini-4-hydrogen",
+    input: [
+      {
+        type: "document",
+        uri: uploadedDoc.uri,
+        mime_type: "application/pdf",
+        resolution: "high",
+        processing: {
+          type: "static",
+          page_options: {
+            start_page: 3,
+            end_page: 7,
+            content_layers: ["page_image"],
+          },
+        },
+      },
+      {
+        type: "text",
+        text: "Summarize the revenue bridge chart and footnotes on pages 3 through 7.",
+      },
+    ],
+  });
+  
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab filename="PageOptions.java" label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.Content;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.DocumentContent;
+  import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+  import com.google.genai.gaos.models.interactions.DocumentMediaProcessing;
+  import com.google.genai.gaos.models.interactions.DocumentProcessing;
+  import com.google.genai.gaos.models.interactions.DocumentStaticMediaProcessing;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.MediaResolution;
+  import com.google.genai.gaos.models.interactions.Model;
+  import com.google.genai.gaos.models.interactions.PageProcessingOptions;
+  import com.google.genai.gaos.models.interactions.PageProcessingOptionsContentLayer;
+  import com.google.genai.gaos.models.interactions.TextContent;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.types.File;
+  import com.google.genai.types.HttpOptions;
+  import com.google.genai.types.UploadFileConfig;
+  import java.util.List;
+  
+  Client client =
+      Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+  
+  File uploadedDoc =
+      client.files.upload(
+          new java.io.File("quarterly_report.pdf"),
+          UploadFileConfig.builder().mimeType("application/pdf").build());
+  
+  List<Content> content =
+      List.of(
+          DocumentContent.builder()
+              .uri(uploadedDoc.uri().orElse(""))
+              .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+              .resolution(MediaResolution.HIGH)
+              .processing(
+                  DocumentProcessing.of(
+                      DocumentMediaProcessing.of(
+                          DocumentStaticMediaProcessing.builder()
+                              .pageOptions(
+                                  PageProcessingOptions.builder()
+                                      .startPage(3)
+                                      .endPage(7)
+                                      .contentLayers(
+                                          List.of(PageProcessingOptionsContentLayer.PAGE_IMAGE))
+                                      .build())
+                              .build())))
+              .build(),
+          TextContent.builder()
+              .text("Summarize the revenue bridge chart and footnotes on pages 3 through 7.")
+              .build());
+  
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model(Model.of("gemini-4-hydrogen"))
+          .input(InteractionsInput.ofContent(content))
+          .build();
+  
+  Interaction interaction =
+      client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().orElseThrow();
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab filename="page_options.go" label="Go" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+  
+      "google.golang.org/genai"
+      "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, &genai.ClientConfig{
+          HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      uploadedDoc, err := client.Files.UploadFromPath(ctx, "quarterly_report.pdf", &genai.UploadFileConfig{
+          MIMEType: "application/pdf",
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      contents := []interactions.Content{
+          interactions.NewContent(interactions.DocumentContent{
+              URI:        genai.Ptr(uploadedDoc.URI),
+              MimeType:   interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+              Resolution: interactions.MediaResolutionHigh.ToPointer(),
+              Processing: genai.Ptr(interactions.NewDocumentProcessing(
+                  interactions.NewDocumentMediaProcessing(interactions.DocumentStaticMediaProcessing{
+                      PageOptions: &interactions.PageProcessingOptions{
+                          StartPage: genai.Ptr(3),
+                          EndPage:   genai.Ptr(7),
+                          ContentLayers: []interactions.PageProcessingOptionsContentLayer{
+                              interactions.PageProcessingOptionsContentLayerPageImage,
+                          },
+                      },
+                  }),
+              )),
+          }),
+          interactions.NewContent(interactions.TextContent{
+              Text: "Summarize the revenue bridge chart and footnotes on pages 3 through 7.",
+          }),
+      }
+  
+      res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+              Model: interactions.Model("gemini-4-hydrogen"),
+              Input: genai.Ptr(interactions.NewInteractionsInput(contents)),
+          }),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab filename="page_options.sh" label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "Content-Type: application/json" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -d '{
+      "model": "gemini-4-hydrogen",
+      "input": [
+        {
+          "type": "document",
+          "uri": "https://generativelanguage.googleapis.com/v1beta/files/FILE_ID",
+          "mime_type": "application/pdf",
+          "resolution": "high",
+          "processing": {
+            "type": "static",
+            "page_options": {
+              "start_page": 3,
+              "end_page": 7,
+              "content_layers": ["page_image"]
+            }
+          }
+        },
+        {
+          "type": "text",
+          "text": "Summarize the revenue bridge chart and footnotes on pages 3 through 7."
+        }
+      ]
+    }'
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
+### Select spreadsheet tabs and cell ranges  {% id="spreadsheet-options" %}
+
+For spreadsheets (`.xlsx`, `.xls`, `.ods`), set `processing.spreadsheet_options`:
+
+* `sheet_index` (integer, optional): 1-indexed worksheet position in tab order.
+  Omit to ingest all sheets (up to 50,000 cells per sheet). Values `<= 0` or
+  above the sheet count return `400 INVALID_ARGUMENT`.
+* `visible_cells` (string, optional): Standard A1 cell or range (such as
+  `"A1:G40"` or `"B5"`). Crops all selected layers to that region.
+* `content_layers` (list of strings, optional): Choose `"data"` (evaluated cell
+  values), `"formulas"` (raw formulas), and `"visual"` (rendered sheet snapshot
+  for charts and layout). Defaults to `["data", "formulas"]`.
+* `resolution` (string, optional): Set on the outer `document` block (`"low"`,
+  `"medium"`, or `"high"`) when `"visual"` is enabled. Defaults to `"medium"`.
+
+{% tabs %}
+  {% tab filename="spreadsheet_options.py" label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  workbook = client.files.upload(file="financial_model.xlsx")
+  
+  interaction = client.interactions.create(
+      model="gemini-4-hydrogen",
+      input=[
+          {
+              "type": "document",
+              "uri": workbook.uri,
+              "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "resolution": "high",
+              "processing": {
+                  "type": "static",
+                  "spreadsheet_options": {
+                      "sheet_index": 2,
+                      "visible_cells": "A1:H50",
+                      "content_layers": ["data", "formulas", "visual"],
+                  },
+              },
+          },
+          {
+              "type": "text",
+              "text": "Audit the EBITDA formulas and chart in Sheet 2 (A1:H50).",
+          },
+      ],
+  )
+  
+  print(interaction.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab filename="spreadsheet_options.js" label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const ai = new GoogleGenAI({});
+  
+  const workbook = await ai.files.upload({
+    file: "financial_model.xlsx",
+    config: {
+      mimeType:
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    },
+  });
+  
+  const interaction = await ai.interactions.create({
+    model: "gemini-4-hydrogen",
+    input: [
+      {
+        type: "document",
+        uri: workbook.uri,
+        mime_type:
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        resolution: "high",
+        processing: {
+          type: "static",
+          spreadsheet_options: {
+            sheet_index: 2,
+            visible_cells: "A1:H50",
+            content_layers: ["data", "formulas", "visual"],
+          },
+        },
+      },
+      {
+        type: "text",
+        text: "Audit the EBITDA formulas and chart in Sheet 2 (A1:H50).",
+      },
+    ],
+  });
+  
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab filename="SpreadsheetOptions.java" label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.Content;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.DocumentContent;
+  import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+  import com.google.genai.gaos.models.interactions.DocumentMediaProcessing;
+  import com.google.genai.gaos.models.interactions.DocumentProcessing;
+  import com.google.genai.gaos.models.interactions.DocumentStaticMediaProcessing;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.MediaResolution;
+  import com.google.genai.gaos.models.interactions.Model;
+  import com.google.genai.gaos.models.interactions.SpreadsheetProcessingOptions;
+  import com.google.genai.gaos.models.interactions.SpreadsheetProcessingOptionsContentLayer;
+  import com.google.genai.gaos.models.interactions.TextContent;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.types.File;
+  import com.google.genai.types.HttpOptions;
+  import com.google.genai.types.UploadFileConfig;
+  import java.util.List;
+  
+  Client client =
+      Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+  
+  File workbook =
+      client.files.upload(
+          new java.io.File("financial_model.xlsx"),
+          UploadFileConfig.builder()
+              .mimeType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+              .build());
+  
+  List<Content> content =
+      List.of(
+          DocumentContent.builder()
+              .uri(workbook.uri().orElse(""))
+              .mimeType(
+                  DocumentContentMimeType
+                      .APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_SPREADSHEETML_SHEET)
+              .resolution(MediaResolution.HIGH)
+              .processing(
+                  DocumentProcessing.of(
+                      DocumentMediaProcessing.of(
+                          DocumentStaticMediaProcessing.builder()
+                              .spreadsheetOptions(
+                                  SpreadsheetProcessingOptions.builder()
+                                      .sheetIndex(2)
+                                      .visibleCells("A1:H50")
+                                      .contentLayers(
+                                          List.of(
+                                              SpreadsheetProcessingOptionsContentLayer.DATA,
+                                              SpreadsheetProcessingOptionsContentLayer.FORMULAS,
+                                              SpreadsheetProcessingOptionsContentLayer.VISUAL))
+                                      .build())
+                              .build())))
+              .build(),
+          TextContent.builder()
+              .text("Audit the EBITDA formulas and chart in Sheet 2 (A1:H50).")
+              .build());
+  
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model(Model.of("gemini-4-hydrogen"))
+          .input(InteractionsInput.ofContent(content))
+          .build();
+  
+  Interaction interaction =
+      client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().orElseThrow();
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab filename="spreadsheet_options.go" label="Go" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+  
+      "google.golang.org/genai"
+      "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, &genai.ClientConfig{
+          HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      workbook, err := client.Files.UploadFromPath(ctx, "financial_model.xlsx", &genai.UploadFileConfig{
+          MIMEType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      contents := []interactions.Content{
+          interactions.NewContent(interactions.DocumentContent{
+              URI:        genai.Ptr(workbook.URI),
+              MimeType:   interactions.DocumentContentMimeTypeApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet.ToPointer(),
+              Resolution: interactions.MediaResolutionHigh.ToPointer(),
+              Processing: genai.Ptr(interactions.NewDocumentProcessing(
+                  interactions.NewDocumentMediaProcessing(interactions.DocumentStaticMediaProcessing{
+                      SpreadsheetOptions: &interactions.SpreadsheetProcessingOptions{
+                          SheetIndex:   genai.Ptr(2),
+                          VisibleCells: genai.Ptr("A1:H50"),
+                          ContentLayers: []interactions.SpreadsheetProcessingOptionsContentLayer{
+                              interactions.SpreadsheetProcessingOptionsContentLayerData,
+                              interactions.SpreadsheetProcessingOptionsContentLayerFormulas,
+                              interactions.SpreadsheetProcessingOptionsContentLayerVisual,
+                          },
+                      },
+                  }),
+              )),
+          }),
+          interactions.NewContent(interactions.TextContent{
+              Text: "Audit the EBITDA formulas and chart in Sheet 2 (A1:H50).",
+          }),
+      }
+  
+      res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+              Model: interactions.Model("gemini-4-hydrogen"),
+              Input: genai.Ptr(interactions.NewInteractionsInput(contents)),
+          }),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab filename="spreadsheet_options.sh" label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "Content-Type: application/json" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -d '{
+      "model": "gemini-4-hydrogen",
+      "input": [
+        {
+          "type": "document",
+          "uri": "https://generativelanguage.googleapis.com/v1beta/files/WORKBOOK_FILE_ID",
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "resolution": "high",
+          "processing": {
+            "type": "static",
+            "spreadsheet_options": {
+              "sheet_index": 2,
+              "visible_cells": "A1:H50",
+              "content_layers": ["data", "formulas", "visual"]
+            }
+          }
+        },
+        {
+          "type": "text",
+          "text": "Audit the EBITDA formulas and chart in Sheet 2 (A1:H50)."
+        }
+      ]
+    }'
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
 
 ## Technical details  {% id="technical-details" %}
 
-Gemini supports PDF files up to 50MB or 1000 pages. This limit applies
-to both inline data and Files API uploads. Each document page is equivalent to
-258 tokens.
+### Limits and scaling  {% id="limits-and-scaling" %}
 
-While there are no specific limits to the number of pixels in a document besides
-the model's [context window](/docs/long-context), larger pages are
-scaled down to a maximum resolution of 3072 x 3072 while preserving their
-original aspect ratio, while smaller pages are scaled up to 768 x 768 pixels.
-There is no cost reduction for pages at lower sizes, other than bandwidth, or
-performance improvement for pages at higher resolution.
+* **File size and length**: Up to 50 MB per file, 1,000 pages per PDF, or 2,000
+  pages or slides per Office or OpenDocument file (applies to both inline data
+  and Files API uploads, and to the full uploaded file even when slicing).
+* **Spreadsheets**: Up to 50,000 cells per sheet.
+* **Page image rendering**: Gemini renders PDF and Office pages to 2-megapixel
+  images (288 DPI) while preserving aspect ratio. Input pixel dimensions don't
+  change token cost. Use `resolution` to control token budget and detail.
+* **Other text formats**: Files such as TXT, Markdown, HTML, and XML are
+  extracted as plain text only (layout, formatting, and charts aren't
+  preserved). See [File input methods](/docs/file-input-methods) for all input
+  options.
 
-### Gemini 3 models  {% id="gemini-3-models" %}
+### Tokens and billing  {% id="tokens-and-billing" %}
 
-Gemini 3 introduces granular control over multimodal vision processing with the
-`media_resolution` parameter. You can now set the resolution to low, medium, or
-high per individual media part. With this addition, the processing of PDF
-documents has been updated:
+* **Gemini 4 and Gemini 3 models**: Page image token counts depend on
+  `resolution`. They use approximately 280 tokens per page at `low`, 560 at
+  `medium` (default), or 1,120 at `high`. See
+  [Media resolution](/docs/media-resolution) for details.
+* **Gemini 2.5 models**: Flat 258 tokens per page.
+* **PDF native text and usage reporting**: For default PDF processing (without
+  `processing` options), embedded PDF text is extracted alongside page images
+  at no extra token charge. Page image tokens are reported under the `"image"`
+  modality in `usage.input_tokens_by_modality`.
+* **Sliced billing**: When you set `processing` options, Gemini counts and bills
+  only the selected pages, sheets, and `content_layers` sent to the model.
 
-1. **Native text inclusion:** Text natively embedded in the PDF is extracted
-   and provided to the model.
-
-2. **Billing & token reporting:**
-
-   * You are **not charged** for tokens originating from the extracted
-     **native text** in PDFs.
-
-   * In the `usage_metadata` section of the API response, tokens generated
-     from processing PDF pages (as images) are now counted under the `IMAGE`
-     modality, not a separate `DOCUMENT` modality as in some earlier
-     versions.
-
-
-
-For more details about the media resolution parameter, see the
-[Media resolution](/docs/media-resolution) guide.
-
-### Document types  {% id="document-types" %}
-
-Document vision meaningfully understands PDFs and DOC, PPT, and ODP files,
-which are rendered as page images. DOCX, DOTX, ODT, and PPTX files are converted
-to text, and spreadsheets are read as tabular data. For details, see
-[Office and OpenDocument files](/docs/document-processing#office-documents).
-
-Technically, you can pass other MIME types for document understanding, like
-TXT, Markdown, HTML, XML, etc. However, these types are extracted as pure
-text, which means the model can't understand the visual elements present in a
-rendered file. Any file-type specifics like charts, diagrams, HTML tags,
-Markdown formatting, etc., will be lost.
-
-To learn about other file input methods, see the
-[File input methods](/docs/file-input-methods) guide.
-
-### Best practices  {% id="best-practices" %}
-
-For best results:
+## Best practices  {% id="best-practices" %}
 
 * Rotate pages to the correct orientation before uploading.
-* Avoid blurry pages.
-* If using a single page, place the text prompt after the page.
+* Avoid blurry scans or low-contrast pages.
+* When sending a single page, place the text prompt after the document.
 
 ## What's next  {% id="whats-next" %}
 

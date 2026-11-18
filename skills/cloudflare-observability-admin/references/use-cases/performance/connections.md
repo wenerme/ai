@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/performance/connections/og.pn
 
 # Accelerate connections
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Network congestion and suboptimal routing between your origin and visitors add latency. Cloudflare Argo Smart Routing uses real-time network telemetry to route requests through the fastest paths, while Early Hints preloads assets before the full HTML response arrives.
 
 ## Solutions

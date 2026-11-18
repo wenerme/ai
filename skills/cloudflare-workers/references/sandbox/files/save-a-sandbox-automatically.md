@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatica
 
 # Save a sandbox automatically
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 An alarm in the Durable Object saves a Container snapshot of an idle sandbox and stops it. While the sandbox is in use, the alarm also saves checkpoints. The next request starts the sandbox from the last snapshot.
 
 Public beta

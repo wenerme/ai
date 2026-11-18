@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/mu
 
 # Multi-vendor Application Security and Performance Reference Architecture
 
-Last updated Nov 19, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/multi-vendor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 Over time and with the rapidly evolving application security and performance industries, companies have come to deploy multiple vendors to provide services. Sometimes customers opt for using multiple vendors for reasons of regulatory/company compliance, resiliency, performance, or cost.

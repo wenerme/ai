@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/observability/logging/og.png
 
 # Logging
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Logs help you monitor requests and troubleshoot application issues. Each log can include the prompt, response, provider, timestamp, status, token usage, cost, duration, and user agent.
 
 When a request matches a [Data Loss Prevention (DLP)](https://developers.cloudflare.com/ai-gateway/features/dlp/) policy, its log can also include the action and matched policy details.

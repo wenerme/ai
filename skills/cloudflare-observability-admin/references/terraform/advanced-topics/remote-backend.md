@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/advanced-topics/remote-backen
 
 # Remote R2 backend
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cloudflare R2](https://developers.cloudflare.com/r2/) and [Terraform remote backends ↗︎](https://developer.hashicorp.com/terraform/language/settings/backends/remote) can interact with each other to provide a seamless experience for Terraform state management.
 
 Cloudflare R2 is an object storage service that provides a highly available, scalable, and secure way to store and serve static assets, such as images, videos, and static websites. R2 has [S3 API compatibility](https://developers.cloudflare.com/r2/api/s3/api/) making it easy to integrate with existing cloud infrastructure and applications.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-ru
 
 # Troubleshoot WAF managed rules (previous version)
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 By default, WAF managed rules are fully managed via the Cloudflare dashboard and are compatible with most websites and web applications. However, false positives and false negatives may occur:
 
 - **False positives**: Legitimate requests detected and filtered as malicious.

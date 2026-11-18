@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/changelog/og.png?v=940a05bcf760e7
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cache.xml)
 
 ## 2026-09-28

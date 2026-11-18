@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/send-emails-with-rese
 
 # Send Emails With Resend
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to send transactional emails from Workers using [Resend ↗︎](https://resend.com/). At the end of this tutorial, you’ll be able to:
 
 - Create a Worker to send emails.

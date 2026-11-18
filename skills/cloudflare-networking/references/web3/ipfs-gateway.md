@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web3/ipfs-gateway/og.png?v=209642275fa2
 
 # IPFS Gateway
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's IPFS gateway provides a read-only, HTTP-accessible interface to the [Interplanetary File System (IPFS)](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/). This gateway does not require you to download any special software or give up any storage space on your computer.
 
 - [Concepts](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/)

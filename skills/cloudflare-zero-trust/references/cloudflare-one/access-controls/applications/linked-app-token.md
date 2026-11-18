@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Linked App Token
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The **Linked App Token** policy selector allows an Access policy on one application to accept tokens issued for another application. This is useful when one application needs to make authenticated requests to another on behalf of a user — for example, an MCP server calling internal APIs, or a microservice forwarding user identity to a downstream service.
 
 Linked App Token supports two flows:

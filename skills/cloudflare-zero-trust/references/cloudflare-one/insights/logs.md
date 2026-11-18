@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/logs/og.png?v=b
 
 # Logs
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review detailed logs for your Zero Trust organization.
 
 - [Dashboard logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Antivirus
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Antivirus device posture attribute checks if any antivirus software is installed and active on a device. The Cloudflare One Client queries the [Windows Security Center API ↗︎](https://learn.microsoft.com/en-us/windows/win32/api/iwscapi/ne-iwscapi-wsc_security_product_state) to determine the state of registered security products. For the posture check to pass, Windows Security Center must report that a security product is turned on and up to date.
 
 ## Prerequisites

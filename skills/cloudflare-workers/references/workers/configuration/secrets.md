@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/secrets/og.png?v=
 
 # Secrets
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Background
 
 Secrets are a type of binding that allow you to attach encrypted text values to your Worker. Secrets are used for storing sensitive information like API keys and auth tokens.

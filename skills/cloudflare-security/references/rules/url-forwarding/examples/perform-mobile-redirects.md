@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/rules/url-forwarding/examples/perform-m
 
 Create a redirect rule to redirect visitors using mobile devices to a different hostname.
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following examples will redirect visitors using mobile devices — based on the request user agent string — to a different hostname.
 
 ## Redirect mobile users dropping the original URI path

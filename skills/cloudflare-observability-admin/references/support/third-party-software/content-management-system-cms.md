@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/third-party-software/content-ma
 
 # Content Management System (CMS)
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below you will find links to the relevant sections for Content Management System (CMS) support-focused material.
 
 - [Cloudflare WordPress Plugin Automatic Cache Management](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/cloudflare-wordpress-plugin-automatic-cache-management/)

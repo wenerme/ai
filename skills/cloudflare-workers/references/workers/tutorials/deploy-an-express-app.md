@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app
 
 # Deploy an Express.js application on Cloudflare Workers
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to deploy an [Express.js ↗︎](https://expressjs.com/) application on Cloudflare Workers using the [Cloudflare Workers platform](https://developers.cloudflare.com/workers/) and [D1 database](https://developers.cloudflare.com/d1/). You will build a Members Registry API with basic Create, Read, Update, and Delete (CRUD) operations. You will use D1 as the database for storing and retrieving member data.
 
 ## Before you start

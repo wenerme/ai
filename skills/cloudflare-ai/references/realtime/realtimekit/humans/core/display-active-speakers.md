@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/displa
 
 # Display active speakers
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/display-active-speakers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 WebMobile
 
 ReactWeb ComponentsAngular

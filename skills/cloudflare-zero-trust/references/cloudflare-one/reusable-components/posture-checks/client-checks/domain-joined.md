@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Domain joined
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/domain-joined/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Domain Joined device posture attribute ensures that a user is a member of a specific Windows Active Directory domain.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-integrations/sentin
 
 # Sentinel
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare has integrations with Microsoft Sentinel to make analyzing your Cloudflare data easier and in a centralized space. Cloudflare has two versions of this connector available. We recommend utilizing the latest Codeless Connector integration as it provides easier setup, cost management, and integrates with [Sentinel Data Lake ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview).
 
 **[Sentinel CCF Solution ↗︎](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)** (recommended): The Codeless Connector Framework (CCF) provides partners, advanced users, and developers the ability to create custom connectors for ingesting data to Microsoft Sentinel.

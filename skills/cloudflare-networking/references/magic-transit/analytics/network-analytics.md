@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/analytics/network-analyti
 
 # Network Analytics
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) provides real-time insights into Magic Transit traffic that enters and leaves Cloudflare's network through GRE or IPsec tunnels.
 
 Data is aggregated into time intervals that vary based on the selected zoom level. For example, a daily view shows 24-hour averages, which can flatten short-term traffic spikes. As a result, longer time intervals display lower peak bandwidth values compared to more granular views like five-minute intervals.

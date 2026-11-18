@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/internals/og.png?v=a
 
 # Agent class internals
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/internals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The core of the `agents` library is the `Agent` class. You extend it, override a few methods, and get state management, WebSockets, scheduling, RPC, and more for free. This page explains how `Agent` is built, layer by layer, so you understand what is happening under the hood.
 
 The snippets shown here are illustrative and do not necessarily represent best practices. For the full API, refer to the [API reference](https://developers.cloudflare.com/agents/runtime/) and the [source code ↗︎](https://github.com/cloudflare/agents/blob/main/packages/agents/src/index.ts).

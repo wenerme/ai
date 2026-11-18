@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/reference/wrangler-commands/o
 
 # Wrangler commands
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Vectorize uses the following [Wrangler Commands](https://developers.cloudflare.com/workers/wrangler/commands/).
 
 ## `vectorize create`

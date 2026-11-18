@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/regional-priva
 
 # Implement regional private DNS servers with Gateway resolver policies
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Gateway resolver policies allow you to route DNS queries to custom DNS resolvers based on various criteria. This tutorial demonstrates how to configure region-specific private DNS servers to ensure your users are directed to the closest internal resources based on their geographic location.
 
 This approach is particularly useful for organizations with internal networks spanning multiple locations where DNS routes and manages access to private network resources.
@@ -86,7 +84,7 @@ Create a catch-all policy for users in regions without a dedicated DNS server, o
 
 ## 3. Configure policy order
 
-Gateway will apply resolver policies based on [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence). Ensure your policies are ordered from most specific to least specific:
+Gateway will apply resolver policies based on [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/#order-of-precedence). Ensure your policies are ordered from most specific to least specific:
 
 1. Go to **Traffic policies** > **Resolver policies**.
 2. Use the drag handle to reorder policies:
@@ -121,13 +119,13 @@ To test your configuration, deploy the Cloudflare One Client on a device in each
 
 - **Use backup resolvers**: Configure secondary DNS resolvers for each region to ensure high availability.
 - **Monitor DNS performance**: Use [Gateway Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/) to track DNS query performance and identify any issues with regional routing.
-- **Implement network policies**: Combine resolver policies with [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to control access to internal resources based on user identity and device posture.
+- **Implement network policies**: Combine resolver policies with [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) to control access to internal resources based on user identity and device posture.
 - **Consider virtual networks**: If you have overlapping IP address spaces across regions, use [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) to isolate traffic.
 - **Test failover scenarios**: Regularly test what happens when a regional DNS server becomes unavailable to ensure your backup resolvers work as expected.
 
 ## Related resources
 
-- [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/)
+- [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/)
 - [Connect private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 - [Gateway Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/)
 - [Virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/)
@@ -141,5 +139,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/#page","headline":"Implement regional private DNS servers with Gateway resolver policies","description":"Configure Gateway resolver policies to route DNS queries to region-specific private DNS servers, enabling geo-steering for internal resources across multiple locations.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/og.png?v=8a057daf93357048","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Geolocation","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/#page","headline":"Implement regional private DNS servers with Gateway resolver policies","description":"Configure Gateway resolver policies to route DNS queries to region-specific private DNS servers, enabling geo-steering for internal resources across multiple locations.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/og.png?v=8a057daf93357048","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Geolocation","Private networks"]}
 ```

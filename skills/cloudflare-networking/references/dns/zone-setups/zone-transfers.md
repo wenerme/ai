@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/og.png?v
 
 # DNS Zone transfers
 
-Last updated Jul 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Zone transfers allow you to use multiple DNS providers for the same domain to increase availability and fault tolerance. If one provider has an outage, the other can still answer DNS queries, keeping your domain available.
 
 With zone transfers, your providers synchronize DNS records between themselves using one of two protocols:

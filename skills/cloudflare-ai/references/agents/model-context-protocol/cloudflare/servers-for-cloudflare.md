@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/cloudflar
 
 # Cloudflare's own MCP servers
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth on clients like [Claude ↗︎](https://modelcontextprotocol.io/quickstart/user), [Windsurf ↗︎](https://docs.windsurf.com/windsurf/cascade/mcp), our own [AI Playground ↗︎](https://playground.ai.cloudflare.com/) or any [SDK that supports MCP ↗︎](https://github.com/cloudflare/agents/tree/main/packages/agents/src/mcp).
 
 These MCP servers allow your MCP client to read configurations from your account, process information, make suggestions based on data, and even make those suggested changes for you. All of these actions can happen across Cloudflare's many services including application development, security and performance.

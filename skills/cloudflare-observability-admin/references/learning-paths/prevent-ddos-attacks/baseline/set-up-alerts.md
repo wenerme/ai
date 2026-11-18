@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/bas
 
 # Set up alerts
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/set-up-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Another part of preparing for DDoS attacks is knowing when your application is being attacked.
 
 Cloudflare offers notifications for DDoS attacks, which you can set up on your account.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usa
 
 # Profiling CPU usage
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If a Worker spends too much time performing CPU-intensive tasks, responses may be slow or the Worker might fail to startup due to [time limits](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 
 Profiling in DevTools can help you identify and fix code that uses too much CPU.

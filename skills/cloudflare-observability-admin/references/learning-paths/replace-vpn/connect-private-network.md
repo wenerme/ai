@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/connect-priv
 
 # Connect your private network
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This module covers how to connect your private network services and applications to Cloudflare. In many ways, this connection will replace the concept of a traditional VPN concentrator or headend device.
 
 ## Objectives

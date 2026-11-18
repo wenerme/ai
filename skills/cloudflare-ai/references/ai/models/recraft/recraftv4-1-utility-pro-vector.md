@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Recraft
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-utility-pro-vector/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `recraft/recraftv4-1-utility-pro-vector` Copy

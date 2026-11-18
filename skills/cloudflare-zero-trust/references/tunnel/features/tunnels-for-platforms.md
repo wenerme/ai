@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/features/tunnels-for-platforms/o
 
 # Tunnels for Platforms
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/tunnels-for-platforms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Tunnels for Platforms lets you run more than 1,000 Cloudflare Tunnels in a single Cloudflare account. Every account includes 1,000 tunnels at no cost. With Tunnels for Platforms, you add tunnel capacity beyond that as your deployment grows, without splitting your fleet across multiple accounts.
 
 Tunnels for Platforms uses the same `cloudflared` daemon, API, and dashboard as every other tunnel. No changes to your tunnels or `cloudflared` deployments are required.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 421
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-421/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 421 Misdirected Request
 
 The `421 Misdirected Request` status code indicates that the request was directed to a server that is not able to produce a response for the combination of scheme and authority included in the request URI.

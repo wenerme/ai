@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/get-started/limits/og.png?v=fd40
 
 # Limits and formats
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/get-started/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This section covers limits and supported formats for Images.
 
 ---

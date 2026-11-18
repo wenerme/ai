@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/migration-guides
 
 # SCIM v1 to v2 Migration
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's first iteration of SCIM integration introduced a concept called *Virtual Groups*, typically identified by the pattern `CF-<accountID>-<Role Name>` in your IdP. Virtual Groups were an early implementation of group-based access control: they acted as placeholders created automatically by SCIM to map IdP groups to account memberships.
 
 While customers could add or remove members from these groups within their IdP, Virtual Groups had important limitations:

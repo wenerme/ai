@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # Scan HTTP traffic
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can scan HTTP traffic for sensitive data through [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) policies. To enforce DLP policies, first configure a **DLP profile** that defines what sensitive data patterns to detect. Then build a **Gateway HTTP policy** that defines what action to take (allow, block, or log) when Gateway finds matching data.
 
 Before creating a policy, use [Passive Detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/) to explore sensitive data in sampled Gateway traffic. Its findings can help you choose which data types and destinations your policy should cover.

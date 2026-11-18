@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 413
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-413/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 413 Payload Too Large
 
 The `413 Payload Too Large` status code indicates that the server refuses to process the request because the payload sent by the client exceeds the server's acceptable size limit. The server may optionally close the connection. If this refusal would only happen temporarily, then the server should send a `Retry-After` header to specify when the client should try the request again.

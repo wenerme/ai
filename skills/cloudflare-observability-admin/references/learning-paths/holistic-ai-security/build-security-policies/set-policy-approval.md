@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/bui
 
 # Set policy based on approval status
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you use specific AI tools within your organization, you may want to create policies to explicitly allow the usage of those tools while continuing to evaluate additional usage within your organization.
 
 ## Create a Gateway policy for monitoring and evaluating all AI tool usage

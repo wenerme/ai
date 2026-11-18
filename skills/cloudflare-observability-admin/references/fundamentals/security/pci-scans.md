@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/security/pci-scans/og.png?
 
 # Scan for PCI compliance
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/security/pci-scans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Cloudflare is PCI certified as a Data Processor. Refer to [PCI compliance and vulnerabilities mitigation](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities) and Cloudflare's PCI DSS Responsibility Matrix for more information.

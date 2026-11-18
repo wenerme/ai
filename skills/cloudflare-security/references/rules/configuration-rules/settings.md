@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/configuration-rules/settings/og.p
 
 # Configuration Rules settings
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can change the configuration settings described below in a configuration rule.
 
 ## Automatic HTTPS Rewrites

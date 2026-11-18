@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/og.p
 
 # Reusable components
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)
 - [Tags](https://developers.cloudflare.com/cloudflare-one/reusable-components/tags/)
 - [Use IP lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/use-rules-list/)

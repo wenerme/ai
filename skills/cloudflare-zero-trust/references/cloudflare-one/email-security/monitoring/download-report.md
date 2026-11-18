@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/monitorin
 
 # Download a report
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security allows you to download three types of reports:
 
 - Disposition report

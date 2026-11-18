@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/markdown-for-age
 
 # Markdown for Agents
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## What is Markdown for Agents
 
 Markdown has quickly become the lingua franca for agents and AI systems as a whole. The format’s explicit structure makes it ideal for AI processing, ultimately resulting in better results while minimizing token waste.

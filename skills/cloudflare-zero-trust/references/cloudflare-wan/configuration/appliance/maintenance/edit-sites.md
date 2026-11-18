@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/
 
 # Edit sites
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/edit-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 1. Go to the **Network health** page.
 
 [Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)

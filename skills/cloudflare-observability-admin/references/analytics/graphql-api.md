@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/og.png?v=d0a23175
 
 # GraphQL Analytics API
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The GraphQL Analytics API provides data regarding HTTP requests passing through Cloudflare's network, as well as data from specific products, such as Firewall or Load Balancing. Network Analytics users also have access to packet-level data. Use the GraphQL Analytics API to select specific datasets and metrics of interest, filter and aggregate the data along various dimensions, and integrate the results with other applications.
 
 The basis of the API is the [GraphQL framework ↗︎](https://graphql.org/), created and open-sourced by Facebook. There is an active developer community for GraphQL and powerful clients for running queries, which makes it easy to get started. GraphQL is especially useful for building visualizations and powers the analytics in the Cloudflare dashboard.

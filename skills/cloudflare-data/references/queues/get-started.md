@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/get-started/og.png?v=28a1b265183
 
 # Getting started
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Queues is a flexible messaging queue that allows you to queue messages for asynchronous processing. By following this guide, you will create your first queue, a Worker to publish messages to that queue, and a consumer Worker to consume messages from that queue.
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/features/filterin
 
 # Filtering
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Filters constrain queries to a particular account or set of zones, requests by date, or those from a specific user agent, for example. Without filters, queries can suffer performance degradation, results can exceed supported bounds, and the data returned can be noisy.
 
 ## Filter Structure

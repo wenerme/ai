@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/tunnel/platform/og.png?v=11be90e3148ea0
 
 # Platform
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [System requirements](https://developers.cloudflare.com/tunnel/platform/system-requirements/)
 - [Changelog](https://developers.cloudflare.com/tunnel/platform/changelog/)
 

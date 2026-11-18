@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/byoip/concepts/static-ips/og.png?v=51d3
 
 # Static IPs
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/static-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you use Cloudflare as a [reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), Cloudflare assigns shared [anycast IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) to proxied DNS records by default. These IPs can change at any time. Static IPs give you a set of specifically assigned Cloudflare IP addresses — Cloudflare will not change them without notifying you, and will typically only do so at your request.
 
 Static IPs are useful when you need to allowlist your IPs or communicate them to third parties in advance.

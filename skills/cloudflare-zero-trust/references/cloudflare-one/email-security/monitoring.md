@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/monitorin
 
 # Monitoring
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you have chosen a domain to scan, Email security allows you to monitor the traffic scanned from your email inboxes.
 
 Note

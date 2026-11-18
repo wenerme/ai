@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/design-guides/ex
 
 # Extend Cloudflare's benefits to SaaS providers' end-customers
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 A key aspect of developing a Software-as-a-service (SaaS) application is ensuring its security against the wide array of potential attacks it faces on the Internet. Cloudflare's network and security services can be used to protect your customers using your SaaS application, off-loading the risk to a vendor with experience in [protecting applications ↗︎](https://radar.cloudflare.com/reports/ddos).

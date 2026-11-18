@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-
 
 # Static site
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Use this guide when you specifically want to deploy a Next.js static export to Cloudflare Pages. For Next.js on Workers, Cloudflare recommends [vinext](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/), which also supports static exports.

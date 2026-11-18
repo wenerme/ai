@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/reject-if-busy/og.p
 
 # Reject busy requests
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/reject-if-busy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Set `rejectIfBusy` when your application should not wait in a capacity queue. Workers AI rejects the synchronous inference request if capacity is unavailable.
 
 ## Send a REST request

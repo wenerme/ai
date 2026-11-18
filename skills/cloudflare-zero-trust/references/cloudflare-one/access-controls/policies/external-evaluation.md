@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # External Evaluation rules
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Cloudflare Access, you can create Allow or Block policies which evaluate the user based on custom criteria. This is done by adding an **External Evaluation** rule to your policy. The **External Evaluation** selector requires two values:
 
 - **Evaluate URL** — the API endpoint containing your business logic.
@@ -70,7 +68,7 @@ You can set up External Evaluation rules using any API service, but to get start
   "name": "my-worker",
   "workers_dev": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "main": "index.js",
   "upload_source_maps": true,
   "kv_namespaces": [
@@ -91,7 +89,7 @@ You can set up External Evaluation rules using any API service, but to get start
 name = "my-worker"
 workers_dev = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 main = "index.js"
 upload_source_maps = true
 

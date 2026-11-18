@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods
 
 # Workers Bindings
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The AI binding (`env.AI`) lets you call AI models and access AI Gateway features directly from your Worker.
 
 For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/).
@@ -37,7 +35,7 @@ binding = "AI"
 
 The binding is accessible in your Worker code as `env.AI`.
 
-If you're using TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
+If you're using TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
 ## `env.AI.run()`
 

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Manage policy reference resources
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/policy-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use **Policy reference** resources to share code and data between policies. You need access to manage Cloud Workload Security in your account.
 
 ## Create a Rego module

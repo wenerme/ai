@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Performance
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare for SaaS allows you to deliver the best performance to your end customers by helping enable you to reduce latency through:
 
 - [Argo Smart Routing for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/argo-for-saas/) calculates and optimizes the fastest path for requests to travel to your origin.

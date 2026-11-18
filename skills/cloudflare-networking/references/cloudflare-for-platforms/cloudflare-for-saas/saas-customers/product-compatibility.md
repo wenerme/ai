@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Product compatibility
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/product-compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 As a general rule, settings on the customer zone will override settings on the SaaS zone. In addition, [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/) does not permit traffic directed to a custom hostname zone into another custom hostname zone.
 
 The following table provides a list of compatibility guidelines for various Cloudflare products and features.

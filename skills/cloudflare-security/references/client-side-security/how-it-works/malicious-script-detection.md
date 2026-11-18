@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/how-it-works/malic
 
 # Malicious script and connection detection
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Domain-based threat intelligence is available to all customers. Malicious script detection and malicious URL checks require Client-Side Security Advanced.

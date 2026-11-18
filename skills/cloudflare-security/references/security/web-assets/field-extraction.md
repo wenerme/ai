@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security/web-assets/field-extraction/og
 
 # Configure field extraction
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/field-extraction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Field extraction tells Cloudflare where to find application data in incoming requests. Expressions can locate data in supported request bodies, headers, and URI query parameters. Cloudflare security products can inspect the extracted values and expose detection results for rules and analytics.
 
 Note

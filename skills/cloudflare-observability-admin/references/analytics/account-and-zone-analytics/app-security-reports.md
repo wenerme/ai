@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/ap
 
 # Security reports
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Application Security reports provide cyber attack insights and trends for all of the Enterprise zones in your Cloudflare account.
 
 The reports are automatically generated on a monthly basis.

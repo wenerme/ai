@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/configuration/retrieval/cache
 
 # Similarity cache
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Similarity-based caching in AI Search lets you serve responses from Cloudflare's cache for queries that are similar to previous requests, rather than creating new, unique responses for every request. This speeds up response times and cuts costs by reusing answers for questions that are close in meaning.
 
 ## How it works

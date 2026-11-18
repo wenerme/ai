@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-pass/production-deployment-test
 
 # Production Deployment Testing
 
-Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers obtaining a token from your Cloudflare-operated deployment. By this point, you and Cloudflare have already worked together to build and provision the following components. Use this guide to confirm the deployment issues and redeems tokens end to end.
 
 Privacy Pass is not a self-serve product at the moment: a production deployment is a managed engagement with Cloudflare. If you just want to see Privacy Pass work without any setup, refer to [Getting started](https://developers.cloudflare.com/privacy-pass/getting-started/).

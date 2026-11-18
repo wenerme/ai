@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-pl
 
 # Local development
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Test changes to your [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) by running the dynamic dispatch Worker locally but connecting it to user Workers that have been deployed to Cloudflare.
 
 Note

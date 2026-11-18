@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/moq/about/og.png?v=1288e994c8cef9d7
 
 # Background
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/moq/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Over the years, efficient delivery of live media content has attracted significant interest from the networking and media streaming community. Many applications, including live streaming platforms, real-time communication systems, gaming, and interactive media experiences, require low-latency media delivery. However, it remained a major challenge to deliver media content in a scalable, efficient, and robust way over the internet. Currently, most solutions rely on proprietary protocols or repurpose existing protocols like HTTP/2 or WebRTC that weren't specifically designed for media streaming use cases.
 
 Realizing this gap, the IETF Media Over QUIC (MoQ) working group was formed to develop a standardized protocol for media delivery over QUIC transport. The working group brings together expertise from major technology companies, content delivery networks, and academic institutions to create a modern solution for media streaming.

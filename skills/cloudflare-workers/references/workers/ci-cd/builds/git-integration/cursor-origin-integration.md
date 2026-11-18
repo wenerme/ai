@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cu
 
 # Cursor Origin integration
 
-Last updated Sep 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cursor-origin-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Cursor Origin ↗︎](https://cursor.com/origin) is Cursor's Git hosting platform. Cloudflare supports connecting a Cursor Origin repository to your Cloudflare Worker. Workers Builds automatically builds and deploys your Worker when you push a change to the configured production branch. You can also enable [preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds) to create [Previews](https://developers.cloudflare.com/workers/previews/) without deploying changes to production.
 
 ## Features

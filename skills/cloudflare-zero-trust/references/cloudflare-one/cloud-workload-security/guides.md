@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Guides
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use these guides to configure Cloud Workload Security resources:
 
 - [Configure policies](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/configure-policies/): define workloads, write policies, and attach policy sets to deployments.

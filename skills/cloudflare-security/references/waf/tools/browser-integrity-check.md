@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/tools/browser-integrity-check/og.pn
 
 # Browser Integrity Check
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/browser-integrity-check/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's Browser Integrity Check (BIC) looks for common HTTP headers abused most commonly by spammers and denies access to your page.
 
 It also challenges visitors without a user agent or with a non-standard user agent such as commonly used by abusive bots, crawlers, or visitors.

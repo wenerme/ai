@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/migrat
 
 # Authenticate without integrated SSO
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A common goal for many security organizations is to implement continuous authentication and authorization. With Cloudflare Access JWT validation, you can achieve this goal without introducing significant user interruption or requiring behavioral changes for your end users.
 
 As discussed on the [previous page](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/), some of your applications may currently rely on a direct SSO integration to authenticate requests. However, if you were to put this type of application behind Cloudflare to enable remote access, your user would need to authenticate twice. First, they must authenticate to your identity provider via Cloudflare Access. Once they have authenticated to Access, your user will reach the front door of your internal application, where they must complete a second authentication event via the direct SSO integration.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/
 
 # Submission addresses
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/submission-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To view the destination addresses of user and team submissions:
 
 1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).

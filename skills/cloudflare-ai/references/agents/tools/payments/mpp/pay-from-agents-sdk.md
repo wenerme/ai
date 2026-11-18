@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/payments/mpp/pay-from-agen
 
 # Pay from the Agents SDK
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/pay-from-agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the Cloudflare Agents SDK to pay MPP services. The `mppx` SDK handles payment retries for HTTP requests and Model Context Protocol (MCP) tool calls.
 
 ## Prerequisites

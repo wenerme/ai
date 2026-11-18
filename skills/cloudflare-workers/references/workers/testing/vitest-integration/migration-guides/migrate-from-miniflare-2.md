@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/migr
 
 # Migrate from Miniflare 2's test environments
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Miniflare 2 ↗︎](https://github.com/cloudflare/miniflare?tab=readme-ov-file) provided custom environments for Jest and Vitest in the `jest-environment-miniflare` and `vitest-environment-miniflare` packages respectively. The `@cloudflare/vitest-plugin` package provides similar functionality using modern Miniflare versions and the [`workerd` runtime ↗︎](https://github.com/cloudflare/workerd). `workerd` is the same JavaScript/WebAssembly runtime that powers Cloudflare Workers. Using `workerd` reduces behavior mismatches between your tests and deployed code. Refer to the [Miniflare 3 announcement ↗︎](https://blog.cloudflare.com/miniflare-and-workerd) for more information.
 
 Caution

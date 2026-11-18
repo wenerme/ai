@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/report-abuse/sub
 
 # View and submit reports
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Submit reports
 
 Cloudflare provides security, performance, and reliability services to millions of websites. When you report abuse involving a website that uses Cloudflare, Cloudflare's ability to respond depends on the Cloudflare service involved. Many reports involve websites using Cloudflare's pass-through CDN and security services, while others involve domains registered through Cloudflare Registrar or content hosted on Cloudflare's developer platform.

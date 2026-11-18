@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/workers/get-started/firs
 
 # First application
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/get-started/first-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Build an AI application with Hono and Workers
 
 If you have already created your first Worker and want to learn what more you can do with your project, review the following Learn Cloudflare Workers course for beginners.

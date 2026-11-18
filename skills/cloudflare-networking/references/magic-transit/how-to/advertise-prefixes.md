@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes
 
 # Advertise prefixes
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Onboard prefixes
 
 You can bring your own public IP addresses to Cloudflare to use with Magic Transit. This is also known as bring your own IP (BYOIP). This process involves two distinct types of prefixes:

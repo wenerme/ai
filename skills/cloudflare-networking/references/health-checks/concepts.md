@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/health-checks/concepts/og.png?v=fe6e52e
 
 # Concepts
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/health-checks/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the following topics to learn more about the basic concepts involved in Cloudflare Health Checks.
 
 - [Health Checks regions](https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/)

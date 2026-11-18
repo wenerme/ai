@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/change-log/historical-2024/og.png?v
 
 # Historical (2024)
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/historical-2024/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Managed ruleset updates](#managed-ruleset-updates)
 - [General updates](#general-updates)
 

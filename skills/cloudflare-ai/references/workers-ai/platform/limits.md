@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/platform/limits/og.png?v=f48
 
 # Limits
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers AI is now Generally Available. We've updated our rate limits to reflect this.
 
 Note that model inferences in local mode using Wrangler will also count towards these limits. Beta models may have lower rate limits while we work on performance and scale.

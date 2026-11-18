@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/analytics-engine/sampling/og.
 
 # Sampling with WAE
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sampling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers Analytics Engine offers the ability to write an extensive amount of data and retrieve it quickly, at minimal or no cost. To facilitate writing large amounts of data at a reasonable cost, Workers Analytics Engine employs weighted adaptive [sampling ↗︎](<https://en.wikipedia.org/wiki/Sampling_(statistics)>).
 
 When utilizing sampling, you do not need every single data point to answer questions about a dataset. For a sufficiently large dataset, the [necessary sample size ↗︎](https://select-statistics.co.uk/blog/importance-effect-sample-size/) does not depend on the size of the original population. Necessary sample size depends on the variance of your measure, the size of the subgroups you analyze, and how accurate your estimate must be.

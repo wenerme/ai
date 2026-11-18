@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/custom-domain-protection/og.p
 
 # Cloudflare Custom Domain Protection
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/custom-domain-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare offers [Custom Domain Protection ↗︎](https://www.cloudflare.com/products/registrar/custom-domain-protection/) to customers with a Cloudflare Enterprise plan and high-profile domains who need the highest level of security against domain hijacking.
 
 Custom Domain Protection offers additional safeguard features for registered domains, including:

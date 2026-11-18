@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/platform/troubleshooting/og.png?v=ab
 
 # Troubleshooting
 
-Last updated Jun 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Troubleshooting 403 / CORS issues with R2
 
 If you are encountering a CORS error despite setting up everything correctly, you may follow this troubleshooting guide to help you.

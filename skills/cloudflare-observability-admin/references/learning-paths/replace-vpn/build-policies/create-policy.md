@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/build-polici
 
 # Secure your first application
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To ensure holistic security precautions, we recommend securing each distinct private application with at least two policies:
 
 - A [Gateway DNS policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) with the appropriate identity and device posture values, targeting the domain list that defines your application. Policy enforcement happens at the request resolution event, before the user's device makes a connection request to the application itself; if denied here, no traffic will reach your private network.

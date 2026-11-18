@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Amazon AWS Transit Gateway
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide provides step-by-step instructions for connecting an Amazon Web Services (AWS) Transit Gateway to Cloudflare WAN with redundant, route-based IPsec tunnels and Border Gateway Protocol (BGP). The primary topology uses:
 
 - One Cloudflare anycast IP

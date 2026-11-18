@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule
 
 # Update a rule in a ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Applies one or more changes to an existing rule in a ruleset at the account or zone level.
 
 Use one of the following API endpoints:

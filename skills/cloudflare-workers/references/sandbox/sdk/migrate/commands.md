@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/commands/og.png?v=9
 
 # Change command calls
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Replace 0.12 command calls with [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec) on the container. In Sandbox SDK 0.12, `exec()` runs each command string in a long-lived `bash` session that starts in `/workspace`. In 1.0, each call starts one process, and nothing carries over from one call to the next.
 
 ## Before you start

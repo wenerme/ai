@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics
 
 # Speed test
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/speed-test/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Speed tests allow administrators to remotely measure network performance from end-user devices running the [Cloudflare One client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). Each test runs from the client to Cloudflare's network edge and reports metrics for internet speed, latency, and network quality.
 
 Speed tests help IT teams:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/serve
 
 # Serve private images
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can serve private images by using signed URL tokens. When an image requires a signed URL, the image cannot be accessed without a token unless it is being requested for a variant set to always allow public access.
 
 1. In the Cloudflare dashboard, go to the **Hosted Images** page. [Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)

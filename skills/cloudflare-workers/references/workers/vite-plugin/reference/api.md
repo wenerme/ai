@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/api/og.pn
 
 # API
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## `cloudflare()`
 
 The `cloudflare` plugin should be included in the Vite `plugins` array:

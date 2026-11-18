@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/magic-transit/how-to/ipv6/og.png?v=3dd6
 
 # Configure IPv6 (beta)
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/ipv6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 IPv6 (beta) for Magic Transit allows customers with existing IPv4 tunnels to enable and test IPv6 functionality with minimal configuration changes. This beta provides an opportunity to evaluate IPv6 addressing, routing, and security within Magic Transit while maintaining the existing IPv4 setup.
 
 As this is a beta release, we encourage customers to contact their account team to enable the feature and provide feedback to help refine the IPv6 functionality before general availability.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/cron-triggers/og.
 
 # Cron Triggers
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/cron-triggers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Background
 
 Cron Triggers allow users to map a cron expression to a Worker using a [`scheduled()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) that enables Workers to be executed on a schedule.

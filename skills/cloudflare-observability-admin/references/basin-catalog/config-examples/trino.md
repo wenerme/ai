@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin-catalog/config-examples/trino/og.
 
 # Trino
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/config-examples/trino/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Below is an example of using [Trino ↗︎](https://trino.io/) to connect to Basin Catalog. For more information on connecting to Basin Catalog with Trino, refer to [Trino documentation ↗︎](https://trino.io/docs/current/connector/iceberg.html).
 
 ## Prerequisites

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/og.png?v=0c352f7f2b0adf44
 
 # Cloudflare Stream
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Serverless live and on-demand video streaming
 
 Cloudflare Stream lets you or your end users upload, store, encode, and deliver live and on-demand video with one API, without configuring or maintaining infrastructure.

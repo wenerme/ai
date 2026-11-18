@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/client-certificates/troubleshooting
 
 # Troubleshooting
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If your query returns an error even after configuring and embedding a client SSL certificate, check the following settings.
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifica
 
 # Log and store upload events in R2 with event notifications
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example provides a step-by-step guide on using [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to capture and store R2 upload logs in a separate bucket.
 
 ![Push-Based R2 Event Notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=912,height=472,format=svg/_astro/pushed-based-event-notification.NdMYExDK.svg)
@@ -90,7 +88,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -118,7 +116,7 @@ name = "event-notification-writer"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.consumers]]

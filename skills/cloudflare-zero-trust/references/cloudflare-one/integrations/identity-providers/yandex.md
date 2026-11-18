@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Yandex
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/yandex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Yandex is a web search engine that also offers identity provider (IdP) services.
 
 ## Set up Yandex

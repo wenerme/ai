@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/examples/ssec/og.png?v=83c74e2f518a7
 
 # Use SSE-C
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/ssec/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following tutorial shows some snippets for how to use Server-Side Encryption with Customer-Provided Keys (SSE-C) on R2.
 
 ## Before you begin

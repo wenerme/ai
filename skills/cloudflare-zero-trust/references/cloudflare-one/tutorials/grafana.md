@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/grafana/og.png
 
 # Monitor Cloudflare Tunnel with Grafana
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/grafana/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Grafana ↗︎](https://grafana.com/) is a dashboard tool that visualizes data stored in other databases. You can use Grafana to convert your [tunnel metrics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/metrics/) into actionable insights.
 
 It is not possible to push metrics directly from `cloudflared` to Grafana. Instead, `cloudflared` runs a [Prometheus ↗︎](https://prometheus.io) metrics endpoint, which a Prometheus server periodically scrapes. Grafana then uses Prometheus as a data source to present metrics to the administrator.

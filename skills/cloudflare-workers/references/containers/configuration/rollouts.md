@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/configuration/rollouts/og.pn
 
 # Rollouts
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Rollouts apply to Container applications that use the [`default` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/). Durable Object-managed Container instances do not participate in application-wide rollouts; application code selects their image when it calls `ctx.container.start()`.

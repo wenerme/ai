@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/clientless-access/migrat
 
 # Best practices
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Most customers have a heterogeneous private application portfolio; some are home-built, some are internal managed services, some have SSO integrations available, and some rely on HTML or other forms of authentication. With that in mind, we recommend that you mix-and-match [onboarding solutions](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/integrated-sso/#potential-solutions) to fit the needs of each individual application. As shown in the table below, you can bucket applications into a series of stack-ranked categories that prioritize ease of implementation and total organizational impact.
 
 | Application type | Recommendation | Outcome |

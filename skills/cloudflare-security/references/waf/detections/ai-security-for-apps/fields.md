@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fie
 
 # AI Security for Apps fields
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When enabled, AI Security for Apps populates the following fields:
 
 | Field | Description |

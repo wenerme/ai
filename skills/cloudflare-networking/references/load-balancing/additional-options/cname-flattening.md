@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/load-balancing/additional-options/cname
 
 # CNAME flattening for endpoints
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a [DNS-only (gray-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) load balancer selects an endpoint whose address is a hostname (for example `origin.example.com`), Cloudflare resolves that hostname to an IP address and returns an `A`/`AAAA` record to the client. This is *CNAME flattening*, and it matches how [CNAME flattening works in Cloudflare DNS](https://developers.cloudflare.com/dns/cname-flattening/).
 
 Some use cases — such as third-party endpoints that perform their own DNS-based steering — require the load balancer to return the `CNAME` record itself instead of a resolved IP. The `flatten_cname` property on a pool endpoint lets you opt out of flattening on a per-endpoint basis.

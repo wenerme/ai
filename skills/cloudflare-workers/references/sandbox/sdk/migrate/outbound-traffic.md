@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/outbound-traffic/og
 
 # Move outbound rules
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In Sandbox SDK 0.12, `ContainerProxy` applies the outbound fields of your `Sandbox` class to each request that the container sends. In 1.0, your Durable Object registers your own `WorkerEntrypoint` for HTTP and HTTPS requests from the container, and the entrypoint applies the same rules in the same order.
 
 ## Before you start

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/core/og.png?v
 
 # Core
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Compatibility Dates](https://developers.cloudflare.com/workers/testing/miniflare/core/compatibility/)
 - [Fetch Events](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch/)
 - [Modules](https://developers.cloudflare.com/workers/testing/miniflare/core/modules/)

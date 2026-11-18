@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkJoinStage
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkjoinstage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Join stage confirmation dialog with video preview and mic/camera toggles for webinar/livestream participants.
 
 ## Properties

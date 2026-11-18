@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modul
 
 # AWS cloud HSM
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/aws-cloud-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This example imports an existing key pair, but you may prefer to [generate your key on the HSM ↗︎](https://docs.aws.amazon.com/cloudhsm/latest/userguide/manage-keys.html).

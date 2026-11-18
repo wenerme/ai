@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/kv/observability/metrics-analytics/og.p
 
 # Metrics and analytics
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/observability/metrics-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 KV exposes analytics that allow you to inspect requests and storage across all namespaces in your account.
 
 The metrics displayed in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) charts are queried from Cloudflare’s [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.

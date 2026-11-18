@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/og.png?v=54a0a1b5a3c2e37f
 
 # Cloudflare Workflows
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build durable multi-step applications on Cloudflare Workers with Workflows.
 
 Available on Free and Paid plans

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/how-to/og.png?v=cfc12b4557de0c9f
 
 # How to
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Add a custom domain to a branch](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/)
 - [Add custom HTTP headers](https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/)
 - [Deploy a static WordPress site](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/)

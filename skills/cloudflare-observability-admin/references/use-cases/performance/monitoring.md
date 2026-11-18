@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/use-cases/performance/monitoring/og.png
 
 # Monitor performance
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Understanding how real visitors experience your site requires metrics from actual sessions, not synthetic tests. Cloudflare Web Analytics collects Core Web Vitals and performance data from 100% of page views without cookies or sampling.
 
 ## Solutions

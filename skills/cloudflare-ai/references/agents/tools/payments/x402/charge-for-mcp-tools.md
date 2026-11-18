@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-m
 
 # Charge for MCP tools
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Agents SDK provides `paidTool`, which registers a tool with x402 payment requirements. Clients pay per tool call, and you can mix free and paid tools in the same server.
 
 `agents/x402` needs `@modelcontextprotocol/sdk`, which is an optional peer dependency of `agents`. It does not load the package at runtime, but its types refer to MCP SDK v1. Add the exact version your Agents release expects, such as `@modelcontextprotocol/sdk@1.32.1`, to your `package.json`.

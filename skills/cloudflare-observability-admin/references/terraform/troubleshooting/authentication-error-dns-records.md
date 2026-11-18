@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/troubleshooting/authenticatio
 
 # 403 Authentication error when creating DNS records
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/troubleshooting/authentication-error-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When creating DNS records using Terraform, the API returns the following error:
 
 `Error: failed to create DNS record: HTTP status 403: Authentication error (10000)`

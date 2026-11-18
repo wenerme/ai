@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cache/advanced-configuration/vary-for-i
 
 # Vary for images
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `Vary` HTTP response header tells Cloudflare that an origin can serve different versions of the same resource depending on the request headers. For images, this allows your origin to serve modern formats like WebP or AVIF to browsers that support them, while continuing to serve JPEG or PNG to others.
 
 When Cloudflare receives a response with image variants, it caches each variant separately. Subsequent requests from browsers with the same image format preferences are served directly from cache without contacting your origin.

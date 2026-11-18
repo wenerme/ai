@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/a
 
 # Authenticate with a Cloudflare API key
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-key-auth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 API keys are unique to each Cloudflare user and used only for authentication. An API key does not authorize access to accounts or zones. To ensure that the GraphQL Analytics API authenticates your queries, retrieve your Cloudflare Global API Key.
 
 Learn how to [retrieve your API Key in the Cloudflare dashboard](https://developers.cloudflare.com/fundamentals/api/get-started/keys/).

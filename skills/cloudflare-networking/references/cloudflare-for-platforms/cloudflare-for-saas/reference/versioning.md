@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Deprecation - Version 1
 
-Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The first version of SSL for SaaS will be deprecated on September 1, 2021.
 
 ## Why is SSL for SaaS changing?

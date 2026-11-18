@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/registrar/account-options/domain-manage
 
 # Domain management
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/domain-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Domain status
 
 When your domain is registered with Cloudflare, you can review your domain status in **Overview**.

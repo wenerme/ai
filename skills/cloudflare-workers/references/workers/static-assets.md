@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/og.png?v=acb320fc
 
 # Static Assets
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can upload static assets (HTML, CSS, images and other files) as part of your Worker, and Cloudflare will handle caching and serving them to web browsers.
 
 **Start from CLI** - Scaffold a React SPA with an API Worker, and use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
@@ -59,7 +57,7 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
   "main": "src/index.js",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-12",
+  "compatibility_date": "2026-11-18",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
@@ -73,7 +71,7 @@ name = "my-spa"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "./dist"
@@ -150,7 +148,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 {
 	"name": "my-spa-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-12",
+	"compatibility_date": "2026-11-18",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -165,7 +163,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 ```toml
 name = "my-spa-worker"
 # Set this to today's date
-compatibility_date = "2026-11-12"
+compatibility_date = "2026-11-18"
 main = "./src/index.ts"
 upload_source_maps = true
 

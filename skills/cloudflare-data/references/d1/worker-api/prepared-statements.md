@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/worker-api/prepared-statements/og.pn
 
 # Prepared statement methods
 
-Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/worker-api/prepared-statements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This chapter documents the various ways you can run and retrieve the results of a query after you have [prepared your statement](https://developers.cloudflare.com/d1/worker-api/d1-database/#prepare).
 
 ## Methods

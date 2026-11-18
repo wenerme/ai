@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/spend-management/cli/og.
 
 # Manage spending limits and alerts with the cf CLI
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/spend-management/cli/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [Cloudflare CLI (`cf`)](https://developers.cloudflare.com/cf/) to manage spending limits and email alerts. In the API, each limit or alert is a *spend policy* that applies to one product across your account.
 
 ## Before you begin

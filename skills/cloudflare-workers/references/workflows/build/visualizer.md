@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/build/visualizer/og.png?v=9d2
 
 # Visualize Workflows
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/visualizer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 View a visual representation of your parsed Workflow code as a diagram on the Cloudflare dashboard.
 
 The diagram illustrates your sequenced & parallel steps, conditionals, loops, and nested logic. To see the Workflow at a high level, view the diagram with loops and conditionals collapsed, or expand for a more detailed view.

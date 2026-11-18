@@ -199,6 +199,7 @@ and the merge request must be open.
 | `CI_MERGE_REQUEST_IID`                      | The IID (internal ID) of the merge request. This ID is unique for the current project, and is the number used in the merge request URL, page title, and other visible locations. |
 | `CI_MERGE_REQUEST_LABELS`                   | Comma-separated label names of the merge request. Only available if the merge request has at least one label. |
 | `CI_MERGE_REQUEST_MILESTONE`                | The milestone title of the merge request. Only available if the merge request has a milestone set. |
+| `CI_MERGE_REQUEST_PIPELINE_BASE_SHA`        | The SHA of the target branch commit that the pipeline is based on. A diff from this commit to `CI_COMMIT_SHA` contains only the changes of the merge request. Available in all merge request pipeline types. Not available if the target branch no longer exists. This variable is an [experiment](../../policy/development_stages_support.md#experiment). [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637722) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_merge_request_pipeline_base_sha`. Disabled by default. |
 | `CI_MERGE_REQUEST_PROJECT_ID`               | The ID of the project of the merge request. |
 | `CI_MERGE_REQUEST_PROJECT_PATH`             | The path of the project of the merge request. For example `namespace/awesome-project`. |
 | `CI_MERGE_REQUEST_PROJECT_URL`              | The URL of the project of the merge request. For example, `http://192.168.10.15:3000/namespace/awesome-project`. |
@@ -212,7 +213,7 @@ and the merge request must be open.
 | `CI_MERGE_REQUEST_SQUASH_ON_MERGE`          | `true` when the [squash on merge](../../user/project/merge_requests/squash_and_merge.md) option is set. |
 | `CI_MERGE_REQUEST_TARGET_BRANCH_NAME`       | The target branch name of the merge request. |
 | `CI_MERGE_REQUEST_TARGET_BRANCH_PROTECTED`  | `true` when the target branch of the merge request is [protected](../../user/project/repository/branches/protected.md). |
-| `CI_MERGE_REQUEST_TARGET_BRANCH_SHA`        | The HEAD SHA of the target branch of the merge request. The variable is empty in merge request pipelines. The SHA is present only in [merged results pipelines](../pipelines/merged_results_pipelines.md). |
+| `CI_MERGE_REQUEST_TARGET_BRANCH_SHA`        | The HEAD SHA of the target branch of the merge request. The SHA is present only in [merged results pipelines](../pipelines/merged_results_pipelines.md), and the variable is empty in merge request pipelines. To compare the changes of a merge request, use `CI_MERGE_REQUEST_PIPELINE_BASE_SHA` instead. |
 | `CI_MERGE_REQUEST_TITLE`                    | The title of the merge request. |
 | `CI_MERGE_REQUEST_DRAFT`                    | `true` if the merge request is a draft. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/275981) in GitLab 17.10. |
 

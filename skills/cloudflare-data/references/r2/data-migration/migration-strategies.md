@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/data-migration/migration-strategies/
 
 # Migration Strategies
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/data-migration/migration-strategies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use a combination of Super Slurper and Sippy to effectively migrate all objects with minimal downtime.
 
 ### When the source bucket is actively being read from / written to

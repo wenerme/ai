@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/features/og.png?v=7
 
 # Features
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare enables developers to optimize images at scale by dynamically generating different versions in real time.
 
 The guide describes all of the parameters that can be used to resize, crop, manipulate, and apply visual effects to images.
@@ -546,7 +544,21 @@ cf: {image: {height: 250}}
 
 ### `metadata`
 
-Controls the amount of invisible metadata (EXIF) that should be preserved for a JPEG image. For all other output formats (e.g. WebP or PNG), all metadata will always be discarded.
+Controls the amount of invisible metadata (EXIF and XMP) that should be preserved in the output image. Support for extracting metadata from the source image (decode) and writing it to the output image (encode) varies by format:
+
+| Format | Decode EXIF | Decode XMP | Encode EXIF | Encode XMP |
+| --- | --- | --- | --- | --- |
+| JPEG | Yes | Yes | Yes | Yes |
+| PNG | Yes | Yes | Yes | Yes |
+| WebP | Yes | Yes | Yes | Yes |
+| AVIF | Yes | Yes | Yes | No |
+| HEIC | Yes | Yes | N/A | N/A |
+| GIF | No | No | No | Yes |
+| TIFF | No | No | N/A | N/A |
+
+HEIC and TIFF are supported as input formats, but not as output formats.
+
+Each of EXIF and XMP is capped at 64 KB after `metadata` mode filtering is applied. If the filtered metadata still exceeds this limit, it is dropped entirely rather than truncated.
 
 Color profiles and EXIF rotation are applied to the image even if the metadata is discarded.
 

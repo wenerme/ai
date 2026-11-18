@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/reference/bot-management-variables
 
 # Bot Management variables
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/bot-management-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Ruleset Engine fields
 
 Bot Management provides access to several [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=Bots) within the expression builder of Ruleset Engine-based products such as [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/).

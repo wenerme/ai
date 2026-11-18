@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/frequently-asked-questi
 
 # FAQ
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/frequently-asked-questions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## What is a DDoS attack event?
 
 When Cloudflare's DDoS systems detect and mitigate attacks, they drop, rate-limit, or challenge (as applicable) packets, DNS queries, or HTTP requests, based on the type of attack.

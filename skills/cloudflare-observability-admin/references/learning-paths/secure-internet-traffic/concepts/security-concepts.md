@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # What security features does Cloudflare provide?
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review concepts related to Cloudflare Internet traffic and SaaS app security.
 
 ## What is 1.1.1.1?
@@ -28,13 +26,13 @@ A secure web gateway (SWG) is a cyber security product that protects company dat
 
 Cloudflare Gateway is a modern next-generation firewall between your user, device, or network and the public Internet. It includes DNS filtering to inspect and apply policies to all Internet-bound DNS queries.
 
-For more information, refer to the [Learning Center ↗︎](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) and [Gateway documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+For more information, refer to the [Learning Center ↗︎](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) and [Gateway documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 ## What is HTTPS inspection?
 
 HTTPS inspection (also known as TLS decryption) is the process of filtering traffic by decrypting traffic sent to or from your organization, inspecting it and applying policies, then re-encrypting the traffic as it ingresses or egresses.
 
-For more information, refer to the [Learning Center ↗︎](https://www.cloudflare.com/learning/security/what-is-https-inspection/) and [TLS decryption documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/).
+For more information, refer to the [Learning Center ↗︎](https://www.cloudflare.com/learning/security/what-is-https-inspection/) and [TLS decryption documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/).
 
 ## What is data loss prevention (DLP)?
 
@@ -69,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/#page","headline":"What security features does Cloudflare provide?","description":"Explore Cloudflare Zero Trust security features.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/og.png?v=65994f0855296f4f","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/#page","headline":"What security features does Cloudflare provide?","description":"Explore Cloudflare Zero Trust security features.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/og.png?v=65994f0855296f4f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

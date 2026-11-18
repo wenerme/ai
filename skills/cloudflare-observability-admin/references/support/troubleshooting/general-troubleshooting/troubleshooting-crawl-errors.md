@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # Troubleshoot crawl errors
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/troubleshooting-crawl-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare allows search engine crawlers and bots. If you observe crawl issues or Cloudflare challenges presented to the search engine crawler or bot, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the information you gather when troubleshooting the crawl errors via the methods outlined in this guide.
 
 ---

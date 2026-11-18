@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/og
 
 # Extract a brand kit from any website
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A brand kit is the set of visual design decisions that make a website recognizable: its colors, typography, logo, and component styles. Extracting one automatically is useful for building design-system tooling, generating themed previews, seeding a coding agent with a site's look and feel, or auditing brand consistency across pages.
 
 The reliable way to read these values is from a real browser. A site's exact hex colors, `font-family` names, border radii, and logo live in CSS and computed styles, not in the page's readable text. A large language model that only sees text will get the name and description right, but it will hallucinate the colors and fonts. With [Cloudflare Browser Run](https://developers.cloudflare.com/browser-run/) and [Cloudflare's fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), you can load a page in managed headless Chrome and read the **real** computed styles, meta tags, and logo straight from the DOM.
@@ -111,7 +109,7 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-11",
+  "compatibility_date": "2026-11-18",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -132,7 +130,7 @@ name = "brand-kit"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-11"
+compatibility_date = "2026-11-18"
 compatibility_flags = ["nodejs_compat"]
 
 # Browser Run binding — driven by Puppeteer.

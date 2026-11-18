@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/og.png?v=400934
 
 # Networks
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Learn how to connect your private networks to Cloudflare.
 
 - [Connectivity options](https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options/)

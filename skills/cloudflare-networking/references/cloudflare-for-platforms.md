@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/og.png?v=a5683
 
 # Cloudflare for Platforms
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build a platform where your customers can deploy code, each with their own subdomain or custom domain.
 
 Cloudflare for Platforms is used by leading platforms big and small to:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/enabl
 
 # Enable flexible variants
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/enable-flexible-variants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Flexible variants allow you to create variants with dynamic resizing which can provide more options than regular variants allow. This option is not enabled by default.
 
 ## Enable flexible variants via the Cloudflare dashboard

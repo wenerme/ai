@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/zaraz/http-events-api/og.png?v=071fdaa9
 
 # HTTP Events API
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/http-events-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Zaraz HTTP Events API allows you to send information to Zaraz from places that cannot run the [Web API](https://developers.cloudflare.com/zaraz/web-api/), such as your server or your mobile app. It is useful for tracking events that are happening outside the browser, like successful transactions, sign-ups and more. The API also allows sending multiple events in batches.
 
 ## Configure the API endpoint

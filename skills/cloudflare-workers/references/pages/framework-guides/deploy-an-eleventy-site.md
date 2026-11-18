@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleven
 
 # Eleventy
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Eleventy ↗︎](https://www.11ty.dev/) is a simple static site generator. In this guide, you will create a new Eleventy site and deploy it using Cloudflare Pages. You will be using the `eleventy` CLI to create a new Eleventy site.
 
 ## Installing Eleventy

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/reference/generated-columns/og.png?v
 
 # Generated columns
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/generated-columns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 D1 allows you to define generated columns based on the values of one or more other columns, SQL functions, or even [extracted JSON values](https://developers.cloudflare.com/d1/sql-api/query-json/).
 
 This allows you to normalize your data as you write to it or read it from a table, making it easier to query and reducing the need for complex application logic.

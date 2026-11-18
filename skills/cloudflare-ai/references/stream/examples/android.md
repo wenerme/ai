@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/stream/examples/android/og.png?v=b537c6
 
 Example of video playback on Android using ExoPlayer
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/android/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Before you can play videos, you must first [upload a video to Cloudflare Stream](https://developers.cloudflare.com/stream/uploading-videos/) or be [actively streaming to a live input](https://developers.cloudflare.com/stream/stream-live)

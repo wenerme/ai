@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/video-tutorials/og.png?
 
 # Videos
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/video-tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ### [Introduction to Durable Objects](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/introduction-to-series-1/)
 
 Dive into a hands-on Durable Objects project and learn how to build stateful apps using serverless architecture

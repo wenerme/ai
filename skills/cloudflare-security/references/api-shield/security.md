@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/og.png?v=f4c2f4c55f
 
 # Security
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/) provides the shared profile detection, analytics, and mitigation model. Schema Profile is its only current profile type.
 
 [Schema Learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) learns a Schema Profile from traffic. [Schema Validation](https://developers.cloudflare.com/api-shield/security/schema-validation/) supplies the same profile type through uploaded OpenAPI schemas.

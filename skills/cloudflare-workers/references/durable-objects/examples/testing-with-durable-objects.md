@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/durable-objects/examples/testing-with-d
 
 Write tests for Durable Objects using the Workers Vitest integration.
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the [`@cloudflare/vitest-plugin` ↗︎](https://www.npmjs.com/package/@cloudflare/vitest-plugin) package to write tests for your Durable Objects. This integration runs your tests inside the Workers runtime, giving you direct access to Durable Object bindings and APIs.
 
 ## Prerequisites
@@ -219,7 +217,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "durable_objects": {
     "bindings": [
       { "name": "COUNTER", "class_name": "Counter" }
@@ -236,7 +234,7 @@ name = "counter-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[durable_objects.bindings]]
 name = "COUNTER"

@@ -12,11 +12,9 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Recommended DNS policies
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 We recommend you add the following DNS policies to build an Internet and SaaS app security strategy for your organization.
 
-For additional commonly used DNS policy examples, refer to [Common DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/common-policies/). For more information on building DNS policies, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/).
+For additional commonly used DNS policy examples, refer to [Common DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/common-policies/). For more information on building DNS policies, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/).
 
 ## All-DNS-Domain-Allowlist
 
@@ -105,7 +103,7 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_restrict_quarantined_users"
 
 ## All-DNS-SecurityCategories-Blocklist
 
-Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
+Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |
@@ -146,7 +144,7 @@ resource "cloudflare_zero_trust_gateway_policy" "block_security_threats" {
 
 ## All-DNS-ContentCategories-Blocklist
 
-Entries in the [security risk content subcategory](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-risk-subcategories), such as **New Domains**, do not always pose a security threat. We recommend you first create an Allow policy to track policy matching and identify any false positives. You can add false positives to your **Trusted Domains** list used in **All-DNS-Domain-Allowlist**.
+Entries in the [security risk content subcategory](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-risk-subcategories), such as **New Domains**, do not always pose a security threat. We recommend you first create an Allow policy to track policy matching and identify any false positives. You can add false positives to your **Trusted Domains** list used in **All-DNS-Domain-Allowlist**.
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
@@ -442,5 +440,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/#page","headline":"Recommended DNS policies","description":"Deploy recommended DNS filtering policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/og.png?v=355ab4658a9edec4","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/#page","headline":"Recommended DNS policies","description":"Deploy recommended DNS filtering policies.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/og.png?v=355ab4658a9edec4","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/og.p
 
 # Preview rules
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The expression of a firewall rule can become quite complex. In this situation, you should test your firewall rule before deploying it to ensure that the rule will behave as expected.
 
 Rule Preview helps you understand the potential impact of a firewall rule, by testing the rule against a sample drawn from the last 72 hours of traffic. Rule Preview is built into the firewall rules Expression Editor so that you can test a rule as you edit it.

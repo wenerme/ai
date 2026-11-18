@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/snippets/how-it-works/og.png?v=f0
 
 # How Snippets work
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Snippets are executed based on rules defined within your zone. Here is how the process works:
 
 ![Diagram of the snippets execution workflow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1546,height=491,format=webp/_astro/snippets-execution.Cb6ZLHBP.png)

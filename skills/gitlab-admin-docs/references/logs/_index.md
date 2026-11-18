@@ -209,6 +209,8 @@ seconds:
 - `queue_duration_s`: Total time the request was queued inside GitLab Workhorse
 - `view_duration_s`: Total time inside the Rails views
 - `db_duration_s`: Total time to retrieve data from PostgreSQL
+- `db_write_bytes`: Approximate bytes sent to PostgreSQL in write statements
+- `db_<database>_write_bytes`: Approximate bytes sent to a database, such as `main` or `ci`, in write statements
 - `cpu_s`: Total time spent on CPU
 - `gitaly_duration_s`: Total time by Gitaly calls
 - `gitaly_calls`: Total number of calls made to Gitaly
@@ -226,6 +228,17 @@ seconds:
 - `redis_<instance>_write_bytes`: Total bytes written to a Redis instance
 - `pid`: The worker's Linux process ID (changes when workers restart)
 - `worker_id`: The worker's logical ID (does not change when workers restart)
+
+[In GitLab 19.6 and later](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269663),
+the `db_write_bytes` fields add up the size of the SQL text and the bind values of every statement
+that is not a plain `SELECT`, such as `INSERT`, `UPDATE`, `DELETE`, and `SELECT ... FOR UPDATE`.
+They show how much data a request or a Sidekiq job sent to PostgreSQL, not how much PostgreSQL
+wrote to disk: an `UPDATE` that changes many rows can be a short statement.
+A request or job that ran no such statements has no `db_write_bytes` fields.
+
+> [!flag]
+> The availability of the `db_write_bytes` fields is controlled by the `log_db_write_bytes`
+> feature flag. This flag is disabled by default.
 
 User clone and fetch activity using HTTP transport appears in the log as `action: git_upload_pack`.
 

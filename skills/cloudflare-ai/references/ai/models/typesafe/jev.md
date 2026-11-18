@@ -16,8 +16,6 @@ t
 
 Text Generation • typesafe
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/typesafe/jev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `typesafe/jev` Copy

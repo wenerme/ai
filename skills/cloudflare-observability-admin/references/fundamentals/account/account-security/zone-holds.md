@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/z
 
 # Zone holds
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Zone holds prevent other teams in your organization from adding zones that are already active in another account.
 
 For example, you might already have an active Cloudflare zone for `example.com`. If another team does not realize this, they could add and activate `example.com` in another Cloudflare account, which may cause downtimes or security issues until the original zone could be re-activated.

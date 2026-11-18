@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkBreakoutRoomsToggle
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkbreakoutroomstoggle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Control bar button that opens and closes the `RtkBreakoutRoomsManager`. Automatically hides if the local participant has neither `canAlterConnectedMeetings` nor `canSwitchConnectedMeetings` permission.
 
 ## Properties

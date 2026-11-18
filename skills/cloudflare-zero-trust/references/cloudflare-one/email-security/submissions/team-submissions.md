@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/submissio
 
 # Team submissions
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/team-submissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Team submissions are the emails your security team submitted for submission. All team submissions receive a human review by Cloudflare.
 
 ## View team submissions

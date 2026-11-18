@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/sdk/tutorials/og.png?v=2b7eacdc
 
 # Tutorials
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Get started](https://developers.cloudflare.com/sandbox/get-started/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).

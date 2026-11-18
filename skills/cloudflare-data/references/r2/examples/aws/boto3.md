@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/examples/aws/boto3/og.png?v=8260585a
 
 # boto3
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/boto3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
 

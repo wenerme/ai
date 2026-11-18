@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/get-started/token-form
 
 # Token formats
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare API keys and API tokens use a prefixed, scannable format that makes them identifiable by credential scanning tools. Each credential type in the following table has a distinct prefix followed by 40 characters and a checksum.
 
 | Credential type | Description | Format |

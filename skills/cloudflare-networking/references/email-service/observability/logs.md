@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/observability/logs/og.png
 
 Email sending and routing statuses, authentication details, and message fields
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Email Service Activity log lists sending and routing events. Each event includes delivery and authentication details.
 
 The Activity log allows you to sort through all email activities and check actions taken by Email Service. In the dashboard you can filter the Activity log to a time range between 30 minutes and 30 days, or specify a custom range.

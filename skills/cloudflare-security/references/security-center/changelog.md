@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security-center/changelog/og.png?v=5ce7
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/security-center.xml)
 
 ## 2026-06-10

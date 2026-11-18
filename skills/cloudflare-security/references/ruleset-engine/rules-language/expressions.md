@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/expressio
 
 # Expressions
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Rules language supports two kinds of expressions: simple and compound.
 
 ## Simple expressions

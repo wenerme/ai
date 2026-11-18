@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/durable-objects/tutorials/og.png?v=b380
 
 # Tutorials
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 View tutorials to help you get started with Durable Objects.
 
 | Name | Last Updated | Difficulty |

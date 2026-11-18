@@ -22,7 +22,7 @@ Emoji reactions make it much easier to give and receive feedback without a long
 comment thread.
 
 "Thumbs up" and "thumbs down" emoji are used to calculate an issue or merge request's position when
-[sorting by popularity](project/issues/sorting_issue_lists.md#sorting-by-popularity).
+[sorting by popularity](project/issues/sorting_issue_lists.md#sort-by-popularity).
 
 For more information, see the [emoji reactions API](../api/emoji_reactions.md).
 

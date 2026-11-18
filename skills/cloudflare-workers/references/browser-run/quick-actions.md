@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/quick-actions/og.png?v=b1c1
 
 # Quick Actions
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Quick Actions provide simple interfaces for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more. You can use Quick Actions in two ways:
 
 - **REST API**: HTTP endpoints for one-off requests or external integration.

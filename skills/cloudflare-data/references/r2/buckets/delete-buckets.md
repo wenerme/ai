@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/r2/buckets/delete-buckets/og.png?v=8521
 
 # Delete buckets
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/delete-buckets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To delete an R2 bucket, you must first remove all objects from it. Once the bucket is empty, you can delete it.
 
 ## Empty a bucket

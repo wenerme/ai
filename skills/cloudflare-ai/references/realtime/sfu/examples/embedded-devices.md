@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/sfu/examples/embedded-devices/
 
 # Embedded devices and remote control
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/examples/embedded-devices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use Realtime SFU to connect embedded hardware to browser listeners. Pocket Radio shows how firmware connects over WebRTC, publishes audio and telemetry, and receives authorized control commands from a browser.
 
 Pocket Radio runs on an ESP32-S3. It reads a playlist from flash, publishes Opus audio, and sends spectrum data and device state to browsers. One listener can control playback and the board's LED.

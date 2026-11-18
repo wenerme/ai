@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/regional-services/htt
 
 # Default HTTP Privacy
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/http-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare runs one of the largest global anycast networks in the world — a network architecture where traffic is automatically routed to the nearest available data center. All current data center locations are accessible on the [network map ↗︎](https://www.cloudflare.com/network/).
 
 Within Cloudflare data centers, and between the Cloudflare network and your origin server, traffic is encrypted during transit. You can select which [encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) (controlling how strictly Cloudflare validates your server's certificate) and which [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/) (the specific encryption algorithms used for the connection) to use.

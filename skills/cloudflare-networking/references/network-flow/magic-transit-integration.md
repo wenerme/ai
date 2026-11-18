@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/magic-transit-integration/
 
 # Magic Transit integration
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/magic-transit-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Magic Transit On Demand](https://developers.cloudflare.com/magic-transit/on-demand/) allows you to keep Magic Transit disabled during normal operations and activate it only when you need DDoS protection. Network Flow monitors your traffic while Magic Transit is off and detects attacks. When an attack is detected, you can enable Magic Transit automatically or manually.
 
 You can create Network Flow rules that monitor specific IP prefixes for DDoS attacks. When an attack is detected, Cloudflare notifies you by email, [webhook](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/), or [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).

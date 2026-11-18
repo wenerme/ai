@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/observability/local-devel
 
 Test email routing Workers locally using wrangler dev with simulated incoming emails
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/local-development/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Test email routing behavior locally using `wrangler dev` to simulate incoming emails and verify your routing logic before deploying.
 
 ## Prerequisites
@@ -45,14 +43,14 @@ Configure your Wrangler file:
 {
 	"name": "email-routing-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-11-18",
 }
 ```
 
 ```toml
 name = "email-routing-worker"
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-11-18"
 ```
 
 ## Basic routing worker

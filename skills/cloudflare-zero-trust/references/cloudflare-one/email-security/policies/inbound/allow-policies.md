@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/
 
 # Allow policies
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Email security allows you to configure allow policies. An allow policy exempts messages that match certain patterns from normal detection scanning.
 
 ## How allow policies work

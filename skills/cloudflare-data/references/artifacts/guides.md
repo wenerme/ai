@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/guides/og.png?v=6fd584c72d6ad
 
 # Guides
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Guides for local development and deployed Artifacts, including authentication, imports, and mounting large repos within sandboxes.
 
 - [Authentication](https://developers.cloudflare.com/artifacts/guides/authentication/)

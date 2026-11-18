@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/bu
 
 # Build a Code Mode MCP server
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A Code Mode MCP server lets any Model Context Protocol (MCP) client use model-written code without providing its own sandbox. Instead of advertising one tool per operation, the server exposes code execution as its tool interface and runs the generated JavaScript in an isolated Worker. Generated code can compose several operations and return only the final result, so tool definitions and intermediate data stay out of the model's context. For the design rationale, refer to [Code Mode: give agents an entire API in 1,000 tokens ↗︎](https://blog.cloudflare.com/code-mode-mcp/).
 
 Caution
@@ -83,7 +81,7 @@ You need a Cloudflare Workers project and an existing `McpServer`.
      "main": "src/server.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-27",
+     "compatibility_date": "2026-11-18",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -100,7 +98,7 @@ You need a Cloudflare Workers project and an existing `McpServer`.
    main = "src/server.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-27"
+   compatibility_date = "2026-11-18"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]
@@ -304,7 +302,7 @@ You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side 
      "main": "src/server.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-27",
+     "compatibility_date": "2026-11-18",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -321,7 +319,7 @@ You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side 
    main = "src/server.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-27"
+   compatibility_date = "2026-11-18"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]

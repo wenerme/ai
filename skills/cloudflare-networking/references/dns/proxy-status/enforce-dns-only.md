@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/og.pn
 
 # Enforce DNS-only
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The enforce DNS-only setting is an account-level break-glass mechanism that allows you to bypass Cloudflare's reverse proxy for all zones in your account in a single action. When enabled, Cloudflare responds to DNS queries with the underlying record content — origin IP addresses for proxied `A` and `AAAA` records, and CNAME targets for proxied `CNAME` records — instead of Cloudflare's anycast IP addresses, effectively setting all [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/) to DNS-only without modifying the records themselves.
 
 This setting is intended for emergency situations only, such as during an outage when you need to quickly route traffic directly to your origins.

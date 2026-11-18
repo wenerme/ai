@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/
 
 # Proxy configuration
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `config.yaml` to configure the Cloud Workload Security (CWS) proxy process. Start with the complete local configuration in [Get started](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/#configure-the-proxy), then replace the relevant blocks with the options in this reference.
 
 Either API authentication mode can be combined with direct or chained outbound connections and any cache mode.

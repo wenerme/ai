@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/concepts/agent-skills/og.png?v=7
 
 # Agent Skills
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/agent-skills/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Agent Skills ↗︎](https://agentskills.io/) are an open format for giving an agent specialized knowledge and repeatable workflows. A skill is a folder with a `SKILL.md` file. The file holds a name, a description, and instructions for one kind of task. The folder can also hold scripts, reference documents, templates, and other files.
 
 Agent Skills was released as an open standard. Many agents support the standard, so a skill written once works across compatible agents. The [specification ↗︎](https://agentskills.io/specification) defines what goes inside a skill folder. It does not define where skills are stored or how an agent loads them.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/
 
 # Make API calls
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Once you [create your API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/), all API requests are authorized in the same way. Cloudflare uses the [RFC standard ↗︎](https://tools.ietf.org/html/rfc6750#section-2.1) `Authorization: Bearer <API_TOKEN>` interface. An example request is shown below.
 
 ```bash

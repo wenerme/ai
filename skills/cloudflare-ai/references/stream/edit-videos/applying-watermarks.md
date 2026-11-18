@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/
 
 # Apply watermarks
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can add watermarks to videos uploaded using the Stream API.
 
 To add watermarks to your videos, first create a watermark profile. A watermark profile describes the image you would like to be used as a watermark and the position of that image. Once you have a watermark profile, you can use it as an option when uploading videos.

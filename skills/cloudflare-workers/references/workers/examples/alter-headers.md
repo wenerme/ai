@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/workers/examples/alter-headers/og.png?v
 
 Example of how to add, change, or delete headers sent in a request or returned in a response.
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/alter-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you want to get started quickly, click on the button below.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/docs-examples/tree/main/workers/alter-headers)

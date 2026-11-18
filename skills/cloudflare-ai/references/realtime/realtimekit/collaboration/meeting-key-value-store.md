@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/collaboration/meet
 
 # Meeting key-value store
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/collaboration/meeting-key-value-store/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The RealtimeKit Stores API allows you to create multiple key-value pair realtime stores. Users can subscribe to changes in a store and receive real-time updates. Data is stored until a [session](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/#session) is active.
 
 WebMobile

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-flow/tutorials/ddos-testing-gui
 
 # DDoS testing guide
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/tutorials/ddos-testing-guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To test Network Flow (formerly Magic Network Monitoring) in a repeatable manner, simulate a DDoS attack. At a high level, you need to:
 
 1. Select and install a trusted, open source DDoS simulation tool.

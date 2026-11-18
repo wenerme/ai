@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/observability/audit-logs/og.png?v=3b
 
 # Audit Logs
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to D1 databases. This functionality is available on all plan types, free of charge, and is always enabled.
 
 ## Viewing audit logs

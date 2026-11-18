@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/skills/sources/computer/og.png?v
 
 # Computer
 
-Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/skills/sources/computer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 `skills.workspace()` reads [Agent Skills](https://developers.cloudflare.com/agents/skills/) from files in a Workspace from [`@cloudflare/computer` ↗︎](https://github.com/cloudflare/computer). A skill is a folder in the Workspace. Writing, editing, or deleting a `SKILL.md` changes the agent's skills on its next turn, with no deploy.
 
 ## Read skills from the Workspace

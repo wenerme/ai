@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/rulesets-api/dry-run/og.
 
 # Validate rule changes before deployment
 
-Last updated Sep 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/dry-run/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare can validate a rule or ruleset before deployment. Validation checks the complete configuration without persisting or publishing changes.
 
 Validation includes:

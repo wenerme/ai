@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enab
 
 # Enable IDS
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare's IDS takes advantage of the threat intelligence powered by our global network and extends the capabilities of the Cloudflare Firewall to monitor and protect your network from malicious actors.
 
 You can enable IDS through the dashboard or via the API.

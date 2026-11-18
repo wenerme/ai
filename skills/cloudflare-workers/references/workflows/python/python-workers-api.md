@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workflows/python/python-workers-api/og.
 
 # Python Workers API
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/python/python-workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers the Python Workflows SDK, with instructions on how to build and create workflows using Python.
 
 ## WorkflowEntrypoint

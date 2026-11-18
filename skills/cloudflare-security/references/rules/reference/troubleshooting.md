@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/rules/reference/troubleshooting/og.png?
 
 # Troubleshoot Rules
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Interaction between redirects and other Cloudflare products
 
 Your redirects may interfere with Cloudflare products and features such as challenges. Consider excluding the [`/cdn-cgi/*` URI path](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/) in your rule expression to avoid issues. Alternatively, you may exclude only a sub-path such as `/cdn-cgi/challenge-platform/*` to avoid issues with specific features (in this example, [Cloudflare challenges](#interaction-between-cloudflare-challenges-and-rules-features)).

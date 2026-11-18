@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/payload-logging/decrypt-in-logs/og.
 
 # Store decrypted matched payloads in logs
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/decrypt-in-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can include the encrypted matched payload in your [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs by adding the **General** > [**Metadata**](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall_events/#metadata) field from the Firewall Events dataset to your job.
 
 The payload, in its encrypted form, is available in the [`encrypted_matched_data` property](#structure-of-encrypted_matched_data-property-in-logpush) of the `Metadata` field.

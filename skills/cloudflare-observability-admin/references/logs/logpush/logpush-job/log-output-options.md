@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-opt
 
 # Log Output Options
 
-Last updated Jun 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Jobs in Logpush now have a new key, **output\_options**, which replaces **logpull\_options** and allows for more flexible formatting. You can modify **output\_options** via the API.
 
 ## Replace logpull\_options

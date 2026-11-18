@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/sandbox/files/og.png?v=74a9c89ed01f6f30
 
 # Work with files in a sandbox
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `Files` class from `@cloudflare/sandbox` moves files between your Worker and a running sandbox, and provides common file system operations. For more information, refer to [Move files in and out of a sandbox](https://developers.cloudflare.com/sandbox/files/manage-files/).
 
 Each sandbox name maps to a Durable Object, which starts a Linux instance when needed. Stopping the instance deletes the files on its disk. For more information, refer to [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/#snapshots-carry-files-to-the-next-instance).

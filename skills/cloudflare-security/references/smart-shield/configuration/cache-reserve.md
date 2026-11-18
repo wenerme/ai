@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/smart-shield/configuration/cache-reserv
 
 # Cache Reserve
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Availability
 
 Available with Smart Shield Advanced.

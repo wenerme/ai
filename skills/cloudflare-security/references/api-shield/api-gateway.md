@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/api-gateway/og.png?v=86ed18a
 
 # API Gateway
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/api-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare API Shield provides API security, management tools, and integration with the Cloudflare Developer Platform for building new APIs.
 
 - **Security**: Protect APIs with JWT validation, mutual TLS (mTLS) authentication, schema validation, and defenses against the [OWASP Top 10 API Security risks ↗︎](https://api-security.owasp.org/).

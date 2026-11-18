@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/examples/browser-agent/og.png?v=
 
 # Browser agent
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/browser-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Build an agent that can browse the web, inspect pages, capture screenshots, and debug frontend issues with [Browser Run](https://developers.cloudflare.com/browser-run/) tools.
 
 Instead of a fixed set of browser actions (click, screenshot, navigate), the LLM writes JavaScript code that runs CDP commands against a live browser session — accessing all domains, commands, events, and types in the protocol.

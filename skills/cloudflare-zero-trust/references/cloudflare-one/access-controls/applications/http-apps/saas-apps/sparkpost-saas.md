@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # SparkPost
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/sparkpost-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [SparkPost or SparkPost EU ↗︎](https://support.sparkpost.com/docs/my-account-and-profile/sso) as a SAML application in Cloudflare Zero Trust.
 
 ## Prerequisites

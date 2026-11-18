@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/conversions/convert-ful
 
 # Convert full setup to partial setup
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you initially configured a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/), you can later convert your zone to use a CNAME setup (also known as partial setup). This guide assumes your zone is already in an [active status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/#active).
 
 A CNAME setup allows you to use [Cloudflare's reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) on individual subdomains while using a different authoritative DNS provider.

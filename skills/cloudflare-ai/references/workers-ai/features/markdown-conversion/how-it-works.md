@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion
 
 # How it works
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Pre-processing
 
 When parsing files before converting them to Markdown, there are some cleanup tasks we do depending on the type of file you are trying to convert.

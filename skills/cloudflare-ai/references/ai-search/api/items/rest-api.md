@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/api/items/rest-api/og.png?v=2
 
 # REST API
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/items/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use the AI Search REST API to upload, list, and manage individual documents within an instance.
 
 Note

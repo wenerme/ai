@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/storage/manage-images/export-ima
 
 # Export images
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/manage-images/export-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Images supports image exports via the Cloudflare dashboard and API which allows you to get the original version of your image.
 
 ## Export images via the Cloudflare dashboard

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/skills/og.png?v=737c4b720e609086
 
 # Agent Skills
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/skills/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Agent Skills ↗︎](https://agentskills.io/) are on-demand instructions, references, and scripts for an agent. Each skill is a directory with a `SKILL.md` file. The agent sees a short catalog of skill names and descriptions. It loads a full skill only when a task matches it, so a large library of skills does not fill every prompt.
 
 For background on the format and how agents use it, refer to [Agent Skills concepts](https://developers.cloudflare.com/agents/concepts/agent-skills/).

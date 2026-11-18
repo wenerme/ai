@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/
 
 # Troubleshoot CASB
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/troubleshoot-casb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use this guide to troubleshoot common issues with Cloud Access Security Broker (CASB).
 
 This guide covers troubleshooting steps for CASB integrations and webhooks. For integration-specific issues, refer to the integration's documentation.

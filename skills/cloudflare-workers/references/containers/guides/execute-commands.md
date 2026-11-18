@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/containers/guides/execute-commands/og.p
 
 # Execute commands
 
-Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/execute-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec) to start another process inside a running container. The examples call `exec()` on `this.ctx.container` inside a class that extends `DurableObject`.
 
 `exec()` does not start a stopped container. It waits for a container that is still starting. The examples on this page call a `startContainer()` method that starts the container when it is not running:

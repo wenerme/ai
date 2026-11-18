@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/tutorial/initialize-terraform
 
 # 1 – Initialize Terraform
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial shows you how to get started with Terraform. You just signed up your domain (`example.com`) on Cloudflare to manage everything in Terraform and now you will create a DNS record pointing `www.example.com` to a web server at `203.0.113.10`.
 
 Before you begin, ensure you have:

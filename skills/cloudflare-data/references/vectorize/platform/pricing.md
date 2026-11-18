@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/platform/pricing/og.png?v=ae9
 
 # Pricing
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Vectorize is now Generally Available
 
 To report bugs or give feedback, go to the [#vectorize Discord channel ↗︎](https://discord.cloudflare.com). If you are having issues with Wrangler, report issues in the [Wrangler GitHub repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose).

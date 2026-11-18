@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/reference/faq/og.png?v=72e4edc321eee
 
 # FAQs
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Pricing
 
 ### Will D1 always have a Free plan?

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/react
 
 # React Router (formerly Remix)
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 For Remix 3 applications, refer to the [Remix 3 guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/remix/).
 
 **Start from CLI**: Scaffold a full-stack app with [React Router v8 ↗︎](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Magic Transit egress
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/magic-transit-egress/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The suggestions in the [Minimal ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/minimal-ruleset) and [Extended ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/extended-ruleset) are recommendations for ingress (incoming) traffic. This page covers the additional consideration needed for egress (outgoing) traffic.
 
 Cloudflare Network Firewall does not track connection state (it is not "stateful"). A stateful firewall automatically allows return traffic for active connections — for example, if you send a request outbound, the response is allowed back in. Because Network Firewall is not stateful, each packet — whether ingress or egress — is evaluated independently against your rules. This means ingress block rules can inadvertently block egress traffic.

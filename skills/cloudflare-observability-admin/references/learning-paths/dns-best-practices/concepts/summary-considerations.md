@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/dns-best-practices/conce
 
 # Key considerations and best practices summary
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/summary-considerations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - Plan meticulously: Do not rush the planning and preparation phases.
 - Communicate clearly: Keep stakeholders informed.
 - Lower TTLs in advance: This is crucial for a faster cutover.

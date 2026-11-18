@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/how-to/og.png?v=1342d5f29cd75
 
 # How-to guides
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The following guides explain how to complete common Terraform tasks.
 
 - [Create a partial zone using Terraform](https://developers.cloudflare.com/terraform/how-to/create-partial-zone/)

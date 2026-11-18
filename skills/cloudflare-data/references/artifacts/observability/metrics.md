@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/observability/metrics/og.png?
 
 # Metrics
 
-Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/observability/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Artifacts exposes analytics that let you inspect repo activity, errors, and operation duration across your account.
 
 Artifacts metrics are available through Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can use them to answer questions like which repos are busiest, where errors cluster, and how long operations take.

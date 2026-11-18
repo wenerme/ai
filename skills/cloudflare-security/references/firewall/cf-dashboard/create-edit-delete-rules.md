@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delet
 
 # Create, edit, and delete rules
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A firewall rule has two main attributes: an [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) and an [action](https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/).
 
 Deprecation notice

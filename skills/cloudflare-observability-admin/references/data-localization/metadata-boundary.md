@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/data-localization/metadata-boundary/og.
 
 # Customer Metadata Boundary
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 As part of the Data Localization Suite, the Customer Metadata Boundary (CMB) ensures that Customer Logs stay in the region you select.
 
 Customer Logs are traffic metadata — information generated when visitors access your site, such as request URLs, timestamps, and firewall events — that could identify your end users. These logs are tagged with your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and will be stored exclusively in the European Union (`eu`) or the United States (`us`), depending on the region you configure. Customer Metadata Boundary supports these two regions only; by default no boundary is applied and logs may be stored in Cloudflare's core data centers globally. CMB uses its own region setting, separate from [Regional Services regions](https://developers.cloudflare.com/data-localization/region-support/#region-types). For example, if you select the `eu` Customer Metadata Boundary, metadata will **only** be sent to Cloudflare's core data center (the centralized processing facility, as distinct from the globally distributed edge data centers) located in the European Union.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/spectrum/protocols-per-plan/og.png?v=f6
 
 # Protocols per plan
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/protocols-per-plan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 On this table, you have information about which protocols are available per plan.
 
 |  | Free | Pro | Business | Enterprise |

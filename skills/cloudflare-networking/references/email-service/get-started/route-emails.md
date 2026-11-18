@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/email-service/get-started/route-emails/
 
 Set up email routing to forward incoming emails to existing mailboxes or process them with Workers.
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/get-started/route-emails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Route incoming emails sent to your domain to existing mailboxes, Workers for processing, or other destinations.
 
 Note

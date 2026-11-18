@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/manage/cancel-subscription/og.p
 
 # Cancel Cloudflare subscriptions
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/cancel-subscription/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cancellations take effect at the end of the current billing period. You retain access to paid features until then. To avoid charges for the next billing period, start the cancellation process before your current period ends.
 
 Downgrades follow the same timing. Switching from a yearly plan to a monthly plan, or from a paid plan to Free, does not take immediate effect. You continue to have access to the higher-tier service for the remainder of the current billing period. Refunds are not issued for unused time within a billing period.

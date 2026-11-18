@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/my
 
 Connect Hyperdrive to a Google Cloud SQL database instance.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/google-cloud-sql/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This example shows you how to connect Hyperdrive to a Google Cloud SQL MySQL database instance.
 
 ## 1. Allow Hyperdrive access
@@ -87,7 +85,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -107,7 +105,7 @@ name = "hyperdrive-example"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -150,7 +148,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-11-18",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -163,7 +161,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

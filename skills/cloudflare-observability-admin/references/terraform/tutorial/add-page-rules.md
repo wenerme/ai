@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/tutorial/add-page-rules/og.pn
 
 # 5 – Add exceptions with Page Rules
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/add-page-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In the [Configure HTTPS settings](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/) tutorial, you configured zone settings that apply to all incoming requests for `example.com`. In this tutorial, you will add an exception to these settings using [Page Rules](https://developers.cloudflare.com/rules/page-rules/).
 
 Specifically, you will increase the security level for a URL known to be expensive to render and cannot be cached: `https://www.example.com/expensive-db-call`. Additionally, you will add a redirect from the previous URL used to host this page.

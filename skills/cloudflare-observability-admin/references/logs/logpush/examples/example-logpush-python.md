@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/examples/example-logpush-p
 
 # Manage Logpush with Python
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can manage your Cloudflare Logpush service using Python. In the script below you can find example requests to create a job, retrieve job details, update job settings, and delete a Logpush job.
 
 Note

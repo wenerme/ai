@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/payload-logging/command-line/genera
 
 # Generate a key pair
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/command-line/generate-key-pair/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Generate a public/private key pair using the Cloudflare [`matched-data-cli` ↗︎](https://github.com/cloudflare/matched-data-cli) command-line tool. After generating a key pair, enter the generated public key in the payload logging configuration.
 
 Do the following:

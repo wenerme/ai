@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-part
 
 # Alibaba Cloud VPN Gateway
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial shows you how to connect Alibaba Cloud infrastructure to Cloudflare WAN (formerly Magic WAN) through IPsec tunnels. For more information regarding Alibaba Cloud technology, refer to [Alibaba's documentation ↗︎](https://www.alibabacloud.com/help/en/vpn-gateway).
 
 ## Alibaba Cloud

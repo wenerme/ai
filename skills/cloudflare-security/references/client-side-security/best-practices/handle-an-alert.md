@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/client-side-security/best-practices/han
 
 # Handle a client-side resource alert
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 If you receive a [client-side resource alert](https://developers.cloudflare.com/client-side-security/alerts/alert-types/), sometimes you need to perform some manual investigation to confirm the nature of the script. Use the guidance provided in this page as a starting point for your investigation.
 
 ## 1. Understand what triggered the alert

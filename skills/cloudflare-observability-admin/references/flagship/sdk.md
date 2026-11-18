@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/sdk/og.png?v=e2162f8929b4958f
 
 # OpenFeature SDK
 
-Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Evaluate Flagship feature flags using OpenFeature.
 
 [OpenFeature ↗︎](https://openfeature.dev/) is the CNCF standard for feature flag interfaces. It provides a vendor-neutral API so you can switch between flag providers without changing evaluation code.

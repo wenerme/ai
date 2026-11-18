@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/artifacts/platform/limits/og.png?v=83d5
 
 # Limits
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Limits that apply to creating, importing, cloning, and pushing Artifacts are detailed below.
 
 These limits cover naming rules, storage, request rates for control-plane and Git operations, and the size of each push.

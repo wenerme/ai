@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/a
 
 # JSON objects
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 # JSON object
 
 This page contains an example of the DNS protection rule JSON object used in the API.

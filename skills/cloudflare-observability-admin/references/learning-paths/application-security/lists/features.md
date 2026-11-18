@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/application-security/lis
 
 # Features
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/lists/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 List availability varies according to the list type and your Cloudflare plan and subscriptions.
 
 |  | Free | Pro | Business | Enterprise |

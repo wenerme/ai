@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificat
 
 # Manage custom certificates
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page lists Cloudflare requirements for custom certificates and explains how to upload and update these certificates using Cloudflare dashboard or API.
 
 ## Certificate requirements

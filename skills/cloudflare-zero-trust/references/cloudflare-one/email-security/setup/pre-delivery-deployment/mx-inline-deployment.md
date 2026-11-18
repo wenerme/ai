@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre
 
 # MX/Inline deployment
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With pre-delivery deployment, also known as Inline deployment, Email security evaluates email messages before they reach a user's inbox.
 
 ![Inline deployment diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=591,height=252,format=webp/_astro/Email_security_Deployment_Inline.Dsh4g8YD.png)

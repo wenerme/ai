@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security-center/infrastructure/og.png?v
 
 # Infrastructure
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/infrastructure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 User permission
 
 Only Super Admin users with edit permissions can start scans, turn scans off, or manage issues.

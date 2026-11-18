@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/basin/get-started/prompting/og.png?v=ca
 
 # Prompt an agent to build with Basin
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin/get-started/prompting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Describe the events you want to collect and the question you want to answer. Your coding agent can instrument a Worker or application, send events to Basin Pipelines, write an Iceberg table in Basin Catalog, and query it with Basin SQL.
 
 `Source → Basin Pipelines → Basin Catalog → Basin SQL`

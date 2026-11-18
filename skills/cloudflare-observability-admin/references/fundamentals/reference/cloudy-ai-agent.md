@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/
 
 # Cloudy AI agent (beta)
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudy is Cloudflare's first version of an AI agent, with assistant-like functionality designed to help users understand and improve their Cloudflare configurations in multiple areas of the product suite.
 
 Cloudy is powered by [Workers AI](https://developers.cloudflare.com/workers-ai/) and helps identify and solve issues such as identifying redundant rules, optimizing execution order, analyzing conflicting rules, and identifying disabled rules. Cloudy can also help investigate threat events and provide actionable recommendations.

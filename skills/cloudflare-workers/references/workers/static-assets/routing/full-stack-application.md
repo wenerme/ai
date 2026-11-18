@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/routing/full-stac
 
 # Full-stack application
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/full-stack-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Full-stack applications are web applications that span both the client and server. The build process of these applications will produce HTML files, accompanying client-side resources (e.g. JavaScript bundles, CSS stylesheets, images, fonts, etc.) and a Worker script. Data is typically fetched by the Worker script at request-time and the initial page response is usually server-side rendered (SSR). From there, the client is then hydrated and a SPA-like experience ensues.
 
 The following full-stack frameworks are natively supported by Workers:

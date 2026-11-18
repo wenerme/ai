@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Workday
 
-Last updated Nov 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/workday-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide covers how to configure [Workday ↗︎](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/saml/dan1370796470811.html?toc=1.5.1) as a SAML application in Cloudflare One.
 
 ## Prerequisites

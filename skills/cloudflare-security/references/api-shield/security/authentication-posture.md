@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/api-shield/security/authentication-post
 
 # Authentication Posture
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/authentication-posture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Authentication Posture detects API endpoints where all or some successful requests lack a configured session identifier and alerts you to potential misconfigurations.
 
 For example, a security team member may expect that their API endpoints `/api/v1/users` and `/api/v1/orders` require authentication. However, bugs in origin API authentication policies can create broken authentication vulnerabilities — allowing unauthenticated access to protected resources. Authentication Posture does not validate credentials. Instead, it reports whether configured session identifiers are present on successful requests to help you identify potential misconfigurations.

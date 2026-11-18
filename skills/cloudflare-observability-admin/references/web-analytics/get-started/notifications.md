@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/get-started/notifications
 
 # Notifications
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/get-started/notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Web Analytics uses Cloudflare's Notification service. When enabled, Web Analytics sends you a weekly report with aggregate visits, page views and median page load time for all your sites, so you can monitor their performance.
 
 

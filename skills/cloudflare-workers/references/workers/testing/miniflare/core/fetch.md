@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/core/fetch/og
 
 # Fetch Events
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [`FetchEvent` Reference](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
 
 ## HTTP Requests

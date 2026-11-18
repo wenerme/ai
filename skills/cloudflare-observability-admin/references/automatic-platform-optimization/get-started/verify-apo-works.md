@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/automatic-platform-optimization/get-sta
 
 # Verify APO works
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/verify-apo-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can check whether or not APO is working by verifying APO headers are present. When APO is working, three headers are present: `CF-Cache-Status`, `cf-apo-via`, `cf-edge-cache`.
 
 1. Visit [Uptrends.com ↗︎](https://www.uptrends.com/tools/http-response-header-check).

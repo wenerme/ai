@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/2fa/og.png?v
 
 # Two-factor authentication
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 We recommend that all Cloudflare user account holders enable two-factor authentication (2FA) to keep your accounts secure. 
 
 2FA can only be enabled successfully on an account with a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/). If you do not verify your email address first, you may lock yourself out of your account.

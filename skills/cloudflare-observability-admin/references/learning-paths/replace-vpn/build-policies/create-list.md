@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/replace-vpn/build-polici
 
 # Create a list of IPs or domains
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/create-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Gateway supports creating [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of IPs, hostnames, or other entries to reference in your policies.
 
 It is likely that you will be onboarding to the Cloudflare platform with some predetermined series of security policies. Maybe you have explicit deny lists based on hostnames, IPs, or another measure that tie to individual users. Maybe some networks can access certain apex records while others cannot.

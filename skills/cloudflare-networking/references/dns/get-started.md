@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/get-started/og.png?v=c1a12feb3125af
 
 # Get started
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can use Cloudflare DNS with a variety of [setups](https://developers.cloudflare.com/dns/zone-setups/). For an overview of what these setups are and an introduction to specific DNS terminology, refer to [Concepts](https://developers.cloudflare.com/dns/concepts/).
 
 In the most common setup (full), you [add your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/), import your [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/), and [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to make Cloudflare your primary authoritative DNS provider.

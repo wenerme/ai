@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/fate/
 
 # fate
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/fate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [*fate* ↗︎](https://fate.technology/) is a modern data client for the web inspired by [Relay ↗︎](https://relay.dev/) and [GraphQL ↗︎](https://graphql.org/). It combines view composition, normalized caching, data masking, Async React features, and type-safe data fetching.
 
 Deploy fate directly to your own Cloudflare account with [Void ↗︎](https://fate.technology/integrations/void). The Void template includes the app, [D1 database](https://developers.cloudflare.com/d1/), Drizzle migrations, Better Auth, and live updates through `void-fate` and `void/live`.

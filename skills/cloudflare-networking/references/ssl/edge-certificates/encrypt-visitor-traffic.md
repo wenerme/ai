@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-t
 
 # Enforce HTTPS connections
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Even with an active SSL/TLS certificate, visitors can still access resources over unsecured HTTP connections.
 
 It is best to redirect this traffic over HTTPS, as well as ensure other resources (such as images) are also loaded over HTTPS.

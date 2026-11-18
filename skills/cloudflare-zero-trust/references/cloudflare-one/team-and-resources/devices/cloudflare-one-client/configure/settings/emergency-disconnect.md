@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Emergency Disconnect
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Emergency disconnect allows organizations and administrators to disconnect and reconnect their fleet of Cloudflare One Clients (formerly WARP) independently from Cloudflare infrastructure. For example, in the event of a [Cloudflare network outage](#use-cases) you ensure that you can still manage your devices even if Cloudflare’s systems are down or unreachable.
 
 Two mechanisms are available:

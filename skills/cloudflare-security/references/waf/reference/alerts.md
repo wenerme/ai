@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/reference/alerts/og.png?v=df98be933
 
 # Alerts for security events
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/reference/alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare provides two types of security alerts that inform you of any spikes in security events:
 
 - **Security Events Alert**: Alerts about spikes across all services that generate log entries in Security Events.

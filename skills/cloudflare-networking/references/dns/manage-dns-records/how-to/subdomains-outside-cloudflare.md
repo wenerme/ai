@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomain
 
 # Delegate subdomains
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Subdomain delegation allows different individuals, teams, or organizations to manage different subdomains of a site.
 
 Note

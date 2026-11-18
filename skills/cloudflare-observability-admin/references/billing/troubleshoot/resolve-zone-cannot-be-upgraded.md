@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-canno
 
 # Resolve the zone cannot be upgraded error
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-cannot-be-upgraded/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When trying to upgrade a domain or purchase a subscription, you may see an error that contains one of the following phrases:
 
 - "this zone cannot be upgraded"

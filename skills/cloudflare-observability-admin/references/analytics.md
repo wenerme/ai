@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/analytics/og.png?v=5912beeb3297756c
 
 # Analytics
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare visualizes the metadata collected by our products in the Cloudflare dashboard. Refer to [Types of analytics](https://developers.cloudflare.com/analytics/types-of-analytics/) for more information about the various types of analytics and where they exist in the dashboard.
 
 ---

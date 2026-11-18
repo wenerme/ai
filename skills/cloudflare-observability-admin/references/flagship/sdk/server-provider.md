@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/sdk/server-provider/og.png?v=f
 
 # TypeScript Server SDK
 
-Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/server-provider/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The `FlagshipServerProvider` implements the OpenFeature server provider interface. The provider works in [Cloudflare Workers](https://developers.cloudflare.com/workers/), Node.js, and any server-side JavaScript runtime that supports the Fetch API.
 
 Inside a Cloudflare Worker, you can pass the Flagship [binding](https://developers.cloudflare.com/flagship/binding/) directly to the provider. This avoids HTTP overhead and is the recommended approach. Outside of Workers, initialize the provider with an app ID and account ID.

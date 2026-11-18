@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ruleset-engine/managed-rulesets/overrid
 
 # Override a managed ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To customize the behavior of a managed ruleset via API, override the ruleset at deployment. When you override a ruleset you specify changes to be executed on top of the default configuration. These changes take precedence over the ruleset's default behavior.
 
 For example, to test a managed ruleset before enforcing it, consider executing the ruleset with all rules set to `log` instead of their default actions. To do this, override the configured behavior of the managed ruleset at the ruleset level, so that each rule uses the `log` action.

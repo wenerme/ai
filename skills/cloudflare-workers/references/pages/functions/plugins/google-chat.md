@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/functions/plugins/google-chat/og.
 
 # Google Chat
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/google-chat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Google Chat Pages Plugin creates a Google Chat bot which can respond to messages. It also includes an API for interacting with Google Chat (for example, for creating messages) without the need for user input. This API is useful for situations such as alerts.
 
 ## Installation

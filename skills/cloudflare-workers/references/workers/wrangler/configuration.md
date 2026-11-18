@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v
 
 # Configuration
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
 Note
@@ -40,7 +38,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-13",
+	"compatibility_date": "2026-11-18",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -76,7 +74,7 @@ name = "my-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-13"
+compatibility_date = "2026-11-18"
 workers_dev = false
 
 [route]

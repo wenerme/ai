@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-elderj
 
 # Elder.js
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-elderjs-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [Elder.js ↗︎](https://elderguide.com/tech/elderjs/) is an SEO-focused framework for building static sites with [SvelteKit](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/).
 
 In this guide, you will create a new Elder.js application and deploy it using Cloudflare Pages.

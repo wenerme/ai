@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/usage/universal/og.png?v=75d
 
 # Universal Endpoint (Deprecated)
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/universal/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Deprecated
 
 The Universal Endpoint is deprecated. Use the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) for new integrations, and [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/) for fallbacks, retries, and conditional routing. The Universal Endpoint will continue to work for existing integrations.

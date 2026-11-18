@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/terraform/tutorial/revert-configuration
 
 # 6 – Revert configuration
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/revert-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Sometimes, you may have to roll back configuration changes. For example, you might want to run performance tests on a new configuration or maybe you mistyped an IP address and brought your entire site down.
 
 To revert your configuration, check out the desired branch and ask Terraform to move your Cloudflare settings back in time. If you accidentally brought your site down, consider establishing a good strategy for peer reviewing pull requests rather than merging directly to `master` as done in the tutorials for brevity.

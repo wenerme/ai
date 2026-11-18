@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/support/third-party-software/forum-soft
 
 # Using Cloudflare with various forums
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/forum-software/using-cloudflare-with-various-forums-vbulletin-xenforo-mybb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Overview
 
 Many widely used forum platforms are compatible with Cloudflare.

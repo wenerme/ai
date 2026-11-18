@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/containers/examples/stateless/og.png?v=
 
 Run multiple instances across Cloudflare's network
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/stateless/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Distribute HTTP requests across three named Container instances. Each Durable Object starts its Container with the `durable_object` scheduling policy.
 
 The Worker chooses among `instance-0`, `instance-1`, and `instance-2`. This is a fixed pool, not automatic scaling. Requests can reach different instances, so keep shared application data outside the container filesystem.
@@ -29,7 +27,7 @@ The Worker chooses among `instance-0`, `instance-1`, and `instance-2`. This is a
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-11-18",
   "observability": {
     "enabled": true
   },
@@ -66,7 +64,7 @@ name = "stateless-containers"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-11-18"
 
 [observability]
 enabled = true

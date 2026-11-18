@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/developing/de
 
 # Attaching a Debugger
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Caution
 
 This documentation describes breakpoint debugging when using Miniflare directly, which is only relevant for advanced use cases. Instead, most users should refer to the [Workers Observability documentation for how to set this up when using Wrangler](https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/).

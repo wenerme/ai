@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolve
 
 # Resolver endpoints
 
-Last updated Nov 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 DNS locations are a collection of DNS endpoints which can be mapped to physical entities such as offices, homes, or data centers.
 
 The fastest way to start filtering DNS queries from a location is by changing the DNS resolvers at the router.

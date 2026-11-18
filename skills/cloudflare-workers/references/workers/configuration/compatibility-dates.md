@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/configuration/compatibility-dat
 
 # Compatibility dates
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/compatibility-dates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare regularly updates the Workers runtime. These updates apply to all Workers globally and should never cause a Worker that is already deployed to stop functioning. Sometimes, though, some changes may be backwards-incompatible. In particular, there might be bugs in the runtime API that existing Workers may inadvertently depend upon. Cloudflare implements bug fixes that new Workers can opt into while existing Workers will continue to see the buggy behavior to prevent breaking deployed Workers.
 
 The compatibility date and flags are how you, as a developer, opt into these runtime changes. [Compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags) will often have a date in which they are enabled by default, and so, by specifying a `compatibility_date` for your Worker, you can quickly enable all of these various compatibility flags up to, and including, that date.

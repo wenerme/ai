@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/testing/miniflare/developing/og
 
 # Developing
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/developing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Attaching a Debugger](https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/)
 - [Live Reload](https://developers.cloudflare.com/workers/testing/miniflare/developing/live-reload/)
 

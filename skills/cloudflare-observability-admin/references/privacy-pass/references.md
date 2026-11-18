@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/privacy-pass/references/og.png?v=6563a8
 
 # References
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/references/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Libraries and implementations
 
 - [TypeScript library for the Privacy Pass issuance protocol ↗︎](https://github.com/cloudflare/privacypass-ts)

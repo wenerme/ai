@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/og.
 
 # Enable mTLS
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can enable mutual Transport Layer Security (mTLS) for any hostname. For more information, refer to the [Client certificates overview](https://developers.cloudflare.com/ssl/client-certificates/).
 
 Cloudflare-issued or BYOCA

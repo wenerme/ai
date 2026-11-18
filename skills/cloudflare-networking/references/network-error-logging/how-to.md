@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/network-error-logging/how-to/og.png?v=3
 
 # How to
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-error-logging/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use NEL reports to view information such as:
 
 - Why a request failed

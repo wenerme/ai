@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable IBM QRadar
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To configure a QRadar/Cloudflare integration you have the option to use one of the following methods:
 
 - [HTTP Receiver protocol](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-qradar/#http-receiver-protocol)

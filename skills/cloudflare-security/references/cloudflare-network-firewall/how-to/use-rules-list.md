@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-
 
 # Use IP lists
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-rules-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) are a part of Cloudflare's custom lists. Custom lists contain one or more items of the same type — IP addresses, hostnames or ASNs — that you can reference in rule expressions.
 
 IP lists are defined at the account level and can be used to match against `ip.src` and `ip.dst` fields. Currently, Cloudflare Network Firewall (formerly Magic Firewall) only supports IPv4 addresses in these lists, not IPv6.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/glossary/og.png?v=e6eafc5cbb
 
 # Header Glossary
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway supports a variety of headers to help you configure, customize, and manage your API requests. This page provides a complete list of all supported headers, along with a short description
 
 | Term | Definition |

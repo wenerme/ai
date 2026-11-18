@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/local-development/og.png?v=f54c
 
 # Local development
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code in a local [`workerd` ↗︎](https://github.com/cloudflare/workerd) process. `workerd` also powers the hosted Workers platform.
 
 [By default](https://developers.cloudflare.com/workers/local-development/#defaults), your Worker's bindings [connect to locally simulated resources](https://developers.cloudflare.com/workers/local-development/#bindings-during-local-development), but can be configured to interact with the real, production resource with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
@@ -106,7 +104,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-28",
+	"compatibility_date": "2026-11-18",
 
 	"r2_buckets": [
 		{
@@ -121,7 +119,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-28"
+compatibility_date = "2026-11-18"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -141,7 +139,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-28",
+	"compatibility_date": "2026-11-18",
 
 	"env": {
 		"production": {
@@ -168,7 +166,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-28"
+compatibility_date = "2026-11-18"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"

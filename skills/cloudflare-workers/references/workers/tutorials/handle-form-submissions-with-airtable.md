@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/tutorials/handle-form-submissio
 
 # Handle form submissions with Airtable
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will use [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Airtable ↗︎](https://airtable.com) to persist form submissions from a front-end user interface. Airtable is a free-to-use spreadsheet solution that has an approachable API for developers. Workers will handle incoming form submissions and use Airtable's [REST API ↗︎](https://airtable.com/api) to asynchronously persist the data in an Airtable base (Airtable's term for a spreadsheet) for later reference.
 
 ![GIF of a complete Airtable and serverless function integration](https://developers.cloudflare.com/images/workers/tutorials/airtable/example.gif)
@@ -265,7 +263,7 @@ Add a `vars` table at the end of your Wrangler file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-23",
+	"compatibility_date": "2026-11-18",
 	"vars": {
 		"AIRTABLE_BASE_ID": "exampleBaseId",
 		"AIRTABLE_TABLE_NAME": "Form Submissions"
@@ -279,7 +277,7 @@ name = "workers-airtable-form"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-23"
+compatibility_date = "2026-11-18"
 
 [vars]
 AIRTABLE_BASE_ID = "exampleBaseId"

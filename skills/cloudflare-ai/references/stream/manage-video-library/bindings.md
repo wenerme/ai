@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/manage-video-library/bindings/og
 
 # Bind to Workers API
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/manage-video-library/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Stream](https://developers.cloudflare.com/stream/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
 For example, when you use Stream within Workers, you can:

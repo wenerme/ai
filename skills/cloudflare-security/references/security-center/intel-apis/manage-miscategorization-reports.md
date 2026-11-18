@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/security-center/intel-apis/manage-misca
 
 # Manage miscategorization reports
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/intel-apis/manage-miscategorization-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This guide will show you how to manage miscategorization of reports. To complete this guide, you will need to generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
 1. Create an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) if you do not have one already.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/adv
 
 # Restrict external connections
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/advanced/prevent-external-connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To fully secure your origin, you should limit or restrict external connections to your origin server. These suggestions vary in their level of completeness and complexity and depend on your application and origin setup.
 
 ## Application layer

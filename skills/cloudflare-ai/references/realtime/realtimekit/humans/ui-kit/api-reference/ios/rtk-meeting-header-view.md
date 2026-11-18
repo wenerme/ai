@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkMeetingHeaderView
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-meeting-header-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Meeting header view that displays the meeting title, participant count, elapsed time clock, recording indicator, and camera switch button.
 
 ## Initializer parameters

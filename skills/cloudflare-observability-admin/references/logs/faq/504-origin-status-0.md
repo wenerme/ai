@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/faq/504-origin-status-0/og.png?v=8
 
 # 504 responses with origin status 0 in Logpush
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/504-origin-status-0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [❮ Back to FAQ](https://developers.cloudflare.com/logs/faq/)
 
 ### Why do I see 504 responses with `OriginResponseStatus=0` in Logpush that do not appear in the dashboard?

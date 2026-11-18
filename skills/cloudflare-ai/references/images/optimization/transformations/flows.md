@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/optimization/transformations/flo
 
 # Create transformation flows
 
-Last updated May 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/flows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Define automated rules to optimize remote images without writing any code or changing your existing URLs.
 
 Flows let you automatically apply image optimization to requests on your zone.

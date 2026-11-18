@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkEndMeetingControlBarButton
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-end-meeting-control-bar-button/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A control bar button that ends or leaves the meeting. Optionally displays a confirmation dialog before ending the meeting.
 
 ## Initializer parameters

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-
 
 # Traffic types
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/traffic-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Network Firewall enables you to allow or block traffic on a variety of packet characteristics, including:
 
 - **Source and destination IP** — the sender's and receiver's IP addresses

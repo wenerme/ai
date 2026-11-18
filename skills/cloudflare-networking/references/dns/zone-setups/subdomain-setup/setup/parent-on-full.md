@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/p
 
 # Parent zone on full setup
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-full/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When the parent zone is using a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/)<sup>[1](#user-content-fn-1)</sup>, the steps to set up your child zone depend on whether the subdomain already exists in the parent domain.
 
 Note

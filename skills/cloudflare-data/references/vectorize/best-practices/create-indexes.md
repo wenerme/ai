@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/vectorize/best-practices/create-indexes
 
 # Create indexes
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Indexes are the "atom" of Vectorize. Vectors are inserted into an index and enable you to query the index for similar vectors for a given input vector.
 
 Creating an index requires three inputs:

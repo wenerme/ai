@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/configuration/mta-sts/og.
 
 # Configure MTA-STS
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/mta-sts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 MTA Strict Transport Security ([MTA-STS ↗︎](https://datatracker.ietf.org/doc/html/rfc8461)) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email.
 
 Suppose that `example.com` is your domain and uses Email Service. Here is how you can enable MTA-STS for it.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkTooltip
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtktooltip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Tooltip component which follows RTK Design System.
 
 ## Properties

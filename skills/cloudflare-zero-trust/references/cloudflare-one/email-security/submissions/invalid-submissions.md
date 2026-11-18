@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/submissio
 
 # Invalid submissions
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/invalid-submissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A submission is invalid when:
 
 - A submission has no EML file attached.

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-c
 
 # Composable AI architecture
 
-Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## Introduction
 
 The AI market is witnessing a rapid evolution, propelled by the swift pace of technological advancement. With breakthroughs occurring frequently, staying up-to-date with the latest innovations is imperative for organizations aiming to remain competitive. Short iteration cycles and agility have become indispensable in this landscape, allowing businesses to swiftly adopt and leverage the newest advancements in AI technology.

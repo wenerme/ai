@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkNameTag
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtknametag/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Displays a participant's name with optional child content (such as an audio visualizer icon). Used as an overlay on participant tiles.
 
 ## Properties

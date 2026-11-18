@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/tools/codemode/openapi/og.png?v=
 
 # Use an OpenAPI service with Code Mode
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/openapi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Use `OpenApiConnector` to expose an OpenAPI service inside a durable Code Mode runtime. The connector derives one sandbox method for each operation in the OpenAPI document.
 
 The model can discover methods with `codemode.search()` and request focused input types with `codemode.describe()`. The complete OpenAPI document does not need to enter the model context.

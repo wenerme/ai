@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db45
 
 # Features
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Gateway provides a comprehensive set of features to help you build, deploy, and manage AI applications with confidence. From performance optimization to security and observability, these features work together to create a robust AI infrastructure.
 
 ## Core Features

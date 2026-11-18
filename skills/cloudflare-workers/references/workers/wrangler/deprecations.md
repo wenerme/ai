@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/wrangler/deprecations/og.png?v=
 
 # Deprecations
 
-Last updated Apr 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/deprecations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Review the difference between Wrangler versions, specifically deprecations and breaking changes.
 
 ## Wrangler v4

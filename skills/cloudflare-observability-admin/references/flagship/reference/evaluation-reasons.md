@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/flagship/reference/evaluation-reasons/o
 
 # Evaluation reasons and error codes
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When you evaluate a flag using the binding's `*Details` methods or the OpenFeature SDK, the response includes a `reason` field that explains why a particular value was returned. If an error occurs, the response includes an `errorCode` field.
 
 ## Evaluation reasons

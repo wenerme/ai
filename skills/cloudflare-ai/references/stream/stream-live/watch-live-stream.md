@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/stream-live/watch-live-stream/og
 
 # Watch a live stream
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When a [Live Input](https://developers.cloudflare.com/stream/stream-live/start-stream-live/) begins receiving a broadcast, a new video is automatically created if the input's `mode` property is set to `automatic`.
 
 To watch, Stream offers a built-in Player or you use a custom player with the HLS and DASH manifests.

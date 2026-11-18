@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/d1/best-practices/retry-queries/og.png?
 
 # Retry queries
 
-Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/retry-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 It is useful to retry write queries from your application when you encounter a transient [error](https://developers.cloudflare.com/d1/observability/debug-d1/#error-list). From the list of `D1_ERROR`s, refer to the Recommended action column to determine if a query should be retried.
 
 Note

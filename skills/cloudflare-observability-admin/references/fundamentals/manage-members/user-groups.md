@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/user-groups
 
 # User Groups
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 User Groups are a collection of [account members](https://developers.cloudflare.com/fundamentals/manage-members/) that are treated equally from an access control perspective. User Groups can be assigned permission policies, with individual members in the group receiving all permissions of the roles assigned to the User Group. If users also have individually assigned permissions, then their effective permissions are the union of all of their individual permissions, plus the permissions for all of the User Groups they are a member of.
 
 Note

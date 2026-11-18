@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/get-started/first-request/og.png?
 
 # Make your first API request
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/first-request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 To make your first request to Cloudflare's Radar API, you must obtain your [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) first. Create a Custom Token, with *Account* > *Radar* in the **Permissions** group, and select *Read* as the access level.
 
 Once you have the token, you are ready to make your first request to Radar's API at `https://api.cloudflare.com/client/v4/radar/`.

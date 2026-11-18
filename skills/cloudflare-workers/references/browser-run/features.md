@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/browser-run/features/og.png?v=85155a1e8
 
 # Additional features
 
-Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Live View](https://developers.cloudflare.com/browser-run/features/live-view/)
 - [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)
 - [Session recording](https://developers.cloudflare.com/browser-run/features/session-recording/)

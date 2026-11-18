@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate from Netlify to Workers
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 In this tutorial, you will learn how to migrate your Netlify application to Cloudflare Workers.
 
 You should already have an existing project deployed on Netlify that you would like to host on Cloudflare Workers. Netlify specific features are not supported by Cloudflare Workers. Review the [Workers compatibility matrix](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#compatibility-matrix) for more information on what is supported.
@@ -42,7 +40,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 {
 	"name": "<your-project-name>",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"directory": "<your-build-directory>",
 	},
@@ -52,7 +50,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "<your-build-directory>"
@@ -64,7 +62,7 @@ For a **Single Page Application**, you will need to add the following to your Wr
 {
 	"name": "<your-project-name>",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-11-18",
 	"assets": {
 		"directory": "<your-build-directory>",
 		"not_found_handling": "single-page-application",
@@ -75,7 +73,7 @@ For a **Single Page Application**, you will need to add the following to your Wr
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-11-18"
 
 [assets]
 directory = "<your-build-directory>"

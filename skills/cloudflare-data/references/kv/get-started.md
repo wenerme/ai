@@ -14,8 +14,6 @@ image: https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc2398
 
 Create a basic key-value store which stores the notification configuration of all users in an application, where each user may have `enabled` or `disabled` notifications.
 
-Last updated Nov 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Workers KV provides low-latency, high-throughput global storage to your [Cloudflare Workers](https://developers.cloudflare.com/workers/) applications. Workers KV is ideal for storing user configuration data, routing data, A/B testing configurations and authentication tokens, and is well suited for read-heavy workloads.
 
 This guide instructs you through:

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get
 
 # Get started with AI Security for Apps
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## 1. Turn on AI Security for Apps
 
 Note

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zone
 
 # Accounts, zones, and profiles
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Within the Cloudflare ecosystem, there are three organizing concepts that control where specific settings live: user profiles, accounts, and zones.
 
 ```

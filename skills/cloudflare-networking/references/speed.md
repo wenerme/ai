@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/speed/og.png?v=501715c9d470576f
 
 # Speed
 
-Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Improve the performance of your website or web application.
 
 Available on all plans

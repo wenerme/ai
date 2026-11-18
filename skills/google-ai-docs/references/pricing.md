@@ -6,7 +6,7 @@
 # Gemini Developer API pricing
 
 Start building free of charge with generous limits, then scale up with prepaid
-and pay-as-you-go pricing for your production-ready applications.
+and pay-as-you-go pricing for your production-ready applications. To compare reasoning depth, speed, and cost trade-offs across models, see [Choosing a model](/docs/choosing-a-model).
 
 {% card-grid %}
   {% card title="Free" %}

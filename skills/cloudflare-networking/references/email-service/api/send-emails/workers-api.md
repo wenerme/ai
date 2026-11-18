@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/email-service/api/send-emails/workers-a
 
 # Email Sending Workers API
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 The Workers API provides native email sending capabilities directly from your Cloudflare Workers through bindings. If you are not using Workers, you can send emails using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) instead.
 
 ## Email binding

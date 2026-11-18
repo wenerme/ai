@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkNameTag
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-name-tag/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Base name tag view with an icon, title, and optional subtitle. Serves as the foundation for `RtkMeetingNameTag`.
 
 ## Initializer parameters

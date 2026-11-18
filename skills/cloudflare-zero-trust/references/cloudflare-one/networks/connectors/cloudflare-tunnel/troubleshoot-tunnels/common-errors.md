@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Common errors
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This section covers the most common errors you might encounter when connecting resources with Cloudflare Tunnel. If you do not see your issue listed below, refer to [Troubleshooting Cloudflare One](https://developers.cloudflare.com/cloudflare-one/troubleshooting/), view your [Tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/), or [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
 ## Tunnel status

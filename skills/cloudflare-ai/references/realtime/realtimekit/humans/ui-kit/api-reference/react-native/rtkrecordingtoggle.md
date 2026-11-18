@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkRecordingToggle
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkrecordingtoggle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Toggle button to start or stop meeting recording. Only visible for participants with recording permissions who are on stage.
 
 ## Properties

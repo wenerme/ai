@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/turn/what-is-turn/og.png?v=022
 
 # What is TURN?
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/what-is-turn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 ## What is TURN?
 
 TURN (Traversal Using Relays around NAT) is a protocol that assists in traversing Network Address Translators (NATs) or firewalls in order to facilitate peer-to-peer communications. It is an extension of the STUN (Session Traversal Utilities for NAT) protocol and is defined in [RFC 8656 ↗︎](https://datatracker.ietf.org/doc/html/rfc8656).

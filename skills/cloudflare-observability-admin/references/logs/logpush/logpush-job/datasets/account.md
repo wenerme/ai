@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/accou
 
 # Account-scoped datasets
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Access Requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/access_requests/)
 - [Account Abuse Protection Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account_abuse_protection_events/)
 - [AI Gateway Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ai_gateway_events/)

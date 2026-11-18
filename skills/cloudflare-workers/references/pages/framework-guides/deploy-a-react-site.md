@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-s
 
 # React
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 [React ↗︎](https://reactjs.org/) is a popular framework for building reactive and powerful front-end applications, built by the open-source team at Facebook.
 
 In this guide, you will create a new React application and deploy it using Cloudflare Pages.

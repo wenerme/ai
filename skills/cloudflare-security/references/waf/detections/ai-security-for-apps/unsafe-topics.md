@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/uns
 
 # Unsafe and custom topic detection
 
-Last updated Nov 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 AI Security for Apps can detect when an LLM prompt touches on unsafe or unwanted subjects. There are two layers of topic detection:
 
 - [Default unsafe topics](#default-unsafe-topics): A built-in set of safety categories that detect harmful content such as violent crimes, hate speech, and sexual content.

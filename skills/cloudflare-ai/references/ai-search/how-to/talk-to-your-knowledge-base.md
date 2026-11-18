@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge
 
 # Talk to your knowledge base
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This tutorial builds a voice agent that you can talk to and that answers out loud from your [AI Search](https://developers.cloudflare.com/ai-search/) knowledge base. It uses [Cloudflare Agents](https://developers.cloudflare.com/agents/) [voice](https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/) (`agents/voice`) for the speech pipeline, and AI Search as the agent's knowledge base, exposed as a retrieval tool the agent's model calls.
 
 **What you will build:** A voice agent that transcribes your speech, calls AI Search to retrieve relevant content from your indexed knowledge base, generates a grounded answer, and speaks it back.
@@ -102,7 +100,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
 	"main": "src/server.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-30",
+	"compatibility_date": "2026-11-18",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -137,7 +135,7 @@ name = "voice-knowledge-base"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-11-18"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

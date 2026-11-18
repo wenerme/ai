@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Isolate self-hosted application
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 Requires [Cloudflare Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/).

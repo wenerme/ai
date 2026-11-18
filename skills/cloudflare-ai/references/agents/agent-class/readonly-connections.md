@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/agents/agent-class/readonly-connections
 
 # Readonly connections
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/readonly-connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A readonly connection receives state updates but cannot change state. The `Agent` class uses the [readonly support in the `WebSockets` capability](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/#readonly-connections) and adds methods for it.
 
 ```js

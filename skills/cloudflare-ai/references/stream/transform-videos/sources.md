@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/stream/transform-videos/sources/og.png?
 
 # Define source origin
 
-Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/transform-videos/sources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When optimizing remote videos, you can specify which origins can be used as the source for transformed videos. By default, Cloudflare accepts only source videos from the zone where your transformations are served.
 
 On this page, you will learn how to define and manage the origins for the source videos that you want to optimize.

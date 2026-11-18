@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation
 
 # Isolation policies
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 With Browser Isolation, you can define policies to dynamically isolate websites based on identity, security threats, or content.
 
 Note

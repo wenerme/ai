@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/learning-paths/data-center-protection/c
 
 # Configure routes
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Magic Transit Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Magic Transit Virtual Network routing table through static route configuration or routes learned from BGP peering over IPsec and GRE tunnels or CNI with Dataplane v2 (closed beta).
 
 Refer to [Traffic Steering](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/) for more information about all the technical aspects related to:

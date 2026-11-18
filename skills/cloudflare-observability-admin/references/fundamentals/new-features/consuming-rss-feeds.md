@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/new-features/consuming-rss
 
 # Consuming RSS Feeds
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/new-features/consuming-rss-feeds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Our [changelogs](https://developers.cloudflare.com/changelog/) are published to [various RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) with HTML in the `<description>` tag.
 
 In feeds with multiple products, such as the global or product-area feeds, the products associated with a given entry are in the `<category>` tag.

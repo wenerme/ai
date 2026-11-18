@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-
 
 # RtkSwitchCameraButtonControlBar
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-switch-camera-button-control-bar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 A control bar button that switches between the front and rear cameras.
 
 ## Initializer parameters

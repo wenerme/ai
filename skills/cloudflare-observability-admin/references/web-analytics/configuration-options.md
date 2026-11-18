@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/web-analytics/configuration-options/og.
 
 # Configuration options
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/configuration-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Customize your Web Analytics views by using filters and rules.
 
 - [Filters](https://developers.cloudflare.com/web-analytics/configuration-options/filters/)

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Path MTU Discovery (PMTUD)
 
-Last updated Sep 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 <details>
 
 <summary>
@@ -31,9 +29,13 @@ Feature availability
 | Windows | ✅ | 2025.9.173.1 |
 | macOS | ✅ | 2025.9.173.1 |
 | Linux | ✅ | 2025.9.173.1 |
-| iOS | ❌ | |
-| Android | ❌ | |
-| ChromeOS | ❌ | |
+| iOS | ✅ | 1.12.5 |
+| Android | ✅ | 2.5.5 |
+| ChromeOS | ✅ | 2.5.5 |
+
+Note
+
+PMTUD is disabled by default on iOS, Android, and ChromeOS. To enable it, set <code>enable_pmtud</code> to <code>true</code> in your <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#ios">MDM configuration</a>.
 
 </details>
 
@@ -51,7 +53,7 @@ Certain features may be disabled or degraded at low MTU thresholds. For details,
 
 ## Enable or disable Path MTU Discovery
 
-PMTUD is now enabled by default (Cloudflare One Client version 2026.6.822.0 and above). To disable PMTUD on your devices, [deploy an MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) with the `enable_pmtud` key set to `false`. For example:
+PMTUD is enabled by default on Windows, macOS, and Linux starting with Cloudflare One Client version 2026.6.822.0. To disable it on these platforms, [deploy an MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#windows) with the `enable_pmtud` key set to `false`. For example:
 
 ```xml
 <dict>
@@ -159,5 +161,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#page","headline":"Path MTU Discovery (PMTUD)","description":"How Path MTU Discovery (PMTUD) works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/og.png?v=40fa7c0a923c0b82","dateModified":"2026-09-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MASQUE","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/#page","headline":"Path MTU Discovery (PMTUD)","description":"How Path MTU Discovery (PMTUD) works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/og.png?v=40fa7c0a923c0b82","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MASQUE","IPv6"]}
 ```

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/radar/concepts/normalization/og.png?v=5
 
 # Normalization methods
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/concepts/normalization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare Radar does not normally return raw values. Instead, values are returned as percentages or normalized using min-max.
 
 Refer to the `result.meta.normalization` property in the response to check which post-processing method was applied to the raw values, if any.

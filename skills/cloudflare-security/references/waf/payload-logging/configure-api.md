@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/waf/payload-logging/configure-api/og.pn
 
 # Configure payload logging via API
 
-Last updated Nov 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/payload-logging/configure-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Configure an account-level or zone-level public key to capture payloads for WAF managed rules and custom rules. You can also use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure a key for a specific managed ruleset.
 
 ## Configure an account-level key

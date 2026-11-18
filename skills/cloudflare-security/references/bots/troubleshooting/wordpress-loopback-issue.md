@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback
 
 # Super Bot Fight Mode for WordPress
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 When users attempt to run diagnostics in the Site Status page for WordPress installations, loopback issues arise when our bot detection services block them.
 
 WordPress relies on making loopback requests to monitor and occasionally administer its websites. Customers can opt-in to optimize Super Bot Fight Mode for WordPress. If this feature is enabled, automated loopback requests made by your WordPress site will be authorized even when Super Bot Fight Mode blocks other bots.

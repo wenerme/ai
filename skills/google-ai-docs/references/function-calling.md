@@ -3219,6 +3219,193 @@ applies as for an input video. For details, see
 
 {% /tabs %}
 
+### Slice and inspect files in function responses  {% id="file-inspection-options" %}
+
+Your tools can return sliced pages, spreadsheet ranges, or media clips inside a
+top-level `function_result` block using the same `processing` and `resolution`
+fields. The model receives file metadata (page counts and worksheet names)
+automatically so it can request narrower ranges on later turns.
+
+See
+[Customize document, presentation, and spreadsheet processing](/docs/document-processing#customize-document-processing),
+[Customize video processing](/docs/video-understanding#customize-video-processing),
+and [Clip audio intervals](/docs/audio#clipping-intervals) for all available
+options.
+
+{% tabs %}
+  {% tab filename="function_result_slice.py" label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  manual_file = client.files.upload(file="service_manual.pdf")
+  
+  tools = [
+      {
+          "type": "function",
+          "name": "inspect_document_pages",
+          "description": "Load specific pages of service_manual.pdf.",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "start_page": {"type": "integer", "description": "1-indexed start page."},
+                  "end_page": {"type": "integer", "description": "1-indexed end page."},
+              },
+              "required": ["start_page", "end_page"],
+          },
+      }
+  ]
+  
+  turn1 = client.interactions.create(
+      model="gemini-4-hydrogen",
+      tools=tools,
+      input="Use inspect_document_pages to read pages 14-16 of service_manual.pdf.",
+  )
+  
+  call = next(s for s in turn1.steps if s.type == "function_call")
+  
+  turn2 = client.interactions.create(
+      model="gemini-4-hydrogen",
+      previous_interaction_id=turn1.id,
+      tools=tools,
+      input=[
+          {
+              "type": "function_result",
+              "call_id": call.id,
+              "name": call.name,
+              "result": [
+                  {
+                      "type": "document",
+                      "uri": manual_file.uri,
+                      "mime_type": "application/pdf",
+                      "resolution": "high",
+                      "processing": {
+                          "type": "static",
+                          "page_options": {
+                              "start_page": call.arguments["start_page"],
+                              "end_page": call.arguments["end_page"],
+                              "content_layers": ["page_image"],
+                          },
+                      },
+                  }
+              ],
+          }
+      ],
+  )
+  
+  print(turn2.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab filename="function_result_slice.js" label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const ai = new GoogleGenAI({});
+  
+  const manualFile = await ai.files.upload({
+    file: "service_manual.pdf",
+    config: { mimeType: "application/pdf" },
+  });
+  
+  const tools = [
+    {
+      type: "function",
+      name: "inspect_document_pages",
+      description: "Load specific pages of service_manual.pdf.",
+      parameters: {
+        type: "object",
+        properties: {
+          start_page: { type: "integer", description: "1-indexed start page." },
+          end_page: { type: "integer", description: "1-indexed end page." },
+        },
+        required: ["start_page", "end_page"],
+      },
+    },
+  ];
+  
+  const turn1 = await ai.interactions.create({
+    model: "gemini-4-hydrogen",
+    tools,
+    input: "Use inspect_document_pages to read pages 14-16 of service_manual.pdf.",
+  });
+  
+  const toolCall = turn1.steps.find((s) => s.type === "function_call");
+  
+  const turn2 = await ai.interactions.create({
+    model: "gemini-4-hydrogen",
+    previous_interaction_id: turn1.id,
+    tools,
+    input: [
+      {
+        type: "function_result",
+        call_id: toolCall.id,
+        name: toolCall.name,
+        result: [
+          {
+            type: "document",
+            uri: manualFile.uri,
+            mime_type: "application/pdf",
+            resolution: "high",
+            processing: {
+              type: "static",
+              page_options: {
+                start_page: toolCall.arguments.start_page,
+                end_page: toolCall.arguments.end_page,
+                content_layers: ["page_image"],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  });
+  
+  console.log(turn2.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab filename="function_result_slice.sh" label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "Content-Type: application/json" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -d '{
+      "model": "gemini-4-hydrogen",
+      "previous_interaction_id": "INTERACTION_ID",
+      "input": [
+        {
+          "type": "function_result",
+          "call_id": "CALL_ID",
+          "name": "inspect_document_pages",
+          "result": [
+            {
+              "type": "document",
+              "uri": "https://generativelanguage.googleapis.com/v1beta/files/MANUAL_FILE_ID",
+              "mime_type": "application/pdf",
+              "resolution": "high",
+              "processing": {
+                "type": "static",
+                "page_options": {
+                  "start_page": 14,
+                  "end_page": 16,
+                  "content_layers": ["page_image"]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }'
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
 ## Function calling with Structured output  {% id="structured-output" %}
 
 For Gemini 3 series models, combine function calling with

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-s
 
 # Cloud and SaaS integrations
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You can integrate cloud environments and SaaS applications with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/). Once you have added an integration, you can [view and manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/).
 
 You can also configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) to send posture finding instances to external systems.

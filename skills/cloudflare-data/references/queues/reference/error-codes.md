@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/queues/reference/error-codes/og.png?v=8
 
 # Error codes
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/reference/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 This page documents error codes returned by Queues when using the [Queues Cloudflare API](https://developers.cloudflare.com/api/resources/queues/methods/create/).
 
 ## How errors are returned

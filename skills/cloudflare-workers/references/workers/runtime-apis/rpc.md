@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/workers/runtime-apis/rpc/og.png?v=900a6
 
 # Remote-procedure call (RPC)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Note
 
 To use RPC, [define a compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates) of `2024-04-03` or higher, or include `rpc` in your [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
@@ -47,7 +45,7 @@ Worker B implements the public method `add(a, b)`:
 	"name": "worker-b",
 	"main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-23",
+	"compatibility_date": "2026-11-18",
 	"upload_source_maps": true
 }
 ```
@@ -57,7 +55,7 @@ Worker B implements the public method `add(a, b)`:
 name = "worker-b"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-23"
+compatibility_date = "2026-11-18"
 upload_source_maps = true
 ```
 
@@ -97,7 +95,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 	"name": "worker-a",
 	"main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-23",
+	"compatibility_date": "2026-11-18",
 	"upload_source_maps": true,
 	"services": [
 		{
@@ -113,7 +111,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 name = "worker-a"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-23"
+compatibility_date = "2026-11-18"
 upload_source_maps = true
 
 [[services]]

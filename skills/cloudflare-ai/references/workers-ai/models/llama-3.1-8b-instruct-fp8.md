@@ -16,8 +16,6 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fp8/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Model ID
 
 `@cf/meta/llama-3.1-8b-instruct-fp8` Copy
@@ -30,7 +28,7 @@ Llama 3.1 8B quantized to FP8 precision
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/15/2026 |
+| Planned Deprecation | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens |
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE) |
 | Zero data retention | Yes |

@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/images/tutorials/og.png?v=c5de8b9c4a168
 
 # Tutorials
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 - [Optimize mobile viewing](https://developers.cloudflare.com/images/tutorials/optimize-mobile-viewing/)
 - [Transform user-uploaded images before uploading to R2](https://developers.cloudflare.com/images/tutorials/optimize-user-uploaded-image/)
 

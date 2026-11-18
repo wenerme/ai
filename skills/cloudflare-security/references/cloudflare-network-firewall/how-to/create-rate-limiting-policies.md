@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/crea
 
 # Create Rate Limiting policies (beta)
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/create-rate-limiting-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Rate limiting policies (beta) allow you to manage incoming traffic to your network for specific locations.
 
 This guide will teach you how to create a policy for when incoming packets match, and in cases where your rate exceeds a certain value (in packets or bits).

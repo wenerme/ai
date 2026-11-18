@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/fundamentals/manage-domains/move-domain
 
 # Move a domain between Cloudflare accounts
 
-Last updated Nov 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 You will have to move or transfer domains from one Cloudflare account to another if you:
 
 - Manage a multi-user organization and need to segment domain access by user.

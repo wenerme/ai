@@ -12,8 +12,6 @@ image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/og.png
 
 # Replace your VPN
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
 Cloudflare One uses Cloudflare's global network and Zero Trust Network Access (ZTNA) to replace traditional VPNs. After you securely connect your devices and resources to Cloudflare, you can set policies to verify every request based on identity and context, reducing your attack surface and improving performance for remote users. For more background, refer to [Why should you replace your VPN?](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/)
 
 How you set this up depends on what needs to connect to what. Choose the scenario that matches your use case:
