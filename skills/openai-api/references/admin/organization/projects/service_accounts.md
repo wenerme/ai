@@ -79,37 +79,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "name"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "api_key": {
-    "id": "id",
-    "created_at": 0,
-    "name": "name",
-    "object": "organization.project.service_account.api_key",
-    "value": "value",
-    "expires_at": 0
-  },
-  "created_at": 0,
-  "name": "name",
-  "object": "organization.project.service_account",
-  "role": "member"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_accounts \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
@@ -165,24 +134,6 @@ is archived (archived projects have no service accounts).
 - `object: "organization.project.service_account.deleted"`
 
   - `"organization.project.service_account.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.project.service_account.deleted"
-}
-```
 
 ### Example
 
@@ -271,33 +222,6 @@ Returns a list of service accounts in the project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?after=custom_id&limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -374,25 +298,6 @@ Retrieves a service account in the project.
     - `"member"`
 
     - `"none"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "name": "name",
-  "object": "organization.project.service_account",
-  "role": "owner"
-}
-```
 
 ### Example
 
@@ -481,27 +386,6 @@ Content type: `application/json`
     - `"member"`
 
     - `"none"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "name": "name",
-  "object": "organization.project.service_account",
-  "role": "owner"
-}
-```
 
 ### Example
 
@@ -692,27 +576,6 @@ Content type: `application/json`
   The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
   `format: unixtime`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID/api_keys \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "name": "name",
-  "object": "organization.project.service_account.api_key",
-  "value": "value",
-  "expires_at": 0
-}
-```
 
 ### Example
 

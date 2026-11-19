@@ -4686,35 +4686,6 @@ Get a single item from a conversation with the given IDs.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "content": [
-    {
-      "text": "text",
-      "type": "input_text",
-      "prompt_cache_breakpoint": {
-        "mode": "explicit",
-        "ttl": "30m"
-      }
-    }
-  ],
-  "role": "unknown",
-  "status": "in_progress",
-  "type": "message",
-  "phase": "commentary"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

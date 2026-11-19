@@ -421,77 +421,6 @@ List evaluations for a project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "data_source_config": {
-        "schema": {
-          "type": "object",
-          "properties": {
-            "item": {
-              "type": "object",
-              "properties": {
-                "label": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "label"
-              ]
-            }
-          },
-          "required": [
-            "item"
-          ]
-        },
-        "type": "custom"
-      },
-      "metadata": {
-        "foo": "string"
-      },
-      "name": "Chatbot effectiveness Evaluation",
-      "object": "eval",
-      "testing_criteria": [
-        {
-          "input": [
-            {
-              "content": "string",
-              "role": "user",
-              "type": "message"
-            }
-          ],
-          "labels": [
-            "string"
-          ],
-          "model": "model",
-          "name": "name",
-          "passing_labels": [
-            "string"
-          ],
-          "type": "label_model"
-        }
-      ]
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals?limit=1 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -532,7 +461,7 @@ curl https://api.openai.com/v1/evals?limit=1 \
           "name": "Push Notification Summary Grader",
           "id": "Push Notification Summary Grader-9b876f24-4762-4be9-aff4-db7a9b31c673",
           "type": "label_model",
-          "model": "o3-mini",
+          "model": "gpt-4.1-mini-2025-04-14",
           "input": [
             {
               "type": "message",

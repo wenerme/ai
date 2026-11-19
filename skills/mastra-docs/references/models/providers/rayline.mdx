@@ -1,6 +1,6 @@
 ---
-title: "Rayline | Models"
-description: "Browse Rayline model IDs and capabilities. Learn how to use them in TypeScript with Mastra's model router."
+title: "Rayline Models: IDs, Pricing & Usage"
+description: "Browse Rayline model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [Rayline logo]Rayline
@@ -38,8 +38,35 @@ for await (const chunk of stream) {
 ## Models
 
 <ProviderModelsTable
-  models={[]}
+  models={[
+  {
+    "model": "rayline/arc-sage-1.0",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 1,
+    "outputCost": 5
+  },
+  {
+    "model": "rayline/arc-swift-1.0",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 0.05,
+    "outputCost": 0.25
+  }
+]}
 />
+
+Model availability, capabilities, context windows, and pricing are sourced from [models.dev](https://models.dev) and may change.
 
 ## Advanced configuration
 

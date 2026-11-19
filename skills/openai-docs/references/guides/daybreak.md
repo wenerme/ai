@@ -41,20 +41,30 @@ Only organizations with existing access can use `gpt-5.5-cyber-preview`. It
         </td>
       </tr>
       <tr>
+        <td>GPT-6 Luna</td>
+        <td>Blue or Red</td>
+        <td>
+          `daybreak_blue`
+        </td>
+      </tr>
+      <tr>
         <td className="align-top">
           
+
+            
+GPT-6.2 Astra
+
+            
+GPT-6.2 Sol
 
             
 GPT-6.1 Sol
 
             
+GPT-6.1 Terra
+
+            
 GPT-6 Astra
-
-            
-GPT-5.5-Cyber (existing access only)
-
-            
-GPT-5.6 Cyber
 
           
 
@@ -75,12 +85,17 @@ GPT-5.6 Cyber
 
             
 
-              `daybreak_red`
+              `daybreak_blue`
             
 
             
 
-              `daybreak_red`
+              `daybreak_blue`
+            
+
+            
+
+              `daybreak_blue`
             
 
           
@@ -94,6 +109,37 @@ GPT-5.6 Cyber
           `daybreak_red`
         </td>
       </tr>
+      <tr>
+        <td className="align-top">
+          
+
+            
+GPT-5.6 Cyber
+
+            
+GPT-5.5-Cyber (existing access only)
+
+          
+
+        </td>
+        <td className="align-top">Red</td>
+        <td className="align-top">
+          
+
+            
+
+              `daybreak_red`
+            
+
+            
+
+              `daybreak_red`
+            
+
+          
+
+        </td>
+      </tr>
     </tbody>
   </table>
 
@@ -101,10 +147,11 @@ GPT-5.6 Cyber
 
 Use the value listed for the model even if your organization has a higher approval level. For example, `gpt-6-sol` accepts `daybreak_blue`, but returns `invalid_access_program` for `daybreak_red`.
 
-For reduced refusals on `gpt-6-astra` and `gpt-6.1-sol`, your organization
-  needs Daybreak Red approval and your project needs the required access
-  enabled. Send `daybreak_blue`. Both models reject `daybreak_red`, and Blue
-  approval alone isn't sufficient.
+For reduced refusals on `gpt-6.2-astra`, `gpt-6.2-sol`, `gpt-6.1-sol`,
+  `gpt-6.1-terra`, and `gpt-6-astra`, your organization needs Daybreak Red
+  approval and your project needs the required access enabled. Send
+  `daybreak_blue`. Blue approval alone isn't sufficient. `gpt-6-astra` and
+  `gpt-6.1-sol` reject `daybreak_red`.
 
 ## Send a request
 
@@ -144,11 +191,11 @@ Both `access_programs` and `cyber` are optional, but neither accepts `null` in a
 
 ## Understand defaults when omitted
 
-Starting with `gpt-6.1-terra`, requests that omit `access_programs.cyber` default to `standard` instead of the highest available Daybreak tier.
+For `gpt-6.1-terra` and newer models, including `gpt-6.2-astra` and `gpt-6.2-sol`, requests that omit `access_programs.cyber` default to `standard` instead of the highest available Daybreak tier.
 
 These models use the following defaults when you omit the parameter:
 
-- **Mainline models such as `gpt-6-sol`:** Daybreak Blue treatment when your organization and project have the required access; otherwise, standard safeguards.
+- **Mainline models such as `gpt-6-sol` and `gpt-6-luna`:** Daybreak Blue treatment when your organization and project have the required access; otherwise, standard safeguards.
 - **Red models such as `gpt-5.6-cyber`:** The API selects `daybreak_red`. The request fails if the required access is missing.
 - **`gpt-6-astra` and `gpt-6.1-sol`:** Reduced refusals for eligible callers with Daybreak Red access enabled for their project; otherwise, standard safeguards.
 

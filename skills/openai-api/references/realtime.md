@@ -24120,23 +24120,12 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "type": "realtime"
-        }'
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
         "type": "realtime",
-        "model": "gpt-realtime",
+        "model": "gpt-realtime-2.1",
         "instructions": "You are Alex, a friendly concierge for Example Corp.",
       }'
 ```
@@ -25064,19 +25053,10 @@ Content type: `application/sdp`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F sdp=sdp
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F "sdp=<offer.sdp;type=application/sdp" \
-  -F 'session={"type":"realtime","model":"gpt-realtime"};type=application/json'
+  -F 'session={"type":"realtime","model":"gpt-realtime-2.1"};type=application/json'
 ```
 
 #### Response example
@@ -25124,14 +25104,6 @@ WebRTC.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -25158,17 +25130,6 @@ Content type: `application/json`
 
   URI that should appear in the SIP Refer-To header. Supports values like
   `tel:+14155550123` or `sip:agent@example.com`.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "target_uri": "tel:+14155550123"
-        }'
-```
 
 ### Example
 
@@ -25201,14 +25162,6 @@ Content type: `application/json`
 
   SIP response code to send back to the caller. Defaults to `603` (Decline)
   when omitted.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
 
 ### Example
 
@@ -27341,100 +27294,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/client_secrets \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "expires_at": 0,
-  "session": {
-    "id": "id",
-    "object": "realtime.session",
-    "type": "realtime",
-    "audio": {
-      "input": {
-        "format": {
-          "rate": 24000,
-          "type": "audio/pcm"
-        },
-        "noise_reduction": {
-          "strength": 0,
-          "type": "near_field"
-        },
-        "transcription": {
-          "keywords": [
-            "string"
-          ],
-          "language": "language",
-          "languages": [
-            "string"
-          ],
-          "model": "gpt-transcribe",
-          "prompt": "prompt"
-        },
-        "turn_detection": {
-          "type": "server_vad",
-          "create_response": true,
-          "idle_timeout_ms": 5000,
-          "interrupt_response": true,
-          "prefix_padding_ms": 0,
-          "silence_duration_ms": 0,
-          "threshold": 0
-        }
-      },
-      "output": {
-        "format": {
-          "rate": 24000,
-          "type": "audio/pcm"
-        },
-        "speed": 0.25,
-        "voice": "ash"
-      }
-    },
-    "expires_at": 0,
-    "include": [
-      "item.input_audio_transcription.logprobs"
-    ],
-    "instructions": "instructions",
-    "max_output_tokens": "inf",
-    "model": "gpt-realtime-1.5",
-    "output_modalities": [
-      "text"
-    ],
-    "prompt": {
-      "id": "id",
-      "variables": {
-        "foo": "string"
-      },
-      "version": "version"
-    },
-    "reasoning": {
-      "effort": "minimal"
-    },
-    "tool_choice": "none",
-    "tools": [
-      {
-        "description": "description",
-        "name": "name",
-        "parameters": {},
-        "type": "function"
-      }
-    ],
-    "tracing": "auto",
-    "truncation": "auto"
-  },
-  "value": "value"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/client_secrets \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -27445,7 +27304,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
     },
     "session": {
       "type": "realtime",
-      "model": "gpt-realtime",
+      "model": "gpt-realtime-2.1",
       "instructions": "You are a friendly assistant."
     }
   }'
@@ -27461,7 +27320,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
     "type": "realtime",
     "object": "realtime.session",
     "id": "sess_C9CiUVUzUzYIssh3ELY1d",
-    "model": "gpt-realtime",
+    "model": "gpt-realtime-2.1",
     "output_modalities": [
       "audio"
     ],
@@ -30358,91 +30217,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/sessions \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "client_secret": {
-            "expires_at": 0,
-            "value": "value"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "audio": {
-    "input": {
-      "format": {
-        "rate": 24000,
-        "type": "audio/pcm"
-      },
-      "noise_reduction": {
-        "type": "near_field"
-      },
-      "transcription": {
-        "keywords": [
-          "string"
-        ],
-        "language": "language",
-        "languages": [
-          "string"
-        ],
-        "model": "gpt-transcribe",
-        "prompt": "prompt"
-      },
-      "turn_detection": {
-        "prefix_padding_ms": 0,
-        "silence_duration_ms": 0,
-        "threshold": 0,
-        "type": "type"
-      }
-    },
-    "output": {
-      "format": {
-        "rate": 24000,
-        "type": "audio/pcm"
-      },
-      "speed": 0,
-      "voice": "ash"
-    }
-  },
-  "expires_at": 0,
-  "include": [
-    "item.input_audio_transcription.logprobs"
-  ],
-  "instructions": "instructions",
-  "max_output_tokens": "inf",
-  "model": "model",
-  "object": "object",
-  "output_modalities": [
-    "text"
-  ],
-  "tool_choice": "tool_choice",
-  "tools": [
-    {
-      "description": "description",
-      "name": "name",
-      "parameters": {},
-      "type": "function"
-    }
-  ],
-  "tracing": "auto",
-  "turn_detection": {
-    "prefix_padding_ms": 0,
-    "silence_duration_ms": 0,
-    "threshold": 0,
-    "type": "type"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/sessions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -31057,47 +30831,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/transcription_sessions \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "client_secret": {
-    "expires_at": 0,
-    "value": "value"
-  },
-  "input_audio_format": "input_audio_format",
-  "input_audio_transcription": {
-    "keywords": [
-      "string"
-    ],
-    "language": "language",
-    "languages": [
-      "string"
-    ],
-    "model": "gpt-transcribe",
-    "prompt": "prompt"
-  },
-  "modalities": [
-    "text"
-  ],
-  "turn_detection": {
-    "prefix_padding_ms": 0,
-    "silence_duration_ms": 0,
-    "threshold": 0,
-    "type": "type"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -31445,48 +31178,6 @@ Content type: `application/json`
   - `value: string`
 
     The generated client secret value.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/realtime/translations/client_secrets \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "session": {
-            "model": "model"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "expires_at": 0,
-  "session": {
-    "id": "id",
-    "audio": {
-      "input": {
-        "noise_reduction": {
-          "type": "near_field",
-          "strength": 0
-        },
-        "transcription": {
-          "model": "model"
-        }
-      },
-      "output": {
-        "language": "language"
-      }
-    },
-    "expires_at": 0,
-    "model": "model",
-    "type": "translation"
-  },
-  "value": "value"
-}
-```
 
 ### Example
 

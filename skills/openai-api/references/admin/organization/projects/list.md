@@ -103,36 +103,6 @@ Returns a list of projects.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "object": "organization.project",
-      "archived_at": 0,
-      "external_key_id": "external_key_id",
-      "name": "name",
-      "residency": "GLOBAL",
-      "status": "status"
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects?after=proj_abc&limit=20&include_archived=false \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

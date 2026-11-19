@@ -65,26 +65,6 @@ Retrieves a project's group.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups/$GROUP_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "created_at": 0,
-  "group_id": "group_id",
-  "group_name": "group_name",
-  "group_type": "group",
-  "object": "project.group",
-  "project_id": "project_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01J1F8ABCDXYZ \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

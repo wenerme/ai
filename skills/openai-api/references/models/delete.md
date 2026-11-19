@@ -23,25 +23,7 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 ### Example
 
 ```http
-curl https://api.openai.com/v1/models/$MODEL \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "object"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/models/ft:gpt-4o-mini:acemeco:suffix:abc123 \
+curl https://api.openai.com/v1/models/ft:gpt-4.1-mini-2025-04-14:acemeco:suffix:abc123 \
   -X DELETE \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -50,7 +32,7 @@ curl https://api.openai.com/v1/models/ft:gpt-4o-mini:acemeco:suffix:abc123 \
 
 ```json
 {
-  "id": "ft:gpt-4o-mini:acemeco:suffix:abc123",
+  "id": "ft:gpt-4.1-mini-2025-04-14:acemeco:suffix:abc123",
   "object": "model",
   "deleted": true
 }

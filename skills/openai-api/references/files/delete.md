@@ -25,24 +25,6 @@ Delete a file and remove it from all vector stores.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/files/$FILE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "file"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/files/file-abc123 \
   -X DELETE \
   -H "Authorization: Bearer $OPENAI_API_KEY"

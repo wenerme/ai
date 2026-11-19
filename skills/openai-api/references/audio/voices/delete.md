@@ -35,24 +35,6 @@ Deleting a voice does not delete its consent recording. Deleting an already dele
 ### Example
 
 ```http
-curl https://api.openai.com/v1/audio/voices/$VOICE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "voice_1234",
-  "deleted": true,
-  "object": "audio.voice.deleted"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/audio/voices/voice_1234 \
   -X DELETE \
   -H "Authorization: Bearer $OPENAI_API_KEY"

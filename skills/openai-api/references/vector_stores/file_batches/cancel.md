@@ -77,34 +77,6 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
 ### Example
 
 ```http
-curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATCH_ID/cancel \
-    -X POST \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "file_counts": {
-    "cancelled": 0,
-    "completed": 0,
-    "failed": 0,
-    "in_progress": 0,
-    "total": 0
-  },
-  "object": "vector_store.file_batch",
-  "status": "in_progress",
-  "vector_store_id": "vector_store_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \

@@ -595,7 +595,7 @@ If you need to give the model access to a large ecosystem of tools, you can defe
 
 Under the hood, functions are injected into the system message in a syntax the model has been trained on. This means callable function definitions count against the model's context limit and are billed as input tokens. If you run into token limits, we suggest limiting the number of functions loaded up front, shortening descriptions where possible, or using [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) so deferred tools are loaded only when needed.
 
-It is also possible to use [fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization#fine-tuning-examples) to reduce the number of tokens used if you have many functions defined in your tools specification.
+It is also possible to use [fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#formatting-your-data) to reduce the number of tokens used if you have many functions defined in your tools specification.
 
 ## Handling function calls
 
@@ -1197,7 +1197,7 @@ While we recommend you enable strict mode, it has a few limitations:
 Specifically for fine tuned models:
 
 1. Schemas undergo additional processing on the first request (and are then cached). If your schemas vary from request to request, this may result in higher latencies.
-2. Schemas are cached for performance, and are not eligible for [zero data retention](https://developers.openai.com/api/docs/models#how-we-use-your-data).
+2. Schemas are cached for performance, and are not eligible for [zero data retention](https://developers.openai.com/api/docs/guides/your-data#zero-data-retention).
 
 ## Streaming
 

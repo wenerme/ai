@@ -1299,7 +1299,7 @@ strings that can be concatenated to form the final JSON object.
 
 {% callout type="note" %}
   Preview: This feature is available only to Gemini 4 and Gemini 3 series models,
-  such as `gemini-4-carbon`, `gemini-4-argon`, `gemini-4-hydrogen`, and `gemini-3.8-flash`.
+  such as `gemini-4-carbon`, `gemini-4-argon`, `gemini-4-neon`, `gemini-4-hydrogen`, and `gemini-3.8-flash`.
 
 {% /callout %}
 

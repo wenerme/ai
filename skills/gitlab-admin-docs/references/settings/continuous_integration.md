@@ -151,16 +151,29 @@ The external redirect warning page is displayed by default. To hide it:
 
 #### Archive pipelines
 
+- Deletion of job configuration from archived pipelines [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271984) in GitLab 19.7.
+
 Archive old pipelines and all their jobs automatically after a specified time period. Archived jobs:
 
 - Display an informational notice **This job is archived** at the top of the job log.
 - Cannot be re-run or retried.
 - Cannot run as [on-stop deployment actions](../../ci/environments/_index.md#stopping-an-environment) when environments auto-stop.
-- Continue to have visible job logs.
+- Continue to have visible job logs. After jobs lose access to their configuration,
+  only users with the Developer, Maintainer, or Owner role can view the logs.
 
 The archive duration is measured from the time the pipeline is created. It must be at least 1 day.
 Examples of valid durations include `15 days`, `1 month`, and `2 years`.
 Leave this field empty to never archive pipelines automatically.
+
+GitLab groups pipelines into CI/CD partitions by creation time, one partition for each
+[time window](../cicd/limits.md#maximum-time-window-for-cicd-partitions).
+About one day after all pipelines in a partition are archived, their jobs lose access to their
+job configuration records.
+This configuration includes job keywords from the `.gitlab-ci.yml` file, such as `script`, `tags`, and `variables`.
+
+> [!warning]
+> GitLab permanently deletes job configurations two to four weeks after their pipelines are archived.
+> Changing or clearing the archive duration does not restore job configurations, and archived jobs stay archived.
 
 For GitLab.com, see [pipeline archival](../../user/gitlab_com/_index.md#cicd).
 

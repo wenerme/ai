@@ -132,6 +132,10 @@ The Price in Tokens column is equivalent to the Price in Neurons column - the di
 
 ## Other model pricing
 
+Launch promo: Clairic 58% off
+
+`@cf/cloudflare/clairic` costs $0.100 per M input tokens (9091 neurons) until December 1, 2026. From December 1, 2026, it costs $0.240 per M input tokens (21818 neurons). `@cf/cloudflare/clairic-flash` stays at $0.100 per M input tokens.
+
 | Model | Price in Tokens | Price in Neurons |
 | --- | --- | --- |
 | @cf/huggingface/distilbert-sst-2-int8 | $0.026 per M input tokens | 2394 neurons per M input tokens |
@@ -143,7 +147,8 @@ The Price in Tokens column is equivalent to the Price in Neurons column - the di
 | @cf/cloudflare/clef | $0.240 per M input tokens | 21818 neurons per M input tokens |
 | @cf/cloudflare/clef-omni | $0.150 per M input tokens | 13636 neurons per M input tokens |
 | @cf/cloudflare/clef-flash | $0.038 per M input tokens | 3455 neurons per M input tokens |
-| @cf/cloudflare/clairic | $0.100 per M input tokens | 9091 neurons per M input tokens |
+| @cf/cloudflare/clairic | $0.100 per M input tokens (promo until Dec 1, 2026; then $0.240) | 9091 neurons per M input tokens (then 21818) |
+| @cf/cloudflare/clairic-flash | $0.100 per M input tokens | 9091 neurons per M input tokens |
 
 Was this helpful?
 
@@ -154,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/pricing/#page","headline":"Pricing","description":"Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.","url":"https://developers.cloudflare.com/workers-ai/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/platform/pricing/og.png?v=c0f09dd6cf3238d9","dateModified":"2026-11-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/pricing/#page","headline":"Pricing","description":"Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.","url":"https://developers.cloudflare.com/workers-ai/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/platform/pricing/og.png?v=c0f09dd6cf3238d9","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

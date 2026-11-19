@@ -70,40 +70,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/deactivate \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "certificate_ids": [
-            "cert_abc"
-          ]
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "active": true,
-      "certificate_details": {
-        "expires_at": 0,
-        "valid_at": 0
-      },
-      "created_at": 0,
-      "name": "name",
-      "object": "organization.project.certificate"
-    }
-  ],
-  "object": "organization.project.certificate.deactivation"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deactivate \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \

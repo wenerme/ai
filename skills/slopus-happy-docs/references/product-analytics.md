@@ -19,7 +19,10 @@ The rules every client follows:
   `-`/`+` suffix is cut, anything else is null). A model is sent as its
   family from the catalog's `model_family_rule`, never as its id.
   It never holds text, IDs, names, paths, URLs, hosts, error messages, stack
-  traces, device model, timezone or screen size. Each client enforces this
+  traces, device model, timezone or screen size. The one exception is
+  `app_crashed`'s code identifiers: class names and at most five
+  `class.method:line` frames (never a message, file or argument), held to
+  the catalog's `class_name` and `frame_list` patterns. Each client enforces this
   twice. A typed catalog means an unknown event or property does not
   compile, and a runtime allowlist at the send boundary drops anything else.
 - **Identity** is a random install UUID, used as `distinct_id`. It is never
@@ -27,7 +30,9 @@ The rules every client follows:
   person profiles: `$process_person_profile: false`, `$ip: null` and
   `$geoip_disable: true` are set on every event. Timestamps are whole
   seconds.
-- **Nothing on disk but the install id.** The queue, the dedupe set and
+- **Nothing on disk but the install id** (and, on Android, the last JVM
+  crash's `app_crashed` class names and frames, until the next start reads
+  them or analytics is turned off). The queue, the dedupe set and
   the throttle times live in memory; unsent events are lost when the app
   quits. Opting out deletes the install id with everything else, and
   opting back in makes a new one. A stored switch that can't be read is
@@ -68,10 +73,30 @@ Errors and results:
   with `result: failed`.
 - `app_crashed`: the app died abnormally. Reported at the next launch from
   the OS's exit records, of which only the exception type or signal and the
-  app version are read.
+  app version are read. On Android a JVM crash also carries its exception's
+  class, its root cause's class and up to five frames (`exception_class`,
+  `cause_class`, `crash_frames`), and a native crash its `signal`. On iOS a
+  crash also carries its `signal`, Mach `exception_type` and
+  `exception_code`, an Objective-C exception's class (`exception_class`),
+  the crashed thread's top five frames as `binary+0xoffset`
+  (`crash_frames`) and the app binary's UUID (`binary_id`), for
+  symbolicating with the build's dSYM. Never the termination text, a
+  message, addresses, memory regions, file paths or thread names.
+- `rn_import_failed` (Android): at a start, the React Native app's account
+  was on the phone but couldn't be opened, with why, at a start where it
+  is the account the person would open (another readable account opens in
+  its place, else the unlock screen shows; the account stays). Or, once, its
+  server couldn't be trusted (`server_unconfirmed`). A Keystore read that
+  throws is tried three times first; `error_class` and
+  `error_cause_class` are the exception's platform classes (never an app
+  class, a message or a trace), null for a reason that isn't an exception.
 - `mobile_pairing_failed`: a phone pairing ended unlinked, with why.
 - `sign_in_failed`: creating, restoring or signing in to an account failed.
-  Leaving the flow sends nothing.
+  Leaving the flow sends nothing. On Android a Happy account's code is the
+  step that failed: the key (`invalid_token`), the server's answer
+  (`rejected`, `rate_limited`, `server_error`, `invalid_response`, which
+  also covers a QR approval that doesn't open), the network
+  (`unreachable`), or keeping the credentials (`storage_failed`).
 - `voice_session_error`: voice failed to start or dropped.
 - `paywall_error`: a purchase or restore failed, or a restore found nothing.
 
@@ -144,10 +169,14 @@ Definitions:
   account. The answer is kept in memory for the launch;
   HappyCore's `MigrationNoteFlag` only holds it, and without
   HappyAnalytics the card never shows.
-- Crashes and hangs come from MetricKit at the next launch. Of each, only
-  the exception type and signal (mapped to `reason`) and the build that
-  crashed are read; never the call stack, the termination text or memory
-  regions.
+- Crashes and hangs come from MetricKit at the next launch. Of each, the
+  exception type and signal (mapped to `reason`) and the build that
+  crashed are read. Of a crash, also its signature (`CrashSignature`):
+  the exception's type, code and signal, `exceptionReason.className`, and
+  from `callStackTree.jsonRepresentation()` only the attributed thread's
+  top 5 frames' `binaryName` and `offsetIntoBinaryTextSegment` and the
+  app binary's `binaryUUID`. Never addresses, other threads, the
+  termination text, `composedMessage` or memory regions.
 - A debug run can send to a capture endpoint on the same machine instead
   of PostHog: launch with `HAPPY_ANALYTICS_CAPTURE=http://127.0.0.1:<port>/batch/`.
   It never asks for the flag.
@@ -297,11 +326,21 @@ can stay or go:
   `FeatureFlags` only holds it, and without the module the card never
   shows.
 - Crashes, native crashes, hangs and failed starts come from the system's
-  `ApplicationExitInfo` at the next start. Only the reason, the importance
-  and the version that crashed are read, never the trace or description. A
-  process leaves its version with the system (`setProcessStateSummary`)
-  only while analytics is on, so a run with analytics off is never
-  reported.
+  `ApplicationExitInfo` at the next start. Only the reason, the importance,
+  the status (a native crash's `signal`) and the version that crashed are
+  read, never the trace or description. A process leaves its version with
+  the system (`setProcessStateSummary`) only while analytics is on, so a
+  run with analytics off is never reported.
+- A JVM crash's signature (`CrashSignature`): while analytics is on, the
+  analytics module's uncaught-exception handler, ahead of the platform's,
+  writes the exception's class, its root cause's and up to five frames
+  from the first outside the platform and the libraries (`java.`,
+  `kotlin.`, `androidx.` and so on) to `noBackupFilesDir/crash_signature`,
+  with the process id. The next start reads and deletes it, and it goes
+  with `app_crashed` only when the system's record of that same process
+  says it crashed. Turning analytics off deletes it. Store builds are
+  shrunk by R8, so the names and lines are R8's; the build's mapping
+  (embedded in the AAB, so Play has it) turns them back.
 - A debug build sends only to a capture endpoint on the same machine:
   `adb reverse tcp:8787 tcp:8787`, then
   `adb shell setprop debug.happy.analytics_host http://127.0.0.1:8787`.

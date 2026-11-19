@@ -16,8 +16,8 @@ Because the connection stays open and each turn sends only incremental input, We
 
 Install the WebSocket dependencies with `pip install "openai[realtime]>=3.8.0"` for Python, `npm install openai@^7.10.0 ws` for JavaScript, or `gem install openai async-websocket` for Ruby.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.98.0`.
-For Java, add the Maven dependency `com.openai:openai-java:4.101.0` and use Java 17 or later for these examples.
+For Go, run `go get github.com/openai/openai-go/v3@v3.99.0`.
+For Java, add the Maven dependency `com.openai:openai-java:4.105.0` and use Java 17 or later for these examples.
 These Go and Java SDK versions provide native Responses WebSocket support.
 
 In WebSocket mode, start each turn by sending a `response.create` event from the client. The payload mirrors the normal [Responses create body](https://developers.openai.com/api/reference/resources/responses/methods/create), except that transport-specific fields like `stream` and `background` are not used.
@@ -734,6 +734,55 @@ with client.responses.connect() as connection:
         raise RuntimeError("Connection closed before the response finished.")
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+	"log"
+	"time"
+)
+
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+	client := openai.NewClient()
+	compacted, err := client.Responses.Compact(ctx, responses.ResponseCompactParams{Model: "gpt-6.2-astra", Input: responses.ResponseCompactParamsInputUnion{OfResponseInputItemArray: responses.ResponseInputParam{responses.ResponseInputItemParamOfMessage("Find the failing test.", responses.EasyInputMessageRoleUser)}}})
+	if err != nil {
+		log.Fatal(err)
+	}
+	input := responses.ResponseInputParam{}
+	for _, item := range compacted.Output {
+		var converted responses.ResponseInputItemUnion
+		if err := json.Unmarshal([]byte(item.RawJSON()), &converted); err != nil {
+			log.Fatal(err)
+		}
+		input = append(input, converted.ToParam())
+	}
+	input = append(input, responses.ResponseInputItemParamOfMessage("Continue from here.", responses.EasyInputMessageRoleUser))
+	conn, err := client.Responses.Connect(ctx, responses.ResponseConnectionOptions{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+	if err := conn.Create(ctx, responses.ResponsesClientEventResponseCreateParam{StreamID: openai.String("main"), Model: "gpt-6.2-astra", Store: openai.Bool(false), Input: responses.ResponsesClientEventResponseCreateInputUnionParam{OfResponse: &input}, Tools: []responses.ToolUnionParam{}}); err != nil {
+		log.Fatal(err)
+	}
+	response, err := conn.FinalResponse(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if response.Status != responses.ResponseStatusCompleted {
+		log.Fatalf("Response ended with status %s", response.Status)
+	}
+	fmt.Println(response.OutputText())
+}
+```
+
 ```ruby
 require "async"
 require "openai"
@@ -1061,6 +1110,106 @@ with client.responses.connect() as connection:
         previous_response_id=planner_response_id,
     )
     drain_until_complete(connection, {"critic", "planner"})
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+	"log"
+	"os"
+	"time"
+)
+
+func sendCreate(ctx context.Context, conn *responses.ResponseConnection, lane, text, parent string) error {
+	input := responses.ResponseInputParam{responses.ResponseInputItemParamOfMessage(text, responses.EasyInputMessageRoleUser)}
+	command := responses.ResponsesClientEventResponseCreateParam{StreamID: openai.String(lane), Model: "gpt-6.2-astra", Store: openai.Bool(false), Input: responses.ResponsesClientEventResponseCreateInputUnionParam{OfResponse: &input}}
+	if parent != "" {
+		command.PreviousResponseID = openai.String(parent)
+	}
+	return conn.Create(ctx, command)
+}
+func readEvent(ctx context.Context, conn *responses.ResponseConnection) (responses.ResponsesServerEventUnion, error) {
+	event, err := conn.Recv(ctx)
+	if err != nil {
+		return event, err
+	}
+	switch event.Type {
+	case "error", "response.failed", "response.incomplete":
+		return event, fmt.Errorf("response failed: %s", event.RawJSON())
+	}
+	return event, nil
+}
+func drainResponses(ctx context.Context, conn *responses.ResponseConnection, latest map[string]string, lanes ...string) error {
+	remaining := map[string]bool{}
+	for _, lane := range lanes {
+		remaining[lane] = true
+	}
+	for len(remaining) > 0 {
+		event, err := readEvent(ctx, conn)
+		if err != nil {
+			return err
+		}
+		if event.Type != "response.completed" {
+			continue
+		}
+		completed := event.AsResponseCompleted()
+		if !remaining[completed.StreamID] {
+			continue
+		}
+		latest[completed.StreamID] = completed.Response.ID
+		delete(remaining, completed.StreamID)
+	}
+	return nil
+}
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+	client := openai.NewClient()
+	conn, err := client.Responses.Connect(ctx, responses.ResponseConnectionOptions{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+	latest := map[string]string{}
+	if err := sendCreate(ctx, conn, "planner", "Draft a deployment plan for a stateless API service.", ""); err != nil {
+		log.Fatal(err)
+	}
+	if err := sendCreate(ctx, conn, "research", "List common deployment risks for a stateless API service.", ""); err != nil {
+		log.Fatal(err)
+	}
+	if err := drainResponses(ctx, conn, latest, "planner", "research"); err != nil {
+		log.Fatal(err)
+	}
+	parent := latest["planner"]
+	if err := sendCreate(ctx, conn, "critic", "Find gaps in this deployment plan.", parent); err != nil {
+		log.Fatal(err)
+	}
+	// Let the fork load its parent before advancing the original lane's cache.
+	for {
+		event, err := readEvent(ctx, conn)
+		if err != nil {
+			log.Fatal(err)
+		}
+		if event.Type == "response.in_progress" && event.AsResponseInProgress().StreamID == "critic" {
+			break
+		}
+	}
+	if err := sendCreate(ctx, conn, "planner", "Add rollback and monitoring steps.", parent); err != nil {
+		log.Fatal(err)
+	}
+	if err := drainResponses(ctx, conn, latest, "critic", "planner"); err != nil {
+		log.Fatal(err)
+	}
+	if err := json.NewEncoder(os.Stdout).Encode(latest); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby

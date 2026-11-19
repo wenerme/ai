@@ -59,36 +59,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/roles \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "permissions": [
-            "string"
-          ],
-          "role_name": "role_name"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "description": "description",
-  "name": "name",
-  "object": "role",
-  "permissions": [
-    "string"
-  ],
-  "predefined_role": true,
-  "resource_type": "resource_type"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/roles \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

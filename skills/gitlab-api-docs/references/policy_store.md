@@ -438,6 +438,7 @@ The following conditions return `400 Bad Request`:
 - `rules` or `actions` carries more than 5 entries.
 - An entry in `rules` or `actions` serializes to more than 4096 bytes.
 - A rule constrains a path or value the context of `trigger_type` does not allow.
+- The policy is active, and the organization already holds 100 active policies for `trigger_type`.
 
 On GitLab.com, creating a policy in the default organization returns
 [`422 Unprocessable Entity`](rest/troubleshooting.md#status-codes). Groups without their own
@@ -533,6 +534,8 @@ The following conditions return `400 Bad Request`:
 - The replacement `rules`, or the stored rules under a new `trigger_type`, constrain a path or
   value the trigger's context does not allow.
 - The policy belongs to a group, and the new `trigger_type` is not one a group policy can use.
+- The change activates the policy, or moves an active policy to a new `trigger_type`, while the
+  organization already holds 100 active policies for that trigger.
 
 Example request:
 
@@ -752,6 +755,8 @@ The following conditions return `400 Bad Request`:
 - An entry in `rules` or `actions` serializes to more than 4096 bytes.
 - A rule constrains a path or value the context of `trigger_type` does not allow.
 - The `trigger_type` is not one a group policy can use.
+- The policy is active, and 100 active policies for `trigger_type` already belong to the group,
+  its ancestors, its subgroups, and the organization.
 
 Example request:
 
@@ -840,6 +845,9 @@ The following conditions return `400 Bad Request`:
 - The replacement `rules`, or the stored rules under a new `trigger_type`, constrain a path or
   value the trigger's context does not allow.
 - The new `trigger_type` is not one a group policy can use.
+- The change activates the policy, or moves an active policy to a new `trigger_type`, while 100
+  active policies for that trigger already belong to the group, its ancestors, its subgroups, and
+  the organization.
 
 Example request:
 

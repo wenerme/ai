@@ -494,7 +494,7 @@ Content type: `application/json`
 
 - `model: string or "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
-  Model ID used to generate the response, like `gpt-6-astra` or `o3`. OpenAI
+  Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/api/docs/models)
   to browse and compare available models.
@@ -503,7 +503,7 @@ Content type: `application/json`
 
   - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 89 more`
 
-    Model ID used to generate the response, like `gpt-6-astra` or `o3`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
@@ -1148,7 +1148,7 @@ Content type: `application/json`
 
 - `stop: optional string or array of string or null`
 
-  Not supported with latest reasoning models `o3` and `o4-mini`.
+  Not supported with reasoning models `o3` and `o4-mini`.
 
   Up to 4 sequences where the API will stop generating further tokens. The
   returned text will not contain the stop sequence.
@@ -1996,194 +1996,10 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/chat/completions \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "messages": [
-            {
-              "content": "string",
-              "role": "developer"
-            }
-          ],
-          "model": "gpt-6-astra",
-          "n": 1,
-          "prompt_cache_key": "prompt-cache-key-1234",
-          "safety_identifier": "safety-identifier-1234",
-          "temperature": 1,
-          "top_p": 1,
-          "user": "user-1234"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "choices": [
-    {
-      "finish_reason": "stop",
-      "index": 0,
-      "logprobs": {
-        "content": [
-          {
-            "token": "token",
-            "bytes": [
-              0
-            ],
-            "logprob": 0,
-            "top_logprobs": [
-              {
-                "token": "token",
-                "bytes": [
-                  0
-                ],
-                "logprob": 0
-              }
-            ]
-          }
-        ],
-        "refusal": [
-          {
-            "token": "token",
-            "bytes": [
-              0
-            ],
-            "logprob": 0,
-            "top_logprobs": [
-              {
-                "token": "token",
-                "bytes": [
-                  0
-                ],
-                "logprob": 0
-              }
-            ]
-          }
-        ]
-      },
-      "message": {
-        "content": "content",
-        "role": "assistant",
-        "annotations": [
-          {
-            "type": "url_citation",
-            "url_citation": {
-              "end_index": 0,
-              "start_index": 0,
-              "title": "title",
-              "url": "https://example.com"
-            }
-          }
-        ],
-        "audio": {
-          "id": "id",
-          "data": "data",
-          "expires_at": 0,
-          "transcript": "transcript"
-        },
-        "function_call": {
-          "arguments": "arguments",
-          "name": "name"
-        },
-        "refusal": "refusal",
-        "tool_calls": [
-          {
-            "id": "id",
-            "function": {
-              "arguments": "arguments",
-              "name": "name"
-            },
-            "type": "function"
-          }
-        ]
-      }
-    }
-  ],
-  "created": 0,
-  "model": "model",
-  "object": "chat.completion",
-  "metadata": {
-    "foo": "string"
-  },
-  "moderation": {
-    "input": {
-      "model": "model",
-      "results": [
-        {
-          "categories": {
-            "foo": true
-          },
-          "category_applied_input_types": {
-            "foo": [
-              "text"
-            ]
-          },
-          "category_scores": {
-            "foo": 0
-          },
-          "flagged": true,
-          "model": "model",
-          "type": "moderation_result"
-        }
-      ],
-      "type": "moderation_results"
-    },
-    "output": {
-      "model": "model",
-      "results": [
-        {
-          "categories": {
-            "foo": true
-          },
-          "category_applied_input_types": {
-            "foo": [
-              "text"
-            ]
-          },
-          "category_scores": {
-            "foo": 0
-          },
-          "flagged": true,
-          "model": "model",
-          "type": "moderation_result"
-        }
-      ],
-      "type": "moderation_results"
-    }
-  },
-  "service_tier": "auto",
-  "system_fingerprint": "system_fingerprint",
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0,
-    "completion_tokens_details": {
-      "accepted_prediction_tokens": 0,
-      "audio_tokens": 0,
-      "reasoning_tokens": 0,
-      "rejected_prediction_tokens": 0,
-      "text_tokens": 0
-    },
-    "prompt_tokens_details": {
-      "audio_tokens": 0,
-      "cache_write_tokens": 0,
-      "cached_tokens": 0,
-      "image_tokens": 0,
-      "text_tokens": 0
-    }
-  }
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "messages": [
       {
         "role": "developer",
@@ -2204,7 +2020,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT",
   "object": "chat.completion",
   "created": 1741569952,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "choices": [
     {
       "index": 0,
@@ -2244,7 +2060,7 @@ curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-6-astra",
+  "model": "gpt-5.6-terra",
   "messages": [
     {
       "role": "user",
@@ -2274,7 +2090,8 @@ curl https://api.openai.com/v1/chat/completions \
       }
     }
   ],
-  "tool_choice": "auto"
+  "tool_choice": "auto",
+  "reasoning_effort": "none"
 }'
 ```
 
@@ -2285,7 +2102,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-abc123",
   "object": "chat.completion",
   "created": 1699896916,
-  "model": "gpt-6-astra",
+  "model": "gpt-5.6-terra",
   "choices": [
     {
       "index": 0,
@@ -2327,7 +2144,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "messages": [
       {
         "role": "user",
@@ -2356,7 +2173,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-B9MHDbslfkBeAs8l4bebGdFOJ6PeG",
   "object": "chat.completion",
   "created": 1741570283,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "choices": [
     {
       "index": 0,
@@ -2610,7 +2427,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "messages": [
       {
         "role": "developer",
@@ -2628,13 +2445,13 @@ curl https://api.openai.com/v1/chat/completions \
 #### Response example
 
 ```json
-data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6.2-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
 
-data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6.2-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
 
 : Intermediate chat completion chunks omitted.
 
-data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6.2-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
 
 data: [DONE]
 

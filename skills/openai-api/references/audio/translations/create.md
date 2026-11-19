@@ -142,24 +142,6 @@ Content type: `multipart/form-data`
 
 ```http
 curl https://api.openai.com/v1/audio/translations \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F 'file=@/path/to/file' \
-    -F model=whisper-1
-```
-
-#### 200 — Example
-
-```json
-{
-  "text": "text"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/audio/translations \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: multipart/form-data" \
   -F file="@/path/to/file/german.m4a" \

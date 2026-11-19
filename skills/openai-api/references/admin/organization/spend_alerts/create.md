@@ -97,44 +97,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/spend_alerts \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "currency": "USD",
-          "interval": "month",
-          "notification_channel": {
-            "recipients": [
-              "string"
-            ],
-            "type": "email"
-          },
-          "threshold_amount": 0
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "currency": "USD",
-  "interval": "month",
-  "notification_channel": {
-    "recipients": [
-      "string"
-    ],
-    "type": "email",
-    "subject_prefix": "subject_prefix"
-  },
-  "object": "organization.spend_alert",
-  "threshold_amount": 0
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/spend_alerts \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

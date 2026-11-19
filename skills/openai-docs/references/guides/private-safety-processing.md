@@ -210,7 +210,7 @@ curl --fail-with-body -sS "$PROJECTS_URL/$PROJECT_ID" \
 
 
 
-Connect your own AWS S3 bucket, Azure Blob container, Google Cloud Storage bucket, or Oracle Cloud Infrastructure (OCI) Object Storage bucket to an OpenAI project. Follow the setup steps for your cloud, then register and validate the connection.
+Connect your own AWS S3 bucket, Azure Blob container, Google Cloud Storage bucket, or Oracle Cloud Infrastructure (OCI) Object Storage bucket to an OpenAI project. For a direct connection, follow the setup steps for your cloud, then register and validate the connection. You can also register a custom HTTPS endpoint to route records to customer storage. This option takes more work than a direct cloud connection because you must build and operate a service that verifies signed requests, stores records, and returns them for review.
 
 ZDR with PSP is enabled per project. Once enabled, the PSP policy applies to all API traffic in that project, including requests to models that do not otherwise require PSP. To use ZDR without PSP for eligible models, send those requests through a separate project configured for ZDR without PSP.
 
@@ -219,6 +219,7 @@ ZDR with PSP is enabled per project. Once enabled, the PSP policy applies to all
 - Organizations already approved for Zero Data Retention can set up ZDR with PSP directly in the API console. If your organization isn't approved for ZDR, see the [eligibility and approval requirements](https://developers.openai.com/api/docs/guides/your-data#data-retention-controls-for-abuse-monitoring).
 - You can choose any supported storage region that meets your project's data residency requirements. You need permission to create storage and delegate access in your cloud account.
 - Have an organization administrator register and validate storage in the API console. For the Management API, use an OpenAI organization Admin API key. Project administrators can view guidance and status; a project inference key won't work for the Management API calls.
+- If you need to route encrypted safety records by customer or geography, skip to [Option 3: Set up a custom endpoint](#option-3-set-up-a-custom-endpoint). You’ll need an HTTPS endpoint that you operate. This setup can support zero data retention (ZDR) or data isolation commitments you’ve made to your customers.
 
 ### Open storage setup in the API console
 
@@ -609,9 +610,17 @@ Continue to **Register your storage**.
 
 ### Register your storage
 
-After completing the cloud setup above, select an eligible base data retention policy for the project. Private Safety Processing can be used with Zero Data Retention or Modified Abuse Monitoring, and the selected policy remains active while Private Safety Processing uses your connected storage. Then use either the API console or the Management API to register and validate your storage. You only need to use one method.
+Select an eligible base data retention policy for the project. Private Safety Processing can be used with Zero Data Retention or Modified Abuse Monitoring, and the selected policy remains active while Private Safety Processing uses your connected storage. If you completed the cloud setup above, register and validate your storage using the API console (option 1) or the Management API (option 2). If OpenAI will send records to an HTTPS endpoint you operate, follow option 3.
+
+
+
+<a id="option-1-api-console"></a>
+
+
 
 #### Option 1: API console
+
+
 
 Sign in as an organization administrator. The API console uses your signed-in session; you don't need an Admin API key or curl commands for this method.
 
@@ -663,7 +672,19 @@ Wait for **Storage validated** and confirmation that Private Safety Processing i
 
 If validation fails after registration, fix the reported issue and select **Retry validation**. To resume later, select the destination under **Registered storage** and choose **Validate storage**. If the API console can't refresh the result, select **Refresh status** before starting over.
 
+
+
+
+
+
+
+<a id="option-2-management-api"></a>
+
+
+
 #### Option 2: Management API
+
+
 
 Use an organization Admin API key for this method. Set the project's base data retention policy, register storage, then follow [**4. Verify your setup**](#4-verify-your-setup) to run validation.
 
@@ -799,7 +820,360 @@ curl --fail-with-body -sS \
   -H "OpenAI-Organization: $OPENAI_ORG_ID"
 ```
 
-For either method, open **Project Settings > Data retention** and select **Refresh**. Confirm the destination, provider, geography, and **Validated** status, then check that the selected base policy shows Private Safety Processing. The organization Data retention table also shows storage and status for each project.
+
+
+
+
+
+
+<a id="option-3-set-up-a-custom-endpoint"></a>
+
+
+
+#### Option 3: Set up a custom endpoint
+
+
+
+If you serve customers with zero data retention requirements or have customer data isolation commitments, you will need to set up a custom endpoint to isolate the encrypted safety record by customer-specific, geography specific buckets. Your application will call the Responses API as usual with a storage key attached. When OpenAI needs to retain a record, it sends the encrypted bytes to an HTTPS endpoint you run.
+
+
+
+
+![The PSP writer sends an encrypted record and routing key to the custom endpoint, which stores the record in an end-customer-owned bucket and retrieves it by ID for review.](https://developers.openai.com/images/platform/guides/private-safety-processing/custom-endpoint.webp)
+
+
+
+
+
+
+
+![The PSP writer sends an encrypted record and routing key to the custom endpoint, which stores the record in an end-customer-owned bucket and retrieves it by ID for review.](https://developers.openai.com/images/platform/guides/private-safety-processing/custom-endpoint-dark.webp)
+
+
+
+
+##### 1. Set the project's base retention policy
+
+Use an organization Admin API key to set an explicit policy on the project that will send Responses requests. In the path, replace `proj_123` with your project ID. In the JSON body, set `retention_type` to `zero_data_retention` or `modified_abuse_monitoring`. An inherited organization default doesn't satisfy the validation requirement.
+
+**Your request**
+
+```http snippet=reference reason="HTTP message format"
+POST /v1/organization/projects/proj_123/data_retention HTTP/1.1
+Host: api.openai.com
+Authorization: Bearer <OPENAI_ADMIN_KEY>
+Content-Type: application/json
+
+{"retention_type":"zero_data_retention"}
+```
+
+**OpenAI responds** with `200 OK` and your selected policy. For this example, the response includes:
+
+```json snippet=reference reason="Example JSON payload"
+{
+  "object": "project.data_retention",
+  "type": "zero_data_retention"
+}
+```
+
+This sets the base policy. Private Safety Processing becomes active for the project when storage validation succeeds in step 3.
+
+##### 2. Register your endpoint
+
+```http snippet=reference reason="HTTP message format"
+POST https://api.openai.com/v1/organization/external_storage
+```
+
+Use an organization admin API key with `api.external_storage.write`. For a Global project, include the destination geography. For a fixed-region project, you can omit it.
+
+```json snippet=reference reason="Example JSON payload"
+{
+  "project_id": "proj_123",
+  "provider": {
+    "type": "custom_endpoint",
+    "endpoint_url": "https://storage.example.com/custom-endpoint",
+    "geography": "EU"
+  }
+}
+```
+
+Response: `200 OK`
+
+```json snippet=reference reason="Example JSON payload"
+{
+  "object": "organization.external_storage",
+  "id": "extstorage_abc123",
+  "project_id": "proj_123",
+  "provider": {
+    "type": "custom_endpoint",
+    "endpoint_url": "https://storage.example.com/custom-endpoint",
+    "signing_secret": "whsec_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "signing_secret_hint": "whsec_...AAA="
+  },
+  "geography": "EU",
+  "status": "pending",
+  "created_at": 1793880000
+}
+```
+
+**Save your signing secret.** Store `provider.signing_secret` in your secret manager. You'll use it to [verify requests from OpenAI](#verify-requests-from-openai). The API returns the full secret only at registration.
+
+##### 3. Validate your endpoint
+
+Implement `POST {endpoint_url}/v1/validate` on your server.
+
+**You request validation.** Send the registration ID from step 2 in the URL. Authenticate with your organization Admin API key and leave the body empty.
+
+```http snippet=reference reason="HTTP message format"
+POST /v1/organization/external_storage/extstorage_abc123/validate HTTP/1.1
+Host: api.openai.com
+Authorization: Bearer <OPENAI_ADMIN_KEY>
+Content-Length: 0
+```
+
+**OpenAI sends a signed challenge**
+
+```http snippet=reference reason="HTTP message format"
+POST /custom-endpoint/v1/validate HTTP/1.1
+Host: storage.example.com
+Content-Type: application/json
+webhook-id: probe_a81f907c2b6d4e13a5709f28c6103eb4
+webhook-timestamp: 1793880000
+webhook-signature: v1,R2MM/gN/BbBWiq51ShHlMTY/D8Qlsd2nuzWyZUNirm4=
+
+{"challenge": "a81f907c2b6d4e13a5709f28c6103eb4"}
+```
+
+**You verify the signature and return the challenge.** [Verify the raw request body](#verify-requests-from-openai) with the signing secret from step 2. If verification succeeds, parse the JSON and return the received `challenge` value.
+
+```http snippet=reference reason="HTTP message format"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{"challenge":"a81f907c2b6d4e13a5709f28c6103eb4"}
+```
+
+**Check the registration status.** OpenAI responds to your original request with `200 OK` and the updated registration. Look for `"status": "validated"` before sending a Responses request.
+
+```http snippet=reference reason="HTTP message format"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "object": "organization.external_storage",
+  "id": "extstorage_abc123",
+  "project_id": "proj_123",
+  "status": "validated",
+  "provider": {
+    "type": "custom_endpoint",
+    "endpoint_url": "https://storage.example.com/custom-endpoint",
+    "signing_secret_hint": "whsec_...AAA="
+  },
+  "geography": "EU",
+  "created_at": 1793880000
+}
+```
+
+##### 4. Send a request
+
+```http snippet=reference reason="HTTP message format"
+POST https://api.openai.com/v1/responses
+```
+
+Use a PSP-enabled project API key with `api.responses.write`. Pick an opaque routing key that your server recognizes, e.g. a customer identifier and geography combination. Your custom endpoint will use this later to route OpenAI’s retention requests.
+
+```json snippet=reference reason="Example JSON payload"
+{
+  "model": "<model-id>",
+  "input": "Summarize this account update.",
+  "storage_routing": {
+    "routing_key": "customer_1-us"
+  }
+}
+```
+
+##### 5. Accept the encrypted record
+
+You implement `POST {endpoint_url}/v1/records` on your server.
+
+**OpenAI sends the encrypted record.** The signed multipart request includes the encrypted bytes in the `ciphertext` part and a routing key that identifies your end-customer’s storage.
+
+```http snippet=reference reason="HTTP message format"
+POST /custom-endpoint/v1/records HTTP/1.1
+Host: storage.example.com
+Content-Type: multipart/form-data; boundary=custom-endpoint-example
+webhook-id: cobj_456
+webhook-timestamp: 1793880060
+webhook-signature: v1,MLAK7AYd/cYh1U8Yqo28Lx2SEds5nLb/IYulCiTFXJA=
+
+--custom-endpoint-example
+Content-Disposition: form-data; name="type"
+
+record.write
+--custom-endpoint-example
+Content-Disposition: form-data; name="id"
+
+cobj_456
+--custom-endpoint-example
+Content-Disposition: form-data; name="storage_routing[routing_key]"
+
+customer_1-us
+--custom-endpoint-example
+Content-Disposition: form-data; name="expires_at"
+
+1796472000
+--custom-endpoint-example
+Content-Disposition: form-data; name="ciphertext"; filename="record.bin"
+Content-Type: application/octet-stream
+
+<raw encrypted bytes>
+--custom-endpoint-example--
+```
+
+**You return `202 Accepted` with the record ID.** [Verify the request signature](#verify-requests-from-openai) before parsing the multipart body. Once your server accepts the write, return the `id` from that request.
+
+```http snippet=reference reason="HTTP message format"
+HTTP/1.1 202 Accepted
+Content-Type: application/json
+
+{ "id": "cobj_456" }
+```
+
+You can finish storing the bytes asynchronously. OpenAI retries unacknowledged writes with backoff, so use the ID to recognize duplicates. Keep the ID with the storage location and delete the record at `expires_at` (Unix seconds).
+
+##### 6. Return the record for review
+
+You implement `GET {endpoint_url}/v1/records/{id}/content` on your server. During a safety review, OpenAI calls this endpoint to retrieve an unexpired record.
+
+**OpenAI sends a signed GET request**
+
+```http snippet=reference reason="HTTP message format"
+GET /custom-endpoint/v1/records/cobj_456/content HTTP/1.1
+Host: storage.example.com
+webhook-id: cobj_456
+webhook-timestamp: 1793883600
+webhook-signature: v1,PYSp9wJfLMP9tl+6O476HMV+8wuFZ/q6X/gPirSbdBQ=
+```
+
+**You return the encrypted record.** [Verify the request signature](#verify-requests-from-openai) and apply your access policy. If the request is authorized, look up the record by ID and return the original encrypted bytes. Send those bytes directly in the response body, without gzip compression, additional encryption, or any other encoding.
+
+```http snippet=reference reason="HTTP message format"
+HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+
+<the same encrypted bytes accepted for cobj_456>
+```
+
+OpenAI decrypts the record for review.
+
+##### Verify requests from OpenAI
+
+Verify each callback with the signing secret for its registration. If verification fails, return `401` before echoing a challenge, accepting a write, or returning a record.
+
+The verifier reads the signed bytes from the incoming request. The examples use a Fetch API `Request` in Node.js and a FastAPI `Request` in Python.
+
+- **POST:** Use the exact request body. Read it before parsing JSON or multipart data so that whitespace, multipart boundaries, and binary data are preserved.
+- **GET:** Use the bytes of `GET`, one space, and the original public request path, including the registered path prefix. For the example above, the signed content is `GET /custom-endpoint/v1/records/cobj_456/content`.
+
+Verify a callback signature
+
+```typescript
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+async function verifyCallback(request: Request, secret: string) {
+  const headers = request.headers;
+  const id = headers.get("webhook-id");
+  const timestamp = headers.get("webhook-timestamp");
+  const signatures = headers.get("webhook-signature");
+  if (!id || !timestamp || !signatures || !/^\d+$/.test(timestamp))
+    return false;
+
+  // A short time window limits how long someone can replay a signed request.
+  if (Math.abs(Date.now() / 1000 - Number(timestamp)) > 300) return false;
+
+  // The whsec_ prefix identifies the secret. The rest encodes the HMAC key.
+  if (!secret.startsWith("whsec_")) throw new Error("Invalid signing secret");
+  const key = Buffer.from(secret.slice("whsec_".length), "base64");
+  if (key.length !== 32) throw new Error("Invalid signing secret");
+  // GET signs the public path. POST signs the body before any parsing.
+  let signedContent: string | Uint8Array;
+  if (request.method === "GET") {
+    signedContent = "GET " + new URL(request.url).pathname;
+  } else if (request.method === "POST") {
+    signedContent = new Uint8Array(await request.clone().arrayBuffer());
+  } else {
+    return false;
+  }
+  const digest = createHmac("sha256", key)
+    .update(`${id}.${timestamp}.`)
+    .update(signedContent)
+    .digest("base64");
+
+  // Accept any matching v1 signature using a constant-time comparison.
+  const expected = Buffer.from(`v1,${digest}`);
+  return signatures.split(/\s+/).some((value) => {
+    const candidate = Buffer.from(value);
+    return (
+      candidate.length === expected.length &&
+      timingSafeEqual(candidate, expected)
+    );
+  });
+}
+```
+
+```python
+import base64
+import hashlib
+import hmac
+import time
+
+from fastapi import Request
+
+
+async def verify_callback(request: Request, secret: str) -> bool:
+    headers = request.headers
+    delivery_id = headers.get("webhook-id")
+    timestamp = headers.get("webhook-timestamp", "")
+    signatures = headers.get("webhook-signature")
+    if (
+        not delivery_id
+        or not signatures
+        or not (timestamp.isascii() and timestamp.isdecimal())
+    ):
+        return False
+
+    # A short time window limits how long someone can replay a signed request.
+    if abs(time.time() - float(timestamp)) > 300:
+        return False
+
+    # The whsec_ prefix identifies the secret. The rest encodes the HMAC key.
+    if not secret.startswith("whsec_"):
+        raise ValueError("Invalid signing secret")
+    key = base64.b64decode(secret.removeprefix("whsec_"), validate=True)
+    if len(key) != 32:
+        raise ValueError("Invalid signing secret")
+    mac = hmac.new(key, f"{delivery_id}.{timestamp}.".encode(), hashlib.sha256)
+    # GET signs the encoded public path. POST signs the body before any parsing.
+    if request.method == "GET":
+        mac.update(b"GET " + request.scope["raw_path"])
+    elif request.method == "POST":
+        mac.update(await request.body())
+    else:
+        return False
+
+    # Accept any matching v1 signature using a constant-time comparison.
+    expected = b"v1," + base64.b64encode(mac.digest())
+    return any(
+        hmac.compare_digest(value.encode(), expected) for value in signatures.split()
+    )
+```
+
+
+
+
+
+
+After validating your storage configuration, open **Project Settings > Data retention** and select **Refresh**. Confirm the destination, provider, geography, and **Validated** status, then check that the selected base policy shows Private Safety Processing. The organization Data retention table also shows storage and status for each project.
 
 ![OpenAI Project Settings Data retention page showing an AWS S3 external-storage connection with Validated status and the Zero Data Retention with PSP retention policy.](https://developers.openai.com/images/platform/guides/private-safety-processing/setup-05-verify-project-retention.webp)
 

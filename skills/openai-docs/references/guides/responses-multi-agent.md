@@ -44,6 +44,17 @@ The Python and TypeScript examples use the beta Responses SDK. For HTTP
 
 Enable Multi-agent in your Responses API request with `multi_agent.enabled`. When `multi_agent.enabled` is `true`, the root agent becomes eligible to spawn a tree of subagents. The subagents share the request’s model and available tools, while agents coordinate through collaboration primitives such as spawning, messaging, and waiting (see [How Multi-agent works](#how-multi-agent-works)). The root agent is responsible for synthesizing subagent responses and providing the final response.
 
+
+
+  The Go examples use `github.com/openai/openai-go/v3` at `v3.99.0` and its
+  typed `client.Beta.Responses` API. HTTP requests set `Betas` to `[]string
+  {"responses_multi_agent=v1"}`. The WebSocket example uses
+  `client.Beta.Responses.Connect` and passes the beta header when opening the
+  connection. Its complete program reads the comparison prompt from standard
+  input.
+
+
+
 Review a pull request with subagents
 
 ```typescript
@@ -116,6 +127,35 @@ def review_pull_request(diff: str) -> str:
         for part in item.content
         if part.type == "output_text"
     )
+```
+
+```go
+func reviewPullRequest(ctx context.Context, client openai.Client, diff string) (string, error) {
+	response, err := client.Beta.Responses.New(ctx, openai.BetaResponseNewParams{
+		Model:      "gpt-6.2-sol",
+		Input:      openai.BetaResponseNewParamsInputUnion{OfString: openai.String("Review the pull-request diff below with three agents: one for correctness, one for security, and one for missing tests. Reconcile duplicate or conflicting findings, then return a prioritized review with file and line references.\n\n<diff>\n" + diff + "\n</diff>")},
+		MultiAgent: openai.BetaResponseNewParamsMultiAgent{Enabled: true, MaxConcurrentSubagents: openai.Int(3)},
+		Betas:      []string{"responses_multi_agent=v1"},
+	})
+	if err != nil {
+		return "", err
+	}
+	if response.Status != "completed" {
+		return "", fmt.Errorf("review did not complete: %s", response.Status)
+	}
+	var text strings.Builder
+	for _, item := range response.Output {
+		if item.Type != "message" || item.Agent.AgentName != "/root" || item.Phase != "final_answer" {
+			continue
+		}
+		for _, part := range item.AsMessage().Content {
+			if part.Type == "output_text" {
+				text.WriteString(part.Text)
+			}
+		}
+	}
+	return text.String(), nil
+}
 ```
 
 ```ruby
@@ -450,6 +490,129 @@ while True:
 
     if not pending_calls:
         break
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+	"time"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func run(ctx context.Context) error {
+	client := openai.NewClient()
+	proposals := map[string]any{"alpha": map[string]any{"estimated_weeks": 6, "risk": "medium"}, "beta": map[string]any{"estimated_weeks": 8, "risk": "low"}}
+	tools := []openai.BetaToolUnionParam{{OfFunction: &openai.BetaFunctionToolParam{
+		Name: "get_proposal", Description: openai.String("Return details for a proposal that the agents should compare."), Strict: openai.Bool(true),
+		Parameters: map[string]any{"type": "object", "properties": map[string]any{"proposal": map[string]any{"type": "string", "enum": []string{"alpha", "beta"}}}, "required": []string{"proposal"}, "additionalProperties": false},
+	}}}
+	history := []openai.BetaResponseInputItemUnionParam{{OfMessage: &openai.BetaEasyInputMessageParam{Role: "user", Content: openai.BetaEasyInputMessageContentUnionParam{OfString: openai.String("Use two subagents, one for proposal alpha and one for proposal beta. Have each call get_proposal, then compare their findings.")}}}}
+	for {
+		stream := client.Beta.Responses.NewStreaming(ctx, openai.BetaResponseNewParams{
+			Model: "gpt-6.2-sol", Input: openai.BetaResponseNewParamsInputUnion{OfInputItemList: history}, Tools: tools, Store: openai.Bool(false),
+			Instructions: openai.String("After launching both subagents, call get_proposal for alpha yourself before waiting for their findings. Use that direct result to check the final comparison."),
+			MultiAgent:   openai.BetaResponseNewParamsMultiAgent{Enabled: true, MaxConcurrentSubagents: openai.Int(3)}, Betas: []string{"responses_multi_agent=v1"},
+		})
+		completed := false
+		agents := map[int64]string{}
+		var outputs []openai.BetaResponseOutputItemUnion
+		var calls []openai.BetaResponseFunctionToolCall
+		for stream.Next() {
+			event := stream.Current()
+			switch event.Type {
+			case "response.output_item.added":
+				agent := event.Item.Agent.AgentName
+				if agent == "" {
+					agent = "/root"
+				}
+				agents[event.OutputIndex] = agent
+			case "response.output_text.delta":
+				agent := agents[event.OutputIndex]
+				if agent == "" {
+					agent = "/root"
+				}
+				if agent == "/root" {
+					fmt.Print(event.Delta)
+				} else {
+					fmt.Fprintf(os.Stderr, "[%s] %s", agent, event.Delta)
+				}
+			case "response.output_item.done":
+				outputs = append(outputs, event.Item)
+				if event.Item.Type == "function_call" {
+					calls = append(calls, event.Item.AsFunctionCall())
+				}
+			case "response.completed":
+				completed = true
+				usage, err := json.Marshal(event.Response.Usage)
+				if err != nil {
+					stream.Close()
+					return err
+				}
+				fmt.Fprintf(os.Stderr, "\nUsage: %s\n", usage)
+			case "error", "response.failed", "response.incomplete":
+				stream.Close()
+				return fmt.Errorf("multi-agent response failed: %s", event.RawJSON())
+			}
+		}
+		err := stream.Err()
+		stream.Close()
+		if err != nil {
+			return err
+		}
+		if !completed {
+			return fmt.Errorf("stream ended without a completed response")
+		}
+		// Keep every agent's output, including attribution and encrypted reasoning.
+		for _, item := range outputs {
+			var input openai.BetaResponseInputItemUnionParam
+			if item.Type == "message" {
+				// Select the output-message variant to retain agent attribution.
+				message := item.AsMessage().ToParam()
+				input.OfOutputMessage = &message
+			} else if err := json.Unmarshal([]byte(item.RawJSON()), &input); err != nil {
+				return err
+			}
+			history = append(history, input)
+		}
+		for _, call := range calls {
+			if call.Name != "get_proposal" {
+				return fmt.Errorf("unknown tool: %s", call.Name)
+			}
+			var args struct {
+				Proposal string `json:"proposal"`
+			}
+			if err := json.Unmarshal([]byte(call.Arguments), &args); err != nil {
+				return err
+			}
+			proposal, ok := proposals[args.Proposal]
+			if !ok {
+				return fmt.Errorf("unknown proposal: %s", args.Proposal)
+			}
+			output, err := json.Marshal(proposal)
+			if err != nil {
+				return err
+			}
+			history = append(history, openai.BetaResponseInputItemUnionParam{OfFunctionCallOutput: &openai.BetaResponseInputItemFunctionCallOutputParam{CallID: openai.String(call.CallID), Output: openai.BetaResponseInputItemFunctionCallOutputOutputUnionParam{OfString: openai.String(string(output))}}})
+		}
+		if len(calls) == 0 {
+			return nil
+		}
+	}
+}
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 4*time.Minute)
+	defer cancel()
+	if err := run(ctx); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -920,6 +1083,168 @@ with client.beta.responses.connect(
             if part.type == "output_text"
         )
     )
+```
+
+```go
+package main
+
+import (
+	"bufio"
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+	"strings"
+	"time"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+)
+
+func toolOutput(call openai.BetaResponseFunctionToolCall) (openai.BetaResponseInputItemUnionParam, error) {
+	var zero openai.BetaResponseInputItemUnionParam
+	if call.Name != "get_proposal" {
+		return zero, fmt.Errorf("unknown tool: %s", call.Name)
+	}
+	var args struct {
+		Proposal string `json:"proposal"`
+	}
+	if err := json.Unmarshal([]byte(call.Arguments), &args); err != nil {
+		return zero, err
+	}
+	proposals := map[string]any{"alpha": map[string]any{"estimated_weeks": 6, "risk": "medium"}, "beta": map[string]any{"estimated_weeks": 8, "risk": "low"}}
+	value, ok := proposals[args.Proposal]
+	if !ok {
+		return zero, fmt.Errorf("unknown proposal: %s", args.Proposal)
+	}
+	output, err := json.Marshal(value)
+	if err != nil {
+		return zero, err
+	}
+	return openai.BetaResponseInputItemUnionParam{OfFunctionCallOutput: &openai.BetaResponseInputItemFunctionCallOutputParam{CallID: openai.String(call.CallID), Output: openai.BetaResponseInputItemFunctionCallOutputOutputUnionParam{OfString: openai.String(string(output))}}}, nil
+}
+
+func runMultiAgent(ctx context.Context, connection *openai.BetaResponseConnection, prompt string) (*openai.BetaResponse, error) {
+	tools := []openai.BetaToolUnionParam{{OfFunction: &openai.BetaFunctionToolParam{Name: "get_proposal", Description: openai.String("Return details for a proposal that the agents should compare."), Strict: openai.Bool(true), Parameters: map[string]any{"type": "object", "properties": map[string]any{"proposal": map[string]any{"type": "string", "enum": []string{"alpha", "beta"}}}, "required": []string{"proposal"}, "additionalProperties": false}}}}
+	input := openai.BetaResponseInputParam{{OfMessage: &openai.BetaEasyInputMessageParam{Role: "user", Content: openai.BetaEasyInputMessageContentUnionParam{OfString: openai.String(prompt)}}}}
+	previous := ""
+	for len(input) > 0 {
+		request := openai.BetaResponsesClientEventResponseCreateParam{Model: "gpt-6.2-sol", Store: openai.Bool(true), MultiAgent: openai.BetaResponsesClientEventResponseCreateMultiAgentParam{Enabled: true}, Tools: tools, Input: openai.BetaResponsesClientEventResponseCreateInputUnionParam{OfResponse: &input}}
+		if previous != "" {
+			request.PreviousResponseID = openai.String(previous)
+		}
+		if err := connection.Send(ctx, openai.BetaResponsesClientEventUnionParam{OfResponseCreate: &request}); err != nil {
+			return nil, err
+		}
+		responseID := ""
+		pending := 0
+		var completed *openai.BetaResponse
+		var retry []openai.BetaResponseInputItemUnionParam
+		for completed == nil || pending != 0 {
+			event, err := connection.Recv(ctx)
+			if err != nil {
+				return nil, fmt.Errorf("connection ended before completion and injection acknowledgements: %w", err)
+			}
+			switch event.Type {
+			case "response.created":
+				responseID = event.AsResponseCreated().Response.ID
+			case "response.output_item.done":
+				item := event.AsResponseOutputItemDone().Item
+				if item.Type != "function_call" {
+					continue
+				}
+				if responseID == "" {
+					return nil, fmt.Errorf("function call arrived before response creation")
+				}
+				output, err := toolOutput(item.AsFunctionCall())
+				if err != nil {
+					return nil, err
+				}
+				pending++
+				if err := connection.Send(ctx, openai.BetaResponsesClientEventUnionParam{OfResponseInject: &openai.BetaResponseInjectEventParam{ResponseID: responseID, Input: []openai.BetaResponseInputItemUnionParam{output}}}); err != nil {
+					return nil, err
+				}
+			case "response.inject.created":
+				ack := event.AsBetaResponseInjectCreatedEvent()
+				if responseID == "" || ack.ResponseID != responseID || pending == 0 {
+					return nil, fmt.Errorf("unexpected injection acknowledgement")
+				}
+				pending--
+			case "response.inject.failed":
+				ack := event.AsBetaResponseInjectFailedEvent()
+				if responseID == "" || ack.ResponseID != responseID || pending == 0 {
+					return nil, fmt.Errorf("unexpected injection acknowledgement")
+				}
+				pending--
+				if ack.Error.Code != "response_already_completed" {
+					return nil, fmt.Errorf("injection failed: %s", ack.Error.Code)
+				}
+				for _, item := range ack.Input {
+					var value openai.BetaResponseInputItemUnionParam
+					if err := json.Unmarshal([]byte(item.RawJSON()), &value); err != nil {
+						return nil, err
+					}
+					retry = append(retry, value)
+				}
+			case "response.completed":
+				response := event.AsResponseCompleted().Response
+				if responseID == "" || response.ID != responseID {
+					return nil, fmt.Errorf("unexpected response completion")
+				}
+				completed = &response
+			case "error", "response.failed", "response.incomplete":
+				return nil, fmt.Errorf("multi-agent response failed: %s", event.RawJSON())
+			}
+		}
+		if len(retry) == 0 {
+			return completed, nil
+		}
+		previous = completed.ID
+		input = retry
+	}
+	return nil, fmt.Errorf("no response was created")
+}
+
+func run(ctx context.Context) error {
+	scanner := bufio.NewScanner(os.Stdin)
+	if !scanner.Scan() {
+		if err := scanner.Err(); err != nil {
+			return err
+		}
+		return fmt.Errorf("expected a prompt on stdin")
+	}
+	client := openai.NewClient()
+	connection, err := client.Beta.Responses.Connect(ctx, openai.BetaResponseConnectionOptions{}, option.WithQuery("beta", "true"), option.WithHeader("OpenAI-Beta", "responses_multi_agent=v1"))
+	if err != nil {
+		return err
+	}
+	defer connection.Close()
+	response, err := runMultiAgent(ctx, connection, scanner.Text())
+	if err != nil {
+		return err
+	}
+	var text strings.Builder
+	for _, item := range response.Output {
+		if item.Type != "message" || item.Agent.AgentName != "/root" || item.Phase != "final_answer" {
+			continue
+		}
+		for _, part := range item.AsMessage().Content {
+			if part.Type == "output_text" {
+				text.WriteString(part.Text)
+			}
+		}
+	}
+	fmt.Println(text.String())
+	return nil
+}
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 4*time.Minute)
+	defer cancel()
+	if err := run(ctx); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby

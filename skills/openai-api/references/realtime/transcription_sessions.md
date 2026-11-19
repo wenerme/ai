@@ -259,47 +259,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/transcription_sessions \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "client_secret": {
-    "expires_at": 0,
-    "value": "value"
-  },
-  "input_audio_format": "input_audio_format",
-  "input_audio_transcription": {
-    "keywords": [
-      "string"
-    ],
-    "language": "language",
-    "languages": [
-      "string"
-    ],
-    "model": "gpt-transcribe",
-    "prompt": "prompt"
-  },
-  "modalities": [
-    "text"
-  ],
-  "turn_detection": {
-    "prefix_padding_ms": 0,
-    "silence_duration_ms": 0,
-    "threshold": 0,
-    "type": "type"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \

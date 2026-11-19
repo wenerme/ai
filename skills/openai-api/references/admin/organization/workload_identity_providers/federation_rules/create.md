@@ -115,44 +115,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/workload_identity_providers/$WORKLOAD_IDENTITY_PROVIDER_ID/federation_rules \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "attribute_matchers": {
-            "foo": "string"
-          },
-          "project_id": "x",
-          "service_account_id": "x"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "attribute_matchers": {
-    "foo": "string"
-  },
-  "created_at": 0,
-  "description": "description",
-  "enabled": true,
-  "name": "name",
-  "object": "organization.workload_identity_federation_rule",
-  "permissions": {
-    "type": "service_account_default"
-  },
-  "project_id": "project_id",
-  "service_account_id": "service_account_id",
-  "updated_at": 0,
-  "workload_identity_provider_id": "workload_identity_provider_id"
-}
-```
-
-### Example
-
-```http
 curl -X POST "https://api.openai.com/v1/organization/workload_identity_providers/wip_example/federation_rules" \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

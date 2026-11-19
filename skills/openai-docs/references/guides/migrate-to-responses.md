@@ -82,6 +82,31 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model:    "gpt-6.2-astra",
+		Messages: []openai.ChatCompletionMessageParamUnion{openai.UserMessage("Write a one-sentence bedtime story about a unicorn.")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	if len(completion.Choices) == 0 {
+		panic("no completion choices")
+	}
+	fmt.Println(completion.Choices[0].Message.Content)
+}
+```
+
 ```ruby
 require "openai"
 
@@ -111,6 +136,29 @@ response = client.responses.create(
 )
 
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-6.2-astra",
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Write a one-sentence bedtime story about a unicorn.")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```ruby

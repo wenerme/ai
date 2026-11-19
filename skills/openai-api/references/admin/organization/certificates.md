@@ -68,40 +68,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/organization/certificates/activate \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "certificate_ids": [
-            "cert_abc"
-          ]
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "active": true,
-      "certificate_details": {
-        "expires_at": 0,
-        "valid_at": 0
-      },
-      "created_at": 0,
-      "name": "name",
-      "object": "organization.certificate"
-    }
-  ],
-  "object": "organization.certificate.activation"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/certificates/activate \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
@@ -220,34 +186,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/certificates \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "certificate": "certificate"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "certificate_details": {
-    "content": "content",
-    "expires_at": 0,
-    "valid_at": 0
-  },
-  "created_at": 0,
-  "name": "name",
-  "object": "certificate",
-  "active": true
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/certificates \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
@@ -340,40 +278,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/organization/certificates/deactivate \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "certificate_ids": [
-            "cert_abc"
-          ]
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "active": true,
-      "certificate_details": {
-        "expires_at": 0,
-        "valid_at": 0
-      },
-      "created_at": 0,
-      "name": "name",
-      "object": "organization.certificate"
-    }
-  ],
-  "object": "organization.certificate.deactivation"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/certificates/deactivate \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
 -H "Content-Type: application/json" \
 -d '{
@@ -438,23 +342,6 @@ The certificate must be inactive for the organization and all projects.
   The object type, must be `certificate.deleted`.
 
   - `"certificate.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "object": "certificate.deleted"
-}
-```
 
 ### Example
 
@@ -547,37 +434,6 @@ List uploaded certificates for this organization.
 - `object: "list"`
 
   - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/certificates \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "active": true,
-      "certificate_details": {
-        "expires_at": 0,
-        "valid_at": 0
-      },
-      "created_at": 0,
-      "name": "name",
-      "object": "organization.certificate"
-    }
-  ],
-  "first_id": "cert_abc",
-  "has_more": true,
-  "last_id": "cert_abc",
-  "object": "list"
-}
-```
 
 ### Example
 
@@ -691,30 +547,6 @@ You can get a certificate regardless of whether it is active or not.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "certificate_details": {
-    "content": "content",
-    "expires_at": 0,
-    "valid_at": 0
-  },
-  "created_at": 0,
-  "name": "name",
-  "object": "certificate",
-  "active": true
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/organization/certificates/cert_abc?include[]=content" \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
@@ -810,32 +642,6 @@ Content type: `application/json`
   - `active: optional boolean`
 
     Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "certificate_details": {
-    "content": "content",
-    "expires_at": 0,
-    "valid_at": 0
-  },
-  "created_at": 0,
-  "name": "name",
-  "object": "certificate",
-  "active": true
-}
-```
 
 ### Example
 

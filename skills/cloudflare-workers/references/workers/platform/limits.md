@@ -30,8 +30,7 @@ To limit usage charges across your account, configure a [Workers spending limit]
 | [Worker size](#worker-size) | 64 MiB | 64 MiB |
 | [Worker startup time](#worker-startup-time) | 1 second | 1 second |
 | [Number of Workers](#number-of-workers) | 100 | 500<sup>[1](#user-content-fn-1)</sup> |
-| [Stored versions](#versions) per Worker | 100 | 100 |
-| Number of [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)<br>per account | 5 | 250 |
+| Number of [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)<br>per account | 5 | 1,000 |
 | Number of [Static Asset](#static-assets) files per Worker version | 20,000 | 100,000 |
 | Individual [Static Asset](#static-assets) file size | 25 MiB | 25 MiB |
 
@@ -74,7 +73,7 @@ CPU time measures how long the CPU spends executing your Worker code. Waiting on
 | Limit | Workers Free | Workers Paid |
 | --- | --- | --- |
 | CPU time per HTTP request | 10 ms | 5 min (default: 30 seconds) |
-| CPU time per Cron Trigger | 10 ms | 30 seconds (< 1 hour interval) <br> 15 min (>= 1 hour interval) |
+| CPU time per Cron Trigger | 10 ms | 5 min (default: 30 seconds) for intervals under 1 hour <br> 15 min for intervals of 1 hour or more |
 
 Most Workers consume very little CPU time. The average Worker uses approximately 2.2 ms per request. Heavier workloads that handle authentication, server-side rendering, or parse large payloads typically use 10-20 ms.
 
@@ -327,23 +326,6 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 | Workers per account | 100 | 500<sup>[1](#user-content-fn-1)</sup> |
 
 If you are building a platform where your end customers deploy their own sites or applications, use [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/), which runs an unlimited number of user Workers.
-
----
-
-## Versions
-
-| Limit | Value |
-| --- | --- |
-| Stored versions per Worker | 100 most recent |
-| Versions available to deploy or roll back to | 100 most recent |
-
-Cloudflare keeps each Worker's 100 most recent versions and any version that is currently deployed. Versions outside the 100 most recent are deleted unless they are deployed.
-
-When a Worker reaches 100 stored versions, uploading a new version automatically deletes the oldest version that is not deployed.
-
-You can only deploy, create a gradual deployment with, or roll back to the 100 most recent versions of a Worker.
-
-For more information, refer to [Version retention](https://developers.cloudflare.com/workers/versions-and-deployments/#version-retention).
 
 ---
 

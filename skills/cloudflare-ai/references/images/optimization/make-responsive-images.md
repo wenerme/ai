@@ -148,7 +148,7 @@ The following table shows the widths that Cloudflare will pick based on the defa
 | 960px | 960px |
 | 1500px | 1200px |
 
-You can override the default breakpoints using the [`wbreakpoints`](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameter, which accepts positive integers separated by semicolons.
+You can override the default breakpoints using the [`breakpoints`](https://developers.cloudflare.com/images/optimization/features/#width) setting, which accepts a list of positive integers.
 
 #### Enabling client hints
 
@@ -187,7 +187,7 @@ The default sizes for user-agent detection are:
 | Mobile (`iPhone` or `Android` in user-agent) | 768px |
 | Desktop (all other user-agents) | 1200px |
 
-You can override the default sizes using the [`wmobile` and `wdesktop`](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameters, which accept positive integers.
+You can override the default sizes using the [`mobile` and `desktop`](https://developers.cloudflare.com/images/optimization/features/#width) settings, which accept positive integers.
 
 Was this helpful?
 
@@ -198,5 +198,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/make-responsive-images/#page","headline":"Make responsive images","description":"Automatically resize images for optimal display on every device.","url":"https://developers.cloudflare.com/images/optimization/make-responsive-images/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/make-responsive-images/og.png?v=30c3f244edc4e591","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/make-responsive-images/#page","headline":"Make responsive images","description":"Automatically resize images for optimal display on every device.","url":"https://developers.cloudflare.com/images/optimization/make-responsive-images/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/make-responsive-images/og.png?v=30c3f244edc4e591","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

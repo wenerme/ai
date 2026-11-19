@@ -85,29 +85,6 @@ Returns information about a specific file.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/files/$FILE_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "filename": "filename",
-  "object": "file",
-  "purpose": "assistants",
-  "status": "uploaded",
-  "expires_at": 0,
-  "status_details": "status_details"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/files/file-abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

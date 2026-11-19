@@ -358,8 +358,11 @@ connections):
 1. Confirm that Gitaly can perform callbacks to the GitLab internal API:
 
    ```shell
-   sudo -u git -- /opt/gitlab/embedded/bin/gitaly check /var/opt/gitlab/gitaly/config.toml
+   sudo /opt/gitlab/embedded/bin/chpst -e /opt/gitlab/etc/gitaly/env -u git:git /opt/gitlab/embedded/bin/gitaly check /var/opt/gitlab/gitaly/config.toml
    ```
+
+   The `chpst -e` option runs the check with the environment variables of the Gitaly service, such as `SSL_CERT_DIR`.
+   The check then trusts the same certificates as the service.
 
 ### Self-compiled (source)
 

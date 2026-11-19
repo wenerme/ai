@@ -19,6 +19,16 @@ python -m pip install openai pandas numpy requests beautifulsoup4 tiktoken matpl
 
 
 
+The Go examples use `github.com/openai/openai-go/v3` at `v3.98.0`, `github.com/tiktoken-go/tokenizer` at `v0.10.0`, and `golang.org/x/net/html` at `v0.63.0`. Use the complete programs in the [Go tutorial sample directory](https://github.com/openai/developers-website/tree/main/src/content/platform/go-examples/tutorial-crawl-website-embeddings). When running downloaded source files, replace `{{MODEL}}` with the model shown in the rendered example. Run each workflow step separately from the same working directory; don't concatenate their `main` functions. The hyperlink helpers share one program, and context retrieval, answering, and test questions share another.
+
+Replace `https://example.com` with your website's URL in the crawler, hyperlink, and scraped-data programs. Set `OPENAI_API_KEY` before the API steps. The Go crawler follows same-domain redirects and writes files under `text`; subsequent programs read and write `processed/scraped.csv`, `processed/chunks.json`, and `processed/embeddings.csv` in order. The histogram steps write `token-histogram.png` locally.
+
+
+
+
+
+
+
 For Ruby, use Ruby 3.3 with the `openai`, `nokogiri`, `tiktoken_ruby`, and `chunky_png` gems. The [sample dependencies](https://github.com/openai/developers-website/blob/main/src/content/platform/ruby-examples/Gemfile) list tested versions.
 
 
@@ -99,6 +109,60 @@ class HyperlinkParser(HTMLParser):
             self.hyperlinks.append(attrs["href"])
 ```
 
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"golang.org/x/net/html"
+	"io"
+	"os"
+	"strings"
+)
+
+func parseHTML(body io.Reader) ([]string, string, error) {
+	document, err := html.Parse(body)
+	if err != nil {
+		return nil, "", err
+	}
+	links := []string{}
+	var text strings.Builder
+	var visit func(*html.Node)
+	visit = func(node *html.Node) {
+		if node.Type == html.ElementNode && (node.Data == "script" || node.Data == "style") {
+			return
+		}
+		if node.Type == html.TextNode {
+			text.WriteString(node.Data)
+		}
+		if node.Type == html.ElementNode && node.Data == "a" {
+			for _, attribute := range node.Attr {
+				if attribute.Key == "href" {
+					links = append(links, attribute.Val)
+				}
+			}
+		}
+		for child := node.FirstChild; child != nil; child = child.NextSibling {
+			visit(child)
+		}
+	}
+	visit(document)
+	return links, text.String(), nil
+}
+
+func main() {
+	links, _, err := parseHTML(os.Stdin)
+	if err == nil {
+		err = json.NewEncoder(os.Stdout).Encode(links)
+	}
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+```
+
 ```ruby
 require "net/http"
 require "uri"
@@ -147,6 +211,109 @@ def get_hyperlinks(url):
     parser.feed(html)
 
     return parser.hyperlinks
+```
+
+```go
+func parseHTML(body io.Reader) ([]string, string, error) {
+	document, err := html.Parse(body)
+	if err != nil {
+		return nil, "", err
+	}
+	links := []string{}
+	var text strings.Builder
+	var visit func(*html.Node)
+	visit = func(node *html.Node) {
+		if node.Type == html.ElementNode && (node.Data == "script" || node.Data == "style") {
+			return
+		}
+		if node.Type == html.TextNode {
+			text.WriteString(node.Data)
+		}
+		if node.Type == html.ElementNode && node.Data == "a" {
+			for _, attribute := range node.Attr {
+				if attribute.Key == "href" {
+					links = append(links, attribute.Val)
+				}
+			}
+		}
+		for child := node.FirstChild; child != nil; child = child.NextSibling {
+			visit(child)
+		}
+	}
+	visit(document)
+	return links, text.String(), nil
+}
+func validURL(value *url.URL) bool {
+	return (value.Scheme == "http" || value.Scheme == "https") && value.Host != "" && value.User == nil
+}
+func fetchPage(ctx context.Context, address, domain string) (*url.URL, []string, string, error) {
+	initial, err := url.Parse(address)
+	if err != nil {
+		return nil, nil, "", err
+	}
+	if !validURL(initial) || initial.Host != domain {
+		return nil, nil, "", fmt.Errorf("expected a same-domain HTTP or HTTPS URL")
+	}
+	client := &http.Client{Timeout: 10 * time.Second, CheckRedirect: func(request *http.Request, via []*http.Request) error {
+		if !validURL(request.URL) || request.URL.Host != domain {
+			return fmt.Errorf("expected a same-domain HTTP or HTTPS URL")
+		}
+		if len(via) > 5 {
+			return fmt.Errorf("Too many redirects")
+		}
+		request.URL.Fragment = ""
+		return nil
+	}}
+	request, err := http.NewRequestWithContext(ctx, http.MethodGet, initial.String(), nil)
+	if err != nil {
+		return nil, nil, "", err
+	}
+	response, err := client.Do(request)
+	if err != nil {
+		return nil, nil, "", err
+	}
+	defer response.Body.Close()
+	mediaType, _, _ := mime.ParseMediaType(response.Header.Get("Content-Type"))
+	if response.StatusCode < 200 || response.StatusCode >= 300 || mediaType != "text/html" {
+		// A nil final URL marks an HTTP error or non-HTML response to skip.
+		return nil, nil, "", nil
+	}
+	// Bound each downloaded page before parsing it.
+	body, err := io.ReadAll(io.LimitReader(response.Body, (8<<20)+1))
+	if err != nil {
+		return nil, nil, "", err
+	}
+	if len(body) > 8<<20 {
+		return nil, nil, "", fmt.Errorf("HTML page exceeds 8 MiB")
+	}
+	links, text, err := parseHTML(bytes.NewReader(body))
+	return response.Request.URL, links, text, err
+}
+func getHyperlinks(ctx context.Context, address string) ([]string, error) {
+	initial, err := url.Parse(address)
+	if err != nil {
+		return nil, err
+	}
+	final, links, _, err := fetchPage(ctx, address, initial.Host)
+	if err != nil {
+		return nil, err
+	}
+	if final == nil {
+		return []string{}, nil
+	}
+	resolved := []string{}
+	for _, link := range links {
+		if link == "" || strings.HasPrefix(link, "#") {
+			continue
+		}
+		relative, err := url.Parse(link)
+		if err != nil {
+			continue
+		}
+		resolved = append(resolved, final.ResolveReference(relative).String())
+	}
+	return resolved, nil
+}
 ```
 
 ```ruby
@@ -215,6 +382,49 @@ def get_domain_hyperlinks(local_domain, url):
         if parsed.scheme in {"http", "https"} and parsed.netloc == local_domain:
             links.add(candidate)
     return list(links)
+```
+
+```go
+func getDomainHyperlinks(ctx context.Context, domain, address string) ([]string, error) {
+	links, err := getHyperlinks(ctx, address)
+	if err != nil {
+		return nil, err
+	}
+	result := []string{}
+	seen := map[string]bool{}
+	for _, link := range links {
+		candidate, err := url.Parse(link)
+		if err != nil || !validURL(candidate) || candidate.Host != domain {
+			continue
+		}
+		candidate.Fragment = ""
+		normalized := candidate.String()
+		if !seen[normalized] {
+			seen[normalized] = true
+			result = append(result, normalized)
+		}
+	}
+	return result, nil
+}
+func crawlURL() string {
+	return "https://example.com"
+}
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	defer cancel()
+	address := crawlURL()
+	initial, err := url.Parse(address)
+	if err != nil {
+		log.Fatal(err)
+	}
+	links, err := getDomainHyperlinks(ctx, initial.Host, address)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := json.NewEncoder(os.Stdout).Encode(links); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -313,6 +523,226 @@ def crawl(url):
 crawl(full_url)
 ```
 
+```go
+package main
+
+import (
+	"bytes"
+	"context"
+	"crypto/sha256"
+	"fmt"
+	"golang.org/x/net/html"
+	"io"
+	"log"
+	"mime"
+	"net/http"
+	"net/url"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+)
+
+func parseHTML(body io.Reader) ([]string, string, error) {
+	document, err := html.Parse(body)
+	if err != nil {
+		return nil, "", err
+	}
+	links := []string{}
+	var text strings.Builder
+	var visit func(*html.Node)
+	visit = func(node *html.Node) {
+		if node.Type == html.ElementNode && (node.Data == "script" || node.Data == "style") {
+			return
+		}
+		if node.Type == html.TextNode {
+			text.WriteString(node.Data)
+		}
+		if node.Type == html.ElementNode && node.Data == "a" {
+			for _, attribute := range node.Attr {
+				if attribute.Key == "href" {
+					links = append(links, attribute.Val)
+				}
+			}
+		}
+		for child := node.FirstChild; child != nil; child = child.NextSibling {
+			visit(child)
+		}
+	}
+	visit(document)
+	return links, text.String(), nil
+}
+func validURL(value *url.URL) bool {
+	return (value.Scheme == "http" || value.Scheme == "https") && value.Host != "" && value.User == nil
+}
+func fetchPage(ctx context.Context, address, domain string) (*url.URL, []string, string, error) {
+	initial, err := url.Parse(address)
+	if err != nil {
+		return nil, nil, "", err
+	}
+	if !validURL(initial) || initial.Host != domain {
+		return nil, nil, "", fmt.Errorf("expected a same-domain HTTP or HTTPS URL")
+	}
+	client := &http.Client{Timeout: 10 * time.Second, CheckRedirect: func(request *http.Request, via []*http.Request) error {
+		if !validURL(request.URL) || request.URL.Host != domain {
+			return fmt.Errorf("expected a same-domain HTTP or HTTPS URL")
+		}
+		if len(via) > 5 {
+			return fmt.Errorf("Too many redirects")
+		}
+		request.URL.Fragment = ""
+		return nil
+	}}
+	request, err := http.NewRequestWithContext(ctx, http.MethodGet, initial.String(), nil)
+	if err != nil {
+		return nil, nil, "", err
+	}
+	response, err := client.Do(request)
+	if err != nil {
+		return nil, nil, "", err
+	}
+	defer response.Body.Close()
+	mediaType, _, _ := mime.ParseMediaType(response.Header.Get("Content-Type"))
+	if response.StatusCode < 200 || response.StatusCode >= 300 || mediaType != "text/html" {
+		// A nil final URL marks an HTTP error or non-HTML response to skip.
+		return nil, nil, "", nil
+	}
+	// Bound each downloaded page before parsing it.
+	body, err := io.ReadAll(io.LimitReader(response.Body, (8<<20)+1))
+	if err != nil {
+		return nil, nil, "", err
+	}
+	if len(body) > 8<<20 {
+		return nil, nil, "", fmt.Errorf("HTML page exceeds 8 MiB")
+	}
+	links, text, err := parseHTML(bytes.NewReader(body))
+	return response.Request.URL, links, text, err
+}
+func getHyperlinks(ctx context.Context, address string) ([]string, error) {
+	initial, err := url.Parse(address)
+	if err != nil {
+		return nil, err
+	}
+	final, links, _, err := fetchPage(ctx, address, initial.Host)
+	if err != nil {
+		return nil, err
+	}
+	if final == nil {
+		return []string{}, nil
+	}
+	resolved := []string{}
+	for _, link := range links {
+		if link == "" || strings.HasPrefix(link, "#") {
+			continue
+		}
+		relative, err := url.Parse(link)
+		if err != nil {
+			continue
+		}
+		resolved = append(resolved, final.ResolveReference(relative).String())
+	}
+	return resolved, nil
+}
+func getDomainHyperlinks(ctx context.Context, domain, address string) ([]string, error) {
+	links, err := getHyperlinks(ctx, address)
+	if err != nil {
+		return nil, err
+	}
+	result := []string{}
+	seen := map[string]bool{}
+	for _, link := range links {
+		candidate, err := url.Parse(link)
+		if err != nil || !validURL(candidate) || candidate.Host != domain {
+			continue
+		}
+		candidate.Fragment = ""
+		normalized := candidate.String()
+		if !seen[normalized] {
+			seen[normalized] = true
+			result = append(result, normalized)
+		}
+	}
+	return result, nil
+}
+func crawlURL() string {
+	return "https://example.com"
+}
+func crawl(ctx context.Context, address string) error {
+	initial, err := url.Parse(address)
+	if err != nil {
+		return err
+	}
+	if !validURL(initial) {
+		return fmt.Errorf("expected an HTTP or HTTPS URL")
+	}
+	initial.Fragment = ""
+	if initial.Path == "" {
+		initial.Path = "/"
+	}
+	directory := filepath.Join("text", initial.Host)
+	if err := os.MkdirAll(directory, 0700); err != nil {
+		return err
+	}
+	if err := os.MkdirAll("processed", 0700); err != nil {
+		return err
+	}
+	queue := []string{initial.String()}
+	seen := map[string]bool{initial.String(): true}
+	for len(queue) > 0 {
+		current := queue[len(queue)-1]
+		queue = queue[:len(queue)-1]
+		final, links, text, err := fetchPage(ctx, current, initial.Host)
+		if err != nil {
+			return err
+		}
+		if final == nil {
+			continue
+		}
+		final.Fragment = ""
+		if final.String() != current && seen[final.String()] {
+			continue
+		}
+		seen[final.String()] = true
+		fmt.Println(final.String())
+		name := strings.ReplaceAll(initial.Host+final.EscapedPath(), "/", "_")
+		// Include the complete URL so paths such as /a/b and /a_b stay distinct.
+		suffix := fmt.Sprintf("#%x", sha256.Sum256([]byte(final.String())))
+		limit := 255 - len(suffix) - len(".txt")
+		if len(name) > limit {
+			name = name[:limit]
+		}
+		name += suffix
+		if err := os.WriteFile(filepath.Join(directory, name+".txt"), []byte(text), 0600); err != nil {
+			return err
+		}
+		for _, link := range links {
+			if link == "" || strings.HasPrefix(link, "#") {
+				continue
+			}
+			relative, err := url.Parse(link)
+			if err != nil {
+				continue
+			}
+			candidate := final.ResolveReference(relative)
+			candidate.Fragment = ""
+			if !validURL(candidate) || candidate.Host != initial.Host || seen[candidate.String()] {
+				continue
+			}
+			seen[candidate.String()] = true
+			queue = append(queue, candidate.String())
+		}
+	}
+	return nil
+}
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+	defer cancel()
+	if err := crawl(ctx, crawlURL()); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 ```ruby
 def crawl(full_url)
   initial = URI.parse(full_url)
@@ -392,6 +822,39 @@ def remove_newlines(serie):
     return serie
 ```
 
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"strings"
+)
+
+func removeNewlines(texts []string) []string {
+	result := make([]string, len(texts))
+	for i, text := range texts {
+		text = strings.ReplaceAll(text, "\n", " ")
+		text = strings.ReplaceAll(text, `\n`, " ")
+		text = strings.ReplaceAll(text, "  ", " ")
+		result[i] = strings.ReplaceAll(text, "  ", " ")
+	}
+	return result
+}
+func main() {
+	var texts []string
+	err := json.NewDecoder(os.Stdin).Decode(&texts)
+	if err == nil {
+		err = json.NewEncoder(os.Stdout).Encode(removeNewlines(texts))
+	}
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+```
+
 ```ruby
 def remove_newlines(texts)
   texts.map { |text| text.tr("\n", " ").gsub('\n', " ").gsub("  ", " ").gsub("  ", " ") }
@@ -444,6 +907,95 @@ df = pd.DataFrame(texts, columns=["fname", "text"])
 df["text"] = df.fname + ". " + remove_newlines(df.text)
 df.to_csv("processed/scraped.csv")
 df.head()
+```
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/hex"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/url"
+	"os"
+	"path/filepath"
+	"strings"
+)
+
+func removeNewlines(texts []string) []string {
+	result := make([]string, len(texts))
+	for i, text := range texts {
+		text = strings.ReplaceAll(text, "\n", " ")
+		text = strings.ReplaceAll(text, `\n`, " ")
+		text = strings.ReplaceAll(text, "  ", " ")
+		result[i] = strings.ReplaceAll(text, "  ", " ")
+	}
+	return result
+}
+
+func main() {
+	address := "https://example.com"
+	initial, err := url.Parse(address)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if (initial.Scheme != "http" && initial.Scheme != "https") || initial.Host == "" || initial.User != nil {
+		log.Fatal("expected an HTTP or HTTPS URL")
+	}
+	directory := filepath.Join("text", initial.Host)
+	entries, err := os.ReadDir(directory)
+	if err != nil {
+		log.Fatal(err)
+	}
+	rows := []map[string]string{}
+	for _, entry := range entries {
+		if !entry.Type().IsRegular() || filepath.Ext(entry.Name()) != ".txt" {
+			continue
+		}
+		title := strings.TrimSuffix(entry.Name(), ".txt")
+		// The crawler's URL digest prevents filename collisions, but isn't a page title.
+		if i := strings.LastIndex(title, "#"); i >= 0 && len(title)-i == 65 {
+			if _, err := hex.DecodeString(title[i+1:]); err == nil {
+				title = title[:i]
+			}
+		}
+		if title == initial.Host || title == initial.Host+"_" {
+			title = "index"
+		} else {
+			title = strings.TrimPrefix(title, initial.Host+"_")
+		}
+		title = strings.NewReplacer("-", " ", "_", " ", "#update", "").Replace(title)
+		data, err := os.ReadFile(filepath.Join(directory, entry.Name()))
+		if err != nil {
+			log.Fatal(err)
+		}
+		text := removeNewlines([]string{string(data)})[0]
+		rows = append(rows, map[string]string{"fname": title, "text": fmt.Sprintf("%s. %s", title, text)})
+	}
+	if err := os.MkdirAll("processed", 0700); err != nil {
+		log.Fatal(err)
+	}
+	file, err := os.Create("processed/scraped.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	records := [][]string{{"fname", "text"}}
+	for _, row := range rows {
+		records = append(records, []string{row["fname"], row["text"]})
+	}
+	if err := csv.NewWriter(file).WriteAll(records); err != nil {
+		file.Close()
+		log.Fatal(err)
+	}
+	if err := file.Close(); err != nil {
+		log.Fatal(err)
+	}
+	if err := json.NewEncoder(os.Stdout).Encode(rows); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -502,6 +1054,113 @@ df["n_tokens"] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 
 # Visualize the distribution of the number of tokens per row using a histogram
 df.n_tokens.hist()
+```
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"github.com/tiktoken-go/tokenizer"
+	"image"
+	"image/color"
+	"image/draw"
+	"image/png"
+	"io"
+	"log"
+	"os"
+	"slices"
+)
+
+func readTexts(path string) ([]string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	column := -1
+	for i, name := range header {
+		if name == "text" {
+			column = i
+		}
+	}
+	if column < 0 {
+		return nil, fmt.Errorf("missing text column")
+	}
+	texts := []string{}
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		texts = append(texts, record[column])
+	}
+	return texts, nil
+}
+func histogram(texts []string) error {
+	codec, err := tokenizer.Get(tokenizer.Cl100kBase)
+	if err != nil {
+		return err
+	}
+	counts := make([]int, len(texts))
+	frequencies := map[int]int{}
+	for i, text := range texts {
+		ids, _, err := codec.Encode(text)
+		if err != nil {
+			return err
+		}
+		counts[i] = len(ids)
+		frequencies[counts[i]]++
+	}
+	keys := []int{}
+	maximum := 1
+	total := 0
+	for count, frequency := range frequencies {
+		keys = append(keys, count)
+		maximum = max(maximum, frequency)
+		total += frequency
+	}
+	slices.Sort(keys)
+	plot := image.NewRGBA(image.Rect(0, 0, 600, 400))
+	draw.Draw(plot, plot.Bounds(), image.NewUniform(color.White), image.Point{}, draw.Src)
+	for i, count := range keys {
+		left := 20 + i*560/len(keys)
+		right := 20 + (i+1)*560/len(keys)
+		top := 380 - frequencies[count]*360/maximum
+		draw.Draw(plot, image.Rect(left, top, right, 381), image.NewUniform(color.RGBA{0, 100, 0, 255}), image.Point{}, draw.Src)
+	}
+	file, err := os.Create("token-histogram.png")
+	if err != nil {
+		return err
+	}
+	if err := png.Encode(file, plot); err != nil {
+		file.Close()
+		return err
+	}
+	if err := file.Close(); err != nil {
+		return err
+	}
+	return json.NewEncoder(os.Stdout).Encode(map[string]any{"counts": counts, "histogram_total": total})
+}
+func main() {
+	texts, err := readTexts("processed/scraped.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := histogram(texts); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -593,6 +1252,122 @@ for row in df.iterrows():
         shortened.append(row[1]["text"])
 ```
 
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"github.com/tiktoken-go/tokenizer"
+	"io"
+	"log"
+	"os"
+	"strings"
+)
+
+func readTexts(path string) ([]string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	column := -1
+	for i, name := range header {
+		if name == "text" {
+			column = i
+		}
+	}
+	if column < 0 {
+		return nil, fmt.Errorf("missing text column")
+	}
+	texts := []string{}
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		texts = append(texts, record[column])
+	}
+	return texts, nil
+}
+func splitIntoMany(text string, maxTokens int) ([]string, error) {
+	if maxTokens <= 0 {
+		return nil, fmt.Errorf("maxTokens must be positive")
+	}
+	chunks := []string{}
+	if strings.TrimSpace(text) == "" {
+		return chunks, nil
+	}
+	codec, err := tokenizer.Get(tokenizer.Cl100kBase)
+	if err != nil {
+		return nil, err
+	}
+	sentences := strings.Split(text, ". ")
+	chunk := ""
+	for i, sentence := range sentences {
+		if i < len(sentences)-1 {
+			sentence += "."
+		}
+		ids, _, err := codec.Encode(sentence)
+		if err != nil {
+			return nil, err
+		}
+		if len(ids) > maxTokens {
+			return nil, fmt.Errorf("a sentence exceeds maxTokens; split it before chunking")
+		}
+		candidate := sentence
+		if chunk != "" {
+			candidate = chunk + " " + sentence
+		}
+		ids, _, err = codec.Encode(candidate)
+		if err != nil {
+			return nil, err
+		}
+		if len(ids) > maxTokens {
+			chunks = append(chunks, chunk)
+			chunk = sentence
+		} else {
+			chunk = candidate
+		}
+	}
+	if chunk != "" {
+		chunks = append(chunks, chunk)
+	}
+	return chunks, nil
+}
+
+func main() {
+	texts, err := readTexts("processed/scraped.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	chunks := []string{}
+	for _, text := range texts {
+		parts, err := splitIntoMany(text, 500)
+		if err != nil {
+			log.Fatal(err)
+		}
+		chunks = append(chunks, parts...)
+	}
+	data, err := json.Marshal(chunks)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := os.WriteFile("processed/chunks.json", data, 0600); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 ```ruby
 require "csv"
 require "json"
@@ -640,6 +1415,81 @@ Visualize token counts after splitting
 df = pd.DataFrame(shortened, columns=["text"])
 df["n_tokens"] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 df.n_tokens.hist()
+```
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"github.com/tiktoken-go/tokenizer"
+	"image"
+	"image/color"
+	"image/draw"
+	"image/png"
+	"log"
+	"os"
+	"slices"
+)
+
+func histogram(texts []string) error {
+	codec, err := tokenizer.Get(tokenizer.Cl100kBase)
+	if err != nil {
+		return err
+	}
+	counts := make([]int, len(texts))
+	frequencies := map[int]int{}
+	for i, text := range texts {
+		ids, _, err := codec.Encode(text)
+		if err != nil {
+			return err
+		}
+		counts[i] = len(ids)
+		frequencies[counts[i]]++
+	}
+	keys := []int{}
+	maximum := 1
+	total := 0
+	for count, frequency := range frequencies {
+		keys = append(keys, count)
+		maximum = max(maximum, frequency)
+		total += frequency
+	}
+	slices.Sort(keys)
+	plot := image.NewRGBA(image.Rect(0, 0, 600, 400))
+	draw.Draw(plot, plot.Bounds(), image.NewUniform(color.White), image.Point{}, draw.Src)
+	for i, count := range keys {
+		left := 20 + i*560/len(keys)
+		right := 20 + (i+1)*560/len(keys)
+		top := 380 - frequencies[count]*360/maximum
+		draw.Draw(plot, image.Rect(left, top, right, 381), image.NewUniform(color.RGBA{0, 100, 0, 255}), image.Point{}, draw.Src)
+	}
+	file, err := os.Create("token-histogram.png")
+	if err != nil {
+		return err
+	}
+	if err := png.Encode(file, plot); err != nil {
+		file.Close()
+		return err
+	}
+	if err := file.Close(); err != nil {
+		return err
+	}
+	return json.NewEncoder(os.Stdout).Encode(map[string]any{"counts": counts, "histogram_total": total})
+}
+func main() {
+	data, err := os.ReadFile("processed/chunks.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	var texts []string
+	if err := json.Unmarshal(data, &texts); err != nil {
+		log.Fatal(err)
+	}
+	if err := histogram(texts); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -696,6 +1546,68 @@ df.to_csv("processed/embeddings.csv")
 df.head()
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"log"
+	"os"
+	"strconv"
+	"time"
+)
+
+func run() error {
+	data, err := os.ReadFile("processed/chunks.json")
+	if err != nil {
+		return err
+	}
+	var texts []string
+	if err := json.Unmarshal(data, &texts); err != nil {
+		return err
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+	defer cancel()
+	client := openai.NewClient()
+	records := [][]string{{"text", "n_tokens", "embeddings"}}
+	for _, text := range texts {
+		response, err := client.Embeddings.New(ctx, openai.EmbeddingNewParams{Model: "text-embedding-3-small", Input: openai.EmbeddingNewParamsInputUnion{OfString: openai.String(text)}})
+		if err != nil {
+			return err
+		}
+		if len(response.Data) != 1 || response.Data[0].Index != 0 || len(response.Data[0].Embedding) == 0 {
+			return fmt.Errorf("expected one embedding")
+		}
+		vector, err := json.Marshal(response.Data[0].Embedding)
+		if err != nil {
+			return err
+		}
+		records = append(records, []string{text, strconv.FormatInt(response.Usage.PromptTokens, 10), string(vector)})
+	}
+	if err := os.MkdirAll("processed", 0700); err != nil {
+		return err
+	}
+	file, err := os.Create("processed/embeddings.csv")
+	if err != nil {
+		return err
+	}
+	if err := csv.NewWriter(file).WriteAll(records); err != nil {
+		file.Close()
+		return err
+	}
+	return file.Close()
+}
+func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 ```ruby
 require "openai"
 require "csv"
@@ -748,6 +1660,84 @@ df = pd.read_csv("processed/embeddings.csv", index_col=0)
 df["embeddings"] = df["embeddings"].apply(literal_eval).apply(np.array)
 
 df.head()
+```
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"os"
+)
+
+type embeddedRow struct {
+	Text      string
+	Embedding []float64
+}
+
+func loadEmbeddings(path string) ([]embeddedRow, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"text", "embeddings"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []embeddedRow{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		row := embeddedRow{Text: record[columns["text"]]}
+		if err := json.Unmarshal([]byte(record[columns["embeddings"]]), &row.Embedding); err != nil {
+			return nil, err
+		}
+		if len(row.Embedding) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(row.Embedding)
+		}
+		if len(row.Embedding) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		rows = append(rows, row)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no embeddings")
+	}
+	return rows, nil
+}
+func main() {
+	rows, err := loadEmbeddings("processed/embeddings.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err := json.NewEncoder(os.Stdout).Encode(rows[0].Embedding); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -810,6 +1800,135 @@ def create_context(question, df, max_len=1800):
     return "\n\n###\n\n".join(returns)
 ```
 
+```go
+import (
+	"context"
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+	"io"
+	"log"
+	"math"
+	"os"
+	"sort"
+	"strconv"
+	"strings"
+	"time"
+)
+
+type embeddedRow struct {
+	Text      string
+	NTokens   int
+	Embedding []float64
+}
+
+func loadEmbeddings(path string) ([]embeddedRow, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"text", "embeddings", "n_tokens"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []embeddedRow{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		row := embeddedRow{Text: record[columns["text"]]}
+		row.NTokens, err = strconv.Atoi(record[columns["n_tokens"]])
+		if err != nil || row.NTokens < 0 {
+			return nil, fmt.Errorf("invalid token count")
+		}
+		if err := json.Unmarshal([]byte(record[columns["embeddings"]]), &row.Embedding); err != nil {
+			return nil, err
+		}
+		if len(row.Embedding) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(row.Embedding)
+		}
+		if len(row.Embedding) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		rows = append(rows, row)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no embeddings")
+	}
+	return rows, nil
+}
+
+func cosineDistance(a, b []float64) (float64, error) {
+	if len(a) != len(b) {
+		return 0, fmt.Errorf("embedding dimensions differ")
+	}
+	dot, aa, bb := 0.0, 0.0, 0.0
+	for i, value := range a {
+		dot += value * b[i]
+		aa += value * value
+		bb += b[i] * b[i]
+	}
+	norm := math.Sqrt(aa * bb)
+	if norm <= 0 {
+		return 0, fmt.Errorf("embedding must have a nonzero norm")
+	}
+	return 1 - dot/norm, nil
+}
+func createContext(ctx context.Context, client *openai.Client, question string, rows []embeddedRow, maxLen int) (string, error) {
+	response, err := client.Embeddings.New(ctx, openai.EmbeddingNewParams{Input: openai.EmbeddingNewParamsInputUnion{OfString: openai.String(question)}, Model: "text-embedding-3-small"})
+	if err != nil {
+		return "", err
+	}
+	if len(response.Data) != 1 {
+		return "", fmt.Errorf("expected one query embedding")
+	}
+	type rankedRow struct {
+		Row      embeddedRow
+		Distance float64
+	}
+	ranked := make([]rankedRow, len(rows))
+	for i, row := range rows {
+		distance, err := cosineDistance(response.Data[0].Embedding, row.Embedding)
+		if err != nil {
+			return "", err
+		}
+		ranked[i] = rankedRow{row, distance}
+	}
+	sort.SliceStable(ranked, func(i, j int) bool { return ranked[i].Distance < ranked[j].Distance })
+	length := 0
+	parts := []string{}
+	for _, item := range ranked {
+		length += item.Row.NTokens + 4
+		if length > maxLen {
+			break
+		}
+		parts = append(parts, item.Row.Text)
+	}
+	return strings.Join(parts, "\n\n###\n\n"), nil
+}
+```
+
 ```ruby
 require "openai"
 require "csv"
@@ -859,6 +1978,23 @@ def answer_question(df, question, max_len=1800):
     return response.output_text.strip()
 ```
 
+```go
+func answerQuestion(ctx context.Context, client *openai.Client, rows []embeddedRow, question string, maxLen int) (string, error) {
+	retrieved, err := createContext(ctx, client, question, rows, maxLen)
+	if err != nil {
+		return "", err
+	}
+	response, err := client.Responses.New(ctx, responses.ResponseNewParams{Model: "gpt-6-luna", Instructions: openai.String("Answer the question using only the supplied context. If the context doesn't answer the question, say \"I don't know.\""), Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Context: " + retrieved + "\n\nQuestion: " + question)}})
+	if err != nil {
+		return "", err
+	}
+	if response.Status != responses.ResponseStatusCompleted {
+		return "", fmt.Errorf("response ended with status %s", response.Status)
+	}
+	return strings.TrimSpace(response.OutputText()), nil
+}
+```
+
 ```ruby
 def answer_question(client, rows, question, max_len: 1800)
   context = create_context(client, question, rows, max_len: max_len)
@@ -880,6 +2016,25 @@ Try example questions
 ```python
 print(answer_question(df, "What is ChatGPT?"))
 print(answer_question(df, "What did I have for breakfast today?"))
+```
+
+```go
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+	defer cancel()
+	client := openai.NewClient()
+	rows, err := loadEmbeddings("processed/embeddings.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, question := range []string{"What is ChatGPT?", "What did I have for breakfast today?"} {
+		answer, err := answerQuestion(ctx, &client, rows, question, 1800)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(answer)
+	}
+}
 ```
 
 ```ruby

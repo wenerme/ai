@@ -151,32 +151,6 @@ Content type: `multipart/form-data`
 
 ```http
 curl https://api.openai.com/v1/files \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F 'file=@/path/to/file' \
-    -F purpose=assistants
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "filename": "filename",
-  "object": "file",
-  "purpose": "assistants",
-  "status": "uploaded",
-  "expires_at": 0,
-  "status_details": "status_details"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F purpose="fine-tune" \
   -F file="@mydata.jsonl" \

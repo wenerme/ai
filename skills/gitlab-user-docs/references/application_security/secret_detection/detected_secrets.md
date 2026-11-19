@@ -325,9 +325,9 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Shopify private app access token                  | Shopify private app access token              | Yes | No | Yes | No | None |
 | Shopify custom app access token                   | Shopify custom app access token               | Yes | No | Yes | No | None |
 | Shopify shared secret                             | Shopify shared secret                         | Yes | No | Yes | No | None |
-| Slack app configuration token                     | SlackAppConfigurationToken                    | Yes | No | Yes | No | None |
+| Slack app configuration token                     | SlackAppConfigurationToken                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Slack app configuration refresh token             | SlackAppConfigurationRefreshToken             | Yes | No | Yes | No | None |
-| Slack app level token                             | SlackAppLevelToken                            | Yes | No | Yes | No | None |
+| Slack app level token                             | SlackAppLevelToken                            | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Slack bot user OAuth token                        | Slack token                                   | Yes | No | Yes | No | None |
 | Slack webhook                                     | Slack Webhook                                 | Yes | No | No | No | None |
 | SonarQube Global Analysis Token                   | SonarQubeGlobalAnalysisToken                  | Yes | No | Yes | No | None |

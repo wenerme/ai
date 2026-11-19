@@ -34,7 +34,7 @@ export default {
 				await updateAPI2();
 				break;
 			case "*/45 * * * *":
-				// Every forty-five minutes
+				// At minutes 0 and 45 of every hour
 				await updateAPI3();
 				break;
 		}
@@ -62,7 +62,7 @@ export default {
 				await updateAPI2();
 				break;
 			case "*/45 * * * *":
-				// Every forty-five minutes
+				// At minutes 0 and 45 of every hour
 				await updateAPI3();
 				break;
 		}
@@ -104,7 +104,7 @@ export default {
 				await updateAPI2();
 				break;
 			case "*/45 * * * *":
-				// Every forty-five minutes
+				// At minutes 0 and 45 of every hour
 				await updateAPI3();
 				break;
 		}
@@ -134,5 +134,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/#page","headline":"Multiple Cron Triggers","description":"Set multiple Cron Triggers on three different schedules.","url":"https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/og.png?v=8741bcd73a1f84fc","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JavaScript","TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/#page","headline":"Multiple Cron Triggers","description":"Set multiple Cron Triggers on three different schedules.","url":"https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/og.png?v=8741bcd73a1f84fc","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Middleware","JavaScript","TypeScript"]}
 ```

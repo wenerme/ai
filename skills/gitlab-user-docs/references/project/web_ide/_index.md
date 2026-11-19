@@ -59,12 +59,37 @@ To open a file by name in the Web IDE:
 1. Press <kbd>Command</kbd>+<kbd>P</kbd>.
 1. In the search box, enter the filename.
 
-### Search open files
+### Search files
 
-To search across open files in the Web IDE:
+- Search across all project files [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268604) in GitLab 19.7 [with a feature flag](../../../administration/feature_flags/_index.md) named `web_ide_project_wide_text_search`. Enabled by default.
 
-1. Press <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>F</kbd>.
-1. In the search box, enter your search term.
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Search for text in all files of the branch or commit you opened, including your uncommitted changes.
+
+To search files:
+
+1. On the left side of the Web IDE, select
+   (), or press <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>F</kbd>.
+1. In the search box, enter your search term, then press <kbd>Enter</kbd>.
+
+To change how the search term matches, select ,
+, or .
+To search only some files, select
+(), then enter patterns in
+or .
+
+Search has these limitations:
+
+- Search terms must have at least two characters.
+  A regular expression must contain at least three literal characters in a row outside any group,
+  and must not use `|` outside a group.
+  Otherwise, the Web IDE searches only your uncommitted changes.
+- Multiline search is not supported.
+- When a search term matches many lines in the repository, some results might be missing,
+  even if you use the search options or .
 
 ### Upload a file
 

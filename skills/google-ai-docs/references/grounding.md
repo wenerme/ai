@@ -1,7 +1,7 @@
 > ## AI Agent Context
-> Get the complete documentation index at: https://aistudio.google.com/llms.txt
-> Use this file to discover all available pages.
-> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+> - Full documentation index: https://aistudio.google.com/llms.txt
+> - Gemini Docs MCP server (consistent live info): https://gemini-api-docs-mcp.dev
+> - Coding agent skills & setup guide: https://aistudio.google.com/docs/coding-agents.md
 
 # Grounding with Google Search
 
@@ -12,13 +12,13 @@ knowledge cutoff.
 
 Grounding helps you build applications that can:
 
-*   **Increase factual accuracy:** Reduce model hallucinations by basing
+* **Increase factual accuracy:** Reduce model hallucinations by basing
   responses on real-world information.
 
-*   **Access real-time information:** Answer questions about recent events and
+* **Access real-time information:** Answer questions about recent events and
   topics.
 
-*   **Provide citations:** Build user trust by showing the sources for the
+* **Provide citations:** Build user trust by showing the sources for the
   model's claims.
 
 
@@ -151,23 +151,23 @@ of searching, processing, and citing information automatically.
 
 ![](https://www.gstatic.com/cloud-cms/0c893db002557e538dbe4c9afe8f5abf.png)
 
-1.   **User Prompt:** Your application sends a user's prompt to the Gemini API
-  with the `google_search` tool enabled.
+1. **User Prompt:** Your application sends a user's prompt to the Gemini API
+   with the `google_search` tool enabled.
 
-2.   **Prompt Analysis:** The model analyzes the prompt and determines if a
-  Google Search can improve the answer.
+2. **Prompt Analysis:** The model analyzes the prompt and determines if a
+   Google Search can improve the answer.
 
-3.   **Google Search:** If needed, the model automatically generates one or
-  multiple search queries and executes them.
+3. **Google Search:** If needed, the model automatically generates one or
+   multiple search queries and executes them.
 
-4.   **Search Results Processing:** The model processes the search results,
-  synthesizes the information, and formulates a response.
+4. **Search Results Processing:** The model processes the search results,
+   synthesizes the information, and formulates a response.
 
-5.   **Grounded Response:** The API returns a final, user-friendly response that
-  is grounded in the search results. This response includes the model's text
-  answer with inline `annotations` containing the citations, as well as
-  `google_search_call` and `google_search_result` steps with the search
-  queries and search suggestions.
+5. **Grounded Response:** The API returns a final, user-friendly response that
+   is grounded in the search results. This response includes the model's text
+   answer with inline `annotations` containing the citations, as well as
+   `google_search_call` and `google_search_result` steps with the search
+   queries and search suggestions.
 
 
 ## Understanding the grounding response  {% id="understanding-the-grounding-response" %}
@@ -235,13 +235,13 @@ provide citation information linking parts of the response to their sources.
 
 The key fields in the response:
 
-*   `google_search_call` : Contains the search `queries` the model executed.
+* `google_search_call` : Contains the search `queries` the model executed.
 
-*   `google_search_result` : Contains `search_suggestions`, an HTML snippet
+* `google_search_result` : Contains `search_suggestions`, an HTML snippet
   for rendering search suggestions in your UI. Full usage requirements are
   detailed in the [Terms of Service](/docs/terms#grounding-with-google-search).
 
-*   `text` with `annotations` : The model's synthesized answer with inline
+* `text` with `annotations` : The model's synthesized answer with inline
   citations. Each `url_citation` annotation links a text segment (defined
   by `start_index` and `end_index`) to a source URL. This is the key to
   building inline citations.
@@ -502,6 +502,7 @@ overview](/docs/models) page.
 | --- | :---: |
 | Gemini 4 Carbon | ✔️ |
 | Gemini 4 Argon | ✔️ |
+| Gemini 4 Neon | ✔️ |
 | Gemini 4 Hydrogen | ✔️ |
 | Gemini 3.8 Flash | ✔️ |
 | Gemini 3.6 Flash | ✔️ |

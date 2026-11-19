@@ -426,7 +426,7 @@ curl https://api.openai.com/v1/images/edits \
             }
           ],
           "prompt": "Add a watercolor effect to this image",
-          "model": "gpt-image-1.5",
+          "model": "gpt-image-2.6-flare",
           "quality": "high",
           "size": "1024x1024"
         }'
@@ -479,7 +479,7 @@ curl -s -D >(grep -i x-request-id >&2) \
   -o >(jq -r '.data[0].b64_json' | base64 --decode > gift-basket.png) \
   -X POST "https://api.openai.com/v1/images/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -F "model=gpt-image-1.5" \
+  -F "model=gpt-image-2.6-flare" \
   -F "image[]=@body-lotion.png" \
   -F "image[]=@bath-bomb.png" \
   -F "image[]=@incense-kit.png" \
@@ -500,7 +500,7 @@ curl https://api.openai.com/v1/images/edits \
             }
           ],
           "prompt": "Add a watercolor effect to this image",
-          "model": "gpt-image-1.5",
+          "model": "gpt-image-2.6-flare",
           "quality": "high",
           "size": "1024x1024"
         }'
@@ -522,8 +522,7 @@ curl https://api.openai.com/v1/images/edits \
           "mask": {
             "file_id": "file-mask123"
           },
-          "model": "gpt-image-1.5",
-          "output_compression": 100,
+          "model": "gpt-image-2.6-flare",
           "output_format": "png"
         }'
 ```
@@ -533,7 +532,7 @@ curl https://api.openai.com/v1/images/edits \
 ```http
 curl -s -N -X POST "https://api.openai.com/v1/images/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -F "model=gpt-image-1.5" \
+  -F "model=gpt-image-2.6-flare" \
   -F "image[]=@body-lotion.png" \
   -F "image[]=@bath-bomb.png" \
   -F "image[]=@incense-kit.png" \

@@ -89,44 +89,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RATE_LIMIT_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{}'
-```
-
-#### 200 example 1
-
-```json
-{
-  "id": "id",
-  "max_requests_per_1_minute": 0,
-  "max_tokens_per_1_minute": 0,
-  "model": "model",
-  "object": "project.rate_limit",
-  "batch_1_day_max_input_tokens": 0,
-  "max_audio_megabytes_per_1_minute": 0,
-  "max_images_per_1_minute": 0,
-  "max_requests_per_1_day": 0
-}
-```
-
-#### 404 — default
-
-```json
-{
-  "error": {
-    "code": "project_not_found",
-    "message": "The project proj_abc was not found",
-    "type": "invalid_request_error",
-    "param": null
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limits/rl_xxx \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

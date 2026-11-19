@@ -66,6 +66,30 @@ Cloudflare does not support the [binary format ↗︎](https://opentelemetry.io/
 
 ![Edit Destination dialog showing configuration for Honeycomb tracing with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1942,height=974,format=webp/_astro/destination-setup.B8cxx8yd.png)
 
+## Custom receiver requirements
+
+A custom receiver must accept OTLP over HTTP with JSON encoding. Use separate endpoints for traces and logs, typically `/v1/traces` and `/v1/logs`. Configure any authentication headers when you create the destination. Cloudflare sends a test export to the receiver using those headers before saving the destination.
+
+For traces, accept a JSON export request with a `resourceSpans` array. For logs, accept `resourceLogs`. Handle empty arrays as valid requests. For example, test the traces endpoint with the same authentication headers as your destination:
+
+```sh
+curl --include --request POST https://otel.example.com/v1/traces \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer <TOKEN>" \
+  --data '{"resourceSpans": []}'
+```
+
+For a successful export with no partial failures, return:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{}
+```
+
+If destination creation fails, check the receiver logs, URL, authentication headers, and response against the [OTLP/HTTP response contract ↗︎](https://opentelemetry.io/docs/specs/otlp/#otlphttp-response).
+
 ## Enable export for Cloudflare Traces
 
 Add the destination under **Export destinations** in your domain settings. Refer to [Cloudflare Traces configuration](https://developers.cloudflare.com/observability/traces/configuration/#export-traces).
@@ -97,5 +121,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/observability/export/opentelemetry/#page","headline":"OpenTelemetry export","description":"Export Cloudflare logs and traces to OpenTelemetry destinations.","url":"https://developers.cloudflare.com/observability/export/opentelemetry/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/export/opentelemetry/og.png?v=2a6205b4ded568cd","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/observability/export/opentelemetry/#page","headline":"OpenTelemetry export","description":"Export Cloudflare logs and traces to OpenTelemetry destinations.","url":"https://developers.cloudflare.com/observability/export/opentelemetry/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/export/opentelemetry/og.png?v=2a6205b4ded568cd","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

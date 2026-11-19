@@ -47,26 +47,6 @@ Retrieves a user in a group.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "email": "email",
-  "is_service_account": true,
-  "name": "name",
-  "picture": "picture",
-  "user_type": "user"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

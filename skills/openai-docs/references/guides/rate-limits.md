@@ -213,14 +213,27 @@ The Python examples below demonstrate fallback backoff. They don't inspect `Retr
 
 
 
-##### Example 1: Using the Tenacity library
+##### Example 1: Use a retry library
 
 
 
-Tenacity is an Apache 2.0 licensed general-purpose retrying library, written in Python, to simplify the task of adding retry behavior to just about anything.
-To add exponential backoff to your requests, you can use the `tenacity.retry` decorator. The below example uses the `tenacity.wait_random_exponential` function to add random exponential backoff to a request.
 
-Using the Tenacity library
+
+
+The Python example uses [Tenacity](https://tenacity.readthedocs.io/), a third-party retry library. Its `retry` decorator and `wait_random_exponential` function add random exponential backoff.
+
+
+
+
+
+
+
+The Go example uses [`github.com/avast/retry-go/v4`](https://github.com/avast/retry-go) at version `v4.7.0`. It limits the request to six attempts and honors `Retry-After` within a one-minute delay budget. If a server delay exceeds the one-minute budget or a quota error occurs, the function returns to the caller.
+
+
+
+
+Retry with exponential backoff
 
 ```python
 from openai import OpenAI, RateLimitError
@@ -253,6 +266,75 @@ response = response_with_backoff(
 print(response.output_text)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	retry "github.com/avast/retry-go/v4"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/openai/openai-go/v3/shared"
+	"math"
+	"net/http"
+	"strconv"
+	"strings"
+	"time"
+)
+
+// retryDelay rejects permanent errors and server delays beyond this example's budget.
+func retryDelay(err error) (time.Duration, bool) {
+	var apiError *openai.Error
+	if !errors.As(err, &apiError) || apiError.StatusCode != http.StatusTooManyRequests || apiError.Code == "insufficient_quota" || apiError.Code == "billing_hard_limit_reached" {
+		return 0, false
+	}
+	if apiError.Response == nil {
+		return 0, true
+	}
+	hint := strings.TrimSpace(apiError.Response.Header.Get("Retry-After"))
+	seconds, parseErr := strconv.ParseFloat(hint, 64)
+	if parseErr != nil {
+		if date, dateErr := http.ParseTime(hint); dateErr == nil {
+			seconds, parseErr = time.Until(date).Seconds(), nil
+		}
+	}
+	if parseErr != nil || math.IsNaN(seconds) || seconds < 0 {
+		return 0, true
+	}
+	if seconds > 60 {
+		return 0, false
+	}
+	return time.Duration(seconds * float64(time.Second)), true
+}
+
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
+	defer cancel()
+	client := openai.NewClient(option.WithMaxRetries(0))
+	operation := func() (*responses.Response, error) {
+		return client.Responses.New(ctx, responses.ResponseNewParams{Model: "gpt-6-luna", Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say hello in one sentence.")}, Reasoning: shared.ReasoningParam{Effort: shared.ReasoningEffortLow}, MaxOutputTokens: openai.Int(1024)})
+	}
+	response, err := retry.DoWithData(operation, retry.Context(ctx), retry.Attempts(6), retry.Delay(time.Second), retry.MaxDelay(time.Minute), retry.LastErrorOnly(true), retry.RetryIf(func(err error) bool { _, ok := retryDelay(err); return ok }), retry.DelayType(func(n uint, err error, config *retry.Config) time.Duration {
+		wait := retry.CombineDelay(retry.BackOffDelay, retry.RandomDelay)(n, err, config)
+		serverDelay, _ := retryDelay(err)
+		if serverDelay > wait {
+			return serverDelay
+		}
+		return wait
+	}))
+	if err != nil {
+		panic(err)
+	}
+	if response.Status != "completed" {
+		panic("Response did not complete")
+	}
+	fmt.Println(response.OutputText())
+}
+```
+
 ```ruby
 require "openai"
 require "retriable"
@@ -270,8 +352,7 @@ puts(response.output_text)
 ```
 
 
-Note that the Tenacity library is a third-party tool, and OpenAI makes no guarantees about
-its reliability or security.
+These retry libraries are third-party tools; review their behavior and security for your application.
 
 
 
@@ -279,13 +360,27 @@ its reliability or security.
 
 
 
-##### Example 2: Using the backoff library
+##### Example 2: Use a backoff library
 
 
 
-Another python library that provides function decorators for backoff and retry is [backoff](https://pypi.org/project/backoff/):
 
-Using the backoff library
+
+
+The Python example uses [backoff](https://pypi.org/project/backoff/), which provides decorators for retry behavior.
+
+
+
+
+
+
+
+The Go example uses [`github.com/cenkalti/backoff/v5`](https://github.com/cenkalti/backoff/tree/v5.0.3) at version `v5.0.3`. It limits the request to six attempts, honors `Retry-After` within a one-minute delay budget, and returns permanent errors without retrying.
+
+
+
+
+Retry with a backoff schedule
 
 ```python
 import backoff
@@ -309,6 +404,84 @@ response = response_with_backoff(
 print(response.output_text)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	"github.com/cenkalti/backoff/v5"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/openai/openai-go/v3/shared"
+	"math"
+	"net/http"
+	"strconv"
+	"strings"
+	"time"
+)
+
+// retryDelay rejects permanent errors and server delays beyond this example's budget.
+func retryDelay(err error) (time.Duration, bool) {
+	var apiError *openai.Error
+	if !errors.As(err, &apiError) || apiError.StatusCode != http.StatusTooManyRequests || apiError.Code == "insufficient_quota" || apiError.Code == "billing_hard_limit_reached" {
+		return 0, false
+	}
+	if apiError.Response == nil {
+		return 0, true
+	}
+	hint := strings.TrimSpace(apiError.Response.Header.Get("Retry-After"))
+	seconds, parseErr := strconv.ParseFloat(hint, 64)
+	if parseErr != nil {
+		if date, dateErr := http.ParseTime(hint); dateErr == nil {
+			seconds, parseErr = time.Until(date).Seconds(), nil
+		}
+	}
+	if parseErr != nil || math.IsNaN(seconds) || seconds < 0 {
+		return 0, true
+	}
+	if seconds > 60 {
+		return 0, false
+	}
+	return time.Duration(seconds * float64(time.Second)), true
+}
+
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
+	defer cancel()
+	client := openai.NewClient(option.WithMaxRetries(0))
+	operation := func() (*responses.Response, error) {
+		return client.Responses.New(ctx, responses.ResponseNewParams{Model: "gpt-6-luna", Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say hello in one sentence.")}, Reasoning: shared.ReasoningParam{Effort: shared.ReasoningEffortLow}, MaxOutputTokens: openai.Int(1024)})
+	}
+	schedule := backoff.NewExponentialBackOff()
+	schedule.InitialInterval = time.Second
+	schedule.MaxInterval = 40 * time.Second // Default jitter keeps each fallback delay below one minute.
+	response, err := backoff.Retry(ctx, func() (*responses.Response, error) {
+		value, err := operation()
+		if err == nil {
+			return value, nil
+		}
+		delay, retryable := retryDelay(err)
+		if !retryable {
+			return value, backoff.Permanent(err)
+		}
+		if delay > 0 {
+			return value, errors.Join(err, backoff.RetryAfter(int(math.Ceil(delay.Seconds()))))
+		}
+		return value, err
+	}, backoff.WithBackOff(schedule), backoff.WithMaxTries(6))
+	if err != nil {
+		panic(err)
+	}
+	if response.Status != "completed" {
+		panic("Response did not complete")
+	}
+	fmt.Println(response.OutputText())
+}
+```
+
 ```ruby
 require "openai"
 require "retryable"
@@ -326,7 +499,7 @@ puts(response.output_text)
 ```
 
 
-Like Tenacity, the backoff library is a third-party tool, and OpenAI makes no guarantees about its reliability or security.
+These backoff libraries are third-party tools; review their behavior and security for your application.
 
 
 
@@ -409,6 +582,90 @@ response = response_with_backoff(
     max_output_tokens=64,
 )
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/openai/openai-go/v3/shared"
+	"math"
+	"math/rand/v2"
+	"net/http"
+	"strconv"
+	"strings"
+	"time"
+)
+
+func retryWithExponentialBackoff[T any](ctx context.Context, operation func() (T, error)) (T, error) {
+	delay := time.Second
+	for retries := 0; ; retries++ {
+		value, err := operation()
+		var apiError *openai.Error
+		if err == nil || !errors.As(err, &apiError) || apiError.StatusCode != http.StatusTooManyRequests || apiError.Code == "insufficient_quota" || apiError.Code == "billing_hard_limit_reached" || retries >= 10 {
+			return value, err
+		}
+		delay = time.Duration(float64(delay) * 2 * (1 + rand.Float64()))
+		if delay > time.Minute {
+			delay = time.Minute
+		}
+		wait := delay
+		if apiError.Response != nil {
+			hint := strings.TrimSpace(apiError.Response.Header.Get("Retry-After"))
+			seconds, parseErr := strconv.ParseFloat(hint, 64)
+			if parseErr != nil {
+				if date, dateErr := http.ParseTime(hint); dateErr == nil {
+					seconds, parseErr = time.Until(date).Seconds(), nil
+				}
+			}
+			if parseErr == nil && !math.IsNaN(seconds) && seconds >= 0 {
+				// Defer a request whose server delay exceeds this retry budget.
+				if seconds > 60 {
+					return value, err
+				}
+				serverDelay := time.Duration(seconds*float64(time.Second)) + time.Duration(rand.Float64()*float64(time.Second))
+				if serverDelay > wait {
+					wait = serverDelay
+				}
+			}
+		}
+		timer := time.NewTimer(wait)
+		select {
+		case <-ctx.Done():
+			timer.Stop()
+			var zero T
+			return zero, ctx.Err()
+		case <-timer.C:
+		}
+	}
+}
+
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
+	defer cancel()
+	client := openai.NewClient(option.WithMaxRetries(0))
+	response, err := retryWithExponentialBackoff(ctx, func() (*responses.Response, error) {
+		return client.Responses.New(ctx, responses.ResponseNewParams{
+			Model:           "gpt-6-luna",
+			Input:           responses.ResponseNewParamsInputUnion{OfString: openai.String("Say hello in one sentence.")},
+			Reasoning:       shared.ReasoningParam{Effort: shared.ReasoningEffortLow},
+			MaxOutputTokens: openai.Int(1024),
+		})
+	})
+	if err != nil {
+		panic(err)
+	}
+	if response.Status != "completed" {
+		panic("Response did not complete")
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```ruby

@@ -66,27 +66,6 @@ Get the organization's hard spend limit.
 
 ```http
 curl https://api.openai.com/v1/organization/spend_limit \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "currency": "USD",
-  "enforcement": {
-    "status": "inactive"
-  },
-  "interval": "month",
-  "object": "organization.spend_limit",
-  "threshold_amount": 0
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/spend_limit \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
 ```

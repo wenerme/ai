@@ -156,6 +156,19 @@ client = OpenAI(
 )
 ```
 
+```go
+import (
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+)
+
+const baseURL = "https://southcentralus.privatelink.api.openai.com/v1"
+
+var client = openai.NewClient(
+	option.WithBaseURL(baseURL),
+)
+```
+
 ```ruby
 client = OpenAI::Client.new(
   base_url: "https://southcentralus.privatelink.api.openai.com/v1"

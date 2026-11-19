@@ -79,30 +79,6 @@ You can get a certificate regardless of whether it is active or not.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "certificate_details": {
-    "content": "content",
-    "expires_at": 0,
-    "valid_at": 0
-  },
-  "created_at": 0,
-  "name": "name",
-  "object": "certificate",
-  "active": true
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/organization/certificates/cert_abc?include[]=content" \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```

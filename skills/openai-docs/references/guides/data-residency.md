@@ -12,6 +12,8 @@ Data residency is a project configuration option that lets you choose the locati
 
 Eligible organizations can [enable data residency](#how-to-use-data-residency) when creating a project in the API Platform. Data residency endpoints are charged a [10% uplift](https://developers.openai.com/api/docs/pricing) for models released on or after March 5, 2026, that are eligible for data residency.
 
+[**Contact sales**](https://openai.com/contact-sales/) **to discuss your data residency needs and become eligible.**
+
 ## How does data residency work?
 
 You can select an available region when creating a project.
@@ -35,6 +37,8 @@ Data residency does not apply to:
 If your selected Region does not support regional processing, as identified below, OpenAI may also process and temporarily store Customer Content outside of the Region to deliver the services.
 
 ## How to use data residency
+
+[**Contact sales**](https://openai.com/contact-sales/) **to discuss your data residency needs and become eligible.**
 
 Data residency is configured per-project within your API Organization. As an organization owner:
 
@@ -84,6 +88,48 @@ response = client.with_options(
     input="Reply with OK.",
 )
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+	"os"
+)
+
+func main() {
+	// EU processing requires a key from an EU-region project.
+	euKey := os.Getenv("OPENAI_EU_API_KEY")
+	if euKey == "" {
+		panic("Set OPENAI_EU_API_KEY to an EU-project credential")
+	}
+	client := openai.NewClient()
+	ctx := context.Background()
+	params := responses.ResponseNewParams{Model: "gpt-6.1-terra", Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Reply with OK.")}}
+	response, err := client.Responses.New(ctx, params)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+	response, err = client.Responses.New(ctx, params, option.WithDataResidency(option.DataResidencyUS))
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+	response, err = client.Responses.New(ctx, params,
+		option.WithDataResidency(option.DataResidencyEU), option.WithAPIKey(euKey),
+		option.WithHeaderDel("OpenAI-Organization"), option.WithHeaderDel("OpenAI-Project"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```ruby

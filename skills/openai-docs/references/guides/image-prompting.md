@@ -71,7 +71,7 @@ Omit `input_fidelity` on image edits. GPT-Image-2.6 does not support `reasoning.
 5. **Tune one setting at a time.** Change either quality or complexity. Repeat each request and compare how often the output meets your criteria and how long it takes.
 6. **Roll out by workflow.** Move a small share of traffic after the new model meets your criteria. Track response time, failures, retries, and cost per accepted image before you expand.
 
-When migrating from GPT-Image-1 or GPT-Image-1.5, use its reference tab to check parameter differences and shutdown dates. If part of an image must remain pixel-identical, composite the approved edit into the original.
+When migrating from GPT Image 1 or GPT Image 1.5, use its reference tab to check parameter differences and shutdown dates. If part of an image must remain pixel-identical, composite the approved edit into the original.
 
 ## Prompting fundamentals
 
@@ -1391,6 +1391,73 @@ cutout = client.images.edit(
 Path("extract-product.png").write_bytes(base64.b64decode(cutout.data[0].b64_json))
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"os"
+)
+
+func main() {
+	if len(os.Args) != 2 {
+		panic("Usage: go run . MODEL_ID")
+	}
+	model := os.Args[1]
+	suffix := ".png"
+	client := openai.NewClient()
+	ctx := context.Background()
+	logos, err := client.Images.Generate(ctx, openai.ImageGenerateParams{
+		Model:  openai.ImageModel(model),
+		Prompt: "Create an original logo for Field & Flour, a local bakery. Use warm, simple shapes on a fully transparent background, with clean alpha edges and no shadow or checkerboard.",
+		Size:   "1024x1536", Quality: "medium", Background: "transparent", OutputFormat: "png", N: openai.Int(4),
+	})
+	if err != nil {
+		panic(err)
+	}
+	if len(logos.Data) != 4 {
+		panic("Expected four logo candidates")
+	}
+	for i, image := range logos.Data {
+		saveImage(fmt.Sprintf("logo-generation-%d%s", i+1, suffix), image.B64JSON)
+	}
+	input, err := os.Open("input_images/shampoo.webp")
+	if err != nil {
+		panic(err)
+	}
+	defer input.Close()
+	cutout, err := client.Images.Edit(ctx, openai.ImageEditParams{
+		Model:  openai.ImageModel(model),
+		Image:  openai.ImageEditParamsImageUnion{OfFile: openai.File(input, "shampoo.webp", "image/webp")},
+		Prompt: "Extract the product onto a fully transparent background. Preserve its geometry and label, with clean edges and no shadow or restyling.",
+		Size:   "1024x1536", Quality: "medium", Background: "transparent", OutputFormat: "png",
+	})
+	if err != nil {
+		panic(err)
+	}
+	if len(cutout.Data) != 1 {
+		panic("Expected one product cutout")
+	}
+	saveImage("extract-product"+suffix, cutout.Data[0].B64JSON)
+}
+
+func saveImage(filename, encoded string) {
+	if encoded == "" {
+		panic("No PNG returned")
+	}
+	data, err := base64.StdEncoding.Strict().DecodeString(encoded)
+	if err != nil {
+		panic(err)
+	}
+	if err := os.WriteFile(filename, data, 0600); err != nil {
+		panic(err)
+	}
+}
+```
+
 ```ruby
 require "base64"
 require "openai"
@@ -1533,7 +1600,7 @@ For transparent assets, explicitly request `background="transparent"` and use PN
 5. **Tune one setting at a time.** Compare quality levels before rewriting the prompt. Measure typical and slow responses, failures, retries, and cost per accepted image. Confirm current pricing rather than assuming the faster model costs less.
 6. **Roll out by workflow.** Once the released model passes your acceptance criteria, move a small share of traffic, monitor the same measures, and expand gradually. Keep the previous model available for rollback while it remains supported.
 
-When migrating from GPT-Image-1 or GPT-Image-1.5, use the reference tabs to check parameter differences and shutdown dates. Test the candidate model's supported request settings rather than copying older settings unchanged. For GPT-Image-2, keep your existing resolution and transparency requirements in the comparison.
+When migrating from GPT Image 1 or GPT Image 1.5, use the reference tabs to check parameter differences and shutdown dates. Test the candidate model's supported request settings rather than copying older settings unchanged. For GPT-Image-2, keep your existing resolution and transparency requirements in the comparison.
 
 Repeated edits can still change details you intended to preserve. Restate those constraints and inspect each result. If a region must remain pixel-identical, composite the approved edit into the original image instead of relying on prompting alone.
 
@@ -2846,6 +2913,70 @@ Path("extract-product-gpt-image-2.5-sunburst.png").write_bytes(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"os"
+)
+
+func main() {
+	model := "gpt-image-2.5-sunburst"
+	suffix := "-" + model + ".png"
+	client := openai.NewClient()
+	ctx := context.Background()
+	logos, err := client.Images.Generate(ctx, openai.ImageGenerateParams{
+		Model:  openai.ImageModel(model),
+		Prompt: "Create an original logo for Field & Flour, a local bakery. Use warm, simple shapes on a fully transparent background, with clean alpha edges and no shadow or checkerboard.",
+		Size:   "1024x1536", Quality: "medium", Background: "transparent", OutputFormat: "png", N: openai.Int(4),
+	})
+	if err != nil {
+		panic(err)
+	}
+	if len(logos.Data) != 4 {
+		panic("Expected four logo candidates")
+	}
+	for i, image := range logos.Data {
+		saveImage(fmt.Sprintf("logo-generation-%d%s", i+1, suffix), image.B64JSON)
+	}
+	input, err := os.Open("input_images/shampoo.webp")
+	if err != nil {
+		panic(err)
+	}
+	defer input.Close()
+	cutout, err := client.Images.Edit(ctx, openai.ImageEditParams{
+		Model:  openai.ImageModel(model),
+		Image:  openai.ImageEditParamsImageUnion{OfFile: openai.File(input, "shampoo.webp", "image/webp")},
+		Prompt: "Extract the product onto a fully transparent background. Preserve its geometry and label, with clean edges and no shadow or restyling.",
+		Size:   "1024x1536", Quality: "medium", Background: "transparent", OutputFormat: "png",
+	})
+	if err != nil {
+		panic(err)
+	}
+	if len(cutout.Data) != 1 {
+		panic("Expected one product cutout")
+	}
+	saveImage("extract-product"+suffix, cutout.Data[0].B64JSON)
+}
+
+func saveImage(filename, encoded string) {
+	if encoded == "" {
+		panic("No PNG returned")
+	}
+	data, err := base64.StdEncoding.Strict().DecodeString(encoded)
+	if err != nil {
+		panic(err)
+	}
+	if err := os.WriteFile(filename, data, 0600); err != nil {
+		panic(err)
+	}
+}
+```
+
 ```ruby
 require "base64"
 require "openai"
@@ -2937,11 +3068,11 @@ For the original prompts, inputs, and runnable workflows, see the pinned [GPT-Im
           id="gpt-image-1.5-guide"
           className="m-0 text-3xl font-semibold text-default"
         >
-          {"GPT-Image-1.5 reference"}
+          {"GPT Image 1.5 reference"}
         </h2>
         
 
-          Overview and request settings for existing GPT-Image-1.5 workflows.
+          Overview and request settings for existing GPT Image 1.5 workflows.
         
 
       </header>
@@ -2954,13 +3085,13 @@ For the original prompts, inputs, and runnable workflows, see the pinned [GPT-Im
   notice](https://developers.openai.com/api/docs/deprecations#2026-06-02-gpt-image-model-deprecations) and
   validate existing workflows with `gpt-image-2` before migrating.
 
-GPT-Image-1.5 supports image generation and editing, including text rendering, photorealistic images, and reference-based edits. Use this reference to maintain existing integrations. The [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5) covers shared techniques for composition, text, reference images, and preserving details during edits. Test those techniques with your model and inputs; outputs can differ across models.
+GPT Image 1.5 supports image generation and editing, including text rendering, photorealistic images, and reference-based edits. Use this reference to maintain existing integrations. The [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5) covers shared techniques for composition, text, reference images, and preserving details during edits. Test those techniques with your model and inputs; outputs can differ across models.
 
 ## Model parameters
 
 Use `client.images.generate` for generation and `client.images.edit` for edits. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for API setup and request examples.
 
-| Parameter            | GPT-Image-1.5                                                                                                                                                                          |
+| Parameter            | GPT Image 1.5                                                                                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`              | `gpt-image-1.5`                                                                                                                                                                        |
 | `quality`            | `low`, `medium`, `high`, or `auto`                                                                                                                                                     |
@@ -2980,11 +3111,11 @@ Use `client.images.generate` for generation and `client.images.edit` for edits. 
           id="gpt-image-1-guide"
           className="m-0 text-3xl font-semibold text-default"
         >
-          {"GPT-Image-1 reference"}
+          {"GPT Image 1 reference"}
         </h2>
         
 
-          Legacy request settings for migrating GPT-Image-1 workflows.
+          Legacy request settings for migrating GPT Image 1 workflows.
         
 
       </header>
@@ -2998,13 +3129,13 @@ Use `client.images.generate` for generation and `client.images.edit` for edits. 
   notice](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) for
   migration details.
 
-GPT-Image-1 supported image generation and editing with reference images and masks. Use this reference when migrating existing integrations. For shared techniques such as describing a scene, preserving details, and refining an edit, see the [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5).
+GPT Image 1 supported image generation and editing with reference images and masks. Use this reference when migrating existing integrations. For shared techniques such as describing a scene, preserving details, and refining an edit, see the [prompting guide](https://developers.openai.com/api/docs/guides/image-prompting?model=gpt-image-2.5).
 
 ## Model parameters
 
-These settings describe legacy GPT-Image-1 requests. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for supported models, API setup, and current request examples.
+These settings describe legacy GPT Image 1 requests. See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for supported models, API setup, and current request examples.
 
-| Parameter            | GPT-Image-1                                                                                                                                                                                                                              |
+| Parameter            | GPT Image 1                                                                                                                                                                                                                              |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `model`              | `gpt-image-1`                                                                                                                                                                                                                            |
 | `quality`            | `low`, `medium`, `high`, or `auto`                                                                                                                                                                                                       |

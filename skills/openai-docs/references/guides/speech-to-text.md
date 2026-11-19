@@ -726,6 +726,14 @@ The Ruby example calls `ffmpeg`.
 
 
 
+
+
+
+The Go example requires `ffmpeg` and `ffprobe` on your `PATH`. It writes the first ten minutes to `good_morning_10.wav` and prints the input and output durations in milliseconds.
+
+
+
+
 Split a long audio file
 
 ```python
@@ -739,6 +747,62 @@ ten_minutes = 10 * 60 * 1000
 first_10_minutes = song[:ten_minutes]
 
 first_10_minutes.export("good_morning_10.wav", format="wav")
+```
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"math"
+	"os"
+	"os/exec"
+	"strconv"
+)
+
+func audioDurationMS(path string) (int64, error) {
+	output, err := exec.Command("ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "json", path).Output()
+	if err != nil {
+		return 0, fmt.Errorf("inspect audio: %w", err)
+	}
+	var probe struct {
+		Format struct {
+			Duration string `json:"duration"`
+		} `json:"format"`
+	}
+	if err := json.Unmarshal(output, &probe); err != nil {
+		return 0, err
+	}
+	seconds, err := strconv.ParseFloat(probe.Format.Duration, 64)
+	if err != nil {
+		return 0, err
+	}
+	if math.IsNaN(seconds) || math.IsInf(seconds, 0) || seconds < 0 {
+		return 0, fmt.Errorf("invalid audio duration")
+	}
+	return int64(math.Round(seconds * 1000)), nil
+}
+
+func main() {
+	inputMS, err := audioDurationMS("good_morning.wav")
+	if err != nil {
+		panic(err)
+	}
+	// Keep the first ten minutes without altering the retained PCM samples.
+	command := exec.Command("ffmpeg", "-v", "error", "-y", "-i", "good_morning.wav",
+		"-t", "600", "-c:a", "pcm_s16le", "-flags:a", "+bitexact", "-fflags", "+bitexact", "-map_metadata", "-1", "good_morning_10.wav")
+	if output, err := command.CombinedOutput(); err != nil {
+		panic(fmt.Errorf("trim audio: %w: %s", err, output))
+	}
+	outputMS, err := audioDurationMS("good_morning_10.wav")
+	if err != nil {
+		panic(err)
+	}
+	if err := json.NewEncoder(os.Stdout).Encode(map[string]int64{"input_ms": inputMS, "output_ms": outputMS}); err != nil {
+		panic(err)
+	}
+}
 ```
 
 ```ruby

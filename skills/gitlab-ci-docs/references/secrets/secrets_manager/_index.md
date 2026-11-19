@@ -257,6 +257,13 @@ For more information, see [access secrets from external tools](external-tools.md
 
 ## Manage secrets permissions
 
+After the Secrets Manager is set up for the project or group, users with the Owner role
+can also go to the secrets permissions settings from the secrets list:
+
+1. In the top bar, select **Search or go to** and find your project or group.
+1. In the left sidebar, select **Secure** > **Secrets manager**.
+1. In the upper-right corner, select **Settings** ().
+
 ### For a project
 
 - Write permission [updated](https://gitlab.com/gitlab-org/gitlab/-/work_items/630995) to separate create and update permissions in GitLab 19.6.

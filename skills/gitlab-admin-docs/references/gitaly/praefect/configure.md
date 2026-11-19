@@ -1511,8 +1511,11 @@ Particular attention should be shown to:
 1. Verify on each Gitaly node the Git Hooks can reach GitLab. On each Gitaly node run:
 
    ```shell
-   sudo -u git -- /opt/gitlab/embedded/bin/gitaly check /var/opt/gitlab/gitaly/config.toml
+   sudo /opt/gitlab/embedded/bin/chpst -e /opt/gitlab/etc/gitaly/env -u git:git /opt/gitlab/embedded/bin/gitaly check /var/opt/gitlab/gitaly/config.toml
    ```
+
+   The `chpst -e` option runs the check with the environment variables of the Gitaly service, such as `SSL_CERT_DIR`.
+   The check then trusts the same certificates as the service.
 
 1. Verify that GitLab can reach Praefect:
 

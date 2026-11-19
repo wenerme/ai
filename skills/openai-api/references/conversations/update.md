@@ -47,32 +47,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "metadata": {
-            "foo": "string"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "conversation"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/conversations/conv_123 \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \

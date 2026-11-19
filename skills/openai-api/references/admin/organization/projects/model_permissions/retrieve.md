@@ -37,25 +37,6 @@ Returns model permissions for a project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/model_permissions \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "mode": "allow_list",
-  "model_ids": [
-    "string"
-  ],
-  "object": "project.model_permissions"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -68,8 +49,8 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
     "object": "project.model_permissions",
     "mode": "allow_list",
     "model_ids": [
-        "gpt-6-astra",
-        "o3"
+        "gpt-6.2-astra",
+        "gpt-6.2-sol"
     ]
 }
 ```

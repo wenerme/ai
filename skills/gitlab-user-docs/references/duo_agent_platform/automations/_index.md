@@ -308,8 +308,6 @@ summary of stale issues.
 The flow receives no merge request or work item, so use [instructions](#add-instructions)
 to tell the flow what to do on each run.
 
-> [!disclaimer]
-
 Scheduled automations have these limits:
 
 - A scheduled automation has one schedule.

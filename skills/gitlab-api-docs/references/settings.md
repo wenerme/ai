@@ -571,6 +571,7 @@ Example responses:
 - `merge_request_diff_download_request_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270001) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_request_diff_download_rate_limit`. Disabled by default. While the flag is disabled, requests over the limit are logged but not blocked.
 - `issues_analytics_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269532) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `issues_analytics_rate_limit_enforce`. Disabled by default.
 - `merge_requests_merge_ref_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270070) in GitLab 19.7.
+- `user_add_on_assignment_bulk_create_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270545) in GitLab 19.7.
 
 In general, all settings are optional. When enabling some settings, you might also need
 to configure other related settings. These requirements are in the `Required` column of the following table.
@@ -663,6 +664,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `create_organization_api_limit`          | integer          | no                                   | Maximum number of requests every minute for each user to `POST /organizations`. Default: `10`. Set to `0` to disable the rate limit. See [Organizations API rate limits](../rate_limits/api/organizations.md). |
 | `cross_reference_checks_limit`           | integer          | no                                   | Maximum number of references that GitLab checks for "mentioned in" notes every minute for each user, when the user saves a description or comment. Commits do not count. Default: `800`. Set to `0` to disable the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. |
 | `updating_name_disabled_for_users`       | boolean          | no                                   | [Disable user profile name changes](../administration/settings/account_and_limit_settings.md#disable-user-profile-name-changes). |
+| `user_add_on_assignment_bulk_create_limit` | integer | no | Maximum number of `userAddOnAssignmentBulkCreate` GraphQL mutation calls every minute for each user. Default: `0`, which disables the rate limit. |
 | `deactivate_dormant_users`               | boolean          | no                                   | Enable [automatic deactivation of dormant users](../administration/moderate_users.md#automatically-deactivate-dormant-users). |
 | `deactivate_dormant_users_period`        | integer          | no                                   | Length of time (in days) after which a user is considered dormant. |
 | `decompress_archive_file_timeout`        | integer          | no                                   | Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts. |

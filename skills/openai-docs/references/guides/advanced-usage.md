@@ -51,6 +51,14 @@ The examples below use `gpt-3.5-turbo-0613`, which was [retired on September 13,
 
 This local counter applies only to text messages for that historical snapshot. Message formatting varies by model.
 
+
+
+
+The Go examples use the third-party `github.com/tiktoken-go/tokenizer` package, version `v0.10.0`. Install it in your Go module before running either complete example.
+
+
+
+
 Count chat message tokens
 
 ```python
@@ -76,6 +84,50 @@ def num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613"):
     raise ValueError(
         f"num_tokens_from_messages() only supports gpt-3.5-turbo-0613, not {model}."
     )
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/tiktoken-go/tokenizer"
+)
+
+// numTokensFromMessages estimates the historical model's message framing.
+// Other models and tool definitions require different accounting.
+func numTokensFromMessages(messages []map[string]string, model string) (int, error) {
+	if model != "gpt-3.5-turbo-0613" {
+		return 0, fmt.Errorf("unsupported token-counting model: %s", model)
+	}
+	encoding, err := tokenizer.Get(tokenizer.Cl100kBase)
+	if err != nil {
+		return 0, err
+	}
+	total := 3
+	for _, message := range messages {
+		total += 3
+		for key, value := range message {
+			ids, _, err := encoding.Encode(value)
+			if err != nil {
+				return 0, err
+			}
+			total += len(ids)
+			if key == "name" {
+				total++
+			}
+		}
+	}
+	return total, nil
+}
+
+func main() {
+	count, err := numTokensFromMessages([]map[string]string{{"role": "user", "content": "Hi"}}, "gpt-3.5-turbo-0613")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(count)
+}
 ```
 
 ```ruby
@@ -132,6 +184,61 @@ model = "gpt-3.5-turbo-0613"
 
 print(f"{num_tokens_from_messages(messages, model)} prompt tokens counted.")
 # 129 prompt tokens counted.
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/tiktoken-go/tokenizer"
+)
+
+// numTokensFromMessages estimates the historical model's message framing.
+// Other models and tool definitions require different accounting.
+func numTokensFromMessages(messages []map[string]string, model string) (int, error) {
+	if model != "gpt-3.5-turbo-0613" {
+		return 0, fmt.Errorf("unsupported token-counting model: %s", model)
+	}
+	encoding, err := tokenizer.Get(tokenizer.Cl100kBase)
+	if err != nil {
+		return 0, err
+	}
+	total := 3
+	for _, message := range messages {
+		total += 3
+		for key, value := range message {
+			ids, _, err := encoding.Encode(value)
+			if err != nil {
+				return 0, err
+			}
+			total += len(ids)
+			if key == "name" {
+				total++
+			}
+		}
+	}
+	return total, nil
+}
+
+var messages = []map[string]string{
+	{"role": "system", "content": "You are a helpful, pattern-following assistant that translates corporate jargon into plain English."},
+	{"role": "system", "name": "example_user", "content": "New synergies will help drive top-line growth."},
+	{"role": "system", "name": "example_assistant", "content": "Things working well together will increase revenue."},
+	{"role": "system", "name": "example_user", "content": "Let's circle back when we have more bandwidth to touch base on opportunities for increased leverage."},
+	{"role": "system", "name": "example_assistant", "content": "Let's talk later when we're less busy about how to do better."},
+	{"role": "user", "content": "This late pivot means we don't have time to boil the ocean for the client deliverable."},
+}
+
+const model = "gpt-3.5-turbo-0613"
+
+func main() {
+	count, err := numTokensFromMessages(messages, model)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%d prompt tokens counted.\n", count)
+}
 ```
 
 ```ruby
@@ -214,6 +321,28 @@ if response.usage is None:
 print(f"{response.usage.prompt_tokens} prompt tokens used.")
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model:    "gpt-6.2-astra",
+		Messages: []openai.ChatCompletionMessageParamUnion{openai.UserMessage("Translate this sentence into plain English.")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%d prompt tokens used.\n", response.Usage.PromptTokens)
+}
+```
+
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -271,6 +400,13 @@ Set frequency and presence penalties
 
 ```python
 mu[j] = mu[j] - c[j] * alpha_frequency - float(c[j] > 0) * alpha_presence
+```
+
+```go
+mu[j] -= counts[j] * frequency
+if counts[j] > 0 {
+	mu[j] -= presence
+}
 ```
 
 ```ruby

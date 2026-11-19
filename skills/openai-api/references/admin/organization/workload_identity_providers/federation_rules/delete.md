@@ -29,24 +29,6 @@ Delete a federation rule to a project service account.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/workload_identity_providers/$WORKLOAD_IDENTITY_PROVIDER_ID/federation_rules/$WORKLOAD_IDENTITY_FEDERATION_RULE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.workload_identity_federation_rule.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE "https://api.openai.com/v1/organization/workload_identity_providers/wip_example/federation_rules/wifr_example" \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```

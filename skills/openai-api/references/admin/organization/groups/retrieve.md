@@ -45,25 +45,6 @@ Retrieves a group.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "group_type": "group",
-  "is_scim_managed": true,
-  "name": "name"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

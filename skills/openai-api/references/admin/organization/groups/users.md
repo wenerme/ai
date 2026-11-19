@@ -39,27 +39,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "user_id": "user_id"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "group_id": "group_id",
-  "object": "group.user",
-  "user_id": "user_id"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
@@ -105,23 +84,6 @@ Removes a user from a group.
   Always `group.user.deleted`.
 
   - `"group.user.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "deleted": true,
-  "object": "group.user.deleted"
-}
-```
 
 ### Example
 
@@ -207,30 +169,6 @@ Lists the users assigned to a group.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "email": "email",
-      "name": "name"
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -298,26 +236,6 @@ Retrieves a user in a group.
   - `"user"`
 
   - `"tenant_user"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "email": "email",
-  "is_service_account": true,
-  "name": "name",
-  "picture": "picture",
-  "user_type": "user"
-}
-```
 
 ### Example
 

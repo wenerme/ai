@@ -34,24 +34,6 @@ Returns confirmation of the key deletion.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.project.api_key.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -218,52 +200,6 @@ Returns a list of API keys in the project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "last_used_at": 0,
-      "name": "name",
-      "object": "organization.project.api_key",
-      "owner": {
-        "service_account": {
-          "id": "id",
-          "created_at": 0,
-          "name": "name",
-          "role": "role"
-        },
-        "type": "user",
-        "user": {
-          "id": "id",
-          "created_at": 0,
-          "email": "email",
-          "name": "name",
-          "role": "role"
-        }
-      },
-      "owner_project_access": "active",
-      "redacted_value": "redacted_value",
-      "expires_at": 0
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key_abc&limit=20&owner_project_access=any \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -424,44 +360,6 @@ Retrieves an API key in the project.
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
     `format: unixtime`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "last_used_at": 0,
-  "name": "name",
-  "object": "organization.project.api_key",
-  "owner": {
-    "service_account": {
-      "id": "id",
-      "created_at": 0,
-      "name": "name",
-      "role": "role"
-    },
-    "type": "user",
-    "user": {
-      "id": "id",
-      "created_at": 0,
-      "email": "email",
-      "name": "name",
-      "role": "role"
-    }
-  },
-  "owner_project_access": "active",
-  "redacted_value": "redacted_value",
-  "expires_at": 0
-}
-```
 
 ### Example
 
@@ -648,50 +546,6 @@ Content type: `application/json`
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
     `format: unixtime`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "scopes": [
-            "api.all.read"
-          ]
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "last_used_at": 0,
-  "name": "name",
-  "object": "organization.project.api_key",
-  "owner": {
-    "service_account": {
-      "id": "id",
-      "created_at": 0,
-      "name": "name",
-      "role": "role"
-    },
-    "type": "user",
-    "user": {
-      "id": "id",
-      "created_at": 0,
-      "email": "email",
-      "name": "name",
-      "role": "role"
-    }
-  },
-  "owner_project_access": "active",
-  "redacted_value": "redacted_value",
-  "expires_at": 0
-}
-```
 
 ### Example
 

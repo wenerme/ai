@@ -3749,6 +3749,83 @@ with client.responses.stream(
     print(final_response)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	schema := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"attributes": map[string]any{"type": "array", "items": map[string]any{"type": "string"}},
+			"colors":     map[string]any{"type": "array", "items": map[string]any{"type": "string"}},
+			"animals":    map[string]any{"type": "array", "items": map[string]any{"type": "string"}},
+		},
+		"required":             []string{"attributes", "colors", "animals"},
+		"additionalProperties": false,
+	}
+	stream := client.Responses.NewStreaming(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-6.2-astra",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage("Extract entities from the input text.", responses.EasyInputMessageRoleSystem),
+			responses.ResponseInputItemParamOfMessage("The quick brown fox jumps over the lazy dog with piercing blue eyes.", responses.EasyInputMessageRoleUser),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "entities", Schema: schema, Strict: openai.Bool(true)},
+		}},
+	})
+	defer stream.Close()
+	completed := false
+	refused := false
+	for stream.Next() {
+		event := stream.Current()
+		switch event.Type {
+		case "response.output_text.delta":
+			fmt.Print(event.AsResponseOutputTextDelta().Delta)
+		case "response.refusal.delta":
+			fmt.Print(event.AsResponseRefusalDelta().Delta)
+		case "response.failed", "response.incomplete", "error":
+			panic(fmt.Sprintf("Response stream failed: %s", event.RawJSON()))
+		case "response.completed":
+			response := event.AsResponseCompleted().Response
+			if response.Status != "completed" {
+				panic("Response did not complete")
+			}
+			completed = true
+			for _, item := range response.Output {
+				if item.Type != "message" {
+					continue
+				}
+				for _, part := range item.AsMessage().Content {
+					if part.Type == "refusal" {
+						refused = true
+					}
+				}
+			}
+		}
+	}
+	if err := stream.Err(); err != nil {
+		panic(err)
+	}
+	if !completed {
+		panic("Stream ended before response.completed")
+	}
+	if refused {
+		fmt.Println("\nRefused")
+	} else {
+		fmt.Println("\nCompleted")
+	}
+}
+```
+
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -4070,6 +4147,50 @@ const finalSchema = z.discriminatedUnion("status", [
 
 // Invalid JSON Schema for Structured Outputs
 const json = zodResponseFormat(finalSchema, "final_schema");
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"errors"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+	"os"
+)
+
+func main() {
+	// A union can be nested inside an object, but cannot be the root schema.
+	variants := []any{}
+	for _, variant := range []struct{ status, field string }{{"success", "value"}, {"error", "error"}} {
+		variants = append(variants, map[string]any{
+			"type": "object", "properties": map[string]any{
+				"status":      map[string]any{"type": "string", "enum": []string{variant.status}},
+				variant.field: map[string]any{"type": "string"},
+			}, "required": []string{"status", variant.field}, "additionalProperties": false,
+		})
+	}
+	rootUnion := map[string]any{"anyOf": variants}
+	client := openai.NewClient()
+	_, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-6.2-astra", Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Return a successful result.")}, Store: openai.Bool(false),
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{
+			Name: "result", Strict: openai.Bool(true), Schema: rootUnion,
+		}}},
+	})
+	if err == nil {
+		panic("Expected the API to reject the root union")
+	}
+	var apiError *openai.Error
+	if !errors.As(err, &apiError) || apiError.StatusCode != 400 || apiError.Code != "invalid_json_schema" {
+		panic(err)
+	}
+	if err := json.NewEncoder(os.Stdout).Encode(map[string]any{"status": apiError.StatusCode, "code": apiError.Code}); err != nil {
+		panic(err)
+	}
+}
 ```
 
 ```ruby

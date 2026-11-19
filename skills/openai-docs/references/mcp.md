@@ -391,6 +391,128 @@ if __name__ == "__main__":
     main()
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"github.com/modelcontextprotocol/go-sdk/mcp"
+	"github.com/openai/openai-go/v3"
+	"log"
+	"net"
+	"net/http"
+	"os"
+	"os/signal"
+	"strings"
+	"syscall"
+	"time"
+)
+
+type searchInput struct {
+	Query string `json:"query"`
+}
+type searchResult struct {
+	ID    string `json:"id"`
+	Title string `json:"title"`
+	URL   string `json:"url"`
+}
+type searchOutput struct {
+	Results []searchResult `json:"results"`
+}
+type fetchInput struct {
+	ID string `json:"id"`
+}
+type fetchOutput struct {
+	ID       string         `json:"id"`
+	Title    string         `json:"title"`
+	Text     string         `json:"text"`
+	URL      string         `json:"url"`
+	Metadata map[string]any `json:"metadata,omitempty"`
+}
+
+func main() {
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer cancel()
+	client := openai.NewClient()
+	// Replace this illustrative ID with your existing document store ID.
+	store := "vs_123"
+	server := mcp.NewServer(&mcp.Implementation{Name: "Sample MCP Server", Version: "1.0.0"}, &mcp.ServerOptions{Instructions: "Search for relevant documents, then fetch complete content with citations."})
+	mcp.AddTool(server, &mcp.Tool{Name: "search", Description: "Search documents and return identities, titles, and citation URLs."}, func(ctx context.Context, _ *mcp.CallToolRequest, input searchInput) (*mcp.CallToolResult, searchOutput, error) {
+		result := searchOutput{Results: []searchResult{}}
+		if strings.TrimSpace(input.Query) == "" {
+			return nil, result, nil
+		}
+		page, err := client.VectorStores.Search(ctx, store, openai.VectorStoreSearchParams{Query: openai.VectorStoreSearchParamsQueryUnion{OfString: openai.String(input.Query)}})
+		if err != nil {
+			return nil, result, err
+		}
+		for _, item := range page.Data {
+			result.Results = append(result.Results, searchResult{ID: item.FileID, Title: item.Filename, URL: "https://platform.openai.com/storage/files/" + item.FileID})
+		}
+		return nil, result, nil
+	})
+	mcp.AddTool(server, &mcp.Tool{Name: "fetch", Description: "Retrieve a complete document with its citation and metadata."}, func(ctx context.Context, _ *mcp.CallToolRequest, input fetchInput) (*mcp.CallToolResult, fetchOutput, error) {
+		if input.ID == "" {
+			return &mcp.CallToolResult{IsError: true, Content: []mcp.Content{&mcp.TextContent{Text: "Document ID is required"}}}, fetchOutput{}, nil
+		}
+		content := client.VectorStores.Files.ContentAutoPaging(ctx, store, input.ID)
+		var parts []string
+		for content.Next() {
+			parts = append(parts, content.Current().Text)
+		}
+		if err := content.Err(); err != nil {
+			return nil, fetchOutput{}, err
+		}
+		info, err := client.VectorStores.Files.Get(ctx, store, input.ID)
+		if err != nil {
+			return nil, fetchOutput{}, err
+		}
+		file, err := client.Files.Get(ctx, input.ID)
+		if err != nil {
+			return nil, fetchOutput{}, err
+		}
+		metadata := map[string]any{}
+		for name, value := range info.Attributes {
+			var decoded any
+			if err := json.Unmarshal([]byte(value.RawJSON()), &decoded); err != nil {
+				return nil, fetchOutput{}, err
+			}
+			metadata[name] = decoded
+		}
+		return nil, fetchOutput{ID: input.ID, Title: file.Filename, Text: strings.Join(parts, "\n"), URL: "https://platform.openai.com/storage/files/" + input.ID, Metadata: metadata}, nil
+	})
+
+	handler := mcp.NewStreamableHTTPHandler(func(*http.Request) *mcp.Server { return server }, &mcp.StreamableHTTPOptions{Stateless: true, JSONResponse: true})
+	mux := http.NewServeMux()
+	mux.Handle("/mcp", handler)
+	port := "8000"
+	host := "127.0.0.1"
+	listener, err := net.Listen("tcp", net.JoinHostPort(host, port))
+	if err != nil {
+		log.Fatal(err)
+	}
+	httpServer := &http.Server{Handler: mux, ReadHeaderTimeout: 5 * time.Second}
+	fmt.Println("Listening on http://" + listener.Addr().String())
+	shutdownDone := make(chan struct{})
+	go func() {
+		defer close(shutdownDone)
+		<-ctx.Done()
+		shutdownCtx, stop := context.WithTimeout(context.Background(), 5*time.Second)
+		defer stop()
+		if err := httpServer.Shutdown(shutdownCtx); err != nil {
+			log.Print(err)
+		}
+	}()
+	if err := httpServer.Serve(listener); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		log.Fatal(err)
+	}
+	<-shutdownDone
+}
+```
+
 ```ruby
 require "openai"
 require "mcp"
@@ -549,6 +671,14 @@ https://777xxx.janeway.replit.dev/sse/
 
 
 For Ruby, install the `openai`, `mcp` (version 1.10.0), `rackup`, and `webrick` gems, save the Ruby source as `server.rb`, and run `ruby server.rb`. Set `OPENAI_VECTOR_STORE_ID` to your vector store ID and `MCP_HOST` to `0.0.0.0` on Replit. The Ruby server uses Streamable HTTP at `/mcp`; use that path instead of `/sse/` in the connection URL. The Ruby server uses port 8000 by default or the port specified by `PORT`.
+
+
+
+
+
+
+
+For Go, use Go 1.26 or later with `github.com/openai/openai-go/v3` and `github.com/modelcontextprotocol/go-sdk@v1.8.0`. Set `OPENAI_API_KEY`, replace the illustrative `vs_123` value with your existing vector store ID, save the source as `main.go` in your module, and run `go run .`. The server uses Streamable HTTP at `/mcp` on port 8000. Edit the `port` literal to use another port and the `host` literal to bind the server to `0.0.0.0` on Replit.
 
 
 

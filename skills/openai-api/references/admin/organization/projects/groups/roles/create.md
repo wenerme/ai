@@ -95,43 +95,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "role_id": "role_id"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "group": {
-    "id": "id",
-    "created_at": 0,
-    "name": "name",
-    "object": "group",
-    "scim_managed": true
-  },
-  "object": "group.role",
-  "role": {
-    "id": "id",
-    "description": "description",
-    "name": "name",
-    "object": "role",
-    "permissions": [
-      "string"
-    ],
-    "predefined_role": true,
-    "resource_type": "resource_type"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/roles \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

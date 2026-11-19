@@ -71,33 +71,7 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 ### Example
 
 ```http
-curl https://api.openai.com/v1/fine_tuning/checkpoints/$FINE_TUNED_MODEL_CHECKPOINT/permissions \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "object": "checkpoint.permission",
-      "project_id": "project_id"
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18:org:weather:B7R9VjQd/permissions \
+curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4.1-mini-2025-04-14:org:weather:B7R9VjQd/permissions \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 

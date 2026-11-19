@@ -40,9 +40,16 @@ Configuring Spectrum to protect your FTP server requires creating a set of Spect
 
 ### Protect the Control Port
 
-The control plane runs on port 21 by default, and there is nothing special that needs to be to protect this part of the FTP server. In the example below, replace 198.51.100.1 with the IP of the origin server.
+The control plane runs on port 21 by default, and there is nothing special that needs to be to protect this part of the FTP server. Create a Spectrum application with the following settings, replacing `198.51.100.1` with the IP of the origin server.
 
-![Add an application dialog with IP address and port set to 21](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=656,height=1153,format=webp/_astro/ftp-control-plane-app.CCDNXmIO.png)
+| Setting | Value |
+| --- | --- |
+| Application Type | TCP |
+| Subdomain | `ftp` (for `ftp.example.com`) |
+| Edge Port | `21` |
+| Origin type | IP or DNS record |
+| Origin IP or DNS record | `198.51.100.1` |
+| Port | `21` |
 
 This configuration proxies incoming connections to the origin. However, if clients issue a PASV command, they will still receive the IP of the actual origin for the data connection. This is not preferred, as this exposes the origin's IP to the client instead of being masked behind Spectrum. Steps to prevent this are documented in sections below.
 
@@ -100,5 +107,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ftp/#page","headline":"FTP","description":"Enable Spectrum for FTP services and understand protocol limitations.","url":"https://developers.cloudflare.com/spectrum/about/ftp/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/about/ftp/og.png?v=b156b89001681860","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["FTP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ftp/#page","headline":"FTP","description":"Enable Spectrum for FTP services and understand protocol limitations.","url":"https://developers.cloudflare.com/spectrum/about/ftp/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/about/ftp/og.png?v=b156b89001681860","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["FTP"]}
 ```

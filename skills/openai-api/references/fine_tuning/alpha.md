@@ -707,7 +707,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
           ]
         }
       ],
-      "model": "gpt-5-mini",
+      "model": "gpt-4.1-mini-2025-04-14",
       "sampling_params": {
         "temperature": 0.2
       }
@@ -740,7 +740,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
           ]
         }
       ],
-      "model": "gpt-5-mini",
+      "model": "gpt-4.1-mini-2025-04-14",
       "sampling_params": {
         "temperature": 1,
         "top_p": 1,
@@ -786,11 +786,11 @@ curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
       "completion_tokens": 134,
       "cached_tokens": 0
     },
-    "sampled_model_name": "gpt-5-mini"
+    "sampled_model_name": "gpt-4.1-mini-2025-04-14"
   },
   "sub_rewards": {},
   "model_grader_token_usage_per_model": {
-    "gpt-5-mini": {
+    "gpt-4.1-mini-2025-04-14": {
       "prompt_tokens": 190,
       "total_tokens": 324,
       "completion_tokens": 134,
@@ -1791,37 +1791,6 @@ Content type: `application/json`
       The object type, which is always `multi`.
 
       - `"multi"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "grader": {
-            "input": "input",
-            "name": "name",
-            "operation": "eq",
-            "reference": "reference",
-            "type": "string_check"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "grader": {
-    "input": "input",
-    "name": "name",
-    "operation": "eq",
-    "reference": "reference",
-    "type": "string_check"
-  }
-}
-```
 
 ### Example
 

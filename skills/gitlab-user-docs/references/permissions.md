@@ -260,6 +260,7 @@ Group permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_in
 | Action                                                           | Guest | Planner | Reporter | Security Manager | Developer | Maintainer | Owner |
 |------------------------------------------------------------------|:-----:|:-------:|:--------:|:----------------:|:---------:|:----------:|:-----:|
 | Enable GitLab Secrets Manager[^com-top-level]                    |       |         |          |                  |           |            |   ✓   |
+| Open Secrets Manager settings from the secrets list              |       |         |          |                  |           |            |   ✓   |
 | Manage permissions for secrets                                   |       |         |          |                  |           |            |   ✓   |
 | Read secret metadata                                             |       |         |          |                  |           |            |   ✓   |
 | Create, update, and delete secrets[^owners-grant-action]         |       |         |          |                  |           |            |   ✓   |
@@ -833,6 +834,7 @@ Project permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_
 | Action                                                                                      | Guest | Planner | Reporter | Security Manager | Developer | Maintainer | Owner |
 |---------------------------------------------------------------------------------------------|:-----:|:-------:|:--------:|:----------------:|:---------:|:----------:|:-----:|
 | View Secrets Manager user permissions                                                       |       |         |          |                  |           | ✓          |   ✓   |
+| Open Secrets Manager settings from the secrets list                                         |       |         |          |                  |           |            |   ✓   |
 | Manage permissions for secrets                                                              |       |         |          |                  |           |            |   ✓   |
 | Read secrets metadata[^users-owner-role], [^users-maintainer-role], [^users-developer-role] |       |         |          |                  | ✓         | ✓          |   ✓   |
 | Create and update secrets[^users-owner-role], [^users-maintainer-role]                      |       |         |          |                  |           | ✓          |   ✓   |

@@ -103,37 +103,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/hosted_tool_permissions \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "code_interpreter": {
-    "enabled": true
-  },
-  "file_search": {
-    "enabled": true
-  },
-  "image_generation": {
-    "enabled": true
-  },
-  "mcp": {
-    "enabled": true
-  },
-  "web_search": {
-    "enabled": true
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/hosted_tool_permissions \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

@@ -141,56 +141,6 @@ Cancelling prevents new requests from using the issued client secret.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/sessions/$SESSION_ID/cancel \
-    -X POST \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cksess_123",
-  "object": "chatkit.session",
-  "client_secret": "",
-  "expires_at": 1712349876,
-  "workflow": {
-    "id": "workflow_alpha",
-    "version": "2024-10-01",
-    "state_variables": {
-      "message": "hello"
-    },
-    "tracing": {
-      "enabled": true
-    }
-  },
-  "user": "user_789",
-  "rate_limits": {
-    "max_requests_per_1_minute": 60
-  },
-  "max_requests_per_1_minute": 60,
-  "status": "cancelled",
-  "chatkit_configuration": {
-    "automatic_thread_titling": {
-      "enabled": true
-    },
-    "file_upload": {
-      "enabled": true,
-      "max_file_size": 16,
-      "max_files": 20
-    },
-    "history": {
-      "enabled": true,
-      "recent_threads": 10
-    }
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST \
   https://api.openai.com/v1/chatkit/sessions/cksess_123/cancel \
   -H "OpenAI-Beta: chatkit_beta=v1" \
@@ -481,62 +431,6 @@ Content type: `application/json`
     - `version: string or null`
 
       Specific workflow version used for the session. Defaults to null when using the latest deployment.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/sessions \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "user": "x",
-          "workflow": {
-            "id": "id"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cksess_123",
-  "chatkit_configuration": {
-    "automatic_thread_titling": {
-      "enabled": true
-    },
-    "file_upload": {
-      "enabled": true,
-      "max_file_size": 16,
-      "max_files": 20
-    },
-    "history": {
-      "enabled": true,
-      "recent_threads": 10
-    }
-  },
-  "client_secret": "ek_token_123",
-  "expires_at": 1712349876,
-  "max_requests_per_1_minute": 60,
-  "object": "chatkit.session",
-  "rate_limits": {
-    "max_requests_per_1_minute": 60
-  },
-  "status": "active",
-  "user": "user_789",
-  "workflow": {
-    "id": "workflow_alpha",
-    "state_variables": {
-      "message": "hello"
-    },
-    "tracing": {
-      "enabled": true
-    },
-    "version": "2024-10-01"
-  }
-}
-```
 
 ### Example
 

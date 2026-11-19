@@ -23,7 +23,7 @@ The redirect location should be specified in one of the following ways:
 
 The 300 Multiple Choices status indicates that multiple options are available for the requested resource, and the client may select one.
 
-For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.4.1).
 
 ### Common use cases
 
@@ -43,7 +43,7 @@ Cloudflare generally bypasses the 300 Multiple Choices response for automated re
 
 The 301 Moved Permanently status indicates that the requested resource has been assigned a new permanent URI. All future references to this resource should use one of the enclosed URIs.
 
-For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.4.2).
 
 ### Common use cases
 
@@ -65,7 +65,7 @@ The 302 Found status, also referred to as a temporary redirect, indicates that t
 
 While the User-Agent may follow the `Location` header to retrieve the resource, it should not replace the current URI as it would for a 301 Moved Permanently.
 
-For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.4.3).
 
 ### Common use cases
 
@@ -83,7 +83,7 @@ Cloudflare can generate these responses, eliminating the need to send a request 
 
 The 303 See Other status indicates that the client should retrieve the resource at a different URI using a `GET` request. Unlike a 301 Moved Permanently redirect, the resource at the redirect location is not necessarily equivalent to the originally requested resource.
 
-For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.4.4).
 
 ### Common use cases
 
@@ -97,9 +97,9 @@ Cloudflare allows for the configuration of 303 redirects through [Redirect Rules
 
 ## 304 Not Modified
 
-The 304 Not Modified status indicates that the requested resource is available and valid in the client's cache. This means that the origin server has not modified the resource since the client's last request, allowing the client to use the cached resource without connecting to the origin server again. Requirements for caches receiving a 304 response are defined in [Section 4.3.4 of RFC 7234 ↗︎](https://tools.ietf.org/html/rfc7234#section-4.3.4).
+The 304 Not Modified status indicates that the requested resource is available and valid in the client's cache. This means that the origin server has not modified the resource since the client's last request, allowing the client to use the cached resource without connecting to the origin server again. Requirements for caches receiving a 304 response are defined in [Section 4.3.4 of RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111#section-4.3.4).
 
-For more information, refer to [RFC 7232 ↗︎](https://tools.ietf.org/html/rfc7232).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.4.5).
 
 ### Common use cases
 
@@ -126,7 +126,7 @@ This status code indicates that subsequent requests should be sent through the s
 
 The 307 Temporary Redirect status indicates that a requested resource has been temporarily moved to a different URI, as specified in the `Location` header. Unlike a 302 redirect, the original request method (for example, `GET` or `POST`) must remain unchanged when the redirect is followed automatically. This ensures that temporary changes to a resource's location do not disrupt the intended behavior of the request. User agents may automatically follow the redirect using the `Location` header, but should not replace the original URI for future requests.
 
-For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.4.8).
 
 ### Common use cases
 
@@ -140,7 +140,7 @@ Cloudflare can handle 307 Temporary Redirect responses efficiently, enabling tem
 
 The 308 Permanent Redirect status indicates that the requested resource has been permanently moved to a new URI, as specified in the `Location` header. Unlike a 301 redirect, the original request method (for example, `GET`, `POST`) must remain unchanged when automatically following the redirect. User agents should follow the redirect using the `Location` header and replace the original URI with the new one for subsequent requests.
 
-For more information, refer to [RFC 7538 ↗︎](https://tools.ietf.org/html/rfc7538#section-3).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.4.9).
 
 ### Common use cases
 
@@ -159,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/#page","headline":"3xx Redirection","description":"Understand 3xx redirection HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/og.png?v=add0884d3ba29634","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/#page","headline":"3xx Redirection","description":"Understand 3xx redirection HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/og.png?v=add0884d3ba29634","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

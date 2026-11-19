@@ -388,6 +388,44 @@ print("run request_id:", response.headers["x-request-id"])
 print("run response:", response.text)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"os"
+)
+
+func main() {
+	client := openai.NewClient()
+	ctx := context.Background()
+	// Save the Python grading function in grader.py before running this program.
+	source, err := os.ReadFile("grader.py")
+	if err != nil {
+		panic(err)
+	}
+	grader := openai.PythonGraderParam{Name: "word_overlap", Source: string(source)}
+	validated, err := client.FineTuning.Alpha.Graders.Validate(ctx, openai.FineTuningAlphaGraderValidateParams{
+		Grader: openai.FineTuningAlphaGraderValidateParamsGraderUnion{OfPythonGrader: &grader},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("validate response: " + validated.RawJSON())
+	result, err := client.FineTuning.Alpha.Graders.Run(ctx, openai.FineTuningAlphaGraderRunParams{
+		Grader:      openai.FineTuningAlphaGraderRunParamsGraderUnion{OfPython: &grader},
+		Item:        map[string]any{"reference_answer": "fuzzy wuzzy had no hair"},
+		ModelSample: "fuzzy wuzzy was a bear",
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("run response: " + result.RawJSON())
+}
+```
+
 ```ruby
 require "openai"
 
@@ -417,6 +455,15 @@ import inspect
 
 grader_module = importlib.import_module("grader")
 grader = {"type": "python", "source": inspect.getsource(grader_module)}
+```
+
+```go
+// Go packages the source; the hosted grader executes it in Python.
+source, err := os.ReadFile("grader.py")
+if err != nil {
+	panic(err)
+}
+grader := openai.PythonGraderParam{Name: "word_overlap", Source: string(source)}
 ```
 
 ```ruby

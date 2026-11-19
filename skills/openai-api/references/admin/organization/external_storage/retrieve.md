@@ -105,34 +105,6 @@ Get one customer-managed external storage configuration.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/external_storage/$EXTERNAL_STORAGE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "geography": "geography",
-  "object": "organization.external_storage",
-  "project_id": "project_id",
-  "provider": {
-    "account_id": "account_id",
-    "bucket": "bucket",
-    "external_id": "external_id",
-    "region": "region",
-    "role_arn": "role_arn",
-    "type": "aws"
-  },
-  "status": "pending"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/external_storage/extstorage_azure123 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

@@ -727,97 +727,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/evals \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "data_source_config": {
-            "item_schema": {
-              "foo": "bar"
-            },
-            "type": "custom"
-          },
-          "testing_criteria": [
-            {
-              "input": [
-                {
-                  "content": "content",
-                  "role": "role"
-                }
-              ],
-              "labels": [
-                "string"
-              ],
-              "model": "model",
-              "name": "name",
-              "passing_labels": [
-                "string"
-              ],
-              "type": "label_model"
-            }
-          ]
-        }'
-```
-
-#### 201 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source_config": {
-    "schema": {
-      "type": "object",
-      "properties": {
-        "item": {
-          "type": "object",
-          "properties": {
-            "label": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "label"
-          ]
-        }
-      },
-      "required": [
-        "item"
-      ]
-    },
-    "type": "custom"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "name": "Chatbot effectiveness Evaluation",
-  "object": "eval",
-  "testing_criteria": [
-    {
-      "input": [
-        {
-          "content": "string",
-          "role": "user",
-          "type": "message"
-        }
-      ],
-      "labels": [
-        "string"
-      ],
-      "model": "model",
-      "name": "name",
-      "passing_labels": [
-        "string"
-      ],
-      "type": "label_model"
-    }
-  ]
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/evals \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -831,7 +740,7 @@ curl https://api.openai.com/v1/evals \
         "testing_criteria": [
           {
             "type": "label_model",
-            "model": "o3-mini",
+            "model": "gpt-4.1-mini-2025-04-14",
             "input": [
               {
                 "role": "developer",
@@ -887,7 +796,7 @@ curl https://api.openai.com/v1/evals \
     {
       "name": "Example label grader",
       "type": "label_model",
-      "model": "o3-mini",
+      "model": "gpt-4.1-mini-2025-04-14",
       "input": [
         {
           "type": "message",

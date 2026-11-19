@@ -25,24 +25,6 @@ Delete a conversation. Items in the conversation will not be deleted.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "conversation.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

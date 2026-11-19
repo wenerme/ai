@@ -108,37 +108,6 @@ Returns a list of files.
 
 ```http
 curl https://api.openai.com/v1/files \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "bytes": 0,
-      "created_at": 0,
-      "filename": "filename",
-      "object": "file",
-      "purpose": "assistants",
-      "status": "uploaded",
-      "expires_at": 0,
-      "status_details": "status_details"
-    }
-  ],
-  "first_id": "file-abc123",
-  "has_more": false,
-  "last_id": "file-abc456",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 

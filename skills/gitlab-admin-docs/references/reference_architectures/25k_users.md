@@ -2091,8 +2091,14 @@ On each node perform the following:
    sudo gitlab-ctl tail gitaly
    ```
 
-1. Optionally, from the Gitaly servers, confirm that Gitaly can perform callbacks to the internal API by running
-   `sudo -u git -- /opt/gitlab/embedded/bin/gitaly check /var/opt/gitlab/gitaly/config.toml`.
+1. Optionally, from the Gitaly servers, confirm that Gitaly can perform callbacks to the internal API:
+
+   ```shell
+   sudo /opt/gitlab/embedded/bin/chpst -e /opt/gitlab/etc/gitaly/env -u git:git /opt/gitlab/embedded/bin/gitaly check /var/opt/gitlab/gitaly/config.toml
+   ```
+
+   The `chpst -e` option runs the check with the environment variables of the Gitaly service, such as `SSL_CERT_DIR`.
+   The check then trusts the same certificates as the service.
 
 When you specify `https` in the `external_url`, as in the previous example,
 GitLab expects that the SSL certificates are in `/etc/gitlab/ssl/`. If the

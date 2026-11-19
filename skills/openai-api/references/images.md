@@ -222,60 +222,6 @@ Content type: `multipart/form-data`
 
 ```http
 curl https://api.openai.com/v1/images/variations \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F 'image=@/path/to/image' \
-    -F model=dall-e-2 \
-    -F n=1 \
-    -F response_format=url \
-    -F size=1024x1024 \
-    -F user=user-1234
-```
-
-#### 200 — Example
-
-```json
-{
-  "created": 0,
-  "background": "transparent",
-  "data": [
-    {
-      "b64_json": "b64_json",
-      "revised_prompt": "revised_prompt",
-      "url": "https://example.com"
-    }
-  ],
-  "output_format": "png",
-  "quality": "low",
-  "safety_identifier": "safety_identifier",
-  "size": "1024x1024",
-  "svg_usage": {
-    "input_tokens": 0,
-    "model": "model",
-    "output_tokens": 0,
-    "reasoning_tokens": 0,
-    "total_tokens": 0
-  },
-  "usage": {
-    "input_tokens": 0,
-    "input_tokens_details": {
-      "image_tokens": 0,
-      "text_tokens": 0
-    },
-    "output_tokens": 0,
-    "total_tokens": 0,
-    "output_tokens_details": {
-      "image_tokens": 0,
-      "text_tokens": 0
-    }
-  }
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/images/variations \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F image="@otter.png" \
   -F n=2 \
@@ -726,7 +672,7 @@ curl https://api.openai.com/v1/images/edits \
             }
           ],
           "prompt": "Add a watercolor effect to this image",
-          "model": "gpt-image-1.5",
+          "model": "gpt-image-2.6-flare",
           "quality": "high",
           "size": "1024x1024"
         }'
@@ -779,7 +725,7 @@ curl -s -D >(grep -i x-request-id >&2) \
   -o >(jq -r '.data[0].b64_json' | base64 --decode > gift-basket.png) \
   -X POST "https://api.openai.com/v1/images/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -F "model=gpt-image-1.5" \
+  -F "model=gpt-image-2.6-flare" \
   -F "image[]=@body-lotion.png" \
   -F "image[]=@bath-bomb.png" \
   -F "image[]=@incense-kit.png" \
@@ -800,7 +746,7 @@ curl https://api.openai.com/v1/images/edits \
             }
           ],
           "prompt": "Add a watercolor effect to this image",
-          "model": "gpt-image-1.5",
+          "model": "gpt-image-2.6-flare",
           "quality": "high",
           "size": "1024x1024"
         }'
@@ -822,8 +768,7 @@ curl https://api.openai.com/v1/images/edits \
           "mask": {
             "file_id": "file-mask123"
           },
-          "model": "gpt-image-1.5",
-          "output_compression": 100,
+          "model": "gpt-image-2.6-flare",
           "output_format": "png"
         }'
 ```
@@ -833,7 +778,7 @@ curl https://api.openai.com/v1/images/edits \
 ```http
 curl -s -N -X POST "https://api.openai.com/v1/images/edits" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -F "model=gpt-image-1.5" \
+  -F "model=gpt-image-2.6-flare" \
   -F "image[]=@body-lotion.png" \
   -F "image[]=@bath-bomb.png" \
   -F "image[]=@incense-kit.png" \
@@ -1257,19 +1202,8 @@ curl https://api.openai.com/v1/images/generations \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "model": "gpt-image-2.5-flare",
-          "prompt": "A cute baby sea otter",
-          "background": "transparent",
-          "moderation": "low",
-          "n": 1,
-          "output_compression": 100,
-          "output_format": "png",
-          "partial_images": 1,
-          "quality": "medium",
-          "safety_identifier": "user-1234",
-          "size": "1024x1024",
-          "style": "vivid",
-          "user": "user-1234"
+          "model": "gpt-image-2.6-flare",
+          "prompt": "A cute baby sea otter"
         }'
 ```
 
@@ -1320,7 +1254,7 @@ curl https://api.openai.com/v1/images/generations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-image-2.5-flare",
+    "model": "gpt-image-2.6-flare",
     "prompt": "A cute baby sea otter",
     "n": 1,
     "size": "1024x1024"
@@ -1356,7 +1290,7 @@ curl https://api.openai.com/v1/images/generations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-image-2.5-flare",
+    "model": "gpt-image-2.6-flare",
     "prompt": "A cute baby sea otter",
     "n": 1,
     "size": "1024x1024",

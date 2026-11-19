@@ -34,6 +34,7 @@ Select a query type from the **Query Type** drop-down in the query editor:
 - [**Stargazers**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#stargazers): Get a list of users who have starred a repository, including the ability to plot a total count over time.
 - [**Tags**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#tags): List created tags for a repository.
 - [**Vulnerabilities**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#vulnerabilities): Query security vulnerabilities detected in a repository.
+- [**Webhook deliveries**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#webhook-deliveries): List deliveries of an organization or repository webhook, including the response status code.
 - [**Workflows**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflows): List GitHub Actions workflows defined in a repository.
 - [**Workflow runs**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflow-runs): List runs for a specific workflow, including status, conclusion, and timing information.
 - [**Workflow usage**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflow-usage): Retrieve usage statistics for a workflow, such as run counts and durations.
@@ -1019,6 +1020,62 @@ Expand table
 | permalink              | URL to the GitHub Security Advisory or alert                                                         |
 | severity               | Severity level: `LOW`, `MODERATE`, `HIGH`, or `CRITICAL`                                             |
 | state                  | State of the vulnerability alert: `OPEN`, `FIXED`, or `DISMISSED`                                    |
+
+### Webhook deliveries
+
+List deliveries of an organization or repository webhook, one row per delivery. Useful for tracking webhook reliability: plot the success rate of an automation webhook over time, or alert when failures pass a threshold.
+
+> Note
+>
+> GitHub only keeps webhook deliveries for the past 3 days, so a longer dashboard time range returns only the deliveries that are left. This query also requires a token with the `admin:org_hook` scope for organization webhooks, or `admin:repo_hook` for repository webhooks.
+
+To find the ID of a webhook, run `gh api /orgs/<org>/hooks` for an organization webhook, or `gh api /repos/<owner>/<repository>/hooks` for a repository webhook.
+
+#### Query options
+
+Expand table
+
+| Name       | Description                                                                                                                                 | Required |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Owner      | Organization the webhook belongs to, or GitHub user or organization that owns the repository                                                | Yes      |
+| Repository | Name of the repository. Leave it empty to query an organization webhook                                                                     | No       |
+| Hook ID    | Numeric ID of the webhook                                                                                                                   | Yes      |
+| Event      | Only return deliveries triggered by this event (for example, `pull_request`)                                                                | No       |
+| Status     | Filter deliveries by outcome: `All`, `Success` (a 2xx response), or `Failure` (any other response, including deliveries that never got one) | No       |
+
+##### Sample queries
+
+Show all deliveries of an organization webhook:
+
+- Owner: `grafana`
+- Hook ID: `12345678`
+
+Show failed `pull_request` deliveries of a repository webhook:
+
+- Owner: `grafana`
+- Repository: `grafana`
+- Hook ID: `12345678`
+- Event: `pull_request`
+- Status: `Failure`
+
+#### Response
+
+Expand table
+
+| Name             | Description                                                                                 |
+|------------------|---------------------------------------------------------------------------------------------|
+| delivered\_at    | When the delivery was attempted: YYYY-MM-DD HH:MM:SS                                        |
+| id               | Unique identifier for the delivery                                                          |
+| guid             | Identifier shared by a delivery and all of its redeliveries                                 |
+| event            | Event that triggered the delivery (for example, `pull_request`)                             |
+| action           | Action of the event, if applicable (for example, `opened`)                                  |
+| status           | Description of the response (for example, `OK`)                                             |
+| status\_code     | HTTP status code the webhook endpoint responded with                                        |
+| duration         | How long the delivery took, in seconds                                                      |
+| redelivery       | Whether the delivery is a redelivery of an earlier one                                      |
+| repository\_id   | ID of the repository the event came from. The delivery does not include the repository name |
+| installation\_id | ID of the GitHub App installation, if the webhook belongs to one                            |
+| success          | Whether the endpoint responded with a 2xx status code                                       |
 
 ### Workflows
 

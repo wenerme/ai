@@ -129,19 +129,6 @@ Content type: `application/octet-stream`
 
 ```http
 curl https://api.openai.com/v1/audio/speech \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "input": "input",
-          "model": "tts-1",
-          "voice": "ash"
-        }'
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/audio/speech \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{

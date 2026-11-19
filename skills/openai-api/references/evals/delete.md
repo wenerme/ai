@@ -21,24 +21,6 @@ Delete an evaluation.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "deleted": true,
-  "eval_id": "eval_abc123",
-  "object": "eval.deleted"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/eval_abc123 \
   -X DELETE \
   -H "Authorization: Bearer $OPENAI_API_KEY"

@@ -32,22 +32,6 @@ Retrieves organization data retention controls.
 
 ```http
 curl https://api.openai.com/v1/organization/data_retention \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "object": "organization.data_retention",
-  "type": "zero_data_retention"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/data_retention \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
 ```

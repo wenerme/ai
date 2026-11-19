@@ -6219,7 +6219,7 @@ Name of the feature that the callout is for.
 | `ALL_SEATS_USED_ALERT` | Callout feature name for all_seats_used_alert. |
 | `APPROACHING_SEAT_COUNT_THRESHOLD` | Callout feature name for approaching_seat_count_threshold. |
 | `BILLING_RETRIAL_CARD` | Callout feature name for billing_retrial_card. |
-| `BLSA_WHATS_NEW_SPOTLIGHT` | Callout feature name for blsa_whats_new_spotlight. |
+| `BLSA_MYTHOS_ACCESS_SPOTLIGHT` | Callout feature name for blsa_mythos_access_spotlight. |
 | `CI_MINUTES_LIMIT_ALERT_DANGER_STAGE` | Callout feature name for ci_minutes_limit_alert_danger_stage. |
 | `CI_MINUTES_LIMIT_ALERT_EXCEEDED_STAGE` | Callout feature name for ci_minutes_limit_alert_exceeded_stage. |
 | `CI_MINUTES_LIMIT_ALERT_WARNING_STAGE` | Callout feature name for ci_minutes_limit_alert_warning_stage. |
@@ -7058,7 +7058,7 @@ Values for sorting saved views.
 | `CREATED_ASC` | Created at ascending order. |
 | `CREATED_DESC` | Created at descending order. |
 | `ID` | Ordered by id. |
-| `NAME_ASC` | Alphabetically by name in ascending order. |
+| `NAME_ASC` | By name in ascending order, using natural sort for numbers. |
 | `RELATIVE_POSITION` | Relative position by ascending order. If user is logged out, or explicitly subscribed is not passed, falls back to id sort. |
 | `UPDATED_ASC` | Updated at ascending order. |
 | `UPDATED_DESC` | Updated at descending order. |

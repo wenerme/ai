@@ -59,13 +59,14 @@ The exact settings will vary depending on your use case. Refer to the following 
 ### 2. Configure your Spectrum application
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page. [Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
-2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
-3. Select your **[Application Type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type)**.
-4. Under **Domain**, enter the domain that will use Spectrum.
-5. Under **Edge Port**, enter the port Cloudflare should use for your application.
-6. Under **Origin**, select **Load Balancer**.
-7. Select the load balancer you want to use from the dropdown. Disabled load balancers will not show on the **Load Balancer** menu.
-8. Select **Add**.
+2. Select **Create an Application**.
+3. Under **Application Configuration**, select your **[Application Type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type)**.
+4. In **Subdomain**, enter the subdomain that will use Spectrum. The dashboard adds your zone name after it.
+5. In **Edge Port**, enter the port Cloudflare should use for your application.
+6. Under **Origin Configuration**, select **Load Balancer** as the **Origin type**.
+7. In **Load Balancer**, select the load balancer you want to use. Disabled load balancers do not appear in the list.
+8. In **Port**, enter the origin port.
+9. Select **Add Application**.
 
 ---
 

@@ -47,26 +47,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/data_retention \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "retention_type": "zero_data_retention"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "object": "organization.data_retention",
-  "type": "zero_data_retention"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/data_retention \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

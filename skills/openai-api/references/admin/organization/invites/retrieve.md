@@ -85,34 +85,6 @@ Retrieves an invite.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "email": "email",
-  "object": "organization.invite",
-  "projects": [
-    {
-      "id": "id",
-      "role": "member"
-    }
-  ],
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
-  "expires_at": 0
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/invites/invite-abc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
