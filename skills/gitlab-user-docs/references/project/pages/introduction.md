@@ -267,6 +267,59 @@ instead. Here are some examples of what happens given the previous Pages site:
 When `public/data/index.html` exists, it takes priority over the `public/data.html` file
 for both the `/data` and `/data/` URL paths.
 
+### Content negotiation for semantic web formats
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab-pages/-/merge_requests/1384) in GitLab 19.7 with a Pages flag named `FF_ENABLE_CONTENT_NEGOTIATION`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+GitLab Pages supports HTTP content negotiation ([RFC 9110](https://www.rfc-editor.org/info/rfc9110/#section-12.5)) for semantic web and linked data formats.
+For a URL without a file extension, such as `/resource` or `/`, Pages reads the `Accept` header.
+Pages serves the first matching file, in order of quality value (`q`), from highest to lowest.
+If two media types have the same `q` value, Pages selects an exact type (such as `text/turtle`)
+before a wildcard (such as `*/*`). If they're still tied, Pages uses the order in the `Accept`
+header.
+
+To use this feature, an administrator must [turn on the `FF_ENABLE_CONTENT_NEGOTIATION` feature flag](../../../administration/pages/_index.md#use-environment-variables) in the Pages daemon environment.
+
+Pages supports the following media types:
+
+| Media type | File extension | `Content-Type` |
+| ---------- | -------------- | -------------- |
+| `application/rdf+xml` | `.rdf`, `.owl` | `application/rdf+xml` |
+| `text/turtle`, `application/x-turtle` | `.ttl` | `text/turtle; charset=utf-8` |
+| `text/n3`, `text/rdf+n3` | `.n3` | `text/n3; charset=utf-8` |
+| `application/n-triples` | `.nt` | `application/n-triples` |
+| `application/ld+json` | `.jsonld` | `application/ld+json` |
+| `application/owl+xml` | `.owx` | `application/owl+xml` |
+| `text/html`, `application/xhtml+xml` | `.html` | `text/html; charset=utf-8` |
+
+Pages also uses these `Content-Type` values for direct file requests, such as `/resource.ttl`.
+If the operating system on the Pages server maps an extension to another type, Pages uses that type instead.
+
+If no requested media type has a matching file, Pages serves the `.html` file (or `index.html`).
+Responses that undergo content negotiation include a `Vary: Accept` header and a separate `ETag` value for each format.
+Intermediate caches and content delivery networks (CDNs) store each version separately.
+
+For example, consider a Pages site deployed with both an HTML page and a Turtle representation of a resource:
+
+```plaintext
+public/
+├── resource.html
+└── resource.ttl
+```
+
+When a client requests `/resource` with an `Accept: text/turtle` header:
+
+```shell
+curl --header "Accept: text/turtle" "https://example.com/resource"
+```
+
+Pages serves `public/resource.ttl` with `Content-Type: text/turtle; charset=utf-8` and a `Vary: Accept` header.
+If the client does not specify an `Accept` header or requests `text/html`, Pages serves `public/resource.html`.
+
 ## Customize the default folder
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab-pages/-/merge_requests/859) in GitLab 16.1 with a Pages flag named `FF_CONFIGURABLE_ROOT_DIR`. Disabled by default.

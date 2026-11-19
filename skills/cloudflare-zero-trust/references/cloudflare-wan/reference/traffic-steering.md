@@ -168,8 +168,9 @@ Automatic Return Routing applies when:
   - A Cloudflare One Client
   - A private network connected to Cloudflare through Cloudflare Tunnel
   - A private network connected to Cloudflare through Cloudflare Mesh
+  - A private network connected through another Cloudflare WAN connection (TCP and UDP only)
 
-ARR does not change routing for traffic between Cloudflare WAN connections (for example, traffic from one IPsec/GRE tunnel or interconnect to another). That traffic continues to follow your configured Cloudflare WAN routes.
+For TCP and UDP traffic destined towards another Cloudflare WAN connection, ARR will source NAT to a [Cloudflare Source IP](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/). The initial request still follows your configured routes, but the traffic returning from the origin will route back to the original tunnel. ICMP traffic will be unaffected by ARR and will strictly follow your configured Cloudflare WAN routes.
 
 ## Unified Routing mode
 
@@ -200,7 +201,7 @@ The following features require Unified Routing.
 
 | Feature | Availability with Unified Routing |
 | --- | --- |
-| [Automatic Return Routing](#automatic-return-routing) | Generally available for Internet return traffic. Routing between WAN connections is not available. |
+| [Automatic Return Routing](#automatic-return-routing) | Generally available for Internet return traffic. Site-to-site traffic uses Cloudflare Source IPs. |
 | [BGP over IPsec and GRE](#release-status) | Generally available. |
 | [Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) | Generally available. |
 | [Custom Cloudflare One Client device subnets](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) with Cloudflare WAN | Generally available. |
@@ -272,7 +273,7 @@ Unified Routing uses a single routing fabric for all connection types. Route sel
 
 When routes have the same prefix length, Zero Trust routes take precedence over WAN routes.
 
-For scenarios with overlapping IP space across sites, enable [Automatic Return Routing](#automatic-return-routing) to ensure return traffic reaches the correct origin.
+For scenarios with overlapping IP space across sites, [Automatic Return Routing](#automatic-return-routing) can direct return traffic to the originating connection. You still need a route to select the destination site for the initial request.
 
 ### Legacy Routing mode
 
@@ -608,5 +609,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/og.png?v=eceef563a603fdd0","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/og.png?v=eceef563a603fdd0","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

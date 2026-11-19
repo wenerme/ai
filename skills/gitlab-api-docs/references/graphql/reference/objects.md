@@ -1778,6 +1778,18 @@ Usage data for events stored in either PostgreSQL (default) or ClickHouse (when 
 
 Paginated collection of [`AiUsageEvent`](#aiusageevent). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
+## `AiUserMemory`
+
+User-level AI memory content.
+
+### `AiUserMemory` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `content` | [`String!`](scalars.md#string) | Free-form text content of the user memory. |
+| `createdAt` | [`Time!`](scalars.md#time) | Timestamp when the memory was created. |
+| `updatedAt` | [`Time!`](scalars.md#time) | Timestamp when the memory was last updated. |
+
 ## `AiUserMetrics`
 
 Pre-aggregated per-user metrics for GitLab Code Suggestions and GitLab Duo Chat. Requires ClickHouse to be enabled. Premium or Ultimate only.
@@ -2477,11 +2489,15 @@ Per-action permissions Artifact Registry reports for the current user on a names
 | ---- | ---- | ----------- |
 | `createRepository` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can create a repository in the namespace. |
 | `createRepositoryUpstream` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can add an upstream to the namespace's repositories. |
+| `createRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates the user can grant a role on the namespace. |
 | `deleteRepository` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can delete repositories of the namespace. |
 | `deleteRepositoryUpstream` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can remove an upstream from the namespace's repositories. |
+| `deleteRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates the user can revoke a role on the namespace. |
 | `readRepository` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can read repositories of the namespace and their metadata. |
+| `readRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates the user can view who holds a role on the namespace. |
 | `updateRepository` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can change the settings of the namespace's repositories. |
 | `updateRepositoryUpstream` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can change an upstream of the namespace's repositories. |
+| `updateRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Indicates the user can change a member's role on the namespace. |
 
 ## `ArtifactRegistryNamespaceStatistics`
 
@@ -9012,7 +9028,8 @@ GitLab Duo Agent Platform session.
 | `subagents` | [`[DuoWorkflowSubagent!]`](#duoworkflowsubagent) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Subagents provided to the session's latest run. Null when GitLab doesn't know the session's subagents, for example for a session that runs in the GitLab Duo CLI. This field can only be resolved for one session in any single request. |
 | `summary` | [`String`](scalars.md#string) | Summary of the session. |
 | `title` | [`String`](scalars.md#string) | Title of the session. |
-| `toolAccessPolicies` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Tool access policy the GitLab Duo Workflow Service enforces for the session when its token carries none. This field can only be resolved for one session in any single request.  <strong>Arguments for `toolAccessPolicies`:</strong> <dl><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project the session runs in. It can only make the policy stricter.</dd></dl> |
+| `toolAccessPolicies` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Tool access policy the GitLab Duo Workflow Service enforces for the session when its token carries none. Use `toolAccessPolicy` instead. This field can only be resolved for one session in any single request.  <strong>Arguments for `toolAccessPolicies`:</strong> <dl><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project the session runs in. It can only make the policy stricter. Ignored if the project does not exist, the user cannot read it, or it is outside the session's top-level group.</dd></dl> |
+| `toolAccessPolicy` | [`DuoWorkflowToolAccessPolicy`](#duoworkflowtoolaccesspolicy) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Tool access policy the GitLab Duo Workflow Service enforces for the session when its token carries none. This field can only be resolved for one session in any single request.  <strong>Arguments for `toolAccessPolicy`:</strong> <dl><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project the session runs in. It can only make the policy stricter. Ignored if the project does not exist, the user cannot read it, or it is outside the session's top-level group.</dd></dl> |
 | `toolCallApprovalMatch` | [`DuoWorkflowToolCallApprovalMatch!`](#duoworkflowtoolcallapprovalmatch) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Approval match details for the specified tool call.  <strong>Arguments for `toolCallApprovalMatch`:</strong> <dl><dt>`toolCallArgs` ([`String!`](scalars.md#string))</dt><dd>JSON-serialized arguments for the tool call.</dd><dt>`toolName` ([`String!`](scalars.md#string))</dt><dd>Name of the tool to check.</dd></dl> |
 | `toolCallApprovals` | [`JSON`](scalars.md#json) | Tools approval per session policy. |
 | `toolCallApproved` | [`Boolean!`](scalars.md#boolean) | Whether the specified tool call is approved for the session.  <strong>Arguments for `toolCallApproved`:</strong> <dl><dt>`toolCallArgs` ([`String!`](scalars.md#string))</dt><dd>JSON-serialized arguments for the tool call.</dd><dt>`toolName` ([`String!`](scalars.md#string))</dt><dd>Name of the tool to check.</dd></dl> |
@@ -9146,6 +9163,17 @@ Events that describe the history and progress of a GitLab Duo Agent Platform ses
 
 Paginated collection of [`DuoWorkflowEvent`](#duoworkflowevent). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
+## `DuoWorkflowFirstPartyToolPermission`
+
+Permission of a first-party tool in a session's tool access policy.
+
+### `DuoWorkflowFirstPartyToolPermission` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `name` | [`String!`](scalars.md#string) | Name of the tool. |
+| `permission` | [`AiToolPermission!`](enums.md#aitoolpermission) | Permission of the tool. |
+
 ## `DuoWorkflowMergeRequestLink`
 
 Link between a GitLab Duo Agent Platform session and a merge request.
@@ -9254,6 +9282,21 @@ Subagent that a GitLab Duo Agent Platform session can delegate work to, such as 
 | `description` | [`String!`](scalars.md#string) | Description of the subagent. |
 | `name` | [`String!`](scalars.md#string) | Name of the subagent. |
 | `tools` | [`[String!]!`](scalars.md#string) | Names of the tools the subagent declares. |
+
+## `DuoWorkflowToolAccessPolicy`
+
+Tool access policy the GitLab Duo Workflow Service enforces for a session.
+
+### `DuoWorkflowToolAccessPolicy` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `allow` | [`[String!]!`](scalars.md#string) | Tools that run without approval. |
+| `ask` | [`[String!]!`](scalars.md#string) | Tools that need approval before running. |
+| `ceiling` | [`Boolean`](scalars.md#boolean) | Indicates the allowed tools also limit the tools the client pre-approves. |
+| `deny` | [`[String!]!`](scalars.md#string) | Tools that are removed from the session. |
+| `firstPartyTools` | [`[DuoWorkflowFirstPartyToolPermission!]`](#duoworkflowfirstpartytoolpermission) | Permission of each first-party tool. |
+| `promote` | [`[String!]`](scalars.md#string) | Tools that run without approval when the user turns on auto mode. |
 
 ## `DuoWorkflowToolCallApprovalMatch`
 
@@ -19040,7 +19083,7 @@ Represents security metrics.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `mttrOverTime` | [`[MttrOverTimeBucket!]`](#mttrovertimebucket) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Weekly mean time to remediation (MTTR) of vulnerabilities. Each week only counts vulnerabilities detected no earlier than 90 days before the week starts, so a week's MTTR is at most about 97 days. Returns `null` unless the `security_dashboard_mttr_chart` feature flag is enabled. This feature is currently under development and not yet available for general use.  <strong>Arguments for `mttrOverTime`:</strong> <dl><dt>`endDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>End date of the time range. Snapped forward to the end of its week (Sunday), capped at the current date. The most recent week may be partial. The range can span at most 12 weeks.</dd><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd><dt>`startDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>Start date of the time range. Snapped back to the start of its week (Monday) so results align to full Monday to Sunday buckets.</dd></dl> |
+| `mttrOverTime` | [`[MttrOverTimeBucket!]`](#mttrovertimebucket) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Weekly mean time to remediation (MTTR) of vulnerabilities. Each week only counts vulnerabilities detected no earlier than 90 days before the week starts, so a week's MTTR is at most about 97 days. This feature is currently under development and not yet available for general use.  <strong>Arguments for `mttrOverTime`:</strong> <dl><dt>`endDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>End date of the time range. Snapped forward to the end of its week (Sunday), capped at the current date. The most recent week may be partial. The range can span at most 12 weeks.</dd><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd><dt>`startDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>Start date of the time range. Snapped back to the start of its week (Monday) so results align to full Monday to Sunday buckets.</dd></dl> |
 | `riskScore` | [`RiskScore`](#riskscore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.Total risk score information. By default, excludes vulnerabilities that are no longer detected on the default branch. This feature is currently under development and not yet available for general use.  <strong>Arguments for `riskScore`:</strong> <dl><dt>`hasResolution` ([`Boolean`](scalars.md#boolean))</dt><dd>Filters vulnerabilities by whether they are no longer detected on the default branch. If true, includes only those vulnerabilities. If false (default), excludes them.</dd></dl> |
 | `vulnerabilitiesByAge` | [`[VulnerabilitiesByAge!]`](#vulnerabilitiesbyage) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.Vulnerability age statistics based on predefined age bands. See [`VulnerabilitiesByAge`](#vulnerabilitiesbyage) for details. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilitiesByAge`:</strong> <dl><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd></dl> |
 | `vulnerabilitiesByIdentifier` | [`[VulnerabilitiesByIdentifier!]`](#vulnerabilitiesbyidentifier) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Vulnerability identifier statistics with filtering. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilitiesByIdentifier`:</strong> <dl><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd></dl> |

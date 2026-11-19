@@ -300,7 +300,7 @@ For example, if you include `Closes #4, #6, Related to #5` in a merge request
 description:
 
 - Issues `#4` and `#6` are closed automatically when the MR is merged.
-- Issue `#5` is marked as a [related issue](related_issues.md), but it's not closed automatically.
+- Issue `#5` is marked as a [related issue](../../work_items/linked_items.md), but it's not closed automatically.
 
 Alternatively, when you [create a merge request from an issue](../merge_requests/creating_merge_requests.md#from-an-issue),
 it inherits the issue's milestone and labels.

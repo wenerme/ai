@@ -388,12 +388,12 @@ If your GitLab version requests one of those tags, or if you need a different
 1. Build the custom image with the binary included:
 
    ```dockerfile
-   FROM registry.gitlab.com/gitlab-org/duo-workflow/default-docker-image/workflow-generic-image:v0.1.1
+   FROM registry.gitlab.com/gitlab-org/duo-workflow/default-docker-image/workflow-generic-image:v0.2.0
    COPY duo-linux-x64 /usr/local/bin/duo
    RUN chmod +x /usr/local/bin/duo
    ```
 
-   Replace `v0.1.1` with the tag your GitLab version requests.
+   Replace `v0.2.0` with the tag your GitLab version requests.
 
 1. Transfer the image to your internal registry using the same
    `skopeo copy` procedure described above, then reference it

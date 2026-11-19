@@ -550,7 +550,8 @@ When `cache` is not defined, the remote file is fetched every time.
 
 - `true`: Enable caching with a default time-to-live (TTL) of 1 hour.
 - A duration (string): Valid TTL duration strings use time units
-  like `minutes`, `hours`, or `days` (minimum `1 minute`).
+  like `minutes`, `hours`, or `days` (minimum `1 minute`, maximum `1 day`).
+  Durations longer than `1 day` are cached for `1 day`.
 
 **Example of `include:cache`**:
 
@@ -3189,8 +3190,14 @@ job_with_workload_identity:
 
 ### `id_tokens`
 
+- `target_audience` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/639815) in GitLab 19.7.
+
 Use `id_tokens` to create [ID tokens](../secrets/id_token_authentication.md) to authenticate with third party services. All
 JWTs created this way support OIDC authentication. The required `aud` sub-keyword is used to configure the `aud` claim for the JWT.
+
+Use the optional `target_audience` sub-keyword to exchange the ID token for a credential
+for another service with the token exchange API.
+The `target_audience` claim names the service the credential is for.
 
 Job configuration and default configuration does not merge together.
 If the pipeline has [`default:id_tokens`](#default) defined, and the job also has `id_tokens`,
@@ -3202,6 +3209,8 @@ the job configuration takes precedence and the default configuration is not used
   - A single string.
   - An array of strings.
   - [CI/CD variables](../variables/where_variables_can_be_used.md#gitlab-ciyml-file).
+- Optional. `target_audience`: A single string of 1 to 255 characters. CI/CD variables are not supported.
+  When you set `target_audience`, `aud` must be only the token exchange URL, `$CI_SERVER_URL/api/v4/token_exchange`. Otherwise, the job fails.
 
 **Example of `id_tokens`**:
 
@@ -3216,6 +3225,9 @@ job_with_id_tokens:
         - https://aws.com
     SIGSTORE_ID_TOKEN:
       aud: sigstore
+    EXCHANGE_ID_TOKEN:
+      aud: $CI_SERVER_URL/api/v4/token_exchange
+      target_audience: gitlab-artifact-registry
   script:
     - command_to_authenticate_with_vault $ID_TOKEN_1
     - command_to_authenticate_with_aws $ID_TOKEN_2

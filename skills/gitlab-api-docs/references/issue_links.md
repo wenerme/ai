@@ -5,11 +5,11 @@ Documentation for the REST API for issue links in GitLab.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-Use this API to manage [issue links](../user/project/issues/related_issues.md).
+Use this API to manage [issue links](../user/work_items/linked_items.md).
 
 ## List all issue links
 
-Lists all [linked issues](../user/project/issues/related_issues.md) for a specified issue, sorted by the relationship creation datetime (ascending). Issues are filtered according to the user authorizations.
+Lists all [linked issues](../user/work_items/linked_items.md) for a specified issue, sorted by the relationship creation datetime (ascending). Issues are filtered according to the user authorizations.
 
 ```plaintext
 GET /projects/:id/issues/:issue_iid/links

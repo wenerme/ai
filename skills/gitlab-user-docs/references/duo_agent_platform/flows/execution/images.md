@@ -41,6 +41,7 @@ The following table lists the current pinned versions:
 | `npm`                                 | Bundled with Node.js 20                                 |
 | `@gitlab/duo-cli`                     | 10.3.0                                                  |
 | `glab` (GitLab CLI)                   | 1.128.0                                                 |
+| `oras` (OCI registry client)          | 1.2.2 (GitHub release, SHA-256 pinned)                  |
 | `@anthropic-ai/sandbox-runtime` (SRT) | 0.0.77 (via npm)                                        |
 | `bwrap` (bubblewrap)                  | AlmaLinux 9 EPEL (plain binary, root-based sandboxing)  |
 | `socat`                               | AlmaLinux 9 EPEL                                        |
@@ -183,7 +184,7 @@ To configure flows for an offline environment:
 1. Build a custom image that includes the binary:
 
    ```dockerfile
-   FROM registry.gitlab.com/gitlab-org/duo-workflow/default-docker-image/workflow-generic-image:v0.1.1
+   FROM registry.gitlab.com/gitlab-org/duo-workflow/default-docker-image/workflow-generic-image:v0.2.0
    COPY duo-linux-x64 /usr/local/bin/duo
    RUN chmod +x /usr/local/bin/duo
    ```
@@ -333,6 +334,7 @@ The following table lists the current pinned versions:
 | `npm`                                 | Bundled with Node.js 20                                  |
 | `@gitlab/duo-cli`                     | 10.3.0                                                   |
 | `glab` (GitLab CLI)                   | 1.128.0                                                  |
+| `oras` (OCI registry client)          | 1.2.2 (GitHub release, SHA-256 pinned)                   |
 | `@anthropic-ai/sandbox-runtime` (SRT) | 0.0.77 (via npm)                                         |
 | `bwrap` (bubblewrap)                  | AlmaLinux 9 EPEL (plain binary, userns-based sandboxing) |
 | `socat`                               | AlmaLinux 9 EPEL                                         |

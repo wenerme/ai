@@ -124,9 +124,13 @@ description.
 
 ### Change status
 
+-  and  statuses [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/431818) in GitLab 19.7.
+
 You can change the status of a finding or vulnerability in the pipeline's
 security tab. Any changes made to a finding persist when the branch is merged into the default
-branch.
+branch. However, if you resolve a finding in a pipeline for a non-default branch, and the finding
+is detected again after the branch is merged, the vulnerability's status reverts to
+.
 
 Prerequisites:
 
@@ -146,7 +150,7 @@ To change the status of findings or vulnerabilities:
         - To select all findings or vulnerabilities on the page, select the checkbox in the table
           header.
 
-     1. In the **Select action** dropdown list, select either **Dismissed** or **Needs Triage**.
+     1. In the  dropdown list, select a status.
      1. Select **Change status**.
 
 ### Download a security report

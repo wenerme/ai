@@ -1841,6 +1841,75 @@ and simple data processing.
 
 {% /tabs %}
 
+## Genie 4  {% id="genie-4" %}
+
+{% two-column-layout %}
+  {% left-column class="center-vertically" %}
+  *[`models/genie-4`](/docs/models/genie-4)*
+
+  {% /left-column %}
+
+  {% right-column class="center-vertically right-align" %}
+  {% button href="https://aistudio.google.com/live?model=genie-4" variant="ais" %}
+  Try it in Google AI Studio
+
+  {% /button %}
+
+  {% /right-column %}
+
+{% /two-column-layout %}
+
+{% hr /%}
+
+Our real-time interactive world generation model streaming steerable `24 fps`
+`16:9` video with synchronized `48 kHz` stereo audio on the
+[Interactions API](/docs/genie), available on the paid tier of the Gemini API.
+
+{% tabs %}
+  {% tab title="Standard" %}
+  {% table %}
+  * Feature
+  * Free Tier
+  * Paid Tier, per 1M tokens in USD
+
+  ---
+
+  * Input price
+  * Not available
+  * $1.50 (text / reference image)
+
+  ---
+
+  * Output price
+  * Not available
+  * $9.00 (text)    
+  $17.50 (video, audio included){% sup %}*{% /sup %}
+
+  ---
+
+  * Context caching price
+  * Not available
+  * Not available
+
+  ---
+
+  * Used to improve our products
+  * Not available
+  * [No](/docs/terms)
+  {% /table %}
+
+  {% /tab %}
+
+{% /tabs %}
+
+{% sup %}*{% /sup %} Billing is based on emitted video output tokens at `240`
+tokens per frame (`5,760` tokens per second at `24 fps`), with `48 kHz` stereo
+audio bundled into the video token rate. Under Standard pricing (`$17.50` per 1M
+video output tokens), this equates to an effective rate of approximately `$0.10`
+per second (`~$6.05` per minute). Always call `complete()` to end an active
+session and stop billing. Genie 4 does not support the Free tier, Batch API,
+Flex inference, or Priority inference.
+
 ## Gemini Omni 1.2 Flash  {% id="gemini-omni-1.2-flash" %}
 
 {% two-column-layout %}
@@ -5151,6 +5220,12 @@ Tools are priced at their own rates, applied to the model using them. Check the
     ($0.15 / 1M tokens) or
     [Gemini Embedding 2](/docs/pricing#gemini-embedding-2) rates.   
     Retrieved document tokens charged as regular tokens per model pricing.
+
+  ---
+
+  * [Tool retrieval](/docs/tool-retrieval#pricing)
+  * Free of charge
+  * No separate charge. The deferred tool list, the tool search instructions, and loaded tool schemas are charged as input tokens per model pricing. Each server-side tool search runs an extra model call whose prompt is reported as tool-use tokens and charged at the input token rate.
 
   ---
 

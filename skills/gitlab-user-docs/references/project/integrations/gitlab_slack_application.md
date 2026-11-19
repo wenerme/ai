@@ -12,6 +12,9 @@ The GitLab for Slack app is a native Slack app that provides [slash commands](#s
 and the [GitLab Duo integration](#gitlab-duo) in your Slack workspace. GitLab links your Slack user
 with your GitLab user so that any command you run in Slack is run by your linked GitLab user.
 
+On GitLab.com, you can install the app from the
+[Slack Marketplace](https://slack.com/marketplace/A676ADMV5-gitlab).
+
 ## Install the GitLab for Slack app
 
 You can install the GitLab for Slack app on a top-level group, a subgroup, or a project:
@@ -89,15 +92,12 @@ A top-level group is available in the dropdown list when:
 The dropdown list shows up to 100 groups.
 If your group is not listed, install the app from the group settings instead.
 
-### Install from the Slack App Directory
+### Install from the Slack Marketplace
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com
 
-On GitLab.com, you can also install the GitLab for Slack app from the
-[Slack App Directory](https://slack-platform.slack.com/apps/A676ADMV5-gitlab).
-
-To install the GitLab for Slack app from the Slack App Directory:
+To install the GitLab for Slack app from the Slack Marketplace:
 
 1. Go to the [GitLab for Slack page](https://gitlab.com/-/profile/slack/edit).
 1. Select where to install the app, and approve it in Slack, as described in

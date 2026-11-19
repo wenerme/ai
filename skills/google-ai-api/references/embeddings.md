@@ -486,7 +486,7 @@ A resource representing a batch of `EmbedContent` requests.
 
   {% details %}
   {% summary %}
-  **mediaResolution**: `V1mainMediaResolution`
+  **mediaResolution**: `MediaResolution`
 
   Optional. Media resolution for the input media.
 
@@ -649,7 +649,7 @@ A resource representing a batch of `EmbedContent` requests.
 
   {% details %}
   {% summary %}
-  **toolType**: {% mark %}required{% /mark %} `V1mainToolType`
+  **toolType**: {% mark %}required{% /mark %} `ToolType`
 
   The type of tool that was called.
 
@@ -691,7 +691,7 @@ A resource representing a batch of `EmbedContent` requests.
 
   {% details %}
   {% summary %}
-  **toolType**: {% mark %}required{% /mark %} `V1mainToolType`
+  **toolType**: {% mark %}required{% /mark %} `ToolType`
 
   The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
 
@@ -873,7 +873,7 @@ A resource representing a batch of `EmbedContent` requests.
 
   {% details %}
   {% summary %}
-  **mediaResolution**: `V1mainMediaResolution`
+  **mediaResolution**: `MediaResolution`
 
   Optional. Media resolution for the input media.
 

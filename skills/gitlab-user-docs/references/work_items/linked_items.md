@@ -5,11 +5,21 @@ Connect and track relationships between work items in GitLab. Manage dependencie
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
+- Minimum required role for linked issues [changed](https://gitlab.com/groups/gitlab-org/-/work_items/10267) from Reporter to Guest in GitLab 17.0.
+- Linking epics [moved](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/171877) from GitLab Ultimate to GitLab Premium in GitLab 17.7.
+- Links from epics to issues, tasks, objectives, and key results [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/468310) in GitLab 18.1.
+
 Linked items create bi-directional relationships between work items, helping you visualize and manage dependencies across your entire workflow.
 
 With linked items, you can connect various work items including issues, epics, tasks, and objectives to show relationships between them.
 
 These connections help everyone understand how individual pieces of work relate to each other and to larger strategic initiatives.
+
+You can link items in different projects and groups.
+The relationship only appears if you can view both items.
+
+To manage linked items through the API, see the [issue links API](../../api/issue_links.md)
+and the [linked epics API](../../api/linked_epics.md).
 
 ## Ways to use linked items
 
@@ -62,11 +72,11 @@ This coordination helps break down silos and ensures all aspects of the initiati
 
 GitLab supports linking various types of work items:
 
-- [Issues](../project/issues/related_issues.md) help you track tasks, bugs, and features and can be
+- [Issues](../project/issues/_index.md) help you track tasks, bugs, and features and can be
   linked to show dependencies between discrete pieces of work.
-- [Epics](../group/epics/linked_epics.md) let you manage cross-functional initiatives, show
+- [Epics](../group/epics/_index.md) let you manage cross-functional initiatives, show
   dependencies, and connect strategic planning to execution across multiple teams or projects.
-  Available in the Ultimate tier.
+  Available in the Premium and Ultimate tiers.
 - [Tasks](../tasks.md#linked-items-in-tasks) provide lightweight tracking for smaller units of work
   and can be linked to other items to show relationships or dependencies in a project.
 - [Objectives and key results](../okrs.md#linked-items-in-okrs) help connect strategic goals with
@@ -86,6 +96,22 @@ When linking items, you can specify the type of relationship:
 - **Relates to**: Indicates a general relationship between items.
 - **Blocks**: Shows that an item prevents progress on another item.
 - **Is blocked by**: Shows that an item cannot proceed until another item is resolved.
+
+### Blocked items
+
+- Tier: Premium, Ultimate
+
+When you [add a linked item](#add-a-linked-item), you can show that it
+or  another item.
+
+Blocked items show the blocked icon () and the number of
+blocking items next to their title.
+The icon appears in lists, on boards, and on roadmaps.
+To see the blocking items, hover over the icon.
+The icon disappears when the blocking item is closed, or when the relationship is changed or
+[removed](#remove-a-linked-item).
+
+If you try to close a blocked item, a confirmation message appears.
 
 ## Common tasks with linked items
 
@@ -107,6 +133,13 @@ The general process for adding linked items is similar across all work item type
    - Enter `#` or `&` (depending on item type) followed by the item's number.
    - Enter text to search for the item by title.
    - Paste the full URL of the item.
+
+   To link an item from a different project or group, include its path. For example:
+
+   - The same project: `#44`
+   - A different project in the same group: `project#44`
+   - A different group: `group/project#44`
+   - An epic in a different group: `group&44`
 1. Select  to confirm.
 
 Alternatively, you can add linked items using [quick actions](../project/quick_actions.md):
@@ -117,8 +150,6 @@ Alternatively, you can add linked items using [quick actions](../project/quick_a
 
 For detailed information specific to each work item type, see the relevant documentation:
 
-- [Linked issues](../project/issues/related_issues.md#add-a-linked-issue)
-- [Linked epics](../group/epics/linked_epics.md#add-a-linked-item)
 - [Linked tasks](../tasks.md#linked-items-in-tasks)
 - [Linked OKRs](../okrs.md#linked-items-in-okrs)
 
@@ -172,3 +203,4 @@ You can configure what information is displayed in the  section, so that you can
 - [Epics](../group/epics/_index.md)
 - [Tasks](../tasks.md)
 - [Objectives and key results](../okrs.md)
+- [Crosslinking issues](../project/issues/crosslinking_issues.md)

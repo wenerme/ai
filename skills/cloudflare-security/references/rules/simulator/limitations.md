@@ -22,6 +22,16 @@ For more information, refer to [Why are some rules bypassed?](https://developers
 
 ---
 
+## Requests handled by Snippets or Workers
+
+When a simulated request matches a [Snippet](https://developers.cloudflare.com/rules/snippets/) rule or a [Worker](https://developers.cloudflare.com/workers/) route, the simulation results do not include the **Cache Parameters** > **Cache Key** section.
+
+Cloudflare computes the cache key on the subrequest that the Snippet or Worker sends with `fetch()`, not on the incoming request. Rules simulator does not trace that subrequest, so it cannot show the cache key. The Snippet or Worker code can also change the URL or headers of the subrequest, which changes the cache key.
+
+To check whether the response is served from cache, send a real request and inspect the `cf-cache-status` response header.
+
+---
+
 ## Unsupported features
 
 Rules simulator currently does not support:
@@ -47,5 +57,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/simulator/limitations/#page","headline":"Rules simulator limitations","description":"Known limitations when using Rules simulator.","url":"https://developers.cloudflare.com/rules/simulator/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/simulator/limitations/og.png?v=0ad15ab2b5a796d0","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/simulator/limitations/#page","headline":"Rules simulator limitations","description":"Known limitations when using Rules simulator.","url":"https://developers.cloudflare.com/rules/simulator/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/simulator/limitations/og.png?v=0ad15ab2b5a796d0","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

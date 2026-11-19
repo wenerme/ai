@@ -467,7 +467,7 @@ Key each entry by the name of the class that extends `WorkflowEntrypoint`. Set `
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-19",
 	"exports": {
 		"MyWorkflow": {
 			"type": "workflow",
@@ -484,7 +484,7 @@ name = "billing-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-19"
 
 [exports.MyWorkflow]
 type = "workflow"
@@ -609,7 +609,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-19",
 	"workflows": [
 		{
 			// name of your workflow
@@ -629,7 +629,7 @@ name = "workflows-starter"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-19"
 
 [[workflows]]
 name = "workflows-starter"
@@ -656,7 +656,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-19",
 	"workflows": [
 		{
 			// name of your workflow
@@ -679,7 +679,7 @@ name = "web-api-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-19"
 
 [[workflows]]
 name = "billing-workflow"
@@ -733,6 +733,34 @@ return Response.json({
 Returns a `WorkflowInstance`.
 
 Throws an error if the provided ID is already used by an existing instance that has not yet passed its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/). To re-run a workflow with the same ID, you can [`restart`](https://developers.cloudflare.com/workflows/build/trigger-workflows/#restart-a-workflow) the existing instance.
+
+`create()` rejects with an `Error` when it cannot create the instance. For the following failures, `error.message` includes an identifier in parentheses:
+
+| Identifier | Cause |
+| --- | --- |
+| `(instance.already_exists)` | An instance with this ID already exists. |
+| `(instance.invalid_id)` | The ID is not valid, for example because it is longer than 100 characters. |
+| `(body)` | An option has an invalid value, such as a `retention` duration in the wrong format or an `id` that is not a string. |
+
+These errors have no numeric `code` property. Other failures, such as rate limiting, can include a different identifier or none.
+
+To handle a duplicate ID, check `error.message` for the identifier:
+
+```ts
+try {
+	await env.MY_WORKFLOW.create({ id: myIdDefinedFromOtherSystem });
+} catch (err) {
+	if (
+		!(err instanceof Error) ||
+		!err.message.includes("(instance.already_exists)")
+	) {
+		throw err;
+	}
+	// An instance with this ID already exists
+}
+```
+
+To get numeric codes for duplicate IDs instead, use the object form of [`createBatch()`](#createbatch). It does not throw when an ID is already in use. Instead, it returns an entry in `errors` with code `10405` if the ID already exists, or `10415` if the ID repeats within the same batch.
 
 Caution
 
@@ -1339,5 +1367,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

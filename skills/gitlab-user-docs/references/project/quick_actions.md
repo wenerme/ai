@@ -1812,7 +1812,13 @@ Additional details:
 
 ### `request_review`
 
+- `-lite` and `-standard` options for Code Review Flow [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598) as a [beta](../../policy/development_stages_support.md#beta) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_code_review_standard_flow`. Enabled by default.
+
 Assign a reviewer or request a new review from one or more users.
+
+> [!flag]
+> The availability of the `-lite` and `-standard` options is controlled by a feature flag.
+> For more information, see the history.
 
 Availability:
 
@@ -1822,6 +1828,7 @@ Parameters:
 
 - `@user1 @user2`: One or more usernames to request a review from. Usernames must be prefixed with `@`.
 - `me`: Request a review from yourself.
+- `-lite` or `-standard`: For `@GitLabDuo` only, the [review level](../duo_agent_platform/flows/foundational_flows/code_review/_index.md#review-level) to use. Beta.
 
 Examples:
 
@@ -1829,6 +1836,12 @@ Examples:
 
   ```plaintext
   /request_review @alex
+  ```
+
+- Request a Standard review from GitLab Duo:
+
+  ```plaintext
+  /request_review @GitLabDuo -standard
   ```
 
 - Request review from multiple users:
@@ -1848,6 +1861,12 @@ Additional details:
 - Can also be invoked using [`/assign_reviewer`](#assign_reviewer) or `/reviewer`.
 - If the user is not already a reviewer, assigns them as a reviewer.
 - If the user is already a reviewer, requests a new review from them (resets their review state and sends notifications).
+- The `-lite` and `-standard` options apply only when you request a review from `@GitLabDuo`.
+  Without an option, GitLab Duo uses the default review level for the project.
+- The `-standard` option is available only when
+  [experiment and beta features](../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features)
+  are turned on and Standard reviews are allowed for the project.
+  Otherwise, the quick action fails.
 - For more information, see [request a review](merge_requests/reviews/_index.md#request-a-review).
 
 ### `run_pipeline`

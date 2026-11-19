@@ -80,7 +80,7 @@ To create an issue from another issue:
 1. Complete the [fields](#fields-in-the-new-issue-form).
    The new issue form has a **Relate to issue #123** checkbox, where `123` is the ID of the
    issue of origin. If you keep this checkbox checked, the two issues become
-   [linked](related_issues.md).
+   [linked](../../work_items/linked_items.md).
 1. Select **Create issue**.
 
 The newly created issue opens.

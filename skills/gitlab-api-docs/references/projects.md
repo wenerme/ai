@@ -2226,7 +2226,7 @@ Supported general project attributes:
 | `tag_list`                                         | array   | No                             | The list of tags for a project; put array of tags, that should be finally assigned to a project. [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/328226) in GitLab 14.0. Use `topics` instead. |
 | `template_name`                                    | string  | No                             | When used without `use_custom_template`, name of a [built-in project template](../user/project/_index.md#create-a-project-from-a-built-in-template). When used with `use_custom_template`, name of a custom project template. |
 | `template_project_id`                              | integer | No                             | When used with `use_custom_template`, project ID of a custom project template. Using a project ID is preferable to using `template_name` because `template_name` can be ambiguous. Premium and Ultimate only. |
-| `topics`                                           | array   | No                             | The list of topics for a project; put array of topics, that should be finally assigned to a project. |
+| `topics`                                           | array   | No                             | The list of topics for a project; put array of topics, that should be finally assigned to a project. Accepts up to 50 topics. |
 | `use_custom_template`                              | boolean | No                             | Use either custom [instance](../administration/project_templates.md) or [group](../user/group/custom_project_templates.md) (with `group_with_project_templates_id`) project template. Premium and Ultimate only. |
 | `visibility`                                       | string  | No                             | See [project visibility level](#project-visibility-level). |
 | `warn_about_potentially_unwanted_characters`       | boolean | No                             | Enable warnings about usage of potentially unwanted characters in this project. |
@@ -2327,7 +2327,7 @@ Supported general project attributes:
 | `suggestion_commit_message`                        | string  | No       | The commit message used to apply merge request [suggestions](../user/project/merge_requests/reviews/suggestions.md). |
 | `tag_list`                                         | array   | No       | _([Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/328226) in GitLab 14.0)_ The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. |
 | `template_name`                                    | string  | No       | When used without `use_custom_template`, name of a [built-in project template](../user/project/_index.md#create-a-project-from-a-built-in-template). When used with `use_custom_template`, name of a custom project template. |
-| `topics`                                           | array   | No       | The list of topics for the project. |
+| `topics`                                           | array   | No       | The list of topics for the project. Accepts up to 50 topics. |
 | `use_custom_template`                              | boolean | No       | Use either custom [instance](../administration/project_templates.md) or [group](../user/group/custom_project_templates.md) (with `group_with_project_templates_id`) project template. Premium and Ultimate only. |
 | `visibility`                                       | string  | No       | See [project visibility level](#project-visibility-level). |
 | `warn_about_potentially_unwanted_characters`       | boolean | No       | Enable warnings about usage of potentially unwanted characters in this project. |
@@ -2353,8 +2353,9 @@ see [Project feature visibility level](#project-feature-visibility-level).
 - `duo_code_review_decisions_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254980) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_decisions`. Disabled by default.
 - `duo_code_review_decisions_enabled` [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270328) in GitLab 19.6.
 - `duo_code_review_depth_allowed` and `duo_code_review_default_depth` [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `duo_code_review_deep_flow`. Disabled by default.
-- Feature flag [renamed](https://gitlab.com/groups/gitlab-org/-/work_items/23598) to `duo_code_review_standard_flow`, and `duo_code_review_default_depth` values `standard` and `deep` renamed to `lite` and `standard` in GitLab 19.7.
+- Feature flag `duo_code_review_deep_flow` [renamed](https://gitlab.com/groups/gitlab-org/-/work_items/23598) to `duo_code_review_standard_flow`, and `duo_code_review_default_depth` values `standard` and `deep` renamed to `lite` and `standard` in GitLab 19.7.
 - `duo_code_review_depth_allowed` and `duo_code_review_default_depth` [renamed](https://gitlab.com/groups/gitlab-org/-/work_items/23598) to `duo_code_review_level_allowed` and `duo_code_review_default_level` in GitLab 19.7.
+- `duo_code_review_level_allowed` and `duo_code_review_default_level` [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268528) in GitLab 19.7.
 
 Updates an existing project.
 
@@ -2403,8 +2404,8 @@ Supported general project attributes:
 | `default_branch`                                   | string            | No       | The [default branch](../user/project/repository/branches/default.md) name. |
 | `description`                                      | string            | No       | Short project description. |
 | `duo_code_review_decisions_enabled`                | boolean           | No       | Enable approval and change requests by GitLab Duo on merge requests. See [GitLab Duo in merge requests](../user/project/merge_requests/duo_in_merge_requests.md#use-gitlab-duo-to-review-your-code). Ultimate only. |
-| `duo_code_review_default_level`                    | string            | No       | Default review level for Code Review Flow. One of `lite` or `standard`. If `duo_code_review_level_allowed` is `false`, `standard` is saved as `lite`. Beta. |
-| `duo_code_review_level_allowed`                     | boolean           | No       | If `true`, Code Review Flow can run Standard reviews in this project. Beta. |
+| `duo_code_review_default_level`                    | string            | No       | Default review level for Code Review Flow. One of `lite` or `standard`. If `duo_code_review_level_allowed` is `false`, `standard` is saved as `lite`. See [review level](../user/duo_agent_platform/flows/foundational_flows/code_review/_index.md#review-level). Beta. |
+| `duo_code_review_level_allowed`                     | boolean           | No       | If `true`, Code Review Flow can run Standard reviews in this project. See [review level](../user/duo_agent_platform/flows/foundational_flows/code_review/_index.md#review-level). Beta. |
 | `duo_remote_flows_enabled`                         | boolean           | No       | Determine whether or not [flows](../user/duo_agent_platform/flows/_index.md) can run in your project. |
 | `duo_sast_fp_detection_enabled` | boolean | No | If `true`, turns on SAST false positive detection. Requires the Security Manager, Maintainer, or Owner role. See [turn on SAST false positive detection](../user/application_security/vulnerabilities/false_positive_detection.md#turn-on-for-a-project). |
 | `duo_secret_detection_fp_enabled` | boolean | No | If `true`, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role. See [turn on secret detection false positive detection](../user/application_security/vulnerabilities/secret_false_positive_detection.md#turn-on-for-a-project). |
@@ -2465,7 +2466,7 @@ Supported general project attributes:
 | `squash_option`                                    | string            | No       | One of `never`, `always`, `default_on`, or `default_off`. |
 | `suggestion_commit_message`                        | string            | No       | The commit message used to apply merge request suggestions. |
 | `tag_list`                                         | array             | No       | _([Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/328226) in GitLab 14.0)_ The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. |
-| `topics`                                           | array             | No       | The list of topics for the project. This replaces any existing topics that are already added to the project. |
+| `topics`                                           | array             | No       | The list of topics for the project. Replaces any existing topics that are already added to the project. A request can add up to 50 new topics to the project. |
 | `visibility`                                       | string            | No       | See [project visibility level](#project-visibility-level). |
 | `warn_about_potentially_unwanted_characters`       | boolean           | No       | Enable warnings about usage of potentially unwanted characters in this project. |
 | `wiki_enabled`                                     | boolean           | No       | _(Deprecated)_ Enable wiki for this project. Use `wiki_access_level` instead. |

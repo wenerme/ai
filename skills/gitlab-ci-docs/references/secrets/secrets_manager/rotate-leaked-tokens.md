@@ -115,6 +115,25 @@ until they use the new token:
 
 For other projects and systems, [create a personal access token](../../../user/profile/personal_access_tokens.md#create-a-personal-access-token).
 
+## Rotate leaked tokens in bulk
+
+To rotate leaked tokens across a group instead of one vulnerability at a time,
+use the [leaked-token-rotation-automation](https://gitlab.com/gitlab-org/software-supply-chain-security/tools/leaked-token-rotation-automation)
+tool. The tool is a command-line tool and a CI/CD component that can:
+
+- Rotate the leaked tokens in all secret detection vulnerabilities with an active token status
+  in a group or project. For each vulnerability, it makes the same calls as
+  , and the same [prerequisites](#prerequisites) apply.
+- Find GitLab personal access tokens stored in project CI/CD variables, which secret detection does not scan.
+  It rotates each token, stores the new value in GitLab Secrets Manager, and starts a GitLab Duo session
+  to update the CI/CD jobs that use the variable.
+- Run on a pipeline schedule to rotate tokens found since the last run.
+
+Every command is a dry run until you add `--apply`, and each run stops after 10 rotations by default.
+
+For installation, required token scopes, and limitations, see the
+[project README](https://gitlab.com/gitlab-org/software-supply-chain-security/tools/leaked-token-rotation-automation/-/blob/main/README.md).
+
 ## GitLab Credits usage
 
 This feature consumes [GitLab Credits](../../../subscriptions/gitlab_credits.md) for:

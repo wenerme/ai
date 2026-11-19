@@ -38,6 +38,9 @@ security scanner's templates to your `.gitlab-ci.yml` file.
 
 For instructions on how to enable individual security scanners, see their documentation.
 
+Pipeline secret detection with the `Jobs/Secret-Detection.gitlab-ci.yml` template is available in all tiers.
+For the capabilities that require GitLab Ultimate, see [pipeline secret detection availability](../secret_detection/pipeline/_index.md#availability).
+
 #### Enable security scanning by using Auto DevOps
 
 To enable the following security scanning tools, with default settings, enable

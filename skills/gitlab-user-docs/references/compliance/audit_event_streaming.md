@@ -236,6 +236,8 @@ To update a streaming destination's event filters:
 
 When this feature is enabled for a group, you can permit users to filter streamed audit events per destination.
 If the feature is enabled with no filters, the destination receives all audit events.
+A group filter includes events for the group, its subgroups, and their projects.
+A project filter includes only events for that project.
 
 A streaming destination that has a namespace filter set has a **filtered** () label.
 

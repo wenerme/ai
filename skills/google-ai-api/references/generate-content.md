@@ -1347,7 +1347,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **mediaResolution**: `V1mainMediaResolution`
+  **mediaResolution**: `MediaResolution`
 
   Optional. Media resolution for the input media.
 
@@ -1510,7 +1510,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **toolType**: {% mark %}required{% /mark %} `V1mainToolType`
+  **toolType**: {% mark %}required{% /mark %} `ToolType`
 
   The type of tool that was called.
 
@@ -1552,7 +1552,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **toolType**: {% mark %}required{% /mark %} `V1mainToolType`
+  **toolType**: {% mark %}required{% /mark %} `ToolType`
 
   The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
 
@@ -1734,7 +1734,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **mediaResolution**: `V1mainMediaResolution`
+  **mediaResolution**: `MediaResolution`
 
   Optional. Media resolution for the input media.
 

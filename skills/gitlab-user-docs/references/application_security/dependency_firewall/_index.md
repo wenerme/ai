@@ -54,10 +54,6 @@ Packages in other ecosystems are fetched without evaluation.
 For the command to use with each package manager, see
 [`glab dependency-firewall`](https://docs.gitlab.com/cli/dependency-firewall/).
 
-The CLI connects to registries directly, over HTTPS only, and refuses plain `http://` requests.
-It does not use an outbound corporate proxy, so `glab df` cannot reach registries in a network
-that requires one.
-
 ## Turn on the dependency firewall
 
 Turn on the dependency firewall before you create policies. While the firewall is off, GitLab
@@ -531,29 +527,5 @@ like bypass events for other security policy types:
 
 ## Troubleshooting
 
-When you use the dependency firewall, you might encounter the following issues.
-
-If GitLab can't evaluate a package, the CLI blocks it. If the firewall isn't evaluating the
-project, the CLI allows every package.
-
-### Error: `policy check failed`
-
-A package is blocked, and its reason in the summary starts with `policy check failed`.
-
-This issue occurs when the evaluation request fails because of a network error, a timeout
-after 60 seconds, a server error (`503`), rate limiting (`429`), or a permission error (`403`),
-for example when you do not have the Reporter role.
-
-The CLI retries a failed check the next time the package is requested in the same run.
-`glab df package` does not block the package. It exits with `1` instead.
-
-### Warning: `dependency firewall not evaluating`
-
-The CLI prints a line to standard error that starts with `dependency firewall not evaluating`,
-and allows every package for the rest of the run.
-
-The line is expected when the firewall is not turned on for the project. You can use the same
-commands in every project, whether or not a policy applies.
-
-This issue also occurs when GitLab cannot find the project or your token cannot access it.
-To resolve this issue, check your Git remote and your token's access to the project.
+When you use the dependency firewall, you might encounter blocked packages, policy changes that do not apply, or TLS errors.
+For more information, see [troubleshooting the dependency firewall](troubleshooting.md).

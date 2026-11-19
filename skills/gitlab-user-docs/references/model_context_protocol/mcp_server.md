@@ -276,6 +276,43 @@ Other clients, including Gemini Code Assist and Gemini CLI, GitHub Copilot in VS
 OpenAI Codex, use their own configuration formats. Check your client's documentation for how
 to send a custom HTTP header.
 
+### Apply tool rules from a group or project
+
+- Tier: Premium, Ultimate
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/639265) in GitLab 19.7.
+
+When [Always Deny enforcement](../ai-governance/tool-governance.md#always-deny-enforcement) is on,
+the tool list leaves out denied tools and annotates tools set to **Always Ask**.
+By default, the list uses the rules of your default GitLab Duo namespace.
+
+To use the rules of the group or project you work in, set the optional `X-Gitlab-Namespace-Id`
+HTTP header to its full path. You can also use a group ID.
+A number is read as a namespace ID, not a project ID, so use the full path for a project.
+The rules of the group or project replace the rules of your default GitLab Duo namespace in the list.
+For a project, the list uses the rules of the project and its top-level group.
+For a subgroup, the list uses the rules of its top-level group.
+Your client sets this header the same way as the header in [select tool groups](#select-tool-groups-toolsets).
+
+```json
+{
+  "mcpServers": {
+    "GitLab": {
+      "type": "http",
+      "url": "https://<gitlab.example.com>/api/v4/mcp",
+      "headers": {
+        "X-Gitlab-Namespace-Id": "my-group/my-project"
+      }
+    }
+  }
+}
+```
+
+If the group or project does not exist or you cannot access it, the list uses your default GitLab Duo namespace.
+
+The header changes only the tool list.
+When you call a tool, the server checks the rules of the project or group named in the call.
+
 ### stdio transport with `mcp-remote`
 
 Prerequisites:

@@ -187,18 +187,24 @@ A call that names a group is also checked against the rules of the projects in t
 A deny rule on one of those projects blocks the call, even if you cannot access that project.
 
 Denied tools are also not included in the tool list the server advertises, so a
-client does not offer them. A list request does not name any project
-or group. Those rules therefore resolve against your default GitLab Duo
-namespace, and if you don't have a default namespace, the list is unfiltered. Only rules set
-on that namespace apply. A rule set on one of its projects does not hide a tool from the list. Enforcement is
-unaffected either way: a denied tool is refused when it is called, even if it
+client does not offer them. A client can name the group or project you work in with the
+`X-Gitlab-Namespace-Id` header. The list then uses the rules of that group or project.
+For more information, see
+[apply tool rules from a group or project](../model_context_protocol/mcp_server.md#apply-tool-rules-from-a-group-or-project).
+
+Without the header, the list uses the rules of your default GitLab Duo namespace.
+If you don't have a default namespace, the list is unfiltered. Only rules set
+on that namespace apply. A rule set on one of its projects does not hide a tool from the list.
+
+Enforcement is unaffected either way: a denied tool is refused when it is called, even if it
 was listed.
 
 #### Always Ask
 
 > [!note]
-> When a client uses a GitLab MCP server tool, **Always Ask** rules come from your default
-> GitLab Duo namespace, not from the group or project the tool acts on.
+> When a client uses a GitLab MCP server tool, **Always Ask** rules come from the group or project
+> in the `X-Gitlab-Namespace-Id` header, or otherwise from your default GitLab Duo namespace.
+> They do not come from the group or project the tool acts on.
 > To enforce a rule for the group or project, use **Always Deny**.
 
 **Always Ask** is not enforced by the GitLab MCP server. Tools set to **Always Ask**

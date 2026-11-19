@@ -32,7 +32,7 @@ The possible relationships between epics and other items are:
 
 - An epic is the parent of one or more issues.
 - An epic is the parent of one or more [child epics](../../work_items/child_items.md#work-with-multi-level-hierarchies). Ultimate only.
-- An epic is [linked](linked_epics.md) to one or more tasks, objectives, or key results.
+- An epic is [linked](../../work_items/linked_items.md) to one or more tasks, objectives, or key results.
 - An epic can be assigned one [group milestone](../../project/milestones/_index.md).
   The epic's own milestone does not affect its dates.
 - An epic can [inherit its start and due dates](manage_epics.md#start-and-due-date-inheritance)
@@ -85,7 +85,7 @@ To move your integrations, see [migrate epic APIs to work items](../../../api/gr
 ## Related topics
 
 - [Manage epics](manage_epics.md) and multi-level child epics.
-- Link [related epics](linked_epics.md) based on a type of relationship.
+- Link [related epics](../../work_items/linked_items.md) based on a type of relationship.
 - Create workflows with [epic boards](epic_boards.md).
 - [Turn on notifications](../../profile/notifications.md) for epic events.
 - [Add an emoji reaction](../../emoji_reactions.md) to an epic or its comments.

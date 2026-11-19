@@ -93,6 +93,7 @@ These features are either beta or experimental and consume GitLab Credits.
 |---------|---|---|---|
 | [GitLab for Slack app](../project/integrations/gitlab_slack_application.md#gitlab-duo)  Interact with GitLab Duo from Slack. | No | Yes | Yes |
 | [Security Review Flow](../application_security/security_review.md)  Detects business logic vulnerabilities in merge requests. | No | No | Yes |
+| [Standard reviews by Code Review Flow](flows/foundational_flows/code_review/_index.md#review-level)  Thorough, variable-priced reviews for complex changes. | Yes | Yes | Yes |
 
 ## Beta and experimental features that don't consume credits
 
@@ -113,6 +114,5 @@ but you require credits in your monthly commitment pool to access them.
 | [CI Expert Agent](../../topics/build_your_application/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | Yes | Yes | Yes |
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
 | [Generate Workplan Flow](../work_items/workplan.md)  Draft a workplan for a work item and add it to the **Workplan** widget. | No | Yes | Yes |
-| [Readiness Score Flow](../work_items/workplan.md#readiness)  Show how ready a work item is for GitLab Duo to implement, with suggested improvements. | No | Yes | Yes |
 | [Agentic Breaking Change Resolution Flow](flows/foundational_flows/agentic-breaking-change-resolution.md)  Analyze pipeline failures on dependency bump merge requests and create code fixes to resolve breaking changes introduced by the dependency update. | No | No | Yes |
 | [Support Assistant](agents/foundational_agents/support_assistant.md)  Diagnose and resolve GitLab product problems. | No | Yes | Yes |

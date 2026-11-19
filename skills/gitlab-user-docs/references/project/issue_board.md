@@ -446,7 +446,7 @@ To remove a WIP limit, select .
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-If an issue is [blocked by another issue](issues/related_issues.md#blocking-issues), an icon appears next to its title to indicate its blocked
+If an issue is [blocked by another issue](../work_items/linked_items.md#blocked-items), an icon appears next to its title to indicate its blocked
 status.
 
 When you hover over the blocked icon (), a detailed information popover is displayed.

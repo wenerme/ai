@@ -29,7 +29,7 @@ This table lists the default model for each feature in the Agent Platform.
 | Feature | Model |
 |-------|--------------|
 | GitLab Duo Agentic Chat | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
-| Code Review Flow[^earlier-code-review] | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
+| Code Review Flow[^earlier-code-review], [^review-levels] | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Security Review Flow | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | Business Logic Security Scan | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Recommend Reviewers Flow | Claude Haiku 5.5 Gemini Enterprise Agent Platform |
@@ -38,6 +38,7 @@ This table lists the default model for each feature in the Agent Platform.
 
 [^earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow uses the [default LLM](../gitlab_duo/model_selection.md#default-models)
     set for GitLab Duo Code Review, the non-agentic version.
+[^review-levels]: Lite and Standard reviews use the same default model.
 
 ## Supported models
 
@@ -51,16 +52,28 @@ For information about model availability during trials, see
 - Claude Sonnet 5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6383) as a supported model for Code Review Flow on August 3, 2026.
 - Claude Sonnet 4.5 as a supported model for Code Review Flow [deprecated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6483) on August 10, 2026 and [removed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6621) on August 25, 2026.
 - Claude Sonnet 5.5 and Claude Sonnet 5.5 Gemini Enterprise Agent Platform [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7238) as supported models for Code Review Flow on October 5, 2026.
+- Separate model settings for Lite and Standard reviews [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598)
+  as a [beta](../../policy/development_stages_support.md#beta) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md)
+  named `duo_code_review_standard_flow`. Enabled by default.
 
-This table lists the models you can select for Code Review Flow.
+> [!flag]
+> The availability of separate model settings for Lite and Standard reviews is controlled by a feature flag.
+> For more information, see the history.
 
-| Model             | Code Review Flow[^supported-models-earlier-code-review] |
-|-------------------|---------------------------------------------------------|
-| Claude Sonnet 4.6 | Yes                                             |
-| Claude Sonnet 5   | Yes                                             |
-| Claude Sonnet 5.5 | Yes                                             |
-| GPT-5.2           | Yes                                             |
-| GPT-5.3 Codex     | Yes                                             |
+For Code Review Flow, different models are available for each [review level](flows/foundational_flows/code_review/_index.md#review-level).
+
+> [!note]
+> If you have [experiment and beta features](turn_on_off.md#turn-on-beta-and-experimental-features)
+> turned off, only the models in the Lite column apply.
+
+| Model                                              | Lite (default)[^supported-models-earlier-code-review] | Standard (beta) |
+|----------------------------------------------------|-------------------------------------------------------|-----------------|
+| Claude Sonnet 4.6                                  | Yes                                           | No      |
+| Claude Sonnet 5                                    | Yes                                           | No      |
+| Claude Sonnet 5.5                                  | Yes                                           | No      |
+| Claude Sonnet 5.5 Gemini Enterprise Agent Platform | Yes                                           | Yes     |
+| GPT-5.2                                            | Yes                                           | No      |
+| GPT-5.3 Codex                                      | Yes                                           | No      |
 
 [^supported-models-earlier-code-review]: In GitLab 19.0 and earlier, Code Review Flow can use only the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)
     for GitLab Duo Code Review, the non-agentic version.

@@ -77,8 +77,7 @@ However, to help estimate the duration of your import, a project comprised of th
 - You must enable the [Bitbucket Server import source](../../administration/settings/import_and_export_settings.md#configure-allowed-import-sources)
   or ask your GitLab administrator to enable it. Enabled by default on GitLab.com.
 - The Maintainer or Owner role on the destination group to import to.
-- Bitbucket Server authentication token with administrator access. Without administrator access, some data is
-  [not imported](https://gitlab.com/gitlab-org/gitlab/-/issues/446218).
+- Bitbucket Server authentication token with administrator access.
 
 ## Import your Bitbucket Server repositories
 

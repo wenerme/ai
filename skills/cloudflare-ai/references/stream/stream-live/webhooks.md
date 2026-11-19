@@ -83,40 +83,7 @@ Stream notifications are entirely customizable by the customer. Action will depe
 
 The `event_type` property of the data object will either be `live_input.connected`, `live_input.disconnected`, or `live_input.errored`.
 
-If there are issues detected with the input, the `event_type` will be `live_input.errored`. Additional data will be under the `live_input_errored` json key and will include a `code` with one of the values listed below.
-
-## Error codes
-
-- `ERR_GOP_OUT_OF_RANGE` – The input GOP size or keyframe interval is out of range.
-- `ERR_UNSUPPORTED_VIDEO_CODEC` – The input video codec is unsupported for the protocol used.
-- `ERR_UNSUPPORTED_AUDIO_CODEC` – The input audio codec is unsupported for the protocol used.
-- `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purchase additional storage.
-- `ERR_MISSING_SUBSCRIPTION` – Unauthorized to start a live stream. Check subscription or log into Dash for details.
-- `ERR_UNHEALTHY` – The active broadcast cannot be processed for an unknown reason that is most often due to encoder misconfiguration. Confirm the broadcast follows [required and recommended settings](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations), then disconnect and reconnect to try again.
-
-*Example live\_input.errored webhook payloadjson*
-
-```json
-{
-  "name": "Live Webhook Test",
-  "text": "Notification type: Stream Live Input\nInput ID: 2c28dd2cc444cb77578c4840b51e43a8\nEvent type: live_input.errored\nUpdated at: 2024-07-09T18:07:51.077371662Z\nError Code: ERR_GOP_OUT_OF_RANGE\nError Message: Input GOP size or keyframe interval is out of range.\nVideo Codec: \nAudio Codec: ",
-  "data": {
-    "notification_name": "Stream Live Input",
-    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",
-    "event_type": "live_input.errored",
-    "updated_at": "2024-07-09T18:07:51.077371662Z",
-    "live_input_errored": {
-      "error": {
-        "code": "ERR_GOP_OUT_OF_RANGE",
-        "message": "Input GOP size or keyframe interval is out of range."
-      },
-      "video_codec": "",
-      "audio_codec": ""
-    }
-  },
-  "ts": 1720548474
-}
-```
+If there are issues detected with the input, the `event_type` will be `live_input.errored`. Additional data will be under the `live_input_errored` json key and will include a `code` with one of the values listed in [Error codes](https://developers.cloudflare.com/stream/stream-live/troubleshooting/#error-codes).
 
 Was this helpful?
 
@@ -127,5 +94,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/webhooks/#page","headline":"Receive Live Webhooks","description":"Configure webhook notifications for Cloudflare Stream Live connect, disconnect, and error events.","url":"https://developers.cloudflare.com/stream/stream-live/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/stream-live/webhooks/og.png?v=bd6e2a31ec0ddf75","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/webhooks/#page","headline":"Receive Live Webhooks","description":"Configure webhook notifications for Cloudflare Stream Live connect, disconnect, and error events.","url":"https://developers.cloudflare.com/stream/stream-live/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/stream-live/webhooks/og.png?v=bd6e2a31ec0ddf75","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

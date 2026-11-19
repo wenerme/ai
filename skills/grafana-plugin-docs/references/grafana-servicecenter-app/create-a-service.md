@@ -11,7 +11,7 @@ Create a service to enable the [Service Center view](https://grafana.com/docs/gr
 
 A service represents an application, API, or other component that your team owns and operates. Service Center correlates Grafana Cloud resources to a service by matching labels and tags that identify that service.
 
-You can create and manage services directly in Grafana Cloud, [discover them from your existing resources](https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#discover-services-from-existing-resources), [provision them with Terraform](https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#provision-services-with-terraform), or import them from [Backstage](https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#import-services-from-backstage).
+You can create and manage services directly in Grafana Cloud, [discover them from the knowledge graph or your existing resources](https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#discover-services), [provision them with Terraform](https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#provision-services-with-terraform), or import them from [Backstage](https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#import-services-from-backstage).
 
 ## Add a service
 
@@ -80,9 +80,14 @@ Optionally, define dependencies between services to model relationships within y
 
 After you save the service, Service Center discovers matching resources and displays them in the [Service Center view](https://grafana.com/docs/grafana-cloud/alerting-and-irm/service-center/overview/).
 
-## Discover services from existing resources
+## Discover services
 
-If your SLOs, alert rules, dashboards, incidents, or synthetic checks already use a label such as `service_name` to identify services, you can create many services at once. **Discover services** lists the values of that label as candidate services, lets you choose how they’re named, and creates the ones you select.
+To create many services at once, use **Discover services**. It lists candidate services from one of two places:
+
+- The services that the knowledge graph has observed running in your stack.
+- The values of a label, such as `service_name`, on your SLOs, alert rules, dashboards, incidents, or synthetic checks.
+
+You choose the services you want, and Service Center creates them in a single step.
 
 For instructions, refer to [Discover services](https://grafana.com/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/).
 

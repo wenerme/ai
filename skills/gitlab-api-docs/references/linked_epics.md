@@ -1,7 +1,9 @@
 # Linked epics API (deprecated)
 
-- Tier: Ultimate
+- Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+- [Moved](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/171877) from GitLab Ultimate to GitLab Premium in GitLab 17.7.
 
 > [!warning]
 > The Epics REST API was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/460668) in GitLab 17.0

@@ -133,3 +133,15 @@ isolation by default, so the policy job doesn't receive that value. An unset var
 The workaround is to set `AST_ENABLE_MR_PIPELINES: "false"` directly in the policy CI/CD
 configuration. For more information, including how to use the project or group value instead, see
 [CI/CD variables](../../policies/pipeline_execution_policies.md#cicd-variables).
+
+## Findings show `Unknown` severity and no CVSS vector
+
+A finding might show a severity of `Unknown` and no Common Vulnerability Scoring System (CVSS)
+vector, even though the advisory for that vulnerability has a severity assigned.
+
+Severity and CVSS data come from the [GitLab advisory database](../../gitlab_advisory_database/_index.md)
+rather than from the analyzer. This data is written to the finding each time a scan creates or updates
+it. If the advisory data was incomplete when that happened, the finding keeps the `Unknown`
+severity until a later scan updates it.
+
+To update an affected finding, run a new dependency scanning job on the default branch.

@@ -135,6 +135,46 @@ The following standard interactive rate limits apply to
   * 2,000
 {% /table %}
 
+### Genie 4 rate limits  {% id="genie-4" %}
+
+The following concurrent session and daily request limits apply to
+[`models/genie-4`](/docs/models/genie-4) on the [Interactions API](/docs/genie):
+
+{% table %}
+  * Usage tier
+  * Concurrent active sessions
+  * Requests per day (RPD)
+
+  ---
+
+  * Free
+  * Not supported
+  * Not supported
+
+  ---
+
+  * Tier 1
+  * 2
+  * 50
+
+  ---
+
+  * Tier 2
+  * 5
+  * 250
+
+  ---
+
+  * Tier 3
+  * 10
+  * 1,000
+{% /table %}
+
+Real-time in-session control messages (`user_action` and mid-session `input`
+events) do not consume separate RPM or RPD quota. Genie 4 doesn't support the
+[Batch API](/docs/batch-api), [Flex inference](/docs/flex-inference), or
+[Priority inference](/docs/priority-inference).
+
 ### Gemini Decision 1 rate limits  {% id="gemini-decision" %}
 
 The following standard interactive rate limits apply to

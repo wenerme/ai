@@ -458,9 +458,10 @@ Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/conf
 
    Calls `env.EGRESS.fetch()`
 2. [VPC binding](https://developers.cloudflare.com/workers-vpc/)↓
-3. [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
+3. ⇄ [VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 
    Bind via [`cf1:network`](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
+   No Cloudflare Tunnel, Mesh, or WAN on-ramp required.
 4. ↓
 5. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 

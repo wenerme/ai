@@ -1257,6 +1257,30 @@ Updates a self-hosted model.
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `selfHostedModel` | [`AiSelfHostedModel`](objects.md#aiselfhostedmodel) | Self-hosted model after mutation. |
 
+## `aiUserMemoryUpdate`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.
+
+Updates the current user's AI memory for a given namespace scope.
+
+**Input type:** `AiUserMemoryUpdateInput`
+
+### `aiUserMemoryUpdate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `content` | [`String`](scalars.md#string) | New memory content. Pass null to clear the memory. |
+| `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the root namespace (top-level group) to scope the memory. On self-managed, the namespace's organization is used as the actual container. |
+
+### `aiUserMemoryUpdate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `userMemory` | [`AiUserMemory`](objects.md#aiusermemory) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Updated user memory record. Null when memory is cleared. |
+
 ## `alertSetAssignees`
 
 **Input type:** `AlertSetAssigneesInput`
@@ -15723,29 +15747,6 @@ Deprecated in GitLab 18.0. Use WorkItemsCsvExport.
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `message` | [`String`](scalars.md#string) | Export request result message. |
-
-## `workItemGenerateReadinessScore`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
-
-Scores the readiness of a work item asynchronously through a Duo Agent Platform flow, instead of Duo Chat. Available only when the `workplan` feature flag is enabled; returns an error otherwise.
-
-**Input type:** `WorkItemGenerateReadinessScoreInput`
-
-### `workItemGenerateReadinessScore` arguments {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item to score readiness for. |
-
-### `workItemGenerateReadinessScore` fields {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
-| `workflow` | [`DuoWorkflow`](objects.md#duoworkflow) | Duo Agent Platform workflow started to score the readiness. |
 
 ## `workItemGenerateWorkplan`
 
