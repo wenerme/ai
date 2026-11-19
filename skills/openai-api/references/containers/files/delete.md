@@ -23,24 +23,6 @@ Delete Container File
 ### Example
 
 ```http
-curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "container.file.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2474fb6f4a085685cbe3cb5863/files/cfile_682e0e8a43c88191a7978f477a09bdf5 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

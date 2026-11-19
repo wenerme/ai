@@ -15,7 +15,7 @@ info:
   title: GitLab REST API
   description: GitLab REST API used to interact with a GitLab installation.
   termsOfService: https://handbook.gitlab.com/handbook/legal/api-terms/
-  version: '19.6'
+  version: '19.7'
   license:
     name: CC BY-SA 4.0
     url: https://gitlab.com/gitlab-org/gitlab/-/blob/master/LICENSE
@@ -1513,6 +1513,9 @@ tags:
     These endpoints do not adhere to the standard API authentication methods.
     See the [Composer package registry documentation](https://docs.gitlab.com/user/packages/composer_repository/)
     for details on which headers and token types are supported. Undocumented authentication methods might be removed in the future.
+
+    The V1 package metadata endpoint takes the package name and SHA in one path segment, in the format
+    `<package_name>$<sha>`. You might need to URL-encode the `$` symbol as `%24`.
   x-displayName: 'Packages: Composer'
   externalDocs:
     url: https://docs.gitlab.com/api/packages/composer/
@@ -1546,11 +1549,18 @@ tags:
     > for manual consumption.
 
     Use this API to manage [Debian distributions](https://docs.gitlab.com/user/packages/debian_repository/)
-    for groups and projects, and to publish and retrieve Debian packages. The distribution endpoints are
-    behind a feature flag that is disabled by default. To use them, enable the
+    for groups and projects, and to publish and retrieve Debian packages. The distribution and package
+    endpoints are behind feature flags that are disabled by default. Debian group repository support is
+    still a work in progress. To use the endpoints, a GitLab administrator with access to the GitLab
+    Rails console must enable the
     [group](https://docs.gitlab.com/api/packages/debian_group_distributions/#enable-the-debian-group-api) or
     [project](https://docs.gitlab.com/api/packages/debian_project_distributions/#enable-the-debian-api)
     Debian API.
+
+    The Release file and package index endpoints have identical routes at two levels. Use the
+    project-level prefix `/projects/:id/packages/debian` to make requests in a single project's scope,
+    and the group-level prefix `/groups/:id/-/packages/debian` to make requests in a single group's
+    scope.
 
     > [!note]
     > These endpoints do not adhere to the standard API authentication methods. For the supported headers
@@ -1599,6 +1609,10 @@ tags:
     These endpoints do not adhere to the standard API authentication methods.
     See the [NuGet package registry documentation](https://docs.gitlab.com/user/packages/nuget_repository/)
     for details on which headers and token types are supported. Undocumented authentication methods might be removed in the future.
+
+    Most endpoints exist at two route prefixes. Use the group-level prefix `/groups/:id/-/packages/nuget`
+    to make requests in a group's scope, and the project-level prefix `/projects/:id/packages/nuget` to
+    make requests in a single project's scope.
   x-displayName: 'Packages: NuGet'
   externalDocs:
     url: https://docs.gitlab.com/api/packages/nuget/
@@ -1637,11 +1651,23 @@ tags:
     These endpoints do not adhere to the standard API authentication methods.
     See the [Ruby gems registry documentation](https://docs.gitlab.com/user/packages/rubygems_registry/)
     for details on which headers and token types are supported. Undocumented authentication methods might be removed in the future.
+
+    These endpoints are behind a feature flag named `rubygem_packages`, disabled by default. GitLab
+    administrators with access to the GitLab Rails console can enable or disable the flag for the
+    instance, or for specific projects.
   x-displayName: 'Packages: RubyGem'
   externalDocs:
     url: https://docs.gitlab.com/api/packages/rubygems/
 - name: Pipeline schedules
-  description: Use this API to interact with [pipeline schedules](https://docs.gitlab.com/ci/pipelines/schedules/).
+  description: |-
+    Use this API to interact with [pipeline schedules](https://docs.gitlab.com/ci/pipelines/schedules/).
+
+    The API cannot automatically expand a short `ref` to a full `ref` when:
+
+    - Both a branch and a tag exist with the same name as the short `ref`.
+    - No branch or tag exists with that name.
+
+    To resolve this issue, provide the full `ref`, for example `refs/heads/main` or `refs/tags/main`.
   x-displayName: Pipeline schedules
   externalDocs:
     url: https://docs.gitlab.com/api/pipeline_schedules/
@@ -1718,7 +1744,21 @@ tags:
   externalDocs:
     url: https://docs.gitlab.com/api/project_import_export/
 - name: Project mirrors
-  description: Use this API to manage project [pull mirroring](https://docs.gitlab.com/user/project/repository/mirror/pull/).
+  description: |-
+    Use this API to manage project [pull mirroring](https://docs.gitlab.com/user/project/repository/mirror/pull/).
+
+    > [!warning]
+    > Configuring pull mirroring with the `mirror` and `import_url` attributes of the projects API was
+    > deprecated in GitLab 17.6 and is planned for removal in v5 of the API. Use the endpoint that
+    > updates project pull mirroring settings instead. This change is a breaking change.
+
+    With the deprecated method, if the remote repository is publicly accessible or uses
+    `username:token` authentication, configure pull mirroring when you create or update a project.
+    To enable pull mirroring, set `mirror` to `true` and set `import_url` to the URL of the remote
+    repository. To disable it, set `mirror` to `false`. If your HTTP repository is not publicly
+    accessible, add the authentication information to the URL, for example
+    `https://username:token@gitlab.company.com/group/project.git`, where `token` is a personal access
+    token with the `api` scope enabled.
   x-displayName: Project mirrors
   externalDocs:
     url: https://docs.gitlab.com/api/project_pull_mirroring/
@@ -1749,8 +1789,10 @@ tags:
   externalDocs:
     url: https://docs.gitlab.com/api/project_templates/
 - name: Project topics
-  description: Use this API to interact with project topics. For more information,
-    see [project topics](https://docs.gitlab.com/user/project/project_topics/).
+  description: |-
+    Use this API to interact with project topics. For more information, see [project topics](https://docs.gitlab.com/user/project/project_topics/).
+
+    To remove a topic avatar, set `avatar` to a blank value when you update the topic.
   x-displayName: Project topics
   externalDocs:
     url: https://docs.gitlab.com/api/topics/
@@ -1766,6 +1808,40 @@ tags:
 
     If a user is not a member of a private project, a `GET` request on that project results in a
     `404` status code.
+
+    To read the properties of a private project, you need any default role on the project. To edit project
+    properties, you need the Maintainer or Owner role on each project you change.
+
+    A project has one of three visibility levels: `private`, `internal`, or `public`. The fields returned in
+    responses vary based on the permissions of the authenticated user.
+
+    Each project feature access level setting is defined independently and accepts these values:
+
+    - `disabled`: Turns off the feature.
+    - `private`: Turns on the feature for project members only.
+    - `enabled`: Turns on the feature for everyone with access to the project.
+    - `public`: Turns on the feature for everyone. Available only for `pages_access_level`.
+
+    If Pages access control is turned on, private projects accept `disabled`, `private`, and `public` for
+    `pages_access_level`, internal projects accept all four values, and public projects accept `disabled`,
+    `private`, and `enabled`. `public` is also rejected when public access to Pages is turned off for the
+    instance or the group.
+
+    New projects have Service Desk turned on by default. To turn off Service Desk for several projects, update
+    each project and set `service_desk_enabled` to `false`.
+
+    To remove a project avatar, update the project with a blank value for `avatar`.
+
+    The returned `restrict_user_defined_variables` value is derived from
+    `ci_pipeline_variables_minimum_override_role`, which takes priority when you set both. It is `false` only
+    when the minimum override role is `developer`. For example, setting `restrict_user_defined_variables` to
+    `true` and `ci_pipeline_variables_minimum_override_role` to `developer` returns
+    `restrict_user_defined_variables: false`. Setting `restrict_user_defined_variables` to `false` and
+    `ci_pipeline_variables_minimum_override_role` to `maintainer` returns `restrict_user_defined_variables: true`.
+
+    Every call to the project statistics and project security settings endpoints must be authenticated.
+    Project statistics count the number of times the project is cloned or pulled over HTTP. SSH fetches
+    are not included.
   x-displayName: Projects
   externalDocs:
     url: https://docs.gitlab.com/api/projects/
@@ -1791,8 +1867,39 @@ tags:
 
     > [!warning]
     > Group protected branch settings are restricted to top-level groups. They support only
-    > [valid access levels](https://docs.gitlab.com/api/group_protected_branches/#valid-access-levels),
-    > and cannot name individual users or groups.
+    > [valid access levels](https://docs.gitlab.com/api/group_protected_branches/#valid-access-levels)
+    > and, on GitLab Ultimate, custom roles (`member_role_id`). They cannot name individual users or groups.
+    > The custom role must belong to the same top-level group as the protected branch.
+
+    Valid access levels are:
+
+    - `0`: No access. Valid for push and merge access levels only, not for unprotect access levels.
+    - `30`: Developer.
+    - `40`: Maintainer.
+    - `60`: Administrator. Valid for GitLab Self-Managed only.
+
+    On project protected branches, you can also assign access by:
+
+    - User (`user_id`): Valid for push, merge, and unprotect access levels. The user must have access to
+      the project.
+    - Group (`group_id`): Valid for push, merge, and unprotect access levels. The group must have the
+      project shared with it, with the Developer, Maintainer, or Owner role.
+    - Deploy key (`deploy_key_id`): Valid for push access levels only. The deploy key must be enabled
+      for the project and have write access to the project repository.
+
+    Each element in the `allowed_to_push`, `allowed_to_merge`, and `allowed_to_unprotect` arrays takes
+    the form `{user_id: integer}`, `{group_id: integer}`, `{deploy_key_id: integer}`,
+    `{member_role_id: integer}`, or `{access_level: integer}`. `user_id`, `group_id`, and `access_level`
+    are available only on GitLab Premium and Ultimate. `member_role_id` is available only on GitLab
+    Ultimate. `deploy_key_id` is valid only in `allowed_to_push`.
+
+    On GitLab Premium and Ultimate, to update a project protected branch, you must be included in its `allowed_to_unprotect` configuration.
+    To modify an existing access level record, include its `id`. To remove an access level, include its
+    `id` and set `_destroy` to `true`.
+
+    > [!note]
+    > To avoid permanently locking protection settings for a branch, ensure at least one user or group
+    > retains unprotect permissions for the branch at all times.
   x-displayName: Protected branches
   externalDocs:
     url: https://docs.gitlab.com/api/protected_branches/
@@ -1811,7 +1918,16 @@ tags:
   externalDocs:
     url: https://docs.gitlab.com/api/protected_environments/
 - name: Protected tags
-  description: Use this API to manage [protected tags](https://docs.gitlab.com/user/project/protected_tags/).
+  description: |-
+    Use this API to manage [protected tags](https://docs.gitlab.com/user/project/protected_tags/).
+
+    These access levels are recognized: `0` (No access), `30` (Developer role), `40` (Maintainer role),
+    and `60` (administrator). `60` is not available on GitLab.com.
+
+    Elements in the `allowed_to_create` array take the form `{user_id: integer}`, `{group_id: integer}`,
+    `{deploy_key_id: integer}`, or `{access_level: integer}`. `user_id`, `group_id`, and `access_level`
+    are available only on GitLab Premium and Ultimate. Each user must be a member of the project, and
+    the project must be shared with each group with at least the Developer role.
   x-displayName: Protected tags
   externalDocs:
     url: https://docs.gitlab.com/api/protected_tags/
@@ -1854,6 +1970,14 @@ tags:
     list the releases across a group, and manage the asset links attached to a release.
 
     Asset links support the `http`, `https`, and `ftp` protocols.
+
+    For authentication, the Releases API accepts either a personal access token in the `PRIVATE-TOKEN`
+    header, or the CI/CD job token `$CI_JOB_TOKEN` in the `JOB-TOKEN` header.
+
+    When you create or update a release, the `milestones` and `milestone_ids` parameters accept group
+    milestones only from the project's group. Specifying a milestone of an ancestor group returns an error.
+
+    In release responses, `upcoming_release` is `true` when `released_at` is set to a future date.
   x-displayName: Releases
   externalDocs:
     url: https://docs.gitlab.com/api/releases/
@@ -1873,7 +1997,13 @@ tags:
   externalDocs:
     url: https://docs.gitlab.com/api/remote_mirrors/
 - name: Repositories
-  description: Use this API to manage [Git repositories](https://docs.gitlab.com/user/project/repository/).
+  description: |-
+    Use this API to manage [Git repositories](https://docs.gitlab.com/user/project/repository/).
+
+    When the add changelog data operation adds to an existing changelog file, it places the new section by
+    the version headers already in the file. A version header must have the form `## X.Y.Z`. If the file
+    uses another form, such as `## vX.Y.Z`, new sections are appended to the end of the file. Migrate a
+    manually-managed changelog file to this format before you use the API.
   x-displayName: Repositories
   externalDocs:
     url: https://docs.gitlab.com/api/repositories/
@@ -1889,6 +2019,12 @@ tags:
 
     State events do not track the initial state (`created` or `opened`) of a resource. For a resource
     that was never closed or reopened, an empty list is returned.
+
+    > [!warning]
+    > The epic endpoints in this API are part of the Epics REST API, which was
+    > [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/460668) in GitLab 17.0 and is planned
+    > for removal in v5 of the API. From GitLab 17.4 to 18.0, if the new look for epics is enabled, or in
+    > GitLab 18.1 and later, use the Work Items API instead. This change is a breaking change.
   x-displayName: Resource events
   externalDocs:
     url: https://docs.gitlab.com/api/resource_label_events/
@@ -1920,6 +2056,10 @@ tags:
     Use this API to manage the runner controllers that handle CI/CD job admission control, and the scopes
     assigned to them. Runner controllers connect to the job router and evaluate jobs against custom
     policies, deciding whether to admit or reject them.
+
+    Runner controller scopes define which jobs a runner controller evaluates for admission control. A
+    runner controller must have at least one scope to receive admission requests. Without a scope, the
+    controller remains inactive even when its state is `enabled` or `dry_run`.
 
     These endpoints require administrator access to the instance.
 
@@ -1963,6 +2103,11 @@ tags:
     [specify a search type](https://docs.gitlab.com/user/search/#specify-a-search-type).
 
     These endpoints support [offset-based pagination](https://docs.gitlab.com/api/rest/#offset-based-pagination).
+
+    With advanced search, at most 10,000 results (`page` multiplied by `per_page`) can be retrieved.
+    Requests past that limit return an empty page with no `next` link. Basic search and exact code
+    search are not affected. Raising `index.max_result_window` on the Elasticsearch cluster does not
+    increase the limit.
   x-displayName: Search
   externalDocs:
     url: https://docs.gitlab.com/api/search/
@@ -1996,6 +2141,26 @@ tags:
 
     You can also interact with service accounts through the [users API](https://docs.gitlab.com/api/users/).
     To manage SSH keys for service accounts, use the [user SSH and GPG keys API](https://docs.gitlab.com/api/user_keys/).
+
+    Instance service accounts are available to an entire GitLab instance, but must still be added to
+    groups and projects like a human user. Managing instance service accounts requires administrator
+    access to the instance.
+
+    Group service accounts are owned by a specific group. A service account created in a top-level group
+    can be invited to any group or project on the instance. A service account created in a subgroup can
+    be invited only to that subgroup and its descendant subgroups or projects. To manage group service
+    accounts:
+
+    - On GitLab.com, you must have the Owner role for the group.
+    - On GitLab Self-Managed or GitLab Dedicated, you must either be an administrator for the instance,
+      or have the Owner role in a group and be allowed to create service accounts.
+
+    Project service accounts are owned by a specific project and are available only to their
+    associated project. To manage project service accounts:
+
+    - On GitLab.com, you must have the Maintainer or Owner role for the project.
+    - On GitLab Self-Managed or GitLab Dedicated, you must either be an administrator for the instance,
+      or have the Maintainer or Owner role in the project.
   x-displayName: Service accounts
   externalDocs:
     url: https://docs.gitlab.com/api/service_accounts/
@@ -2063,6 +2228,8 @@ tags:
     Suggestions provide a way to propose specific changes that can be directly applied to the code.
     You can programmatically create and apply code suggestions in merge request discussions with
     this API. Every API call to suggestions must be authenticated.
+
+    To create a suggestion, use the Discussions API to create a new thread in the merge request diff.
   x-displayName: Suggestions
   externalDocs:
     url: https://docs.gitlab.com/api/suggestions/
@@ -2081,6 +2248,9 @@ tags:
     - [`.gitignore` templates](https://git-scm.com/docs/gitignore)
     - [CI/CD configuration templates](https://gitlab.com/gitlab-org/gitlab/-/tree/master/lib/gitlab/ci/templates)
     - [Open source license templates](https://choosealicense.com/)
+
+    On GitLab Premium and Ultimate, instance administrators can override the Dockerfile templates in
+    the **Admin** area.
 
     Custom CI/CD templates are not available from these endpoints. For templates specific to a project,
     use the [project templates API](https://docs.gitlab.com/api/project_templates/).
@@ -2125,6 +2295,12 @@ tags:
     Use this API to track internal events and to retrieve the
     [Service Ping](https://docs.gitlab.com/development/internal_analytics/service_ping/) payload that
     GitLab collects, including its non-SQL metrics and the queries behind it.
+
+    The Service Ping payload includes `schema_inconsistencies_metric`. Database schema inconsistencies are
+    expected, and are unlikely to indicate a problem with your instance. This metric is only for
+    troubleshooting ongoing issues, and should not be used as a regular health check. Interpret it only with
+    the guidance of GitLab Support. The metric reports the same database schema inconsistencies as the
+    database schema checker Rake task.
   x-displayName: Usage data
   externalDocs:
     url: https://docs.gitlab.com/api/usage_data/
@@ -2162,6 +2338,7 @@ tags:
     > The response payload may be subject to change or breakage across GitLab releases. Use the
     > [GraphQL API](https://docs.gitlab.com/api/graphql/reference/queries/#vulnerabilities) instead.
     > For more information, see [replace vulnerability REST API with GraphQL](https://docs.gitlab.com/api/vulnerabilities/#replace-vulnerability-rest-api-with-graphql).
+    > For project vulnerability findings, use the `Pipeline.securityReportFindings` GraphQL field.
 
     Use this API to manage [vulnerabilities](https://docs.gitlab.com/user/application_security/vulnerabilities/),
     retrieve vulnerability findings, and export [vulnerability reports](https://docs.gitlab.com/user/application_security/vulnerability_report/)
@@ -2177,6 +2354,10 @@ tags:
     > Vulnerabilities name now serves [vulnerability objects](https://gitlab.com/gitlab-org/gitlab/-/issues/13561).
     > To fix a broken integration with the former API, change the `vulnerabilities` URL part to
     > `vulnerability_findings`.
+
+    To replace these REST endpoints with GraphQL, use `Query.vulnerability` to retrieve a vulnerability, and
+    `Mutation.vulnerabilityConfirm`, `Mutation.vulnerabilityResolve`, `Mutation.vulnerabilityDismiss`, and
+    `Mutation.vulnerabilityRevertToDetected` to change its state.
   x-displayName: Vulnerabilities
   externalDocs:
     url: https://docs.gitlab.com/api/vulnerabilities/
@@ -2189,10 +2370,14 @@ tags:
     url: https://docs.gitlab.com/api/web_commits/
 - name: Wikis
   description: |-
-    Use this API to manage [group wikis](https://docs.gitlab.com/user/project/wiki/group/).
-    An API for [project wikis](https://docs.gitlab.com/api/wikis/) is also available.
+    Use this API to manage [project wikis](https://docs.gitlab.com/user/project/wiki/) and
+    [group wikis](https://docs.gitlab.com/user/project/wiki/group/).
 
-    Comments on a wiki page are called `notes`. To interact with them, use the [notes API](https://docs.gitlab.com/api/notes/#group-wikis).
+    Comments on a wiki page are called `notes`. To interact with them, use the notes API for
+    [project wikis](https://docs.gitlab.com/api/notes/#project-wikis) or [group wikis](https://docs.gitlab.com/api/notes/#group-wikis).
+
+    A rate limit applies to unauthenticated requests that list or retrieve wiki pages. This rate limit is
+    behind a feature flag named `wiki_read_unauthenticated_rate_limit_enforce`, disabled by default.
   x-displayName: Wikis
   externalDocs:
     url: https://docs.gitlab.com/api/group_wikis/
@@ -79838,6 +80023,8 @@ paths:
           description: Forbidden
         '405':
           description: Artifacts support not enabled
+        '409':
+          description: Conflict
         '413':
           description: File too large
         '429':
@@ -98761,6 +98948,8 @@ components:
         trial_create_limit:
           type: string
         hand_raise_lead_create_limit:
+          type: string
+        user_add_on_assignment_bulk_create_limit:
           type: string
         duo_workflow_oauth_application_id:
           type: string
@@ -121008,6 +121197,12 @@ components:
           type: integer
           description: 'Maximum number of hand-raise lead requests per hour per user.
             Default: `10`. Set to `0` to disable the rate limit.'
+          nullable: true
+        user_add_on_assignment_bulk_create_limit:
+          type: integer
+          description: 'Maximum number of `userAddOnAssignmentBulkCreate` GraphQL
+            mutation calls per minute per user. Default: `0`. Set to `0` to disable
+            the rate limit.'
           nullable: true
         group_owners_can_manage_default_branch_protection:
           type: boolean

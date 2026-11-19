@@ -16,7 +16,7 @@ Use the Responses API for non-PDF file inputs. To use text from a file in Chat C
 
 In the Responses API, `input_file` processing depends on the file type:
 
-- **PDF files**: On models with vision capabilities, such as `gpt-4o` and later models, the API extracts both text and page images and sends both to the model.
+- For **PDF files**, the API extracts both text and page images and sends both to models that accept image inputs.
 - **Non-PDF document and text files** (for example, `.docx`, `.pptx`, `.txt`, and code files): the API extracts text only.
 - **Spreadsheet files** (for example, `.xlsx`, `.csv`, `.tsv`): the API runs a spreadsheet-specific augmentation flow (described below).
 
@@ -54,11 +54,11 @@ or diagrams.
 The `detail` setting only affects PDF page image processing. Text extracted from
 the PDF is still included. Chat Completions file inputs don't support `detail`.
 
-A minimal Responses API request body with explicit high detail looks like this:
+This Responses API request sets `detail` to `high`.
 
 ```json
 {
-  "model": "gpt-4.1",
+  "model": "gpt-6.2-astra",
   "input": [
     {
       "role": "user",
@@ -842,7 +842,7 @@ Keep these constraints in mind when you use file inputs:
 
 - **Token usage:** PDF parsing includes both extracted text and page images in context, which can increase token usage. In the Responses API, set `detail` to `auto` (the default), `low`, or `high` to control the amount of visual detail for PDF page images. Before deploying at scale, review pricing and token implications. [More on pricing](https://developers.openai.com/api/docs/pricing).
 - **File size limits:** A single request can include more than one file, but each file must be under 50 MB. The combined limit across all files in the request is 50 MB.
-- **Supported models:** PDF parsing that includes text and page images requires models with vision capabilities, such as `gpt-4o` and later models.
+- PDF parsing with text and page images requires a [model that accepts image inputs](https://developers.openai.com/api/docs/models).
 - **File upload purpose:** You can upload files with any supported [purpose](https://developers.openai.com/api/reference/resources/files/methods/create#files-create-purpose), but use `user_data` for files you plan to pass as model inputs.
 
 ## Full list of accepted file types

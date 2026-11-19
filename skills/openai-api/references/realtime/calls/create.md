@@ -921,19 +921,10 @@ Content type: `application/sdp`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F sdp=sdp
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F "sdp=<offer.sdp;type=application/sdp" \
-  -F 'session={"type":"realtime","model":"gpt-realtime"};type=application/json'
+  -F 'session={"type":"realtime","model":"gpt-realtime-2.1"};type=application/json'
 ```
 
 #### Response example

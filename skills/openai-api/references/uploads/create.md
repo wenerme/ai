@@ -198,46 +198,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/uploads \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "bytes": 0,
-          "filename": "filename",
-          "mime_type": "mime_type",
-          "purpose": "assistants"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "filename": "filename",
-  "purpose": "purpose",
-  "status": "pending",
-  "file": {
-    "id": "id",
-    "bytes": 0,
-    "created_at": 0,
-    "filename": "filename",
-    "object": "file",
-    "purpose": "assistants",
-    "status": "uploaded",
-    "expires_at": 0,
-    "status_details": "status_details"
-  },
-  "object": "upload"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/uploads \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "purpose": "fine-tune",

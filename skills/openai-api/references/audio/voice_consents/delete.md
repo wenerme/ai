@@ -27,9 +27,9 @@ Deletes a voice consent recording.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
+  -X DELETE \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
 #### 200 — Example
@@ -40,12 +40,4 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
   "deleted": true,
   "object": "audio.voice_consent"
 }
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
-  -X DELETE \
-  -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

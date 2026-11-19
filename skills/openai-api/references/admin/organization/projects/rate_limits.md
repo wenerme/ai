@@ -81,50 +81,6 @@ Returns the rate limits per model for a project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 example 1
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "max_requests_per_1_minute": 0,
-      "max_tokens_per_1_minute": 0,
-      "model": "model",
-      "object": "project.rate_limit",
-      "batch_1_day_max_input_tokens": 0,
-      "max_audio_megabytes_per_1_minute": 0,
-      "max_images_per_1_minute": 0,
-      "max_requests_per_1_day": 0
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-#### 404 — default
-
-```json
-{
-  "error": {
-    "code": "project_not_found",
-    "message": "The project proj_abc was not found",
-    "type": "invalid_request_error",
-    "param": null
-  }
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/rate_limits?after=rl_xxx&limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -238,44 +194,6 @@ Content type: `application/json`
   - `max_requests_per_1_day: optional integer`
 
     The maximum requests per day. Only present for relevant models.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RATE_LIMIT_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{}'
-```
-
-#### 200 example 1
-
-```json
-{
-  "id": "id",
-  "max_requests_per_1_minute": 0,
-  "max_tokens_per_1_minute": 0,
-  "model": "model",
-  "object": "project.rate_limit",
-  "batch_1_day_max_input_tokens": 0,
-  "max_audio_megabytes_per_1_minute": 0,
-  "max_images_per_1_minute": 0,
-  "max_requests_per_1_day": 0
-}
-```
-
-#### 404 — default
-
-```json
-{
-  "error": {
-    "code": "project_not_found",
-    "message": "The project proj_abc was not found",
-    "type": "invalid_request_error",
-    "param": null
-  }
-}
-```
 
 ### Example
 

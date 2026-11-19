@@ -60,8 +60,8 @@ The RBAC Roles API is available to Claude Enterprise organizations only.
     permission entitlement (`permission_*`), or a blanket capability-access
     mode — `capability_access_all` grants every product-feature entitlement
     except `inference_hooks_inspection`, which a role holds only through its
-    own row, and `capability_access_all_ga` grants the generally-available
-    subset of those as it stands at permission-check time; neither mode grants
+    own row, and `capability_access_all_ga` grants the subset of those for
+    stable features as it stands at permission-check time; neither mode grants
     model-access entitlements. A consumer enumerating a role's per-feature grants should
     treat a blanket row as granting every product-feature entitlement it
     covers, or it will under-report the role's effective access. A `connector_tool` grant carries
@@ -161,6 +161,24 @@ The RBAC Roles API is available to Claude Enterprise organizations only.
 
   Opaque cursor for the next page. Pass as the `page` parameter on the next
   request.
+
+## Errors
+
+Any method can also return the general [HTTP errors](https://platform.claude.com/docs/en/api/errors?sdk_languages=http).
+
+Each code below is the value of `error.details.error_code` in the response body.
+
+- `organization_type_not_supported` (HTTP status 400)
+
+  The endpoint does not support the organization's type. Each endpoint's description says which organization types it supports.
+
+- `parent_organization_required` (HTTP status 400)
+
+  The endpoint serves only organizations that belong to a parent organization, and this organization belongs to none.
+
+- `rbac_role_not_found` (HTTP status 404)
+
+  No RBAC Role with this ID was found.
 
 ## Example
 

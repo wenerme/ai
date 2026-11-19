@@ -2932,10 +2932,27 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/agents/$AGENT_ID \
-    -X POST \
-    -H 'OpenAI-Beta: agents=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+# 1. Omit reasoning: keep its current settings while renaming the agent.
+curl "https://api.openai.com/v1/agents/$AGENT_ID" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: agents=v1" \
+  -d '{"name": "Renamed"}'
+
+# 2. Send null: reset reasoning to the model's defaults.
+curl "https://api.openai.com/v1/agents/$AGENT_ID" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: agents=v1" \
+  -d '{"reasoning": null}'
+
+# 3. Send an object: replace the entire reasoning configuration, without merging.
+# The agent's model must support the "low" reasoning effort.
+curl "https://api.openai.com/v1/agents/$AGENT_ID" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: agents=v1" \
+  -d '{"reasoning": {"effort": "low"}}'
 ```
 
 #### 200 — Example
@@ -2986,32 +3003,6 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
     "time_awareness": true
   }
 }
-```
-
-### Example
-
-```http
-# 1. Omit reasoning: keep its current settings while renaming the agent.
-curl "https://api.openai.com/v1/agents/$AGENT_ID" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -H "OpenAI-Beta: agents=v1" \
-  -d '{"name": "Renamed"}'
-
-# 2. Send null: reset reasoning to the model's defaults.
-curl "https://api.openai.com/v1/agents/$AGENT_ID" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -H "OpenAI-Beta: agents=v1" \
-  -d '{"reasoning": null}'
-
-# 3. Send an object: replace the entire reasoning configuration, without merging.
-# The agent's model must support the "low" reasoning effort.
-curl "https://api.openai.com/v1/agents/$AGENT_ID" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -H "OpenAI-Beta: agents=v1" \
-  -d '{"reasoning": {"effort": "low"}}'
 ```
 
 ## Domain Types
@@ -67587,7 +67578,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     -H 'OpenAI-Beta: agents=v1' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "metadata": {}
+          "metadata": {
+            "environment": "staging"
+          }
         }'
 ```
 
@@ -69291,25 +69284,6 @@ Delete an assistant.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
-    -X DELETE \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "assistant.deleted"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/assistants/asst_abc123 \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -69606,59 +69580,6 @@ Returns a list of assistants.
 - `last_id: string`
 
 - `object: string`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/assistants \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "description": "description",
-      "instructions": "instructions",
-      "metadata": {
-        "foo": "string"
-      },
-      "model": "model",
-      "name": "name",
-      "object": "assistant",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ],
-      "response_format": "auto",
-      "temperature": 1,
-      "tool_resources": {
-        "code_interpreter": {
-          "file_ids": [
-            "string"
-          ]
-        },
-        "file_search": {
-          "vector_store_ids": [
-            "string"
-          ]
-        }
-      },
-      "top_p": 1
-    }
-  ],
-  "first_id": "asst_abc123",
-  "has_more": false,
-  "last_id": "asst_abc456",
-  "object": "list"
-}
-```
 
 ### Example
 
@@ -69984,51 +69905,6 @@ Retrieves an assistant.
     We generally recommend altering this or temperature but not both.
 
     `minimum: 0`, `maximum: 1`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "description": "description",
-  "instructions": "instructions",
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "name": "name",
-  "object": "assistant",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "response_format": "auto",
-  "temperature": 1,
-  "tool_resources": {
-    "code_interpreter": {
-      "file_ids": [
-        "string"
-      ]
-    },
-    "file_search": {
-      "vector_store_ids": [
-        "string"
-      ]
-    }
-  },
-  "top_p": 1
-}
-```
 
 ### Example
 
@@ -70661,56 +70537,6 @@ Content type: `application/json`
     We generally recommend altering this or temperature but not both.
 
     `minimum: 0`, `maximum: 1`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/assistants/$ASSISTANT_ID \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "temperature": 1,
-          "top_p": 1
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "description": "description",
-  "instructions": "instructions",
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "name": "name",
-  "object": "assistant",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "response_format": "auto",
-  "temperature": 1,
-  "tool_resources": {
-    "code_interpreter": {
-      "file_ids": [
-        "string"
-      ]
-    },
-    "file_search": {
-      "vector_store_ids": [
-        "string"
-      ]
-    }
-  },
-  "top_p": 1
-}
-```
 
 ### Example
 
@@ -74697,56 +74523,6 @@ Cancelling prevents new requests from using the issued client secret.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/sessions/$SESSION_ID/cancel \
-    -X POST \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cksess_123",
-  "object": "chatkit.session",
-  "client_secret": "",
-  "expires_at": 1712349876,
-  "workflow": {
-    "id": "workflow_alpha",
-    "version": "2024-10-01",
-    "state_variables": {
-      "message": "hello"
-    },
-    "tracing": {
-      "enabled": true
-    }
-  },
-  "user": "user_789",
-  "rate_limits": {
-    "max_requests_per_1_minute": 60
-  },
-  "max_requests_per_1_minute": 60,
-  "status": "cancelled",
-  "chatkit_configuration": {
-    "automatic_thread_titling": {
-      "enabled": true
-    },
-    "file_upload": {
-      "enabled": true,
-      "max_file_size": 16,
-      "max_files": 20
-    },
-    "history": {
-      "enabled": true,
-      "recent_threads": 10
-    }
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST \
   https://api.openai.com/v1/chatkit/sessions/cksess_123/cancel \
   -H "OpenAI-Beta: chatkit_beta=v1" \
@@ -75042,62 +74818,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/chatkit/sessions \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "user": "x",
-          "workflow": {
-            "id": "id"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cksess_123",
-  "chatkit_configuration": {
-    "automatic_thread_titling": {
-      "enabled": true
-    },
-    "file_upload": {
-      "enabled": true,
-      "max_file_size": 16,
-      "max_files": 20
-    },
-    "history": {
-      "enabled": true,
-      "recent_threads": 10
-    }
-  },
-  "client_secret": "ek_token_123",
-  "expires_at": 1712349876,
-  "max_requests_per_1_minute": 60,
-  "object": "chatkit.session",
-  "rate_limits": {
-    "max_requests_per_1_minute": 60
-  },
-  "status": "active",
-  "user": "user_789",
-  "workflow": {
-    "id": "workflow_alpha",
-    "state_variables": {
-      "message": "hello"
-    },
-    "tracing": {
-      "enabled": true
-    },
-    "version": "2024-10-01"
-  }
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/sessions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "OpenAI-Beta: chatkit_beta=v1" \
@@ -75320,37 +75040,6 @@ List ChatKit threads with optional pagination and user filters.
   The type of object returned, must be `list`.
 
   - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/threads \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "cthr_def456",
-      "created_at": 1712345600,
-      "object": "chatkit.thread",
-      "status": {
-        "type": "active"
-      },
-      "title": "Demo feedback",
-      "user": "user_456"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
 
 ### Example
 
@@ -75848,55 +75537,6 @@ List items that belong to a ChatKit thread.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID/items \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "attachments": [
-        {
-          "id": "id",
-          "mime_type": "mime_type",
-          "name": "name",
-          "preview_url": "https://example.com",
-          "type": "image"
-        }
-      ],
-      "content": [
-        {
-          "text": "text",
-          "type": "input_text"
-        }
-      ],
-      "created_at": 0,
-      "inference_options": {
-        "model": "model",
-        "tool_choice": {
-          "id": "id"
-        }
-      },
-      "object": "chatkit.thread_item",
-      "thread_id": "thread_id",
-      "type": "chatkit.user_message"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
   -H "OpenAI-Beta: chatkit_beta=v1" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -76027,29 +75667,6 @@ Retrieve a ChatKit thread by its identifier.
   - `user: string`
 
     Free-form string that identifies your end user who owns the thread.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cthr_def456",
-  "created_at": 1712345600,
-  "object": "chatkit.thread",
-  "status": {
-    "type": "active"
-  },
-  "title": "Demo feedback",
-  "user": "user_456"
-}
-```
 
 ### Example
 
@@ -82892,14 +82509,14 @@ the `background` parameter set to `true` can be cancelled.
 
   - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
     - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
@@ -89444,159 +89061,6 @@ the `background` parameter set to `true` can be cancelled.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41",
-  "object": "response",
-  "access_programs": null,
-  "created_at": 1741476777,
-  "status": "completed",
-  "completed_at": 1741476778,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "max_output_tokens": null,
-  "model": "gpt-6-astra",
-  "output": [
-    {
-      "type": "message",
-      "id": "msg_67ccd3acc8d48190a77525dc6de64b4104becb25c45c1d41",
-      "status": "completed",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "The image depicts a scenic landscape with a wooden boardwalk or pathway leading through lush, green grass under a blue sky with some clouds. The setting suggests a peaceful natural area, possibly a park or nature reserve. There are trees and shrubs in the background.",
-          "annotations": [],
-          "logprobs": []
-        }
-      ]
-    }
-  ],
-  "parallel_tool_calls": true,
-  "previous_response_id": null,
-  "reasoning": {
-    "effort": null,
-    "summary": null,
-    "context": null
-  },
-  "store": true,
-  "temperature": 1,
-  "text": {
-    "format": {
-      "type": "text"
-    }
-  },
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1,
-  "truncation": "disabled",
-  "usage": {
-    "input_tokens": 328,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 52,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 380
-  },
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "text_tokens": 0,
-        "image_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "text_tokens": 0,
-        "image_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
-  },
-  "user": null,
-  "metadata": {},
-  "conversation": {
-    "id": "id"
-  },
-  "image": {
-    "context_compression": "enabled"
-  },
-  "input_transformations": [
-    {
-      "id": "id",
-      "action": "removed",
-      "reason": "organization_mismatch",
-      "type": "reasoning"
-    }
-  ],
-  "moderation": {
-    "input": {
-      "categories": {
-        "foo": true
-      },
-      "category_applied_input_types": {
-        "foo": [
-          "text"
-        ]
-      },
-      "category_scores": {
-        "foo": 0
-      },
-      "flagged": true,
-      "model": "model",
-      "type": "moderation_result"
-    },
-    "output": {
-      "categories": {
-        "foo": true
-      },
-      "category_applied_input_types": {
-        "foo": [
-          "text"
-        ]
-      },
-      "category_scores": {
-        "foo": 0
-      },
-      "flagged": true,
-      "model": "model",
-      "type": "moderation_result"
-    }
-  },
-  "output_text": "output_text",
-  "prompt_cache_diagnostics": {
-    "cache_missed_tokens": 0,
-    "reason": "model_changed",
-    "type": "cache_miss",
-    "comparison_reusable_tokens": 0
-  },
-  "prompt_cache_options": {
-    "mode": "implicit",
-    "ttl": "30m",
-    "comparison_response_id": "comparison_response_id"
-  },
-  "service_tier": "auto"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -89617,7 +89081,7 @@ curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -89677,11 +89141,11 @@ Content type: `application/json`
 
 - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string or null`
 
-  Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
+  Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
   - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
     - `"gpt-6-astra"`
 
@@ -100670,83 +100134,11 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/compact \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "model": "gpt-6-astra",
-          "previous_response_id": "resp_123"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "resp_001",
-  "created_at": 1731459200,
-  "object": "response.compaction",
-  "output": [
-    {
-      "id": "msg_001",
-      "status": "completed",
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Summarize our launch checklist from last week."
-        }
-      ]
-    },
-    {
-      "id": "msg_002",
-      "status": "completed",
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "You are performing a CONTEXT CHECKPOINT COMPACTION..."
-        }
-      ]
-    },
-    {
-      "type": "compaction",
-      "id": "cmp_001",
-      "encrypted_content": "encrypted-summary"
-    }
-  ],
-  "usage": {
-    "input_tokens": 42897,
-    "input_tokens_details": {
-      "cache_write_tokens": 0,
-      "cached_tokens": 0,
-      "cache_write_tokens_details": {
-        "ttl_12h_tokens": 0,
-        "ttl_30m_tokens": 0
-      }
-    },
-    "output_tokens": 12000,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 54897
-  },
-  "image": {
-    "context_compression": "disabled"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/responses/compact \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-      "model": "gpt-6-astra",
+      "model": "gpt-6.2-astra",
       "input": [
         {
           "role": "user",
@@ -106440,14 +105832,14 @@ Content type: `application/json`
 
 - `model: optional "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-  Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+  Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/api/docs/models)
   to browse and compare available models.
 
   - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
@@ -113972,14 +113364,14 @@ Content type: `application/json`
 
   - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
     - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
@@ -120527,7 +119919,10 @@ Content type: `application/json`
 curl https://api.openai.com/v1/responses \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '"string"'
+    -d '{
+          "model": "gpt-6.2-astra",
+          "input": "Write a one-sentence bedtime story about a unicorn."
+        }'
 ```
 
 #### 200 — Example
@@ -120544,7 +119939,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -120682,7 +120077,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": [
       {
         "role": "user",
@@ -120715,7 +120110,7 @@ curl https://api.openai.com/v1/responses \
   "instructions": null,
   "max_output_tokens": null,
   "max_tool_calls": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "id": "msg_686eef60d3e081a29283bdcbc4322fd90e34c516d176ff86",
@@ -120775,7 +120170,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [{
       "type": "file_search",
       "vector_store_ids": ["vs_1234567890"],
@@ -120799,7 +120194,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "file_search_call",
@@ -120928,7 +120323,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "What is the weather like in Boston today?",
     "tools": [
       {
@@ -120969,7 +120364,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "function_call",
@@ -121048,7 +120443,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": [
       {
         "role": "user",
@@ -121078,7 +120473,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -121136,7 +120531,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "How much wood would a woodchuck chuck?",
     "reasoning": {
       "effort": "high"
@@ -121158,7 +120553,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -121216,7 +120611,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "instructions": "You are a helpful assistant.",
     "input": "Hello!",
     "stream": true
@@ -121227,10 +120622,10 @@ curl https://api.openai.com/v1/responses \
 
 ```json
 event: response.created
-data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":0}
+data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6.2-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":0}
 
 event: response.in_progress
-data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":1}
+data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6.2-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":1}
 
 event: response.output_item.added
 data: {"type":"response.output_item.added","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"in_progress","role":"assistant","content":[]},"sequence_number":2}
@@ -121253,7 +120648,7 @@ event: response.output_item.done
 data: {"type":"response.output_item.done","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[],"logprobs":[]}]},"sequence_number":12}
 
 event: response.completed
-data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[],"logprobs":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48,"input_tokens_details":{"cached_tokens":0,"cache_write_tokens":0}},"user":null,"metadata":{}},"sequence_number":13}
+data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6.2-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[],"logprobs":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48,"input_tokens_details":{"cached_tokens":0,"cache_write_tokens":0}},"user":null,"metadata":{}},"sequence_number":13}
 
 ```
 
@@ -121264,7 +120659,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "Tell me a three sentence bedtime story about a unicorn."
   }'
 ```
@@ -121283,7 +120678,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -121341,7 +120736,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [{ "type": "web_search_preview" }],
     "input": "What was a positive news story from today?"
   }'
@@ -121361,7 +120756,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "web_search_call",
@@ -121479,24 +120874,6 @@ Deletes a model response with the given ID.
 - `object: "response.deleted" (default: "response.deleted")`
 
   - `"response.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/responses/$RESPONSE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "response.deleted"
-}
-```
 
 ### Example
 
@@ -127178,14 +126555,14 @@ Retrieves a model response with the given ID.
 
   - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
     - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
@@ -133730,158 +133107,6 @@ Retrieves a model response with the given ID.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/$RESPONSE_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41",
-  "object": "response",
-  "access_programs": null,
-  "created_at": 1741476777,
-  "status": "completed",
-  "completed_at": 1741476778,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "max_output_tokens": null,
-  "model": "gpt-6-astra",
-  "output": [
-    {
-      "type": "message",
-      "id": "msg_67ccd3acc8d48190a77525dc6de64b4104becb25c45c1d41",
-      "status": "completed",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "The image depicts a scenic landscape with a wooden boardwalk or pathway leading through lush, green grass under a blue sky with some clouds. The setting suggests a peaceful natural area, possibly a park or nature reserve. There are trees and shrubs in the background.",
-          "annotations": [],
-          "logprobs": []
-        }
-      ]
-    }
-  ],
-  "parallel_tool_calls": true,
-  "previous_response_id": null,
-  "reasoning": {
-    "effort": null,
-    "summary": null,
-    "context": null
-  },
-  "store": true,
-  "temperature": 1,
-  "text": {
-    "format": {
-      "type": "text"
-    }
-  },
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1,
-  "truncation": "disabled",
-  "usage": {
-    "input_tokens": 328,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 52,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 380
-  },
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "text_tokens": 0,
-        "image_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "text_tokens": 0,
-        "image_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
-  },
-  "user": null,
-  "metadata": {},
-  "conversation": {
-    "id": "id"
-  },
-  "image": {
-    "context_compression": "enabled"
-  },
-  "input_transformations": [
-    {
-      "id": "id",
-      "action": "removed",
-      "reason": "organization_mismatch",
-      "type": "reasoning"
-    }
-  ],
-  "moderation": {
-    "input": {
-      "categories": {
-        "foo": true
-      },
-      "category_applied_input_types": {
-        "foo": [
-          "text"
-        ]
-      },
-      "category_scores": {
-        "foo": 0
-      },
-      "flagged": true,
-      "model": "model",
-      "type": "moderation_result"
-    },
-    "output": {
-      "categories": {
-        "foo": true
-      },
-      "category_applied_input_types": {
-        "foo": [
-          "text"
-        ]
-      },
-      "category_scores": {
-        "foo": 0
-      },
-      "flagged": true,
-      "model": "model",
-      "type": "moderation_result"
-    }
-  },
-  "output_text": "output_text",
-  "prompt_cache_diagnostics": {
-    "cache_missed_tokens": 0,
-    "reason": "model_changed",
-    "type": "cache_miss",
-    "comparison_reusable_tokens": 0
-  },
-  "prompt_cache_options": {
-    "mode": "implicit",
-    "ttl": "30m",
-    "comparison_response_id": "comparison_response_id"
-  },
-  "service_tier": "auto"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/responses/resp_123 \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -133901,7 +133126,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -145758,14 +144983,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
     - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
@@ -158215,14 +157440,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
       - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
@@ -171137,14 +170362,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
       - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
@@ -183530,14 +182755,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
       - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
@@ -196176,14 +195401,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
       - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
@@ -208382,14 +207607,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
       - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
@@ -248489,14 +247714,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
       - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
@@ -262979,14 +262204,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
 
         - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-          Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+          Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
           offers a wide range of models with different capabilities, performance
           characteristics, and price points. Refer to the [model guide](/api/docs/models)
           to browse and compare available models.
@@ -277526,14 +276751,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: optional "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string`
 
-      Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+      Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
       - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-        Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+        Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
@@ -296338,45 +295563,6 @@ Returns a list of input items for a given response.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "content": [
-        {
-          "text": "text",
-          "type": "input_text",
-          "prompt_cache_breakpoint": {
-            "mode": "explicit",
-            "ttl": "30m"
-          }
-        }
-      ],
-      "role": "user",
-      "type": "message",
-      "agent": {
-        "agent_name": "agent_name"
-      },
-      "status": "in_progress"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/responses/resp_abc123/input_items \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -308613,28 +307799,11 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/input_tokens \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "input_tokens": 123,
-  "object": "response.input_tokens"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/responses/input_tokens \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-      "model": "gpt-6-astra",
+      "model": "gpt-6.2-astra",
       "input": "Tell me a joke."
     }'
 ```
@@ -310058,87 +309227,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/threads/runs \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "assistant_id": "assistant_id",
-          "model": "gpt-4.1",
-          "temperature": 1,
-          "top_p": 1
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "cancelled_at": 0,
-  "completed_at": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "failed_at": 0,
-  "incomplete_details": {
-    "reason": "max_completion_tokens"
-  },
-  "instructions": "instructions",
-  "last_error": {
-    "code": "server_error",
-    "message": "message"
-  },
-  "max_completion_tokens": 256,
-  "max_prompt_tokens": 256,
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "object": "thread.run",
-  "parallel_tool_calls": true,
-  "required_action": {
-    "submit_tool_outputs": {
-      "tool_calls": [
-        {
-          "id": "id",
-          "function": {
-            "arguments": "arguments",
-            "name": "name"
-          },
-          "type": "function"
-        }
-      ]
-    },
-    "type": "submit_tool_outputs"
-  },
-  "response_format": "auto",
-  "started_at": 0,
-  "status": "queued",
-  "thread_id": "thread_id",
-  "tool_choice": "none",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "truncation_strategy": {
-    "type": "auto",
-    "last_messages": 1
-  },
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
-  },
-  "temperature": 0,
-  "top_p": 0
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/runs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -H "OpenAI-Beta: assistants=v2" \
@@ -310374,25 +309462,6 @@ Delete a thread.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID \
-    -X DELETE \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "thread.deleted"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123 \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -310472,39 +309541,6 @@ Retrieves a thread.
         The [vector store](/api/reference/resources/vector_stores) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 
         `maxItems: 1`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread",
-  "tool_resources": {
-    "code_interpreter": {
-      "file_ids": [
-        "string"
-      ]
-    },
-    "file_search": {
-      "vector_store_ids": [
-        "string"
-      ]
-    }
-  }
-}
-```
 
 ### Example
 
@@ -310626,41 +309662,6 @@ Content type: `application/json`
         The [vector store](/api/reference/resources/vector_stores) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 
         `maxItems: 1`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread",
-  "tool_resources": {
-    "code_interpreter": {
-      "file_ids": [
-        "string"
-      ]
-    },
-    "file_search": {
-      "vector_store_ids": [
-        "string"
-      ]
-    }
-  }
-}
-```
 
 ### Example
 
@@ -311320,61 +310321,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "content": "string",
-          "role": "user"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "attachments": [
-    {
-      "file_id": "file_id",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ]
-    }
-  ],
-  "completed_at": 0,
-  "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
-  ],
-  "created_at": 0,
-  "incomplete_at": 0,
-  "incomplete_details": {
-    "reason": "content_filter"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread.message",
-  "role": "user",
-  "run_id": "run_id",
-  "status": "in_progress",
-  "thread_id": "thread_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123/messages \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -311441,25 +310387,6 @@ Deletes a message.
   - `object: "thread.message.deleted"`
 
     - `"thread.message.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
-    -X DELETE \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "thread.message.deleted"
-}
-```
 
 ### Example
 
@@ -311786,64 +310713,6 @@ Returns a list of messages for a given thread.
 - `last_id: string`
 
 - `object: string`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "assistant_id": "assistant_id",
-      "attachments": [
-        {
-          "file_id": "file_id",
-          "tools": [
-            {
-              "type": "code_interpreter"
-            }
-          ]
-        }
-      ],
-      "completed_at": 0,
-      "content": [
-        {
-          "image_file": {
-            "file_id": "file_id",
-            "detail": "auto"
-          },
-          "type": "image_file"
-        }
-      ],
-      "created_at": 0,
-      "incomplete_at": 0,
-      "incomplete_details": {
-        "reason": "content_filter"
-      },
-      "metadata": {
-        "foo": "string"
-      },
-      "object": "thread.message",
-      "role": "user",
-      "run_id": "run_id",
-      "status": "in_progress",
-      "thread_id": "thread_id"
-    }
-  ],
-  "first_id": "msg_abc123",
-  "has_more": false,
-  "last_id": "msg_abc123",
-  "object": "list"
-}
-```
 
 ### Example
 
@@ -312197,56 +311066,6 @@ Retrieve a message.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "attachments": [
-    {
-      "file_id": "file_id",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ]
-    }
-  ],
-  "completed_at": 0,
-  "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
-  ],
-  "created_at": 0,
-  "incomplete_at": 0,
-  "incomplete_details": {
-    "reason": "content_filter"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread.message",
-  "role": "user",
-  "run_id": "run_id",
-  "status": "in_progress",
-  "thread_id": "thread_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -312573,58 +311392,6 @@ Content type: `application/json`
   - `thread_id: string`
 
     The [thread](/api/docs/assistants/migration) ID that this message belongs to.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "attachments": [
-    {
-      "file_id": "file_id",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ]
-    }
-  ],
-  "completed_at": 0,
-  "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
-  ],
-  "created_at": 0,
-  "incomplete_at": 0,
-  "incomplete_details": {
-    "reason": "content_filter"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread.message",
-  "role": "user",
-  "run_id": "run_id",
-  "status": "in_progress",
-  "thread_id": "thread_id"
-}
-```
 
 ### Example
 
@@ -314473,81 +313240,6 @@ Cancels a run that is `in_progress`.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/cancel \
-    -X POST \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "cancelled_at": 0,
-  "completed_at": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "failed_at": 0,
-  "incomplete_details": {
-    "reason": "max_completion_tokens"
-  },
-  "instructions": "instructions",
-  "last_error": {
-    "code": "server_error",
-    "message": "message"
-  },
-  "max_completion_tokens": 256,
-  "max_prompt_tokens": 256,
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "object": "thread.run",
-  "parallel_tool_calls": true,
-  "required_action": {
-    "submit_tool_outputs": {
-      "tool_calls": [
-        {
-          "id": "id",
-          "function": {
-            "arguments": "arguments",
-            "name": "name"
-          },
-          "type": "function"
-        }
-      ]
-    },
-    "type": "submit_tool_outputs"
-  },
-  "response_format": "auto",
-  "started_at": 0,
-  "status": "queued",
-  "thread_id": "thread_id",
-  "tool_choice": "none",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "truncation_strategy": {
-    "type": "auto",
-    "last_messages": 1
-  },
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
-  },
-  "temperature": 0,
-  "top_p": 0
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "OpenAI-Beta: assistants=v2" \
@@ -315568,87 +314260,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "assistant_id": "assistant_id",
-          "model": "gpt-4.1",
-          "temperature": 1,
-          "top_p": 1
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "cancelled_at": 0,
-  "completed_at": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "failed_at": 0,
-  "incomplete_details": {
-    "reason": "max_completion_tokens"
-  },
-  "instructions": "instructions",
-  "last_error": {
-    "code": "server_error",
-    "message": "message"
-  },
-  "max_completion_tokens": 256,
-  "max_prompt_tokens": 256,
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "object": "thread.run",
-  "parallel_tool_calls": true,
-  "required_action": {
-    "submit_tool_outputs": {
-      "tool_calls": [
-        {
-          "id": "id",
-          "function": {
-            "arguments": "arguments",
-            "name": "name"
-          },
-          "type": "function"
-        }
-      ]
-    },
-    "type": "submit_tool_outputs"
-  },
-  "response_format": "auto",
-  "started_at": 0,
-  "status": "queued",
-  "thread_id": "thread_id",
-  "tool_choice": "none",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "truncation_strategy": {
-    "type": "auto",
-    "last_messages": 1
-  },
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
-  },
-  "temperature": 0,
-  "top_p": 0
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123/runs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -316313,88 +314924,6 @@ Returns a list of runs belonging to a thread.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "assistant_id": "assistant_id",
-      "cancelled_at": 0,
-      "completed_at": 0,
-      "created_at": 0,
-      "expires_at": 0,
-      "failed_at": 0,
-      "incomplete_details": {
-        "reason": "max_completion_tokens"
-      },
-      "instructions": "instructions",
-      "last_error": {
-        "code": "server_error",
-        "message": "message"
-      },
-      "max_completion_tokens": 256,
-      "max_prompt_tokens": 256,
-      "metadata": {
-        "foo": "string"
-      },
-      "model": "model",
-      "object": "thread.run",
-      "parallel_tool_calls": true,
-      "required_action": {
-        "submit_tool_outputs": {
-          "tool_calls": [
-            {
-              "id": "id",
-              "function": {
-                "arguments": "arguments",
-                "name": "name"
-              },
-              "type": "function"
-            }
-          ]
-        },
-        "type": "submit_tool_outputs"
-      },
-      "response_format": "auto",
-      "started_at": 0,
-      "status": "queued",
-      "thread_id": "thread_id",
-      "tool_choice": "none",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ],
-      "truncation_strategy": {
-        "type": "auto",
-        "last_messages": 1
-      },
-      "usage": {
-        "completion_tokens": 0,
-        "prompt_tokens": 0,
-        "total_tokens": 0
-      },
-      "temperature": 0,
-      "top_p": 0
-    }
-  ],
-  "first_id": "run_abc123",
-  "has_more": false,
-  "last_id": "run_abc456",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123/runs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -316951,80 +315480,6 @@ Retrieves a run.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "cancelled_at": 0,
-  "completed_at": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "failed_at": 0,
-  "incomplete_details": {
-    "reason": "max_completion_tokens"
-  },
-  "instructions": "instructions",
-  "last_error": {
-    "code": "server_error",
-    "message": "message"
-  },
-  "max_completion_tokens": 256,
-  "max_prompt_tokens": 256,
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "object": "thread.run",
-  "parallel_tool_calls": true,
-  "required_action": {
-    "submit_tool_outputs": {
-      "tool_calls": [
-        {
-          "id": "id",
-          "function": {
-            "arguments": "arguments",
-            "name": "name"
-          },
-          "type": "function"
-        }
-      ]
-    },
-    "type": "submit_tool_outputs"
-  },
-  "response_format": "auto",
-  "started_at": 0,
-  "status": "queued",
-  "thread_id": "thread_id",
-  "tool_choice": "none",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "truncation_strategy": {
-    "type": "auto",
-    "last_messages": 1
-  },
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
-  },
-  "temperature": 0,
-  "top_p": 0
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "OpenAI-Beta: assistants=v2"
@@ -317533,86 +315988,6 @@ Content type: `application/json`
   - `top_p: optional number or null`
 
     The nucleus sampling value used for this run. If not set, defaults to 1.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/submit_tool_outputs \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "tool_outputs": [
-            {}
-          ]
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "cancelled_at": 0,
-  "completed_at": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "failed_at": 0,
-  "incomplete_details": {
-    "reason": "max_completion_tokens"
-  },
-  "instructions": "instructions",
-  "last_error": {
-    "code": "server_error",
-    "message": "message"
-  },
-  "max_completion_tokens": 256,
-  "max_prompt_tokens": 256,
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "object": "thread.run",
-  "parallel_tool_calls": true,
-  "required_action": {
-    "submit_tool_outputs": {
-      "tool_calls": [
-        {
-          "id": "id",
-          "function": {
-            "arguments": "arguments",
-            "name": "name"
-          },
-          "type": "function"
-        }
-      ]
-    },
-    "type": "submit_tool_outputs"
-  },
-  "response_format": "auto",
-  "started_at": 0,
-  "status": "queued",
-  "thread_id": "thread_id",
-  "tool_choice": "none",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "truncation_strategy": {
-    "type": "auto",
-    "last_messages": 1
-  },
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
-  },
-  "temperature": 0,
-  "top_p": 0
-}
-```
 
 ### Example
 
@@ -318214,82 +316589,6 @@ Content type: `application/json`
   - `top_p: optional number or null`
 
     The nucleus sampling value used for this run. If not set, defaults to 1.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "cancelled_at": 0,
-  "completed_at": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "failed_at": 0,
-  "incomplete_details": {
-    "reason": "max_completion_tokens"
-  },
-  "instructions": "instructions",
-  "last_error": {
-    "code": "server_error",
-    "message": "message"
-  },
-  "max_completion_tokens": 256,
-  "max_prompt_tokens": 256,
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "object": "thread.run",
-  "parallel_tool_calls": true,
-  "required_action": {
-    "submit_tool_outputs": {
-      "tool_calls": [
-        {
-          "id": "id",
-          "function": {
-            "arguments": "arguments",
-            "name": "name"
-          },
-          "type": "function"
-        }
-      ]
-    },
-    "type": "submit_tool_outputs"
-  },
-  "response_format": "auto",
-  "started_at": 0,
-  "status": "queued",
-  "thread_id": "thread_id",
-  "tool_choice": "none",
-  "tools": [
-    {
-      "type": "code_interpreter"
-    }
-  ],
-  "truncation_strategy": {
-    "type": "auto",
-    "last_messages": 1
-  },
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
-  },
-  "temperature": 0,
-  "top_p": 0
-}
-```
 
 ### Example
 
@@ -319173,59 +317472,6 @@ Returns a list of run steps belonging to a run.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/steps \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "assistant_id": "assistant_id",
-      "cancelled_at": 0,
-      "completed_at": 0,
-      "created_at": 0,
-      "expired_at": 0,
-      "failed_at": 0,
-      "last_error": {
-        "code": "server_error",
-        "message": "message"
-      },
-      "metadata": {
-        "foo": "string"
-      },
-      "object": "thread.run.step",
-      "run_id": "run_id",
-      "status": "in_progress",
-      "step_details": {
-        "message_creation": {
-          "message_id": "message_id"
-        },
-        "type": "message_creation"
-      },
-      "thread_id": "thread_id",
-      "type": "message_creation",
-      "usage": {
-        "completion_tokens": 0,
-        "prompt_tokens": 0,
-        "total_tokens": 0
-      }
-    }
-  ],
-  "first_id": "step_abc123",
-  "has_more": false,
-  "last_id": "step_abc456",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -319604,51 +317850,6 @@ Retrieves a run step.
     - `total_tokens: integer`
 
       Total number of tokens used (prompt + completion).
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs/$RUN_ID/steps/$STEP_ID \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "cancelled_at": 0,
-  "completed_at": 0,
-  "created_at": 0,
-  "expired_at": 0,
-  "failed_at": 0,
-  "last_error": {
-    "code": "server_error",
-    "message": "message"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread.run.step",
-  "run_id": "run_id",
-  "status": "in_progress",
-  "step_details": {
-    "message_creation": {
-      "message_id": "message_id"
-    },
-    "type": "message_creation"
-  },
-  "thread_id": "thread_id",
-  "type": "message_creation",
-  "usage": {
-    "completion_tokens": 0,
-    "prompt_tokens": 0,
-    "total_tokens": 0
-  }
-}
-```
 
 ### Example
 

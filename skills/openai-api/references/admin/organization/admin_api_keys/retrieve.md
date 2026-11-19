@@ -83,35 +83,6 @@ Retrieve a single organization API key
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "key_abc",
-  "created_at": 1711471533,
-  "expires_at": 1714063533,
-  "object": "organization.admin_api_key",
-  "owner": {
-    "id": "sa_456",
-    "created_at": 1711471533,
-    "name": "My Service Account",
-    "object": "organization.user",
-    "role": "owner",
-    "type": "user"
-  },
-  "redacted_value": "sk-admin...def",
-  "last_used_at": 1711471534,
-  "name": "Administration Key"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

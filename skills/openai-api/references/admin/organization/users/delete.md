@@ -23,24 +23,6 @@ Deletes a user from the organization.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/users/$USER_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.user.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

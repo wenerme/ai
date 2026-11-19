@@ -23,8 +23,9 @@ This feature requires an Enterprise plan. If you would like to upgrade, contact 
 ## Enable Proxy Protocol v1 for TCP
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page. [Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
-2. Locate the application that will use the PROXY protocol and select **Configure**.
-3. From the dropdown, select **PROXY Protocol v1**.
+2. Locate the application that will use the PROXY protocol and select its hostname, or select the three dots next to it > **Edit**.
+3. Under **Advanced Options**, select **PROXY Protocol v1** in **Proxy Protocols**.
+4. Select **Save**.
 
 When TCP applications are configured to use **PROXY Protocol v1**, Cloudflare will prepend each inbound TCP connection with the PROXY Protocol plain-text header.
 
@@ -51,8 +52,9 @@ PROXY TCP6 2001:db8:: 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff 42300 443\r\n
 ## Enable Proxy Protocol v2 for TCP/UDP
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page. [Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
-2. Locate the application that will use the PROXY protocol and select **Configure**.
-3. From the dropdown, select **PROXY Protocol v2**.
+2. Locate the application that will use the PROXY protocol and select its hostname, or select the three dots next to it > **Edit**.
+3. Under **Advanced Options**, select **PROXY Protocol v2** in **Proxy Protocols**.
+4. Select **Save**.
 
 When TCP applications are configured to use **PROXY Protocol v2**, Cloudflare will prepend each inbound TCP connection with the PROXY Protocol binary header.
 
@@ -122,7 +124,7 @@ A PROXY Protocol binary header for a IPv6 incoming address has the format:
 
 When using Spectrum for UDP, the client source IP and port information can be obtained by using Simple Proxy Protocol, a lightweight protocol developed specifically for UDP.
 
-To enable it, select **Configure** on a Spectrum application and toggle the setting for Simple Proxy Protocol to **On**.
+To enable it, edit a UDP Spectrum application, select **Simple Proxy Protocol** in **Proxy Protocols** under **Advanced Options**, and select **Save**.
 
 Simple Proxy Protocol dictates that your origin must also prepend packets meant for the client with the same header, including original client source information. This is done to validate that packets coming in are in fact intended for the client.
 
@@ -137,5 +139,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/#page","headline":"Enable Proxy protocol","description":"Pass client IP information to your origin using Proxy protocol v1 or Simple Proxy Protocol.","url":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/og.png?v=bc94e8997f6438fa","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/#page","headline":"Enable Proxy protocol","description":"Pass client IP information to your origin using Proxy protocol v1 or Simple Proxy Protocol.","url":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/og.png?v=bc94e8997f6438fa","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

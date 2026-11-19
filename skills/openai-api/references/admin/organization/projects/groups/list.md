@@ -85,33 +85,6 @@ Lists the groups that have access to a project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "created_at": 0,
-      "group_id": "group_id",
-      "group_name": "group_name",
-      "group_type": "group",
-      "object": "project.group",
-      "project_id": "project_id"
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

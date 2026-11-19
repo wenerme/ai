@@ -65,40 +65,6 @@ Retrieve an OIDC provider in the authenticated organization.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/workload_identity_providers/$WORKLOAD_IDENTITY_PROVIDER_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "attribute_transformations": [
-    {
-      "attribute": "attribute",
-      "expression": "expression"
-    }
-  ],
-  "audience": "audience",
-  "created_at": 0,
-  "description": "description",
-  "enabled": true,
-  "issuer": "issuer",
-  "name": "name",
-  "object": "organization.workload_identity_provider",
-  "type": "oidc",
-  "updated_at": 0,
-  "verification": {
-    "discovery_url": "discovery_url",
-    "type": "discovery"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X GET "https://api.openai.com/v1/organization/workload_identity_providers/wip_example" \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```

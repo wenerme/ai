@@ -141,7 +141,7 @@ Get an evaluation run by ID.
 
         - `model: optional string or null`
 
-          An optional model to filter by (e.g., 'gpt-6-astra').
+          An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
     - `type: "completions" (default: "completions")`
 
@@ -517,7 +517,7 @@ Get an evaluation run by ID.
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Chat Completions API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -889,7 +889,7 @@ Get an evaluation run by ID.
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Responses API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -2369,74 +2369,6 @@ Get an evaluation run by ID.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source": {
-    "source": {
-      "content": [
-        {
-          "item": {
-            "foo": "bar"
-          },
-          "sample": {
-            "foo": "bar"
-          }
-        }
-      ],
-      "type": "file_content"
-    },
-    "type": "jsonl"
-  },
-  "error": {
-    "code": "code",
-    "message": "message"
-  },
-  "eval_id": "eval_id",
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "name": "name",
-  "object": "eval.run",
-  "per_model_usage": [
-    {
-      "cached_tokens": 0,
-      "completion_tokens": 0,
-      "invocation_count": 0,
-      "model_name": "model_name",
-      "prompt_tokens": 0,
-      "total_tokens": 0
-    }
-  ],
-  "per_testing_criteria_results": [
-    {
-      "failed": 0,
-      "passed": 0,
-      "testing_criteria": "testing_criteria"
-    }
-  ],
-  "report_url": "https://example.com",
-  "result_counts": {
-    "errored": 0,
-    "failed": 0,
-    "passed": 0,
-    "total": 0
-  },
-  "status": "status"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/evalrun_67abd54d60ec8190832b46859da808f7 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -2451,8 +2383,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
   "report_url": "https://platform.openai.com/evaluations/eval_67abd54d9b0081909a86353f6fb9317a?run_id=evalrun_67abd54d60ec8190832b46859da808f7",
   "status": "queued",
-  "model": "gpt-6-astra",
-  "name": "gpt-6-astra",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "name": "gpt-4.1-mini-2025-04-14",
   "created_at": 1743092069,
   "result_counts": {
     "total": 0,
@@ -2580,7 +2512,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
         }
       ]
     },
-    "model": "gpt-6-astra",
+    "model": "gpt-4.1-mini-2025-04-14",
     "sampling_params": {
       "max_completions_tokens": 2048
     }

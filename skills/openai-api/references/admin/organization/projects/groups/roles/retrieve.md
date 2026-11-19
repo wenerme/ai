@@ -79,43 +79,6 @@ Retrieves a project role assigned to a group.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles/$ROLE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assignment_sources": [
-    {
-      "principal_id": "principal_id",
-      "principal_type": "principal_type"
-    }
-  ],
-  "created_at": 0,
-  "created_by": "created_by",
-  "created_by_user_obj": {
-    "foo": "bar"
-  },
-  "description": "description",
-  "metadata": {
-    "foo": "bar"
-  },
-  "name": "name",
-  "permissions": [
-    "string"
-  ],
-  "predefined_role": true,
-  "resource_type": "resource_type",
-  "updated_at": 0
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8PROJ \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

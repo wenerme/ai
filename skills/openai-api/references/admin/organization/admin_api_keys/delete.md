@@ -23,24 +23,6 @@ Delete an organization admin API key
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "key_abc",
-  "deleted": true,
-  "object": "organization.admin_api_key.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

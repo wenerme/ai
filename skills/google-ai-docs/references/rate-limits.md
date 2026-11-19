@@ -214,6 +214,11 @@ limits, separate from the non-batch API calls.
 
   ---
 
+  * Gemini 4 Neon
+  * 5,000,000
+
+  ---
+
   * Gemini 4 Hydrogen
   * 3,000,000
 
@@ -342,6 +347,11 @@ limits, separate from the non-batch API calls.
 
   ---
 
+  * Gemini 4 Neon
+  * 500,000,000
+
+  ---
+
   * Gemini 4 Hydrogen
   * 400,000,000
 
@@ -466,6 +476,11 @@ limits, separate from the non-batch API calls.
   ---
 
   * Gemini 4 Argon
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 4 Neon
   * 1,000,000,000
 
   ---

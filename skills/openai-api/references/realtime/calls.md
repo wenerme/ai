@@ -913,23 +913,12 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "type": "realtime"
-        }'
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/accept \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
         "type": "realtime",
-        "model": "gpt-realtime",
+        "model": "gpt-realtime-2.1",
         "instructions": "You are Alex, a friendly concierge for Example Corp.",
       }'
 ```
@@ -1857,19 +1846,10 @@ Content type: `application/sdp`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F sdp=sdp
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F "sdp=<offer.sdp;type=application/sdp" \
-  -F 'session={"type":"realtime","model":"gpt-realtime"};type=application/json'
+  -F 'session={"type":"realtime","model":"gpt-realtime-2.1"};type=application/json'
 ```
 
 #### Response example
@@ -1917,14 +1897,6 @@ WebRTC.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -1951,17 +1923,6 @@ Content type: `application/json`
 
   URI that should appear in the SIP Refer-To header. Supports values like
   `tel:+14155550123` or `sip:agent@example.com`.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/refer \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "target_uri": "tel:+14155550123"
-        }'
-```
 
 ### Example
 
@@ -1994,14 +1955,6 @@ Content type: `application/json`
 
   SIP response code to send back to the caller. Defaults to `603` (Decline)
   when omitted.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
 
 ### Example
 

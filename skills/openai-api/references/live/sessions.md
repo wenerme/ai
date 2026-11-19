@@ -2192,15 +2192,10 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/live/sessions/$SESSION_ID/fork \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "transport": {
-            "sdp": "x",
-            "type": "webrtc"
-          }
-        }'
+curl https://api.openai.com/v1/live/sessions/live_123/fork \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"session":{},"transport":{"type":"webrtc","sdp":"<SDP offer>"}}'
 ```
 
 #### 201 — Example
@@ -2215,15 +2210,6 @@ curl https://api.openai.com/v1/live/sessions/$SESSION_ID/fork \
     "type": "webrtc"
   }
 }
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/live/sessions/live_123/fork \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"session":{},"transport":{"type":"webrtc","sdp":"<SDP offer>"}}'
 ```
 
 ## Hang up session

@@ -24,7 +24,7 @@ To resolve this issue, ensure:
 
 - The project full path is correct.
 - If using a [project alias](gitlab_slack_application.md#create-a-project-alias), the alias is correct.
-- The GitLab for Slack app is [turned on for the project](gitlab_slack_application.md#from-the-project-or-group-settings).
+- The GitLab for Slack app is [turned on for the project](gitlab_slack_application.md#install-from-the-group-or-project-settings).
 
 ## Slash commands return `dispatch_failed` in Slack
 

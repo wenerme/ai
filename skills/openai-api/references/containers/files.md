@@ -59,29 +59,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "container_id": "container_id",
-  "created_at": 0,
-  "object": "object",
-  "path": "path",
-  "source": "source"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/containers/cntr_682e0e7318108198aa783fd921ff305e08e78805b9fdbb04/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F file="@example.txt"
@@ -122,24 +99,6 @@ Delete Container File
 - `object: "container.file.deleted"`
 
   - `"container.file.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "container.file.deleted"
-}
-```
 
 ### Example
 
@@ -243,35 +202,6 @@ List Container files
 ### Example
 
 ```http
-curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "bytes": 0,
-      "container_id": "container_id",
-      "created_at": 0,
-      "object": "object",
-      "path": "path",
-      "source": "source"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/containers/cntr_682e0e7318108198aa783fd921ff305e08e78805b9fdbb04/files \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -341,27 +271,6 @@ Retrieve Container File
 - `source: string`
 
   Source of the file (e.g., `user`, `assistant`).
-
-### Example
-
-```http
-curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "container_id": "container_id",
-  "created_at": 0,
-  "object": "object",
-  "path": "path",
-  "source": "source"
-}
-```
 
 ### Example
 
@@ -517,13 +426,6 @@ Retrieve Container File Content
 ### Returns
 
 `file`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID/content \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
 
 ### Example
 

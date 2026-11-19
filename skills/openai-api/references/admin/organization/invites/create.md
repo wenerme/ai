@@ -111,39 +111,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/invites \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "email": "email",
-          "role": "reader"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "email": "email",
-  "object": "organization.invite",
-  "projects": [
-    {
-      "id": "id",
-      "role": "member"
-    }
-  ],
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
-  "expires_at": 0
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/invites \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

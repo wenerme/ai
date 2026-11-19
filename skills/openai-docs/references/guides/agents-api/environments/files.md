@@ -97,6 +97,57 @@ def download_artifact(client, session_id, turn_id, path, destination):
     raise FileNotFoundError(f"No artifact for {path!r} in turn {turn_id}")
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"io"
+	"log"
+	"os"
+	"time"
+)
+
+func downloadArtifact(ctx context.Context, client *openai.Client, sessionID, turnID, path, destination string) error {
+	artifacts := client.Beta.Agents.Sessions.Artifacts.ListAutoPaging(ctx, sessionID, openai.BetaAgentSessionArtifactListParams{})
+	for artifacts.Next() {
+		artifact := artifacts.Current()
+		if artifact.TurnID != turnID || artifact.Path != path {
+			continue
+		}
+		content, err := client.Beta.Agents.Sessions.Artifacts.Content(ctx, sessionID, artifact.ID)
+		if err != nil {
+			return err
+		}
+		defer content.Body.Close()
+		output, err := os.Create(destination)
+		if err != nil {
+			return err
+		}
+		_, copyErr := io.Copy(output, content.Body)
+		closeErr := output.Close()
+		if copyErr != nil {
+			return copyErr
+		}
+		return closeErr
+	}
+	if err := artifacts.Err(); err != nil {
+		return err
+	}
+	return fmt.Errorf("no artifact for %q in turn %s", path, turnID)
+}
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+	client := openai.NewClient()
+	if err := downloadArtifact(ctx, &client, "sess_123", "turn_123", "/workspace/outputs/report.pdf", "report.pdf"); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 ```ruby
 require "openai"
 

@@ -212,79 +212,6 @@ Get a list of output items for an evaluation run.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "datasource_item": {
-        "foo": "bar"
-      },
-      "datasource_item_id": 0,
-      "eval_id": "eval_id",
-      "object": "eval.run.output_item",
-      "results": [
-        {
-          "name": "name",
-          "passed": true,
-          "score": 0,
-          "sample": {
-            "foo": "bar"
-          },
-          "type": "type"
-        }
-      ],
-      "run_id": "run_id",
-      "sample": {
-        "error": {
-          "code": "code",
-          "message": "message"
-        },
-        "finish_reason": "finish_reason",
-        "input": [
-          {
-            "content": "content",
-            "role": "role"
-          }
-        ],
-        "max_completion_tokens": 0,
-        "model": "model",
-        "output": [
-          {
-            "content": "content",
-            "role": "role"
-          }
-        ],
-        "seed": 0,
-        "temperature": 0,
-        "top_p": 0,
-        "usage": {
-          "cached_tokens": 0,
-          "completion_tokens": 0,
-          "prompt_tokens": 0,
-          "total_tokens": 0
-        }
-      },
-      "status": "status"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/runs/erun_67abd54d60ec8190832b46859da808f7/output_items \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -343,7 +270,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
           }
         ],
         "finish_reason": "stop",
-        "model": "gpt-6-astra",
+        "model": "gpt-4.1-mini-2025-04-14",
         "usage": {
           "total_tokens": 325,
           "completion_tokens": 2,

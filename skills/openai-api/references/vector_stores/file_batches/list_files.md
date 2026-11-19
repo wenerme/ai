@@ -169,49 +169,6 @@ Returns a list of vector store files in a batch.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATCH_ID/files \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "last_error": {
-        "code": "server_error",
-        "message": "message"
-      },
-      "object": "vector_store.file",
-      "status": "in_progress",
-      "usage_bytes": 0,
-      "vector_store_id": "vector_store_id",
-      "attributes": {
-        "foo": "string"
-      },
-      "chunking_strategy": {
-        "static": {
-          "chunk_overlap_tokens": 0,
-          "max_chunk_size_tokens": 100
-        },
-        "type": "static"
-      }
-    }
-  ],
-  "first_id": "file-abc123",
-  "has_more": false,
-  "last_id": "file-abc456",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \

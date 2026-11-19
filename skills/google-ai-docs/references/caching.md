@@ -29,6 +29,7 @@ We automatically pass on cost savings if your request hits caches. You don't nee
 | :--- | :--- |
 | Gemini 4 Carbon | 4,096 |
 | Gemini 4 Argon | 4,096 |
+| Gemini 4 Neon | 4,096 |
 | Gemini 4 Hydrogen | 4,096 |
 | Gemini 3.8 Flash | 4,096 |
 | Gemini 3.6 Flash | 4,096 |

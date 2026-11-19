@@ -139,6 +139,8 @@ Validity checks support the following secret types:
 - SendGrid API tokens
 - Shippo live API tokens
 - Shippo test API tokens
+- Slack app configuration tokens
+- Slack app-level tokens
 - Stripe live publishable keys
 - Stripe live restricted keys
 - Stripe live secret keys
@@ -232,6 +234,8 @@ The supported URLs are:
 - `https://registry.npmjs.org/-/whoami`
 - `https://rest.messagebird.com/balance`
 - `https://rubygems.org/api/v1/gems.json`
+- `https://slack.com/api/apps.connections.open`
+- `https://slack.com/api/apps.manifest.validate`
 - `https://sts.amazonaws.com/`
 - `https://us.posthog.com/api/users/@me/`
 - `https://www.googleapis.com/discovery/v1/apis`

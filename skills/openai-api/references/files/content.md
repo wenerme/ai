@@ -17,13 +17,6 @@ Returns a response containing the contents of the specified file.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/files/$FILE_ID/content \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/files/file-abc123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > file.jsonl
 ```

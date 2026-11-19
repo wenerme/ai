@@ -65,30 +65,6 @@ Lists the users assigned to a group.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "email": "email",
-      "name": "name"
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

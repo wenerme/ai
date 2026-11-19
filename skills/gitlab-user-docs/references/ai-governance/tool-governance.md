@@ -16,6 +16,14 @@ Configure tool-level approval policies for AI agents to gate sensitive actions w
 > It is subject to change without notice.
 > For more information, see [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
 
+Agent tool governance includes two related but separate features:
+
+- Tool governance sets a mode for each tool.
+  Tool governance applies to GitLab Duo Agent Platform tools and tools served by the GitLab MCP server.
+- [Blocking MCP servers](#block-model-context-protocol-mcp-servers) blocks all tools
+  from an external MCP server. You configure MCP server blocking in the **MCP Registry** tab,
+  and the feature has different availability from tool governance.
+
 Tool governance sits at the execution boundary. After an agent has been
 admitted to a project, and before a tool is invoked, the governance layer
 consults the configured rules for the user's role and the tool's action
@@ -336,8 +344,8 @@ To configure tool governance rules for a project:
 ## Block Model Context Protocol (MCP) servers
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/601159) in GitLab 19.3 as a [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `mcp_server_block_enforcement`. Disabled by default.
-- Enforcement [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251329) for GitLab Self-Managed and GitLab Dedicated in GitLab 19.4, applied when the session's tool configuration is built. Enabled by default.
-- Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated in GitLab 19.4.
+- Enforcement of MCP server blocks [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251329) for GitLab Self-Managed and GitLab Dedicated in GitLab 19.4, applied when the session's tool configuration is built. Enabled by default.
+- Enforcement of MCP server blocks enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated in GitLab 19.4.
 
 > [!warning]
 > This feature is in [beta](../../policy/development_stages_support.md).
@@ -351,6 +359,15 @@ invoked, regardless of individual tool governance settings or user approvals.
 > [!flag]
 > Enforcement of MCP server blocks is controlled by a feature flag.
 > For more information, see the history.
+>
+> The **MCP Registry** tab, used to block MCP servers, is part of
+> [MCP servers in the AI Catalog](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md).
+> That feature is an experiment and its availability is controlled with the `ai_catalog_mcp_servers`
+> feature flag. The flag is disabled by default. If MCP servers in the AI Catalog is not available to
+> you, the **MCP Registry** tab is not available and you can't block servers.
+>
+> The `ai_catalog_mcp_servers` feature flag is separate from the `mcp_server_block_enforcement`
+> feature flag, which controls whether blocks take effect.
 
 If enforcement is not enabled on your instance, the MCP Registry still shows the server as blocked.
 The block itself does not take effect, so the server's tools remain available to GitLab Duo Agentic Chat.
@@ -390,6 +407,8 @@ You can block an MCP server at the group or project level:
 Prerequisites:
 
 - You have the Owner role for the top-level group.
+- You can use [MCP servers in the AI Catalog](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md).
+  This experiment requires that GitLab Duo experiment and beta features are turned on.
 
 To block an MCP server for a group:
 
@@ -406,6 +425,8 @@ blocked server are removed for all users in the group and its subgroups and proj
 Prerequisites:
 
 - You have the Owner role for the project.
+- You can use [MCP servers in the AI Catalog](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md).
+  This experiment requires that GitLab Duo experiment and beta features are turned on.
 
 To block an MCP server for a project:
 

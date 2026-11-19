@@ -42,30 +42,6 @@ Lists the currently available models, and provides basic information about each 
 
 ```http
 curl https://api.openai.com/v1/models \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created": 0,
-      "object": "model",
-      "owned_by": "owned_by",
-      "shutdown_date": "2019-12-27"
-    }
-  ],
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/models \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 

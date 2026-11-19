@@ -45,26 +45,7 @@ Retrieves a model instance, providing basic information about the model such as 
 ### Example
 
 ```http
-curl https://api.openai.com/v1/models/$MODEL \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created": 0,
-  "object": "model",
-  "owned_by": "owned_by",
-  "shutdown_date": "2019-12-27"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/models/gpt-6-astra \
+curl https://api.openai.com/v1/models/gpt-6.2-astra \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -72,7 +53,7 @@ curl https://api.openai.com/v1/models/gpt-6-astra \
 
 ```json
 {
-  "id": "gpt-6-astra",
+  "id": "gpt-6.2-astra",
   "object": "model",
   "created": 1686935002,
   "owned_by": "openai",

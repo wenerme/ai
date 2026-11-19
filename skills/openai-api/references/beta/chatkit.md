@@ -179,56 +179,6 @@ Cancelling prevents new requests from using the issued client secret.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/sessions/$SESSION_ID/cancel \
-    -X POST \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cksess_123",
-  "object": "chatkit.session",
-  "client_secret": "",
-  "expires_at": 1712349876,
-  "workflow": {
-    "id": "workflow_alpha",
-    "version": "2024-10-01",
-    "state_variables": {
-      "message": "hello"
-    },
-    "tracing": {
-      "enabled": true
-    }
-  },
-  "user": "user_789",
-  "rate_limits": {
-    "max_requests_per_1_minute": 60
-  },
-  "max_requests_per_1_minute": 60,
-  "status": "cancelled",
-  "chatkit_configuration": {
-    "automatic_thread_titling": {
-      "enabled": true
-    },
-    "file_upload": {
-      "enabled": true,
-      "max_file_size": 16,
-      "max_files": 20
-    },
-    "history": {
-      "enabled": true,
-      "recent_threads": 10
-    }
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST \
   https://api.openai.com/v1/chatkit/sessions/cksess_123/cancel \
   -H "OpenAI-Beta: chatkit_beta=v1" \
@@ -524,62 +474,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/chatkit/sessions \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "user": "x",
-          "workflow": {
-            "id": "id"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cksess_123",
-  "chatkit_configuration": {
-    "automatic_thread_titling": {
-      "enabled": true
-    },
-    "file_upload": {
-      "enabled": true,
-      "max_file_size": 16,
-      "max_files": 20
-    },
-    "history": {
-      "enabled": true,
-      "recent_threads": 10
-    }
-  },
-  "client_secret": "ek_token_123",
-  "expires_at": 1712349876,
-  "max_requests_per_1_minute": 60,
-  "object": "chatkit.session",
-  "rate_limits": {
-    "max_requests_per_1_minute": 60
-  },
-  "status": "active",
-  "user": "user_789",
-  "workflow": {
-    "id": "workflow_alpha",
-    "state_variables": {
-      "message": "hello"
-    },
-    "tracing": {
-      "enabled": true
-    },
-    "version": "2024-10-01"
-  }
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/sessions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "OpenAI-Beta: chatkit_beta=v1" \
@@ -802,37 +696,6 @@ List ChatKit threads with optional pagination and user filters.
   The type of object returned, must be `list`.
 
   - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/threads \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "cthr_def456",
-      "created_at": 1712345600,
-      "object": "chatkit.thread",
-      "status": {
-        "type": "active"
-      },
-      "title": "Demo feedback",
-      "user": "user_456"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
 
 ### Example
 
@@ -1330,55 +1193,6 @@ List items that belong to a ChatKit thread.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID/items \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "attachments": [
-        {
-          "id": "id",
-          "mime_type": "mime_type",
-          "name": "name",
-          "preview_url": "https://example.com",
-          "type": "image"
-        }
-      ],
-      "content": [
-        {
-          "text": "text",
-          "type": "input_text"
-        }
-      ],
-      "created_at": 0,
-      "inference_options": {
-        "model": "model",
-        "tool_choice": {
-          "id": "id"
-        }
-      },
-      "object": "chatkit.thread_item",
-      "thread_id": "thread_id",
-      "type": "chatkit.user_message"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
   -H "OpenAI-Beta: chatkit_beta=v1" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -1509,29 +1323,6 @@ Retrieve a ChatKit thread by its identifier.
   - `user: string`
 
     Free-form string that identifies your end user who owns the thread.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cthr_def456",
-  "created_at": 1712345600,
-  "object": "chatkit.thread",
-  "status": {
-    "type": "active"
-  },
-  "title": "Demo feedback",
-  "user": "user_456"
-}
-```
 
 ### Example
 

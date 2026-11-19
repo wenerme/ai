@@ -44,7 +44,7 @@ Get costs details for the organization.
 
 - `line_items: optional array of string`
 
-  Return only costs for these exact line item names. Each value must match the complete `line_item` value, for example `gpt-6-astra, input_tokens`.
+  Return only costs for these exact line item names. Each value must match the complete `line_item` value, for example `gpt-6.2-astra, input_tokens`.
 
 - `page: optional string`
 
@@ -531,59 +531,6 @@ Get costs details for the organization.
 - `object: "page"`
 
   - `"page"`
-
-### Example
-
-```http
-curl "https://api.openai.com/v1/organization/costs?start_time=0" \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "end_time": 0,
-      "object": "bucket",
-      "results": [
-        {
-          "input_tokens": 0,
-          "num_model_requests": 0,
-          "object": "organization.usage.completions.result",
-          "output_tokens": 0,
-          "api_key_id": "api_key_id",
-          "api_source": "agents_api",
-          "batch": true,
-          "input_audio_tokens": 0,
-          "input_cache_write_12h_tokens": 0,
-          "input_cache_write_30m_tokens": 0,
-          "input_cache_write_tokens": 0,
-          "input_cached_audio_tokens": 0,
-          "input_cached_image_tokens": 0,
-          "input_cached_text_tokens": 0,
-          "input_cached_tokens": 0,
-          "input_image_tokens": 0,
-          "input_text_tokens": 0,
-          "input_uncached_tokens": 0,
-          "model": "model",
-          "output_audio_tokens": 0,
-          "output_image_tokens": 0,
-          "output_text_tokens": 0,
-          "project_id": "project_id",
-          "service_tier": "service_tier",
-          "user_id": "user_id"
-        }
-      ],
-      "start_time": 0
-    }
-  ],
-  "has_more": true,
-  "next_page": "next_page",
-  "object": "page"
-}
-```
 
 ### Example
 

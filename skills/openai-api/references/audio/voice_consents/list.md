@@ -55,8 +55,8 @@ Returns a list of voice consent recordings.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/audio/voice_consents \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+curl https://api.openai.com/v1/audio/voice_consents?limit=20 \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
 #### 200 — Example
@@ -77,11 +77,4 @@ curl https://api.openai.com/v1/audio/voice_consents \
   "first_id": "first_id",
   "last_id": "last_id"
 }
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/audio/voice_consents?limit=20 \
-  -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

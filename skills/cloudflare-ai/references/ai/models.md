@@ -18,7 +18,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 296 modelsClear filters
+We found 312 modelsClear filters
 
 ## Compare models
 
@@ -318,6 +318,24 @@ Compare
 
 Compare
 
+[![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedance-1-pro</h3>ByteDanceText-to-Video ByteDance's first-generation cinematic video model. Generates 1080p video from text or images with strong prompt adherence, stable motion, and native multi-shot narrative coherence. Supports first/last-frame image-to-video and image references.](https://developers.cloudflare.com/ai/models/bytedance/seedance-1-pro/)
+
+- Third-party
+
+Compare
+
+[![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedance-1-pro-fast</h3>ByteDanceText-to-Video A speed- and cost-optimized variant of Seedance 1.0 Pro, delivering roughly 30-60% faster inference at about 60% lower cost while keeping the same capability surface. Suited to rapid iteration, storyboarding, and platform-scale video workloads.](https://developers.cloudflare.com/ai/models/bytedance/seedance-1-pro-fast/)
+
+- Third-party
+
+Compare
+
+[![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedance-1.5-pro</h3>ByteDanceText-to-Video ByteDance's joint audio-video model. A dual-branch diffusion transformer generates synchronized native audio and video in a single pass, giving millisecond-precision lip-sync across English, Mandarin, Japanese, Korean, Spanish, Portuguese, Indonesian, and Chinese dialects, plus cinematic camera control and character consistency at up to 1080p.](https://developers.cloudflare.com/ai/models/bytedance/seedance-1.5-pro/)
+
+- Third-party
+
+Compare
+
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedance-2.0</h3>ByteDanceText-to-Video ByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/)
 
 - Third-party
@@ -526,6 +544,13 @@ Compare
 
 Compare
 
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-decision-1</h3>GoogleText Generation Gemini Decision 1 evaluates typed questions over shared text, images, audio, video, and PDFs. It returns calibrated yes/no probabilities, choices, and rubric scores for classification, routing, and ranking, with zero output tokens.](https://developers.cloudflare.com/ai/models/google/gemini-decision-1/)
+
+- Third-party
+- +1
+
+Compare
+
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-omni-1.1-flash</h3>GoogleText-to-Video High-performance multimodal video generation and editing model with conversational controls and generated audio.](https://developers.cloudflare.com/ai/models/google/gemini-omni-1.1-flash/)
 
 - Third-party
@@ -541,6 +566,25 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-omni-flash</h3>GoogleText-to-Video Preview high-performance multimodal video generation and editing model with conversational controls and generated audio.](https://developers.cloudflare.com/ai/models/google/gemini-omni-flash/)
 
 - Third-party
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>lyria-3</h3>GoogleMusic Generation Google's Lyria 3 model generates 30-second MP3 music clips from text and optional image prompts.](https://developers.cloudflare.com/ai/models/google/lyria-3/)
+
+- Third-party
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>lyria-3-pro</h3>GoogleMusic Generation Google's Lyria 3 Pro model generates full-length MP3 songs from detailed text prompts and optional image prompts.](https://developers.cloudflare.com/ai/models/google/lyria-3-pro/)
+
+- Third-party
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>lyria-3.5</h3>GoogleMusic Generation Google's Lyria 3.5 model generates full-length MP3 songs from text prompts and optional image prompts.](https://developers.cloudflare.com/ai/models/google/lyria-3.5/)
+
+- Third-party
+- +1
 
 Compare
 
@@ -613,6 +657,12 @@ Compare
 
 Compare
 
+[![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v2-6-motion-control</h3>Kling AIvideo-to-video Kling AI Motion Control 2.6 transfers a reference video's motion to a character image, generating 3–30 seconds when matching the video orientation or up to 10 seconds when matching the image orientation, with optional prompt guidance and 720p or 1080p output.](https://developers.cloudflare.com/ai/models/klingai/kling-v2-6-motion-control/)
+
+- Third-party
+
+Compare
+
 [![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v3</h3>Kling AIText-to-Video Kling V3 is Kling AI's text-to-video model with audio generation support.](https://developers.cloudflare.com/ai/models/klingai/kling-v3/)
 
 - Third-party
@@ -620,6 +670,12 @@ Compare
 Compare
 
 [![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v3-image</h3>Kling AIText-to-Image Kling V3 Image is Kling AI's text-to-image model for photorealistic image generation.](https://developers.cloudflare.com/ai/models/klingai/kling-v3-image/)
+
+- Third-party
+
+Compare
+
+[![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v3-motion-control</h3>Kling AIvideo-to-video Kling AI Motion Control 3.0 transfers a reference video's motion to a character image, generating 3–30 seconds when matching the video orientation or up to 10 seconds when matching the image orientation, with optional prompt guidance and 720p or 1080p output.](https://developers.cloudflare.com/ai/models/klingai/kling-v3-motion-control/)
 
 - Third-party
 
@@ -668,6 +724,12 @@ Compare
 Compare
 
 [k<h3>krea-3</h3>kreaImage-to-Image Krea 3 is Krea's image generation and editing model, in beta. It edits one or more reference images from a text instruction, or generates an image from the prompt alone. References are passed as HTTP(S) URLs in image\_urls (up to 8). Outputs go up to 2K, with optional thinking\_mode, aspect\_ratio, seed and regional\_edit controls.](https://developers.cloudflare.com/ai/models/krea/krea-3/)
+
+- Third-party
+
+Compare
+
+[k<h3>kling-v2.6</h3>kwaivgiText-to-Video Kling v2.6 generates cinematic 5- or 10-second videos with synchronized audio from text prompts or a base64-encoded starting image. It supports 16:9, 9:16, and 1:1 aspect ratios, with optional negative prompts and standard or pro quality modes.](https://developers.cloudflare.com/ai/models/kwaivgi/kling-v2.6/)
 
 - Third-party
 
@@ -735,6 +797,18 @@ Compare
 Compare
 
 [![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3-highspeed</h3>MiniMaxText-to-Video A multimodal video generation model that balances quality and speed, supporting text-to-video, first and last frame image-to-video, and reference-to-video generation at 768P.](https://developers.cloudflare.com/ai/models/minimax/h3-highspeed/)
+
+- Third-party
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3-image</h3>MiniMaxText-to-Image MiniMax's open-weight image model built on H3 for text-to-image, multi-reference generation and image editing, producing realistic detail and strong prompt adherence at up to 4K with up to 16 reference images.](https://developers.cloudflare.com/ai/models/minimax/h3-image/)
+
+- Third-party
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3-image-highspeed</h3>MiniMaxText-to-Image The faster version of MiniMax H3 Image, with the same text-to-image, multi-reference generation and image editing features, up to 4K output and up to 16 reference images.](https://developers.cloudflare.com/ai/models/minimax/h3-image-highspeed/)
 
 - Third-party
 
@@ -838,6 +912,12 @@ Compare
 Compare
 
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k3.1-pro</h3>Moonshot AIText Generation Kimi K3.1 Pro is Moonshot's flagship model for long-horizon coding and end-to-end knowledge work, and the first model in the K3.1 series. A post-trained version of Kimi K3 with substantially larger post-training compute, it offers native visual understanding, always-on reasoning, and a 1M-token context window, with gains in coding, 3D creation, and financial research.](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3.1-pro/)
+
+- Third-party
+
+Compare
+
+[![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k3.1-pro-highspeed</h3>Moonshot AIText Generation Kimi K3.1 Pro Highspeed is the high-speed variant of Moonshot's Kimi K3.1 Pro, delivering 2-3x the speed of K3.1 Pro for more responsive interactions. It is built for long-horizon coding and end-to-end knowledge work with a 1M-token context window and always-on reasoning.](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3.1-pro-highspeed/)
 
 - Third-party
 
@@ -1010,6 +1090,19 @@ Compare
 
 - Third-party
 - +1
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6.2-astra</h3>OpenAIText Generation OpenAI's most capable model for the hardest projects, from start to finish. GPT-6.2 Astra supports advanced reasoning, coding, and agentic workflows.](https://developers.cloudflare.com/ai/models/openai/gpt-6.2-astra/)
+
+- Third-party
+- +1
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6.2-sol</h3>OpenAIText Generation OpenAI's go-to model for everyday work, from coding to powering agents at scale. GPT-6.2 Sol offers capable reasoning and tool use across common workflows.](https://developers.cloudflare.com/ai/models/openai/gpt-6.2-sol/)
+
+- Third-party
 
 Compare
 
@@ -1527,6 +1620,13 @@ Compare
 Compare
 
 [Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clairic</h3>CloudflareText Generation Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in preview from the Cloudflare Workers AI team.](https://developers.cloudflare.com/ai/models/@cf/cloudflare/clairic/)
+
+- 58% off until Dec 1
+- +3
+
+Compare
+
+[![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clairic-flash</h3>CloudflareText Generation Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in early research preview from the Cloudflare Workers AI team.](https://developers.cloudflare.com/ai/models/@cf/cloudflare/clairic-flash/)
 
 - Cloudflare-hosted
 - +2

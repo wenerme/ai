@@ -6177,28 +6177,11 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/input_tokens \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "input_tokens": 123,
-  "object": "response.input_tokens"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/responses/input_tokens \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-      "model": "gpt-6-astra",
+      "model": "gpt-6.2-astra",
       "input": "Tell me a joke."
     }'
 ```

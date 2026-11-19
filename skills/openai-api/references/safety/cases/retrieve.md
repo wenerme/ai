@@ -41,28 +41,6 @@ Get a safety case by ID.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/safety/cases/$ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "entity_identifier": "entity_identifier",
-  "notice": {
-    "type": "warning"
-  },
-  "object": "safety.case",
-  "reason": "reason"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/safety/cases/C-abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

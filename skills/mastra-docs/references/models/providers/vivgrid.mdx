@@ -5,7 +5,7 @@ description: "Browse Vivgrid model IDs, capabilities, context windows, and prici
 
 # [Vivgrid logo]Vivgrid
 
-Access 38 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
+Access 42 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
 
 Learn more in the [Vivgrid documentation](https://docs.vivgrid.com/models).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 10,
     "outputCost": 50
+  },
+  {
+    "model": "vivgrid/claude-fable-5-2",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 8.8,
+    "outputCost": 44
   },
   {
     "model": "vivgrid/claude-haiku-5-5",
@@ -314,6 +326,42 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1.1,
     "outputCost": 5.5
+  },
+  {
+    "model": "vivgrid/gpt-6.2-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 8.8,
+    "outputCost": 44
+  },
+  {
+    "model": "vivgrid/gpt-6.2-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2.2,
+    "outputCost": 11
+  },
+  {
+    "model": "vivgrid/hy4-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.07,
+    "outputCost": 0.281
   },
   {
     "model": "vivgrid/kimi-k3",

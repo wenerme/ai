@@ -550,6 +550,27 @@ FATAL: invalid argument
 
 If a job artifact fails to upload due to the previous error when using consolidated object storage, make sure you are [using separate buckets](../object_storage.md#use-separate-buckets) for each data type.
 
+## Job artifact upload fails with `409 Conflict (another artifact of the same type already exists)`
+
+- Status code [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/612866) from `400 Bad Request` to `409 Conflict` in GitLab 19.7.
+
+This error means that the job already has a stored artifact of the same type, and the uploaded file is different from it:
+
+```plaintext
+WARNING: Uploading artifacts as "archive" to coordinator... POST https://gitlab.example.com/api/v4/jobs/<JOB_ID>/artifacts?artifact_format=zip&artifact_type=archive&expire_in=1+day: 409 Conflict (another artifact of the same type already exists)
+```
+
+If the uploaded file is identical to the stored artifact, GitLab returns `201 Created` instead.
+This error occurs when:
+
+- A job uploads a second artifact of the same type. For example, a job script uploads an artifact
+  with the job token through the API, and the runner then uploads the job's `artifacts` as well.
+- The runner retries an upload whose response it did not receive. The runner creates the archive
+  again for the retry, and the new archive can differ from the stored one even when the files are the same.
+
+To resolve this issue, upload only one artifact of each type for each job. If the error follows
+a retried upload, retry the job.
+
 ## Job artifacts fail to upload with `FATAL: invalid argument` when using Windows mount
 
 If you are using a Windows mount with CIFS for job artifacts, you may see an

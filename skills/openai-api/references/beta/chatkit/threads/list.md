@@ -127,37 +127,6 @@ List ChatKit threads with optional pagination and user filters.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/threads \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "cthr_def456",
-      "created_at": 1712345600,
-      "object": "chatkit.thread",
-      "status": {
-        "type": "active"
-      },
-      "title": "Demo feedback",
-      "user": "user_456"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
   -H "OpenAI-Beta: chatkit_beta=v1" \
   -H "Authorization: Bearer $OPENAI_API_KEY"

@@ -729,97 +729,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/evals \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "data_source_config": {
-            "item_schema": {
-              "foo": "bar"
-            },
-            "type": "custom"
-          },
-          "testing_criteria": [
-            {
-              "input": [
-                {
-                  "content": "content",
-                  "role": "role"
-                }
-              ],
-              "labels": [
-                "string"
-              ],
-              "model": "model",
-              "name": "name",
-              "passing_labels": [
-                "string"
-              ],
-              "type": "label_model"
-            }
-          ]
-        }'
-```
-
-#### 201 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source_config": {
-    "schema": {
-      "type": "object",
-      "properties": {
-        "item": {
-          "type": "object",
-          "properties": {
-            "label": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "label"
-          ]
-        }
-      },
-      "required": [
-        "item"
-      ]
-    },
-    "type": "custom"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "name": "Chatbot effectiveness Evaluation",
-  "object": "eval",
-  "testing_criteria": [
-    {
-      "input": [
-        {
-          "content": "string",
-          "role": "user",
-          "type": "message"
-        }
-      ],
-      "labels": [
-        "string"
-      ],
-      "model": "model",
-      "name": "name",
-      "passing_labels": [
-        "string"
-      ],
-      "type": "label_model"
-    }
-  ]
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/evals \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -833,7 +742,7 @@ curl https://api.openai.com/v1/evals \
         "testing_criteria": [
           {
             "type": "label_model",
-            "model": "o3-mini",
+            "model": "gpt-4.1-mini-2025-04-14",
             "input": [
               {
                 "role": "developer",
@@ -889,7 +798,7 @@ curl https://api.openai.com/v1/evals \
     {
       "name": "Example label grader",
       "type": "label_model",
-      "model": "o3-mini",
+      "model": "gpt-4.1-mini-2025-04-14",
       "input": [
         {
           "type": "message",
@@ -945,24 +854,6 @@ Delete an evaluation.
 - `eval_id: string`
 
 - `object: string`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/evals/$EVAL_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "deleted": true,
-  "eval_id": "eval_abc123",
-  "object": "eval.deleted"
-}
-```
 
 ### Example
 
@@ -1405,77 +1296,6 @@ List evaluations for a project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "data_source_config": {
-        "schema": {
-          "type": "object",
-          "properties": {
-            "item": {
-              "type": "object",
-              "properties": {
-                "label": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "label"
-              ]
-            }
-          },
-          "required": [
-            "item"
-          ]
-        },
-        "type": "custom"
-      },
-      "metadata": {
-        "foo": "string"
-      },
-      "name": "Chatbot effectiveness Evaluation",
-      "object": "eval",
-      "testing_criteria": [
-        {
-          "input": [
-            {
-              "content": "string",
-              "role": "user",
-              "type": "message"
-            }
-          ],
-          "labels": [
-            "string"
-          ],
-          "model": "model",
-          "name": "name",
-          "passing_labels": [
-            "string"
-          ],
-          "type": "label_model"
-        }
-      ]
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals?limit=1 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -1516,7 +1336,7 @@ curl https://api.openai.com/v1/evals?limit=1 \
           "name": "Push Notification Summary Grader",
           "id": "Push Notification Summary Grader-9b876f24-4762-4be9-aff4-db7a9b31c673",
           "type": "label_model",
-          "model": "o3-mini",
+          "model": "gpt-4.1-mini-2025-04-14",
           "input": [
             {
               "type": "message",
@@ -1934,69 +1754,6 @@ Get an evaluation by ID.
     - `pass_threshold: optional number`
 
       The threshold for the score.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/evals/$EVAL_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source_config": {
-    "schema": {
-      "type": "object",
-      "properties": {
-        "item": {
-          "type": "object",
-          "properties": {
-            "label": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "label"
-          ]
-        }
-      },
-      "required": [
-        "item"
-      ]
-    },
-    "type": "custom"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "name": "Chatbot effectiveness Evaluation",
-  "object": "eval",
-  "testing_criteria": [
-    {
-      "input": [
-        {
-          "content": "string",
-          "role": "user",
-          "type": "message"
-        }
-      ],
-      "labels": [
-        "string"
-      ],
-      "model": "model",
-      "name": "name",
-      "passing_labels": [
-        "string"
-      ],
-      "type": "label_model"
-    }
-  ]
-}
-```
 
 ### Example
 
@@ -2451,71 +2208,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source_config": {
-    "schema": {
-      "type": "object",
-      "properties": {
-        "item": {
-          "type": "object",
-          "properties": {
-            "label": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "label"
-          ]
-        }
-      },
-      "required": [
-        "item"
-      ]
-    },
-    "type": "custom"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "name": "Chatbot effectiveness Evaluation",
-  "object": "eval",
-  "testing_criteria": [
-    {
-      "input": [
-        {
-          "content": "string",
-          "role": "user",
-          "type": "message"
-        }
-      ],
-      "labels": [
-        "string"
-      ],
-      "model": "model",
-      "name": "name",
-      "passing_labels": [
-        "string"
-      ],
-      "type": "label_model"
-    }
-  ]
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
@@ -2582,7 +2274,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
   - Improve the quality of my chatbot
   - See how well my chatbot handles customer support
-  - Check if o4-mini is better at my usecase than gpt-6-astra
+  - Compare how different models perform on the same task
 
   - `id: string`
 
@@ -2988,7 +2680,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
   - Improve the quality of my chatbot
   - See how well my chatbot handles customer support
-  - Check if o4-mini is better at my usecase than gpt-6-astra
+  - Compare how different models perform on the same task
 
   - `id: string`
 
@@ -3363,7 +3055,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
   - Improve the quality of my chatbot
   - See how well my chatbot handles customer support
-  - Check if o4-mini is better at my usecase than gpt-6-astra
+  - Compare how different models perform on the same task
 
   - `id: string`
 
@@ -3764,7 +3456,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
   - Improve the quality of my chatbot
   - See how well my chatbot handles customer support
-  - Check if o4-mini is better at my usecase than gpt-6-astra
+  - Compare how different models perform on the same task
 
   - `id: string`
 
@@ -4274,7 +3966,7 @@ Cancel an ongoing evaluation run.
 
         - `model: optional string or null`
 
-          An optional model to filter by (e.g., 'gpt-6-astra').
+          An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
     - `type: "completions" (default: "completions")`
 
@@ -4650,7 +4342,7 @@ Cancel an ongoing evaluation run.
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Chat Completions API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -5022,7 +4714,7 @@ Cancel an ongoing evaluation run.
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Responses API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -6502,75 +6194,6 @@ Cancel an ongoing evaluation run.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/cancel \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source": {
-    "source": {
-      "content": [
-        {
-          "item": {
-            "foo": "bar"
-          },
-          "sample": {
-            "foo": "bar"
-          }
-        }
-      ],
-      "type": "file_content"
-    },
-    "type": "jsonl"
-  },
-  "error": {
-    "code": "code",
-    "message": "message"
-  },
-  "eval_id": "eval_id",
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "name": "name",
-  "object": "eval.run",
-  "per_model_usage": [
-    {
-      "cached_tokens": 0,
-      "completion_tokens": 0,
-      "invocation_count": 0,
-      "model_name": "model_name",
-      "prompt_tokens": 0,
-      "total_tokens": 0
-    }
-  ],
-  "per_testing_criteria_results": [
-    {
-      "failed": 0,
-      "passed": 0,
-      "testing_criteria": "testing_criteria"
-    }
-  ],
-  "report_url": "https://example.com",
-  "result_counts": {
-    "errored": 0,
-    "failed": 0,
-    "passed": 0,
-    "total": 0
-  },
-  "status": "status"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/evalrun_67abd54d60ec8190832b46859da808f7/cancel \
   -X POST \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -6586,8 +6209,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
   "report_url": "https://platform.openai.com/evaluations/eval_67abd54d9b0081909a86353f6fb9317a?run_id=evalrun_67abd54d60ec8190832b46859da808f7",
   "status": "canceled",
-  "model": "gpt-6-astra",
-  "name": "gpt-6-astra",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "name": "gpt-4.1-mini-2025-04-14",
   "created_at": 1743092069,
   "result_counts": {
     "total": 0,
@@ -6715,7 +6338,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
         }
       ]
     },
-    "model": "gpt-6-astra",
+    "model": "gpt-4.1-mini-2025-04-14",
     "sampling_params": {
       "max_completions_tokens": 2048
     }
@@ -6856,7 +6479,7 @@ Content type: `application/json`
 
         - `model: optional string or null`
 
-          An optional model to filter by (e.g., 'gpt-6-astra').
+          An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
     - `type: "completions" (default: "completions")`
 
@@ -7232,7 +6855,7 @@ Content type: `application/json`
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Chat Completions API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -7604,7 +7227,7 @@ Content type: `application/json`
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Responses API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -9108,7 +8731,7 @@ Content type: `application/json`
 
         - `model: optional string or null`
 
-          An optional model to filter by (e.g., 'gpt-6-astra').
+          An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
     - `type: "completions" (default: "completions")`
 
@@ -9484,7 +9107,7 @@ Content type: `application/json`
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Chat Completions API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -9856,7 +9479,7 @@ Content type: `application/json`
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Responses API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -11336,95 +10959,11 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "data_source": {
-            "source": {
-              "content": [
-                {
-                  "item": {
-                    "foo": "bar"
-                  }
-                }
-              ],
-              "type": "file_content"
-            },
-            "type": "jsonl"
-          }
-        }'
-```
-
-#### 201 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source": {
-    "source": {
-      "content": [
-        {
-          "item": {
-            "foo": "bar"
-          },
-          "sample": {
-            "foo": "bar"
-          }
-        }
-      ],
-      "type": "file_content"
-    },
-    "type": "jsonl"
-  },
-  "error": {
-    "code": "code",
-    "message": "message"
-  },
-  "eval_id": "eval_id",
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "name": "name",
-  "object": "eval.run",
-  "per_model_usage": [
-    {
-      "cached_tokens": 0,
-      "completion_tokens": 0,
-      "invocation_count": 0,
-      "model_name": "model_name",
-      "prompt_tokens": 0,
-      "total_tokens": 0
-    }
-  ],
-  "per_testing_criteria_results": [
-    {
-      "failed": 0,
-      "passed": 0,
-      "testing_criteria": "testing_criteria"
-    }
-  ],
-  "report_url": "https://example.com",
-  "result_counts": {
-    "errored": 0,
-    "failed": 0,
-    "passed": 0,
-    "total": 0
-  },
-  "status": "status"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs \
   -X POST \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"name":"gpt-6-astra","data_source":{"type":"completions","input_messages":{"type":"template","template":[{"role":"developer","content":"Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"} , {"role":"user","content":"{{item.input}}"}]} ,"sampling_params":{"max_completions_tokens":2048},"model":"gpt-6-astra","source":{"type":"file_content","content":[{"item":{"input":"Tech Company Launches Advanced Artificial Intelligence Platform","ground_truth":"Technology"}}]}}}'
+  -d '{"name":"gpt-4.1-mini-2025-04-14","data_source":{"type":"completions","input_messages":{"type":"template","template":[{"role":"developer","content":"Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"} , {"role":"user","content":"{{item.input}}"}]} ,"sampling_params":{"max_completions_tokens":2048},"model":"gpt-4.1-mini-2025-04-14","source":{"type":"file_content","content":[{"item":{"input":"Tech Company Launches Advanced Artificial Intelligence Platform","ground_truth":"Technology"}}]}}}'
 ```
 
 #### Response example
@@ -11436,8 +10975,8 @@ curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs 
   "eval_id": "eval_67e579652b548190aaa83ada4b125f47",
   "report_url": "https://platform.openai.com/evaluations/eval_67e579652b548190aaa83ada4b125f47&run_id=evalrun_67e57965b480819094274e3a32235e4c",
   "status": "queued",
-  "model": "gpt-6-astra",
-  "name": "gpt-6-astra",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "name": "gpt-4.1-mini-2025-04-14",
   "created_at": 1743092069,
   "result_counts": {
     "total": 0,
@@ -11481,7 +11020,7 @@ curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs 
         }
       ]
     },
-    "model": "gpt-6-astra",
+    "model": "gpt-4.1-mini-2025-04-14",
     "sampling_params": {
       "max_completions_tokens": 2048
     }
@@ -11514,24 +11053,6 @@ Delete an eval run.
 - `object: optional string`
 
 - `run_id: optional string`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "deleted": true,
-  "object": "eval.run.deleted",
-  "run_id": "evalrun_677469f564d48190807532a852da3afb"
-}
-```
 
 ### Example
 
@@ -11727,7 +11248,7 @@ Get a list of runs for an evaluation.
 
           - `model: optional string or null`
 
-            An optional model to filter by (e.g., 'gpt-6-astra').
+            An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
       - `type: "completions" (default: "completions")`
 
@@ -12103,7 +11624,7 @@ Get a list of runs for an evaluation.
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Chat Completions API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -12475,7 +11996,7 @@ Get a list of runs for an evaluation.
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Responses API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -13973,82 +13494,6 @@ Get a list of runs for an evaluation.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "data_source": {
-        "source": {
-          "content": [
-            {
-              "item": {
-                "foo": "bar"
-              },
-              "sample": {
-                "foo": "bar"
-              }
-            }
-          ],
-          "type": "file_content"
-        },
-        "type": "jsonl"
-      },
-      "error": {
-        "code": "code",
-        "message": "message"
-      },
-      "eval_id": "eval_id",
-      "metadata": {
-        "foo": "string"
-      },
-      "model": "model",
-      "name": "name",
-      "object": "eval.run",
-      "per_model_usage": [
-        {
-          "cached_tokens": 0,
-          "completion_tokens": 0,
-          "invocation_count": 0,
-          "model_name": "model_name",
-          "prompt_tokens": 0,
-          "total_tokens": 0
-        }
-      ],
-      "per_testing_criteria_results": [
-        {
-          "failed": 0,
-          "passed": 0,
-          "testing_criteria": "testing_criteria"
-        }
-      ],
-      "report_url": "https://example.com",
-      "result_counts": {
-        "errored": 0,
-        "failed": 0,
-        "passed": 0,
-        "total": 0
-      },
-      "status": "status"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/runs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -14066,8 +13511,8 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
       "eval_id": "eval_67e0c726d560819083f19a957c4c640b",
       "report_url": "https://platform.openai.com/evaluations/eval_67e0c726d560819083f19a957c4c640b",
       "status": "completed",
-      "model": "o3-mini",
-      "name": "bulk_with_negative_examples_o3-mini",
+      "model": "gpt-4.1-mini-2025-04-14",
+      "name": "bulk_with_negative_examples_gpt-4.1-mini-2025-04-14",
       "created_at": 1742784467,
       "result_counts": {
         "total": 1,
@@ -14077,7 +13522,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
       },
       "per_model_usage": [
         {
-          "model_name": "o3-mini",
+          "model_name": "gpt-4.1-mini-2025-04-14",
           "invocation_count": 1,
           "prompt_tokens": 563,
           "completion_tokens": 874,
@@ -14125,7 +13570,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
             }
           ]
         },
-        "model": "o3-mini"
+        "model": "gpt-4.1-mini-2025-04-14"
       },
       "error": null,
       "metadata": {}
@@ -14280,7 +13725,7 @@ Get an evaluation run by ID.
 
         - `model: optional string or null`
 
-          An optional model to filter by (e.g., 'gpt-6-astra').
+          An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
     - `type: "completions" (default: "completions")`
 
@@ -14656,7 +14101,7 @@ Get an evaluation run by ID.
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Chat Completions API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -15028,7 +14473,7 @@ Get an evaluation run by ID.
 
     - `model: optional string`
 
-      The name of the model to use for generating completions (e.g. "o3-mini").
+      The model to use to sample outputs with the Responses API.
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -16508,74 +15953,6 @@ Get an evaluation run by ID.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "data_source": {
-    "source": {
-      "content": [
-        {
-          "item": {
-            "foo": "bar"
-          },
-          "sample": {
-            "foo": "bar"
-          }
-        }
-      ],
-      "type": "file_content"
-    },
-    "type": "jsonl"
-  },
-  "error": {
-    "code": "code",
-    "message": "message"
-  },
-  "eval_id": "eval_id",
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "model",
-  "name": "name",
-  "object": "eval.run",
-  "per_model_usage": [
-    {
-      "cached_tokens": 0,
-      "completion_tokens": 0,
-      "invocation_count": 0,
-      "model_name": "model_name",
-      "prompt_tokens": 0,
-      "total_tokens": 0
-    }
-  ],
-  "per_testing_criteria_results": [
-    {
-      "failed": 0,
-      "passed": 0,
-      "testing_criteria": "testing_criteria"
-    }
-  ],
-  "report_url": "https://example.com",
-  "result_counts": {
-    "errored": 0,
-    "failed": 0,
-    "passed": 0,
-    "total": 0
-  },
-  "status": "status"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/evalrun_67abd54d60ec8190832b46859da808f7 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -16590,8 +15967,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   "eval_id": "eval_67abd54d9b0081909a86353f6fb9317a",
   "report_url": "https://platform.openai.com/evaluations/eval_67abd54d9b0081909a86353f6fb9317a?run_id=evalrun_67abd54d60ec8190832b46859da808f7",
   "status": "queued",
-  "model": "gpt-6-astra",
-  "name": "gpt-6-astra",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "name": "gpt-4.1-mini-2025-04-14",
   "created_at": 1743092069,
   "result_counts": {
     "total": 0,
@@ -16719,7 +16096,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
         }
       ]
     },
-    "model": "gpt-6-astra",
+    "model": "gpt-4.1-mini-2025-04-14",
     "sampling_params": {
       "max_completions_tokens": 2048
     }
@@ -16802,7 +16179,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string or null`
 
-        An optional model to filter by (e.g., 'gpt-6-astra').
+        An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
   - `type: "completions" (default: "completions")`
 
@@ -17178,7 +16555,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
   - `model: optional string`
 
-    The name of the model to use for generating completions (e.g. "o3-mini").
+    The model to use to sample outputs with the Chat Completions API.
 
   - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -17515,7 +16892,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
           - `model: optional string or null`
 
-            An optional model to filter by (e.g., 'gpt-6-astra').
+            An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
       - `type: "completions" (default: "completions")`
 
@@ -17891,7 +17268,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Chat Completions API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -18263,7 +17640,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Responses API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -19871,7 +19248,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
           - `model: optional string or null`
 
-            An optional model to filter by (e.g., 'gpt-6-astra').
+            An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
       - `type: "completions" (default: "completions")`
 
@@ -20247,7 +19624,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Chat Completions API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -20619,7 +19996,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Responses API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -22237,7 +21614,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
           - `model: optional string or null`
 
-            An optional model to filter by (e.g., 'gpt-6-astra').
+            An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
       - `type: "completions" (default: "completions")`
 
@@ -22613,7 +21990,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Chat Completions API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -22985,7 +22362,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Responses API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -24593,7 +23970,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
           - `model: optional string or null`
 
-            An optional model to filter by (e.g., 'gpt-6-astra').
+            An optional model to filter by (e.g., 'gpt-4.1-mini-2025-04-14').
 
       - `type: "completions" (default: "completions")`
 
@@ -24969,7 +24346,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Chat Completions API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
@@ -25341,7 +24718,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       - `model: optional string`
 
-        The name of the model to use for generating completions (e.g. "o3-mini").
+        The model to use to sample outputs with the Responses API.
 
       - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
@@ -27034,79 +26411,6 @@ Get a list of output items for an evaluation run.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "datasource_item": {
-        "foo": "bar"
-      },
-      "datasource_item_id": 0,
-      "eval_id": "eval_id",
-      "object": "eval.run.output_item",
-      "results": [
-        {
-          "name": "name",
-          "passed": true,
-          "score": 0,
-          "sample": {
-            "foo": "bar"
-          },
-          "type": "type"
-        }
-      ],
-      "run_id": "run_id",
-      "sample": {
-        "error": {
-          "code": "code",
-          "message": "message"
-        },
-        "finish_reason": "finish_reason",
-        "input": [
-          {
-            "content": "content",
-            "role": "role"
-          }
-        ],
-        "max_completion_tokens": 0,
-        "model": "model",
-        "output": [
-          {
-            "content": "content",
-            "role": "role"
-          }
-        ],
-        "seed": 0,
-        "temperature": 0,
-        "top_p": 0,
-        "usage": {
-          "cached_tokens": 0,
-          "completion_tokens": 0,
-          "prompt_tokens": 0,
-          "total_tokens": 0
-        }
-      },
-      "status": "status"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/runs/erun_67abd54d60ec8190832b46859da808f7/output_items \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -27165,7 +26469,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
           }
         ],
         "finish_reason": "stop",
-        "model": "gpt-6-astra",
+        "model": "gpt-4.1-mini-2025-04-14",
         "usage": {
           "total_tokens": 325,
           "completion_tokens": 2,
@@ -27355,71 +26659,6 @@ Get an evaluation run output item by ID.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items/$OUTPUT_ITEM_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "datasource_item": {
-    "foo": "bar"
-  },
-  "datasource_item_id": 0,
-  "eval_id": "eval_id",
-  "object": "eval.run.output_item",
-  "results": [
-    {
-      "name": "name",
-      "passed": true,
-      "score": 0,
-      "sample": {
-        "foo": "bar"
-      },
-      "type": "type"
-    }
-  ],
-  "run_id": "run_id",
-  "sample": {
-    "error": {
-      "code": "code",
-      "message": "message"
-    },
-    "finish_reason": "finish_reason",
-    "input": [
-      {
-        "content": "content",
-        "role": "role"
-      }
-    ],
-    "max_completion_tokens": 0,
-    "model": "model",
-    "output": [
-      {
-        "content": "content",
-        "role": "role"
-      }
-    ],
-    "seed": 0,
-    "temperature": 0,
-    "top_p": 0,
-    "usage": {
-      "cached_tokens": 0,
-      "completion_tokens": 0,
-      "prompt_tokens": 0,
-      "total_tokens": 0
-    }
-  },
-  "status": "status"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/evalrun_67abd54d60ec8190832b46859da808f7/output_items/outputitem_67abd55eb6548190bb580745d5644a33 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json"
@@ -27475,7 +26714,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
       }
     ],
     "finish_reason": "stop",
-    "model": "gpt-6-astra",
+    "model": "gpt-4.1-mini-2025-04-14",
     "usage": {
       "total_tokens": 325,
       "completion_tokens": 2,

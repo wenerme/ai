@@ -187,6 +187,10 @@ webhook or poll using the same response ID.
 
 ## Use discounted completion windows
 
+Starting with GPT-6.2 Astra and Sol, new models launch without Flex processing
+(`service_tier: flex`). For long-running Responses API requests, use discounted
+completion windows with Standard processing on supported models.
+
 Discounted completion windows are in public beta on GPT-6.2 Astra, GPT-6.2
   Sol, GPT-6.1 Terra, and GPT-6 Luna.
 

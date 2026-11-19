@@ -44,6 +44,7 @@ Included products
 - <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/">Cloudflare for SaaS</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-for-saas.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/dns/">DNS</a><a href="https://developers.cloudflare.com/changelog/rss/dns.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/load-balancing/">Load Balancing</a><a href="https://developers.cloudflare.com/changelog/rss/load-balancing.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/spectrum/">Spectrum</a><a href="https://developers.cloudflare.com/changelog/rss/spectrum.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/speed/">Speed</a><a href="https://developers.cloudflare.com/changelog/rss/speed.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/ssl/">SSL/TLS</a><a href="https://developers.cloudflare.com/changelog/rss/ssl.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a><a href="https://developers.cloudflare.com/changelog/rss/web-analytics.xml">Subscribe to RSS</a>

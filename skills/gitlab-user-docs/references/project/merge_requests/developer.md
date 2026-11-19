@@ -10,6 +10,7 @@
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
 - Mention triggers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228817) in GitLab 18.11.
 - Work item status change triggers, and workplan support when you assign the flow, [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633027) in GitLab 19.6.
+- Work item labels and milestone on the merge request [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636766) in GitLab 19.7.
 
 The Developer Flow helps you work more efficiently across issues and merge requests.
 You can use the Developer Flow to:
@@ -106,6 +107,10 @@ When you assign the flow to an issue that has a [workplan](../../work_items/work
 the flow follows the workplan. If the description and the workplan disagree,
 the flow follows the workplan.
 
+The merge request gets the labels and the milestone of the issue.
+The flow sets the milestone only when the project of the merge request, or one of its groups,
+has an active milestone.
+
 ### Start the flow when a work item status changes
 
 When a work item changes to a status that you select, the Developer Flow implements
@@ -128,7 +133,9 @@ To start the flow:
 1. To monitor progress, in the left sidebar, select **AI** > **Sessions**.
 1. When the session completes, review the merge request from the link in
    the **Activity** section of the work item. The flow assigns the merge request
-   to the user who changed the status.
+   to the user who changed the status. The merge request gets the labels and the
+   milestone of the work item. The flow sets the milestone only when the project of
+   the merge request, or one of its groups, has an active milestone.
 
 ### Use the flow in Agentic Chat
 

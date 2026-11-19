@@ -114,7 +114,7 @@ they map to OpenAI's reasoning efforts as follows:
 | `low` | `low` | `low` | `low` | `1,024` |
 | `medium` | `medium` | `medium` | `medium` | `8,192` |
 | `high` | `high` | `high` | `high` | `24,576` |
-| `xhigh` | `xhigh` (`gemini-4-hydrogen` only) | Not supported | Not supported | Not supported |
+| `xhigh` | `xhigh` (`gemini-4-neon` and `gemini-4-hydrogen` only) | Not supported | Not supported | Not supported |
 
 If no `reasoning_effort` is specified, Gemini uses the model's
 default [level or budget](/docs/thinking#thinking-levels).

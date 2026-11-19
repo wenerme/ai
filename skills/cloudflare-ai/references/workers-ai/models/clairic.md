@@ -20,11 +20,16 @@ Model ID
 
 `@cf/cloudflare/clairic` Copy
 
+- 58% off until Dec 1
 - Cloudflare-hosted
 - Vision
 - Zero data retention
 
 Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in preview from the Cloudflare Workers AI team.
+
+Tip
+
+**Launch promo:** Clairic is 58% off at $0.10 per M input tokens until December 1, 2026. The standard price of $0.24 per M input tokens applies from then on.
 
 | Model Info | |
 | --- | --- |
@@ -32,7 +37,7 @@ Clairic is a System One-style model that can extract, compute, estimate, and for
 | Terms and License | [link](#terms) |
 | Vision | Yes |
 | Zero data retention | Yes |
-| Unit Pricing | $0.10 per M input tokens |
+| Unit Pricing | $0.10 per M input tokens ~~$0.24~~ Promo<br>Promotional price until December 1, 2026, then $0.24 per M input tokens. |
 
 How media inputs are billed
 
@@ -182,19 +187,23 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 model
 
-`string`requireddefault: clairicpattern: ^(clairic|@cf/cloudflare/clairic)$Required. The model selector: "clairic".
+`string`requireddefault: clairicpattern: ^(clairic|@cf/cloudflare/clairic)$Required. The model selector: "clairic"
 
 state
 
-`string`default: The text to read and predict from. Must be non-empty unless images are sent. Text answers are spans of this string.
+`string`default: The text to read and predict from. Must be non-empty unless images or documents are sent. Text answers are spans of this string.
 
 ▶fields{}
 
-`object`requiredminProperties: 1Required. Map of field name to a typed field spec. At least one field; no upper limit. Fields that do not fit next to the state in one 8,192-token pass are split across parallel passes.
+`object`requiredminProperties: 1Required. Map of field name to a typed field spec. At least one field; no upper limit. Each prompt (state plus fields) must fit in 65,273 input tokens; input is never truncated and oversized requests are rejected. Unknown keys for a field's type are rejected.
 
 ▶images\[]
 
-`array`maxItems: 4Optional embedded PNG, JPEG or WebP images placed before the state (max 4; 4 MiB each, 8 MiB total decoded; request body max 16 MiB). Remote URLs are not accepted.
+`array`maxItems: 4Optional embedded PNG, JPEG or WebP images placed before the state (max 4; 4 MiB each, 8 MiB total decoded across images and documents; request body max 16 MiB). Remote URLs are not accepted.
+
+▶documents\[]
+
+`array`maxItems: 4Optional embedded PDFs (4 MiB each). Rendered pages plus images must total at most 4. Encrypted PDFs are rejected.
 
 reference\_date
 
@@ -206,15 +215,15 @@ reference\_date
 
 model
 
-`string`
+`string`Always "clairic-27b", whichever selector was sent.
 
 ▶answers{}
 
-`object`One answer per field, keyed by field name. value is null when the input does not determine it.
+`object`One answer per field, keyed by field name. value is null when the input does not determine it. Generated answers (text, number, boolean, enum, object, source\_only fields, lists) carry valid/complete/decoder metadata; typed answers (date, time, datetime, duration, compute) carry guess instead.
 
 truncated
 
-`boolean`
+`boolean`True when any generated answer or list is invalid or incomplete. Input is never truncated.
 
 state\_text
 

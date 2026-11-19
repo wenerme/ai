@@ -88,6 +88,23 @@ environment_id = environment.id
 print(environment_id)
 ```
 
+```go
+ctx := context.Background()
+client := openai.NewClient()
+environment, err := client.Beta.Agents.Environments.New(ctx, openai.BetaAgentEnvironmentNewParams{
+	Environment: openai.BetaAgentEnvironmentNewParamsEnvironment{
+		Packages:      openai.BetaAgentEnvironmentNewParamsEnvironmentPackages{Python: []string{"pandas==2.2.3"}},
+		Files:         []openai.HostedEnvironmentFileParamUnion{{OfParamInline: &openai.HostedEnvironmentFileParamInline{Path: "/workspace/amounts.csv", Data: "YW1vdW50CjEwCjIwCjMwCg=="}}},
+		SetupCommands: []openai.SetupCommandParam{{Command: `python -c "import pandas; print(pandas.__version__)"`, Cwd: openai.String("/workspace")}},
+	},
+})
+if err != nil {
+	panic(err)
+}
+environmentID := environment.ID
+fmt.Println(environmentID)
+```
+
 ```java
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 
@@ -181,7 +198,7 @@ print(current.status)
 ```
 
 ```go
-current, err := client.Beta.Agents.Environments.Get(context.Background(), environmentID)
+current, err := client.Beta.Agents.Environments.Get(ctx, environmentID)
 if err != nil {
 	panic(err)
 }
@@ -245,6 +262,32 @@ stream = client.beta.agents.sessions.create(
 with stream:
     for event in stream:
         print(event.model_dump_json())
+```
+
+```go
+stream := client.Beta.Agents.Sessions.NewStreaming(ctx, openai.BetaAgentSessionNewParams{
+	Agent:       openai.BetaAgentSessionNewParamsAgent{Model: openai.String("gpt-6-astra")},
+	Environment: openai.EnvironmentParamUnion{OfParamOpenAIHosted: &openai.EnvironmentParamOpenAIHosted{EnvironmentID: openai.String(environmentID)}},
+	Input:       openai.BetaAgentSessionNewParamsInputUnion{OfString: openai.String("Use pandas to read /workspace/amounts.csv, calculate the sum of the amount column, and report the total.")},
+})
+defer stream.Close()
+completed := false
+for stream.Next() {
+	event := stream.Current()
+	fmt.Println(event.RawJSON())
+	switch event.Type {
+	case "agent.session.turn.failed", "error":
+		panic("Agent turn failed")
+	case "agent.session.turn.completed":
+		completed = true
+	}
+}
+if err := stream.Err(); err != nil {
+	panic(err)
+}
+if !completed {
+	panic("Stream ended before the turn completed")
+}
 ```
 
 ```java
@@ -328,6 +371,18 @@ environment = client.beta.agents.environments.create(
 print(environment.id)
 ```
 
+```go
+environment, err := client.Beta.Agents.Environments.New(context.Background(), openai.BetaAgentEnvironmentNewParams{
+	Environment: openai.BetaAgentEnvironmentNewParamsEnvironment{
+		EnvironmentTemplateID: openai.String("envtmpl_REPLACE_WITH_TEMPLATE_ID"),
+	},
+})
+if err != nil {
+	panic(err)
+}
+fmt.Println(environment.ID)
+```
+
 ```java
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.beta.agents.environments.EnvironmentCreateParams;
@@ -396,6 +451,18 @@ environment = client.beta.agents.environments.create(
 print(environment.id)
 ```
 
+```go
+environment, err := client.Beta.Agents.Environments.New(context.Background(), openai.BetaAgentEnvironmentNewParams{
+	Environment: openai.BetaAgentEnvironmentNewParamsEnvironment{
+		Desktop: openai.BetaAgentEnvironmentNewParamsEnvironmentDesktop{Enabled: openai.Bool(true)},
+	},
+})
+if err != nil {
+	panic(err)
+}
+fmt.Println(environment.ID)
+```
+
 ```java
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.beta.agents.environments.EnvironmentCreateParams;
@@ -455,6 +522,16 @@ console.log(environments.data);
 environments = client.beta.agents.environments.list(limit=20, order="desc")
 for item in environments.data:
     print(item.model_dump_json())
+```
+
+```go
+environments, err := client.Beta.Agents.Environments.List(ctx, openai.BetaAgentEnvironmentListParams{Limit: openai.Int(20), Order: "desc"})
+if err != nil {
+	panic(err)
+}
+for _, item := range environments.Data {
+	fmt.Println(item.ID)
+}
 ```
 
 ```java

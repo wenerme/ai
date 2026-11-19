@@ -176,37 +176,6 @@ List ChatKit threads with optional pagination and user filters.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/threads \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "cthr_def456",
-      "created_at": 1712345600,
-      "object": "chatkit.thread",
-      "status": {
-        "type": "active"
-      },
-      "title": "Demo feedback",
-      "user": "user_456"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
   -H "OpenAI-Beta: chatkit_beta=v1" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -700,55 +669,6 @@ List items that belong to a ChatKit thread.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID/items \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "attachments": [
-        {
-          "id": "id",
-          "mime_type": "mime_type",
-          "name": "name",
-          "preview_url": "https://example.com",
-          "type": "image"
-        }
-      ],
-      "content": [
-        {
-          "text": "text",
-          "type": "input_text"
-        }
-      ],
-      "created_at": 0,
-      "inference_options": {
-        "model": "model",
-        "tool_choice": {
-          "id": "id"
-        }
-      },
-      "object": "chatkit.thread_item",
-      "thread_id": "thread_id",
-      "type": "chatkit.user_message"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
   -H "OpenAI-Beta: chatkit_beta=v1" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -879,29 +799,6 @@ Retrieve a ChatKit thread by its identifier.
   - `user: string`
 
     Free-form string that identifies your end user who owns the thread.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cthr_def456",
-  "created_at": 1712345600,
-  "object": "chatkit.thread",
-  "status": {
-    "type": "active"
-  },
-  "title": "Demo feedback",
-  "user": "user_456"
-}
-```
 
 ### Example
 

@@ -113,39 +113,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/invites \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "email": "email",
-          "role": "reader"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "email": "email",
-  "object": "organization.invite",
-  "projects": [
-    {
-      "id": "id",
-      "role": "member"
-    }
-  ],
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
-  "expires_at": 0
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/invites \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
@@ -213,24 +180,6 @@ Delete an invite. If the invite has already been accepted, it cannot be deleted.
   The object type, which is always `organization.invite.deleted`
 
   - `"organization.invite.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.invite.deleted"
-}
-```
 
 ### Example
 
@@ -357,42 +306,6 @@ Returns a list of invites in the organization.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/invites \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "email": "email",
-      "object": "organization.invite",
-      "projects": [
-        {
-          "id": "id",
-          "role": "member"
-        }
-      ],
-      "role": "owner",
-      "status": "accepted",
-      "accepted_at": 0,
-      "expires_at": 0
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -505,34 +418,6 @@ Retrieves an invite.
     The Unix timestamp (in seconds) of when the invite expires.
 
     `format: unixtime`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "email": "email",
-  "object": "organization.invite",
-  "projects": [
-    {
-      "id": "id",
-      "role": "member"
-    }
-  ],
-  "role": "owner",
-  "status": "accepted",
-  "accepted_at": 0,
-  "expires_at": 0
-}
-```
 
 ### Example
 

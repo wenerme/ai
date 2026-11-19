@@ -138,7 +138,15 @@ For Ruby, install `hpke` and `json-canonicalization` with the OpenSSL Ruby bindi
 
 
 
-Pass these inputs to `recover_record`:
+
+
+
+For Go, install `github.com/cyberphone/json-canonicalization/go/src/webpki.org/jsoncanonicalizer`. The complete program uses Go's cryptography packages for P-256, HKDF, and AES-GCM. Its `recoverRecord` function accepts the same four inputs below. The command reads a JSON object from stdin with `bundle`, `capsule`, `key_id`, and `public_key` fields; encode the capsule with standard Base64.
+
+
+
+
+Pass these inputs to the recovery function:
 
 - `bundle_json`: The inner record bundle as UTF-8 JSON bytes.
 - `capsule`: The bytes returned by your cloud key-management service.
@@ -290,6 +298,136 @@ def point(value):
     encoded = decode64(value)
     require(len(encoded) == 65 and encoded[0] == 4, "Invalid P-256 encoding")
     return ec.EllipticCurvePublicKey.from_encoded_point(ec.SECP256R1(), encoded)
+```
+
+```go
+// Recover exact bundle bytes with an already decrypted capsule and the trusted
+// original key registration. The RSA private key remains in the cloud.
+func recoverRecord(bundleJSON, capsule []byte, originalKeyID string, publicPEM []byte) (string, error) {
+	// Canonicalization rejects duplicate fields and malformed Unicode before decoding.
+	if _, err := jsoncanonicalizer.Transform(bundleJSON); err != nil {
+		return "", err
+	}
+	decoder := json.NewDecoder(bytes.NewReader(bundleJSON))
+	decoder.UseNumber()
+	var bundle map[string]any
+	if err := decoder.Decode(&bundle); err != nil {
+		return "", err
+	}
+	if bundle["bundle_version"] != json.Number("1") {
+		return "", fmt.Errorf("unsupported bundle version")
+	}
+	record, ok := bundle["protected_record"].(map[string]any)
+	if !ok {
+		return "", fmt.Errorf("invalid protected record")
+	}
+	access, ok := bundle["customer_access"].(map[string]any)
+	if !ok {
+		return "", fmt.Errorf("customer recovery is unavailable")
+	}
+	if record["version"] != "v4" || record["algorithm"] != "HPKE-v1-DHKEM_P256_HKDF_SHA256-EXPORT_ONLY-AES256_GCM" || access["version"] != json.Number("1") || access["algorithm"] != "RSA-OAEP-256" || access["customer_key_id"] != originalKeyID {
+		return "", fmt.Errorf("wrong schema or original key")
+	}
+	block, rest := pem.Decode(publicPEM)
+	if block == nil || len(bytes.TrimSpace(rest)) != 0 {
+		return "", fmt.Errorf("expected an RSA public key")
+	}
+	var parsed any
+	var err error
+	switch block.Type {
+	case "PUBLIC KEY":
+		parsed, err = x509.ParsePKIXPublicKey(block.Bytes)
+	case "RSA PUBLIC KEY":
+		parsed, err = x509.ParsePKCS1PublicKey(block.Bytes)
+	default:
+		return "", fmt.Errorf("expected an RSA public key")
+	}
+	if err != nil {
+		return "", err
+	}
+	public, ok := parsed.(*rsa.PublicKey)
+	if !ok || public.N.BitLen() != 3072 {
+		return "", fmt.Errorf("expected RSA-3072")
+	}
+	wrapped, err := decode64(access["recovery_secret"])
+	if err != nil || len(wrapped) != 384 {
+		return "", fmt.Errorf("wrong RSA ciphertext length")
+	}
+	der, err := x509.MarshalPKIXPublicKey(public)
+	if err != nil {
+		return "", err
+	}
+	expectedFingerprint := sha256.Sum256(der)
+	fingerprint, err := decode64(access["customer_public_key_fingerprint"])
+	if err != nil || subtle.ConstantTimeCompare(fingerprint, expectedFingerprint[:]) != 1 {
+		return "", fmt.Errorf("wrong key fingerprint")
+	}
+	encoded, err := decode64(record["safety_review_runtime_public_key"])
+	if err != nil || len(encoded) != 65 || encoded[0] != 4 {
+		return "", fmt.Errorf("invalid P-256 encoding")
+	}
+	runtime, err := ecdh.P256().NewPublicKey(encoded)
+	if err != nil {
+		return "", err
+	}
+	encode := base64.RawURLEncoding.EncodeToString
+	jwk, err := canonical(map[string]any{"crv": "P-256", "kty": "EC", "x": encode(encoded[1:33]), "y": encode(encoded[33:])})
+	if err != nil {
+		return "", err
+	}
+	thumbprint := sha256.Sum256(jwk)
+	if record["key_thumbprint"] != encode(thumbprint[:]) {
+		return "", fmt.Errorf("wrong runtime key")
+	}
+	nonce, err := decode64(record["nonce"])
+	if err != nil || len(nonce) != 12 {
+		return "", fmt.Errorf("invalid AES-GCM nonce")
+	}
+	ciphertext, err := decode64(record["ciphertext"])
+	if err != nil || len(ciphertext) < 16 {
+		return "", fmt.Errorf("invalid AES-GCM ciphertext")
+	}
+	bindingJSON, err := canonical(map[string]any{"purpose": "OpenAI-PSP-v4/customer-recovery-binding", "bundle_version": 1, "record": record, "recovery_header": without(access, "recovery_secret")})
+	if err != nil {
+		return "", err
+	}
+	binding := sha256.Sum256(bindingJSON)
+	if len(capsule) != 72 || string(capsule[:8]) != "PSPv4\x00\x00\x01" || subtle.ConstantTimeCompare(capsule[40:], binding[:]) != 1 {
+		return "", fmt.Errorf("invalid recovery capsule binding")
+	}
+	ephemeral, err := ecdh.P256().NewPrivateKey(capsule[8:40])
+	if err != nil {
+		return "", err
+	}
+	enc, err := decode64(record["encrypted_dek"])
+	if err != nil || subtle.ConstantTimeCompare(enc, ephemeral.PublicKey().Bytes()) != 1 {
+		return "", fmt.Errorf("wrong recovered scalar")
+	}
+	aad, err := canonical(without(record, "ciphertext"))
+	if err != nil {
+		return "", err
+	}
+	key, err := payloadKey(ephemeral, runtime, aad)
+	if err != nil {
+		return "", err
+	}
+	cipherBlock, err := aes.NewCipher(key)
+	if err != nil {
+		return "", err
+	}
+	aead, err := cipher.NewGCM(cipherBlock)
+	if err != nil {
+		return "", err
+	}
+	plaintext, err := aead.Open(nil, nonce, ciphertext, aad)
+	if err != nil {
+		return "", errAuthentication
+	}
+	if !utf8.Valid(plaintext) {
+		return "", fmt.Errorf("plaintext is not UTF-8")
+	}
+	return string(plaintext), nil
+}
 ```
 
 ```ruby

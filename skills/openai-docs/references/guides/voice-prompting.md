@@ -1466,6 +1466,10 @@ Preamble sample phrases:
 ]
 ```
 
+```go
+tools := realtime.RealtimeToolsConfigParam{{OfFunction: &realtime.RealtimeFunctionToolParam{Type: "function", Name: openai.String("lookup_account"), Description: openai.String("Retrieve a customer account using either an email or phone number to enable verification and account-specific actions.\n\nPreamble sample phrases:\n- For security, I’ll pull up your account using the email on file.\n- Let me look up your account by {email} now.\n- I’m fetching the account linked to {phone} to verify access.\n- One moment—I’m opening your account details."), Parameters: map[string]any{"type": "object", "properties": map[string]any{"email": map[string]any{"type": "string"}, "phone": map[string]any{"type": "string"}}, "additionalProperties": false}}}, {OfFunction: &realtime.RealtimeFunctionToolParam{Type: "function", Name: openai.String("check_outage"), Description: openai.String("Check for network outages affecting a given service address and return status and ETA if applicable.\n\nPreamble sample phrases:\n- I’ll check for any outages at {service_address} right now.\n- Let me look up network status for your area.\n- I’m checking whether there’s an active outage impacting your address.\n- One sec—verifying service status and any posted ETA."), Parameters: map[string]any{"type": "object", "properties": map[string]any{"service_address": map[string]any{"type": "string"}}, "required": []any{"service_address"}, "additionalProperties": false}}}}
+```
+
 ```ruby
 tools = [
   {
@@ -2096,6 +2100,33 @@ def build_session_update(state: State) -> dict:
             "tools": TOOLS_BY_STATE[state] + [build_state_change_tool(state)],
         },
     }
+```
+
+```go
+var transitions = map[string][]string{"verify": {"resolve"}, "resolve": {}}
+var toolsByState = map[string]realtime.RealtimeToolsConfigParam{
+	"verify":  {{OfFunction: &realtime.RealtimeFunctionToolParam{Type: "function", Name: openai.String("lookup_account"), Description: openai.String("Fetch account by email or phone."), Parameters: map[string]any{"type": "object", "properties": map[string]any{"email_or_phone": map[string]any{"type": "string"}}, "required": []any{"email_or_phone"}}}}},
+	"resolve": {{OfFunction: &realtime.RealtimeFunctionToolParam{Type: "function", Name: openai.String("schedule_technician"), Description: openai.String("Book a technician visit."), Parameters: map[string]any{"type": "object", "properties": map[string]any{"account_id": map[string]any{"type": "string"}, "window": map[string]any{"type": "string", "enum": []any{"10-12 ET", "14-16 ET"}}}, "required": []any{"account_id", "window"}}}}},
+}
+var instructionsByState = map[string]string{"verify": "# Role & Objective\nVerify identity to access the account.\n\n# Conversation (Verify)\n- Ask for the email or phone on the account.\n- Read back digits one-by-one (e.g., '4-1-5… Is that correct?').\nExit when: Account ID is returned.\nWhen exit is satisfied: call set_conversation_state(next_state=\"resolve\").", "resolve": "# Role & Objective\nApply a fix by booking a technician.\n\n# Conversation (Resolve)\n- Offer two windows: '10–12 ET' or '2–4 ET'.\n- Book the chosen window.\nExit when: Appointment is confirmed.\nWhen exit is satisfied: end the call politely."}
+
+func buildSessionUpdate(state string) (realtime.RealtimeSessionCreateRequestParam, error) {
+	allowed, ok := transitions[state]
+	if !ok {
+		return realtime.RealtimeSessionCreateRequestParam{}, fmt.Errorf("unknown conversation state %q", state)
+	}
+	readable := "no further states (terminal)"
+	if len(allowed) > 0 {
+		readable = strings.Join(allowed, ", ")
+	}
+	tools := append(realtime.RealtimeToolsConfigParam{}, toolsByState[state]...)
+	tools = append(tools, realtime.RealtimeToolsConfigUnionParam{OfFunction: &realtime.RealtimeFunctionToolParam{
+		Type: "function", Name: openai.String("set_conversation_state"),
+		Description: openai.String(fmt.Sprintf("Switch the conversation phase. Current: '%s'. You may switch only to: %s. Call this AFTER exit criteria are satisfied.", state, readable)),
+		Parameters:  map[string]any{"type": "object", "properties": map[string]any{"next_state": map[string]any{"type": "string", "enum": allowed}}, "required": []string{"next_state"}},
+	}})
+	return realtime.RealtimeSessionCreateRequestParam{Instructions: openai.String(instructionsByState[state]), Tools: tools}, nil
+}
 ```
 
 ```ruby

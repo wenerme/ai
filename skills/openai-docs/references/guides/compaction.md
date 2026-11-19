@@ -108,7 +108,7 @@ const turns = lines[Symbol.asyncIterator]();
 
 async function respond() {
   const response = await client.responses.create({
-    model: "gpt-5.3-codex",
+    model: "gpt-6.2-astra",
     input: conversation,
     store: false,
     context_management: [{ type: "compaction", compact_threshold: 200_000 }],
@@ -141,7 +141,7 @@ conversation = [
 
 while keep_going:
     response = client.responses.create(
-        model="gpt-5.3-codex",
+        model="gpt-6.2-astra",
         input=conversation,
         store=False,
         context_management=[{"type": "compaction", "compact_threshold": 200000}],
@@ -184,7 +184,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-			Model: "gpt-5.3-codex",
+			Model: "gpt-6.2-astra",
 			Store: openai.Bool(false),
 			Input: responses.ResponseNewParamsInputUnion{OfInputItemList: conversation},
 			ContextManagement: []responses.ResponseNewParamsContextManagement{{
@@ -242,7 +242,7 @@ conversation.add(
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
-        .model("gpt-5.3-codex")
+        .model("gpt-6.2-astra")
         .inputOfResponse(conversation)
         .store(false)
         .putAdditionalBodyProperty(
@@ -286,7 +286,7 @@ conversation = [
 
 loop do
   response = client.responses.create(
-    model: "gpt-5.3-codex",
+    model: "gpt-6.2-astra",
     input: conversation,
     store: false,
     context_management: [
@@ -334,7 +334,7 @@ import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
 
 const client = new OpenAI();
-const model = "gpt-6-astra";
+const model = "gpt-6.2-astra";
 const lookupTicket: OpenAI.Responses.FunctionTool = {
   type: "function",
   name: "lookup_ticket",
@@ -393,7 +393,7 @@ console.log(response.output_text);
 from openai import OpenAI
 
 client = OpenAI()
-model = "gpt-6-astra"
+model = "gpt-6.2-astra"
 lookup_ticket = {
     "type": "function",
     "name": "lookup_ticket",
@@ -462,7 +462,7 @@ import (
 func main() {
 	client := openai.NewClient()
 	ctx := context.Background()
-	model := shared.ResponsesModel("gpt-6-astra")
+	model := shared.ResponsesModel("gpt-6.2-astra")
 	lookupTicket := responses.ToolUnionParam{OfFunction: &responses.FunctionToolParam{
 		Name: "lookup_ticket", Description: openai.String("Look up a ticket by ID."),
 		Parameters: map[string]any{
@@ -539,7 +539,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-String model = "gpt-6-astra";
+String model = "gpt-6.2-astra";
 var tool =
     FunctionTool.builder()
         .name("lookup_ticket")
@@ -642,7 +642,7 @@ response.output().stream()
 require "openai"
 
 client = OpenAI::Client.new
-model = "gpt-6-astra"
+model = "gpt-6.2-astra"
 lookup_ticket = {
   type: :function,
 

@@ -196,6 +196,14 @@ Get_embeddings_from_dataset.ipynb
 
 
 
+
+
+
+For Go, save the review CSV as `data/fine_food_reviews_1k.csv`. Keep the `Summary`, `Text`, `Score`, `UserId`, and `ProductId` columns. The program preserves the input columns and adds `combined` and `ada_embedding` for the analysis steps.
+
+
+
+
 Create review embeddings
 
 ```typescript
@@ -250,6 +258,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"slices"
 	"strings"
 
 	"github.com/openai/openai-go/v3"
@@ -264,7 +273,25 @@ func main() {
 func run() error {
 	client := openai.NewClient()
 	ctx := context.Background()
-	reviews := []string{"A rich cup of coffee.", "A bright herbal tea."}
+	input, err := os.Open("data/fine_food_reviews_1k.csv")
+	if err != nil {
+		return err
+	}
+	defer input.Close()
+	rows, err := csv.NewReader(input).ReadAll()
+	if err != nil {
+		return err
+	}
+	if len(rows) < 2 {
+		return fmt.Errorf("review CSV needs a header and at least one review")
+	}
+	headers := rows[0]
+	for _, name := range []string{"Summary", "Text", "Score", "UserId", "ProductId"} {
+		if !slices.Contains(headers, name) {
+			return fmt.Errorf("missing %s column", name)
+		}
+	}
+	summaryColumn, textColumn := slices.Index(headers, "Summary"), slices.Index(headers, "Text")
 	if err := os.MkdirAll("output", 0755); err != nil {
 		return err
 	}
@@ -274,11 +301,12 @@ func run() error {
 	}
 	defer file.Close()
 	writer := csv.NewWriter(file)
-	if err := writer.Write([]string{"combined", "ada_embedding"}); err != nil {
+	if err := writer.Write(append(append([]string{}, headers...), "combined", "ada_embedding")); err != nil {
 		return err
 	}
-	for _, review := range reviews {
-		vector, err := embedding(ctx, &client, strings.ReplaceAll(review, "\n", " "))
+	for _, row := range rows[1:] {
+		combined := strings.ReplaceAll(row[summaryColumn]+" "+row[textColumn], "\n", " ")
+		vector, err := embedding(ctx, &client, combined)
 		if err != nil {
 			return err
 		}
@@ -286,7 +314,7 @@ func run() error {
 		if err != nil {
 			return err
 		}
-		if err := writer.Write([]string{review, string(encoded)}); err != nil {
+		if err := writer.Write(append(append([]string{}, row...), combined, string(encoded))); err != nil {
 			return err
 		}
 	}
@@ -406,6 +434,14 @@ end
 
 
 
+Each Go example is a complete program that reads `output/embedded_1k_reviews.csv`. Run each program separately from your Go module. The file needs JSON arrays in `ada_embedding` and integer values in `Score`; grouped averages also need `UserId` and `ProductId`. The split uses a fixed seed, while forest predictions and t-SNE coordinates can vary between runs. The metrics below describe the linked Python notebooks, not these Go programs.
+
+
+
+
+
+
+
 For Ruby, use Ruby 3.3 and install the [sample project dependencies](https://github.com/openai/developers-website/blob/main/src/content/platform/ruby-examples/Gemfile). Append the loading and analysis snippets to the same Ruby file; run the split before either forest example. The metrics below come from the linked Python notebooks and depend on the dataset and implementation.
 
 
@@ -421,6 +457,98 @@ import pandas as pd
 
 df = pd.read_csv("output/embedded_1k_reviews.csv")
 df["ada_embedding"] = df.ada_embedding.apply(literal_eval).apply(np.array)
+```
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"os"
+	"strconv"
+)
+
+type review struct {
+	Vector            []float64
+	Score             int
+	UserID, ProductID string
+}
+
+func loadReviews(path string) ([]review, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"ada_embedding", "Score"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []review{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		var value review
+		if err := json.Unmarshal([]byte(record[columns["ada_embedding"]]), &value.Vector); err != nil {
+			return nil, err
+		}
+		if len(value.Vector) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(value.Vector)
+		}
+		if len(value.Vector) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		value.Score, err = strconv.Atoi(record[columns["Score"]])
+		if err != nil {
+			return nil, err
+		}
+		if column, ok := columns["UserId"]; ok {
+			value.UserID = record[column]
+		}
+		if column, ok := columns["ProductId"]; ok {
+			value.ProductID = record[column]
+		}
+		rows = append(rows, value)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no reviews")
+	}
+	return rows, nil
+}
+
+func main() {
+	rows, err := loadReviews("output/embedded_1k_reviews.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	result := map[string]any{"rows": len(rows), "first": rows[0].Vector, "last": rows[len(rows)-1].Vector}
+	if err := json.NewEncoder(os.Stdout).Encode(result); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -496,6 +624,31 @@ cut_dim = response.data[0].embedding[:256]
 norm_dim = normalize_l2(cut_dim)
 
 print(norm_dim)
+```
+
+```go
+response, err := client.Embeddings.New(context.Background(), openai.EmbeddingNewParams{
+	Model:          openai.EmbeddingModelTextEmbedding3Small,
+	Input:          openai.EmbeddingNewParamsInputUnion{OfString: openai.String("Testing 123")},
+	EncodingFormat: openai.EmbeddingNewParamsEncodingFormatFloat,
+})
+if err != nil {
+	panic(err)
+}
+if len(response.Data) != 1 || len(response.Data[0].Embedding) < 256 {
+	panic("expected an embedding with at least 256 dimensions")
+}
+shortened := append([]float64(nil), response.Data[0].Embedding[:256]...)
+magnitude := 0.0
+for _, value := range shortened {
+	magnitude += value * value
+}
+magnitude = math.Sqrt(magnitude)
+if magnitude != 0 {
+	for i := range shortened {
+		shortened[i] /= magnitude
+	}
+}
 ```
 
 ```java
@@ -1578,6 +1731,14 @@ We color the individual reviews based on the star rating which the reviewer has 
 
 The visualization seems to have produced roughly 3 clusters, one of which has mostly negative reviews.
 
+
+
+
+The Go plotting example uses `github.com/danaugrs/go-tsne/tsne` at `v0.0.0-20220306155740-2250969e057f`, `gonum.org/v1/gonum` at `v0.16.0`, and `gonum.org/v1/plot` at `v0.16.0`. It writes `local-plot.png` and prints the transformed coordinates and rating-color indices.
+
+
+
+
 Visualize embeddings with t-SNE
 
 ```python
@@ -1605,6 +1766,152 @@ color_indices = df.Score.values - 1
 colormap = matplotlib.colors.ListedColormap(colors)
 plt.scatter(x, y, c=color_indices, cmap=colormap, alpha=0.3)
 plt.title("Amazon ratings visualized in language using t-SNE")
+```
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"github.com/danaugrs/go-tsne/tsne"
+	"gonum.org/v1/gonum/mat"
+	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/vg"
+	"gonum.org/v1/plot/vg/draw"
+	"image/color"
+	"io"
+	"log"
+	"math"
+	"os"
+	"strconv"
+)
+
+type review struct {
+	Vector            []float64
+	Score             int
+	UserID, ProductID string
+}
+
+func loadReviews(path string) ([]review, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"ada_embedding", "Score"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []review{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		var value review
+		if err := json.Unmarshal([]byte(record[columns["ada_embedding"]]), &value.Vector); err != nil {
+			return nil, err
+		}
+		if len(value.Vector) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(value.Vector)
+		}
+		if len(value.Vector) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		value.Score, err = strconv.Atoi(record[columns["Score"]])
+		if err != nil {
+			return nil, err
+		}
+		if column, ok := columns["UserId"]; ok {
+			value.UserID = record[column]
+		}
+		if column, ok := columns["ProductId"]; ok {
+			value.ProductID = record[column]
+		}
+		rows = append(rows, value)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no reviews")
+	}
+	return rows, nil
+}
+
+func main() {
+	rows, err := loadReviews("output/embedded_1k_reviews.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(rows) < 3 {
+		log.Fatal("need at least three reviews")
+	}
+	values := []float64{}
+	for _, row := range rows {
+		values = append(values, row.Vector...)
+	}
+	matrix := mat.NewDense(len(rows), len(rows[0].Vector), values)
+	perplexity := math.Min(15, float64(len(rows)-1))
+	embedded := tsne.NewTSNE(2, perplexity, 200, 1000, false).EmbedData(matrix, nil)
+	points := make(plotter.XYs, len(rows))
+	coordinates := make([][]float64, len(rows))
+	colors := make([]int, len(rows))
+	for i, row := range rows {
+		x, y := embedded.At(i, 0), embedded.At(i, 1)
+		if math.IsNaN(x) || math.IsNaN(y) || math.IsInf(x, 0) || math.IsInf(y, 0) {
+			log.Fatal("non-finite t-SNE output")
+		}
+		if row.Score < 1 || row.Score > 5 {
+			log.Fatal("review scores must be between 1 and 5")
+		}
+		points[i] = plotter.XY{X: x, Y: y}
+		coordinates[i] = []float64{x, y}
+		colors[i] = row.Score - 1
+	}
+	chart := plot.New()
+	chart.Title.Text = "Review embeddings"
+	chart.X.Label.Text = "t-SNE 1"
+	chart.Y.Label.Text = "t-SNE 2"
+	scatter, err := plotter.NewScatter(points)
+	if err != nil {
+		log.Fatal(err)
+	}
+	palette := []color.RGBA{{255, 0, 0, 255}, {255, 140, 0, 255}, {255, 215, 0, 255}, {64, 224, 208, 255}, {0, 100, 0, 255}}
+	scatter.GlyphStyleFunc = func(i int) draw.GlyphStyle {
+		return draw.GlyphStyle{Color: palette[colors[i]], Radius: vg.Points(3), Shape: draw.CircleGlyph{}}
+	}
+	chart.Add(scatter)
+	if err := chart.Save(6*vg.Inch, 4*vg.Inch, "local-plot.png"); err != nil {
+		log.Fatal(err)
+	}
+	plotted := make([][]float64, len(points))
+	for i := range points {
+		x, y := scatter.XY(i)
+		plotted[i] = []float64{x, y}
+	}
+	result := map[string]any{"points": coordinates, "plotted": plotted, "colors": colors}
+	if err := json.NewEncoder(os.Stdout).Encode(result); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -1670,6 +1977,116 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"math/rand"
+	"os"
+	"strconv"
+)
+
+type review struct {
+	Vector            []float64
+	Score             int
+	UserID, ProductID string
+}
+
+func loadReviews(path string) ([]review, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"ada_embedding", "Score"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []review{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		var value review
+		if err := json.Unmarshal([]byte(record[columns["ada_embedding"]]), &value.Vector); err != nil {
+			return nil, err
+		}
+		if len(value.Vector) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(value.Vector)
+		}
+		if len(value.Vector) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		value.Score, err = strconv.Atoi(record[columns["Score"]])
+		if err != nil {
+			return nil, err
+		}
+		if column, ok := columns["UserId"]; ok {
+			value.UserID = record[column]
+		}
+		if column, ok := columns["ProductId"]; ok {
+			value.ProductID = record[column]
+		}
+		rows = append(rows, value)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no reviews")
+	}
+	return rows, nil
+}
+
+func main() {
+	rows, err := loadReviews("output/embedded_1k_reviews.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(rows) < 2 {
+		log.Fatal("need at least two reviews")
+	}
+	indices := rand.New(rand.NewSource(42)).Perm(len(rows))
+	testSize := (len(rows) + 4) / 5
+	trainVectors, testVectors := [][]float64{}, [][]float64{}
+	trainScores, testScores := []int{}, []int{}
+	for i, index := range indices {
+		row := rows[index]
+		if i < testSize {
+			testVectors = append(testVectors, row.Vector)
+			testScores = append(testScores, row.Score)
+		} else {
+			trainVectors = append(trainVectors, row.Vector)
+			trainScores = append(trainScores, row.Score)
+		}
+	}
+	result := map[string]any{"train": trainScores, "test": testScores, "train_vectors": trainVectors, "test_vectors": testVectors}
+	if err := json.NewEncoder(os.Stdout).Encode(result); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 ```ruby
 vectors = rows.map { |row| row.fetch("ada_embedding") }
 scores = rows.map { |row| Integer(row.fetch("Score")) }
@@ -1691,6 +2108,14 @@ Embeddings present an elegant way of predicting a numerical value. In this examp
 
 We assume the score is a continuous variable between 1 and 5, and allow the algorithm to predict any floating point value. The ML algorithm minimizes the distance of the predicted value to the true score, and achieves a mean absolute error of 0.39, which means that on average the prediction is off by less than half a star.
 
+
+
+
+The Go example uses `github.com/wlattner/rf/forest` from module version `v0.0.0-20150304005020-e98c6ca28b25`. It fits 100 trees on the training partition and predicts the held-out rows. Install the pinned module version before running the program.
+
+
+
+
 Predict review scores
 
 ```python
@@ -1699,6 +2124,125 @@ from sklearn.ensemble import RandomForestRegressor
 rfr = RandomForestRegressor(n_estimators=100)
 rfr.fit(X_train, y_train)
 preds = rfr.predict(X_test)
+```
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"github.com/wlattner/rf/forest"
+	"io"
+	"log"
+	"math/rand"
+	"os"
+	"strconv"
+)
+
+type review struct {
+	Vector            []float64
+	Score             int
+	UserID, ProductID string
+}
+
+func loadReviews(path string) ([]review, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"ada_embedding", "Score"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []review{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		var value review
+		if err := json.Unmarshal([]byte(record[columns["ada_embedding"]]), &value.Vector); err != nil {
+			return nil, err
+		}
+		if len(value.Vector) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(value.Vector)
+		}
+		if len(value.Vector) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		value.Score, err = strconv.Atoi(record[columns["Score"]])
+		if err != nil {
+			return nil, err
+		}
+		if column, ok := columns["UserId"]; ok {
+			value.UserID = record[column]
+		}
+		if column, ok := columns["ProductId"]; ok {
+			value.ProductID = record[column]
+		}
+		rows = append(rows, value)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no reviews")
+	}
+	return rows, nil
+}
+
+func main() {
+	rows, err := loadReviews("output/embedded_1k_reviews.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(rows) < 2 {
+		log.Fatal("need at least two reviews")
+	}
+	indices := rand.New(rand.NewSource(42)).Perm(len(rows))
+	testSize := (len(rows) + 4) / 5
+	trainVectors, testVectors := [][]float64{}, [][]float64{}
+	trainScores, testScores := []int{}, []int{}
+	for i, index := range indices {
+		row := rows[index]
+		if i < testSize {
+			testVectors = append(testVectors, row.Vector)
+			testScores = append(testScores, row.Score)
+		} else {
+			trainVectors = append(trainVectors, row.Vector)
+			trainScores = append(trainScores, row.Score)
+		}
+	}
+	targets := make([]float64, len(trainScores))
+	for i, score := range trainScores {
+		targets[i] = float64(score)
+	}
+	model := forest.NewRegressor(forest.NumTrees(100), forest.NumWorkers(1))
+	model.Fit(trainVectors, targets)
+	predictions := model.Predict(testVectors)
+	result := map[string]any{"train": trainScores, "test": testScores, "train_vectors": trainVectors, "test_vectors": testVectors, "predictions": predictions, "trees": len(model.Trees), "features": len(trainVectors[0])}
+
+	if err := json.NewEncoder(os.Stdout).Encode(result); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -1736,6 +2280,14 @@ This time, instead of having the algorithm predict a value anywhere between 1 an
 
 After the training, the model learns to predict 1 and 5-star reviews much better than the more nuanced reviews (2-4 stars), likely due to more extreme sentiment expression.
 
+
+
+
+The Go example uses `github.com/wlattner/rf/forest` from module version `v0.0.0-20150304005020-e98c6ca28b25`. It fits 100 trees on the training partition and predicts the held-out rows. Install the pinned module version before running the program.
+
+
+
+
 Classify review scores
 
 ```python
@@ -1745,6 +2297,143 @@ from sklearn.metrics import classification_report, accuracy_score
 clf = RandomForestClassifier(n_estimators=100)
 clf.fit(X_train, y_train)
 preds = clf.predict(X_test)
+```
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"github.com/wlattner/rf/forest"
+	"io"
+	"log"
+	"math/rand"
+	"os"
+	"slices"
+	"strconv"
+)
+
+type review struct {
+	Vector            []float64
+	Score             int
+	UserID, ProductID string
+}
+
+func loadReviews(path string) ([]review, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"ada_embedding", "Score"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []review{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		var value review
+		if err := json.Unmarshal([]byte(record[columns["ada_embedding"]]), &value.Vector); err != nil {
+			return nil, err
+		}
+		if len(value.Vector) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(value.Vector)
+		}
+		if len(value.Vector) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		value.Score, err = strconv.Atoi(record[columns["Score"]])
+		if err != nil {
+			return nil, err
+		}
+		if column, ok := columns["UserId"]; ok {
+			value.UserID = record[column]
+		}
+		if column, ok := columns["ProductId"]; ok {
+			value.ProductID = record[column]
+		}
+		rows = append(rows, value)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no reviews")
+	}
+	return rows, nil
+}
+
+func main() {
+	rows, err := loadReviews("output/embedded_1k_reviews.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(rows) < 2 {
+		log.Fatal("need at least two reviews")
+	}
+	indices := rand.New(rand.NewSource(42)).Perm(len(rows))
+	testSize := (len(rows) + 4) / 5
+	trainVectors, testVectors := [][]float64{}, [][]float64{}
+	trainScores, testScores := []int{}, []int{}
+	for i, index := range indices {
+		row := rows[index]
+		if i < testSize {
+			testVectors = append(testVectors, row.Vector)
+			testScores = append(testScores, row.Score)
+		} else {
+			trainVectors = append(trainVectors, row.Vector)
+			trainScores = append(trainScores, row.Score)
+		}
+	}
+	labels := make([]string, len(trainScores))
+	for i, score := range trainScores {
+		labels[i] = strconv.Itoa(score)
+	}
+	model := forest.NewClassifier(forest.NumTrees(100), forest.NumWorkers(1))
+	model.Fit(trainVectors, labels)
+	predictedClasses := model.Predict(testVectors)
+	predictions := make([]int, len(predictedClasses))
+	for i, class := range predictedClasses {
+		value, err := strconv.Atoi(model.Classes[class])
+		if err != nil {
+			log.Fatal(err)
+		}
+		predictions[i] = value
+	}
+	classes := make([]int, len(model.Classes))
+	for i, class := range model.Classes {
+		value, err := strconv.Atoi(class)
+		if err != nil {
+			log.Fatal(err)
+		}
+		classes[i] = value
+	}
+	slices.Sort(classes)
+	result := map[string]any{"train": trainScores, "test": testScores, "train_vectors": trainVectors, "test_vectors": testVectors, "predictions": predictions, "trees": len(model.Trees), "features": len(trainVectors[0]), "classes": classes}
+
+	if err := json.NewEncoder(os.Stdout).Encode(result); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby
@@ -1998,6 +2687,130 @@ user_embeddings = df.groupby("UserId").ada_embedding.apply(np.mean)
 prod_embeddings = df.groupby("ProductId").ada_embedding.apply(np.mean)
 ```
 
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"os"
+	"strconv"
+)
+
+type review struct {
+	Vector            []float64
+	Score             int
+	UserID, ProductID string
+}
+
+func loadReviews(path string) ([]review, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"ada_embedding", "Score"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []review{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		var value review
+		if err := json.Unmarshal([]byte(record[columns["ada_embedding"]]), &value.Vector); err != nil {
+			return nil, err
+		}
+		if len(value.Vector) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(value.Vector)
+		}
+		if len(value.Vector) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		value.Score, err = strconv.Atoi(record[columns["Score"]])
+		if err != nil {
+			return nil, err
+		}
+		if column, ok := columns["UserId"]; ok {
+			value.UserID = record[column]
+		}
+		if column, ok := columns["ProductId"]; ok {
+			value.ProductID = record[column]
+		}
+		rows = append(rows, value)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no reviews")
+	}
+	return rows, nil
+}
+
+func averageEmbeddings(rows []review, id func(review) string) (map[string][]float64, error) {
+	sums := map[string][]float64{}
+	counts := map[string]int{}
+	for _, row := range rows {
+		key := id(row)
+		if key == "" {
+			return nil, fmt.Errorf("missing user or product ID")
+		}
+		if sums[key] == nil {
+			sums[key] = make([]float64, len(row.Vector))
+		}
+		for i, value := range row.Vector {
+			sums[key][i] += value
+		}
+		counts[key]++
+	}
+	for key, vector := range sums {
+		for i := range vector {
+			vector[i] /= float64(counts[key])
+		}
+	}
+	return sums, nil
+}
+
+func main() {
+	rows, err := loadReviews("output/embedded_1k_reviews.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	users, err := averageEmbeddings(rows, func(row review) string { return row.UserID })
+	if err != nil {
+		log.Fatal(err)
+	}
+	products, err := averageEmbeddings(rows, func(row review) string { return row.ProductID })
+	if err != nil {
+		log.Fatal(err)
+	}
+	result := map[string]any{"users": users, "products": products}
+	if err := json.NewEncoder(os.Stdout).Encode(result); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 ```ruby
 vectors = rows.map { |row| row.fetch("ada_embedding") }
 user_ids = rows.map { |row| row.fetch("UserId") }
@@ -2050,6 +2863,190 @@ kmeans.fit(matrix)
 df["Cluster"] = kmeans.labels_
 ```
 
+```go
+package main
+
+import (
+	"encoding/csv"
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"math"
+	"math/rand"
+	"os"
+	"strconv"
+)
+
+type review struct {
+	Vector            []float64
+	Score             int
+	UserID, ProductID string
+}
+
+func loadReviews(path string) ([]review, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	reader := csv.NewReader(file)
+	header, err := reader.Read()
+	if err != nil {
+		return nil, err
+	}
+	columns := map[string]int{}
+	for i, name := range header {
+		columns[name] = i
+	}
+	for _, name := range []string{"ada_embedding", "Score"} {
+		if _, ok := columns[name]; !ok {
+			return nil, fmt.Errorf("missing %s column", name)
+		}
+	}
+	rows := []review{}
+	dimensions := 0
+	for {
+		record, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		var value review
+		if err := json.Unmarshal([]byte(record[columns["ada_embedding"]]), &value.Vector); err != nil {
+			return nil, err
+		}
+		if len(value.Vector) == 0 {
+			return nil, fmt.Errorf("empty embedding")
+		}
+		if dimensions == 0 {
+			dimensions = len(value.Vector)
+		}
+		if len(value.Vector) != dimensions {
+			return nil, fmt.Errorf("inconsistent embedding dimensions")
+		}
+		value.Score, err = strconv.Atoi(record[columns["Score"]])
+		if err != nil {
+			return nil, err
+		}
+		if column, ok := columns["UserId"]; ok {
+			value.UserID = record[column]
+		}
+		if column, ok := columns["ProductId"]; ok {
+			value.ProductID = record[column]
+		}
+		rows = append(rows, value)
+	}
+	if len(rows) == 0 {
+		return nil, fmt.Errorf("no reviews")
+	}
+	return rows, nil
+}
+
+func squaredDistance(a, b []float64) float64 {
+	sum := 0.0
+	for i, value := range a {
+		delta := value - b[i]
+		sum += delta * delta
+	}
+	return sum
+}
+func kmeans(vectors [][]float64, k int) ([]int, [][]float64, error) {
+	if len(vectors) < k || k < 1 {
+		return nil, nil, fmt.Errorf("need at least %d vectors", k)
+	}
+	random := rand.New(rand.NewSource(42))
+	centers := [][]float64{append([]float64(nil), vectors[random.Intn(len(vectors))]...)}
+	// k-means++ initialization samples proportional to squared distance.
+	for len(centers) < k {
+		distances := make([]float64, len(vectors))
+		total := 0.0
+		for i, vector := range vectors {
+			best := math.Inf(1)
+			for _, center := range centers {
+				best = math.Min(best, squaredDistance(vector, center))
+			}
+			distances[i] = best
+			total += best
+		}
+		if total == 0 {
+			return nil, nil, fmt.Errorf("need %d distinct vectors", k)
+		}
+		threshold := random.Float64() * total
+		chosen := len(vectors) - 1
+		for i, distance := range distances {
+			threshold -= distance
+			if threshold < 0 {
+				chosen = i
+				break
+			}
+		}
+		centers = append(centers, append([]float64(nil), vectors[chosen]...))
+	}
+	labels := make([]int, len(vectors))
+	for i := range labels {
+		labels[i] = -1
+	}
+	for iteration := 0; iteration < 300; iteration++ {
+		changed := false
+		counts := make([]int, k)
+		sums := make([][]float64, k)
+		for i := range sums {
+			sums[i] = make([]float64, len(vectors[0]))
+		}
+		for i, vector := range vectors {
+			closest := 0
+			for j := 1; j < k; j++ {
+				if squaredDistance(vector, centers[j]) < squaredDistance(vector, centers[closest]) {
+					closest = j
+				}
+			}
+			if labels[i] != closest {
+				changed = true
+			}
+			labels[i] = closest
+			counts[closest]++
+			for j, value := range vector {
+				sums[closest][j] += value
+			}
+		}
+		for i, count := range counts {
+			if count > 0 {
+				for j := range sums[i] {
+					sums[i][j] /= float64(count)
+				}
+				centers[i] = sums[i]
+			}
+		}
+		if !changed {
+			return labels, centers, nil
+		}
+	}
+	return nil, nil, fmt.Errorf("k-means did not converge")
+}
+
+func main() {
+	rows, err := loadReviews("output/embedded_1k_reviews.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	vectors := make([][]float64, len(rows))
+	for i, row := range rows {
+		vectors[i] = row.Vector
+	}
+	labels, centers, err := kmeans(vectors, 4)
+	if err != nil {
+		log.Fatal(err)
+	}
+	result := map[string]any{"labels": labels, "centers": centers}
+	if err := json.NewEncoder(os.Stdout).Encode(result); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 ```ruby
 require "rumale/clustering"
 
@@ -2089,6 +3086,32 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
 num_tokens_from_string("tiktoken is great!", "cl100k_base")
 ```
 
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/tiktoken-go/tokenizer"
+)
+
+func numTokensFromString(text, encodingName string) (int, error) {
+	encoding, err := tokenizer.Get(tokenizer.Encoding(encodingName))
+	if err != nil {
+		return 0, err
+	}
+	ids, _, err := encoding.Encode(text)
+	return len(ids), err
+}
+
+func main() {
+	count, err := numTokensFromString("tiktoken is great!", "cl100k_base")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(count)
+}
+```
+
 ```ruby
 require "tiktoken_ruby"
 
@@ -2098,6 +3121,14 @@ end
 
 puts(num_tokens_from_string("tiktoken is great!", "cl100k_base"))
 ```
+
+
+
+
+
+The Go example uses the third-party `github.com/tiktoken-go/tokenizer` package, version `v0.10.0`. Install it in your Go module before running the example.
+
+
 
 
 For third-generation embedding models like `text-embedding-3-small`, use the `cl100k_base` encoding.

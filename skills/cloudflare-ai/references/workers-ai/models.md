@@ -22,7 +22,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 75 modelsClear filters
+We found 76 modelsClear filters
 
 ## Compare models
 
@@ -100,6 +100,13 @@ Compare
 Compare
 
 [Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clairic</h3>CloudflareText Generation Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in preview from the Cloudflare Workers AI team.](https://developers.cloudflare.com/workers-ai/models/clairic/)
+
+- 58% off until Dec 1
+- +3
+
+Compare
+
+[![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clairic-flash</h3>CloudflareText Generation Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in early research preview from the Cloudflare Workers AI team.](https://developers.cloudflare.com/workers-ai/models/clairic-flash/)
 
 - Cloudflare-hosted
 - +2

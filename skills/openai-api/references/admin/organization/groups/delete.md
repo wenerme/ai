@@ -29,24 +29,6 @@ Deletes a group from the organization.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "group.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

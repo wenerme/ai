@@ -78,6 +78,8 @@ Expand table
 
 When PDC is enabled in your Grafana instance, a **Secure SOCKS Proxy** configuration section appears on the data source settings page. For more information, refer to [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
+PDC supports the `tcp://` and `tls://` schemes and their aliases. The `ws://` and `wss://` schemes aren’t supported with PDC, and the connection fails with an error.
+
 ## Verify the connection
 
 After you configure the data source, click **Save &amp; test** to verify the connection.

@@ -19,13 +19,6 @@ Returns a response containing the contents of the specified file.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/files/$FILE_ID/content \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/files/file-abc123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > file.jsonl
 ```
@@ -183,32 +176,6 @@ Content type: `multipart/form-data`
 
 ```http
 curl https://api.openai.com/v1/files \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F 'file=@/path/to/file' \
-    -F purpose=assistants
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "filename": "filename",
-  "object": "file",
-  "purpose": "assistants",
-  "status": "uploaded",
-  "expires_at": 0,
-  "status_details": "status_details"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F purpose="fine-tune" \
   -F file="@mydata.jsonl" \
@@ -254,24 +221,6 @@ Delete a file and remove it from all vector stores.
   - `object: "file"`
 
     - `"file"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/files/$FILE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "file"
-}
-```
 
 ### Example
 
@@ -401,37 +350,6 @@ Returns a list of files.
 
 ```http
 curl https://api.openai.com/v1/files \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "bytes": 0,
-      "created_at": 0,
-      "filename": "filename",
-      "object": "file",
-      "purpose": "assistants",
-      "status": "uploaded",
-      "expires_at": 0,
-      "status_details": "status_details"
-    }
-  ],
-  "first_id": "file-abc123",
-  "has_more": false,
-  "last_id": "file-abc456",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -551,29 +469,6 @@ Returns information about a specific file.
   - `status_details: optional string`
 
     Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`. Completed file upload responses can return null when these details are unset.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/files/$FILE_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "filename": "filename",
-  "object": "file",
-  "purpose": "assistants",
-  "status": "uploaded",
-  "expires_at": 0,
-  "status_details": "status_details"
-}
-```
 
 ### Example
 

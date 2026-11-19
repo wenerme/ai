@@ -861,13 +861,13 @@
   },
   "grafana-github-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor.md",
-    "size": 71354,
-    "updatedAt": "2026-11-04T06:08:56.234Z"
+    "size": 75405,
+    "updatedAt": "2026-11-19T07:13:53.126Z"
   },
   "grafana-github-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/template-variables.md",
-    "size": 6057,
-    "updatedAt": "2026-10-28T00:53:38.870Z"
+    "size": 6445,
+    "updatedAt": "2026-11-19T07:13:53.298Z"
   },
   "grafana-github-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/troubleshooting.md",
@@ -1396,8 +1396,8 @@
   },
   "grafana-mqtt-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure.md",
-    "size": 10055,
-    "updatedAt": "2026-10-28T00:53:56.092Z"
+    "size": 10222,
+    "updatedAt": "2026-11-19T07:14:13.207Z"
   },
   "grafana-mqtt-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest.md",
@@ -3571,8 +3571,8 @@
   },
   "yesoreyeram-infinity-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure.md",
-    "size": 24274,
-    "updatedAt": "2026-10-28T00:55:10.451Z"
+    "size": 24750,
+    "updatedAt": "2026-11-19T07:15:30.841Z"
   },
   "yesoreyeram-infinity-datasource/data-formats.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats.md",
@@ -3696,8 +3696,8 @@
   },
   "yesoreyeram-infinity-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting.md",
-    "size": 34095,
-    "updatedAt": "2026-10-28T00:55:14.890Z"
+    "size": 34591,
+    "updatedAt": "2026-11-19T07:15:34.905Z"
   },
   "yesoreyeram-infinity-datasource/variables.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables.md",

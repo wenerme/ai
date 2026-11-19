@@ -49,23 +49,6 @@ Retrieve the configured default and enabled service tiers for a project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_tier_settings \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "default": "standard",
-  "enabled_tiers": "all",
-  "object": "project.service_tier_settings"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/service_tier_settings \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
@@ -155,27 +138,6 @@ Content type: `application/json`
   - `object: "project.service_tier_settings" (default: "project.service_tier_settings")`
 
     - `"project.service_tier_settings"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_tier_settings \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "default": "standard"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "default": "standard",
-  "enabled_tiers": "all",
-  "object": "project.service_tier_settings"
-}
-```
 
 ### Example
 

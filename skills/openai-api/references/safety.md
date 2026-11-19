@@ -61,30 +61,6 @@ Get a safety alert belonging to the authenticated API project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/safety/alerts/$ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "error_type": "potentially_unintended_data_transfer",
-  "model": "model",
-  "object": "safety.alert",
-  "reason": "reason",
-  "request_id": "request_id",
-  "request_paused": true,
-  "response_id": "response_id",
-  "detailed_explanation": "detailed_explanation"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/safety/alerts/alert_0123456789abcdef0123456789abcdef \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -98,7 +74,7 @@ curl https://api.openai.com/v1/safety/alerts/alert_0123456789abcdef0123456789abc
   "created_at": 1787659200,
   "request_id": "req_123",
   "response_id": "resp_123",
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "request_paused": true,
   "error_type": "potentially_unintended_data_access",
   "reason": "Potentially unintended data access."
@@ -190,28 +166,6 @@ Get a safety case by ID.
     - `"safety.case"`
 
   - `reason: string or null`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/safety/cases/$ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "entity_identifier": "entity_identifier",
-  "notice": {
-    "type": "warning"
-  },
-  "object": "safety.case",
-  "reason": "reason"
-}
-```
 
 ### Example
 

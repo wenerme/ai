@@ -126,45 +126,6 @@ List Containers
 
 ```http
 curl https://api.openai.com/v1/containers \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "name": "name",
-      "object": "object",
-      "status": "status",
-      "expires_after": {
-        "anchor": "last_active_at",
-        "minutes": 0
-      },
-      "last_active_at": 0,
-      "memory_limit": "1g",
-      "network_policy": {
-        "type": "allowlist",
-        "allowed_domains": [
-          "string"
-        ]
-      }
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/containers \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 

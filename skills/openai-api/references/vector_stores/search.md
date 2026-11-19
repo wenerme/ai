@@ -200,47 +200,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/search \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "query": "string"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "attributes": {
-        "foo": "string"
-      },
-      "content": [
-        {
-          "text": "text",
-          "type": "text"
-        }
-      ],
-      "file_id": "file_id",
-      "filename": "filename",
-      "score": 0
-    }
-  ],
-  "has_more": true,
-  "next_page": "next_page",
-  "object": "vector_store.search_results.page",
-  "search_query": [
-    "string"
-  ]
-}
-```
-
-### Example
-
-```http
 curl -X POST \
 https://api.openai.com/v1/vector_stores/vs_abc123/search \
 -H "Authorization: Bearer $OPENAI_API_KEY" \

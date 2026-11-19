@@ -103,43 +103,6 @@ List organization API keys
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/admin_api_keys \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "key_abc",
-      "created_at": 1711471533,
-      "expires_at": 1714063533,
-      "object": "organization.admin_api_key",
-      "owner": {
-        "id": "sa_456",
-        "created_at": 1711471533,
-        "name": "My Service Account",
-        "object": "organization.user",
-        "role": "owner",
-        "type": "user"
-      },
-      "redacted_value": "sk-admin...def",
-      "last_used_at": 1711471534,
-      "name": "Administration Key"
-    }
-  ],
-  "has_more": false,
-  "object": "list",
-  "first_id": "key_abc",
-  "last_id": "key_xyz"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

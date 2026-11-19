@@ -61,36 +61,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/roles \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "permissions": [
-            "string"
-          ],
-          "role_name": "role_name"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "description": "description",
-  "name": "name",
-  "object": "role",
-  "permissions": [
-    "string"
-  ],
-  "predefined_role": true,
-  "resource_type": "resource_type"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/roles \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
@@ -148,24 +118,6 @@ Deletes a custom role from the organization.
   Always `role.deleted`.
 
   - `"role.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "role.deleted"
-}
-```
 
 ### Example
 
@@ -264,36 +216,6 @@ Lists the roles configured for the organization.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/roles \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "description": "description",
-      "name": "name",
-      "object": "role",
-      "permissions": [
-        "string"
-      ],
-      "predefined_role": true,
-      "resource_type": "resource_type"
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/roles?limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -370,29 +292,6 @@ Retrieves an organization role.
   - `resource_type: string`
 
     Resource type the role is bound to (for example `api.organization` or `api.project`).
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "description": "description",
-  "name": "name",
-  "object": "role",
-  "permissions": [
-    "string"
-  ],
-  "predefined_role": true,
-  "resource_type": "resource_type"
-}
-```
 
 ### Example
 
@@ -482,31 +381,6 @@ Content type: `application/json`
   - `resource_type: string`
 
     Resource type the role is bound to (for example `api.organization` or `api.project`).
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{}'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "description": "description",
-  "name": "name",
-  "object": "role",
-  "permissions": [
-    "string"
-  ],
-  "predefined_role": true,
-  "resource_type": "resource_type"
-}
-```
 
 ### Example
 

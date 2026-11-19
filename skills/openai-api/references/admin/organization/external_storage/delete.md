@@ -23,24 +23,6 @@ Disconnect a customer-managed external storage configuration. Removing the proje
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/external_storage/$EXTERNAL_STORAGE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.external_storage.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/organization/external_storage/extstorage_abc123 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

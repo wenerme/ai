@@ -2203,7 +2203,7 @@ PreToolUse hooks run before every tool call, whether or not it needs permission.
 
 | Field | Description |
 | :- | :- |
-| `behavior` | `"allow"` grants the permission, `"deny"` denies it. [Deny and ask rules](https://code.claude.com/docs/en/permissions.md#manage-permissions) are still evaluated, so a hook returning `"allow"` doesn't override a matching deny rule |
+| `behavior` | `"allow"` grants the permission, `"deny"` denies it. The hook can't approve what a deny rule refuses, unless a mod overrides the rule: see [Precedence among rules, hooks, and mods](https://code.claude.com/docs/en/permissions.md#precedence-among-rules-hooks-and-mods) |
 | `updatedInput` | For `"allow"` only: modifies the tool's input parameters before execution. Replaces the entire input object, so include unchanged fields alongside modified ones. The modified input is re-evaluated against deny and ask rules. `AskUserQuestion` and `ExitPlanMode` [need this field](#allow-with-updatedinput) |
 | `updatedPermissions` | For `"allow"` only: array of [permission update entries](#permission-update-entries) to apply, such as adding an allow rule or changing the session permission mode |
 | `message` | For `"deny"` only: tells Claude why the permission was denied |
@@ -3335,7 +3335,7 @@ Runs when Claude Code cleans up a worktree that your [`WorktreeCreate`](#worktre
 
 When a subagent or a workflow agent finishes, Claude Code keeps the worktree your WorktreeCreate hook made for it and doesn't run your WorktreeRemove hook. Remove those worktrees yourself when the work is done.
 
-Claude Code doesn't prompt you before your hook runs for an `ExitWorktree` call or a `claude remote-control` cleanup. `ExitWorktree` refuses to remove a hook-created worktree unless the call passes [`discard_changes: true`](https://code.claude.com/docs/en/agent-sdk/typescript#exitworktree), which makes your hook the last check on that route.
+For a `claude remote-control` cleanup, Claude Code runs your hook without prompting you. `ExitWorktree` refuses to remove a hook-created worktree unless the call passes [`discard_changes: true`](https://code.claude.com/docs/en/agent-sdk/typescript#exitworktree).
 
 Claude Code uses git to look for changed or untracked files, so it finds none in a worktree that isn't a git checkout or inside one, even when the directory holds uncommitted work. Check for that work in your WorktreeRemove hook before it deletes anything.
 

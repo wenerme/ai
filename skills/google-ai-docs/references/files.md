@@ -189,7 +189,7 @@ The following code uploads a file and then uses the file in a call to
   
   # Initial resumable request defining metadata.
   # The upload url is in the response headers dump them to a file.
-  curl "${BASE_URL}/upload/v1beta/files" \
+  curl "https://generativelanguage.googleapis.com/upload/v1beta/files" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -D "${tmp_header_file}" \
     -H "X-Goog-Upload-Protocol: resumable" \

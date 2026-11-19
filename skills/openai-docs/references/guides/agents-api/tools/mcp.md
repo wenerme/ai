@@ -141,6 +141,78 @@ if __name__ == "__main__":
     server.run(transport=transport)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	"log"
+	"net"
+	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
+
+	"github.com/modelcontextprotocol/go-sdk/mcp"
+)
+
+type lookupInput struct {
+	CustomerID string `json:"customer_id" jsonschema:"Customer ID to look up"`
+}
+type customer struct {
+	Name string `json:"name"`
+	Plan string `json:"plan"`
+}
+type lookupOutput struct {
+	Customer *customer `json:"customer"`
+}
+
+func main() {
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer cancel()
+	server := mcp.NewServer(&mcp.Implementation{Name: "customer-lookup", Version: "1.0.0"}, nil)
+	mcp.AddTool(server, &mcp.Tool{Name: "get_customer", Description: "Look up a customer in the example data."},
+		func(_ context.Context, _ *mcp.CallToolRequest, input lookupInput) (*mcp.CallToolResult, lookupOutput, error) {
+			customers := map[string]*customer{"123": {Name: "Example Customer", Plan: "pro"}}
+			return nil, lookupOutput{Customer: customers[input.CustomerID]}, nil
+		})
+	// Default to stdio. Run `go run . http` to expose /mcp over HTTP.
+	if len(os.Args) < 2 || os.Args[1] != "http" {
+		if err := server.Run(ctx, &mcp.StdioTransport{}); err != nil && ctx.Err() == nil {
+			log.Fatal(err)
+		}
+		return
+	}
+	port := "8765"
+	handler := mcp.NewStreamableHTTPHandler(func(*http.Request) *mcp.Server { return server }, &mcp.StreamableHTTPOptions{Stateless: true, JSONResponse: true})
+	mux := http.NewServeMux()
+	mux.Handle("/mcp", handler)
+	listener, err := net.Listen("tcp", "127.0.0.1:"+port)
+	if err != nil {
+		log.Fatal(err)
+	}
+	httpServer := &http.Server{Handler: mux, ReadHeaderTimeout: 5 * time.Second}
+	fmt.Println("Listening on http://" + listener.Addr().String())
+	shutdownDone := make(chan struct{})
+	go func() {
+		defer close(shutdownDone)
+		<-ctx.Done()
+		shutdownCtx, stop := context.WithTimeout(context.Background(), 5*time.Second)
+		defer stop()
+		if err := httpServer.Shutdown(shutdownCtx); err != nil {
+			log.Print(err)
+		}
+	}()
+	if err := httpServer.Serve(listener); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		log.Fatal(err)
+	}
+	<-shutdownDone
+}
+```
+
 ```ruby
 require "mcp"
 require "json"

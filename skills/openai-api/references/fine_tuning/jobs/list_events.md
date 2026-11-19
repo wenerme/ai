@@ -75,33 +75,6 @@ Get status updates for a fine-tuning job.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID/events \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "level": "info",
-      "message": "message",
-      "object": "fine_tuning.job.event",
-      "data": {},
-      "type": "message"
-    }
-  ],
-  "has_more": true,
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/events \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -126,7 +99,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/events \
       "id": "ft-event-tyiGuB72evQncpH87xe505Sv",
       "created_at": 1721764800,
       "level": "info",
-      "message": "New fine-tuned model created: ft:gpt-4o-mini:openai::7p4lURel",
+      "message": "New fine-tuned model created: ft:gpt-4.1-mini-2025-04-14:openai::7p4lURel",
       "data": null,
       "type": "message"
     }

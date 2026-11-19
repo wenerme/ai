@@ -27,23 +27,6 @@ The certificate must be inactive for the organization and all projects.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "object": "certificate.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/organization/certificates/cert_abc \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```

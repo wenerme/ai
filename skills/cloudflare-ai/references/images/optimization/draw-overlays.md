@@ -1,5 +1,5 @@
 ---
-description: Add watermarks, logos, and overlay images over other images using Workers.
+description: Add watermarks, logos, and overlay images over other images.
 title: Draw overlays and watermarks
 image: https://developers.cloudflare.com/images/optimization/draw-overlays/og.png?v=f3456e2f0c5bd480
 ---
@@ -12,56 +12,67 @@ image: https://developers.cloudflare.com/images/optimization/draw-overlays/og.pn
 
 # Draw overlays and watermarks
 
-Use [Workers](https://developers.cloudflare.com/workers/) to draw text, watermarks, and logos over other images. Overlays support transparency, positioning, and compositing modes.
+Use Images to draw text, watermarks, and logos over other images. Overlays support transparency, positioning, and compositing modes.
 
-You can draw overlays in a Worker using two approaches:
+You can draw overlays through all three Images interfaces:
 
-- **[`cf.image` on a fetch subrequest](#draw-with-cfimage)** — Add a `draw` array to the image options to overlay with text or images. Overlay images must be accessible via URL. Use this approach when optimizing through the [URL interface](https://developers.cloudflare.com/images/optimization/features/#url-interface).
-- **[Images binding](#draw-with-the-images-binding)** — Chain `.draw()` calls to overlay images from any source, including [hosted images](https://developers.cloudflare.com/images/storage/binding/) or [R2](https://developers.cloudflare.com/r2/), or to overlay text.
+- **[URL interface](#draw-with-cfimage)** — Use the `draw` parameter to place image and text overlays directly from the URL without a Worker.
+- **[`cf.image` on a fetch subrequest in Workers](#draw-with-cfimage)** — Add a `draw` array to the image options to overlay with text or images. Overlay images and custom fonts must be accessible via URL.
+- **[Images binding in Workers](#draw-with-the-images-binding)** — Chain `.draw()` calls to overlay images from any source, including [hosted images](https://developers.cloudflare.com/images/storage/binding/) or [R2](https://developers.cloudflare.com/r2/), or to overlay text.
 
-## Draw with `cf.image`
+## Draw with the URL interface or `cf.image` in Workers
 
-To draw overlays on a [`fetch()` subrequest](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) in Workers, you can add a `draw` array to your `cf.image` options.
+Use the `draw` parameter in a transformation URL or the `draw` array in `cf.image` on a Worker `fetch()` subrequest. Overlay images and custom fonts must be accessible through a URL.
+
+Note
+
+The URL interface supports `draw` only in transformation URLs for remote images.
+
+To watermark a hosted image, configure the overlay in a [predefined variant](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/) or use the [Images binding in Workers](https://developers.cloudflare.com/images/optimization/binding/).
 
 Each entry draws either an image or text:
 
 - **Image** — Set `url` to the absolute URL of the image. Apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) like [`width`](https://developers.cloudflare.com/images/optimization/features/#width--w), [`height`](https://developers.cloudflare.com/images/optimization/features/#height--h), [`fit`](https://developers.cloudflare.com/images/optimization/features/#fit), [`blur`](https://developers.cloudflare.com/images/optimization/features/#blur), and [`rotate`](https://developers.cloudflare.com/images/optimization/features/#rotate).
-- **Text** — Set `text` to the string to render. Style it with the same `font`, `color`, and `size` options as the binding `.text()` method. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
+- **Text** — Set `text` to the string to render. Style it with the same `font`, `color`, and `size` settings that are available in the binding `.text()` method. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
 
 Overlays are drawn in the order they appear — the last entry is the topmost layer.
 
+```txt
+https://example.com/cdn-cgi/image/width=800,height=600,draw=((url='/branding/logo.png',bottom=5,right=5,fit=contain,width=100,height=50,opacity=0.8),(text=HELLO,font=(url='/font.otf'),color=rgb(0,0,0),size=96,top=40))/image.png
+```
+
 ```js
 export default {
-	async fetch(request) {
-		const imageURL = "https://example.com/image.png";
+  async fetch() {
+    const imageURL = "https://example.com/image.png";
 
-		return fetch(imageURL, {
-			cf: {
-				image: {
-					width: 800,
-					height: 600,
-					draw: [
-						{
-							url: "https://example.com/branding/logo.png",
-							bottom: 5,
-							right: 5,
-							fit: "contain",
-							width: 100,
-							height: 50,
-							opacity: 0.8,
-						},
-						{
-							text: "HELLO",
-							font: { url: "https://example.com/font.otf" },
-							color: "#223E49",
-							size: 96,
-							top: 40,
-						},
-					],
-				},
-			},
-		});
-	},
+    return fetch(imageURL, {
+      cf: {
+        image: {
+          width: 800,
+          height: 600,
+          draw: [
+            {
+              url: "https://example.com/branding/logo.png",
+              bottom: 5,
+              right: 5,
+              fit: "contain",
+              width: 100,
+              height: 50,
+              opacity: 0.8,
+            },
+            {
+              text: "HELLO",
+              font: { url: "https://example.com/font.otf" },
+              color: "#223E49",
+              size: 96,
+              top: 40,
+            },
+          ],
+        },
+      },
+    });
+  },
 };
 ```
 
@@ -69,7 +80,7 @@ export default {
 
 The [Images binding](https://developers.cloudflare.com/images/optimization/binding/) uses a chainable `.draw()` method to draw an overlay on top of an image. You can chain multiple `.draw()` calls for multiple overlays.
 
-Pass the overlay as the first argument, then the draw options as the second. The overlay can be an image or text:
+Pass the overlay as the first argument, then the draw settings as the second. The overlay can be an image or text:
 
 - **Image** — Pass the image bytes or an `.input()` chain. To apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) to the overlay image, pass an `.input()` chain with `.transform()` as the first argument.
 - **Text** — Pass a handle created with `.text()`. Set the font, color, and size in the `.text()` `options` argument. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
@@ -103,15 +114,15 @@ export default {
 };
 ```
 
-## Options
+## Settings
 
 The dimensions of the output image are always determined by the base image. The overlay is then drawn onto the base image's canvas.
 
-The following draw-specific options can be used for positioning and blending.
+The following draw-specific settings can be used for positioning and blending. In the URL interface and cf.image, these settings are grouped beneath `draw`. With the Images binding, pass the corresponding settings as the second argument to .draw().
 
 ### `url`
 
-Absolute URL of the overlay image when drawing with `cf.image`. `url` applies only to image overlays. To draw text, create the overlay with a `text` entry in the `draw` array instead.
+Absolute URL of the overlay image when drawing with the URL interface or with `cf.image`. `url` applies only to image overlays. To draw text, create the overlay using `text` instead.
 
 Accepts any [supported image format](https://developers.cloudflare.com/images/get-started/limits/). For watermarks or non-rectangular overlays, use PNG or WebP images.
 
@@ -119,19 +130,19 @@ When drawing an image overlay with the binding, the overlay is passed as image b
 
 ### `text`
 
-Renders a text string as an overlay when drawing with `cf.image`. When drawing with the Images binding, create the text overlay with `.text()` instead.
+Renders a text string as an overlay when drawing with the URL interface or with `cf.image`. When drawing with the Images binding, create the text overlay with `.text()` instead.
 
-Style the text with `font`, `color`, and `size` options. These apply to both `cf.image` text entries and the binding `.text()` method. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
+Style the text with `font`, `color`, and `size` settings. These apply to the URL interface, `cf.image` text entries, and the binding `.text()` method. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available settings, defaults, and limits.
 
 ### `width` and `height`
 
-Sets the maximum dimensions of the overlay image when drawing with `cf.image`. These options apply only to image overlays. The dimensions of a text overlay are determined by its text string and styling.
+Sets the maximum dimensions of the overlay image when drawing with the URL interface or with `cf.image`. These settings apply only to image overlays. The dimensions of a text overlay are determined by its text string and styling.
 
-Accepts an integer (pixels) or a decimal between `0` and `1` representing a fraction of the base image's dimension. For example, `height:0.25` sets the overlay height to 25% of the height of the base image.
+Accepts an integer pixel count or a percentage string such as `50p`. For example, `height: "25p"` (`cf.image`) sets the overlay height to 25% of the height of the base image.
 
 Use [`fit`](https://developers.cloudflare.com/images/optimization/features/#fit) and [`gravity`](https://developers.cloudflare.com/images/optimization/features/#gravity--g) to control how the overlay image is resized and cropped.
 
-When drawing with the Images binding, the dimensions of the overlay image can be set using the `.transform()` method.
+When drawing with the Images binding, the dimensions of the overlay image can be set using the [`.transform()`](https://developers.cloudflare.com/images/optimization/binding/#transformoptions) method.
 
 ### `repeat`
 
@@ -147,13 +158,13 @@ Accepts the following values:
 
 Sets the position of the overlay as an offset, in pixels, to the specified edge. `0` aligns the overlay flush to the edge. If no position is specified, then the overlay is centered.
 
-For example, `{ bottom: 0, right: 10 }` places the overlay at the bottom-right corner, 10 pixels inward from the right edge.
+For example, `{ bottom: 0, right: 10 }` (`cf.image`) places the overlay at the bottom-right corner, 10 pixels inward from the right edge.
 
 Setting both `left` and `right`, or both `top` and `bottom` returns an error.
 
 ### `opacity`
 
-Sets the opacity of the overlay. Accepts a decimal value between `0.0` (fully transparent) and `1.0` (fully opaque). For example, `opacity: 0.5` makes the overlay semitransparent.
+Sets the opacity of the overlay. Accepts a decimal value between `0.0` (fully transparent) and `1.0` (fully opaque). For example, `opacity: 0.5` (`cf.image`) makes the overlay semitransparent.
 
 ### `composite`
 
@@ -207,63 +218,75 @@ Adds the color values of both images, which makes the overlapping areas brighter
 
 ### Watermark
 
-Tile a semitransparent watermark across the entire image using `cf.image`.
+Tile a semitransparent watermark across the entire image.
+
+```txt
+https://example.com/cdn-cgi/image/draw=((url=/watermark.png,repeat=true,opacity=0.2))/image.png
+```
 
 ```js
 fetch(imageURL, {
-	cf: {
-		image: {
-			draw: [
-				{
-					url: "https://example.com/watermark.png",
-					repeat: true,
-					opacity: 0.2,
-				},
-			],
-		},
-	},
+  cf: {
+    image: {
+      draw: [
+        {
+          url: "https://example.com/watermark.png",
+          repeat: true,
+          opacity: 0.2,
+        },
+      ],
+    },
+  },
 });
 ```
 
 ### Logo in the corner
 
-Position a logo at the bottom-right corner using `cf.image`.
+Position a logo at the bottom-right corner.
+
+```txt
+https://example.com/cdn-cgi/image/draw=((url=/logo.png,bottom=5,right=5))/image.png
+```
 
 ```js
 fetch(imageURL, {
-	cf: {
-		image: {
-			draw: [
-				{
-					url: "https://example.com/logo.png",
-					bottom: 5,
-					right: 5,
-				},
-			],
-		},
-	},
+  cf: {
+    image: {
+      draw: [
+        {
+          url: "https://example.com/logo.png",
+          bottom: 5,
+          right: 5,
+        },
+      ],
+    },
+  },
 });
 ```
 
 ### Multiple overlays
 
-Combine multiple overlays in one request using `cf.image`. They are drawn in order — the last entry is the topmost layer.
+Combine multiple overlays in one request. They are drawn in order — the last entry is the topmost layer.
+
+```txt
+https://example.com/cdn-cgi/image/draw=((url=/watermark.png,repeat=true,opacity=0.2),(url=/play-button.png),(url=/logo.png,bottom=5,right=5))/image.png
+```
 
 ```js
 fetch(imageURL, {
-	cf: {
-		image: {
-			draw: [
-				{
-					url: "https://example.com/watermark.png",
-					repeat: true,
-					opacity: 0.2,
-				},
-				{ url: "https://example.com/play-button.png" },
-				{ url: "https://example.com/logo.png", bottom: 5, right: 5 },
-			],
-		},
-	},
+  cf: {
+    image: {
+      draw: [
+        {
+          url: "https://example.com/watermark.png",
+          repeat: true,
+          opacity: 0.2,
+        },
+        { url: "https://example.com/play-button.png" },
+        { url: "https://example.com/logo.png", bottom: 5, right: 5 },
+      ],
+    },
+  },
 });
 ```
 
@@ -317,5 +340,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/draw-overlays/#page","headline":"Draw overlays and watermarks","description":"Add watermarks, logos, and overlay images over other images using Workers.","url":"https://developers.cloudflare.com/images/optimization/draw-overlays/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/draw-overlays/og.png?v=f3456e2f0c5bd480","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/draw-overlays/#page","headline":"Draw overlays and watermarks","description":"Add watermarks, logos, and overlay images over other images.","url":"https://developers.cloudflare.com/images/optimization/draw-overlays/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/draw-overlays/og.png?v=f3456e2f0c5bd480","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

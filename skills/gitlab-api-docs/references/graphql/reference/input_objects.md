@@ -162,7 +162,7 @@ Negated filter arguments for AI governance sessions.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `flowType` | [`String`](scalars.md#string) | Exclude sessions with the flow type. |
+| `flowType` | [`String`](scalars.md#string) | Exclude sessions with the flow type. A flow type without a version, such as `code_review`, also excludes its versions, such as `code_review/v1`. |
 | `projectPath` | [`String`](scalars.md#string) | Exclude sessions belonging to the project full path. |
 | `triggeredByUserId` | [`UserID`](scalars.md#userid) | Exclude sessions triggered by the user with the given global ID. |
 

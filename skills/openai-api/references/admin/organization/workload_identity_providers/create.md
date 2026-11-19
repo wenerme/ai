@@ -113,47 +113,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/workload_identity_providers \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "audience": "x",
-          "issuer": "x",
-          "name": "x",
-          "type": "oidc"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "attribute_transformations": [
-    {
-      "attribute": "attribute",
-      "expression": "expression"
-    }
-  ],
-  "audience": "audience",
-  "created_at": 0,
-  "description": "description",
-  "enabled": true,
-  "issuer": "issuer",
-  "name": "name",
-  "object": "organization.workload_identity_provider",
-  "type": "oidc",
-  "updated_at": 0,
-  "verification": {
-    "discovery_url": "discovery_url",
-    "type": "discovery"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST "https://api.openai.com/v1/organization/workload_identity_providers" \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

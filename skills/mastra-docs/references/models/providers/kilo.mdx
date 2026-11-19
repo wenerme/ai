@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 465 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 468 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -60,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": 0.5,
-    "outputCost": 2.5
+    "inputCost": 0.1,
+    "outputCost": 0.5
   },
   {
     "model": "kilo/~anthropic/claude-opus-latest",
@@ -108,8 +108,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 393216,
-    "inputCost": 1.32,
-    "outputCost": 3.96
+    "inputCost": 0.111,
+    "outputCost": 4.44
   },
   {
     "model": "kilo/~deepseek/deepseek-v4-flash-latest",
@@ -120,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.44,
-    "outputCost": 1.32
+    "inputCost": 0.047,
+    "outputCost": 0.3
   },
   {
     "model": "kilo/~google/gemini-flash-latest",
@@ -168,8 +168,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 16,
-    "outputCost": 60
+    "inputCost": 8,
+    "outputCost": 40
   },
   {
     "model": "kilo/~openai/gpt-luna-latest",
@@ -180,8 +180,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 0.2,
-    "outputCost": 0.75
+    "inputCost": 0.1,
+    "outputCost": 0.5
   },
   {
     "model": "kilo/~openai/gpt-mini-latest",
@@ -204,8 +204,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 15
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "kilo/~openai/gpt-terra-latest",
@@ -216,8 +216,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 7.5
+    "inputCost": 1,
+    "outputCost": 5
   },
   {
     "model": "kilo/~unbiased/pareto-latest",
@@ -240,8 +240,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 500000,
     "maxOutput": 450000,
-    "inputCost": 4,
-    "outputCost": 12
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "kilo/~z-ai/glm-flash-latest",
@@ -492,8 +492,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": 0.5,
-    "outputCost": 2.5
+    "inputCost": 0.1,
+    "outputCost": 0.5
   },
   {
     "model": "kilo/anthropic/claude-opus-4.1",
@@ -588,8 +588,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 64000,
-    "inputCost": 6,
-    "outputCost": 22.5
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "kilo/anthropic/claude-sonnet-4.6",
@@ -672,8 +672,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 131072,
-    "inputCost": 0.5,
-    "outputCost": 4
+    "inputCost": 0.25,
+    "outputCost": 2
   },
   {
     "model": "kilo/bytedance-seed/seed-2.0-mini",
@@ -684,8 +684,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 131072,
-    "inputCost": 0.2,
-    "outputCost": 0.8
+    "inputCost": 0.1,
+    "outputCost": 0.4
   },
   {
     "model": "kilo/bytedance/ui-tars-1.5-7b",
@@ -923,9 +923,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.44,
-    "outputCost": 1.32
+    "maxOutput": 943718,
+    "inputCost": 0.047,
+    "outputCost": 0.3
   },
   {
     "model": "kilo/deepseek/deepseek-v4-flash-vision-exp",
@@ -948,8 +948,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 393216,
-    "inputCost": 1.6,
-    "outputCost": 3.2
+    "inputCost": 0.9,
+    "outputCost": 1.5
   },
   {
     "model": "kilo/deepseek/deepseek-v4-pro-0813",
@@ -960,8 +960,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 1.32,
-    "outputCost": 3.96
+    "inputCost": 0.111,
+    "outputCost": 4.44
   },
   {
     "model": "kilo/deepseek/deepseek-v4.1-flash",
@@ -983,7 +983,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 943718,
+    "maxOutput": 393216,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -1080,8 +1080,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.25,
-    "outputCost": 7.5
+    "inputCost": 0.625,
+    "outputCost": 5
   },
   {
     "model": "kilo/google/gemini-3-flash",
@@ -1212,8 +1212,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 4,
-    "outputCost": 18
+    "inputCost": 2,
+    "outputCost": 12
   },
   {
     "model": "kilo/google/gemini-3.5-flash",
@@ -1312,6 +1312,18 @@ for await (const chunk of stream) {
     "outputCost": 7.5
   },
   {
+    "model": "kilo/google/gemini-4-neon",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 943718,
+    "inputCost": 3,
+    "outputCost": 15
+  },
+  {
     "model": "kilo/google/gemini-nano-banana-2.1",
     "imageInput": true,
     "audioInput": false,
@@ -1391,7 +1403,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 117964,
+    "maxOutput": 16384,
     "inputCost": 0.064,
     "outputCost": 0.128
   },
@@ -1586,6 +1598,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.3,
     "outputCost": 0.9
+  },
+  {
+    "model": "kilo/inclusionai/ling-3.2-flash:free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "kilo/inference-net/schematron-v2-small",
@@ -2040,8 +2064,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 524288,
-    "inputCost": 0.15,
-    "outputCost": 0.6
+    "inputCost": 0.075,
+    "outputCost": 0.3
   },
   {
     "model": "kilo/mistralai/codestral",
@@ -2448,8 +2472,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 235929,
-    "inputCost": 0.7,
-    "outputCost": 3.75
+    "inputCost": 0.6,
+    "outputCost": 3.5
   },
   {
     "model": "kilo/moonshotai/kimi-k2.7-code-highspeed",
@@ -2796,8 +2820,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 1047576,
     "maxOutput": 32768,
-    "inputCost": 2,
-    "outputCost": 8
+    "inputCost": 3.5,
+    "outputCost": 14
   },
   {
     "model": "kilo/openai/gpt-4.1-mini",
@@ -2820,8 +2844,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 1047576,
     "maxOutput": 32768,
-    "inputCost": 0.4,
-    "outputCost": 1.6
+    "inputCost": 0.7,
+    "outputCost": 2.8
   },
   {
     "model": "kilo/openai/gpt-4.1-nano",
@@ -2892,8 +2916,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 16384,
-    "inputCost": 2.5,
-    "outputCost": 10
+    "inputCost": 4.25,
+    "outputCost": 17
   },
   {
     "model": "kilo/openai/gpt-4o-mini",
@@ -2928,8 +2952,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 16384,
-    "inputCost": 0.15,
-    "outputCost": 0.6
+    "inputCost": 0.25,
+    "outputCost": 1
   },
   {
     "model": "kilo/openai/gpt-5",
@@ -2964,8 +2988,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.25,
-    "outputCost": 10
+    "inputCost": 2.5,
+    "outputCost": 20
   },
   {
     "model": "kilo/openai/gpt-5-image",
@@ -3012,8 +3036,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 0.25,
-    "outputCost": 2
+    "inputCost": 0.45,
+    "outputCost": 3.6
   },
   {
     "model": "kilo/openai/gpt-5-nano",
@@ -3108,8 +3132,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.25,
-    "outputCost": 10
+    "inputCost": 2.5,
+    "outputCost": 20
   },
   {
     "model": "kilo/openai/gpt-5.2",
@@ -3144,8 +3168,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.75,
-    "outputCost": 14
+    "inputCost": 3.5,
+    "outputCost": 28
   },
   {
     "model": "kilo/openai/gpt-5.2-pro",
@@ -3180,8 +3204,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.75,
-    "outputCost": 14
+    "inputCost": 3.5,
+    "outputCost": 28
   },
   {
     "model": "kilo/openai/gpt-5.4",
@@ -3192,8 +3216,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 5,
-    "outputCost": 22.5
+    "inputCost": 2.5,
+    "outputCost": 15
   },
   {
     "model": "kilo/openai/gpt-5.4-fast",
@@ -3204,8 +3228,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2.5,
-    "outputCost": 15
+    "inputCost": 5,
+    "outputCost": 30
   },
   {
     "model": "kilo/openai/gpt-5.4-image-2",
@@ -3240,8 +3264,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 0.75,
-    "outputCost": 4.5
+    "inputCost": 1.5,
+    "outputCost": 9
   },
   {
     "model": "kilo/openai/gpt-5.4-nano",
@@ -3264,8 +3288,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 60,
-    "outputCost": 270
+    "inputCost": 30,
+    "outputCost": 180
   },
   {
     "model": "kilo/openai/gpt-5.5",
@@ -3276,8 +3300,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 10,
-    "outputCost": 45
+    "inputCost": 5,
+    "outputCost": 30
   },
   {
     "model": "kilo/openai/gpt-5.5-fast",
@@ -3288,8 +3312,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": 5,
-    "outputCost": 30
+    "inputCost": 12.5,
+    "outputCost": 75
   },
   {
     "model": "kilo/openai/gpt-5.5-pro",
@@ -3300,23 +3324,11 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 60,
-    "outputCost": 270
+    "inputCost": 30,
+    "outputCost": 180
   },
   {
     "model": "kilo/openai/gpt-5.6-luna",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 0.4,
-    "outputCost": 1.8
-  },
-  {
-    "model": "kilo/openai/gpt-5.6-luna-fast",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3328,7 +3340,7 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
-    "model": "kilo/openai/gpt-5.6-luna-pro",
+    "model": "kilo/openai/gpt-5.6-luna-fast",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3337,10 +3349,10 @@ for await (const chunk of stream) {
     "contextWindow": 1050000,
     "maxOutput": 128000,
     "inputCost": 0.4,
-    "outputCost": 1.8
+    "outputCost": 2.4
   },
   {
-    "model": "kilo/openai/gpt-5.6-sol",
+    "model": "kilo/openai/gpt-5.6-luna-pro",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3348,11 +3360,11 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 8,
-    "outputCost": 30
+    "inputCost": 0.2,
+    "outputCost": 1.2
   },
   {
-    "model": "kilo/openai/gpt-5.6-sol-fast",
+    "model": "kilo/openai/gpt-5.6-sol",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3364,247 +3376,7 @@ for await (const chunk of stream) {
     "outputCost": 20
   },
   {
-    "model": "kilo/openai/gpt-5.6-sol-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 8,
-    "outputCost": 30
-  },
-  {
-    "model": "kilo/openai/gpt-5.6-terra",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 18
-  },
-  {
-    "model": "kilo/openai/gpt-5.6-terra-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 12
-  },
-  {
-    "model": "kilo/openai/gpt-5.6-terra-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 18
-  },
-  {
-    "model": "kilo/openai/gpt-6-astra",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 20,
-    "outputCost": 75
-  },
-  {
-    "model": "kilo/openai/gpt-6-astra-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 10,
-    "outputCost": 50
-  },
-  {
-    "model": "kilo/openai/gpt-6-astra-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 20,
-    "outputCost": 75
-  },
-  {
-    "model": "kilo/openai/gpt-6-luna",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 0.2,
-    "outputCost": 0.75
-  },
-  {
-    "model": "kilo/openai/gpt-6-luna-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 0.1,
-    "outputCost": 0.5
-  },
-  {
-    "model": "kilo/openai/gpt-6-luna-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 0.2,
-    "outputCost": 0.75
-  },
-  {
-    "model": "kilo/openai/gpt-6-sol",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 15
-  },
-  {
-    "model": "kilo/openai/gpt-6-sol-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
-    "model": "kilo/openai/gpt-6-sol-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 15
-  },
-  {
-    "model": "kilo/openai/gpt-6.1-sol",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 15
-  },
-  {
-    "model": "kilo/openai/gpt-6.1-sol-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 10
-  },
-  {
-    "model": "kilo/openai/gpt-6.1-sol-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 15
-  },
-  {
-    "model": "kilo/openai/gpt-6.1-terra",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 7.5
-  },
-  {
-    "model": "kilo/openai/gpt-6.1-terra-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 1,
-    "outputCost": 5
-  },
-  {
-    "model": "kilo/openai/gpt-6.1-terra-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 7.5
-  },
-  {
-    "model": "kilo/openai/gpt-6.2-astra",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 16,
-    "outputCost": 60
-  },
-  {
-    "model": "kilo/openai/gpt-6.2-astra-fast",
+    "model": "kilo/openai/gpt-5.6-sol-fast",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3616,19 +3388,7 @@ for await (const chunk of stream) {
     "outputCost": 40
   },
   {
-    "model": "kilo/openai/gpt-6.2-astra-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 16,
-    "outputCost": 60
-  },
-  {
-    "model": "kilo/openai/gpt-6.2-sol",
+    "model": "kilo/openai/gpt-5.6-sol-pro",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3637,10 +3397,118 @@ for await (const chunk of stream) {
     "contextWindow": 1050000,
     "maxOutput": 128000,
     "inputCost": 4,
-    "outputCost": 15
+    "outputCost": 20
   },
   {
-    "model": "kilo/openai/gpt-6.2-sol-fast",
+    "model": "kilo/openai/gpt-5.6-terra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 12
+  },
+  {
+    "model": "kilo/openai/gpt-5.6-terra-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 4,
+    "outputCost": 24
+  },
+  {
+    "model": "kilo/openai/gpt-5.6-terra-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 12
+  },
+  {
+    "model": "kilo/openai/gpt-6-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "kilo/openai/gpt-6-astra-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 20,
+    "outputCost": 100
+  },
+  {
+    "model": "kilo/openai/gpt-6-astra-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "kilo/openai/gpt-6-luna",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 0.1,
+    "outputCost": 0.5
+  },
+  {
+    "model": "kilo/openai/gpt-6-luna-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 0.2,
+    "outputCost": 1
+  },
+  {
+    "model": "kilo/openai/gpt-6-luna-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 0.1,
+    "outputCost": 0.5
+  },
+  {
+    "model": "kilo/openai/gpt-6-sol",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3652,7 +3520,7 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
-    "model": "kilo/openai/gpt-6.2-sol-pro",
+    "model": "kilo/openai/gpt-6-sol-fast",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -3661,7 +3529,163 @@ for await (const chunk of stream) {
     "contextWindow": 1050000,
     "maxOutput": 128000,
     "inputCost": 4,
-    "outputCost": 15
+    "outputCost": 20
+  },
+  {
+    "model": "kilo/openai/gpt-6-sol-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "kilo/openai/gpt-6.1-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "kilo/openai/gpt-6.1-sol-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 4,
+    "outputCost": 20
+  },
+  {
+    "model": "kilo/openai/gpt-6.1-sol-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "kilo/openai/gpt-6.1-terra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 1,
+    "outputCost": 5
+  },
+  {
+    "model": "kilo/openai/gpt-6.1-terra-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "kilo/openai/gpt-6.1-terra-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 1,
+    "outputCost": 5
+  },
+  {
+    "model": "kilo/openai/gpt-6.2-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 8,
+    "outputCost": 40
+  },
+  {
+    "model": "kilo/openai/gpt-6.2-astra-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 16,
+    "outputCost": 80
+  },
+  {
+    "model": "kilo/openai/gpt-6.2-astra-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 8,
+    "outputCost": 40
+  },
+  {
+    "model": "kilo/openai/gpt-6.2-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "kilo/openai/gpt-6.2-sol-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 4,
+    "outputCost": 20
+  },
+  {
+    "model": "kilo/openai/gpt-6.2-sol-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "kilo/openai/gpt-audio",
@@ -3780,8 +3804,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 100000,
-    "inputCost": 2,
-    "outputCost": 8
+    "inputCost": 3.5,
+    "outputCost": 14
   },
   {
     "model": "kilo/openai/o3-mini",
@@ -4092,8 +4116,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 1000000,
     "maxOutput": 32768,
-    "inputCost": 0.78,
-    "outputCost": 2.34
+    "inputCost": 0.26,
+    "outputCost": 0.78
   },
   {
     "model": "kilo/qwen/qwen2.5-vl-72b-instruct",
@@ -4212,8 +4236,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 1000000,
     "maxOutput": 65536,
-    "inputCost": 0.52,
-    "outputCost": 2.6
+    "inputCost": 0.195,
+    "outputCost": 0.975
   },
   {
     "model": "kilo/qwen/qwen3-coder-next",
@@ -4380,8 +4404,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
-    "inputCost": 0.325,
-    "outputCost": 1.95
+    "inputCost": 0.26,
+    "outputCost": 1.56
   },
   {
     "model": "kilo/qwen/qwen3.5-plus-20260420",
@@ -4392,8 +4416,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
-    "inputCost": 0.375,
-    "outputCost": 2.25
+    "inputCost": 0.3,
+    "outputCost": 1.8
   },
   {
     "model": "kilo/qwen/qwen3.6-27b",
@@ -4428,8 +4452,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
-    "inputCost": 0.75,
-    "outputCost": 3
+    "inputCost": 0.1875,
+    "outputCost": 1.125
   },
   {
     "model": "kilo/qwen/qwen3.6-plus",
@@ -4440,8 +4464,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
-    "inputCost": 1.3,
-    "outputCost": 3.9
+    "inputCost": 0.5,
+    "outputCost": 3
   },
   {
     "model": "kilo/qwen/qwen3.7-flash",
@@ -4452,8 +4476,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
-    "inputCost": 0.2,
-    "outputCost": 0.8
+    "inputCost": 0.03,
+    "outputCost": 0.13
   },
   {
     "model": "kilo/qwen/qwen3.7-max",
@@ -4476,8 +4500,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 0.96,
-    "outputCost": 3.84
+    "inputCost": 0.4,
+    "outputCost": 1.6
   },
   {
     "model": "kilo/qwen/qwen3.8-2.4t-a95b",
@@ -4588,6 +4612,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "kilo/recursive/flint-v1.0:free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 235929,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "kilo/reflection/beam-1.0-501b-a23b",
     "imageInput": false,
     "audioInput": false,
@@ -4595,7 +4631,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 943718,
+    "maxOutput": 131072,
     "inputCost": 0.25,
     "outputCost": 1
   },
@@ -4692,8 +4728,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": 10,
-    "outputCost": 45
+    "inputCost": 5,
+    "outputCost": 30
   },
   {
     "model": "kilo/sakana/fugu-ultra-v2",
@@ -4704,8 +4740,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": 10,
-    "outputCost": 45
+    "inputCost": 5,
+    "outputCost": 30
   },
   {
     "model": "kilo/sakana/sakana-namazu",
@@ -5124,8 +5160,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 2000000,
     "maxOutput": 1800000,
-    "inputCost": 2.5,
-    "outputCost": 5
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "kilo/x-ai/grok-4.20-multi-agent",
@@ -5136,8 +5172,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 2000000,
     "maxOutput": 1800000,
-    "inputCost": 2.5,
-    "outputCost": 5
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "kilo/x-ai/grok-4.20-multi-agent-beta",
@@ -5208,8 +5244,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 900000,
-    "inputCost": 2.5,
-    "outputCost": 5
+    "inputCost": 1.25,
+    "outputCost": 2.5
   },
   {
     "model": "kilo/x-ai/grok-4.5",
@@ -5220,8 +5256,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 500000,
     "maxOutput": 450000,
-    "inputCost": 4,
-    "outputCost": 12
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "kilo/x-ai/grok-4.6",
@@ -5232,8 +5268,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 500000,
     "maxOutput": 450000,
-    "inputCost": 4,
-    "outputCost": 12
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "kilo/x-ai/grok-4.7",
@@ -5244,8 +5280,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 500000,
     "maxOutput": 450000,
-    "inputCost": 4,
-    "outputCost": 12
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "kilo/x-ai/grok-build-0.1",
@@ -5256,8 +5292,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 230400,
-    "inputCost": 2,
-    "outputCost": 4
+    "inputCost": 1,
+    "outputCost": 2
   },
   {
     "model": "kilo/xiaomi/mimo-v2.6-flash",
@@ -5423,7 +5459,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 202752,
-    "maxOutput": 182476,
+    "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
   },

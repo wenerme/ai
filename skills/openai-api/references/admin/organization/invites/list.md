@@ -105,42 +105,6 @@ Returns a list of invites in the organization.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/invites \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "email": "email",
-      "object": "organization.invite",
-      "projects": [
-        {
-          "id": "id",
-          "role": "member"
-        }
-      ],
-      "role": "owner",
-      "status": "accepted",
-      "accepted_at": 0,
-      "expires_at": 0
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

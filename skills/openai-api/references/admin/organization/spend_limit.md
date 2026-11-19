@@ -25,23 +25,6 @@ Delete the organization's hard spend limit.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/spend_limit \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "deleted": true,
-  "object": "organization.spend_limit.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/organization/spend_limit \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -119,27 +102,6 @@ Get the organization's hard spend limit.
   - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/spend_limit \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "currency": "USD",
-  "enforcement": {
-    "status": "inactive"
-  },
-  "interval": "month",
-  "object": "organization.spend_limit",
-  "threshold_amount": 0
-}
-```
 
 ### Example
 
@@ -248,33 +210,6 @@ Content type: `application/json`
   - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/spend_limit \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "currency": "USD",
-          "interval": "month",
-          "threshold_amount": 1
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "currency": "USD",
-  "enforcement": {
-    "status": "inactive"
-  },
-  "interval": "month",
-  "object": "organization.spend_limit",
-  "threshold_amount": 0
-}
-```
 
 ### Example
 

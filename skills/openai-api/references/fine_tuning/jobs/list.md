@@ -918,104 +918,6 @@ List your organization's fine-tuning jobs
 ### Example
 
 ```http
-curl https://api.openai.com/v1/fine_tuning/jobs \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "error": {
-        "code": "code",
-        "message": "message",
-        "param": "param"
-      },
-      "fine_tuned_model": "fine_tuned_model",
-      "finished_at": 0,
-      "model": "model",
-      "object": "fine_tuning.job",
-      "organization_id": "organization_id",
-      "result_files": [
-        "file-abc123"
-      ],
-      "seed": 0,
-      "status": "validating_files",
-      "trained_tokens": 0,
-      "training_file": "training_file",
-      "validation_file": "validation_file",
-      "estimated_finish": 0,
-      "hyperparameters": {
-        "batch_size": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      },
-      "integrations": [
-        {
-          "type": "wandb",
-          "wandb": {
-            "project": "my-wandb-project",
-            "entity": "entity",
-            "name": "name",
-            "tags": [
-              "custom-tag"
-            ]
-          }
-        }
-      ],
-      "metadata": {
-        "foo": "string"
-      },
-      "method": {
-        "type": "supervised",
-        "dpo": {
-          "hyperparameters": {
-            "batch_size": "auto",
-            "beta": "auto",
-            "learning_rate_multiplier": "auto",
-            "n_epochs": "auto"
-          }
-        },
-        "reinforcement": {
-          "grader": {
-            "input": "input",
-            "name": "name",
-            "operation": "eq",
-            "reference": "reference",
-            "type": "string_check"
-          },
-          "hyperparameters": {
-            "batch_size": "auto",
-            "compute_multiplier": "auto",
-            "eval_interval": "auto",
-            "eval_samples": "auto",
-            "learning_rate_multiplier": "auto",
-            "n_epochs": "auto",
-            "reasoning_effort": "default"
-          }
-        },
-        "supervised": {
-          "hyperparameters": {
-            "batch_size": "auto",
-            "learning_rate_multiplier": "auto",
-            "n_epochs": "auto"
-          }
-        }
-      }
-    }
-  ],
-  "has_more": true,
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl "https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
@@ -1029,7 +931,7 @@ curl "https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value" \
     {
       "object": "fine_tuning.job",
       "id": "ftjob-abc123",
-      "model": "gpt-4o-mini-2024-07-18",
+      "model": "gpt-4.1-mini-2025-04-14",
       "created_at": 1721764800,
       "fine_tuned_model": null,
       "organization_id": "org-123",

@@ -647,13 +647,13 @@ Updated our image encoder to fix a small bug with `input_image` inputs in GPT-5.
 
 Feature · Model: sora-2 · Model: sora-2-pro · API: v1/videos · API: v1/videos/characters · API: v1/videos/extensions · API: v1/batch
 
-Expanded the Sora API with reusable character references, longer generations up to `20` seconds, `1080p` output for `sora-2-pro`, video extensions, and Batch API support for `POST /v1/videos`. `1080p` generations on `sora-2-pro` are billed at `$0.70` per second. Learn more [here](https://developers.openai.com/api/docs/guides/video-generation).
+Expanded the Sora API with reusable character references, longer generations up to `20` seconds, `1080p` output for `sora-2-pro`, video extensions, and Batch API support for `POST /v1/videos`. `1080p` generations on `sora-2-pro` are billed at `$0.70` per second.
 
 ### Mar 12
 
 Update · Model: sora-2 · Model: sora-2-pro · API: v1/videos/edits · API: v1/videos/{video_id}/remix
 
-Added `POST /v1/videos/edits` for editing existing videos. This will replace `POST /v1/videos/{video_id}/remix`, which will be deprecated in `6` months. Learn more [here](https://developers.openai.com/api/docs/guides/video-generation#edit-existing-videos).
+Added `POST /v1/videos/edits` for editing existing videos. This will replace `POST /v1/videos/{video_id}/remix`, which will be deprecated in `6` months.
 
 ### Mar 5
 
@@ -915,7 +915,7 @@ Released [GPT-Realtime mini](https://developers.openai.com/api/docs/models/gpt-r
 
 Released [gpt-image-1-mini](https://developers.openai.com/api/docs/models/gpt-image-1-mini) for more cost-efficient image generation and editing.
 
-Launched [v1/videos](https://developers.openai.com/api/docs/guides/video-generation) for rich, detailed, and dynamic video generation and remixing with our latest [Sora 2](https://developers.openai.com/api/docs/models/sora-2) and [Sora 2 Pro](https://developers.openai.com/api/docs/models/sora-2-pro) models.
+Launched `v1/videos` for rich, detailed, and dynamic video generation and remixing with our latest [Sora 2](https://developers.openai.com/api/docs/models/sora-2) and [Sora 2 Pro](https://developers.openai.com/api/docs/models/sora-2-pro) models.
 
 Launched [Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder) for visually creating custom multi-agent workflows.
 
@@ -939,7 +939,7 @@ Released [IP allowlist](https://platform.openai.com/settings/organization/securi
 
 Feature · API: v1/responses
 
-Added support for image and file as a [tool call output](https://developers.openai.com/api/docs/docs/guides/function-calling#how-it-works) in Responses API.
+Added support for image and file as a [tool call output](https://developers.openai.com/api/docs/guides/function-calling#how-it-works) in Responses API.
 
 ### Sep 23
 
@@ -1161,7 +1161,7 @@ Added [`reasoning_effort` parameter](https://developers.openai.com/api/reference
 
 Added [`developer` message role](https://developers.openai.com/api/reference/resources/chat#chat-create-messages) for o1 model. Note that o1-preview and o1-mini do not support system or developer messages.
 
-Launched Preference Fine-tuning using [Direct Preference Optimization (DPO)](https://developers.openai.com/api/docs/guides/model-optimization#preference).
+Launched Preference Fine-tuning using [Direct Preference Optimization (DPO)](https://developers.openai.com/api/docs/guides/direct-preference-optimization).
 
 Launched beta SDKs for Go and Java. [Learn more](https://developers.openai.com/api/docs/libraries).
 
@@ -1211,7 +1211,7 @@ Released several new features at [OpenAI DevDay in San Francisco](https://openai
 
 [Model distillation](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#distilling-from-a-larger-model): Platform for fine-tuning cost-efficient models with your outputs from a large frontier model.
 
-[Image fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization#vision): Fine-tune GPT-4o with images and text to improve vision capabilities.
+[Image fine-tuning](https://developers.openai.com/api/docs/guides/vision-fine-tuning): Fine-tune GPT-4o with images and text to improve vision capabilities.
 
 [Evals](https://developers.openai.com/api/docs/guides/evals): Create and run custom evaluations to measure model performance on specific tasks.
 
@@ -1239,7 +1239,7 @@ Released [o1-preview and o1-mini](https://developers.openai.com/api/docs/guides/
 
 Feature · API: v1/assistants
 
-Assistants API now supports [including file search results used by the file search tool, and customizing ranking behavior](https://developers.openai.com/api/docs/assistants/migration#improve-file-search-result-relevance-with-chunk-ranking).
+Assistants API now supports including file search results used by the file search tool, and customizing ranking behavior.
 
 ### Aug 20
 
@@ -1299,7 +1299,7 @@ Released [Uploads](https://developers.openai.com/api/reference/resources/uploads
 
 Update
 
-[Parallel function calling](https://developers.openai.com/api/docs/guides/function-calling#configure-parallel-function-calling) can be disabled in Chat Completions and the Assistants API by passing `parallel_tool_calls=false`.
+[Parallel function calling](https://developers.openai.com/api/docs/guides/function-calling#parallel-function-calling) can be disabled in Chat Completions and the Assistants API by passing `parallel_tool_calls=false`.
 
 [.NET SDK](https://developers.openai.com/api/docs/libraries#dotnet-library) launched in Beta.
 
@@ -1307,7 +1307,7 @@ Update
 
 Update
 
-Added support for [file search customizations](https://developers.openai.com/api/docs/assistants/migration#customizing-file-search-settings).
+Added support for file search customizations.
 
 ## May, 2024
 
@@ -1355,7 +1355,7 @@ Added [a new endpoint](https://developers.openai.com/api/reference/resources/bet
 
 Update
 
-Added a new [function calling option `tool_choice: "required"`](https://developers.openai.com/api/docs/guides/function-calling#function-calling-behavior) to the Chat Completions and Assistants APIs.
+Added a new [function calling option `tool_choice: "required"`](https://developers.openai.com/api/docs/guides/function-calling#tool-choice) to the Chat Completions and Assistants APIs.
 
 Added a [guide for the Batch API](https://developers.openai.com/api/docs/guides/batch) and Batch API support for [embeddings models](https://developers.openai.com/api/docs/guides/batch#model-availability)
 
@@ -1489,4 +1489,4 @@ Added `max_tokens` to the [Moderation models](https://developers.openai.com/api/
 
 Update
 
-Added [function calling support](https://developers.openai.com/api/docs/guides/model-optimization#fine-tuning-examples) to the Fine-tuning API
+Added [function calling support](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#formatting-your-data) to the Fine-tuning API

@@ -85,29 +85,6 @@ Retrieve a ChatKit thread by its identifier.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "cthr_def456",
-  "created_at": 1712345600,
-  "object": "chatkit.thread",
-  "status": {
-    "type": "active"
-  },
-  "title": "Demo feedback",
-  "user": "user_456"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
   -H "OpenAI-Beta: chatkit_beta=v1" \
   -H "Authorization: Bearer $OPENAI_API_KEY"

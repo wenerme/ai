@@ -53,39 +53,13 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/model_permissions \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "mode": "allow_list",
-          "model_ids": [
-            "string"
-          ]
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "mode": "allow_list",
-  "model_ids": [
-    "string"
-  ],
-  "object": "project.model_permissions"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/model_permissions \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
   -d '{
       "mode": "deny_list",
       "model_ids": [
-          "o3"
+          "gpt-6.2-sol"
       ]
   }'
 ```
@@ -97,7 +71,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/model_perm
     "object": "project.model_permissions",
     "mode": "deny_list",
     "model_ids": [
-        "o3"
+        "gpt-6.2-sol"
     ]
 }
 ```

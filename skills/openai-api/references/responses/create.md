@@ -4972,7 +4972,7 @@ Content type: `application/json`
 
 - `model: optional ResponsesModel`
 
-  Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+  Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/api/docs/models)
   to browse and compare available models.
@@ -11722,7 +11722,7 @@ Content type: `application/json`
 
   - `model: ResponsesModel`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
@@ -17449,7 +17449,10 @@ Content type: `application/json`
 curl https://api.openai.com/v1/responses \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '"string"'
+    -d '{
+          "model": "gpt-6.2-astra",
+          "input": "Write a one-sentence bedtime story about a unicorn."
+        }'
 ```
 
 #### 200 — Example
@@ -17466,7 +17469,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -17604,7 +17607,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": [
       {
         "role": "user",
@@ -17637,7 +17640,7 @@ curl https://api.openai.com/v1/responses \
   "instructions": null,
   "max_output_tokens": null,
   "max_tool_calls": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "id": "msg_686eef60d3e081a29283bdcbc4322fd90e34c516d176ff86",
@@ -17697,7 +17700,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [{
       "type": "file_search",
       "vector_store_ids": ["vs_1234567890"],
@@ -17721,7 +17724,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "file_search_call",
@@ -17850,7 +17853,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "What is the weather like in Boston today?",
     "tools": [
       {
@@ -17891,7 +17894,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "function_call",
@@ -17970,7 +17973,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": [
       {
         "role": "user",
@@ -18000,7 +18003,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -18058,7 +18061,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "How much wood would a woodchuck chuck?",
     "reasoning": {
       "effort": "high"
@@ -18080,7 +18083,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -18138,7 +18141,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "instructions": "You are a helpful assistant.",
     "input": "Hello!",
     "stream": true
@@ -18149,10 +18152,10 @@ curl https://api.openai.com/v1/responses \
 
 ```json
 event: response.created
-data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":0}
+data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6.2-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":0}
 
 event: response.in_progress
-data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":1}
+data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6.2-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}},"sequence_number":1}
 
 event: response.output_item.added
 data: {"type":"response.output_item.added","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"in_progress","role":"assistant","content":[]},"sequence_number":2}
@@ -18175,7 +18178,7 @@ event: response.output_item.done
 data: {"type":"response.output_item.done","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[],"logprobs":[]}]},"sequence_number":12}
 
 event: response.completed
-data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[],"logprobs":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48,"input_tokens_details":{"cached_tokens":0,"cache_write_tokens":0}},"user":null,"metadata":{}},"sequence_number":13}
+data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6.2-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[],"logprobs":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48,"input_tokens_details":{"cached_tokens":0,"cache_write_tokens":0}},"user":null,"metadata":{}},"sequence_number":13}
 
 ```
 
@@ -18186,7 +18189,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "input": "Tell me a three sentence bedtime story about a unicorn."
   }'
 ```
@@ -18205,7 +18208,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",
@@ -18263,7 +18266,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6.2-astra",
     "tools": [{ "type": "web_search_preview" }],
     "input": "What was a positive news story from today?"
   }'
@@ -18283,7 +18286,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "web_search_call",

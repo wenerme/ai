@@ -105,40 +105,6 @@ Lists project spend alerts.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "currency": "USD",
-      "interval": "month",
-      "notification_channel": {
-        "recipients": [
-          "string"
-        ],
-        "type": "email",
-        "subject_prefix": "subject_prefix"
-      },
-      "object": "project.spend_alert",
-      "threshold_amount": 0
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts?limit=20&order=asc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

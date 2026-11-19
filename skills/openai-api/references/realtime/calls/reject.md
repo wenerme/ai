@@ -24,14 +24,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/realtime/calls/$CALL_ID/reject \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \

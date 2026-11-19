@@ -92,13 +92,15 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/audio/voices \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "name": "x",
-          "prompt": "x",
-          "type": "prompt"
-        }'
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "prompt",
+    "name": "Warm narrator",
+    "prompt": "A warm, calm narrator with a clear, measured delivery.",
+    "model": "auto"
+  }'
 ```
 
 #### 200 — Example
@@ -112,19 +114,4 @@ curl https://api.openai.com/v1/audio/voices \
   "type": "audio_sample",
   "prompt": "prompt"
 }
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/audio/voices \
-  -X POST \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "type": "prompt",
-    "name": "Warm narrator",
-    "prompt": "A warm, calm narrator with a clear, measured delivery.",
-    "model": "auto"
-  }'
 ```

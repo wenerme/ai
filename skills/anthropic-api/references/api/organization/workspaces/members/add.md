@@ -75,6 +75,20 @@ Create Workspace Member
 
     - `"workspace_user"`
 
+## Errors
+
+Any method can also return the general [HTTP errors](https://platform.claude.com/docs/en/api/errors?sdk_languages=http).
+
+Each code below is the value of `error.details.error_code` in the response body.
+
+- `workspace_member_limit_exceeded` (HTTP status 400)
+
+  The workspace has reached the member limit that Anthropic set for it.
+
+- `sandbox_egress_restricted` (HTTP status 403)
+
+  The request came from a Claude sandbox with restricted network access, which is not allowed to make this change. Send it from outside the sandbox, or from a sandbox with unrestricted network access.
+
 ## Example
 
 ```bash
@@ -83,7 +97,7 @@ curl https://api.anthropic.com/v1/organizations/workspaces/$WORKSPACE_ID/members
     -H 'anthropic-version: 2026-10-21' \
     -H "Authorization: Bearer $ANTHROPIC_API_KEY" \
     -d '{
-          "user_id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+          "user_id": "user_01WxYzAbCdEfGhJkMnPqRsTu",
           "workspace_role": "workspace_admin"
         }'
 ```
@@ -93,7 +107,7 @@ curl https://api.anthropic.com/v1/organizations/workspaces/$WORKSPACE_ID/members
 ```json
 {
   "type": "workspace_member",
-  "user_id": "user_01WCz1FkmYMm4gnmykNKUu3Q",
+  "user_id": "user_01WxYzAbCdEfGhJkMnPqRsTu",
   "workspace_id": "wrkspc_01JwQvzr7rXLA5AGx3HKfFUJ",
   "workspace_role": "workspace_admin"
 }

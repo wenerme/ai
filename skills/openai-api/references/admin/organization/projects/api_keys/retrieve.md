@@ -125,44 +125,6 @@ Retrieves an API key in the project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "last_used_at": 0,
-  "name": "name",
-  "object": "organization.project.api_key",
-  "owner": {
-    "service_account": {
-      "id": "id",
-      "created_at": 0,
-      "name": "name",
-      "role": "role"
-    },
-    "type": "user",
-    "user": {
-      "id": "id",
-      "created_at": 0,
-      "email": "email",
-      "name": "name",
-      "role": "role"
-    }
-  },
-  "owner_project_access": "active",
-  "redacted_value": "redacted_value",
-  "expires_at": 0
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

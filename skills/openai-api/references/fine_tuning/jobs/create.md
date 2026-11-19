@@ -12,17 +12,19 @@ Response includes details of the enqueued job including job status and the name 
 
 Content type: `application/json`
 
-- `model: string or "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
+- `model: string or "gpt-4.1-mini-2025-04-14" or "babbage-002" or "davinci-002" or 2 more`
 
   The name of the model to fine-tune. You can select one of the
   [supported models](/api/docs/guides/model-optimization#fine-tuning-methods).
 
   - `string`
 
-  - `"babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
+  - `"gpt-4.1-mini-2025-04-14" or "babbage-002" or "davinci-002" or 2 more`
 
     The name of the model to fine-tune. You can select one of the
     [supported models](/api/docs/guides/model-optimization#fine-tuning-methods).
+
+    - `"gpt-4.1-mini-2025-04-14"`
 
     - `"babbage-002"`
 
@@ -838,7 +840,7 @@ Content type: `application/json`
 
   A string of up to 64 characters that will be added to your fine-tuned model name.
 
-  For example, a `suffix` of "custom-model-name" would produce a model name like `ft:gpt-4o-mini:openai:custom-model-name:7p4lURel`.
+  For example, a `suffix` of "custom-model-name" would produce a model name like `ft:gpt-4.1-mini-2025-04-14:openai:custom-model-name:7p4lURel`.
 
   `minLength: 1`, `maxLength: 64`
 
@@ -1747,105 +1749,6 @@ Content type: `application/json`
 
             `minimum: 1`, `maximum: 50`
 
-### Example
-
-```http
-curl https://api.openai.com/v1/fine_tuning/jobs \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "model": "gpt-4o-mini",
-          "training_file": "file-abc123",
-          "seed": 42,
-          "validation_file": "file-abc123"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "error": {
-    "code": "code",
-    "message": "message",
-    "param": "param"
-  },
-  "fine_tuned_model": "fine_tuned_model",
-  "finished_at": 0,
-  "model": "model",
-  "object": "fine_tuning.job",
-  "organization_id": "organization_id",
-  "result_files": [
-    "file-abc123"
-  ],
-  "seed": 0,
-  "status": "validating_files",
-  "trained_tokens": 0,
-  "training_file": "training_file",
-  "validation_file": "validation_file",
-  "estimated_finish": 0,
-  "hyperparameters": {
-    "batch_size": "auto",
-    "learning_rate_multiplier": "auto",
-    "n_epochs": "auto"
-  },
-  "integrations": [
-    {
-      "type": "wandb",
-      "wandb": {
-        "project": "my-wandb-project",
-        "entity": "entity",
-        "name": "name",
-        "tags": [
-          "custom-tag"
-        ]
-      }
-    }
-  ],
-  "metadata": {
-    "foo": "string"
-  },
-  "method": {
-    "type": "supervised",
-    "dpo": {
-      "hyperparameters": {
-        "batch_size": "auto",
-        "beta": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      }
-    },
-    "reinforcement": {
-      "grader": {
-        "input": "input",
-        "name": "name",
-        "operation": "eq",
-        "reference": "reference",
-        "type": "string_check"
-      },
-      "hyperparameters": {
-        "batch_size": "auto",
-        "compute_multiplier": "auto",
-        "eval_interval": "auto",
-        "eval_samples": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
-        "reasoning_effort": "default"
-      }
-    },
-    "supervised": {
-      "hyperparameters": {
-        "batch_size": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      }
-    }
-  }
-}
-```
-
 ### DPO
 
 ```http
@@ -1855,7 +1758,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   -d '{
     "training_file": "file-abc123",
     "validation_file": "file-abc123",
-    "model": "gpt-4o-mini",
+    "model": "gpt-4.1-mini-2025-04-14",
     "method": {
       "type": "dpo",
       "dpo": {
@@ -1873,7 +1776,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 {
   "object": "fine_tuning.job",
   "id": "ftjob-abc",
-  "model": "gpt-4o-mini",
+  "model": "gpt-4.1-mini-2025-04-14",
   "created_at": 1746130590,
   "fine_tuned_model": null,
   "organization_id": "org-abc",
@@ -1913,7 +1816,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "training_file": "file-BK7bzQj3FfZFXr7DbL6xJwfo",
-    "model": "gpt-4o-mini"
+    "model": "gpt-4.1-mini-2025-04-14"
   }'
 ```
 
@@ -1923,7 +1826,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 {
   "object": "fine_tuning.job",
   "id": "ftjob-abc123",
-  "model": "gpt-4o-mini-2024-07-18",
+  "model": "gpt-4.1-mini-2025-04-14",
   "created_at": 1721764800,
   "fine_tuned_model": null,
   "organization_id": "org-123",
@@ -1962,7 +1865,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "training_file": "file-abc123",
-    "model": "gpt-4o-mini",
+    "model": "gpt-4.1-mini-2025-04-14",
     "method": {
       "type": "supervised",
       "supervised": {
@@ -1980,7 +1883,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 {
   "object": "fine_tuning.job",
   "id": "ftjob-abc123",
-  "model": "gpt-4o-mini",
+  "model": "gpt-4.1-mini-2025-04-14",
   "created_at": 1721764800,
   "fine_tuned_model": null,
   "organization_id": "org-123",
@@ -2016,7 +1919,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 }
 ```
 
-### Reinforcement
+### Reinforcement (historical)
 
 ```http
 curl https://api.openai.com/v1/fine_tuning/jobs \
@@ -2091,7 +1994,6 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   "usage_metrics": null,
   "shared_with_openai": false
 }
-      
 ```
 
 ### Validation file
@@ -2103,7 +2005,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   -d '{
     "training_file": "file-abc123",
     "validation_file": "file-abc123",
-    "model": "gpt-4o-mini"
+    "model": "gpt-4.1-mini-2025-04-14"
   }'
 ```
 
@@ -2113,7 +2015,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 {
   "object": "fine_tuning.job",
   "id": "ftjob-abc123",
-  "model": "gpt-4o-mini-2024-07-18",
+  "model": "gpt-4.1-mini-2025-04-14",
   "created_at": 1721764800,
   "fine_tuned_model": null,
   "organization_id": "org-123",
@@ -2153,7 +2055,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   -d '{
     "training_file": "file-abc123",
     "validation_file": "file-abc123",
-    "model": "gpt-4o-mini",
+    "model": "gpt-4.1-mini-2025-04-14",
     "integrations": [
       {
         "type": "wandb",
@@ -2175,7 +2077,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 {
   "object": "fine_tuning.job",
   "id": "ftjob-abc123",
-  "model": "gpt-4o-mini-2024-07-18",
+  "model": "gpt-4.1-mini-2025-04-14",
   "created_at": 1721764800,
   "fine_tuned_model": null,
   "organization_id": "org-123",

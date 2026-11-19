@@ -12,11 +12,11 @@ Content type: `application/json`
 
 - `model: "gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more or string or null`
 
-  Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
+  Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
   - `"gpt-6-astra" or "gpt-6.2-astra" or "gpt-6.1-sol" or 112 more`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
     - `"gpt-6-astra"`
 
@@ -9761,83 +9761,11 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/compact \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "model": "gpt-6-astra",
-          "previous_response_id": "resp_123"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "resp_001",
-  "created_at": 1731459200,
-  "object": "response.compaction",
-  "output": [
-    {
-      "id": "msg_001",
-      "status": "completed",
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Summarize our launch checklist from last week."
-        }
-      ]
-    },
-    {
-      "id": "msg_002",
-      "status": "completed",
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "You are performing a CONTEXT CHECKPOINT COMPACTION..."
-        }
-      ]
-    },
-    {
-      "type": "compaction",
-      "id": "cmp_001",
-      "encrypted_content": "encrypted-summary"
-    }
-  ],
-  "usage": {
-    "input_tokens": 42897,
-    "input_tokens_details": {
-      "cache_write_tokens": 0,
-      "cached_tokens": 0,
-      "cache_write_tokens_details": {
-        "ttl_12h_tokens": 0,
-        "ttl_30m_tokens": 0
-      }
-    },
-    "output_tokens": 12000,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 54897
-  },
-  "image": {
-    "context_compression": "disabled"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/responses/compact \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-      "model": "gpt-6-astra",
+      "model": "gpt-6.2-astra",
       "input": [
         {
           "role": "user",

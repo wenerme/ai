@@ -51,12 +51,13 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "name": "name"
-        }'
+curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
+  -X POST \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe"
+  }'
 ```
 
 #### 200 — Example
@@ -69,16 +70,4 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
   "name": "name",
   "object": "audio.voice_consent"
 }
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
-  -X POST \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "John Doe"
-  }'
 ```

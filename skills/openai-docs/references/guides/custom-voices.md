@@ -263,6 +263,18 @@ const sessionConfig = JSON.stringify({
 });
 ```
 
+```go
+sessionConfig := map[string]any{
+	"session": map[string]any{
+		"type":              "realtime",
+		"model":             "gpt-realtime-2.1-mini",
+		"instructions":      "Read the user's text aloud without adding commentary.",
+		"output_modalities": []string{"audio"},
+		"audio":             map[string]any{"output": map[string]any{"voice": map[string]any{"id": "voice_123abc"}}},
+	},
+}
+```
+
 ```ruby
 # Replace the illustrative IDs and URLs below with your own resource values.
 require "json"

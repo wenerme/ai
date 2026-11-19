@@ -403,19 +403,8 @@ curl https://api.openai.com/v1/images/generations \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "model": "gpt-image-2.5-flare",
-          "prompt": "A cute baby sea otter",
-          "background": "transparent",
-          "moderation": "low",
-          "n": 1,
-          "output_compression": 100,
-          "output_format": "png",
-          "partial_images": 1,
-          "quality": "medium",
-          "safety_identifier": "user-1234",
-          "size": "1024x1024",
-          "style": "vivid",
-          "user": "user-1234"
+          "model": "gpt-image-2.6-flare",
+          "prompt": "A cute baby sea otter"
         }'
 ```
 
@@ -466,7 +455,7 @@ curl https://api.openai.com/v1/images/generations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-image-2.5-flare",
+    "model": "gpt-image-2.6-flare",
     "prompt": "A cute baby sea otter",
     "n": 1,
     "size": "1024x1024"
@@ -502,7 +491,7 @@ curl https://api.openai.com/v1/images/generations \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-image-2.5-flare",
+    "model": "gpt-image-2.6-flare",
     "prompt": "A cute baby sea otter",
     "n": 1,
     "size": "1024x1024",

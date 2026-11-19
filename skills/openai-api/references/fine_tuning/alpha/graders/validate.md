@@ -994,37 +994,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "grader": {
-            "input": "input",
-            "name": "name",
-            "operation": "eq",
-            "reference": "reference",
-            "type": "string_check"
-          }
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "grader": {
-    "input": "input",
-    "name": "name",
-    "operation": "eq",
-    "reference": "reference",
-    "type": "string_check"
-  }
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{

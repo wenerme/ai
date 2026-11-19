@@ -4979,7 +4979,7 @@ the `background` parameter set to `true` can be cancelled.
 
   - `model: ResponsesModel`
 
-    Model ID used to generate the response, like `gpt-6-astra`. OpenAI
+    Model ID used to generate the response, like `gpt-6.2-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
@@ -10703,159 +10703,6 @@ the `background` parameter set to `true` can be cancelled.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41",
-  "object": "response",
-  "access_programs": null,
-  "created_at": 1741476777,
-  "status": "completed",
-  "completed_at": 1741476778,
-  "error": null,
-  "incomplete_details": null,
-  "instructions": null,
-  "max_output_tokens": null,
-  "model": "gpt-6-astra",
-  "output": [
-    {
-      "type": "message",
-      "id": "msg_67ccd3acc8d48190a77525dc6de64b4104becb25c45c1d41",
-      "status": "completed",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "The image depicts a scenic landscape with a wooden boardwalk or pathway leading through lush, green grass under a blue sky with some clouds. The setting suggests a peaceful natural area, possibly a park or nature reserve. There are trees and shrubs in the background.",
-          "annotations": [],
-          "logprobs": []
-        }
-      ]
-    }
-  ],
-  "parallel_tool_calls": true,
-  "previous_response_id": null,
-  "reasoning": {
-    "effort": null,
-    "summary": null,
-    "context": null
-  },
-  "store": true,
-  "temperature": 1,
-  "text": {
-    "format": {
-      "type": "text"
-    }
-  },
-  "tool_choice": "auto",
-  "tools": [],
-  "top_p": 1,
-  "truncation": "disabled",
-  "usage": {
-    "input_tokens": 328,
-    "input_tokens_details": {
-      "cached_tokens": 0,
-      "cache_write_tokens": 0
-    },
-    "output_tokens": 52,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 380
-  },
-  "tool_usage": {
-    "image_gen": {
-      "input_tokens": 0,
-      "input_tokens_details": {
-        "text_tokens": 0,
-        "image_tokens": 0
-      },
-      "output_tokens": 0,
-      "output_tokens_details": {
-        "text_tokens": 0,
-        "image_tokens": 0
-      },
-      "total_tokens": 0
-    },
-    "web_search": {
-      "num_requests": 0
-    }
-  },
-  "user": null,
-  "metadata": {},
-  "conversation": {
-    "id": "id"
-  },
-  "image": {
-    "context_compression": "enabled"
-  },
-  "input_transformations": [
-    {
-      "id": "id",
-      "action": "removed",
-      "reason": "organization_mismatch",
-      "type": "reasoning"
-    }
-  ],
-  "moderation": {
-    "input": {
-      "categories": {
-        "foo": true
-      },
-      "category_applied_input_types": {
-        "foo": [
-          "text"
-        ]
-      },
-      "category_scores": {
-        "foo": 0
-      },
-      "flagged": true,
-      "model": "model",
-      "type": "moderation_result"
-    },
-    "output": {
-      "categories": {
-        "foo": true
-      },
-      "category_applied_input_types": {
-        "foo": [
-          "text"
-        ]
-      },
-      "category_scores": {
-        "foo": 0
-      },
-      "flagged": true,
-      "model": "model",
-      "type": "moderation_result"
-    }
-  },
-  "output_text": "output_text",
-  "prompt_cache_diagnostics": {
-    "cache_missed_tokens": 0,
-    "reason": "model_changed",
-    "type": "cache_miss",
-    "comparison_reusable_tokens": 0
-  },
-  "prompt_cache_options": {
-    "mode": "implicit",
-    "ttl": "30m",
-    "comparison_response_id": "comparison_response_id"
-  },
-  "service_tier": "auto"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY"
@@ -10876,7 +10723,7 @@ curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-6-astra",
+  "model": "gpt-6.2-astra",
   "output": [
     {
       "type": "message",

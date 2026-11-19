@@ -59,6 +59,58 @@ if diagnostics is not None and diagnostics.type == "cache_miss":
     print(diagnostics.cache_missed_tokens)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+	"os"
+)
+
+func main() {
+	policy, err := os.ReadFile("support-policy.txt") // At least 1,024 tokens.
+	if err != nil {
+		panic(err)
+	}
+	client := openai.NewClient()
+	ctx := context.Background()
+	params := responses.ResponseNewParams{
+		Model: "gpt-6-astra", Instructions: openai.String(string(policy)),
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Reply with exactly OK.")},
+		Tools: []responses.ToolUnionParam{{OfFunction: &responses.FunctionToolParam{Name: "get_time"}}},
+	}
+	first, err := client.Responses.New(ctx, params)
+	if err != nil {
+		panic(err)
+	}
+	if first.Status != "completed" {
+		panic("Baseline response did not complete")
+	}
+	params.Tools = []responses.ToolUnionParam{{OfFunction: &responses.FunctionToolParam{Name: "get_date"}}}
+	params.PromptCacheOptions = responses.ResponseNewParamsPromptCacheOptions{ComparisonResponseID: openai.String(first.ID)}
+	second, err := client.Responses.New(ctx, params)
+	if err != nil {
+		panic(err)
+	}
+	if second.Status != "completed" {
+		panic("Comparison response did not complete")
+	}
+	diagnostic := second.PromptCacheDiagnostics
+	if diagnostic.Type == "cache_miss" {
+		fmt.Println(diagnostic.Reason)
+		if !diagnostic.JSON.ComparisonReusableTokens.Valid() {
+			fmt.Println("None")
+		} else {
+			fmt.Println(diagnostic.ComparisonReusableTokens)
+		}
+		fmt.Println(diagnostic.CacheMissedTokens)
+	}
+}
+```
+
 ```ruby
 require "openai"
 

@@ -23,24 +23,6 @@ Deletes a model response with the given ID.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/$RESPONSE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "response.deleted"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/responses/resp_123 \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY"

@@ -139,40 +139,6 @@ Returns the Upload object with status `cancelled`.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "filename": "filename",
-  "purpose": "purpose",
-  "status": "pending",
-  "file": {
-    "id": "id",
-    "bytes": 0,
-    "created_at": 0,
-    "filename": "filename",
-    "object": "file",
-    "purpose": "assistants",
-    "status": "uploaded",
-    "expires_at": 0,
-    "status_details": "status_details"
-  },
-  "object": "upload"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/uploads/upload_abc123/cancel
 ```
 
@@ -343,45 +309,6 @@ Content type: `application/json`
     The object type, which is always "upload".
 
     - `"upload"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/uploads/$UPLOAD_ID/complete \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "part_ids": [
-            "string"
-          ]
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "filename": "filename",
-  "purpose": "purpose",
-  "status": "pending",
-  "file": {
-    "id": "id",
-    "bytes": 0,
-    "created_at": 0,
-    "filename": "filename",
-    "object": "file",
-    "purpose": "assistants",
-    "status": "uploaded",
-    "expires_at": 0,
-    "status_details": "status_details"
-  },
-  "object": "upload"
-}
-```
 
 ### Example
 
@@ -616,46 +543,6 @@ Content type: `application/json`
 
 ```http
 curl https://api.openai.com/v1/uploads \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "bytes": 0,
-          "filename": "filename",
-          "mime_type": "mime_type",
-          "purpose": "assistants"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "bytes": 0,
-  "created_at": 0,
-  "expires_at": 0,
-  "filename": "filename",
-  "purpose": "purpose",
-  "status": "pending",
-  "file": {
-    "id": "id",
-    "bytes": 0,
-    "created_at": 0,
-    "filename": "filename",
-    "object": "file",
-    "purpose": "assistants",
-    "status": "uploaded",
-    "expires_at": 0,
-    "status_details": "status_details"
-  },
-  "object": "upload"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/uploads \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "purpose": "fine-tune",
@@ -859,26 +746,6 @@ Content type: `multipart/form-data`
   - `upload_id: string`
 
     The ID of the Upload object that this Part was added to.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/uploads/$UPLOAD_ID/parts \
-    -H 'Content-Type: multipart/form-data' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F 'data=@/path/to/data'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "object": "upload.part",
-  "upload_id": "upload_id"
-}
-```
 
 ### Example
 

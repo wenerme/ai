@@ -173,6 +173,14 @@ This helper packages your folder and creates a session. Pass your API client and
 
 
 
+The Go program uses the OpenAI SDK and standard-library ZIP support. It creates a temporary example plugin, uploads it, and removes the local directory. To upload your own plugin, call `uploadPlugin` with its directory. The program rejects symbolic links and other non-regular files when creating the archive.
+
+
+
+
+
+
+
 The Ruby helper requires the `openai` and `rubyzip` gems. Install them with `gem install openai rubyzip` and set `OPENAI_API_KEY` before creating the client.
 
 
@@ -218,6 +226,119 @@ def upload_plugin(client, plugin_directory):
                 ],
             },
         )
+```
+
+```go
+package main
+
+import (
+	"archive/zip"
+	"bytes"
+	"context"
+	"encoding/base64"
+	"encoding/json"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"io"
+	"io/fs"
+	"log"
+	"os"
+	"path/filepath"
+	"time"
+)
+
+func uploadPlugin(ctx context.Context, client *openai.Client, directory string) (*openai.AgentSession, error) {
+	directory, err := filepath.Abs(directory)
+	if err != nil {
+		return nil, err
+	}
+	data, err := os.ReadFile(filepath.Join(directory, ".codex-plugin/plugin.json"))
+	if err != nil {
+		return nil, err
+	}
+	var manifest struct {
+		Name        string `json:"name"`
+		Description string `json:"description"`
+	}
+	if err := json.Unmarshal(data, &manifest); err != nil {
+		return nil, err
+	}
+	if manifest.Name == "" || manifest.Description == "" {
+		return nil, fmt.Errorf("plugin manifest requires name and description")
+	}
+	var buffer bytes.Buffer
+	archive := zip.NewWriter(&buffer)
+	err = filepath.WalkDir(directory, func(path string, entry fs.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if entry.IsDir() {
+			return nil
+		}
+		if !entry.Type().IsRegular() {
+			return fmt.Errorf("plugin archive requires regular files: %s", path)
+		}
+		relative, err := filepath.Rel(directory, path)
+		if err != nil {
+			return err
+		}
+		member, err := archive.Create(filepath.ToSlash(filepath.Join(filepath.Base(directory), relative)))
+		if err != nil {
+			return err
+		}
+		file, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		defer file.Close()
+		_, err = io.Copy(member, file)
+		return err
+	})
+	closeErr := archive.Close()
+	if err != nil {
+		return nil, err
+	}
+	if closeErr != nil {
+		return nil, closeErr
+	}
+	return client.Beta.Agents.Sessions.New(ctx, openai.BetaAgentSessionNewParams{Agent: openai.BetaAgentSessionNewParamsAgent{Model: openai.String("gpt-6-astra")}, Environment: openai.EnvironmentParamUnion{OfParamOpenAIHosted: &openai.EnvironmentParamOpenAIHosted{Plugins: []openai.HostedPluginParam{{Name: manifest.Name, Description: manifest.Description, Source: openai.InlineCapabilitySourceParam{Data: base64.StdEncoding.EncodeToString(buffer.Bytes())}}}}}})
+}
+func run() error {
+	temporary, err := os.MkdirTemp("", "docs-plugin-")
+	if err != nil {
+		return err
+	}
+	defer os.RemoveAll(temporary)
+	directory := filepath.Join(temporary, "docs-helper")
+	files := map[string]string{
+		".codex-plugin/plugin.json":   `{"name":"docs-helper","version":"1.0.0","description":"Find answers in OpenAI developer documentation.","skills":"./skills/","mcpServers":"./.mcp.json"}`,
+		".mcp.json":                   `{"mcpServers":{"openai_docs":{"type":"http","url":"https://developers.openai.com/mcp"}}}`,
+		"skills/docs-search/SKILL.md": "---\nname: docs-search\ndescription: Find answers in OpenAI developer documentation.\n---\n\nUse the openai_docs MCP server to find relevant documentation.\nAnswer the question and link to the sources you used.\n",
+	}
+	for name, content := range files {
+		path := filepath.Join(directory, name)
+		if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+			return err
+		}
+		if err := os.WriteFile(path, []byte(content), 0600); err != nil {
+			return err
+		}
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+	client := openai.NewClient()
+	session, err := uploadPlugin(ctx, &client, directory)
+	if err != nil {
+		return err
+	}
+	fmt.Println(session.ID)
+	return nil
+}
+func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
 ```
 
 ```ruby

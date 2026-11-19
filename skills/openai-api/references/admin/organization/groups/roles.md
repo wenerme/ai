@@ -93,43 +93,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "role_id": "role_id"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "group": {
-    "id": "id",
-    "created_at": 0,
-    "name": "name",
-    "object": "group",
-    "scim_managed": true
-  },
-  "object": "group.role",
-  "role": {
-    "id": "id",
-    "description": "description",
-    "name": "name",
-    "object": "role",
-    "permissions": [
-      "string"
-    ],
-    "predefined_role": true,
-    "resource_type": "resource_type"
-  }
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
@@ -190,23 +153,6 @@ Unassigns an organization role from a group within the organization.
 - `object: string`
 
   Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "deleted": true,
-  "object": "object"
-}
-```
 
 ### Example
 
@@ -336,50 +282,6 @@ Lists the organization roles assigned to a group within the organization.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "assignment_sources": [
-        {
-          "principal_id": "principal_id",
-          "principal_type": "principal_type"
-        }
-      ],
-      "created_at": 0,
-      "created_by": "created_by",
-      "created_by_user_obj": {
-        "foo": "bar"
-      },
-      "description": "description",
-      "metadata": {
-        "foo": "bar"
-      },
-      "name": "name",
-      "permissions": [
-        "string"
-      ],
-      "predefined_role": true,
-      "resource_type": "resource_type",
-      "updated_at": 0
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"
@@ -496,43 +398,6 @@ Retrieves an organization role assigned to a group.
   When the role was last updated.
 
   `format: unixtime`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "assignment_sources": [
-    {
-      "principal_id": "principal_id",
-      "principal_type": "principal_type"
-    }
-  ],
-  "created_at": 0,
-  "created_by": "created_by",
-  "created_by_user_obj": {
-    "foo": "bar"
-  },
-  "description": "description",
-  "metadata": {
-    "foo": "bar"
-  },
-  "name": "name",
-  "permissions": [
-    "string"
-  ],
-  "predefined_role": true,
-  "resource_type": "resource_type",
-  "updated_at": 0
-}
-```
 
 ### Example
 

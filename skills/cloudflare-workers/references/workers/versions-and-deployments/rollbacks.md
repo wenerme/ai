@@ -60,8 +60,6 @@ Errors could occur if using code for a prior version if the structure of data ha
 
 You can only roll back to the 100 most recently published versions.
 
-Cloudflare always keeps the 100 most recent versions. Older versions can be deleted under [version retention](https://developers.cloudflare.com/workers/versions-and-deployments/#version-retention), and you cannot roll back to a deleted version.
-
 Note
 
 When using Wrangler in interactive mode, you can select from up to 100 recent versions. To roll back to a specific version, you can also specify the version ID directly on the command line. Refer to the [`wrangler rollback`](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) documentation for details on specifying version IDs.

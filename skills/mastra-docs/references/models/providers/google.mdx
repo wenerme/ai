@@ -5,7 +5,7 @@ description: "Browse Google model IDs, capabilities, context windows, and pricin
 
 # [Google logo]Google
 
-Access 38 Google models through Mastra's model router. Authentication is handled automatically using one of the following environment variables: `GOOGLE_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY`.
+Access 39 Google models through Mastra's model router. Authentication is handled automatically using one of the following environment variables: `GOOGLE_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY`.
 
 Learn more in the [Google documentation](https://ai.google.dev/gemini-api/docs/models).
 
@@ -349,6 +349,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 1.5,
     "outputCost": 7.5
+  },
+  {
+    "model": "google/gemini-4-neon",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "google/gemini-embedding-001",

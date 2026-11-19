@@ -49,29 +49,6 @@ Content type: `application/json`
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/groups \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "name": "x"
-        }'
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "group_type": "group",
-  "is_scim_managed": true,
-  "name": "name"
-}
-```
-
-### Example
-
-```http
 curl -X POST https://api.openai.com/v1/organization/groups \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \

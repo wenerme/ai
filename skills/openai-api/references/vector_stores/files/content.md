@@ -45,30 +45,6 @@ Retrieve the parsed contents of a vector store file.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/files/$FILE_ID/content \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "text": "text",
-      "type": "type"
-    }
-  ],
-  "has_more": true,
-  "next_page": "next_page",
-  "object": "vector_store.file_content.page"
-}
-```
-
-### Example
-
-```http
 curl \
 https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 -H "Authorization: Bearer $OPENAI_API_KEY"

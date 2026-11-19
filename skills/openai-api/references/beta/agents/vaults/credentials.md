@@ -1444,7 +1444,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     -H 'OpenAI-Beta: agents=v1' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "metadata": {}
+          "metadata": {
+            "environment": "staging"
+          }
         }'
 ```
 

@@ -46,7 +46,7 @@ Use the `embedContent` method to generate text embeddings:
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   
   async function main() {
@@ -343,7 +343,7 @@ similar in meaning strings of texts are.
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   // npm i compute-cosine-similarity
   import * as cosineSimilarity from "compute-cosine-similarity";
@@ -927,7 +927,7 @@ through the [Files API](/docs/files).
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   import * as fs from "node:fs";
   
@@ -1050,7 +1050,7 @@ image input. Simply add multiple inputs to the `contents` parameter:
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   import * as fs from "node:fs";
   
@@ -1184,7 +1184,7 @@ embedding call:
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   import * as fs from "node:fs";
   
@@ -1314,7 +1314,7 @@ through the [Files API](/docs/files).
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   import * as fs from "node:fs";
   
@@ -1423,7 +1423,7 @@ through the [Files API](/docs/files).
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   import * as fs from "node:fs";
   
@@ -1568,7 +1568,7 @@ The following example shows how to embed a PDF using `gemini-embedding-2`:
   {% /tab %}
 
   {% tab label="JavaScript" %}
-  ```js
+  ```javascript
   import { GoogleGenAI } from "@google/genai";
   import * as fs from "node:fs";
   

@@ -4699,42 +4699,6 @@ Returns a list of input items for a given response.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/responses/$RESPONSE_ID/input_items \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "content": [
-        {
-          "text": "text",
-          "type": "input_text",
-          "prompt_cache_breakpoint": {
-            "mode": "explicit",
-            "ttl": "30m"
-          }
-        }
-      ],
-      "role": "user",
-      "type": "message",
-      "status": "in_progress"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/responses/resp_abc123/input_items \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY"

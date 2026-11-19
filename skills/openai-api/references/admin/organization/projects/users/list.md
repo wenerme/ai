@@ -63,34 +63,6 @@ Returns a list of users in the project.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "added_at": 0,
-      "object": "organization.project.user",
-      "role": "role",
-      "email": "email",
-      "name": "name"
-    }
-  ],
-  "has_more": true,
-  "object": "object",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/organization/projects/proj_abc/users?after=user_abc&limit=20 \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json"

@@ -38,26 +38,6 @@ Get a conversation
 ### Example
 
 ```http
-curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "conversation"
-}
-```
-
-### Example
-
-```http
 curl https://api.openai.com/v1/conversations/conv_123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```

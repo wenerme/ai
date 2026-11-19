@@ -42,27 +42,6 @@ Delete an item from a conversation with the given IDs.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### 200 — Example
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "conversation"
-}
-```
-
-### Example
-
-```http
 curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
