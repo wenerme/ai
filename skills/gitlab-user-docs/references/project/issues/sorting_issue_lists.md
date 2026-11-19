@@ -15,7 +15,7 @@ To change how a list is sorted, see [sort work items](../../work_items/_index.md
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 When you sort by , the issue list changes to sort descending by the
-number of issues each issue is [blocking](related_issues.md#blocking-issues).
+number of issues each issue is [blocking](../../work_items/linked_items.md#blocked-items).
 
 ## Sort by created, updated, or closed date
 

@@ -276,8 +276,7 @@ To link a work item from another project, enter its URL or its full reference, s
 
 ## Related topics
 
-- [Linked issues](../project/issues/related_issues.md)
-- [Linked epics](../group/epics/linked_epics.md)
+- [Linked items](linked_items.md)
 - [Issue boards](../project/issue_board.md)
 - [Labels](../project/labels.md)
 - [Iterations](../group/iterations/_index.md)

@@ -138,8 +138,10 @@ To review other open merge requests, assign the flow as a reviewer.
 The flow does not review again when you push new commits.
 To request another review, reassign the flow as a reviewer.
 
-Automatic reviews use the merge request author's GitLab Credits,
-even when someone else marks the merge request as ready.
+Automatic reviews run as the flow's service account on behalf of the merge request author.
+Their usage is [billed to the namespace](../../subscriptions/gitlab_credits.md#billing-subjects-for-credit-usage),
+not to the author or to whoever marks the merge request as ready.
+
 Automatic reviews do not run for these merge requests:
 
 - Merge requests from forks

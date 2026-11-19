@@ -5,11 +5,11 @@
 
 ### Model information
 
-- LLM: Anthropic Claude Sonnet 5.5 Gemini Enterprise Agent Platform
+- LLM: Anthropic Claude Sonnet 5.5 Gemini Enterprise Agent Platform, for both Lite and Standard reviews.
 - LLM for GitLab 19.0 or earlier: [Default LLM](../../../../gitlab_duo/model_selection.md#default-models) for GitLab Duo Code Review, the non-agentic version.
-- On GitLab.com, [select a different model](../../../model_selection.md#select-a-model-for-a-feature) using the **Agentic Code Review** setting.
+- On GitLab.com, [select a different model](../../../model_selection.md#select-a-model-for-a-feature) using the **Agentic Code Review** settings.
 - On GitLab Self-Managed and GitLab Dedicated, [select a different model](../../../../../administration/gitlab_duo/model_selection.md#select-a-model-for-code-review-flow) using the setting appropriate for your GitLab version.
-- Available on [GitLab Duo with self-hosted models](../../../../../administration/gitlab_duo_self_hosted/_index.md)
+- Available on [GitLab Duo with self-hosted models](../../../../../administration/gitlab_duo_self_hosted/_index.md) for Lite reviews only.
 
 - Introduced as [a beta](../../../../../policy/development_stages_support.md) in GitLab [18.7](https://gitlab.com/groups/gitlab-org/-/epics/18645) [with a feature flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_on_agent_platform`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8. Feature flag `duo_code_review_on_agent_platform` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217209).
@@ -227,9 +227,127 @@ To get the most from follow-up reviews:
 - Push fixes and let GitLab Duo verify them in the next review.
 - Keep discussion of a GitLab Duo finding in its thread. Follow-up reviews do not read comments outside GitLab Duo threads.
 
+## Review level
+
+- Status: Beta
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23598) as a [beta](../../../../../policy/development_stages_support.md#beta) in GitLab 19.7 [with a feature flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_standard_flow`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+The review level specifies how much context GitLab Duo gathers for a review,
+such as the diff, surrounding files, project history, and code relationships.
+
+Code Review Flow supports two review levels:
+
+- Lite: a fast review for routine changes.
+- Standard: a thorough review for complex changes, where GitLab Duo explores more of the codebase as needed. A Standard review usually surfaces more findings, but takes longer.
+
+Each level has its own model setting and [supported models](../../../model_selection.md#code-review-flow).
+
+Lite reviews use flat pricing, and Standard reviews use variable pricing.
+For more information, see [billing methods](../../../../../subscriptions/gitlab_credits.md#billing-methods).
+
+By default, Code Review Flow runs Lite reviews.
+To use Standard reviews, [turn on experiment and beta features](../../../turn_on_off.md#turn-on-beta-and-experimental-features).
+You can then request a Standard review for a single merge request, or make
+the default review level for all merge requests.
+
+### Change the level for a single review
+
+After GitLab Duo reviews a merge request, you can request another review at a different level.
+
+Prerequisites:
+
+- Experiment and beta features turned on.
+-  turned on for the project. It is on by default.
+
+To change the level for a single review:
+
+1. In the left sidebar, select  >  and find your merge request.
+1. In the right sidebar, under , find `@GitLabDuo` and select
+    ().
+1. Select  or .
+
+You can also set the level with the [`/request_review`](../../../../project/quick_actions.md#request_review) quick action.
+In a comment, enter `/request_review @GitLabDuo -lite` or `/request_review @GitLabDuo -standard`.
+
+### Configure review level settings
+
+You can configure review level settings in a project, a group, or an instance.
+
+When you change a setting for an instance or a group, GitLab applies the new value to all groups,
+subgroups, and projects below it and replaces their values.
+You can then change the setting again for a subgroup or a project.
+
+### Project
+
+Prerequisites:
+
+- The Maintainer or Owner role for the project.
+- [Experiment and beta features](../../../turn_on_off.md#turn-on-beta-and-experimental-features) turned on.
+
+To configure the review level for a project:
+
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the  section:
+   - Select or clear the  checkbox.
+   - Under , select  or .
+1. Select .
+
+### Group
+
+Prerequisites:
+
+- The Owner role for the group.
+- [Experiment and beta features](../../../turn_on_off.md#turn-on-beta-and-experimental-features) turned on.
+
+To configure the review level for a group and its subgroups and projects:
+
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Expand the  section.
+1. In the  section:
+   - Select or clear the  checkbox.
+   - Under , select  or .
+1. Select .
+
+### Instance
+
+Prerequisites:
+
+- Administrator access.
+- [Experiment and beta features](../../../turn_on_off.md#turn-on-beta-and-experimental-features) turned on.
+
+To configure the review level for all groups and projects in an instance:
+
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. In the  section:
+   - Select or clear the  checkbox.
+   - Under , select  or .
+1. Select .
+
 ## Contextual awareness
 
-Code Review Flow runs in two stages:
+Lite and Standard reviews gather context differently:
+
+- Lite reviews gather all context before the review starts.
+  A pre-scan selects related files from the merge request diffs, and the review uses only those files.
+- Standard reviews start with less context, mostly the merge request diffs.
+  During the review, GitLab Duo fetches more context as needed.
+  This context can include other project files, commit history, and code in other projects
+  that GitLab Duo can access.
+
+To specify content to exclude, see
+[manage context exclusions](../../../context.md#manage-context-exclusions).
+
+### Context for Lite reviews
+
+For Lite reviews, Code Review Flow runs in two stages:
 
 1. Pre-scan: The flow inspects the merge request diffs and uses them to identify related
    context to fetch from the project repository. The pre-scan typically includes directory
@@ -246,16 +364,34 @@ Code Review Flow runs in two stages:
    - On follow-up reviews, comment threads from previous GitLab Duo reviews, including replies.
    - Custom review instructions.
 
-To specify content to exclude, see
-[manage context exclusions](../../../context.md#manage-context-exclusions).
+### Context for Standard reviews
+
+For Standard reviews, Code Review Flow starts the review with the following data:
+
+- Merge request title.
+- Merge request description.
+- Merge request diffs.
+- Filenames.
+- Custom review instructions.
+- On follow-up reviews, comment threads from previous GitLab Duo reviews, including replies.
+
+During the review, GitLab Duo fetches more context when needed. For example, GitLab Duo can:
+
+- Read other files from the project repository, not only the files the merge request changes.
+- Search the repository for code that uses the changed code.
+- Check the commit history of the changed files.
+- Read files and search code in other projects that GitLab Duo can access, when the change depends on them.
 
 ### File and context limits
 
 Code Review Flow applies two limits to keep the prompt within a workable size:
 
-- For files longer than 10,000 lines, only the diff is sent to the model. The full file contents are not included.
-- The total context that the pre-scan gathers is capped at approximately 1 MiB. When the cap is
-  exceeded, the context is truncated to approximately 800 KiB before the review stage runs.
+- For a Lite review, files longer than 10,000 lines are sent to the model as diffs only.
+  The full file contents are not included.
+  A Standard review reads long files in parts, so this limit does not apply.
+- The merge request data that the flow fetches at the start of a review is capped at approximately 1 MiB.
+  When the cap is exceeded, the data is truncated to approximately 800 KiB before the review runs.
+  For a Standard review, the review summary states when the review does not cover all of the diff.
 
 These limits apply to the data the flow gathers and are separate from the
 [selected model's](../../../model_selection.md) context window.

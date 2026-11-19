@@ -101,10 +101,13 @@ Pipelines now include a pipeline secret detection job.
 
 ## Coverage
 
+- [Changed](https://gitlab.com/gitlab-org/security-products/analyzers/secrets/-/merge_requests/490) to scan the commits in each push to the default branch in secret detection analyzer version `v7.38.1`, released with GitLab 19.3.
+
 Pipeline secret detection is optimized to balance coverage and run time.
-Only the current state of the repository and future commits are scanned for secrets.
-To identify secrets already present in the repository's history, run a historic scan once
-after enabling pipeline secret detection. Scan results are available only after the pipeline is completed.
+On the default branch, pipeline secret detection scans the commits in each push.
+It does not scan commits that were pushed before you enabled pipeline secret detection.
+To identify secrets in those commits, run a historic scan once after enabling pipeline secret detection.
+Scan results are available only after the pipeline is completed.
 
 Exactly what is scanned for secrets depends on the type of pipeline,
 and whether any additional configuration is set.
@@ -173,9 +176,10 @@ If you experience persistent issues with missing commits in restricted network e
 
 ### Run a historic scan
 
-By default, pipeline secret detection scans only the current state of the Git repository. Any secrets
-contained in the repository's history are not detected. Run a historic scan to check for secrets from
-all commits and branches in the Git repository.
+By default, pipeline secret detection scans the commits in each push to the default branch.
+If no prior commit is available, it scans the Git working tree.
+Run a historic scan to check for secrets from all commits and branches in the Git repository,
+including secrets that are no longer present in the working tree.
 
 You should run a historic scan only once, after enabling pipeline secret detection. Historic scans
 can take a long time, especially for larger repositories with lengthy Git histories. After

@@ -109,6 +109,17 @@ npx wrangler login
 
 If you authenticate with an API token (`CLOUDFLARE_API_TOKEN`), ensure the token belongs to a user with the required roles.
 
+### Error 10196 when deploying a Worker with a VPC binding
+
+Error `10196` means the account member or API token that deploys the Worker cannot use Workers VPC.
+
+To fix this error:
+
+1. Assign the **Connectivity Directory Bind** or **Connectivity Directory Admin** role to the member. Binding directly to a Cloudflare Tunnel with `tunnel_id` requires **Connectivity Directory Admin**.
+2. If you deploy with an API token, add the matching permission to the token.
+
+API tokens inherit the permissions of the member who created them. Roles that come only from a single sign-on (SSO) group mapping may not be inherited, so assign the role to the member directly.
+
 Was this helpful?
 
 YesNo
@@ -118,5 +129,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/#page","headline":"Troubleshoot and debug","description":"Debug Workers VPC connection errors, tunnel issues, and common configuration problems.","url":"https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/og.png?v=111917df6d5cc9cf","dateModified":"2026-11-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/#page","headline":"Troubleshoot and debug","description":"Debug Workers VPC connection errors, tunnel issues, and common configuration problems.","url":"https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/og.png?v=111917df6d5cc9cf","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

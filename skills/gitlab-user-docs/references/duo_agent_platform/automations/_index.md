@@ -415,14 +415,10 @@ GitLab skips a scheduled run, and does not count a failure, when:
 - The namespace has no GitLab Credits left.
 - The project is archived or scheduled for deletion.
 
-To resume a deactivated schedule, fix the cause in the email, then set `active` to `true` with the
-[`aiFlowScheduleUpdate`](../../../api/graphql/reference/mutations.md#aiflowscheduleupdate)
-GraphQL mutation.
-To get the ID of the schedule, query the `flowSchedules` field of the automation.
-Reactivation does not reset the failure count, so one more failed run deactivates the
-schedule again.
-The automation toggle does not reactivate a schedule. After GitLab deactivates the schedule,
-the automation stays turned on, but the flow does not run.
+When GitLab deactivates the schedule, it also turns off the automation.
+To resume the schedule, fix the cause that the deactivation email describes, then
+turn the automation back on.
+When the schedule resumes, the failure count resets.
 
 ### Turn scheduled automations on or off
 

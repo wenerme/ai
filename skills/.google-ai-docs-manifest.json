@@ -8,20 +8,20 @@
   "google-ai-api/generate-content.md": {
     "url": "https://ai.google.dev/api/generate-content",
     "skill": "google-ai-api",
-    "size": 103162,
-    "updatedAt": "2026-11-18T07:10:23.125Z"
+    "size": 103138,
+    "updatedAt": "2026-11-19T19:09:07.696Z"
   },
   "google-ai-api/caching.md": {
     "url": "https://ai.google.dev/api/caching",
     "skill": "google-ai-api",
-    "size": 69325,
-    "updatedAt": "2026-11-18T07:10:23.786Z"
+    "size": 69277,
+    "updatedAt": "2026-11-19T19:09:08.326Z"
   },
   "google-ai-api/embeddings.md": {
     "url": "https://ai.google.dev/api/embeddings",
     "skill": "google-ai-api",
-    "size": 36761,
-    "updatedAt": "2026-11-18T07:10:24.447Z"
+    "size": 36737,
+    "updatedAt": "2026-11-19T19:09:09.076Z"
   },
   "google-ai-api/files.md": {
     "url": "https://ai.google.dev/api/files",
@@ -98,8 +98,8 @@
   "google-ai-docs/video.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video",
     "skill": "google-ai-docs",
-    "size": 1912,
-    "updatedAt": "2026-11-16T20:27:07.301Z"
+    "size": 2254,
+    "updatedAt": "2026-11-19T19:09:18.227Z"
   },
   "google-ai-docs/document-processing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/document-processing",
@@ -116,8 +116,8 @@
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",
     "skill": "google-ai-docs",
-    "size": 134070,
-    "updatedAt": "2026-11-18T18:58:13.293Z"
+    "size": 136038,
+    "updatedAt": "2026-11-19T19:09:20.803Z"
   },
   "google-ai-docs/code-execution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/code-execution",
@@ -158,14 +158,14 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 115954,
-    "updatedAt": "2026-11-19T07:12:16.571Z"
+    "size": 117969,
+    "updatedAt": "2026-11-19T19:09:27.134Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
     "skill": "google-ai-docs",
-    "size": 11788,
-    "updatedAt": "2026-11-19T07:12:18.006Z"
+    "size": 12512,
+    "updatedAt": "2026-11-19T19:09:28.374Z"
   },
   "google-ai-docs/openai.md": {
     "url": "https://ai.google.dev/gemini-api/docs/openai",

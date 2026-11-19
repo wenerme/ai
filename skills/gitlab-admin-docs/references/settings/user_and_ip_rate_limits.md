@@ -16,11 +16,16 @@ The following limits are disabled by default:
 - [Authenticated dependency proxy requests (per user or deploy token)](#enable-authenticated-dependency-proxy-request-rate-limit).
 
 > [!note]
-> By default, all Git operations are first tried unauthenticated. Because of this, HTTP Git operations
-> may trigger the rate limits configured for unauthenticated requests.
+> Git HTTP clients can try a request without credentials before a request with credentials.
+> Requests without credentials can trigger the
+> [unauthenticated Git HTTP rate limit](../../rate_limits/git.md#configure-unauthenticated-git-http-rate-limits).
 
-The rate limits for API requests don't affect requests made by the frontend, as these are always
-counted as web traffic.
+General API rate limits exclude requests with a valid cross-site request forgery (CSRF) token from
+a browser session.
+With the LabKit rate limiter, these requests count as web traffic unless a specialized API limit applies.
+
+To find which rate limit counts a request when several apply, see
+[request rate limit precedence](../../rate_limits/precedence.md).
 
 ## Prerequisites
 

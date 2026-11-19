@@ -178,3 +178,12 @@ They now validate the parameter type and return `400 Bad Request`.
 
 To migrate, send a single numeric ID with each request. Legitimate clients
 already do this, so no action is required for well-formed requests.
+
+## `namespaces` field in Geo site and node status API endpoints
+
+Breaking change. [Related merge request](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286).
+
+In GitLab 10.5, the `namespaces` field in the [Geo site status](../geo_sites.md#retrieve-a-geo-site-status) and
+[Geo node status](../geo_nodes.md#retrieve-a-geo-node-status) responses was deprecated in favor of the `selective_sync_type` field.
+
+The `namespaces` field will be removed in v5 of the GitLab REST API.

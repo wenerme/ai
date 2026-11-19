@@ -171,7 +171,7 @@ due dates.
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-If an epic is [blocked by another epic](../epics/linked_epics.md#blocking-epics), an icon appears next to its title to indicate its blocked status.
+If an epic is [blocked by another epic](../../work_items/linked_items.md#blocked-items), an icon appears next to its title to indicate its blocked status.
 
 When you hover over the blocked icon (), a detailed information popover is displayed.
 

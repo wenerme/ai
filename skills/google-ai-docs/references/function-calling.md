@@ -1459,6 +1459,16 @@ arguments={'color_temp': 'warm', 'brightness': 25}
 
 {% /tabs %}
 
+{% callout type="note" %}
+   Tool declarations aren't stored with the
+  interaction. Send the same `tools` array on every request, including requests
+  that pass `previous_interaction_id`, as the examples in this step do. If a later
+  request leaves tools out, the model only knows about the tools it already
+  called. This matters most with
+  [tool retrieval](/docs/tool-retrieval#resend-tools). 
+
+{% /callout %}
+
 ### Stateless function calling  {% id="stateless-function-calling" %}
 
 You can also use function calling in stateless mode by managing the conversation history on the client side and setting `store=false`.
@@ -1468,6 +1478,8 @@ In stateless mode, you must pass the full history of the conversation in the `in
 1. The initial `user_input` step.
 2. All model-generated steps returned in Turn 1 (including `thought` and `function_call` steps) exactly as received.
 3. The `function_result` step containing the output of your executed function.
+
+If you use [tool retrieval](/docs/tool-retrieval) with `defer_loading`, the model-generated steps also include `tool_search_call` and `tool_search_result` steps. Send them back unchanged, including their `signature` field, or the next request fails with a `400` error. See [Stateless conversations](/docs/tool-retrieval#stateless).
 
 {% tabs %}
   {% tab filename="sample.py" label="Python" %}
@@ -2341,6 +2353,42 @@ first, then get weather for that location).
   {% /tab %}
 
 {% /tabs %}
+
+## Scaling to large tool libraries  {% id="tool-retrieval" %}
+
+Every function declaration you send is billed as input tokens on every request,
+and tool selection accuracy declines as the number of candidates grows. Once you
+pass roughly 20 to 30 tools, consider [tool retrieval](/docs/tool-retrieval). It
+lets the model search your tool library and load only the schemas it needs for
+the current task.
+
+Mark the tools you want to withhold with `defer_loading: true` and add a
+`tool_search` tool:
+
+```python
+tools = [
+    {"type": "tool_search"},
+    {
+        "type": "function",
+        "name": "convert_currency",
+        "description": "Convert an amount from one currency to another.",
+        "defer_loading": True,
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "amount": {"type": "number"},
+                "to": {"type": "string"},
+            },
+            "required": ["amount", "to"],
+        },
+    },
+]
+```
+
+Deferred tools contribute only their name and description to the initial
+context. Gemini loads the full schema when it needs it, or you can run the
+search yourself with `execution: "client"`. See the
+[Tool retrieval](/docs/tool-retrieval) guide.
 
 ## Function calling modes  {% id="function_calling_modes" %}
 

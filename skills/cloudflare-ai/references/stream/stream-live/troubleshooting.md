@@ -30,18 +30,7 @@ If your live stream is buffering, freezing, experiencing latency issues, or havi
 
 The keyframe interval (also called GOP size) is a measurement of how often keyframes are sent to Stream. A shorter keyframe interval requires more Internet bandwidth on the broadcast side, but can reduce glass-to-glass latency. A longer keyframe requires less Internet bandwidth and can reduce buffering and freezing, but can increase glass-to-glass latency.</details>
 
-4. Look at your **Upload-to-Duration Ratio** chart.
-
-   It should be a consistent flat line below 90%. If you see an inconsistent or wavy line, or a line that is consistently above 100%, try the following troubleshooting steps:
-   - [Check that your Internet upload speed ↗︎](https://speed.cloudflare.com/) is at least 20 Mbps. If it is below 20 Mbps, use common troubleshooting steps such as restarting your router, using an Ethernet connection instead of Wi-Fi, or contacting your Internet service provider.
-   - Check the video bitrate setting in the software or service you use to send the stream to Cloudflare.
-     - If it is "variable", change it to "constant" with a specific number, like 8 Mbps.
-     - If it is above 15 Mbps, lower it to 8 Mbps or 70% of your Internet speed, whichever is lower.
-   - Follow the steps above (the keyframe interval steps) to *increase* the keyframe interval in the software or service you use to send the stream to Cloudflare.<details><summary>
-
-   What is the upload-to-duration ratio?</summary>
-
-The upload-to-duration ratio is a measurement of how long it takes to upload a part of the stream compared to how long that part would take to play. A ratio of less than 100% means that the stream is uploading at least as fast as it would take to play, so most users should not experience buffering or freezing. A ratio of 100% or more means that your video is uploading slower than it would take to play, so it is likely that most users will experience buffering and freezing.</details>
+4. Select the **Logs** tab and check for errors. Refer to [Error codes](#error-codes) to identify the cause.
 
 ## Encoder failing to connect or keeps disconnecting
 
@@ -49,7 +38,7 @@ If your encoder shows a connection error such as "Failed to connect to server" o
 
 - Verify that your RTMPS URL, stream key, and encoder software are copied correctly into your broadcasting software.
 - If the connection fails, check whether the live input is [disabled](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#enable-or-disable-a-live-input) or its [broadcast keys have been rotated](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#rotate-broadcast-keys).
-- If you use [Live Webhooks](https://developers.cloudflare.com/stream/stream-live/webhooks/), check for a `live_input.errored` event. The webhook payload includes an [error code](https://developers.cloudflare.com/stream/stream-live/webhooks/#error-codes) that can help you troubleshoot the specific cause.
+- If you use [Live Webhooks](https://developers.cloudflare.com/stream/stream-live/webhooks/), check for a `live_input.errored` event. The webhook payload includes an [error code](#error-codes) that can help you troubleshoot the specific cause.
 
 ## Connecting but the player says "Stream has not started yet"
 
@@ -60,6 +49,49 @@ If your encoder is connected and the dashboard shows a green **Connected** statu
 - Verify that your encoder is sending [AAC audio](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations). If it is not, set your encoder's settings to AAC explicitly.
 - Verify that your encoder is sending keyframes at a fixed interval between two and eight seconds. If the keyframe interval is set to *variable* or *automatic*, change it to a specific value such as four seconds. For more details, refer to the keyframe information in [Buffering, freezing, and latency](#buffering-freezing-and-latency).
 
+## Error codes
+
+Live input warnings and errors are communicated both in the **Logs** tab for your live input, the `live_input.errored` [live webhook payload](https://developers.cloudflare.com/stream/stream-live/webhooks/), and via [GraphQL](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/#event-fields). The following codes are reported:
+
+Fatal conditions that will block playback or recording completely:
+
+- `ERR_UNSUPPORTED_VIDEO_CODEC` – The input video codec is unsupported for the protocol used.
+- `ERR_UNSUPPORTED_AUDIO_CODEC` – The input audio codec is unsupported for the protocol used.
+- `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purchase additional storage.
+- `ERR_MISSING_SUBSCRIPTION` – Unauthorized to start a live stream. Check subscription or log into Dash for details.
+
+Non-fatal errors that will negatively affect playback or recordings:
+
+- `ERR_GOP_OUT_OF_RANGE` – The input GOP size or keyframe interval is less than 2 seconds or greater than 8.
+- `ERR_UNHEALTHY` – The active broadcast cannot be processed for an unknown reason that is most often due to encoder misconfiguration. Confirm the broadcast follows [required and recommended settings](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations), then disconnect and reconnect to try again.
+- `ERR_LIVE_INPUT_LLHLS_INCOMPATIBLE` – The input is enabled for Low-Latency HLS and encountered a B-Frame, which are not supported in LL-HLS and may result in buffering or stuttering on playback.
+
+The following example shows an error code in a `live_input.errored` webhook payload:
+
+*Example live\_input.errored webhook payloadjson*
+
+```json
+{
+  "name": "Live Webhook Test",
+  "text": "Notification type: Stream Live Input\nInput ID: 2c28dd2cc444cb77578c4840b51e43a8\nEvent type: live_input.errored\nUpdated at: 2024-07-09T18:07:51.077371662Z\nError Code: ERR_GOP_OUT_OF_RANGE\nError Message: Input GOP size or keyframe interval is out of range.\nVideo Codec: \nAudio Codec: ",
+  "data": {
+    "notification_name": "Stream Live Input",
+    "input_id": "eb222fcca08eeb1ae84c981ebe8aeeb6",
+    "event_type": "live_input.errored",
+    "updated_at": "2024-07-09T18:07:51.077371662Z",
+    "live_input_errored": {
+      "error": {
+        "code": "ERR_GOP_OUT_OF_RANGE",
+        "message": "Input GOP size or keyframe interval is out of range."
+      },
+      "video_codec": "",
+      "audio_codec": ""
+    }
+  },
+  "ts": 1720548474
+}
+```
+
 Was this helpful?
 
 YesNo
@@ -69,5 +101,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/#page","headline":"Troubleshooting a live stream","description":"Diagnose and resolve buffering, freezing, latency, and other Cloudflare Stream Live issues.","url":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/og.png?v=98bf71f19fd0a9de","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/#page","headline":"Troubleshooting a live stream","description":"Diagnose and resolve buffering, freezing, latency, and other Cloudflare Stream Live issues.","url":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/og.png?v=98bf71f19fd0a9de","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

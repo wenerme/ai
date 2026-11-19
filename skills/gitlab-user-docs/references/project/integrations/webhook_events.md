@@ -1890,6 +1890,8 @@ Payload example:
 
 ## Job events
 
+- `build_status_changed_at` and `build_status_changed_at_iso` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266428) in GitLab 19.7.
+
 Job events are triggered when the status of a job changes. Trigger jobs are excluded.
 
 The `commit.id` in the payload is the ID of the pipeline, not the ID of the commit.
@@ -1900,6 +1902,15 @@ When the `sidekiq_concurrency_limit_use_free_slots_Ci::ExecuteBuildHooksWorker` 
 The flag is disabled by default.
 Under high load, an event for a later status can arrive before an event for an earlier status of the same job.
 The `build_status` field describes the job's status when the event occurred, not necessarily its current status.
+
+The `build_status_changed_at` and `build_status_changed_at_iso` fields contain the time
+of the status change in `build_status`.
+For `success`, `failed`, and `canceled` jobs, this is the same time as `build_finished_at`.
+For statuses without a recorded time, such as `skipped`, `manual`, or `preparing`, these fields contain the time the job was last updated.
+If the job is no longer in one of these statuses, these fields are `null`.
+Use these fields to order job events chronologically, because
+webhooks can be delivered out of order or after a delay.
+Events with `null` in these fields cannot be ordered this way.
 
 Request header:
 
@@ -1921,12 +1932,14 @@ Payload example:
   "build_name": "test",
   "build_stage": "test",
   "build_status": "created",
+  "build_status_changed_at": "2021-02-23T02:41:37.886Z",
   "build_created_at": "2021-02-23T02:41:37.886Z",
   "build_started_at": null,
   "build_finished_at": null,
   "build_created_at_iso": "2021-02-23T02:41:37Z",
   "build_started_at_iso": null,
   "build_finished_at_iso": null,
+  "build_status_changed_at_iso": "2021-02-23T02:41:37Z",
   "build_duration": null,
   "build_queued_duration": 1095.588715,
   "build_allow_failure": false,

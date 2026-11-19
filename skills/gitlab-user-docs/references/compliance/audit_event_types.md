@@ -108,8 +108,13 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`artifact_registry_repository_artifacts_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272332) | Deletion of every artifact in an Artifact Registry repository is requested through the GitLab UI or GraphQL API | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/ops/artifact-registry/-/work_items/718) | Group, Instance |
+| [`artifact_registry_repository_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272332) | An Artifact Registry repository is created through the GitLab UI or GraphQL API | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/ops/artifact-registry/-/work_items/718) | Group, Instance |
+| [`artifact_registry_repository_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272332) | An Artifact Registry repository and every artifact it holds are deleted through the GitLab UI or GraphQL API | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/ops/artifact-registry/-/work_items/718) | Group, Instance |
+| [`artifact_registry_repository_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272332) | An Artifact Registry repository's visibility, description, settings, or upstream list is updated through the GitLab UI or GraphQL API | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/ops/artifact-registry/-/work_items/718) | Group, Instance |
 | [`artifact_registry_role_granted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268575) | An Artifact Registry role is granted to a user on an organization or repository | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/634604) | Group, Instance |
 | [`artifact_registry_role_revoked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268575) | An Artifact Registry role is revoked from a user on an organization or repository | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/634604) | Group, Instance |
+| [`artifact_registry_upstream_repository_dissociated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272332) | An upstream repository association is removed from an Artifact Registry virtual repository through the GitLab UI or GraphQL API | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/ops/artifact-registry/-/work_items/718) | Group, Instance |
 
 ### Audit events
 

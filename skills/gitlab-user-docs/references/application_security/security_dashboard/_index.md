@@ -240,10 +240,7 @@ To view details:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259541) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_dashboard_mttr_chart`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263600) in GitLab 19.6.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/626731) in GitLab 19.7. Feature flag `security_dashboard_mttr_chart` removed.
 
 The **MTTR over time** chart is available on project, group, and organization dashboards.
 It shows the mean time to remediation (MTTR) for vulnerabilities as a weekly trend over the last 12 weeks.

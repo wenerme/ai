@@ -23,7 +23,7 @@ The limits are:
 
 | Limit                   | Default                   | Applies to |
 |-------------------------|---------------------------|------------|
-| Domain creation         | 20 domains each day       | Adding a custom domain in the UI and with `POST /projects/:id/pages/domains`, and [adding a group domain](../../user/enterprise_user/_index.md#add-group-domains). Attempts that fail validation do not count toward the limit. |
+| Domain creation         | 50 domains each day       | Adding a custom domain in the UI and with `POST /projects/:id/pages/domains`, and [adding a group domain](../../user/enterprise_user/_index.md#add-group-domains). Attempts that fail validation do not count toward the limit. |
 | Domain verification     | 5 requests every minute   | Verifying a custom domain in the UI and with `PUT /projects/:id/pages/domains/:domain/verify`, and [verifying a group domain](../../user/enterprise_user/_index.md#add-group-domains). |
 
 Requests over a limit return `429 Too Many Requests` in the API, and an error message in the UI, only when the `pages_domain_rate_limits` feature flag is enabled.

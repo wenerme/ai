@@ -376,7 +376,6 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | `DUO_CHAT_TROUBLESHOOT_JOB` | Duo chat troubleshoot job feature setting. |
 | `DUO_CHAT_WRITE_TESTS` | Duo chat write test feature setting. |
 | `DUO_DEVELOPER` | Duo developer feature setting. |
-| `FEATURE_DISCOVERY_SEARCH` | Feature discovery search feature setting. |
 | `GENERATE_COMMIT_MESSAGE` | Generate commit message feature setting. |
 | `GLAB_ASK_GIT_COMMAND` | Glab ask git command feature setting. |
 | `RECOMMEND_REVIEWERS_ASSIGN` | Recommend reviewers assign feature setting. |
@@ -684,7 +683,7 @@ Type of AI usage event.
 | `REQUEST_DUO_VULNERABILITY_RESOLUTION` | An AI vulnerability resolution was requested with GitLab Duo. |
 | `REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_AUTHOR` | MR author requested Duo Code Review. |
 | `REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_NON_AUTHOR` | Non-author requested Duo Code Review on MR. |
-| `RESOLVE_FEATURE_DISCOVERY_SEARCH` | Feature discovery search was resolved. |
+| `RESOLVE_FEATURE_DISCOVERY_SEARCH` | Feature discovery search was resolved. Old data only. |
 | `RESTORE_AI_CATALOG_ITEM` | AI Catalog item version was restored as new latest version. |
 | `START_MCP_TOOL_CALL` | MCP tool call was started. |
 | `SUMMARIZE_NEW_MERGE_REQUEST` | Merge request summary was generated. |
@@ -1654,6 +1653,7 @@ Values for sorting CI/CD job analytics.
 | `FAILED_OUTDATED_DEPLOYMENT_JOB` | A job that failed due to failed outdated deployment job. |
 | `FORWARD_DEPLOYMENT_FAILURE` | A job that failed due to forward deployment failure. |
 | `ID_TOKEN_BURNED_PROJECT_PATH` | A job that failed due to id token burned project path. |
+| `ID_TOKEN_TARGET_AUDIENCE_NOT_ALLOWED` | A job that failed due to id token target audience not allowed. |
 | `INSUFFICIENT_BRIDGE_PERMISSIONS` | A job that failed due to insufficient bridge permissions. |
 | `INSUFFICIENT_UPSTREAM_PERMISSIONS` | A job that failed due to insufficient upstream permissions. |
 | `INVALID_BRIDGE_TRIGGER` | A job that failed due to invalid bridge trigger. |

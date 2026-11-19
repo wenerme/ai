@@ -300,7 +300,11 @@ Example response:
 
 ## List all Geo site statuses
 
+- `namespaces` [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5.
+
 Lists all Geo site statuses.
+
+The `namespaces` attribute in the response is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5. Use `selective_sync_type` instead.
 
 From GitLab 19.6, when the legacy `geo_upload_replication` and `geo_upload_force_primary_checksumming` feature flags are disabled, the `uploads_*` fields are the sum of the values for each upload type.
 
@@ -1405,7 +1409,11 @@ Example response:
 
 ## Retrieve a Geo site status
 
+- `namespaces` [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5.
+
 Retrieves a specified Geo site status.
+
+The `namespaces` attribute in the response is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5. Use `selective_sync_type` instead.
 
 From GitLab 19.6, when the legacy `geo_upload_replication` and `geo_upload_force_primary_checksumming` feature flags are disabled, the `uploads_*` fields are the sum of the values for each upload type.
 

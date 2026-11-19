@@ -116,6 +116,7 @@ The token also includes custom claims provided by GitLab:
 | `project_visibility`    | Always                                     | The [visibility](../../user/public_access.md) of the project where the pipeline is running. Can be `internal`, `private`, or `public`. |
 | `job_source`            | Always                                     | [Job source](../jobs/_index.md#available-job-sources). [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/459001) in GitLab 18.9. |
 | `job_config`              | Job triggered by a policy                  | Metadata about the origin of the job. For policy jobs, includes `sha` and `url` for the policy configuration. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/459001) in GitLab 18.9. |
+| `target_audience`       | Token specifies a target audience          | Service the token exchange API issues a credential for. Specified with [`id_tokens:target_audience`](../yaml/_index.md#id_tokens). [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/639815) in GitLab 19.7. |
 
 ```json
 {

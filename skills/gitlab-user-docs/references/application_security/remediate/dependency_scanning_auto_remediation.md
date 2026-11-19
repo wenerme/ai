@@ -38,6 +38,8 @@ Automatically open merge requests to fix vulnerable dependencies.
 - Per-project scheduler rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267539) in GitLab 19.6
   [with a feature flag](../../../administration/feature_flags/_index.md) named
   `dependency_management_scheduler_rate_limit`. Disabled by default.
+- Per-project scheduler rate limit [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272129)
+  in GitLab 19.7. Feature flag `dependency_management_scheduler_rate_limit` removed.
 
 Dependency scanning auto-remediation opens a merge request to bump a vulnerable dependency
 to a non-vulnerable version when one is available. A service account creates the
@@ -107,13 +109,8 @@ eligible vulnerability:
 During beta, GitLab processes three vulnerabilities at a time, starting
 with the highest severity finding.
 
-> [!flag]
-> The availability of the scheduler rate limit is controlled by a feature flag.
-> For more information, see the history.
-
-When the scheduler rate limit is enabled, GitLab starts at most one scheduler run for each
-project every five minutes. Runs that fill a slot freed by a dismissed update have their own
-limit of one every five minutes. For more information, see
+GitLab starts at most one scheduler run for each project every five minutes. Runs that fill
+a slot freed by a dismissed update have their own limit of one every five minutes. For more information, see
 [non-configurable rate limits](../../../rate_limits/non_configurable.md).
 
 ### Merge request titles and commit messages

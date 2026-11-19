@@ -40,7 +40,7 @@ Reach destinations through GRE, IPsec, or CNI on-ramps
 
 [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
-Mesh and WAN traffic flows through Gateway, with policies enforced and traffic [logged](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
+Public Internet, Mesh, and WAN traffic flows through Gateway, with policies enforced and traffic [logged](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 
 [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/)
 
@@ -50,11 +50,15 @@ APIs, databases, hosts in your network — reachable via any on-ramp
 
 Public Internet
 
-Reachable via Mesh or WAN
+Reachable directly through Gateway with `cf1:network`, no on-ramp required
 
 Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
+
+Public Internet egress does not need an on-ramp
+
+A Cloudflare Tunnel, Cloudflare Mesh node, or Cloudflare WAN on-ramp is only required to reach **private** destinations. To send a Worker's traffic to public Internet destinations through Cloudflare Gateway, bind to `cf1:network` and call the binding's `fetch()`. You do not need to deploy a Tunnel, Mesh node, or WAN on-ramp first. Refer to [Egress to the public Internet](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#egress-to-the-public-internet).
 
 ```ts
 export default {
@@ -151,5 +155,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-vpc/#page","headline":"Cloudflare Workers VPC","description":"Securely connect your private cloud to Cloudflare to build cross-cloud apps.","url":"https://developers.cloudflare.com/workers-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/og.png?v=4a94097bf32dbf62","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-vpc/#page","headline":"Cloudflare Workers VPC","description":"Securely connect your private cloud to Cloudflare to build cross-cloud apps.","url":"https://developers.cloudflare.com/workers-vpc/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/og.png?v=4a94097bf32dbf62","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

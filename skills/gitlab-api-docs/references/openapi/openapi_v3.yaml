@@ -2320,6 +2320,21 @@ tags:
     Use this API to synchronize Visual Studio Code settings, so that a user's editor preferences follow
     them between VS Code and the [Web IDE](https://docs.gitlab.com/user/project/web_ide/).
   x-displayName: VS Code
+- name: Validity checks
+  description: |-
+    Use this API to check whether raw token values are still active.
+
+    > [!note]
+    > The availability of this feature is controlled by a feature flag.
+    > While the feature flag is disabled, requests return `404 Not Found`.
+    > This feature is available for testing, but not ready for production use.
+
+    ## History
+
+    - Endpoint to verify raw tokens introduced in GitLab 19.7
+      [with a feature flag](https://docs.gitlab.com/administration/feature_flags/) named `validity_checks_raw_token_api`.
+      Disabled by default.
+  x-displayName: Validity checks
 - name: Virtual registries
   description: |-
     Use this API to manage the Maven and npm
@@ -3051,11 +3066,11 @@ paths:
       description: Issues a short-lived RS256 JWT scoped to one modular-service audience
         (such as the Artifact Registry). Claims include the requesting user id (sub),
         organization id, and deployment realm (saas / self-managed). When called with
-        a CI/CD ID token, the claims also carry its build metadata, and an ID token
-        older than 15 minutes is refused. Presented to the corresponding backend and
-        verified against the instance JWKS. The response uses the RFC 8693 names.
-        token and access_token have the same value, with access_token preferred where
-        possible.
+        a CI/CD ID token, the claims also carry its build metadata, a target_audience
+        claim in the ID token names the audience, and an ID token older than 15 minutes
+        is refused. Presented to the corresponding backend and verified against the
+        instance JWKS. The response uses the RFC 8693 names. token and access_token
+        have the same value, with access_token preferred where possible.
       tags:
       - Token exchange
       responses:
@@ -3076,7 +3091,7 @@ paths:
         '409':
           description: Conflict
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3738,6 +3753,174 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4AiDuoWorkflowsAgentWorkflowsRequest"
+      x-gitlab-lifecycle: experiment
+  "/api/v4/ai/duo_workflows/workflows/{workflow_id}/capsules/authorize":
+    post:
+      operationId: postApiV4AiDuoWorkflowsWorkflowsWorkflowIdCapsulesAuthorize
+      summary: Authorize a session capsule upload
+      description: Workhorse calls this endpoint before it accepts the capsule file.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+        '400':
+          description: Bad Request
+      parameters:
+      - name: workflow_id
+        required: true
+        description: The ID of the session
+        schema:
+          type: integer
+        in: path
+        example: 1
+      x-gitlab-lifecycle: experiment
+  "/api/v4/ai/duo_workflows/workflows/{workflow_id}/capsules":
+    post:
+      operationId: postApiV4AiDuoWorkflowsWorkflowsWorkflowIdCapsules
+      summary: Upload a session capsule
+      description: Stores a tar of the session state that a CI job did not push, so
+        the job that resumes the session can restore it.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesAiDuoWorkflowsSessionCapsule"
+        '400':
+          description: Validation failed
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+      parameters:
+      - name: workflow_id
+        required: true
+        description: The ID of the session
+        schema:
+          type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              "$ref": "#/components/schemas/postApiV4AiDuoWorkflowsWorkflowsWorkflowIdCapsulesRequest"
+      x-gitlab-lifecycle: experiment
+    get:
+      operationId: getApiV4AiDuoWorkflowsWorkflowsWorkflowIdCapsules
+      summary: List session capsules
+      description: Lists the capsules of a session that have not expired, newest first.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesAiDuoWorkflowsSessionCapsule"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: workflow_id
+        required: true
+        description: The ID of the session
+        schema:
+          type: integer
+        in: path
+        example: 1
+      - name: thread_ts
+        required: false
+        description: Return only capsules taken at this checkpoint thread
+        schema:
+          type: string
+          nullable: true
+          maxLength: 255
+        in: query
+        example: 1f0a3b2c-4d5e-6f70-8192-a3b4c5d6e7f8
+      - name: page
+        required: false
+        description: Page number of results to retrieve.
+        schema:
+          type: integer
+          nullable: true
+          default: 1
+        in: query
+        example: 1
+      - name: per_page
+        required: false
+        description: Number of items to list per page.
+        schema:
+          type: integer
+          nullable: true
+          default: 20
+        in: query
+        example: 20
+      x-gitlab-lifecycle: experiment
+  "/api/v4/ai/duo_workflows/workflows/{workflow_id}/capsules/{capsule_id}/download":
+    get:
+      operationId: getApiV4AiDuoWorkflowsWorkflowsWorkflowIdCapsulesCapsuleIdDownload
+      summary: Download a session capsule
+      description: Downloads the capsule tar file. Expired capsules are not found.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/x-tar:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: workflow_id
+        required: true
+        description: The ID of the session
+        schema:
+          type: integer
+        in: path
+        example: 1
+      - name: capsule_id
+        required: true
+        description: The ID of the capsule, or `latest` for the newest capsule
+        schema:
+          type: string
+          pattern: "^(?:latest|\\d+)$"
+        in: path
+        example: latest
       x-gitlab-lifecycle: experiment
   "/api/v4/ai/duo_workflows/revoke_token":
     post:
@@ -9372,6 +9555,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesWebHookLog"
         '400':
           description: Bad request
         '404':
@@ -41949,6 +42138,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesWebHookLog"
         '400':
           description: Bad request
         '404':
@@ -88258,6 +88453,32 @@ components:
         created_at:
           type: string
           example: '2026-06-17T00:00:00.000Z'
+    APIEntitiesAiDuoWorkflowsSessionCapsule:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        workflow_id:
+          type: integer
+          example: 1
+        thread_ts:
+          type: string
+          example: 1f0a3b2c-4d5e-6f70-8192-a3b4c5d6e7f8
+        size:
+          type: integer
+          example: 4096
+        created_at:
+          type: string
+          format: date-time
+          example: '2026-10-14T10:43:27.633Z'
+        expire_at:
+          type: string
+          format: date-time
+          example: '2026-11-13T10:43:27.624Z'
+        download_url:
+          type: string
+          example: https://gitlab.example.com/api/v4/ai/duo_workflows/workflows/1/capsules/1/download
     APIEntitiesAiDuoWorkflowsWorkflow:
       type: object
       properties:
@@ -90855,6 +91076,46 @@ components:
           type: boolean
         duo_flow_callback_enabled:
           type: boolean
+    APIEntitiesWebHookLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        url:
+          type: string
+          example: https://example.com
+        trigger:
+          type: string
+          example: push_hooks
+        request_headers:
+          type: object
+          example:
+            Content-Type: application/json
+        request_data:
+          type: object
+          example:
+            user_id: 72
+            event_name: push
+        response_headers:
+          type: object
+          example:
+            Content-Type: application/json
+        response_body:
+          type: string
+          example: '"{\"success\":true}"'
+        execution_duration:
+          type: number
+          format: float
+          example: 98.29
+        response_status:
+          type: string
+          example: '200'
+        created_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T04:42:42-07:00'
     APIEntitiesIdentityDetail:
       type: object
       properties:
@@ -92787,11 +93048,15 @@ components:
         selective_sync_type:
           type: string
         namespaces:
-          "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
         updated_at:
           type: string
         storage_shards:
-          "$ref": "#/components/schemas/StorageShardEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/StorageShardEntity"
         storage_shards_match:
           type: string
         _links:
@@ -94064,11 +94329,15 @@ components:
         selective_sync_type:
           type: string
         namespaces:
-          "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
         updated_at:
           type: string
         storage_shards:
-          "$ref": "#/components/schemas/StorageShardEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/StorageShardEntity"
         storage_shards_match:
           type: string
         _links:
@@ -111390,8 +111659,9 @@ components:
           enum:
           - gitlab-artifact-registry
           - gitlab-autoflow
-          description: Target service audience.
-          minLength: 1
+          description: Target service audience. Required unless a CI/CD ID token names
+            it in its target_audience claim. When both are sent, they must match.
+          nullable: true
         expires_in:
           type: integer
           minimum: 1
@@ -111406,8 +111676,6 @@ components:
           description: ID of the organization to mint the token for. Required for
             Artifact Registry when the caller belongs to more than one.
           nullable: true
-      required:
-      - audience
     postApiV4CodeSuggestionsCompletionsRequest:
       type: object
       properties:
@@ -111885,6 +112153,22 @@ components:
             with. Requires `project_id`.
           example: 123
           nullable: true
+    postApiV4AiDuoWorkflowsWorkflowsWorkflowIdCapsulesRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+          description: The capsule tar file
+          nullable: true
+        thread_ts:
+          type: string
+          description: The checkpoint thread the capsule was taken at
+          example: 1f0a3b2c-4d5e-6f70-8192-a3b4c5d6e7f8
+          nullable: true
+          maxLength: 255
+      required:
+      - file
     postApiV4AiDuoWorkflowsRevokeTokenRequest:
       type: object
       properties:
@@ -119147,7 +119431,7 @@ components:
         pages_domain_create_limit:
           type: integer
           description: 'Maximum number of Pages custom domains each user can create
-            per day. Default: `20`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635642)
+            per day. Default: `50`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635642)
             in GitLab 19.6.'
           nullable: true
         pages_domain_verify_limit:

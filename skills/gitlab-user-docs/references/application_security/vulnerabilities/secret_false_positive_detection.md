@@ -47,6 +47,7 @@ The analysis runs in the background and results appear in the vulnerability repo
 
 - Support for tracked branches [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267156) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `secrets_fp_detection_non_default_branches`. Disabled by default.
 - Support for tracked tags [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267164) in GitLab 19.6.
+- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/637817) in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

@@ -2031,13 +2031,13 @@
   },
   "grafana-servicecenter-app/create-a-service.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service.md",
-    "size": 7103,
-    "updatedAt": "2026-10-28T00:54:19.155Z"
+    "size": 7155,
+    "updatedAt": "2026-11-19T19:11:59.930Z"
   },
   "grafana-servicecenter-app/discover-services.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/discover-services.md",
-    "size": 10352,
-    "updatedAt": "2026-10-28T00:54:19.300Z"
+    "size": 19332,
+    "updatedAt": "2026-11-19T19:12:00.088Z"
   },
   "grafana-servicecenter-app/escalate-to-irm.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/escalate-to-irm.md",

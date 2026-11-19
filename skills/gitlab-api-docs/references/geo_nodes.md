@@ -301,7 +301,11 @@ Example response:
 
 ## List all Geo node statuses
 
+- `namespaces` [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5.
+
 Lists all Geo node statuses.
+
+The `namespaces` attribute in the response is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5. Use `selective_sync_type` instead.
 
 ```plaintext
 GET /geo_nodes/status
@@ -1411,7 +1415,11 @@ Example response:
 
 ## Retrieve a Geo node status
 
+- `namespaces` [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5.
+
 Retrieves a specified Geo node status.
+
+The `namespaces` attribute in the response is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/4286) in GitLab 10.5. Use `selective_sync_type` instead.
 
 ```shell
 curl --request GET \

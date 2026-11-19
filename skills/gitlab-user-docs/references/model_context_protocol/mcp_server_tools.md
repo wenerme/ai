@@ -322,6 +322,7 @@ Get merge request 15 in project gitlab-org/gitlab with its commits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617173) in GitLab 19.5.
 - `include_triggers` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/640203) in GitLab 19.7.
+- `url` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/640950) in GitLab 19.7.
 
 This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -355,7 +356,8 @@ organization on GitLab Self-Managed, rather than by the project.
 
 | Parameter          | Type    | Required | Description |
 |--------------------|---------|----------|-------------|
-| `project_id`       | string  | Yes      | Numeric ID or full path of the project to list agents and flows for. |
+| `url`              | string  | No       | URL of the project. Provide exactly one of `url` or `project_id`. |
+| `project_id`       | string  | No       | Numeric ID or full path of the project. Provide exactly one of `url` or `project_id`. |
 | `item_type`        | string  | No       | Return only `agent`, `flow` or `third_party_flow` entries. All kinds are returned when omitted. |
 | `include_triggers` | boolean | No       | Return the triggers of each entry, and keep disabled entries in the list. Default is `false`. |
 | `after`            | string  | No       | Cursor for forward pagination. |
@@ -379,7 +381,9 @@ run when its triggers fire. Each entry then also includes:
   - `kind`: `event` or `scheduled`. Security policy triggers have no kind.
   - `active`: whether the trigger is active.
   - `last_run`: the `status`, `started_at`, `finished_at`, and `error` of the most recent run,
-    or `null` if the trigger has never run.
+    or `null` if the trigger has never run. For an entry inherited from the top-level group,
+    `last_run` does not include sessions that its triggers started, so `null` does not mean
+    the trigger never ran.
 
 `triggers` is `null` if you or your token do not have permission to view the entry's triggers.
 For an entry inherited from the top-level group, those are the group's triggers.
@@ -1659,6 +1663,10 @@ This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) tools
 Runs, retries, cancels, or renames a CI/CD pipeline in a GitLab project. To list pipelines,
 use the `list_pipelines` tool instead.
 
+If a fine-grained token can create, retry, or cancel a pipeline but cannot read the result,
+the tool reports success and lists the missing read permissions.
+Do not repeat a successful create call because it creates another pipeline.
+
 | Parameter           | Type    | Required    | Description |
 |---------------------|---------|-------------|-------------|
 | `url`               | string  | No          | GitLab URL of the project. Used only to create a pipeline. Provide this, or `project_id`. |
@@ -1730,6 +1738,9 @@ All supplied identifiers must refer to the same project and job.
 | `project_id` | string | No | ID or full path of the project. Required if `url` is not provided. |
 | `job_id` | integer | No | ID of the manual job to play. Required if `url` is not provided. |
 | `variables` | array | No | CI/CD variables in array format (`[{key, value, variable_type}]`). Each variable requires `key` and `value`. The optional `variable_type` is `env_var` (default) or `file`. |
+
+If a fine-grained token can play the job but cannot read the result, the tool reports success
+and lists the missing read permissions instead of returning job details.
 
 Returns the following job details:
 
@@ -2390,6 +2401,7 @@ List the wiki pages in gitlab-org/gitlab
 - `scope` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/606755) in GitLab 19.4.
 - `semantic_query` parameter [renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/606755) to `q` in GitLab 19.4.
 - `scope` parameter [made optional](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267551) in GitLab 19.6.
+- `query` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/640148) as an alternative to `q` in GitLab 19.7.
 
 This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -2405,7 +2417,8 @@ see [semantic code search](../gitlab_duo/semantic_code_search.md).
 | Parameter        | Type    | Required | Description |
 |------------------|---------|----------|-------------|
 | `scope`          | string  | No       | Type of content to search. Only `code` is supported. If omitted, `code` is used. |
-| `q`              | string  | Yes      | Natural language search query. |
+| `query`          | string  | No       | Natural language search query. Required if `q` is not set. |
+| `q`              | string  | No       | Same as `query`. Required if `query` is not set. If both are set, `query` is used. |
 | `project_id`     | string  | Yes      | ID or full path of the project. |
 | `directory_path` | string  | No       | Restricts the search to files under this directory path (for example, `app/services/`). Must be a relative path, without a leading slash or `..` segments. Applies only when `scope` is `code`. |
 | `knn`            | integer | No       | Number of nearest neighbors retrieved internally. Default is `64`, maximum is `100`. Higher values improve recall at the cost of latency. Applies only when `scope` is `code`. |

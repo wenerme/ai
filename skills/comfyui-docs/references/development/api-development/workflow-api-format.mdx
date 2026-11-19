@@ -1,6 +1,6 @@
 ---
-title: "Workflow API Format"
-description: "Understanding the API format for ComfyUI workflows and how to export them"
+title: "ComfyUI Workflow API Format: Export JSON for API Submission"
+description: "The JSON shape a ComfyUI API accepts: how API format differs from the saved workflow, which UI data it drops, and how to export it from the frontend."
 ---
 
 ComfyUI workflows are JSON objects that describe a graph of nodes. When calling ComfyUI programmatically — whether through the Cloud API or running your own server — the workflow must be submitted in **API format**, a specialized JSON structure that differs from the regular save format used in the browser.

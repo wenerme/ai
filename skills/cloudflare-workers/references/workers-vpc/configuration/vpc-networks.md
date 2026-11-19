@@ -71,7 +71,7 @@ Gateway drops HTTP traffic from Workers VPC if it matches a [Forward policy](htt
 
 Note
 
-Your account must have at least one active [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) node, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp that can reach the target services.
+To reach **private** destinations, your account must have at least one active [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) node, or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp that can reach the target services. This requirement does not apply to public Internet destinations. Refer to [Egress to the public Internet](#egress-to-the-public-internet).
 
 For destinations behind Cloudflare WAN on-ramps (GRE, IPsec, or CNI), your network must also route the [Cloudflare source IP range](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) (`100.64.0.0/12` by default) back through the on-ramp so reply traffic returns to Cloudflare. This is part of standard Cloudflare WAN onboarding. If you have already configured this for Gateway, Load Balancing, or other Cloudflare services that reach your private network through Cloudflare WAN, no additional setup is required.
 
@@ -95,6 +95,68 @@ binding = "MY_VPC"
 network_id = "cf1:network"
 remote = true
 ```
+
+## Egress to the public Internet
+
+A binding with `network_id: "cf1:network"` sends your Worker's traffic to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/). Gateway enforces your [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) policies and logs the traffic.
+
+You do not need a Cloudflare Tunnel, Cloudflare Mesh node, or Cloudflare WAN on-ramp to egress to public destinations. The only dependency is Cloudflare Gateway: your account needs a Zero Trust organization with Gateway set up, and you must [turn on the Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/#turn-on-the-gateway-proxy) for Network and HTTP policies to apply.
+
+```jsonc
+{
+  "vpc_networks": [
+    {
+      "binding": "EGRESS",
+      "network_id": "cf1:network",
+      "remote": true
+    }
+  ]
+}
+```
+
+```toml
+[[vpc_networks]]
+binding = "EGRESS"
+network_id = "cf1:network"
+remote = true
+```
+
+Call `fetch()` on the binding to send a request through Gateway:
+
+*src/index.jsjs*
+
+```js
+export default {
+	async fetch(_request, env) {
+		return env.EGRESS.fetch("https://api.example.com/data");
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+export default {
+	async fetch(_request: Request, env: Env): Promise<Response> {
+		return env.EGRESS.fetch("https://api.example.com/data");
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+When you route Worker egress through Gateway, note these behaviors:
+
+- Only calls made on the binding go through Gateway. A global `fetch()` does not.
+- The binding works in request handlers, Durable Object alarms, Queue consumers, and Cron Triggers, because it is part of the Worker version.
+- [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) between Workers stay inside Cloudflare. They never reach the public Internet and do not use an egress IP.
+- `connect()` supports plaintext TCP only. Refer to [TCP via `connect()`](#tcp-via-connect).
+
+### Use dedicated egress IPs
+
+Gateway [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/) and [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/) apply to Network and HTTP traffic that Gateway proxies, including traffic from a `cf1:network` binding. Dedicated egress IPs are an add-on to Zero Trust Enterprise plans.
+
+Configure a fallback egress IP in every egress policy. Without one, traffic that does not match a policy can fall back to the shared Cloudflare egress range.
+
+[Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) from Smart Shield are a different product. They cover proxied HTTP and HTTPS traffic from Cloudflare to your origin, and `connect()` does not use them. They do not give you static IP addresses for traffic you send through `cf1:network`.
 
 ## Select a virtual network
 
@@ -213,7 +275,7 @@ When a VPC Network cannot establish a TCP connection, `connect()` throws an exce
 
 Note
 
-`connect()` over VPC Networks currently supports plaintext TCP only.
+`connect()` over VPC Networks currently supports plaintext TCP only. Workers VPC does not establish TLS for `connect()`, so destinations that require implicit TLS, such as SMTP on port 465, are not supported. To reach an HTTPS destination, use `fetch()` with an `https://` URL.
 
 ## Logs
 
@@ -259,5 +321,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
