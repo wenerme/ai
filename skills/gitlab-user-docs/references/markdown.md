@@ -1353,10 +1353,11 @@ a standard image.
 Where embedded content cannot load, like in email notifications, it displays as a link to the
 content on the provider's site.
 
-GitLab defines the available embed providers.
+GitLab defines a set of embed providers.
+On GitLab Self-Managed, administrators can also add their own.
 Administrators [choose which embed providers to allow](../administration/settings/embedded-content.md).
 
-The following embed providers are available:
+GitLab defines the following embed providers:
 
 | Provider | ID        | Loads automatically | Accepted URLs |
 |----------|-----------|---------------------|---------------|

@@ -37,6 +37,26 @@ Based on your Cloudflare plan type, a Pages project is limited to a specific num
 | --- | --- | --- | --- |
 | 100 | 250 | 500 | 500<sup>[1](#user-content-fn-1)</sup> |
 
+## Deployments
+
+| Limit | Value |
+| --- | --- |
+| Deployment retention | 30 days |
+| Deployments always kept | 100 most recent, plus your current production deployment |
+
+Deployments are kept for 30 days. After 30 days, a deployment is deleted unless:
+
+- It is one of the project's 100 most recent deployments. Both production and preview deployments count.
+- It is your current production deployment.
+
+For example, a project has 250 deployments. Its 100 most recent deployments are always kept. Of the other 150, deployments created in the last 30 days are kept, and older ones are deleted unless one of them is your current production deployment.
+
+When a deployment is deleted:
+
+- It no longer appears in your project's deployment list in the dashboard or API.
+- Its unique preview URL, such as `<hash>.<project>.pages.dev`, stops working.
+- You cannot [roll back](https://developers.cloudflare.com/pages/configuration/rollbacks/) to it.
+
 ## Files
 
 Pages uploads each file on your site to Cloudflare's globally distributed network to deliver a low latency experience to every user that visits your site. Cloudflare Pages sites can contain up to 20,000 files on the Free plan.
@@ -65,7 +85,7 @@ An individual header in a `_headers` file can have a maximum of 2,000 characters
 
 ## Preview deployments
 
-You can have an unlimited number of [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/) active on your project at a time.
+Preview deployments count toward the deployments that Cloudflare keeps for each project. Preview deployments older than 30 days are deleted, unless they are one of the project's 100 most recent deployments. For more information, refer to [Deployments](#deployments).
 
 ## Redirects
 
@@ -104,5 +124,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/limits/#page","headline":"Limits","description":"Build, deployment, and custom domain limits for Cloudflare Pages by plan type.","url":"https://developers.cloudflare.com/pages/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf313015aa08a9","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/limits/#page","headline":"Limits","description":"Build, deployment, and custom domain limits for Cloudflare Pages by plan type.","url":"https://developers.cloudflare.com/pages/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/limits/og.png?v=5abf313015aa08a9","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

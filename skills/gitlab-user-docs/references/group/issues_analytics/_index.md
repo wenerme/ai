@@ -38,7 +38,7 @@ To view issue analytics:
    For example, `https://gitlab.com/groups/gitlab-org/-/issues_analytics?months_back=15`
    displays a chart with data for 15 months for the GitLab.org group.
 
-You can also access issue analytics from the [Value Streams Dashboard](../../analytics/value_streams_dashboard.md) through the **New issues** drill-down report.
+You can also access issue analytics from the [value stream dashboard](../../analytics/value_streams_dashboard.md) through the **New issues** drill-down report.
 
 ### Enhanced issue analytics
 

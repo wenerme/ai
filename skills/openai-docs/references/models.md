@@ -49,6 +49,7 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [GPT-Image-2.6 Flare](/api/docs/models/gpt-image-2.6-flare.md): Image generation and editing for fast iteration
 - [GPT-Image-2.6 Sunburst](/api/docs/models/gpt-image-2.6-sunburst.md): Image generation and editing for detailed visual work
 - [GPT-Live-1](/api/docs/models/gpt-live-1.md): Our premier model for natural, expressive voice conversations with smooth interruption handling.
+- [GPT-Live-1.1](/api/docs/models/gpt-live-1.1.md): Full-duplex voice model for multilingual conversations.
 - [GPT-Live-Transcribe](/api/docs/models/gpt-live-transcribe.md): Low-latency speech-to-text model for realtime transcription
 - [gpt-oss-120b](/api/docs/models/gpt-oss-120b.md): Most powerful open-weight model, fits into an H100 GPU
 - [gpt-oss-20b](/api/docs/models/gpt-oss-20b.md): Medium-sized open-weight model for low latency

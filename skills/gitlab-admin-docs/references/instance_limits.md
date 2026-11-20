@@ -808,40 +808,37 @@ Reports that go over the 20 MB limit aren't loaded. Affected reports:
 - [CI/CD parameter `artifacts:expose_as`](../ci/yaml/_index.md#artifactsexpose_as)
 - [Unit test reports](../ci/testing/unit_test_reports.md)
 
-## Scanned resources CSV limits
+## Scanned resources limits
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637250) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `scanned_resources_csv_limits`. Disabled by default.
+- Tier: Ultimate
 
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-
-When you download the scanned resources CSV for a pipeline, GitLab parses the pipeline's
-DAST reports, including those in child pipelines. The download fails if the reports:
-
-- Total more than 20 MB.
-- Number more than 100.
-
-If the download fails, download the DAST report artifact instead.
-
-For the rate limit on these downloads, see [non-configurable rate limits](../rate_limits/non_configurable.md).
-
-## Scanned resources GraphQL limits
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637250) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `scanned_resources_graphql_limits`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637250) in GitLab 19.6 [with feature flags](feature_flags/_index.md) named `scanned_resources_csv_limits` and `scanned_resources_graphql_limits`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/637250) to application settings in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
-When you request the `scannedResources` or `scannedResourcesCount` GraphQL fields for DAST or
-API fuzzing reports, GitLab parses the pipeline's DAST and API fuzzing reports, including those
-in child pipelines. The fields return `null` with an error if the reports:
+GitLab parses a pipeline's DAST reports, including those in child pipelines, when you:
 
-- Total more than 20 MB.
-- Number more than 100.
+- Download the scanned resources CSV from the pipeline's **Security** tab.
+- Request the `scannedResources` or `scannedResourcesCount` GraphQL fields. These fields also
+  parse API fuzzing reports.
 
-For the rate limit on these fields, see [non-configurable rate limits](../rate_limits/non_configurable.md).
+You can limit how much GitLab parses for one pipeline with these
+[application settings](../api/settings.md#available-settings):
+
+- `scanned_resources_artifacts_size_limit_megabytes`: the total size of the reports, in megabytes.
+- `scanned_resources_artifacts_count_limit`: the number of reports.
+
+Both limits are disabled by default. When a pipeline's reports are over a limit:
+
+- The CSV download fails. Download the DAST report artifact instead.
+- The GraphQL fields return `null` with an error.
+
+On GitLab.com, the reports can total at most 20 MB and number at most 100.
+
+For the rate limits on these downloads and fields, see [rate limits](../rate_limits/_index.md#api-and-rails-console).
 
 ## Advanced search limits
 

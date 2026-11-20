@@ -226,7 +226,7 @@ and use it to automatically:
 
 DORA metrics are displayed in the following analytics features:
 
-- [Value Streams Dashboard](value_streams_dashboard.md) includes the [DORA metrics comparison panel](value_streams_dashboard.md#devsecops-metrics-comparison) and [DORA Performers score panel](value_streams_dashboard.md#dora-performers-score).
+- [Value stream dashboard](value_streams_dashboard.md) includes the [DORA metrics comparison panel](value_streams_dashboard.md#devsecops-metrics-comparison) and [DORA Performers score panel](value_streams_dashboard.md#dora-performers-score).
 - [CI/CD analytics charts](ci_cd_analytics.md) show the history of DORA metrics over time.
 - [Insights reports](../project/insights/_index.md) provide the option to create custom charts with [DORA query parameters](../project/insights/_index.md#dora-query-parameters).
 - [GraphQL API](../../api/graphql/reference/_index.md) (with the interactive [GraphQL explorer](../../api/graphql/_index.md#interactive-graphql-explorer)) and [REST API](../../api/dora/metrics.md) support the retrieval of metrics data.
@@ -248,7 +248,7 @@ The following table provides an overview of the DORA metrics' availability in pr
 
 The following table provides an overview of the DORA metrics' data aggregation in different charts.
 
-| Metric name | Measured values | Data aggregation in the [Value Streams Dashboard](value_streams_dashboard.md) | Data aggregation in [CI/CD analytics charts](ci_cd_analytics.md) | Data aggregation in [Custom insights reporting](../project/insights/_index.md#dora-query-parameters) |
+| Metric name | Measured values | Data aggregation in the [value stream dashboard](value_streams_dashboard.md) | Data aggregation in [CI/CD analytics charts](ci_cd_analytics.md) | Data aggregation in [Custom insights reporting](../project/insights/_index.md#dora-query-parameters) |
 |---------------------------|-------------------|-----------------------------------------------------|------------------------|----------|
 | Deployment frequency | Number of successful deployments | daily average per month | daily average | `day` (default) or `month` |
 | Lead time for changes | Number of seconds to successfully deliver a commit into production | daily median per month | median time |  `day` (default) or `month` |

@@ -23,6 +23,19 @@ Prerequisites:
 
 - You use PostgreSQL 12 or later,
   which includes the [`pg_basebackup` tool](https://www.postgresql.org/docs/16/app-pgbasebackup.html).
+- The secondary site runs the same PostgreSQL major version as the primary site.
+  A fresh install initializes PostgreSQL with the default version of its Linux package release,
+  unless `postgresql['version']` is set before the first reconfigure. If you install the package
+  with `EXTERNAL_URL`, the first reconfigure runs during the installation. To pin the version on a
+  new secondary site, create `/etc/gitlab/gitlab.rb` with `external_url` and `postgresql['version']`
+  before you install the package. For the default version of each release, see
+  [PostgreSQL versions shipped with the Linux package](../../package_information/postgresql_versions.md).
+  Keep the setting until you upgrade PostgreSQL. `gitlab-ctl pg-upgrade` skips nodes where it is set,
+  so you must remove it before the upgrade. For Docker, add `postgresql['version']` to `GITLAB_OMNIBUS_CONFIG`
+  before the container first starts.
+  For more information, see [pin the packaged PostgreSQL version](https://docs.gitlab.com/omnibus/settings/database/#pin-the-packaged-postgresql-version-fresh-installs-only).
+  If the secondary site already runs a newer version, see
+  [secondary site runs a newer PostgreSQL version than the primary site](../replication/troubleshooting/postgresql_replication.md#secondary-site-runs-a-newer-postgresql-version-than-the-primary-site).
 
 ### Configure the primary site
 

@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 504 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 502 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1876,6 +1876,18 @@ for await (const chunk of stream) {
     "outputCost": 13.5
   },
   {
+    "model": "llmgateway-providers/canopywave/kimi-k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
     "model": "llmgateway-providers/canopywave/minimax-m3.1-flash",
     "imageInput": true,
     "audioInput": false,
@@ -1912,30 +1924,6 @@ for await (const chunk of stream) {
     "outputCost": 0.75
   },
   {
-    "model": "llmgateway-providers/cloudflare/deepseek-v4-flash-0731",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 0.44,
-    "outputCost": 1.32
-  },
-  {
-    "model": "llmgateway-providers/cloudflare/deepseek-v4-pro",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 1.32,
-    "outputCost": 3.96
-  },
-  {
     "model": "llmgateway-providers/cloudflare/deepseek-v4.1-flash-1017",
     "imageInput": true,
     "audioInput": false,
@@ -1970,18 +1958,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
-  },
-  {
-    "model": "llmgateway-providers/cloudflare/glm-5.3-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": 0.15,
-    "outputCost": 0.5
   },
   {
     "model": "llmgateway-providers/consensusprotocol/deepseek-v4-flash",
@@ -4800,8 +4776,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.15,
-    "outputCost": 0.6
+    "inputCost": 0.2,
+    "outputCost": 0.8
   },
   {
     "model": "llmgateway-providers/sciforium/deepseek-v4.1-flash-latest",
@@ -4812,8 +4788,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 1048576,
-    "inputCost": 0.15,
-    "outputCost": 0.6
+    "inputCost": 0.2,
+    "outputCost": 0.8
   },
   {
     "model": "llmgateway-providers/scx-ai-gp/deepseek-v4.1-flash",

@@ -48,7 +48,7 @@ ws.socket.on("open", () => {
     type: "session.start",
     event_id: "event_start",
     session: {
-      model: "gpt-live-1",
+      model: "gpt-live-1.1",
       instructions:
         "Be concise. Delegate requests needing current information to the backend, which can search the web.",
       audio: {
@@ -143,7 +143,7 @@ from openai.types.live.session_config_param import SessionConfigParam
 async def main() -> None:
     # stdin/stdout carry raw mono PCM16 at 24 kHz, not WAV files.
     session: SessionConfigParam = {
-        "model": "gpt-live-1",
+        "model": "gpt-live-1.1",
         "instructions": "Be concise. Delegate requests needing current information to the backend, which can search the web.",
         "audio": {
             "format": {"type": "audio/pcm", "rate": 24000},
@@ -264,7 +264,7 @@ func run() error {
 	}
 	defer connection.Abort()
 	session := live.SessionConfigParam{
-		Model:        "gpt-live-1",
+		Model:        "gpt-live-1.1",
 		Instructions: openai.String("Be concise. Delegate requests needing current information to the backend, which can search the web."),
 		Audio:        live.SessionConfigAudioParam{Format: live.AudioFormatParamOfAudioPCM(24000), Output: live.SessionConfigAudioOutputParam{Voice: live.SessionConfigAudioOutputVoiceUnionParam{OfString: openai.String("marin")}}},
 		Delegation: live.SessionConfigDelegationUnionParam{OfResponses: &live.SessionConfigDelegationResponsesParam{Responses: live.ResponsesDelegationConfigParam{
@@ -407,7 +407,7 @@ public final class LiveConnectionWebsocketExample {
   public static void main(String[] args) throws Exception {
     var session =
         SessionConfig.builder()
-            .model("gpt-live-1")
+            .model("gpt-live-1.1")
             .instructions(
                 "Be concise. Delegate requests needing current information to the backend, which can search the web.")
             .audio(
@@ -533,7 +533,7 @@ require "base64"
 $stdin.binmode
 $stdout.binmode
 session = {
-  model: "gpt-live-1",
+  model: "gpt-live-1.1",
   instructions: "Be concise. Delegate requests needing current information to the backend, which can search the web.",
   audio: {
     format: {

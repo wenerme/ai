@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/spectrum/how-to/og.png?v=0875bc8d2e48b7
 
 For more information on completing Spectrum related tasks, refer to the sections below.
 
+- [Route TCP traffic to a Worker](https://developers.cloudflare.com/spectrum/how-to/route-tcp-traffic-to-a-worker/)
 - [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/)
 
 Was this helpful?

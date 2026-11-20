@@ -28,6 +28,7 @@ Models for image generation and editing.
 
 Models for realtime, speech, and audio workflows.
 
+- [GPT-Live-1.1](/api/docs/models/gpt-live-1.1.md): Full-duplex voice model for multilingual conversations.
 - [GPT-Live-1](/api/docs/models/gpt-live-1.md): Our premier model for natural, expressive voice conversations with smooth interruption handling.
 - [GPT-Realtime-2.1](/api/docs/models/gpt-realtime-2.1.md): Reasoning model with tool use
 - [GPT-Realtime-2.1 mini](/api/docs/models/gpt-realtime-2.1-mini.md): Reasoning model with tool use

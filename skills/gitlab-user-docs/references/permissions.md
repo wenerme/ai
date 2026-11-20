@@ -396,7 +396,7 @@ Project permissions for [analytics](analytics/_index.md) features including valu
 | View [DORA metrics](analytics/ci_cd_analytics.md)                                          |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | View [merge request analytics](analytics/merge_request_analytics.md)                       |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | View [repository analytics](analytics/repository_analytics.md)                             |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
-| View [Value Streams Dashboard](analytics/value_streams_dashboard.md)                       |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
+| View [Value stream dashboard](analytics/value_streams_dashboard.md)                        |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | View [GitLab Duo and SDLC trends](analytics/duo_and_sdlc_trends.md)                        |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 
 ### Project application security

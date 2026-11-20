@@ -60,8 +60,11 @@ If your existing Global project already supports per-request data residency, you
 The following example reuses one client and an API key from a Global project for global, US, and EU requests:
 
 ```python
-from openai import OpenAI
+import os
 
+from openai import OpenAI, omit
+
+eu_api_key = os.environ["OPENAI_EU_API_KEY"]
 client = OpenAI()
 
 # No processing constraint.
@@ -80,12 +83,14 @@ response = client.with_options(
 )
 print(response.output_text)
 
-# EU processing and storage.
+# EU processing and storage require a key from an EU project.
 response = client.with_options(
     base_url="https://eu.api.openai.com/v1",
+    api_key=eu_api_key,
 ).responses.create(
     model="gpt-6.1-terra",
     input="Reply with OK.",
+    extra_headers={"OpenAI-Project": omit, "OpenAI-Organization": omit},
 )
 print(response.output_text)
 ```

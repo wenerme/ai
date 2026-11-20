@@ -103,6 +103,49 @@ class MyDurableObject(DurableObject):
         return Response("Not found", status=404)
 ```
 
+### `connect`
+
+Public beta
+
+Raw TCP connections to Workers and Durable Objects are in public beta.
+
+- `connect(socket Socket)` : `void` | `Promise<void>`
+  - Called when a Worker or another Durable Object opens a raw socket through a [`DurableObjectStub`](https://developers.cloudflare.com/durable-objects/api/stub/#connect).
+  - Use the socket's readable and writable streams to process or proxy the connection.
+  - This method can be `async`.
+
+#### Parameters
+
+- `socket` `Socket` - the established TCP connection. Refer to the [Socket API](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket).
+
+#### Return values
+
+- None.
+
+Keep the returned promise pending while the Durable Object is processing the connection. When the promise settles, the inbound socket closes.
+
+#### Example
+
+```js
+import { DurableObject } from "cloudflare:workers";
+
+export class TcpSession extends DurableObject {
+	async connect(socket) {
+		await socket.readable.pipeTo(socket.writable);
+	}
+}
+```
+
+```ts
+import { DurableObject } from "cloudflare:workers";
+
+export class TcpSession extends DurableObject<Env> {
+	async connect(socket: Socket): Promise<void> {
+		await socket.readable.pipeTo(socket.writable);
+	}
+}
+```
+
 ### `alarm`
 
 - `alarm(alarmInfo? AlarmInvocationInfo)` : `void` | `Promise<void>`
@@ -315,6 +358,7 @@ class MyDurableObject(DurableObject):
 - [Use WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/) for WebSocket handler best practices.
 - [Alarms API](https://developers.cloudflare.com/durable-objects/api/alarms/) for scheduling future work.
 - [RPC methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) for type-safe method calls.
+- [Connect handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/connect/) for inbound TCP connections to Workers.
 
 Was this helpful?
 
@@ -325,5 +369,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/base/#page","headline":"Durable Object Base Class","description":"API reference for the DurableObject abstract base class and its handler methods.","url":"https://developers.cloudflare.com/durable-objects/api/base/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/base/og.png?v=94c0de69c741c2d3","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/base/#page","headline":"Durable Object Base Class","description":"API reference for the DurableObject abstract base class and its handler methods.","url":"https://developers.cloudflare.com/durable-objects/api/base/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/base/og.png?v=94c0de69c741c2d3","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

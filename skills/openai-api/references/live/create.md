@@ -28,7 +28,7 @@ Content type: `application/json`
 
   Startup configuration for the Live session.
 
-  - `model: string or "gpt-live-1"`
+  - `model: string or "gpt-live-1" or "gpt-live-1.1"`
 
     The Live model. Required in the session configuration for every transport; do not pass it as a URL query parameter.
 
@@ -36,11 +36,13 @@ Content type: `application/json`
 
       `minLength: 1`
 
-    - `"gpt-live-1"`
+    - `"gpt-live-1" or "gpt-live-1.1"`
 
       The Live model. Required in the session configuration for every transport; do not pass it as a URL query parameter.
 
       - `"gpt-live-1"`
+
+      - `"gpt-live-1.1"`
 
   - `audio: optional object { output }`
 
@@ -1152,6 +1154,12 @@ Content type: `application/json`
 
         `minimum: 0`, `maximum: 800`
 
+  - `idle_timeout_s: optional integer`
+
+    Whole seconds of inactivity after which a Live WebRTC session with a speech wake policy pauses inference. The connection and conversation history are retained. Omit to keep inference active after the first wake until the session ends.
+
+    `minimum: 5`, `maximum: 60`
+
   - `input: optional array of InitialItem`
 
     Ordered text-only history supplied before startup. Supports developer, user, and assistant messages with one text part each; at most 128 messages and a configured rendered-token limit (8,192 by default).
@@ -1354,6 +1362,20 @@ Content type: `application/json`
 
       - `"decisions"`
 
+  - `wake_policy: optional object { type, vad_threshold }`
+
+    Starts inference when microphone speech is detected.
+
+    - `type: "speech" (default: "speech")`
+
+      The wake policy type, always `speech`.
+
+      - `"speech"`
+
+    - `vad_threshold: optional number`
+
+      The speech detection threshold for the first wake and each later wake, from 0 to 1 inclusive. Defaults to 0.5. Higher values require stronger evidence of speech. This setting is independent of active turn detection.
+
 - `transport: Webrtc { sdp, type }  or Sip { destination, trunk, type }`
 
   WebRTC transport with an SDP offer, or SIP transport with a destination and per-call trunk credentials.
@@ -1474,7 +1496,7 @@ curl https://api.openai.com/v1/live/sessions \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
           "session": {
-            "model": "gpt-live-1"
+            "model": "gpt-live-1.1"
           },
           "transport": {
             "sdp": "x",
@@ -1516,7 +1538,7 @@ curl https://api.openai.com/v1/live/sessions \
 curl https://api.openai.com/v1/live/sessions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"session":{"model":"gpt-live-1","instructions":"Be concise. Ask for clarification when needed."},"transport":{"type":"webrtc","sdp":"<SDP offer>"}}'
+  -d '{"session":{"model":"gpt-live-1.1","instructions":"Be concise. Ask for clarification when needed."},"transport":{"type":"webrtc","sdp":"<SDP offer>"}}'
 ```
 
 #### Response example
@@ -1531,7 +1553,7 @@ curl https://api.openai.com/v1/live/sessions \
 # Export SIP_USERNAME and SIP_PASSWORD in your environment first.
 jq -n '{
     "session": {
-      "model": "gpt-live-1",
+      "model": "gpt-live-1.1",
       "instructions": "Help the user schedule an appointment.",
       "audio": { "output": { "voice": "marin" } },
       "delegation": { "type": "client" }

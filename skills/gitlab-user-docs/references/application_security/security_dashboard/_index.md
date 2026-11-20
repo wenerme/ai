@@ -446,9 +446,9 @@ To view the group security dashboard:
 
 [Group security dashboard]
 
-## Vulnerability metrics in the value streams dashboard
+## Vulnerability metrics in the value stream dashboard
 
-There are additional vulnerability metrics available in the [value streams dashboard](../../analytics/value_streams_dashboard.md) comparison panel, which helps you understand security exposure in the context of your organization's software delivery workflows.
+There are additional vulnerability metrics available in the [value stream dashboard](../../analytics/value_streams_dashboard.md) comparison panel, which helps you understand security exposure in the context of your organization's software delivery workflows.
 
 ## Related topics
 

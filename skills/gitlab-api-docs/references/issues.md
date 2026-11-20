@@ -1208,7 +1208,7 @@ For more information, see [content creation rate limits](../rate_limits/content_
 
 Updates a specified issue for a project. This request is also used to close or reopen an issue using the `state_event` parameter
 
-By default, this endpoint is rate limited to 1,000 requests every minute for each user.
+By default, this endpoint is rate limited to 1,200 requests every minute for each user.
 The limit is shared with other issue, epic, and work item updates in the UI, the REST API, and GraphQL.
 Administrators can change the limit with the `work_item_update_limit` [application setting](settings.md#available-settings).
 After you reach the limit, you receive
@@ -1457,7 +1457,7 @@ Moves a specified issue to a different project. If the target project is the sou
 If a given label or milestone with the same name also exists in the target
 project, it's then assigned to the issue being moved.
 
-By default, this endpoint is rate limited to 30 requests every minute for each user.
+By default, this endpoint is rate limited to 100 requests every minute for each user.
 The limit is shared with cloning issues and with moving and cloning issues in the UI and GraphQL.
 Administrators can change the limit with the `work_item_move_limit` [application setting](settings.md#available-settings).
 After you reach the limit, you receive
@@ -1620,7 +1620,7 @@ Clones a specified issue to a given project. Copies as much data as possible as 
 
 If you have insufficient permissions, an error message with status code `400` is returned.
 
-By default, this endpoint is rate limited to 30 requests every minute for each user.
+By default, this endpoint is rate limited to 100 requests every minute for each user.
 The limit is shared with moving issues and with moving and cloning issues in the UI and GraphQL.
 Administrators can change the limit with the `work_item_move_limit` [application setting](settings.md#available-settings).
 After you reach the limit, you receive

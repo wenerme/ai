@@ -340,11 +340,11 @@ To view lifecycle metrics:
       - In the **From** field, select a start date.
       - In the **To** field, select an end date.
 
-To view the [Value Streams Dashboard](../../analytics/value_streams_dashboard.md) and [DORA metrics](../../analytics/dora_metrics.md):
+To view the [value stream dashboard](../../analytics/value_streams_dashboard.md) and [DORA metrics](../../analytics/dora_metrics.md):
 
 1. In the top bar, select **Search or go to** and find your project or group.
 1. In the left sidebar, select **Analyze** > **Value stream analytics**.
-1. Below the **Filter results** text box, in the **Lifecycle metrics** row, select **Value Streams Dashboard / DORA**.
+1. Below the **Filter results** text box, in the **Lifecycle metrics** row, select **Value stream dashboard (DORA)**.
 1. Optional. To open the new page, append this path `/analytics/dashboards/value_streams_dashboard` to the group URL
    (for example, `https://gitlab.com/groups/gitlab-org/-/analytics/dashboards/value_streams_dashboard`).
 

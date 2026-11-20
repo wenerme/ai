@@ -20,7 +20,7 @@ Follow the [Workers AI Get Started Guide](https://developers.cloudflare.com/work
 
 ## 2. Install additional npm package
 
-Next, run the following command in your project repository to install the Worker AI utilities package.
+Next, run the following command in your project repository to install the Workers AI utilities package.
 
 npmyarnpnpmbun
 
@@ -66,7 +66,7 @@ export default {
 				messages: [
 					{
 						role: "user",
-						content: "What the result of 123123123 + 10343030?",
+						content: "What is the result of 123123123 + 10343030?",
 					},
 				],
 				// Definition of available tools the AI model can leverage
@@ -119,7 +119,7 @@ export default {
 				messages: [
 					{
 						role: "user",
-						content: "What the result of 123123123 + 10343030?",
+						content: "What is the result of 123123123 + 10343030?",
 					},
 				],
 				// Definition of available tools the AI model can leverage
@@ -146,9 +146,9 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-This example imports the utils with `import { runWithTools} from "@cloudflare/ai-utils"` and follows the API reference below.
+This example imports the utils with `import { runWithTools } from "@cloudflare/ai-utils"` and follows the [embedded function calling API reference](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/api-reference/).
 
-Moreover, in this example we define and describe a list of tools that the LLM can leverage to respond to the user query. Here, the list contains of only one tool, the `sum` function.
+Moreover, in this example we define and describe a list of tools that the LLM can leverage to respond to the user query. Here, the list contains only one tool, the `sum` function.
 
 Abstracted by the `runWithTools` function, the following steps occur:
 
@@ -165,7 +165,7 @@ sequenceDiagram
 
 ```
 
-The `ai-utils package` is also open-sourced on [Github ↗︎](https://github.com/cloudflare/ai-utils).
+The `ai-utils` package is also open-sourced on [GitHub ↗︎](https://github.com/cloudflare/ai-utils).
 
 ## 4. Local development & deployment
 
@@ -188,5 +188,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/#page","headline":"Get Started","description":"Set up and deploy your first Workers AI project with embedded function calling.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/og.png?v=8085b109897093fc","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/#page","headline":"Get Started","description":"Set up and deploy your first Workers AI project with embedded function calling.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/og.png?v=8085b109897093fc","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

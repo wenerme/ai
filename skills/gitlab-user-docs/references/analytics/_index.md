@@ -17,7 +17,7 @@ Use these features to gain insights into your overall software development lifec
 
 | Feature | Description | Project-level | Group-level | Instance-level |
 | ------- | ----------- | ------------- | ----------- | -------------- |
-| [Value Streams Dashboard](value_streams_dashboard.md) | Insights into DevSecOps trends, patterns, and opportunities for digital transformation improvements. | Yes | Yes | No |
+| [Value stream dashboard](value_streams_dashboard.md) | Insights into DevSecOps trends, patterns, and opportunities for digital transformation improvements. | Yes | Yes | No |
 | [Value Stream Management Analytics](../group/value_stream_analytics/_index.md) | Insights into time-to-value through customizable stages. | Yes | Yes | No |
 | DevOps adoption [by group](../group/devops_adoption/_index.md) and [by instance](../../administration/analytics/devops_adoption.md) | Organization's maturity in DevOps adoption, with feature adoption over time and feature distribution by group. | No | Yes | Yes |
 | [Usage trends](../../administration/analytics/usage_trends.md) | Overview of instance data and changes in data volume over time. | No | No | Yes |

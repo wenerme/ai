@@ -29,14 +29,14 @@ Start with the [GPT-Live WebRTC quickstart](https://developers.openai.com/api/do
 
 You need a microphone, a browser page served over HTTPS or localhost, and a trusted server with an OpenAI project API key. Keep the key on the server.
 
-1. Write a short [conversation prompt](https://developers.openai.com/api/docs/guides/live-prompting) that tells GPT-Live when to ask the backend for help.
+1. Set the session model to [`gpt-live-1.1`](https://developers.openai.com/api/docs/models/gpt-live-1.1). Write a short [conversation prompt](https://developers.openai.com/api/docs/guides/live-prompting) that tells GPT-Live when to ask the backend for help.
 2. Follow the quickstart to connect the browser's microphone, audio playback, and event channel. Your server creates the session and exchanges the browser's connection offer for an answer.
 3. Wait for `session.started`, then speak and listen to a reply. Ask a question that needs current information to try the web search backend.
 4. End the conversation and [close the session](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close) to collect final usage and release the connection.
 
 For your first test, listen to the assistant and check that its answer reflects the backend’s search result.
 
-GPT-Live voice sessions are billed by duration, per second. See the [model pricing](https://developers.openai.com/api/docs/models/gpt-live-1) for the current rate. Backend model and tool usage is billed separately. See [Cost optimization](https://developers.openai.com/api/docs/guides/voice-latency-cost?api=live) for usage accounting and ways to reduce costs.
+GPT-Live bills voice sessions by duration and charges separately for backend model and tool usage. See [GPT-Live pricing](https://developers.openai.com/api/docs/pricing#live-session-duration) for the current rate and [Cost optimization](https://developers.openai.com/api/docs/guides/voice-latency-cost?api=live) for ways to reduce costs.
 
 ## Sample apps and client SDKs
 

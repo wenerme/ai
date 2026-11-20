@@ -47,7 +47,7 @@ Get the organization's hard spend limit.
 
 ### Returns
 
-- `OrganizationSpendLimit object { currency, enforcement, interval, 2 more }`
+- `OrganizationSpendLimit object { currency, enforcement, interval, 3 more }`
 
   Represents a hard spend limit configured at the organization level.
 
@@ -92,6 +92,18 @@ Get the organization's hard spend limit.
       The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notifications sent when the hard spend limit is reached.
+
+    - `recipients: array of string`
+
+    - `type: "email" (default: "email")`
+
+      - `"email"`
+
+    - `subject_prefix: optional string or null`
 
   - `object: "organization.spend_limit" (default: "organization.spend_limit")`
 
@@ -153,9 +165,13 @@ Content type: `application/json`
 
   `minimum: 1`
 
+- `notification_channel: optional object {  }  or null`
+
+  Configure email notifications when the spend limit is reached. Leave this out to keep the current settings, or send null to reset to owner-only notifications.
+
 ### Returns
 
-- `OrganizationSpendLimit object { currency, enforcement, interval, 2 more }`
+- `OrganizationSpendLimit object { currency, enforcement, interval, 3 more }`
 
   Represents a hard spend limit configured at the organization level.
 
@@ -200,6 +216,18 @@ Content type: `application/json`
       The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notifications sent when the hard spend limit is reached.
+
+    - `recipients: array of string`
+
+    - `type: "email" (default: "email")`
+
+      - `"email"`
+
+    - `subject_prefix: optional string or null`
 
   - `object: "organization.spend_limit" (default: "organization.spend_limit")`
 
@@ -242,7 +270,7 @@ curl -X POST https://api.openai.com/v1/organization/spend_limit \
 
 ### Organization Spend Limit
 
-- `OrganizationSpendLimit object { currency, enforcement, interval, 2 more }`
+- `OrganizationSpendLimit object { currency, enforcement, interval, 3 more }`
 
   Represents a hard spend limit configured at the organization level.
 
@@ -287,6 +315,18 @@ curl -X POST https://api.openai.com/v1/organization/spend_limit \
       The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notifications sent when the hard spend limit is reached.
+
+    - `recipients: array of string`
+
+    - `type: "email" (default: "email")`
+
+      - `"email"`
+
+    - `subject_prefix: optional string or null`
 
   - `object: "organization.spend_limit" (default: "organization.spend_limit")`
 

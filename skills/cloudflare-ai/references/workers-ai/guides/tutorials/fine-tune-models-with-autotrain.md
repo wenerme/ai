@@ -44,7 +44,7 @@ Different models, like Mistral, will provide a specific [chat template/instructi
 
 Open the [HuggingFace Autotrain Advanced Notebook ↗︎](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain_LLM.ipynb)
 
-In order to give your AutoTrain ample memory, you will need to need to choose a different Runtime. From the menu at the top of the Notebook choose Runtime > Change Runtime Type. Choose A100.
+In order to give your AutoTrain ample memory, you will need to choose a different Runtime. From the menu at the top of the Notebook choose Runtime > Change Runtime Type. Choose A100.
 
 Note
 
@@ -57,7 +57,7 @@ The notebook contains a few interactive sections that we will need to change.
 Modify the following fields
 
 - **project\_name**: Choose a descriptive name for you to remember later
-- **model\_name**: Choose from the one of the official HuggingFace base models that we support:
+- **model\_name**: Choose from one of the official HuggingFace base models that we support:
   - `mistralai/Mistral-7B-Instruct-v0.2`
   - `google/gemma-2b-it`
   - `google/gemma-7b-it`
@@ -150,5 +150,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/#page","headline":"Fine Tune Models With AutoTrain from HuggingFace","description":"Fine-tuning AI models with LoRA adapters on Workers AI allows adding custom training data, like for LLM finetuning.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/og.png?v=b0b15ca1c67a6587","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","LLM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/#page","headline":"Fine Tune Models With AutoTrain from HuggingFace","description":"Fine-tuning AI models with LoRA adapters on Workers AI allows adding custom training data, like for LLM finetuning.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/og.png?v=b0b15ca1c67a6587","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","LLM"]}
 ```

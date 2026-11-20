@@ -99,91 +99,95 @@ example-tf/
 Terraform modules are ways of encapsulating multiple resources with logic in an abstracted interface. Consider the example where a module sets up default load balancer with a pool, some DNS entries, and perhaps a page rule. The end user may use it like this:
 
 ```hcl
-module "example" "an_example_site" {
-  domain = "example.com"
+module "an_example_site" {
+  source    = "./modules/example"
+  domain    = "example.com"
   origin_ip = "192.168.0.1"
 }
 ```
 
 In terms of Terraform resources, however, the above example would be translated to:
 
+Note
+
+Terraform code snippets below refer to the v5 SDK only.
+
 ```hcl
-resource "cloudflare_record" "example_1" {
+resource "cloudflare_dns_record" "example_1" {
   zone_id = var.cloudflare_zone_id
-  name    = "terraform"
-  value   = "198.51.100.11"
+  name    = "terraform.example.com"
+  content = "198.51.100.11"
   type    = "A"
   ttl     = 3600
 }
 
-resource "cloudflare_record" "example_2" {
+resource "cloudflare_dns_record" "example_2" {
   zone_id = var.cloudflare_zone_id
-  name    = "terraform"
-  value   = "198.51.100.12"
+  name    = "terraform.example.com"
+  content = "198.51.100.12"
   type    = "A"
   ttl     = 3600
 }
 
-resource "cloudflare_record" "example_3" {
+resource "cloudflare_dns_record" "example_3" {
   zone_id = var.cloudflare_zone_id
-  name    = "terraform"
-  value   = "198.51.100.13"
+  name    = "terraform.example.com"
+  content = "198.51.100.13"
   type    = "A"
   ttl     = 3600
 }
 
-resource "cloudflare_load_balancer" "bar" {
-  zone_id          = var.cloudflare_zone_id
-  name             = "example-load-balancer.example.com"
-  fallback_pool_id = cloudflare_load_balancer_pool.foo.id
-  default_pool_ids = [cloudflare_load_balancer_pool.foo.id]
-  description      = "example load balancer using geo-balancing"
-  proxied          = true
-  steering_policy  = "geo"
+resource "cloudflare_load_balancer" "example_lb" {
+  zone_id         = var.cloudflare_zone_id
+  name            = "example-load-balancer.example.com"
+  fallback_pool   = cloudflare_load_balancer_pool.example_lb_pool.id
+  default_pools   = [cloudflare_load_balancer_pool.example_lb_pool.id]
+  description     = "example load balancer using geo-balancing"
+  proxied         = true
+  steering_policy = "geo"
 
-  pop_pools {
-    pop      = "LAX"
-    pool_ids = [cloudflare_load_balancer_pool.foo.id]
+  pop_pools = {
+    LAX = [cloudflare_load_balancer_pool.example_lb_pool.id]
   }
 
-  country_pools {
-    country  = "US"
-    pool_ids = [cloudflare_load_balancer_pool.foo.id]
+  country_pools = {
+    US = [cloudflare_load_balancer_pool.example_lb_pool.id]
   }
 
-  region_pools {
-    region   = "WNAM"
-    pool_ids = [cloudflare_load_balancer_pool.foo.id]
+  region_pools = {
+    WNAM = [cloudflare_load_balancer_pool.example_lb_pool.id]
   }
 
-  rules {
+  rules = [{
     name      = "example rule"
     condition = "http.request.uri.path contains \"testing\""
-    fixed_response {
+    fixed_response = {
       message_body = "hello"
       status_code  = 200
       content_type = "html"
       location     = "www.example.com"
     }
-  }
+  }]
 }
 
 resource "cloudflare_load_balancer_pool" "example_lb_pool" {
-  name = "example-lb-pool"
-  origins {
+  account_id = var.cloudflare_account_id
+  name       = "example-lb-pool"
+
+  origins = [{
     name    = "example-1"
     address = "198.51.100.1"
     enabled = true
-  }
+  }]
 }
 
 resource "cloudflare_page_rule" "example_page_rule" {
-  zone_id = var.cloudflare_zone_id
-  target = "sub.${var.cloudflare_zone}/page"
+  zone_id  = var.cloudflare_zone_id
+  target   = "sub.example.com/page"
   priority = 1
 
-  actions {
-    ssl = "flexible"
+  actions = {
+    ssl               = "flexible"
     email_obfuscation = "on"
   }
 }
@@ -230,5 +234,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/#page","headline":"Best practices","description":"Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/og.png?v=667da80310f1ae7e","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/#page","headline":"Best practices","description":"Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/terraform/advanced-topics/best-practices/og.png?v=667da80310f1ae7e","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -11,6 +11,7 @@ The following topics provide you with additional configuration options for Grafa
 
 - [Configure burn-rate notifications](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/configure-burn-rate-notifications/)
 - [Configure RBAC permissions](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/rbac/)
+- [Use gcx to manage SLO resources](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/gcx/)
 - [Provision SLO resources using Terraform](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform/)
 - [Provision SLO resources using the HTTP API](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/api/)
 - [Configure additional data sources for SLOs](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources/)

@@ -1075,7 +1075,7 @@ This file logs the progress of [database migrations](../raketasks/maintenance.md
 
 This log is located:
 
-- In the `/var/log/gitlab/mailroom/current` file on Linux package installations.
+- In the `/var/log/gitlab/mailroom/mail_room_json.log` file on Linux package installations.
 - In the `/home/git/gitlab/log/mail_room_json.log` file on self-compiled installations.
 
 This structured log file records internal activity in the `mail_room` gem.

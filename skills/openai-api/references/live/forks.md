@@ -6653,7 +6653,7 @@ Use Bearer Auth (header Authorization).
 
 ### Fork Server Event
 
-- `ForkServerEvent = SessionStartedEvent or SessionUpdatedEvent or InputAudioMutedEvent or 24 more`
+- `ForkServerEvent = SessionStartedEvent or SessionUpdatedEvent or SessionResumed { event_id, type, client_event_id }  or 26 more`
 
   Server events for Live. Response lifecycle events are wrapped inside response.event; dispatch the nested event by its full type and tolerate new response event types. Follow the [Live prompting guide](https://developers.openai.com/api/docs/guides/live-prompting) when designing the conversation and delegation policy.
 
@@ -6677,7 +6677,7 @@ Use Bearer Auth (header Authorization).
 
         The Unix timestamp, in seconds, at which the Live session expires.
 
-      - `model: string or "gpt-live-1"`
+      - `model: string or "gpt-live-1" or "gpt-live-1.1"`
 
         The Live model. Required in the session configuration for every transport; do not pass it as a URL query parameter.
 
@@ -6685,11 +6685,13 @@ Use Bearer Auth (header Authorization).
 
           `minLength: 1`
 
-        - `"gpt-live-1"`
+        - `"gpt-live-1" or "gpt-live-1.1"`
 
           The Live model. Required in the session configuration for every transport; do not pass it as a URL query parameter.
 
           - `"gpt-live-1"`
+
+          - `"gpt-live-1.1"`
 
       - `status: "active" (default: "active")`
 
@@ -8097,6 +8099,38 @@ Use Bearer Auth (header Authorization).
 
       The event_id of the client command associated with this server event, when supplied.
 
+  - `SessionResumed object { event_id, type, client_event_id }`
+
+    Sent when speech wakes inference and it is ready for audio in a Live WebRTC session. This occurs on the first wake and after each later wake. Delivered to the sideband and, when permitted by its event settings, the data channel.
+
+    - `event_id: string`
+
+      The unique ID of the Live server event.
+
+    - `type: "session.resumed" (default: "session.resumed")`
+
+      - `"session.resumed"`
+
+    - `client_event_id: optional string`
+
+      The event_id of the client command associated with this server event, when supplied.
+
+  - `SessionPaused object { event_id, type, client_event_id }`
+
+    Sent when the idle timeout pauses inference in a Live WebRTC session. The WebRTC connection, sideband, and session ID persist. Delivered to the sideband and, when permitted by its event settings, the data channel.
+
+    - `event_id: string`
+
+      The unique ID of the Live server event.
+
+    - `type: "session.paused" (default: "session.paused")`
+
+      - `"session.paused"`
+
+    - `client_event_id: optional string`
+
+      The event_id of the client command associated with this server event, when supplied.
+
   - `InputAudioMutedEvent object { event_id, type, client_event_id }`
 
     Acknowledges a session.input_audio.mute command. An independent input mute sends silence to the model and preserves sideband audio reflection. Fixture playback does not emit this event.
@@ -9051,9 +9085,17 @@ Use Bearer Auth (header Authorization).
 
       The cumulative Live audio usage so far.
 
-      - `seconds: number`
+      - `seconds: integer`
 
-        The cumulative Live audio duration in seconds. Do not sum this value across usage events.
+        The cumulative billable duration in whole seconds. When present, the active and paused breakdown adds up to this total.
+
+      - `active_seconds: optional integer`
+
+        The remaining billable seconds attributed to active audio and any unused prepaid duration.
+
+      - `paused_seconds: optional integer`
+
+        Billable time attributed to paused inference at the configured rate, rounded down to whole seconds.
 
     - `client_event_id: optional string`
 
