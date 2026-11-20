@@ -18,6 +18,7 @@ Daybreak Blue access doesn't grant specialist-model access.
 For approved API projects, use the most capable cyber model available to you. Alias resolution can change and depends on your approved access.
 See [Use Daybreak in the Responses API](https://developers.openai.com/api/docs/guides/daybreak) to choose a
 model and `access_programs.cyber` value, understand defaults, and handle errors.
+In the Agents API, [select the program for the session](https://developers.openai.com/api/docs/guides/agents-api/configuration#use-daybreak-in-a-session).
 Access and model behavior depend on the approved organization and project;
 the model ID alone doesn't grant access.
 
@@ -28,7 +29,7 @@ applicable endpoint.
 Trusted Access governs approved model access; it doesn't configure your tools,
 environment, or engagement scope.
 
-If a Responses API or Agents SDK workflow can take sensitive cybersecurity
+If a Responses API, Agents API, or Agents SDK workflow can take sensitive cybersecurity
 actions, review each proposed tool call against the approved scope before
 execution. Deny unauthorized actions, pause ambiguous or high-risk changes for
 human approval, enforce independent filesystem and network boundaries, keep
@@ -38,7 +39,7 @@ audit logs, and fail closed when review is unavailable. See
 Application-level tool review and Codex product-side sandboxing are separate
 from the API cybersecurity safeguards described on this page.
 
-For GPT-6-Cyber, [configure your project and IP allowlist](https://developers.openai.com/api/docs/guides/daybreak#set-up-gpt-6-cyber) before sending requests.
+For GPT-6 Cyber, [configure your project and IP allowlist](https://developers.openai.com/api/docs/guides/daybreak#set-up-gpt-6-cyber) before sending requests.
 
 ## Safeguard actions for non-ZDR Organizations
 

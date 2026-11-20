@@ -198,6 +198,8 @@ The following are required to run Geo:
 - [Supported PostgreSQL versions](https://handbook.gitlab.com/handbook/engineering/data-engineering/database-excellence/database-frameworks/postgresql-upgrade-cadence/) for your GitLab releases with [Streaming Replication](https://www.postgresql.org/docs/16/warm-standby.html#STREAMING-REPLICATION).
   - [PostgreSQL Logical replication](https://www.postgresql.org/docs/16/logical-replication.html) is not supported.
 - All sites must run [the same PostgreSQL versions](setup/database.md#postgresql-replication).
+  If a secondary site runs a newer version, see
+  [secondary site runs a newer PostgreSQL version than the primary site](replication/troubleshooting/postgresql_replication.md#secondary-site-runs-a-newer-postgresql-version-than-the-primary-site).
 - Git 2.9 or later
 - Git-lfs 2.4.2 or later on the user side when using LFS
 - All sites must run the exact same GitLab version. The [major, minor, and patch versions](../../policy/maintenance.md#versioning) must all match.

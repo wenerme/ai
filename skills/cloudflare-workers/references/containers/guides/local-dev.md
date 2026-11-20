@@ -1,5 +1,5 @@
 ---
-description: Learn how to run Container-enabled Workers locally with `wrangler dev` and `vite dev`.
+description: Run Container-enabled Workers locally and test raw TCP and gRPC traffic with Wrangler.
 title: Local Development
 image: https://developers.cloudflare.com/containers/guides/local-dev/og.png?v=a2f82e93548ea4bd
 ---
@@ -31,6 +31,26 @@ If you use a private Docker Hub, Amazon ECR, or Google Artifact Registry image i
 As a workaround for Cloudflare Registry images, point `vite dev` at a local Dockerfile that uses `FROM <IMAGE_REFERENCE>`. Docker then pulls the base image during the local build.
 
 Container instances will be launched locally when your Worker code calls to create a new container. Requests will then automatically be routed to the correct locally-running container.
+
+## Test TCP and gRPC locally
+
+To receive raw TCP connections locally, export a [`connect()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/connect/) and configure a TCP listener in `wrangler.jsonc`:
+
+```jsonc
+{
+	"connect": [{ "protocol": "tcp", "port": 8788 }],
+}
+```
+
+```toml
+[[connect]]
+protocol = "tcp"
+port = 8_788
+```
+
+Connect TCP or gRPC clients to `localhost:8788`. The port comes from this configuration; exporting the handler alone does not create a listener.
+
+Refer to [Bidirectional gRPC with Workers and Containers](https://developers.cloudflare.com/containers/examples/bidirectional-grpc/) for a complete local development workflow.
 
 When the dev session ends, all associated container instances should be stopped, but local images are not removed, so that they can be reused in subsequent builds.
 
@@ -133,5 +153,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/local-dev/#page","headline":"Local Development","description":"Learn how to run Container-enabled Workers locally with wrangler dev and vite dev.","url":"https://developers.cloudflare.com/containers/guides/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/local-dev/og.png?v=a2f82e93548ea4bd","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/local-dev/#page","headline":"Local Development","description":"Run Container-enabled Workers locally and test raw TCP and gRPC traffic with Wrangler.","url":"https://developers.cloudflare.com/containers/guides/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/local-dev/og.png?v=a2f82e93548ea4bd","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

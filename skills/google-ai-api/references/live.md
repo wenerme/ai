@@ -189,7 +189,7 @@ Configures automatic detection of activity.
 
 Incremental update of the current conversation delivered from the client. All of the content here is unconditionally appended to the conversation history and used as part of the prompt to the model to generate content.
 
-A message here will interrupt any current model generation.
+For conversational Live models, a message here interrupts any current model generation. For TTS models, `turn_complete = false` queues text, style, and speed without interrupting active audio generation, and `turn_complete = true` flushes the turn.
 
 {% table %}
   * Field

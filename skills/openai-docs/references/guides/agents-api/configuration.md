@@ -17,7 +17,7 @@ Pass these settings in `agent` when you create a session. This example supplies 
 
 Configure an agent for one session
 
-```javascript
+```typescript
 import OpenAI from "openai";
 const client = new OpenAI();
 
@@ -165,7 +165,7 @@ Save an agent to reuse its configuration across sessions. Create it once, then p
 
 Reuse an agent
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const client = new OpenAI();
@@ -308,7 +308,7 @@ Replace the illustrative `agent_123` value with the saved agent's ID before runn
 
 Override an agent for one session
 
-```javascript
+```typescript
 // Replace the illustrative IDs and URLs below with your own resource values.
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -479,6 +479,30 @@ For example, this request changes reasoning effort and lets the API select the s
 Updating a session does not change the saved agent or other sessions. Later saved-agent updates do not change the session.
 
 You cannot update `reasoning.summary`, `text`, `instructions`, or `multi_agent` through this endpoint. Create a new session to change those settings. See the [Update session reference](https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/update) for request fields.
+
+## Use Daybreak in a session
+
+The Agents API supports Daybreak Blue and Daybreak Red. Use an API key from a project with access to both your [chosen model and its cyber access program](https://developers.openai.com/api/docs/guides/daybreak#choose-the-model-and-access-program).
+
+When you [create a session](https://developers.openai.com/api/docs/guides/agents-api/quickstart?lang=cURL), include the fields for your program in the request body.
+
+**Daybreak Blue**
+
+```json
+{
+  "agent": { "model": "gpt-6-sol" },
+  "access_programs": { "cyber": "daybreak_blue" }
+}
+```
+
+**Daybreak Red**
+
+```json
+{
+  "agent": { "model": "gpt-5.6-cyber" },
+  "access_programs": { "cyber": "daybreak_red" }
+}
+```
 
 ## Automatic action review
 

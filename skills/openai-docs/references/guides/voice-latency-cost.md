@@ -15,23 +15,22 @@ duration, while backend costs depend on the models and tools you use.
 
 ### Voice session costs
 
-GPT-Live voice sessions are billed per second at the current [model rate](https://developers.openai.com/api/docs/models/gpt-live-1). Session duration is not rounded up to the next whole minute.
+GPT-Live voice sessions accrue charges per second at the [active and standby rates](https://developers.openai.com/api/docs/pricing#live-session-duration).
 
-Active session time includes time when the user speaks, the assistant speaks, both are silent,
-or the backend is working.
-
-For estimates, count the active session from start through closure. Use the
-duration reported by the API instead of timing only the audio you play. Muting
-microphone input does not close the session. When the conversation is finished,
-close the session and collect its final usage.
+Active time includes speech, silence before the idle timeout expires, and time
+spent waiting for backend work while inference is running. The standby rate
+applies while inference is paused in a WebRTC session configured for
+[standby](https://developers.openai.com/api/docs/guides/live-conversations#configure-standby). Muting microphone input
+leaves the session active. When the conversation is finished, close the session
+and collect its final usage.
 
 See [API pricing](https://developers.openai.com/api/docs/pricing) for backend model and tool prices.
 
 ### WebRTC initialization charges
 
-A `POST /v1/live/sessions` request to create a WebRTC session bills 15 seconds of voice duration while the session initializes. That amount is credited against duration charges once the session starts running. Don't add another 15 seconds to the running session's duration when estimating its cost.
+With the default startup behavior, creating a WebRTC session with `POST /v1/live/sessions` bills 15 seconds of voice duration while the session initializes. That amount is credited against duration charges once the session starts running. Don't add another 15 seconds to the running session's duration when estimating its cost.
 
-For example, the 90-second session below already includes the 15 seconds billed at initialization. It is not billed as 105 seconds. Account for session-creation charges when evaluating reconnects or applications that create sessions before the user is ready to speak.
+For example, a 90-second active session already includes the 15 seconds billed at initialization. Account for session-creation charges when evaluating reconnects or applications that create sessions before the user is ready to speak.
 
 ### Backend costs
 
@@ -52,21 +51,12 @@ reliably the assistant completes the task.
 
 ### Estimate conversation costs
 
-For a conversation with one voice session:
-
-**Total cost = (billable voice seconds ÷ 60 × voice rate per minute) + backend costs**
-
-For example, at an illustrative voice rate of $0.05 per minute, a 90-second voice session costs $0.075. If the backend model and tool costs total $0.02, the conversation costs $0.095:
-
-| Component              | Calculation                | Cost       |
-| ---------------------- | -------------------------- | ---------- |
-| Voice session          | 90 seconds ÷ 60 × $0.05    | $0.075     |
-| Backend work           | Total model and tool costs | $0.02      |
-| **Conversation total** | **$0.075 + $0.02**         | **$0.095** |
-
-The rates and backend cost above are examples; use the current voice rate, your measured backend usage, and the
-applicable model and tool rates. If the task spans multiple voice sessions, add
-their durations and include backend work performed between sessions.
+Estimate voice cost by multiplying active minutes by the active rate and
+standby minutes by the standby rate. For example, if a call spends 60 seconds
+active and 30 seconds on standby, add one minute at the active rate and half a
+minute at the standby rate. Add backend model and tool charges to get the total
+cost. If a task spans multiple sessions, include backend work performed between
+sessions.
 
 ### Optimization strategies
 
@@ -91,7 +81,7 @@ Shorter waits can improve the user experience and reduce voice-session costs.
 For example, suppose your backend uses `gpt-5.6-luna` with
 [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) and runs independent tool calls in
 parallel. If these optimizations help the user finish and close the voice
-session one minute sooner, you save $0.05 in voice charges. The total cost
+session one minute sooner, you save one minute of voice charges. The total cost
 falls if the additional backend cost is less than that saving.
 
 You can also [start a speculative lookup from transcript fragments](https://developers.openai.com/api/docs/guides/live-delegation#react-to-transcript-fragments)
@@ -109,7 +99,7 @@ With client delegation, your backend worker can keep running while the voice
 session is open or closed. Save the task state and conversation context before
 [closing the voice session](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close).
 
-For the inactivity timeout, restart trigger, and context restoration workflow, see [Close idle sessions and resume](https://developers.openai.com/api/docs/guides/live-conversations#close-idle-sessions-and-resume).
+For WebRTC calls that should stay connected during quiet periods, use [standby](https://developers.openai.com/api/docs/guides/live-conversations#configure-standby). To disconnect during inactivity, follow [Close an idle session and start another](https://developers.openai.com/api/docs/guides/live-conversations#close-an-idle-session-and-start-another).
 
 For an ambient agent, close the voice session while the backend handles a
 long-running task, such as coding in goal mode. Offer a button labeled
@@ -150,8 +140,7 @@ for the supported history format.
 
 If the earlier session was stored with `store: true`, you can also [fork that session](https://developers.openai.com/api/docs/guides/live-conversations#store-and-fork-a-session). Keep the verified backend task state in your application whichever approach you use.
 
-Closing saves $0.05 per minute of idle voice time; compare that saving with
-reconnection costs and the interruption to the user's experience.
+Closing the session stops voice charges. Weigh the savings against reconnection costs and the interruption to the user’s conversation.
 
 #### Choose the right backend model
 
@@ -170,7 +159,7 @@ Compare cost per successful task alongside completion rate and time to completio
 ### Monitor actual usage
 
 Record voice duration and backend usage separately for each session. GPT-Live
-reports cumulative voice duration in seconds:
+reports cumulative voice usage in seconds:
 
 ```json
 {
@@ -181,7 +170,7 @@ reports cumulative voice duration in seconds:
 }
 ```
 
-Each update replaces the previous duration snapshot. Do not sum the snapshots.
+Each update replaces the previous usage total. Do not sum the snapshots.
 After sending `session.close`, keep receiving events until `session.closed` and
 record its final `usage.seconds` once. Follow the
 [graceful-close procedure](https://developers.openai.com/api/docs/guides/live-conversations#usage-and-graceful-close)

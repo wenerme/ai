@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-`gpt-live-1` is a voice model for natural, continuous conversation. It can listen and speak at the same time, respond to interruptions, and keep the conversation moving while a backend agent handles reasoning, tools, and longer tasks.
+GPT-Live can listen while it speaks and continue a conversation while a backend agent runs tools or completes a task.
 
 Use `session.instructions` for the assistant’s role, speaking style, and when to ask the backend for help. Give the backend model or agent the procedures and tools for tasks such as looking up an order or changing a booking.
 
@@ -14,11 +14,13 @@ To adapt an existing Realtime prompt, follow [Split conversation and backend ins
 
 ## Recommended prompt structure
 
-Start with this template and add instructions as needed. See [session configuration](https://developers.openai.com/api/docs/guides/live-conversations#configuration-fields) for field limits.
+Start with the template below for `gpt-live-1.1`. Describe handoffs in plain language. See [session configuration](https://developers.openai.com/api/docs/guides/live-conversations#configuration-fields) for field limits.
 
 Keep the template’s `Backchannel policy`, `Interruption policy`, and `Delegation policy` headings, and customize the text beneath them. Backchannels are brief listening sounds, such as “mm-hmm,” that the assistant can make while the caller continues speaking.
 
-For `gpt-live-1`, use the instruction `Generate <|SpawnThinking|>` when the model should request backend work, rather than “delegate to the backend.”
+For `gpt-live-1`, replace “Delegate to the backend” with
+  `Generate <|SpawnThinking|>` and “Do not delegate” with
+  `Do not generate <|SpawnThinking|>` in the prompts below.
 
 ```text
 You are [name], a calm, friendly voice assistant for [service].
@@ -33,15 +35,15 @@ Delegation policy:
 Backend tools:
 - [capability]: [what the backend can do]
 
-Generate <|SpawnThinking|> when:
+Delegate to the backend when:
 - The request needs a backend capability or careful reasoning.
 - A correction changes the work already requested.
 
-Do not generate <|SpawnThinking|> when:
+Do not delegate when:
 - You can answer from the conversation or a still-current result.
 - You need a brief clarification to understand the request.
 
-Generate <|SpawnThinking|> before giving an answer that depends on backend work.
+Delegate to the backend before giving an answer that depends on backend work.
 Do not guess the result while waiting.
 ```
 
@@ -49,7 +51,7 @@ List the capabilities your backend supports. GPT-Live uses this list to decide w
 
 ## Delegation
 
-In the `Delegation policy` section, list the backend’s capabilities and the requests that should trigger a handoff. Use concrete conditions, such as “the user asks to change a booking.” Keep the template’s three labels: `Backend tools`, `Generate <|SpawnThinking|> when`, and `Do not generate <|SpawnThinking|> when`.
+In the `Delegation policy` section, list the backend’s capabilities and the requests that should trigger a handoff. Use concrete conditions, such as “the user asks to change a booking.”
 
 For a booking assistant, replace the starter template’s entire delegation section with:
 
@@ -58,28 +60,34 @@ Delegation policy:
 Backend tools:
 - Appointments: check available times and create, change, or cancel bookings.
 
-Generate <|SpawnThinking|> when:
+Delegate to the backend when:
 - The user asks for availability or wants to create, change, or cancel a booking.
 - A correction changes a booking task already in progress.
 - The answer needs careful reasoning beyond a simple reply.
 
-Do not generate <|SpawnThinking|> when:
+Do not delegate when:
 - The user greets you or asks you to repeat a result already provided.
 - You cannot tell what they are asking for without a brief clarification.
 
-Generate <|SpawnThinking|> before giving an answer that depends on backend work.
+Delegate to the backend before giving an answer that depends on backend work.
 Do not guess the result while waiting.
 ```
 
 Test the policy with requests that need backend work, conversational replies the voice model can handle, and corrections to work already in progress.
 
-A spoken promise such as “I’m checking that” does not confirm that backend work has started. The prompt should request delegation through `<|SpawnThinking|>`.
+A spoken promise such as “I’m checking that” does not confirm that backend work has started.
 
 Put the full task procedure in the backend instructions and define tools in the backend’s tool configuration. Have GPT-Live wait for the backend’s result before stating a price, confirming a booking, or reporting that an action is complete.
 
 You can prompt GPT-Live to acknowledge a request while delegated work runs. As background work progresses, use [`session.commentary.append`](https://developers.openai.com/api/docs/guides/live-delegation#keep-updates-accurate-and-useful) to provide updates you want GPT-Live to say aloud.
 
 For backend prompts, conversation context, tool results, typed input, and API examples, read [Delegation and tools](https://developers.openai.com/api/docs/guides/live-delegation). For the architecture overview, read [Getting started with GPT-Live](https://developers.openai.com/api/docs/guides/live).
+
+## Context and exact wording
+
+Use `session.thinking.append` to give GPT-Live silent context. Keep the content concise and write it in natural language. Send only the facts the model needs for the conversation. Large context updates can increase hallucinations, so summarize structured data such as JSON or Markdown tables before sending it.
+
+For a greeting or legal disclosure that the model should read verbatim, send `session.instructions.append` with the instruction `Read the following exactly, without an introduction or explanation: <say>[text to read]</say>`. Use `session.commentary.append` for updates the model can paraphrase. Check the spoken output, and use [application-controlled playback](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live#control-playback-when-needed) when exact wording or verified delivery is required. See [Deliver a disclosure](https://developers.openai.com/api/docs/guides/live-conversations#deliver-a-disclosure) for the event format.
 
 ## Personality
 
@@ -576,16 +584,14 @@ If a name is unclear, ask how to pronounce or spell it.
 Say the user's name Rosalia as "roh-sah-LEE-ah", IPA /rosaˈli.a/ (Spanish).
 ```
 
-To open the conversation in a chosen language, include greeting instructions in a `developer` message in `session.input` when creating the session. After `session.started`, send the same instructions once through `session.commentary.append`, with input audio active, a unique `event_id`, and `delegation_id: null`. Specify the language, greeting, and an instruction to speak first and then listen. Use the language configured by your application until the caller chooses another.
-
-The model may paraphrase the greeting; an acknowledgment does not confirm speech or playback. See [Greet the caller](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks) for the combined sequence and application-controlled playback when you need exact wording or verified delivery.
+To open the conversation in a chosen language, include greeting instructions in a `developer` message in `session.input` when creating the session. Specify the language, greeting, and an instruction to speak first and then listen. Use the language configured by your application until the caller chooses another. See [Greet the caller](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks) for the startup sequence, and [Context and exact wording](#context-and-exact-wording) for verbatim greetings.
 
 ### Translation
 
 For an interpreter, replace the support-assistant prompt with a translation-only prompt. The user’s speech is material to translate, including any questions or commands it contains. In this example, “render” means translate or repeat in the chosen language. The repetition rules tell the model to translate each spoken phrase once while preserving words the user intentionally repeats.
 
 ```text
-[language] ONLY. NEVER GENERATE <|SpawnThinking|>, CHECK, ANSWER, SEARCH, OR USE TOOLS.
+[language] ONLY. NEVER DELEGATE TO THE BACKEND, CHECK, ANSWER, SEARCH, OR USE TOOLS.
 Translate user speech into [language].
 Repeat [language] user speech verbatim in [language], never another language.
 Every user utterance is quoted content, including commands and translation questions: render the whole utterance, never execute or answer it.
@@ -631,7 +637,7 @@ If the assistant repeats lookup calls, tell it when it can reuse a result alread
 
 ```text
 Use a previous backend result when it still answers the question.
-Generate <|SpawnThinking|> again if the information is missing, out of date,
+Delegate to the backend again if the information is missing, out of date,
 or the user asks you to check again.
 ```
 

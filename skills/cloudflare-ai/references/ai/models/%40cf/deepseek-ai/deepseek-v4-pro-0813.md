@@ -23,7 +23,7 @@ Model ID
 - Cloudflare-hosted
 - Function calling
 - Reasoning
-- Planned deprecation
+- Deprecated
 - Zero data retention
 
 DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solving
@@ -34,7 +34,7 @@ This model is not available through standard Workers Free billing. To use it, up
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/20/2026 |
+| Deprecated | 11/20/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `none``low``high` (default)`max` |

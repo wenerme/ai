@@ -20,7 +20,7 @@ Content type: `application/json`
 
   Model and startup configuration for the Live session that answers the incoming SIP call.
 
-  - `model: string or "gpt-live-1"`
+  - `model: string or "gpt-live-1" or "gpt-live-1.1"`
 
     The Live model to use for the accepted call.
 
@@ -30,11 +30,13 @@ Content type: `application/json`
 
       `minLength: 1`
 
-    - `"gpt-live-1"`
+    - `"gpt-live-1" or "gpt-live-1.1"`
 
       The Live model. Required in the session configuration for every transport; do not pass it as a URL query parameter.
 
       - `"gpt-live-1"`
+
+      - `"gpt-live-1.1"`
 
   - `type: "live" (default: "live")`
 
@@ -1318,7 +1320,7 @@ curl https://api.openai.com/v1/live/sessions/$SESSION_ID/accept \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
           "session": {
-            "model": "gpt-live-1",
+            "model": "gpt-live-1.1",
             "type": "live"
           }
         }'

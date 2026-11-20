@@ -4,7 +4,11 @@
 
 Set `access_programs.cyber` in a Responses API request to select [Daybreak Blue or Daybreak Red](https://help.openai.com/en/articles/20001258-trusted-access-for-cyber). Other [API cybersecurity safeguards](https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity) still apply.
 
-Before sending a request, complete [organization approval and project setup](https://help.openai.com/en/articles/20001261-enterprise-daybreak-onboarding). Use an API key from a project with access to both the program and the model. The parameter doesn't grant access.
+After OpenAI approves your API organization for Daybreak, ask an API organization owner to enable the approved access level in a named (non-default) project. Default projects cannot enable Daybreak. Follow the [API project setup instructions](https://help.openai.com/en/articles/20001531-openai-daybreak-set-up-access-for-your-team#set-up-api-project-access).
+
+Use an API key from that project for your requests.
+
+You can also [use Daybreak in the Agents API](https://developers.openai.com/api/docs/guides/agents-api/configuration#use-daybreak-in-a-session). Set `access_programs.cyber` when you create or update a session, not on individual messages. The request and response examples below use the Responses API.
 
 All Daybreak Red organizations must [require SSO](https://help.openai.com/en/articles/9534785-single-sign-on-sso-setup-for-openai-products) for the API organization that holds Cyber access and enforce MFA through your identity provider. If you use a separate Cyber organization, verify its domain and test SSO there.
 

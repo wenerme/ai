@@ -4,7 +4,7 @@
 
 After [connecting to GPT-Live](https://developers.openai.com/api/docs/guides/live), use session events to add context, display transcripts, and manage the connection. GPT-Live can listen and speak at the same time. Track transcript text, played audio, and backend task progress separately so your interface can show what the assistant is saying and what work is still running.
 
-This guide assumes your connection has emitted `session.started`. See [Connections](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live) for connection setup and audio streaming, and [Delegation and tools](https://developers.openai.com/api/docs/guides/live-delegation) for backend work.
+Most procedures in this guide assume your connection has emitted `session.started`. For WebRTC sessions configured to wait for speech, see [Managing idle sessions](#managing-idle-sessions). See [Connections](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live) for connection setup and audio streaming, and [Delegation and tools](https://developers.openai.com/api/docs/guides/live-delegation) for backend work.
 
 
 
@@ -205,6 +205,8 @@ These times describe context delivery, not speech or playback. The model may sti
 If the session timeline stops, the acknowledgment can remain pending. Match acknowledgments to the outgoing `event_id` through `client_event_id`, and keep handling errors while you wait. Closing the session returns errors for appends that are still pending.
 
 ### Add context during the conversation
+
+GPT-Live-1.1 uses the same context events as GPT-Live-1. For example, send a booking lookup in progress with `session.thinking.append`. Once your backend confirms the booking, use `session.commentary.append` to give the caller the result.
 
 Choose an event based on how the model should use the update:
 
@@ -425,19 +427,8 @@ Specify the language, what the assistant should say, and that it should begin im
 > Greet the caller now in English. Introduce yourself as the support assistant and ask how you can help. Then pause and listen.
 
 1. Add the message to `session.input` with `role: "developer"` and one `input_text` content part. See [Seed a session with prior conversation](#seed-a-session-with-prior-conversation) for the message format.
-2. Wait for `session.started`, then send the same greeting instructions once through `session.commentary.append`, using a unique `event_id` and `delegation_id: null`, as shown below. Keep input audio running, including silence before the caller speaks. On WebSocket, continue sending `session.input_audio.append`; on WebRTC, keep the input audio track active.
+2. After `session.started`, keep input audio running, including silence before the caller speaks. On WebSocket, continue sending `session.input_audio.append`. On WebRTC, keep the input audio track active.
 3. Check the output audio and transcript to verify that the assistant greeted the caller. Startup instructions can improve greeting behavior, but do not guarantee that the model will speak.
-
-```json
-{
-  "type": "session.commentary.append",
-  "event_id": "greeting_1",
-  "delegation_id": null,
-  "content": "Greet the caller now in English. Introduce yourself as the support assistant and ask how you can help. Then pause and listen."
-}
-```
-
-The `session.commentary.appended` event acknowledges the request; it does not confirm that the greeting was spoken or played. GPT-Live may paraphrase the greeting, add words, or remain silent.
 
 For predictable greeting playback, exact wording, or a known playback-completion point, play a verified recording or rendered clip through your application and [control GPT-Live playback while it plays](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live#control-playback-when-needed). Test greetings in the languages you support, including when the caller starts speaking during the greeting. See [Prompting voice models](https://developers.openai.com/api/docs/guides/live-prompting) for prompt design.
 
@@ -957,7 +948,30 @@ end
 ```
 
 
-## Close idle sessions and resume
+## Managing idle sessions
+
+Use standby to keep a WebRTC connection open during inactivity and resume inference when someone speaks. For longer gaps when your application can disconnect, close the session and start another when the user returns.
+
+### Configure standby
+
+When creating a [WebRTC session](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live), set `session.wake_policy.type` to `speech` to wait for speech before starting inference. Set `session.idle_timeout_s` to a whole number from `5` to `60` to return to standby after that many seconds without an input or output transcript. If you omit the timeout, inference stays active after the first wake until the session ends.
+
+The optional `session.wake_policy.vad_threshold` controls how much evidence of speech the server's voice activity detector (VAD) needs to start inference. It accepts a number from `0` to `1` and defaults to `0.5`. Higher values require stronger evidence of speech. The threshold applies at the first wake and after each pause.
+
+Keep the microphone track active while the session is on standby. The connection and session ID stay the same. The session resumes and restores conversation history while the user speaks. After standby, the first response to a short utterance may take longer.
+
+Listen on the sideband, or on the WebRTC data channel if its event settings allow these events:
+
+- `session.resumed` indicates that inference is ready, including on the first wake.
+- `session.paused` indicates that the idle timeout stopped inference and the session entered standby. The connection and sideband remain open.
+
+GPT-Live bills standby time at a [lower rate](https://developers.openai.com/api/docs/pricing#live-session-duration) than active time.
+
+
+
+
+
+### Close an idle session and start another
 
 For applications with long gaps between interactions, close the voice session during inactivity and start a new session when the user returns. Keep conversation context and application task state so the user can continue without repeating themselves. For example, an in-car assistant can resume when the driver activates voice again, while a coding assistant can keep its backend worker running between voice conversations.
 
@@ -1003,7 +1017,7 @@ Keep handling `error` events while audio is playing. Track audio interruption an
 
 ### Usage and graceful close
 
-`session.usage.updated` reports cumulative voice duration in seconds:
+`session.usage.updated` reports cumulative voice usage in seconds:
 
 ```json
 {
@@ -1014,7 +1028,7 @@ Keep handling `error` events while audio is playing. Track audio interruption an
 }
 ```
 
-Use the latest `usage.seconds` as the running total for voice duration. For example, updates of 12 and then 15 seconds mean 15 seconds of use. Track backend token usage separately from nested Responses completion events. See [Cost optimization](https://developers.openai.com/api/docs/guides/voice-latency-cost?api=live) for usage accounting.
+Use the latest `usage.seconds` as the running usage total. For example, if the value changes from 12 to 15, the total is 15 seconds. Track backend token usage separately from nested Responses completion events. See [Cost optimization](https://developers.openai.com/api/docs/guides/voice-latency-cost?api=live) for usage accounting.
 
 To close gracefully:
 

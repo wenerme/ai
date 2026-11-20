@@ -12,7 +12,7 @@ Get a project's hard spend limit.
 
 ### Returns
 
-- `ProjectSpendLimit object { currency, enforcement, interval, 2 more }`
+- `ProjectSpendLimit object { currency, enforcement, interval, 3 more }`
 
   Represents a hard spend limit configured at the project level.
 
@@ -57,6 +57,18 @@ Get a project's hard spend limit.
       The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
+
+  - `notification_channel: object { recipients, type, subject_prefix }`
+
+    Email notifications sent when the hard spend limit is reached.
+
+    - `recipients: array of string`
+
+    - `type: "email" (default: "email")`
+
+      - `"email"`
+
+    - `subject_prefix: optional string or null`
 
   - `object: "project.spend_limit" (default: "project.spend_limit")`
 

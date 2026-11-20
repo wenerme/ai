@@ -112,6 +112,102 @@ log data to build up in `pg_xlog`.
 
 [Removing the inactive slots](#removing-an-inactive-replication-slot) can reduce the amount of space used in the `pg_xlog`.
 
+## Secondary site runs a newer PostgreSQL version than the primary site
+
+All Geo sites must run the same PostgreSQL major version.
+Fresh installs use the default PostgreSQL version of the Linux package.
+If you install a secondary site from a release with a newer default, the secondary site runs a newer version
+than the primary site.
+For example, in GitLab 19.6, fresh installs default to PostgreSQL 18, while existing installs stay on PostgreSQL 17.
+For the default version of each release, see [PostgreSQL versions shipped with the Linux package](../../../package_information/postgresql_versions.md).
+
+When the versions differ, `gitlab-ctl replicate-geo-database` completes the base backup,
+but PostgreSQL on the secondary site fails to start.
+`sudo gitlab-ctl status postgresql` shows `down: postgresql`,
+and `/var/log/gitlab/postgresql/current` contains:
+
+```plaintext
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 17, which is not compatible with this version 18.6.
+```
+
+The `DETAIL` line shows both versions. The data directory is a copy of the primary site,
+so it has the version of the primary site. The second version is the one the secondary site runs.
+
+To confirm the versions:
+
+1. On the primary site, run:
+
+   ```shell
+   sudo gitlab-psql -c 'SHOW server_version;'
+   ```
+
+1. On the secondary site, check the version of the PostgreSQL binaries.
+   This command works when PostgreSQL is not running:
+
+   ```shell
+   sudo /opt/gitlab/embedded/bin/postgres --version
+   ```
+
+If the secondary site runs a newer major version, rebuild its databases on the version of the primary site.
+Don't use `gitlab-ctl revert-pg-upgrade` for this problem. It restores the data directory that
+`gitlab-ctl pg-upgrade` keeps, and a fresh install has none.
+
+> [!warning]
+> The following steps delete the PostgreSQL data on the site where you run them.
+> Run them on the secondary site only, never on the primary site.
+
+1. On the secondary site, stop GitLab, and confirm that no PostgreSQL processes are running:
+
+   ```shell
+   sudo gitlab-ctl stop
+   pgrep -a postgres
+   ```
+
+1. Delete the PostgreSQL data folders of the main database and the Geo tracking database:
+
+   ```shell
+   sudo rm -rf /var/opt/gitlab/postgresql /var/opt/gitlab/geo-postgresql
+   ```
+
+1. Edit `/etc/gitlab/gitlab.rb`, and set `postgresql['version']` to the major version of the primary site.
+   This setting also applies to the Geo tracking database. For example:
+
+   ```ruby
+   postgresql['version'] = 17
+   ```
+
+1. Reconfigure GitLab:
+
+   ```shell
+   sudo gitlab-ctl reconfigure
+   ```
+
+1. The `gitlab-psql` user's home directory is `/var/opt/gitlab/postgresql`,
+   so deleting it also removes the certificate of the primary site that PostgreSQL uses for TLS verification.
+   Copy `server.crt` from the primary site to the current directory, and install the certificate again:
+
+   ```shell
+   sudo install \
+      -D \
+      -o gitlab-psql \
+      -g gitlab-psql \
+      -m 0400 \
+      -T server.crt ~gitlab-psql/.postgresql/root.crt
+   ```
+
+1. [Replicate the database from the primary site again](../../setup/database.md#step-3-initiate-the-replication-process).
+1. Run the Geo tracking database migrations, and check that replication works:
+
+   ```shell
+   sudo gitlab-rake db:migrate:geo
+   sudo gitlab-rake gitlab:geo:check
+   ```
+
+You must set `postgresql['version']` before PostgreSQL initializes the data folders.
+If you set it after, `gitlab-ctl reconfigure` fails, and PostgreSQL logs the same `database files are incompatible with server` error.
+For more information, see [pin the packaged PostgreSQL version](https://docs.gitlab.com/omnibus/settings/database/#pin-the-packaged-postgresql-version-fresh-installs-only).
+
 ## Free up disk space used by old PostgreSQL data directories
 
 If a site that uses the Linux package is running low on disk space,

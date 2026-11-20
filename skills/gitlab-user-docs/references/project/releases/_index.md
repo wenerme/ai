@@ -41,6 +41,12 @@ To view a list of releases:
   - On private projects, this number is visible to users with at least the Reporter
     [role](../../permissions.md#project-permissions).
 
+### Download release assets
+
+Open the release and scroll to .
+When the release has notes, this section appears below .
+If  is collapsed, expand it to see the download links.
+
 ### Sort releases
 
 To sort releases by **Released date** or **Created date**, select from the sort order dropdown list. To

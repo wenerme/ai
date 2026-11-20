@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/spectrum/reference/configuration-option
 
 Spectrum is a global TCP and UDP proxy running on Cloudflare's edge nodes. It does not terminate the connection in the application-layer sense. However, at Layer 4, Spectrum does terminate the TCP and UDP sockets in both directions. The L4 payloads of TCP segments and UDP datagrams are passed back and forth as-is, without modifications.
 
-This means Spectrum does not inspect, modify, or upgrade application-layer protocols. For example, Spectrum cannot convert an HTTP connection to HTTPS, add HTTP headers, or apply WAF rules to TCP traffic. To add Layer 7 functionality such as CDN, Workers, or Bot Management, set the [application type](#application-type) to **HTTP/HTTPS**.
+This means Spectrum does not inspect, modify, or upgrade application-layer protocols. For example, Spectrum cannot convert an HTTP connection to HTTPS, add HTTP headers, or apply WAF rules to TCP traffic. To add Layer 7 functionality such as CDN or Bot Management, set the [application type](#application-type) to **HTTP/HTTPS**.
 
 For common issues and troubleshooting guidance, refer to [Spectrum Troubleshooting](https://developers.cloudflare.com/spectrum/reference/troubleshooting/).
 
@@ -24,7 +24,30 @@ Some of these features require an Enterprise plan. If you would like to upgrade,
 
 ## Application type
 
-The application type determines the protocol by which data travels from the edge to your origin. Select *TCP/UDP* if you want to proxy directly to the origin. If you want to set up products like CDN, Workers, or Bot management, you need to select *HTTP/HTTPS*. In this case, traffic is routed through Cloudflare's pipeline instead of connecting directly to your origin.
+The application type determines how data travels from the edge to your origin:
+
+- Select **TCP/UDP** to proxy directly to an IP address, hostname, load balancer, or virtual network.
+- Select **HTTP/HTTPS** to route traffic through Cloudflare's Layer 7 pipeline.
+
+For a TCP application, you can select a [Worker origin](#worker-origin) to send connections to a Worker's `connect()` handler.
+
+## Worker origin
+
+Public beta
+
+Spectrum applications with Worker origins are in public beta.
+
+Set `traffic_type` to `worker` and `origin_worker_id` to the immutable 32-character tag assigned to the target Worker. Refer to [Route TCP traffic to a Worker](https://developers.cloudflare.com/spectrum/how-to/route-tcp-traffic-to-a-worker/) for setup instructions.
+
+Worker origins have the following constraints:
+
+- For the TCP beta, `protocol` must specify TCP on a single port. Port ranges are not supported.
+- Pro and Business zones without Spectrum Enterprise support one Worker-origin application per zone, in addition to their existing plan-supported applications. Free zones are not supported.
+- On Pro and Business zones without Spectrum Enterprise, omit `tls`. Spectrum does not terminate TLS for these applications.
+- With Spectrum Enterprise, `tls` can be `off` or `flexible`.
+- `origin_direct`, `origin_dns`, `origin_port`, `virtual_network_id`, Proxy Protocol, and Argo Smart Routing are not supported.
+
+Without TLS termination, Spectrum passes the TCP payload to the Worker. An encrypted service must terminate TLS behind the Worker. With Spectrum Enterprise and `tls` set to `flexible`, Spectrum terminates TLS at the edge and sends the decrypted TCP payload to the Worker.
 
 ## IP addresses
 
@@ -56,6 +79,8 @@ Cloudflare supports all TCP ports.
 ## Port ranges
 
 Spectrum applications can be configured to proxy traffic on ranges of ports.
+
+Worker origins do not support port ranges. Configure a single TCP port instead.
 
 For direct origins:
 
@@ -220,5 +245,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/configuration-options/og.png?v=a0f8992ba404a747","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/configuration-options/og.png?v=a0f8992ba404a747","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

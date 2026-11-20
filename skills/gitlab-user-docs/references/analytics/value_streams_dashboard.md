@@ -1,4 +1,4 @@
-# Value Streams Dashboard
+# Value stream dashboard
 
 View DevSecOps metrics (such as DORA and vulnerabilities) across your organization on a customizable dashboard.
 
@@ -7,16 +7,16 @@ View DevSecOps metrics (such as DORA and vulnerabilities) across your organizati
 
 - [Moved](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195086) from GitLab Ultimate to GitLab Premium in GitLab 18.2.
 
-The Value Streams Dashboard is a customizable dashboard you can use to identify trends, patterns, and opportunities for digital transformation improvements.
-The centralized UI in the Value Streams Dashboard acts as the single source of truth (SSOT), where all stakeholders can access and view the same set of metrics that are relevant to the organization.
-The Value Streams Dashboard includes panels that visualize the following metrics:
+The value stream dashboard is a customizable dashboard you can use to identify trends, patterns, and opportunities for digital transformation improvements.
+The centralized UI in the value stream dashboard acts as the single source of truth (SSOT), where all stakeholders can access and view the same set of metrics that are relevant to the organization.
+The value stream dashboard includes panels that visualize the following metrics:
 
 - [DORA metrics](dora_metrics.md)
 - [Value Stream Analytics (VSA) - flow metrics](../group/value_stream_analytics/_index.md)
 - [Vulnerabilities](../application_security/vulnerability_report/_index.md)
 - GitLab Duo Code Suggestions
 
-With the Value Streams Dashboard, you can:
+With the value stream dashboard, you can:
 
 - Track and compare the metrics listed previously over a period of time.
 - Identify downward trends early on.
@@ -26,19 +26,19 @@ With the Value Streams Dashboard, you can:
 
 For a click-through demo, see [the Value Stream Management product tour](https://gitlab.navattic.com/vsm).
 
-To view the Value Streams Dashboard as an analytics dashboard for a group:
+To view the value stream dashboard as an analytics dashboard for a group:
 
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Analyze** > **Analytics dashboards**.
-1. From the list of available dashboards, select **Value Streams Dashboard**.
+1. From the list of available dashboards, select **Value stream dashboard**.
 
 > [!note]
-> Data displayed on the Value Streams Dashboard is continuously collected in the backend.
+> Data displayed on the value stream dashboard is continuously collected in the backend.
 > If you upgrade to the Ultimate tier, you get access to historical data, and can view metrics about past GitLab usage and performance.
 
 ## Panels
 
-The Value Streams Dashboard panels have a default configuration, but you can also customize the dashboard panels.
+The value stream dashboard panels have a default configuration, but you can also customize the dashboard panels.
 
 ### Overview
 
@@ -158,16 +158,16 @@ For further investigation, you can select a project name to drill down into that
 - Tier: Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-To enable or disable the overview count aggregation for the Value Streams Dashboard:
+To enable or disable the overview count aggregation for the value stream dashboard:
 
 1. In the top bar, select **Search or go to** and find your group.
    This group must be at the top level.
 1. In the left sidebar, select **Settings** > **Analytics**.
-1. In **Value Streams Dashboard**, select or clear the **Enable overview background aggregation for Value Streams Dashboard** checkbox.
+1. In **Value stream dashboard**, select or clear the **Enable overview background aggregation for the value stream dashboard** checkbox.
 
 To retrieve aggregated usage counts in the group, use the [GraphQL API](../../api/graphql/reference/objects.md#group).
 
-## View the Value Streams Dashboard
+## View the value stream dashboard
 
 Prerequisites:
 
@@ -179,7 +179,7 @@ Prerequisites:
 
 ### For groups
 
-To view the Value Streams Dashboard for a group:
+To view the value stream dashboard for a group:
 
 - From Analytics Dashboards:
   1. In the top bar, select **Search or go to** and find your group.
@@ -187,7 +187,7 @@ To view the Value Streams Dashboard for a group:
 - From Value Stream Analytics:
   1. In the top bar, select **Search or go to** and find your project or group.
   1. Select **Analyze** > **Value stream analytics**.
-  1. Below the **Filter results** text box, in the **Lifecycle metrics** row, select **Value Streams Dashboard / DORA**.
+  1. Below the **Filter results** text box, in the **Lifecycle metrics** row, select **Value stream dashboard (DORA)**.
   1. Optional. To open the new page, append this path `/analytics/dashboards/value_streams_dashboard` to the group URL (for example, `https://gitlab.com/groups/gitlab-org/-/analytics/dashboards/value_streams_dashboard`).
 
 ### For projects
@@ -195,11 +195,11 @@ To view the Value Streams Dashboard for a group:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137483) in GitLab 16.7 [with a feature flag](../../administration/feature_flags/_index.md) named `project_analytics_dashboard_dynamic_vsd`. Disabled by default.
 - Feature flag `project_analytics_dashboard_dynamic_vsd` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/441207) in GitLab 17.5.
 
-To view the Value Streams Dashboard as an analytics dashboard for a project:
+To view the value stream dashboard as an analytics dashboard for a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Analyze** > **Analytics dashboards**.
-1. From the list of available dashboards, select **Value Streams Dashboard**.
+1. From the list of available dashboards, select **Value stream dashboard**.
 
 ## Schedule reports
 
@@ -218,7 +218,7 @@ To learn more, see the blog post [New Scheduled Reports Generation tool simplifi
 
 ## Customize dashboard panels
 
-You can customize the Value Streams Dashboard and configure what subgroups and projects to include in the page.
+You can customize the value stream dashboard and configure what subgroups and projects to include in the page.
 
 To customize the default content of the page, you need to create a YAML configuration file in a project of your choice.
 In this file, you can define various settings and parameters, such as title, description, and number of panels.
@@ -260,10 +260,10 @@ After you have set up the project, set up the configuration file:
 # version - The latest version of the analytics dashboard schema
 version: '2'
 
-# title - Change the title of the Value Streams Dashboard.
+# title - Change the title of the value stream dashboard.
 title: 'Custom Dashboard title'
 
-# description - Change the description of the Value Streams Dashboard. [optional]
+# description - Change the description of the value stream dashboard. [optional]
 description: 'Custom description'
 
 # panels - List of panels that contain panel settings.
@@ -386,7 +386,7 @@ For project namespaces:
 
 - Code Suggestions, Non-Agentic Chat, and Root Cause Analysis usage metrics [updated](https://gitlab.com/gitlab-org/gitlab/-/issues/589605) to display absolute user counts instead of percentage rates in GitLab 18.10.
 
-The following table provides an overview of the metrics available in the Value Streams Dashboard,
+The following table provides an overview of the metrics available in the value stream dashboard,
 along with their descriptions and the name of the drill-down report where they are displayed.
 
 | Metric                            | Description                                                                                                          | Drill-down report | ID |

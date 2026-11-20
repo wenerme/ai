@@ -2,14 +2,13 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Flex processing provides lower costs for [Responses](https://developers.openai.com/api/reference/resources/responses) or [Chat Completions](https://developers.openai.com/api/reference/resources/chat) requests in exchange for slower response times and occasional resource unavailability. It's ideal for non-production or lower priority tasks, such as model evaluations, data enrichment, and asynchronous workloads.
+You can continue using Flex processing on [supported models](https://developers.openai.com/api/docs/pricing?latest-pricing=flex) as we wind down the beta. Flex is unavailable on GPT-6.2 Astra and GPT-6.2 Sol, and we won’t be adding it to future models. We’ll share the retirement date and migration guidance here once the date is confirmed.
+
+For workloads that can run asynchronously, [background mode in the Responses API](https://developers.openai.com/api/docs/guides/background#use-discounted-completion-windows) offers discounted completion windows on supported models. The 2-hour window is 30% below Standard token pricing, and the 8-hour window is 40% below. The discount applies to every eligible request, including follow-ups.
+
+Flex processing provides lower costs for [Responses](https://developers.openai.com/api/reference/resources/responses) or [Chat Completions](https://developers.openai.com/api/reference/resources/chat) requests in exchange for slower response times and occasional resource unavailability.
 
 Tokens are [priced](https://developers.openai.com/api/docs/pricing) at [Batch API rates](https://developers.openai.com/api/docs/guides/batch), with additional discounts from [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
-
-Flex processing is in beta with limited model availability. Supported models
-  are listed on the [pricing page](https://developers.openai.com/api/docs/pricing?latest-pricing=flex).
-
-For asynchronous Responses API workflows that can wait longer for the initial response, see [discounted background completion windows](https://developers.openai.com/api/docs/guides/background#use-discounted-completion-windows). These windows use Standard processing.
 
 ## API usage
 

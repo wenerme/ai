@@ -1,5 +1,5 @@
 ---
-description: This release introduces 6 new malformed base64 Cloudflare Managed Ruleset detections for Java4Shell CVE-2026-114938. The rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden if needed with supplementary information around the same available through blog post How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938).
+description: "This release introduces updates to an existing PHP Remote Code Execution rule to improve detection accuracy, as well as a few new generic, PHP and Ruby CVE specific rules. The new PHP rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden after evaluating requests matching the rules. Supplementary information around the CVEs are available through Zero Wire phpAfterShell and six other PHP critical flaws and ruby2shell: heap overflow in Ruby string case conversion."
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -9,6 +9,27 @@ image: https://developers.cloudflare.com/og-docs.png
 # Changelog
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-11-19
+
+
+**WAF Emergency Release - 2026-11-19**
+
+This release introduces updates to an existing PHP Remote Code Execution rule to improve detection accuracy, as well as a few new generic, PHP and Ruby CVE specific rules. The new PHP rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden after evaluating requests matching the rules. Supplementary information around the CVEs are available through Zero Wire [phpAfterShell and six other PHP critical flaws ↗︎](https://radar.cloudflare.com/zero-wire/php-november-2026-security-release-phpaftershell) and [ruby2shell: heap overflow in Ruby string case conversion ↗︎](https://radar.cloudflare.com/zero-wire/ruby2shell).
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560, CVE-2026-126714) #6 | N/A | Block | Rule detection and description updated. |
+| Cloudflare Free Ruleset | ...b19210f1 | N/A | Ruby - Heap Overflow - CVE:CVE-2026-13282 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...e9855f05 | N/A | Ruby - Integer Overflow - GHSA-87fm-7w84-j2px | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560, CVE-2026-126714) #6 | N/A | Block | Rule detection and description updated. |
+| Cloudflare Managed Ruleset | ...34402c88 | N/A | Ruby - Heap Overflow - CVE:CVE-2026-13282 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...daf25922 | N/A | Ruby - Integer Overflow - GHSA-87fm-7w84-j2px | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...6c6f42b2 | N/A | PHP-FPM - CVE:CVE-2026-129289 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a54028d4 | N/A | PHP SOAP - CVE:CVE-2026-15353 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4521b819 | N/A | PHP SOAP - CVE:CVE-2026-129506 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...3f53db3c | N/A | Generic Rules - Authentication Bypass | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...36ba9f71 | N/A | Anomaly - Embedded Application Request | N/A | Block | This is a new detection. |
 
 ## 2026-11-18
 
@@ -446,22 +467,8 @@ Detailed Rule Changes
 | Cloudflare Managed Ruleset | ...c797ef03 | N/A | JFrog Artifactory - Authentication Bypass - CVE:CVE-2026-42018 | N/A | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...a813ac74 | N/A | JFrog Artifactory - Authentication Bypass - CVE:CVE-2026-82329 | N/A | Block | This is a new detection. |
 
-## 2026-09-22
-
-
-**WAF Release - 2026-09-22**
-
-This release introduces new threat detections to enhance protection against Server-Side Request Forgery (SSRF) attempts using non-standard IP notations or jar loopback payloads, alongside new defenses against Server-Side Template Injection (SSTI) targeting Jinja environments.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...5f21b651 | N/A | SSRF - Cloud,Link-Local non-standard IP notation | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...0f0313d6 | N/A | SSRF - Block jar HTTP loopback payload | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...75cd912a | N/A | SSRF - Local non-standard IP notation | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...a1ba83f6 | N/A | SSTI - Jinja Dangerous Globals Chain | Log | Block | This is a new detection. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces 6 new malformed base64 Cloudflare Managed Ruleset detections for Java4Shell CVE-2026-114938. The rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden if needed with supplementary information around the same available through blog post How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938).","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces updates to an existing PHP Remote Code Execution rule to improve detection accuracy, as well as a few new generic, PHP and Ruby CVE specific rules. The new PHP rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden after evaluating requests matching the rules. Supplementary information around the CVEs are available through Zero Wire phpAfterShell and six other PHP critical flaws and ruby2shell: heap overflow in Ruby string case conversion.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

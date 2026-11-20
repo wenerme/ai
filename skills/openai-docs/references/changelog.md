@@ -8,6 +8,14 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## November, 2026
 
+### Nov 19
+
+Feature · Model: gpt-live-1.1 · API: v1/live/sessions
+
+[GPT-Live-1.1](https://developers.openai.com/api/docs/models/gpt-live-1.1) improves pronunciation, accent consistency, and transcription in multilingual voice conversations. Use `gpt-live-1.1` in an existing Live session configuration and [describe in plain language when to delegate](https://developers.openai.com/api/docs/guides/live-prompting#recommended-prompt-structure) to your backend.
+
+[Configure standby](https://developers.openai.com/api/docs/guides/live-conversations#configure-standby) for GPT-Live-1 and GPT-Live-1.1 WebRTC sessions to pause inference during inactivity and resume when someone speaks.
+
 ### Nov 17
 
 Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · API: v1/responses · API: v1/chat/completions

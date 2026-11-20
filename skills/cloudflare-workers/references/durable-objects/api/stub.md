@@ -114,9 +114,77 @@ stub = env.MY_DURABLE_OBJECT.getByName("foo")
 assert stub.name == "foo", "This should always be true"
 ```
 
+## Methods
+
+### `connect`
+
+Public beta
+
+Raw TCP connections to Workers and Durable Objects are in public beta.
+
+`connect(address, options)` opens a raw TCP connection to the Durable Object and invokes its [`connect()` handler](https://developers.cloudflare.com/durable-objects/api/base/#connect).
+
+```ts
+connect(address: SocketAddress | string, options?: SocketOptions): Socket
+```
+
+#### Parameters
+
+- `address` ( `SocketAddress | string`) — A logical destination, expressed as a `host:port` string or a [`SocketAddress`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketaddress) with `hostname` and `port` fields. The Durable Object receives the resulting `host:port` string as the socket's `localAddress`.
+- `options` ( `SocketOptions`, optional) — Socket configuration. Refer to [`SocketOptions`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketoptions).
+
+#### Return values
+
+Returns a [`Socket`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket).
+
+#### Example
+
+```js
+export default {
+	async connect(socket, env) {
+		const stub = env.TCP_SESSION.getByName("shared-session");
+		const durableObjectSocket = stub.connect("tcp-session:8080", {
+			allowHalfOpen: true,
+		});
+
+		try {
+			await durableObjectSocket.opened;
+			await Promise.all([
+				socket.readable.pipeTo(durableObjectSocket.writable),
+				durableObjectSocket.readable.pipeTo(socket.writable),
+			]);
+		} finally {
+			await Promise.allSettled([socket.close(), durableObjectSocket.close()]);
+		}
+	},
+};
+```
+
+```ts
+export default {
+	async connect(socket: Socket, env: Env): Promise<void> {
+		const stub = env.TCP_SESSION.getByName("shared-session");
+		const durableObjectSocket = stub.connect("tcp-session:8080", {
+			allowHalfOpen: true,
+		});
+
+		try {
+			await durableObjectSocket.opened;
+			await Promise.all([
+				socket.readable.pipeTo(durableObjectSocket.writable),
+				durableObjectSocket.readable.pipeTo(socket.writable),
+			]);
+		} finally {
+			await Promise.allSettled([socket.close(), durableObjectSocket.close()]);
+		}
+	},
+} satisfies ExportedHandler<Env>;
+```
+
 ## Related resources
 
 - [Durable Objects: Easy, Fast, Correct – Choose Three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- [Connect handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/connect/).
 
 Was this helpful?
 
@@ -127,5 +195,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/stub/og.png?v=4ef0df5cda212c39","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/stub/og.png?v=4ef0df5cda212c39","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

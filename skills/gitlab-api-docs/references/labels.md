@@ -213,7 +213,7 @@ Example response:
 
 Deletes a specified label from a project.
 
-By default, this endpoint is rate limited to 120 requests every minute for each user.
+By default, this endpoint is rate limited to 500 requests every minute for each user.
 The limit is shared with deleting group labels and with deleting labels in the UI.
 Administrators can change the limit with the `label_delete_limit` [application setting](settings.md#available-settings).
 After you reach the limit, you receive

@@ -238,6 +238,62 @@ Make sure you install the necessary dependencies from step 1,
 add GitLab package repository from step 2.
 When installing the GitLab package, do not supply `EXTERNAL_URL` value.
 
+All nodes in a Patroni cluster must run the same PostgreSQL major version.
+When you add a node to an existing cluster, set `postgresql['version']` to the major version of the
+existing cluster before the first reconfigure. If you don't, the node uses the default version for
+fresh installs, which can be newer. When this happens, the node fails to start:
+
+- `gitlab-ctl patroni members` shows it as `start failed`.
+- `/var/log/gitlab/patroni/current` contains `FATAL:  database files are incompatible with server`.
+
+To fix this problem, rebuild the new node with the version of the cluster.
+The other nodes keep running, so you don't need to reset the Patroni state in Consul.
+
+> [!warning]
+> The following steps delete the PostgreSQL data on the node where you run them.
+> Run them only on the node that failed to start.
+
+1. Stop Patroni, and confirm that no PostgreSQL processes are running.
+   The `pgrep` command must return no output:
+
+   ```shell
+   sudo gitlab-ctl stop patroni
+   pgrep -a -x postgres
+   ```
+
+1. Delete the data directory:
+
+   ```shell
+   sudo rm -rf /var/opt/gitlab/postgresql/data
+   ```
+
+1. Edit `/etc/gitlab/gitlab.rb`, and set `postgresql['version']` to the major version of the cluster.
+   For example:
+
+   ```ruby
+   postgresql['version'] = 17
+   ```
+
+1. Reconfigure GitLab, and start Patroni:
+
+   ```shell
+   sudo gitlab-ctl reconfigure
+   sudo gitlab-ctl start patroni
+   ```
+
+1. Check that the node is listed as a `Replica` with the state `streaming`:
+
+   ```shell
+   sudo gitlab-ctl patroni members
+   ```
+
+If you use Geo, the nodes of a standby cluster must also run the PostgreSQL version of the primary site.
+For more information, see
+[configure a standby cluster on the secondary site](../geo/setup/database.md#step-4-configure-a-standby-cluster-on-the-secondary-site).
+
+For more information about pinning, see
+[pin the packaged PostgreSQL version](https://docs.gitlab.com/omnibus/settings/database/#pin-the-packaged-postgresql-version-fresh-installs-only).
+
 ### Configuring the Database nodes
 
 1. Make sure to [configure the Consul nodes](../consul.md).

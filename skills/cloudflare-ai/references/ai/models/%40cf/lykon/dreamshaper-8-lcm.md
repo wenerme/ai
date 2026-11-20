@@ -21,14 +21,14 @@ Model ID
 `@cf/lykon/dreamshaper-8-lcm` Copy
 
 - Cloudflare-hosted
-- Planned deprecation
+- Deprecated
 - Zero data retention
 
 Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/20/2026 |
+| Deprecated | 11/20/2026 |
 | More information | [link ↗](https://huggingface.co/Lykon/DreamShaper) |
 | Zero data retention | Yes |
 

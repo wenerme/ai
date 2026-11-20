@@ -75,6 +75,18 @@ The following guide assumes that:
   you have a new secondary site set up with the same
   [versions of PostgreSQL](../_index.md#requirements-for-running-geo),
   OS, and GitLab on all sites.
+- The secondary site runs the same PostgreSQL major version as the primary site.
+  A fresh install initializes PostgreSQL with the default version of its Linux package release,
+  unless `postgresql['version']` is set before the first reconfigure. If you install the package
+  with `EXTERNAL_URL`, the first reconfigure runs during the installation. To pin the version on a
+  new secondary site, create `/etc/gitlab/gitlab.rb` with `external_url` and `postgresql['version']`
+  before you install the package. For the default version of each release, see
+  [PostgreSQL versions shipped with the Linux package](../../package_information/postgresql_versions.md).
+  Keep the setting until you upgrade PostgreSQL. `gitlab-ctl pg-upgrade` skips nodes where it is set,
+  so you must remove it before the upgrade.
+  For more information, see [pin the packaged PostgreSQL version](https://docs.gitlab.com/omnibus/settings/database/#pin-the-packaged-postgresql-version-fresh-installs-only).
+  If the secondary site already runs a newer version, see
+  [secondary site runs a newer PostgreSQL version than the primary site](../replication/troubleshooting/postgresql_replication.md#secondary-site-runs-a-newer-postgresql-version-than-the-primary-site).
 
 > [!warning]
 > Geo works with streaming replication. Logical replication is not supported,
@@ -964,6 +976,30 @@ For each Patroni node on the secondary site:
    ```
 
 1. [Opt out of automatic PostgreSQL upgrades](https://docs.gitlab.com/omnibus/settings/database/#opt-out-of-automatic-postgresql-upgrades) to avoid unintended downtime when upgrading GitLab. Be aware of the known [caveats when upgrading PostgreSQL with Geo](https://docs.gitlab.com/omnibus/settings/database/#caveats-when-upgrading-postgresql-with-geo). Especially for larger environments, PostgreSQL upgrades must be planned and executed consciously. As a result and going forward, ensure PostgreSQL upgrades are part of the regular maintenance activities.
+1. Set the PostgreSQL version of the node to the major version of the primary site:
+
+   1. On any Patroni node of the primary site, check the version:
+
+      ```shell
+      sudo gitlab-psql -c 'SHOW server_version;'
+      ```
+
+   1. In `/etc/gitlab/gitlab.rb`, set `postgresql['version']` to that major version. For example:
+
+      ```ruby
+      postgresql['version'] = 17
+      ```
+
+   Set it before the first reconfigure. Otherwise, the node uses the default version for fresh installs,
+   which can be newer, and PostgreSQL fails to start with `FATAL:  database files are incompatible with server`.
+   If you already ran `gitlab-ctl reconfigure` on this node, check the version of its PostgreSQL binaries:
+
+   ```shell
+   /opt/gitlab/embedded/bin/postgres --version
+   ```
+
+   If the major version differs from the primary site, set `postgresql['version']` on all nodes of the
+   standby cluster. Then, in the reconfigure step later in this procedure, follow the steps for a version mismatch.
 1. Edit `/etc/gitlab/gitlab.rb` and add the following:
 
    > [!warning]
@@ -1029,7 +1065,9 @@ For each Patroni node on the secondary site:
      gitlab-ctl reconfigure
      ```
 
-   - If you are configuring a Patroni standby cluster on a site that previously had a working Patroni cluster:
+   - If you are configuring a Patroni standby cluster on a site that previously had a working Patroni cluster,
+     or if a node of the standby cluster runs a different PostgreSQL major version than the primary site
+     because you ran `gitlab-ctl reconfigure` before you set `postgresql['version']`:
 
      1. On the primary site, check that the replication slot named in
         `patroni['standby_cluster']['primary_slot_name']` exists:
@@ -1052,10 +1090,12 @@ For each Patroni node on the secondary site:
         If the slot is missing, [configure it](#step-1-configure-patroni-permanent-replication-slot-on-the-primary-site),
         then run the check again to confirm the slot is listed before you continue.
 
-     1. Stop Patroni on all nodes that are managed by Patroni, including cascade replicas:
+     1. Stop Patroni on all nodes that are managed by Patroni, including cascade replicas,
+        and confirm that no PostgreSQL processes are running. The `pgrep` command must return no output:
 
         ```shell
         gitlab-ctl stop patroni
+        pgrep -a -x postgres
         ```
 
      1. Run the following on the leader Patroni node to recreate the standby cluster:
@@ -1065,6 +1105,10 @@ For each Patroni node on the secondary site:
         /opt/gitlab/embedded/bin/patronictl -c /var/opt/gitlab/patroni/patroni.yaml remove postgresql-ha
         gitlab-ctl reconfigure
         ```
+
+        For a version mismatch, the standby cluster might not have a leader Patroni node, because the
+        bootstrap failed. Run the commands on any one node of the standby cluster, and use that node as
+        the leader Patroni node in the remaining steps.
 
      1. Start Patroni on the leader Patroni node to initiate the replication process from the primary database:
 
@@ -1086,11 +1130,25 @@ For each Patroni node on the secondary site:
 
         Wait until the node's role stabilizes as `Standby Leader` and the state is `Running`. This might take a few minutes.
 
-     1. When the leader Patroni node is the `Standby Leader` and is `Running`, start Patroni on the other Patroni nodes in the standby cluster:
+     1. When the leader Patroni node is the `Standby Leader` and is `Running`, set up the other Patroni nodes
+        in the standby cluster:
 
-        ```shell
-        gitlab-ctl start patroni
-        ```
+        - For a previously working cluster, start Patroni on each of the other nodes:
+
+          ```shell
+          gitlab-ctl start patroni
+          ```
+
+        - For a version mismatch, delete the data directory, reconfigure, and start Patroni on each of the other nodes:
+
+          ```shell
+          rm -rf /var/opt/gitlab/postgresql/data
+          gitlab-ctl reconfigure
+          gitlab-ctl start patroni
+          ```
+
+          The data directories on these nodes might have been initialized with a different PostgreSQL version.
+          After you delete the data directories, the nodes rebuild as replicas of the leader Patroni node with the pinned version.
 
         The other Patroni nodes should join the new standby cluster as replicas and begin replicating from the leader Patroni node automatically.
 

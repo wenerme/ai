@@ -110,6 +110,8 @@ Explore the following examples for Workers.
 
 [**Respond with another site** Respond to the Worker request with the response from another website (example.com in this example).](https://developers.cloudflare.com/workers/examples/respond-with-another-site/)
 
+[**Bidirectional gRPC with Workers and Containers** Build a bidirectional gRPC service that receives TCP connections in a Worker and forwards them to a Cloudflare Container.](https://developers.cloudflare.com/workers/examples/bidirectional-grpc/)
+
 Was this helpful?
 
 YesNo

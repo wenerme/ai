@@ -99182,6 +99182,16 @@ components:
           type: string
         issues_analytics_limit:
           type: string
+        dast_configuration_show_limit:
+          type: string
+        scanned_resources_artifacts_count_limit:
+          type: string
+        scanned_resources_artifacts_size_limit_megabytes:
+          type: string
+        scanned_resources_csv_download_limit:
+          type: string
+        scanned_resources_pipelines_query_limit:
+          type: string
         merge_train_removal_limit_per_user:
           type: string
         orbit_query_limit:
@@ -99219,6 +99229,14 @@ components:
         hand_raise_lead_create_limit:
           type: string
         user_add_on_assignment_bulk_create_limit:
+          type: string
+        billed_users_scan_per_minute_limit:
+          type: string
+        billed_users_scan_per_hour_limit:
+          type: string
+        billed_users_scan_per_day_limit:
+          type: string
+        seat_usage_export_limit:
           type: string
         duo_workflow_oauth_application_id:
           type: string
@@ -121377,6 +121395,34 @@ components:
             user or IP address, for each group or project. Default: `0`, which disables
             the rate limit. GitLab.com uses `60`.'
           nullable: true
+        dast_configuration_show_limit:
+          type: integer
+          description: 'Maximum number of DAST configuration page views per minute
+            for each user. Default: `0`, which disables the rate limit.'
+          nullable: true
+        scanned_resources_artifacts_count_limit:
+          type: integer
+          description: 'Maximum number of DAST and API fuzzing artifacts parsed for
+            the scanned resources CSV and GraphQL fields of a pipeline. Default: `0`,
+            which disables the limit.'
+          nullable: true
+        scanned_resources_artifacts_size_limit_megabytes:
+          type: integer
+          description: 'Maximum total size, in megabytes, of DAST and API fuzzing
+            artifacts parsed for the scanned resources CSV and GraphQL fields of a
+            pipeline. Default: `0`, which disables the limit.'
+          nullable: true
+        scanned_resources_csv_download_limit:
+          type: integer
+          description: 'Maximum number of scanned resources CSV downloads per minute
+            for each user. Default: `0`, which disables the rate limit.'
+          nullable: true
+        scanned_resources_pipelines_query_limit:
+          type: integer
+          description: 'Maximum number of pipelines per minute for each user whose
+            `scannedResources` or `scannedResourcesCount` GraphQL fields are requested.
+            Default: `0`, which disables the rate limit.'
+          nullable: true
         issues_analytics_limit:
           type: integer
           description: 'Maximum number of issue analytics chart requests a user can
@@ -121487,6 +121533,29 @@ components:
           description: 'Maximum number of `userAddOnAssignmentBulkCreate` GraphQL
             mutation calls per minute per user. Default: `0`. Set to `0` to disable
             the rate limit.'
+          nullable: true
+        billed_users_scan_per_minute_limit:
+          type: integer
+          description: 'Maximum number of requests that calculate billable users per
+            minute per user per top-level group. Default: `500`. Set to `0` to disable
+            the rate limit.'
+          nullable: true
+        billed_users_scan_per_hour_limit:
+          type: integer
+          description: 'Maximum number of requests that calculate billable users per
+            hour per user per top-level group. Default: `2500`. Set to `0` to disable
+            the rate limit.'
+          nullable: true
+        billed_users_scan_per_day_limit:
+          type: integer
+          description: 'Maximum number of requests that calculate billable users per
+            day per user per top-level group. Default: `20000`. Set to `0` to disable
+            the rate limit.'
+          nullable: true
+        seat_usage_export_limit:
+          type: integer
+          description: 'Maximum number of seat usage CSV exports per hour per user
+            per top-level group. Default: `10`. Set to `0` to disable the rate limit.'
           nullable: true
         group_owners_can_manage_default_branch_protection:
           type: boolean

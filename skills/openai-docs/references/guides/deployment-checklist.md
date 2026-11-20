@@ -1849,7 +1849,7 @@ The Python sample uses `pip install "openai[realtime]>=3.8.0"`.
 The TypeScript sample uses `npm install openai@^7.10.0 ws`.
 The Ruby sample uses `gem install openai async-websocket`.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.99.0`.
+For Go, run `go get github.com/openai/openai-go/v3@v3.103.0`.
 For Java, add the Maven dependency `com.openai:openai-java:4.105.0`.
 These Go and Java SDK versions provide native Responses WebSocket support.
 

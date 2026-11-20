@@ -29,6 +29,9 @@ Prerequisites:
   the flow must have a [composite identity](../user/duo_agent_platform/composite_identity.md) service account.
   The service account is either configured for the flow in the AI Catalog, or is the service account behind the request's composite identity.
   Otherwise, GitLab returns `403 Forbidden` and does not start the flow.
+  For example, a request authenticated with a personal access token for a human user cannot start
+  a foundational chat agent, such as `analytics_agent/v1` in `workflow_definition`,
+  because no service account is configured for the agent.
 
 ```plaintext
 POST /ai/duo_workflows/workflows
@@ -92,6 +95,15 @@ GitLab Duo Agent Platform, GitLab returns [`403 Forbidden`](rest/troubleshooting
 ```json
 {
   "message": "403 Forbidden - Identity verification is required to use GitLab Duo Agent Platform"
+}
+```
+
+If the flow requires a composite identity service account and has none, GitLab returns
+`403 Forbidden` with a `message`:
+
+```json
+{
+  "message": "403 Forbidden - A composite identity service account is required to start this workflow."
 }
 ```
 

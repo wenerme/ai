@@ -26,6 +26,23 @@ Note
 
 State changes for associated [storage resources](https://developers.cloudflare.com/workers/platform/storage-options/) such as [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), and [D1](https://developers.cloudflare.com/d1/) are not tracked with versions.
 
+### Version retention
+
+Cloudflare creates a new version every time you upload code or change a Worker's settings or secrets. Versions are kept for 30 days. After 30 days, a version is deleted unless:
+
+- It is one of the Worker's 100 most recent versions.
+- It is currently deployed. A version is deployed if it serves any percentage of traffic, including both versions in a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/).
+
+For example, a Worker has 250 versions. Its 100 most recent versions are always kept. Of the other 150, versions created in the last 30 days are kept, and older ones are deleted unless they are deployed.
+
+When a version is deleted:
+
+- It no longer appears in the version list in the dashboard or API.
+- Its [Version URL](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) and any [aliased Version URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/#aliased-version-urls) stop working. An alias does not prevent its version from being deleted. For URLs that keep working, use [Previews](https://developers.cloudflare.com/workers/previews/compare-workflows/#migrate-from-aliased-version-urls-to-previews).
+- Deployment history is kept. If a past deployment used the deleted version, the deployment history shows that version as deleted.
+
+You can only [deploy](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/), create a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) with, or [roll back](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) to the 100 most recent versions of your Worker. For all version limits, refer to [Limits](https://developers.cloudflare.com/workers/platform/limits/#versions).
+
 ## Deployments
 
 A deployment determines which version(s) of your Worker are actively serving traffic. A deployment can reference one version (serving 100% of traffic) or two versions (with traffic split between them during a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/)).
@@ -72,5 +89,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/#page","headline":"Versions & deployments","description":"Understand how Workers tracks changes with versions and releases them with deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/og.png?v=ed23c8daadd08946","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/#page","headline":"Versions & deployments","description":"Understand how Workers tracks changes with versions and releases them with deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/versions-and-deployments/og.png?v=ed23c8daadd08946","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

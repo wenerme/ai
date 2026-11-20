@@ -237,7 +237,7 @@ triage, and remediation with minimal configuration.
 | [Automated triage and remediation](#automated-triage-and-remediation-profile) | Turns on GitLab Duo triage flows and dependency scanning auto-remediation. | [UI](#apply-profiles-in-the-ui), [wizard](#apply-an-automated-triage-and-remediation-profile-with-the-triage-and-remediation-wizard), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Business logic](#business-logic-profile) | Uses an AI agent to find business logic vulnerabilities. | [UI](#apply-profiles-in-the-ui), [CLI](#apply-profiles-with-the-gitlab-cli), [API](#apply-profiles-with-the-graphql-api) |
 | [Security Review](#security-review-profile) | Posts review threads on merge requests instead of running the business logic scan. | [API](#apply-profiles-with-the-graphql-api) |
-| [SkillGuard](#skillguard-profile) | Uses an AI agent to find security risks in AI agent skill files. | [API](#apply-profiles-with-the-graphql-api) |
+| [SkillGuard](#skillguard-profile) | Uses an AI agent to find security risks in AI agent skill files. | [UI](#apply-profiles-in-the-ui), [API](#apply-profiles-with-the-graphql-api) |
 
 ### Secret detection profile
 

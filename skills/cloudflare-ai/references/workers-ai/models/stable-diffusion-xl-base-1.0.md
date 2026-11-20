@@ -23,14 +23,14 @@ Model ID
 `@cf/stabilityai/stable-diffusion-xl-base-1.0` Copy
 
 - Cloudflare-hosted
-- Planned deprecation
+- Deprecated
 - Zero data retention
 
 Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.
 
 | Model Info | |
 | --- | --- |
-| Planned Deprecation | 11/20/2026 |
+| Deprecated | 11/20/2026 |
 | Terms and License | [link ↗](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md) |
 | More information | [link ↗](https://stability.ai/stable-diffusion) |
 | Zero data retention | Yes |
