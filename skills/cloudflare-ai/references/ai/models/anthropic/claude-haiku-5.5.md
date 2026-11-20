@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Claude Haiku 5.5 is a fast, cost-efficient model for high-volume, latency-sensitive tasks such as classification, extraction, routing, and subagent work.
 
@@ -33,6 +34,7 @@ Claude Haiku 5.5 is a fast, cost-efficient model for high-volume, latency-sensit
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/models/haiku-5-5/overview) |
+| Zero data retention | Yes |
 | Request formats | Anthropic Messages |
 | Pricing | <ul><li>Short-context input (per 1M)$0.10</li><li>Short-context cached input (per 1M)$0.01</li><li>Short-context cache write (per 1M)$0.125</li><li>Short-context output (per 1M)$0.50</li><li>Long-context input (per 1M)$0.50</li><li>Long-context cached input (per 1M)$0.05</li><li>Long-context cache write (per 1M)$0.625</li><li>Long-context output (per 1M)$2.50</li></ul> |
 

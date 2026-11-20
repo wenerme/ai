@@ -57,7 +57,58 @@ Use an API key from that Global project with a regional domain prefix for each r
 
 If your existing Global project already supports per-request data residency, you can continue using its API keys.
 
-The following example reuses one client and an API key from a Global project for global, US, and EU requests:
+The following example uses a Global project key for global and US requests and a separate EU project key for the EU request:
+
+
+
+
+Install `openai`. Set `OPENAI_API_KEY` for the global and US calls and `OPENAI_EU_API_KEY` for an EU-region project. Save the complete source as `per-request-regional-processing.ts` and run `node --experimental-strip-types per-request-regional-processing.ts`. The EU client clears the global project and organization headers.
+
+
+
+
+```typescript
+import OpenAI from "openai";
+
+const euKey = process.env.OPENAI_EU_API_KEY;
+if (!euKey) throw new Error("Set OPENAI_EU_API_KEY to an EU-project API key");
+
+const client = new OpenAI();
+console.log(
+  (
+    await client.responses.create({
+      model: "gpt-6.1-terra",
+      input: "Reply with OK.",
+    })
+  ).output_text
+);
+
+console.log(
+  (
+    await client.withOptions({ dataResidency: "us" }).responses.create({
+      model: "gpt-6.1-terra",
+      input: "Reply with OK.",
+    })
+  ).output_text
+);
+
+// EU processing requires a key from an EU-region project.
+console.log(
+  (
+    await client
+      .withOptions({
+        dataResidency: "eu",
+        apiKey: euKey,
+        organization: null,
+        project: null,
+      })
+      .responses.create({
+        model: "gpt-6.1-terra",
+        input: "Reply with OK.",
+      })
+  ).output_text
+);
+```
 
 ```python
 import os

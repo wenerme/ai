@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.
 
@@ -33,6 +34,7 @@ Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, s
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Zero data retention | Yes |
 | Request formats | Chat Completions |
 | Pricing | <ul><li>Input <=200k (per 1M)$1.50</li><li>Cached input <=200k (per 1M)$0.15</li><li>Output <=200k (per 1M)$9.00</li><li>Input >200k (per 1M)$1.50</li><li>Cached input >200k (per 1M)$0.15</li><li>Output >200k (per 1M)$9.00</li></ul> |
 

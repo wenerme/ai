@@ -572,6 +572,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`github_updates_restored`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272186) | A user restores GitHub updates for a project imported with continuous sync, using a new personal access token | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/634424) | Project |
 | [`github_updates_stop_requested`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266762) | A user requests to stop GitHub updates for a project imported with continuous sync | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628593) | Project |
 | [`direct_transfer_relation_export_batch_downloaded`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/194872) | Direct Transfer relation export batch downloaded | Yes | GitLab [18.2](https://gitlab.com/gitlab-org/gitlab/-/issues/441977) | Group, Project |
 | [`direct_transfer_relation_export_downloaded`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/194872) | Direct Transfer relation export downloaded | Yes | GitLab [18.2](https://gitlab.com/gitlab-org/gitlab/-/issues/441977) | Group, Project |
@@ -601,6 +602,9 @@ Audit event types belong to the following product categories.
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`duo_in_slack_disabled`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265962) | GitLab Duo is turned off for a Slack workspace, by an Owner, an administrator, or the system when the claim is no longer valid. | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/633566) | Group |
 | [`duo_in_slack_enabled`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265962) | An Owner or administrator turns on GitLab Duo in Slack for a Slack workspace, so that its sessions run in the group. | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/633566) | Group |
+| [`integration_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271255) | An integration is created from its settings page or the REST API. | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/629838) | Project, Group, Instance |
+| [`integration_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271255) | An integration is deleted from its settings page. | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/629838) | Project, Group, Instance |
+| [`integration_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271255) | An integration is updated from its settings page or the REST API. | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/629838) | Project, Group, Instance |
 
 ### Knowledge graph
 

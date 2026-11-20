@@ -156,8 +156,7 @@ To turn on an agent:
 1. In the left sidebar, select **AI** > **Agents**.
 1. Select the **Managed** tab, then select the agent you want to turn on.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to turn on the agent in.
-1. Select **Enable**.
+1. In the dialog, select **Enable**.
 
 ### From the top-level group
 
@@ -182,14 +181,14 @@ To turn on an agent for all projects in a top-level group:
 1. In the upper-right corner, select **Enable for all projects**.
 1. Select **Enable for all projects**.
 
-   If the agent is already enabled in one or more projects in the group,
+   If the agent is already turned on in one or more projects in the group,
    select **Replace and enable for all projects**.
    The project configurations are deleted and the group configuration is used instead.
 
 In the group, the agent is labeled **Enabled for all projects**.
 In each project, the agent is labeled **Enabled by** followed by the group name.
 
-To disable the agent for all projects, on the agent's page, select **Disable for all projects**, then select **Disable**.
+To turn off the agent for all projects, on the agent's page, select **Disable for all projects**, then select **Disable**.
 
 ### From the AI Catalog
 
@@ -203,10 +202,10 @@ To turn on an agent:
 1. Select **AI Catalog**, then select the **Agents** tab.
 1. Select the agent you want to turn on.
 1. In the upper-right corner, select **Enable**.
-1. Under **Project**, select the project you want to turn on the agent in.
+1. Under **Select projects**, select the project you want to turn on the agent in.
 
-   To turn on a public or restricted agent for multiple projects, from the **Project** dropdown list,
-   select the relevant projects. You can select up to 100 projects.
+   To turn on a public or restricted agent for multiple projects, select the relevant projects.
+   You can select up to 100 projects.
    You can turn on an agent for multiple projects up to 10 times per minute.
 
 1. Select **Enable**.
@@ -292,14 +291,14 @@ The model uses them to decide when to delegate a task to the agent.
 Write the description so that a model can tell what the agent does and when to use it.
 A description written only for people to read in the AI Catalog might not be enough.
 
-## Disable an agent
+## Turn off an agent
 
 Prerequisites:
 
 - For groups, you must have the Maintainer or Owner role.
 - For projects, you must have the Maintainer or Owner role.
 
-To disable an agent:
+To turn off an agent:
 
 1. In the top bar, select **Search or go to** and find your group or project.
 1. Select **AI** > **Agents**.
@@ -307,7 +306,7 @@ To disable an agent:
 1. On the confirmation dialog, select **Disable**.
 
 The agent no longer appears in the project, and is not available in Chat.
-You can disable an agent or flow up to 30 times per minute.
+You can turn off an agent or flow up to 30 times per minute.
 
 ## Duplicate an agent
 
@@ -370,7 +369,7 @@ When you delete an agent, you can choose one of two deletion methods:
 
 - **Delete permanently**: The agent is removed from the instance. This action cannot be undone.
 - **Hide from the AI Catalog**: The agent is hidden instead of removed. Users can continue to use
-  the agent in the groups and projects it is enabled in.
+  the agent in the groups and projects it is turned on in.
 
 If a project other than the managing project has turned on the agent,
 or a custom flow uses the agent as a subagent, the agent is always hidden instead of removed,

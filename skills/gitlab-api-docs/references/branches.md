@@ -11,6 +11,8 @@ To change the branch protections configured for a project, use the [protected br
 
 ## List all repository branches
 
+- `422 Unprocessable Entity` response for an invalid `page_token` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272015) in GitLab 19.7.
+
 Lists all repository branches from a project, sorted by name alphabetically. Search by name, or
 use regular expressions to find specific branch patterns. Returns detailed information about the branch,
 including its protection status, merge status, and commit details.
@@ -27,6 +29,7 @@ Supported attributes:
 | Attribute | Type              | Required | Description |
 |-----------|-------------------|----------|-------------|
 | `id`      | integer or string | Yes      | ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
+| `page_token` | string | No | Token for the next page of results, from the `Link` header of the previous response. Do not create or edit this token. Used for keyset pagination. |
 | `regex`   | string            | No       | Return list of branches with names matching a [re2](https://github.com/google/re2/wiki/Syntax) regular expression. Cannot be used together with `search`. |
 | `search`  | string            | No       | Return list of branches containing the search string. You can use `^term` to find branches that begin with `term`, and `term$` to find branches that end with `term`. |
 

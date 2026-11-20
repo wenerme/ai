@@ -2576,6 +2576,33 @@ For example, download the [kitchen photo](https://developers.openai.com/images/p
 
 Edit the circled vase with the Image API
 
+```typescript
+import { createReadStream } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import OpenAI, { toFile } from "openai";
+
+const client = new OpenAI();
+const response = await client.images.edit({
+  model: "gpt-image-2.6-flare",
+  image: await toFile(createReadStream("kitchen.webp"), "kitchen.webp", {
+    type: "image/webp",
+  }),
+  markup: await toFile(
+    createReadStream("markup-vase-overlay-gpt-image-2-6.png"),
+    "markup-vase-overlay-gpt-image-2-6.png",
+    { type: "image/png" }
+  ),
+  quality: "medium",
+  prompt:
+    "Recolor the striped vase inside the red circle to solid cobalt blue ceramic. " +
+    "Keep its shape, the dried stems, and the rest of the kitchen unchanged. " +
+    "Remove the red circle from the finished photo.",
+});
+const encoded = response.data?.[0]?.b64_json;
+if (!encoded) throw new Error("Image edit returned no image");
+await writeFile("vase.png", Buffer.from(encoded, "base64"));
+```
+
 ```python
 import base64
 from pathlib import Path
@@ -3220,6 +3247,26 @@ The mask image must also contain an alpha channel. If you're using an image edit
 You can modify a black and white image programmatically to add an alpha channel.
 
 Add an alpha channel to a black and white mask
+
+```typescript
+import { execFileSync } from "node:child_process";
+
+// Requires FFmpeg. Use the grayscale mask as both color and alpha.
+execFileSync("ffmpeg", [
+  "-v",
+  "error",
+  "-y",
+  "-i",
+  "mask.png",
+  "-i",
+  "mask.png",
+  "-filter_complex",
+  "[0:v]format=rgb24[color];[color][1:v]alphamerge",
+  "-frames:v",
+  "1",
+  "mask_alpha.png",
+]);
+```
 
 ```python
 from PIL import Image

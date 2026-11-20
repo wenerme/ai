@@ -1845,7 +1845,7 @@ and simple data processing.
 
 {% two-column-layout %}
   {% left-column class="center-vertically" %}
-  *[`models/genie-4`](/docs/models/genie-4)*
+  *[`genie-4`](/docs/models/genie-4)*
 
   {% /left-column %}
 
@@ -1861,8 +1861,8 @@ and simple data processing.
 
 {% hr /%}
 
-Our real-time interactive world generation model streaming steerable `24 fps`
-`16:9` video with synchronized `48 kHz` stereo audio on the
+Our real-time interactive world generation model streaming steerable 24 fps
+16:9 video with synchronized 48 kHz stereo audio on the
 [Interactions API](/docs/genie), available on the paid tier of the Gemini API.
 
 {% tabs %}

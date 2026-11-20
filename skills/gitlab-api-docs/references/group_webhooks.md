@@ -439,7 +439,7 @@ Example response:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/151130) in GitLab 17.4.
 - Configurable rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/587887) in GitLab 19.3. Feature flag `web_hook_event_resend_api_endpoint_rate_limit` removed.
 
-Resends a specific hook event.
+Resends a specific hook event from the past seven days.
 
 This endpoint has a rate limit of five requests per minute for each authenticated user for a given group.
 All webhooks in the same group share the limit. On GitLab Self-Managed and GitLab Dedicated,

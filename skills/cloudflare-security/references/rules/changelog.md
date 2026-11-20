@@ -14,6 +14,17 @@ image: https://developers.cloudflare.com/rules/changelog/og.png?v=0e682d94f4e7c3
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/rules.xml)
 
+## 2026-11-18
+
+
+**Cloud Connector is now generally available**
+
+[Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/) is now generally available to all customers.
+
+Cloud Connector lets you route matching requests to public object storage in Cloudflare R2, Amazon S3, Google Cloud Storage, Microsoft Azure Blob Storage, and Oracle Cloud Infrastructure Object Storage. You can create and manage routing rules in the Cloudflare dashboard, using Rules expressions to control which requests are sent to each provider.
+
+Refer to the [Cloud Connector documentation](https://developers.cloudflare.com/rules/cloud-connector/) to get started.
+
 ## 2026-11-12
 
 

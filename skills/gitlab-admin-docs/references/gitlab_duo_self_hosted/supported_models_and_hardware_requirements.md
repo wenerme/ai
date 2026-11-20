@@ -115,8 +115,8 @@ This feature is in beta and is therefore subject to change as we gather feedback
 | Model family   | Model name |
 |----------------|-------|
 | General        | Any model compatible with the [OpenAI API specification](https://platform.openai.com/docs/api-reference) |
-| Gemini         | [Gemini 3.1 Pro](https://deepmind.google/models/gemini/pro/) |
-| Gemini         | [Gemini 3.0 Flash](https://deepmind.google/models/gemini/flash/) |
+| Gemini         | [Gemini 3.1 Pro](https://aistudio.google.com/docs/models/gemini-3.1-pro-preview) |
+| Gemini         | [Gemini 3 Flash](https://aistudio.google.com/models/gemini-3) |
 | General        | [Gemma-4-31B-IT](https://huggingface.co/google/gemma-4-31B-it) |
 | Qwen           | [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B) |
 
@@ -209,8 +209,20 @@ the GPU count for larger models:
 |--------------------------------------------|---------------------------|-----------------------|
 | 7B models(for example, Mistral 7B)     | 1x NVIDIA A100 (40 GB)    | 35 GB                 |
 | 22B models(for example, Codestral 22B) | 2x NVIDIA A100 (80 GB)    | 110 GB                |
+| Qwen3.8-27B[^testing](BF16 weights)    | 2x NVIDIA A100 (40 GB)    | 80 GB                 |
 | Mixtral 8x7B                               | 2x NVIDIA A100 (80 GB)    | 220 GB                |
 | Mixtral 8x22B                              | 8x NVIDIA A100 (80 GB)    | 526 GB                |
+
+[^testing]: GitLab tested Qwen3.8-27B with vLLM 0.18.1.
+    BF16 weights on two A100 (40 GB) GPUs run out of memory at startup.
+    The failure happens when vLLM profiles memory for graph capture.
+    You must limit the capture sizes with `--compilation-config '{"cudagraph_capture_sizes":[1,2,4,8,16]}'`
+    for Qwen3.8-27B to start.
+
+    A100 GPUs have no native FP8 support, so vLLM serves FP8 weights with weight-only kernels.
+    With FP8 weights on a single GPU, vLLM fails at the same step.
+    In that FP8 setup, start vLLM with `--enforce-eager` instead of limiting the capture sizes.
+    This flag slows token generation.
 
 Use [Hugging Face's memory utility](https://huggingface.co/spaces/hf-accelerate/model-memory-usage) to verify memory requirements.
 

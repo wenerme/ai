@@ -54,12 +54,44 @@ This local counter applies only to text messages for that historical snapshot. M
 
 
 
-The Go examples use the third-party `github.com/tiktoken-go/tokenizer` package, version `v0.10.0`. Install it in your Go module before running either complete example.
+The Go examples use the third-party `github.com/tiktoken-go/tokenizer` package. Install it in your Go module before running either complete example.
+
+
+
+
+
+
+
+The TypeScript counters use `js-tiktoken`. Install it in your project. Save the counter definition and the example messages below together as `counter.ts`, then run `node --experimental-strip-types counter.ts`. The counting rules apply to the historical model snapshot named in the code.
 
 
 
 
 Count chat message tokens
+
+```typescript
+import { getEncoding } from "js-tiktoken";
+
+// Estimate this historical model's framing; other models and tools differ.
+function numTokensFromMessages(
+  messages: Record<string, string>[],
+  model = "gpt-3.5-turbo-0613"
+): number {
+  if (model !== "gpt-3.5-turbo-0613") {
+    throw new Error(`Unsupported token-counting model: ${model}`);
+  }
+  const encoding = getEncoding("cl100k_base");
+  let total = 3;
+  for (const message of messages) {
+    total += 3;
+    for (const [key, value] of Object.entries(message)) {
+      total += encoding.encode(value).length;
+      if (key === "name") total += 1;
+    }
+  }
+  return total;
+}
+```
 
 ```python
 import tiktoken
@@ -147,6 +179,44 @@ end
 Count the example messages locally:
 
 Count tokens in an example prompt
+
+```typescript
+const messages: Record<string, string>[] = [
+  {
+    role: "system",
+    content:
+      "You are a helpful, pattern-following assistant that translates corporate jargon into plain English.",
+  },
+  {
+    role: "system",
+    name: "example_user",
+    content: "New synergies will help drive top-line growth.",
+  },
+  {
+    role: "system",
+    name: "example_assistant",
+    content: "Things working well together will increase revenue.",
+  },
+  {
+    role: "system",
+    name: "example_user",
+    content:
+      "Let's circle back when we have more bandwidth to touch base on opportunities for increased leverage.",
+  },
+  {
+    role: "system",
+    name: "example_assistant",
+    content: "Let's talk later when we're less busy about how to do better.",
+  },
+  {
+    role: "user",
+    content:
+      "This late pivot means we don't have time to boil the ocean for the client deliverable.",
+  },
+];
+const model = "gpt-3.5-turbo-0613";
+console.log(`${numTokensFromMessages(messages, model)} prompt tokens counted.`);
+```
 
 ```python
 messages = [
@@ -397,6 +467,11 @@ The frequency and presence penalties found in the [Chat Completions API](https:/
 They work by directly modifying the raw token scores (un-normalized log-probabilities) with an additive contribution.
 
 Set frequency and presence penalties
+
+```typescript
+mu[j] =
+  mu[j] - counts[j] * alphaFrequency - (counts[j] > 0 ? alphaPresence : 0);
+```
 
 ```python
 mu[j] = mu[j] - c[j] * alpha_frequency - float(c[j] > 0) * alpha_presence

@@ -1331,9 +1331,31 @@ Include ONLY this packaging text (verbatim):
 
 Generate four logo variations and extract a product onto a transparent background with the 2.6 model you want to test.
 
-Install the [OpenAI SDK](https://developers.openai.com/api/docs/libraries#install-an-official-sdk) with `pip install openai` for Python or `gem install openai` for Ruby. Set `OPENAI_API_KEY` and save the [product photograph](https://developers.openai.com/images/platform/guides/image-prompting/shampoo.webp) as `input_images/shampoo.webp`.
+Set `OPENAI_API_KEY` and save the [product photograph](https://developers.openai.com/images/platform/guides/image-prompting/shampoo.webp) as `input_images/shampoo.webp`. The program writes four PNG logo files and `extract-product.png`.
 
-Save the sample as `demo.py` or `demo.rb`. To try Flare, run `python demo.py gpt-image-2.6-flare` or `ruby demo.rb gpt-image-2.6-flare`. To try Sunburst, pass `gpt-image-2.6-sunburst` instead. The script writes four logo files in PNG format and `extract-product.png`.
+
+
+
+Install the [OpenAI SDK](https://developers.openai.com/api/docs/libraries#install-an-official-sdk) with `pip install openai` and save the sample as `demo.py`. Run `python demo.py gpt-image-2.6-flare`, or pass `gpt-image-2.6-sunburst` instead.
+
+
+
+
+
+
+
+Install the [OpenAI SDK](https://developers.openai.com/api/docs/libraries#install-an-official-sdk) with `gem install openai` and save the sample as `demo.rb`. Run `ruby demo.rb gpt-image-2.6-flare`, or pass `gpt-image-2.6-sunburst` instead.
+
+
+
+
+
+
+
+Install `openai` in your project and save the sample as `demo.ts`. Run `node --experimental-strip-types demo.ts gpt-image-2.6-flare`, or pass `gpt-image-2.6-sunburst` instead.
+
+
+
 
 
 
@@ -1341,6 +1363,59 @@ Save the sample as `demo.py` or `demo.rb`. To try Flare, run `python demo.py gpt
 
 
   Generate and edit transparent assets
+
+```typescript
+import { createReadStream } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import OpenAI, { toFile } from "openai";
+
+const model = process.argv[2];
+if (!model)
+  throw new Error("Usage: node transparent-assets-for-model.ts MODEL_ID");
+const suffix = ".png";
+const client = new OpenAI();
+const logos = await client.images.generate({
+  model,
+  prompt:
+    "Create an original logo for Field & Flour, a local bakery. Use warm, simple shapes on a fully transparent background, with clean alpha edges and no shadow or checkerboard.",
+  size: "1024x1536",
+  quality: "medium",
+  background: "transparent",
+  output_format: "png",
+  n: 4,
+});
+if (logos.data?.length !== 4) throw new Error("Expected four logo candidates");
+for (const [index, image] of logos.data.entries()) {
+  await saveImage(`logo-generation-${index + 1}${suffix}`, image.b64_json);
+}
+
+const cutout = await client.images.edit({
+  model,
+  image: await toFile(
+    createReadStream("input_images/shampoo.webp"),
+    "shampoo.webp",
+    {
+      type: "image/webp",
+    }
+  ),
+  prompt:
+    "Extract the product onto a fully transparent background. Preserve its geometry and label, with clean edges and no shadow or restyling.",
+  size: "1024x1536",
+  quality: "medium",
+  background: "transparent",
+  output_format: "png",
+});
+if (cutout.data?.length !== 1) throw new Error("Expected one product cutout");
+await saveImage(`extract-product${suffix}`, cutout.data[0].b64_json);
+
+async function saveImage(
+  filename: string,
+  encoded: string | undefined
+): Promise<void> {
+  if (!encoded) throw new Error("No PNG returned");
+  await writeFile(filename, Buffer.from(encoded, "base64"));
+}
+```
 
 ```python
 import argparse
@@ -2844,9 +2919,33 @@ Example outputs:
 
 ## Run a complete example
 
-This runnable example remains pinned to `gpt-image-2`. Use it as a baseline, then choose an available model and its supported request settings for your evaluation.
+This runnable example remains pinned to `gpt-image-2.5-sunburst`. Use it as a baseline, then choose an available model and its supported request settings for your evaluation.
 
-The examples below generate four logo variations and extract a product onto a transparent background. Install the [OpenAI SDK](https://developers.openai.com/api/docs/libraries#install-an-official-sdk) with `pip install openai` for Python or `gem install openai` for Ruby. Set `OPENAI_API_KEY` and save the [product photograph](https://developers.openai.com/images/platform/guides/image-prompting/shampoo.webp) as `input_images/shampoo.webp`. Live requests incur API usage charges.
+The examples below generate four logo variations and extract a product onto a transparent background. Set `OPENAI_API_KEY` and save the [product photograph](https://developers.openai.com/images/platform/guides/image-prompting/shampoo.webp) as `input_images/shampoo.webp`. Live requests incur API usage charges.
+
+
+
+
+Install the [OpenAI SDK](https://developers.openai.com/api/docs/libraries#install-an-official-sdk) with `pip install openai` for Python.
+
+
+
+
+
+
+
+Install the [OpenAI SDK](https://developers.openai.com/api/docs/libraries#install-an-official-sdk) with `gem install openai` for Ruby.
+
+
+
+
+
+
+
+Install `openai` in your project and save the complete TypeScript sample as `demo.ts`. With the image file saved and the API key set, run `node --experimental-strip-types demo.ts`.
+
+
+
 
 
 
@@ -2854,6 +2953,57 @@ The examples below generate four logo variations and extract a product onto a tr
 
 
   Generate and edit transparent assets
+
+```typescript
+import { createReadStream } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import OpenAI, { toFile } from "openai";
+
+const model = "gpt-image-2.5-sunburst";
+const suffix = `-${model}.png`;
+const client = new OpenAI();
+const logos = await client.images.generate({
+  model,
+  prompt:
+    "Create an original logo for Field & Flour, a local bakery. Use warm, simple shapes on a fully transparent background, with clean alpha edges and no shadow or checkerboard.",
+  size: "1024x1536",
+  quality: "medium",
+  background: "transparent",
+  output_format: "png",
+  n: 4,
+});
+if (logos.data?.length !== 4) throw new Error("Expected four logo candidates");
+for (const [index, image] of logos.data.entries()) {
+  await saveImage(`logo-generation-${index + 1}${suffix}`, image.b64_json);
+}
+
+const cutout = await client.images.edit({
+  model,
+  image: await toFile(
+    createReadStream("input_images/shampoo.webp"),
+    "shampoo.webp",
+    {
+      type: "image/webp",
+    }
+  ),
+  prompt:
+    "Extract the product onto a fully transparent background. Preserve its geometry and label, with clean edges and no shadow or restyling.",
+  size: "1024x1536",
+  quality: "medium",
+  background: "transparent",
+  output_format: "png",
+});
+if (cutout.data?.length !== 1) throw new Error("Expected one product cutout");
+await saveImage(`extract-product${suffix}`, cutout.data[0].b64_json);
+
+async function saveImage(
+  filename: string,
+  encoded: string | undefined
+): Promise<void> {
+  if (!encoded) throw new Error("No PNG returned");
+  await writeFile(filename, Buffer.from(encoded, "base64"));
+}
+```
 
 ```python
 import base64

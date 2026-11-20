@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.
 
@@ -33,6 +34,7 @@ GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, 
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
 | Request formats | Responses |
 | Pricing | <ul><li>Short-context input (per 1M)$0.20</li><li>Short-context cached input (per 1M)$0.02</li><li>Short-context cache write (per 1M)$0.25</li><li>Short-context output (per 1M)$1.20</li><li>Long-context input (per 1M)$0.40</li><li>Long-context cached input (per 1M)$0.04</li><li>Long-context cache write (per 1M)$0.50</li><li>Long-context output (per 1M)$1.80</li></ul> |
 

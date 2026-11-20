@@ -123,6 +123,8 @@ An unlisted distributed app:
 - Is not published in the Slack App Directory.
 - Can only be used with your GitLab instance and not by other sites.
 
+You cannot install the app across an entire Slack organization.
+
 To configure the GitLab for Slack app as an unlisted distributed app:
 
 1. Go to the [**Your Apps**](https://api.slack.com/apps) page on Slack and select your GitLab for Slack app.

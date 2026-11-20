@@ -1263,7 +1263,7 @@ Updates a self-hosted model.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.
 
-Updates the current user's AI memory for a given namespace scope.
+Updates the current user's AI memory for a given namespace or organization scope.
 
 **Input type:** `AiUserMemoryUpdateInput`
 
@@ -1272,7 +1272,8 @@ Updates the current user's AI memory for a given namespace scope.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `content` | [`String`](scalars.md#string) | New memory content. Pass null to clear the memory. |
-| `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the root namespace (top-level group) to scope the memory. On self-managed, the namespace's organization is used as the actual container. |
+| `namespaceId` | [`NamespaceID`](scalars.md#namespaceid) | Global ID of the root namespace (top-level group) to scope the memory. On self-managed, the namespace's organization is used as the actual container. Exactly one of `namespaceId` or `organizationId` is required. |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Global ID of the organization to scope the memory. Self-managed only. Exactly one of `namespaceId` or `organizationId` is required. |
 
 ### `aiUserMemoryUpdate` fields {.no_toc}
 
@@ -14027,7 +14028,7 @@ These settings can be adjusted only by the group Owner.
 | ---- | ---- | ----------- |
 | `approvalSource` | [`DuoWorkflowToolCallApprovalSource`](enums.md#duoworkflowtoolcallapprovalsource) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Source of the approval decision, for audit purposes. |
 | `pattern` | [`String`](scalars.md#string) | Glob pattern to approve for matching tool call arguments. |
-| `toolCallArgs` | [`JSON`](scalars.md#json) | Arguments for the tool call. |
+| `toolCallArgs` | [`JSON`](scalars.md#json) | Arguments for the tool call as a JSON-encoded string. |
 | `toolName` | [`String!`](scalars.md#string) | Name of the tool to approve. |
 | `workflowId` | [`AiDuoWorkflowsWorkflowID!`](scalars.md#aiduoworkflowsworkflowid) | Global ID of the workflow to update. |
 

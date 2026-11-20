@@ -642,3 +642,28 @@ global:
   extraEnv:
     GITLAB_PROXY_NO_DNS: "1"
 ```
+
+## Error: `... failed to open self-hosted tracking stream`
+
+With an online license, a flow that uses a self-hosted model requires
+a usage tracking stream to the cloud GitLab Duo Workflow service.
+GitLab Workhorse opens this stream when the flow starts.
+If outbound access to that service is blocked:
+
+- The flow fails before it runs any step.
+- The Workhorse log records a `duo workflow connection failed` entry,
+  with `error_stage` set to `runner_initialization`.
+  Its `error` contains the following message:
+
+  ```plaintext
+  failed to initialize stream manager: failed to initialize cloud service stream: failed to open self-hosted tracking stream
+  ```
+
+This error occurs even when your local Agent Platform service is reachable.
+
+To resolve this issue, allow outbound connections to the cloud GitLab Duo Workflow service.
+For more information, see [internet connectivity requirements for the Agent Platform](_index.md#internet-connectivity-requirements-for-the-agent-platform).
+
+To test the connection, [run a health check for GitLab Duo](../gitlab_duo/configure/_index.md#run-a-health-check-for-gitlab-duo).
+Under ,
+check whether the cloud GitLab Duo Agent Platform service is reachable for usage billing.

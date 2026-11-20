@@ -25,12 +25,14 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Google's Lyria 3 model generates 30-second MP3 music clips from text and optional image prompts.
 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/lyria/lyria-3) |
+| Zero data retention | Yes |
 | Pricing | <ul><li>Per track$0.04</li></ul> |
 
 ## Usage

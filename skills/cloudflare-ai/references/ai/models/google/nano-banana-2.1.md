@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Google's Nano Banana 2.1 image generation and editing model, optimized for a balance of quality and performance.
 
@@ -33,6 +34,7 @@ Google's Nano Banana 2.1 image generation and editing model, optimized for a bal
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/nano-banana-2-1) |
+| Zero data retention | Yes |
 | Pricing | <ul><li>Input text (per 1M tokens)$1.50</li><li>Input image (per 1M tokens)$1.50</li><li>Output text (per 1M tokens)$7.50</li><li>Reasoning (per 1M tokens)$7.50</li><li>Output image (per 1M tokens)$30.00</li></ul> |
 
 ## Usage

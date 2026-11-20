@@ -148,6 +148,12 @@ If your routing decision depends on a specific API or model, pair this health ch
 
 Use the regional Private Link host name as the OpenAI API base URL:
 
+```typescript
+const client = new OpenAI({
+  baseURL: "https://southcentralus.privatelink.api.openai.com/v1",
+});
+```
+
 ```python
 from openai import OpenAI
 

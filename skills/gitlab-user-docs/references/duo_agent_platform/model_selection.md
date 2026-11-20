@@ -97,6 +97,7 @@ For Code Review Flow, different models are available for each [review level](flo
 - Claude Mythos 5.2 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7949) as a supported model for Business Logic Security Scan on November 12, 2026.
 - Gemini 4 Carbon and Gemini 4 Hydrogen [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8014) as supported models for GitLab Duo Agentic Chat and all other agents on November 12, 2026.
 - GPT-6.2 Astra and GPT-6.2 Sol [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8107) as supported models for GitLab Duo Agentic Chat and all other agents on November 17, 2026.
+- Gemini 4 Neon [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/8174) as a supported model for GitLab Duo Agentic Chat and all other agents on November 19, 2026.
 
 This table lists the models you can select for Agentic Chat and other features in the Agent Platform.
 For Code Review Flow, see the previous table.
@@ -127,6 +128,7 @@ For Code Review Flow, see the previous table.
 | Gemini 4 Argon              | Yes             | No           | No                   | No               | Yes      |
 | Gemini 4 Carbon             | Yes             | No           | No                   | No               | Yes      |
 | Gemini 4 Hydrogen           | Yes             | No           | No                   | No               | Yes      |
+| Gemini 4 Neon               | Yes             | No           | No                   | No               | Yes      |
 | GLM 5.3                     | Yes             | No           | No                   | No               | Yes      |
 | GPT-5                       | Yes             | No           | No                   | No               | Yes      |
 | GPT-5.1                     | Yes             | No           | No                   | No               | Yes      |

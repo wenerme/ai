@@ -10,6 +10,27 @@ Actions are a way for the ChatKit SDK frontend to trigger a streaming response w
 
 Actions can be triggered by attaching an `ActionConfig` to any widget node that supports it. For example, you can respond to click events on Buttons. When a user clicks on this button, the action will be sent to your server where you can update the widget, run inference, stream new thread items, etc.
 
+
+
+
+The TypeScript widget uses the `Widgets.Button` type from `@openai/chatkit`. Install that package in your TypeScript project to type-check the widget payload. This example defines the button payload; your ChatKit integration renders the button and supplies its server-side action handler.
+
+
+
+
+```typescript
+import type { Widgets } from "@openai/chatkit";
+
+const button: Widgets.Button = {
+  type: "Button",
+  label: "Example",
+  onClickAction: {
+    type: "example",
+    payload: { id: 123 },
+  },
+};
+```
+
 ```python
 button = Button(
     label="Example",

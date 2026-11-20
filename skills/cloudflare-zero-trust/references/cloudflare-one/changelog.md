@@ -430,9 +430,9 @@ For more information, refer to [Keyboard](https://developers.cloudflare.com/clou
 
 **New managed rule to help mitigate CVE-2026-98432.**
 
-Cloudflare Network Firewall has a new managed rule to help mitigate the Linux IPv4 TCP use-after-free vulnerability ([CVE-2026-98432 ↗︎](https://www.cve.org/CVERecord?id=CVE-2026-98432)):
+Cloudflare Network Firewall has a new managed rule to help mitigate the Linux IPv4 TCP use-after-free vulnerability ([CVE-2026-98432 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-98432)):
 
-- **Rule name:** Block CVE-2026-98432 traffic
+- **Rule name:** Block [CVE-2026-98432 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-98432) traffic
 - **Rule ID:** `6a4df2bf984946a88c74b07349557e83`
 
 The rule is **disabled by default**. To use it:

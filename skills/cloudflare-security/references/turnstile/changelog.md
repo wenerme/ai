@@ -14,6 +14,14 @@ image: https://developers.cloudflare.com/turnstile/changelog/og.png?v=51a6aaf0a2
 
 [Subscribe to RSS](https://developers.cloudflare.com/turnstile/changelog/index.xml)
 
+## 2026-11-13
+
+**Swahili language support**
+
+Turnstile now supports Swahili (Kenya). Set the widget's `language` option or `data-language` attribute to `sw` or `sw-ke`, or use `auto` to follow the visitor's browser language preference.
+
+Refer to [supported languages](https://developers.cloudflare.com/turnstile/reference/supported-languages/) for the full list of languages and language codes.
+
 ## 2026-11-02
 
 - Improved Turnstile widget responsiveness in narrow layouts and at increased browser zoom levels. The widget retains its standard width when space allows and adapts to narrower containers to improve accessibility. For sizing options, refer to [Widget sizes](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#widget-sizes).

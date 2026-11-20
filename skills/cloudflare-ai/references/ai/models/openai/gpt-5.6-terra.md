@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.
 
@@ -33,6 +34,7 @@ GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, us
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
 | Request formats | Responses |
 | Pricing | <ul><li>Short-context input (per 1M)$2.00</li><li>Short-context cached input (per 1M)$0.20</li><li>Short-context cache write (per 1M)$2.50</li><li>Short-context output (per 1M)$12.00</li><li>Long-context input (per 1M)$4.00</li><li>Long-context cached input (per 1M)$0.40</li><li>Long-context cache write (per 1M)$5.00</li><li>Long-context output (per 1M)$18.00</li></ul> |
 

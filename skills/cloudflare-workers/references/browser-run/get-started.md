@@ -17,12 +17,13 @@ Cloudflare Browser Run (formerly Browser Rendering) allows you to programmatical
 Browser Run offers two categories of integration methods:
 
 - **[Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/)**: Simple, stateless browser tasks like screenshots, PDFs, and scraping. No code deployment needed.
-- **Browser Sessions**: Direct browser control via [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/), or [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/). Deploy within Cloudflare Workers or connect from any environment via CDP.
+- **Browser Sessions**: Direct browser control via [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/), or [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/). Deploy within Cloudflare Workers, connect from any environment via CDP, or submit a script over HTTP with [Custom scripts](https://developers.cloudflare.com/browser-run/script/).
 
 | Use case | Recommended | Why |
 | --- | --- | --- |
 | Simple screenshot, PDF, or scrape | [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) | No code deployment; single HTTP request |
 | Browser automation | [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Full browser control with scripting |
+| Multi-step automation | [Custom scripts](https://developers.cloudflare.com/browser-run/script/) | Run Playwright, Puppeteer, or CDP code in one HTTP request |
 | Porting existing scripts | [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Minimal code changes from standard libraries |
 | AI-powered data extraction | [JSON endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) | Structured data via natural language prompts |
 | Site-wide crawling | [Crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) | Multi-page content extraction with async results |
@@ -96,7 +97,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-20",
   "browser": {
     "binding": "BROWSER"
   }
@@ -108,7 +109,7 @@ name = "browser-quick-action"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-20"
 
 [browser]
 binding = "BROWSER"
@@ -310,7 +311,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-20",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -331,7 +332,7 @@ name = "browser-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-20"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

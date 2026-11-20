@@ -16,7 +16,8 @@ For advanced cache key strategies, you can use:
 - [`cache:key:files`](../yaml/_index.md#cachekeyfiles): Generate keys linked to the content of specific files.
 - [`cache:key:files_commits`](../yaml/_index.md#cachekeyfiles_commits): Generate keys linked to the latest commit of specific files.
 
-For more use cases and examples, see [CI/CD caching examples](examples.md).
+For more caching examples, including for Node.js, PHP, Python, Ruby, and Go dependencies,
+see [CI/CD caching examples](examples.md).
 
 ## How cache is different from artifacts
 

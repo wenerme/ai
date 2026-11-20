@@ -79,7 +79,7 @@ The **output\_options** object has the following settings:
 
   Default timestamp formats apply unless explicitly set. The dashboard defaults to `rfc3339` and the API defaults to `unixnano`.
 - **sample\_rate**: floating number to specify sampling rate (default 1.0: no sampling). Sampling is applied on top of filtering, and regardless of the current sample\_interval of the data.
-- **CVE-2021-44228**: bool, default false. If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
+- **[CVE-2021-44228 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2021-44228)**: bool, default false. If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
 
 ## Examples
 

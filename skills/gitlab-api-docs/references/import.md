@@ -150,6 +150,97 @@ Returns the following status codes:
 - `400 Bad Request`: the project import cannot be canceled.
 - `404 Not Found`: the project associated with `project_id` does not exist.
 
+### Restore GitHub updates with a new personal access token
+
+- Tier: Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634424) in GitLab 19.7. This endpoint is not behind a feature flag, but only applies to projects with GitHub updates, which depend on the `github_continuous_import` [feature flag](../administration/feature_flags/_index.md). Disabled by default.
+
+Reconnects GitHub updates for a project that was imported with a personal access token
+and continuous sync.
+Use this endpoint after GitLab disconnects GitHub updates because GitHub revoked the token or the token expired.
+The new token replaces the stored token.
+GitLab records a [`github_updates_restored`](../user/compliance/audit_event_types.md) audit event for the project.
+
+This endpoint shares a rate limit with starting imports from the UI and with file-based project imports.
+By default, the limit is six requests per minute for each user.
+Administrators can [change this limit](../administration/settings/import_export_rate_limits.md).
+
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
+- GitHub updates for the project must be disconnected.
+- The new token must have read access to the GitHub repository that the project was imported from.
+
+```plaintext
+POST /projects/:id/import/github/sync/restore
+```
+
+| Attribute               | Type              | Required | Description |
+|-------------------------|-------------------|----------|-------------|
+| `id`                    | integer or string | Yes      | ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the project. |
+| `personal_access_token` | string            | Yes      | New GitHub personal access token. |
+
+```shell
+curl --request POST \
+  --url "https://gitlab.example.com/api/v4/projects/12345/import/github/sync/restore" \
+  --header "content-type: application/json" \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --data '{
+    "personal_access_token": "<new_github_personal_access_token>"
+}'
+```
+
+If the token can't manage repository webhooks, GitHub updates are restored without a webhook,
+and the response contains a `warning`. Changes are then checked on a schedule.
+Use a classic token with the `repo` or `admin:repo_hook` scope, or a fine-grained token with
+read and write access to webhooks, to receive changes sooner.
+
+If successful, returns `200` and the following response attributes:
+
+| Attribute               | Type    | Description |
+|-------------------------|---------|-------------|
+| `state`                 | string  | Which side owns the repository. After a restore, this is the state the repository had before it was disconnected, usually `provider_canonical`. |
+| `read_only`             | boolean | If `true`, the project is read-only because GitHub is the source of truth. |
+| `final_pass_incomplete` | boolean | If `true`, a stop finished without every data type being current. |
+| `data`                  | object  | Update status for each type of data, keyed by the type. |
+| `data.<type>.state`     | string  | State of the updates for this type of data. |
+| `data.<type>.last_updated_at` | string | Time of the last successful update, in ISO 8601 format. |
+| `data.<type>.last_checked_at` | string | Time of the last check, in ISO 8601 format. |
+| `warning`               | string  | Only present when the webhook could not be created. Explains that changes are checked on a schedule. |
+
+Example response:
+
+```json
+{
+    "state": "provider_canonical",
+    "read_only": true,
+    "final_pass_incomplete": false,
+    "data": {
+        "source": {
+            "state": "current",
+            "last_updated_at": "2026-11-18T10:15:00.000Z",
+            "last_checked_at": "2026-11-18T10:15:00.000Z"
+        }
+    },
+    "warning": "Updates are not received instantly because GitHub did not allow creating a webhook. Changes are checked on a schedule instead. Use a token that can manage repository webhooks to receive them sooner."
+}
+```
+
+Returns the following status codes:
+
+- `200 OK`: GitHub updates are restored.
+- `400 Bad Request`: `personal_access_token` is missing or blank.
+- `401 Unauthorized`: GitHub rejected the personal access token.
+- `403 Forbidden`: you do not have permission to restore GitHub updates for the project.
+- `404 Not Found`: the project does not exist, or it has no GitHub updates.
+- `409 Conflict`: GitHub updates are not disconnected, or another change to them is in progress.
+- `422 Unprocessable Entity`: the project was not imported with a personal access token,
+  or the token can't read the GitHub repository that the project was imported from.
+- `429 Too Many Requests`: you exceeded the rate limit of this endpoint.
+- `503 Service Unavailable`: GitHub is not available.
+
 ### Import GitHub gists into GitLab snippets
 
 - Rate limit introduced in GitLab 19.6.

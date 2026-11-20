@@ -146,6 +146,14 @@ For Go, install `github.com/cyberphone/json-canonicalization/go/src/webpki.org/j
 
 
 
+
+
+
+Download and extract the [TypeScript samples and locked dependencies](https://developers.openai.com/api/docs/samples/typescript.tar.gz). From the extracted `typescript-examples` directory, run `pnpm install --ignore-workspace --frozen-lockfile` to install `canonicalize` and the other dependencies. The [complete recovery source](https://developers.openai.com/api/docs/samples/typescript/psp/recover-record.ts) includes the validation and key-derivation helpers used below. Pass the bundle JSON and public-key PEM as strings, the decrypted capsule as a `Buffer`, and the original key ID as a string. The private RSA key remains in your cloud key-management service. To run the complete file, use `node --experimental-strip-types psp/recover-record.ts bundle.json capsule.bin original-key-id public.pem`. Supply the decrypted capsule as a binary file. The command writes only the recovered text to standard output. It exits with code 1 for validation errors and code 2 for payload authentication errors.
+
+
+
+
 Pass these inputs to the recovery function:
 
 - `bundle_json`: The inner record bundle as UTF-8 JSON bytes.
@@ -156,6 +164,103 @@ Pass these inputs to the recovery function:
 The function returns the decrypted content as a UTF-8 string. A failed check stops recovery.
 
 Decrypt a PSP record
+
+```typescript
+// Supply the decrypted capsule and trusted original registration. Keep the RSA
+// private key in the cloud. This function returns the exact recovered UTF-8 text.
+function recoverRecord(
+  bundleJSON: string,
+  capsule: Buffer,
+  originalKeyID: string,
+  publicPEM: string
+): string {
+  const bundle = parseBundle(bundleJSON);
+  const record = object(bundle.protected_record);
+  const access = object(bundle.customer_access);
+  if (
+    bundle.bundle_version !== 1 ||
+    record.version !== "v4" ||
+    record.algorithm !==
+      "HPKE-v1-DHKEM_P256_HKDF_SHA256-EXPORT_ONLY-AES256_GCM" ||
+    access.version !== 1 ||
+    access.algorithm !== "RSA-OAEP-256" ||
+    access.customer_key_id !== originalKeyID
+  )
+    throw new Error("Wrong schema or original key");
+  if (
+    !/^\s*-----BEGIN (PUBLIC KEY|RSA PUBLIC KEY)-----[A-Za-z0-9+/=\r\n]+-----END \1-----\s*$/.test(
+      publicPEM
+    )
+  )
+    throw new Error("Expected one RSA public key");
+  const publicKey = createPublicKey(publicPEM);
+  if (
+    publicKey.asymmetricKeyType !== "rsa" ||
+    publicKey.asymmetricKeyDetails?.modulusLength !== 3072
+  )
+    throw new Error("Expected RSA-3072");
+  if (decode64(access.recovery_secret).length !== 384)
+    throw new Error("Wrong RSA ciphertext length");
+  const der = publicKey.export({ type: "spki", format: "der" });
+  if (!equal(decode64(access.customer_public_key_fingerprint), sha256(der)))
+    throw new Error("Wrong key fingerprint");
+  const runtime = decode64(record.safety_review_runtime_public_key);
+  if (runtime.length !== 65 || runtime[0] !== 4)
+    throw new Error("Invalid P-256 encoding");
+  const thumbprint = sha256(
+    canonical({
+      crv: "P-256",
+      kty: "EC",
+      x: runtime.subarray(1, 33).toString("base64url"),
+      y: runtime.subarray(33).toString("base64url"),
+    })
+  ).toString("base64url");
+  if (record.key_thumbprint !== thumbprint)
+    throw new Error("Wrong runtime key");
+  const nonce = decode64(record.nonce);
+  const ciphertext = decode64(record.ciphertext);
+  if (nonce.length !== 12 || ciphertext.length < 16)
+    throw new Error("Invalid AES-GCM parameters");
+  const binding = sha256(
+    canonical({
+      purpose: "OpenAI-PSP-v4/customer-recovery-binding",
+      bundle_version: 1,
+      record,
+      recovery_header: without(access, "recovery_secret"),
+    })
+  );
+  if (
+    capsule.length !== 72 ||
+    !equal(
+      capsule.subarray(0, 8),
+      Buffer.from([0x50, 0x53, 0x50, 0x76, 0x34, 0, 0, 1])
+    ) ||
+    !equal(capsule.subarray(40), binding)
+  )
+    throw new Error("Invalid recovery capsule binding");
+  const ephemeral = createECDH("prime256v1");
+  ephemeral.setPrivateKey(capsule.subarray(8, 40));
+  if (!equal(decode64(record.encrypted_dek), ephemeral.getPublicKey()))
+    throw new Error("Wrong recovered scalar");
+  const aad = canonical(without(record, "ciphertext"));
+  const key = payloadKey(ephemeral, runtime, aad);
+  const decipher = createDecipheriv("aes-256-gcm", key, nonce);
+  decipher.setAAD(aad);
+  decipher.setAuthTag(ciphertext.subarray(-16));
+  let plaintext: Buffer;
+  try {
+    plaintext = Buffer.concat([
+      decipher.update(ciphertext.subarray(0, -16)),
+      decipher.final(),
+    ]);
+  } catch {
+    throw new AuthenticationError("Payload authentication failed");
+  }
+  return new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(
+    plaintext
+  );
+}
+```
 
 ```python
 import base64

@@ -267,6 +267,7 @@ can also go to the secrets permissions settings from the secrets list:
 ### For a project
 
 - Write permission [updated](https://gitlab.com/gitlab-org/gitlab/-/work_items/630995) to separate create and update permissions in GitLab 19.6.
+- Update permission without create permission [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270110) in GitLab 19.7.
 
 Prerequisites:
 
@@ -282,7 +283,8 @@ To update the secrets permissions for a project:
 1. Under **GitLab Secrets Manager**, in the **User permissions** section:
    - Select **Add** to add permissions rules for specific users or roles.
    - You can set permission scopes to read metadata, read value, delete, create, and update secrets.
-     To select the update scope, you must also select the create scope.
+     You can select the update scope without the create scope, so a user can change
+     existing secrets but cannot add new ones.
    - Optional. Set an **Access expiration date** to make the permissions expire.
 
 For secrets managers enabled in GitLab 19.4 and later, users with the Maintainer role for the project have the
@@ -298,6 +300,7 @@ Users with the Owner role can remove or change these default permissions.
 
 - Top-level group setting [moved](https://gitlab.com/gitlab-org/gitlab/-/issues/605581) from **Settings** > **General** to **Settings** > **Secure** in GitLab 19.4
 - Write permission [updated](https://gitlab.com/gitlab-org/gitlab/-/work_items/630995) to separate create and update permissions in GitLab 19.6.
+- Update permission without create permission [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270110) in GitLab 19.7.
 
 Prerequisites:
 
@@ -314,7 +317,8 @@ To update the secrets permissions for a group:
 1. Under **GitLab Secrets Manager**, in the **User permissions** section:
    - Select **Add** to add permissions rules for specific users or roles.
    - You can set permission scopes to read metadata, read value, delete, create, and update secrets.
-     To select the update scope, you must also select the create scope.
+     You can select the update scope without the create scope, so a user can change
+     existing secrets but cannot add new ones.
    - Optional. Set an **Access expiration date** to make the permissions expire.
 
 Users with the Owner role for the group always have permissions to perform all operations in the Secrets Manager.

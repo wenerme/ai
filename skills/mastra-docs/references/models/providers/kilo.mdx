@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 467 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 466 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -119,7 +119,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 384000,
+    "maxOutput": 943718,
     "inputCost": 0.44,
     "outputCost": 1.32
   },
@@ -784,18 +784,6 @@ for await (const chunk of stream) {
     "outputCost": 0.15
   },
   {
-    "model": "kilo/cohere/north-mini-code:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "kilo/deepseek/deepseek-chat",
     "imageInput": false,
     "audioInput": false,
@@ -983,7 +971,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 943718,
+    "maxOutput": 393216,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -1816,26 +1804,14 @@ for await (const chunk of stream) {
     "outputCost": 0.04
   },
   {
-    "model": "kilo/meta-llama/llama-3.2-1b-instruct",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 60000,
-    "maxOutput": 54000,
-    "inputCost": 0.027,
-    "outputCost": 0.201
-  },
-  {
     "model": "kilo/meta-llama/llama-3.2-3b-instruct",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 80000,
-    "maxOutput": 72000,
+    "contextWindow": 131072,
+    "maxOutput": 117964,
     "inputCost": 0.05,
     "outputCost": 0.33
   },
@@ -2064,8 +2040,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 524288,
-    "inputCost": 0.075,
-    "outputCost": 0.3
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "kilo/mistralai/codestral",
@@ -2352,6 +2328,18 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 65536,
     "maxOutput": 52428,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
+    "model": "kilo/mistralai/pixtral-large-2502",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 128000,
+    "maxOutput": 102400,
     "inputCost": 2,
     "outputCost": 6
   },
@@ -3912,7 +3900,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.03,
+    "inputCost": 0.035,
     "outputCost": 0.25
   },
   {
@@ -5506,8 +5494,8 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048575,
-    "maxOutput": 943717,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.5
   },

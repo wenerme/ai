@@ -8481,6 +8481,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPersonalAccessToken"
         '404':
           description: Not Found
         '400':
@@ -8688,6 +8694,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesResourceAccessToken"
         '404':
           description: Not Found
         '400':
@@ -30764,6 +30776,7 @@ paths:
           type: integer
           nullable: true
         in: query
+        example: 1
       - name: page
         required: false
         description: Page number of results to retrieve.
@@ -51738,6 +51751,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/APIEntitiesPendingMember"
         '404':
           description: Not Found
         '400':
@@ -56814,7 +56833,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/JiraConnectSubscriptionEntity"
+                "$ref": "#/components/schemas/APIEntitiesJiraForgeSubscriptions"
         '401':
           description: Unauthorized
       x-gitlab-lifecycle: experiment
@@ -63624,6 +63643,55 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4ImportGithubGistsRequest"
+  "/api/v4/projects/{id}/import/github/sync/restore":
+    post:
+      operationId: postApiV4ProjectsIdImportGithubSyncRestore
+      summary: Restore GitHub updates with a new personal access token
+      description: Reconnects a project that was imported from GitHub with a personal
+        access token and with continuous sync, after GitHub updates were disconnected
+        because the token was revoked or expired. The new token replaces the stored
+        one. It must be able to read the GitHub repository the project was imported
+        from. If the token cannot manage repository webhooks, GitHub updates are restored
+        without a webhook and the response has a `warning`. Changes are then checked
+        on a schedule. This endpoint shares a rate limit with starting imports. Requires
+        the Maintainer role for the project.
+      tags:
+      - Project import
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '422':
+          description: Unprocessable entity
+        '429':
+          description: Too many requests
+        '503':
+          description: Service unavailable
+      parameters:
+      - name: id
+        required: true
+        description: ID or URL-encoded path of the project.
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/postApiV4ProjectsIdImportGithubSyncRestoreRequest"
+      x-gitlab-tier: premium
   "/api/v4/import/bitbucket_server":
     post:
       operationId: postApiV4ImportBitbucketServer
@@ -68038,6 +68106,7 @@ paths:
           format: date-time
           nullable: true
         in: query
+        example: '2015-12-24T15:51:21.880Z'
       - name: limit
         required: false
         description: Maximum number of environments to delete.
@@ -84158,6 +84227,8 @@ paths:
                   "$ref": "#/components/schemas/APIEntitiesBranch"
         '404':
           description: 404 Project Not Found
+        '422':
+          description: Unprocessable entity
         '400':
           description: Bad Request
       parameters:
@@ -84217,7 +84288,8 @@ paths:
         in: query
       - name: page_token
         required: false
-        description: Name of the branch to start the pagination from. Used for keyset
+        description: Token for the next page of results, from the `Link` header of
+          the previous response. Do not create or edit this token. Used for keyset
           pagination.
         schema:
           type: string
@@ -90519,6 +90591,62 @@ components:
           description: ID of the group when the scope targets a group, otherwise `null`.
           format: int64
           example: 5
+    APIEntitiesPersonalAccessToken:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        name:
+          type: string
+          example: John Doe
+        revoked:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+          example: Token to manage api
+        scopes:
+          type: array
+          example:
+          - api
+        user_id:
+          type: integer
+          format: int64
+          example: 3
+        last_used_at:
+          type: string
+          format: date-time
+          example: '2020-08-31T15:53:00.073Z'
+        last_used_ips:
+          type: array
+          description: The five most recent unique IP addresses that have authenticated
+            with this token. When the limit is reached, the oldest IP address is removed.
+            The list updates once per minute per token.
+          example:
+          - 127.0.0.1
+          - 127.0.0.2
+          - 127.0.0.3
+          items:
+            type: string
+        granular_scopes:
+          type: array
+          description: Granular scopes of the token, each with `access`, `permissions`,
+            `group_id`, and `project_id`. Returned only for tokens created with granular
+            scopes.
+          items:
+            "$ref": "#/components/schemas/APIEntitiesGranularScope"
+        active:
+          type: boolean
+        granular:
+          type: boolean
+        expires_at:
+          type: string
+          format: date-time
+          example: '2020-08-31T15:53:00.073Z'
     APIEntitiesPersonalAccessTokenWithToken:
       type: object
       properties:
@@ -90578,6 +90706,80 @@ components:
         token:
           type: string
           example: glpat-<example-token>
+    APIEntitiesResourceAccessToken:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        name:
+          type: string
+          example: John Doe
+        revoked:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+          example: Token to manage api
+        scopes:
+          type: array
+          example:
+          - api
+        user_id:
+          type: integer
+          format: int64
+          example: 3
+        last_used_at:
+          type: string
+          format: date-time
+          example: '2020-08-31T15:53:00.073Z'
+        last_used_ips:
+          type: array
+          description: The five most recent unique IP addresses that have authenticated
+            with this token. When the limit is reached, the oldest IP address is removed.
+            The list updates once per minute per token.
+          example:
+          - 127.0.0.1
+          - 127.0.0.2
+          - 127.0.0.3
+          items:
+            type: string
+        granular_scopes:
+          type: array
+          description: Granular scopes of the token, each with `access`, `permissions`,
+            `group_id`, and `project_id`. Returned only for tokens created with granular
+            scopes.
+          items:
+            "$ref": "#/components/schemas/APIEntitiesGranularScope"
+        active:
+          type: boolean
+        granular:
+          type: boolean
+        expires_at:
+          type: string
+          format: date-time
+          example: '2020-08-31T15:53:00.073Z'
+        access_level:
+          type: integer
+          enum:
+          - 10
+          - 20
+          - 30
+          - 40
+          - 50
+          example: 40
+        resource_type:
+          type: string
+          enum:
+          - project
+          - group
+          example: project
+        resource_id:
+          type: integer
+          example: 1234
     APIEntitiesSshKeyWithUserId:
       type: object
       properties:
@@ -94386,7 +94588,9 @@ components:
           type: string
           example: 'on'
         gates:
-          "$ref": "#/components/schemas/APIEntitiesFeatureGate"
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesFeatureGate"
     APIEntitiesExperiment:
       type: object
       properties:
@@ -98210,6 +98414,8 @@ components:
           type: string
         mirror_available:
           type: string
+        ml_experiment_tracking_run_retention_days:
+          type: string
         notify_on_unknown_sign_in:
           type: string
         o11y_provisioner_url:
@@ -99546,62 +99752,6 @@ components:
         action:
           type: string
           example: add
-    APIEntitiesPersonalAccessToken:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 2
-        name:
-          type: string
-          example: John Doe
-        revoked:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-          example: Token to manage api
-        scopes:
-          type: array
-          example:
-          - api
-        user_id:
-          type: integer
-          format: int64
-          example: 3
-        last_used_at:
-          type: string
-          format: date-time
-          example: '2020-08-31T15:53:00.073Z'
-        last_used_ips:
-          type: array
-          description: The five most recent unique IP addresses that have authenticated
-            with this token. When the limit is reached, the oldest IP address is removed.
-            The list updates once per minute per token.
-          example:
-          - 127.0.0.1
-          - 127.0.0.2
-          - 127.0.0.3
-          items:
-            type: string
-        granular_scopes:
-          type: array
-          description: Granular scopes of the token, each with `access`, `permissions`,
-            `group_id`, and `project_id`. Returned only for tokens created with granular
-            scopes.
-          items:
-            "$ref": "#/components/schemas/APIEntitiesGranularScope"
-        active:
-          type: boolean
-        granular:
-          type: boolean
-        expires_at:
-          type: string
-          format: date-time
-          example: '2020-08-31T15:53:00.073Z'
     APIEntitiesProjectsRepositoryStorageMove:
       type: object
       properties:
@@ -100763,80 +100913,6 @@ components:
         token:
           type: string
           example: glpat-<example-token>
-    APIEntitiesResourceAccessToken:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 2
-        name:
-          type: string
-          example: John Doe
-        revoked:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-          example: Token to manage api
-        scopes:
-          type: array
-          example:
-          - api
-        user_id:
-          type: integer
-          format: int64
-          example: 3
-        last_used_at:
-          type: string
-          format: date-time
-          example: '2020-08-31T15:53:00.073Z'
-        last_used_ips:
-          type: array
-          description: The five most recent unique IP addresses that have authenticated
-            with this token. When the limit is reached, the oldest IP address is removed.
-            The list updates once per minute per token.
-          example:
-          - 127.0.0.1
-          - 127.0.0.2
-          - 127.0.0.3
-          items:
-            type: string
-        granular_scopes:
-          type: array
-          description: Granular scopes of the token, each with `access`, `permissions`,
-            `group_id`, and `project_id`. Returned only for tokens created with granular
-            scopes.
-          items:
-            "$ref": "#/components/schemas/APIEntitiesGranularScope"
-        active:
-          type: boolean
-        granular:
-          type: boolean
-        expires_at:
-          type: string
-          format: date-time
-          example: '2020-08-31T15:53:00.073Z'
-        access_level:
-          type: integer
-          enum:
-          - 10
-          - 20
-          - 30
-          - 40
-          - 50
-          example: 40
-        resource_type:
-          type: string
-          enum:
-          - project
-          - group
-          example: project
-        resource_id:
-          type: integer
-          example: 1234
     APIEntitiesTreeObject:
       type: object
       properties:
@@ -107269,6 +107345,25 @@ components:
           type: string
         member_role:
           "$ref": "#/components/schemas/APIEntitiesMemberRole"
+    APIEntitiesPendingMember:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        web_url:
+          type: string
+        invited:
+          type: boolean
+        avatar_url:
+          type: string
+        approved:
+          type: boolean
     APIEntitiesBillableMembership:
       type: object
       properties:
@@ -107713,6 +107808,13 @@ components:
           type: string
         group:
           "$ref": "#/components/schemas/JiraConnectGroupEntity"
+    APIEntitiesJiraForgeSubscriptions:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          items:
+            "$ref": "#/components/schemas/JiraConnectSubscriptionEntity"
     APIEntitiesIntegrationBasic:
       type: object
       properties:
@@ -109748,7 +109850,9 @@ components:
             error: 0
             suite_error:
         test_suites:
-          "$ref": "#/components/schemas/TestSuiteSummaryEntity"
+          type: array
+          items:
+            "$ref": "#/components/schemas/TestSuiteSummaryEntity"
     APIEntitiesCiSecureFile:
       type: object
       properties:
@@ -117566,6 +117670,19 @@ components:
         tags:
           type: array
           description: Additional metadata for the registered model.
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Name of the tag.
+                nullable: true
+              value:
+                type: string
+                description: Value of the tag.
+                nullable: true
+            required:
+            - key
           nullable: true
       required:
       - name
@@ -117606,6 +117723,19 @@ components:
         tags:
           type: array
           description: Tags to store with the run. Tags are stored but not displayed.
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Name of the tag.
+                nullable: true
+              value:
+                type: string
+                description: Value of the tag.
+                nullable: true
+            required:
+            - key
           nullable: true
         run_name:
           type: string
@@ -117834,6 +117964,19 @@ components:
         tags:
           type: array
           description: Additional metadata for a model version.
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Name of the tag.
+                nullable: true
+              value:
+                type: string
+                description: Value of the tag.
+                nullable: true
+            required:
+            - key
           nullable: true
         run_id:
           type: string
@@ -117889,6 +118032,19 @@ components:
         tags:
           type: array
           description: Tags containing metadata about the experiment.
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Name of the tag.
+                nullable: true
+              value:
+                type: string
+                description: Value of the tag.
+                nullable: true
+            required:
+            - key
           nullable: true
         artifact_location:
           type: string
@@ -120721,6 +120877,14 @@ components:
           type: string
           description: If `true`, project Maintainers can configure repository mirroring.
             If `false`, only administrators can configure repository mirroring.
+          nullable: true
+        ml_experiment_tracking_run_retention_days:
+          type: integer
+          description: 'Number of days to keep model experiment runs that no model
+            version uses, and experiments that have no runs left. Deletion starts
+            no earlier than one period after retention is turned on. `0` keeps all
+            runs and experiments. Maximum: `36500`. Default: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270962)
+            in GitLab 19.7.'
           nullable: true
         notify_on_unknown_sign_in:
           type: string
@@ -124904,6 +125068,7 @@ components:
           type: integer
           description: The organization id for the topic. This parameter is experimental
             and might be changed or removed without notice.
+          example: 1
           nullable: true
       required:
       - name
@@ -140791,6 +140956,15 @@ components:
           nullable: true
       required:
       - personal_access_token
+    postApiV4ProjectsIdImportGithubSyncRestoreRequest:
+      type: object
+      properties:
+        personal_access_token:
+          type: string
+          description: New GitHub personal access token.
+          minLength: 1
+      required:
+      - personal_access_token
     postApiV4ImportBitbucketServerRequest:
       type: object
       properties:
@@ -146391,12 +146565,14 @@ components:
           format: date-time
           description: Starting time, in UTC. When creating a message, defaults to
             the current time.
+          example: '2015-12-24T15:51:21.880Z'
           nullable: true
         ends_at:
           type: string
           format: date-time
           description: Ending time, in UTC. When creating a message, defaults to one
             hour after the current time.
+          example: '2015-12-24T16:51:21.880Z'
           nullable: true
         color:
           type: string

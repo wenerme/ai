@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 GPT-6 Astra is OpenAI's most capable model, built for complex reasoning, coding, computer use, research, and document creation.
 
@@ -33,6 +34,7 @@ GPT-6 Astra is OpenAI's most capable model, built for complex reasoning, coding,
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://developers.openai.com/api/docs/models/gpt-6-astra) |
+| Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
 | Pricing | <ul><li>Short-context input (per 1M)$10.00</li><li>Short-context cached input (per 1M)$1.00</li><li>Short-context cache write (per 1M)$12.00</li><li>Short-context output (per 1M)$50.00</li><li>Long-context input (per 1M)$20.00</li><li>Long-context cached input (per 1M)$2.00</li><li>Long-context cache write (per 1M)$25.00</li><li>Long-context output (per 1M)$75.00</li></ul> |
 

@@ -18,7 +18,7 @@ When the value of [`http.request.body.truncated`](https://developers.cloudflare.
 - **Whitespace**: Preserved
 - **Non-ASCII**: Preserved
 
-Requires a Cloudflare Enterprise plan.
+Requires a Cloudflare Enterprise plan and the Advanced application security plan. Contact your account team for details on current and legacy contracts.
 
 Caution
 

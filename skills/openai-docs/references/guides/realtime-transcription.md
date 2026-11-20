@@ -108,7 +108,66 @@ A completion event contains the final transcript for the committed item:
 
 Ordering between completion events from different speech turns isn't guaranteed. Use `item_id` to match transcription events to committed input items.
 
-After configuring a transcription session, use this Go function to send mono PCM16 audio at 24 kHz, commit the turn, and match the final transcript to the committed item:
+After configuring a transcription session, use this function to send mono PCM16 audio at 24 kHz, commit the turn, and match the final transcript to the committed item:
+
+```typescript
+// Use a transcription session configured for 24 kHz mono PCM16 and manual commits.
+function transcribeTurn(
+  connection: OpenAIRealtimeWS,
+  audio: Buffer
+): Promise<string> {
+  if (!audio.length || audio.length % 2)
+    throw new Error("Expected nonempty PCM16 audio");
+  return new Promise((resolve, reject) => {
+    let itemID: string | undefined;
+    const completed = new Map<string, string>();
+    const failed = new Set<string>();
+    const timer = setTimeout(
+      () => finish(new Error("Transcription timed out")),
+      120000
+    );
+    function finish(error?: Error, transcript?: string) {
+      clearTimeout(timer);
+      connection.off("event", onEvent);
+      connection.off("error", onError);
+      connection.socket.off("close", onClose);
+      if (error) reject(error);
+      else resolve(transcript!);
+    }
+    const onError = (error: Error) => finish(error);
+    const onClose = () =>
+      finish(new Error("Connection closed before transcription"));
+    const onEvent = (event: RealtimeServerEvent) => {
+      if (
+        event.type === "conversation.item.input_audio_transcription.delta" &&
+        event.item_id === itemID
+      )
+        console.error(`Partial transcript (${event.item_id}): ${event.delta}`);
+      if (event.type === "input_audio_buffer.committed") itemID = event.item_id;
+      if (
+        event.type === "conversation.item.input_audio_transcription.completed"
+      )
+        completed.set(event.item_id, event.transcript);
+      if (event.type === "conversation.item.input_audio_transcription.failed")
+        failed.add(event.item_id);
+      if (itemID && failed.has(itemID))
+        finish(new Error("Transcription failed"));
+      else if (itemID && completed.has(itemID))
+        finish(undefined, completed.get(itemID));
+    };
+    connection.on("event", onEvent);
+    connection.on("error", onError);
+    connection.socket.on("close", onClose);
+    for (let start = 0; start < audio.length; start += 9600) {
+      connection.send({
+        type: "input_audio_buffer.append",
+        audio: audio.subarray(start, start + 9600).toString("base64"),
+      });
+    }
+    connection.send({ type: "input_audio_buffer.commit" });
+  });
+}
+```
 
 ```go
 func transcribeTurn(ctx context.Context, conn *realtime.RealtimeConnection, audio []byte) error {

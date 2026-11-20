@@ -132,6 +132,7 @@ You can generate a workplan with GitLab Duo or write one manually.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248543) in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workplan_async_flow`. Disabled by default.
 - Generating a workplan in GitLab Duo Chat [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260695) in GitLab 19.6. Feature flag `duo_workplan_async_flow` removed.
+- Session icon in the  widget [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/631233) in GitLab 19.7.
 
 GitLab Duo generates the workplan with the  flow, which runs in the background.
 When you select  to [turn on planning](#turn-on-planning-for-a-work-item) for a work item,
@@ -152,6 +153,14 @@ GitLab Duo writes the workplan to the  widget, and the status changes to
 
 The flow runs in the background, so you can leave the page while GitLab Duo works.
 When GitLab Duo needs your input, you receive a to-do item and an email.
+
+To follow the progress of a run, or to find out why the generation failed,
+open the [session](../duo_agent_platform/sessions/_index.md) for the latest run.
+In the  widget, next to the status,
+select  ().
+The icon appears when the status is ,
+, or .
+To close the GitLab Duo sidebar, select  () again.
 
 If the generation fails, in the  widget, select .
 

@@ -6,9 +6,12 @@ This tutorial walks through an example of crawling a website (in this example, t
 
 # Getting started
 
-Some basic knowledge of Python and GitHub is helpful for this tutorial. Before diving in, make sure to [set up an OpenAI API key](https://developers.openai.com/api/reference/overview) and walk through the [quickstart tutorial](https://developers.openai.com/api/docs/quickstart). This will give a good intuition on how to use the API to its full potential.
+Before starting, [set up an OpenAI API key](https://developers.openai.com/api/reference/overview) and work through the [quickstart tutorial](https://developers.openai.com/api/docs/quickstart).
 
-Use Python 3.11 or later. Create a virtual environment, install the packages used in the examples, and set `OPENAI_API_KEY` as described in the [quickstart](https://developers.openai.com/api/docs/quickstart).
+
+
+
+Create a virtual environment and install the packages:
 
 ```bash
 python -m venv env
@@ -16,10 +19,27 @@ source env/bin/activate
 python -m pip install openai pandas numpy requests beautifulsoup4 tiktoken matplotlib
 ```
 
+Copy the Python examples into a file or notebook in the order shown.
 
 
 
-The Go examples use `github.com/openai/openai-go/v3` at `v3.98.0`, `github.com/tiktoken-go/tokenizer` at `v0.10.0`, and `golang.org/x/net/html` at `v0.63.0`. Use the complete programs in the [Go tutorial sample directory](https://github.com/openai/developers-website/tree/main/src/content/platform/go-examples/tutorial-crawl-website-embeddings). When running downloaded source files, replace `{{MODEL}}` with the model shown in the rendered example. Run each workflow step separately from the same working directory; don't concatenate their `main` functions. The hyperlink helpers share one program, and context retrieval, answering, and test questions share another.
+
+
+
+
+Download and extract the [TypeScript sample archive](https://developers.openai.com/api/docs/samples/typescript.tar.gz). From the extracted `typescript-examples` directory, run `pnpm install --ignore-workspace --frozen-lockfile`. The lockfile pins OpenAI, Cheerio, CSV, tokenizer, and canvas dependencies. Set `OPENAI_API_KEY` before the API steps.
+
+Run each complete program separately from the same working directory with `node --experimental-strip-types tutorial-crawl-website-embeddings/<filename>.ts`. Do not concatenate the excerpts: each file includes its own imports and setup. Run `crawl-website`, `build-scraped-dataframe`, `tokenize-scraped-text`, `split-long-text`, `visualize-chunk-token-counts`, `create-embeddings`, and `answer-question` in that order. The hyperlink helpers share one program; context retrieval, answering, and test questions share `answer-question.ts`.
+
+Replace `https://example.com` with your website's URL in the crawler, hyperlink, and scraped-data programs. Replace `{{MODEL}}` in the downloaded answering program with the model shown below. The crawler saves text under `text`; later stages produce `processed/scraped.csv`, `processed/chunks.json`, and `processed/embeddings.csv`. Run `create-embeddings` before answering questions; the package's synthetic CSV fixtures are only for local analysis tests.
+
+
+
+
+
+
+
+The Go examples use `github.com/openai/openai-go/v3`, `github.com/tiktoken-go/tokenizer`, and `golang.org/x/net/html`. Use the complete programs in the [Go tutorial sample directory](https://github.com/openai/developers-website/tree/main/src/content/platform/go-examples/tutorial-crawl-website-embeddings). When running downloaded source files, replace `{{MODEL}}` with the model shown in the rendered example. Run each workflow step separately from the same working directory; don't concatenate their `main` functions. The hyperlink helpers share one program, and context retrieval, answering, and test questions share another.
 
 Replace `https://example.com` with your website's URL in the crawler, hyperlink, and scraped-data programs. Set `OPENAI_API_KEY` before the API steps. The Go crawler follows same-domain redirects and writes files under `text`; subsequent programs read and write `processed/scraped.csv`, `processed/chunks.json`, and `processed/embeddings.csv` in order. The histogram steps write `token-histogram.png` locally.
 
@@ -29,14 +49,12 @@ Replace `https://example.com` with your website's URL in the crawler, hyperlink,
 
 
 
-For Ruby, use Ruby 3.3 with the `openai`, `nokogiri`, `tiktoken_ruby`, and `chunky_png` gems. The [sample dependencies](https://github.com/openai/developers-website/blob/main/src/content/platform/ruby-examples/Gemfile) list tested versions.
+For Ruby, install the `openai`, `nokogiri`, `tiktoken_ruby`, and `chunky_png` gems. The [sample dependencies](https://developers.openai.com/api/docs/samples/ruby-Gemfile) list tested versions.
 
 
 
 
-Set `OPENAI_API_KEY` for either language.
-
-Copy the examples into a file or notebook for the selected language in the order shown.
+Set `OPENAI_API_KEY` before running examples in your selected language.
 
 
 
@@ -75,6 +93,17 @@ While this crawler is written from scratch, open source packages like [`Scrapy`]
 This crawler will start from the root URL passed in at the bottom of the code below, visit each page, find additional links, and visit those pages as well (as long as they have the same root domain). To begin, import the required packages, set the starting URL, and define a subclass of `HTMLParser`.
 
 Set up the web crawler
+
+```typescript
+import { load } from "cheerio";
+
+function getHTMLHyperlinks(html: string): string[] {
+  const document = load(html);
+  return document("a[href]")
+    .map((_, node) => document(node).attr("href")!)
+    .get();
+}
+```
 
 ```python
 import requests
@@ -189,6 +218,87 @@ end
 The next function takes a URL as an argument, opens the URL, and reads the HTML content. Then, it returns all the hyperlinks found on that page.
 
 Extract links from a page
+
+```typescript
+import { load } from "cheerio";
+
+function parseHTML(html: string): { links: string[]; text: string } {
+  const document = load(html);
+  document("script, style").remove();
+  return {
+    links: document("a[href]")
+      .map((_, node) => document(node).attr("href")!)
+      .get(),
+    text: document.root().text(),
+  };
+}
+
+function validURL(url: URL): boolean {
+  return (
+    ["http:", "https:"].includes(url.protocol) && !url.username && !url.password
+  );
+}
+
+async function fetchPage(address: string, domain: string) {
+  let url = new URL(address);
+  const signal = AbortSignal.timeout(10_000);
+  for (let redirects = 0; ; redirects++) {
+    if (!validURL(url) || url.host !== domain) {
+      throw new Error("Expected a same-domain HTTP or HTTPS URL");
+    }
+    url.hash = "";
+    const response = await fetch(url, { redirect: "manual", signal });
+    if ([301, 302, 303, 307, 308].includes(response.status)) {
+      await response.body?.cancel();
+      const location = response.headers.get("location");
+      if (!location) return null;
+      if (redirects >= 5) throw new Error("Too many redirects");
+      url = new URL(location, url);
+      continue;
+    }
+    if (
+      !response.ok ||
+      response.headers
+        .get("content-type")
+        ?.split(";")[0]
+        .trim()
+        .toLowerCase() !== "text/html"
+    ) {
+      await response.body?.cancel();
+      return null;
+    }
+    const reader = response.body?.getReader();
+    if (!reader) return null;
+    const buffers: Uint8Array[] = [];
+    let bytes = 0;
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        bytes += value.length;
+        if (bytes > 8 * 1024 * 1024) throw new Error("HTML page exceeds 8 MiB");
+        buffers.push(value);
+      }
+    } finally {
+      await reader.cancel();
+    }
+    return { url, ...parseHTML(Buffer.concat(buffers).toString("utf8")) };
+  }
+}
+
+async function getHyperlinks(address: string): Promise<string[]> {
+  const page = await fetchPage(address, new URL(address).host);
+  if (!page) return [];
+  return page.links.flatMap((link) => {
+    if (!link || link.startsWith("#")) return [];
+    try {
+      return [new URL(link, page.url).href];
+    } catch {
+      return [];
+    }
+  });
+}
+```
 
 ```python
 # Function to get the hyperlinks from a URL
@@ -370,6 +480,27 @@ The goal is to crawl through and index only the content that lives under the Ope
 
 Keep links within the target domain
 
+```typescript
+async function getDomainHyperlinks(
+  domain: string,
+  address: string
+): Promise<string[]> {
+  const links = await getHyperlinks(address);
+  const result = new Set<string>();
+  for (const link of links) {
+    const url = new URL(link);
+    if (!validURL(url) || url.host !== domain) continue;
+    url.hash = "";
+    result.add(url.href);
+  }
+  return [...result];
+}
+const address = "https://example.com";
+console.log(
+  JSON.stringify(await getDomainHyperlinks(new URL(address).host, address))
+);
+```
+
 ```python
 # Function to get the hyperlinks from a URL that are within the same domain
 def get_domain_hyperlinks(local_domain, url):
@@ -447,6 +578,58 @@ end
 The `crawl` function is the final step in the web scraping task setup. It keeps track of the visited URLs to avoid repeating the same page, which might be linked across multiple pages on a site. It also extracts the raw text from a page without the HTML tags, and writes the text content into a local .txt file specific to the page.
 
 Crawl the website
+
+```typescript
+import { createHash } from "node:crypto";
+import { mkdir, writeFile } from "node:fs/promises";
+import path from "node:path";
+
+async function crawl(address: string): Promise<void> {
+  const initial = new URL(address);
+  if (!validURL(initial)) throw new Error("Expected an HTTP or HTTPS URL");
+  initial.hash = "";
+  const directory = path.join("text", initial.host);
+  await mkdir(directory, { recursive: true });
+  await mkdir("processed", { recursive: true });
+  const queue = [initial.href];
+  const queued = new Set(queue);
+  const visited = new Set<string>();
+  while (queue.length) {
+    const current = queue.pop()!;
+    const page = await fetchPage(current, initial.host);
+    if (!page || visited.has(page.url.href)) continue;
+    visited.add(page.url.href);
+    console.log(page.url.href);
+    const digest = createHash("sha256").update(page.url.href).digest("hex");
+    // URL-encoded paths keep filenames ASCII; the digest prevents collisions.
+    const prefix = `${initial.host}${page.url.pathname}`
+      .replaceAll("/", "_")
+      .slice(0, 186);
+    await writeFile(path.join(directory, `${prefix}#${digest}.txt`), page.text);
+    for (const link of page.links) {
+      if (!link || link.startsWith("#")) continue;
+      let next: URL;
+      try {
+        next = new URL(link, page.url);
+      } catch {
+        continue;
+      }
+      next.hash = "";
+      if (
+        !validURL(next) ||
+        next.host !== initial.host ||
+        queued.has(next.href) ||
+        visited.has(next.href)
+      )
+        continue;
+      queued.add(next.href);
+      queue.push(next.href);
+    }
+  }
+}
+
+await crawl("https://example.com");
+```
 
 ```python
 from hashlib import sha256
@@ -813,6 +996,14 @@ The last line of the above example runs the crawler which goes through all the a
 
 Clean the scraped text
 
+```typescript
+function removeNewlines(texts: string[]): string[] {
+  return texts.map((text) =>
+    text.replaceAll("\n", " ").replaceAll("\\n", " ").replace(/ {2,}/g, " ")
+  );
+}
+```
+
 ```python
 def remove_newlines(serie):
     serie = serie.str.replace("\n", " ")
@@ -870,6 +1061,40 @@ Extra spacing and new lines can clutter the text and complicate the embeddings
   characters.
 
 Save scraped pages as a dataset
+
+```typescript
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { stringify } from "csv-stringify/sync";
+
+const address = new URL("https://example.com");
+const directory = path.join("text", address.host);
+const rows: { fname: string; text: string }[] = [];
+const entries = await readdir(directory, { withFileTypes: true });
+entries.sort((a, b) => a.name.localeCompare(b.name));
+for (const entry of entries) {
+  if (!entry.isFile() || !entry.name.endsWith(".txt")) continue;
+  let title = entry.name.slice(0, -4).replace(/#[a-f0-9]{64}$/, "");
+  if (title === address.host || title === `${address.host}_`) title = "index";
+  else if (title.startsWith(`${address.host}_`))
+    title = title.slice(address.host.length + 1);
+  title = title.replaceAll("#update", "").replace(/[-_]/g, " ");
+  const content = await readFile(path.join(directory, entry.name), "utf8");
+  const text = content
+    .replaceAll("\n", " ")
+    .replaceAll("\\n", " ")
+    .replace(/ {2,}/g, " ");
+  rows.push({ fname: title, text: `${title}. ${text}` });
+}
+await mkdir("processed", { recursive: true });
+await writeFile(
+  "processed/scraped.csv",
+  stringify(rows, {
+    header: true,
+    columns: ["fname", "text"],
+  })
+);
+```
 
 ```python
 from pathlib import Path
@@ -1040,6 +1265,41 @@ The API has a limit on the maximum number of input tokens for embeddings. To sta
 
 Count tokens in scraped pages
 
+```typescript
+import { readFile, writeFile } from "node:fs/promises";
+import { createCanvas } from "@napi-rs/canvas";
+import { getEncoding } from "js-tiktoken";
+const encoding = getEncoding("cl100k_base");
+import { parse } from "csv-parse/sync";
+const rows: { text: string }[] = parse(
+  await readFile("processed/scraped.csv", "utf8"),
+  { columns: true, skip_empty_lines: true }
+);
+const texts = rows.map((row) => row.text);
+const counts = texts.map((text) => encoding.encode(text).length);
+const bins = Array<number>(10).fill(0);
+const maximum = Math.max(1, ...counts);
+for (const count of counts)
+  bins[Math.min(9, Math.floor((count / maximum) * 10))]++;
+const canvas = createCanvas(800, 600);
+const context = canvas.getContext("2d");
+context.fillStyle = "white";
+context.fillRect(0, 0, 800, 600);
+context.fillStyle = "black";
+context.font = "20px sans-serif";
+context.fillText("Token counts", 40, 30);
+const largestBin = Math.max(1, ...bins);
+context.fillStyle = "steelblue";
+for (const [index, count] of bins.entries()) {
+  const height = (count / largestBin) * 480;
+  context.fillRect(40 + index * 72, 540 - height, 68, height);
+}
+context.fillStyle = "black";
+context.fillText("0", 40, 575);
+context.fillText(String(maximum), 740, 575);
+await writeFile("token-histogram.png", await canvas.encode("png"));
+```
+
 ```python
 import tiktoken
 
@@ -1201,6 +1461,43 @@ plot.save("token-histogram.png")
 Split longer pages into chunks that fit within the [embedding model’s input limit](https://developers.openai.com/api/docs/models/text-embedding-3-small).
 
 Split long pages into chunks
+
+```typescript
+import { readFile, writeFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+import { getEncoding } from "js-tiktoken";
+
+const encoding = getEncoding("cl100k_base");
+function splitIntoMany(text: string, maxTokens = 500): string[] {
+  if (!Number.isInteger(maxTokens) || maxTokens <= 0) {
+    throw new Error("maxTokens must be a positive integer");
+  }
+  if (!text.trim()) return [];
+  const sentences = text.split(". ");
+  const chunks: string[] = [];
+  let chunk = "";
+  for (const [index, part] of sentences.entries()) {
+    const sentence = index < sentences.length - 1 ? `${part}.` : part;
+    if (encoding.encode(sentence).length > maxTokens) {
+      throw new Error("Split the oversized sentence before chunking");
+    }
+    const candidate = chunk ? `${chunk} ${sentence}` : sentence;
+    if (encoding.encode(candidate).length > maxTokens) {
+      chunks.push(chunk);
+      chunk = sentence;
+    } else chunk = candidate;
+  }
+  if (chunk) chunks.push(chunk);
+  return chunks;
+}
+
+const rows: { text: string }[] = parse(
+  await readFile("processed/scraped.csv", "utf8"),
+  { columns: true, skip_empty_lines: true }
+);
+const chunks = rows.flatMap((row) => splitIntoMany(row.text));
+await writeFile("processed/chunks.json", JSON.stringify(chunks));
+```
 
 ```python
 max_tokens = 500
@@ -1411,6 +1708,38 @@ Visualizing the updated histogram again can help to confirm if the rows were suc
 
 Visualize token counts after splitting
 
+```typescript
+import { readFile, writeFile } from "node:fs/promises";
+import { createCanvas } from "@napi-rs/canvas";
+import { getEncoding } from "js-tiktoken";
+const encoding = getEncoding("cl100k_base");
+const texts: string[] = JSON.parse(
+  await readFile("processed/chunks.json", "utf8")
+);
+const counts = texts.map((text) => encoding.encode(text).length);
+const bins = Array<number>(10).fill(0);
+const maximum = Math.max(1, ...counts);
+for (const count of counts)
+  bins[Math.min(9, Math.floor((count / maximum) * 10))]++;
+const canvas = createCanvas(800, 600);
+const context = canvas.getContext("2d");
+context.fillStyle = "white";
+context.fillRect(0, 0, 800, 600);
+context.fillStyle = "black";
+context.font = "20px sans-serif";
+context.fillText("Token counts", 40, 30);
+const largestBin = Math.max(1, ...bins);
+context.fillStyle = "steelblue";
+for (const [index, count] of bins.entries()) {
+  const height = (count / largestBin) * 480;
+  context.fillRect(40 + index * 72, 540 - height, 68, height);
+}
+context.fillStyle = "black";
+context.fillText("0", 40, 575);
+context.fillText(String(maximum), 740, 575);
+await writeFile("token-histogram.png", await canvas.encode("png"));
+```
+
 ```python
 df = pd.DataFrame(shortened, columns=["text"])
 df["n_tokens"] = df.text.apply(lambda x: len(tokenizer.encode(x)))
@@ -1530,6 +1859,43 @@ plot.save("token-histogram.png")
 Create an embedding for each chunk with `text-embedding-3-small`. Use the same model for query embeddings. If you change embedding models, rebuild the index before searching it.
 
 Create embeddings for the scraped text
+
+```typescript
+import OpenAI from "openai";
+import { readFile, writeFile } from "node:fs/promises";
+import { stringify } from "csv-stringify/sync";
+
+const client = new OpenAI();
+const chunks: string[] = JSON.parse(
+  await readFile("processed/chunks.json", "utf8")
+);
+if (
+  !Array.isArray(chunks) ||
+  !chunks.every((text) => typeof text === "string")
+) {
+  throw new Error("Expected an array of text chunks");
+}
+const rows: (string | number)[][] = [["text", "n_tokens", "embeddings"]];
+for (const text of chunks) {
+  const response = await client.embeddings.create({
+    model: "text-embedding-3-small",
+    input: text,
+  });
+  if (
+    response.data.length !== 1 ||
+    response.data[0].index !== 0 ||
+    !response.data[0].embedding.length
+  ) {
+    throw new Error("Expected one embedding per chunk");
+  }
+  rows.push([
+    text,
+    response.usage.prompt_tokens,
+    JSON.stringify(response.data[0].embedding),
+  ]);
+}
+await writeFile("processed/embeddings.csv", stringify(rows));
+```
 
 ```python
 from openai import OpenAI
@@ -1652,6 +2018,33 @@ Turning the embeddings into a NumPy array is the first step, which will provide 
 
 Load the saved embeddings
 
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: { text: string; embeddings: string }[] = parse(
+  await readFile("processed/embeddings.csv", "utf8"),
+  { columns: true, skip_empty_lines: true }
+);
+const rows = records.map((row) => ({
+  text: row.text,
+  embedding: JSON.parse(row.embeddings) as number[],
+}));
+if (!rows.length) throw new Error("No embeddings");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error("Expected finite embeddings with consistent dimensions");
+  }
+}
+console.log(rows[0].embedding);
+```
+
 ```python
 from ast import literal_eval
 import numpy as np
@@ -1754,6 +2147,84 @@ end
 Embed the question using the same model you used to build the index. The example computes cosine distances with NumPy and retrieves the closest text chunks.
 
 Build context for a question
+
+```typescript
+import OpenAI from "openai";
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+interface EmbeddedRow {
+  text: string;
+  nTokens: number;
+  embedding: number[];
+}
+async function loadEmbeddings(path: string): Promise<EmbeddedRow[]> {
+  const records: { text: string; n_tokens: string; embeddings: string }[] =
+    parse(await readFile(path, "utf8"), {
+      columns: true,
+      skip_empty_lines: true,
+    });
+  const rows = records.map((row) => ({
+    text: row.text,
+    nTokens: Number(row.n_tokens),
+    embedding: JSON.parse(row.embeddings) as number[],
+  }));
+  if (!rows.length) throw new Error("No embeddings");
+  const dimensions = rows[0].embedding.length;
+  for (const row of rows) {
+    if (
+      typeof row.text !== "string" ||
+      !Number.isInteger(row.nTokens) ||
+      row.nTokens < 0 ||
+      !Array.isArray(row.embedding) ||
+      !dimensions ||
+      row.embedding.length !== dimensions ||
+      !row.embedding.every(Number.isFinite)
+    ) {
+      throw new Error("Invalid embedded row");
+    }
+  }
+  return rows;
+}
+function cosineSimilarity(a: number[], b: number[]): number {
+  if (a.length !== b.length || !a.length || !a.every(Number.isFinite))
+    throw new Error("Invalid embedding dimensions or values");
+  const dot = a.reduce((sum, value, i) => sum + value * b[i], 0);
+  const norm = Math.sqrt(
+    a.reduce((sum, value) => sum + value * value, 0) *
+      b.reduce((sum, value) => sum + value * value, 0)
+  );
+  if (!(norm > 0)) throw new Error("Embedding must have a nonzero norm");
+  return dot / norm;
+}
+async function createContext(
+  client: OpenAI,
+  question: string,
+  rows: EmbeddedRow[],
+  maxTokens = 1800
+): Promise<string> {
+  const response = await client.embeddings.create({
+    model: "text-embedding-3-small",
+    input: question,
+  });
+  if (response.data.length !== 1)
+    throw new Error("Expected one query embedding");
+  const ranked = rows
+    .map((row) => ({
+      row,
+      similarity: cosineSimilarity(response.data[0].embedding, row.embedding),
+    }))
+    .sort((a, b) => b.similarity - a.similarity);
+  const parts: string[] = [];
+  let tokens = 0;
+  for (const { row } of ranked) {
+    tokens += row.nTokens + 4;
+    if (tokens > maxTokens) break;
+    parts.push(row.text);
+  }
+  return parts.join("\n\n###\n\n");
+}
+```
 
 ```python
 def distances_from_embeddings(query, embeddings, distance_metric="cosine"):
@@ -1964,6 +2435,25 @@ The `max_len` argument limits how many tokens of retrieved text to include. Pass
 
 Answer a question from the website
 
+```typescript
+async function answerQuestion(
+  client: OpenAI,
+  rows: EmbeddedRow[],
+  question: string
+): Promise<string> {
+  const context = await createContext(client, question, rows);
+  const response = await client.responses.create({
+    model: "gpt-6-luna",
+    instructions:
+      'Answer the question using only the supplied context. If the context does not answer the question, say "I don\'t know."',
+    input: `Context: ${context}\n\nQuestion: ${question}`,
+  });
+  if (response.status !== "completed")
+    throw new Error(`Response ended with status ${response.status}`);
+  return response.output_text.trim();
+}
+```
+
 ```python
 def answer_question(df, question, max_len=1800):
     context = create_context(question, df, max_len=max_len)
@@ -2012,6 +2502,17 @@ end
 Ask a question the indexed pages can answer, then ask one they cannot. If the index contains a description of ChatGPT, the first call should answer from it. The second should return “I don't know.”
 
 Try example questions
+
+```typescript
+const client = new OpenAI();
+const rows = await loadEmbeddings("processed/embeddings.csv");
+for (const question of [
+  "What is ChatGPT?",
+  "What did I have for breakfast today?",
+]) {
+  console.log(await answerQuestion(client, rows, question));
+}
+```
 
 ```python
 print(answer_question(df, "What is ChatGPT?"))

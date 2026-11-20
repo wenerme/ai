@@ -181,13 +181,13 @@ all jobs inherit it. pip's cache is defined under `.cache/pip/` and is cached pe
 ```yaml
 default:
   image: python:latest
-  cache:                      # Pip's cache doesn't store the python packages
+  cache:
+    key: $CI_COMMIT_REF_SLUG  # Pip's cache doesn't store the python packages
     paths:                    # https://pip.pypa.io/en/stable/topics/caching/
       - .cache/pip
   before_script:
     - python -V               # Print out python version for debugging
-    - pip install virtualenv
-    - virtualenv venv
+    - python -m venv venv
     - source venv/bin/activate
 
 variables:  # Change pip's cache directory to be inside the project directory because GitLab can only cache local items.
@@ -195,9 +195,9 @@ variables:  # Change pip's cache directory to be inside the project directory be
 
 test:
   script:
-    - python setup.py test
-    - pip install ruff
-    - ruff --format=gitlab .
+    - pip install pytest ruff
+    - pytest
+    - ruff check --output-format=gitlab .
 ```
 
 ### Ruby

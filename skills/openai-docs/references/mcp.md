@@ -177,6 +177,122 @@ The following examples implement both `search` and `fetch` with an MCP SDK.
 
 Create a document search MCP server
 
+```typescript
+import OpenAI from "openai";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { createMcpExpressApp } from "@modelcontextprotocol/sdk/server/express.js";
+import { z } from "zod";
+
+const client = new OpenAI();
+// Replace this illustrative ID with your existing document store ID.
+const vectorStoreID = "vs_123";
+const citation = (id: string) =>
+  `https://platform.openai.com/storage/files/${encodeURIComponent(id)}`;
+function createServer() {
+  const server = new McpServer(
+    { name: "Sample MCP Server", version: "1.0.0" },
+    {
+      instructions:
+        "Search for relevant documents, then fetch complete content with citations.",
+    }
+  );
+  server.registerTool(
+    "search",
+    {
+      description:
+        "Search documents and return identities, titles, and citation URLs.",
+      inputSchema: { query: z.string() },
+      outputSchema: {
+        results: z.array(
+          z.object({ id: z.string(), title: z.string(), url: z.string() })
+        ),
+      },
+    },
+    async ({ query }) => {
+      const results: { id: string; title: string; url: string }[] = [];
+      if (query.trim()) {
+        const page = await client.vectorStores.search(vectorStoreID, { query });
+        for (const item of page.data)
+          results.push({
+            id: item.file_id,
+            title: item.filename,
+            url: citation(item.file_id),
+          });
+      }
+      const result = { results };
+      return {
+        content: [{ type: "text", text: JSON.stringify(result) }],
+        structuredContent: result,
+      };
+    }
+  );
+  server.registerTool(
+    "fetch",
+    {
+      description:
+        "Retrieve a complete document with its citation and metadata.",
+      inputSchema: { id: z.string().min(1) },
+      outputSchema: {
+        id: z.string(),
+        title: z.string(),
+        text: z.string(),
+        url: z.string(),
+        metadata: z.record(z.string(), z.unknown()),
+      },
+    },
+    async ({ id }) => {
+      const parts: string[] = [];
+      for await (const item of client.vectorStores.files.content(id, {
+        vector_store_id: vectorStoreID,
+      })) {
+        if (typeof item.text !== "string")
+          throw new Error("Document content omitted text");
+        parts.push(item.text);
+      }
+      const attachment = await client.vectorStores.files.retrieve(id, {
+        vector_store_id: vectorStoreID,
+      });
+      const file = await client.files.retrieve(id);
+      const result = {
+        id,
+        title: file.filename,
+        text: parts.join("\n"),
+        url: citation(id),
+        metadata: attachment.attributes ?? {},
+      };
+      return {
+        content: [{ type: "text", text: JSON.stringify(result) }],
+        structuredContent: result,
+      };
+    }
+  );
+  return server;
+}
+// Loopback binding and SDK Host validation protect this local example.
+const app = createMcpExpressApp({ host: "127.0.0.1" });
+app.all("/mcp", async (request, response) => {
+  const server = createServer();
+  const transport = new StreamableHTTPServerTransport({
+    sessionIdGenerator: undefined,
+    enableJsonResponse: true,
+  });
+  response.on("close", () => {
+    void transport.close();
+    void server.close();
+  });
+  try {
+    await server.connect(transport);
+    await transport.handleRequest(request, response, request.body);
+  } catch (error) {
+    console.error("MCP request failed", error);
+    if (!response.headersSent)
+      response.status(500).end("Internal server error");
+  }
+});
+const httpServer = app.listen(8000, "127.0.0.1");
+```
+
 ```python
 # Replace the illustrative IDs and URLs below with your own resource values.
 """
@@ -660,6 +776,9 @@ On free Replit accounts, server URLs are active for as long as the editor is act
 
 ![replit configuration](https://cdn.openai.com/API/docs/images/replit.png)
 
+
+
+
 For the Python server, ensure the long dev URL ends with `/sse/`, which is the server-sent events (streaming) interface to the MCP server. This is the URL you will use to connect your app in ChatGPT and call it via API. An example Replit URL looks like:
 
 ```text
@@ -670,7 +789,10 @@ https://777xxx.janeway.replit.dev/sse/
 
 
 
-For Ruby, install the `openai`, `mcp` (version 1.10.0), `rackup`, and `webrick` gems, save the Ruby source as `server.rb`, and run `ruby server.rb`. Set `OPENAI_VECTOR_STORE_ID` to your vector store ID and `MCP_HOST` to `0.0.0.0` on Replit. The Ruby server uses Streamable HTTP at `/mcp`; use that path instead of `/sse/` in the connection URL. The Ruby server uses port 8000 by default or the port specified by `PORT`.
+
+
+
+For Ruby, install the `openai`, `mcp`, `rackup`, and `webrick` gems, save the Ruby source as `server.rb`, and run `ruby server.rb`. Set `OPENAI_VECTOR_STORE_ID` to your vector store ID and `MCP_HOST` to `0.0.0.0` on Replit. The Ruby server uses Streamable HTTP at `/mcp`; use that path instead of `/sse/` in the connection URL. The Ruby server uses port 8000 by default or the port specified by `PORT`.
 
 
 
@@ -678,7 +800,17 @@ For Ruby, install the `openai`, `mcp` (version 1.10.0), `rackup`, and `webrick` 
 
 
 
-For Go, use Go 1.26 or later with `github.com/openai/openai-go/v3` and `github.com/modelcontextprotocol/go-sdk@v1.8.0`. Set `OPENAI_API_KEY`, replace the illustrative `vs_123` value with your existing vector store ID, save the source as `main.go` in your module, and run `go run .`. The server uses Streamable HTTP at `/mcp` on port 8000. Edit the `port` literal to use another port and the `host` literal to bind the server to `0.0.0.0` on Replit.
+Download and extract the [TypeScript samples and locked dependencies](https://developers.openai.com/api/docs/samples/typescript.tar.gz): OpenAI, the MCP SDK, and Zod. Set `OPENAI_API_KEY` and replace `vs_123` with your vector store ID. From the sample project directory, run `pnpm install --ignore-workspace --frozen-lockfile`, then start the server with `node --experimental-strip-types mcp/mcp-server.ts`.
+
+The local server uses Streamable HTTP at `http://127.0.0.1:8000/mcp`. For a hosted deployment, change the `app.listen` binding to `0.0.0.0` and set the `createMcpExpressApp` options to `host: "0.0.0.0"` with `allowedHosts` containing your exact deployment hostname. Keep Host validation enabled, configure HTTPS and access controls at your hosting boundary, and use the `/mcp` path in the connection URL. Change the port number if your host requires a different port.
+
+
+
+
+
+
+
+For Go, use `github.com/openai/openai-go/v3` and `github.com/modelcontextprotocol/go-sdk`. Set `OPENAI_API_KEY`, replace the illustrative `vs_123` value with your existing vector store ID, save the source as `main.go` in your module, and run `go run .`. The server uses Streamable HTTP at `/mcp` on port 8000. Edit the `port` literal to use another port and the `host` literal to bind the server to `0.0.0.0` on Replit.
 
 
 

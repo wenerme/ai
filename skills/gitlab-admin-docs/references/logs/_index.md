@@ -1371,6 +1371,7 @@ The log file is located at:
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - Logging of GitLab Duo session creation over MCP [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/630113) in GitLab 19.5.
+- `gitaly_calls` and `gitaly_duration_s` fields for tool calls [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271952) in GitLab 19.7.
 
 The `mcp.log` file logs information related to the
 [GitLab MCP server](../../user/model_context_protocol/mcp_server.md). Logging includes
@@ -1419,6 +1420,18 @@ The fields have the same names as in `api_json.log`, for example `db_count`, `db
 Fields whose value did not change are left out. The `*_txn_max_duration_s` fields are always
 left out, because they hold the longest transaction in the whole request. Calls to unknown tools
 and calls denied by tool rules have no database fields.
+
+Tools that read from Gitaly, such as tools for files, diffs, commits, and merge conflicts,
+add the following fields:
+
+- `gitaly_calls`, which is the number of Gitaly calls the tool made.
+- `gitaly_duration_s`, which is the total time in seconds.
+
+The fields have the same names as in `api_json.log`. Both fields are absent when:
+
+- The tool made no Gitaly calls.
+- The tool is unknown.
+- Calls by the tool were denied by tool rules.
 
 For tool calls from a GitLab Duo Agent Platform session, the `tool_call` line has a `meta.duo_workflow_id`
 field with the session ID. Workhorse reports this value, and GitLab does not verify it.
