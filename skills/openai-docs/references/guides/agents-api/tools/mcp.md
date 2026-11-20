@@ -114,12 +114,44 @@ Save the Python server as `/workspace/lookup_mcp.py`.
 
 
 
-For Ruby, install the `mcp` gem at version `1.10.0` and save the Ruby server as `/workspace/lookup_mcp.rb`. The Ruby example is tested with Ruby 3.3.
+For Ruby, install the `mcp` gem and save the Ruby server as `/workspace/lookup_mcp.rb`.
+
+
+
+
+
+
+
+In `/workspace`, install `@modelcontextprotocol/sdk` and `zod`, then save the TypeScript server as `/workspace/lookup_mcp.ts`. In the configuration below, set `transport.command` to the absolute path of your Node executable and `transport.args` to `["--experimental-strip-types", "/workspace/lookup_mcp.ts"]`. This server uses stdio without a transport argument.
 
 
 
 
 Run a customer lookup MCP server
+
+```typescript
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+const server = new McpServer({ name: "customer-lookup", version: "1.0.0" });
+server.registerTool(
+  "get_customer",
+  {
+    description: "Look up a customer in the example data.",
+    inputSchema: { customer_id: z.string() },
+  },
+  async ({ customer_id }) => {
+    const customers = new Map([
+      ["123", { name: "Example Customer", plan: "pro" }],
+    ]);
+    const result = { customer: customers.get(customer_id) ?? null };
+    return { content: [{ type: "text", text: JSON.stringify(result) }] };
+  }
+);
+
+await server.connect(new StdioServerTransport());
+```
 
 ```python
 import sys

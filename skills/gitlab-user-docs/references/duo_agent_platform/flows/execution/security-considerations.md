@@ -44,7 +44,6 @@ the following sensitive variables are present in the environment:
 - `GITLAB_OAUTH_TOKEN` and `GITLAB_TOKEN`: The triggering user's OAuth token
   through composite identity.
 - `DUO_WORKFLOW_GIT_HTTP_PASSWORD`: The Git HTTP password.
-- `DUO_WORKFLOW_SERVICE_TOKEN`: The service token.
 - `DUO_WORKFLOW_GIT_USER_EMAIL` and `DUO_WORKFLOW_GIT_USER_NAME`: The triggering user's
   email and name.
 

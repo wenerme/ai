@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Smaller, faster, more cost-efficient. Extensive post-training makes outputs especially stable and consistent across generations. Strongest on illustration, anime, painting, and other expressive or artistic styles.
 
@@ -32,6 +33,7 @@ Smaller, faster, more cost-efficient. Extensive post-training makes outputs espe
 | --- | --- |
 | Terms and License | [link ↗](https://www.krea.ai/terms) |
 | More information | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium) |
+| Zero data retention | Yes |
 | Pricing | <ul><li>Per image$0.03</li></ul> |
 
 ## Usage

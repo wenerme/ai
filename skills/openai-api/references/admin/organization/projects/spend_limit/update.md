@@ -32,7 +32,7 @@ Content type: `application/json`
 
   `minimum: 1`
 
-- `notification_channel: optional object {  }  or null`
+- `notification_channel: optional unknown or null`
 
   Configure email notifications when the spend limit is reached. Leave this out to keep the current settings, or send null to reset to owner-only notifications.
 

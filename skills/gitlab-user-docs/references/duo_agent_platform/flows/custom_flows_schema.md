@@ -193,6 +193,7 @@ flow:
 
 ### `include`
 
+- Offering: GitLab.com, GitLab Self-Managed
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/628153) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_flow_agent_references`. Disabled by default.

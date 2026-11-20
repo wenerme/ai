@@ -141,7 +141,7 @@ To create a flow:
 Prerequisites:
 
 - [Install and configure the GitLab for VS Code extension](../../../editor_extensions/visual_studio_code/setup.md).
-- Enable the `gitlab.featureFlags.flowBuilder` VS Code extension setting.
+- Turn on the `gitlab.featureFlags.flowBuilder` VS Code extension setting.
 - To run a flow: GitLab Duo Agent Platform must be turned on for the project, and you must have at least the Developer role.
 - To publish a flow to the AI Catalog: Have the Maintainer or Owner role for the managing project.
 
@@ -243,7 +243,7 @@ To turn on a flow for all projects in a top-level group:
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
 1. Select **Enable for all projects**.
 
-   If the flow is already enabled in one or more projects in the group,
+   If the flow is already turned on in one or more projects in the group,
    select **Replace and enable for all projects**.
    The project configurations are deleted and the group configuration is used instead.
 
@@ -252,7 +252,7 @@ In each project, the flow is labeled **Enabled by** followed by the group name.
 
 The service account for the flow is added to each project in the group with the Developer role.
 
-To disable the flow for all projects, on the flow's page, select **Disable for all projects**, then select **Disable**.
+To turn off the flow for all projects, on the flow's page, select **Disable for all projects**, then select **Disable**.
 
 ### From the AI Catalog
 
@@ -325,14 +325,14 @@ Prerequisites:
    select **Trigger actions** () > **Delete**.
 1. On the confirmation dialog, select **Delete**.
 
-## Disable a flow
+## Turn off a flow
 
 Prerequisites:
 
 - For groups, you must have the Maintainer or Owner role.
 - For projects, you must have the Maintainer or Owner role.
 
-To disable a flow:
+To turn off a flow:
 
 1. In the top bar, select **Search or go to** and find your group or project.
 1. Select **AI** > **Flows**.
@@ -340,7 +340,7 @@ To disable a flow:
 1. On the confirmation dialog, select **Disable**.
 
 The flow no longer appears in the project or group, and can't be run. Any service accounts or automations associated with the flow are also removed.
-You can disable a flow or agent up to 30 times per minute.
+You can turn off a flow or agent up to 30 times per minute.
 
 ## Use a flow
 

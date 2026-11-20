@@ -13,7 +13,7 @@ For more information on troubleshooting GitLab Duo, see:
 
 If the health check does not resolve your problem, review these troubleshooting steps.
 
-## GitLab Duo features do not work on self-managed
+## GitLab Duo features do not work on GitLab Self-Managed
 
 In addition to [ensuring GitLab Duo features are turned on](turn_on_off.md),
 you can also do the following:

@@ -94,6 +94,9 @@ You can import your GitHub repository by either:
 
 If importing from `github.com` you can use any method to import. Self-hosted GitHub Enterprise Server customers must use the API.
 
+You can keep an imported project updated from GitHub until you're ready to move to GitLab.
+For more information, see [Keep a GitHub project updated in GitLab](github_sync.md).
+
 ### Use GitHub OAuth
 
 If you are importing to GitLab.com or to a GitLab Self-Managed that has GitHub OAuth [configured](../../../integration/github.md), you can use GitHub OAuth to import your repository.

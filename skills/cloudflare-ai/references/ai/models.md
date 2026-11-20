@@ -18,7 +18,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 313 modelsClear filters
+We found 315 modelsClear filters
 
 ## Compare models
 
@@ -143,7 +143,6 @@ Compare
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-fable-5.2</h3>AnthropicText Generation Claude Fable 5.2 is built for demanding reasoning and long-horizon agentic work, with adaptive thinking, a 1M token context window, and up to 128K output tokens.](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.2/)
 
 - Third-party
-- +1
 
 Compare
 
@@ -157,6 +156,7 @@ Compare
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-haiku-5.5</h3>AnthropicText Generation Claude Haiku 5.5 is a fast, cost-efficient model for high-volume, latency-sensitive tasks such as classification, extraction, routing, and subagent work.](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-5.5/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -191,6 +191,7 @@ Compare
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-opus-5</h3>AnthropicText Generation Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing. Unlike Fable 5, Opus 5 has no data retention requirements for general access.](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -218,12 +219,14 @@ Compare
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-sonnet-5</h3>AnthropicText Generation Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, tool use, reasoning, and long-horizon professional work at lower cost than Opus-class models.](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/)
 
 - Third-party
+- +1
 
 Compare
 
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-sonnet-5.5</h3>AnthropicText Generation Claude Sonnet 5.5 offers the best combination of speed and intelligence, with adaptive thinking for coding, tool use, reasoning, and long-horizon work.](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5.5/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -384,6 +387,19 @@ Compare
 
 Compare
 
+[![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>seedream-5.5</h3>ByteDanceText-to-Image Seedream 5.5 is ByteDance's image generation and editing model with text prompts, up to 10 reference images, 1K, 1.5K, 2K, or custom pixel-size output, PNG or JPEG output, and native transparent backgrounds.](https://developers.cloudflare.com/ai/models/bytedance/seedream-5.5/)
+
+- Third-party
+- +1
+
+Compare
+
+[![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-v4.1-flash-1017</h3>DeepSeekText Generation DeepSeek V4.1 Flash is a language model from DeepSeek, available through Cloudflare Workers AI and Subconscious, with PrimaLabs as a fallback.](https://developers.cloudflare.com/ai/models/deepseek-ai/deepseek-v4.1-flash-1017/)
+
+- Third-party
+
+Compare
+
 [d<h3>deepseek-v4-pro</h3>deepseekText Generation DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference.](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/)
 
 - Third-party
@@ -491,30 +507,35 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.5-flash</h3>GoogleText Generation Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/)
 
 - Third-party
+- +1
 
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.5-flash-lite</h3>GoogleText Generation Gemini 3.5 Flash-Lite is a low-latency, cost-effective multimodal model optimized for high-throughput, low-cost execution for subagent tasks and document parsing.](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash-lite/)
 
 - Third-party
+- +1
 
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.6-flash</h3>GoogleText Generation Gemini 3.6 Flash provides sustained frontier-level intelligence optimized for real-world tasks at a higher speed and lower cost, excelling at code generation, agentic execution, and spatial reasoning.](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/)
 
 - Third-party
+- +1
 
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.7-flash</h3>GoogleText Generation Gemini 3.7 Flash is a highly capable, natively multimodal reasoning model optimized for agentic workflows and real-world tasks.](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/)
 
 - Third-party
+- +1
 
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.8-flash</h3>GoogleText Generation Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.](https://developers.cloudflare.com/ai/models/google/gemini-3.8-flash/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -547,6 +568,7 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-4-hydrogen</h3>GoogleText Generation Gemini 4 Hydrogen brings Gemini 4 agent and coding quality at Flash speed.](https://developers.cloudflare.com/ai/models/google/gemini-4-hydrogen/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -578,12 +600,14 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>lyria-3</h3>GoogleMusic Generation Google's Lyria 3 model generates 30-second MP3 music clips from text and optional image prompts.](https://developers.cloudflare.com/ai/models/google/lyria-3/)
 
 - Third-party
+- +1
 
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>lyria-3-pro</h3>GoogleMusic Generation Google's Lyria 3 Pro model generates full-length MP3 songs from detailed text prompts and optional image prompts.](https://developers.cloudflare.com/ai/models/google/lyria-3-pro/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -618,6 +642,7 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>nano-banana-2.1</h3>GoogleText-to-Image Google's Nano Banana 2.1 image generation and editing model, optimized for a balance of quality and performance.](https://developers.cloudflare.com/ai/models/google/nano-banana-2.1/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -714,24 +739,28 @@ Compare
 [k<h3>krea-2-large</h3>kreaText-to-Image More than 2x the size of Medium, with softer post-training. Outputs are rawer, more textured, and more flexible — at its best, Large produces results Medium can't match. Strongest on photorealism, raw looks (motion blur, grain, low dynamic range), and expressive and artistic styles.](https://developers.cloudflare.com/ai/models/krea/krea-2-large/)
 
 - Third-party
+- +1
 
 Compare
 
 [k<h3>krea-2-medium</h3>kreaText-to-Image Smaller, faster, more cost-efficient. Extensive post-training makes outputs especially stable and consistent across generations. Strongest on illustration, anime, painting, and other expressive or artistic styles.](https://developers.cloudflare.com/ai/models/krea/krea-2-medium/)
 
 - Third-party
+- +1
 
 Compare
 
 [k<h3>krea-2-medium-turbo</h3>kreaText-to-Image The fastest Krea 2 model, built for low-cost iteration on expressive illustrations, style-driven concepts, and rapid visual exploration. Keeps the Krea 2 style system and expressive visual range but uses a distilled sampling schedule so you can move through ideas much faster. Especially useful for expressive illustration, graphic styles, typography experiments, and quick campaign or concept directions.](https://developers.cloudflare.com/ai/models/krea/krea-2-medium-turbo/)
 
 - Third-party
+- +1
 
 Compare
 
 [k<h3>krea-3</h3>kreaImage-to-Image Krea 3 is Krea's image generation and editing model, in beta. It edits one or more reference images from a text instruction, or generates an image from the prompt alone. References are passed as HTTP(S) URLs in image\_urls (up to 8). Outputs go up to 2K, with optional thinking\_mode, aspect\_ratio, seed and regional\_edit controls.](https://developers.cloudflare.com/ai/models/krea/krea-3/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -932,6 +961,7 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>decisions</h3>OpenAIText Generation Decisions uses GPT-6 Luna to evaluate shared text or image evidence against typed questions. It returns probabilities, fixed choices, or rubric scores for low-latency classification, routing, and prioritization workflows.](https://developers.cloudflare.com/ai/models/openai/decisions/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -1050,6 +1080,7 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-5.6-luna</h3>OpenAIText Generation GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -1063,18 +1094,21 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-5.6-terra</h3>OpenAIText Generation GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-terra/)
 
 - Third-party
+- +1
 
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6-astra</h3>OpenAIText Generation GPT-6 Astra is OpenAI's most capable model, built for complex reasoning, coding, computer use, research, and document creation.](https://developers.cloudflare.com/ai/models/openai/gpt-6-astra/)
 
 - Third-party
+- +1
 
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6-luna</h3>OpenAIText Generation GPT-6 Luna is OpenAI's most efficient GPT-6 model, built for focused, high-volume tasks.](https://developers.cloudflare.com/ai/models/openai/gpt-6-luna/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -1109,6 +1143,7 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6.2-sol</h3>OpenAIText Generation OpenAI's go-to model for everyday work, from coding to powering agents at scale. GPT-6.2 Sol offers capable reasoning and tool use across common workflows.](https://developers.cloudflare.com/ai/models/openai/gpt-6.2-sol/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -1129,12 +1164,14 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2.5-flare</h3>OpenAIText-to-Image OpenAI's fastest high-quality everyday image generation model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.](https://developers.cloudflare.com/ai/models/openai/gpt-image-2.5-flare/)
 
 - Third-party
+- +1
 
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-2.5-sunburst</h3>OpenAIText-to-Image OpenAI's most capable image generation and editing model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.](https://developers.cloudflare.com/ai/models/openai/gpt-image-2.5-sunburst/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -1416,6 +1453,7 @@ Compare
 [t<h3>jev-1.14.0</h3>typesafeText Generation Jev 1.14 is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, Score, and Box questions and returns calibrated answers with probabilities and confidence. Image inputs and Box questions are beta and dreamer-ready, not recommended for production.](https://developers.cloudflare.com/ai/models/typesafe/jev-1.14.0/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -1786,28 +1824,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
 - +4
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 - Cloudflare-hosted
 - +3
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +5

@@ -52,7 +52,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 21 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
 
       A stable, machine-readable failure category.
 
@@ -111,6 +111,10 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       - `"misalignment_policy_violation"`
 
         The request was blocked by the safety systems.
+
+      - `"audio_input_unavailable"`
+
+        Audio input is unavailable for the organization.
 
       - `"connection_failed"`
 

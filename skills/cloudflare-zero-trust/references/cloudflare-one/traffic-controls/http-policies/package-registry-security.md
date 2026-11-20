@@ -130,7 +130,7 @@ pkg.ecosystem == "npm" and pkg.name == "event-stream"
 
 ### Block vulnerable versions of a package
 
-To block all versions of `lodash` below `4.17.21`, which is the version that patched CVE-2021-23337:
+To block all versions of `lodash` below `4.17.21`, which is the version that patched [CVE-2021-23337 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2021-23337):
 
 | Selector | Operator | Value | Logic | Action |
 | --- | --- | --- | --- | --- |

@@ -228,12 +228,65 @@ The Python example uses [Tenacity](https://tenacity.readthedocs.io/), a third-pa
 
 
 
-The Go example uses [`github.com/avast/retry-go/v4`](https://github.com/avast/retry-go) at version `v4.7.0`. It limits the request to six attempts and honors `Retry-After` within a one-minute delay budget. If a server delay exceeds the one-minute budget or a quota error occurs, the function returns to the caller.
+The Go example uses [`github.com/avast/retry-go/v4`](https://github.com/avast/retry-go). It limits the request to six attempts and honors `Retry-After` within a one-minute delay budget. If a server delay exceeds the one-minute budget or a quota error occurs, the function returns to the caller.
+
+
+
+
+
+
+
+Install `openai` and `p-retry` in your project, save the complete TypeScript program as `retry.ts`, and set `OPENAI_API_KEY`. Run `node --experimental-strip-types retry.ts`. The wrapper disables SDK retries, retries requests that hit transient rate limits, and honors `Retry-After` within its delay budget.
 
 
 
 
 Retry with exponential backoff
+
+```typescript
+import OpenAI from "openai";
+import { setTimeout as sleep } from "node:timers/promises";
+
+// Stop on permanent errors or server delays beyond this example's budget.
+function retryDelay(error: unknown): number | undefined {
+  if (
+    !(error instanceof OpenAI.RateLimitError) ||
+    error.code === "insufficient_quota" ||
+    error.code === "billing_hard_limit_reached"
+  )
+    return undefined;
+  const hint = error.headers?.get("retry-after")?.trim();
+  if (!hint) return 0;
+  let delay = Number(hint) * 1000;
+  if (Number.isNaN(delay)) delay = Date.parse(hint) - Date.now();
+  if (Number.isNaN(delay) || delay < 0) return 0;
+  return delay <= 60000 ? delay : undefined;
+}
+const client = new OpenAI({ maxRetries: 0 });
+const operation = () =>
+  client.responses.create({
+    model: "gpt-6-luna",
+    input: "Say hello in one sentence.",
+    reasoning: { effort: "low" },
+    max_output_tokens: 1024,
+  });
+
+import pRetry from "p-retry";
+const response = await pRetry(operation, {
+  retries: 5,
+  minTimeout: 1000,
+  maxTimeout: 60000,
+  randomize: true,
+  onFailedAttempt: async ({ error, retriesLeft }) => {
+    const delay = retryDelay(error);
+    if (delay === undefined) throw error;
+    if (retriesLeft && delay) await sleep(delay);
+  },
+});
+if (response.status !== "completed")
+  throw new Error("Response did not complete");
+console.log(response.output_text);
+```
 
 ```python
 from openai import OpenAI, RateLimitError
@@ -375,12 +428,66 @@ The Python example uses [backoff](https://pypi.org/project/backoff/), which prov
 
 
 
-The Go example uses [`github.com/cenkalti/backoff/v5`](https://github.com/cenkalti/backoff/tree/v5.0.3) at version `v5.0.3`. It limits the request to six attempts, honors `Retry-After` within a one-minute delay budget, and returns permanent errors without retrying.
+The Go example uses [`github.com/cenkalti/backoff/v5`](https://github.com/cenkalti/backoff). It limits the request to six attempts, honors `Retry-After` within a one-minute delay budget, and returns permanent errors without retrying.
+
+
+
+
+
+
+
+Install `openai` and `exponential-backoff` in your project, save the complete TypeScript program as `retry.ts`, and set `OPENAI_API_KEY`. Run `node --experimental-strip-types retry.ts`. The wrapper disables SDK retries, retries requests that hit transient rate limits, and honors `Retry-After` within its delay budget.
 
 
 
 
 Retry with a backoff schedule
+
+```typescript
+import OpenAI from "openai";
+import { setTimeout as sleep } from "node:timers/promises";
+
+// Stop on permanent errors or server delays beyond this example's budget.
+function retryDelay(error: unknown): number | undefined {
+  if (
+    !(error instanceof OpenAI.RateLimitError) ||
+    error.code === "insufficient_quota" ||
+    error.code === "billing_hard_limit_reached"
+  )
+    return undefined;
+  const hint = error.headers?.get("retry-after")?.trim();
+  if (!hint) return 0;
+  let delay = Number(hint) * 1000;
+  if (Number.isNaN(delay)) delay = Date.parse(hint) - Date.now();
+  if (Number.isNaN(delay) || delay < 0) return 0;
+  return delay <= 60000 ? delay : undefined;
+}
+const client = new OpenAI({ maxRetries: 0 });
+const operation = () =>
+  client.responses.create({
+    model: "gpt-6-luna",
+    input: "Say hello in one sentence.",
+    reasoning: { effort: "low" },
+    max_output_tokens: 1024,
+  });
+
+import { backOff } from "exponential-backoff";
+const response = await backOff(operation, {
+  numOfAttempts: 6,
+  startingDelay: 1000,
+  maxDelay: 60000,
+  jitter: "full",
+  retry: async (error: unknown, attempt: number) => {
+    const delay = retryDelay(error);
+    if (delay === undefined || attempt >= 6) return false;
+    if (delay) await sleep(delay);
+    return true;
+  },
+});
+if (response.status !== "completed")
+  throw new Error("Response did not complete");
+console.log(response.output_text);
+```
 
 ```python
 import backoff
@@ -512,6 +619,55 @@ These backoff libraries are third-party tools; review their behavior and securit
 
 If you don't want to use third-party libraries, you can implement your own backoff logic following this example:
 Using manual backoff implementation
+
+```typescript
+import OpenAI from "openai";
+import { setTimeout as sleep } from "node:timers/promises";
+
+// Stop on permanent errors or server delays beyond this example's budget.
+function retryDelay(error: unknown): number | undefined {
+  if (
+    !(error instanceof OpenAI.RateLimitError) ||
+    error.code === "insufficient_quota" ||
+    error.code === "billing_hard_limit_reached"
+  )
+    return undefined;
+  const hint = error.headers?.get("retry-after")?.trim();
+  if (!hint) return 0;
+  let delay = Number(hint) * 1000;
+  if (Number.isNaN(delay)) delay = Date.parse(hint) - Date.now();
+  if (Number.isNaN(delay) || delay < 0) return 0;
+  return delay <= 60000 ? delay : undefined;
+}
+const client = new OpenAI({ maxRetries: 0 });
+const operation = () =>
+  client.responses.create({
+    model: "gpt-6-luna",
+    input: "Say hello in one sentence.",
+    reasoning: { effort: "low" },
+    max_output_tokens: 1024,
+  });
+
+async function withExponentialBackoff<T>(
+  request: () => Promise<T>
+): Promise<T> {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await request();
+    } catch (error) {
+      const serverDelay = retryDelay(error);
+      if (serverDelay === undefined || attempt >= 10) throw error;
+      const jitteredDelay =
+        Math.random() * Math.min(60000, 1000 * 2 ** attempt);
+      await sleep(Math.max(serverDelay, jitteredDelay));
+    }
+  }
+}
+const response = await withExponentialBackoff(operation);
+if (response.status !== "completed")
+  throw new Error("Response did not complete");
+console.log(response.output_text);
+```
 
 ```python
 # imports

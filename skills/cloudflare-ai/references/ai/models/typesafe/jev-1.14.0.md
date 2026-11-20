@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Jev 1.14 is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, Score, and Box questions and returns calibrated answers with probabilities and confidence. Image inputs and Box questions are beta and dreamer-ready, not recommended for production.
 
@@ -33,6 +34,7 @@ Jev 1.14 is TypeSafe's structured evaluation model. It evaluates one state again
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens |
 | Terms and License | [link ↗](https://docs.typesafe.ai/legal.md) |
 | More information | [link ↗](https://docs.typesafe.ai/models.md) |
+| Zero data retention | Yes |
 | Pricing | <ul><li>Input (per 1M tokens)$0.042</li><li>Cached input (per 1M tokens)$0.00</li><li>Output (per 1M tokens)$0.00</li></ul> |
 
 ## Usage

@@ -83,6 +83,40 @@ Pass your API client, session ID, completed turn ID, artifact path, and local de
 
 Find and download an artifact
 
+```typescript
+import { writeFile } from "node:fs/promises";
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+async function downloadArtifact(
+  sessionID: string,
+  turnID: string,
+  path: string,
+  destination: string
+): Promise<void> {
+  for await (const artifact of client.beta.agents.sessions.artifacts.list(
+    sessionID
+  )) {
+    if (artifact.turn_id !== turnID || artifact.path !== path) continue;
+    const content = await client.beta.agents.sessions.artifacts.content(
+      artifact.id,
+      { session_id: sessionID }
+    );
+    await writeFile(destination, Buffer.from(await content.arrayBuffer()));
+    return;
+  }
+  throw new Error(`No artifact for ${path} in turn ${turnID}`);
+}
+
+await downloadArtifact(
+  "sess_123",
+  "turn_123",
+  "/workspace/outputs/report.pdf",
+  "report.pdf"
+);
+```
+
 ```python
 # Pass the saved session ID, completed turn ID, artifact path, and local destination.
 def download_artifact(client, session_id, turn_id, path, destination):

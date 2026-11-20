@@ -1,6 +1,6 @@
 # Pages domain rate limits
 
-Configure per-user rate limits for creating and verifying GitLab Pages custom domains.
+Configure rate limits for creating and verifying GitLab Pages custom domains.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
@@ -14,21 +14,19 @@ Configure per-user rate limits for creating and verifying GitLab Pages custom do
 You can limit how often each user can add and verify
 [GitLab Pages custom domains](../../user/project/pages/custom_domains_ssl_tls_certification/_index.md).
 These limits apply to the UI and to the [Pages domains API](../../api/pages_domains.md).
+The limits apply to each user, not to each IP address.
 
-The limits are:
-
-- Applied independently per user.
-- Not applied per IP address.
-- Shared between project and group domains.
+The following limits are available:
 
 | Limit                   | Default                   | Applies to |
 |-------------------------|---------------------------|------------|
-| Domain creation         | 50 domains each day       | Adding a custom domain in the UI and with `POST /projects/:id/pages/domains`, and [adding a group domain](../../user/enterprise_user/_index.md#add-group-domains). Attempts that fail validation do not count toward the limit. |
-| Domain verification     | 5 requests every minute   | Verifying a custom domain in the UI and with `PUT /projects/:id/pages/domains/:domain/verify`, and [verifying a group domain](../../user/enterprise_user/_index.md#add-group-domains). |
+| Domain creation         | 50 domains each day       | Adding a custom domain in the UI and with `POST /projects/:id/pages/domains`. Attempts that fail validation do not count toward the limit. |
+| Domain verification     | 5 requests every minute   | Verifying a custom domain in the UI and with `PUT /projects/:id/pages/domains/:domain/verify`. |
 
-Requests over a limit return `429 Too Many Requests` in the API, and an error message in the UI, only when the `pages_domain_rate_limits` feature flag is enabled.
+When the `pages_domain_rate_limits` flag is enabled, requests over a limit return
+`429 Too Many Requests` in the API and an error message in the UI.
+These requests are also logged to the `auth.log` file.
 While the flag is disabled, requests over a limit are logged but not blocked.
-When the flag is enabled, requests over a limit are also logged to the `auth.log` file.
 
 ## Change the Pages domain rate limits
 
@@ -38,11 +36,11 @@ Prerequisites:
 
 To change the Pages domain rate limits:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **Network**.
-1. Expand **Pages domain rate limits**.
-1. Change the value of either limit. Set a limit to `0` to disable it.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Change the value of either limit. To turn off a limit, set it to `0`.
+1. Select .
 
 You can also set these limits with the [application settings API](../../api/settings.md#available-settings),
 using `pages_domain_create_limit` and `pages_domain_verify_limit`.

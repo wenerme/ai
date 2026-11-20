@@ -1706,6 +1706,7 @@ Security-filtered projects for a namespace. This field is a [connection](objects
 | `hasFailedOrWarning` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any failed security scans. Warnings have no effect on this filter. |  |
 | `hasScanners` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any configured security scans. |  |
 | `hasStale` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any failed security scans. |  |
+| `hasTriageCoverage` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.7.Filter projects by whether they have any triage and remediation trigger turned on. |  |
 | `includeSubgroups` | [`Boolean`](scalars.md#boolean) | Include also subgroup projects. | `false` |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the namespace. |  |
 | `search` | [`String`](scalars.md#string) | Search projects by name. |  |

@@ -304,7 +304,94 @@ ws.on("message", function incoming(message) {
 ```
 
 
-In Go, pass the call ID to your server-side session update function:
+Pass the call ID to your server-side session update function:
+
+
+
+
+Install `openai` and the `ws` WebSocket package with `npm install openai ws`. Set `OPENAI_API_KEY` for the project that owns the active call. Save the [complete TypeScript program](https://developers.openai.com/api/docs/samples/typescript/realtime/connect-sideband-websocket.ts), then run `node --experimental-strip-types connect-sideband-websocket.ts <call-id>` to update that call's instructions.
+
+
+
+
+```typescript
+import OpenAI from "openai";
+import { OpenAIRealtimeWS } from "openai/realtime/ws";
+import type {
+  RealtimeServerEvent,
+  RealtimeClientEvent,
+} from "openai/resources/realtime/realtime";
+
+function waitForEvent(
+  connection: OpenAIRealtimeWS,
+  type: string
+): Promise<RealtimeServerEvent> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(
+      () => finish(new Error(`Timed out waiting for ${type}`)),
+      120000
+    );
+    function finish(error?: Error, event?: RealtimeServerEvent) {
+      clearTimeout(timer);
+      connection.off("event", onEvent);
+      connection.off("error", onError);
+      connection.socket.off("close", onClose);
+      if (error) reject(error);
+      else resolve(event!);
+    }
+    const onEvent = (event: RealtimeServerEvent) => {
+      if (event.type === type) finish(undefined, event);
+    };
+    const onError = (error: Error) => finish(error);
+    const onClose = () => finish(new Error(`Connection closed before ${type}`));
+    connection.on("event", onEvent);
+    connection.on("error", onError);
+    connection.socket.on("close", onClose);
+  });
+}
+
+// callID comes from the existing call's Location header or SIP webhook.
+async function updateSession(callID: string): Promise<void> {
+  const connection = new OpenAIRealtimeWS({ callID }, new OpenAI());
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const timer = setTimeout(
+        () => finish(new Error("Sideband connection timed out")),
+        30000
+      );
+      const onOpen = () => finish();
+      const onError = (error: Error) => finish(error);
+      const onClose = () => finish(new Error("Sideband closed before opening"));
+      function finish(error?: Error) {
+        clearTimeout(timer);
+        connection.socket.off("open", onOpen);
+        connection.off("error", onError);
+        connection.socket.off("close", onClose);
+        if (error) reject(error);
+        else resolve();
+      }
+      connection.socket.once("open", onOpen);
+      connection.once("error", onError);
+      connection.socket.once("close", onClose);
+    });
+    const updated = waitForEvent(connection, "session.updated");
+    connection.send({
+      type: "session.update",
+      session: { type: "realtime", instructions: "Be extra nice today!" },
+    });
+    const event = await updated;
+    if (
+      event.type !== "session.updated" ||
+      event.session.type !== "realtime" ||
+      event.session.instructions !== "Be extra nice today!"
+    )
+      throw new Error("Session update was not applied");
+    console.log("session.updated");
+  } finally {
+    connection.close();
+  }
+}
+```
 
 ```go
 func updateSession(ctx context.Context, client openai.Client, callID string) error {

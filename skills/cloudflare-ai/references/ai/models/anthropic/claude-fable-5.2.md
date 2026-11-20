@@ -25,7 +25,6 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
-- Zero data retention
 
 Claude Fable 5.2 is built for demanding reasoning and long-horizon agentic work, with adaptive thinking, a 1M token context window, and up to 128K output tokens.
 
@@ -34,7 +33,6 @@ Claude Fable 5.2 is built for demanding reasoning and long-horizon agentic work,
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/models/fable-5-2/overview) |
-| Zero data retention | Yes |
 | Request formats | Anthropic Messages |
 | Pricing | <ul><li>Input (per 1M tokens)$8.00</li><li>Cached input (per 1M tokens)$0.20</li><li>Cache creation (per 1M tokens)$10.00</li><li>Output (per 1M tokens)$40.00</li></ul> |
 

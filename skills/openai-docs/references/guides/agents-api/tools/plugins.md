@@ -186,7 +186,80 @@ The Ruby helper requires the `openai` and `rubyzip` gems. Install them with `gem
 
 
 
+
+
+
+Install `openai` and `jszip` in your project. Set `OPENAI_API_KEY`, then call `uploadPlugin` with your client and plugin directory. The helper returns the created session; retain its ID and delete the session when your application finishes using it.
+
+
+
+
 Upload a plugin folder
+
+```typescript
+import {
+  mkdtemp,
+  mkdir,
+  readFile,
+  readdir,
+  rm,
+  writeFile,
+} from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import JSZip from "jszip";
+import OpenAI from "openai";
+
+async function uploadPlugin(client: OpenAI, directory: string) {
+  directory = path.resolve(directory);
+  const manifest = JSON.parse(
+    await readFile(path.join(directory, ".codex-plugin/plugin.json"), "utf8")
+  );
+  if (
+    typeof manifest.name !== "string" ||
+    !manifest.name ||
+    typeof manifest.description !== "string" ||
+    !manifest.description
+  ) {
+    throw new Error("Plugin manifest requires a name and description");
+  }
+  const archive = new JSZip();
+  async function addDirectory(relative: string): Promise<void> {
+    for (const entry of await readdir(path.join(directory, relative), {
+      withFileTypes: true,
+    })) {
+      const member = path.join(relative, entry.name);
+      if (entry.isDirectory()) await addDirectory(member);
+      else if (entry.isFile()) {
+        const name = [path.basename(directory), ...member.split(path.sep)].join(
+          "/"
+        );
+        archive.file(name, await readFile(path.join(directory, member)));
+      } else
+        throw new Error(`Plugin archive requires regular files: ${member}`);
+    }
+  }
+  await addDirectory("");
+  return client.beta.agents.sessions.create({
+    agent: { model: "gpt-6-astra" },
+    environment: {
+      type: "openai_hosted",
+      plugins: [
+        {
+          type: "inline",
+          name: manifest.name,
+          description: manifest.description,
+          source: {
+            type: "base64",
+            media_type: "application/zip",
+            data: await archive.generateAsync({ type: "base64" }),
+          },
+        },
+      ],
+    },
+  });
+}
+```
 
 ```python
 import base64

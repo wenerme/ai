@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Claude Sonnet 5.5 offers the best combination of speed and intelligence, with adaptive thinking for coding, tool use, reasoning, and long-horizon work.
 
@@ -33,6 +34,7 @@ Claude Sonnet 5.5 offers the best combination of speed and intelligence, with ad
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/models/sonnet-5-5/overview) |
+| Zero data retention | Yes |
 | Request formats | Anthropic Messages |
 | Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$0.10</li><li>Cache creation (per 1M tokens)$2.50</li><li>Output (per 1M tokens)$10.00</li></ul> |
 

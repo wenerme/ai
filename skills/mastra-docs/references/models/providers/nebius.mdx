@@ -5,7 +5,7 @@ description: "Browse Nebius Token Factory model IDs, capabilities, context windo
 
 # [Nebius Token Factory logo]Nebius Token Factory
 
-Access 23 Nebius Token Factory models through Mastra's model router. Authentication is handled automatically using the `NEBIUS_API_KEY` environment variable.
+Access 24 Nebius Token Factory models through Mastra's model router. Authentication is handled automatically using the `NEBIUS_API_KEY` environment variable.
 
 Learn more in the [Nebius Token Factory documentation](https://docs.tokenfactory.nebius.com/).
 
@@ -194,6 +194,18 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 0.3,
     "outputCost": 0.9
+  },
+  {
+    "model": "nebius/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.06,
+    "outputCost": 0.24
   },
   {
     "model": "nebius/openai/gpt-oss-120b",

@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 OpenAI's fastest high-quality everyday image generation model. It accepts text and image inputs and produces images with low, medium, high, xhigh, max, and auto quality settings.
 
@@ -32,6 +33,7 @@ OpenAI's fastest high-quality everyday image generation model. It accepts text a
 | --- | --- |
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://developers.openai.com/api/docs/models/gpt-image-2.5-flare) |
+| Zero data retention | Yes |
 | Pricing | <ul><li>Cached input image (per 1M tokens)$3.00</li><li>Cached input (per 1M tokens)$1.25</li><li>Input image (per 1M tokens)$8.00</li><li>Input (per 1M tokens)$5.00</li><li>Output image (per 1M tokens)$30.00</li></ul> |
 
 ## Usage

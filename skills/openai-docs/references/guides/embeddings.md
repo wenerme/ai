@@ -204,29 +204,60 @@ For Go, save the review CSV as `data/fine_food_reviews_1k.csv`. Keep the `Summar
 
 
 
+
+
+
+Download and extract the [TypeScript samples and locked dependencies](https://developers.openai.com/api/docs/samples/typescript.tar.gz), including OpenAI and the CSV parser and writer. Save the review dataset as `data/fine_food_reviews_1k.csv` and set `OPENAI_API_KEY`. Keep `Summary`, `Text`, `Score`, `UserId`, and `ProductId`; the producer preserves these columns in its output for the analysis programs. Use a dataset with at least four rows for the four-cluster example.
+
+
+
+
 Create review embeddings
 
 ```typescript
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+import { stringify } from "csv-stringify/sync";
 import OpenAI from "openai";
 
+const reviews: Record<string, string>[] = parse(
+  await readFile("data/fine_food_reviews_1k.csv", "utf8"),
+  { columns: true, skip_empty_lines: true }
+);
+if (!reviews.length) throw new Error("No reviews in the input CSV");
+for (const review of reviews) {
+  for (const column of ["Summary", "Text", "Score", "UserId", "ProductId"]) {
+    if (typeof review[column] !== "string" || !review[column].trim())
+      throw new Error(`Review is missing ${column}`);
+  }
+  const score = Number(review.Score);
+  if (!Number.isInteger(score) || score < 1 || score > 5)
+    throw new Error("Score must be an integer from 1 to 5");
+}
+const combined = reviews.map((review) =>
+  `${review.Summary} ${review.Text}`.replaceAll("\n", " ")
+);
 const client = new OpenAI();
-const reviews = ["A rich cup of coffee.", "A bright herbal tea."];
-
 const response = await client.embeddings.create({
   model: "text-embedding-3-small",
-  input: reviews.map((review) => review.replaceAll("\n", " ")),
+  input: combined,
 });
-
-const csvField = (value: string) => `"${value.replaceAll('"', '""')}"`;
-const rows = response.data.map(({ embedding }, index) =>
-  [csvField(reviews[index]), csvField(JSON.stringify(embedding))].join(",")
-);
-
+const embeddings = [...response.data].sort((a, b) => a.index - b.index);
+if (embeddings.length !== reviews.length)
+  throw new Error("Embedding response did not include every review");
+const rows = reviews.map((review, index) => {
+  if (embeddings[index].index !== index)
+    throw new Error("Embedding response has invalid review indices");
+  return {
+    ...review,
+    combined: combined[index],
+    ada_embedding: JSON.stringify(embeddings[index].embedding),
+  };
+});
 await mkdir("output", { recursive: true });
 await writeFile(
   "output/embedded_1k_reviews.csv",
-  ["combined,ada_embedding", ...rows].join("\n") + "\n"
+  stringify(rows, { header: true })
 );
 ```
 
@@ -442,7 +473,17 @@ Each Go example is a complete program that reads `output/embedded_1k_reviews.csv
 
 
 
-For Ruby, use Ruby 3.3 and install the [sample project dependencies](https://github.com/openai/developers-website/blob/main/src/content/platform/ruby-examples/Gemfile). Append the loading and analysis snippets to the same Ruby file; run the split before either forest example. The metrics below come from the linked Python notebooks and depend on the dataset and implementation.
+For Ruby, install the [sample project dependencies](https://developers.openai.com/api/docs/samples/ruby-Gemfile). Append the loading and analysis snippets to the same Ruby file; run the split before either forest example. The metrics below come from the linked Python notebooks and depend on the dataset and implementation.
+
+
+
+
+
+
+
+Download and extract the [TypeScript samples and locked dependencies](https://developers.openai.com/api/docs/samples/typescript.tar.gz). From the extracted `typescript-examples` directory, install with `pnpm install --ignore-workspace --frozen-lockfile`. Run each complete analysis program separately with `node --experimental-strip-types embeddings/<filename>.ts` from that directory.
+
+The programs read `output/embedded_1k_reviews.csv` with JSON arrays in `ada_embedding` and numeric review ratings in `Score`. Grouped averages also require `UserId` and `ProductId`. Each program loads its own input; do not concatenate the excerpts. The linked Python notebooks supply the metrics below. Results from the TypeScript algorithms can differ from those metrics, and t-SNE coordinates can vary between runs.
 
 
 
@@ -450,6 +491,36 @@ For Ruby, use Ruby 3.3 and install the [sample project dependencies](https://git
 To load the data from a saved file, you can run the following:
 
 Load saved embeddings
+
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: { Score: string; ada_embedding: string }[] = parse(
+  await readFile("output/embedded_1k_reviews.csv", "utf8"),
+  { columns: true, skip_empty_lines: true }
+);
+const rows = records.map((row) => ({
+  score: Number(row.Score),
+  embedding: JSON.parse(row.ada_embedding) as number[],
+}));
+if (!rows.length) throw new Error("No embeddings");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Number.isFinite(row.score) ||
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error(
+      "Expected finite scores and embeddings with consistent dimensions"
+    );
+  }
+}
+console.log(rows);
+```
 
 ```python
 from ast import literal_eval
@@ -1734,12 +1805,92 @@ The visualization seems to have produced roughly 3 clusters, one of which has mo
 
 
 
-The Go plotting example uses `github.com/danaugrs/go-tsne/tsne` at `v0.0.0-20220306155740-2250969e057f`, `gonum.org/v1/gonum` at `v0.16.0`, and `gonum.org/v1/plot` at `v0.16.0`. It writes `local-plot.png` and prints the transformed coordinates and rating-color indices.
+The Go plotting example uses `github.com/danaugrs/go-tsne/tsne`, `gonum.org/v1/gonum`, and `gonum.org/v1/plot`. It writes `local-plot.png` and prints the transformed coordinates and rating-color indices.
 
 
 
 
 Visualize embeddings with t-SNE
+
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: {
+  Score: string;
+  ada_embedding: string;
+  UserId: string;
+  ProductId: string;
+}[] = parse(await readFile("output/embedded_1k_reviews.csv", "utf8"), {
+  columns: true,
+  skip_empty_lines: true,
+});
+const rows = records.map((row) => ({
+  score: Number(row.Score),
+  embedding: JSON.parse(row.ada_embedding) as number[],
+  userID: row.UserId,
+  productID: row.ProductId,
+}));
+if (!rows.length) throw new Error("No reviews");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Number.isFinite(row.score) ||
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error(
+      "Expected finite scores and embeddings with consistent dimensions"
+    );
+  }
+}
+
+import TSNE from "tsne-js";
+import { createCanvas } from "@napi-rs/canvas";
+import { writeFile } from "node:fs/promises";
+
+const model = new TSNE({
+  dim: 2,
+  perplexity: 15,
+  learningRate: 200,
+  nIter: 1000,
+  metric: "euclidean",
+});
+model.init({ data: rows.map((row) => row.embedding), type: "dense" });
+model.run();
+const points = model.getOutput();
+const colors = ["red", "darkorange", "gold", "turquoise", "darkgreen"];
+const colorIndices = rows.map((row) => row.score - 1);
+const canvas = createCanvas(800, 600);
+const context = canvas.getContext("2d");
+context.fillStyle = "white";
+context.fillRect(0, 0, 800, 600);
+context.fillStyle = "black";
+context.font = "20px sans-serif";
+context.fillText("Amazon ratings visualized using t-SNE", 40, 30);
+const xs = points.map((point) => point[0]);
+const ys = points.map((point) => point[1]);
+const minX = Math.min(...xs),
+  maxX = Math.max(...xs);
+const minY = Math.min(...ys),
+  maxY = Math.max(...ys);
+const plotted: number[][] = [];
+for (const [index, point] of points.entries()) {
+  if (point.length !== 2 || !point.every(Number.isFinite))
+    throw new Error("Invalid t-SNE point");
+  const x = 40 + ((point[0] - minX) / (maxX - minX || 1)) * 720;
+  const y = 560 - ((point[1] - minY) / (maxY - minY || 1)) * 500;
+  context.fillStyle = colors[colorIndices[index]];
+  context.globalAlpha = 0.3;
+  context.beginPath();
+  context.arc(x, y, 6, 0, Math.PI * 2);
+  context.fill();
+  plotted.push(point);
+}
+await writeFile("local-plot.png", await canvas.encode("png"));
+```
 
 ```python
 from ast import literal_eval
@@ -1969,6 +2120,58 @@ This code splits the data into a training set and a testing set, which will be u
 
 Split the dataset for training and testing
 
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: {
+  Score: string;
+  ada_embedding: string;
+  UserId: string;
+  ProductId: string;
+}[] = parse(await readFile("output/embedded_1k_reviews.csv", "utf8"), {
+  columns: true,
+  skip_empty_lines: true,
+});
+const rows = records.map((row) => ({
+  score: Number(row.Score),
+  embedding: JSON.parse(row.ada_embedding) as number[],
+  userID: row.UserId,
+  productID: row.ProductId,
+}));
+if (!rows.length) throw new Error("No reviews");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Number.isFinite(row.score) ||
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error(
+      "Expected finite scores and embeddings with consistent dimensions"
+    );
+  }
+}
+
+// Shuffle whole rows so labels stay paired with their embedding vectors.
+const shuffled = [...rows];
+let seed = 42;
+for (let i = shuffled.length - 1; i > 0; i--) {
+  seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+  const j = Math.floor((seed / 2 ** 32) * (i + 1));
+  [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+}
+const testSize = Math.ceil(shuffled.length * 0.2);
+const testRows = shuffled.slice(0, testSize);
+const trainRows = shuffled.slice(testSize);
+const trainVectors = trainRows.map((row) => row.embedding);
+const trainScores = trainRows.map((row) => row.score);
+const testVectors = testRows.map((row) => row.embedding);
+const testScores = testRows.map((row) => row.score);
+```
+
 ```python
 from sklearn.model_selection import train_test_split
 
@@ -2111,12 +2314,76 @@ We assume the score is a continuous variable between 1 and 5, and allow the algo
 
 
 
-The Go example uses `github.com/wlattner/rf/forest` from module version `v0.0.0-20150304005020-e98c6ca28b25`. It fits 100 trees on the training partition and predicts the held-out rows. Install the pinned module version before running the program.
+The Go example uses `github.com/wlattner/rf/forest`. It fits 100 trees on the training partition and predicts the held-out rows. Install the module before running the program.
 
 
 
 
 Predict review scores
+
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: {
+  Score: string;
+  ada_embedding: string;
+  UserId: string;
+  ProductId: string;
+}[] = parse(await readFile("output/embedded_1k_reviews.csv", "utf8"), {
+  columns: true,
+  skip_empty_lines: true,
+});
+const rows = records.map((row) => ({
+  score: Number(row.Score),
+  embedding: JSON.parse(row.ada_embedding) as number[],
+  userID: row.UserId,
+  productID: row.ProductId,
+}));
+if (!rows.length) throw new Error("No reviews");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Number.isFinite(row.score) ||
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error(
+      "Expected finite scores and embeddings with consistent dimensions"
+    );
+  }
+}
+
+// Shuffle whole rows so labels stay paired with their embedding vectors.
+const shuffled = [...rows];
+let seed = 42;
+for (let i = shuffled.length - 1; i > 0; i--) {
+  seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+  const j = Math.floor((seed / 2 ** 32) * (i + 1));
+  [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+}
+const testSize = Math.ceil(shuffled.length * 0.2);
+const testRows = shuffled.slice(0, testSize);
+const trainRows = shuffled.slice(testSize);
+const trainVectors = trainRows.map((row) => row.embedding);
+const trainScores = trainRows.map((row) => row.score);
+const testVectors = testRows.map((row) => row.embedding);
+const testScores = testRows.map((row) => row.score);
+
+import { RandomForestRegression } from "ml-random-forest";
+const forest = new RandomForestRegression({
+  nEstimators: 100,
+  seed: 42,
+  maxFeatures: trainVectors[0].length,
+  // Evaluate on the held-out test rows instead of out-of-bag samples.
+  noOOB: true,
+});
+forest.train(trainVectors, trainScores);
+const predictions = forest.predict(testVectors);
+console.log(predictions);
+```
 
 ```python
 from sklearn.ensemble import RandomForestRegressor
@@ -2283,12 +2550,74 @@ After the training, the model learns to predict 1 and 5-star reviews much better
 
 
 
-The Go example uses `github.com/wlattner/rf/forest` from module version `v0.0.0-20150304005020-e98c6ca28b25`. It fits 100 trees on the training partition and predicts the held-out rows. Install the pinned module version before running the program.
+The Go example uses `github.com/wlattner/rf/forest`. It fits 100 trees on the training partition and predicts the held-out rows. Install the module before running the program.
 
 
 
 
 Classify review scores
+
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: {
+  Score: string;
+  ada_embedding: string;
+  UserId: string;
+  ProductId: string;
+}[] = parse(await readFile("output/embedded_1k_reviews.csv", "utf8"), {
+  columns: true,
+  skip_empty_lines: true,
+});
+const rows = records.map((row) => ({
+  score: Number(row.Score),
+  embedding: JSON.parse(row.ada_embedding) as number[],
+  userID: row.UserId,
+  productID: row.ProductId,
+}));
+if (!rows.length) throw new Error("No reviews");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Number.isFinite(row.score) ||
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error(
+      "Expected finite scores and embeddings with consistent dimensions"
+    );
+  }
+}
+
+// Shuffle whole rows so labels stay paired with their embedding vectors.
+const shuffled = [...rows];
+let seed = 42;
+for (let i = shuffled.length - 1; i > 0; i--) {
+  seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+  const j = Math.floor((seed / 2 ** 32) * (i + 1));
+  [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+}
+const testSize = Math.ceil(shuffled.length * 0.2);
+const testRows = shuffled.slice(0, testSize);
+const trainRows = shuffled.slice(testSize);
+const trainVectors = trainRows.map((row) => row.embedding);
+const trainScores = trainRows.map((row) => row.score);
+const testVectors = testRows.map((row) => row.embedding);
+const testScores = testRows.map((row) => row.score);
+
+import { RandomForestClassifier } from "ml-random-forest";
+const forest = new RandomForestClassifier({
+  nEstimators: 100,
+  seed: 42,
+  maxFeatures: trainVectors[0].length,
+});
+forest.train(trainVectors, trainScores);
+const predictions = forest.predict(testVectors);
+console.log(predictions);
+```
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -2682,6 +3011,68 @@ We evaluate the usefulness of these embeddings on a separate test set, where we 
 
 Average user and product embeddings
 
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: {
+  Score: string;
+  ada_embedding: string;
+  UserId: string;
+  ProductId: string;
+}[] = parse(await readFile("output/embedded_1k_reviews.csv", "utf8"), {
+  columns: true,
+  skip_empty_lines: true,
+});
+const rows = records.map((row) => ({
+  score: Number(row.Score),
+  embedding: JSON.parse(row.ada_embedding) as number[],
+  userID: row.UserId,
+  productID: row.ProductId,
+}));
+if (!rows.length) throw new Error("No reviews");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Number.isFinite(row.score) ||
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error(
+      "Expected finite scores and embeddings with consistent dimensions"
+    );
+  }
+}
+
+function averageEmbeddings(
+  key: "userID" | "productID"
+): Record<string, number[]> {
+  const groups = new Map<string, { sum: number[]; count: number }>();
+  for (const row of rows) {
+    if (!row[key]) throw new Error(`Missing ${key}`);
+    const group = groups.get(row[key]) ?? {
+      sum: Array(dimensions).fill(0),
+      count: 0,
+    };
+    row.embedding.forEach((value, i) => {
+      group.sum[i] += value;
+    });
+    group.count++;
+    groups.set(row[key], group);
+  }
+  return Object.fromEntries(
+    [...groups].map(([id, group]) => [
+      id,
+      group.sum.map((value) => value / group.count),
+    ])
+  );
+}
+const userEmbeddings = averageEmbeddings("userID");
+const productEmbeddings = averageEmbeddings("productID");
+```
+
 ```python
 user_embeddings = df.groupby("UserId").ada_embedding.apply(np.mean)
 prod_embeddings = df.groupby("ProductId").ada_embedding.apply(np.mean)
@@ -2850,6 +3241,48 @@ Clustering is one way of making sense of a large volume of textual data. Embeddi
 In this example, we discover four distinct clusters: one focusing on dog food, one on negative reviews, and two on positive reviews.
 
 Cluster embeddings
+
+```typescript
+import { readFile } from "node:fs/promises";
+import { parse } from "csv-parse/sync";
+
+const records: {
+  Score: string;
+  ada_embedding: string;
+  UserId: string;
+  ProductId: string;
+}[] = parse(await readFile("output/embedded_1k_reviews.csv", "utf8"), {
+  columns: true,
+  skip_empty_lines: true,
+});
+const rows = records.map((row) => ({
+  score: Number(row.Score),
+  embedding: JSON.parse(row.ada_embedding) as number[],
+  userID: row.UserId,
+  productID: row.ProductId,
+}));
+if (!rows.length) throw new Error("No reviews");
+const dimensions = rows[0].embedding.length;
+for (const row of rows) {
+  if (
+    !Number.isFinite(row.score) ||
+    !Array.isArray(row.embedding) ||
+    !dimensions ||
+    row.embedding.length !== dimensions ||
+    !row.embedding.every(Number.isFinite)
+  ) {
+    throw new Error(
+      "Expected finite scores and embeddings with consistent dimensions"
+    );
+  }
+}
+
+import { kmeans } from "ml-kmeans";
+
+const matrix = rows.map((row) => row.embedding);
+const clusters = kmeans(matrix, 4, { seed: 42, initialization: "kmeans++" });
+console.log(clusters.clusters);
+```
 
 ```python
 import numpy as np
@@ -3072,6 +3505,20 @@ Example code:
 
 Count tokens before embedding
 
+```typescript
+import { getEncoding } from "js-tiktoken";
+import type { TiktokenEncoding } from "js-tiktoken";
+
+function numTokensFromString(
+  text: string,
+  encodingName: TiktokenEncoding
+): number {
+  return getEncoding(encodingName).encode(text).length;
+}
+
+console.log(numTokensFromString("tiktoken is great!", "cl100k_base"));
+```
+
 ```python
 import tiktoken
 
@@ -3126,7 +3573,7 @@ puts(num_tokens_from_string("tiktoken is great!", "cl100k_base"))
 
 
 
-The Go example uses the third-party `github.com/tiktoken-go/tokenizer` package, version `v0.10.0`. Install it in your Go module before running the example.
+The Go example uses the third-party `github.com/tiktoken-go/tokenizer` package. Install it in your Go module before running the example.
 
 
 

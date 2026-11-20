@@ -5,7 +5,7 @@ description: "Browse Hugging Face model IDs, capabilities, context windows, and 
 
 # [Hugging Face logo]Hugging Face
 
-Access 92 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
+Access 93 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
 
 Learn more in the [Hugging Face documentation](https://huggingface.co).
 
@@ -890,6 +890,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.14,
     "outputCost": 0.58
+  },
+  {
+    "model": "huggingface/tencent/Hy4",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.417,
+    "outputCost": 1.2505
   },
   {
     "model": "huggingface/tencent/Hy4-flash",

@@ -26,6 +26,40 @@ Use your own policy document in `support-policy.txt`. The reusable prefix must m
 
 Compare prompt cache reuse between responses
 
+```typescript
+import { readFile } from "node:fs/promises";
+import OpenAI from "openai";
+
+const client = new OpenAI();
+const policy = await readFile("support-policy.txt", "utf8"); // At least 1,024 tokens.
+const input = [
+  { role: "developer" as const, content: policy },
+  { role: "user" as const, content: "Reply with exactly OK." },
+];
+const first = await client.responses.create({
+  model: "gpt-6-astra",
+  input,
+  tools: [
+    { type: "function", name: "get_time", parameters: null, strict: null },
+  ],
+});
+const second = await client.responses.create({
+  model: "gpt-6-astra",
+  input,
+  tools: [
+    { type: "function", name: "get_date", parameters: null, strict: null },
+  ],
+  prompt_cache_options: { comparison_response_id: first.id },
+});
+
+const diagnostics = second.prompt_cache_diagnostics;
+if (diagnostics?.type === "cache_miss") {
+  console.log(diagnostics.reason);
+  console.log(diagnostics.comparison_reusable_tokens ?? "None");
+  console.log(diagnostics.cache_missed_tokens);
+}
+```
+
 ```python
 from pathlib import Path
 

@@ -8132,7 +8132,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         A customer-safe error. Non-null only for a failed turn.
 
-        - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 21 more`
+        - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
 
           A stable, machine-readable failure category.
 
@@ -8191,6 +8191,10 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `"misalignment_policy_violation"`
 
             The request was blocked by the safety systems.
+
+          - `"audio_input_unavailable"`
+
+            Audio input is unavailable for the organization.
 
           - `"connection_failed"`
 
@@ -13472,7 +13476,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 21 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
 
       A stable, machine-readable failure category.
 
@@ -13531,6 +13535,10 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
       - `"misalignment_policy_violation"`
 
         The request was blocked by the safety systems.
+
+      - `"audio_input_unavailable"`
+
+        Audio input is unavailable for the organization.
 
       - `"connection_failed"`
 
@@ -13814,7 +13822,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 21 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
 
       A stable, machine-readable failure category.
 
@@ -13873,6 +13881,10 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"misalignment_policy_violation"`
 
         The request was blocked by the safety systems.
+
+      - `"audio_input_unavailable"`
+
+        Audio input is unavailable for the organization.
 
       - `"connection_failed"`
 
@@ -15229,7 +15241,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/subagents/$SUBAGENT_I
 
 **get** `/agents/sessions/{session_id}/traces`
 
-Lists published root-turn traces as OTLP JSON, ordered by turn creation time and ID. Unpublished traces are skipped. Each page returns data available when read; it does not wait for late traces. Trace reads and the JSON response are limited to 16 MiB per request. If the limit is exceeded, request fewer traces.
+Lists published root-turn traces as OTLP JSON, ordered by turn creation time and ID. Unpublished traces are skipped. Each page returns data available when read; it does not wait for late traces. Pages may contain fewer traces than requested to fit the 16 MiB response limit. When `has_more` is true, pass `last_id` as `after` to continue. If the first trace exceeds 16 MiB before conversion or cannot fit on a page by itself, the API returns a `trace_too_large` error.
 
 ### Path Parameters
 
@@ -15465,7 +15477,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 21 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
 
       A stable, machine-readable failure category.
 
@@ -15524,6 +15536,10 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
       - `"misalignment_policy_violation"`
 
         The request was blocked by the safety systems.
+
+      - `"audio_input_unavailable"`
+
+        Audio input is unavailable for the organization.
 
       - `"connection_failed"`
 
@@ -15801,7 +15817,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 21 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
 
       A stable, machine-readable failure category.
 
@@ -15860,6 +15876,10 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       - `"misalignment_policy_violation"`
 
         The request was blocked by the safety systems.
+
+      - `"audio_input_unavailable"`
+
+        Audio input is unavailable for the organization.
 
       - `"connection_failed"`
 
@@ -16089,7 +16109,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 21 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
 
       A stable, machine-readable failure category.
 
@@ -16148,6 +16168,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       - `"misalignment_policy_violation"`
 
         The request was blocked by the safety systems.
+
+      - `"audio_input_unavailable"`
+
+        Audio input is unavailable for the organization.
 
       - `"connection_failed"`
 

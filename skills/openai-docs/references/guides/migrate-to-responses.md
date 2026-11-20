@@ -64,6 +64,22 @@ Additionally, Chat Completions can return multiple parallel generations as `choi
 
   Chat Completions API
 
+```typescript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+const completion = await client.chat.completions.create({
+  model: "gpt-6.2-astra",
+  messages: [
+    {
+      role: "user",
+      content: "Write a one-sentence bedtime story about a unicorn.",
+    },
+  ],
+});
+console.log(completion.choices[0].message.content);
+```
+
 ```python
 from openai import OpenAI
 
@@ -124,6 +140,17 @@ puts(completion.choices.fetch(0).message.content)
 ```
 
   Responses API
+
+```typescript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+const response = await client.responses.create({
+  model: "gpt-6.2-astra",
+  input: "Write a one-sentence bedtime story about a unicorn.",
+});
+console.log(response.output_text);
+```
 
 ```python
 from openai import OpenAI

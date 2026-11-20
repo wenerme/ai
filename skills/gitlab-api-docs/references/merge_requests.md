@@ -2737,7 +2737,7 @@ For important notes on response data, see [single merge request response notes](
 
 ## Update a merge request
 
-- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606719) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_update_rate_limit`. Disabled by default.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270214) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `merge_requests_update_rate_limit`. Disabled by default.
 
 > [!flag]
 > The availability of the rate limit is controlled by a feature flag. For more information, see the history.

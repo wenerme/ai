@@ -334,6 +334,35 @@ To redact text from your repository:
 > [which contains the forked data](../../../administration/housekeeping.md#object-pool-repositories).
 > For help, contact GitLab Support.
 
+### Copies that remain after you remove blobs or redact text
+
+After you run housekeeping and prune unreachable objects,
+the repository no longer contains the removed blobs or redacted text.
+Removing blobs or redacting text does not delete copies of the data outside the repository.
+Revoke or rotate any exposed secret.
+These copies can still contain the secret:
+
+- Job logs and job artifacts created before the removal can still contain the data.
+  To remove these copies, [delete the job log and artifacts](../../../ci/jobs/job_artifacts.md#delete-job-log-and-artifacts).
+- Merge request diffs created before the removal still contain the data,
+  and the merge request diffs API returns it.
+- Comments on merge request diff lines store the diff lines around the comment,
+  and still show the data.
+- A project export created before the removal still contains the data.
+  Later exports still include the merge request diffs and diff comments.
+- A backup created before the removal still contains the data.
+  This includes the full backup you should create before you reduce repository size.
+  Later backups still contain merge request diffs, job logs, and job artifacts on the file system.
+  Data in object storage stays in the bucket and in any backups of the bucket.
+- The advanced search and exact code search indexes still return matches from the removed data.
+  This continues until GitLab indexes the project again,
+  for example after the next push to the default branch.
+- Secret detection findings store the detected secret.
+  The vulnerabilities API returns it until a
+  [full scan](../../application_security/secret_detection/pipeline/_index.md#secrets-removed-from-the-code)
+  on the default branch no longer detects the secret.
+  The API then redacts the value, but the finding still stores it.
+
 ## Troubleshooting
 
 These sections have solutions for issues you might encounter.

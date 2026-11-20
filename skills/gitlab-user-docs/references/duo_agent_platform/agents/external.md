@@ -397,14 +397,14 @@ To enable an external agent in a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Agents**.
+1. Select the **AI Catalog** tab, then select the external agent you want to enable.
 1. In the upper-right corner, select **Enable**.
-1. From the dropdown list, select the external agent you want to enable.
-1. Under **Conditions**, review the [events](../automations/_index.md#event-types) that trigger the external agent.
-   By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
-   - To add an event, select **Add condition** > **On an event**.
-   - To change or remove an event, select the edit or delete icon next to it.
-1. Optional. To tell the agent what to do for an event, edit the event, then enter text in the **Instructions** field.
+1. Optional. In the **Instructions** field, enter what the agent should do each time it runs.
    For more information, see [Add instructions](../automations/_index.md#add-instructions).
+1. Under **Runs when**, review the [events](../automations/_index.md#event-types) that trigger the external agent.
+   By default, the agent runs on **Mention**, **Assign**, and **Assign reviewer**.
+   - To add an event, select **Add trigger** > **On an event**.
+   - To change or remove an event, select the edit or delete icon next to it.
 1. Select **Enable**.
 
 The external agent appears in the project's **AI** > **Agents** list.

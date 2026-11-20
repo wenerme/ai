@@ -138,7 +138,7 @@ The following standard interactive rate limits apply to
 ### Genie 4 rate limits  {% id="genie-4" %}
 
 The following concurrent session and daily request limits apply to
-[`models/genie-4`](/docs/models/genie-4) on the [Interactions API](/docs/genie):
+[`genie-4`](/docs/models/genie-4) on the [Interactions API](/docs/genie):
 
 {% table %}
   * Usage tier

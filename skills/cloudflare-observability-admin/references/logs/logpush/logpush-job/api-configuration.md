@@ -270,11 +270,11 @@ If you are still using logpull\_options, here are the options that you can custo
 
 1. **Fields** (optional): Refer to [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the currently available fields. The list of fields is also accessible directly from the API: `https://api.cloudflare.com/client/v4/zones/{zone_id}/logpush/datasets/{dataset_id}/fields`. Default fields: `https://api.cloudflare.com/client/v4/zones/{zone_id}/logpush/datasets/{dataset_id}/fields/default`.
 2. **Timestamp format** (optional): The format in which timestamp fields will be returned. Value options: `unixnano` (nanoseconds unit - default), `unix` (seconds unit), `rfc3339` (seconds unit).
-3. **Redaction for CVE-2021-44228** (optional): This option will replace every occurrence of `${` with `x{`. To enable it, set `"CVE-2021-44228": true`.
+3. **Redaction for [CVE-2021-44228 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2021-44228)** (optional): This option will replace every occurrence of `${` with `x{`. To enable it, set `"CVE-2021-44228": true`.
 
 Note
 
-The **CVE-2021-44228** parameter can only be set through the API at this time. Updating your Logpush job through the dashboard will set this option to false.
+The **[CVE-2021-44228 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2021-44228)** parameter can only be set through the API at this time. Updating your Logpush job through the dashboard will set this option to false.
 
 To check if the selected **logpull\_options** are valid:
 

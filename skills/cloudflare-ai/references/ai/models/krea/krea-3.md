@@ -25,6 +25,7 @@ Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/u
 Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
+- Zero data retention
 
 Krea 3 is Krea's image generation and editing model, in beta. It edits one or more reference images from a text instruction, or generates an image from the prompt alone. References are passed as HTTP(S) URLs in image\_urls (up to 8). Outputs go up to 2K, with optional thinking\_mode, aspect\_ratio, seed and regional\_edit controls.
 
@@ -32,6 +33,7 @@ Krea 3 is Krea's image generation and editing model, in beta. It edits one or mo
 | --- | --- |
 | Terms and License | [link ↗](https://www.krea.ai/terms) |
 | More information | [link ↗](https://www.krea.ai/docs/api-reference/krea/krea-3-beta) |
+| Zero data retention | Yes |
 | Pricing | <ul><li>output size 1k$0.03</li><li>Per image$0.03</li><li>output size 2k$0.06</li><li>Per input image$0.07</li></ul> |
 
 ## Usage

@@ -1138,7 +1138,7 @@ package:
 This usually indicates an authentication issue. Check that:
 
 - Your authentication token is valid and has not expired.
-- You're using the correct token type (personal access token, deploy token, or CI job token).
+- You're using the correct token type (personal access token, deploy token, CI/CD job token, or OAuth token).
 - The token has the necessary permissions (`api`, `read_api`, or `read_repository`).
 - For Maven projects, you're using the `-s` option with your mvn commands (for example, `mvn deploy -s settings.xml`). Without this option, Maven won't apply the authentication settings from your `settings.xml` file, leading to unauthorized errors.
 
@@ -1156,7 +1156,7 @@ For example, "1.0.0", "1.0-SNAPSHOT", and "1.0.0-alpha" are valid, but "1..0" or
 
 The `403 Forbidden` error with the message `Authorization failed` usually indicates either an authentication or permissions issue. Check that:
 
-- You're using the correct token type (personal access token, deploy token, or CI/CD job token). For more information, see [Authenticate to the package registry](#authenticate-to-the-package-registry).
+- You're using the correct token type (personal access token, deploy token, CI/CD job token, or OAuth token). For more information, see [Authenticate to the package registry](#authenticate-to-the-package-registry).
 - The token has the necessary permissions. Only users with the Developer, Maintainer, or Owner role can publish packages. For more information, see [GitLab permissions](../../permissions.md#project-packages-and-registries).
 - The package you're publishing is not protected by push protection rules. For more information about package protection rules, see [how to protect a package](../package_registry/package_protection_rules.md#protect-a-package).
 

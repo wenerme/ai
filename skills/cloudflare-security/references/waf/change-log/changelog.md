@@ -19,15 +19,15 @@ This release introduces updates to an existing PHP Remote Code Execution rule to
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560, CVE-2026-126714) #6 | N/A | Block | Rule detection and description updated. |
-| Cloudflare Free Ruleset | ...b19210f1 | N/A | Ruby - Heap Overflow - CVE:CVE-2026-13282 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619), [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560), [CVE-2026-126714 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-126714)) #6 | N/A | Block | Rule detection and description updated. |
+| Cloudflare Free Ruleset | ...b19210f1 | N/A | Ruby - Heap Overflow - CVE: [CVE-2026-13282 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-13282) | N/A | Block | This is a new detection. |
 | Cloudflare Free Ruleset | ...e9855f05 | N/A | Ruby - Integer Overflow - GHSA-87fm-7w84-j2px | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560, CVE-2026-126714) #6 | N/A | Block | Rule detection and description updated. |
-| Cloudflare Managed Ruleset | ...34402c88 | N/A | Ruby - Heap Overflow - CVE:CVE-2026-13282 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619), [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560), [CVE-2026-126714 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-126714)) #6 | N/A | Block | Rule detection and description updated. |
+| Cloudflare Managed Ruleset | ...34402c88 | N/A | Ruby - Heap Overflow - CVE: [CVE-2026-13282 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-13282) | N/A | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...daf25922 | N/A | Ruby - Integer Overflow - GHSA-87fm-7w84-j2px | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...6c6f42b2 | N/A | PHP-FPM - CVE:CVE-2026-129289 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...a54028d4 | N/A | PHP SOAP - CVE:CVE-2026-15353 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...4521b819 | N/A | PHP SOAP - CVE:CVE-2026-129506 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...6c6f42b2 | N/A | PHP-FPM - CVE: [CVE-2026-129289 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-129289) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a54028d4 | N/A | PHP SOAP - CVE: [CVE-2026-15353 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-15353) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4521b819 | N/A | PHP SOAP - CVE: [CVE-2026-129506 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-129506) | N/A | Log | This is a new detection. |
 | Cloudflare Managed Ruleset | ...3f53db3c | N/A | Generic Rules - Authentication Bypass | N/A | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...36ba9f71 | N/A | Anomaly - Embedded Application Request | N/A | Block | This is a new detection. |
 
@@ -36,16 +36,16 @@ This release introduces updates to an existing PHP Remote Code Execution rule to
 
 **WAF Emergency Release - 2026-11-18**
 
-This release introduces 6 new malformed base64 Cloudflare Managed Ruleset detections for Java4Shell CVE-2026-114938. The rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden if needed with supplementary information around the same available through blog post [How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938) ↗︎](https://blog.cloudflare.com/java4shell-waf-protection/).
+This release introduces 6 new malformed base64 Cloudflare Managed Ruleset detections for Java4Shell [CVE-2026-114938 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-114938). The rules are being deployed in log mode by default (in lieu of False Positive risk) and can be overridden if needed with supplementary information around the same available through blog post [How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938) ↗︎](https://blog.cloudflare.com/java4shell-waf-protection/).
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...4d718bf4 | N/A | Java4Shell - Malformed Base64 Header - CVE-2026-114938 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...2337b51d | N/A | Java4Shell - Malformed Base64 Query Value - CVE-2026-114938 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...e5e5836c | N/A | Java4Shell - Malformed Base64 Body Value - CVE-2026-114938 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...6fd6f152 | N/A | Java4Shell - Malformed Base64 Path Segment - CVE-2026-114938 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...5a25d991 | N/A | Java4Shell - Malformed Base64url JWT Component - CVE-2026-114938 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...67d74ebb | N/A | Java4Shell - Malformed Base64 WebAuthn Value - CVE-2026-114938 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4d718bf4 | N/A | Java4Shell - Malformed Base64 Header - [CVE-2026-114938 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-114938) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...2337b51d | N/A | Java4Shell - Malformed Base64 Query Value - [CVE-2026-114938 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-114938) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e5e5836c | N/A | Java4Shell - Malformed Base64 Body Value - [CVE-2026-114938 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-114938) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...6fd6f152 | N/A | Java4Shell - Malformed Base64 Path Segment - [CVE-2026-114938 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-114938) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...5a25d991 | N/A | Java4Shell - Malformed Base64url JWT Component - [CVE-2026-114938 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-114938) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...67d74ebb | N/A | Java4Shell - Malformed Base64 WebAuthn Value - [CVE-2026-114938 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-114938) | N/A | Log | This is a new detection. |
 
 ## 2026-11-12
 
@@ -97,14 +97,14 @@ Refer to [Configure payload logging via API](https://developers.cloudflare.com/w
 
 **WAF Release - 2026-11-03**
 
-This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
+This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities [CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619) and [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560). The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Free Ruleset | ...bcd95984 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2 | Block | Block | Rule detection updated. |
-| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
-| Cloudflare Managed Ruleset | ...0a0c2f64 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2 | Block | Block | Rule detection updated. |
-| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...bcd95984 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #2 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...0a0c2f64 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #2 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #3 | Block | Block | Rule detection updated. |
 | Cloudflare Managed Ruleset | ...13f91633 | N/A | phpMyAdmin - Authentication Bypass | N/A | Disabled | This is a new detection. |
 
 ## 2026-10-30
@@ -123,14 +123,14 @@ This emergency release adds a new rule to the Cloudflare Managed Ruleset, disabl
 
 **WAF Release - 2026-10-30**
 
-This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
+This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities [CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619) and [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560). The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
-| Cloudflare Free Ruleset | ...24b1a4c6 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
-| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
-| Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...24b1a4c6 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #4 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #4 | Block | Block | Rule detection updated. |
 | Cloudflare Response Ruleset | ...48d2242a | N/A | Default block for High confidence Signatures | Block | Block | Rule detection updated. |
 
 ## 2026-10-28
@@ -147,19 +147,19 @@ For more information, refer to [Multipart requests](https://developers.cloudflar
 
 **WAF Release - 2026-10-28**
 
-This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
+This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities [CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619) and [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560). The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | Block | Rule detection updated. |
-| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619), [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560)) #6 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619), [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560)) #6 | Block | Block | Rule detection updated. |
 
 ## 2026-10-25
 
 
 **WAF Release - 2026-10-25 - Emergency - Cloudflare Managed Ruleset**
 
-This emergency release will add two rules related to the Brotli vulnerability **CVE-2026-111497** to the Cloudflare Managed Ruleset. Both rules will be **enabled by default** with their action set to **Log**, providing visibility into matching requests so customers can evaluate the impact before choosing to block them.
+This emergency release will add two rules related to the Brotli vulnerability **[CVE-2026-111497 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-111497)** to the Cloudflare Managed Ruleset. Both rules will be **enabled by default** with their action set to **Log**, providing visibility into matching requests so customers can evaluate the impact before choosing to block them.
 
 **Rule behavior**
 
@@ -180,19 +180,19 @@ Review your existing ruleset overrides before deployment. If you want to evaluat
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...ca706f3c | N/A | Brotli - Request Content-Encoding - CVE:CVE-2026-111497 | N/A | Log | This is a new detection. |
-| Cloudflare Managed Ruleset | ...402fe5bb | N/A | Next.js - Image Optimizer Path - CVE:CVE-2026-111497 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...ca706f3c | N/A | Brotli - Request Content-Encoding - CVE: [CVE-2026-111497 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-111497) | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...402fe5bb | N/A | Next.js - Image Optimizer Path - CVE: [CVE-2026-111497 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-111497) | N/A | Log | This is a new detection. |
 
 ## 2026-10-23
 
 
 **WAF Release - 2026-10-23 - Emergency - Cloudflare Managed Ruleset**
 
-The existing PHP remote code execution rule in the Cloudflare Managed Ruleset covers CVE-2026-115560. This emergency release adds the CVE identifier to existing rule. Detection logic and rule actions remain unchanged.
+The existing PHP remote code execution rule in the Cloudflare Managed Ruleset covers [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560). This emergency release adds the CVE identifier to existing rule. Detection logic and rule actions remain unchanged.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619), [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560)) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
 
 For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -201,11 +201,11 @@ For more information, refer to [WAF Managed Rules](https://developers.cloudflare
 
 **WAF Release - 2026-10-23 - Emergency - Cloudflare Free Ruleset**
 
-The existing PHP remote code execution rule in the Cloudflare Free Ruleset covers CVE-2026-115560. This emergency release adds the CVE identifier to existing rule. Detection logic and rule actions remain unchanged.
+The existing PHP remote code execution rule in the Cloudflare Free Ruleset covers [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560). This emergency release adds the CVE identifier to existing rule. Detection logic and rule actions remain unchanged.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619), [CVE-2026-115560 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-115560)) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
 
 For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -214,17 +214,17 @@ For more information, refer to [WAF Managed Rules](https://developers.cloudflare
 
 **WAF Release - 2026-10-22 - Emergency - Cloudflare Managed Ruleset**
 
-This emergency release updates the names and metadata of seven existing rules in the Cloudflare Managed Ruleset to identify CVE-2026-109618 and CVE-2026-109619. Detection logic and rule actions remain unchanged.
+This emergency release updates the names and metadata of seven existing rules in the Cloudflare Managed Ruleset to identify [CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618) and [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619). Detection logic and rule actions remain unchanged.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...c438d5dd | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Managed Ruleset | ...0a0c2f64 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Managed Ruleset | ...1867b12e | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #5 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Managed Ruleset | ...48143645 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #7 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...c438d5dd | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...0a0c2f64 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #2 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #3 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #4 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...1867b12e | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #5 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...48143645 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #7 | Block | N/A | Rule metadata description refined. Detection unchanged. |
 
 For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -233,17 +233,17 @@ For more information, refer to [WAF Managed Rules](https://developers.cloudflare
 
 **WAF Release - 2026-10-22 - Emergency - Cloudflare Free Ruleset**
 
-This emergency release updates the names and metadata of seven existing rules in the Cloudflare Free Ruleset to identify CVE-2026-109618 and CVE-2026-109619. Detection logic and rule actions remain unchanged.
+This emergency release updates the names and metadata of seven existing rules in the Cloudflare Free Ruleset to identify [CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618) and [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619). Detection logic and rule actions remain unchanged.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Free Ruleset | ...b5ccf32f | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Free Ruleset | ...bcd95984 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Free Ruleset | ...24b1a4c6 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Free Ruleset | ...302ede46 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #5 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Free Ruleset | ...e8d613fa | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #7 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...b5ccf32f | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...bcd95984 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #2 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #3 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...24b1a4c6 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #4 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...302ede46 | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #5 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset | ...e8d613fa | N/A | PHP Remote Code Execution Attack ([CVE-2026-109618 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109618), [CVE-2026-109619 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-109619)) #7 | Block | N/A | Rule metadata description refined. Detection unchanged. |
 
 For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -332,14 +332,14 @@ This release introduces new detections to mitigate recent vulnerabilities affect
 
 **Key Findings**
 
-- CVE-2026-102989: A reflected Cross-Site Scripting (XSS) vulnerability affecting TanStack. Unauthenticated attackers can exploit this flaw to inject malicious scripts into web pages viewed by other users, potentially leading to session hijacking or unauthorized actions.
-- CVE-2026-21589: An arbitrary file access vulnerability affecting Atlassian products. Threat actors can exploit this flaw to read unauthorized files on the target system, risking the exposure of sensitive configuration data.
+- [CVE-2026-102989 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-102989): A reflected Cross-Site Scripting (XSS) vulnerability affecting TanStack. Unauthenticated attackers can exploit this flaw to inject malicious scripts into web pages viewed by other users, potentially leading to session hijacking or unauthorized actions.
+- [CVE-2026-21589 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-21589): An arbitrary file access vulnerability affecting Atlassian products. Threat actors can exploit this flaw to read unauthorized files on the target system, risking the exposure of sensitive configuration data.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...02751ef3 | N/A | Generic Rules - Template Injection - 2 - Beta | Disabled | Disabled | This rule is merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123). |
-| Cloudflare Managed Ruleset | ...4ee560b2 | N/A | TanStack - Reflected XSS - CVE:CVE-2026-102989 | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...e919cd31 | N/A | Atlassian - Arbitrary File Access - CVE:CVE-2026-21589 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4ee560b2 | N/A | TanStack - Reflected XSS - CVE: [CVE-2026-102989 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-102989) | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e919cd31 | N/A | Atlassian - Arbitrary File Access - CVE: [CVE-2026-21589 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-21589) | N/A | Block | This is a new detection. |
 
 ## 2026-10-09
 
@@ -394,13 +394,13 @@ This release introduces a new detection to mitigate a heap-based buffer overflow
 
 **Key Findings**
 
-- CVE-2026-94127: A heap-based buffer overflow vulnerability in F5 BIG-IP. Attackers can exploit this flaw to execute arbitrary code on the affected system.
+- [CVE-2026-94127 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-94127): A heap-based buffer overflow vulnerability in F5 BIG-IP. Attackers can exploit this flaw to execute arbitrary code on the affected system.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...a056caff | N/A | Command Injection - Generic 8 - uri - Beta | Log | Block | This rule is merged into the original rule "Command Injection - Generic 8 - uri" (ID: ...ee159e2e). |
-| Cloudflare Managed Ruleset | ...7206c737 | N/A | F5 BIG-IP - UnAuth Heap-Overflow - CVE:CVE-2026-94127 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...549f7356 | N/A | Next.js - Cache Poisoning - CVE:CVE-2026-94543 | Block | Block | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...7206c737 | N/A | F5 BIG-IP - UnAuth Heap-Overflow - CVE: [CVE-2026-94127 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-94127) | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...549f7356 | N/A | Next.js - Cache Poisoning - CVE: [CVE-2026-94543 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-94543) | Block | Block | Rule metadata description refined. Detection unchanged. |
 
 ## 2026-10-01
 
@@ -411,7 +411,7 @@ This update provides immediate defense against a vulnerability affecting Citrix 
 
 **Key Findings**
 
-- CVE-2026-88771: An improper input validation vulnerability affecting Citrix NetScaler ADC and Gateway allows an unauthenticated attacker to execute arbitrary commands.
+- [CVE-2026-88771 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-88771): An improper input validation vulnerability affecting Citrix NetScaler ADC and Gateway allows an unauthenticated attacker to execute arbitrary commands.
 
 **Impact**
 
@@ -421,7 +421,7 @@ Detailed Rule Changes
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...827ab216 | N/A | Citrix Netscaler ADC and Gateway - Improper input validation - CVE:CVE-2026-88771 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...827ab216 | N/A | Citrix Netscaler ADC and Gateway - Improper input validation - CVE: [CVE-2026-88771 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-88771) | N/A | Block | This is a new detection. |
 
 ## 2026-09-30
 
@@ -432,14 +432,14 @@ This release introduces new detections to enhance protection against a specific 
 
 **Key Findings**
 
-- CVE-2026-85706: A path traversal vulnerability affecting GitLab.
+- [CVE-2026-85706 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-85706): A path traversal vulnerability affecting GitLab.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...cb14ded8 | N/A | Broken Access Control - Directory Traversal | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...0364bd7e | N/A | HTTP Request Smuggling - Request Body Anomaly - Beta | Log | Block | This rule is merged into the original rule "HTTP/2 Request Smuggling - Request Body Anomaly" (ID: ...1489d892). |
 | Cloudflare Managed Ruleset | ...d498a69a | N/A | Command Injection - Generic 8 - body - Beta | Disabled | Disabled | This rule is merged into the original rule "Command Injection - Generic 8 - body" (ID: ...413592e2). |
-| Cloudflare Managed Ruleset | ...87ae8cfc | N/A | GitLab - Path Traversal- CVE:CVE-2026-85706 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...87ae8cfc | N/A | GitLab - Path Traversal- CVE: [CVE-2026-85706 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-85706) | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...549f7356 | N/A | Generic - Request routing cache inconsistency | N/A | Block | This is a new detection. |
 
 ## 2026-09-25
@@ -451,8 +451,8 @@ This update provides immediate defense against critical vulnerabilities affectin
 
 **Key Findings**
 
-- CVE-2026-87902: A high-severity Path Traversal and Local File Inclusion (LFI) vulnerability affecting WordPress. Unauthenticated attackers can exploit this flaw to read arbitrary files on the host server, potentially exposing sensitive configuration data or system files.
-- CVE-2026-42018 & CVE-2026-82329: Critical authentication bypass vulnerabilities affecting JFrog Artifactory. Successful exploitation allows unauthenticated attackers to bypass security controls and achieve unauthorized access to the Artifactory instance.
+- [CVE-2026-87902 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-87902): A high-severity Path Traversal and Local File Inclusion (LFI) vulnerability affecting WordPress. Unauthenticated attackers can exploit this flaw to read arbitrary files on the host server, potentially exposing sensitive configuration data or system files.
+- [CVE-2026-42018 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-42018) & [CVE-2026-82329 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-82329): Critical authentication bypass vulnerabilities affecting JFrog Artifactory. Successful exploitation allows unauthenticated attackers to bypass security controls and achieve unauthorized access to the Artifactory instance.
 
 **Impact**
 
@@ -462,10 +462,10 @@ Detailed Rule Changes
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...70a43f96 | N/A | Wordpress - Path Traversal, Local File Inclusion - CVE:CVE-2026-87902 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...70a43f96 | N/A | Wordpress - Path Traversal, Local File Inclusion - CVE: [CVE-2026-87902 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-87902) | N/A | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...909a4db4 | N/A | Wordpress - XSS - Comment | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...c797ef03 | N/A | JFrog Artifactory - Authentication Bypass - CVE:CVE-2026-42018 | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...a813ac74 | N/A | JFrog Artifactory - Authentication Bypass - CVE:CVE-2026-82329 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...c797ef03 | N/A | JFrog Artifactory - Authentication Bypass - CVE: [CVE-2026-42018 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-42018) | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a813ac74 | N/A | JFrog Artifactory - Authentication Bypass - CVE: [CVE-2026-82329 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2026-82329) | N/A | Block | This is a new detection. |
 
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 

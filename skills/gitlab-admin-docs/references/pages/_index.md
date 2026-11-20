@@ -5,7 +5,7 @@ Configure and administer GitLab Pages, including storage, size limits, and loggi
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-GitLab Pages provides static site hosting for GitLab projects and groups.
+[GitLab Pages](../../user/project/pages/_index.md) provides static site hosting for GitLab projects and groups.
 Server administrators must configure Pages before users can access this feature.
 As an administrator, you can use GitLab Pages to:
 
@@ -17,7 +17,6 @@ As an administrator, you can use GitLab Pages to:
 
 The GitLab Pages daemon runs as a separate process and can be configured either on the same server
 as GitLab or on its own dedicated infrastructure.
-For user documentation, see [GitLab Pages](../../user/project/pages/_index.md).
 
 > [!note]
 > This guide is for Linux package installations. For self-compiled installations, see

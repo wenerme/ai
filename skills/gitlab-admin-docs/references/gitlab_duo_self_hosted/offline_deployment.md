@@ -130,7 +130,9 @@ filesystem.
 These files are not distributed as container images.
 
 Mistral Small 24B (~48 GB) is used in the examples on this page.
-It supports both Code Suggestions and GitLab Duo Chat.
+It supports GitLab Duo Code Suggestions and GitLab Duo Non-Agentic Chat
+but has limited functionality for GitLab Duo Agent Platform.
+For GitLab Duo Agent Platform, select a model with full functionality.
 For other model options and GPU requirements, see
 [Supported models and hardware requirements](supported_models_and_hardware_requirements.md).
 

@@ -236,7 +236,7 @@ Realtime API you can direct incoming phone calls to the API.
 ## Overview
 
 If you want to connect a phone number to the Realtime API,
-use a SIP trunking provider (e.g., Twilio). This is a service that converts your phone call
+use a SIP trunking provider (for example, Twilio). This is a service that converts your phone call
 to IP traffic. After you purchase a phone number from your SIP trunking
 provider, follow the instructions below.
 
@@ -291,7 +291,7 @@ Use the [Accept call endpoint](https://developers.openai.com/api/reference/resou
 approve the inbound call and configure the realtime session that will answer it.
 Send the same parameters you would send in a
 [`create client secret`](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets/methods/create)
-request, i.e., ensure the realtime model, voice, tools, or instructions are set before bridging the
+request. Ensure the realtime model, voice, tools, or instructions are set before bridging the
 call to the model.
 
 ```bash
@@ -312,12 +312,15 @@ webhook, and every request requires the `Authorization` header shown above. The
 endpoint returns `200 OK` once the SIP leg is ringing and the realtime session
 is being established.
 
-## Reject the call
 
-Use the [Reject call endpoint](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/reject) to
-decline an invite when you do not want to handle the incoming call, (e.g., from
-an unsupported country code.) Supply the `call_id` path parameter
-and an optional SIP `status_code` (e.g., `486` to indicate "busy") in the JSON
+
+
+## Decline the call
+
+Use the [`reject` endpoint](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/reject) to
+decline an invite when you do not want to handle the incoming call (for example, from
+an unsupported country code). Supply the `call_id` path parameter
+and an optional SIP `status_code` (for example, `486` to indicate "busy") in the JSON
 body to control the response sent back to the carrier.
 
 ```bash
@@ -359,7 +362,7 @@ and other client events to control the call, and listen for server events to
 track progress. See [Webhooks and server-side controls](https://developers.openai.com/api/docs/guides/voice-server-controls?api=realtime)
 for more information.
 
-```javascript
+```typescript
 import WebSocket from "ws";
 
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
@@ -437,14 +440,138 @@ allow bidirectional SRTP traffic over UDP to and from the following CIDRs:
 
 ## Server examples
 
-The following is an example of a `realtime.call.incoming` handler. It accepts the call and then logs all the events from
-the Realtime API.
+These `realtime.call.incoming` handlers accept an incoming call and greet the caller.
+
+
+
 
 For the Ruby example, set the `OPENAI_API_KEY` and `OPENAI_WEBHOOK_SECRET`
 environment variables, then install the required dependencies with
 `gem install openai webrick async-websocket`.
 
+
+
+
+
+
+
+For TypeScript, install the dependencies with `npm install openai express ws`. Save the complete example below as `sip-realtime-api-webhook.ts` in the directory where you installed the dependencies. Set `OPENAI_API_KEY` and `OPENAI_WEBHOOK_SECRET`, then run `node --experimental-strip-types sip-realtime-api-webhook.ts`. Forward requests from your configured HTTPS webhook endpoint to `http://127.0.0.1:8000/webhook`, preserving the raw request body and signature headers. The example deduplicates accepted call IDs in memory; production deployments need shared, durable deduplication across instances and restarts.
+
+
+
+
 Handle an incoming SIP call
+
+```typescript
+import express from "express";
+import OpenAI from "openai";
+import { OpenAIRealtimeWS } from "openai/realtime/ws";
+
+const client = new OpenAI({ webhookSecret: process.env.OPENAI_WEBHOOK_SECRET });
+if (!process.env.OPENAI_WEBHOOK_SECRET)
+  throw new Error("Set OPENAI_WEBHOOK_SECRET");
+const app = express();
+// Persist accepted call IDs in production for deduplication across restarts.
+const accepted = new Map<string, Promise<void>>();
+
+async function greetCaller(callID: string) {
+  const connection = new OpenAIRealtimeWS({ callID }, client);
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const timer = setTimeout(
+        () => reject(new Error("Greeting timed out")),
+        120000
+      );
+      const finish = (error?: Error) => {
+        clearTimeout(timer);
+        if (error) reject(error);
+        else resolve();
+      };
+      connection.on("error", () =>
+        finish(new Error("Realtime greeting failed"))
+      );
+      connection.socket.on("close", () =>
+        finish(new Error("Call closed before greeting completed"))
+      );
+      connection.socket.once("open", () => {
+        connection.send({
+          type: "response.create",
+          response: {
+            instructions: "Thank the caller and ask how you can help.",
+            output_modalities: ["audio"],
+          },
+        });
+      });
+      connection.on("response.done", (event) => {
+        if (event.response.status !== "completed")
+          finish(new Error("Greeting did not complete"));
+        else finish();
+      });
+    });
+    console.log("Call greeting completed");
+  } finally {
+    connection.close();
+  }
+}
+
+app.post(
+  "/webhook",
+  express.text({ type: "application/json", limit: "1mb" }),
+  async (req, res) => {
+    let event;
+    try {
+      if (typeof req.body !== "string") throw new Error("Expected JSON text");
+      const headers = new Headers();
+      for (const [key, value] of Object.entries(req.headers)) {
+        if (value !== undefined)
+          headers.set(key, Array.isArray(value) ? value.join(",") : value);
+      }
+      event = await client.webhooks.unwrap(req.body, headers);
+    } catch {
+      res.status(400).send("Invalid webhook");
+      return;
+    }
+    if (event.type !== "realtime.call.incoming") {
+      res.sendStatus(200);
+      return;
+    }
+    const callID = event.data.call_id;
+    try {
+      let attempt = accepted.get(callID);
+      if (!attempt) {
+        // Bound this demo's in-memory deduplication storage without forgetting calls.
+        if (accepted.size >= 10000) {
+          res.sendStatus(503);
+          return;
+        }
+        attempt = client.realtime.calls
+          .accept(callID, {
+            type: "realtime",
+            model: "gpt-realtime-2.1",
+            instructions: "You are a helpful support agent.",
+          })
+          .then(() => {
+            void greetCaller(callID).catch(() =>
+              console.error("Call greeting failed")
+            );
+          })
+          .catch((error) => {
+            accepted.delete(callID);
+            throw error;
+          });
+        accepted.set(callID, attempt);
+      }
+      await attempt;
+      res.sendStatus(200);
+    } catch {
+      res.status(502).send("Could not accept call");
+    }
+  }
+);
+app.listen(8000, "127.0.0.1", () =>
+  console.log("SIP webhook listening on port 8000")
+);
+```
 
 ```python
 from flask import Flask, request, Response, jsonify, make_response

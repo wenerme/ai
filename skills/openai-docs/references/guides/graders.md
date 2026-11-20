@@ -343,6 +343,28 @@ For Ruby, save the `grade` function shown above, including its import, as `grade
 
 Run a Python grader through the API
 
+```typescript
+import { readFileSync } from "node:fs";
+import OpenAI from "openai";
+
+const client = new OpenAI();
+// Save the Python grading function as grader.py before running this program.
+const grader = {
+  type: "python" as const,
+  name: "answer_overlap",
+  source: readFileSync("grader.py", "utf8"),
+};
+
+console.log(await client.fineTuning.alpha.graders.validate({ grader }));
+console.log(
+  await client.fineTuning.alpha.graders.run({
+    grader,
+    item: { reference_answer: "fuzzy wuzzy had no hair" },
+    model_sample: "fuzzy wuzzy was a bear",
+  })
+);
+```
+
 ```python
 import os
 import requests
@@ -445,9 +467,28 @@ puts(client.fine_tuning.alpha.graders.run(grader: grader, item: item, model_samp
 
 
 **Tip:**
-If you don't want to manually put your grading function in a string, you can also load it from a Python file using `importlib` and `inspect`. For example, if your grader function is in a file named `grader.py`, you can do:
+You can load your grading function from a file named `grader.py` instead of embedding it in a string.
+
+
+
+
+Python uses `importlib` and `inspect` to load the grading function.
+
+
+
 
 Load a grader from a Python file
+
+```typescript
+import { readFileSync } from "node:fs";
+
+// The service executes Python; TypeScript reads the grader's source file.
+const grader = {
+  type: "python" as const,
+  name: "answer_overlap",
+  source: readFileSync("grader.py", "utf8"),
+};
+```
 
 ```python
 import importlib

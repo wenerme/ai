@@ -550,7 +550,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" 
 }
 ```
 
-Next, edit the **output\_options** as desired and create a `PUT` request. The following example enables the **CVE-2021-44228** redaction option.
+Next, edit the **output\_options** as desired and create a `PUT` request. The following example enables the **[CVE-2021-44228 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2021-44228)** redaction option.
 
 <details>
 
@@ -590,7 +590,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$JOB_ID" 
 	}'
 ```
 
-Note that at this time, the **CVE-2021-44228** option is not available through the UI, and updating your Logpush job through the UI will remove this option.
+Note that at this time, the **[CVE-2021-44228 ↗︎](https://radar.cloudflare.com/zero-wire/cves/CVE-2021-44228)** option is not available through the UI, and updating your Logpush job through the UI will remove this option.
 
 ### Response
 

@@ -265,6 +265,7 @@ Group permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_in
 | Read secret metadata                                             |       |         |          |                  |           |            |   ✓   |
 | Create, update, and delete secrets[^owners-grant-action]         |       |         |          |                  |           |            |   ✓   |
 | Create secrets (without update permission)[^owners-grant-action] |       |         |          |                  |           |            |   ✓   |
+| Update secrets (without create permission)[^owners-grant-action] |       |         |          |                  |           |            |   ✓   |
 | Read secret value[^secret-values]                                |       |         |          |                  |           |            |       |
 
 [^com-top-level]: On GitLab.com, only a top-level group Owner can enable Secrets Manager for subgroups and projects. On GitLab Self-Managed, an administrator must enable it for the instance.
@@ -839,6 +840,7 @@ Project permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_
 | Read secrets metadata[^users-owner-role], [^users-maintainer-role], [^users-developer-role] |       |         |          |                  | ✓         | ✓          |   ✓   |
 | Create and update secrets[^users-owner-role], [^users-maintainer-role]                      |       |         |          |                  |           | ✓          |   ✓   |
 | Create secrets (without update permission)[^users-owner-role], [^users-developer-role]      |       |         |          |                  | ✓         |            |   ✓   |
+| Update secrets (without create permission)[^users-owner-role]                               |       |         |          |                  |           |            |   ✓   |
 | Delete secrets[^users-owner-role]                                                           |       |         |          |                  |           |            |   ✓   |
 | Read secret value[^project-secrets-secret-values]                                           |       |         |          |                  |           |            |       |
 

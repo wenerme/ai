@@ -52,9 +52,9 @@ migration. Until you turn off Slack notifications, each event is delivered twice
 
 Prerequisites:
 
-- The GitLab for Slack app must be available on your instance. On GitLab
-  Self-Managed and GitLab Dedicated, an administrator must configure the app
-  first.
+- The GitLab for Slack app must be available on your instance.
+  On GitLab Self-Managed and GitLab Dedicated, an administrator must configure
+  the app first.
 - You must have at least the Maintainer role for the project, the Owner role for
   the group, or administrator access for the instance where Slack notifications
   is configured.

@@ -7,7 +7,7 @@
 
 Use [Gemini Omni Flash](/docs/omni) (`gemini-omni-1.2-flash`) for clip-based
 video generation and conversational video editing, or [Genie 4](/docs/genie)
-(`models/genie-4`) for real-time interactive world generation in the Gemini API.
+(`genie-4`) for real-time interactive world generation in the Gemini API.
 
 The Veo 3.1 Preview in the Gemini API has been shut down.
 
@@ -23,10 +23,10 @@ API.
 
 ## Genie 4 (interactive worlds)  {% id="genie-4" %}
 
-Genie 4 (`models/genie-4`) streams a real-time `24 fps` interactive `16:9` world
-with synchronized `48 kHz` stereo audio over WebRTC and WebSockets on the
-Interactions API. Seed a world from text, a `16:9` reference image, or both, and
-steer movement and world events live with `WASD`, arrow keys, and mid-session
+Genie 4 (`genie-4`) streams a real-time 24 fps interactive 16:9 world
+with synchronized 48 kHz stereo audio over WebRTC and WebSockets on the
+Interactions API. Seed a world from text, a 16:9 reference image, or both, and
+steer movement and world events live with WASD, arrow keys, and mid-session
 text prompts.
 
 *   [Get started with Genie 4 →](/docs/genie)

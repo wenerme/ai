@@ -14,6 +14,14 @@ image: https://developers.cloudflare.com/bots/changelog/og.png?v=5e2b866d141dfc6
 
 [Subscribe to RSS](https://developers.cloudflare.com/bots/changelog/index.xml)
 
+## 2026-11-13
+
+**Swahili language support for Challenge Pages**
+
+Cloudflare Challenge Pages now support Swahili (Kenya), allowing visitors whose browser language preference is `sw` or `sw-ke` to receive a localized challenge experience.
+
+Refer to [supported languages](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-languages/) for more information about language detection and supported language codes.
+
 ## 2026-07-01
 
 **New options to manage AI traffic**
