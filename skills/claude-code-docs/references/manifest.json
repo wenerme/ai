@@ -355,9 +355,9 @@
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Sat, 21 Nov 2026 05:37:00 GMT",
-    "size": 194263,
-    "updatedAt": "2026-11-21T06:50:13.686Z"
+    "lastModified": "Sat, 21 Nov 2026 17:08:20 GMT",
+    "size": 194157,
+    "updatedAt": "2026-11-21T17:20:09.155Z"
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
@@ -451,9 +451,9 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Sat, 21 Nov 2026 05:26:45 GMT",
-    "size": 294429,
-    "updatedAt": "2026-11-21T06:50:19.062Z"
+    "lastModified": "Sat, 21 Nov 2026 17:08:14 GMT",
+    "size": 294008,
+    "updatedAt": "2026-11-21T17:20:14.455Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
@@ -595,9 +595,9 @@
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Fri, 20 Nov 2026 02:51:25 GMT",
-    "size": 121282,
-    "updatedAt": "2026-11-20T06:55:00.939Z"
+    "lastModified": "Sat, 21 Nov 2026 17:08:14 GMT",
+    "size": 121926,
+    "updatedAt": "2026-11-21T17:20:22.371Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
@@ -769,9 +769,9 @@
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",
-    "lastModified": "Sat, 21 Nov 2026 06:04:42 GMT",
-    "size": 116240,
-    "updatedAt": "2026-11-21T06:50:47.096Z"
+    "lastModified": "Sat, 21 Nov 2026 17:08:18 GMT",
+    "size": 115219,
+    "updatedAt": "2026-11-21T17:20:42.114Z"
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
@@ -787,9 +787,9 @@
   },
   "tools-reference.md": {
     "url": "https://code.claude.com/docs/en/tools-reference",
-    "lastModified": "Fri, 20 Nov 2026 02:51:30 GMT",
-    "size": 92785,
-    "updatedAt": "2026-11-20T06:55:22.342Z"
+    "lastModified": "Sat, 21 Nov 2026 17:08:13 GMT",
+    "size": 97965,
+    "updatedAt": "2026-11-21T17:20:43.098Z"
   },
   "troubleshoot-install.md": {
     "url": "https://code.claude.com/docs/en/troubleshoot-install",
@@ -817,9 +817,9 @@
   },
   "vs-code.md": {
     "url": "https://code.claude.com/docs/en/vs-code",
-    "lastModified": "Sat, 21 Nov 2026 06:02:15 GMT",
-    "size": 107432,
-    "updatedAt": "2026-11-21T06:50:49.782Z"
+    "lastModified": "Sat, 21 Nov 2026 17:08:23 GMT",
+    "size": 107437,
+    "updatedAt": "2026-11-21T17:20:44.736Z"
   },
   "web-quickstart.md": {
     "url": "https://code.claude.com/docs/en/web-quickstart",
