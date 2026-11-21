@@ -5,7 +5,7 @@ description: "Browse Prime Inference model IDs, capabilities, context windows, a
 
 # [Prime Inference logo]Prime Inference
 
-Access 73 Prime Inference models through Mastra's model router. Authentication is handled automatically using the `PRIME_API_KEY` environment variable.
+Access 69 Prime Inference models through Mastra's model router. Authentication is handled automatically using the `PRIME_API_KEY` environment variable.
 
 Learn more in the [Prime Inference documentation](https://docs.primeintellect.ai).
 
@@ -216,7 +216,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.04368,
+    "inputCost": 0.056784,
     "outputCost": 0.7
   },
   {
@@ -410,18 +410,6 @@ for await (const chunk of stream) {
     "maxOutput": 52428,
     "inputCost": 2.2,
     "outputCost": 6.6
-  },
-  {
-    "model": "prime/moonshotai/kimi-k2-0905",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 98304,
-    "inputCost": 0.6,
-    "outputCost": 2.5
   },
   {
     "model": "prime/moonshotai/kimi-k3",
@@ -818,42 +806,6 @@ for await (const chunk of stream) {
     "maxOutput": 235929,
     "inputCost": 0.13,
     "outputCost": 0.52
-  },
-  {
-    "model": "prime/qwen/qwen3-coder-next",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 235929,
-    "inputCost": 0.3,
-    "outputCost": 1.5
-  },
-  {
-    "model": "prime/qwen/qwen3-vl-235b-a22b-instruct",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 32768,
-    "inputCost": 0.3,
-    "outputCost": 1.5
-  },
-  {
-    "model": "prime/qwen/qwen3-vl-30b-a3b-instruct",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 16384,
-    "inputCost": 0.2,
-    "outputCost": 0.7
   },
   {
     "model": "prime/qwen/qwen3.8-27b",

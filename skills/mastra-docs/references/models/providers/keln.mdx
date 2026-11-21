@@ -5,7 +5,7 @@ description: "Browse Keln model IDs, capabilities, context windows, and pricing.
 
 # [Keln logo]Keln
 
-Access 14 Keln models through Mastra's model router. Authentication is handled automatically using the `KELN_API_KEY` environment variable.
+Access 13 Keln models through Mastra's model router. Authentication is handled automatically using the `KELN_API_KEY` environment variable.
 
 Learn more in the [Keln documentation](https://docs.keln.ai/models-pricing/).
 
@@ -98,18 +98,6 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.15,
     "outputCost": 0.6
-  },
-  {
-    "model": "keln/moonshotai/kimi-k3",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 1048576,
-    "inputCost": 3,
-    "outputCost": 15
   },
   {
     "model": "keln/moonshotai/kimi-k3.1-pro",
