@@ -175,6 +175,19 @@ var client = openai.NewClient(
 )
 ```
 
+```csharp
+using System.ClientModel;
+using OpenAI;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(new ApiKeyCredential(key), new ResponsesClientOptions
+{
+    Endpoint = new Uri("https://southcentralus.privatelink.api.openai.com/v1")
+});
+```
+
 ```ruby
 client = OpenAI::Client.new(
   base_url: "https://southcentralus.privatelink.api.openai.com/v1"

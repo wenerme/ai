@@ -644,7 +644,7 @@ tags:
     > This change is a breaking change.
 
     Use this API to manage [epics](https://docs.gitlab.com/user/group/epics/), the issues assigned to
-    them, their child and [related epics](https://docs.gitlab.com/user/group/epics/linked_epics/), and
+    them, their child and [related epics](https://docs.gitlab.com/user/work_items/linked_items/), and
     [group epic boards](https://docs.gitlab.com/user/group/epics/epic_boards/).
 
     Every call to this API must be authenticated. If a user is not a member of a private group, a `GET`
@@ -1021,7 +1021,7 @@ tags:
 - name: Issues
   description: |-
     Use this API to manage [issues](https://docs.gitlab.com/user/project/issues/), their
-    [links to related issues](https://docs.gitlab.com/user/project/issues/related_issues/), and issue
+    [links to related issues](https://docs.gitlab.com/user/work_items/linked_items/), and issue
     statistics. You can:
 
     - Create, update, and delete issues.
@@ -98860,6 +98860,8 @@ components:
           type: string
         bulk_import_max_download_file_size:
           type: string
+        max_import_record_size:
+          type: string
         silent_admin_exports_enabled:
           type: string
         allow_contribution_mapping_to_admins:
@@ -98985,6 +98987,8 @@ components:
         work_item_move_limit:
           type: string
         work_item_update_limit:
+          type: string
+        track_namespace_visits_limit:
           type: string
         github_gists_import_limit:
           type: string
@@ -119536,6 +119540,12 @@ components:
           type: integer
           description: Maximum import size in MB
           nullable: true
+        max_import_record_size:
+          type: integer
+          description: Maximum size in MiB of a single record in an import file. Set
+            to `0` for unlimited. Default is `50`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631025)
+            in GitLab 19.7.
+          nullable: true
         max_import_remote_file_size:
           type: integer
           description: Maximum remote file size in MB for imports from external object
@@ -122543,6 +122553,9 @@ components:
           type: string
           nullable: true
         work_item_update_limit:
+          type: string
+          nullable: true
+        track_namespace_visits_limit:
           type: string
           nullable: true
         ipv6_rate_limit_prefix_length:

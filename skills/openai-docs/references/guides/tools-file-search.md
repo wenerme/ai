@@ -148,6 +148,18 @@ var file =
 System.out.println(file.id());
 ```
 
+```csharp
+using OpenAI.Files;
+#pragma warning disable OPENAI001
+
+Uri source = new("https://cdn.openai.com/API/docs/deep_research_blog.pdf");
+
+using HttpClient http = new();
+using Stream content = await http.GetStreamAsync(source);
+OpenAIFile file = await client.UploadFileAsync(content, "deep_research_blog.pdf", FileUploadPurpose.Assistants);
+Console.WriteLine(file.Id);
+```
+
 ```ruby
 require "openai"
 require "pathname"
@@ -208,6 +220,17 @@ var store =
         .create(VectorStoreCreateParams.builder().name("Product docs").build());
 
 System.out.println(store.id());
+```
+
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStore store = await client.CreateVectorStoreAsync(new VectorStoreCreationOptions { Name = "knowledge_base" });
+Console.WriteLine(store.Id);
 ```
 
 ```ruby
@@ -343,6 +366,19 @@ import com.openai.client.okhttp.OpenAIOkHttpClient;
 String vectorStoreId = "<vector_store_id>";
 
 System.out.println(client.vectorStores().files().list(vectorStoreId).data());
+```
+
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+await foreach (VectorStoreFile file in client.GetVectorStoreFilesAsync("<vector_store_id>"))
+{
+    Console.WriteLine($"{file.FileId}: {file.Status}");
+}
 ```
 
 ```ruby

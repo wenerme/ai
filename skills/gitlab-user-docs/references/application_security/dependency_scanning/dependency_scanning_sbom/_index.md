@@ -1378,6 +1378,8 @@ The overall flow of dependency scanning is illustrated below.
 
 ```mermaid
 flowchart TD
+    accTitle: Dependency scanning flow
+    accDescr: A CI/CD job detects dependencies, generates SBOMs, analyzes reachability, and uploads the SBOMs to GitLab, which scans them and returns the results.
     subgraph CI[CI Pipeline]
         START([CI Job Starts])
         DETECT[Dependency Detection]

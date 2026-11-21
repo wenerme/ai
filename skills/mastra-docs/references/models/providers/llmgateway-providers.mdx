@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 503 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 505 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 2,
     "outputCost": 10
+  },
+  {
+    "model": "llmgateway-providers/alibaba/kimi-k3.1-pro-prime",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 4,
+    "outputCost": 20
   },
   {
     "model": "llmgateway-providers/alibaba/qwen-flash",
@@ -1970,18 +1982,6 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 0.1,
     "outputCost": 0.2
-  },
-  {
-    "model": "llmgateway-providers/consensusprotocol/deepseek-v4.1-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.15,
-    "outputCost": 0.55
   },
   {
     "model": "llmgateway-providers/consensusprotocol/deepseek-v4.1-flash-uncensored",
@@ -4514,6 +4514,30 @@ for await (const chunk of stream) {
     "maxOutput": 393216,
     "inputCost": 0.135,
     "outputCost": 0.54
+  },
+  {
+    "model": "llmgateway-providers/reka-ai/deepseek-v4.1-flash-1017",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 393216,
+    "inputCost": 0.15,
+    "outputCost": 0.6
+  },
+  {
+    "model": "llmgateway-providers/reka-ai/deepseek-v4.1-flash-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 393216,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "llmgateway-providers/reka-ai/glm-5.3-flash",

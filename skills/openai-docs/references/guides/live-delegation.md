@@ -115,6 +115,8 @@ Start with [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-lu
 
 Register supported tools in `delegation.responses.tools`. Set `delegation.responses.tool_choice` to `"auto"` to let the backend choose a tool, `"required"` to require a tool call, or `"none"` to disable tool calls. You can also select a named function.
 
+In Ruby SDK 1.0, typed delegation tool choices use `ToolChoice::Function` and `ToolChoice::Mcp`. See [Update Live delegation tool choices](https://developers.openai.com/api/docs/guides/ruby-sdk-migration#update-live-delegation-tool-choices) for the new names and MCP fields.
+
 Set `delegation.responses.parallel_tool_calls` to `true` to allow multiple tool calls in a response, or `false` for sequential calls. Your application executes custom functions and checks their dependencies and required approvals. These settings apply after GPT-Live delegates; use the [live prompt](https://developers.openai.com/api/docs/guides/live-prompting#delegation) to guide when it should delegate.
 
 The Responses configuration requires a backend `model` at creation. In addition to the tools below, it exposes `max_output_tokens` (at least 16 when set), `service_tier`, and the `reasoning` and `text` settings supported by the selected backend model. See [Reduce backend latency](#reduce-backend-latency) for settings you can tune.

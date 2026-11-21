@@ -346,6 +346,35 @@ To modify this setting:
 1. Expand **Import and export settings**.
 1. Set another value for **Maximum decompressed file size for archives from imports (MiB)**.
 
+## Maximum size of a single record in import files
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631025) in GitLab 19.7.
+
+When you import a project or group by using [file exports](../../user/project/settings/import_export.md),
+[direct transfer](../../user/group/import/_index.md), or
+[offline transfer](../../user/import/gitlab_instances/offline-transfer-migrations.md), you can specify the
+maximum size of a single record in the import files.
+A record is one line in a newline-delimited JSON (NDJSON) file, such as a merge request
+with all of its notes and diffs.
+The default value is 50 MiB.
+
+If a record is larger than this limit, the import fails with the following error:
+
+```plaintext
+JSON exceeds 50 MiB limit in merge_requests.ndjson
+```
+
+Each record is loaded into memory during import. Raising this limit increases the memory that Sidekiq uses for each
+import job. The limit also protects the instance from oversized records, so raise it only as much as you need.
+If you set the limit to `0`, GitLab does not check the record size, and a single record can use all available memory.
+
+To modify this setting:
+
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Set another value for . Set to `0` for no size limit.
+
 ## Timeout for decompressing archived files
 
 When you [import a project](../../user/project/settings/import_export.md), you can specify the maximum timeout for decompressing imported archives. The default value is 210 seconds.

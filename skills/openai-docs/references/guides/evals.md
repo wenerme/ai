@@ -569,6 +569,17 @@ var file =
 System.out.println(file.id());
 ```
 
+```csharp
+using OpenAI.Files;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIFileClient client = new(key);
+
+OpenAIFile file = await client.UploadFileAsync("tickets.jsonl", new FileUploadPurpose("evals"));
+Console.WriteLine(file.Id);
+```
+
 ```ruby
 require "openai"
 require "pathname"

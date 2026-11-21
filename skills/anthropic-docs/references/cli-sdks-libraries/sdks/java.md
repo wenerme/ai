@@ -15,7 +15,7 @@ The Anthropic Java SDK provides convenient access to the Claude API from applica
 <Tabs>
   <Tab title="Gradle">
     ```kotlin
-    implementation("com.anthropic:anthropic-java:3.10.0")
+    implementation("com.anthropic:anthropic-java:3.12.0")
     ```
   </Tab>
 
@@ -24,7 +24,7 @@ The Anthropic Java SDK provides convenient access to the Claude API from applica
     <dependency>
         <groupId>com.anthropic</groupId>
         <artifactId>anthropic-java</artifactId>
-        <version>3.10.0</version>
+        <version>3.12.0</version>
     </dependency>
     ```
   </Tab>
@@ -37,8 +37,8 @@ Cloud platform integrations and the client-side MCP helpers ship as separate add
 <Tabs>
   <Tab title="Gradle">
     ```kotlin
-    implementation("com.anthropic:anthropic-java:3.10.0")
-    implementation("com.anthropic:anthropic-java-mcp:3.10.0")
+    implementation("com.anthropic:anthropic-java:3.12.0")
+    implementation("com.anthropic:anthropic-java-mcp:3.12.0")
     ```
   </Tab>
 
@@ -47,12 +47,12 @@ Cloud platform integrations and the client-side MCP helpers ship as separate add
     <dependency>
         <groupId>com.anthropic</groupId>
         <artifactId>anthropic-java</artifactId>
-        <version>3.10.0</version>
+        <version>3.12.0</version>
     </dependency>
     <dependency>
         <groupId>com.anthropic</groupId>
         <artifactId>anthropic-java-mcp</artifactId>
-        <version>3.10.0</version>
+        <version>3.12.0</version>
     </dependency>
     ```
   </Tab>
@@ -133,11 +133,11 @@ For authentication options including Workload Identity Federation, see [Authenti
 
 ### Configuration options
 
-| Setter      | System property       | Environment variable   | Required | Default value                 |
-| ----------- | --------------------- | ---------------------- | -------- | ----------------------------- |
-| `apiKey`    | `anthropic.apiKey`    | `ANTHROPIC_API_KEY`    | false    | -                             |
-| `authToken` | `anthropic.authToken` | `ANTHROPIC_AUTH_TOKEN` | false    | -                             |
-| `baseUrl`   | `anthropic.baseUrl`   | `ANTHROPIC_BASE_URL`   | true     | `"https://api.anthropic.com"` |
+| Setter | System property | Environment variable | Required | Default value |
+| ----- | ----- | ----- | ----- | ----- |
+| `apiKey` | `anthropic.apiKey` | `ANTHROPIC_API_KEY` | false | - |
+| `authToken` | `anthropic.authToken` | `ANTHROPIC_AUTH_TOKEN` | false | - |
+| `baseUrl` | `anthropic.baseUrl` | `ANTHROPIC_BASE_URL` | true | `"https://api.anthropic.com"` |
 
 System properties take precedence over environment variables.
 
@@ -606,15 +606,15 @@ The SDK throws custom unchecked exception types:
 
 ### Status code mapping
 
-| Status | Exception                       |
-| ------ | ------------------------------- |
-| 400    | `BadRequestException`           |
-| 401    | `UnauthorizedException`         |
-| 403    | `PermissionDeniedException`     |
-| 404    | `NotFoundException`             |
-| 422    | `UnprocessableEntityException`  |
-| 429    | `RateLimitException`            |
-| 5xx    | `InternalServerException`       |
+| Status | Exception |
+| ----- | ----- |
+| 400 | `BadRequestException` |
+| 401 | `UnauthorizedException` |
+| 403 | `PermissionDeniedException` |
+| 404 | `NotFoundException` |
+| 422 | `UnprocessableEntityException` |
+| 429 | `RateLimitException` |
+| 5xx | `InternalServerException` |
 | others | `UnexpectedStatusCodeException` |
 
 `SseException` is thrown for errors encountered during SSE streaming after a successful initial HTTP response.

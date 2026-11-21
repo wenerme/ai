@@ -101,6 +101,22 @@ Ask your agent to read a URL, such as a documentation page or PDF report. The mo
 
 The Pi tool is marked `replay: "safe"`. Pi reruns a fetch interrupted by an eviction when the session recovers. Completed results remain stored and are not fetched again during recovery. The tool also honors Pi's abort signal when you cancel a running call.
 
+In [Pi's code mode](https://developers.cloudflare.com/agents/tools/browser/#use-it-in-pis-code-mode), a script calls `tools.web_fetch({ url, offset, format })` and gets the window as an object instead of the model's text:
+
+```ts
+{ url, status, contentType, title?, content, offset, nextOffset, totalChars }
+```
+
+`url` is the URL after redirects. `content` stays wrapped in the `untrusted_web_content` tags, so text that a script hands back to the model is still marked as data. Pass `nextOffset` as `offset` to read on. It is `null` at the end. A failed fetch rejects with the model's text. With [`web_search`](https://developers.cloudflare.com/agents/tools/web-search/) installed too, one script can search and read the results in parallel:
+
+```ts
+const found = await tools.web_search({ query: "Durable Objects alarms" });
+const pages = await Promise.all(
+	found.items.slice(0, 3).map((item) => tools.web_fetch({ url: item.url })),
+);
+return pages.map((page) => ({ title: page.title, content: page.content }));
+```
+
 ### AI SDK
 
 Add the tool to the `tools` object in your existing `streamText()` or `generateText()` call:
@@ -289,5 +305,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/web-fetch/#page","headline":"Web fetch","description":"Give your agent a web fetch tool with document conversion, pagination, and request controls. Use Pi Durable, AI SDK, TanStack AI, or your own harness.","url":"https://developers.cloudflare.com/agents/tools/web-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/web-fetch/og.png?v=876c4e97e6613361","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/web-fetch/#page","headline":"Web fetch","description":"Give your agent a web fetch tool with document conversion, pagination, and request controls. Use Pi Durable, AI SDK, TanStack AI, or your own harness.","url":"https://developers.cloudflare.com/agents/tools/web-fetch/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/web-fetch/og.png?v=876c4e97e6613361","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

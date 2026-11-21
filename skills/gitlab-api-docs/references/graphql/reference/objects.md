@@ -18882,25 +18882,6 @@ Configuration for the secret detection false positive detection trigger of a tri
 | `runMode` | [`SecurityScanProfileRunMode`](enums.md#securityscanprofilerunmode) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Whether false positive detection runs automatically or on demand. |
 | `severityLevel` | [`VulnerabilitySeverity`](enums.md#vulnerabilityseverity) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Minimum vulnerability severity that triggers false positive detection. |
 
-## `SecretPermission`
-
-Representation of a secret permission.
-
-### `SecretPermission` fields {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `actions` | [`[SecretsManagementAction!]!`](enums.md#secretsmanagementaction) | Actions that can be performed on secrets. |
-| `expiredAt` | [`ISO8601Date`](scalars.md#iso8601date) | Expiration date for Secret Permission (optional). |
-| `grantedBy` | [`UserCore`](#usercore) | User who created the Secret Permission. |
-| `permissions` | [`String!`](scalars.md#string) | Permissions to be provided. ['create', 'update', 'read', 'delete']. |
-| `principal` | [`Principal!`](#principal) | Who is provided access to. For eg: User/Role/MemberRole. |
-| `project` | [`Project!`](#project) | Project the secret permission belong to. |
-
-## `SecretPermissionConnection`
-
-Paginated collection of [`SecretPermission`](#secretpermission). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
-
 ## `SecretRotationInfo`
 
 Rotation configuration and status for a secret.

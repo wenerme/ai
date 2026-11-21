@@ -846,6 +846,16 @@ Content type: `application/json`
 
     Review eligible actions automatically. Deny manual approval fallbacks.
 
+- `spend_control: optional object { limit }  or null`
+
+  Optional spending limit in USD cents. Omission or null creates an unlimited session.
+
+  - `limit: integer or null`
+
+    Positive USD cents, or null to remove the limit.
+
+    `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
 - `stream: optional boolean (default: false)`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
@@ -866,7 +876,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 11 more }`
+- `AgentSession object { id, agent, created_at, 12 more }`
 
   A Managed Agents session.
 
@@ -1814,7 +1824,23 @@ Content type: `application/json`
 
         - `"environment_connection"`
 
-  - `status: "idle" or "in_progress" or "requires_action" or "failed"`
+  - `spend_control: object { consumed, limit }`
+
+    Spending limit and best-effort consumption, in USD cents. The limit is null for an unlimited session. Consumption is null when unavailable.
+
+    - `consumed: integer or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+      `minimum: 0`
+
+    - `limit: integer or null`
+
+      The configured positive limit in USD cents, or null when unlimited.
+
+      `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
+  - `status: "idle" or "in_progress" or "requires_action" or 2 more`
 
     The current status of the session.
 
@@ -1833,6 +1859,10 @@ Content type: `application/json`
     - `"failed"`
 
       The session failed.
+
+    - `"budget_reached"`
+
+      The session is paused because its spending limit was reached.
 
   - `usage: TokenUsage or null`
 
@@ -1982,6 +2012,10 @@ curl https://api.openai.com/v1/agents/sessions \
       "type": "mcp_approval_request"
     }
   ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  },
   "status": "idle",
   "usage": {
     "input_tokens": 0,

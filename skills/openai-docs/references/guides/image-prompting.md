@@ -3127,6 +3127,46 @@ func saveImage(filename, encoded string) {
 }
 ```
 
+```csharp
+using OpenAI.Images;
+#pragma warning disable OPENAI001
+
+string prompt = """
+
+Create an original, non-infringing logo for a company called Field & Flour, a local bakery.
+The logo should feel warm, simple, and timeless. Use clean, vector-like shapes, a strong silhouette, and balanced negative space.
+Favor simplicity over detail so it reads clearly at small and large sizes. Flat design, minimal strokes, no gradients unless essential.
+Fully transparent background. Deliver a single centered logo with generous padding, clean alpha edges, and no solid backdrop, scenery, checkerboard, or watermark.
+
+""";
+        GeneratedImageCollection logos = await client.GenerateImagesAsync(prompt, 4, new ImageGenerationOptions
+        {
+            Size = new GeneratedImageSize(1024, 1536),
+            Quality = GeneratedImageQuality.MediumQuality,
+            Background = GeneratedImageBackground.Transparent,
+            OutputFileFormat = GeneratedImageFileFormat.Png
+        });
+        for (int index = 0; index < logos.Count; index++)
+            await File.WriteAllBytesAsync($"logo-generation-{index + 1}-gpt-image-2.5-sunburst.png", logos[index].ImageBytes.ToArray());
+        prompt = """
+
+Extract the product from the input image and isolate it on a fully transparent background.
+Output: centered product, crisp silhouette, no halos/fringing.
+Preserve product geometry and label legibility exactly.
+Add only light polishing. Do not add a solid backdrop, checkerboard, scenery, or shadow.
+Do not restyle the product; remove the background and preserve clean alpha transparency.
+
+""";
+        GeneratedImage cutout = await client.GenerateImageEditAsync("input_images/shampoo.webp", prompt, new ImageEditOptions
+        {
+            Size = new GeneratedImageSize(1024, 1536),
+            Quality = GeneratedImageQuality.MediumQuality,
+            Background = GeneratedImageBackground.Transparent,
+            OutputFileFormat = GeneratedImageFileFormat.Png
+        });
+        await File.WriteAllBytesAsync("extract-product-gpt-image-2.5-sunburst.png", cutout.ImageBytes.ToArray());
+```
+
 ```ruby
 require "base64"
 require "openai"

@@ -1,5 +1,5 @@
 ---
-description: Restore a D1 database to any minute within the last 30 days using Time Travel point-in-time recovery.
+description: Restore a D1 database within your plan's retention window.
 title: Time Travel and backups
 image: https://developers.cloudflare.com/d1/reference/time-travel/og.png?v=ffc54a7087c55964
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/d1/reference/time-travel/og.png?v=ffc54
 
 # Time Travel and backups
 
-Time Travel is D1's approach to backups and point-in-time-recovery, and allows you to restore a database to any minute within the last 30 days.
+Time Travel is D1's approach to backups and point-in-time recovery. You can restore a database to any minute within the last 7 days on the Workers Free plan or 30 days on the Workers Paid plan.
 
 - You do not need to enable Time Travel. It is always on.
 - Database history and restoring a database incur no additional costs.
@@ -30,7 +30,7 @@ To understand which storage subsystem your database uses, run `wrangler d1 info 
 
 Time Travel leverages D1's concept of a bookmark to restore to a point in time.
 
-- Bookmarks older than 30 days are invalid and cannot be used as a restore point.
+- Bookmarks outside your plan's retention window cannot be used as a restore point.
 - Restoring a database to a specific bookmark does not remove or delete older bookmarks. For example, if you restore to a bookmark representing the state of your database 10 minutes ago, and determine that you needed to restore to an earlier point in time, you can still do so.
 - Bookmarks are lexicographically sortable. Sorting orders a list of bookmarks from oldest-to-newest.
 - Bookmarks can be derived from a [Unix timestamp ↗︎](https://en.wikipedia.org/wiki/Unix_time) (seconds since Jan 1st, 1970), and conversion between a specific timestamp and a bookmark is deterministic (stable).
@@ -145,5 +145,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/time-travel/#page","headline":"Time Travel and backups","description":"Restore a D1 database to any minute within the last 30 days using Time Travel point-in-time recovery.","url":"https://developers.cloudflare.com/d1/reference/time-travel/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/time-travel/og.png?v=ffc54a7087c55964","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/time-travel/#page","headline":"Time Travel and backups","description":"Restore a D1 database within your plan's retention window.","url":"https://developers.cloudflare.com/d1/reference/time-travel/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/time-travel/og.png?v=ffc54a7087c55964","dateModified":"2026-11-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

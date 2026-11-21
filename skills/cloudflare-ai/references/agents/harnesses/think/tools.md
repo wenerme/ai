@@ -59,7 +59,7 @@ The default Workspace has no execution backends, so there is no `exec` tool unti
 ```js
 import { Think } from "@cloudflare/think";
 import { Workspace } from "@cloudflare/computer";
-import { WorkerJavaScriptBackend } from "@cloudflare/computer/backends/worker-javascript";
+import { CodemodeBackend } from "@cloudflare/computer/backends/codemode";
 import { createGitClient } from "@cloudflare/computer/git";
 import { createGitModule } from "@cloudflare/computer/modules/git";
 
@@ -68,11 +68,10 @@ export class MyAgent extends Think {
 		storage: this.ctx.storage,
 		git: createGitClient(),
 		backends: [
-			new WorkerJavaScriptBackend({
-				id: "js",
+			new CodemodeBackend({
 				loader: this.env.LOADER,
 				access: "read-write",
-				modules: { "ws:git": createGitModule() },
+				modules: { "codemode:git": createGitModule() },
 			}),
 		],
 	});
@@ -86,7 +85,7 @@ export class MyAgent extends Think {
 ```ts
 import { Think } from "@cloudflare/think";
 import { Workspace } from "@cloudflare/computer";
-import { WorkerJavaScriptBackend } from "@cloudflare/computer/backends/worker-javascript";
+import { CodemodeBackend } from "@cloudflare/computer/backends/codemode";
 import { createGitClient } from "@cloudflare/computer/git";
 import { createGitModule } from "@cloudflare/computer/modules/git";
 
@@ -95,11 +94,10 @@ export class MyAgent extends Think<Env> {
 		storage: this.ctx.storage,
 		git: createGitClient(),
 		backends: [
-			new WorkerJavaScriptBackend({
-				id: "js",
+			new CodemodeBackend({
 				loader: this.env.LOADER,
 				access: "read-write",
-				modules: { "ws:git": createGitModule() },
+				modules: { "codemode:git": createGitModule() },
 			}),
 		],
 	});
@@ -110,7 +108,7 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-The JavaScript backend runs code in a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/), so it needs a Worker Loader binding:
+The codemode backend runs JavaScript in a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/), so it needs a Worker Loader binding:
 
 ```jsonc
 {
@@ -132,17 +130,16 @@ Computer also ships a `just-bash` shell backend that runs in Dynamic Workers, an
 
 ### Call the agent's tools from code
 
-Give a JavaScript backend a `ws:tools` module, and code the model runs with `exec` can import the agent's tools. Code reads files through `node:fs/promises`, so serve `getTools()` rather than the workspace tools:
+Give a codemode backend a `codemode:tools` module, and code the model runs with `exec` can import the agent's tools. Code reads files through `node:fs/promises`, so serve `getTools()` rather than the workspace tools:
 
 ```js
 import { createToolBindings } from "@cloudflare/computer/modules/tools";
 import { forAISDKTools } from "@cloudflare/computer/tools/ai-sdk";
 
-new WorkerJavaScriptBackend({
-	id: "js",
+new CodemodeBackend({
 	loader: this.env.LOADER,
 	modules: {
-		"ws:tools": createToolBindings(forAISDKTools(() => this.getTools())),
+		"codemode:tools": createToolBindings(forAISDKTools(() => this.getTools())),
 	},
 });
 ```
@@ -151,11 +148,10 @@ new WorkerJavaScriptBackend({
 import { createToolBindings } from "@cloudflare/computer/modules/tools";
 import { forAISDKTools } from "@cloudflare/computer/tools/ai-sdk";
 
-new WorkerJavaScriptBackend({
-	id: "js",
+new CodemodeBackend({
 	loader: this.env.LOADER,
 	modules: {
-		"ws:tools": createToolBindings(forAISDKTools(() => this.getTools())),
+		"codemode:tools": createToolBindings(forAISDKTools(() => this.getTools())),
 	},
 });
 ```
@@ -164,7 +160,7 @@ Code the model runs with `exec`:
 
 ```js
 import { readFile } from "node:fs/promises";
-import { getWeather } from "ws:tools";
+import { getWeather } from "codemode:tools";
 
 export default async function () {
 	const cities = JSON.parse(await readFile("/workspace/cities.json", "utf8"));
@@ -174,7 +170,7 @@ export default async function () {
 }
 ```
 
-`ws:tools` does not export tools that need approval or tools that run in the browser, because nothing can approve or run them from code. Calls from code do not go through `beforeToolCall`. Refer to [`ws:tools` ↗︎](https://github.com/cloudflare/computer/blob/main/docs/17_isolate_javascript.md#wstools) for how calls and results work.
+`codemode:tools` does not export tools that need approval or tools that run in the browser, because nothing can approve or run them from code. Calls from code do not go through `beforeToolCall`. Refer to [`codemode:tools` ↗︎](https://github.com/cloudflare/computer/blob/main/docs/17_isolate_javascript.md#codemodetools) for how calls and results work.
 
 ### Change the tools
 
@@ -401,7 +397,7 @@ export class MyAgent extends Think<Env> {
 
 Deprecated
 
-`createExecuteTool` and `createExecuteRuntime` are deprecated. Use `exec` on a JavaScript backend with a `ws:tools` module instead. Refer to [Call the agent's tools from code](#call-the-agents-tools-from-code). The execute tool keeps working until it is removed along with `@cloudflare/codemode`.
+`createExecuteTool` and `createExecuteRuntime` are deprecated. Use `exec` on a codemode backend with a `codemode:tools` module instead. Refer to [Call the agent's tools from code](#call-the-agents-tools-from-code). The execute tool keeps working until it is removed along with `@cloudflare/codemode`.
 
 Let the LLM write and run JavaScript in a sandboxed Worker, recorded on a durable Code Mode runtime (abort-and-replay, human approvals, audit trail, reusable snippets). Requires `@cloudflare/codemode` and a `worker_loaders` binding.
 
@@ -837,5 +833,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools","description":"Built-in workspace tools, custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools","description":"Built-in workspace tools, custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

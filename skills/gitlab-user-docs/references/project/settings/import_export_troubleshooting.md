@@ -297,19 +297,23 @@ out, but makes migrations slower.
 To have the batch size reduced, you must have a feature flag enabled. For more information, see
 [issue 456948](https://gitlab.com/gitlab-org/gitlab/-/issues/456948).
 
-## Error: `JSON exceeds 50 MB limit`
+## Error: `JSON exceeds <size> limit`
 
-You might get the following error when you import a project by using file exports:
+You might get an error similar to the following when you import a project by using file exports, direct transfer, or offline transfer:
 
 ```plaintext
-JSON exceeds 50 MB limit
+JSON exceeds 50 MiB limit in merge_requests.ndjson
 ```
 
 This error occurs when a single record in the export, such as a merge request or issue with a large
-description or diff, is larger than the 50 MB limit that the import applies to each record.
+description or diff, is larger than the limit that the import applies to each record. The error shows the
+current limit and the file that contains the record. The default limit is 50 MiB.
 
-To resolve this error, reduce the size of the affected record in the source project, then export and
-import the project again.
+To resolve this error, either:
+
+- Reduce the size of the affected record in the source project, then export and import the project again.
+- On GitLab Self-Managed and GitLab Dedicated, ask an administrator to raise the
+  [maximum size of a single record in import files](../../../administration/settings/import_and_export_settings.md#maximum-size-of-a-single-record-in-import-files).
 
 ## Error: `command exited with error code 15 and Unable to save [FILTERED] into [FILTERED]`
 

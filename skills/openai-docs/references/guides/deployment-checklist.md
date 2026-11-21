@@ -48,25 +48,24 @@ stateful workflows, and agent features.
 
 ## Choose a model for the workload
 
-Evaluate the [GPT-6 model family](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra)
-for your workload. Use [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra) for the
-highest capability, [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol) for complex
-coding and professional work at a lower cost than Astra, and
-[`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna) for
-efficient, repeatable work. Choose the model that performs well on representative
-tasks rather than routing every request to the most capable model.
+Start with [`gpt-6.2-sol`](https://developers.openai.com/api/docs/models/gpt-6.2-sol) at medium reasoning effort for most API workflows.
+Evaluate [`gpt-6.2-astra`](https://developers.openai.com/api/docs/models/gpt-6.2-astra) for demanding engineering or analysis,
+use [`gpt-6.1-terra`](https://developers.openai.com/api/docs/models/gpt-6.1-terra) for visual tasks such as interpreting charts and screenshots,
+and use [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna) for small, repeatable tasks. Choose the model that performs well on representative
+tasks rather than routing every request to the most capable model. See
+[model selection](https://developers.openai.com/api/docs/guides/model-selection) for more workload guidance.
 
 When migrating to GPT-6, preserve your current model's workload role and
 effective reasoning effort where supported. Use the Responses API for reasoning
-with tools. GPT-6 Astra and [GPT-6.1 Sol](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra#gpt-61-sol)
-require Responses for tool calling; GPT-6 Sol and GPT-6 Luna support function
-calling in Chat Completions only with `reasoning_effort: "none"`.
+with tools. GPT-6.2 Astra, GPT-6.2 Sol, and GPT-6.1 Terra require Responses for
+tool calling. GPT-6 Luna supports function calling in Chat Completions only with
+`reasoning_effort: "none"`.
 When reasoning effort is not `none`, remove `temperature`, `top_p`, and
 `top_logprobs`; also remove `logprobs` from Chat Completions requests and
 `message.output_text.logprobs` from the Responses `include` array. Check
 [data residency eligibility](https://developers.openai.com/api/docs/guides/data-residency#which-models-and-features-are-eligible-for-data-residency)
 before selecting a model or processing tier. See the
-[model migration guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra#migration-quickstart)
+[model migration guidance](https://developers.openai.com/api/docs/guides/latest-model#migration-quickstart)
 for other compatibility checks. Run representative evals before changing prompts or adding new
 capabilities. Compare task success, latency, input, output, reasoning, and
 cache-write tokens, and cost per successful task.
@@ -76,18 +75,18 @@ cache-write tokens, and cost per successful task.
 Use `reasoning.effort` to decide how much thinking the model should do before it
 answers.
 
-GPT-6 Astra, GPT-6.1 Sol, GPT-6 Sol, and GPT-6 Luna support `low`, `medium`,
-`high`, `xhigh`, and `max`. GPT-6 Sol and GPT-6 Luna also support `none`; GPT-6
-Astra and GPT-6.1 Sol do not. Lower effort is faster and uses fewer
-reasoning tokens. Higher effort gives the model more time for planning,
+GPT-6.2 Astra, GPT-6.2 Sol, GPT-6.1 Terra, and GPT-6 Luna support `low`,
+`medium`, `high`, `xhigh`, and `max`. GPT-6.1 Terra and GPT-6 Luna also support
+`none`; GPT-6.2 Astra and GPT-6.2 Sol do not. Lower effort is faster and uses
+fewer reasoning tokens. Higher effort gives the model more time for planning,
 debugging, synthesis, and multi-step tradeoffs.
 
 Use `low` when the job is mostly extraction, routing, classification, or a
 routine rewrite. Use `medium` or `high` when the model needs to diagnose a
 problem, compare options, write a plan, or reason through code. Use `xhigh` or
 `max` only when representative evals show that the quality gain justifies the
-extra latency and cost. When migrating from `minimal`, or from `none` to GPT-6
-Astra or GPT-6.1 Sol, start with `low` and compare results. Otherwise, preserve
+extra latency and cost. When migrating from `minimal`, or from `none` to GPT-6.2
+Astra or GPT-6.2 Sol, start with `low` and compare results. Otherwise, preserve
 your current effective effort and test changes against your quality, latency,
 and cost targets.
 
@@ -1609,8 +1608,9 @@ information. For logged-out experiences, use a stable session ID.
 
 ## Handle misalignment monitoring
 
-For GPT-6 Astra agent workflows, plan for [misalignment
-monitoring](https://developers.openai.com/api/docs/guides/safety-checks/misalignment-monitoring). If a request
+For agent workflows with models covered by [misalignment
+monitoring](https://developers.openai.com/api/docs/guides/safety-checks/misalignment-monitoring), plan for
+blocked requests. If a request
 returns `403` with `misalignment_policy_violation`, stop dispatching actions for
 that conversation and do not automatically retry the blocked workflow. Handle
 errors during streaming too, and review any actions that may already have run.
@@ -1779,6 +1779,28 @@ response.output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+CreateResponseOptions options = new("gpt-6.2-astra", [ResponseItem.CreateUserMessageItem("Analyze this large log bundle and cluster the primary failure modes.")])
+{
+    BackgroundModeEnabled = true,
+    StoredOutputEnabled = false
+};
+options.Tools.Add(ResponseTool.CreateCodeInterpreterTool(
+    CodeInterpreterToolContainerConfiguration.CreateAutomaticContainerConfiguration(["file_abc123"])));
+ResponseResult response = await client.CreateResponseAsync(options);
+while (response.Status is ResponseStatus.Queued or ResponseStatus.InProgress)
+{
+    await Task.Delay(TimeSpan.FromSeconds(2));
+    response = await client.GetResponseAsync(response.Id);
+}
+if (response.Status != ResponseStatus.Completed)
+    throw new InvalidOperationException($"Response ended with status {response.Status}");
+Console.WriteLine(response.GetOutputText());
+```
+
 ```ruby
 require "openai"
 
@@ -1849,7 +1871,7 @@ The Python sample uses `pip install "openai[realtime]>=3.8.0"`.
 The TypeScript sample uses `npm install openai@^7.10.0 ws`.
 The Ruby sample uses `gem install openai async-websocket`.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.103.0`.
+For Go, run `go get github.com/openai/openai-go/v3@v3.105.0`.
 For Java, add the Maven dependency `com.openai:openai-java:4.105.0`.
 These Go and Java SDK versions provide native Responses WebSocket support.
 

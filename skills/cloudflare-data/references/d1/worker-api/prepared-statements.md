@@ -86,6 +86,30 @@ stmt = self.env.DB.prepare(
   stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?2 AND CustomerId = ?1").bind(1, "Alfreds Futterkiste")
   ```
 
+#### Bind a list with one parameter
+
+D1 allows [100 bound parameters per query](https://developers.cloudflare.com/d1/platform/limits/).
+
+For an `IN` query, bind a JSON array as one string and expand it with [`json_each()`](https://developers.cloudflare.com/d1/sql-api/query-json/#expand-arrays-for-in-queries):
+
+```js
+const customerIds = [1, 2, 3];
+const result = await env.DB.prepare(
+	"SELECT * FROM Customers WHERE CustomerId IN (SELECT value FROM json_each(?1))",
+)
+	.bind(JSON.stringify(customerIds))
+	.all();
+```
+
+```ts
+const customerIds = [1, 2, 3];
+const result = await env.DB.prepare(
+  "SELECT * FROM Customers WHERE CustomerId IN (SELECT value FROM json_each(?1))",
+).bind(JSON.stringify(customerIds)).all();
+```
+
+The JSON string counts as one bound parameter. The [maximum string size](https://developers.cloudflare.com/d1/platform/limits/) still applies.
+
 #### Static statements
 
 D1 API supports static statements. Static statements are SQL statements where the variables have been hard coded. When writing a static statement, you manually type the variable within the statement string.
@@ -441,5 +465,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/#page","headline":"Prepared statement methods","description":"Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.","url":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/og.png?v=d0ebdf58b26c28b1","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/#page","headline":"Prepared statement methods","description":"Bind parameters and run D1 prepared statements using the run, all, first, and raw methods.","url":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/worker-api/prepared-statements/og.png?v=d0ebdf58b26c28b1","dateModified":"2026-11-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

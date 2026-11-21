@@ -413,7 +413,9 @@ import { createAI } from "agents/models/ai-sdk";
 
 export class Assistant extends Think {
 	getModel() {
-		return createAI({ binding: this.env.AI })("@cf/moonshotai/kimi-k2.7-code");
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 }
 ```
@@ -424,7 +426,9 @@ import { createAI } from "agents/models/ai-sdk";
 
 export class Assistant extends Think<Env> {
 	getModel() {
-		return createAI({ binding: this.env.AI })("@cf/moonshotai/kimi-k2.7-code");
+		return createAI({ binding: this.env.AI })(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+		);
 	}
 }
 ```
@@ -639,11 +643,21 @@ Model-specific settings go under `providerOptions.cloudflare`:
 | Modality | Call options used | `providerOptions.cloudflare` |
 | --- | --- | --- |
 | Image | `prompt`, `n`, `size`, `seed`, `files`, `mask` | `steps`, `guidance`, `negativePrompt`, `strength` |
-| Speech | `text`, `voice` (as `speaker`), `outputFormat` (as `encoding`), `language` (MeloTTS only) | None |
+| Speech | `text`, `voice` (as `speaker`), `outputFormat` (as `encoding`) | None |
 | Transcription | `audio`, `mediaType` | `language`, `task`, `initialPrompt`, `prefix`, `vadFilter` |
 | Reranking | `query`, `documents`, `topN` (as `top_k`) | None |
 
-An option a model does not take is listed in the result's `warnings` instead of being sent. For example, `flux-1-schnell` takes only a prompt and `steps`, and `@cf/deepgram/nova-3` takes `language` but not the Whisper-only transcription options. Image generation makes one image per request, so `generateImage` with a larger `n` sends parallel requests.
+An option a model does not take is listed in the result's `warnings` instead of being sent. For example, `flux-1-schnell` takes only a prompt and `steps`, Aura speech models take their language from the model id, such as `@cf/deepgram/aura-2-es`, and `@cf/deepgram/nova-3` takes `language` but not the Whisper-only transcription options. Image generation makes one image per request, so `generateImage` with a larger `n` sends parallel requests.
+
+The FLUX.2 image models, `@cf/black-forest-labs/flux-2-klein-9b`, `flux-2-klein-4b`, and `flux-2-dev`, take multipart form data instead of JSON. The provider sends it straight to Workers AI, so the gateway options do not apply, and a `warnings` entry says so when any are set. These models take `size`, `seed`, and `guidance`, and `steps` on `flux-2-dev` only, because the klein models always run four steps. They also take up to four reference images from the prompt's `images`, which the prompt can refer to as image 0 to image 3:
+
+```ts
+const { image } = await generateImage({
+	model: ai.image("@cf/black-forest-labs/flux-2-klein-9b"),
+	prompt: { text: "Put the lizard from image 0 in the snow", images: [lizard] },
+	size: "1024x768",
+});
+```
 
 These methods take Workers AI `@cf/` ids only, including in `fallback`. To route a vendor's own embedding, image, speech, or transcription model through AI Gateway, pass it to `ai.routed(model)`. It goes to the provider-native endpoint, like `ai(model)`. `ai.routed()` takes the gateway options, `headers`, `sessionAffinity`, and `vendorKey`.
 
@@ -692,5 +706,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

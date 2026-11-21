@@ -1541,6 +1541,32 @@ try (StreamResponse<ResponseStreamEvent> stream = client.responses().createStrea
 }
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra", StreamingEnabled = true };
+options.InputItems.Add(ResponseItem.CreateUserMessageItem("Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape"));
+options.Tools.Add(new ImageGenerationTool { Model = "gpt-image-2.5-sunburst", PartialImageCount = 2 });
+bool completed = false;
+await foreach (StreamingResponseUpdate update in client.CreateResponseStreamingAsync(options))
+{
+    if (update is StreamingResponseImageGenerationCallPartialImageUpdate partial)
+        await File.WriteAllBytesAsync($"river-partial-{partial.PartialImageIndex}.png", partial.PartialImageBytes.ToArray());
+    else if (update is StreamingResponseCompletedUpdate final)
+    {
+        ImageGenerationCallResponseItem image = final.Response.OutputItems.OfType<ImageGenerationCallResponseItem>().FirstOrDefault()
+            ?? throw new InvalidOperationException("No generated image was returned.");
+        await File.WriteAllBytesAsync("river-final.png", image.ImageResultBytes.ToArray());
+        completed = true;
+    }
+}
+if (!completed) throw new InvalidOperationException("Image generation did not complete.");
+```
+
 ```ruby
 require "base64"
 require "openai"
@@ -1870,6 +1896,17 @@ var file =
                 .build());
 
 System.out.println(file.id());
+```
+
+```csharp
+using OpenAI.Files;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIFileClient client = new(key);
+
+OpenAIFile file = await client.UploadFileAsync("cat_and_otter.png", FileUploadPurpose.Vision);
+Console.WriteLine(file.Id);
 ```
 
 ```ruby
@@ -2258,6 +2295,30 @@ Files.write(
     Base64.getDecoder()
         .decode(
             image.result().orElseThrow(() -> new IllegalStateException("No image returned"))));
+```
+
+```csharp
+using OpenAI.Files;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+OpenAIFileClient files = new(key);
+
+OpenAIFile bathBomb = await files.UploadFileAsync("bath-bomb.png", FileUploadPurpose.Vision);
+OpenAIFile incense = await files.UploadFileAsync("incense-kit.png", FileUploadPurpose.Vision);
+CreateResponseOptions options = new("gpt-6.2-astra", [ResponseItem.CreateUserMessageItem([
+    ResponseContentPart.CreateInputTextPart("Generate a photorealistic image of a gift basket on a white background labeled 'Relax & Unwind' with a ribbon and handwriting-like font, containing all the items in the reference pictures."),
+    ResponseContentPart.CreateInputImagePart(BinaryData.FromBytes(await File.ReadAllBytesAsync("body-lotion.png"), "image/png")),
+    ResponseContentPart.CreateInputImagePart(BinaryData.FromBytes(await File.ReadAllBytesAsync("soap.png"), "image/png")),
+    ResponseContentPart.CreateInputImagePart(bathBomb.Id),
+    ResponseContentPart.CreateInputImagePart(incense.Id),
+])]);
+options.Tools.Add(new ImageGenerationTool { Model = "gpt-image-2.5-sunburst" });
+ResponseResult response = await client.CreateResponseAsync(options);
+ImageGenerationCallResponseItem image = response.OutputItems.OfType<ImageGenerationCallResponseItem>().First();
+await File.WriteAllBytesAsync("gift-basket.png", image.ImageResultBytes.ToArray());
 ```
 
 ```ruby
@@ -2998,6 +3059,32 @@ String imageResult =
 Files.write(Path.of("lounge.png"), Base64.getDecoder().decode(imageResult));
 ```
 
+```csharp
+using OpenAI.Files;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+OpenAIFileClient files = new(key);
+
+OpenAIFile lounge = await files.UploadFileAsync("sunlit_lounge.png", FileUploadPurpose.Vision);
+OpenAIFile mask = await files.UploadFileAsync("mask.png", FileUploadPurpose.Vision);
+CreateResponseOptions options = new("gpt-6.2-astra", [ResponseItem.CreateUserMessageItem([
+    ResponseContentPart.CreateInputTextPart("generate an image of the same sunlit indoor lounge area with a pool but the pool should contain a flamingo"),
+    ResponseContentPart.CreateInputImagePart(lounge.Id),
+])]);
+options.Tools.Add(new ImageGenerationTool
+{
+    Model = "gpt-image-2.5-sunburst",
+    Quality = ImageGenerationToolQuality.High,
+    InputImageMask = new ImageGenerationToolInputImageMask(mask.Id),
+});
+ResponseResult response = await client.CreateResponseAsync(options);
+ImageGenerationCallResponseItem image = response.OutputItems.OfType<ImageGenerationCallResponseItem>().First();
+await File.WriteAllBytesAsync("lounge.png", image.ImageResultBytes.ToArray());
+```
+
 ```ruby
 require "base64"
 require "openai"
@@ -3179,6 +3266,21 @@ try (InputStream image = Files.newInputStream(imagePath);
       Path.of("lounge.png"),
       Base64.getDecoder().decode(images.data().orElseThrow().get(0).b64Json().orElseThrow()));
 }
+```
+
+```csharp
+using OpenAI.Images;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+string model = "gpt-image-2.5-sunburst";
+ImageClient client = new(model, key);
+
+GeneratedImage image = await client.GenerateImageEditAsync(
+    "sunlit_lounge.png",
+    "A sunlit indoor lounge area with a pool containing a flamingo",
+    "mask.png");
+await File.WriteAllBytesAsync("composition.png", image.ImageBytes.ToArray());
 ```
 
 ```ruby

@@ -429,6 +429,8 @@ You can generate diagrams from text in a source code block, the same way as in
 ```org
 #+BEGIN_SRC mermaid
 graph TD;
+    accTitle: Basic Mermaid diagram example
+    accDescr: Node A connects to nodes B and C, which both connect to node D.
     A-->B;
     A-->C;
     B-->D;
@@ -440,6 +442,8 @@ When rendered, the example looks similar to:
 
 ```mermaid
 graph TD;
+    accTitle: Basic Mermaid diagram example
+    accDescr: Node A connects to nodes B and C, which both connect to node D.
     A-->B;
     A-->C;
     B-->D;

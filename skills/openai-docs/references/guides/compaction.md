@@ -742,6 +742,14 @@ Output handling: do not prune `/responses/compact` output. The returned window
 is the canonical next context window, so pass it into your next `/responses`
 call as-is.
 
+In Ruby SDK 1.0, the `output` from `client.responses.compact` uses `ResponseItem`,
+and the `output` from `client.beta.responses.compact` uses `BetaResponseItem`.
+These unions include retained input messages, output items, and compaction
+records. Update typed collections to use the broader union. To preserve raw
+fields on unrecognized items, pass `compacted.deep_to_h.fetch(:output)` as
+`input` on the next request. See the [Ruby SDK migration
+guide](https://developers.openai.com/api/docs/guides/ruby-sdk-migration).
+
 ### User journey for standalone compaction
 
 1. Use `/responses` normally, sending input items that include user messages,

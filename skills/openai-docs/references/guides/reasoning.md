@@ -663,6 +663,28 @@ second.output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+List<ResponseItem> history = [ResponseItem.CreateUserMessageItem("Inspect this repository and identify the likely bug.")];
+ResponseResult first = await client.CreateResponseAsync(new CreateResponseOptions("gpt-6.1-sol", history)
+{
+    ReasoningOptions = new ResponseReasoningOptions { Context = ResponseReasoningContext.CurrentTurn },
+});
+
+ResponseResult second = await client.CreateResponseAsync(new CreateResponseOptions(
+    "gpt-6.1-sol", [ResponseItem.CreateUserMessageItem("Now patch the bug and explain the change.")])
+{
+    PreviousResponseId = first.Id,
+    ReasoningOptions = new ResponseReasoningOptions { Context = ResponseReasoningContext.AllTurns },
+});
+Console.WriteLine(second.GetOutputText());
+```
+
 ```ruby
 require "openai"
 
@@ -905,6 +927,31 @@ client
     .flatMap(message -> message.content().stream())
     .flatMap(content -> content.outputText().stream())
     .forEach(text -> System.out.println(text.text()));
+```
+
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+List<ResponseItem> history = [ResponseItem.CreateUserMessageItem("Inspect this repository and identify the likely bug.")];
+ResponseResult first = await client.CreateResponseAsync(new CreateResponseOptions("gpt-6.1-sol", history)
+{
+    ReasoningOptions = new ResponseReasoningOptions { Context = ResponseReasoningContext.CurrentTurn },
+    StoredOutputEnabled = false,
+});
+
+// Preserve every output item, including encrypted reasoning.
+history.AddRange(first.OutputItems);
+history.Add(ResponseItem.CreateUserMessageItem("Now patch the bug and explain the change."));
+ResponseResult second = await client.CreateResponseAsync(new CreateResponseOptions("gpt-6.1-sol", history)
+{
+    StoredOutputEnabled = false,
+    ReasoningOptions = new ResponseReasoningOptions { Context = ResponseReasoningContext.AllTurns },
+});
+Console.WriteLine(second.GetOutputText());
 ```
 
 ```ruby

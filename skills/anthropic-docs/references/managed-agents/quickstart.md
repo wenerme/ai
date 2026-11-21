@@ -47,12 +47,12 @@ Let Claude Code set up your agent for you
 
 ## Core concepts
 
-| Concept         | Description                                                                                                                   |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Agent**       | The model, system prompt, tools, MCP servers, and skills                                                                      |
+| Concept | Description |
+| ----- | ----- |
+| **Agent** | The model, system prompt, tools, MCP servers, and skills |
 | **Environment** | Configuration for where sessions run: an Anthropic-managed cloud sandbox, or a self-hosted sandbox on your own infrastructure |
-| **Session**     | A running agent instance within an environment, performing a specific task and generating outputs                             |
-| **Events**      | Messages exchanged between your application and the agent (user turns, tool results, status updates)                          |
+| **Session** | A running agent instance within an environment, performing a specific task and generating outputs |
+| **Events** | Messages exchanged between your application and the agent (user turns, tool results, status updates) |
 
 ## Before you begin
 
@@ -83,7 +83,7 @@ Let Claude Code set up your agent for you
         For Linux environments, download the release binary directly.
 
         ```bash
-        VERSION=2.10.0
+        VERSION=2.12.1
         OS=$(uname -s | tr '[:upper:]' '[:lower:]')
         case $(uname -m) in
           x86_64) ARCH=amd64 ;;
@@ -152,7 +152,7 @@ To run the CLI examples, install the CLI:
     For Linux environments, download the release binary directly.
 
     ```bash
-    VERSION=2.10.0
+    VERSION=2.12.1
     OS=$(uname -s | tr '[:upper:]' '[:lower:]')
     case $(uname -m) in
       x86_64) ARCH=amd64 ;;
@@ -199,7 +199,7 @@ To run the CLI examples, install the CLI:
     <Tabs>
       <Tab title="Gradle">
         ```kotlin
-        implementation("com.anthropic:anthropic-java:3.10.0")
+        implementation("com.anthropic:anthropic-java:3.12.0")
         ```
       </Tab>
 
@@ -208,7 +208,7 @@ To run the CLI examples, install the CLI:
         <dependency>
             <groupId>com.anthropic</groupId>
             <artifactId>anthropic-java</artifactId>
-            <version>3.10.0</version>
+            <version>3.12.0</version>
         </dependency>
         ```
       </Tab>

@@ -14,7 +14,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 11 more }`
+- `AgentSession object { id, agent, created_at, 12 more }`
 
   A Managed Agents session.
 
@@ -962,7 +962,23 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         - `"environment_connection"`
 
-  - `status: "idle" or "in_progress" or "requires_action" or "failed"`
+  - `spend_control: object { consumed, limit }`
+
+    Spending limit and best-effort consumption, in USD cents. The limit is null for an unlimited session. Consumption is null when unavailable.
+
+    - `consumed: integer or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+      `minimum: 0`
+
+    - `limit: integer or null`
+
+      The configured positive limit in USD cents, or null when unlimited.
+
+      `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
+  - `status: "idle" or "in_progress" or "requires_action" or 2 more`
 
     The current status of the session.
 
@@ -981,6 +997,10 @@ Retrieves the current state of a managed agent session. See [managing sessions](
     - `"failed"`
 
       The session failed.
+
+    - `"budget_reached"`
+
+      The session is paused because its spending limit was reached.
 
   - `usage: TokenUsage or null`
 
@@ -1124,6 +1144,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
       "type": "mcp_approval_request"
     }
   ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  },
   "status": "idle",
   "usage": {
     "input_tokens": 0,

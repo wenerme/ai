@@ -194,6 +194,26 @@ VALUES
   ('1000', 'Boris Pewter', '2022-12-15 22:16:15');
 ```
 
+If one large value makes an `INSERT` exceed the [100,000-byte SQL statement limit](https://developers.cloudflare.com/d1/platform/limits/), splitting rows cannot help. This can also affect D1 exports. In a restore script, bind the values instead of including them as SQL literals:
+
+```js
+await env.DB.prepare(
+	"INSERT INTO users (id, full_name, created_on) VALUES (?, ?, ?)",
+)
+	.bind(id, fullName, createdOn)
+	.run();
+```
+
+```ts
+await env.DB.prepare(
+  "INSERT INTO users (id, full_name, created_on) VALUES (?, ?, ?)",
+)
+  .bind(id, fullName, createdOn)
+  .run();
+```
+
+The value and row size limits still apply. Verify restored data in a separate database.
+
 ## Foreign key constraints
 
 When importing data, you may need to temporarily disable [foreign key constraints](https://developers.cloudflare.com/d1/sql-api/foreign-keys/). To do so, call `PRAGMA defer_foreign_keys = true` before making changes that would violate foreign keys.
@@ -215,5 +235,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/import-export-data/#page","headline":"Import and export data","description":"Import existing SQLite tables into D1 or export a D1 database for local use.","url":"https://developers.cloudflare.com/d1/best-practices/import-export-data/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/best-practices/import-export-data/og.png?v=bbc73732a0afdd37","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/import-export-data/#page","headline":"Import and export data","description":"Import existing SQLite tables into D1 or export a D1 database for local use.","url":"https://developers.cloudflare.com/d1/best-practices/import-export-data/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/best-practices/import-export-data/og.png?v=bbc73732a0afdd37","dateModified":"2026-11-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

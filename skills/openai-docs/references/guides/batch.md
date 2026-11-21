@@ -138,6 +138,17 @@ var file =
 System.out.println(file.id());
 ```
 
+```csharp
+using OpenAI.Files;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+OpenAIFileClient client = new(key);
+
+OpenAIFile file = await client.UploadFileAsync("batchinput.jsonl", FileUploadPurpose.Batch);
+Console.WriteLine(file.Id);
+```
+
 ```ruby
 require "openai"
 require "pathname"
@@ -612,6 +623,21 @@ client
     .list(BatchListParams.builder().limit(10).build())
     .autoPager()
     .forEach(batch -> System.out.println(batch.id()));
+```
+
+```csharp
+using OpenAI.Batch;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+BatchClient client = new(key);
+
+int count = 0;
+await foreach (BatchJob batch in client.GetBatchesAsync(new BatchCollectionOptions { PageSizeLimit = 10 }))
+{
+    Console.WriteLine(batch.Id);
+    if (++count == 10) break;
+}
 ```
 
 ```ruby

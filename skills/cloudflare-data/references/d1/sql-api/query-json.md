@@ -214,15 +214,27 @@ key|value|type|id|fullkey|path
 2|94944|integer|3|$[2]|$
 ```
 
-You can use `json_each` with [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) in a Worker by creating a statement and using `JSON.stringify` to pass an array as a [bound parameter](https://developers.cloudflare.com/d1/worker-api/d1-database/#guidance):
+You can use `json_each` with [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) in a Worker by creating a statement and using `JSON.stringify` to pass an array as a [bound parameter](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#bind):
+
+```js
+const stmt = context.env.DB.prepare(
+	"UPDATE users SET last_audited = ?1 WHERE id IN (SELECT value FROM json_each(?2))",
+);
+const resp = await stmt
+	.bind("2023-05-16T11:24:08+00:00", JSON.stringify([183183, 13913, 94944]))
+	.run();
+```
 
 ```ts
-const stmt = context.env.DB
-    .prepare("UPDATE users SET last_audited = ? WHERE id IN (SELECT value FROM json_each(?1))")
-const resp = await stmt.bind(
+const stmt = context.env.DB.prepare(
+    "UPDATE users SET last_audited = ?1 WHERE id IN (SELECT value FROM json_each(?2))",
+);
+const resp = await stmt
+  .bind(
     "2023-05-16T11:24:08+00:00",
-    JSON.stringify([183183, 13913, 94944])
-    ).run()
+    JSON.stringify([183183, 13913, 94944]),
+  )
+  .run();
 ```
 
 This would only update rows in your `users` table where the `id` matches one of the three provided.
@@ -236,5 +248,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/query-json/#page","headline":"Query JSON","description":"Extract, insert, and manipulate JSON data stored in D1 using built-in SQLite JSON functions.","url":"https://developers.cloudflare.com/d1/sql-api/query-json/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/sql-api/query-json/og.png?v=84d7799e906615c5","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/sql-api/query-json/#page","headline":"Query JSON","description":"Extract, insert, and manipulate JSON data stored in D1 using built-in SQLite JSON functions.","url":"https://developers.cloudflare.com/d1/sql-api/query-json/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/sql-api/query-json/og.png?v=84d7799e906615c5","dateModified":"2026-11-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

@@ -82,7 +82,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
       A stable, machine-readable failure category.
 
@@ -93,6 +93,10 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
       - `"max_output_tokens"`
 
         The model reached its output token limit before finishing the response.
+
+      - `"session_budget_exceeded"`
+
+        The session has reached its usage budget.
 
       - `"usage_limit_exceeded"`
 
@@ -428,7 +432,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
       A stable, machine-readable failure category.
 
@@ -439,6 +443,10 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"max_output_tokens"`
 
         The model reached its output token limit before finishing the response.
+
+      - `"session_budget_exceeded"`
+
+        The session has reached its usage budget.
 
       - `"usage_limit_exceeded"`
 

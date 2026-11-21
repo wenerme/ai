@@ -12,6 +12,8 @@ The following models are available:
 
 | Model         | Model ID        |
 | ------------- | --------------- |
+| GPT-6.2 Astra | `gpt-6.2-astra` |
+| GPT-6.2 Sol   | `gpt-6.2-sol`   |
 | GPT-6 Luna    | `gpt-6-luna`    |
 | GPT-6.1 Sol   | `gpt-6.1-sol`   |
 | GPT-6.1 Terra | `gpt-6.1-terra` |
@@ -62,7 +64,7 @@ curl --fail-with-body "$PROJECT_URL/locations/global/publishers/openai/v1/respon
   }'
 ```
 
-```javascript
+```typescript
 import OpenAI from "openai";
 
 const projectId = "your-project-id";
@@ -241,7 +243,7 @@ The table compares feature support on Google Cloud with the first-party OpenAI A
       <tr>
         <td>Reasoning summaries</td>
         <td>Available</td>
-        <td>Not available</td>
+        <td>Available</td>
       </tr>
     </tbody>
     <tbody>

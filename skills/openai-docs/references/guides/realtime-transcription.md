@@ -215,6 +215,47 @@ func transcribeTurn(ctx context.Context, conn *realtime.RealtimeConnection, audi
 }
 ```
 
+```csharp
+using OpenAI.Realtime;
+#pragma warning disable OPENAI002
+
+RealtimeTranscriptionSessionInputAudioOptions input = new()
+{
+    AudioFormat = new RealtimePcmAudioFormat(),
+    AudioTranscriptionOptions = new() { Model = "gpt-live-transcribe" }
+};
+input.DisableTurnDetection();
+await session.SendCommandAsync(new RealtimeClientCommandSessionUpdate(new RealtimeTranscriptionSessionOptions
+{
+    AudioOptions = new() { InputAudioOptions = input }
+}), timeout.Token);
+byte[] audio = await File.ReadAllBytesAsync("speech.pcm", timeout.Token);
+for (int offset = 0; offset < audio.Length; offset += 9600)
+{
+    BinaryData chunk = BinaryData.FromBytes(audio.AsMemory(offset, Math.Min(9600, audio.Length - offset)));
+    await session.SendCommandAsync(new RealtimeClientCommandInputAudioBufferAppend(chunk), timeout.Token);
+}
+await session.SendCommandAsync(new RealtimeClientCommandInputAudioBufferCommit(), timeout.Token);
+string? itemId = null;
+await foreach (RealtimeServerUpdate update in session.ReceiveUpdatesAsync(timeout.Token))
+{
+    if (update is RealtimeServerUpdateError error)
+        throw new InvalidOperationException(error.Error.Message);
+    if (update is RealtimeServerUpdateInputAudioBufferCommitted committed)
+        itemId = committed.ItemId;
+    if (update is RealtimeServerUpdateConversationItemInputAudioTranscriptionDelta delta)
+        Console.Error.WriteLine($"Partial transcript ({delta.ItemId}): {delta.Delta}");
+    if (update is RealtimeServerUpdateConversationItemInputAudioTranscriptionFailed failed && failed.ItemId == itemId)
+        throw new InvalidOperationException(failed.Error.Message);
+    if (update is RealtimeServerUpdateConversationItemInputAudioTranscriptionCompleted transcript && transcript.ItemId == itemId)
+    {
+        Console.WriteLine($"Final transcript: {transcript.Transcript}");
+        return;
+    }
+}
+throw new InvalidOperationException("Session ended before the committed audio was transcribed.");
+```
+
 ```ruby
 require "openai"
 require "base64"

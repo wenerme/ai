@@ -1858,6 +1858,8 @@ plot.save("token-histogram.png")
 
 Create an embedding for each chunk with `text-embedding-3-small`. Use the same model for query embeddings. If you change embedding models, rebuild the index before searching it.
 
+For the C# example, first export the `text` column of the chunked `df` to `processed/chunks.json` as a JSON array of strings. The example reads those chunks and writes the embeddings used by the question-answering step.
+
 Create embeddings for the scraped text
 
 ```typescript
@@ -1972,6 +1974,37 @@ func main() {
 		log.Fatal(err)
 	}
 }
+```
+
+```csharp
+using System.Globalization;
+using System.Text.Json;
+using OpenAI.Embeddings;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+string model = "text-embedding-3-small";
+EmbeddingClient client = new(model, key);
+
+string[] pageChunks = JsonSerializer.Deserialize<string[]>(
+    await File.ReadAllTextAsync("processed/chunks.json"))!;
+Directory.CreateDirectory("processed");
+using StreamWriter writer = new("processed/embeddings.csv");
+await writer.WriteLineAsync("text,n_tokens,embeddings");
+foreach (string text in pageChunks)
+{
+    (float[] vector, int tokens) = await EmbedAsync(client, text.Replace("\n", " ", StringComparison.Ordinal));
+    string encoded = JsonSerializer.Serialize(vector);
+    await writer.WriteLineAsync($"{CsvField(text)},{tokens.ToString(CultureInfo.InvariantCulture)},{CsvField(encoded)}");
+}
+Console.WriteLine("Saved processed/embeddings.csv");
+
+static async Task<(float[] Vector, int Tokens)> EmbedAsync(EmbeddingClient client, string text)
+{
+    OpenAIEmbeddingCollection result = await client.GenerateEmbeddingsAsync([text]);
+    return (result[0].ToFloats().ToArray(), result.Usage.InputTokenCount);
+}
+
+static string CsvField(string value) => "\"" + value.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"";
 ```
 
 ```ruby
@@ -2144,7 +2177,7 @@ end
 ```
 
 
-Embed the question using the same model you used to build the index. The example computes cosine distances with NumPy and retrieves the closest text chunks.
+Embed the question using the same model you used to build the index. The example computes cosine distances and retrieves the closest text chunks.
 
 Build context for a question
 
@@ -2400,6 +2433,43 @@ func createContext(ctx context.Context, client *openai.Client, question string, 
 }
 ```
 
+```csharp
+using System.Globalization;
+using System.Text.Json;
+using Microsoft.VisualBasic.FileIO;
+using OpenAI.Embeddings;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+private sealed record Page(string Text, int Tokens, float[] Embedding);
+private static double CosineDistance(float[] query, float[] vector)
+{
+    double dot = 0, leftNorm = 0, rightNorm = 0;
+    for (int i = 0; i < query.Length; i++)
+    {
+        dot += (double)query[i] * vector[i];
+        leftNorm += (double)query[i] * query[i];
+        rightNorm += (double)vector[i] * vector[i];
+    }
+    return 1 - dot / Math.Sqrt(leftNorm * rightNorm);
+}
+
+private static async Task<string> CreateContextAsync(EmbeddingClient embeddings, string question, IEnumerable<Page> pages, int maxTokens = 1800)
+{
+    OpenAIEmbedding result = await embeddings.GenerateEmbeddingAsync(question);
+    float[] query = result.ToFloats().ToArray();
+    List<string> context = [];
+    int tokenCount = 0;
+    foreach (Page page in pages.OrderBy(page => CosineDistance(query, page.Embedding)))
+    {
+        tokenCount += page.Tokens + 4;
+        if (tokenCount > maxTokens) break;
+        context.Add(page.Text);
+    }
+    return string.Join("\n\n###\n\n", context);
+}
+```
+
 ```ruby
 require "openai"
 require "csv"
@@ -2485,6 +2555,19 @@ func answerQuestion(ctx context.Context, client *openai.Client, rows []embeddedR
 }
 ```
 
+```csharp
+private static async Task<string> AnswerQuestionAsync(EmbeddingClient embeddings, ResponsesClient responses, IEnumerable<Page> pages, string question)
+{
+    string context = await CreateContextAsync(embeddings, question, pages);
+    ResponseResult response = await responses.CreateResponseAsync(new CreateResponseOptions(
+        "gpt-6-luna", [ResponseItem.CreateUserMessageItem($"Context: {context}\n\nQuestion: {question}")])
+    {
+        Instructions = "Answer the question using only the supplied context. If the context doesn't answer the question, say \"I don't know.\"",
+    });
+    return response.GetOutputText().Trim();
+}
+```
+
 ```ruby
 def answer_question(client, rows, question, max_len: 1800)
   context = create_context(client, question, rows, max_len: max_len)
@@ -2536,6 +2619,25 @@ func main() {
 		fmt.Println(answer)
 	}
 }
+```
+
+```csharp
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+EmbeddingClient embeddings = new("text-embedding-3-small", key);
+
+ResponsesClient responses = new(key);
+
+using TextFieldParser csv = new("processed/embeddings.csv") { HasFieldsEnclosedInQuotes = true };
+csv.SetDelimiters(",");
+csv.ReadFields();
+List<Page> pages = [];
+while (!csv.EndOfData)
+{
+    string[] row = csv.ReadFields()!;
+    pages.Add(new(row[0], int.Parse(row[1], CultureInfo.InvariantCulture), JsonSerializer.Deserialize<float[]>(row[2])!));
+}
+Console.WriteLine(await AnswerQuestionAsync(embeddings, responses, pages, "What is ChatGPT?"));
+Console.WriteLine(await AnswerQuestionAsync(embeddings, responses, pages, "What did I have for breakfast today?"));
 ```
 
 ```ruby

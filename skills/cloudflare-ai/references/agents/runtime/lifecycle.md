@@ -154,6 +154,7 @@ Implement these optional methods on your class. The Lifecycle calls them inside 
 | --- | --- |
 | `onStart(props?)` | Once per in-memory lifetime, after every capability has started |
 | `onRequest(request)` | For each HTTP request that no capability handled |
+| `onFetchError(request, error)` | When startup, a capability's request or upgrade hook, or `onRequest()` throws. Returns the response to send. Refer to [Failed requests](#failed-requests) |
 | `onAlarm()` | Once per alarm, after the Lifecycle has run the due jobs |
 | `onJob(context)` | When a job the host pushed through `lifecycle.jobs` comes due |
 | `onAlarmMemoryLimit(context)` | After an alarm ends in a memory-limit reset, after every capability's policy has run |
@@ -259,6 +260,64 @@ Only one catch-all can exist for each hook. `use()` throws when you install a se
 | WebSocket upgrade | The first capability that returns a `Response`, otherwise `404` |
 | WebSocket message, close, or error | The capability that owns the connection, otherwise ignored |
 | Alarm | Due jobs, then the host's `onAlarm()` |
+
+## Failed requests
+
+When startup, a capability's `onRequest()` or `onWebSocketUpgrade()` hook, or the host's `onRequest()` throws, the Lifecycle logs the error with `console.error` and sends a response that does not include it:
+
+- An HTTP request gets `500 Internal Server Error`.
+- A WebSocket upgrade gets a socket that closes at once with code `1011`.
+
+An error's message and stack can reveal internals, such as secret names or file paths, to callers who are not authenticated. To send something else, implement `onFetchError()`. It runs after the error is logged, with the request and the thrown value:
+
+```js
+import { DurableObject } from "cloudflare:workers";
+import { Lifecycle } from "agents/lifecycle";
+
+export class MyObject extends DurableObject {
+	lifecycle = Lifecycle.install(this);
+
+	onFetchError(request, error) {
+		// Show details only in local development.
+		if (this.env.ENVIRONMENT !== "development") return;
+		const detail = error instanceof Error ? error.stack : String(error);
+		return new Response(detail, { status: 500 });
+	}
+}
+```
+
+```ts
+import { DurableObject } from "cloudflare:workers";
+import { Lifecycle } from "agents/lifecycle";
+
+export class MyObject extends DurableObject<Env> {
+	readonly lifecycle = Lifecycle.install(this);
+
+	onFetchError(request: Request, error: unknown): Response | undefined {
+		// Show details only in local development.
+		if (this.env.ENVIRONMENT !== "development") return;
+		const detail = error instanceof Error ? error.stack : String(error);
+		return new Response(detail, { status: 500 });
+	}
+}
+```
+
+Return nothing to send the default response. If `onFetchError()` throws, the Lifecycle logs that error and also sends the default. In both cases, if the original thrown value is not an `Error`, the Lifecycle rethrows it to the runtime instead. `error` is whatever was thrown, so narrow it before you read it. `request` may already have had its body read.
+
+For a WebSocket upgrade, return either an HTTP error response or a `101` response with your own socket:
+
+```ts
+onFetchError(request: Request, error: unknown): Response | undefined {
+	if (request.headers.get("Upgrade")?.toLowerCase() !== "websocket") return;
+	const pair = new WebSocketPair();
+	pair[1].accept();
+	pair[1].send(JSON.stringify({ error: "unavailable" }));
+	pair[1].close(1011, "Startup failed");
+	return new Response(null, { status: 101, webSocket: pair[0] });
+}
+```
+
+`onFetchError()` runs in the object's context, so [`getCurrentAgent()`](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/) returns the object and the request. After a failed startup, `onStart()` has not finished, so do not rely on state it sets up.
 
 ## Install capabilities
 
@@ -424,5 +483,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/#page","headline":"Lifecycle","description":"Install the Lifecycle from agents/lifecycle on a Durable Object to get startup, request dispatch, a durable job queue that owns the alarm, object names, and teardown.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/lifecycle/og.png?v=844b4a9e739ea52f","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/#page","headline":"Lifecycle","description":"Install the Lifecycle from agents/lifecycle on a Durable Object to get startup, request dispatch, a durable job queue that owns the alarm, object names, and teardown.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/lifecycle/og.png?v=844b4a9e739ea52f","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

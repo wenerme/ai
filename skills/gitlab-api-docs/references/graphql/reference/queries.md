@@ -2103,22 +2103,6 @@ Get all runners in the GitLab instance (project and shared). Access is restricte
 | `upgradeStatus` | [`CiRunnerUpgradeStatus`](enums.md#cirunnerupgradestatus) | Filter by upgrade status. |
 | `versionPrefix` | [`String`](scalars.md#string) | Filter runners by version. Runners that contain runner managers with the version at the start of the search term are returned. For example, the search term '14.' returns runner managers with versions '14.11.1' and '14.2.3'. |
 
-## `secretPermissions`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
-
-List secret permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
-
-**Returns:** [`SecretPermissionConnection`](objects.md#secretpermissionconnection)
-
-### `secretPermissions` arguments {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `projectPath` | [`ID!`](scalars.md#id) | Project the secret permission belong to. |
-
 ## `secretsManagerInstanceEntitlement`
 
 - Status: Experiment

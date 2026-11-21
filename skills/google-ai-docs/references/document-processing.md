@@ -1662,12 +1662,10 @@ presentations (`.pptx`, `.ppt`, `.odp`), set `processing.page_options`:
   import com.google.genai.gaos.models.interactions.TextContent;
   import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
   import com.google.genai.types.File;
-  import com.google.genai.types.HttpOptions;
   import com.google.genai.types.UploadFileConfig;
   import java.util.List;
   
-  Client client =
-      Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+  Client client = new Client();
   
   File uploadedDoc =
       client.files.upload(
@@ -1726,9 +1724,7 @@ presentations (`.pptx`, `.ppt`, `.odp`), set `processing.page_options`:
   
   func main() {
       ctx := context.Background()
-      client, err := genai.NewClient(ctx, &genai.ClientConfig{
-          HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
-      })
+      client, err := genai.NewClient(ctx, nil)
       if err != nil {
           log.Fatal(err)
       }
@@ -1781,7 +1777,7 @@ presentations (`.pptx`, `.ppt`, `.odp`), set `processing.page_options`:
 
   {% tab filename="page_options.sh" label="REST" %}
   ```shell
-  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
@@ -1929,12 +1925,10 @@ For spreadsheets (`.xlsx`, `.xls`, `.ods`), set `processing.spreadsheet_options`
   import com.google.genai.gaos.models.interactions.TextContent;
   import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
   import com.google.genai.types.File;
-  import com.google.genai.types.HttpOptions;
   import com.google.genai.types.UploadFileConfig;
   import java.util.List;
   
-  Client client =
-      Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+  Client client = new Client();
   
   File workbook =
       client.files.upload(
@@ -2000,9 +1994,7 @@ For spreadsheets (`.xlsx`, `.xls`, `.ods`), set `processing.spreadsheet_options`
   
   func main() {
       ctx := context.Background()
-      client, err := genai.NewClient(ctx, &genai.ClientConfig{
-          HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
-      })
+      client, err := genai.NewClient(ctx, nil)
       if err != nil {
           log.Fatal(err)
       }
@@ -2057,7 +2049,7 @@ For spreadsheets (`.xlsx`, `.xls`, `.ods`), set `processing.spreadsheet_options`
 
   {% tab filename="spreadsheet_options.sh" label="REST" %}
   ```shell
-  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
