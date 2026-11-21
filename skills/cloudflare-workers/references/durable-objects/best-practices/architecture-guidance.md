@@ -76,7 +76,7 @@ For a worked design that follows the administrative, resource, and analytics flo
 
 1. **Separate control-plane changes from data-plane traffic.** Durable Objects can serve either role. Publish configuration outward so routine application requests do not depend on a control-plane object.
 2. **Choose an atom of coordination.** Use one object for a room, session, document, account, or other unit whose state must change together.
-3. **Measure each object's capacity.** Load-test the expected workload, allow headroom, and shard when one object cannot meet your targets.
+3. **Measure each object's capacity.** Load-test the expected workload across many active objects, account for [shared isolates](#shared-isolates), and shard when one object cannot meet your targets.
 4. **Route with deterministic names** built from the resource key, using `getByName()`.
 5. **Use complementary services.** Distribute configuration with KV, store large objects in R2, and send analytical events to [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) instead of collecting them in one global object.
 6. **Plan for hot Durable Objects.** Identify the limiting resource, then add shards or layers that preserve the coordination your application needs.
@@ -347,6 +347,18 @@ RIGHT: clients → room:lobby | room:42 | room:dev (one object per room)
 </details>
 
 ## Step 2: Size each atom
+
+### Shared isolates and event-loop contention
+
+Cloudflare does not deliberately place your Durable Objects together on the same physical host. For most accounts, a Durable Object is typically the only Durable Object in its isolate. However, multiple instances of the same Durable Object class can share an [isolate](https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates). Different object IDs do not guarantee separate isolates.
+
+Only one thread can execute JavaScript in an isolate at a time. Synchronous work—including expensive SQLite queries or parsing large JSON payloads—can delay other objects sharing that isolate. For example, a query that scans a large table because an appropriate index is missing can cause delays even if the objects never communicate.
+
+Staying within the [per-request CPU limit](https://developers.cloudflare.com/durable-objects/platform/limits/) does not prevent this contention. Design for shared execution as your application grows:
+
+- **Keep synchronous work short.** Avoid long CPU-bound loops and unbounded payload processing. Declaring a function `async` does not make its synchronous work nonblocking.
+- **Load-test many active objects together.** Include realistic traffic and bursts, not just requests to one object. Measure tail latency across objects while CPU-heavy operations run.
+- **Shard for coordination and capacity, not dedicated compute.** Sharding can distribute work, but does not guarantee a separate isolate for each shard. Keep headroom and validate the combined workload after sharding.
 
 ### Limits at a glance
 
@@ -1193,7 +1205,7 @@ The diagram illustrates immediate updates. The default `deferred` [code update s
   "name": "api",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-21",
   "durable_objects": {
     "bindings": [
       {
@@ -1210,7 +1222,7 @@ The diagram illustrates immediate updates. The default `deferred` [code update s
 name = "api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-21"
 
 [[durable_objects.bindings]]
 name = "ENGINE"
@@ -1223,7 +1235,7 @@ script_name = "engine"
 - **Responsibilities:** identify administrative operations, routine resource traffic, and analytics. Workers and Durable Objects can participate in either application plane.
 - **Propagation:** data-plane traffic does not need to write control-plane state. Configuration has a version, a freshness policy, and a recovery path for failed publication.
 - **Coordination:** each object owns a defined unit of state. Cross-object operations account for the absence of a shared transaction.
-- **Capacity:** objects meet latency and throughput targets under load, with headroom for bursts and growth.
+- **Capacity:** objects meet latency and throughput targets under concurrent load across many objects, accounting for shared-isolate contention and leaving headroom for bursts and growth.
 - **Routing:** names are deterministic, and layout changes preserve access to existing state and retries.
 - **Composition:** resource requests bypass administrative parents when parent coordination is unnecessary.
 - **Placement:** location hints match the workload and are treated as hints, not placement guarantees.
@@ -1251,5 +1263,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/#page","headline":"Architecture guidance","description":"Choose coordination boundaries, separate control and data planes, and scale Durable Objects with other Cloudflare services.","url":"https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/og.png?v=e7983ddddd2ca9ad","dateModified":"2026-11-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/#page","headline":"Architecture guidance","description":"Choose coordination boundaries, separate control and data planes, and scale Durable Objects with other Cloudflare services.","url":"https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/architecture-guidance/og.png?v=e7983ddddd2ca9ad","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

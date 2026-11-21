@@ -1094,6 +1094,32 @@ try (StreamResponse<ResponseStreamEvent> stream = client.responses().createStrea
 }
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+CreateResponseOptions options = new() { Model = "gpt-6.2-astra", StreamingEnabled = true };
+options.InputItems.Add(ResponseItem.CreateUserMessageItem("Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape"));
+options.Tools.Add(new ImageGenerationTool { Model = "gpt-image-2.5-sunburst", PartialImageCount = 2 });
+bool completed = false;
+await foreach (StreamingResponseUpdate update in client.CreateResponseStreamingAsync(options))
+{
+    if (update is StreamingResponseImageGenerationCallPartialImageUpdate partial)
+        await File.WriteAllBytesAsync($"river-partial-{partial.PartialImageIndex}.png", partial.PartialImageBytes.ToArray());
+    else if (update is StreamingResponseCompletedUpdate final)
+    {
+        ImageGenerationCallResponseItem image = final.Response.OutputItems.OfType<ImageGenerationCallResponseItem>().FirstOrDefault()
+            ?? throw new InvalidOperationException("No generated image was returned.");
+        await File.WriteAllBytesAsync("river-final.png", image.ImageResultBytes.ToArray());
+        completed = true;
+    }
+}
+if (!completed) throw new InvalidOperationException("Image generation did not complete.");
+```
+
 ```ruby
 require "base64"
 require "openai"

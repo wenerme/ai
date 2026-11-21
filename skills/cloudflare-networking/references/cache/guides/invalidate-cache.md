@@ -38,10 +38,12 @@ Invalidation does not fetch new content in advance. Instead, the next request fo
 To revalidate, Cloudflare sends your origin a conditional request. The request uses the `ETag` or `Last-Modified` header that your origin sent with the content. Your origin's response determines what happens next:
 
 - If your origin responds with `304 Not Modified`, Cloudflare reuses the cached content and sets a new time to live (TTL).
-- If your origin returns new cacheable content, Cloudflare replaces the cached content.
+- If the content changed and your origin returns it with a new `ETag`, or a later `Last-Modified` if your origin sends no `ETag`, Cloudflare replaces the cached content.
 - If your origin returns a `5xx` error or cannot be reached, Cloudflare can serve the cached content stale. For details, refer to [Stale content during revalidation](#stale-content-during-revalidation).
 
 Invalidation does not guarantee that content is reused. Cloudflare fetches the full response if the content is no longer cached, your origin sent neither header, or your origin does not support conditional requests.
+
+Your origin must answer a matching conditional request with `304 Not Modified`. Whenever the content changes, your origin must send a new `ETag`, or a later `Last-Modified` if it sends no `ETag`. If your origin returns new content with the same `ETag`, Cloudflare and visitors' browsers can keep serving the old content, even if the `Last-Modified` is later. For details, refer to [Origin requirements for revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/#origin-requirements-for-revalidation).
 
 A `304 Not Modified` response does not refresh cache tags set by [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/). Cache tags from your origin's `Cache-Tag` header are updated only if your origin includes that header in the `304` response. To refresh cache tags otherwise, purge the content.
 
@@ -82,7 +84,7 @@ Invalidation from the dashboard or the `invalidate_cache` endpoint does not affe
 
 Check the following requirements before you invalidate content:
 
-- **Origin validators**: To reuse cached content, your origin must return an `ETag` or `Last-Modified` header and support conditional requests.
+- **Origin validators**: To reuse cached content, your origin must return an `ETag` or `Last-Modified` header and answer matching conditional requests with `304 Not Modified`. Whenever the content changes, the `ETag` must change, or `Last-Modified` must move later if your origin sends no `ETag`.
 - **Permissions**: For API requests, use a token with the **Cache Purge** permission for the zone. To invalidate from the dashboard, your role must include the same permission.
 - **Rate limits**: Invalidation requests count toward the purge limits for your account. For details, refer to [Limits](#limits).
 
@@ -218,7 +220,7 @@ For cached content, expect the following results:
 | Result | `CF-Cache-Status` |
 | --- | --- |
 | Your origin confirms that the content has not changed | `REVALIDATED`, then `HIT` |
-| Your origin returns new content | `EXPIRED`, then `HIT` |
+| Your origin returns new content with a new `ETag`, or a later `Last-Modified` and no `ETag` | `EXPIRED`, then `HIT` |
 | Your origin sends no `ETag` or `Last-Modified` header | `EXPIRED`, then `HIT` |
 | Cloudflare serves stale content while revalidating | `UPDATING`, then `HIT` |
 | Your origin returns a `5xx` error or cannot be reached | `STALE` |
@@ -238,6 +240,12 @@ Check these headers in a request sent directly to your origin, not through Cloud
 
 If the content was also purged after it was cached, the purge takes precedence, and the next request fetches the full response.
 
+### Visitors receive old content after your origin changes it
+
+Check whether your origin changed the `ETag` along with the content, or moved `Last-Modified` later if it sends no `ETag`. If your origin answers a conditional request with a `200` that repeats the cached `ETag`, it breaks the HTTP rule for `If-None-Match` ([RFC 9110, section 13.1.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-13.1.2)), even if the `Last-Modified` is later. With [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/), lower-tier data centers then keep serving their old copies, and browsers keep theirs.
+
+Change the `ETag` whenever the content changes, and answer matching conditional requests with `304 Not Modified`. Purging the content removes Cloudflare's old copies, but browsers that cached the old response keep it until the `ETag` changes. For details, refer to [Origin requirements for revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/#origin-requirements-for-revalidation).
+
 ### Visitors receive stale content
 
 While Cloudflare revalidates, it serves stale content only if the cached response includes `stale-while-revalidate`. You can turn this off with the [Serve stale content while revalidating](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#serve-stale-content-while-revalidating) setting in Cache Rules.
@@ -255,5 +263,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/guides/invalidate-cache/#page","headline":"Invalidate cached content","description":"Mark cached content as stale so Cloudflare revalidates it with your origin and reuses content that has not changed.","url":"https://developers.cloudflare.com/cache/guides/invalidate-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/guides/invalidate-cache/og.png?v=8651173c508c74fc","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/guides/invalidate-cache/#page","headline":"Invalidate cached content","description":"Mark cached content as stale so Cloudflare revalidates it with your origin and reuses content that has not changed.","url":"https://developers.cloudflare.com/cache/guides/invalidate-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/guides/invalidate-cache/og.png?v=8651173c508c74fc","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

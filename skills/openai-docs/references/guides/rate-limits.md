@@ -824,6 +824,42 @@ func main() {
 }
 ```
 
+```csharp
+using System.ClientModel;
+using System.ClientModel.Primitives;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+ResponsesClientOptions clientOptions = new() { RetryPolicy = new ClientRetryPolicy(maxRetries: 0) };
+ResponsesClient client = new(new ApiKeyCredential(key), clientOptions);
+
+CreateResponseOptions options = new("gpt-6-luna", [ResponseItem.CreateUserMessageItem("Say hello in one sentence.")])
+{
+    ReasoningOptions = new() { ReasoningEffortLevel = ResponseReasoningEffortLevel.Low },
+    MaxOutputTokenCount = 2048
+};
+ResponseResult response = await RetryWithBackoffAsync(() => client.CreateResponseAsync(options));
+Console.WriteLine(response.GetOutputText());
+
+internal static async Task<ResponseResult> RetryWithBackoffAsync(Func<Task<ClientResult<ResponseResult>>> operation)
+{
+    double delaySeconds = 1;
+    const int maxRetries = 10;
+    for (int attempt = 0; ; attempt++)
+    {
+        try
+        {
+            return await operation();
+        }
+        catch (ClientResultException error) when (error.Status == 429 && attempt < maxRetries)
+        {
+            delaySeconds *= 2 * (1 + Random.Shared.NextDouble());
+            await Task.Delay(TimeSpan.FromSeconds(delaySeconds));
+        }
+    }
+}
+```
+
 ```ruby
 require "openai"
 

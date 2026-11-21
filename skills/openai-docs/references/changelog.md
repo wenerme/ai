@@ -30,6 +30,8 @@ Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · Model: gpt-6.1-terra ·
 
 Choose a two-hour or eight-hour [background completion window](https://developers.openai.com/api/docs/guides/background#use-discounted-completion-windows) in the Responses API public beta. Model token rates are 30% lower than Standard for the two-hour window and 40% lower for the eight-hour window.
 
+New models will not support [Flex processing](https://developers.openai.com/api/docs/guides/flex-processing). Flex remains available on supported models while the beta winds down.
+
 ### Nov 16
 
 Feature · Model: omni-moderation-csam-latest · API: v1/moderations

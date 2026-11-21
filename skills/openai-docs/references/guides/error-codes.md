@@ -469,6 +469,33 @@ try {
 }
 ```
 
+```csharp
+using System.ClientModel;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+try
+{
+    ResponseResult response = await client.CreateResponseAsync("gpt-6.2-astra", "Hello world");
+    Console.WriteLine(response.GetOutputText());
+}
+catch (ClientResultException error) when (error.Status == 429)
+{
+    Console.WriteLine($"OpenAI API request exceeded rate limit: {error.Message}");
+}
+catch (ClientResultException error)
+{
+    Console.WriteLine($"OpenAI API returned an API error: {error.Message}");
+}
+catch (HttpRequestException error)
+{
+    Console.WriteLine($"Failed to connect to OpenAI API: {error.Message}");
+}
+```
+
 ```ruby
 require "openai"
 

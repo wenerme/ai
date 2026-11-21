@@ -43,6 +43,8 @@ before the next stage starts, even if some jobs are independent:
 
 ```mermaid
 graph TB
+  accTitle: Pipeline with jobs organized in stages
+  accDescr: A pipeline with build, test, and deploy stages, where each stage contains one job for app A and one job for app B.
   subgraph build["Build Stage"]
     build_a["build_app_A"]
     build_b["build_app_B"]
@@ -97,6 +99,8 @@ allowing parallel execution across the two paths:
 
 ```mermaid
 graph LR
+  accTitle: Pipeline with two independent execution paths
+  accDescr: The build, test, and deploy jobs for app A form one execution path, and the jobs for app B form a second path that runs independently.
   subgraph build["Build Stage"]
     build_a["build_app_A"]
     build_b["build_app_B"]
@@ -179,6 +183,8 @@ For example:
 
 ```mermaid
 graph LR
+  accTitle: Fan-out job dependencies
+  accDescr: One build job fans out to three test jobs that all depend on it.
   subgraph build["Build Stage"]
     build_job["build"]
   end
@@ -226,6 +232,8 @@ For example:
 
 ```mermaid
 graph LR
+  accTitle: Fan-in job dependencies
+  accDescr: The frontend and backend each have a build job followed by a test job, and one deploy job waits for both test jobs to finish.
   subgraph build["Build Stage"]
     build_frontend["build_frontend"]
     build_backend["build_backend"]
@@ -281,6 +289,8 @@ which then fan back in to a single job. For example:
 
 ```mermaid
 graph LR
+  accTitle: Diamond job dependencies
+  accDescr: One build job fans out to three test jobs, which then fan in to a single deploy job.
   subgraph build["Build Stage"]
     build_job["build"]
   end
@@ -377,6 +387,8 @@ The pipeline view shows the jobs grouped in stages:
 
 ```mermaid
 graph LR
+  accTitle: Pipeline view with jobs grouped in stages
+  accDescr: The build stage contains build_app, the test stage contains test_app, lint_yaml, and lint_code, and the deploy stage contains deploy_app.
   subgraph build["Build Stage"]
     build_app["build_app"]
   end
@@ -397,6 +409,8 @@ The jobs start running as early as possible:
 
 ```mermaid
 graph LR
+  accTitle: Job start order with immediate start
+  accDescr: When the pipeline starts, build_app, lint_yaml, and lint_code start at the same time, test_app runs after build_app, and deploy_app runs after test_app.
   start["Pipeline Start"]
 
   start --> build_app["build_app"]

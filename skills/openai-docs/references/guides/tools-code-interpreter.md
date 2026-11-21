@@ -305,6 +305,30 @@ response.output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+```csharp
+using OpenAI.Containers;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ContainerClient client = new(key);
+
+ContainerResource container = await client.CreateContainerAsync(new ContainerCreationOptions("test-container")
+{
+    MemoryLimit = ContainerMemoryLimit.Max4GB,
+});
+ResponsesClient responses = new(key);
+
+CreateResponseOptions options = new("gpt-6.2-astra", [ResponseItem.CreateUserMessageItem(
+    "use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result")])
+{
+    ToolChoice = ResponseToolChoice.CreateRequiredChoice(),
+};
+options.Tools.Add(new CodeInterpreterTool(container.Id));
+ResponseResult response = await responses.CreateResponseAsync(options);
+Console.WriteLine(response.GetOutputText());
+```
+
 ```ruby
 require "openai"
 

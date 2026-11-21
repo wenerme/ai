@@ -50,6 +50,8 @@ the Interactions API and `generateContent` unless specified otherwise:
 | **Core API capabilities** |  |  |
 | [Interactions API](/docs/get-started) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Function Calling](/docs/function-calling) | {% badge type="supported" /%} | {% badge type="supported" /%} |
+| Media Processing Options (Interactions API): [documents](/docs/document-processing#customize-document-processing), [audio](/docs/audio#clipping-intervals), [video](/docs/video-understanding#customize-video-processing) | {% badge type="supported" /%} | {% badge type="supported" /%} |
+| Media Processing Options (generateContent): [documents](/docs/document-processing?generate-content=true#customize-document-processing), [audio](/docs/audio?generate-content=true#clipping-intervals), [video content layers](/docs/video-understanding?generate-content=true#video-content-layers) |  | {% badge type="supported" /%} |
 | [Structured Output](/docs/structured-output) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Thinking / Reasoning](/docs/thinking) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [System Instructions](/docs/text-generation#system-instructions) | {% badge type="supported" /%} | {% badge type="supported" /%} |

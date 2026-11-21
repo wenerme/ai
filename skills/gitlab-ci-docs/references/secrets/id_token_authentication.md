@@ -14,6 +14,8 @@ by this diagram:
 
 ```mermaid
 sequenceDiagram
+    accTitle: ID token authentication with HashiCorp Vault
+    accDescr: GitLab CI/CD generates an ID token for a job, and the runner uses the token to authenticate with HashiCorp Vault and request secrets.
     participant GitLab as GitLab CI/CD
     participant Runner as GitLab Runner
     participant Vault as HashiCorp Vault

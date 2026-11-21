@@ -419,11 +419,34 @@ class MyAgent extends Agent {
 			console.error("Server error:", connectionOrError);
 		}
 
-		// Optionally throw to propagate the error
+		// Throw to replace the error. If onError returns, the original error
+		// continues, and for a request reaches onFetchError.
 		throw connectionOrError;
 	}
 }
 ```
+
+### `this.onFetchError`
+
+When an HTTP request or WebSocket upgrade fails, including a failed `onStart`, the Agent logs the error and sends a response that does not include it: `500 Internal Server Error`, or for an upgrade, a socket that closes with code `1011`. Override `onFetchError` to send something else, and return nothing to keep the default:
+
+```ts
+class MyAgent extends Agent<Env> {
+	onFetchError(request: Request, error: unknown) {
+		if (this.env.ENVIRONMENT !== "development") return;
+		const detail = error instanceof Error ? error.stack : String(error);
+		return new Response(detail, { status: 500 });
+	}
+}
+```
+
+Errors from `onStart`, `onRequest`, and `onConnect` pass through `onError` first. If `onError` throws, `onFetchError` receives what it threw. If `onError` returns, `onFetchError` receives the original error.
+
+For a [sub-agent](https://developers.cloudflare.com/agents/agent-class/sub-agents/), the object that accepts the request or socket answers it. A failed HTTP request reaches the child's `onFetchError`. A failed WebSocket upgrade reaches the parent's, because the parent accepts the socket and passes the connection to the child, even when the child's `onConnect` threw. If `onBeforeSubAgent` throws, no `onFetchError` runs, and the error reaches the caller of `fetch`.
+
+When the parent's `onFetchError` answers a child's failed upgrade, `error` is a copy that crossed from the child to the parent. It is still an `Error` with the same `name` and `message`, but it is no longer an instance of the child's error class, so `error instanceof MyError` is `false`. Check `error.name` instead.
+
+For the full behavior, refer to [Failed requests](https://developers.cloudflare.com/agents/runtime/lifecycle/#failed-requests).
 
 ### `this.destroy`
 
@@ -542,5 +565,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/agent-class/internals/#page","headline":"Agent class internals","description":"Explore how the Agent class extends Durable Objects to provide state, WebSockets, scheduling, and RPC.","url":"https://developers.cloudflare.com/agents/agent-class/internals/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/agent-class/internals/og.png?v=a31f520b4b74a2c7","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/agent-class/internals/#page","headline":"Agent class internals","description":"Explore how the Agent class extends Durable Objects to provide state, WebSockets, scheduling, and RPC.","url":"https://developers.cloudflare.com/agents/agent-class/internals/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/agent-class/internals/og.png?v=a31f520b4b74a2c7","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

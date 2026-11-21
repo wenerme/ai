@@ -201,6 +201,13 @@ try (StreamResponse<ResponseStreamEvent> stream = client.responses().createStrea
 }
 ```
 
+```csharp
+using System.ClientModel.Primitives;
+using OpenAI.Responses;
+using StreamingEvent = OpenAI.Responses.StreamingResponseUpdate;
+#pragma warning disable OPENAI001
+```
+
 ```ruby
 require "openai"
 

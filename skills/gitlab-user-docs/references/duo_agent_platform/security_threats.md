@@ -93,6 +93,8 @@ When the developer runs the agent in their IDE, the injected prompt causes the a
 
 ```mermaid
 sequenceDiagram
+    accTitle: SSH key exfiltration through prompt injection in an IDE
+    accDescr: A hidden prompt injection in a merge request causes an agent in a developer's IDE to read an SSH private key and post it in a review comment.
     actor Attacker
     actor Developer as Developer
     participant PublicProject as Public project
@@ -128,6 +130,8 @@ When the agent runs in the CI pipeline, the injected prompt makes the agent stea
 
 ```mermaid
 sequenceDiagram
+    accTitle: CI token exfiltration through prompt injection in a CI/CD pipeline
+    accDescr: A hidden prompt injection in a merge request causes a code review agent in a CI/CD pipeline to read the CI token and post it in a review comment.
     actor Attacker
     actor Developer as Developer
     participant PublicProject as Public project
@@ -245,6 +249,8 @@ The writer agent cannot access the original malicious content, because it only r
 
 ```mermaid
 graph TD
+    accTitle: Single agent compared to separate reader and writer agents
+    accDescr: A malicious merge request makes a single agent expose the CI token, but separate reader and write-only writer agents block the injected instructions.
     Start["Malicious MR<br/>with CI_TOKEN injection"]
 
     Start --> V1

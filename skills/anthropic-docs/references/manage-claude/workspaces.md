@@ -14,7 +14,7 @@ Key characteristics:
 
 * **Workspace identifiers** use the `wrkspc_` prefix (for example, `wrkspc_01JwQvzr7rXLA5AGx3HKfFUJ`).
 
-* **Maximum 100 workspaces** for each organization by default (archived workspaces don’t count). Contact your account team if you need more.
+* **Maximum 1,000 workspaces** for each organization by default (archived workspaces and the Default Workspace don’t count). Creating a workspace at the limit returns a `400` error with the message `Workspace limit reached`. Contact your account team if you need more.
 
 * **Default Workspace** has a `wrkspc_` ID like any other workspace:
 
@@ -44,13 +44,13 @@ The Claude Code workspace keeps Claude Code traffic separate from your other API
 
 Members can have different roles in each workspace, allowing fine-grained access control.
 
-| Role                        | Permissions                                                                                               |
-| --------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Workspace User              | Use playground only                                                                                       |
+| Role | Permissions |
+| ----- | ----- |
+| Workspace User | Use playground only |
 | Workspace Limited Developer | Create and manage API keys, use the API (with some limits in the Claude Console, listed after this table) |
-| Workspace Developer         | Create and manage API keys, use the API                                                                   |
-| Workspace Admin             | Full control over workspace settings and members                                                          |
-| Workspace Billing           | View workspace billing information (inherited from organization billing role)                             |
+| Workspace Developer | Create and manage API keys, use the API |
+| Workspace Admin | Full control over workspace settings and members |
+| Workspace Billing | View workspace billing information (inherited from organization billing role) |
 
 The following limits apply only to the Claude Console’s interface, not to the API. In the Console, a Workspace Limited Developer cannot:
 
@@ -1225,11 +1225,11 @@ Usage and costs in the Default Workspace are reported under the Default Workspac
 
 Create separate workspaces for development, staging, and production:
 
-| Workspace   | Purpose                                            |
-| ----------- | -------------------------------------------------- |
+| Workspace | Purpose |
+| ----- | ----- |
 | Development | Testing and experimentation with lower rate limits |
-| Staging     | Pre-production testing with production-like limits |
-| Production  | Live traffic with full rate limits and monitoring  |
+| Staging | Pre-production testing with production-like limits |
+| Production | Live traffic with full rate limits and monitoring |
 
 ### Team or department isolation
 
@@ -1279,7 +1279,7 @@ Create workspaces for specific projects or products to track usage and costs sep
   </Accordion>
 
   <Accordion title="Are there limits on workspaces?">
-    Yes. Each organization can have up to 100 workspaces by default, and archived workspaces don’t count toward this limit. If you need more, contact your account team.
+    Yes. Each organization can have up to 1,000 workspaces by default, and archived workspaces and the Default Workspace don’t count toward this limit. If you need more, contact your account team.
   </Accordion>
 
   <Accordion title="How do organization roles affect workspace access?">

@@ -61,6 +61,7 @@ Example response:
   "max_decompressed_archive_size": 25600,
   "max_export_size": 50,
   "max_import_size": 50,
+  "max_import_record_size": 50,
   "max_import_remote_file_size": 10240,
   "max_login_attempts": 3,
   "user_oauth_applications" : true,
@@ -284,6 +285,7 @@ Example response:
   "max_decompressed_archive_size": 25600,
   "max_export_size": 50,
   "max_import_size": 50,
+  "max_import_record_size": 50,
   "max_import_remote_file_size": 10240,
   "max_login_attempts": 3,
   "session_expire_delay": 10080,
@@ -770,6 +772,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `max_http_response_xml_structural_chars` | integer          | no                                   | Maximum allowed object count in XML HTTP responses from outbound requests. Count is an estimate based on the number of `<`, and `=` occurrences in the response. Introduced in GitLab 18.4. |
 | `max_http_response_csv_structural_chars` | integer          | no                                   | Maximum allowed object count in CSV HTTP responses from outbound requests. Count is an estimate based on the number of `,`, `;`, `\t`, and `\n` occurrences in the response. Introduced in GitLab 18.4. |
 | `max_http_response_size_limit`           | integer          | no                                   | Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4. |
+| `max_import_record_size`                 | integer          | no                                   | Maximum size in MiB of a single record, such as a merge request or issue, in files imported by file export, direct transfer, or offline transfer. Set to `0` for unlimited. Default: 50. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631025) in GitLab 19.7. |
 | `max_import_size`                        | integer          | no                                   | Maximum import size in MB. 0 for unlimited. Default = 0 (unlimited). |
 | `max_import_remote_file_size`            | integer          | no                                   | Maximum remote file size for imports from external object storages. |
 | `max_login_attempts`                     | integer          | no                                   | Maximum number of sign-in attempts before locking out the user. |
@@ -1048,6 +1051,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `time_tracking_limit_to_hours`           | boolean          | no                                   | Limit display of time tracking units to hours. Default is `false`. |
 | `todos_list_api_limit`                   | integer          | no                                   | Maximum number of requests every minute for each user to the [list to-do items](todos.md#list-all-to-do-items) endpoint (`GET /todos`). Default: `300`. Set to `0` to turn off the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_list_api_rate_limit`. Disabled by default. |
 | `top_level_group_creation_enabled`           | boolean          | no                                   | Allows a user to create top-level-groups. Default is `true`. |
+| `track_namespace_visits_limit`           | integer          | no                                   | Maximum number of group and project visits tracked every minute for each user. Default: `60`. Set to `0` to turn off the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272280) in GitLab 19.7 [with a feature flag](../administration/feature_flags/_index.md) named `enforce_track_namespace_visits_rate_limit`. Disabled by default. While the flag is disabled, requests over the limit are logged but not blocked. |
 | `trial_create_limit`                     | integer          | no                                   | Maximum number of trial creation requests every hour for each user. Default: `10`. Set to `0` to disable the rate limit. GitLab.com only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/271030) in GitLab 19.7. |
 | `two_factor_grace_period`                | integer          | required by: `require_two_factor_authentication` | Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication. |
 | `unconfirmed_users_delete_after_days`    | integer          | no                                   | Specifies how many days after account creation to delete users who have not confirmed their email. Only applicable if `delete_unconfirmed_users` is set to `true`. Must be `1` or greater. Default is `7`. GitLab Self-Managed, Premium and Ultimate only. |

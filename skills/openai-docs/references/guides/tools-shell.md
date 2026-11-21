@@ -279,6 +279,25 @@ var container =
 System.out.println(container.id());
 ```
 
+```csharp
+using OpenAI.Containers;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ContainerClient client = new(key);
+
+ContainerResource container = await client.CreateContainerAsync(new ContainerCreationOptions("analysis-container")
+{
+    MemoryLimit = ContainerMemoryLimit.Max1GB,
+    ExpirationPolicy = new ContainerExpirationPolicy
+    {
+        Anchor = ContainerExpirationPolicyAnchor.LastActiveAt,
+        Duration = TimeSpan.FromMinutes(20),
+    },
+});
+Console.WriteLine(container.Id);
+```
+
 ```ruby
 require "openai"
 
@@ -1243,6 +1262,17 @@ String containerId = "container_id";
 client.containers().delete(containerId);
 
 System.out.println("Container deleted.");
+```
+
+```csharp
+using OpenAI.Containers;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ContainerClient client = new(key);
+
+await client.DeleteContainerAsync("container_id");
+Console.WriteLine("Container deleted");
 ```
 
 ```ruby

@@ -151,7 +151,7 @@ Adding a server takes three calls:
 | `transport` | `type` is `"auto"`, `"streamable-http"`, or `"sse"`. Also takes `authProvider` and the MCP transport options, such as `requestInit` for headers |
 | `client` | MCP client options, such as the `capabilities` to advertise |
 | `clientId` | A pre-registered OAuth client ID |
-| `retry` | Retry policy for connecting and reconnecting. Defaults to three attempts, 500 ms base, 5 s maximum |
+| `retry` | How many quick attempts each connection makes before the server counts as failed. Defaults to three attempts, 500 ms base, 5 s maximum |
 
 `connectToServer()` returns one of these states:
 
@@ -163,7 +163,11 @@ Adding a server takes three calls:
 
 `discoverIfConnected(id, { timeoutMs? })` waits up to 30 seconds by default and returns `{ success, state, error? }`.
 
-The server stays registered after the object leaves memory. On the next start, the manager reconnects to every stored server in the background.
+The server stays registered after the object leaves memory. On the next start, the manager reconnects to every stored server in the background, so startup never waits on an MCP server.
+
+A connection that fails after its quick attempts, or whose authorization was refused, is recorded as `failed`. Nothing retries it on a timer, and later starts do not contact the server again. `connectToServer(id)` is the explicit retry: it clears the recorded failure and the step-up budget before it connects. For which failures count as refused, refer to [Failures and reconnecting](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#failures-and-reconnecting).
+
+Connection work for one server runs one operation at a time: `connectToServer()`, `discoverIfConnected()`, OAuth callback handling, and restore for the same server wait for each other instead of interleaving. Work for different servers runs in parallel.
 
 ## Handle OAuth
 
@@ -225,6 +229,8 @@ For your own OAuth storage, pass `createAuthProvider` to the constructor or `tra
 | `readResource({ serverId, uri })` | The contents of one resource |
 
 A `filter` limits the results by `serverId`, `serverName`, or connection `state`. Each field takes one value or an array.
+
+When a request needs the user to authorize again, such as a tool call that needs a scope the grant lacks, `callTool()`, `readResource()`, and `getPrompt()` throw `MCPAuthorizationRequiredError` with the link in `authUrl`, and the server moves to `authenticating`. A call for a `serverId` with no connection throws `MCPConnectionNotFoundError`. Refer to [Re-authorization during a session](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#re-authorization-during-a-session).
 
 The manager reconnects in the background after a wake. Call `waitForConnections()` before you read tools, so that servers that are still reconnecting are included. It never rejects. Without a `timeout`, it waits until every pending connection settles.
 
@@ -428,7 +434,7 @@ The manager stores servers in the `cf_agents_mcp_servers` table. The default OAu
 
 ## On the Agent class
 
-The [`Agent` class](https://developers.cloudflare.com/agents/agent-class/) installs `MCPClientManager` as `this.mcp`. Its `addMcpServer()` method runs the register, connect, and discover steps in one call and builds the callback URL for you. `removeMcpServer()` and `getMcpServers()` wrap the manager too, and the Agent sends the server list to its clients for `useAgent({ onMcpUpdate })`. For more information, refer to [McpClient](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
+The [`Agent` class](https://developers.cloudflare.com/agents/agent-class/) installs `MCPClientManager` as `this.mcp`. Its `addMcpServer()` method runs the register, connect, and discover steps in one call and builds the callback URL for you. `reconnectMcpServer()`, `removeMcpServer()`, and `getMcpServers()` wrap the manager too, and the Agent sends the server list to its clients for `useAgent({ onMcpUpdate })`. For more information, refer to [McpClient](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
 
 Was this helpful?
 
@@ -439,5 +445,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/#page","headline":"MCPClientManager","description":"Connect a Durable Object to MCP servers with the MCPClientManager capability, including OAuth, elicitation, reconnection after restarts, and AI SDK tools.","url":"https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/og.png?v=c380c2833c933ab4","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/#page","headline":"MCPClientManager","description":"Connect a Durable Object to MCP servers with the MCPClientManager capability, including OAuth, elicitation, reconnection after restarts, and AI SDK tools.","url":"https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/og.png?v=c380c2833c933ab4","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

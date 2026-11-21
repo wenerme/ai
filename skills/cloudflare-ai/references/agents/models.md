@@ -26,7 +26,7 @@ Both take the same options, route through the same gateway, and handle Workers A
 Name a model with a string, or pass a model object built by the vendor's own package:
 
 ```ts
-ai("@cf/zai-org/glm-5.3-flash"); // Workers AI
+ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017"); // Workers AI
 ai("anthropic/claude-opus-5.5"); // AI Gateway catalog
 ai("dynamic/support"); // AI Gateway dynamic route
 ai(anthropic("claude-opus-5-5")); // the vendor's own model object
@@ -186,7 +186,7 @@ export class MyAgent extends DurableObject<Env> {
 }
 ```
 
-To use a different model, change the string, such as `ai("openai/gpt-5.5")` or `ai("@cf/zai-org/glm-5.3-flash")`, or pass the vendor's own model object, such as `ai(openai("gpt-5.5"))`. All of these route through AI Gateway, so you do not need a vendor API key in your Worker.
+To use a different model, change the string, such as `ai("openai/gpt-5.5")` or `ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017")`, or pass the vendor's own model object, such as `ai(openai("gpt-5.5"))`. All of these route through AI Gateway, so you do not need a vendor API key in your Worker.
 
 You can also use any other AI SDK provider directly, without `createAI`. The call then goes straight to the vendor, with your own API key, and skips AI Gateway:
 
@@ -368,15 +368,18 @@ export class MyAgent extends DurableObject {
 	lifecycle = Lifecycle.install(this);
 
 	async onRequest(request) {
-		const stream = await this.env.AI.run("@cf/zai-org/glm-5.3-flash", {
-			messages: [
-				{
-					role: "user",
-					content: "Build me a Cloudflare Worker that returns JSON.",
-				},
-			],
-			stream: true,
-		});
+		const stream = await this.env.AI.run(
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+			{
+				messages: [
+					{
+						role: "user",
+						content: "Build me a Cloudflare Worker that returns JSON.",
+					},
+				],
+				stream: true,
+			},
+		);
 
 		return new Response(stream, {
 			headers: { "content-type": "text/event-stream" },
@@ -399,7 +402,7 @@ export class MyAgent extends DurableObject<Env> {
 	readonly lifecycle = Lifecycle.install(this);
 
 	async onRequest(request: Request): Promise<Response> {
-		const stream = await this.env.AI.run("@cf/zai-org/glm-5.3-flash", {
+		const stream = await this.env.AI.run("@cf/deepseek-ai/deepseek-v4.1-flash-1017", {
 			messages: [
 				{
 					role: "user",
@@ -429,7 +432,7 @@ export class MyAgent extends DurableObject {
 
 	async onRequest(request) {
 		const response = await this.env.AI.run(
-			"@cf/zai-org/glm-5.3-flash",
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
 			{
 				messages: [
 					{
@@ -467,7 +470,7 @@ export class MyAgent extends DurableObject<Env> {
 
 	async onRequest(request: Request): Promise<Response> {
 		const response = await this.env.AI.run(
-			"@cf/zai-org/glm-5.3-flash",
+			"@cf/deepseek-ai/deepseek-v4.1-flash-1017",
 			{
 				messages: [
 					{
@@ -599,5 +602,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/models/#page","headline":"Models","description":"Call Workers AI, AI Gateway catalog models, dynamic routes, and vendor models from the AI SDK or Pi AI with one createAI provider over the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/og.png?v=dd8074fab97f2bb3","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/models/#page","headline":"Models","description":"Call Workers AI, AI Gateway catalog models, dynamic routes, and vendor models from the AI SDK or Pi AI with one createAI provider over the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/og.png?v=dd8074fab97f2bb3","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

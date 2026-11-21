@@ -6030,9 +6030,21 @@ Content type: `application/json`
 
   `minimum: 1`
 
-- `notification_channel: optional unknown or null`
+- `notification_channel: optional object { type, recipients, subject_prefix }  or null`
 
   Configure email notifications when the spend limit is reached. Leave this out to keep the current settings, or send null to reset to owner-only notifications.
+
+  - `type: "email" (default: "email")`
+
+    - `"email"`
+
+  - `recipients: optional array of string`
+
+    Additional email recipients. Omit to keep them unchanged; send [] to clear them.
+
+  - `subject_prefix: optional string or null`
+
+    Email subject prefix. Omit to keep it unchanged; send null or an empty string to clear it.
 
 ### Returns
 

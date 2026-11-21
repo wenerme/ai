@@ -848,6 +848,16 @@ Content type: `application/json`
 
     Review eligible actions automatically. Deny manual approval fallbacks.
 
+- `spend_control: optional object { limit }  or null`
+
+  Optional spending limit in USD cents. Omission or null creates an unlimited session.
+
+  - `limit: integer or null`
+
+    Positive USD cents, or null to remove the limit.
+
+    `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
 - `stream: optional boolean (default: false)`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
@@ -868,7 +878,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 11 more }`
+- `AgentSession object { id, agent, created_at, 12 more }`
 
   A Managed Agents session.
 
@@ -1816,7 +1826,23 @@ Content type: `application/json`
 
         - `"environment_connection"`
 
-  - `status: "idle" or "in_progress" or "requires_action" or "failed"`
+  - `spend_control: object { consumed, limit }`
+
+    Spending limit and best-effort consumption, in USD cents. The limit is null for an unlimited session. Consumption is null when unavailable.
+
+    - `consumed: integer or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+      `minimum: 0`
+
+    - `limit: integer or null`
+
+      The configured positive limit in USD cents, or null when unlimited.
+
+      `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
+  - `status: "idle" or "in_progress" or "requires_action" or 2 more`
 
     The current status of the session.
 
@@ -1835,6 +1861,10 @@ Content type: `application/json`
     - `"failed"`
 
       The session failed.
+
+    - `"budget_reached"`
+
+      The session is paused because its spending limit was reached.
 
   - `usage: TokenUsage or null`
 
@@ -1984,6 +2014,10 @@ curl https://api.openai.com/v1/agents/sessions \
       "type": "mcp_approval_request"
     }
   ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  },
   "status": "idle",
   "usage": {
     "input_tokens": 0,
@@ -3055,7 +3089,23 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         - `"environment_connection"`
 
-  - `status: "idle" or "in_progress" or "requires_action" or "failed"`
+  - `spend_control: object { consumed, limit }`
+
+    Spending limit and best-effort consumption, in USD cents. The limit is null for an unlimited session. Consumption is null when unavailable.
+
+    - `consumed: integer or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+      `minimum: 0`
+
+    - `limit: integer or null`
+
+      The configured positive limit in USD cents, or null when unlimited.
+
+      `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
+  - `status: "idle" or "in_progress" or "requires_action" or 2 more`
 
     The current status of the session.
 
@@ -3074,6 +3124,10 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
     - `"failed"`
 
       The session failed.
+
+    - `"budget_reached"`
+
+      The session is paused because its spending limit was reached.
 
   - `usage: TokenUsage or null`
 
@@ -3241,6 +3295,10 @@ curl https://api.openai.com/v1/agents/sessions \
           "type": "mcp_approval_request"
         }
       ],
+      "spend_control": {
+        "consumed": 0,
+        "limit": 1
+      },
       "status": "idle",
       "usage": {
         "input_tokens": 0,
@@ -3285,7 +3343,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 11 more }`
+- `AgentSession object { id, agent, created_at, 12 more }`
 
   A Managed Agents session.
 
@@ -4233,7 +4291,23 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         - `"environment_connection"`
 
-  - `status: "idle" or "in_progress" or "requires_action" or "failed"`
+  - `spend_control: object { consumed, limit }`
+
+    Spending limit and best-effort consumption, in USD cents. The limit is null for an unlimited session. Consumption is null when unavailable.
+
+    - `consumed: integer or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+      `minimum: 0`
+
+    - `limit: integer or null`
+
+      The configured positive limit in USD cents, or null when unlimited.
+
+      `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
+  - `status: "idle" or "in_progress" or "requires_action" or 2 more`
 
     The current status of the session.
 
@@ -4252,6 +4326,10 @@ Retrieves the current state of a managed agent session. See [managing sessions](
     - `"failed"`
 
       The session failed.
+
+    - `"budget_reached"`
+
+      The session is paused because its spending limit was reached.
 
   - `usage: TokenUsage or null`
 
@@ -4395,6 +4473,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
       "type": "mcp_approval_request"
     }
   ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  },
   "status": "idle",
   "usage": {
     "input_tokens": 0,
@@ -4797,6 +4879,16 @@ Content type: `application/json`
 
     Review eligible actions automatically. Deny manual approval fallbacks.
 
+- `spend_control: optional object { limit }  or null`
+
+  Omit to retain the limit; null or a null limit removes it without resetting spend.
+
+  - `limit: integer or null`
+
+    Positive USD cents, or null to remove the limit.
+
+    `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
 - `vault_ids: optional array of string or null`
 
   Replaces the session's referenced vaults. Omit to retain them; null or [] clears them.
@@ -4805,7 +4897,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 11 more }`
+- `AgentSession object { id, agent, created_at, 12 more }`
 
   A Managed Agents session.
 
@@ -5753,7 +5845,23 @@ Content type: `application/json`
 
         - `"environment_connection"`
 
-  - `status: "idle" or "in_progress" or "requires_action" or "failed"`
+  - `spend_control: object { consumed, limit }`
+
+    Spending limit and best-effort consumption, in USD cents. The limit is null for an unlimited session. Consumption is null when unavailable.
+
+    - `consumed: integer or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+      `minimum: 0`
+
+    - `limit: integer or null`
+
+      The configured positive limit in USD cents, or null when unlimited.
+
+      `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
+  - `status: "idle" or "in_progress" or "requires_action" or 2 more`
 
     The current status of the session.
 
@@ -5772,6 +5880,10 @@ Content type: `application/json`
     - `"failed"`
 
       The session failed.
+
+    - `"budget_reached"`
+
+      The session is paused because its spending limit was reached.
 
   - `usage: TokenUsage or null`
 
@@ -5916,6 +6028,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
       "type": "mcp_approval_request"
     }
   ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  },
   "status": "idle",
   "usage": {
     "input_tokens": 0,
@@ -6690,7 +6806,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 31 more`
 
   An event emitted by a Managed Agents session.
 
@@ -7986,7 +8102,23 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             - `"environment_connection"`
 
-      - `status: "idle" or "in_progress" or "requires_action" or "failed"`
+      - `spend_control: object { consumed, limit }`
+
+        Spending limit and best-effort consumption, in USD cents. The limit is null for an unlimited session. Consumption is null when unavailable.
+
+        - `consumed: integer or null`
+
+          Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+          `minimum: 0`
+
+        - `limit: integer or null`
+
+          The configured positive limit in USD cents, or null when unlimited.
+
+          `format: int64`, `minimum: 1`, `maximum: 4503599627370495`
+
+      - `status: "idle" or "in_progress" or "requires_action" or 2 more`
 
         The current status of the session.
 
@@ -8005,6 +8137,10 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `"failed"`
 
           The session failed.
+
+        - `"budget_reached"`
+
+          The session is paused because its spending limit was reached.
 
       - `usage: TokenUsage or null`
 
@@ -8132,7 +8268,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         A customer-safe error. Non-null only for a failed turn.
 
-        - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+        - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
           A stable, machine-readable failure category.
 
@@ -8143,6 +8279,10 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `"max_output_tokens"`
 
             The model reached its output token limit before finishing the response.
+
+          - `"session_budget_exceeded"`
+
+            The session has reached its usage budget.
 
           - `"usage_limit_exceeded"`
 
@@ -9591,6 +9731,32 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.idle`.
 
       - `"agent.session.idle"`
+
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionBudgetReachedEvent object { event_id, session, type, obfuscation }`
+
+    Emitted when a session pauses because its spending limit was reached.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+      `minLength: 0`
+
+    - `session: AgentSession`
+
+      The paused session.
+
+    - `type: "agent.session.budget_reached" (default: "agent.session.budget_reached")`
+
+      The type of the object. Always `agent.session.budget_reached`.
+
+      - `"agent.session.budget_reached"`
 
     - `obfuscation: optional string`
 
@@ -13476,7 +13642,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
       A stable, machine-readable failure category.
 
@@ -13487,6 +13653,10 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
       - `"max_output_tokens"`
 
         The model reached its output token limit before finishing the response.
+
+      - `"session_budget_exceeded"`
+
+        The session has reached its usage budget.
 
       - `"usage_limit_exceeded"`
 
@@ -13822,7 +13992,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
       A stable, machine-readable failure category.
 
@@ -13833,6 +14003,10 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"max_output_tokens"`
 
         The model reached its output token limit before finishing the response.
+
+      - `"session_budget_exceeded"`
+
+        The session has reached its usage budget.
 
       - `"usage_limit_exceeded"`
 
@@ -15477,7 +15651,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
       A stable, machine-readable failure category.
 
@@ -15488,6 +15662,10 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
       - `"max_output_tokens"`
 
         The model reached its output token limit before finishing the response.
+
+      - `"session_budget_exceeded"`
+
+        The session has reached its usage budget.
 
       - `"usage_limit_exceeded"`
 
@@ -15817,7 +15995,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
       A stable, machine-readable failure category.
 
@@ -15828,6 +16006,10 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       - `"max_output_tokens"`
 
         The model reached its output token limit before finishing the response.
+
+      - `"session_budget_exceeded"`
+
+        The session has reached its usage budget.
 
       - `"usage_limit_exceeded"`
 
@@ -16109,7 +16291,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "max_output_tokens" or "usage_limit_exceeded" or 22 more`
+    - `code: "context_length_exceeded" or "max_output_tokens" or "session_budget_exceeded" or 23 more`
 
       A stable, machine-readable failure category.
 
@@ -16120,6 +16302,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       - `"max_output_tokens"`
 
         The model reached its output token limit before finishing the response.
+
+      - `"session_budget_exceeded"`
+
+        The session has reached its usage budget.
 
       - `"usage_limit_exceeded"`
 

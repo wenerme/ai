@@ -484,6 +484,27 @@ for (var segment : diarized.segments()) {
 }
 ```
 
+```csharp
+using System.Globalization;
+using OpenAI.Audio;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+AudioClient client = new("gpt-4o-transcribe-diarize", key);
+
+string speaker = "data:audio/wav;base64," + Convert.ToBase64String(await File.ReadAllBytesAsync("agent.wav"));
+AudioTranscriptionOptions options = new()
+{
+    ResponseFormat = AudioTranscriptionFormat.Diarized,
+    ChunkingStrategy = AudioTranscriptionDefaultChunkingStrategy.Auto,
+    KnownSpeakerNames = { "agent" },
+    KnownSpeakerReferenceUris = { speaker },
+};
+DiarizedAudioTranscription transcript = await client.TranscribeAudioDiarizedAsync("meeting.wav", options);
+foreach (DiarizedTranscriptionSegment segment in transcript.Segments)
+    Console.WriteLine(string.Create(CultureInfo.InvariantCulture, $"{segment.SpeakerLabel}: {segment.Text} ({segment.StartTime.TotalSeconds:F2}-{segment.EndTime.TotalSeconds:F2})"));
+```
+
 ```ruby
 require "base64"
 require "openai"

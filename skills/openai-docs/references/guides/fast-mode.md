@@ -90,6 +90,21 @@ client.responses().create(params).output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+ResponseResult response = await client.CreateResponseAsync(new CreateResponseOptions(
+    "gpt-6.2-sol", [ResponseItem.CreateUserMessageItem("What does 'fit check for my napalm era' mean?")])
+{
+    ServiceTier = new ResponseServiceTier("fast"),
+});
+Console.WriteLine(response.GetOutputText());
+```
+
 ```ruby
 require "openai"
 

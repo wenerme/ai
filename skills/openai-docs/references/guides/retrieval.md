@@ -606,6 +606,21 @@ var store =
 System.out.println(store.id());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStore store = await client.CreateVectorStoreAsync(new VectorStoreCreationOptions
+{
+    Name = "Support FAQ",
+    FileIds = { "file_123" },
+});
+Console.WriteLine(store.Id);
+```
+
 ```ruby
 require "openai"
 
@@ -663,6 +678,17 @@ import com.openai.client.okhttp.OpenAIOkHttpClient;
 String vectorStoreId = "vs_123";
 
 System.out.println(client.vectorStores().retrieve(vectorStoreId).id());
+```
+
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStore store = await client.GetVectorStoreAsync("vs_123");
+Console.WriteLine(store.Id);
 ```
 
 ```ruby
@@ -734,6 +760,20 @@ var store =
 System.out.println(store.name());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStore store = await client.ModifyVectorStoreAsync("vs_123", new VectorStoreModificationOptions
+{
+    Name = "Support FAQ Updated",
+});
+Console.WriteLine(store.Name);
+```
+
 ```ruby
 require "openai"
 
@@ -790,6 +830,17 @@ String vectorStoreId = "vs_123";
 System.out.println(client.vectorStores().delete(vectorStoreId).deleted());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStoreDeletionResult result = await client.DeleteVectorStoreAsync("vs_123");
+Console.WriteLine(result.Deleted);
+```
+
 ```ruby
 require "openai"
 
@@ -840,6 +891,23 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 
 System.out.println(client.vectorStores().list().data());
+```
+
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+// Display the first page; the SDK fetches more pages as you keep iterating.
+VectorStoreCollectionOptions options = new() { PageSizeLimit = 20, Order = VectorStoreCollectionOrder.Descending };
+int count = 0;
+await foreach (VectorStore store in client.GetVectorStoresAsync(options))
+{
+    Console.WriteLine(store.Id);
+    if (++count == 20) break;
+}
 ```
 
 ```ruby
@@ -1097,6 +1165,17 @@ System.out.println(
         .id());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStoreFile file = await client.GetVectorStoreFileAsync("vs_123", "file_123");
+Console.WriteLine(file.FileId);
+```
+
 ```ruby
 require "openai"
 
@@ -1180,6 +1259,19 @@ var file =
 System.out.println(file.id());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStoreFile file = await client.UpdateVectorStoreFileAttributesAsync(
+    "vs_123", "file_123",
+    new Dictionary<string, BinaryData> { ["key"] = BinaryData.FromObjectAsJson("value") });
+Console.WriteLine(file.FileId);
+```
+
 ```ruby
 require "openai"
 
@@ -1250,6 +1342,17 @@ System.out.println(
         .deleted());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+FileFromStoreRemovalResult result = await client.RemoveFileFromVectorStoreAsync("vs_123", "file_123");
+Console.WriteLine(result.Removed);
+```
+
 ```ruby
 require "openai"
 
@@ -1304,6 +1407,19 @@ import com.openai.client.okhttp.OpenAIOkHttpClient;
 String vectorStoreId = "vs_123";
 
 System.out.println(client.vectorStores().files().list(vectorStoreId).data());
+```
+
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+await foreach (VectorStoreFile file in client.GetVectorStoreFilesAsync("vs_123"))
+{
+    Console.WriteLine(file.FileId);
+}
 ```
 
 ```ruby
@@ -1554,6 +1670,17 @@ System.out.println(
         .status());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStoreFileBatch batch = await client.GetVectorStoreFileBatchAsync("vs_123", "vsfb_123");
+Console.WriteLine(batch.BatchId);
+```
+
 ```ruby
 require "openai"
 
@@ -1627,6 +1754,16 @@ System.out.println(
         .status());
 ```
 
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStoreFileBatch batch = await client.CancelVectorStoreFileBatchAsync("vs_123", "vsfb_123");
+```
+
 ```ruby
 require "openai"
 
@@ -1698,6 +1835,19 @@ System.out.println(
                 .vectorStoreId(vectorStoreId)
                 .build())
         .data());
+```
+
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+await foreach (VectorStoreFile file in client.GetVectorStoreFilesInBatchAsync("vs_123", "vsfb_123"))
+{
+    Console.WriteLine(file.FileId);
+}
 ```
 
 ```ruby
@@ -1878,6 +2028,20 @@ var store =
                 .build());
 
 System.out.println(store.expiresAfter().orElseThrow());
+```
+
+```csharp
+using OpenAI.VectorStores;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+VectorStoreClient client = new(key);
+
+VectorStore store = await client.ModifyVectorStoreAsync("vs_123", new VectorStoreModificationOptions
+{
+    ExpirationPolicy = new VectorStoreExpirationPolicy(VectorStoreExpirationAnchor.LastActiveAt, 7),
+});
+Console.WriteLine(store.ExpirationPolicy.Days);
 ```
 
 ```ruby

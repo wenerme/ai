@@ -167,6 +167,26 @@ public final class TutorialMeetingMinutesExample {
   }
 ```
 
+```csharp
+using System.IO.Compression;
+using System.Text.Json;
+using System.Xml.Linq;
+using OpenAI.Audio;
+using OpenAI.Chat;
+
+internal static class MeetingMinutes
+{
+    private static readonly string Key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+    private static readonly AudioClient Audio = new("gpt-transcribe", Key);
+    private static readonly ChatClient Chat = new("gpt-5.5", Key);
+
+private static async Task<string> TranscribeAudioAsync(string path)
+{
+    AudioTranscription transcription = await Audio.TranscribeAudioAsync(path);
+    return transcription.Text;
+}
+```
+
 ```ruby
 require "caracal"
 require "openai"
@@ -251,6 +271,14 @@ private static String complete(String transcription, String instructions) {
 }
 ```
 
+```csharp
+private static async Task<string> CompleteAsync(string transcription, string instructions)
+{
+    ChatCompletion completion = await Chat.CompleteChatAsync([new SystemChatMessage(instructions), new UserChatMessage(transcription)]);
+    return completion.Content[0].Text;
+}
+```
+
 ```ruby
 def complete(client, transcription, instructions)
   response = client.chat.completions.create(
@@ -326,6 +354,16 @@ static MeetingMinutes buildMeetingMinutes(String transcription) {
 }
 ```
 
+```csharp
+private static async Task<Dictionary<string, string>> BuildMeetingMinutesAsync(string transcription) => new()
+{
+    ["Abstract summary"] = await ExtractAbstractSummaryAsync(transcription),
+    ["Key points"] = await ExtractKeyPointsAsync(transcription),
+    ["Action items"] = await ExtractActionItemsAsync(transcription),
+    ["Sentiment"] = await AnalyzeSentimentAsync(transcription),
+};
+```
+
 ```ruby
 def build_meeting_minutes(client, transcription)
   {
@@ -379,6 +417,11 @@ static String extractAbstractSummary(String transcription) {
 }
 ```
 
+```csharp
+private static Task<string> ExtractAbstractSummaryAsync(string transcription) => CompleteAsync(transcription,
+    "Summarize the meeting transcript in one concise paragraph. Keep the most important decisions and context, and omit tangents.");
+```
+
 ```ruby
 def extract_abstract_summary(client, transcription)
   complete(
@@ -425,6 +468,11 @@ static String extractKeyPoints(String transcription) {
       "List the most important ideas, findings, and topics from the meeting. "
           + "Use concise bullet points.");
 }
+```
+
+```csharp
+private static Task<string> ExtractKeyPointsAsync(string transcription) => CompleteAsync(transcription,
+    "List the most important ideas, findings, and topics from the meeting. Use concise bullet points.");
 ```
 
 ```ruby
@@ -475,6 +523,11 @@ static String extractActionItems(String transcription) {
 }
 ```
 
+```csharp
+private static Task<string> ExtractActionItemsAsync(string transcription) => CompleteAsync(transcription,
+    "List every task or follow-up agreed to in the meeting. Include the owner and deadline when the transcript provides them.");
+```
+
 ```ruby
 def extract_action_items(client, transcription)
   complete(
@@ -521,6 +574,11 @@ static String analyzeSentiment(String transcription) {
       "Describe the meeting's overall sentiment as positive, negative, or neutral, "
           + "and briefly explain the assessment.");
 }
+```
+
+```csharp
+private static Task<string> AnalyzeSentimentAsync(string transcription) => CompleteAsync(transcription,
+    "Describe the meeting's overall sentiment as positive, negative, or neutral, and briefly explain the assessment.");
 ```
 
 ```ruby
@@ -643,6 +701,36 @@ private static void addSection(XWPFDocument document, String heading, String con
 }
 ```
 
+```csharp
+private static void SaveAsDocx(Dictionary<string, string> minutes, string path)
+{
+    XNamespace word = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+    XElement body = new(word + "body");
+    foreach ((string heading, string content) in minutes)
+    {
+        body.Add(new XElement(word + "p", new XElement(word + "r",
+            new XElement(word + "rPr", new XElement(word + "b")), new XElement(word + "t", heading))));
+        foreach (string line in content.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n'))
+            body.Add(new XElement(word + "p", new XElement(word + "r", new XElement(word + "t", line))));
+    }
+    using FileStream file = File.Create(path);
+    using ZipArchive archive = new(file, ZipArchiveMode.Create);
+    WriteEntry(archive, "[Content_Types].xml", """
+
+""");
+    WriteEntry(archive, "_rels/.rels", """
+
+""");
+    WriteEntry(archive, "word/document.xml", new XDocument(new XElement(word + "document", body)).ToString());
+}
+
+private static void WriteEntry(ZipArchive archive, string name, string content)
+{
+    using StreamWriter writer = new(archive.CreateEntry(name).Open());
+    writer.Write(content);
+}
+```
+
 ```ruby
 def save_as_docx(minutes, filename)
   Caracal::Document.save(filename) do |document|
@@ -699,6 +787,17 @@ public static void main(String[] args) throws IOException {
     System.out.println(minutes);
     saveAsDocx(minutes, Path.of("meeting_minutes.docx"));
   }
+}
+```
+
+```csharp
+internal static async Task RunAsync()
+    {
+        string transcription = await TranscribeAudioAsync("meeting.wav");
+        Dictionary<string, string> minutes = await BuildMeetingMinutesAsync(transcription);
+        Console.WriteLine(JsonSerializer.Serialize(minutes));
+        SaveAsDocx(minutes, "meeting_minutes.docx");
+    }
 }
 ```
 

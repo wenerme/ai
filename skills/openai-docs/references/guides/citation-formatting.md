@@ -516,6 +516,43 @@ static String stripCitations(String text, List<Citation> citations) {
 }
 ```
 
+```csharp
+using System.Text.RegularExpressions;
+
+private sealed record Citation(string Raw, string Family, string[] SourceIds, string? Locator, int Start, int End);
+
+private static List<Citation> ExtractCitations(string text, params string[] families)
+{
+    if (families.Length == 0) return [];
+    string familyPattern = string.Join("|", families.Select(Regex.Escape));
+    Regex tokens = new($"\uE200(?<family>{familyPattern})\uE202(?<body>.*?)\uE201", RegexOptions.Singleline);
+    List<Citation> citations = [];
+    foreach (Match match in tokens.Matches(text))
+    {
+        List<string> parts = match.Groups["body"].Value.Split('\uE202')
+            .Select(part => part.Trim()).Where(part => part.Length > 0).ToList();
+        if (parts.Count == 0) continue;
+        string? locator = null;
+        if (Regex.IsMatch(parts[^1], @"\AL[0-9]+(?:-L[0-9]+)?\z"))
+        {
+            locator = parts[^1];
+            parts.RemoveAt(parts.Count - 1);
+        }
+        if (parts.Count == 0 || parts.Any(part => !Regex.IsMatch(part, @"\A[A-Za-z0-9_-]+\z"))) continue;
+        citations.Add(new(match.Value, match.Groups["family"].Value, parts.ToArray(), locator,
+            match.Index, match.Index + match.Length));
+    }
+    return citations;
+}
+
+private static string StripCitations(string text, IEnumerable<Citation> citations)
+{
+    foreach (Citation citation in citations.OrderByDescending(citation => citation.Start))
+        text = text.Remove(citation.Start, citation.End - citation.Start);
+    return text;
+}
+```
+
 ```ruby
 CITATION_START = "\u{E200}"
 CITATION_DELIMITER = "\u{E202}"

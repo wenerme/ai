@@ -110,6 +110,8 @@ The handlers run inside your object's invocation context, so [`getCurrentAgent()
 
 A message wakes a hibernated object. The constructor and Lifecycle startup run again before `onMessage`. Keep anything you need after a wake in storage or on the connection.
 
+Once the host closes a connection with `connection.close()`, no handler or callable runs for another message from it, on either [transport](#transports). This includes frames the client sent before it received the Close frame, so a client that `onConnect` rejects cannot run anything. Messages the client sent before closing the connection itself still run.
+
 ### Connections
 
 A `Connection` is a `WebSocket` with these extra fields:
@@ -349,7 +351,7 @@ export class Assistant extends DurableObject {
 				context,
 			);
 		},
-		defaults: { model: this.ai("@cf/zai-org/glm-5.3-flash") },
+		defaults: { model: this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017") },
 	});
 	webSockets = new WebSockets({
 		callables: new RunCallables(this.harness),
@@ -407,7 +409,7 @@ export class Assistant extends DurableObject<Env> {
 				context,
 			);
 		},
-		defaults: { model: this.ai("@cf/zai-org/glm-5.3-flash") },
+		defaults: { model: this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017") },
 	});
 	readonly webSockets = new WebSockets({
 		callables: new RunCallables(this.harness),
@@ -807,5 +809,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/capabilities/websockets/#page","headline":"WebSockets","description":"Accept hibernating WebSocket connections on a Durable Object, serve methods to useAgent clients, and tag, broadcast to, and restrict connections with the WebSockets capability.","url":"https://developers.cloudflare.com/agents/runtime/capabilities/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/capabilities/websockets/og.png?v=b59d4260b0dd4fe9","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/capabilities/websockets/#page","headline":"WebSockets","description":"Accept hibernating WebSocket connections on a Durable Object, serve methods to useAgent clients, and tag, broadcast to, and restrict connections with the WebSockets capability.","url":"https://developers.cloudflare.com/agents/runtime/capabilities/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/capabilities/websockets/og.png?v=b59d4260b0dd4fe9","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

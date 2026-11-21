@@ -82,7 +82,7 @@ Add the `AI` binding, a SQLite-backed Durable Object, and `nodejs_compat` to you
 	"name": "opencode-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-21",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI", "remote": true },
 	"durable_objects": {
@@ -96,7 +96,7 @@ Add the `AI` binding, a SQLite-backed Durable Object, and `nodejs_compat` to you
 name = "opencode-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-21"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -205,7 +205,7 @@ export class Assistant extends DurableObject {
 				plugins: [this.ai.plugin, workerTools],
 			}),
 		defaults: {
-			model: this.ai("@cf/moonshotai/kimi-k2.7-code", {
+			model: this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017", {
 				reasoningEffort: "low",
 			}),
 			agent: "build",
@@ -249,7 +249,7 @@ export class Assistant extends DurableObject<Env> {
 				plugins: [this.ai.plugin, workerTools],
 			}),
 		defaults: {
-			model: this.ai("@cf/moonshotai/kimi-k2.7-code", {
+			model: this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017", {
 				reasoningEffort: "low",
 			}),
 			agent: "build",
@@ -283,7 +283,7 @@ The `"demo"` object name is for this example. In an application, choose an objec
 `this.ai()` takes the same model ids as the [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/), and accepts its model options:
 
 ```ts
-this.ai("@cf/moonshotai/kimi-k2.7-code"); // Workers AI
+this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017"); // Workers AI
 this.ai("anthropic/claude-opus-5.5"); // AI Gateway catalog
 this.ai("dynamic/support"); // AI Gateway dynamic route
 ```
@@ -351,7 +351,7 @@ const all = await this.harness.sessions.list();
 | `steer(input, options)` | Submit with `whenBusy: "steer"`. |
 | `wait(operationId, signal)` | Wait for an operation. Aborting the signal stops only the wait. |
 | `abort(operationId)` | Withdraw a queued operation or interrupt the run it joined. Without an ID, abort all work in the session. |
-| `setModel(model)` | Change the model, using a reference such as `this.ai("@cf/moonshotai/kimi-k2.7-code")`. |
+| `setModel(model)` | Change the model, using a reference such as `this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017")`. |
 | `setAgent(agent)` | Change the OpenCode agent, such as `"build"` or `"plan"`. |
 | `messages()` | Read the active context after the latest compaction. |
 | `history()` | Read the full transcript, including compacted messages. |
@@ -508,5 +508,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI and AI Gateway models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI and AI Gateway models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

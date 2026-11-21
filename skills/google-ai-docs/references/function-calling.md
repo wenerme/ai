@@ -2859,7 +2859,7 @@ automatically circulates the built-in tool context.
 
 ## Multimodal function responses  {% id="multimodal" %}
 
-For Gemini 3 series models, you can include multimodal content in
+For Gemini 3 and later models, you can include multimodal content in
 the function response parts that you send to the model. The model can process
 this multimodal content in its next turn to produce a more informed response.
 
@@ -2872,7 +2872,6 @@ To include multimodal data in a function response, include it as one or more con
   (DOCX, DOC, DOTX, ODT, PPTX, PPT, ODP, XLSX, XLS, ODS)
 * **`audio`**: [Supported audio formats](/docs/audio#supported-formats)
 * **`video`**: [Supported video formats](/docs/video-understanding#supported-formats)
-  (available in `v1beta` and `v1alpha`)
 
 Each media block accepts either base64-encoded `data` or a `uri`, such as a
 [Files API](/docs/files) URI. Files in function results are processed the same
@@ -2966,7 +2965,7 @@ The following example shows how to send a function response containing image dat
 
   {% tab filename="sample.sh" label="REST" %}
   ```shell
-  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3233,7 +3232,7 @@ applies as for an input video. For details, see
 
   {% tab filename="sample.sh" label="REST" %}
   ```shell
-  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
@@ -3418,7 +3417,7 @@ options.
 
   {% tab filename="function_result_slice.sh" label="REST" %}
   ```shell
-  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{

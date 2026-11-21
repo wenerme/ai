@@ -484,6 +484,12 @@ if counts[j] > 0 {
 }
 ```
 
+```csharp
+using System.Globalization;
+
+mu[j] = mu[j] - counts[j] * frequencyPenalty - (counts[j] > 0 ? presencePenalty : 0);
+```
+
 ```ruby
 mu[j] = mu[j] - c[j] * alpha_frequency - ((c[j] > 0) ? alpha_presence : 0.0)
 ```

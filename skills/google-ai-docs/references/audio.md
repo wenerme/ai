@@ -1396,7 +1396,7 @@ tokens only for the clipped duration:
 
   {% tab filename="audio_clip.sh" label="REST" %}
   ```shell
-  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{

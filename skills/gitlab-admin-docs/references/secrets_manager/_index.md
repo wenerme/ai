@@ -27,6 +27,8 @@ OpenBao integrates with GitLab as an optional component that runs in parallel to
 
 ```mermaid
 flowchart TB
+    accTitle: GitLab Secrets Manager architecture
+    accDescr: Rails and GitLab Runner use a load balancer to reach OpenBao, which uses a secret store and PostgreSQL and sends audit logs to Rails through Workhorse.
     SecretStore[Secret store]
     PostgreSQL[PostgreSQL]
     LB[Load balancer]

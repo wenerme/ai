@@ -177,7 +177,7 @@ OpenAI provides an API helper for the Java programming language. You can include
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.106.0</version>
+  <version>4.111.0</version>
 </dependency>
 ```
 
@@ -276,7 +276,7 @@ Ruby
 
     
 
-To use the OpenAI API in Ruby, you can use the official [OpenAI SDK for Ruby](https://github.com/openai/openai-ruby). Get started by adding the gem to your application:
+The official [OpenAI SDK for Ruby](https://github.com/openai/openai-ruby) requires Ruby 3.3.0 or later. If you use an earlier version of the gem, read the [Ruby SDK 1.0 migration guide](https://developers.openai.com/api/docs/guides/ruby-sdk-migration). To get started, add the gem to your application:
 
 Install the OpenAI SDK with Bundler
 

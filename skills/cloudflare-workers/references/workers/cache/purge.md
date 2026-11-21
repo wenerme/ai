@@ -329,7 +329,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-21",
 	"cache": { "enabled": true, "cross_version_cache": true },
 	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -340,7 +340,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-21"
 
 [cache]
 enabled = true
@@ -543,9 +543,12 @@ The two methods differ in what happens to the matching cached responses:
 | `purge()` | Deleted | Cache miss. Your Worker runs and produces a fresh response. |
 | `invalidate()` | Kept, but marked stale | Revalidated. The cache sends your Worker a conditional request instead. |
 
-To revalidate an invalidated response, the cache calls your Worker with conditional request headers built from the validators stored with the response — for example, `If-None-Match` carrying the cached `ETag`, or `If-Modified-Since` carrying the cached `Last-Modified`. If your Worker answers `304 Not Modified`, the cache keeps the stored body and serves it with `Cf-Cache-Status: REVALIDATED`, and later requests are `HIT`s again. If your Worker answers with a full `200` response instead, that response replaces the cached one.
+To revalidate an invalidated response, the cache calls your Worker with conditional request headers built from the validators stored with the response — for example, `If-None-Match` carrying the cached `ETag`, or `If-Modified-Since` carrying the cached `Last-Modified`. Your Worker answers based on whether the content has changed:
 
-`invalidate()` therefore saves work only when your Worker emits validators (`ETag` or `Last-Modified`) and answers matching conditional requests with `304`. This helps most when one call covers many responses but only some of them changed. Each unchanged response then costs a validator check instead of a full regeneration. If your Worker does not emit validators, or always answers with a full response, every revalidation regenerates the response and `invalidate()` saves no work compared to `purge()`.
+- **Unchanged:** answer `304 Not Modified`. The cache keeps the stored body and serves it with `Cf-Cache-Status: REVALIDATED`, and later requests are `HIT`s again.
+- **Changed:** answer with a full `200` response that carries a new `ETag`, or a later `Last-Modified` if the response has no `ETag`. That response replaces the cached one.
+
+`invalidate()` therefore saves work only when your Worker emits validators (`ETag` or `Last-Modified`) and answers matching conditional requests with `304`. This helps most when one call covers many responses but only some of them changed. Each unchanged response then costs a validator check instead of a full regeneration. If your Worker does not emit validators, every revalidation regenerates the response and `invalidate()` saves no work compared to `purge()`.
 
 In this example, a catalog sync writes every product and then invalidates all product pages. Each product carries a revision that changes only when its data changes, and the Worker uses that revision as the `ETag`. Pages for unchanged products revalidate with `304`, so the Worker renders only the pages that changed:
 
@@ -557,11 +560,32 @@ function renderProductPage(product) {
 	return `<!doctype html><title>${product.name}</title>`;
 }
 
+// If-None-Match uses weak comparison (RFC 9110, section 8.8.3.2): ignore the
+// W/ prefix and match any listed entity tag. Revisions never contain commas,
+// so splitting the list on commas is safe here.
+function ifNoneMatchMatches(header, etag) {
+	if (header === null) return false;
+	if (header.trim() === "*") return true;
+	const opaqueTag = (tag) => tag.trim().replace(/^W\//, "");
+	return header.split(",").some((tag) => opaqueTag(tag) === opaqueTag(etag));
+}
+
+// A 405 response must list the methods the resource supports (RFC 9110,
+// section 15.5.6).
+function methodNotAllowed(allow) {
+	return new Response("Method Not Allowed", {
+		status: 405,
+		headers: { Allow: allow },
+	});
+}
+
 export default {
 	async fetch(request, env, ctx) {
 		const url = new URL(request.url);
 
-		if (request.method === "POST" && url.pathname === "/sync") {
+		if (url.pathname === "/sync") {
+			if (request.method !== "POST") return methodNotAllowed("POST");
+
 			// Write every product from the upstream catalog. Many are unchanged.
 			const products = await request.json();
 			await Promise.all(
@@ -574,6 +598,12 @@ export default {
 			await ctx.cache.invalidate({ tags: ["products"] });
 
 			return new Response("Synced", { status: 200 });
+		}
+
+		// Product pages are read-only. A matching If-None-Match calls for 304 only
+		// on GET and HEAD (RFC 9110, section 13.1.2), so reject other methods.
+		if (request.method !== "GET" && request.method !== "HEAD") {
+			return methodNotAllowed("GET, HEAD");
 		}
 
 		const id = url.pathname.split("/").pop() ?? "";
@@ -589,8 +619,9 @@ export default {
 
 		// To revalidate an invalidated response, the cache sends the stored ETag
 		// in If-None-Match. If the product has not changed, answer 304 and skip
-		// rendering. The cache keeps the body it already has.
-		if (request.headers.get("If-None-Match") === etag) {
+		// rendering. The cache keeps the body it already has. A changed product
+		// has a new revision, and so a new ETag, which replaces the cached page.
+		if (ifNoneMatchMatches(request.headers.get("If-None-Match"), etag)) {
 			return new Response(null, { status: 304, headers });
 		}
 
@@ -620,11 +651,32 @@ function renderProductPage(product: Product): string {
 	return `<!doctype html><title>${product.name}</title>`;
 }
 
+// If-None-Match uses weak comparison (RFC 9110, section 8.8.3.2): ignore the
+// W/ prefix and match any listed entity tag. Revisions never contain commas,
+// so splitting the list on commas is safe here.
+function ifNoneMatchMatches(header: string | null, etag: string): boolean {
+	if (header === null) return false;
+	if (header.trim() === "*") return true;
+	const opaqueTag = (tag: string) => tag.trim().replace(/^W\//, "");
+	return header.split(",").some((tag) => opaqueTag(tag) === opaqueTag(etag));
+}
+
+// A 405 response must list the methods the resource supports (RFC 9110,
+// section 15.5.6).
+function methodNotAllowed(allow: string): Response {
+	return new Response("Method Not Allowed", {
+		status: 405,
+		headers: { Allow: allow },
+	});
+}
+
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 
-		if (request.method === "POST" && url.pathname === "/sync") {
+		if (url.pathname === "/sync") {
+			if (request.method !== "POST") return methodNotAllowed("POST");
+
 			// Write every product from the upstream catalog. Many are unchanged.
 			const products = await request.json<Product[]>();
 			await Promise.all(
@@ -637,6 +689,12 @@ export default {
 			await ctx.cache.invalidate({ tags: ["products"] });
 
 			return new Response("Synced", { status: 200 });
+		}
+
+		// Product pages are read-only. A matching If-None-Match calls for 304 only
+		// on GET and HEAD (RFC 9110, section 13.1.2), so reject other methods.
+		if (request.method !== "GET" && request.method !== "HEAD") {
+			return methodNotAllowed("GET, HEAD");
 		}
 
 		const id = url.pathname.split("/").pop() ?? "";
@@ -652,8 +710,9 @@ export default {
 
 		// To revalidate an invalidated response, the cache sends the stored ETag
 		// in If-None-Match. If the product has not changed, answer 304 and skip
-		// rendering. The cache keeps the body it already has.
-		if (request.headers.get("If-None-Match") === etag) {
+		// rendering. The cache keeps the body it already has. A changed product
+		// has a new revision, and so a new ETag, which replaces the cached page.
+		if (ifNoneMatchMatches(request.headers.get("If-None-Match"), etag)) {
 			return new Response(null, { status: 304, headers });
 		}
 
@@ -663,6 +722,16 @@ export default {
 	},
 } satisfies ExportedHandler<Env>;
 ```
+
+### Answer conditional requests
+
+Revalidation uses standard HTTP conditional requests, and your Worker must follow the HTTP rules for them:
+
+- **Answer a matching `If-None-Match` with `304`.** On a `GET` or `HEAD` request, if an entity tag listed in `If-None-Match` matches the `ETag` of the response your Worker would send, respond with `304 Not Modified`, not `200` ([RFC 9110, section 13.1.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-13.1.2)). Compare entity tags with the weak comparison function, which ignores the `W/` prefix ([RFC 9110, section 8.8.3.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-8.8.3.2)).
+- **Change the `ETag` whenever the content changes.** Responses that share an `ETag` are interchangeable as far as caches are concerned. A weak `ETag` ought to change whenever you want caches to stop using old responses ([RFC 9110, section 8.8.1 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-8.8.1)). Derive the `ETag` from the content, or from a revision that changes with it, or do not send an `ETag` at all.
+- **Keep `Last-Modified` accurate.** It is the time the content last changed ([RFC 9110, section 8.8.2 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-8.8.2)). When a `GET` or `HEAD` request carries `If-Modified-Since` without `If-None-Match`, answer `304` if the content has not changed since that time. When the request carries both, ignore `If-Modified-Since` and let `If-None-Match` decide ([RFC 9110, section 13.1.3 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-13.1.3)).
+
+A `200` response that repeats the cached `ETag` tells every cache that the old and new bodies are interchangeable, even if its `Last-Modified` is later, so the new body does not reliably replace the old one. With [tiered cache](https://developers.cloudflare.com/workers/cache/#tiered-cache), the lower tier revalidates its copy with the upper tier. The upper tier receives the new body from your Worker, but its `ETag` matches the lower tier's copy, so the upper tier answers the lower tier with `304` and the lower tier keeps serving the old body. Browsers that cached the old response revalidate the same way and keep their copy too.
 
 ## Purge propagation
 
@@ -721,5 +790,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purge and invalidate the cache","description":"Delete cached responses with ctx.cache.purge() or mark them stale with ctx.cache.invalidate() — by tag, by path prefix, or everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c14e903","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purge and invalidate the cache","description":"Delete cached responses with ctx.cache.purge() or mark them stale with ctx.cache.invalidate() — by tag, by path prefix, or everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c14e903","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

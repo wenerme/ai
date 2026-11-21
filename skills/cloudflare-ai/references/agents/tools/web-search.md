@@ -107,6 +107,14 @@ Ask your agent a question that needs current information. The model can call `we
 
 The Pi tool is marked `replay: "safe"`. If an eviction interrupts a search, Pi reruns only that search when the session recovers, which is a second billed search. Finished calls already have their results in the transcript. The tool does not cache results, so when the model repeats a search, it makes and bills a new one. The tool also honors Pi's abort signal when you cancel a running call.
 
+In [Pi's code mode](https://developers.cloudflare.com/agents/tools/browser/#use-it-in-pis-code-mode), a script calls `tools.web_search({ query, limit })` and gets the results as an object instead of the model's text:
+
+```ts
+{ query, items: [{ title, url, description?, lastModifiedDate? }] }
+```
+
+Descriptions are trimmed as they are for the model. A failed search rejects with the model's text. To search, then read the results in the same script, refer to [Web fetch](https://developers.cloudflare.com/agents/tools/web-fetch/#pi-durable).
+
 ### AI SDK
 
 Add the tool to the `tools` object in your existing `streamText()` or `generateText()` call:
@@ -376,5 +384,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/web-search/#page","headline":"Web search","description":"Give your agent a web search tool backed by the Cloudflare Web Search API. Use Pi Durable, AI SDK, TanStack AI, or your own harness.","url":"https://developers.cloudflare.com/agents/tools/web-search/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/web-search/og.png?v=d32bfef30de0079d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/web-search/#page","headline":"Web search","description":"Give your agent a web search tool backed by the Cloudflare Web Search API. Use Pi Durable, AI SDK, TanStack AI, or your own harness.","url":"https://developers.cloudflare.com/agents/tools/web-search/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/web-search/og.png?v=d32bfef30de0079d","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -123,6 +123,18 @@ func main() {
 }
 ```
 
+```csharp
+using OpenAI.Chat;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ChatClient client = new("gpt-6.2-astra", key);
+
+ChatCompletion completion = await client.CompleteChatAsync(
+    [new UserChatMessage("Write a one-sentence bedtime story about a unicorn.")]);
+Console.WriteLine(completion.Content[0].Text);
+```
+
 ```ruby
 require "openai"
 
@@ -186,6 +198,18 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-6.2-astra", "Write a one-sentence bedtime story about a unicorn.");
+Console.WriteLine(response.GetOutputText());
 ```
 
 ```ruby

@@ -1328,6 +1328,8 @@ TCP load balancers pass ALPN directly without additional configuration:
 
 ```mermaid
 sequenceDiagram
+    accTitle: TLS session with ALPN through a TCP load balancer
+    accDescr: A TCP load balancer passes the TLS session with the ALPN extension from the client to Praefect, then relays encrypted packets and responses between them.
     autonumber
     participant Client as Client
     participant LB as TCP Load Balancer
@@ -1350,6 +1352,8 @@ does not work when the `proxy_ssl` configuration option is enabled:
 
 ```mermaid
 sequenceDiagram
+    accTitle: Failed TLS session through an NGINX stream proxy
+    accDescr: NGINX accepts a TLS session with ALPN from the client, but its new TLS session with Praefect fails because the ALPN property is missing.
     autonumber
     participant Client as Client
     participant NGINX as NGINX Stream Proxy

@@ -134,6 +134,23 @@ client.chat().completions().create(params).choices().stream()
     .forEach(System.out::println);
 ```
 
+```csharp
+using OpenAI.Chat;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ChatClient client = new("gpt-6.2-astra", key);
+
+ChatCompletion completion = await client.CompleteChatAsync(
+    [new UserChatMessage("This is a test")],
+    new ChatCompletionOptions
+    {
+        SafetyIdentifier = "user_123456",
+        MaxOutputTokenCount = 5,
+    });
+Console.WriteLine(completion.Content[0].Text);
+```
+
 ```ruby
 require "openai"
 

@@ -328,7 +328,35 @@ Connection states flow: `authenticating` (needs OAuth) → `connecting` (complet
 
 ## Handle failures
 
-When OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field. Display this error in your UI and allow users to retry:
+When OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field. A failed server stays failed: the agent does not retry it on a timer or when it wakes, so a flow the user turned down does not start again on its own. Display the error in your UI, and let users try again with `reconnectMcpServer(id)`.
+
+Expose `reconnectMcpServer()` to the client with a callable method:
+
+```js
+import { Agent, callable } from "agents";
+
+export class MyAgent extends Agent {
+	@callable()
+	async reconnectServer(id) {
+		return this.reconnectMcpServer(id);
+	}
+}
+```
+
+*src/index.tsts*
+
+```ts
+import { Agent, callable } from "agents";
+
+export class MyAgent extends Agent<Env> {
+	@callable()
+	async reconnectServer(id: string) {
+		return this.reconnectMcpServer(id);
+	}
+}
+```
+
+Call it from a **Reconnect** button, and open the new authorization link when the server needs one:
 
 ```js
 import { useAgent } from "agents/react";
@@ -348,20 +376,10 @@ function App() {
 		onMcpUpdate: setMcpState,
 	});
 
-	const handleRetry = async (serverId, serverUrl, name) => {
-		// Remove failed connection
-		await fetch(`/agents/my-agent/session-id/disconnect`, {
-			method: "POST",
-			body: JSON.stringify({ serverId }),
-		});
-
-		// Retry connection
-		const response = await fetch(`/agents/my-agent/session-id/connect`, {
-			method: "POST",
-			body: JSON.stringify({ serverUrl, name }),
-		});
-		const { authUrl } = await response.json();
-		if (authUrl) window.open(authUrl, "_blank");
+	const handleReconnect = async (serverId) => {
+		const result = await agent.stub.reconnectServer(serverId);
+		if (result.state === "authenticating")
+			window.open(result.authUrl, "_blank");
 	};
 
 	return (
@@ -372,10 +390,8 @@ function App() {
 					{server.state === "failed" && (
 						<div>
 							{server.error && <p className="error">{server.error}</p>}
-							<button
-								onClick={() => handleRetry(id, server.server_url, server.name)}
-							>
-								Retry Connection
+							<button onClick={() => void handleReconnect(id)}>
+								Reconnect
 							</button>
 						</div>
 					)}
@@ -392,6 +408,7 @@ function App() {
 import { useAgent } from "agents/react";
 import { useState } from "react";
 import type { MCPServersState } from "agents";
+import type { MyAgent } from "./index";
 
 function App() {
 	const [mcpState, setMcpState] = useState<MCPServersState>({
@@ -401,30 +418,16 @@ function App() {
 		tools: [],
 	});
 
-	const agent = useAgent({
+	const agent = useAgent<MyAgent>({
 		agent: "my-agent",
 		name: "session-id",
 		onMcpUpdate: setMcpState,
 	});
 
-	const handleRetry = async (
-		serverId: string,
-		serverUrl: string,
-		name: string,
-	) => {
-		// Remove failed connection
-		await fetch(`/agents/my-agent/session-id/disconnect`, {
-			method: "POST",
-			body: JSON.stringify({ serverId }),
-		});
-
-		// Retry connection
-		const response = await fetch(`/agents/my-agent/session-id/connect`, {
-			method: "POST",
-			body: JSON.stringify({ serverUrl, name }),
-		});
-		const { authUrl } = await response.json();
-		if (authUrl) window.open(authUrl, "_blank");
+	const handleReconnect = async (serverId: string) => {
+		const result = await agent.stub.reconnectServer(serverId);
+		if (result.state === "authenticating")
+			window.open(result.authUrl, "_blank");
 	};
 
 	return (
@@ -435,10 +438,8 @@ function App() {
 					{server.state === "failed" && (
 						<div>
 							{server.error && <p className="error">{server.error}</p>}
-							<button
-								onClick={() => handleRetry(id, server.server_url, server.name)}
-							>
-								Retry Connection
+							<button onClick={() => void handleReconnect(id)}>
+								Reconnect
 							</button>
 						</div>
 					)}
@@ -451,12 +452,16 @@ function App() {
 
 Common failure reasons:
 
-- **User canceled**: Closed OAuth window before completing authorization
+- **User canceled**: Denied access, or closed the OAuth window before completing authorization
 - **Invalid credentials**: Provider credentials were incorrect
-- **Permission denied**: User lacks required permissions
+- **Permission denied**: User lacks required permissions, or the authorization server refused the requested scopes
 - **Expired session**: OAuth session timed out
 
-Failed connections remain in state until removed with `removeMcpServer(serverId)`. The error message is automatically escaped to prevent XSS attacks, so it is safe to display directly in your UI.
+Calling `addMcpServer()` again for a failed server throws its recorded error instead of retrying. Failed connections remain in state until you reconnect them with `reconnectMcpServer(serverId)` or remove them with `removeMcpServer(serverId)`. The error message is automatically escaped to prevent XSS attacks, so it is safe to display directly in your UI. For which failures count as refused, refer to [Failures and reconnecting](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#failures-and-reconnecting).
+
+### Authorize again during a session
+
+A server that is `ready` can need authorization again, for example when a tool call needs a scope the grant lacks, or a token refresh fails. The request throws `MCPAuthorizationRequiredError`, the server moves to `authenticating`, and `onMcpUpdate` delivers its new `auth_url`, so the **Authorize** button in [Monitor connection status](#monitor-connection-status) shows again. Refer to [Re-authorization during a session](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#re-authorization-during-a-session).
 
 ## Complete example
 
@@ -629,5 +634,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/#page","headline":"Handle OAuth with MCP servers","description":"Implement OAuth authentication flows in Cloudflare Agents to connect to protected MCP servers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/og.png?v=0c93b7fceb3b8d12","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/#page","headline":"Handle OAuth with MCP servers","description":"Implement OAuth authentication flows in Cloudflare Agents to connect to protected MCP servers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/og.png?v=0c93b7fceb3b8d12","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

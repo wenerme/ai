@@ -64,7 +64,7 @@ export class Editor extends DurableObject {
 				context,
 			);
 		},
-		defaults: { model: this.ai("@cf/zai-org/glm-5.3-flash") },
+		defaults: { model: this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017") },
 	});
 
 	lifecycle = Lifecycle.install(this).use(this.harness);
@@ -121,7 +121,7 @@ export class Editor extends DurableObject<Env> {
 				context,
 			);
 		},
-		defaults: { model: this.ai("@cf/zai-org/glm-5.3-flash") },
+		defaults: { model: this.ai("@cf/deepseek-ai/deepseek-v4.1-flash-1017") },
 	});
 
 	lifecycle = Lifecycle.install(this).use(this.harness);
@@ -140,6 +140,7 @@ A tool is a Pi Durable `ToolRegistration`:
 - **What a running call can use.** `execute(args, api, context)` gets Pi's operations for the call. `api.output()` streams running output, `api.details()` sends data for a UI, and `api.memo()` stores values that survive an eviction.
 - **Abort.** `context.abortSignal` is aborted when the call is. Honor it: `session.abort()` waits until every running tool returns.
 - **Parallel calls.** Pi runs the tool calls in one model round at the same time by default. Set `executionMode: "sequential"` on a tool whose calls must run one after another. One sequential call makes its whole round sequential.
+- **Waiting.** A tool that waits for a person, a webhook, or another session can park instead of returning a result, and the Durable Object can hibernate while it waits. Refer to [Tools that wait](https://developers.cloudflare.com/agents/harnesses/pi/#tools-that-wait).
 
 ```ts
 const FetchPage = obj({ url: str() });
@@ -213,7 +214,8 @@ The tools match the ones [Think](https://developers.cloudflare.com/agents/harnes
 
 Because the registry is Pi's own, everything else Pi Durable extensions can do also works:
 
-- Hooks on model requests, tool calls, and compaction, such as `hook(ToolTask, { beforeTool })`.
+- Hooks on model requests, tool calls, and compaction, such as `hook(ToolTask, { beforeTool })`. A `beforeTool` hook can park a call until it is approved.
+- Grouping an extension's tools in Pi's code mode with `namespace: { name, description, instructions }`.
 - Durable custom tasks that resume after a restart.
 - Wrapping another extension's tools and sections.
 - Choosing extensions per conversation.
@@ -230,5 +232,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

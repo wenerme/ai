@@ -95,7 +95,7 @@ The following limits apply on migration by direct transfer.
 | Relations export requests per minute per user for each project or group.   | 6           | Yes  |
 | Relations export downloads per minute per user for each project or group.  | 100         | Yes  |
 | Time to wait for decompressing an archive file.                            | 210 seconds | No   |
-| Length of an NDJSON row.                                                   | 50 MB       | No   |
+| Length of an NDJSON row.                                                   | 50 MiB      | Yes  |
 | Time until an empty export status on source instance is raised.            | 5 minutes   | No   |
 | Relation size that can be downloaded from the source instance.             | 5 GiB       | Yes  |
 | Size of a decompressed archive.                                            | 10 GiB      | Yes  |

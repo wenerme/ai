@@ -473,6 +473,16 @@ var conversation = client.conversations().create();
 System.out.println(conversation.id());
 ```
 
+```csharp
+using OpenAI.Conversations;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ConversationClient conversations = new(key);
+
+ConversationResource conversation = await conversations.CreateConversationAsync(new ConversationCreationOptions());
+```
+
 ```ruby
 conversation = client.conversations.create
 ```
@@ -538,6 +548,21 @@ response.output().stream()
     .flatMap(message -> message.content().stream())
     .flatMap(content -> content.outputText().stream())
     .forEach(text -> System.out.println(text.text()));
+```
+
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+ResponsesClient client = new(key);
+
+ResponseResult response = await client.CreateResponseAsync(new CreateResponseOptions(
+    "gpt-6.2-astra",
+    [ResponseItem.CreateUserMessageItem("What are the five Ds of dodgeball?")])
+{
+    ConversationOptions = new ResponseConversationOptions(conversation.Id),
+});
+Console.WriteLine(response.GetOutputText());
 ```
 
 ```ruby

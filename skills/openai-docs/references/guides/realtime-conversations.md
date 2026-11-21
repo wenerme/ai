@@ -1284,6 +1284,15 @@ if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
 }
 ```
 
+```csharp
+using OpenAI.Realtime;
+#pragma warning disable OPENAI002
+
+RealtimeMessageItem item = RealtimeItem.CreateUserMessageItem([new RealtimeInputImageMessageContentPart(new Uri("data:image/png;base64," + Convert.ToBase64String(File.ReadAllBytes("image.png"))))]);
+item.Id = Guid.NewGuid().ToString("N");
+await session.SendCommandAsync(new RealtimeClientCommandConversationItemCreate(item), timeout.Token);
+```
+
 ```ruby
 encoded_image = Base64.strict_encode64(File.binread("image.png"))
 

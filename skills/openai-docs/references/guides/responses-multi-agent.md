@@ -306,12 +306,19 @@ function processToolCall(name: string, argumentsJson: string) {
 }
 
 while (true) {
-  const outputItems = [];
-  const pendingCalls = [];
+  let outputItems: OpenAI.Beta.Responses.BetaResponseOutputItem[] = [];
+  let completed = false;
   const itemAgents = new Map();
 
   const stream = await client.beta.responses.create({
     model: "gpt-6.2-sol",
+    // HTTP tool results arrive in the next request. Waiting for an agent that
+    // needs those results would prevent this response from ending.
+    instructions:
+      "Use separate subagents to look up each proposal. After spawning them, " +
+      "finish your own turn without calling wait_agent so the HTTP caller can " +
+      "supply their get_proposal results. When those results are present in " +
+      "the conversation, compare the subagents' findings and give the final answer.",
     // Replay Beta output unchanged, including agent metadata. The SDK input
     // union is narrower than the agent_message content returned by the API.
     input: history as OpenAI.Beta.Responses.BetaResponseInput,
@@ -334,14 +341,12 @@ while (true) {
       destination.write(
         agent === ROOT ? event.delta : `[${agent}] ${event.delta}`
       );
-    } else if (event.type === "response.output_item.done") {
-      outputItems.push(event.item);
-      if (event.item.type === "function_call") {
-        pendingCalls.push(event.item);
-      }
     } else if (event.type === "response.completed") {
+      // The completed response includes hosted-agent replay items that may not
+      // appear as individual output_item.done events.
+      outputItems = event.response.output;
+      completed = true;
       console.error("\nUsage:", event.response.usage);
-      break;
     } else if (
       event.type === "error" ||
       event.type === "response.failed" ||
@@ -351,6 +356,10 @@ while (true) {
     }
   }
 
+  if (!completed) throw new Error("Stream ended before the response completed");
+  const pendingCalls = outputItems.filter(
+    (item) => item.type === "function_call"
+  );
   history.push(...outputItems);
   for (const call of pendingCalls) {
     history.push({

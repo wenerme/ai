@@ -26,10 +26,10 @@ Responses are simpler—send input items and get output items back. With the Res
   <tbody>
     <tr>
       <td>`Assistants`</td>
-      <td>`Prompts`</td>
+      <td>Responses request configuration</td>
       <td>
-        Prompts hold configuration (model, tools, instructions) and are easier
-        to version and update
+        Keep the model, instructions, and tools in your application and pass
+        them in the request.
       </td>
     </tr>
     <tr>
@@ -55,9 +55,65 @@ Responses are simpler—send input items and get output items back. With the Res
   </tbody>
 </table>
 
+## Migrate Ruby applications
+
+The [Ruby SDK migration guide](https://developers.openai.com/api/docs/guides/ruby-sdk-migration) lists
+the retired Assistants and Threads bindings. Keep your model choice,
+instructions, and tool definitions in your application. Pass them as
+`model:`, `instructions:`, and `tools:` when you call
+`client.responses.create`.
+
+Create a Conversation for each thread you migrate. Convert messages and tool
+results from your own stored history to Conversation items and keep them in
+their original order. Store the new Conversation ID with the original thread
+ID.
+
+Create a Conversation with saved messages
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+conversation = client.conversations.create(
+  items: [
+    {
+      role: :user,
+      content: "What are the five Ds of dodgeball?"
+    }
+  ],
+  metadata: { user_id: "peter_le_fleur" }
+)
+puts(conversation.id)
+```
+
+
+Pass the returned ID as `conversation:` on later requests. For
+application-run function tools, send each result as a `function_call_output`
+item with the matching `call_id`.
+
+Continue the Conversation with a Response
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-6.2-astra",
+  input: [
+    {
+      role: :user,
+      content: "What are the five Ds of dodgeball?"
+    }
+  ],
+  conversation: "conv_abc123"
+)
+puts(response.output_text)
+```
+
+
 ## From assistants to prompts
 
-Assistants were persistent API objects that bundled model choice, instructions, and tool declarations—created and managed entirely through the API. Their replacement, prompts, can only be created in the dashboard, where you can version them as you develop your product.
+Assistants were persistent API objects that bundled model choice, instructions, and tool declarations. Earlier migrations moved that configuration into reusable prompts created in the dashboard.
 
 ### Why this is helpful
 
@@ -482,6 +538,9 @@ console.log(response.output_text);
 
 Follow the migration steps below to move from the Assistants API to the Responses API, without losing any feature support.
 
+For Ruby, follow [Migrate Ruby applications](#migrate-ruby-applications) to
+pass your application configuration directly in the request.
+
 ### 1. Create prompts from your assistants
 
 1. Identify the most important assistant objects in your application.
@@ -542,46 +601,6 @@ for m in messages:
 conversation = openai.conversations.create(items=items)
 ```
 
-```ruby
-# Replace the illustrative IDs and URLs below with your own resource values.
-require "openai"
-
-client = OpenAI::Client.new
-thread_id = "thread_123"
-messages = client.beta.threads.messages.list(thread_id, order: :asc)
-items = []
-messages.auto_paging_each do |message|
-  content = message.content.filter_map do |part|
-    case part
-    when OpenAI::Models::Beta::Threads::TextContentBlock
-      type = if message.role == OpenAI::Models::Beta::Threads::Message::Role::USER
-               :input_text
-             else
-               :output_text
-             end
-      {
-        type: type,
-        text: part.text.value
-      }
-    when OpenAI::Models::Beta::Threads::ImageURLContentBlock
-      {
-        type: :input_image,
-        image_url: part.image_url.url,
-        detail: part.image_url.detail
-      }
-    end
-  end
-  items << {
-    role: message.role,
-    content: content
-  }
-end
-conversation = client.conversations.create(
-  items: items
-)
-puts(conversation.id)
-```
-
 
 ## Comparing full examples
 
@@ -632,51 +651,6 @@ async def message(message: Message):
     return {"content": messages.data[0].content}
 ```
 
-```ruby
-# Replace the illustrative IDs and URLs below with your own resource values.
-require "openai"
-
-client = OpenAI::Client.new
-assistant_id = "asst_123"
-threads_by_session = {}
-
-handle_message = lambda do |session_id:, content:|
-  thread_id = threads_by_session[session_id]
-  unless thread_id
-    thread_id = client.beta.threads.create.id
-    threads_by_session[session_id] = thread_id
-  end
-
-  client.beta.threads.messages.create(
-    thread_id,
-    role: :user,
-    content: content
-  )
-  run = client.beta.threads.runs.create(
-    thread_id,
-    assistant_id: assistant_id
-  )
-  while [:queued, :in_progress].include?(run.status)
-    sleep(1)
-    run = client.beta.threads.runs.retrieve(run.id, thread_id: thread_id)
-  end
-
-  messages = client.beta.threads.messages.list(
-    thread_id,
-    order: :desc,
-    limit: 1
-  )
-  { content: messages.data&.first&.content }
-end
-
-puts(
-  handle_message.call(
-    session_id: "example-session",
-    content: "What are the five Ds of dodgeball?"
-  )
-)
-```
-
 
   
 
@@ -684,59 +658,6 @@ puts(
 
     
 Responses API
-
-```typescript
-// Replace the illustrative IDs and URLs below with your own resource values.
-import express from "express";
-import OpenAI from "openai";
-
-const app = express();
-const client = new OpenAI();
-const conversationsBySession = new Map<string, Promise<string>>();
-
-app.use(express.json());
-
-app.post("/messages", async (request, response) => {
-  const { content, session_id: sessionId } = request.body ?? {};
-  if (
-    typeof content !== "string" ||
-    !content.trim() ||
-    typeof sessionId !== "string" ||
-    !sessionId.trim()
-  ) {
-    response.status(400).json({
-      error: "content and session_id must be non-empty strings.",
-    });
-    return;
-  }
-
-  let conversationIdPromise = conversationsBySession.get(sessionId);
-
-  if (!conversationIdPromise) {
-    conversationIdPromise = client.conversations
-      .create()
-      .then((conversation) => conversation.id)
-      .catch((error) => {
-        conversationsBySession.delete(sessionId);
-        throw error;
-      });
-    conversationsBySession.set(sessionId, conversationIdPromise);
-  }
-  const conversationId = await conversationIdPromise;
-
-  const promptId = "pmpt_123";
-
-  const result = await client.responses.create({
-    prompt: { id: promptId },
-    input: [{ role: "user", content }],
-    conversation: conversationId,
-  });
-
-  response.json({ content: result.output_text });
-});
-
-app.listen(Number(process.env.OPENAI_EXAMPLE_PORT ?? 8000), "127.0.0.1");
-```
 
 ```python
 # Replace the illustrative IDs and URLs below with your own resource values.
@@ -869,6 +790,67 @@ func newChatHandler(client openai.Client) http.Handler {
 }
 ```
 
+```typescript
+// Replace the illustrative IDs and URLs below with your own resource values.
+import express from "express";
+import OpenAI from "openai";
+
+const app = express();
+const client = new OpenAI();
+const conversationsBySession = new Map<string, Promise<string>>();
+
+app.use(express.json());
+
+app.post("/messages", async (request, response) => {
+  const { content, session_id: sessionId } = request.body ?? {};
+  if (
+    typeof content !== "string" ||
+    !content.trim() ||
+    typeof sessionId !== "string" ||
+    !sessionId.trim()
+  ) {
+    response.status(400).json({
+      error: "content and session_id must be non-empty strings.",
+    });
+    return;
+  }
+
+  let conversationIdPromise = conversationsBySession.get(sessionId);
+
+  if (!conversationIdPromise) {
+    conversationIdPromise = client.conversations
+      .create()
+      .then((conversation) => conversation.id)
+      .catch((error) => {
+        conversationsBySession.delete(sessionId);
+        throw error;
+      });
+    conversationsBySession.set(sessionId, conversationIdPromise);
+  }
+  const conversationId = await conversationIdPromise;
+
+  const promptId = "pmpt_123";
+
+  const result = await client.responses.create({
+    prompt: { id: promptId },
+    input: [{ role: "user", content }],
+    conversation: conversationId,
+  });
+
+  response.json({ content: result.output_text });
+});
+
+app.listen(Number(process.env.OPENAI_EXAMPLE_PORT ?? 8000), "127.0.0.1");
+```
+
+
+
+<details>
+  <summary>Earlier Ruby example using a reusable prompt</summary>
+
+For new Ruby integrations, use the application-owned configuration in
+[Migrate Ruby applications](#migrate-ruby-applications).
+
 ```ruby
 # Replace the illustrative IDs and URLs below with your own resource values.
 require "openai"
@@ -907,3 +889,5 @@ puts(
   )
 )
 ```
+
+</details>
