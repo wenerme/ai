@@ -65,6 +65,12 @@ Type: `string`
 
 IP address of the client.
 
+## EdgeResponseStatus
+
+Type: `int`
+
+HTTP status code that Cloudflare returns to the client. A value of `0` means no edge response is available.
+
 ## Email
 
 Type: `string`

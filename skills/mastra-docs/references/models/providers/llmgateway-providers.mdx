@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 506 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 507 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -972,8 +972,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 921600,
     "maxOutput": 128000,
-    "inputCost": 4.4,
-    "outputCost": 26.4
+    "inputCost": 5.5,
+    "outputCost": 33
   },
   {
     "model": "llmgateway-providers/aws-mantle/gpt-5.6-terra",
@@ -2534,6 +2534,18 @@ for await (const chunk of stream) {
     "maxOutput": 943718,
     "inputCost": 1.25,
     "outputCost": 4.25
+  },
+  {
+    "model": "llmgateway-providers/fireworks/qwen3.8-2.4t-a95b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1009981,
+    "maxOutput": 1009981,
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "llmgateway-providers/flexai/deepseek-v4-flash",

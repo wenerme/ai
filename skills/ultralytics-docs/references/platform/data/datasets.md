@@ -288,7 +288,7 @@ Depth datasets can only be created from **Upload** or **URL**; the **Cloud** and
 
 #### Before the Upload Starts
 
-Platform validates your files in the browser before uploading anything, so common problems surface immediately rather than after a long transfer. Archives are checked for corruption, emptiness, password protection, and YAML syntax errors, and oversized files are listed by name.
+Platform validates your files in the browser before uploading anything, so common problems surface immediately rather than after a long transfer. Archives are checked for corruption, emptiness, password protection, and YAML syntax errors, and oversized files are listed by name. A ZIP cut short by an interrupted download or copy has no end-of-archive record, so it stops with **Unable to read ZIP file** before any bytes upload; download or copy it again. URL imports can't be checked in the browser, so an incomplete ZIP at a link fails during processing with **Unable to read this archive**.
 
 Two dialogs may then appear:
 
@@ -1017,7 +1017,7 @@ To delete several datasets at once, select their rows in the table view of the *
 
 ## Train on Dataset
 
-Start training directly from your dataset:
+Start from a dataset you can edit. If you are viewing another workspace's public dataset, [clone it](#clone-dataset) and open the copy first.
 
 1. Click `New Model` on the dataset page
 2. Select a project or create new
