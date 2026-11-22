@@ -137,9 +137,41 @@ It is possible to control how `.env` files are loaded in local development by se
 
 ## Secrets on deployed Workers
 
+### Move a value between a variable and a secret
+
+Variables and secrets use the same set of binding names. A Worker version cannot define both a variable and a secret with the same name. Adding a secret while a variable still uses that name fails with a binding-name conflict.
+
+Deploying a variable with the same name as an existing secret does not fail. The variable replaces the secret, and the secret is deleted.
+
+Renaming a binding also changes its `env` property. Code that still reads the old name receives `undefined` once that binding is removed.
+
+To change a variable to a secret, or a secret to a variable:
+
+1. Create the new binding under a new name. For example, create an `API_TOKEN_SECRET` secret to replace an `API_TOKEN` variable. Only use a plaintext variable for values that are safe to expose in configuration. If you use `secrets.required`, add the new secret name to that list.
+2. Update your code, such as `env.API_TOKEN` → `env.API_TOKEN_SECRET`, and deploy.
+3. Remove the old binding after the new version works. If it was a secret, remove its name from `secrets.required` too.
+
+Update your [local secrets](#local-development-with-secrets) to use the new name too.
+
 ### Validate secrets before deploy
 
 You can declare the secret names your Worker requires using the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) in your Wrangler configuration. When defined, `wrangler deploy` and `wrangler versions upload` will fail with a clear error if any required secrets are not configured on the Worker.
+
+### Add TypeScript types for optional secrets
+
+`secrets.required` validates presence at deployment. Do not add an optional secret to that list just to generate its type.
+
+Declare optional secrets in your own interface that extends your generated `Env`:
+
+```ts
+interface AppEnv extends Env {
+  OPTIONAL_API_TOKEN?: string;
+}
+```
+
+Use `AppEnv` in your handler and check for `undefined` before using the value. This type does not create or load the secret.
+
+If `secrets.required` is set, `.dev.vars` and `.env` cannot load optional secrets outside that list. To test those secrets with local files, use a local-only configuration without `secrets.required`. Refer to [Local Development with Secrets](#local-development-with-secrets).
 
 ### Adding secrets to your project
 
@@ -240,5 +272,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/secrets/#page","headline":"Secrets","description":"Store sensitive information, like API keys and auth tokens, in your Worker.","url":"https://developers.cloudflare.com/workers/configuration/secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/secrets/og.png?v=60a3b999abcd3095","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/secrets/#page","headline":"Secrets","description":"Store sensitive information, like API keys and auth tokens, in your Worker.","url":"https://developers.cloudflare.com/workers/configuration/secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/secrets/og.png?v=60a3b999abcd3095","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

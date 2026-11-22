@@ -40,6 +40,8 @@ bun add -d wrangler@latest
 
 Add a `previews` block to your Wrangler configuration file. Top-level settings define production, and the `previews` block defines Preview settings. The `previews` block can be empty if your Preview does not need separate settings.
 
+Use [test resources](https://developers.cloudflare.com/workers/previews/resources/) for bindings that can affect production. Previews bound to the same D1 `database_id` share data and schema changes. To isolate a Preview, [configure a separate database](https://developers.cloudflare.com/workers/previews/resources/#d1-migrations).
+
 ```jsonc
 {
   // ...
@@ -70,6 +72,10 @@ To determine which settings belong at the top level or in `previews`, refer to [
 Settings that you add or import in the dashboard must also be copied to your [Wrangler configuration file](https://developers.cloudflare.com/workers/previews/configuration/#dashboard-configuration).
 
 ## Step 2: Deploy a Preview
+
+Cron Triggers do not invoke a Preview's `scheduled()` handler. To test scheduled logic, use the [Preview testing workaround](https://developers.cloudflare.com/workers/previews/resources/#cron-triggers).
+
+Preview URLs are public by default. [Configure Cloudflare Access](https://developers.cloudflare.com/workers/previews/custom-domains/#protect-preview-content) before sharing a Preview that contains private content.
 
 Run the same Preview command locally or in your existing CI workflow:
 
@@ -109,5 +115,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/get-started/#page","headline":"Get started","description":"Create a Worker Preview and configure preview-safe settings with Wrangler.","url":"https://developers.cloudflare.com/workers/previews/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/previews/get-started/og.png?v=2eb6967b7d478d0d","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/get-started/#page","headline":"Get started","description":"Create a Worker Preview and configure preview-safe settings with Wrangler.","url":"https://developers.cloudflare.com/workers/previews/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/previews/get-started/og.png?v=2eb6967b7d478d0d","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

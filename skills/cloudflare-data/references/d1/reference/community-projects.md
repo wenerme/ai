@@ -69,6 +69,13 @@ UQL is a TypeScript ORM that queries with plain JSON objects and generates migra
 - [Docs ↗︎](https://uql-orm.dev/cloudflare-d1)
 - [GitHub ↗︎](https://github.com/rogerpadilla/uql)
 
+### Reylo
+
+Reylo types the SQL queries in a project's `.sql` files from the database: importing one gives its parameters, columns, nullability and how many rows it returns, through TypeScript 7.1's content mappers. It runs those queries on D1 through the binding, and on a Durable Object's SQLite storage.
+
+- [GitHub ↗︎](https://github.com/reylosql/reylo)
+- [D1 guide ↗︎](https://reylo.dev/d1)
+
 ### workers-qb
 
 `workers-qb` is a zero-dependency query builder that provides a simple standardized interface while keeping the benefits and speed of using raw queries over a traditional ORM. While not intended to provide ORM-like functionality, `workers-qb` makes it easier to interact with your database from code for direct SQL access.
@@ -135,5 +142,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/community-projects/#page","headline":"Community projects","description":"Explore community-built ORMs, query builders, and tools that integrate with D1.","url":"https://developers.cloudflare.com/d1/reference/community-projects/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/community-projects/og.png?v=d512bd58bb66e712","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/community-projects/#page","headline":"Community projects","description":"Explore community-built ORMs, query builders, and tools that integrate with D1.","url":"https://developers.cloudflare.com/d1/reference/community-projects/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/community-projects/og.png?v=d512bd58bb66e712","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

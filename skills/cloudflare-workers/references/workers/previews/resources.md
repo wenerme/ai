@@ -40,6 +40,52 @@ This table shows which resources are automatically provisioned and which require
 | `ratelimits` | Creates a Rate Limiting binding. The runtime binding name comes from `name`, not `binding`. | Use a different `namespace_id`. |
 | `send_email` | Creates a Send Email binding. The runtime binding name comes from `name`, not `binding`. Successful delivery requires valid Email Routing setup. | Not applicable. |
 
+### Select resources with `cf`
+
+With [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/), use `isPreview` to select different account-level resources:
+
+*cloudflare.config.jsjs*
+
+```js
+import { bindings, defineConfig } from "cf/config";
+
+export default defineConfig(({ isPreview }) => ({
+	worker: {
+		name: "my-worker",
+		entrypoint: "./src/index.ts",
+		compatibilityDate: "2026-11-21",
+		env: {
+			DB: bindings.d1({
+				id: isPreview ? "<PREVIEW_DATABASE_ID>" : "<PRODUCTION_DATABASE_ID>",
+			}),
+		},
+	},
+}));
+```
+
+*cloudflare.config.tsts*
+
+```ts
+import { bindings, defineConfig } from "cf/config";
+
+export default defineConfig(({ isPreview }) => ({
+	worker: {
+		name: "my-worker",
+		entrypoint: "./src/index.ts",
+		compatibilityDate: "2026-11-21",
+		env: {
+			DB: bindings.d1({
+				id: isPreview
+					? "<PREVIEW_DATABASE_ID>"
+					: "<PRODUCTION_DATABASE_ID>",
+			}),
+		},
+	},
+}));
+```
+
+Replace the placeholders with your database IDs. All Previews using `<PREVIEW_DATABASE_ID>` share that database. To isolate Previews from each other, use a different database ID for each Preview. For schema changes, refer to [D1 migrations](#d1-migrations).
+
 ## Durable Objects
 
 Durable Objects use a stateful singleton model: within a namespace, each object ID resolves to one instance and its storage. If Previews shared a namespace, they could read and overwrite the same state. For a class defined in the same Worker without `script_name`, each Preview automatically gets its own namespace and storage.
@@ -49,6 +95,7 @@ State persists across deployments within the same Preview and is deleted when th
 | Access pattern | Preview configuration | Result |
 | --- | --- | --- |
 | [`ctx.exports`](#use-ctxexports-recommended) | Class and migration only | Recommended. Each Preview gets a separate namespace automatically. |
+| [`cf` configuration](#use-cf-configuration) | Class in `worker.exports`; call `ctx.exports.Counter` | Each Preview gets a separate namespace automatically. |
 | [`env` binding](#use-an-env-binding) | Class, migration, and a Preview binding | Use when your code needs `env.COUNTER`. |
 
 ### Use `ctx.exports` (recommended)
@@ -60,7 +107,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-21",
 	"migrations": [
 		{ "tag": "v1", "new_classes": ["Counter"] }
 	],
@@ -70,7 +117,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-21"
 previews = { }
 
 [[migrations]]
@@ -79,6 +126,12 @@ new_classes = [ "Counter" ]
 ```
 
 Production, `feature-login`, and `redesign` each get their own Durable Object namespace and storage. The empty `previews` block is sufficient because no Preview-specific Durable Object binding is needed.
+
+### Use `cf` configuration
+
+With [`cloudflare.config.ts`](https://developers.cloudflare.com/cf/projects/cloudflare-config/), declare `Counter` in `worker.exports` using `exports.durableObject({ storage: "sqlite" })`. Call `ctx.exports.Counter` to use the Preview's isolated namespace.
+
+`bindings.durableObject({ worker: "my-worker", exportName: "Counter" })` targets the named Worker's deployed namespace, even when the name matches your Worker. With `cf` configuration, use `ctx.exports.Counter` for automatic isolation of the Preview's own namespace; the named `env` binding does not provide it.
 
 ### Use an `env` binding
 
@@ -150,7 +203,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-21",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -177,7 +230,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-21"
 
 [[migrations]]
 tag = "v1"
@@ -210,7 +263,7 @@ return container.fetch(request);
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-21",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -247,7 +300,7 @@ return container.fetch(request);
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-21"
 
 [[migrations]]
 tag = "v1"
@@ -444,5 +497,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/resources/#page","headline":"Resources and isolation","description":"Understand which Preview resources are shared, which are isolated, and which invocation types have limitations.","url":"https://developers.cloudflare.com/workers/previews/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/previews/resources/og.png?v=a51699232e855b7d","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/resources/#page","headline":"Resources and isolation","description":"Understand which Preview resources are shared, which are isolated, and which invocation types have limitations.","url":"https://developers.cloudflare.com/workers/previews/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/previews/resources/og.png?v=a51699232e855b7d","dateModified":"2026-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
