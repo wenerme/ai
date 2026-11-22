@@ -14,7 +14,6 @@ image: https://developers.cloudflare.com/d1/reference/og.png?v=0883d662b8c32e8b
 
 - [Migrations](https://developers.cloudflare.com/d1/reference/migrations/)
 - [Time Travel and backups](https://developers.cloudflare.com/d1/reference/time-travel/)
-- [Community projects](https://developers.cloudflare.com/d1/reference/community-projects/)
 - [Generated columns](https://developers.cloudflare.com/d1/reference/generated-columns/)
 - [Data security](https://developers.cloudflare.com/d1/reference/data-security/)
 - [Backups (Legacy)](https://developers.cloudflare.com/d1/reference/backups/)

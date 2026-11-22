@@ -7,6 +7,8 @@ Rotate a leaked GitLab personal access token, store the new value in GitLab Secr
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246577) in GitLab 19.6 as a [beta](../../../policy/development_stages_support.md#beta) [with a feature flag](../../../administration/feature_flags/_index.md) named `secrets_manager_pat_rotation`. Disabled by default.
+- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/work_items/636986) in GitLab 19.6.
+- [Enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/work_items/636986) in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
