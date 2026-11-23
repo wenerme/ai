@@ -105,6 +105,7 @@ Audit event types belong to the following product categories.
 | [`anthropic_compliance_integration_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264339) | An Anthropic Compliance integration is created for a top-level group | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
 | [`anthropic_compliance_integration_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264598) | An Anthropic Compliance integration is deleted from a top-level group | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
 | [`anthropic_compliance_integration_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264598) | The Compliance Access Key of an Anthropic Compliance integration is replaced, or the integration is turned on or off | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
+| [`external_agent_audit_event_content_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270245) | In a group, the setting that keeps content in AI audit events from external agent sessions is changed | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/635002) | Group |
 
 ### Artifact registry
 

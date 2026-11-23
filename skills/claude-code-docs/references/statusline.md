@@ -163,7 +163,19 @@ Your script can print more than a single line of plain text:
 
 ### Size output to the terminal
 
-Claude Code captures your script's output instead of connecting it directly to the terminal, so `tput cols` and language-level width detection cannot read the terminal size from inside the script. Read the `COLUMNS` and `LINES` environment variables instead. Claude Code sets these to the current terminal dimensions before running your script.
+To fit your status line to the terminal, read the size that Claude Code passes to your script. Claude Code puts the width in the `COLUMNS` environment variable and the height in `LINES`, and updates both each time it [runs your script](#when-the-status-line-updates). Calls that ask the terminal directly, such as `stty size`, can fail because your script isn't connected to the terminal.
+
+To keep a line from being cut off with `…`, make it at least four columns narrower than the terminal. Those four columns leave room for the spacing Claude Code adds on each side.
+
+This Bash example calculates the widest your output can be:
+
+```bash theme={null}
+max_width=$((COLUMNS - 4))
+```
+
+In an 80-column terminal, `max_width` is 76. If you set [`padding`](#manually-configure-a-status-line), also subtract twice its value from `max_width`.
+
+When you measure a line, count an emoji such as 📁 as two columns.
 
 ## Available data
 
@@ -356,7 +368,7 @@ Claude Code sends the following JSON fields to your script via stdin:
 The `context_window` object describes the live context window from the most recent API response.
 
 * **Combined totals** (`total_input_tokens`, `total_output_tokens`): tokens currently in the context window. `total_input_tokens` is the sum of `input_tokens`, `cache_creation_input_tokens`, and `cache_read_input_tokens`; `total_output_tokens` is the output tokens from the most recent response. Both are `0` before the first API response.
-* **Per-component usage** (`current_usage`): the same token counts broken out by category. Use this when you need cache hits separate from fresh input. The object is `null` before the first API call in a session, and `null` or all zeros after `/compact` until the next API call. Treat both as empty.
+* **Per-component usage** (`current_usage`): the same token counts broken out by category. Use this when you need cache hits separate from fresh input. `current_usage` is `null` until the conversation has an API response, and `null` or all zeros after `/compact` until the next API call. Treat both as empty.
 
 The `current_usage` object contains:
 
@@ -1167,4 +1179,4 @@ Outside [fullscreen rendering](https://code.claude.com/docs/en/fullscreen.md), C
 
 * System notifications like MCP server errors and auto-updates display on the right side of the row. Transient notifications such as the context-low warning also cycle through this area.
 * Enabling verbose mode adds a token counter to this area, showing the size of your context as the last API response reported it, not the [per-turn count beside the spinner](https://code.claude.com/docs/en/costs.md#read-the-token-count-beside-the-spinner)
-* On narrow terminals, these notifications may truncate your status line output
+* When a notification doesn't fit beside your status line, the notification moves to a row below

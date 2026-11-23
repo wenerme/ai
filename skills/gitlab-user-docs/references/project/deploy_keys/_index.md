@@ -36,6 +36,10 @@ A deploy key is given a permission level when it is created:
 - **Read-only**: A read-only deploy key can only read from the repository.
 - **Read-write**: A read-write deploy key can read from, and write to, the repository.
 
+A deploy key can also read from the project's [wiki](../wiki/_index.md) repository. This includes
+wikis with visibility set to .
+A deploy key cannot read from a disabled wiki.
+
 You can change a deploy key's permission level after creating it. Changing a project deploy key's
 permissions only applies for the current project.
 

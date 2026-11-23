@@ -110519,6 +110519,9 @@ components:
         duo_workflow_file_attachments_enabled:
           type: boolean
           example: false
+        external_agent_audit_event_content_enabled:
+          type: boolean
+          example: true
         include_recommended_allowed:
           type: boolean
           example: false
@@ -144881,6 +144884,12 @@ components:
               description: Allow file attachments in GitLab Duo Chat for this top-level
                 group. Can only be set on top-level groups. GitLab.com only.
               nullable: true
+            external_agent_audit_event_content_enabled:
+              type: boolean
+              description: Whether AI audit events from external agent sessions that
+                glab uploads keep prompts, tool arguments and other content. When
+                `false`, they keep metadata only. Can only be set on top-level groups.
+              nullable: true
             foundational_agents_default_enabled:
               type: boolean
               description: Whether new foundational agents are enabled by default
@@ -145308,6 +145317,12 @@ components:
               type: boolean
               description: Allow file attachments in GitLab Duo Chat for this top-level
                 group. Can only be set on top-level groups. GitLab.com only.
+              nullable: true
+            external_agent_audit_event_content_enabled:
+              type: boolean
+              description: Whether AI audit events from external agent sessions that
+                glab uploads keep prompts, tool arguments and other content. When
+                `false`, they keep metadata only. Can only be set on top-level groups.
               nullable: true
             foundational_agents_default_enabled:
               type: boolean

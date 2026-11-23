@@ -845,7 +845,7 @@ When the same server is defined in more than one place, Claude Code connects to 
 2. Project scope
 3. User scope
 4. [Plugin-provided servers](https://code.claude.com/docs/en/plugins/components.md#mcp-servers)
-5. [claude.ai connectors](#use-mcp-servers-from-claude-ai)
+5. [claude.ai connectors](#use-mcp-servers-from-claude-ai). In `claude -p`, Agent SDK, and VS Code sessions, connectors rank above plugin-provided servers.
 
 Claude Code matches duplicates across the three scopes by name. It matches plugins and connectors by endpoint, so one that points at the same URL or command as an enabled server above counts as a duplicate.
 
@@ -1676,7 +1676,7 @@ MCP servers can request structured input from you mid-task using elicitation. Wh
 
 Servers can request input in two ways:
 
-* **Form mode**: Claude Code shows a dialog with form fields defined by the server (for example, a username and password prompt). Fill in the fields and submit.
+* **Form mode**: Claude Code shows a dialog with form fields defined by the server, such as a project name and a due date. Fill in the fields and submit.
 * **URL mode**: Claude Code asks whether to open a link in your browser. Servers use this mode for a flow that finishes outside the terminal, such as sign-in.
 
 In URL mode, Claude Code passes the URL as a command-line argument to your system's URL handler, and caps how long that argument can be. When the URL, once escaped for the command line, is over that cap, you can only decline the request. Every character that needs escaping, such as `%` or `&`, counts four times toward the cap: its own character plus three escape characters. A URL with none of them reaches the cap at about 8,000 characters. A URL built largely of percent-escapes, where every third character is a `%`, reaches it at roughly 4,000.
