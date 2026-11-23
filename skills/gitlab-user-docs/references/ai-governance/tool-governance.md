@@ -87,6 +87,46 @@ Background access
 | Write | Always Ask |
 | Delete | Always Ask |
 
+### Always allow common write tools
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/273263) in GitLab 19.7 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_tool_governance_relaxed_defaults`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+>
+> The feature flag is checked for your top-level group and applies to all its subgroups and projects.
+> When the feature flag is turned off, the tools in this section default to **Always Ask**,
+> like all other write tools in the [default governance matrix](#default-governance-matrix).
+>
+> If `duo_workflow_background_fail_closed` is turned on, background write and delete tools
+> with no rule default to **Always Deny**, whether or not this feature flag is turned on.
+
+The following write tools default to **Always Allow** instead of **Always Ask**
+for cloud and local [access types](#access-types):
+
+| Area | Tools |
+|------|-------|
+| Issues, epics, and work items | `create_issue`, `update_issue`, `create_epic`, `update_epic`, `create_work_item`, `update_work_item` |
+| Comments and discussions | `create_issue_note`, `create_work_item_note`, `create_merge_request_note`, `create_merge_request_diff_note`, `reply_to_discussion` |
+| Merge requests | `create_merge_request`, `update_merge_request`, `create_branch`, `add_merge_request_reviewers`, `post_suggested_reviewers`, `submit_mr_review` |
+| Vulnerabilities | `link_vulnerability_to_issue`, `link_vulnerability_to_merge_request` |
+
+All other write and delete tools keep **Always Ask**, including:
+
+- `create_commit`
+- `set_discussion_resolved`
+- `create_vulnerability_issue`
+- `dismiss_vulnerability`, `confirm_vulnerability`, and other tools that change the state of a vulnerability
+
+These defaults do not change [background access](#access-types).
+A background tool with no rule already defaults to **Always Allow**.
+
+A mode you set for a tool always applies, and a project rule can still be stricter than the group rule.
+
+These defaults do not apply to the equivalent GitLab MCP server tools, such as `save_merge_request`.
+In GitLab Duo Agent Platform sessions, those tools still prompt for approval.
+
 ### GitLab MCP server tools
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606073) in GitLab 19.4 with a [feature flag](../../administration/feature_flags/_index.md) named `duo_mcp_tool_governance`. Disabled by default.

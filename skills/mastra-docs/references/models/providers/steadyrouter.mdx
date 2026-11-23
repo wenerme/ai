@@ -5,9 +5,9 @@ description: "Browse SteadyRouter model IDs, capabilities, and context windows. 
 
 # [SteadyRouter logo]SteadyRouter
 
-Access 21 SteadyRouter models through Mastra's model router. Authentication is handled automatically using the `STEADYROUTER_API_KEY` environment variable.
+Access 20 SteadyRouter models through Mastra's model router. Authentication is handled automatically using the `STEADYROUTER_API_KEY` environment variable.
 
-Learn more in the [SteadyRouter documentation](https://www.steadyrouter.com/site/docs.html).
+Learn more in the [SteadyRouter documentation](https://www.steadyrouter.com/site/docs.html?utm_source=models.dev).
 
 ```bash title=".env"
 STEADYROUTER_API_KEY=your-api-key
@@ -33,7 +33,7 @@ for await (const chunk of stream) {
 }
 ```
 
-> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [SteadyRouter documentation](https://www.steadyrouter.com/site/docs.html) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [SteadyRouter documentation](https://www.steadyrouter.com/site/docs.html?utm_source=models.dev) for details.
 
 ## Models
 
@@ -89,18 +89,6 @@ for await (const chunk of stream) {
   },
   {
     "model": "steadyrouter/deepseek-v4-flash",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "steadyrouter/deepseek-v4-pro-0813",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

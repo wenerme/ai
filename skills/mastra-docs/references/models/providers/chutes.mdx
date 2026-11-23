@@ -5,7 +5,7 @@ description: "Browse Chutes model IDs, capabilities, context windows, and pricin
 
 # [Chutes logo]Chutes
 
-Access 19 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
+Access 20 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
 
 Learn more in the [Chutes documentation](https://llm.chutes.ai).
 
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 2,
     "outputCost": 6
+  },
+  {
+    "model": "chutes/Qwen/Qwen4-Max",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.5,
+    "outputCost": 4.5
   },
   {
     "model": "chutes/tencent/Hy4",

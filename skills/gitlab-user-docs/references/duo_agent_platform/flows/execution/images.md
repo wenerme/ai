@@ -39,7 +39,7 @@ The following table lists the current pinned versions:
 | `git-lfs`                             | UBI 9 stock                                             |
 | Node.js                               | 20 (UBI 9 module stream `nodejs:20`)                    |
 | `npm`                                 | Bundled with Node.js 20                                 |
-| `@gitlab/duo-cli`                     | 10.3.0                                                  |
+| `@gitlab/duo-cli`                     | 10.4.0                                                  |
 | `glab` (GitLab CLI)                   | 1.128.0                                                 |
 | `oras` (OCI registry client)          | 1.2.2 (GitHub release, SHA-256 pinned)                  |
 | `@anthropic-ai/sandbox-runtime` (SRT) | 0.0.77 (via npm)                                        |
@@ -177,7 +177,7 @@ To configure flows for an offline environment:
    [GitLab package registry](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/packages):
 
    ```shell
-   curl --location "https://gitlab.com/api/v4/projects/46519181/packages/generic/duo-cli/10.3.0/duo-linux-x64" \
+   curl --location "https://gitlab.com/api/v4/projects/46519181/packages/generic/duo-cli/10.4.0/duo-linux-x64" \
      --output duo-linux-x64
    ```
 
@@ -332,7 +332,7 @@ The following table lists the current pinned versions:
 | `git-lfs`                             | UBI 9 stock                                              |
 | Node.js                               | 20 (UBI 9 module stream `nodejs:20`)                     |
 | `npm`                                 | Bundled with Node.js 20                                  |
-| `@gitlab/duo-cli`                     | 10.3.0                                                   |
+| `@gitlab/duo-cli`                     | 10.4.0                                                   |
 | `glab` (GitLab CLI)                   | 1.128.0                                                  |
 | `oras` (OCI registry client)          | 1.2.2 (GitHub release, SHA-256 pinned)                   |
 | `@anthropic-ai/sandbox-runtime` (SRT) | 0.0.77 (via npm)                                         |

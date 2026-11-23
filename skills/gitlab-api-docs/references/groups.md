@@ -271,6 +271,7 @@ Additional response attributes:
     "prompt_injection_protection_level": "no_checks",
     "web_search_enabled": false,
     "duo_workflow_file_attachments_enabled": false,
+    "external_agent_audit_event_content_enabled": true,
     "include_recommended_allowed": false,
     "allow_all_unix_sockets": false,
     "allow_project_extension": true,
@@ -303,6 +304,7 @@ when GitLab Duo Agent Platform is available for the group. The object contains t
 | `duo_agent_platform_enabled` | boolean | When `true`, GitLab Duo Agent Platform features are enabled for this group. Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `duo_workflow_file_attachments_enabled` | boolean | When `true`, file attachments are allowed in GitLab Duo Chat for this group. Returned only for top-level groups on GitLab.com. |
 | `duo_workflow_mcp_enabled` | boolean | When `true`, MCP support for GitLab Duo Agent Platform is enabled. Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
+| `external_agent_audit_event_content_enabled` | boolean | When `true`, AI audit events from external agent sessions that `glab` uploads keep content such as prompts and tool arguments. When `false`, they keep metadata only. Returned for top-level groups only, and applies to all their subgroups and projects. |
 | `foundational_agents_default_enabled` | boolean | When `true`, new foundational agents are enabled by default for this group. Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `include_recommended_allowed` | boolean | When `true`, recommended domains are included in the network access allowlist for GitLab Duo Agent Platform. |
 | `minimum_access_level_enable_on_projects` | string | The minimum access level required to enable GitLab Duo Agent Platform on projects. One of `developer`, `maintainer`, or `owner`. Returned when the `dap_group_customizable_permissions` feature flag is enabled. |
@@ -2061,6 +2063,7 @@ The `shared_runners_setting` attribute determines whether instance runners are e
 - `web_search_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253643) in GitLab 19.4.
 - `require_sandbox` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262117) in GitLab 19.6.
 - `duo_workflow_file_attachments_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268538) in GitLab 19.6.
+- `external_agent_audit_event_content_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270245) in GitLab 19.7.
 
 The `ai_settings_attributes` hash configures AI-related settings for the group.
 All attributes are optional.
@@ -2074,6 +2077,7 @@ All attributes are optional.
 | `duo_agent_platform_enabled` | boolean | When `true`, enables GitLab Duo Agent Platform features for this group. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `duo_workflow_file_attachments_enabled` | boolean | When `true`, allows file attachments in GitLab Duo Chat for this group. Can only be set on top-level groups. GitLab.com only. Ignored on GitLab Self-Managed and GitLab Dedicated. |
 | `duo_workflow_mcp_enabled` | boolean | When `true`, enables MCP support for GitLab Duo Agent Platform. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
+| `external_agent_audit_event_content_enabled` | boolean | When `false`, AI audit events from external agent sessions that `glab` uploads keep metadata only, without prompts, tool arguments, or other content. Defaults to `true`. Can only be set on top-level groups. |
 | `foundational_agents_default_enabled` | boolean | When `true`, new foundational agents are enabled by default for this group. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `include_recommended_allowed` | boolean | When `true`, includes recommended domains in the network access allowlist for GitLab Duo Agent Platform. |
 | `minimum_access_level_enable_on_projects` | integer | The minimum access level required to enable GitLab Duo Agent Platform on projects. Valid values: `30` (Developer), `40` (Maintainer), `50` (Owner). Available when the `dap_group_customizable_permissions` feature flag is enabled. |

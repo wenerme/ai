@@ -5,7 +5,7 @@ description: "Browse OpenCode Go model IDs, capabilities, context windows, and p
 
 # [OpenCode Go logo]OpenCode Go
 
-Access 42 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 43 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Go documentation](https://opencode.ai/v2/docs/console/go/).
 
@@ -256,19 +256,7 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
-    "model": "opencode-go/longcat-2.0",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 131072,
-    "inputCost": 0.3,
-    "outputCost": 1.2
-  },
-  {
-    "model": "opencode-go/longcat-2.5-free",
+    "model": "opencode-go/longcat-2.5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -276,8 +264,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "opencode-go/mimo-v2.5",
