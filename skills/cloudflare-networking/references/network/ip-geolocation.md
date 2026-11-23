@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add visitor country information via the CF-IPCountry header.
 title: IP geolocation
 image: https://developers.cloudflare.com/network/ip-geolocation/og.png?v=6b985d2643a76b17

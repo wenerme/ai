@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Access KV, R2, Durable Objects, and other bindings from a container.
 title: Connect to Workers and Bindings
 image: https://developers.cloudflare.com/containers/configuration/workers-connections/og.png?v=157257af7f1fb147

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot Cloudflare compatibility with third-party software.
 title: Third-Party Software
 image: https://developers.cloudflare.com/support/third-party-software/og.png?v=d5986dcd997ec006

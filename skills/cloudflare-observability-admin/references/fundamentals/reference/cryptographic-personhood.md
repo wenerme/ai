@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare's Cryptographic Attestation of Personhood (CAP) lets visitors prove they are human using a hardware key instead of a CAPTCHA.
 title: Cryptographic Attestation of Personhood
 image: https://developers.cloudflare.com/fundamentals/reference/cryptographic-personhood/og.png?v=b528e5203988a022

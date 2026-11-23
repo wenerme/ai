@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the [bot score field](/workers/runtime-apis/request/#incomingrequestcfproperties) to send bots to a honeypot.
 title: Send suspect bots to a honeypot
 image: https://developers.cloudflare.com/rules/snippets/examples/bots-to-honeypot/og.png?v=0b8b3d095cb458ec

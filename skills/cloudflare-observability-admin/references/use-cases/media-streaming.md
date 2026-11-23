@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deliver video, images, and media at scale with Cloudflare Stream, Images, R2, and global caching.
 title: Media and streaming
 image: https://developers.cloudflare.com/use-cases/media-streaming/og.png?v=4ea4d21c69d0864a

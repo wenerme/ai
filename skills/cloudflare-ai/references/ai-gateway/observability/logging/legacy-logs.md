@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage logs for AI Gateway customers who created a gateway before September 24, 2026.
 title: Legacy Logs
 image: https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/og.png?v=ba4ce76c7c2a65bf

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.
 title: Agents as tools
 image: https://developers.cloudflare.com/agents/agent-class/agent-tools/og.png?v=b728c84fec3af14d

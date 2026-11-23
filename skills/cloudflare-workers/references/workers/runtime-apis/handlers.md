@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Methods, such as `fetch()`, on Workers that can receive and process external inputs.
 title: Handlers
 image: https://developers.cloudflare.com/workers/runtime-apis/handlers/og.png?v=b1f42ea788ac5163
@@ -25,7 +28,7 @@ export default {
 The following handlers are available within Workers:
 
 - [Alarm Handler](https://developers.cloudflare.com/durable-objects/api/alarms/)
-- [Connect Handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/connect/)
+- [Connect handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/connect/)
 - [Email Handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 - [Fetch Handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
 - [Queue Handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer)

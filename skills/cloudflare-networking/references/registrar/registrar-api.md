@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Search and register domains via the Registrar API.
 title: Registrar API
 image: https://developers.cloudflare.com/registrar/registrar-api/og.png?v=68a5766769d08a98

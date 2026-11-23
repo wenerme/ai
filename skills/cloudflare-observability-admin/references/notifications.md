@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up monitors and platform notifications, and deliver them to email, webhooks, PagerDuty, or connected services.
 title: Alerts
 image: https://developers.cloudflare.com/notifications/og.png?v=53368d19a966bd60

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Proxy public hostnames to private origins through Cloudflare Mesh.
 title: Set up a private origin via Cloudflare Mesh
 image: https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-mesh/og.png?v=5b0f1a7348ce5b3d

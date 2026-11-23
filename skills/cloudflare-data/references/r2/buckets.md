@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and manage R2 buckets for storing objects with flat-structure organization.
 title: Buckets
 image: https://developers.cloudflare.com/r2/buckets/og.png?v=5966d0a5c545f171

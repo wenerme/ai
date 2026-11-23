@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Seedream 5.5 is ByteDance's image generation and editing model with text prompts, up to 10 reference images, 1K, 1.5K, 2K, or custom pixel-size output, PNG or JPEG output, and native transparent backgrounds.
 title: Seedream 5.5
 image: https://developers.cloudflare.com/og-docs.png

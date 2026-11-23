@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Receive and reply to Chat SDK messenger webhooks directly from a Think agent, including Telegram setup, routing, conversation targets, and recovery.
 title: Messengers
 image: https://developers.cloudflare.com/agents/harnesses/think/messengers/og.png?v=28caf5d55bd3f181

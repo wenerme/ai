@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review migration guides for specific versions of Wrangler.
 title: Migrations
 image: https://developers.cloudflare.com/workers/wrangler/migration/og.png?v=517fd05b703f46ce

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable BM25 keyword search in AI Search to match documents containing exact query terms.
 title: Keyword search
 image: https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/og.png?v=0ed21bf4322c3741

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Available settings for Single Redirect rules.
 title: Single Redirects settings
 image: https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/og.png?v=a38a2e8a14395ce6

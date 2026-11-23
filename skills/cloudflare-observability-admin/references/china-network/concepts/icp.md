@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Obtain and display an ICP license number required for websites operating in China.
 title: Internet Content Provider (ICP)
 image: https://developers.cloudflare.com/china-network/concepts/icp/og.png?v=ba7d3cfc93b3cbad

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test Email Service sending Workers locally with simulated delivery.
 title: Test email sending locally
 image: https://developers.cloudflare.com/email-service/observability/local-development/sending/og.png?v=76c071adeb4a172d
@@ -47,7 +50,7 @@ Configure your Wrangler file with the email binding:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"send_email": [{ "name": "EMAIL" }],
 }
 ```
@@ -55,7 +58,7 @@ Configure your Wrangler file with the email binding:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[send_email]]
 name = "EMAIL"
@@ -73,7 +76,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 {
 	"name": "email-sending-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"send_email": [
 		{
 			"name": "EMAIL",
@@ -86,7 +89,7 @@ Set `remote: true` on the email binding in your Wrangler configuration:
 ```toml
 name = "email-sending-worker"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[send_email]]
 name = "EMAIL"

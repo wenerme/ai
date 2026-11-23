@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a Workers for Platforms starter kit and create your first multi-tenant platform on Cloudflare.
 title: Get started
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/og.png?v=d15bc0342a467677

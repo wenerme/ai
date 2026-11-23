@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict a Workflow to a jurisdiction to control where its instances run and store data.
 title: Data location
 image: https://developers.cloudflare.com/workflows/reference/data-location/og.png?v=3aaef27a8dc1f7d3

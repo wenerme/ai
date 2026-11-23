@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "Miniflare supports both the traditional service-worker and the newer modules formats for writing workers. To use the modules format, enable it with:"
 title: Modules
 image: https://developers.cloudflare.com/workers/testing/miniflare/core/modules/og.png?v=90663869dda7c2ac

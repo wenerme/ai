@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Images transformations optimize and cache remote images from any origin at the edge.
 title: Overview
 image: https://developers.cloudflare.com/images/optimization/transformations/overview/og.png?v=8e907e1d08eb810a

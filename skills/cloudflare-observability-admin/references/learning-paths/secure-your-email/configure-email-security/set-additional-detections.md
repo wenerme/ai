@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable extra email threat detection rules.
 title: Set additional detections
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/set-additional-detections/og.png?v=3752cf8ff25baa2d

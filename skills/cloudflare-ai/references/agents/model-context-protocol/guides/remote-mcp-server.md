@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a remote MCP server on Cloudflare with optional authentication using Streamable HTTP transport.
 title: Build a Remote MCP server
 image: https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/og.png?v=ef0a334079cbdee6

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor origin and edge HTTP error rates.
 title: HTTP Traffic Alerts
 image: https://developers.cloudflare.com/notifications/reference/traffic-alerts/og.png?v=5e97bf5a1edc7de8

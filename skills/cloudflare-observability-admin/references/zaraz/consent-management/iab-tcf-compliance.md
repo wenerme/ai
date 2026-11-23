@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure IAB TCF compliance for Zaraz consent.
 title: IAB TCF Compliance
 image: https://developers.cloudflare.com/zaraz/consent-management/iab-tcf-compliance/og.png?v=c3f036daed5751d5

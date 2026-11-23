@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create server pools for load balancing.
 title: Create pools
 image: https://developers.cloudflare.com/learning-paths/load-balancing/setup/create-pools/og.png?v=7487b212e0957a17

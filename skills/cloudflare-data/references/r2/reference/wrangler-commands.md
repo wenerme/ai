@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler CLI commands for managing R2 buckets and objects.
 title: Wrangler commands
 image: https://developers.cloudflare.com/r2/reference/wrangler-commands/og.png?v=6ec0796acf0a85ef
@@ -388,15 +391,15 @@ Set the CORS configuration for an R2 bucket from a JSON file
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket cors set <BUCKET>
+npx wrangler r2 bucket cors set <BUCKET> --file <FILE>
 ```
 
 ```
-yarn wrangler r2 bucket cors set <BUCKET>
+yarn wrangler r2 bucket cors set <BUCKET> --file <FILE>
 ```
 
 ```
-pnpm wrangler r2 bucket cors set <BUCKET>
+pnpm wrangler r2 bucket cors set <BUCKET> --file <FILE>
 ```
 
 - `<BUCKET>` `string` required
@@ -709,15 +712,15 @@ Connect a custom domain to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain add <BUCKET>
+npx wrangler r2 bucket domain add <BUCKET> --domain <DOMAIN> --zone-id <ZONE-ID>
 ```
 
 ```
-yarn wrangler r2 bucket domain add <BUCKET>
+yarn wrangler r2 bucket domain add <BUCKET> --domain <DOMAIN> --zone-id <ZONE-ID>
 ```
 
 ```
-pnpm wrangler r2 bucket domain add <BUCKET>
+pnpm wrangler r2 bucket domain add <BUCKET> --domain <DOMAIN> --zone-id <ZONE-ID>
 ```
 
 - `<BUCKET>` `string` required
@@ -770,15 +773,15 @@ Remove a custom domain from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain remove <BUCKET>
+npx wrangler r2 bucket domain remove <BUCKET> --domain <DOMAIN>
 ```
 
 ```
-yarn wrangler r2 bucket domain remove <BUCKET>
+yarn wrangler r2 bucket domain remove <BUCKET> --domain <DOMAIN>
 ```
 
 ```
-pnpm wrangler r2 bucket domain remove <BUCKET>
+pnpm wrangler r2 bucket domain remove <BUCKET> --domain <DOMAIN>
 ```
 
 - `<BUCKET>` `string` required
@@ -827,15 +830,15 @@ Update settings for a custom domain connected to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain update <BUCKET>
+npx wrangler r2 bucket domain update <BUCKET> --domain <DOMAIN>
 ```
 
 ```
-yarn wrangler r2 bucket domain update <BUCKET>
+yarn wrangler r2 bucket domain update <BUCKET> --domain <DOMAIN>
 ```
 
 ```
-pnpm wrangler r2 bucket domain update <BUCKET>
+pnpm wrangler r2 bucket domain update <BUCKET> --domain <DOMAIN>
 ```
 
 - `<BUCKET>` `string` required
@@ -882,15 +885,15 @@ Get custom domain connected to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain get <BUCKET>
+npx wrangler r2 bucket domain get <BUCKET> --domain <DOMAIN>
 ```
 
 ```
-yarn wrangler r2 bucket domain get <BUCKET>
+yarn wrangler r2 bucket domain get <BUCKET> --domain <DOMAIN>
 ```
 
 ```
-pnpm wrangler r2 bucket domain get <BUCKET>
+pnpm wrangler r2 bucket domain get <BUCKET> --domain <DOMAIN>
 ```
 
 - `<BUCKET>` `string` required
@@ -1050,15 +1053,15 @@ Remove a lifecycle rule from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lifecycle remove <BUCKET>
+npx wrangler r2 bucket lifecycle remove <BUCKET> --name <NAME>
 ```
 
 ```
-yarn wrangler r2 bucket lifecycle remove <BUCKET>
+yarn wrangler r2 bucket lifecycle remove <BUCKET> --name <NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket lifecycle remove <BUCKET>
+pnpm wrangler r2 bucket lifecycle remove <BUCKET> --name <NAME>
 ```
 
 - `<BUCKET>` `string` required
@@ -1155,15 +1158,15 @@ Set the lifecycle configuration for an R2 bucket from a JSON file
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lifecycle set <BUCKET>
+npx wrangler r2 bucket lifecycle set <BUCKET> --file <FILE>
 ```
 
 ```
-yarn wrangler r2 bucket lifecycle set <BUCKET>
+yarn wrangler r2 bucket lifecycle set <BUCKET> --file <FILE>
 ```
 
 ```
-pnpm wrangler r2 bucket lifecycle set <BUCKET>
+pnpm wrangler r2 bucket lifecycle set <BUCKET> --file <FILE>
 ```
 
 - `<BUCKET>` `string` required
@@ -1273,15 +1276,15 @@ Remove a bucket lock rule from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lock remove <BUCKET>
+npx wrangler r2 bucket lock remove <BUCKET> --name <NAME>
 ```
 
 ```
-yarn wrangler r2 bucket lock remove <BUCKET>
+yarn wrangler r2 bucket lock remove <BUCKET> --name <NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket lock remove <BUCKET>
+pnpm wrangler r2 bucket lock remove <BUCKET> --name <NAME>
 ```
 
 - `<BUCKET>` `string` required
@@ -1378,15 +1381,15 @@ Set the lock configuration for an R2 bucket from a JSON file
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lock set <BUCKET>
+npx wrangler r2 bucket lock set <BUCKET> --file <FILE>
 ```
 
 ```
-yarn wrangler r2 bucket lock set <BUCKET>
+yarn wrangler r2 bucket lock set <BUCKET> --file <FILE>
 ```
 
 ```
-pnpm wrangler r2 bucket lock set <BUCKET>
+pnpm wrangler r2 bucket lock set <BUCKET> --file <FILE>
 ```
 
 - `<BUCKET>` `string` required
@@ -1435,15 +1438,15 @@ Create an event notification rule for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket notification create <BUCKET>
+npx wrangler r2 bucket notification create <BUCKET> --event-types <EVENT-TYPES> --queue <QUEUE>
 ```
 
 ```
-yarn wrangler r2 bucket notification create <BUCKET>
+yarn wrangler r2 bucket notification create <BUCKET> --event-types <EVENT-TYPES> --queue <QUEUE>
 ```
 
 ```
-pnpm wrangler r2 bucket notification create <BUCKET>
+pnpm wrangler r2 bucket notification create <BUCKET> --event-types <EVENT-TYPES> --queue <QUEUE>
 ```
 
 - `<BUCKET>` `string` required
@@ -1495,15 +1498,15 @@ Delete an event notification rule from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket notification delete <BUCKET>
+npx wrangler r2 bucket notification delete <BUCKET> --queue <QUEUE>
 ```
 
 ```
-yarn wrangler r2 bucket notification delete <BUCKET>
+yarn wrangler r2 bucket notification delete <BUCKET> --queue <QUEUE>
 ```
 
 ```
-pnpm wrangler r2 bucket notification delete <BUCKET>
+pnpm wrangler r2 bucket notification delete <BUCKET> --queue <QUEUE>
 ```
 
 - `<BUCKET>` `string` required

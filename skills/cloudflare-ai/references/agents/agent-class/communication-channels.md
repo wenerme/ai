@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Communication channels define how agents communicate with users and external systems.
 title: Communication channels
 image: https://developers.cloudflare.com/agents/agent-class/communication-channels/og.png?v=ad02c989069864ba

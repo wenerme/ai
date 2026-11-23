@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect two sites with Cloudflare Mesh by routing traffic in both directions between private subnets through Mesh nodes.
 title: Connect two private networks with Cloudflare Mesh
 image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/og.png?v=19e1a35d3288eda9

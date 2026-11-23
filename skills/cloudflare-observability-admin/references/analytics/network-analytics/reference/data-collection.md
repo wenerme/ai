@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how Network Analytics collects packet data.
 title: Data collection
 image: https://developers.cloudflare.com/analytics/network-analytics/reference/data-collection/og.png?v=36a0c1287006e7c5

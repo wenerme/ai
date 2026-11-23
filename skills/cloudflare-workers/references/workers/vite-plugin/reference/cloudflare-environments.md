@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Using Cloudflare environments with the Vite plugin
 title: Cloudflare Environments
 image: https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/og.png?v=67f3d0d54c5a4476
@@ -19,7 +22,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"vars": {
@@ -44,7 +47,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 main = "./src/index.ts"
 upload_source_maps = true
 
@@ -138,7 +141,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"vars": {
@@ -163,7 +166,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 main = "./src/index.ts"
 upload_source_maps = true
 

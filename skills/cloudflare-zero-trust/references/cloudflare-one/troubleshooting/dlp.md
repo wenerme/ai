@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: DLP for Zero Trust.
 title: DLP
 image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/dlp/og.png?v=16cd490e102bef19

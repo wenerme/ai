@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure employees, devices, and data with Cloudflare Zero Trust access, secure web gateway, email security, and data loss prevention.
 title: Company security
 image: https://developers.cloudflare.com/use-cases/company-security/og.png?v=90418726911ce63e

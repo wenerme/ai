@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resize, transform, and optimize images with Cloudflare Images for faster delivery.
 title: Optimization
 image: https://developers.cloudflare.com/images/optimization/og.png?v=45ca8ac451a09c74
@@ -18,6 +21,7 @@ image: https://developers.cloudflare.com/images/optimization/og.png?v=45ca8ac451
 - [Optimize with Workers](https://developers.cloudflare.com/images/optimization/binding/)
 - [Draw overlays and watermarks](https://developers.cloudflare.com/images/optimization/draw-overlays/)
 - [Make responsive images](https://developers.cloudflare.com/images/optimization/make-responsive-images/)
+- [Preserve Content Credentials](https://developers.cloudflare.com/images/optimization/preserve-content-credentials/)
 
 Was this helpful?
 

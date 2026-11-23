@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fast, affordable version of GPT-4.1 with a million-token context window.
 title: GPT-4.1 mini
 image: https://developers.cloudflare.com/og-docs.png

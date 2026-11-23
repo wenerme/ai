@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a K2 stream, produce records over HTTP, and consume them through a subscription.
 title: Get started
 image: https://developers.cloudflare.com/k2/get-started/og.png?v=62dce78adb6d0329

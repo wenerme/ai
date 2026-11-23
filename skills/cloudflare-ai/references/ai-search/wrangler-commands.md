@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage AI Search instances and namespaces from the command line using Wrangler.
 title: Wrangler CLI
 image: https://developers.cloudflare.com/ai-search/wrangler-commands/og.png?v=646a59c194e5f607
@@ -374,15 +377,15 @@ Execute a semantic search query against an AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search search <NAME>
+npx wrangler ai-search search <NAME> --query <QUERY>
 ```
 
 ```
-yarn wrangler ai-search search <NAME>
+yarn wrangler ai-search search <NAME> --query <QUERY>
 ```
 
 ```
-pnpm wrangler ai-search search <NAME>
+pnpm wrangler ai-search search <NAME> --query <QUERY>
 ```
 
 - `<NAME>` `string` required

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to create a recording app using RealtimeKit's SDKs. Follow our guide for effective app creation and integration.
 title: Create Custom Recording App Using Recording SDKs
 image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/og.png?v=8a480c46c1ed38d2

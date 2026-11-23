@@ -154,39 +154,45 @@ In addition to managing your storage usage you can consider these options for in
 - Consider a [GitLab Self-Managed subscription](../subscriptions/manage_subscription.md), which does not have storage limits.
 - [Talk to an expert](https://page.gitlab.com/usage_limits_help.html) for more information about your options.
 
+Storage subscriptions renew automatically each year.
+You can [turn off automatic subscription renewal](../subscriptions/manage_subscription.md#turn-off-automatic-subscription-renewal).
+
 ## Purchase more storage
 
 - Tier: Free
 
-> [!note]
-> To exceed the free tier 10 GiB limit on your Free GitLab.com namespace, you can purchase more storage for your personal or group namespace.
+To exceed the Free tier 10 GiB limit on your Free GitLab.com namespace,
+you can purchase more storage for your personal or group namespace.
+If you purchased your subscription through a reseller, contact your reseller to purchase more storage.
+
+To calculate how much storage you need, add up how much each read-only project's usage
+exceeds the free quota and purchased storage.
+You must purchase the storage increment that exceeds this total.
+
+After your payment is processed, the extra storage is available for your namespace.
+The **Purchased storage available** total is incremented by the amount purchased.
+The read-only state for all projects is removed, and their excess usage is deducted from the additional storage.
 
 Prerequisites:
 
 - You must have the Owner role or be a billing account manager.
 - The billing account must be linked to the subscription for the personal or group's namespace.
-
-> [!note]
-> Storage subscriptions renew automatically each year.
-> You can [turn off automatic subscription renewal](../subscriptions/manage_subscription.md#turn-off-automatic-subscription-renewal).
+- The subscription must not be purchased through a reseller.
 
 ### For your personal namespace
 
-1. Sign in to GitLab.com.
-1. From either your personal homepage or the group's page, go to **Settings** > **Usage quotas**.
-1. Select the **Storage** tab.
-1. For each read-only project, total by how much its **Usage** exceeds the free quota and purchased
-   storage. You must purchase the storage increment that exceeds this total.
-1. Select **Buy storage**. You are taken to the Customers Portal.
-1. In the **Subscription details** section, select the name of the user from the dropdown list.
-1. Enter the desired quantity of storage packs.
+1. In the upper-right corner, select your avatar.
+1. Select **Edit profile**.
+1. In the left sidebar, select **Usage quotas**.
+1. In the **Storage** tab, select **Buy storage**. You are taken to the Customers Portal.
+1. In the **Subscription details** section, in the **Quantity** field, enter the desired quantity of storage packs.
+1. Select **Continue to customer information**.
 1. In the **Customer information** section, verify your address.
-1. In the **Billing information** section, select the payment method from the dropdown list.
+1. Select **Continue to payment method**.
+1. In the **Payment method** section, from the dropdown list, select a payment method.
+1. Select **Review order**.
 1. Select the **Privacy Statement** and **Terms of Service** checkboxes.
-1. Select **Buy storage**.
-
-The **Purchased storage available** total is incremented by the amount purchased. The read-only
-state for all projects is removed, and their excess usage is deducted from the additional storage.
+1. Select **Confirm purchase**.
 
 ### For your group namespace
 
@@ -195,34 +201,33 @@ pipelines aren't blocked after you have used all your storage from your
 main quota. You can find pricing for additional storage on the
 [GitLab Pricing page](https://about.gitlab.com/pricing/#storage).
 
+If your group already has a storage subscription, the additional storage is added to that subscription and prorated to its end date.
+
 To purchase additional storage for your group on GitLab.com:
 
 ### Group owner
 
-1. Sign in to GitLab.com.
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Settings** > **Usage quotas**.
-1. Select the **Storage** tab.
-1. Select **Buy storage**. You are taken to the Customers Portal.
+1. In the **Storage** tab, select **Buy storage**. You are taken to the Customers Portal.
 1. In the **Subscription details** section, in the **Quantity** field, enter the desired quantity of storage packs.
+1. Select **Continue to customer information**.
 1. In the **Customer information** section, verify your address.
-1. In the **Billing information** section, select a payment method from the dropdown list.
+1. Select **Continue to payment method**.
+1. In the **Payment method** section, from the dropdown list, select a payment method.
+1. Select **Review order**.
 1. Select the **Privacy Statement** and **Terms of Service** checkbox.
-1. Select **Buy storage**.
+1. Select **Confirm purchase**.
 
 ### Billing account manager
 
 1. Go to [Customers Portal](https://customers.gitlab.com/customers/sign_in).
 1. By the relevant subscription, select the vertical ellipsis () and then **Buy more storage**.
-1. In the **Subscription details** section, in the **Quantity** field enter, the desired quantity of storage packs.
+1. In the **Subscription details** section, in the **Quantity** field, enter the desired quantity of storage packs.
+1. Select **Continue to customer information**.
 1. In the **Customer information** section, verify your address.
-1. In the **Billing information** section, select a payment method from the dropdown list.
+1. Select **Continue to payment method**.
+1. In the **Payment method** section, from the dropdown list, select a payment method.
+1. Select **Review order**.
 1. Select the **Privacy Statement** and **Terms of Service** checkbox.
-1. Select **Buy storage**.
-
-After your payment is processed, the extra storage is available for your group namespace.
-
-To confirm the available storage, follow the first three steps listed previously.
-
-The **Purchased storage available** total is incremented by the amount purchased. All locked
-projects are unlocked and their excess usage is deducted from the additional storage.
+1. Select **Confirm purchase**.

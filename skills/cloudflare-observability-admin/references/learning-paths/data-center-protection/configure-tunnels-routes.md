@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect data centers with Magic Transit DDoS mitigation.
 title: Configure tunnels and routes
 image: https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/og.png?v=9e4778d50802e5a8

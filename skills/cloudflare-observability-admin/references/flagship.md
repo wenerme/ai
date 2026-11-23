@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.
 title: Cloudflare Flagship
 image: https://developers.cloudflare.com/flagship/og.png?v=e63632964c63afad

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review the current limitations of Cloudflare Organizations and troubleshoot common errors.
 title: Limitations and troubleshooting
 image: https://developers.cloudflare.com/fundamentals/organizations/limitations/og.png?v=2ad0096a325aa8d6

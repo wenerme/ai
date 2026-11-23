@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Llama 3.1 8B quantized to FP8 precision
 title: llama-3.1-8b-instruct-fp8
 image: https://developers.cloudflare.com/og-docs.png

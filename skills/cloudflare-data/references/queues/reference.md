@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Queues reference documentation for architecture, delivery guarantees, and error codes.
 title: Reference
 image: https://developers.cloudflare.com/queues/reference/og.png?v=e8d2c855f8e5910c

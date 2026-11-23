@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Variables available in WAF rules when using client certificates.
 title: Client certificate variables
 image: https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/og.png?v=1092325fc5b2749f

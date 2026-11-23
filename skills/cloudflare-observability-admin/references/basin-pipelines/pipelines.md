@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect streams to sinks with SQL transformations to filter, enrich, and restructure events.
 title: Pipelines
 image: https://developers.cloudflare.com/basin-pipelines/pipelines/og.png?v=d9e3f87bd88daa3a

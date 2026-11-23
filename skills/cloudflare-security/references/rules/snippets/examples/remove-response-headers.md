@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Remove from response all headers that start with a certain name.
 title: Remove response headers
 image: https://developers.cloudflare.com/rules/snippets/examples/remove-response-headers/og.png?v=3bba33e1ed9b24da

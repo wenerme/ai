@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.
 title: Rule phase interactions
 image: https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/og.png?v=ee43b8f5d2fb685d

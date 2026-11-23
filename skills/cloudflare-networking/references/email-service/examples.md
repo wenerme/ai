@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Practical code examples for sending and routing emails with Cloudflare Email Service.
 title: Examples
 image: https://developers.cloudflare.com/email-service/examples/og.png?v=eeec1bfbdcf15e76

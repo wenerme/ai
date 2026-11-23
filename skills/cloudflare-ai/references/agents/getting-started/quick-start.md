@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build your first agent on Cloudflare. Run the Pi harness in a Durable Object with the Lifecycle, give it a Cloudflare Computer workspace, connect to it over WebSockets, and deploy it.
 title: Build your first Durable Agent
 image: https://developers.cloudflare.com/agents/getting-started/quick-start/og.png?v=1f23ec8012a49fb1
@@ -79,7 +82,7 @@ Add the `AI` binding and a SQLite-backed Durable Object to your Wrangler configu
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-21",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -98,7 +101,7 @@ name = "my-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-21"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

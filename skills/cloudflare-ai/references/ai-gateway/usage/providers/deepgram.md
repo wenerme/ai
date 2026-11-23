@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Deepgram speech-to-text and text-to-speech requests through AI Gateway for observability and control.
 title: Deepgram
 image: https://developers.cloudflare.com/ai-gateway/usage/providers/deepgram/og.png?v=1f9191c3744b3eb4

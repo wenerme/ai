@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace @cloudflare/sandbox 0.12 exec(), execStream(), sessions, and command timeouts with container.exec() in your Durable Object.
 title: Change command calls
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/commands/og.png?v=90c2757a3d000943

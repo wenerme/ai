@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Encrypt traffic between Cloudflare and your origin web server and reduce origin bandwidth consumption.
 title: Cloudflare origin CA
 image: https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/og.png?v=f13083cc282ac81f

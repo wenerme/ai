@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Cloudflare Zero Trust for your organization. Choose a use case to get started with a guided quick-start.
 title: Get started
 image: https://developers.cloudflare.com/cloudflare-one/setup/og.png?v=a03497584ce80063

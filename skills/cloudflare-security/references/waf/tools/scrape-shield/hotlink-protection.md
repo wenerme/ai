@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Prevent other sites from linking to your hosted images.
 title: Hotlink Protection
 image: https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/og.png?v=fe5b4185285f3a63

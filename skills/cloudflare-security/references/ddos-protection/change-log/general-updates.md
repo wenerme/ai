@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: General updates and improvements to Cloudflare DDoS protection.
 title: General updates
 image: https://developers.cloudflare.com/ddos-protection/change-log/general-updates/og.png?v=fb857277d9462c80

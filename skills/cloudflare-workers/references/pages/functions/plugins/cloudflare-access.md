@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Validate Cloudflare Access JWT assertions in Pages Functions using this Plugin.
 title: Cloudflare Access
 image: https://developers.cloudflare.com/pages/functions/plugins/cloudflare-access/og.png?v=8c88709ac3d04caf

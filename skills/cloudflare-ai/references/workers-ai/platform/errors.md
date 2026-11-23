@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference table of Workers AI error codes, HTTP statuses, and descriptions.
 title: Errors
 image: https://developers.cloudflare.com/workers-ai/platform/errors/og.png?v=e1140cf7b8f4e385

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Receive threat intelligence about DDoS botnets targeting your network infrastructure.
 title: Botnet Threat Feed
 image: https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/og.png?v=5e29a751153e9c29

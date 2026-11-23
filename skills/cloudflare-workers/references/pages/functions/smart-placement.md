@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Automatically run Pages Functions closer to your back-end infrastructure to reduce latency.
 title: Smart Placement
 image: https://developers.cloudflare.com/pages/functions/smart-placement/og.png?v=d9a4091cca055633

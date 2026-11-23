@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: System requirements for running cloudflared.
 title: System requirements
 image: https://developers.cloudflare.com/tunnel/platform/system-requirements/og.png?v=3515c014872b40cd

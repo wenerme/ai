@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Velocloud to Cloudflare WAN.
 title: Velocloud
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/velocloud/og.png?v=13af3acefcb774f6

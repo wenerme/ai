@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Find answers to common questions about Cloudflare's 1.1.1.1 DNS resolver, including setup, privacy features, IPv6 support, and troubleshooting tips.
 title: FAQ
 image: https://developers.cloudflare.com/1.1.1.1/faq/og.png?v=d2ca9a42ef788f57

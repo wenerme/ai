@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review which S3 API operations and features R2 supports, including implementation status.
 title: S3 API compatibility
 image: https://developers.cloudflare.com/r2/api/s3/api/og.png?v=073ff83b58b1dbf4

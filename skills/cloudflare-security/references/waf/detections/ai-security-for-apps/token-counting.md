@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Count tokens in AI requests and responses for rate limiting.
 title: Token counting
 image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/token-counting/og.png?v=8ced5f03e35f3767

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add AI-powered transcription and summarization to RealtimeKit meetings.
 title: Meeting AI
 image: https://developers.cloudflare.com/realtime/realtimekit/ai/og.png?v=69882abb3d1c62a4

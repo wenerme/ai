@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload video files under 200 MB to Cloudflare Stream using the dashboard or API.
 title: Basic video uploads
 image: https://developers.cloudflare.com/stream/uploading-videos/upload-video-file/og.png?v=491f102a460f2f60

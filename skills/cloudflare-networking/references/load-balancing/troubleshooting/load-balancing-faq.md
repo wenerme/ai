@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Answers to common Load Balancing questions.
 title: FAQs
 image: https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/og.png?v=f16d6917b2de9b6f

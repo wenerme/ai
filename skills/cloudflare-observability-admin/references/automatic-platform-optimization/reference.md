@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for APO, including caching, Page Rules, and query parameters.
 title: Reference
 image: https://developers.cloudflare.com/automatic-platform-optimization/reference/og.png?v=b3b4cf13a7f23173

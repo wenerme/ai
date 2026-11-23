@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure how AI Search splits content into chunks for embedding and retrieval.
 title: Chunking
 image: https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/og.png?v=fc12f99e3feb67a5

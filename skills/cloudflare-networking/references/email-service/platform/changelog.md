@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track Cloudflare Email Service updates, features, and fixes.
 title: Changelog
 image: https://developers.cloudflare.com/email-service/platform/changelog/og.png?v=bd83792d4994d46d
@@ -57,7 +60,7 @@ You can now manage Email Routing rules that route emails to Workers from your Wr
   "name": "invoice-handler",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "addresses": [
     "invoice@yourdomain.com"
   ]
@@ -68,7 +71,7 @@ You can now manage Email Routing rules that route emails to Workers from your Wr
 name = "invoice-handler"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 addresses = ["invoice@yourdomain.com"]
 ```
 

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure different Cloudflare security features that protect your web applications, APIs, and resources.
 title: Security settings
 image: https://developers.cloudflare.com/security/settings/og.png?v=14f099136a8746f0

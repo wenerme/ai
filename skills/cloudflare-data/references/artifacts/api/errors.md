@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Error codes returned by the Artifacts REST API and Workers binding.
 title: Errors
 image: https://developers.cloudflare.com/artifacts/api/errors/og.png?v=4c63d47c2ba7b48e

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use AI Search from the Vercel AI SDK to create an instance, index content, and generate grounded responses in a TypeScript project.
 title: AI SDK
 image: https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/og.png?v=8f22888cce1b37ad

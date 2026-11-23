@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
 title: Off (no encryption)
 image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/og.png?v=6b6d9f1cbdaf466b

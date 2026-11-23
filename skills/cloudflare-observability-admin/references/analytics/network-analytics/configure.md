@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Cloudflare Network Analytics display settings.
 title: Configure
 image: https://developers.cloudflare.com/analytics/network-analytics/configure/og.png?v=08ddea3440d5f5e7

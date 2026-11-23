@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.
 title: Analytics
 image: https://developers.cloudflare.com/stream/getting-analytics/og.png?v=dae1d28bd6533852

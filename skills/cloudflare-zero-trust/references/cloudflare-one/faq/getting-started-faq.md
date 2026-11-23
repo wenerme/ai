@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review FAQs about getting started with Cloudflare Zero Trust.
 title: Getting started with Cloudflare Zero Trust FAQ
 image: https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/og.png?v=e5b1db81663ebca0

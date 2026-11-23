@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Move files in and out of a sandbox, keep a workspace after its instance stops, and share files through R2.
 title: Work with files in a sandbox
 image: https://developers.cloudflare.com/sandbox/files/og.png?v=74a9c89ed01f6f30

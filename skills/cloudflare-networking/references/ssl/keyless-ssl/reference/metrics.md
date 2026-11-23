@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Prometheus metrics exposed by the gokeyless key server.
 title: Key server metrics
 image: https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/og.png?v=310c23f30a0b616d

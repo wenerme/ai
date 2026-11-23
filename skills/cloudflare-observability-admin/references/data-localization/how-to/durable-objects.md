@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Durable Objects with Regional Services and Customer Metadata Boundary.
 title: Durable Objects
 image: https://developers.cloudflare.com/data-localization/how-to/durable-objects/og.png?v=6473e268520782e4

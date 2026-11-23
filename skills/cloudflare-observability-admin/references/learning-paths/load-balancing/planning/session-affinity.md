@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Maintain user sessions on the same server.
 title: Session affinity
 image: https://developers.cloudflare.com/learning-paths/load-balancing/planning/session-affinity/og.png?v=37ccb08d57ce7937

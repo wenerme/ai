@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Amazon Cognito in Zero Trust integrations.
 title: Amazon Cognito
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/awscognito-oidc/og.png?v=928d524a9e2c2f09

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect login requests using credentials from known data breaches.
 title: Check for exposed credentials
 image: https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/og.png?v=93ded4df36777792

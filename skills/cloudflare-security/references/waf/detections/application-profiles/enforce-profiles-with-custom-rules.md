@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Mitigate profile violations with scoped Custom Rules.
 title: Enforce profiles with Custom Rules
 image: https://developers.cloudflare.com/waf/detections/application-profiles/enforce-profiles-with-custom-rules/og.png?v=b08fd6151556692f

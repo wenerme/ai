@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Application Granular Controls works in Gateway.
 title: Application Granular Controls
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/granular-controls/og.png?v=9a698dcc74058fe0

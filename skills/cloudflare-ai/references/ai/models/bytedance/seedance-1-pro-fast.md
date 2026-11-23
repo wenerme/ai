@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A speed- and cost-optimized variant of Seedance 1.0 Pro, delivering roughly 30-60% faster inference at about 60% lower cost while keeping the same capability surface. Suited to rapid iteration, storyboarding, and platform-scale video workloads.
 title: Seedance 1.0 Pro Fast
 image: https://developers.cloudflare.com/og-docs.png

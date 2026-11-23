@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.
 title: Voice
 image: https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/og.png?v=def5f75be26dd0bb

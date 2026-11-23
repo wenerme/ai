@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Push Cloudflare logs to IBM Cloud Logs.
 title: Enable IBM Cloud Logs
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-cloud-logs/og.png?v=699bf0b6cab9f144

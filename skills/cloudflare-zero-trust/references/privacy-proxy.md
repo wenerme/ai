@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Privacy Proxy is a MASQUE-based forward proxy that hides client IP addresses while preserving geolocation accuracy.
 title: Privacy Proxy
 image: https://developers.cloudflare.com/privacy-proxy/og.png?v=c3d1d939348b9910

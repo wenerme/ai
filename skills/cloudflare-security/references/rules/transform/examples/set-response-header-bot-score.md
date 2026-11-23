@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a response header transform rule (part of Transform Rules) to set an `X-Bot-Score` HTTP header in the response with the current bot score.
 title: Set a response header with the current bot score
 image: https://developers.cloudflare.com/rules/transform/examples/set-response-header-bot-score/og.png?v=429db5c9788d0c32

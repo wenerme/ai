@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Schedule future wake-ups for Durable Objects using the Alarms API with guaranteed at-least-once execution.
 title: Alarms
 image: https://developers.cloudflare.com/durable-objects/api/alarms/og.png?v=11f204548f3814f4

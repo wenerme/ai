@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add a payment method to your Cloudflare account.
 title: Create billing profile
 image: https://developers.cloudflare.com/billing/get-started/create-billing-profile/og.png?v=f5e6633e0b96be99

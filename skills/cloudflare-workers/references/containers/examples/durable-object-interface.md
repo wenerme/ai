@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Various examples calling Containers directly from Durable Objects
 title: More examples
 image: https://developers.cloudflare.com/containers/examples/durable-object-interface/og.png?v=2fb49aba202d1f04

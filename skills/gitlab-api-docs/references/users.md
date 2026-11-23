@@ -165,6 +165,9 @@ Supported attributes:
 | `auditors`         | boolean | no       | Return only auditor users. Default is `false`. If not included, it returns all users. Premium and Ultimate only. |
 | `skip_ldap`        | boolean | no       | Skip LDAP users. Premium and Ultimate only. |
 
+The response does not include the `current_sign_in_ip` and `last_sign_in_ip` fields.
+To get them, use [`GET /users/:id`](#retrieve-a-single-user).
+
 Example response:
 
 ```json
@@ -207,8 +210,6 @@ Example response:
     "two_factor_enabled": true,
     "external": false,
     "private_profile": false,
-    "current_sign_in_ip": "196.165.1.102",
-    "last_sign_in_ip": "172.127.2.22",
     "namespace_id": 1,
     "provisioned_by_project_id": null,
     "created_by": null
@@ -246,8 +247,6 @@ Example response:
     "two_factor_enabled": true,
     "external": false,
     "private_profile": false,
-    "current_sign_in_ip": "10.165.1.102",
-    "last_sign_in_ip": "172.127.2.22",
     "namespace_id": 2,
     "provisioned_by_project_id": null,
     "created_by": null
@@ -665,8 +664,6 @@ Supported attributes:
   "external": false,
   "private_profile": false,
   "commit_email": "john-codes@example.com",
-  "current_sign_in_ip": "196.165.1.102",
-  "last_sign_in_ip": "172.127.2.22",
   "namespace_id": 1,
   "provisioned_by_project_id": null,
   "created_by": null,

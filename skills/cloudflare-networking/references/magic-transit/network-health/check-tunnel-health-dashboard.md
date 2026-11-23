@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Check tunnel health in the Magic Transit dashboard.
 title: Check tunnel health in the dashboard
 image: https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/og.png?v=426f6b6091514c3e

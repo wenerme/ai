@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Bias AI Search results toward documents with specific metadata using relevance boosting.
 title: Relevance boosting
 image: https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/og.png?v=ee7217145fff7eda

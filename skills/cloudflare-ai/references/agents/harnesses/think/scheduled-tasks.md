@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Declare recurring, timezone-aware Think turns and deterministic handlers with getScheduledTasks() and a typed scheduling DSL.
 title: Scheduled tasks
 image: https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/og.png?v=4fbd04c27070ed65

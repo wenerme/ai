@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Attach KV, R2, D1, and other resource bindings to user Workers deployed through Workers for Platforms.
 title: Bindings
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/og.png?v=390ed50248b25a2e

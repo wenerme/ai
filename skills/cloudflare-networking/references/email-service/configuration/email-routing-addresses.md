@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.
 title: Email routing rules and addresses
 image: https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/og.png?v=63b8f54a38ce8f37
@@ -134,7 +137,7 @@ This feature requires Wrangler 4.113.0 or later.
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "addresses": [
     "support@example.com",
     "*@example.com"
@@ -147,7 +150,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 addresses = ["support@example.com", "*@example.com"]
 ```
 

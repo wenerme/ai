@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scan and review aggregated security risks.
 title: Security Insights
 image: https://developers.cloudflare.com/learning-paths/application-security/security-center/insights/og.png?v=944da72726f1af15

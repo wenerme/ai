@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Let AI agents pay for services with x402 or Machine Payments Protocol (MPP) through Cloudflare's Agents SDK.
 title: Agentic Payments
 image: https://developers.cloudflare.com/agents/tools/payments/og.png?v=7605a8d2dd6796cd

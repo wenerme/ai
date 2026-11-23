@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Regardless of whether the visitor-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
 title: Strict (SSL-Only Origin Pull)
 image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/og.png?v=f48d31da863947c7

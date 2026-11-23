@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Modify request URLs, headers, and response headers with Transform Rules.
 title: Transform Rules
 image: https://developers.cloudflare.com/rules/transform/og.png?v=660736d97caa60a2

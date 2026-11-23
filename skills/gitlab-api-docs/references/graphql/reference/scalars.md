@@ -1476,6 +1476,12 @@ A `ResourceLabelEventID` is a global ID. It is encoded as a string.
 
 An example `ResourceLabelEventID` is: `"gid://gitlab/ResourceLabelEvent/1"`.
 
+## `ReviewID`
+
+A `ReviewID` is a global ID. It is encoded as a string.
+
+An example `ReviewID` is: `"gid://gitlab/Review/1"`.
+
 ## `SbomComponentID`
 
 A `SbomComponentID` is a global ID. It is encoded as a string.

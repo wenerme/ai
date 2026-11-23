@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare enables fully serverless ETL pipelines, significantly reducing complexity, accelerating time to production, and lowering overall costs.
 title: Serverless ETL pipelines
 image: https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-etl/og.png?v=ea3c53357f9e9450

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and configure address maps for your IP prefixes.
 title: Set up address maps
 image: https://developers.cloudflare.com/byoip/address-maps/setup/og.png?v=29a85a2131605e19

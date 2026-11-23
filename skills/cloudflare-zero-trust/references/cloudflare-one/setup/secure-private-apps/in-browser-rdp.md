@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Provide in-browser remote desktop access to Windows hosts through Cloudflare Access.
 title: In-browser remote desktop
 image: https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/in-browser-rdp/og.png?v=211ac59c15f0c7f4

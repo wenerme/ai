@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.
 title: Disable Brotli compression
 image: https://developers.cloudflare.com/rules/compression-rules/examples/disable-all-brotli/og.png?v=1271a563f8567ede

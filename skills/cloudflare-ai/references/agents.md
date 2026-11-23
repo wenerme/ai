@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build and host AI agents on Cloudflare. Run an agent harness in a Durable Object, add capabilities such as state, WebSockets, and scheduling with the Agents SDK Lifecycle, and give the agent tools.
 title: Build Agents on Cloudflare
 image: https://developers.cloudflare.com/agents/og.png?v=5f3790c1b824e669
@@ -67,7 +70,7 @@ pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works
 bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord
 ```
 
-The Pi packages are optional peer dependencies of `agents`, at `~1.5.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
+The Pi packages are optional peer dependencies of `agents`, at `~1.6.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
 
 To start from a complete app with a browser UI, a Cloudflare Computer workspace, and code execution, deploy the Pi harness example:
 

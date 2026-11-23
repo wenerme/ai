@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve HTTP sites over an encrypted TLS channel.
 title: Opportunistic Encryption
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/og.png?v=17a74edba6f93446

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy Cursor self-hosted machines that run each assigned session in its own Linux sandbox on Containers.
 title: Run Cursor Cloud Agents in a sandbox
 image: https://developers.cloudflare.com/sandbox/coding-agents/cursor/og.png?v=d5367f1d93a4980d

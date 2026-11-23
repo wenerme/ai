@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build an agent that searches a knowledge base and proposes updates to it, with a human approving and able to roll back each write.
 title: Human-in-the-loop knowledge base updates
 image: https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/og.png?v=c960efe4a0ca868c
@@ -135,7 +138,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "main": "src/server.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -178,7 +181,7 @@ name = "kb-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]

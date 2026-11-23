@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Clone a public Git repository into a fresh Linux sandbox, install its dependencies, and return the test results from your Worker.
 title: Run tests from a Git repository
 image: https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/og.png?v=c2631c87a50f61b3

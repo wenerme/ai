@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot Cloudflare with forum software platforms.
 title: Forum Software
 image: https://developers.cloudflare.com/support/third-party-software/forum-software/og.png?v=1836c9cbf4dbe8e9

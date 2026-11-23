@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write your own agent loop as a Lifecycle capability, using the experimental Sessions, Streams, and Tasks capabilities or HarnessStore.
 title: Build your own harness
 image: https://developers.cloudflare.com/agents/harnesses/build-your-own/og.png?v=a4dbf70ba75d0701

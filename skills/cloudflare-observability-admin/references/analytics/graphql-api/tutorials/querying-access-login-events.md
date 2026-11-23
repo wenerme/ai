@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Retrieve Access login event logs via GraphQL.
 title: Querying Access login events with GraphQL
 image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-access-login-events/og.png?v=28289548c674fb2d

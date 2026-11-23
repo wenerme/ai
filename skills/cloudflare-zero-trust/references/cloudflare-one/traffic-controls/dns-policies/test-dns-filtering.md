@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test DNS filtering in Gateway.
 title: Test DNS filtering
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/test-dns-filtering/og.png?v=d27f981ee2052c77

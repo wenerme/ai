@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio
 title: First Live Stream with OBS
 image: https://developers.cloudflare.com/stream/examples/obs-from-scratch/og.png?v=70ec8f9abf5e89ee

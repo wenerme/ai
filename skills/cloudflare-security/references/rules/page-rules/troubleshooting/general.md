@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve common issues with Page Rules configuration.
 title: Troubleshoot Page Rules - General
 image: https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/og.png?v=0978bad1615b7c9f

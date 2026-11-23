@@ -169,6 +169,7 @@ Create a fork relationship between two specified projects.
 Prerequisites:
 
 - You must be an administrator or be assigned the Owner role on the project.
+- Both project repositories must use the same object format, SHA-1 or SHA-256.
 
 ```plaintext
 POST /projects/:id/fork/:forked_from_id

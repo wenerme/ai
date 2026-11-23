@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control where R2 stores your data using automatic placement, location hints, or jurisdictions.
 title: Data location
 image: https://developers.cloudflare.com/r2/reference/data-location/og.png?v=5538a700c60c485c

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create real-time key-value stores that sync shared state across participants in a RealtimeKit session.
 title: Meeting key-value store
 image: https://developers.cloudflare.com/realtime/realtimekit/collaboration/meeting-key-value-store/og.png?v=a32d894e1c376908

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkDraftAttachmentView component (React Library)
 title: RtkDraftAttachmentView
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react/rtkdraftattachmentview/og.png?v=9a5c68a35b9a82b9

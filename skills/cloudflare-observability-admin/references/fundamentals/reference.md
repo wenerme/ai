@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Find Cloudflare reference material including network details, HTTP headers, policies, and troubleshooting resources.
 title: Reference
 image: https://developers.cloudflare.com/fundamentals/reference/og.png?v=6ae1f1be9d5ad0ba

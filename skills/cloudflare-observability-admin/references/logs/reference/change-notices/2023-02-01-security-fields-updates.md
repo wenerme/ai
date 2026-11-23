@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review updates to security fields in log datasets.
 title: 2023-02-01 - Updates to security fields
 image: https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/og.png?v=d9426ac7d2dfd759

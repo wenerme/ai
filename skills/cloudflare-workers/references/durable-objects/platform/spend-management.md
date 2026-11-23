@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set a Durable Objects spending limit and understand its effects on requests, SQL storage, WebSockets, and alarms.
 title: Spending limits
 image: https://developers.cloudflare.com/durable-objects/platform/spend-management/og.png?v=c25147cbe21c53d5

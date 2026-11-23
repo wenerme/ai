@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Start Workflow instances from webhooks sent by your own systems or third-party services.
 title: Trigger a Workflow from a webhook
 image: https://developers.cloudflare.com/workflows/examples/trigger-from-webhook/og.png?v=da43ec695cc80cf2
@@ -205,7 +208,7 @@ export default defineConfig({
   worker: {
   	name: "external-event-trigger",
   	// Set this to today's date
-  	compatibilityDate: "2026-11-18",
+  	compatibilityDate: "2026-11-23",
   	entrypoint: "src/index.ts",
   	observability: {
   		enabled: true,
@@ -246,7 +249,7 @@ Wrangler
 	"name": "external-event-trigger",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"observability": { "enabled": true },
 	"workflows": [
 		{
@@ -275,7 +278,7 @@ Wrangler
 name = "external-event-trigger"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [observability]
 enabled = true

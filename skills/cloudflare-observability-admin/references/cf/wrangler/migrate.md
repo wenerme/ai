@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Convert a Wrangler project to cf with cf migrate, resolve the follow-up items, and deploy it with cloudflare.config.ts.
 title: Migrate a Wrangler project
 image: https://developers.cloudflare.com/cf/wrangler/migrate/og.png?v=28973f624b22bb97

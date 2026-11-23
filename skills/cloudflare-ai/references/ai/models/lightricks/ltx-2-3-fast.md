@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Lightricks LTX-2.3 Fast is a low-cost video generation model for text-to-video and image-to-video, with synchronized audio, first-to-last frame control, portrait and landscape output up to 4K, and clips up to 20 seconds.
 title: LTX-2.3 Fast
 image: https://developers.cloudflare.com/og-docs.png

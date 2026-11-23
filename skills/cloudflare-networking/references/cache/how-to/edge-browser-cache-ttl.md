@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure edge and browser cache TTL for your resources.
 title: Edge and Browser Cache TTL
 image: https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/og.png?v=7b5194742939edf1

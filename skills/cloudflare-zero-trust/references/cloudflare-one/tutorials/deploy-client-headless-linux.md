@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial explains how to deploy the Cloudflare One Client on headless Linux devices using a service token and an installation script.
 title: Deploy the Cloudflare One Client on headless Linux machines
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/og.png?v=d28d8095b38b7468

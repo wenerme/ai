@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scan Gateway logs for unauthorized MCP traffic.
 title: Detect MCP traffic in Gateway logs
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/og.png?v=820aa1d92e7b6e66

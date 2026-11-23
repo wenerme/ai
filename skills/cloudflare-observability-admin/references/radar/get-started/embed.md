@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.
 title: Share a Radar chart
 image: https://developers.cloudflare.com/radar/get-started/embed/og.png?v=95cdbc0560cb3c84

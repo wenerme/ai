@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure payload logging for managed rulesets in the dashboard.
 title: Configure payload logging for Managed Rules
 image: https://developers.cloudflare.com/waf/payload-logging/configure/og.png?v=0ee5be6b75c5057c

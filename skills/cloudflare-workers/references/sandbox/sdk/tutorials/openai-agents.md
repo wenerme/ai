@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the OpenAI Agents SDK with the Sandbox SDK 0.x to build a Python agent that writes, tests, and delivers code in an isolated environment.
 title: Build an AI coding agent with OpenAI Agents SDK
 image: https://developers.cloudflare.com/sandbox/sdk/tutorials/openai-agents/og.png?v=2440273508f20b83

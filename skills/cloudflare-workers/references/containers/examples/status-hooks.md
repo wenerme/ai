@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Execute Workers code in reaction to Container status changes
 title: Monitor container lifecycle
 image: https://developers.cloudflare.com/containers/examples/status-hooks/og.png?v=26c87d17da56027f
@@ -25,7 +28,7 @@ Log when a Container becomes ready, exits successfully, or fails. The Durable Ob
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "observability": {
     "enabled": true
   },
@@ -62,7 +65,7 @@ name = "container-lifecycle"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [observability]
 enabled = true

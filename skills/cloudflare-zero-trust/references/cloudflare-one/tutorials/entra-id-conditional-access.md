@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: With Conditional Access in Microsoft Entra ID, administrators can enforce policies on applications and users directly in EntraID.
 title: Use Microsoft Entra ID Conditional Access policies in Cloudflare Access
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-conditional-access/og.png?v=b50f1759619e6480

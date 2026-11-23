@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A Map (or associative array) representation of multipart names to multipart values in the request body.
 title: http.request.body.multipart
 image: https://developers.cloudflare.com/og-docs.png

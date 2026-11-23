@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy multiple Cloudflare Pages projects from a single monorepo repository.
 title: Monorepos
 image: https://developers.cloudflare.com/pages/configuration/monorepos/og.png?v=05fabe1e1b4dbd18

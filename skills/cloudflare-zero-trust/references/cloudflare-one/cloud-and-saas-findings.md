@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloud and SaaS findings in Cloudflare One.
 title: Cloud and SaaS findings
 image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/og.png?v=26616082715d6e62

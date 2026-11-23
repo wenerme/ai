@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Basin is a serverless data analytics platform for ingesting, managing, and querying Apache Iceberg tables stored in R2.
 title: Basin
 image: https://developers.cloudflare.com/basin/og.png?v=4aac2174eba45ffc

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example of how to use Queues to handle rate limits of external APIs.
 title: Handle rate limits of external APIs
 image: https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/og.png?v=01e162b83702d022
@@ -145,7 +148,7 @@ Your final Wrangler file should look similar to the example below.
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -174,7 +177,7 @@ name = "resend-rate-limit-queue"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.producers]]

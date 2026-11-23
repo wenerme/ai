@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Trace agent activity and subscribe to structured events from the Lifecycle and its capabilities.
 title: Observability
 image: https://developers.cloudflare.com/agents/runtime/observability/og.png?v=9041e8092cecb0f5

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Remove a domain from your Cloudflare account, including required steps for DNS, subscriptions, and registrar settings.
 title: Remove a domain
 image: https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/og.png?v=3fc8385aaf368479

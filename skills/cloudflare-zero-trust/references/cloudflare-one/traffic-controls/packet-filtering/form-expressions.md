@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Form expressions works in Gateway.
 title: Form expressions
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/form-expressions/og.png?v=797b4ab137707381

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run a durable model-driven reasoning step inside a Cloudflare Workflow with ThinkWorkflow and step.prompt(), including structured output and timeouts.
 title: Workflows
 image: https://developers.cloudflare.com/agents/harnesses/think/workflows/og.png?v=d1e47ab935cc53a2

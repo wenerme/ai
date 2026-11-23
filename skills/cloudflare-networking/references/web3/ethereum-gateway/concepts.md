@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Concepts for using the Cloudflare Ethereum Gateway.
 title: Concepts
 image: https://developers.cloudflare.com/web3/ethereum-gateway/concepts/og.png?v=d7d73c3068059cda

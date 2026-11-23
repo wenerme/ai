@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for WAF managed rulesets including OWASP and Cloudflare rules.
 title: Rulesets reference
 image: https://developers.cloudflare.com/waf/managed-rules/reference/og.png?v=3d350fd5f475b1ad

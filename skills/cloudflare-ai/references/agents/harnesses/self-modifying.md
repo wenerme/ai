@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore an experimental harness that edits TypeScript in a durable Workspace and runs activated revisions in Dynamic Workers.
 title: Self-modifying
 image: https://developers.cloudflare.com/agents/harnesses/self-modifying/og.png?v=e9345597849fc1cb

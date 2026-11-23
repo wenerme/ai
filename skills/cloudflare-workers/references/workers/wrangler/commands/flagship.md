@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.
 title: Flagship
 image: https://developers.cloudflare.com/workers/wrangler/commands/flagship/og.png?v=46ac9c3713a23c1c
@@ -279,15 +282,15 @@ Update a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship apps update <APP-ID>
+npx wrangler flagship apps update <APP-ID> --name <NAME>
 ```
 
 ```
-yarn wrangler flagship apps update <APP-ID>
+yarn wrangler flagship apps update <APP-ID> --name <NAME>
 ```
 
 ```
-pnpm wrangler flagship apps update <APP-ID>
+pnpm wrangler flagship apps update <APP-ID> --name <NAME>
 ```
 
 - `<APP-ID>` `string` required
@@ -706,15 +709,15 @@ Set the default variation served by a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags set <APP-ID> <KEY>
+npx wrangler flagship flags set <APP-ID> <KEY> --variation <VARIATION>
 ```
 
 ```
-yarn wrangler flagship flags set <APP-ID> <KEY>
+yarn wrangler flagship flags set <APP-ID> <KEY> --variation <VARIATION>
 ```
 
 ```
-pnpm wrangler flagship flags set <APP-ID> <KEY>
+pnpm wrangler flagship flags set <APP-ID> <KEY> --variation <VARIATION>
 ```
 
 - `<APP-ID>` `string` required
@@ -826,15 +829,15 @@ Update one targeting rule for a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rules update <APP-ID> <KEY>
+npx wrangler flagship flags rules update <APP-ID> <KEY> --priority <PRIORITY>
 ```
 
 ```
-yarn wrangler flagship flags rules update <APP-ID> <KEY>
+yarn wrangler flagship flags rules update <APP-ID> <KEY> --priority <PRIORITY>
 ```
 
 ```
-pnpm wrangler flagship flags rules update <APP-ID> <KEY>
+pnpm wrangler flagship flags rules update <APP-ID> <KEY> --priority <PRIORITY>
 ```
 
 - `<APP-ID>` `string` required
@@ -895,15 +898,15 @@ Delete one targeting rule from a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rules delete <APP-ID> <KEY>
+npx wrangler flagship flags rules delete <APP-ID> <KEY> --priority <PRIORITY>
 ```
 
 ```
-yarn wrangler flagship flags rules delete <APP-ID> <KEY>
+yarn wrangler flagship flags rules delete <APP-ID> <KEY> --priority <PRIORITY>
 ```
 
 ```
-pnpm wrangler flagship flags rules delete <APP-ID> <KEY>
+pnpm wrangler flagship flags rules delete <APP-ID> <KEY> --priority <PRIORITY>
 ```
 
 - `<APP-ID>` `string` required
@@ -955,15 +958,15 @@ Reorder targeting rules for a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rules reorder <APP-ID> <KEY>
+npx wrangler flagship flags rules reorder <APP-ID> <KEY> --order <ORDER>
 ```
 
 ```
-yarn wrangler flagship flags rules reorder <APP-ID> <KEY>
+yarn wrangler flagship flags rules reorder <APP-ID> <KEY> --order <ORDER>
 ```
 
 ```
-pnpm wrangler flagship flags rules reorder <APP-ID> <KEY>
+pnpm wrangler flagship flags rules reorder <APP-ID> <KEY> --order <ORDER>
 ```
 
 - `<APP-ID>` `string` required
@@ -1082,15 +1085,15 @@ Roll out one variation to a percentage of traffic
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rollout <APP-ID> <KEY>
+npx wrangler flagship flags rollout <APP-ID> <KEY> --to <TO> --percentage <PERCENTAGE>
 ```
 
 ```
-yarn wrangler flagship flags rollout <APP-ID> <KEY>
+yarn wrangler flagship flags rollout <APP-ID> <KEY> --to <TO> --percentage <PERCENTAGE>
 ```
 
 ```
-pnpm wrangler flagship flags rollout <APP-ID> <KEY>
+pnpm wrangler flagship flags rollout <APP-ID> <KEY> --to <TO> --percentage <PERCENTAGE>
 ```
 
 - `<APP-ID>` `string` required

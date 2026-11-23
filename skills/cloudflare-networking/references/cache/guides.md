@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Follow task-focused guides to manage cached content and verify cache behavior.
 title: Guides
 image: https://developers.cloudflare.com/cache/guides/og.png?v=41e92982caa8b1e2

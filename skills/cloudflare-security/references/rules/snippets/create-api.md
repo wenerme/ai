@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create Snippets using the Cloudflare API.
 title: Configure Snippets via API
 image: https://developers.cloudflare.com/rules/snippets/create-api/og.png?v=ff96430f0fcf8454

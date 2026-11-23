@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure browser-based access without device clients.
 title: Initial setup
 image: https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/og.png?v=f45a43bfef7f935d

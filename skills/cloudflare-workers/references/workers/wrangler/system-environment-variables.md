@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Local environment variables that can change Wrangler's behavior.
 title: System environment variables
 image: https://developers.cloudflare.com/workers/wrangler/system-environment-variables/og.png?v=d29cb656124747ed

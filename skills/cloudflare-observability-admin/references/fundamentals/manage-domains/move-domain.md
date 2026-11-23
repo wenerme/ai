@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to transfer a domain between Cloudflare accounts, including requirements, DNS settings, and SSL/TLS certificate management for seamless migration.
 title: Move a domain between Cloudflare accounts
 image: https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/og.png?v=df6f2511f90905ca

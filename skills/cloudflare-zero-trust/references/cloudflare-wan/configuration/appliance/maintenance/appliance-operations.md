@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restart, reboot, or shut down a Cloudflare One Appliance from the dashboard or via API.
 title: Appliance operations
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/og.png?v=6c194f2c24d51866

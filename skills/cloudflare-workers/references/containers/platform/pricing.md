@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Billing rates for Containers vCPU, memory, disk, and network egress, including included usage on the Workers Paid plan.
 title: Pricing
 image: https://developers.cloudflare.com/containers/platform/pricing/og.png?v=6cefb4d67718aa46

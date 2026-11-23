@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Inspect query volume, latency, cache hit ratios, and connection pool sizes for your Hyperdrive configurations.
 title: Metrics and analytics
 image: https://developers.cloudflare.com/hyperdrive/observability/metrics/og.png?v=6b9d69a76b186379

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.
 title: Sign requests
 image: https://developers.cloudflare.com/rules/snippets/examples/signing-requests/og.png?v=32b2813d11c06c7c

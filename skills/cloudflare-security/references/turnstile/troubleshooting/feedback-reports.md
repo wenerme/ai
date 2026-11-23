@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Submit Turnstile feedback reports for false positive challenges.
 title: Feedback reports
 image: https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/og.png?v=88d0144f5e92bdc5

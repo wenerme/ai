@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure alerts for Magic Transit events.
 title: Alerts
 image: https://developers.cloudflare.com/magic-transit/alerts/og.png?v=1c20c07de25b02ef

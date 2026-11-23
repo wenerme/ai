@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Download a report in Email Security.
 title: Download a report
 image: https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/og.png?v=6c9b7d9f9c18fb95

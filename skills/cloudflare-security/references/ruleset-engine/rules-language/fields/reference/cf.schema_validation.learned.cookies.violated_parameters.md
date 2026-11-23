@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Names of cookies detected as [violating the learned schema](/waf/detections/application-profiles/fields/#violated-parameters).
 title: cf.schema_validation.learned.cookies.violated_parameters
 image: https://developers.cloudflare.com/og-docs.png

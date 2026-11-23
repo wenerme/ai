@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Queues account limits for message size, throughput, retention, and concurrency.
 title: Limits
 image: https://developers.cloudflare.com/queues/platform/limits/og.png?v=023a88e77a517650

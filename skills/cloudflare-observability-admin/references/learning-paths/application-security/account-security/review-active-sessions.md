@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View and revoke active account sessions.
 title: Review active sessions
 image: https://developers.cloudflare.com/learning-paths/application-security/account-security/review-active-sessions/og.png?v=fcb7f0776274a5b2

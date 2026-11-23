@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: POST JavaScript to your Worker and read the sandboxed result.
 title: Run JavaScript
 image: https://developers.cloudflare.com/sandbox/get-started/dynamic-workers/og.png?v=4ac2191cd371fe40
@@ -63,7 +66,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	"name": "sandbox-dynamic-worker",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"observability": {
    		"enabled": true,
    	},
@@ -81,7 +84,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    name = "sandbox-dynamic-worker"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    upload_source_maps = true
 
    [observability]
@@ -117,7 +120,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    		const { code } = await request.json();
 
    		const sandbox = env.LOADER.load({
-   			compatibilityDate: "2026-11-18",
+   			compatibilityDate: "2026-11-23",
    			mainModule: "code.js",
    			modules: {
    				"code.js": `
@@ -158,7 +161,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    		const { code } = (await request.json()) as { code: string };
 
    		const sandbox = env.LOADER.load({
-   			compatibilityDate: "2026-11-18",
+   			compatibilityDate: "2026-11-23",
    			mainModule: "code.js",
    			modules: {
    				"code.js": `

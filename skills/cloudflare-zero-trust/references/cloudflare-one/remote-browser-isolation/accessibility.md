@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Accessibility in Browser Isolation.
 title: Accessibility
 image: https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/accessibility/og.png?v=5c0900b7f925e3a4

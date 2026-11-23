@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deliver media content from edge locations worldwide.
 title: Cache and accelerate media delivery
 image: https://developers.cloudflare.com/use-cases/media-streaming/cache-delivery/og.png?v=aaea85664beb8ce7

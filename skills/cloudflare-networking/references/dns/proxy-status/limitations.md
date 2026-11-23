@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Limitations when proxying DNS records through Cloudflare.
 title: Proxying limitations
 image: https://developers.cloudflare.com/dns/proxy-status/limitations/og.png?v=3a85ff2b41106be3

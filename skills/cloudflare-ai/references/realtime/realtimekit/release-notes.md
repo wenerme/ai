@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Find release notes for your RealtimeKit SDK and platform.
 title: Release notes
 image: https://developers.cloudflare.com/realtime/realtimekit/release-notes/og.png?v=011c7a089644f201

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve common issues with Cloudflare Email security, including delivery delays, false positives, and DMARC authentication errors.
 title: Troubleshoot Email security
 image: https://developers.cloudflare.com/cloudflare-one/email-security/troubleshooting/og.png?v=9e2b094bc869f8a8

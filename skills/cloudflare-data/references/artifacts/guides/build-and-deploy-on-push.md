@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build projects stored in Artifacts repos and deploy them as Workers or Workers for Platforms User Workers.
 title: Build and deploy Artifacts repos
 image: https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/og.png?v=98037e0f399be105

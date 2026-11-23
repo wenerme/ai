@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.
 title: MCP Client
 image: https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/og.png?v=d89668f9eb52cec9

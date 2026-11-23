@@ -605,6 +605,8 @@ GitLab Duo sidebar.
 - Audit event for web searches [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604065) in GitLab 19.5.
 - Instance setting to allow web search on GitLab Self-Managed and GitLab Dedicated [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637200) in GitLab 19.6. The group setting applies only on GitLab.com.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/587158) in GitLab 19.6.
+- Web search toggle shown when web search is not allowed [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20480) in GitLab 19.7 with a [flag](../../administration/feature_flags/_index.md) named `dap_web_search_unavailable_hint`. Disabled by default.
+- Web search [turned on by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/641684) in new conversations in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -636,9 +638,14 @@ so the total for one message can be higher than five.
 You cannot limit which domains web search can reach.
 [Issue 604066](https://gitlab.com/gitlab-org/gitlab/-/work_items/604066) proposes to add domain allowlists and denylists.
 
+If web search is not allowed for your group or instance, the **Web search** toggle is turned off
+and you cannot change the toggle. A note at the bottom of the menu tells you who can allow web search.
+On GitLab.com, the toggle and note show only in projects and groups that you are a member of
+and that belong to a top-level group. For example, they do not show in your personal namespace.
+
 ### Allow web search for a group
 
-On GitLab.com, allow web search for a top-level group so users in the group can turn on web search
+On GitLab.com, allow web search for a top-level group so users in the group can use web search
 in their Chat conversations. The setting applies to all subgroups and projects in the group.
 
 On GitLab Self-Managed and GitLab Dedicated, the group setting is not available.
@@ -662,7 +669,7 @@ to set the `web_search_enabled` attribute.
 ### Allow web search for an instance
 
 On GitLab Self-Managed and GitLab Dedicated, allow web search for the instance so users
-can turn on web search in their Chat conversations in any group or project.
+can use web search in their Chat conversations in any group or project.
 This setting is the only one that controls web search on the instance.
 It is off by default.
 
@@ -684,11 +691,12 @@ To allow web search for an instance:
 To allow web search for an instance, you can also use the `webSearchEnabled` argument of the
 [`duoSettingsUpdate`](../../api/graphql/reference/mutations.md#duosettingsupdate) GraphQL mutation.
 
-### Turn on web search in a conversation
+### Turn web search on or off in a conversation
 
-Turn on web search in a conversation when you want Chat to search the web for an answer.
+Turn web search on or off in a conversation to choose whether Chat searches the web for an answer.
 Chat saves the setting with the conversation. When you start a new conversation, web search
-starts with the setting you last chose in your browser.
+starts with the setting you last chose in your browser. If you have not chosen a setting,
+web search is on.
 
 Prerequisites:
 
@@ -696,11 +704,11 @@ Prerequisites:
 - On GitLab Self-Managed and GitLab Dedicated, an administrator must
   [allow web search for the instance](#allow-web-search-for-an-instance).
 
-To turn on web search:
+To turn web search on or off:
 
 1. In GitLab, open a new or existing Chat conversation.
 1. In the Chat message box, select **Add or enable** ().
-1. Turn on the **Web search** toggle.
+1. Turn the **Web search** toggle on or off.
 
 ### Search services
 

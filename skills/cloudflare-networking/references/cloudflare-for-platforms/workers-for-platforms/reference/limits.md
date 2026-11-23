@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review Workers for Platforms limits for scripts, Durable Objects, cache, tags, and API rate limits.
 title: Limits
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/limits/og.png?v=e197158116ac3f21

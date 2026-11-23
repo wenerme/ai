@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore demo applications and reference architectures that use Workers KV.
 title: Demos and architectures
 image: https://developers.cloudflare.com/kv/demos/og.png?v=d140eced0e52aacc

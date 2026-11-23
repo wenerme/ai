@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: MTU and MSS values for WAN tunnels.
 title: Maximum transmission unit and maximum segment size
 image: https://developers.cloudflare.com/cloudflare-wan/reference/mtu-mss/og.png?v=474bce829dfbc37e

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor files and directories in real time with the Sandbox SDK 0.x to build development tools and automation workflows.
 title: Watch filesystem changes
 image: https://developers.cloudflare.com/sandbox/sdk/guides/file-watching/og.png?v=d3741a73df2e386a

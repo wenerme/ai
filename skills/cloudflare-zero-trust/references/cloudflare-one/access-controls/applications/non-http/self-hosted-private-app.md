@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure a private IP or hostname in Access.
 title: Secure a private IP or hostname
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/og.png?v=506c529b8a9d6b56

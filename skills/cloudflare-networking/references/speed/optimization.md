@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure content, image, and protocol optimization settings.
 title: Settings
 image: https://developers.cloudflare.com/speed/optimization/og.png?v=78fb4e976c844d8e

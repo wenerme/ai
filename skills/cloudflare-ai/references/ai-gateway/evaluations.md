@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Assess AI Gateway application performance with datasets, human feedback, and evaluation metrics.
 title: Evaluations
 image: https://developers.cloudflare.com/ai-gateway/evaluations/og.png?v=3a2b9756c41fe157

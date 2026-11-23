@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Limit upper-tier data centers to your preferred region for data locality.
 title: Regional Tiered Cache
 image: https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/og.png?v=8e285b03c2df0502

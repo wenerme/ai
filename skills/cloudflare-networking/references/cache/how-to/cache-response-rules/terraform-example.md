@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create cache response rules using Terraform.
 title: Terraform example
 image: https://developers.cloudflare.com/cache/how-to/cache-response-rules/terraform-example/og.png?v=2e1998f2e9c40d4f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Polish skips AVIF conversion when it would increase file size, when the image is too small, when the image is animated, or when AVIF capacity is temporarily unavailable.
 title: AVIF may be skipped
 image: https://developers.cloudflare.com/images/polish/no-avif/og.png?v=b05e3db74b0ff8a9

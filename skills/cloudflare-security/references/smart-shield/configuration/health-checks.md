@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor origin server availability and receive notifications when status changes.
 title: Health Checks
 image: https://developers.cloudflare.com/smart-shield/configuration/health-checks/og.png?v=cd65c1bf7f26c0ad

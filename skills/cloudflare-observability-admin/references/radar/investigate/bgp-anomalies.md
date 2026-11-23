@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect BGP hijack and route leak events using the Cloudflare Radar API, and build Workers-based alert systems for your autonomous system.
 title: BGP anomalies
 image: https://developers.cloudflare.com/radar/investigate/bgp-anomalies/og.png?v=5cd409008e4243c5
@@ -218,7 +221,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"triggers": {
 		"crons": [
 			"*/5 * * * *"
@@ -233,7 +236,7 @@ name = "hijack-alerts"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [triggers]
 crons = [ "*/5 * * * *" ]

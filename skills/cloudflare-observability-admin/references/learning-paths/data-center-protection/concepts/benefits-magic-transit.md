@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about benefits of using magic transit in this guide.
 title: Benefits of using Magic Transit
 image: https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/benefits-magic-transit/og.png?v=00bcca038be2468d

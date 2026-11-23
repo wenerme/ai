@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Authenticate against R2 with temporary credentials.
 title: Authenticate against R2 with temporary credentials
 image: https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/og.png?v=1938303a00674d0e

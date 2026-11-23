@@ -28,7 +28,7 @@ The following table shows when each type of context is available:
 | Current page title and URL in the GitLab UI | Based on location | Not available |
 | Files open in your IDE[^open] | Based on location | Based on location |
 | Files, including images[^ide] (PNG, JPEG, WebP) | When referenced | When referenced |
-| Images attached to issues and merge requests[^ide] | When referenced | When referenced |
+| Images attached to issues, merge requests, and epics[^ide] | When referenced | When referenced |
 | Epics, issues, and merge requests | When referenced | When referenced |
 | Pipelines | When referenced, including job logs | When referenced, for the merge request pipeline status only |
 | Commits | When referenced | Not available |
@@ -36,7 +36,9 @@ The following table shows when each type of context is available:
 | Wiki pages | When referenced | Not available |
 
 [^ide]: Images are available only in your IDE. For attached images, give the upload reference
-    as it appears in the Markdown. For more information, see
+    as it appears in the Markdown.
+    For an attachment outside the current project, give its full URL.
+    For more information, see
     [image requirements](../project/merge_requests/developer.md#image-requirements).
 
 [^open]: To stop GitLab Duo from using a file as context, close the file in your IDE.

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track the latest changes, fixes, and new features for Durable Objects.
 title: Release notes
 image: https://developers.cloudflare.com/durable-objects/release-notes/og.png?v=56dc76a05e0f4d42

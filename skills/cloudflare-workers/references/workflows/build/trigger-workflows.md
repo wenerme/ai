@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.
 title: Trigger Workflows
 image: https://developers.cloudflare.com/workflows/build/trigger-workflows/og.png?v=48434d0a23d3b226
@@ -44,7 +47,7 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"workflows": [
 		{
 			// The name of the Workflow
@@ -66,7 +69,7 @@ name = "workflows-tutorial"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -87,7 +90,7 @@ If you want to create Workflow instances on a recurring interval, add a `schedul
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"workflows": [
 		{
 			"name": "workflows-tutorial",
@@ -105,7 +108,7 @@ name = "workflows-tutorial"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[workflows]]
 name = "workflows-tutorial"

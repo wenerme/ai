@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.
 title: Presigned URLs
 image: https://developers.cloudflare.com/r2/api/s3/presigned-urls/og.png?v=09ebcbfc4fc6c0f8

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review individual security events triggered by WAF rules.
 title: Security Events
 image: https://developers.cloudflare.com/waf/analytics/security-events/og.png?v=6d95d2d1404cd587

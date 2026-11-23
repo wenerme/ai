@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send web search requests through AI Gateway with the REST API or the Workers AI binding, bring your own provider key, and use web search as a tool for models.
 title: How to use Web Search API
 image: https://developers.cloudflare.com/web-search/how-to-use/og.png?v=d825d667b5bdb4f7
@@ -61,7 +64,7 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
      "main": "src/index.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-11-18",
+     "compatibility_date": "2026-11-23",
      "ai": {
        "binding": "AI"
      }
@@ -73,7 +76,7 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
 
    [ai]
    binding = "AI"

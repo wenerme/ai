@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare can use private mobile networks (APNs) to connect devices roaming across multiple countries through regional Internet breakouts.
 title: Optimizing device roaming experience with geolocated IPs
 image: https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/og.png?v=1393d95d8408bb90

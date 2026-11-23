@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect services and devices with post-quantum encrypted private networking through Cloudflare.
 title: Cloudflare Mesh
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/og.png?v=63da8b1ccdc6c6f3

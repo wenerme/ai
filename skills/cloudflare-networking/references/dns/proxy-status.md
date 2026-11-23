@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control whether Cloudflare proxies traffic for DNS records.
 title: Proxy status
 image: https://developers.cloudflare.com/dns/proxy-status/og.png?v=9516888b00ca010f

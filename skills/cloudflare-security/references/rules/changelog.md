@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track the latest updates and changes to Cloudflare Rules features.
 title: Rules changelog
 image: https://developers.cloudflare.com/rules/changelog/og.png?v=0e682d94f4e7c306

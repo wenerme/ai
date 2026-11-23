@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor dedicated egress IP capacity and concurrent connections with GraphQL.
 title: IPs utilization
 image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/ips-utilization/og.png?v=74bd4171720587cd

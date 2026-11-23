@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.
 title: Geolocation
 image: https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/og.png?v=dd8c5845f981ffa0

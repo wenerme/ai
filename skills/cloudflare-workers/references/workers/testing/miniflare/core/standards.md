@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "When using the API, Miniflare allows you to substitute custom Responses for\nfetch() calls using undici's\nMockAgent API.\nThis is useful for testing Workers that make HTTP requests to other services. To\nenable fetch mocking, create a\nMockAgent\nusing the createFetchMock() function, then set this using the fetchMock\noption."
 title: Web Standards
 image: https://developers.cloudflare.com/workers/testing/miniflare/core/standards/og.png?v=4c6bd018ee9afe6e

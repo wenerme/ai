@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project.
 title: Templates
 image: https://developers.cloudflare.com/workers/get-started/quickstarts/og.png?v=8b266957baa916c3

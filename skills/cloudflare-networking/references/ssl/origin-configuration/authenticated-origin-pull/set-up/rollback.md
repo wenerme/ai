@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Roll back per-hostname Authenticated Origin Pulls to zone-level settings.
 title: Roll back per-hostname AOP
 image: https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/rollback/og.png?v=0a12558534de95b6

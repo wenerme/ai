@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure data localization controls for Cloudflare One traffic, private keys, and supported logs.
 title: Data residency for Cloudflare One
 image: https://developers.cloudflare.com/data-localization/how-to/zero-trust/og.png?v=fc232a5634433dfc

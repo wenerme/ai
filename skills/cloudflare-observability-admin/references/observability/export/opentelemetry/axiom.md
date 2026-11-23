@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send Cloudflare traces and logs to Axiom with OpenTelemetry.
 title: Export to Axiom
 image: https://developers.cloudflare.com/observability/export/opentelemetry/axiom/og.png?v=501bb85a9cd9f2d9

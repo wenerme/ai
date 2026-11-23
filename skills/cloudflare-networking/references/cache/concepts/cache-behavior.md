@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare handles HEAD requests and Set-Cookie headers.
 title: Head Requests and Set-Cookie Headers
 image: https://developers.cloudflare.com/cache/concepts/cache-behavior/og.png?v=befea3eecc228c98

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review pre-2023 changes to Cloudflare Workers.
 title: Workers (Historic)
 image: https://developers.cloudflare.com/workers/platform/changelog/historical-changelog/og.png?v=c057f83884b67a53

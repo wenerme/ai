@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a Preact application to Cloudflare Pages.
 title: Preact
 image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-preact-site/og.png?v=87705563b9f9224b

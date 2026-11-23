@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Redirect a www subdomain to your apex domain on Cloudflare Pages using Bulk Redirects.
 title: Redirecting www to domain apex
 image: https://developers.cloudflare.com/pages/how-to/www-redirect/og.png?v=5908b73b25955c7f

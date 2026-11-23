@@ -569,13 +569,13 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
 
 <CodeGroup>
   ```bash cURL
-  # Before: extended thinking with a manual budget (older models)
+  # Before: extended thinking with a manual budget
   curl https://api.anthropic.com/v1/messages \
     -H "content-type: application/json" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2026-10-21" \
     -d '{
-      "model": "claude-sonnet-4-5-20250929",
+      "model": "claude-opus-4-6",
       "max_tokens": 16000,
       "thinking": {"type": "enabled", "budget_tokens": 10000},
       "messages": [
@@ -600,9 +600,9 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```bash CLI
-  # Before: extended thinking with a manual budget (older models)
+  # Before: extended thinking with a manual budget
   ant messages create <<'YAML'
-  model: claude-sonnet-4-5-20250929
+  model: claude-opus-4-6
   max_tokens: 16000
   thinking:
     type: enabled
@@ -627,9 +627,9 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```python Python
-  # Before: extended thinking with a manual budget (older models)
+  # Before: extended thinking with a manual budget
   client.messages.create(
-      model="claude-sonnet-4-5-20250929",
+      model="claude-opus-4-6",
       max_tokens=16000,
       thinking={"type": "enabled", "budget_tokens": 10000},
       messages=[{"role": "user", "content": "..."}],
@@ -646,9 +646,9 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```typescript TypeScript
-  // Before: extended thinking with a manual budget (older models)
+  // Before: extended thinking with a manual budget
   await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
+    model: "claude-opus-4-6",
     max_tokens: 16000,
     thinking: { type: "enabled", budget_tokens: 10000 },
     messages: [{ role: "user", content: "..." }]
@@ -665,10 +665,10 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```csharp C#
-  // Before: extended thinking with a manual budget (older models)
+  // Before: extended thinking with a manual budget
   await client.Messages.Create(new MessageCreateParams
   {
-      Model = Model.ClaudeSonnet4_5_20250929,
+      Model = Model.ClaudeOpus4_6,
       MaxTokens = 16000,
       Thinking = new ThinkingConfigEnabled(budgetTokens: 10000),
       Messages = [new UserMessageParam { Content = "..." }]
@@ -686,9 +686,9 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```go Go
-  // Before: extended thinking with a manual budget (older models)
+  // Before: extended thinking with a manual budget
   client.Messages.New(ctx, anthropic.MessageNewParams{
-  	Model:     anthropic.ModelClaudeSonnet4_5_20250929,
+  	Model:     anthropic.ModelClaudeOpus4_6,
   	MaxTokens: 16000,
   	Thinking: anthropic.ThinkingConfigParamUnion{
   		OfEnabled: &anthropic.ThinkingConfigEnabledParam{BudgetTokens: 10000},
@@ -715,9 +715,9 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```java Java
-  // Before: extended thinking with a manual budget (older models)
+  // Before: extended thinking with a manual budget
   client.messages().create(MessageCreateParams.builder()
-      .model(Model.CLAUDE_SONNET_4_5_20250929)
+      .model(Model.CLAUDE_OPUS_4_6)
       .maxTokens(16000L)
       .thinking(ThinkingConfigEnabled.builder()
           .budgetTokens(10000L)
@@ -738,17 +738,17 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```php PHP
-  // Before: extended thinking with a manual budget (older models)
+  // Before: extended thinking with a manual budget
   $client->messages->create(
-      model: 'claude-sonnet-4-5-20250929',
+      model: Model::CLAUDE_OPUS_4_6,
       maxTokens: 16000,
-      thinking: ['type' => 'enabled', 'budget_tokens' => 10000],
+      thinking: ['type' => 'enabled', 'budgetTokens' => 10000],
       messages: [['role' => 'user', 'content' => '...']],
   );
 
   // After: adaptive thinking with effort
   $client->messages->create(
-      model: 'claude-opus-5-5',
+      model: Model::CLAUDE_OPUS_5_5,
       maxTokens: 16000,
       thinking: ['type' => 'adaptive'],
       outputConfig: ['effort' => 'high'],
@@ -757,9 +757,9 @@ If you are migrating from [extended thinking](https://platform.claude.com/docs/e
   ```
 
   ```ruby Ruby
-  # Before: extended thinking with a manual budget (older models)
+  # Before: extended thinking with a manual budget
   client.messages.create(
-    model: "claude-sonnet-4-5-20250929",
+    model: Anthropic::Model::CLAUDE_OPUS_4_6,
     max_tokens: 16000,
     thinking: { type: "enabled", budget_tokens: 10000 },
     messages: [{ role: "user", content: "..." }]
@@ -780,7 +780,7 @@ If you are not using extended thinking, you don’t need to add a `thinking` par
 
 * **Prefer general instructions over prescriptive steps.** A prompt such as “think thoroughly” often produces better reasoning than a hand-written step-by-step plan. Claude’s reasoning frequently exceeds what a human would prescribe.
 * **Multishot examples work with thinking.** Worked examples in your prompt shape how Claude approaches similar problems in its own thinking blocks. Present each example as a problem, the method to apply, and the expected answer.
-* **Manual chain-of-thought (CoT) prompting as a fallback.** When thinking is off, you can still encourage step-by-step reasoning by asking Claude to think through the problem before it answers. Ask it to put the final answer in `<answer>` tags so you can extract it. Some models might decline a prompt that asks them to write their reasoning, for example in `<thinking>` tags. On those models, rely on thinking instead. If cost or latency matters, use a lower [effort](https://platform.claude.com/docs/en/build-with-claude/effort) level. For examples of these models, see [Keep reasoning in thinking blocks](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback#keep-reasoning-in-thinking-blocks).
+* **Manual chain-of-thought (CoT) prompting as a fallback.** When thinking is off, you can still encourage step-by-step reasoning by asking Claude to think through the problem before it answers. Ask it to put the final answer in `<answer>` tags so you can extract it. Some models might decline a prompt that asks them to write their reasoning, for example in `<thinking>` tags. On those models, rely on thinking instead. If cost or latency matters, use a lower [effort](https://platform.claude.com/docs/en/build-with-claude/effort) level. For the list of these models, see [Keep reasoning in thinking blocks](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback#keep-reasoning-in-thinking-blocks).
 * **Ask Claude to self-check.** Append something like “Before you finish, verify your answer against \[test criteria].” This catches errors reliably, especially for coding and math. Claude Opus 5 is the exception: it verifies its own work well without explicit instruction, and verification instructions carried over from prompts tuned for earlier models can cause over-verification, adding tokens and latency. On Claude Opus 5, remove these instructions rather than rewriting them. See [Task scope and over-verification](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5#task-scope-and-over-verification).
 
 <Note>

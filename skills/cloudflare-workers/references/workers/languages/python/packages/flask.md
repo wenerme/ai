@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run Flask applications in Python Workers.
 title: Flask
 image: https://developers.cloudflare.com/workers/languages/python/packages/flask/og.png?v=99b9d57b4e7dd3b9
@@ -49,7 +52,7 @@ Use this quick start to run a minimal Flask application.
      "name": "my-flask-worker",
      "main": "src/worker.py",
      // Set this to today's date
-     "compatibility_date": "2026-11-18",
+     "compatibility_date": "2026-11-23",
      "compatibility_flags": ["python_workers"]
    }
    ```
@@ -59,7 +62,7 @@ Use this quick start to run a minimal Flask application.
    name = "my-flask-worker"
    main = "src/worker.py"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    compatibility_flags = [ "python_workers" ]
    ```
 
@@ -115,7 +118,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
   "name": "my-flask-worker",
   "main": "src/worker.py",
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "compatibility_flags": ["python_workers"],
   "assets": {
     "directory": "./public/",
@@ -130,7 +133,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
 name = "my-flask-worker"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

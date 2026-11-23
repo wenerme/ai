@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand 3xx redirection HTTP status codes.
 title: 3xx Redirection
 image: https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/og.png?v=add0884d3ba29634

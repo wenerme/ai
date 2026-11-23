@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Preload assets with 103 Early Hints to speed up page loads.
 title: Early Hints
 image: https://developers.cloudflare.com/cache/advanced-configuration/early-hints/og.png?v=845d2a27de4785e2

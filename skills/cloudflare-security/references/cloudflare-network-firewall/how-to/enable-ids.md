@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable the Intrusion Detection System for your account.
 title: Enable IDS
 image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/og.png?v=86f87571f1761cd0

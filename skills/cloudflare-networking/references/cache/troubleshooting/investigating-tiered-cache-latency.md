@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Identify whether intermittent request slowness correlates with Tiered Cache upper-tier routing, and collect the evidence needed to report it.
 title: Investigate latency on tiered requests
 image: https://developers.cloudflare.com/cache/troubleshooting/investigating-tiered-cache-latency/og.png?v=024c14715f0d8280

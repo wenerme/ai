@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The application security dashboard helps you understand the current security posture of your web applications and allows you configure different security rules for those applications.
 title: Application security dashboard
 image: https://developers.cloudflare.com/security/og.png?v=9e2a7a29666c5402

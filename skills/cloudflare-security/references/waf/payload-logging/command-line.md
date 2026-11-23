@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Command-line tools for managing payload logging encryption keys.
 title: Command-line operations
 image: https://developers.cloudflare.com/waf/payload-logging/command-line/og.png?v=593910bd52a169ee

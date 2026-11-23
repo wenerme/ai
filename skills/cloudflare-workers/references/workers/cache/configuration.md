@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable and configure Workers Caching.
 title: Configuration
 image: https://developers.cloudflare.com/workers/cache/configuration/og.png?v=757cd9bbad5852dd
@@ -36,7 +39,7 @@ Add a `cache` block to your Wrangler configuration:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"cache": {
 		"enabled": true,
 	},
@@ -48,7 +51,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = true
@@ -68,7 +71,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"cache": {
 		"enabled": false,
 	},
@@ -80,7 +83,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = false
@@ -102,7 +105,7 @@ Requires Wrangler 4.107.0 or above.
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"cache": {
 		"enabled": true,
 	},
@@ -120,7 +123,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = true
@@ -195,7 +198,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"cache": {
 		"enabled": true,
 		"cross_version_cache": true,
@@ -208,7 +211,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = true
@@ -229,7 +232,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"cache": {
 		"enabled": false,
 	},
@@ -248,7 +251,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [cache]
 enabled = false

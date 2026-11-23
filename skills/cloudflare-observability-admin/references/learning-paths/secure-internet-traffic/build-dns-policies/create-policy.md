@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build your first Gateway DNS policy.
 title: Create your first DNS policy
 image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-dns-policies/create-policy/og.png?v=aad05a4505a5ee2d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect against SQL injection, XSS, and other OWASP Top 10 vulnerabilities.
 title: Block application attacks
 image: https://developers.cloudflare.com/use-cases/application-security/block-attacks/og.png?v=20f1a044699de734

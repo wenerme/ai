@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set custom request headers for R2 S3 API extensions using boto3 or aws-sdk-js-v3.
 title: Configure custom headers
 image: https://developers.cloudflare.com/r2/examples/aws/custom-header/og.png?v=1b42a4c20f8a6623

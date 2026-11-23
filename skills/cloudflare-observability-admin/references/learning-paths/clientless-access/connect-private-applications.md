@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure browser-based access without device clients.
 title: Connect your private applications
 image: https://developers.cloudflare.com/learning-paths/clientless-access/connect-private-applications/og.png?v=d2868836d91cf7c3

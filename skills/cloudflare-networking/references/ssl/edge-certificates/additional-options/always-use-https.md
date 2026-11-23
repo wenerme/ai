@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Redirect all HTTP requests to HTTPS for your domain.
 title: Always Use HTTPS
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/og.png?v=55cb6a889b830944

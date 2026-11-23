@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy Keyless SSL with public DNS resolution.
 title: Public DNS
 image: https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/og.png?v=179f56fd41a14116

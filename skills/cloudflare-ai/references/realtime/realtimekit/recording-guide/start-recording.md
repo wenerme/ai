@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Start composite recording of a RealtimeKit meeting using the API, SDK, or auto-record flag.
 title: Start Recording
 image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/og.png?v=32b0efe62e894201

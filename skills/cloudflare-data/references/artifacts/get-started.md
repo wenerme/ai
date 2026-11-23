@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Start using Artifacts with Workers or the REST API.
 title: Get started
 image: https://developers.cloudflare.com/artifacts/get-started/og.png?v=21ff698bbfe1e2c8

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial covers how to use a Cloudflare Worker to add custom headers to traffic. The headers will be sent to origin services protected by Cloudflare Access.
 title: Create custom headers for Cloudflare Access-protected origins with Workers
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/access-workers/og.png?v=fa530a0104b696ff

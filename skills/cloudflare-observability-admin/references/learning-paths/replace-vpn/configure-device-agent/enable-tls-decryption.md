@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Inspect encrypted traffic with TLS decryption.
 title: Enable TLS decryption (optional)
 image: https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/enable-tls-decryption/og.png?v=6c3e5c77e5373822

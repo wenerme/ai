@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Queueing methods including FIFO, random, and passthrough.
 title: Queueing method
 image: https://developers.cloudflare.com/waiting-room/reference/queueing-methods/og.png?v=68c595800879514d

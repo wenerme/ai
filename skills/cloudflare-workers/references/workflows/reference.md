@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Workflows platform reference, including limits, pricing, and API documentation.
 title: Platform
 image: https://developers.cloudflare.com/workflows/reference/og.png?v=d785f622702132f8

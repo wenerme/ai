@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial explains how to export Cloudflare metrics to Prometheus using the Cloudflare Prometheus Exporter.
 title: Prometheus
 image: https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/og.png?v=002be16aea0979ff

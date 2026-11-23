@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This guide is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks.
 title: Securing guest wireless networks
 image: https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/og.png?v=92dfe60c47eeed3f

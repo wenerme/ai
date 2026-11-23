@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial uses the REST API to import a database into D1.
 title: Bulk import to D1 using REST API
 image: https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/og.png?v=f43c28391039d221

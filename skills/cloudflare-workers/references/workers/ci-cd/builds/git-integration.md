@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to add and manage your Git integration for Workers Builds, including Cloudflare Artifacts.
 title: Git integration
 image: https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/og.png?v=a311d5ba0fb1f71f

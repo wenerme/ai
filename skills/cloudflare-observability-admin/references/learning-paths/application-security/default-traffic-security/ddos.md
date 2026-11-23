@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand automatic DDoS attack mitigation.
 title: DDoS Protection
 image: https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/ddos/og.png?v=782176f0952136c1

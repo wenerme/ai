@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configurable parameters for custom error rules.
 title: Custom Errors parameters
 image: https://developers.cloudflare.com/rules/custom-errors/reference/parameters/og.png?v=0a7fe7d26b97cc7f

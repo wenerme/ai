@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn what settings you need to change to perform a useful `traceroute` to an endpoint behind a Cloudflare Tunnel.
 title: Run traceroute
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/og.png?v=c89b4f0470f74986

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Privacy commitments and audits for the 1.1.1.1 resolver.
 title: Privacy
 image: https://developers.cloudflare.com/1.1.1.1/privacy/og.png?v=9a49d6e794d09dd4

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Develop against a D1 database remotely using the Cloudflare dashboard playground.
 title: Remote development
 image: https://developers.cloudflare.com/d1/best-practices/remote-development/og.png?v=19cb3ef770f1ffd7

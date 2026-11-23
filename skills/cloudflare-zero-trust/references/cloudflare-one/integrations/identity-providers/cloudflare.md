@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare as an identity provider for Access policies, allowing authentication based on Cloudflare account membership.
 title: Cloudflare as identity provider
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/og.png?v=b8711641bddc3637

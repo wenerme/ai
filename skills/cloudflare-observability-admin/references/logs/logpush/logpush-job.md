@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure and manage Logpush job settings.
 title: Logpush job setup
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/og.png?v=ed7d710e22f23492

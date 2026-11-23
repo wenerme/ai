@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Define tools and schemas for industry-standard function calling with Workers AI models.
 title: Traditional
 image: https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/og.png?v=a7f9d52f0e6e4365

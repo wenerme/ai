@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Key terms for working with locally-managed Cloudflare Tunnels.
 title: Useful terms
 image: https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/og.png?v=0932442784e9a134

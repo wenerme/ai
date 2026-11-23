@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use @cloudflare/codemode/tanstack-ai to expose namespaced TanStack AI server tools through chat().
 title: Use Code Mode with TanStack AI
 image: https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/og.png?v=2796bccc8cb5037c
@@ -47,7 +50,7 @@ You need an existing Workers project and a configured TanStack AI model adapter.
      "main": "src/index.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-11-18",
+     "compatibility_date": "2026-11-23",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -64,7 +67,7 @@ You need an existing Workers project and a configured TanStack AI model adapter.
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]

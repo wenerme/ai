@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Data available in the Zaraz context object for triggers and actions.
 title: Zaraz Context
 image: https://developers.cloudflare.com/zaraz/reference/context/og.png?v=39fa48f52d3919de

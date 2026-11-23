@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scan uploaded files for malware and malicious content.
 title: Malicious uploads detection
 image: https://developers.cloudflare.com/waf/detections/malicious-uploads/og.png?v=4271ad4c8fa8ab1f

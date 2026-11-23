@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect unauthorized advertisement of your IP prefixes.
 title: Route Leak Detection
 image: https://developers.cloudflare.com/byoip/route-leak-detection/og.png?v=8ca61d5d0525a4fa

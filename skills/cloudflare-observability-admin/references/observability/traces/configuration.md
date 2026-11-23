@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose how each domain samples, stores, exports, and connects traces.
 title: Configuration
 image: https://developers.cloudflare.com/observability/traces/configuration/og.png?v=61a155bcdb386a5f

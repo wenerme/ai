@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use load balancing analytics to evaluate traffic flow, assess the health of endpoints, and review health changes over time.
 title: Analytics
 image: https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/og.png?v=d824503d2a06c1c5

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Domains and directories resources and guides for Email Security.
 title: Domains & directories
 image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/og.png?v=555ac9bacd645e7a

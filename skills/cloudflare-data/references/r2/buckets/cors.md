@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Cross-Origin Resource Sharing (CORS) policies on R2 buckets for browser access.
 title: Configure CORS
 image: https://developers.cloudflare.com/r2/buckets/cors/og.png?v=3fda55f3023a2710

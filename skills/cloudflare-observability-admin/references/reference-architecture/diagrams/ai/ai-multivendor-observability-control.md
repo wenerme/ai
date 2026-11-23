@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: By shifting features such as rate limiting, caching, and error handling to the proxy layer, organizations can apply unified configurations across services and inference service providers.
 title: Multi-vendor AI observability and control
 image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/og.png?v=14f5f28e472058bd

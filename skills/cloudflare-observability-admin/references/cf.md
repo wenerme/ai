@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use one command-line interface for the public Cloudflare API and for Workers projects.
 title: Cloudflare CLI
 image: https://developers.cloudflare.com/cf/og.png?v=54b5e0417cfb98d9

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Open a web server that runs in a Linux sandbox through your Worker, keep its WebSocket connections open, and share it with a link.
 title: Preview a web application
 image: https://developers.cloudflare.com/sandbox/previews/og.png?v=a671b00fd45ffa2b

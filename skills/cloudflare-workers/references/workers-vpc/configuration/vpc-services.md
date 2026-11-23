@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.
 title: VPC Services
 image: https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/og.png?v=2c2633353a7f0d7f

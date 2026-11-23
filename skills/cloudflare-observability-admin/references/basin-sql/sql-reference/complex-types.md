@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for querying struct, array, and map column types in Basin SQL.
 title: Complex types
 image: https://developers.cloudflare.com/basin-sql/sql-reference/complex-types/og.png?v=7665fc9bf478c765

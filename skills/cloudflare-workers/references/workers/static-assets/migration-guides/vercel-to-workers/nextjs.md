@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run Next.js on Cloudflare Workers with vinext. Keep app/, pages/, and next.config, and swap ISR, next/image, and @vercel/* packages for Cloudflare features.
 title: Migrate Next.js from Vercel to Cloudflare Workers with vinext
 image: https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/nextjs/og.png?v=16f36763ef781121

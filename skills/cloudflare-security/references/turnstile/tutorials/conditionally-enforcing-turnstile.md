@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn two ways to show Turnstile only for certain requests using a Transform Rule or HTMLRewriter.
 title: Conditionally enforce Turnstile
 image: https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/og.png?v=3404859b89a76109

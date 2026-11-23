@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Pages Functions settings using a Wrangler configuration file or the Cloudflare dashboard.
 title: Configuration
 image: https://developers.cloudflare.com/pages/functions/wrangler-configuration/og.png?v=e0a97a11d71221a2
@@ -176,7 +179,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 	"name": "my-pages-app",
 	"pages_build_output_dir": "./dist",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -194,7 +197,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 name = "my-pages-app"
 pages_build_output_dir = "./dist"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]

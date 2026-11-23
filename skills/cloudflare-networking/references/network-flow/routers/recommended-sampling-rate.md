@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The best sampling rate recommendations for your network's traffic volume.
 title: Recommended sampling rate
 image: https://developers.cloudflare.com/network-flow/routers/recommended-sampling-rate/og.png?v=590ca5d1a82b28d9

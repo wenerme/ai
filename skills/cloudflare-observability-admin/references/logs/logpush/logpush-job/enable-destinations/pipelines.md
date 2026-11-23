@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Push Cloudflare logs to Basin Pipelines.
 title: Enable Basin Pipelines
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/og.png?v=bbd63068f3162e05

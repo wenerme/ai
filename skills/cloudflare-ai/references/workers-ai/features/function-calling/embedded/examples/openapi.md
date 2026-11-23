@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate Workers AI function calling tools from an OpenAPI specification using the ai-utils package.
 title: Tools based on OpenAPI Spec
 image: https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/openapi/og.png?v=d57cb6344a7eb170

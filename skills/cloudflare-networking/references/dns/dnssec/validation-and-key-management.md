@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: DNSSEC key types, rotation, and validation behavior.
 title: Validation and keys
 image: https://developers.cloudflare.com/dns/dnssec/validation-and-key-management/og.png?v=2513fb2ad18f83bc

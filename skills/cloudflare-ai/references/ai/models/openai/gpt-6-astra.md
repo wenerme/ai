@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GPT-6 Astra is OpenAI's most capable model, built for complex reasoning, coding, computer use, research, and document creation.
 title: GPT-6 Astra
 image: https://developers.cloudflare.com/og-docs.png

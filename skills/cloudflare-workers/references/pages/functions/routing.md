@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Pages Functions uses file-based routing to map URL patterns to function files.
 title: Routing
 image: https://developers.cloudflare.com/pages/functions/routing/og.png?v=ee61d869a20fb8ed

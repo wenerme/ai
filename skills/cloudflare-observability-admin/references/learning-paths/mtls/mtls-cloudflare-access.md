@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Implement mutual TLS authentication with Cloudflare.
 title: mTLS with Cloudflare Access
 image: https://developers.cloudflare.com/learning-paths/mtls/mtls-cloudflare-access/og.png?v=f1c06628e607c471

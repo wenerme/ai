@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Realtime SFU HTTPS API from your backend to manage sessions, tracks, DataChannels, and WebSocket media adapters.
 title: Connection API
 image: https://developers.cloudflare.com/realtime/sfu/api/og.png?v=e297f2705ac92808

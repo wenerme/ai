@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Indicates whether or not the request originated from a known agent that self-identifies with Web Bot Auth, now classified as a [verified bot or agent](/bots/concepts/bot/verified-bots/) labeled as intermediary.
 title: cf.bot_management.signed_agent
 image: https://developers.cloudflare.com/og-docs.png

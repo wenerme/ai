@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resize, crop, and convert images to WebP and AVIF on-the-fly with Cloudflare Images and Polish.
 title: Optimize and transform images for the web
 image: https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/og.png?v=6e9daddecdcfc3a3

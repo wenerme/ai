@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Mathematical SQL functions for Analytics Engine.
 title: Mathematical functions
 image: https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/mathematical-functions/og.png?v=029d44160f4880b7

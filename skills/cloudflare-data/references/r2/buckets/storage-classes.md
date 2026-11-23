@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose between R2 Standard and Infrequent Access storage to optimize cost and access patterns.
 title: Storage classes
 image: https://developers.cloudflare.com/r2/buckets/storage-classes/og.png?v=da88c6a78ae24a5a

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add TCP health checks, failover, and traffic steering to Spectrum applications.
 title: Cloudflare Load Balancing
 image: https://developers.cloudflare.com/spectrum/about/load-balancer/og.png?v=d4eca97bee635dfb

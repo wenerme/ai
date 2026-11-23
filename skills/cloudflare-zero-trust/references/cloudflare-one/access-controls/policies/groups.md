@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Rule groups works in Access.
 title: Rule groups
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/og.png?v=02b07b32941e22d4

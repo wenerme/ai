@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Verify your DNS records are correct before enabling APO.
 title: Confirm DNS records
 image: https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/og.png?v=00c4010b6ead51b3

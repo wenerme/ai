@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use CDN-Cache-Control headers to control Cloudflare cache independently.
 title: CDN-Cache-Control
 image: https://developers.cloudflare.com/cache/concepts/cdn-cache-control/og.png?v=1d8fe94be1f5b1fb

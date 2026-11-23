@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.
 title: SDK ecosystem support policy
 image: https://developers.cloudflare.com/fundamentals/reference/sdk-ecosystem-support-policy/og.png?v=bc3a275c75c304de

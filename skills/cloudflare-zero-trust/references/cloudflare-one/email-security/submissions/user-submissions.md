@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: User submissions in Email Security.
 title: User submissions
 image: https://developers.cloudflare.com/cloudflare-one/email-security/submissions/user-submissions/og.png?v=d146049bc8f8db43

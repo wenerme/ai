@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Apply GraphQL Analytics API rate limits per account and per zone, so usage scales with the number of resources you query.
 title: Account-based rate limiting
 image: https://developers.cloudflare.com/analytics/graphql-api/account-based-rate-limiting/og.png?v=6ed71cd97cafb4e5

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure how Sandbox SDK 0.x communicates between Durable Objects and containers.
 title: Transport modes
 image: https://developers.cloudflare.com/sandbox/sdk/configuration/transport/og.png?v=d3c6ce180412535d
@@ -87,7 +90,7 @@ Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"vars": {
 		"SANDBOX_TRANSPORT": "rpc"
 	},
@@ -113,7 +116,7 @@ name = "my-sandbox-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [vars]
 SANDBOX_TRANSPORT = "rpc"

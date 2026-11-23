@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand the D1Result and D1ExecResult objects returned by D1 Worker Binding API query methods.
 title: Return objects
 image: https://developers.cloudflare.com/d1/worker-api/return-object/og.png?v=bba5d38bad2303f0

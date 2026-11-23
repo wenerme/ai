@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Get started building and deploying Cloudflare Workflows with step-by-step guides.
 title: Get started
 image: https://developers.cloudflare.com/workflows/get-started/og.png?v=c20d961bfc87cc08

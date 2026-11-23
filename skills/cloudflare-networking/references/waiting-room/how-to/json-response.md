@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Return JSON responses for mobile apps and non-browser clients.
 title: Get JSON response for mobile and other non-browser traffic
 image: https://developers.cloudflare.com/waiting-room/how-to/json-response/og.png?v=6d341cdd2d380b11

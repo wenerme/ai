@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage access control lists for DNS zone transfers.
 title: Access Control Lists (ACLs)
 image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/og.png?v=b90f6001788af533

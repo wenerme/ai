@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Magic Transit egress works in Gateway.
 title: Magic Transit egress
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/magic-transit-egress/og.png?v=ba76b6ea8589de9f

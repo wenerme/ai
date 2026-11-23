@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: SentinelOne in Zero Trust integrations.
 title: SentinelOne
 image: https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/og.png?v=cbeb410655cf5262

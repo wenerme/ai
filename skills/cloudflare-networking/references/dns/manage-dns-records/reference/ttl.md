@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How DNS Time to Live values affect record caching.
 title: Time to Live (TTL)
 image: https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/og.png?v=b68a77fe499d53ab

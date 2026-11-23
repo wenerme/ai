@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Remove the password from a private key file before uploading.
 title: Remove key file password
 image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/og.png?v=a67068d071d5f9e0

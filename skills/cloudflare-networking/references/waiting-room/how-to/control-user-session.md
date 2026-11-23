@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure session duration and renewal settings.
 title: Control user session settings
 image: https://developers.cloudflare.com/waiting-room/how-to/control-user-session/og.png?v=432da22010c074e2

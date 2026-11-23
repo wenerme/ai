@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Convert webpage content to Markdown format using the Browser Run /markdown endpoint.
 title: /markdown - Extract Markdown from a webpage
 image: https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/og.png?v=f381b12e7d5a994d

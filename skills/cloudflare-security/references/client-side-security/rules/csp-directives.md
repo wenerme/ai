@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: CSP directives supported by content security rules
 title: Supported CSP directives
 image: https://developers.cloudflare.com/client-side-security/rules/csp-directives/og.png?v=fe9c6b901a165833

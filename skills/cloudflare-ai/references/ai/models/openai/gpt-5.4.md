@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GPT-5.4 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.
 title: GPT-5.4
 image: https://developers.cloudflare.com/og-docs.png

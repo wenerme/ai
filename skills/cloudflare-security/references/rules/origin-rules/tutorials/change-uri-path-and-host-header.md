@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial shows you how to modify both the URI path and the Host header of incoming requests using Transform Rules and Origin Rules.
 title: Change URI path and Host header
 image: https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/og.png?v=6dca63b34b634526

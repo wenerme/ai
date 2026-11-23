@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Investigate attack signature matches, affected applications, request outcomes, and possible false positives in Security Analytics.
 title: Analyze attack signatures
 image: https://developers.cloudflare.com/waf/detections/attack-signature-detection/analyze-attack-signatures/og.png?v=b42fc91afc538240

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore Cloudflare R2 demos and reference architectures for fullstack applications, storage, and AI, with examples and use cases.
 title: Demos and architectures
 image: https://developers.cloudflare.com/r2/demos/og.png?v=2e34e37f79497ae0

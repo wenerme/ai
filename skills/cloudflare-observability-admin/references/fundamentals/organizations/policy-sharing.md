@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Share WAF and Gateway policies across accounts in your Cloudflare Organization.
 title: Policy sharing
 image: https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/og.png?v=b86a2ebacff3117b

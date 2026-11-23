@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow authorized users to access logs and analytics stored outside their physical region.
 title: Out of region access
 image: https://developers.cloudflare.com/data-localization/metadata-boundary/out-of-region-access/og.png?v=06dc2ce3a8a88a1b

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare One Client checks resources and guides for Zero Trust.
 title: Cloudflare One Client checks
 image: https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/og.png?v=711412c46a89b983

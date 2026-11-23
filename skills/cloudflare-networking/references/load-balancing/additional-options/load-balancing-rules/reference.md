@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fields and operators for load balancing rule expressions.
 title: Supported fields and operators
 image: https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/og.png?v=80d81b02daaa2a19

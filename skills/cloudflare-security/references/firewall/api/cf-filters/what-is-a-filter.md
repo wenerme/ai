@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A filter is a way of setting up if (traffic matches certain criteria), then do something.
 title: What is a filter?
 image: https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/og.png?v=6cf93df9928022fe

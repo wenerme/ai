@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Kling 4.0 Flash is Kling AI's fast text-to-video model, producing 3 to 20 seconds of 720p video from prompts of up to 26,000 characters.
 title: Kling 4.0 Flash
 image: https://developers.cloudflare.com/og-docs.png

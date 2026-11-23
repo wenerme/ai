@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set browser content hints on RealtimeKit audio, video, and screen-sharing tracks to match speech, motion, music, or detailed content.
 title: Content hints
 image: https://developers.cloudflare.com/realtime/realtimekit/best-practices/content-hints/og.png?v=ca3a99653fc93bda

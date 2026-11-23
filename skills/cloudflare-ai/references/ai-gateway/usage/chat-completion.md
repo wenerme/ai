@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send requests to multiple AI providers through a single OpenAI-compatible endpoint on AI Gateway.
 title: Unified API (OpenAI compat)
 image: https://developers.cloudflare.com/ai-gateway/usage/chat-completion/og.png?v=2235868629d7554b

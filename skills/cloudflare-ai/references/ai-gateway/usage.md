@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect your AI applications to AI Gateway using the unified API, provider-native endpoints, or WebSockets.
 title: Using AI Gateway
 image: https://developers.cloudflare.com/ai-gateway/usage/og.png?v=4c625c00a234403d

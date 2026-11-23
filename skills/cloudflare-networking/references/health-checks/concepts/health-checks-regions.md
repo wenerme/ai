@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare data center regions used for Health Checks monitoring.
 title: Health Checks regions
 image: https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/og.png?v=ea639ba8feac0196

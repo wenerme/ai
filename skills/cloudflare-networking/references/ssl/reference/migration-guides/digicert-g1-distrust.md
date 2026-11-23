@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how the DigiCert G1 root distrust may affect your Cloudflare configuration.
 title: DigiCert Legacy Root (G1) distrust by major browsers
 image: https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/og.png?v=aecabf405fc6a0a7

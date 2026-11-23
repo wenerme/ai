@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore Cloudflare Radar data sources including NetFlows, HTTP requests, DNS queries, and attack trends.
 title: Investigate
 image: https://developers.cloudflare.com/radar/investigate/og.png?v=b61d9418b7f0fbf8

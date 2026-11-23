@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Authenticate requests in a loader Worker and authorize data access outside customer app code with Dynamic Workers.
 title: Authentication and authorization
 image: https://developers.cloudflare.com/dynamic-workers/usage/authentication/og.png?v=39b7769909b8b5eb
@@ -219,7 +222,7 @@ After the gate succeeds, load and invoke the app with the [Worker Loader](https:
 
 ```js
 const app = env.LOADER.load({
-	compatibilityDate: "2026-11-18",
+	compatibilityDate: "2026-11-23",
 	mainModule: "app.js",
 	modules: { "app.js": deployment.code },
 	globalOutbound: null,
@@ -231,7 +234,7 @@ return app.getEntrypoint(undefined, { props: { identity } }).fetch(appRequest);
 
 ```ts
 const app = env.LOADER.load({
-	compatibilityDate: "2026-11-18",
+	compatibilityDate: "2026-11-23",
 	mainModule: "app.js",
 	modules: { "app.js": deployment.code },
 	globalOutbound: null,

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example cache rule configurations for common use cases.
 title: Examples
 image: https://developers.cloudflare.com/cache/how-to/cache-rules/examples/og.png?v=034fa1759823b6be

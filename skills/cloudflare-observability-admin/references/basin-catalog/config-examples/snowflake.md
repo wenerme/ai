@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Basin Catalog tables from Snowflake using a catalog integration.
 title: Snowflake
 image: https://developers.cloudflare.com/basin-catalog/config-examples/snowflake/og.png?v=03b2d13b55d72bc2

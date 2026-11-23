@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: CrowdStrike in Zero Trust integrations.
 title: CrowdStrike
 image: https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/og.png?v=38e9e672d58297a3

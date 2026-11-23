@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect to WebSocket servers running in Sandbox SDK 0.x sandboxes.
 title: WebSocket connections
 image: https://developers.cloudflare.com/sandbox/sdk/guides/websocket-connections/og.png?v=940d4f18e858ca31

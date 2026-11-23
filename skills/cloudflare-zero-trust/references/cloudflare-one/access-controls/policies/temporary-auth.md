@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Temporary authentication in Access.
 title: Temporary authentication
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/og.png?v=75ca87e7bf53d156

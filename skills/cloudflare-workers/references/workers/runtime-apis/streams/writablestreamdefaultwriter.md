@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use WritableStreamDefaultWriter in Workers to write data directly to a WritableStream.
 title: WritableStream DefaultWriter
 image: https://developers.cloudflare.com/workers/runtime-apis/streams/writablestreamdefaultwriter/og.png?v=2e492aaffcdb663b

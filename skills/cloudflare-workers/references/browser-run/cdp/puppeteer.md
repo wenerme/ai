@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Puppeteer to Browser Run sessions from any Node.js environment to automate browser tasks using the Chrome DevTools Protocol.
 title: Using with Puppeteer (CDP)
 image: https://developers.cloudflare.com/browser-run/cdp/puppeteer/og.png?v=77807ac77a02a009

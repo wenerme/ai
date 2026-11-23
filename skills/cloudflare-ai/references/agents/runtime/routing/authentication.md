@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Check who is calling in your Worker before routeAgentRequest() forwards an HTTP request or WebSocket upgrade to an agent, and limit each user to their own agents.
 title: Authentication
 image: https://developers.cloudflare.com/agents/runtime/routing/authentication/og.png?v=d760732458c235b5

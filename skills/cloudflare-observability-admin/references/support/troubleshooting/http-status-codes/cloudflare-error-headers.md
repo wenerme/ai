@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the cf-error-type and cf-error-origin response headers present on Cloudflare-generated error pages.
 title: Cloudflare error diagnostic headers
 image: https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-error-headers/og.png?v=1235698c757c2658

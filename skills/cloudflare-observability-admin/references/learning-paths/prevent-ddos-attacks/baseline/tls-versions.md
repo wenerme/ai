@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about update tls versions in this guide.
 title: Update TLS versions
 image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/tls-versions/og.png?v=86af4a83aed36c9b

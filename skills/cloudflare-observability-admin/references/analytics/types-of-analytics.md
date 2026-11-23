@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore the different analytics available in Cloudflare.
 title: Types of analytics
 image: https://developers.cloudflare.com/analytics/types-of-analytics/og.png?v=c2a3c86e383ef336

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Apply security filters to WAN traffic.
 title: Security filters
 image: https://developers.cloudflare.com/cloudflare-wan/security/og.png?v=56a082ff347477ee

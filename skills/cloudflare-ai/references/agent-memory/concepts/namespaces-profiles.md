@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Agent Memory isolates memory storage using namespaces for applications and profiles for individual users or agents.
 title: Namespaces and profiles
 image: https://developers.cloudflare.com/agent-memory/concepts/namespaces-profiles/og.png?v=1d5b365ce7d01937

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Cloudflare Access uses CF_Authorization cookies to secure self-hosted web applications.
 title: Authorization cookie
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/og.png?v=ee13058d8852b5fa

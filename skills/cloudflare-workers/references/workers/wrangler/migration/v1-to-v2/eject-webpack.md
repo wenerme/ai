@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.
 title: 1. Migrate webpack projects
 image: https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/og.png?v=1a05bfe4ee0eccb9

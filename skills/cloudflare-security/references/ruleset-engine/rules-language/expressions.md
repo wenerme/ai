@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write expressions that match request characteristics for rule evaluation.
 title: Expressions
 image: https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/og.png?v=59d1d52c686f56f9

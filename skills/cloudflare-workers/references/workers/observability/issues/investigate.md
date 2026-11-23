@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use occurrences, stack traces, logs, traces, and application context to investigate failures detected by Workers Issues.
 title: Investigate issues
 image: https://developers.cloudflare.com/workers/observability/issues/investigate/og.png?v=c0a462408a85b43b

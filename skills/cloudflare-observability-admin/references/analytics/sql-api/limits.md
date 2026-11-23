@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review SQL API query and request limits.
 title: Limits
 image: https://developers.cloudflare.com/analytics/sql-api/limits/og.png?v=decb1da875bf878f

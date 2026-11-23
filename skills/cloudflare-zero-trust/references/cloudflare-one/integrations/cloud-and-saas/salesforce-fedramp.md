@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Salesforce (FedRAMP) in Zero Trust integrations.
 title: Salesforce (FedRAMP)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/salesforce-fedramp/og.png?v=a54b54788ac0f5d1

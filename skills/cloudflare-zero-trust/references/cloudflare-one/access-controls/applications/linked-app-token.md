@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Forward Access JWTs between linked applications.
 title: Linked App Token
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/og.png?v=a849efcd35ef46f0

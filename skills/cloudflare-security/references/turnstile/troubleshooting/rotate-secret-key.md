@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Rotate your Turnstile secret key for security or key compromise.
 title: Rotate secret key
 image: https://developers.cloudflare.com/turnstile/troubleshooting/rotate-secret-key/og.png?v=7df5d71e9c389725

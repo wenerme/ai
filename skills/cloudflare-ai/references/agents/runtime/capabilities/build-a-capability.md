@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write your own reusable Lifecycle capability with LifecycleCapability, including storage, durable jobs, request handling, events, and user callbacks.
 title: Build a capability
 image: https://developers.cloudflare.com/agents/runtime/capabilities/build-a-capability/og.png?v=eb348b4f828444c9

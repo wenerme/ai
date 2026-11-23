@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GraphQL Analytics API fields that respect Customer Metadata Boundary configuration.
 title: GraphQL datasets
 image: https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/og.png?v=22b520d0a37987ec

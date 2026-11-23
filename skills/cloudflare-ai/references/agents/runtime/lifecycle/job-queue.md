@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Push durable jobs onto the Lifecycle job queue, handle them with onJob(), and control retries, rescheduling, long-running work, and memory-limit protection.
 title: Jobs and alarms
 image: https://developers.cloudflare.com/agents/runtime/lifecycle/job-queue/og.png?v=dbcc77e0a978d019

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: With Cloudflare Browser Isolation and resolver policies, users can connect to private web-based applications via their private hostnames.
 title: Access a web application via its private hostname without the Cloudflare One Client
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/og.png?v=62607a959113a351

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use createTestHarness with Mock Service Worker and Playwright.
 title: Integrations
 image: https://developers.cloudflare.com/workers/testing/test-harness/integrations/og.png?v=d180095af1637ae1

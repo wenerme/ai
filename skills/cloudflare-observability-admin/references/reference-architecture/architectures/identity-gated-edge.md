@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect application login surfaces with Cloudflare Access, close alternate origin paths, and validate identity before forwarding requests.
 title: Identity-gated edge architecture
 image: https://developers.cloudflare.com/reference-architecture/architectures/identity-gated-edge/og.png?v=66df681ca2b09dec

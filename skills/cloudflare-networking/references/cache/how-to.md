@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure caching with rules, purge, TTL, and tiered cache.
 title: Cache configuration
 image: https://developers.cloudflare.com/cache/how-to/og.png?v=c0a270f0e7eb1849

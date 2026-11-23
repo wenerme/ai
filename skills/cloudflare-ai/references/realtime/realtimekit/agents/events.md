@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Event types, payloads, ordering, and delivery rules for RealtimeKit Agent Participant.
 title: Events
 image: https://developers.cloudflare.com/realtime/realtimekit/agents/events/og.png?v=dcd0b2d5addfa5ab

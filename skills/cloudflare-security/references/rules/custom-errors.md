@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve custom error pages for Cloudflare or origin server errors.
 title: Custom Errors
 image: https://developers.cloudflare.com/rules/custom-errors/og.png?v=9d60eae85b39b85a

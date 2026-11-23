@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn why a domain may be removed from Cloudflare and how to recover it using audit logs and registrar verification.
 title: Domain deleted from Cloudflare
 image: https://developers.cloudflare.com/dns/zone-setups/troubleshooting/domain-deleted/og.png?v=a74dff9c92f62533

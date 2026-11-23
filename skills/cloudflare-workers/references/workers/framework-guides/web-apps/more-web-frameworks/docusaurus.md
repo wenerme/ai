@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a Docusaurus application and deploy it to Cloudflare Workers with Workers Assets.
 title: Docusaurus
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/og.png?v=9a0498f6b16eeda6
@@ -109,7 +112,7 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
    		"name": "my-docusaurus-app",
    		// Update to today's date
    		// Set this to today's date
-   		"compatibility_date": "2026-11-18",
+   		"compatibility_date": "2026-11-23",
    		"assets": {
    			"directory": "./build"
    		}
@@ -119,7 +122,7 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
    ```toml
    name = "my-docusaurus-app"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
 
    [assets]
    directory = "./build"

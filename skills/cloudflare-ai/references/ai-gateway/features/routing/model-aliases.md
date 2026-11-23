@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Call a pool of models by one name, and route requests in a fallback order or with smart routing, without changing application code.
 title: Model aliases
 image: https://developers.cloudflare.com/ai-gateway/features/routing/model-aliases/og.png?v=9b842aabe8f41c71

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial covers how to secure access to your Microsoft 365 applications with Cloudflare Gateway dedicated egress IPs.
 title: Protect access to Microsoft 365 with dedicated egress IPs
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/m365-dedicated-egress-ips/og.png?v=70ccd05096641baf

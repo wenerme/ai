@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Validate firewall rule expressions via the API.
 title: Expression validation
 image: https://developers.cloudflare.com/firewall/api/cf-filters/validation/og.png?v=932666611ac48532

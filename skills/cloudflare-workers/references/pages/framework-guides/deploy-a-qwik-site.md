@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a Qwik City application to Cloudflare Pages.
 title: Qwik
 image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site/og.png?v=1fdd0b1fcb087d61

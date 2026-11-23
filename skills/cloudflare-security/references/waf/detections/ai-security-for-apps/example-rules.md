@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example mitigation rules for AI Security for Apps detections.
 title: Example mitigation rules
 image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/example-rules/og.png?v=23ffe249e1a10e47

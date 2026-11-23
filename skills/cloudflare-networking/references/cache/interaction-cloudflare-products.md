@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How caching interacts with Workers, R2, WAF, and other products.
 title: Interaction with Cloudflare products
 image: https://developers.cloudflare.com/cache/interaction-cloudflare-products/og.png?v=c6dc505e68af63a8

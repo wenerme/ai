@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block traffic based on geographic location.
 title: Block traffic by geographical location
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/block-by-geographical-location/og.png?v=f612818530d01734

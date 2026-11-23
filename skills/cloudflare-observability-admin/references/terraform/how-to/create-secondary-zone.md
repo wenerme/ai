@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Automate the setup of a Cloudflare subdomain zone for Enterprise accounts using Terraform.
 title: Create a subdomain zone using Terraform
 image: https://developers.cloudflare.com/terraform/how-to/create-secondary-zone/og.png?v=ef45add96f9523a2

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.
 title: Lifecycle of a Durable Object
 image: https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/og.png?v=5f19b4ca07f8994f

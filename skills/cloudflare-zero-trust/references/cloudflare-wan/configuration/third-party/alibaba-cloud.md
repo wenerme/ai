@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Alibaba Cloud VPN Gateway to Cloudflare WAN.
 title: Alibaba Cloud VPN Gateway
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/og.png?v=a1021b84410f32c2

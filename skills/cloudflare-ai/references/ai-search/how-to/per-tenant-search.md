@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.
 title: Multitenancy
 image: https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/og.png?v=8b26fb73d9feade3

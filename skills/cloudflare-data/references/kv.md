@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workers KV is a global, low-latency, key-value data store for building dynamic and performant APIs and websites.
 title: Cloudflare Workers KV
 image: https://developers.cloudflare.com/kv/og.png?v=7e14ea89b3414981

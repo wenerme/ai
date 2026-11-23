@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.
 title: Meeting Object Explained
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/og.png?v=3ffe26cbcdbb0f27

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure text add-ons in Email Security.
 title: Configure text add-ons
 image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/og.png?v=b0a40be56c51fe4c

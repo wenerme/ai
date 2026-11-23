@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for the DurableObject abstract base class and its handler methods.
 title: Durable Object Base Class
 image: https://developers.cloudflare.com/durable-objects/api/base/og.png?v=94c0de69c741c2d3

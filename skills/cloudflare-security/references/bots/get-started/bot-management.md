@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Bot Management for Enterprise to identify and act on automated traffic.
 title: Bot Management
 image: https://developers.cloudflare.com/bots/get-started/bot-management/og.png?v=0ef4c401153f2015

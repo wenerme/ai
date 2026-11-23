@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Decrypt matched rule payloads using the command-line tool.
 title: Decrypt the payload content
 image: https://developers.cloudflare.com/waf/payload-logging/command-line/decrypt-payload/og.png?v=fefea67035c9f2f0

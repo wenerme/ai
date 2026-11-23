@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure aws4fetch to sign requests to Cloudflare R2 using the S3-compatible API.
 title: aws4fetch
 image: https://developers.cloudflare.com/r2/examples/aws/aws4fetch/og.png?v=5ee06d5f30479a2f

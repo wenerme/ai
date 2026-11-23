@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow the domains and ports required for RealtimeKit connectivity.
 title: Network allowlist
 image: https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/og.png?v=47f95dc05de81314

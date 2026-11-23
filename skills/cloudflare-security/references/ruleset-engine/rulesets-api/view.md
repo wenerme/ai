@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Describes the API operations to list and view the details of rulesets at the account or zone level.
 title: List and view rulesets
 image: https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/og.png?v=2f0a7c034219e29e

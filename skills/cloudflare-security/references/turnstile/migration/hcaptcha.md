@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate from hCaptcha to Cloudflare Turnstile.
 title: Migrate from hCaptcha
 image: https://developers.cloudflare.com/turnstile/migration/hcaptcha/og.png?v=8d9bc87ea0591429

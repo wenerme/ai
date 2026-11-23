@@ -3101,7 +3101,7 @@ Geo registry class.
 | `SNIPPET_REPOSITORY_REGISTRY` | Geo::SnippetRepositoryRegistry registry class. |
 | `SUPPLY_CHAIN_ATTESTATION_REGISTRY` | Geo::SupplyChainAttestationRegistry registry class. |
 | `TERRAFORM_STATE_VERSION_REGISTRY` | Geo::TerraformStateVersionRegistry registry class. |
-| `UPLOAD_REGISTRY` | Geo::UploadRegistry registry class. |
+| `UPLOAD_REGISTRY` | Deprecated in GitLab 19.7. Use the registry class for each upload type, such as `PROJECT_UPLOAD_REGISTRY`. |
 | `USER_PERMISSION_EXPORT_UPLOAD_UPLOAD_REGISTRY` | Geo::UserPermissionExportUploadUploadRegistry registry class. |
 | `USER_UPLOAD_REGISTRY` | Geo::UserUploadRegistry registry class. |
 | `VULNERABILITY_ARCHIVE_EXPORT_UPLOAD_REGISTRY` | Geo::VulnerabilityArchiveExportUploadRegistry registry class. |

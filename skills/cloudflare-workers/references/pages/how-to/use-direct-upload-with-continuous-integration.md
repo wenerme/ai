@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.
 title: Use Direct Upload with continuous integration
 image: https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/og.png?v=b1b7dd283175fda7

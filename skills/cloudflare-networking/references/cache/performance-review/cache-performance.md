@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Measure and improve cache performance for your site.
 title: Cache performance
 image: https://developers.cloudflare.com/cache/performance-review/cache-performance/og.png?v=3beb0f0ad63dfc73

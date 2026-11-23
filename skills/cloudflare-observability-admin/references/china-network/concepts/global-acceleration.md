@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Simplify global asset deployment in China with connectivity from CMI, CBC Tech, and JD Cloud.
 title: Global Acceleration
 image: https://developers.cloudflare.com/china-network/concepts/global-acceleration/og.png?v=7cd3839c6ea601eb

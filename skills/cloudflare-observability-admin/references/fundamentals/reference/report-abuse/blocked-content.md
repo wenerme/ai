@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Request removal of Trust and Safety content blocks on your domain.
 title: Blocked Content
 image: https://developers.cloudflare.com/fundamentals/reference/report-abuse/blocked-content/og.png?v=c53cbb4ea5c5f5be

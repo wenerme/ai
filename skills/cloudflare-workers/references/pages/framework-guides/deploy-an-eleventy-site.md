@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy an Eleventy static site to Cloudflare Pages.
 title: Eleventy
 image: https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/og.png?v=b93883891b20b136

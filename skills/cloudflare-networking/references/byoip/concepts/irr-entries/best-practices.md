@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and maintain IRR entries for your IP prefixes.
 title: Manage IRR entries
 image: https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/og.png?v=3fdb70fd9f9b4763

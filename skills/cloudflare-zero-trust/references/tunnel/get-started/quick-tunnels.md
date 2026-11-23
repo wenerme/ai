@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a temporary URL for a local service without a Cloudflare account. Restrict access with email one-time PINs.
 title: Quick Tunnels
 image: https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/og.png?v=7213d8a3f76b97aa

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Replicate API requests through AI Gateway for observability and control.
 title: Replicate
 image: https://developers.cloudflare.com/ai-gateway/usage/providers/replicate/og.png?v=1ba365ba56b708db

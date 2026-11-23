@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review refund policy, payment methods, and billing terms.
 title: Billing policy
 image: https://developers.cloudflare.com/billing/understand/billing-policy/og.png?v=7348e79cd3a87e47

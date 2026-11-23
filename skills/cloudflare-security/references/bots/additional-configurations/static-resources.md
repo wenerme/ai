@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Extend bot protection to static resources like images, CSS, and JavaScript files.
 title: Static resource protection
 image: https://developers.cloudflare.com/bots/additional-configurations/static-resources/og.png?v=d3d3fd72ce8a4b18

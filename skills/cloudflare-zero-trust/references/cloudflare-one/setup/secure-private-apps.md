@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Provide browser-based access to internal web applications, SSH servers, and remote desktops without installing software on user devices.
 title: Secure private apps
 image: https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/og.png?v=4ccf8f46562fb97c

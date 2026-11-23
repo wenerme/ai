@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Complete API reference for iOS library components
 title: iOS
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/og.png?v=7eeb4b200be0c90b

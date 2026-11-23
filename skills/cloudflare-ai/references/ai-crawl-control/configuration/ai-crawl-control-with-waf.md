@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use AI Crawl Control alongside WAF custom rules.
 title: AI Crawl Control with Cloudflare WAF
 image: https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/og.png?v=753eee521807b5e4

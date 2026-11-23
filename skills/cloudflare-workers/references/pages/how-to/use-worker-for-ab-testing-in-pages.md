@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Implement A/B testing in Cloudflare Pages using Pages Functions and cookies.
 title: Use Pages Functions for A/B testing
 image: https://developers.cloudflare.com/pages/how-to/use-worker-for-ab-testing-in-pages/og.png?v=5c64d5f912cad12d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cache by Device Type
 title: Cache by Device Type
 image: https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-device-type/og.png?v=0baf236c7e909b24

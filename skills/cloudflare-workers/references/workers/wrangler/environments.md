@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use environments to create different configurations for the same Worker application.
 title: Environments
 image: https://developers.cloudflare.com/workers/wrangler/environments/og.png?v=81f75318307e956b

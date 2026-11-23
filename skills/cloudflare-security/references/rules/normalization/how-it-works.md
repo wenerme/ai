@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How URL normalization modifies incoming request URIs before rule evaluation.
 title: How URL normalization works
 image: https://developers.cloudflare.com/rules/normalization/how-it-works/og.png?v=3b093dc4796a9d03

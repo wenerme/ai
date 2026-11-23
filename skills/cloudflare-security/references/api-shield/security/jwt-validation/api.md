@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure JWT validation and act on its results using the Cloudflare API.
 title: Configure JWT validation via the API
 image: https://developers.cloudflare.com/api-shield/security/jwt-validation/api/og.png?v=2a0c992fe482f981

@@ -175,6 +175,81 @@ The event tells your application when to check. The retrieved session tells it w
 
 For saved messages, tool calls, and turn outcomes, see [Fetch items and turns](https://developers.openai.com/api/docs/guides/agents-api/sessions/events#fetch-items-and-turns). To identify which agent ran a command, see [Observe delegation](https://developers.openai.com/api/docs/guides/agents-api/multi-agent#observe-delegation).
 
+## Set a session budget
+
+A `spend_control` object must include `limit`. Set it to a positive integer in USD cents, such as `500` for $5, or `null` for no limit.
+
+Budget control makes a best-effort attempt to limit spending. Spend readings can lag, and work that has already started can continue to incur charges. Actual spend can exceed the limit. If the API cannot check spend, work can continue.
+
+### Create a session with a limit
+
+Send a `POST` request to `/v1/agents/sessions`. For a session without an execution environment, include initial input:
+
+```json snippet=reference reason="Session creation request body with a $5 spending limit"
+{
+  "agent": { "model": "gpt-6.1-terra" },
+  "environment": { "type": "none" },
+  "input": "Reply with exactly OK.",
+  "spend_control": { "limit": 500 }
+}
+```
+
+To create an unlimited session, omit `spend_control` or set it to `null`.
+
+### Read the limit and recorded spend
+
+Send a `GET` request to `/v1/agents/sessions/{session_id}`. Replace `{session_id}` with the ID returned by creation. The session response always includes a `spend_control` object:
+
+```json snippet=output reason="Session response excerpt with a $5 limit and unknown consumption"
+{
+  "id": "sess_example",
+  "object": "agent.session",
+  "spend_control": {
+    "limit": 500,
+    "consumed": null
+  }
+}
+```
+
+`limit` is the total session limit, or `null` if no limit is set. `consumed` is the best-effort recorded spend, rounded down to whole USD cents. It is `null` if no usable reading is available. If budget control is unavailable for the project, both values are `null`.
+
+This unlimited session has recorded $1.23.
+
+```json snippet=output reason="Session response excerpt with no limit and $1.23 in recorded spend"
+{
+  "spend_control": {
+    "limit": null,
+    "consumed": 123
+  }
+}
+```
+
+### Change or remove the limit
+
+Send a `POST` request to `/v1/agents/sessions/{session_id}` with the new total limit. This request changes the total limit to $10 without resetting recorded spend:
+
+```json snippet=reference reason="Session update request body with a $10 total spending limit"
+{
+  "spend_control": { "limit": 1000 }
+}
+```
+
+Omit `spend_control` from an update to keep the current limit. To remove the limit, set `spend_control` to `null` or send the following request.
+
+```json snippet=reference reason="Session update request body that removes the spending limit"
+{
+  "spend_control": { "limit": null }
+}
+```
+
+Retrieve the session again to confirm the change. An unlimited session has `spend_control.limit: null`. Recorded spend can change between reads.
+
+### Continue after reaching the budget
+
+Watch for session status `budget_reached` or the `agent.session.budget_reached` event. The API rejects new input when it detects that the session has reached its limit. A turn stopped by the budget fails with `session_budget_exceeded`.
+
+Increase or remove the total limit to continue. Work stopped by the budget can resume automatically. Follow session events before sending more input.
+
 ## Delete a session
 
 Delete a session when your application no longer needs it. Deletion removes the session from the API. Physical cleanup may continue asynchronously.

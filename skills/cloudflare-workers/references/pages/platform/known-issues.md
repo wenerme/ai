@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.
 title: Known issues
 image: https://developers.cloudflare.com/pages/platform/known-issues/og.png?v=5a712c74821f807c

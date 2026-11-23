@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fields available for use in Ruleset Engine rule expressions.
 title: Fields
 image: https://developers.cloudflare.com/ruleset-engine/rules-language/fields/og.png?v=4e13c2a202975725

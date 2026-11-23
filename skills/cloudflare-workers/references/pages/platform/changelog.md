@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Recent changes and updates to Cloudflare Pages.
 title: Changelog
 image: https://developers.cloudflare.com/pages/platform/changelog/og.png?v=5649a08f0918f7ea

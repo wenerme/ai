@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deprecation notice and migration guide for SSL for SaaS Version 1.
 title: Deprecation - Version 1
 image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/og.png?v=cc2ec001592ef654

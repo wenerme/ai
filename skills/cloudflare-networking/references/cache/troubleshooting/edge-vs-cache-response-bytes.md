@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "In HTTP request logs, cacheResponseBytes and edgeResponseBytes both count the response body as Cloudflare delivered it to the client. They differ only in which response headers they count:"
 title: edgeResponseBytes and cacheResponseBytes discrepancy
 image: https://developers.cloudflare.com/cache/troubleshooting/edge-vs-cache-response-bytes/og.png?v=7cfd5e1933c19659

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up an A/B test by controlling what page is served based on cookies. This version supports passing the request through to test and control on the origin.
 title: A/B testing with middleware
 image: https://developers.cloudflare.com/pages/functions/examples/ab-testing/og.png?v=4e99f7cbe7eeb7b9

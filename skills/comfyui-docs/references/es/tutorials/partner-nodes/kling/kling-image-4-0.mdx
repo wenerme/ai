@@ -1,0 +1,71 @@
+---
+title: "Kling Image 4.0 en ComfyUI: texto a imagen, edición de imagen y long image"
+description: "Genera y edita imágenes con Kling Image 4.0 en ComfyUI: texto a imagen hasta 8K, ediciones que mantienen rostro y encuadre, y páginas largas web y de producto."
+translationSourceHash: 77964c31
+translationFrom: tutorials/partner-nodes/kling/kling-image-4-0.mdx
+translationBlockHashes:
+  "_intro": 3b1af1ae
+  "Kling 4.0: Text to Image {#api_kling4_image_t2i}": b9a4f38f
+  "Kling 4.0: Image Edit {#api_kling4_image_edit}": 6b6de800
+  "Kling 4.0: Long Image {#api_kling4_long_image}": 8ae36644
+  "Input limits": 3f62f14e
+---
+
+Kling Image 4.0 es el modelo de imagen de Kling AI, disponible en ComfyUI como Partner Nodes. `Kling 4.0 Image` genera imágenes de hasta 8K a partir de un prompt, con hasta diez imágenes de referencia y la opción de una serie de imágenes relacionadas. `Kling 4.0 Long Image` genera una página muy alta para un sitio web o una ficha de producto.
+
+Tres plantillas cubren los flujos siguientes.
+
+## Kling 4.0: Texto a imagen {#api_kling4_image_t2i}
+
+Genera una imagen a partir de un prompt en 2K, 4K u 8K con ocho relaciones de aspecto, o `auto` para seguir las imágenes de referencia. Conecta hasta diez imágenes de referencia y nómbralas en el prompt como `@Image1` en adelante para dirigir el resultado. Define `series_amount` en `auto` o en un número del 2 al 10 para obtener un conjunto de imágenes relacionadas que mantienen los mismos personajes y el mismo estilo.
+
+[Vista previa del flujo de trabajo Kling 4.0: Texto a imagen]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Kling 4.0: Texto a imagen&quot; en la Biblioteca de plantillas
+  
+
+## Kling 4.0: edición de imagen {#api_kling4_image_edit}
+
+Cambia el estilo de una imagen sin alterar lo que debe permanecer igual. Conecta la foto como primera imagen de referencia y luego describe tanto el cambio como lo que se mantiene: la plantilla conserva el rostro, el encuadre y el fondo, y cambia solo el cabello, el maquillaje y el vestuario. El nodo es el mismo que en Text to Image, con una imagen de referencia conectada.
+
+[Vista previa del flujo de trabajo Kling 4.0: Image Edit]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Kling 4.0: Image Edit&quot; en la Biblioteca de plantillas
+  
+
+**Material de entrada**
+
+  
+    Cárgala en la primera ranura de imagen de referencia · `@Image1`
+  
+
+## Kling 4.0: Imagen larga {#api_kling4_long_image}
+
+Genera una imagen muy alta en una sola pasada. Elige el tipo de página con `skill`:
+
+- `webpage`: imágenes opcionales de estilo y de sujeto, identificadas como `@Image1` y `@Image2`. Describe la página banda por banda e indica el idioma del texto visible.
+- `ecommerce`: de una a tres imágenes de producto, identificadas desde `@Image1` en adelante, y un `length` de `short`, `medium` o `long`.
+
+Ambas habilidades generan en 1K o 2K.
+
+[Vista previa del flujo de trabajo Kling 4.0: Imagen larga]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Kling 4.0: Long Image (Webpage)&quot; en la biblioteca de plantillas
+  
+
+## Límites de entrada
+
+- Imágenes: al menos 300 x 300 px, relación de aspecto entre 2:5 y 5:2. `Kling 4.0 Image` admite hasta diez imágenes de referencia y `Kling 4.0 Long Image` toma de una a tres imágenes de producto en el modo `ecommerce`.
+- En los nodos de imagen, un prompt que nombre `@ImageN` por encima del número de entradas conectadas hace fallar la ejecución. En el modo `webpage`, `@Image1` es `style_image` y `@Image2` es `subject_image`, así que `@Image2` sigue valiendo si solo conectas la imagen de sujeto.

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Types of error pages you can customize with custom error rules.
 title: Error page types
 image: https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/og.png?v=370482e3ae98531f

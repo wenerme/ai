@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Code Mode isolates generated code and makes approvals, replay, rollback, and reuse durable.
 title: How Code Mode works
 image: https://developers.cloudflare.com/agents/tools/codemode/how-it-works/og.png?v=150bca5f76cce557

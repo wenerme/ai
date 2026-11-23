@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Encryption modes allow you to control how Cloudflare connects to your origin web server and how certificates presented by your origin are validated.
 title: Encryption modes
 image: https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/og.png?v=f22fb9fb9c39beee

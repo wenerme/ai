@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The difference between the Workers runtime versus traditional browsers and Node.js.
 title: How Workers works
 image: https://developers.cloudflare.com/workers/reference/how-workers-works/og.png?v=aca57c5a3e0d9633

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate from legacy Vectorize V1 indexes to the current V2 format.
 title: Transition legacy Vectorize indexes
 image: https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/og.png?v=1d5227b9401681e4

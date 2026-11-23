@@ -2064,6 +2064,7 @@ The `shared_runners_setting` attribute determines whether instance runners are e
 - `require_sandbox` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262117) in GitLab 19.6.
 - `duo_workflow_file_attachments_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268538) in GitLab 19.6.
 - `external_agent_audit_event_content_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270245) in GitLab 19.7.
+- `auto_model_routing_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272874) in GitLab 19.7.
 
 The `ai_settings_attributes` hash configures AI-related settings for the group.
 All attributes are optional.
@@ -2074,6 +2075,7 @@ All attributes are optional.
 | `ai_usage_data_collection_enabled` | boolean | When `true`, enables AI usage data collection for this group. GitLab.com only. |
 | `allow_all_unix_sockets` | boolean | When `true`, allows all Unix sockets for GitLab Duo Agent Platform. |
 | `allow_project_extension` | boolean | When `true`, allows projects to extend the network access domain allowlist for GitLab Duo Agent Platform. |
+| `auto_model_routing_enabled` | boolean | When `true`, turns on Auto model routing for Duo Developer. Can only be set on top-level groups. GitLab.com only. Ignored on GitLab Self-Managed and GitLab Dedicated. |
 | `duo_agent_platform_enabled` | boolean | When `true`, enables GitLab Duo Agent Platform features for this group. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |
 | `duo_workflow_file_attachments_enabled` | boolean | When `true`, allows file attachments in GitLab Duo Chat for this group. Can only be set on top-level groups. GitLab.com only. Ignored on GitLab Self-Managed and GitLab Dedicated. |
 | `duo_workflow_mcp_enabled` | boolean | When `true`, enables MCP support for GitLab Duo Agent Platform. Available on Premium and Ultimate. Also available on the Free tier on GitLab.com with GitLab Credits. |

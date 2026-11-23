@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Collect logs, traces, and analytics across all user Workers in a Workers for Platforms dispatch namespace.
 title: Observability
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/observability/og.png?v=2aa3209c48a1f09c

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The mTLS client certificate is not valid before this date.
 title: cf.tls_client_auth.cert_not_before
 image: https://developers.cloudflare.com/og-docs.png

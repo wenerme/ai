@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.
 title: Chat SDK
 image: https://developers.cloudflare.com/agents/agent-class/communication-channels/chat-sdk/og.png?v=7e291d11e5d502b8
@@ -106,7 +109,7 @@ Add the parent Agent to your Durable Object migration:
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -131,7 +134,7 @@ Add the parent Agent to your Durable Object migration:
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]

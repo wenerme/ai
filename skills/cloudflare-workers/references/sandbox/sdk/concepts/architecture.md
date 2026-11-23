@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sandbox SDK 0.x combines Workers, Durable Objects, and Containers for secure code execution.
 title: Architecture
 image: https://developers.cloudflare.com/sandbox/sdk/concepts/architecture/og.png?v=fc9759f139bbeafd

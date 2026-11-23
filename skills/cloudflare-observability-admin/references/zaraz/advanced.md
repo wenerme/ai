@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Advanced Zaraz options for custom loading, blocking, and enrichment.
 title: Advanced options
 image: https://developers.cloudflare.com/zaraz/advanced/og.png?v=d31b74c0d0b2f7f5

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions. "
 title: flux-1-schnell
 image: https://developers.cloudflare.com/og-docs.png

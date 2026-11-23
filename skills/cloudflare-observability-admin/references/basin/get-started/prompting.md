@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use example prompts to send Worker, Cloudflare service, and application events through Basin Pipelines to Basin Catalog and Basin SQL.
 title: Prompt an agent to build with Basin
 image: https://developers.cloudflare.com/basin/get-started/prompting/og.png?v=ca4de2305646432d

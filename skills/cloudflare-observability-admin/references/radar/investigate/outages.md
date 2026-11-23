@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.
 title: Outages
 image: https://developers.cloudflare.com/radar/investigate/outages/og.png?v=f654f105ee73a2c5

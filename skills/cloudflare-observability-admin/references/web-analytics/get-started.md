@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Cloudflare Web Analytics for your website.
 title: Get started
 image: https://developers.cloudflare.com/web-analytics/get-started/og.png?v=0449a2289673db9a

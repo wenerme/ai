@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Access detailed metadata logs from Cloudflare products.
 title: Cloudflare Logs
 image: https://developers.cloudflare.com/logs/og.png?v=12d23f0706744ae0

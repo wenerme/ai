@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Construct delivery URLs to serve images uploaded to Cloudflare Images using your account hash, image ID, and variant name.
 title: Serve uploaded images
 image: https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/og.png?v=8af0924179a84c07

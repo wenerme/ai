@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage SSL/TLS certificates for encrypted connections between visitors, Cloudflare, and your origin server.
 title: Cloudflare SSL/TLS
 image: https://developers.cloudflare.com/ssl/og.png?v=4d6b48f11e9c8b59

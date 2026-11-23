@@ -3,16 +3,15 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Introduced [required authentication](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93727) in GitLab 15.3 [with a feature flag](../administration/feature_flags/_index.md) named `authenticate_markdown_api`. Enabled by default.
+- Required authentication [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93727) in GitLab 15.3 [with a feature flag](../administration/feature_flags/_index.md) named `authenticate_markdown_api`. Enabled by default.
+
+> [!flag]
+> The availability of required authentication is controlled by a feature flag.
+> For more information, see the history.
 
 Use this API to render [Markdown](../user/markdown.md) content as HTML.
 
 All requests to this API must be [authenticated](rest/authentication.md).
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
 
 ## Render Markdown content
 

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create full-stack applications deployed to Cloudflare Workers.
 title: Static Assets
 image: https://developers.cloudflare.com/workers/static-assets/og.png?v=acb320fcaf3019ec
@@ -57,7 +60,7 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
   "main": "src/index.js",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
@@ -71,7 +74,7 @@ name = "my-spa"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [assets]
 directory = "./dist"
@@ -148,7 +151,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 {
 	"name": "my-spa-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"main": "./src/index.ts",
 	"upload_source_maps": true,
 	"assets": {
@@ -163,7 +166,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 ```toml
 name = "my-spa-worker"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 main = "./src/index.ts"
 upload_source_maps = true
 

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cache Rules are ordered and which rule takes priority.
 title: Order and priority
 image: https://developers.cloudflare.com/cache/how-to/cache-rules/order/og.png?v=46b1f0df3eb4edc0

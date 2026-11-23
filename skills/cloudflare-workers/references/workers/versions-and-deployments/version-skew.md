@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn why HTML and asset requests can use different Worker versions, and how to plan for deployments and older pages.
 title: Version skew and static assets
 image: https://developers.cloudflare.com/workers/versions-and-deployments/version-skew/og.png?v=11bddf3f78666dbd

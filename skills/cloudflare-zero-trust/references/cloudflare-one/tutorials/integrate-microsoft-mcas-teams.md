@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.
 title: Integrate Microsoft MCAS with Cloudflare Zero Trust
 image: https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/og.png?v=0dca691f3d53a0cd

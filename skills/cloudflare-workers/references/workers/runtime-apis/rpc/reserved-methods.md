@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reserved methods with special behavior that are treated differently.
 title: Reserved Methods
 image: https://developers.cloudflare.com/workers/runtime-apis/rpc/reserved-methods/og.png?v=4a6d1c161d56ed91

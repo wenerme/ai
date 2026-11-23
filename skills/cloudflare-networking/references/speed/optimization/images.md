@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Optimize images with Polish, Mirage, and Image Resizing.
 title: Image optimization
 image: https://developers.cloudflare.com/speed/optimization/images/og.png?v=3f3e9c2e0a5a8bb2

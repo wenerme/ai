@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A global score from 1–99 that combines the score of each WAF attack vector into a single score.
 title: cf.waf.score
 image: https://developers.cloudflare.com/og-docs.png

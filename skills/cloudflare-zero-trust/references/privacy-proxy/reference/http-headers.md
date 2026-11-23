@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: HTTP headers used by Privacy Proxy for authentication, geolocation, and observability, including request and response formats.
 title: HTTP headers
 image: https://developers.cloudflare.com/privacy-proxy/reference/http-headers/og.png?v=743f634e2469a307

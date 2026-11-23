@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure cache-control settings for Cloudflare Images at the account or variant level.
 title: Browser TTL
 image: https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/og.png?v=ba24cf593823dca8

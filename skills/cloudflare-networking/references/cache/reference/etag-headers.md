@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How ETag headers work with Cloudflare caching.
 title: Using ETag Headers with Cloudflare
 image: https://developers.cloudflare.com/cache/reference/etag-headers/og.png?v=305d6aaa21190d0f

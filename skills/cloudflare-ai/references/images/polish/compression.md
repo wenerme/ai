@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about Cloudflare's Polish compression options, including Lossless, Lossy, and WebP, to optimize image file sizes while managing metadata effectively.
 title: Polish compression
 image: https://developers.cloudflare.com/images/polish/compression/og.png?v=6fcda865e9b0ad64

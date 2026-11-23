@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send debugging information in an errored response to a logging service.
 title: Debugging logs
 image: https://developers.cloudflare.com/workers/examples/debugging-logs/og.png?v=7697cbe356825cf2

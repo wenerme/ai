@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Collect flow logs from cloud provider environments.
 title: Cloud flow logs (beta)
 image: https://developers.cloudflare.com/network-flow/cloud-flow-logs/og.png?v=c56849766e8832b6

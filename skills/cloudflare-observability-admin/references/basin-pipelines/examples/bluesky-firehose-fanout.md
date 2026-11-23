@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Bluesky Jetstream events into multiple Basin Catalog tables using a single Basin Pipelines stream and multiple SQL statements.
 title: Fan out a stream to multiple Iceberg tables
 image: https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/og.png?v=447a006739af8be5
@@ -313,7 +316,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -349,7 +352,7 @@ name = "bluesky-pipeline"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[pipelines]]
 binding = "BSKY_STREAM"

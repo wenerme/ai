@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect DuckDB to Basin Catalog to query and manage Iceberg tables.
 title: DuckDB
 image: https://developers.cloudflare.com/basin-catalog/config-examples/duckdb/og.png?v=9c709b4d966a5902

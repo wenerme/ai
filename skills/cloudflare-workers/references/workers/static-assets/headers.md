@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about default and custom headers for Workers static assets, including Cache-Control, ETag, and Content-Type behavior.
 title: Headers
 image: https://developers.cloudflare.com/workers/static-assets/headers/og.png?v=c0efe7f62561fc5f

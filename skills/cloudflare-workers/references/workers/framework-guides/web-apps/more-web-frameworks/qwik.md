@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a Qwik application and deploy it to Cloudflare Workers with Workers Assets.
 title: Qwik
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/og.png?v=85859c52da798509

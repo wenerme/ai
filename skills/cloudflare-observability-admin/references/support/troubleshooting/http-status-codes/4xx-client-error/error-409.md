@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot HTTP 409 error responses.
 title: Error 409
 image: https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-409/og.png?v=065990829e22861f

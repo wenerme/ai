@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about publish applications with terraform in this guide.
 title: Publish applications with Terraform
 image: https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/og.png?v=6e06c95aaba6990e

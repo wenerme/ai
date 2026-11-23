@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.
 title: Environments
 image: https://developers.cloudflare.com/durable-objects/reference/environments/og.png?v=dc5ab0423d9f8388

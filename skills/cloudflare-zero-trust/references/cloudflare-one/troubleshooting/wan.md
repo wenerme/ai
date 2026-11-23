@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare WAN resources and guides for Zero Trust.
 title: Cloudflare WAN
 image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/og.png?v=67e45627df108eee

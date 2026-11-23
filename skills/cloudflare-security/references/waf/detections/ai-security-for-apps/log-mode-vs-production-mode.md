@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Differences between log mode and production mode for AI security detections.
 title: Log mode versus production mode
 image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/og.png?v=1339532797a70b9c

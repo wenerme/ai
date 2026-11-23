@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect AWS Transit Gateway to Cloudflare WAN with two redundant IPsec tunnels and dynamic BGP routing.
 title: Amazon AWS Transit Gateway
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/aws/og.png?v=79d35e3e8c3cc1bb

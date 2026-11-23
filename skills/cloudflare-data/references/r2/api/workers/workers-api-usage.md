@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Bind an R2 bucket to a Worker and perform read, write, and list operations.
 title: Use R2 from Workers
 image: https://developers.cloudflare.com/r2/api/workers/workers-api-usage/og.png?v=f165a52a3dcb3a35

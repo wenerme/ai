@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Analyze Magic Transit traffic with Network Analytics.
 title: Network Analytics
 image: https://developers.cloudflare.com/magic-transit/analytics/network-analytics/og.png?v=5836f67aef9f0304

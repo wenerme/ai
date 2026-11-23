@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare as your primary DNS provider.
 title: Primary setup (Full)
 image: https://developers.cloudflare.com/dns/zone-setups/full-setup/og.png?v=d703cc27fa9611a3

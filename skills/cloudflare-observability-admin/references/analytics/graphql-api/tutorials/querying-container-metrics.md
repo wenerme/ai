@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Cloudflare Containers metrics with the GraphQL Analytics API.
 title: Querying Containers metrics with GraphQL
 image: https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/og.png?v=6a2e0f0adf373928

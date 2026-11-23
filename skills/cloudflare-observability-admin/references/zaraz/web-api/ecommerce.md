@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send e-commerce events like purchases and cart updates through Zaraz.
 title: E-commerce
 image: https://developers.cloudflare.com/zaraz/web-api/ecommerce/og.png?v=2c7517243c712967

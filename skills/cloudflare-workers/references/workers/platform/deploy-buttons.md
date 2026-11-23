@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up a Deploy to Cloudflare button
 title: Deploy to Cloudflare buttons
 image: https://developers.cloudflare.com/workers/platform/deploy-buttons/og.png?v=c5d9ceffb1dd21fb
@@ -67,7 +70,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
   "main": "./src/index.ts",
   "upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
   "vars": {
     "API_HOST": "https://example.com",
   },
@@ -79,7 +82,7 @@ name = "my-worker"
 main = "./src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [vars]
 API_HOST = "https://example.com"
@@ -101,7 +104,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
   "main": "./src/index.ts",
   "upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"secrets_store_secrets": [
 		{
 			"binding": "API_KEY",
@@ -117,7 +120,7 @@ name = "my-worker"
 main = "./src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[secrets_store_secrets]]
 binding = "API_KEY"

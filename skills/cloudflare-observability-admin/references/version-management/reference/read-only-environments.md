@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect environments from accidental changes.
 title: Read-only environments
 image: https://developers.cloudflare.com/version-management/reference/read-only-environments/og.png?v=2bc87e7f8f67b0e4

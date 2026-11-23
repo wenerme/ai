@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect Google Cloud VPN to Cloudflare WAN.
 title: Google Cloud VPN
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/google/og.png?v=2be4e79a0660c1dd

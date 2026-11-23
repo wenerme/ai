@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.
 title: Designing a distributed web performance architecture
 image: https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/og.png?v=1d3def6ed3d9e48b

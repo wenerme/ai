@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Split a single application into independently deployable frontends, using a router worker and service bindings
 title: Microfrontends
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/og.png?v=7ed4f2649403a499

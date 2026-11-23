@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.
 title: Using Agents with Workflows
 image: https://developers.cloudflare.com/agents/concepts/workflows/og.png?v=e3ae5b528cd38e9e

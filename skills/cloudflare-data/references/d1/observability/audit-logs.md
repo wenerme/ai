@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review audit log entries for configuration changes made to your D1 databases.
 title: Audit Logs
 image: https://developers.cloudflare.com/d1/observability/audit-logs/og.png?v=3bbca0c7ee1244a3

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Clone repositories, manage branches, and automate Git operations with the Sandbox SDK 0.x.
 title: Work with Git
 image: https://developers.cloudflare.com/sandbox/sdk/guides/git-workflows/og.png?v=048dfbf4df6a0a20

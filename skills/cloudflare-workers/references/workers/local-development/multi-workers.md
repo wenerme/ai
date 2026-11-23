@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to develop with multiple Workers using different approaches and configurations.
 title: Developing with multiple Workers
 image: https://developers.cloudflare.com/workers/local-development/multi-workers/og.png?v=873a8b3ef97d5334

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Filter incoming requests with WAF rules.
 title: Control incoming requests
 image: https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-incoming-requests/og.png?v=cda05aef0d2e4e23

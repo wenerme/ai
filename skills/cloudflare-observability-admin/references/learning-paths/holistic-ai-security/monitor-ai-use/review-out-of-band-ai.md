@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect AI usage with CASB integrations.
 title: Review out-of-band AI use
 image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/monitor-ai-use/review-out-of-band-ai/og.png?v=5d841d3d3879137d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use managed PhishGuard threat monitoring.
 title: PhishGuard
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/phishguard/og.png?v=6c83d26f6144515c

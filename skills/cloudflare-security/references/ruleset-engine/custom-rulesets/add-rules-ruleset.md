@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add rules to an existing custom ruleset using the API.
 title: Add rules to a custom ruleset
 image: https://developers.cloudflare.com/ruleset-engine/custom-rulesets/add-rules-ruleset/og.png?v=a1e99c8df0b2d666

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure public key distribution in end-to-end encrypted messaging systems.
 title: Key Transparency Auditor
 image: https://developers.cloudflare.com/key-transparency/og.png?v=ca2f11507f7fa8d5

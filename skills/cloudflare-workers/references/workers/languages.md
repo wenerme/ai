@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Languages supported on Workers, a polyglot platform.
 title: Languages
 image: https://developers.cloudflare.com/workers/languages/og.png?v=3f28cf43de348134

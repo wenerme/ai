@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run unit and integration tests for Cloudflare Workers inside the Workers runtime using the Vitest integration.
 title: Vitest integration
 image: https://developers.cloudflare.com/workers/testing/vitest-integration/og.png?v=9cf7e0fa0bb75135

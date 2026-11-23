@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.
 title: Isolation and concurrency
 image: https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/og.png?v=e509d8f8e46fe001
@@ -52,7 +55,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18"
+	"compatibility_date": "2026-11-23"
 	# no nodejs_compat flags here
 }
 ```
@@ -62,7 +65,7 @@ name = "test"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 ```
 
 In our `src/index.ts` file, we use the `process` object, which is a Node.js global, unavailable in the Workerd runtime:

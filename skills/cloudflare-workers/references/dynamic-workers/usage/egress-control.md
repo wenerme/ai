@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict, intercept, and audit outbound network access for dynamic Workers.
 title: Egress control
 image: https://developers.cloudflare.com/dynamic-workers/usage/egress-control/og.png?v=5cc81b2003e8ce38

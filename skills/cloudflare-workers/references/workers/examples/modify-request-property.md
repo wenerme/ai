@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a modified request with edited properties based off of an incoming request.
 title: Modify request property
 image: https://developers.cloudflare.com/workers/examples/modify-request-property/og.png?v=db7f00d5953656bf

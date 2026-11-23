@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: URL components used in Bulk Redirect source and target URLs.
 title: Supported URL components in Bulk Redirects
 image: https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/url-components/og.png?v=6904aa204ac210a7

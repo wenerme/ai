@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use pool sets to define location-specific pools, steering policies, weights, and fallback behavior through the API.
 title: Pool sets
 image: https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/pool-sets/og.png?v=7f0192d55db8fd1d

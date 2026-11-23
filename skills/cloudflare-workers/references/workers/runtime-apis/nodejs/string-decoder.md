@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js string_decoder module in Cloudflare Workers for decoding buffer objects into strings.
 title: StringDecoder
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/string-decoder/og.png?v=7b306f06686a610f

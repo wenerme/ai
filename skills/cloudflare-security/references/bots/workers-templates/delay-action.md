@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use a Worker to add configurable delays to requests with low bot scores.
 title: Delay action
 image: https://developers.cloudflare.com/bots/workers-templates/delay-action/og.png?v=c990697ddea61b7b

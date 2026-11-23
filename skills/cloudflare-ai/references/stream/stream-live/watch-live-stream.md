@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Play Cloudflare Stream live video using the Stream Player or custom HLS and DASH players.
 title: Watch a live stream
 image: https://developers.cloudflare.com/stream/stream-live/watch-live-stream/og.png?v=77804448c8004baf

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use a _worker.js file to develop Pages Functions instead of the /functions directory.
 title: Advanced mode
 image: https://developers.cloudflare.com/pages/functions/advanced-mode/og.png?v=23c3d4d9b10b9513

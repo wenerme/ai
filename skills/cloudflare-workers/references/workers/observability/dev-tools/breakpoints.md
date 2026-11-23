@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Debug your local and deployed Workers using breakpoints.
 title: Breakpoints
 image: https://developers.cloudflare.com/workers/observability/dev-tools/breakpoints/og.png?v=0be4a89432d27e88

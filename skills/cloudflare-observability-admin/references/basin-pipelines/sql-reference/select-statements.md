@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query syntax for data transformation in Basin Pipelines SQL
 title: SELECT statements
 image: https://developers.cloudflare.com/basin-pipelines/sql-reference/select-statements/og.png?v=20ad9e71cc8d4d67

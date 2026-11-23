@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View and revoke active login sessions associated with your Cloudflare account to maintain account security.
 title: Manage active sessions
 image: https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/og.png?v=c895dac0b6dfef7b

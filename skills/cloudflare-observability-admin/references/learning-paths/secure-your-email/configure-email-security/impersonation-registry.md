@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect executives from BEC impersonation attacks.
 title: Add user to the impersonation registry
 image: https://developers.cloudflare.com/learning-paths/secure-your-email/configure-email-security/impersonation-registry/og.png?v=7067851457e33f33

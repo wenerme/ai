@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Design Zero Trust access policies.
 title: Policy design
 image: https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/policy-design/og.png?v=f98f3804f6d35ae7

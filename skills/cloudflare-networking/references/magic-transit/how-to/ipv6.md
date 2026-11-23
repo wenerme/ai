@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure IPv6 support for Magic Transit.
 title: Configure IPv6 (beta)
 image: https://developers.cloudflare.com/magic-transit/how-to/ipv6/og.png?v=3dd6c3b010579572

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Pools of origin servers for load balancing traffic distribution.
 title: Pools
 image: https://developers.cloudflare.com/load-balancing/pools/og.png?v=919afb7317e05020

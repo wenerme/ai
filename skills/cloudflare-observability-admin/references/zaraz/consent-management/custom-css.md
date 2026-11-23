@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Customize the consent modal appearance with CSS.
 title: Custom CSS
 image: https://developers.cloudflare.com/zaraz/consent-management/custom-css/og.png?v=245ce60ab63e7a0f

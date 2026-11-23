@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How to configure a Worker with static assets on a subpath.
 title: Serving a subdirectory
 image: https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/og.png?v=185eca9d7984ce9a

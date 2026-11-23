@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure a Durable Object code update strategy to give active objects time to finish work before applying new code.
 title: Durable Objects code updates
 image: https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/og.png?v=5d33cc7d68c763f3

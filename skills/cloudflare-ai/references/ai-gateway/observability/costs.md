@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track and estimate token-based costs across AI providers using AI Gateway cost metrics.
 title: Costs
 image: https://developers.cloudflare.com/ai-gateway/observability/costs/og.png?v=28f49b7fcb66382a

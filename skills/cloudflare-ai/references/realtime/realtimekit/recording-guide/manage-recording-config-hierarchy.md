@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to manage recording configuration hierarchy with RealtimeKit's capabilities. Follow our guide for effective hierarchy management.
 title: Manage Recording Config Precedence Order
 image: https://developers.cloudflare.com/realtime/realtimekit/recording-guide/manage-recording-config-hierarchy/og.png?v=e2026be0624791b8

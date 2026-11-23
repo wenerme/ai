@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate Agents SDK MCP servers and clients to the split MCP TypeScript SDK v2 packages while retaining legacy compatibility.
 title: Migrate to MCP SDK v2
 image: https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/og.png?v=6d00c9de2a63b5f1

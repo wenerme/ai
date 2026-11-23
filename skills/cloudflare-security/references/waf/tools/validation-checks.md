@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Automatic request validation for malformed packets and attack vectors.
 title: Validation checks
 image: https://developers.cloudflare.com/waf/tools/validation-checks/og.png?v=c9b5b43477a7110f

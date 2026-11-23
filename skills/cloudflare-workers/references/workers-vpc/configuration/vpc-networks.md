@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.
 title: VPC Networks
 image: https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f

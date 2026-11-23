@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example of video playback with Cloudflare Stream and Vidstack
 title: Vidstack
 image: https://developers.cloudflare.com/stream/examples/vidstack/og.png?v=48a2a6f2be6b64bf

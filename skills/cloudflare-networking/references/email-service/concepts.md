@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Core concepts behind Cloudflare Email Service, including deliverability, authentication, and suppressions.
 title: Concepts
 image: https://developers.cloudflare.com/email-service/concepts/og.png?v=748652c735cb5ee5

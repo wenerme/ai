@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.
 title: Protect ISP and telecommunications networks from DDoS attacks
 image: https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/og.png?v=ec6b6915c4720eee

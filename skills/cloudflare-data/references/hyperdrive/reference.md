@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Hyperdrive reference documentation including supported databases, Wrangler commands, and FAQ.
 title: Reference
 image: https://developers.cloudflare.com/hyperdrive/reference/og.png?v=7bd8602b9f491181

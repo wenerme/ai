@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands for interacting with Cloudflare's Container Platform.
 title: Containers
 image: https://developers.cloudflare.com/workers/wrangler/commands/containers/og.png?v=9e15e65993753696
@@ -19,10 +22,10 @@ Interact with [Containers](https://developers.cloudflare.com/containers/) using 
 Build a Container image from a Dockerfile.
 
 ```txt
-wrangler containers build [PATH] [OPTIONS]
+wrangler containers build <PATH> --tag <TAG> [OPTIONS]
 ```
 
-- `PATH` `string` optional
+- `PATH` `string` required
   - Path for the directory containing the Dockerfile to build.
 - `-t, --tag` `string` required
   - Name and optionally a tag (format: "name:tag").
@@ -67,7 +70,7 @@ wrangler containers images list [OPTIONS]
 Remove an image from your containers registry.
 
 ```txt
-wrangler containers images delete [IMAGE] [OPTIONS]
+wrangler containers images delete <IMAGE> [OPTIONS]
 ```
 
 - `IMAGE` `string` required
@@ -94,7 +97,7 @@ wrangler containers registries list [OPTIONS]
 Configure a new registry for your account.
 
 ```txt
-wrangler containers registries configure [DOMAIN] [OPTIONS]
+wrangler containers registries configure <DOMAIN> [OPTIONS]
 ```
 
 - `DOMAIN` `string` required
@@ -119,7 +122,7 @@ When run interactively, wrangler will prompt you for your secret and store it in
 Remove a registry configuration from your account.
 
 ```txt
-wrangler containers registries delete [DOMAIN] [OPTIONS]
+wrangler containers registries delete <DOMAIN> [OPTIONS]
 ```
 
 - `DOMAIN` `string` required
@@ -219,7 +222,7 @@ wrangler containers list [OPTIONS]
 Push a tagged image to a Cloudflare managed registry, which is automatically integrated with your account.
 
 ```txt
-wrangler containers push [TAG] [OPTIONS]
+wrangler containers push <TAG> [OPTIONS]
 ```
 
 - `TAG` `string` required

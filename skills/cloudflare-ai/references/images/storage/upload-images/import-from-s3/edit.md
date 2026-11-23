@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage sources and import jobs in Cloudflare Images.
 title: Edit sources
 image: https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/edit/og.png?v=056df4bd9fcb31ec

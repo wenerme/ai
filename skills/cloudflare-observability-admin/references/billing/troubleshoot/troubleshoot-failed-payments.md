@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fix failed payment and declined card errors.
 title: Resolve a payment failure
 image: https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/og.png?v=fdd3b29e58c45f86

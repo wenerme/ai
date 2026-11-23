@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.
 title: Percentage rollouts
 image: https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/og.png?v=a3dcce827a686601

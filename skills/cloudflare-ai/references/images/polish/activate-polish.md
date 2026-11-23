@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Turn on Cloudflare Polish in the dashboard to automatically optimize images with lossy or lossless compression.
 title: Activate Polish
 image: https://developers.cloudflare.com/images/polish/activate-polish/og.png?v=342ee1af0bd8ec02

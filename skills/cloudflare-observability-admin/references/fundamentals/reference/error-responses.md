@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare formats error responses, including structured JSON and Markdown for agents and API clients, and how they interact with Custom Errors.
 title: Error responses
 image: https://developers.cloudflare.com/fundamentals/reference/error-responses/og.png?v=8a1dcafa8d90bd4d

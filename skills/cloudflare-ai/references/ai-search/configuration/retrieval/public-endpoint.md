@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Expose AI Search instances through public MCP, chat, and search endpoints without authentication.
 title: Public endpoint settings
 image: https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/og.png?v=bd2378f1e6191e97

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Email Sending REST API requests, responses, authentication, and errors.
 title: REST API
 image: https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef

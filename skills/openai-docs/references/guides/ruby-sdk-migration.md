@@ -38,7 +38,7 @@ Set `MultiGrader#graders` to a hash keyed by grader name. For example, pass `gra
 
 ## Compare returned image sizes as strings
 
-Image responses and image generation and edit stream events return size strings such as `"1024x1024"`. Use `image.size&.to_s` in code that supports both SDK versions or needs to handle an omitted size. The size constants and `Size.values` also use strings.
+Image responses and image generation and edit stream events return size strings such as `"1024x1024"`. Use `image.size == "1024x1024"` to compare the size. The size constants and `Size.values` also use strings.
 
 ## Replace retired model constants
 

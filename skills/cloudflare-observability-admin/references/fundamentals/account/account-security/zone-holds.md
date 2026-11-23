@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Prevent other teams from adding your active Cloudflare zones to a different account by enabling zone holds.
 title: Zone holds
 image: https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/og.png?v=e4315f344a0e3f8f

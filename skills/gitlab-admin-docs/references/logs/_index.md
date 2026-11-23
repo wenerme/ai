@@ -997,6 +997,7 @@ If you search for the `correlation_id` of a blocked request, you find a `Rate_Li
 ### `rate_limit_block_summary` messages
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268019) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `rate_limiter_endpoint_block_summary`. Disabled by default.
+- `feature_category` field [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/270781) in GitLab 19.7.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -1022,20 +1023,22 @@ For example:
     "message":"rate_limit_block_summary",
     "endpoint_id":"GET /api/:version/projects",
     "rate_limit_rule":"unauthenticated_api",
+    "feature_category":"groups_and_projects",
     "block_count":42
 }
 ```
 
 The message has these fields:
 
-| Field             | Description |
-| ----------------- | ----------- |
-| `severity`        | Always `INFO`. |
-| `time`            | Time that GitLab logged the message, in UTC. |
-| `message`         | Always `rate_limit_block_summary`. |
-| `endpoint_id`     | Endpoint that the blocked requests were for. `unknown` when GitLab cannot find the endpoint without a database lookup, such as for project and group pages, and for an API path with no endpoint. `other` for the blocks of pairs over the limit of five. |
-| `rate_limit_rule` | Name of the LabKit rule that blocked the requests. The same value as the `rule` field of a `Rate_Limit_Block` message. `other` for the blocks of pairs over the limit of five. |
-| `block_count`     | Number of requests that the rule blocked for this endpoint on this worker since the worker's previous message. |
+| Field              | Description |
+| ------------------ | ----------- |
+| `severity`         | Always `INFO`. |
+| `time`             | Time that GitLab logged the message, in UTC. |
+| `message`          | Always `rate_limit_block_summary`. |
+| `endpoint_id`      | Endpoint that the blocked requests were for. `unknown` when GitLab cannot find the endpoint without a database lookup, such as for project and group pages, and for an API path with no endpoint. `other` for the blocks of pairs over the limit of five. |
+| `rate_limit_rule`  | Name of the LabKit rule that blocked the requests. The same value as the `rule` field of a `Rate_Limit_Block` message. `other` for the blocks of pairs over the limit of five. |
+| `feature_category` | Feature category of the endpoint. `unknown` when the endpoint has no feature category, and for every message with an `endpoint_id` of `unknown`. Not present in the message for `other`. |
+| `block_count`      | Number of requests that the rule blocked for this endpoint on this worker since the worker's previous message. |
 
 ## `graphql_json.log`
 

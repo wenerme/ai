@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "Review the TLS cipher suites supported by `cloudflared` for secure connections between your origin and Cloudflare's network.\n"
 title: Cipher suites
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/cipher-suites/og.png?v=27bd4f15a7f8de48

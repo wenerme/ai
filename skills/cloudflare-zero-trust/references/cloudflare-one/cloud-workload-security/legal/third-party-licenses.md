@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Read the third-party license notices and acknowledgments for the Linux ARM64 Cloud Workload Security proxy build.
 title: Third-party licenses
 image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/legal/third-party-licenses/og.png?v=2e449a033c698a55

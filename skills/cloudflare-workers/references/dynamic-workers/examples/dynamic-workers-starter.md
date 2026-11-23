@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A starter template for deploying a Worker that loads and runs Dynamic Workers.
 title: Dynamic Workers Starter
 image: https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-starter/og.png?v=9bfa1c960456467d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Trusted domains in Email Security.
 title: Trusted domains
 image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/trusted-domains/og.png?v=3650cf28658dd6ff

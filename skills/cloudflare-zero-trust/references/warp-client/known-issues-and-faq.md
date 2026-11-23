@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Known issues and answers to common WARP client questions.
 title: FAQ
 image: https://developers.cloudflare.com/warp-client/known-issues-and-faq/og.png?v=e79d990651fbb1b2

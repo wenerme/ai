@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store and access transient in-memory state within a Durable Object instance between requests.
 title: In-memory state in a Durable Object
 image: https://developers.cloudflare.com/durable-objects/reference/in-memory-state/og.png?v=79a1e49274d62c08

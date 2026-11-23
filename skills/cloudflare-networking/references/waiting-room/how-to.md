@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How-to guides for creating and managing waiting rooms.
 title: How to
 image: https://developers.cloudflare.com/waiting-room/how-to/og.png?v=cbc88773f10f555d

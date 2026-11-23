@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to integrate Centrify as a SAML identity provider with Cloudflare One.
 title: Centrify (SAML)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/centrify-saml/og.png?v=0dec7228161a83f0

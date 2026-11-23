@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Gateway for Zero Trust.
 title: Gateway
 image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/og.png?v=99a900cbe73b71a8

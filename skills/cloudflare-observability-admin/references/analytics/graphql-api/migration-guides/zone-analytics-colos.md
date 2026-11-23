@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate colos endpoint queries to GraphQL.
 title: Zone Analytics Colos Endpoint to GraphQL Analytics
 image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics-colos/og.png?v=6a5a26c593f1d877

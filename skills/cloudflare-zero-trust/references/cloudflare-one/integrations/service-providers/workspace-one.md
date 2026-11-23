@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workspace ONE in Zero Trust integrations.
 title: Workspace ONE
 image: https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/workspace-one/og.png?v=3340a8bbafe6b620

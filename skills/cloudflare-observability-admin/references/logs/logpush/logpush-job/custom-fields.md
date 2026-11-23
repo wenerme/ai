@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Log custom request and response headers.
 title: Custom fields
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/og.png?v=31e39d506bfd36ef

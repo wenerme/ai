@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Debug Durable Objects with wrangler dev and wrangler tail, and resolve common errors like overload and storage issues.
 title: Troubleshooting
 image: https://developers.cloudflare.com/durable-objects/observability/troubleshooting/og.png?v=14aee494feb17c92

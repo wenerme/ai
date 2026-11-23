@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Secure remote access to critical infrastructure.
 title: Secure remote access to your critical infrastructure
 image: https://developers.cloudflare.com/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/og.png?v=9da947df8db5bbaa

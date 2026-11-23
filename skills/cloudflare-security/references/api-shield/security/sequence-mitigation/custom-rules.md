@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write custom rules that match valid or invalid API request sequences.
 title: Sequence mitigation custom rules
 image: https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/og.png?v=f445226227fcd9a2

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The time spent executing a Cloudflare Worker in milliseconds.
 title: cf.timings.worker_msec
 image: https://developers.cloudflare.com/og-docs.png

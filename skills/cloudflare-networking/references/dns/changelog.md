@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track the latest updates and changes to Cloudflare DNS features.
 title: Changelog
 image: https://developers.cloudflare.com/dns/changelog/og.png?v=24f6b85b1f47d864
@@ -13,6 +16,29 @@ image: https://developers.cloudflare.com/dns/changelog/og.png?v=24f6b85b1f47d864
 # Changelog
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/dns.xml)
+
+## 2026-11-23
+
+
+**DNS settings endpoints remove deprecated Foundation DNS boolean**
+
+Starting today, the [DNS settings endpoints](https://developers.cloudflare.com/api/resources/dns/subresources/settings/) no longer return or accept the deprecated `foundation_dns` boolean for zone settings or account defaults. The rollout is expected to take seven days. Use `nameservers.type: "cloudflare.advanced"` to configure Advanced Nameservers.
+
+Update clients that still read or write `foundation_dns`. Remove handling for the boolean and use the nameserver type instead. The zone settings JSON for [`/zones/{zone_id}/dns_settings`](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/) is:
+
+```json
+{
+  "nameservers": {
+    "type": "cloudflare.advanced"
+  }
+}
+```
+
+Cloudflare will make an equivalent change to [`/accounts/{account_id}/dns_settings`](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/) at the same time.
+
+`PATCH` requests that include `foundation_dns` will be rejected.
+
+This API update does not change your Foundation DNS subscription or whether Advanced Nameservers are enabled on your zones. It does not require a zone migration.
 
 ## 2026-10-30
 

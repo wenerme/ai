@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
 title: Inworld TTS 1.5 Mini
 image: https://developers.cloudflare.com/og-docs.png

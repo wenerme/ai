@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect to Cloudflare WAN with Network Interconnect.
 title: Network Interconnect (CNI)
 image: https://developers.cloudflare.com/cloudflare-wan/network-interconnect/og.png?v=d301aad9dd2fd976

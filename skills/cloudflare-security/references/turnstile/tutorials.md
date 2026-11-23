@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Tutorials for integrating Turnstile with WAF, login pages, and testing.
 title: Tutorials
 image: https://developers.cloudflare.com/turnstile/tutorials/og.png?v=ce5c4ce967021e0f
@@ -16,8 +19,8 @@ View tutorials to help you get started with Turnstile.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/) | 2 days ago | Intermediate |
-| [Fraud detection with Ephemeral IDs](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/) | 10 months ago | Advanced |
+| [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/) | 7 days ago | Intermediate |
+| [Fraud detection with Ephemeral IDs](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/) | 11 months ago | Advanced |
 | [Protect your forms](https://developers.cloudflare.com/turnstile/tutorials/login-pages/) | last year | Beginner |
 | [Exclude Turnstile from E2E tests](https://developers.cloudflare.com/turnstile/tutorials/excluding-turnstile-from-e2e-tests/) | 2 years ago | Intermediate |
 | [Integrate Turnstile, WAF, & Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/) | 2 years ago | Beginner |

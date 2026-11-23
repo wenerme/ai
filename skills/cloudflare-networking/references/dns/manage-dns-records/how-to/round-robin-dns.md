@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Distribute traffic across multiple origins with round-robin DNS.
 title: Round-robin DNS
 image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/og.png?v=e7146a2283739784

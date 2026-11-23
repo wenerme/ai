@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Map out and understand your API attack surface with Discovery.
 title: Discovery
 image: https://developers.cloudflare.com/api-shield/security/api-discovery/og.png?v=aa24516174af0538

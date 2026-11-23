@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure notifications for Network Flow rule matches.
 title: Configure rule notifications
 image: https://developers.cloudflare.com/network-flow/rules/rule-notifications/og.png?v=82c8b0621ebde799

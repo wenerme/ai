@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect web applications with Cloudflare security products.
 title: Security Center
 image: https://developers.cloudflare.com/learning-paths/application-security/security-center/og.png?v=9c2be76b4e573fba

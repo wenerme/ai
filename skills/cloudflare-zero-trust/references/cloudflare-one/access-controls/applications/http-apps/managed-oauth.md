@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.
 title: Managed OAuth
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/og.png?v=e5ce0214649dd6e3

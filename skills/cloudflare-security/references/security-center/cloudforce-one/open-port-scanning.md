@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scan your IP ranges for open ports and receive daily notifications about changes.
 title: Open Port Scanning
 image: https://developers.cloudflare.com/security-center/cloudforce-one/open-port-scanning/og.png?v=6e52454aafd3a575

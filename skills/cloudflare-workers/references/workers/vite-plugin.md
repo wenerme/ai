@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Integrate Vite and Vite+ with the Workers runtime using the Cloudflare Vite plugin.
 title: Vite plugin
 image: https://developers.cloudflare.com/workers/vite-plugin/og.png?v=e1b8c6ccd311410c

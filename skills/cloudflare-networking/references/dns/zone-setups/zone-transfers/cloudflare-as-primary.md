@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare as the primary DNS with zone transfers to secondaries.
 title: Cloudflare as Primary
 image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/og.png?v=0aa4adcddcde5735

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate CSRs for use with custom certificates.
 title: Certificate Signing Requests (CSRs)
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-signing-requests/og.png?v=681702b8b3304089

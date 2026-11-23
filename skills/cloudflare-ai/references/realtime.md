@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build live audio, video, and data applications with Cloudflare Realtime, or broadcast live video with Stream.
 title: Cloudflare Realtime
 image: https://developers.cloudflare.com/realtime/og.png?v=671f80b438177fe8

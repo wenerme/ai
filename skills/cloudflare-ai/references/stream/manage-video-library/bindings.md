@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.
 title: Bind to Workers API
 image: https://developers.cloudflare.com/stream/manage-video-library/bindings/og.png?v=92912e515ec36f0b

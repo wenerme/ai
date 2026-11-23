@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Hardware-backed registration binds a Cloudflare One Client registration to a Secure Enclave or TPM key and authenticates API requests with mTLS.
 title: Hardware-backed registration
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/og.png?v=a545905c62b7852f

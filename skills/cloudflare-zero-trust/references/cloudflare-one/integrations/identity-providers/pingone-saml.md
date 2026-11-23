@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to integrate PingOne as a SAML identity provider with Cloudflare One.
 title: PingOne (SAML)
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingone-saml/og.png?v=06867e9d13ff7785

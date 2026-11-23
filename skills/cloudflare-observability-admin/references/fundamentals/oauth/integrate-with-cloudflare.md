@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: After registering an application, use these endpoints to integrate your OAuth client with Cloudflare.
 title: Integrate your OAuth client with Cloudflare
 image: https://developers.cloudflare.com/fundamentals/oauth/integrate-with-cloudflare/og.png?v=26453964b3ee3799

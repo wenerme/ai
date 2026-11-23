@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.
 title: Troubleshooting
 image: https://developers.cloudflare.com/r2/platform/troubleshooting/og.png?v=abfeac65d862a0d8

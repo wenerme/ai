@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore Cloudflare products that complement AI, including Workers AI, AI Gateway, Vectorize, and more.
 title: Related products
 image: https://developers.cloudflare.com/ai/related-products/og.png?v=e2eabf2d333ed6f6

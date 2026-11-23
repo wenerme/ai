@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.
 title: Metrics and analytics
 image: https://developers.cloudflare.com/kv/observability/metrics-analytics/og.png?v=f351263eeebbc15c

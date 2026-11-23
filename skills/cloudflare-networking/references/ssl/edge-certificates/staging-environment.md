@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test certificate changes in a staging environment before production.
 title: Staging environment
 image: https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/og.png?v=10cc82259a872b90

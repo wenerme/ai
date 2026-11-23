@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy React, Vue, Astro, and other frontend frameworks globally with Git-triggered builds and preview URLs.
 title: Deploy frontend applications
 image: https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/og.png?v=8e5b3d1b10b6f194

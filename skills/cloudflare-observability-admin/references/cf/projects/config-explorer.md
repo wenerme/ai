@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: See how cloudflare.config.ts describes each part of an application, and what each typed field means.
 title: Configuration explorer
 image: https://developers.cloudflare.com/cf/projects/config-explorer/og.png?v=8877be631a13b653

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Analyze HTTP status code distribution per data center.
 title: Status codes
 image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/status-codes/og.png?v=ec5f8027bbabadf9

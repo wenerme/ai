@@ -46,8 +46,8 @@
   },
   "cloudwatch/configure.md": {
     "url": "https://grafana.com/docs/plugins/cloudwatch/latest/configure.md",
-    "size": 20987,
-    "updatedAt": "2026-10-28T00:53:11.436Z"
+    "size": 21355,
+    "updatedAt": "2026-11-23T22:13:19.313Z"
   },
   "cloudwatch/index.md": {
     "url": "https://grafana.com/docs/plugins/cloudwatch/latest.md",
@@ -56,8 +56,8 @@
   },
   "cloudwatch/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/cloudwatch/latest/query-editor.md",
-    "size": 33029,
-    "updatedAt": "2026-10-28T00:53:11.818Z"
+    "size": 33054,
+    "updatedAt": "2026-11-23T22:13:19.646Z"
   },
   "cloudwatch/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/cloudwatch/latest/template-variables.md",

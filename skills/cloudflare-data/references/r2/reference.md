@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: R2 reference documentation covering consistency, data location, security, and more.
 title: Reference
 image: https://developers.cloudflare.com/r2/reference/og.png?v=d6a1f9f97a804730

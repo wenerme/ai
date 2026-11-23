@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How HTTP/3 inspection works in Gateway.
 title: HTTP/3 inspection
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/http3/og.png?v=be723c1755212951

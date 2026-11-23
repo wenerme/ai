@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Smart Shield to protect your origin server, improve content availability, and reduce network latency.
 title: Cloudflare Smart Shield
 image: https://developers.cloudflare.com/smart-shield/og.png?v=19731b13ef08ad5e

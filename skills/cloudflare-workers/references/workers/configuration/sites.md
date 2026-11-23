@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use [Workers Static Assets](/workers/static-assets/) to host full-stack applications instead of Workers Sites. Do not use Workers Sites for new projects.
 title: Workers Sites
 image: https://developers.cloudflare.com/workers/configuration/sites/og.png?v=16280f234fdae7f8

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Workers Issues to coding agents, webhooks, chat services, or incident-management tools based on configurable triggers.
 title: Set up an automation
 image: https://developers.cloudflare.com/workers/observability/issues/automations/og.png?v=0d61505f991cb251

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and manage breakout rooms to split participants into smaller groups in RealtimeKit.
 title: Breakout Rooms
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/breakout-rooms/og.png?v=2c58dd3ea3e8b2cb

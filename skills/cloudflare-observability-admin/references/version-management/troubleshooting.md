@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot common issues with Version Management, including enablement problems, clone failures, and known limitations.
 title: Troubleshooting
 image: https://developers.cloudflare.com/version-management/troubleshooting/og.png?v=ec74c3437266aead

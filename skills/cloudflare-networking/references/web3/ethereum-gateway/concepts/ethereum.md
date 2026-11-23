@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How the Ethereum blockchain and smart contracts work.
 title: Ethereum network
 image: https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/og.png?v=0e58a6d0ef7a04fe

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare products and features supported on the China Network operated by JD Cloud.
 title: Available products and features
 image: https://developers.cloudflare.com/china-network/reference/available-products/og.png?v=f4dac81645ef67d5

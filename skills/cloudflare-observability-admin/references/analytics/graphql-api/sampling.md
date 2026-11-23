@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand sampling in GraphQL Analytics API datasets.
 title: Sampling
 image: https://developers.cloudflare.com/analytics/graphql-api/sampling/og.png?v=71bf3e3733e5b607

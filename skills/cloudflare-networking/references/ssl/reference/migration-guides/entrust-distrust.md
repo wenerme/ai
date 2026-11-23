@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Chrome and Mozilla have announced they will no longer trust Entrust certificates. Read about this change and how you can use Cloudflare to reduce impact.
 title: Entrust distrust by major browsers
 image: https://developers.cloudflare.com/ssl/reference/migration-guides/entrust-distrust/og.png?v=a90551347fcc651c

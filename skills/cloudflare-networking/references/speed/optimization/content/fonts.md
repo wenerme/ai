@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve Google Fonts from your domain to improve privacy and performance.
 title: Cloudflare Fonts
 image: https://developers.cloudflare.com/speed/optimization/content/fonts/og.png?v=8b15ac297f30bdd4

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference Attack Signature Detection fields, example values, Security Rules usage, and Logpush mappings.
 title: Fields
 image: https://developers.cloudflare.com/waf/detections/attack-signature-detection/fields/og.png?v=c2d4bb2067552e8e

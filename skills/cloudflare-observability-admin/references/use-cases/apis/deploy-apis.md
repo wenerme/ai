@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy globally distributed APIs that scale automatically with no servers to manage.
 title: Deploy APIs at the edge
 image: https://developers.cloudflare.com/use-cases/apis/deploy-apis/og.png?v=b5b4850e592b4208

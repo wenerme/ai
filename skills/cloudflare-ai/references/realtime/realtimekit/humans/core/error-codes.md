@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: RealtimeKit error codes for identifying and troubleshooting SDK and API issues.
 title: Error Codes
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/error-codes/og.png?v=d8136809c35e209d

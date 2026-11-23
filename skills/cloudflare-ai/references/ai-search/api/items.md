@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload, list, and manage individual documents within an AI Search instance.
 title: Items
 image: https://developers.cloudflare.com/ai-search/api/items/og.png?v=1ed5803e7c6276d0

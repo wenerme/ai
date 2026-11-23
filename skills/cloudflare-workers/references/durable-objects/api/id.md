@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for DurableObjectId, the 64-digit hex identifier used to address a Durable Object.
 title: Durable Object ID
 image: https://developers.cloudflare.com/durable-objects/api/id/og.png?v=80ff7e30be454827

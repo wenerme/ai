@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Command Code with Cloudflare projects, Cloudflare Skills, the Cloudflare MCP servers, and Wrangler from your terminal.
 title: Command Code + Cloudflare
 image: https://developers.cloudflare.com/agent-setup/command-code/og.png?v=c491d96cb16733a4

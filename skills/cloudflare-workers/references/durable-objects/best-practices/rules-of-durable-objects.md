@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.
 title: Rules of Durable Objects
 image: https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/og.png?v=238433fba2f60d80

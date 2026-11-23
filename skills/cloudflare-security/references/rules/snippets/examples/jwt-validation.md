@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Extract a JWT from the Authorization header, verify its HMAC-SHA256 signature using the WebCrypto API, and validate its claims.
 title: Validate JSON web tokens (JWT)
 image: https://developers.cloudflare.com/rules/snippets/examples/jwt-validation/og.png?v=8d66f2c36b979f6d

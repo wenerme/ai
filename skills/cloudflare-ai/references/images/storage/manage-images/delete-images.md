@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Remove images from Cloudflare Images storage using the dashboard or API.
 title: Delete images
 image: https://developers.cloudflare.com/images/storage/manage-images/delete-images/og.png?v=f81f630393ab85a8

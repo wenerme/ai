@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload, list, and manage documents in AI Search instances using the Items REST API.
 title: REST API
 image: https://developers.cloudflare.com/ai-search/api/items/rest-api/og.png?v=2130d71799ac2da7

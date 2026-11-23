@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Personalize website styling based on localized user time.
 title: "Geolocation: Custom Styling"
 image: https://developers.cloudflare.com/workers/examples/geolocation-custom-styling/og.png?v=6862e2c3f7438877

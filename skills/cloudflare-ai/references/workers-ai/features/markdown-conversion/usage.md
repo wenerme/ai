@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Workers AI Markdown Conversion via a Workers binding or the REST API.
 title: Usage
 image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/og.png?v=b84bffc492cab4ce

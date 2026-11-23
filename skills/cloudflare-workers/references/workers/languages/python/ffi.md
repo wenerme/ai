@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Call JavaScript APIs, bindings, and globals from Python Workers using the Pyodide FFI.
 title: Foreign Function Interface (FFI)
 image: https://developers.cloudflare.com/workers/languages/python/ffi/og.png?v=1e7b7fa5bbbea4f4

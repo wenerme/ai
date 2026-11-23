@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Incrementally migrate objects to R2 on-demand as they are requested, reducing egress fees.
 title: Sippy
 image: https://developers.cloudflare.com/r2/data-migration/sippy/og.png?v=f55250f93d5de1ee

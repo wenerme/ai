@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build Cloudflare Workflows using the Python SDK with WorkflowEntrypoint on the Workers platform.
 title: Python Workflows SDK
 image: https://developers.cloudflare.com/workflows/python/og.png?v=69ce2605c3c89377
@@ -65,7 +68,7 @@ You must add both `python_workflows` and `python_workers` compatibility flags to
 		"python_workflows"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"workflows": [
 		{
 			"name": "workflows-demo",
@@ -82,7 +85,7 @@ name = "hello-python"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers", "python_workflows" ]
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [[workflows]]
 name = "workflows-demo"

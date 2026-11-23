@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Stream the output of a background process in a Linux sandbox while it runs, or wait until it prints a line.
 title: Follow a background process
 image: https://developers.cloudflare.com/sandbox/commands/follow-a-background-process/og.png?v=3ee2d17d926c182c

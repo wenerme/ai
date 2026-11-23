@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Advanced Cloudflare Terraform topics including best practices, provider customization, and remote backends.
 title: Advanced topics
 image: https://developers.cloudflare.com/terraform/advanced-topics/og.png?v=64060609a17e2b9e

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare encrypts and processes HTTP requests across its global network.
 title: Default HTTP Privacy
 image: https://developers.cloudflare.com/data-localization/regional-services/http-requests/og.png?v=3168034fb51fb29d

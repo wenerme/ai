@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect agents to Slack workspaces so they can respond to direct messages, mentions, and threaded conversations.
 title: Slack
 image: https://developers.cloudflare.com/agents/agent-class/communication-channels/slack/og.png?v=08e77a5025b2e16f

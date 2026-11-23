@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Encrypt DNS queries using TLS with 1.1.1.1.
 title: DNS over TLS
 image: https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/og.png?v=94bb69e99eda1094

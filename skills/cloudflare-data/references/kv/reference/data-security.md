@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workers KV encryption at rest, encryption in transit, and Cloudflare compliance certifications.
 title: Data security
 image: https://developers.cloudflare.com/kv/reference/data-security/og.png?v=ac090d30c647746e

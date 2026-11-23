@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Additional fields available in Zaraz custom actions.
 title: Additional fields
 image: https://developers.cloudflare.com/zaraz/custom-actions/additional-fields/og.png?v=ceef82ea16654f0e

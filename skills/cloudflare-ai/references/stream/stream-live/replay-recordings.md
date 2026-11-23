@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Automatically record Cloudflare Stream live broadcasts and retrieve recordings via the API.
 title: Record and replay live streams
 image: https://developers.cloudflare.com/stream/stream-live/replay-recordings/og.png?v=a67db0dbb6005a8b

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.
 title: Enterprise AI Vibe Coding Platform
 image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/og.png?v=e52ba9a5e69af54b

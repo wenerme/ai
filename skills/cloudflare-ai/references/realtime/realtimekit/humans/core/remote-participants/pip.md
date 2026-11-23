@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Render RealtimeKit participant video as a floating Picture-in-Picture tile in the browser.
 title: Picture in Picture
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/remote-participants/pip/og.png?v=d37018f536cfe11e

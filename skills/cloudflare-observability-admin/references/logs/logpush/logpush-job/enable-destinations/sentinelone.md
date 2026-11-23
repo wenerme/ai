@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Push Cloudflare logs to SentinelOne Data Lake.
 title: Enable SentinelOne
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/og.png?v=ccfe5e51a31c8c6f

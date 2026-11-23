@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Release notes and changelog for the RealtimeKit React Native Core SDK.
 title: React Native Core SDK
 image: https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/og.png?v=75db0aa4d16b1d5a

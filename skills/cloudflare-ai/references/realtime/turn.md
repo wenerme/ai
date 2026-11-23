@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Realtime TURN relays WebRTC traffic through NATs and firewalls on a global network.
 title: TURN Service
 image: https://developers.cloudflare.com/realtime/turn/og.png?v=aa9cabbf1f98830d

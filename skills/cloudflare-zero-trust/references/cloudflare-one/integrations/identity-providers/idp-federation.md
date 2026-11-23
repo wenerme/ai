@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.
 title: IdP federation
 image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/og.png?v=6d1342c4ba0a2282

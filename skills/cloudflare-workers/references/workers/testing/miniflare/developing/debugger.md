@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Attach a Node.js debugger to Miniflare for setting breakpoints and inspecting Cloudflare Workers code.
 title: Attaching a Debugger
 image: https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/og.png?v=7249a4a711859c61

@@ -240,6 +240,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`duo_code_suggestions_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/269985) | GitLab Duo Code Suggestions enabled setting on group changed | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/638481) | Group |
 | [`project_suggestion_commit_message_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/83922) | A project has its suggested commit message updated | Yes | GitLab [14.10](https://gitlab.com/gitlab-org/gitlab/-/issues/301124) | Project |
 
 ### Compliance management
@@ -637,6 +638,12 @@ Audit event types belong to the following product categories.
 | [`ml_model_version_destroyed`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/165145) | ML model version destroyed | Yes | GitLab [17.4](https://gitlab.com/gitlab-org/gitlab/-/issues/463215) | Project |
 | [`project_feature_model_registry_access_level_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/138399) | Model registry access level was updated | Yes | GitLab [16.7](https://gitlab.com/gitlab-org/gitlab/-/issues/412734) | Project |
 
+### Model selection
+
+| Type name | Event triggered when | Saved to database | Introduced in | Scope |
+|:----------|:---------------------|:------------------|:--------------|:------|
+| [`auto_model_routing_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272874) | In a group, the Auto model routing setting for GitLab Duo Developer is changed | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/641323) | Group |
+
 ### Not categorized
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
@@ -756,6 +763,7 @@ Audit event types belong to the following product categories.
 | [`project_security_exclusion_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/166511) | A project security exclusion is deleted | Yes | GitLab [17.5](https://gitlab.com/gitlab-org/gitlab/-/issues/492464) | Project |
 | [`project_security_exclusion_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/166511) | A project security exclusion is updated | Yes | GitLab [17.5](https://gitlab.com/gitlab-org/gitlab/-/issues/492464) | Project |
 | [`project_security_setting_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150767) | A project's security setting is updated | Yes | GitLab [17.0](https://gitlab.com/gitlab-org/gitlab/-/issues/457024) | Project |
+| [`secret_detection_raw_tokens_verified`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/272726) | Raw token values are verified through the validity checks API | Yes | GitLab [19.7](https://gitlab.com/gitlab-org/gitlab/-/work_items/637859) | Project |
 | [`skip_secret_push_protection`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147855) | Secret push protection is skipped by the user | Yes | GitLab [16.11](https://gitlab.com/gitlab-org/gitlab/-/issues/441185) | Project |
 | [`spp_generic_scan_error`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243983) | Secret push protection encounters an unexpected scan error | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/604787) | Project |
 | [`spp_invalid_input`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243985) | Secret push protection is skipped due to invalid input | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/604787) | Project |

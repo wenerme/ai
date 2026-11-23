@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.
 title: Refactor a Worker to a Pages Function
 image: https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/og.png?v=e1fbd41e9d230e26

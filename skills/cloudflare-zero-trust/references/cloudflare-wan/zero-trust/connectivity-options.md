@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Zero Trust connectivity options for Cloudflare WAN.
 title: Connectivity options
 image: https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/og.png?v=c167a85b840f3bcb

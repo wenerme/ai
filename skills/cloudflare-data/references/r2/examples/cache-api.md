@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store R2 objects in Cloudflare's cache using the Workers Cache API for faster retrieval.
 title: Use the Cache API
 image: https://developers.cloudflare.com/r2/examples/cache-api/og.png?v=105d9b206a7f65dd

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send the visitor's IP to your origin via True-Client-IP header.
 title: Understanding the True-Client-IP Header
 image: https://developers.cloudflare.com/network/true-client-ip-header/og.png?v=2f1755ffc4f8f5a0

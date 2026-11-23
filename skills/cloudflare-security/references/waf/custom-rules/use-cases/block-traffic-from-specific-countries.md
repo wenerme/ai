@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block traffic from specific countries with a custom rule.
 title: Block traffic from specific countries
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/block-traffic-from-specific-countries/og.png?v=46cfeba865d34afb

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Legal information for the Cloudflare WARP client.
 title: Legal
 image: https://developers.cloudflare.com/warp-client/legal/og.png?v=0e8a095f0d7da914

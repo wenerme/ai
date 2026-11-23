@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a compression rule to set Gzip compression as the preferred compression method for CSV files.
 title: Use Gzip compression for CSV files
 image: https://developers.cloudflare.com/rules/compression-rules/examples/gzip-for-csv/og.png?v=aaff1874a06e7969

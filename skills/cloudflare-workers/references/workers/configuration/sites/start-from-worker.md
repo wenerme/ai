@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add static asset serving to an existing Cloudflare Worker using Workers Sites.
 title: Start from Worker
 image: https://developers.cloudflare.com/workers/configuration/sites/start-from-worker/og.png?v=7b8a2fcfa39f134a

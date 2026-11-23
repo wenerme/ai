@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restore Super Administrator access and resolve common SCIM provisioning issues on your Cloudflare account.
 title: SCIM troubleshooting
 image: https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/troubleshooting/og.png?v=9f4689ba9e6722a7

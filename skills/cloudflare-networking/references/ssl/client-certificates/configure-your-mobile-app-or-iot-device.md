@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This tutorial demonstrates how to configure your Internet-of-things (IoT) device and mobile application to use client certificates with API Shield.
 title: Configure your mobile app or IoT device
 image: https://developers.cloudflare.com/ssl/client-certificates/configure-your-mobile-app-or-iot-device/og.png?v=6ab04df5b7dcb745

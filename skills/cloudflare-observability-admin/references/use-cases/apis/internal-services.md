@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Expose internal APIs and microservices securely without opening inbound firewall ports.
 title: Connect your internal network services
 image: https://developers.cloudflare.com/use-cases/apis/internal-services/og.png?v=6f62f2b80a2f3b57

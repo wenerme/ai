@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Core caching concepts including TTL, revalidation, and cache control.
 title: Concepts
 image: https://developers.cloudflare.com/cache/concepts/og.png?v=ca919d628c1d5b5d

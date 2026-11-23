@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Subscribe to R2 bucket events and Super Slurper events using Cloudflare Queues.
 title: Event subscriptions
 image: https://developers.cloudflare.com/r2/platform/event-subscriptions/og.png?v=acf39737520935cf

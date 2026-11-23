@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Develop with local R2 buckets or remote bindings, seed and inspect test data, and access local public and S3-compatible endpoints.
 title: Local development
 image: https://developers.cloudflare.com/r2/local-development/og.png?v=d7d1eb63e782ec6d
@@ -97,7 +100,7 @@ Create a minimal Wrangler project
      "name": "r2-local",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-11-18"
+     "compatibility_date": "2026-11-23"
    }
    ```
 
@@ -105,7 +108,7 @@ Create a minimal Wrangler project
    name = "r2-local"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    ```
 
 </details>

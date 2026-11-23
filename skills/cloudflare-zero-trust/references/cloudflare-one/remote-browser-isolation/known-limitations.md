@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Known limitations in Browser Isolation.
 title: Known limitations
 image: https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/og.png?v=e0cd5d4bb9cf246e

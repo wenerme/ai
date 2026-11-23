@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about post prefix advertisement monitoring and fine tuning in this guide.
 title: Post prefix advertisement monitoring and fine tuning
 image: https://developers.cloudflare.com/learning-paths/data-center-protection/post-prefix-fine-tuning/og.png?v=da08bd56400286f2

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage internal DNS records in Cloudflare. Learn about supported DNS record types and CNAME flattening.
 title: Manage internal DNS records
 image: https://developers.cloudflare.com/dns/internal-dns/internal-zones/internal-dns-records/og.png?v=694ea01d70058dd9

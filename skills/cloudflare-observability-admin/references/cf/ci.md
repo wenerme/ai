@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run the Cloudflare CLI in continuous integration with an API token, predictable non-interactive behavior, and a build that you deploy once.
 title: Use cf in CI
 image: https://developers.cloudflare.com/cf/ci/og.png?v=2b4a9b1c37269f15

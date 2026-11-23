@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to create a content security rule in the Cloudflare dashboard.
 title: Create a content security rule in the dashboard
 image: https://developers.cloudflare.com/client-side-security/rules/create-dashboard/og.png?v=fd9a0310a36e08ba

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.
 title: Content Security Policies (CSPs)
 image: https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/og.png?v=2ed3c96d7367cd26

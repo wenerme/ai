@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Consider an example use case and the main steps involved in CNAME flattening.
 title: Example diagram
 image: https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/og.png?v=20be76b93a5dd548

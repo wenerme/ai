@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect a website, R2 bucket, or D1 database to your AI Search instance, or upload files directly for indexing.
 title: Data source
 image: https://developers.cloudflare.com/ai-search/configuration/data-source/og.png?v=3fa0474a40543a58

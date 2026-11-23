@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the Email Service Workers API, REST API, and SMTP interface.
 title: API
 image: https://developers.cloudflare.com/email-service/api/og.png?v=8c0c314aa68ce449

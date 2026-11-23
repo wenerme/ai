@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Compare Web Search API providers Ceramic.ai, Exa, and Linkup, including Zero Data Retention terms and list API pricing.
 title: Providers
 image: https://developers.cloudflare.com/web-search/providers/og.png?v=5d5d95a471b9c663

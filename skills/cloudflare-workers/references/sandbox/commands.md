@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run Python code or a test suite, stream command output, keep a process running after the request ends, or open an interactive shell in a Linux sandbox.
 title: Run commands in a sandbox
 image: https://developers.cloudflare.com/sandbox/commands/og.png?v=b1896115d4c0161a

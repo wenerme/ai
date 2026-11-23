@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The built-in, JavaScript-native RPC system built into Workers and Durable Objects.
 title: Remote-procedure call (RPC)
 image: https://developers.cloudflare.com/workers/runtime-apis/rpc/og.png?v=900a62b1263ba25a
@@ -45,7 +48,7 @@ Worker B implements the public method `add(a, b)`:
 	"name": "worker-b",
 	"main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"upload_source_maps": true
 }
 ```
@@ -55,7 +58,7 @@ Worker B implements the public method `add(a, b)`:
 name = "worker-b"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 upload_source_maps = true
 ```
 
@@ -95,7 +98,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 	"name": "worker-a",
 	"main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"upload_source_maps": true,
 	"services": [
 		{
@@ -111,7 +114,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 name = "worker-a"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 upload_source_maps = true
 
 [[services]]

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Browser Run and Puppeteer to read a site's real computed styles, colors, fonts, and logo, then return a structured brand kit from a Worker.
 title: Extract a brand kit from any website
 image: https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/og.png?v=caff3fbc452d084f
@@ -109,7 +112,7 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -130,7 +133,7 @@ name = "brand-kit"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = ["nodejs_compat"]
 
 # Browser Run binding — driven by Puppeteer.

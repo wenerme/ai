@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand GraphQL Analytics API error formats.
 title: Error responses
 image: https://developers.cloudflare.com/analytics/graphql-api/errors/og.png?v=0831ad0117bcd00d
@@ -96,6 +99,8 @@ An `Unauthorized` response means the API token or bearer token is missing, expir
 
 A `403` response means the token does not have the required permissions for the requested account or zone. Verify the token has the **Analytics: Read** permission for the relevant resources. Refer to the [Tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) section for more details.
 
+A `does not have access to the path` error means the dataset is not available for the requested zone or account, for example because of its plan. Cloudflare returns this error even when the token has the correct permissions, and it can be returned with HTTP `200`. For example, a Free zone that queries `firewallEventsAdaptiveGroups` receives this error, while the same query succeeds on a Pro, Business, or Enterprise zone. To check availability, query the dataset's `enabled` field in the [Settings node](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/settings/), or refer to [Dataset availability by plan](https://developers.cloudflare.com/analytics/graphql-api/limits/#dataset-availability-by-plan).
+
 ### Internal server errors
 
 Sample error message:
@@ -113,5 +118,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/errors/#page","headline":"Error responses","description":"Understand GraphQL Analytics API error formats.","url":"https://developers.cloudflare.com/analytics/graphql-api/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/graphql-api/errors/og.png?v=0831ad0117bcd00d","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/errors/#page","headline":"Error responses","description":"Understand GraphQL Analytics API error formats.","url":"https://developers.cloudflare.com/analytics/graphql-api/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/graphql-api/errors/og.png?v=0831ad0117bcd00d","dateModified":"2026-11-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

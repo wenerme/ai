@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Workflows pricing based on CPU time, requests, storage, and steps, included in Workers Free and Paid plans.
 title: Pricing
 image: https://developers.cloudflare.com/workflows/reference/pricing/og.png?v=374ae0431b662c4f

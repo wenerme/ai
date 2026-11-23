@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create, configure, and manage health checks for your origin servers.
 title: Manage Health Checks
 image: https://developers.cloudflare.com/smart-shield/configuration/health-checks/setup/og.png?v=0519a454b246c79b

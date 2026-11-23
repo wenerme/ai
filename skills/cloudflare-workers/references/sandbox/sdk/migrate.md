@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Move a Sandbox SDK 0.x application to a Durable Object class that you write, which starts its own container, and find the page for each 0.x feature that you use.
 title: Migrate from Sandbox SDK 0.x
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/og.png?v=aa4f59a0942cdaab

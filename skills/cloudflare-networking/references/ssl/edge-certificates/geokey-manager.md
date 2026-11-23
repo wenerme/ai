@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control the geographic storage location of your private SSL/TLS keys.
 title: Geo Key Manager
 image: https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/og.png?v=e2117d6652c76bb5

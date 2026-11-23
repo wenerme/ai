@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy fate directly to your own Cloudflare account with Void.
 title: fate
 image: https://developers.cloudflare.com/workers/framework-guides/web-apps/fate/og.png?v=e9c00ff77b7de08b

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect to the Internal DNS Gateway resolver.
 title: Connect to Gateway resolver
 image: https://developers.cloudflare.com/dns/internal-dns/connectivity/og.png?v=a784affe3f64863d

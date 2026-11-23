@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Diagnose Cloud Workload Security proxy startup, client connections, configuration refresh, and unexpected policy decisions.
 title: Troubleshooting
 image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/troubleshooting/og.png?v=c6fad8bb279af90e

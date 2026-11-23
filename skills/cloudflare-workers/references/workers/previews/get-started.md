@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a Worker Preview and configure preview-safe settings with Wrangler.
 title: Get started
 image: https://developers.cloudflare.com/workers/previews/get-started/og.png?v=2eb6967b7d478d0d

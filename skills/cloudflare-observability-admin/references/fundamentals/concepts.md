@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore foundational Cloudflare concepts including DNS, accounts, zones, IP addresses, and how traffic flows through the network.
 title: Concepts
 image: https://developers.cloudflare.com/fundamentals/concepts/og.png?v=0d270c471056d97a

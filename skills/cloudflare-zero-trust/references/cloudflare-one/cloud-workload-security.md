@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Prevent risky changes to your cloud environments by applying policy controls to API requests with Cloud Workload Security.
 title: Cloud Workload Security
 image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/og.png?v=6cec82e3cb406036

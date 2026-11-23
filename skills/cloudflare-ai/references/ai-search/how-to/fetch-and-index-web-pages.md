@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.
 title: Fetch and index single web pages
 image: https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/og.png?v=a5858494109c3db0
@@ -87,7 +90,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-11-18",
+  "compatibility_date": "2026-11-23",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -107,7 +110,7 @@ name = "fetch-and-index"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [browser]
 binding = "BROWSER"

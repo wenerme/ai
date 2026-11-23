@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build a complete video hosting and delivery solution with Cloudflare Stream.
 title: Upload, encode, and deliver videos
 image: https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/og.png?v=9f122c24ea317fb6

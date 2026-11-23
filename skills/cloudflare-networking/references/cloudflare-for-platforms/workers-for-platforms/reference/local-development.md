@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test your dynamic dispatch Worker locally while connecting to deployed user Workers in a Workers for Platforms namespace.
 title: Local development
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/local-development/og.png?v=e7fa5fdc4378e7e8

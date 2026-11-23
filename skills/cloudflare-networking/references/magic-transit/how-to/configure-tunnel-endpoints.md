@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to configure IPsec or GRE tunnels for Magic Transit.
 title: Configure tunnel endpoints
 image: https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/og.png?v=3cabe2e069b51153

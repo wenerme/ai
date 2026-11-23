@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create WAF custom rules using the Rulesets API.
 title: Create a custom rule via API
 image: https://developers.cloudflare.com/waf/custom-rules/create-api/og.png?v=9b8bef602046ca43

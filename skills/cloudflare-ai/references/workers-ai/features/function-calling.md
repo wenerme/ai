@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable Workers AI models to execute functions and interact with external APIs.
 title: Function calling
 image: https://developers.cloudflare.com/workers-ai/features/function-calling/og.png?v=2747bbb068ab45ae
@@ -18,7 +21,7 @@ In essence, function calling allows you to perform actions with LLMs by executin
 
 ## How can I use function calling?
 
-Workers AI has [embedded function calling](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/) which allows you to execute function code alongside your inference calls. We have a package called [`@cloudflare/ai-utils` ↗︎](https://www.npmjs.com/package/@cloudflare/ai-utils) to help facilitate this, which we have open-sourced on [Github ↗︎](https://github.com/cloudflare/ai-utils).
+Workers AI has [embedded function calling](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/) which allows you to execute function code alongside your inference calls. We have a package called [`@cloudflare/ai-utils` ↗︎](https://www.npmjs.com/package/@cloudflare/ai-utils) to help facilitate this, which we have open-sourced on [GitHub ↗︎](https://github.com/cloudflare/ai-utils).
 
 For industry-standard function calling, take a look at the documentation on [Traditional Function Calling](https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/).
 
@@ -44,7 +47,7 @@ export default {
 			env.AI,
 			"@hf/nousresearch/hermes-2-pro-mistral-7b",
 			{
-				messages: [{ role: "user", content: "Who is Cloudflare on github?" }],
+				messages: [{ role: "user", content: "Who is Cloudflare on GitHub?" }],
 				tools: [
 					// You can pass the OpenAPI spec link or contents directly
 					...(await createToolsFromOpenAPISpec(
@@ -115,7 +118,7 @@ export default {
 				const url = `https://api.github.com/users/${username}`;
 				res = await fetch(url, {
 					headers: {
-						// Github API requires a User-Agent header
+						// GitHub API requires a User-Agent header
 						"User-Agent":
 							"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
 					},
@@ -179,5 +182,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/#page","headline":"Function calling","description":"Enable Workers AI models to execute functions and interact with external APIs.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/features/function-calling/og.png?v=2747bbb068ab45ae","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["LLM"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/features/function-calling/#page","headline":"Function calling","description":"Enable Workers AI models to execute functions and interact with external APIs.","url":"https://developers.cloudflare.com/workers-ai/features/function-calling/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/features/function-calling/og.png?v=2747bbb068ab45ae","dateModified":"2026-11-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["LLM"]}
 ```

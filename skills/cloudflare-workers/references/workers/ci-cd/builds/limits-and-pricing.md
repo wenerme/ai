@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Limits & pricing for Workers Builds
 title: Limits & pricing
 image: https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/og.png?v=db53c6e993192d49

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add and configure a Flagship binding in your Wrangler configuration file to evaluate feature flags in a Worker.
 title: Configuration
 image: https://developers.cloudflare.com/flagship/configuration/og.png?v=ef67fa3a4f19afc7

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve common Cloudflare Tunnel connection and configuration issues.
 title: Troubleshooting
 image: https://developers.cloudflare.com/tunnel/troubleshooting/og.png?v=bbf58d2607cabecc

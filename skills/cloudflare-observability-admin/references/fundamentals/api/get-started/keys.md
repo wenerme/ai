@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.
 title: Get Global API key (legacy)
 image: https://developers.cloudflare.com/fundamentals/api/get-started/keys/og.png?v=0417b6e6cc593c53

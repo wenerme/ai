@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Filter and configure Network Analytics dashboard data.
 title: Adjust the displayed data
 image: https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/og.png?v=8eb3533c715ad2c6

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the S3Mount class in @cloudflare/sandbox, which mounts an S3-compatible bucket or prefix in a running container.
 title: S3Mount API
 image: https://developers.cloudflare.com/sandbox/reference/s3-mounts/og.png?v=fedc54e102484047

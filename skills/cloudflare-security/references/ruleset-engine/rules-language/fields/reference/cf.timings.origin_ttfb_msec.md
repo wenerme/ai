@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The round-trip time (RTT) between the Cloudflare global network and the origin server in milliseconds.
 title: cf.timings.origin_ttfb_msec
 image: https://developers.cloudflare.com/og-docs.png

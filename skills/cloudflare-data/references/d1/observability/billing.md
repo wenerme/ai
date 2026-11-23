@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track D1 billing metrics including rows read, rows written, and storage usage across your account.
 title: Billing
 image: https://developers.cloudflare.com/d1/observability/billing/og.png?v=fcca00d188f82b55

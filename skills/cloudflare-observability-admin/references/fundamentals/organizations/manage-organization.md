@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage your Cloudflare Organization — refer to the guide for your Organization type.
 title: Manage organizations
 image: https://developers.cloudflare.com/fundamentals/organizations/manage-organization/og.png?v=5fe3103dd4a50b8f

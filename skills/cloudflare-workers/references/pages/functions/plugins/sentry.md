@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Capture and log exceptions in Pages Functions using the Sentry Pages Plugin.
 title: Sentry
 image: https://developers.cloudflare.com/pages/functions/plugins/sentry/og.png?v=7bc37c1c53e4871e

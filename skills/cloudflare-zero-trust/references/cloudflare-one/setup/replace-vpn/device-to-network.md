@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect a remote device to a private network using Cloudflare Tunnel and the Cloudflare One Client.
 title: Device to network
 image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-network/og.png?v=c1e63d3eb863ff71

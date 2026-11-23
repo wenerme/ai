@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Read about the various RSS feeds available for Cloudflare's changelogs.
 title: Available RSS Feeds
 image: https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/og.png?v=42762887eb428f77

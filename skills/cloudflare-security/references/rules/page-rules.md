@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Trigger actions based on URL patterns with Page Rules (deprecated).
 title: Page Rules
 image: https://developers.cloudflare.com/rules/page-rules/og.png?v=83a792720739036a

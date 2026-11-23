@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Cloudflare dashboard to create exceptions that skip the execution of WAF managed rulesets or specific ruleset rules.
 title: Add an exception in the dashboard
 image: https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/og.png?v=e3ed79a634b3ab29

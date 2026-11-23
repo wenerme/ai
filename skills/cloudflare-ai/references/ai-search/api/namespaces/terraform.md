@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage AI Search namespaces as code with the Cloudflare Terraform provider.
 title: Terraform
 image: https://developers.cloudflare.com/ai-search/api/namespaces/terraform/og.png?v=21a4609a22c4bc19

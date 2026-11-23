@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Web Assets to review operations, labels, matched traffic, learned schemas, and risks.
 title: Get started
 image: https://developers.cloudflare.com/security/web-assets/get-started/og.png?v=a077270071d6ac1d

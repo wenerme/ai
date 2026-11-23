@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose the right edge certificate type for your domain based on your use case.
 title: Edge certificates
 image: https://developers.cloudflare.com/ssl/edge-certificates/og.png?v=061a28748ea121a7

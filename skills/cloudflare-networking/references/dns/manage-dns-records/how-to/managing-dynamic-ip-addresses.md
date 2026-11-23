@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Update DNS records automatically for dynamic IP addresses.
 title: Dynamically update DNS records
 image: https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/og.png?v=7951fef7f1076411

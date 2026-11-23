@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run your own Playwright, Puppeteer, or Chrome DevTools Protocol (CDP) automation in a Browser Run session with a single API request, using the /script endpoints.
 title: Custom scripts
 image: https://developers.cloudflare.com/browser-run/script/og.png?v=448105e9a58f660d
@@ -222,7 +225,7 @@ From a [Worker](https://developers.cloudflare.com/workers/), configure a [browse
   "name": "browser-script-example",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-11-20",
+  "compatibility_date": "2026-11-23",
   "browser": {
     "binding": "BROWSER"
   }
@@ -233,7 +236,7 @@ From a [Worker](https://developers.cloudflare.com/workers/), configure a [browse
 name = "browser-script-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-20"
+compatibility_date = "2026-11-23"
 
 [browser]
 binding = "BROWSER"

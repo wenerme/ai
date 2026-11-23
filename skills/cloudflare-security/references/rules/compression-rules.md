@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Customize response compression algorithms for specific content types and file extensions.
 title: Compression Rules
 image: https://developers.cloudflare.com/rules/compression-rules/og.png?v=f1ef0d1f81d1c46e

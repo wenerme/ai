@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Write integration tests for Cloudflare Workers with the createTestHarness API in Wrangler.
 title: Integration test harness
 image: https://developers.cloudflare.com/workers/testing/test-harness/og.png?v=5e0eaafcab8795f3

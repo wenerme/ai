@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect users from threats on the Internet with Gateway DNS and HTTP filtering.
 title: Secure your company's Internet access
 image: https://developers.cloudflare.com/use-cases/company-security/internet-access/og.png?v=214be72568495db6

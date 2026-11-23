@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage the users, devices, and applications that make up your Cloudflare One organization.
 title: Team and resources
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/og.png?v=6dd1d26186b71819

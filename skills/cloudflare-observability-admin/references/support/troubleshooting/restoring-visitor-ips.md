@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restore original visitor IP addresses at your origin.
 title: Restoring Visitor IPs
 image: https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/og.png?v=bec9e03b88871d0f

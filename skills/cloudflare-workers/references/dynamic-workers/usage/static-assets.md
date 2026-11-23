@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve static files alongside Dynamic Worker code.
 title: Static assets
 image: https://developers.cloudflare.com/dynamic-workers/usage/static-assets/og.png?v=f052a6b97475ea95
@@ -218,7 +221,7 @@ export default {
 				modules: {
 					"index.js": { js: serverCode },
 				},
-				compatibilityDate: "2026-11-18",
+				compatibilityDate: "2026-11-23",
 				env: {
 					ASSETS: ctx.exports.AssetBinding({
 						props: { projectId },

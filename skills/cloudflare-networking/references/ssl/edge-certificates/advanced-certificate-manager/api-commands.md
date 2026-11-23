@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API commands for managing advanced certificates.
 title: API commands
 image: https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/api-commands/og.png?v=ae3be2b9666e4a3e

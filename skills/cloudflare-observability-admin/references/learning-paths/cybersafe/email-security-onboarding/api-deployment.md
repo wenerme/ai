@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about deploy via microsoft graph api in this guide.
 title: Deploy via Microsoft Graph API
 image: https://developers.cloudflare.com/learning-paths/cybersafe/email-security-onboarding/api-deployment/og.png?v=09ffad7392c32837

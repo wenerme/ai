@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review which AI model types AI Gateway Guardrails evaluates for text generation, embeddings, and unknown models.
 title: Supported model types
 image: https://developers.cloudflare.com/ai-gateway/features/guardrails/supported-model-types/og.png?v=229bda1a6dff72be

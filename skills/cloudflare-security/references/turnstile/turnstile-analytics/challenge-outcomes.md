@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View challenge outcome metrics for your Turnstile widgets.
 title: Challenge outcome
 image: https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge-outcomes/og.png?v=b37248e7c7385297

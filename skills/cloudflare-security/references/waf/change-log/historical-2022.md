@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Changes to WAF managed rulesets done in 2022.
 title: Historical (2022)
 image: https://developers.cloudflare.com/waf/change-log/historical-2022/og.png?v=323f0ae9d5e09854

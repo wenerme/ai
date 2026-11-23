@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Mitigate DDoS attacks automatically with no caps on attack size, no manual intervention, and no extra cost.
 title: Mitigate DDoS attacks
 image: https://developers.cloudflare.com/use-cases/application-security/ddos/og.png?v=b194c8f2cb8c8fa4

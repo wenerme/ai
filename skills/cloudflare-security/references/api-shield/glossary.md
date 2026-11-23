@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Definitions for terms used across API Shield documentation.
 title: Glossary
 image: https://developers.cloudflare.com/api-shield/glossary/og.png?v=c2b1d9918065d5bb

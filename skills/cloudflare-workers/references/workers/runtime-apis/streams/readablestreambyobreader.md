@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use ReadableStreamBYOBReader in Workers to read streamed data into your own buffer.
 title: ReadableStream BYOBReader
 image: https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/og.png?v=1764ea6fd8a7f43d

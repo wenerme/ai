@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand ISP throttling affecting Russian users.
 title: Potential disruption of services for Russian users
 image: https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/service-disruption/og.png?v=1dd94ce6481f00dc

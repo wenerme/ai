@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict Durable Objects to specific jurisdictions or provide location hints to control where data is stored and processed.
 title: Data location
 image: https://developers.cloudflare.com/durable-objects/reference/data-location/og.png?v=247416389a3799e5

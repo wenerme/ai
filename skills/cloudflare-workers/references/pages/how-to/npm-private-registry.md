@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use custom npm registries and private dependencies in your Cloudflare Pages builds.
 title: Install private packages
 image: https://developers.cloudflare.com/pages/how-to/npm-private-registry/og.png?v=6a4a387133d6280c

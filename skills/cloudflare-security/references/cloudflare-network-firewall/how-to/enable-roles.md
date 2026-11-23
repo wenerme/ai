@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable user roles for Network Firewall management.
 title: Enable user roles
 image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-roles/og.png?v=39c6807a8367a0e1

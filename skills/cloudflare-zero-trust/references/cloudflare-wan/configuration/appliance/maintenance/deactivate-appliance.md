@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deactivate a Cloudflare One Appliance.
 title: Deactivate Cloudflare One Appliance
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/deactivate-appliance/og.png?v=de1b86336b539c0d

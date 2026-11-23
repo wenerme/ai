@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Basin Catalog automates table maintenance
 title: Table maintenance
 image: https://developers.cloudflare.com/basin-catalog/table-maintenance/og.png?v=5c86b428b084f346

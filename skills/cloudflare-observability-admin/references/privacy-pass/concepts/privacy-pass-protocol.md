@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The Privacy Pass roles, the issuance and redemption flow.
 title: Privacy Pass Protocol
 image: https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/og.png?v=68f43ddeb8fd1e9a

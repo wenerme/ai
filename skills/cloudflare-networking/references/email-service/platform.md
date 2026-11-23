@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review Email Service limits, pricing, and product changes.
 title: Platform
 image: https://developers.cloudflare.com/email-service/platform/og.png?v=4f44671589aa54bb

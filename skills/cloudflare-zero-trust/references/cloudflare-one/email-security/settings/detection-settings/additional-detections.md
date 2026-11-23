@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Additional detections in Email Security.
 title: Additional detections
 image: https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/additional-detections/og.png?v=9ba7f19a4a13db32

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Start building Agents on Cloudflare. Run the Pi harness in a Durable Object, learn the Agents SDK Lifecycle, or add an agent to a project you already have.
 title: Getting started
 image: https://developers.cloudflare.com/agents/getting-started/og.png?v=96bbb02c04b906b3

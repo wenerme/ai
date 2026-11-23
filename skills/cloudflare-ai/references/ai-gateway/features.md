@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore AI Gateway features including caching, rate limiting, guardrails, routing, and data loss prevention.
 title: Features
 image: https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db4519c9a8

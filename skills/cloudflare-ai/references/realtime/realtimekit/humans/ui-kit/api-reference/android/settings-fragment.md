@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: API reference for RtkSettingsFragment component (Android Library)
 title: RtkSettingsFragment
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/android/settings-fragment/og.png?v=864b704117d23266

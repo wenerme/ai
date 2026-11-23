@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create cache rules in the Cloudflare dashboard.
 title: Create a rule in the dashboard
 image: https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/og.png?v=46012c70eae91f05

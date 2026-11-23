@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage API operations through the Web Assets dashboard.
 title: Endpoint Management
 image: https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/og.png?v=c356a5f151d9e5fe

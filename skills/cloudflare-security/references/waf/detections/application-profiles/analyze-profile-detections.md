@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Investigate profile conformance and sampled violation details.
 title: Analyze profile detections
 image: https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/og.png?v=3d8d27629235805a

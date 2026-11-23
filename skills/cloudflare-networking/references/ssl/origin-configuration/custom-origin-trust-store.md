@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Custom Origin Trust Store allows you to upload certificate authorities (CAs) that Cloudflare will use to authenticate connections to your origin server.
 title: Custom Origin Trust Store
 image: https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/og.png?v=3dab7a8d130a1aca

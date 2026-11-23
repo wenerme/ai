@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Respond to active DDoS attacks.
 title: What to do when under attack
 image: https://developers.cloudflare.com/learning-paths/surge-readiness/security/enable-iaum/og.png?v=fdc483cde57479f4

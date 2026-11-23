@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload your prebuilt assets to Pages and deploy them via the Wrangler CLI or the Cloudflare dashboard.
 title: Direct Upload
 image: https://developers.cloudflare.com/pages/get-started/direct-upload/og.png?v=d4cfca16cf496e79

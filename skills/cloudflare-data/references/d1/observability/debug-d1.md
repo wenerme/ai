@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Capture exceptions and log error messages returned from D1 database queries.
 title: Debug D1
 image: https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a486104ffa018f

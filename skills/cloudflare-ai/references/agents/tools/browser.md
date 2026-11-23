@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Give your agent a browser that remembers tabs, cookies, and logins between turns, and can open sites your agent serves itself. Use it with Pi Durable, the AI SDK, or another harness.
 title: Browser
 image: https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf14142d0
@@ -163,7 +166,7 @@ Configure the model, browser, Worker Loader, and Durable Object bindings:
 	"name": "persistent-browser-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-21",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI" },
 	"browser": { "binding": "BROWSER" },
@@ -179,7 +182,7 @@ Configure the model, browser, Worker Loader, and Durable Object bindings:
 name = "persistent-browser-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-21"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

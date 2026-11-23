@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage which origins Cloudflare Images can use as the source for image transformations.
 title: Define source origins
 image: https://developers.cloudflare.com/images/optimization/transformations/sources/og.png?v=7a75418215992362

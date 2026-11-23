@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Limits for Cloudflare Workflows, including maximum steps, payload sizes, and instance concurrency.
 title: Limits
 image: https://developers.cloudflare.com/workflows/reference/limits/og.png?v=4b832dd62c6be7cf

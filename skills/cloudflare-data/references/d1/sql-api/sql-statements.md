@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.
 title: SQL statements
 image: https://developers.cloudflare.com/d1/sql-api/sql-statements/og.png?v=2d5067165663075d

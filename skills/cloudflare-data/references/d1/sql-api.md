@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: D1 SQL API reference covering supported SQL statements, foreign keys, and JSON query functions.
 title: SQL API
 image: https://developers.cloudflare.com/d1/sql-api/og.png?v=b47ccd445ca55c30

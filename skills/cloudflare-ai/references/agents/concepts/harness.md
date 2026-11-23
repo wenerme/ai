@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A harness is the agent loop around a model. Learn what a harness does, how its brain and hands split across Cloudflare, and which harness to start with.
 title: Harness
 image: https://developers.cloudflare.com/agents/concepts/harness/og.png?v=f193347fb81f303f

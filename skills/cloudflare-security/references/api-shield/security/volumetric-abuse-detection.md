@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up adaptive, per-session rate limiting for API endpoints with Volumetric Abuse Detection.
 title: Volumetric Abuse Detection
 image: https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/og.png?v=894010f6b76bafbd

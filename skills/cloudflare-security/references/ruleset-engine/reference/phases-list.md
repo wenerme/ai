@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Complete list of phases available in the Ruleset Engine.
 title: Phases list
 image: https://developers.cloudflare.com/ruleset-engine/reference/phases-list/og.png?v=06ebf58db3f32266

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore the known issues associated with the Workers Vitest integration.
 title: Known issues
 image: https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/og.png?v=a1b1f93e8b0c7037

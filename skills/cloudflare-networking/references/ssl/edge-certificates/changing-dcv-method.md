@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand when domain control validation is required and when Cloudflare handles it automatically.
 title: Domain control validation (DCV)
 image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/og.png?v=4a7e0cb86134b35c

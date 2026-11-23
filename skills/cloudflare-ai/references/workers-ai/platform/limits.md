@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Rate limits for Workers AI inference requests, organized by task type and model.
 title: Limits
 image: https://developers.cloudflare.com/workers-ai/platform/limits/og.png?v=f48e357380e3ed94

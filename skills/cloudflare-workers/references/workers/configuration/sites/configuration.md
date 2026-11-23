@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Workers Sites settings for static asset hosting in your Wrangler configuration file.
 title: Workers Sites configuration
 image: https://developers.cloudflare.com/workers/configuration/sites/configuration/og.png?v=55c990b69546e989

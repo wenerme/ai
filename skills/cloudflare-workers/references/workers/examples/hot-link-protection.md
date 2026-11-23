@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block other websites from linking to your content. This is useful for protecting images.
 title: Hot-link protection
 image: https://developers.cloudflare.com/workers/examples/hot-link-protection/og.png?v=07917c743c5c9752

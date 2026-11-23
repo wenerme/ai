@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "Miniflare will always upgrade Web Socket connections. The Worker must respond\nwith a status 101 Switching Protocols response including a webSocket. For\nexample, the Worker below implements an echo WebSocket server:"
 title: WebSockets
 image: https://developers.cloudflare.com/workers/testing/miniflare/core/web-sockets/og.png?v=49b51a22cdccba75

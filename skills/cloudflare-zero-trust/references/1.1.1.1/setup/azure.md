@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure 1.1.1.1 on Microsoft Azure virtual networks.
 title: Azure
 image: https://developers.cloudflare.com/1.1.1.1/setup/azure/og.png?v=c05dd93dfd38c8d6

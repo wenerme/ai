@@ -3147,6 +3147,8 @@ paths:
           description: Created
         '401':
           description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
           description: Not found
         '429':
@@ -3202,6 +3204,8 @@ paths:
           description: Created
         '401':
           description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
           description: Not found
         '429':
@@ -26512,7 +26516,8 @@ paths:
         in: query
       - name: search
         required: false
-        description: Keyword to filter labels by.
+        description: Keyword to filter labels by. Returns labels with an exact, case-insensitive
+          name match first.
         schema:
           type: string
           nullable: true
@@ -26898,7 +26903,8 @@ paths:
         in: query
       - name: search
         required: false
-        description: Keyword to filter labels by.
+        description: Keyword to filter labels by. Returns labels with an exact, case-insensitive
+          name match first.
         schema:
           type: string
           nullable: true
@@ -88568,6 +88574,9 @@ components:
         namespace_id:
           type: integer
           description: ID of the associated namespace. `null` if not set.
+        service_account_id:
+          type: integer
+          description: ID of the service account the flow runs as. `null` if not set.
         agent_privileges:
           type: array
           description: Privilege IDs assigned to the agent.
@@ -89653,6 +89662,14 @@ components:
         lock_duo_features_enabled:
           type: boolean
           description: If `true`, the GitLab Duo features enabled setting is enforced
+            for all subgroups. Premium and Ultimate only.
+        duo_code_suggestions_enabled:
+          type: boolean
+          description: If `true`, GitLab Duo Code Suggestions is turned on for the
+            group. Premium and Ultimate only.
+        lock_duo_code_suggestions_enabled:
+          type: boolean
+          description: If `true`, the Code Suggestions enabled setting is enforced
             for all subgroups. Premium and Ultimate only.
         auto_duo_code_review_enabled:
           type: string
@@ -98940,6 +98957,8 @@ components:
           type: string
         create_organization_api_limit:
           type: string
+        delete_merged_branches_limit:
+          type: string
         cross_reference_checks_limit:
           type: string
         user_contributed_projects_api_limit:
@@ -99318,6 +99337,10 @@ components:
           type: string
         duo_scheduled_automations_availability:
           type: string
+        duo_code_suggestions_enabled:
+          type: boolean
+        duo_code_suggestions_availability:
+          type: string
         duo_custom_agents_enabled:
           type: boolean
         duo_custom_agents_availability:
@@ -99637,6 +99660,8 @@ components:
         lock_duo_custom_flows_enabled:
           type: boolean
         lock_duo_external_agents_enabled:
+          type: boolean
+        lock_duo_code_suggestions_enabled:
           type: boolean
         duo_workflows_default_image_registry:
           type: string
@@ -110689,6 +110714,14 @@ components:
         lock_duo_features_enabled:
           type: boolean
           description: If `true`, the GitLab Duo features enabled setting is enforced
+            for all subgroups. Premium and Ultimate only.
+        duo_code_suggestions_enabled:
+          type: boolean
+          description: If `true`, GitLab Duo Code Suggestions is turned on for the
+            group. Premium and Ultimate only.
+        lock_duo_code_suggestions_enabled:
+          type: boolean
+          description: If `true`, the Code Suggestions enabled setting is enforced
             for all subgroups. Premium and Ultimate only.
         auto_duo_code_review_enabled:
           type: string
@@ -121908,6 +121941,19 @@ components:
           description: If `true`, enforces the scheduled automations enabled setting
             for all groups.
           nullable: true
+        duo_code_suggestions_enabled:
+          type: boolean
+          description: If `true`, allows GitLab Duo Code Suggestions for the instance.
+            Defaults to `true`. GitLab Self-Managed, Premium and Ultimate only.
+          nullable: true
+        lock_duo_code_suggestions_enabled:
+          type: boolean
+          description: If `true`, enforces the Code Suggestions enabled setting for
+            all groups. Always `true` when `duo_code_suggestions_enabled` is `false`.
+            Becomes `false` when `duo_code_suggestions_enabled` changes to `true`,
+            unless the same request sets this attribute. GitLab Self-Managed, Premium
+            and Ultimate only.
+          nullable: true
         duo_workflows_default_image_registry:
           type: string
           description: Default container registry for Duo Agent Platform foundational
@@ -122522,6 +122568,9 @@ components:
         create_organization_api_limit:
           type: string
           nullable: true
+        delete_merged_branches_limit:
+          type: string
+          nullable: true
         cross_reference_checks_limit:
           type: string
           nullable: true
@@ -122751,6 +122800,9 @@ components:
           type: string
           nullable: true
         duo_scheduled_automations_availability:
+          type: string
+          nullable: true
+        duo_code_suggestions_availability:
           type: string
           nullable: true
         duo_custom_agents_availability:
@@ -144792,6 +144844,10 @@ components:
           type: boolean
           description: Allow GitLab Duo flows in this group to run on a schedule
           nullable: true
+        duo_code_suggestions_availability:
+          type: boolean
+          description: Enable GitLab Duo Code Suggestions for this group
+          nullable: true
         duo_custom_agents_availability:
           type: boolean
           description: Enable GitLab Duo custom agents for this group
@@ -144922,6 +144978,11 @@ components:
               description: Whether flows that run on GitLab Runner fail when the execution
                 environment sandbox is unavailable. Applies only to top-level groups
                 on GitLab.com.
+              nullable: true
+            auto_model_routing_enabled:
+              type: boolean
+              description: Whether Auto model routing is turned on for Duo Developer.
+                Can only be set on top-level groups. GitLab.com only.
               nullable: true
             minimum_access_level_execute:
               type: integer
@@ -145226,6 +145287,10 @@ components:
           type: boolean
           description: Allow GitLab Duo flows in this group to run on a schedule
           nullable: true
+        duo_code_suggestions_availability:
+          type: boolean
+          description: Enable GitLab Duo Code Suggestions for this group
+          nullable: true
         duo_custom_agents_availability:
           type: boolean
           description: Enable GitLab Duo custom agents for this group
@@ -145356,6 +145421,11 @@ components:
               description: Whether flows that run on GitLab Runner fail when the execution
                 environment sandbox is unavailable. Applies only to top-level groups
                 on GitLab.com.
+              nullable: true
+            auto_model_routing_enabled:
+              type: boolean
+              description: Whether Auto model routing is turned on for Duo Developer.
+                Can only be set on top-level groups. GitLab.com only.
               nullable: true
             minimum_access_level_execute:
               type: integer

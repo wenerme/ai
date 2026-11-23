@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Expose tools from an existing MCP connection to models through a durable Code Mode runtime.
 title: Use MCP tools with Code Mode
 image: https://developers.cloudflare.com/agents/tools/codemode/mcp/og.png?v=e41ce0ad4f097800

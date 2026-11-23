@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare WAN's different analytic options for an overview of the performance of your sites, or to troubleshoot potential issues.
 title: Analytics
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/og.png?v=3493ed93770e9586

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step Cloudflare Terraform tutorials from initialization to advanced configuration.
 title: Tutorials
 image: https://developers.cloudflare.com/terraform/tutorial/og.png?v=670d746c3066471a

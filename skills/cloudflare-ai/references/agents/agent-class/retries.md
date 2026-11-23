@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Retry failed operations with exponential backoff and jitter using the built-in retry system in the Agents SDK.
 title: Retries
 image: https://developers.cloudflare.com/agents/agent-class/retries/og.png?v=059fa67a7faaa30f

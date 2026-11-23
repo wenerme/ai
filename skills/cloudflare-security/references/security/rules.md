@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Security rules perform security actions on incoming requests that match specified filters.
 title: Security rules
 image: https://developers.cloudflare.com/security/rules/og.png?v=28208f8b98d2defd

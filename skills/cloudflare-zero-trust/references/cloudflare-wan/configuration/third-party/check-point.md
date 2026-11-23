@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Turn off IPsec anti-replay protection on a Check Point Security Gateway for use with Cloudflare WAN anycast IPsec tunnels. Requires administrator access to SmartConsole, GuiDBedit, and expert-mode access to the Security Gateway.
 title: Check Point
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/check-point/og.png?v=283d855bcc37964a

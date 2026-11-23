@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Publish to a Queue directly via HTTP and Workers.
 title: Publish to a Queue via HTTP
 image: https://developers.cloudflare.com/queues/examples/publish-to-a-queue-via-http/og.png?v=bccf944edc147a09

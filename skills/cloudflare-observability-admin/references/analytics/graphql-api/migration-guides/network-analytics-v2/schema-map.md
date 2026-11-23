@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Map Network Analytics v1 fields to v2 fields.
 title: NAv1 to NAv2 schema map
 image: https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/schema-map/og.png?v=4f217879f7043594

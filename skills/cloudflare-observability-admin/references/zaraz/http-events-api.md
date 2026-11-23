@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send server-side events to Zaraz with the HTTP Events API.
 title: HTTP Events API
 image: https://developers.cloudflare.com/zaraz/http-events-api/og.png?v=071fdaa9390b2647

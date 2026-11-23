@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to troubleshoot ERR_TOO_MANY_REDIRECTS when using Cloudflare SSL/TLS.
 title: ERR_TOO_MANY_REDIRECTS
 image: https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/og.png?v=8a54f5aaa14afbbb

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.
 title: Cloudflare IP addresses
 image: https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/og.png?v=d4afec393e52b01b

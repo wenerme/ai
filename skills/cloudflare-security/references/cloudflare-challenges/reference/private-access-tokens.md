@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Private Access Tokens reduce challenge steps for visitors with valid tokens.
 title: Private Access Tokens (PAT)
 image: https://developers.cloudflare.com/cloudflare-challenges/reference/private-access-tokens/og.png?v=d16670f63ad98d1f

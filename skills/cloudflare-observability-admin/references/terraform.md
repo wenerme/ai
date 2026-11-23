@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage your Cloudflare configuration as infrastructure as code using the Terraform provider.
 title: Cloudflare Terraform provider
 image: https://developers.cloudflare.com/terraform/og.png?v=4d04801e1994a2fc

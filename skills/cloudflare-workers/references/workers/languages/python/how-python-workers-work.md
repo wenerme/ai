@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Python Workers run via Pyodide in V8 isolates and how local development works.
 title: How Python Workers Work
 image: https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/og.png?v=4d71123593cfb58c
@@ -36,7 +39,7 @@ class Default(WorkerEntrypoint):
 	"name": "hello-world-python-worker",
 	"main": "src/entry.py",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18"
+	"compatibility_date": "2026-11-23"
 }
 ```
 
@@ -45,7 +48,7 @@ class Default(WorkerEntrypoint):
 name = "hello-world-python-worker"
 main = "src/entry.py"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 ```
 
 When you run `uv run pywrangler dev` to do local dev, the Workers runtime will:

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Add, set, or remove HTTP response headers with Transform Rules.
 title: Response Header Transform Rules
 image: https://developers.cloudflare.com/rules/transform/response-header-modification/og.png?v=1b973be47066b806

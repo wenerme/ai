@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.
 title: Gemini 2.5 Flash
 image: https://developers.cloudflare.com/og-docs.png

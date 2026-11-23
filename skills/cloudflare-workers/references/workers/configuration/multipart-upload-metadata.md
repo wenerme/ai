@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Define Workers configuration in JSON metadata for multipart form-data script uploads.
 title: Multipart upload metadata
 image: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/og.png?v=e03a6759be39ccfb

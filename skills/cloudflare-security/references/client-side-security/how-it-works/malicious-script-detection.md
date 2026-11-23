@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare analyzes the JavaScript code of the scripts loaded by your website visitors, using threat intelligence and machine learning (including LLMs) to detect malicious behavior.
 title: Malicious script and connection detection
 image: https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/og.png?v=74ea4d5532bfda28

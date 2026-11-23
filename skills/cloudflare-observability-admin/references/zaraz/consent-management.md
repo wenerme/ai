@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage visitor consent for third-party tools with Zaraz.
 title: Consent management
 image: https://developers.cloudflare.com/zaraz/consent-management/og.png?v=2232b3f23ebccb3c

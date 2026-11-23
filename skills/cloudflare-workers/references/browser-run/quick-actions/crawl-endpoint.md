@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.
 title: /crawl - Crawl web content
 image: https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/og.png?v=0071d0f11e705093

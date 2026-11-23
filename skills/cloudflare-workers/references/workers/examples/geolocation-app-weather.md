@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fetch weather data from an API using the user's geolocation data.
 title: "Geolocation: Weather application"
 image: https://developers.cloudflare.com/workers/examples/geolocation-app-weather/og.png?v=972760bfcd66e48d

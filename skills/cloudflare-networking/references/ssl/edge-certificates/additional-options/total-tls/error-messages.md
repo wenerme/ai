@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Error messages you may encounter with Total TLS.
 title: Error messages
 image: https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/og.png?v=939b4c88640e75a8

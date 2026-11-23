@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Replace @cloudflare/sandbox 0.12 terminal(), session.terminal(), proxyTerminal(), and SandboxAddon with tmux sessions that your Durable Object runs.
 title: Move browser terminals
 image: https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/og.png?v=ede3fefcaf00d10b

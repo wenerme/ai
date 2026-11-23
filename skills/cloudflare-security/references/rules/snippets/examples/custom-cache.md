@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store, retrieve, and remove assets from cache programmatically. Use this template to optimize performance and implement custom caching strategies.
 title: Custom cache
 image: https://developers.cloudflare.com/rules/snippets/examples/custom-cache/og.png?v=a5082cc5d1b0fcc3

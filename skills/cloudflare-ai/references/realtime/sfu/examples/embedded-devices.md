@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect embedded firmware to Realtime SFU for audio, telemetry, and browser control using the ESP32 Pocket Radio example.
 title: Embedded devices and remote control
 image: https://developers.cloudflare.com/realtime/sfu/examples/embedded-devices/og.png?v=39e1a846a14cc8cf

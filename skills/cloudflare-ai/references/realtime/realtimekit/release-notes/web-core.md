@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Release notes and changelog for the RealtimeKit Web Core SDK.
 title: Web Core SDK
 image: https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-core/og.png?v=8a69ff8c89ea617d

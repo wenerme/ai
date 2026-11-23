@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review API Shield add-on requirements and resource limits by Cloudflare plan.
 title: Plans
 image: https://developers.cloudflare.com/api-shield/plans/og.png?v=261ae43b8dc50384

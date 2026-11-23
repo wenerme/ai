@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: RAG combines retrieval with generative models for better text. It uses external knowledge to create factual, relevant responses, improving coherence and accuracy in NLP tasks like chatbots.
 title: Retrieval Augmented Generation (RAG)
 image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/og.png?v=a24c47418c2c3a53

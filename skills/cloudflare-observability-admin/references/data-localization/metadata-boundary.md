@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict where customer traffic metadata and logs are stored by region.
 title: Customer Metadata Boundary
 image: https://developers.cloudflare.com/data-localization/metadata-boundary/og.png?v=2327fab905bc8148

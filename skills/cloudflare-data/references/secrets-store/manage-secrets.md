@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about different operations to manage your secrets in Cloudflare Secrets Store.
 title: Manage account secrets
 image: https://developers.cloudflare.com/secrets-store/manage-secrets/og.png?v=5f48f27ba27a0ce2

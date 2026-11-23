@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler commands and troubleshooting information for Workers VPC.
 title: Reference
 image: https://developers.cloudflare.com/workers-vpc/reference/og.png?v=ea57949916beb8f4

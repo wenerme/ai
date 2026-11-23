@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about enable cloudflare network firewall in this guide.
 title: Enable Cloudflare Network Firewall
 image: https://developers.cloudflare.com/learning-paths/data-center-protection/enable-network-firewall/og.png?v=3fbfefd26d93b50d

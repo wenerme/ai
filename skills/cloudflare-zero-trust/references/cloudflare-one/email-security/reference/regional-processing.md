@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Regional processing in Email Security.
 title: Regional processing
 image: https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/og.png?v=d986e8c434e8b97c

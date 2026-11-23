@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Vectorize pricing for indexes above the included allocation and queried and stored vector dimensions.
 title: Pricing
 image: https://developers.cloudflare.com/vectorize/platform/pricing/og.png?v=ae943fbd0e81b00c

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a secure connection between two devices using Cloudflare Mesh and Cloudflare's network.
 title: Device to device
 image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/og.png?v=05e3b5fbcfb75d10

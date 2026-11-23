@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn which Cloudflare Access application type fits your deployment.
 title: Choose an application type
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/og.png?v=50babca4c7d3e99b

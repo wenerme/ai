@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve DNS queries in Mainland China to improve Time to First Byte performance.
 title: China Authoritative DNS
 image: https://developers.cloudflare.com/china-network/concepts/china-dns/og.png?v=08df0d9700555d07

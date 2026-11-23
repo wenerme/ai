@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Choose between Wrangler and the Cloudflare Vite plugin for local development.
 title: Choosing between Wrangler & Vite
 image: https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/og.png?v=489e95c9aa4a8af1

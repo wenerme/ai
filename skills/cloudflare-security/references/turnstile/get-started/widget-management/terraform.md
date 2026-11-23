@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and manage Turnstile widgets using the Terraform provider.
 title: Create and manage widgets using Terraform
 image: https://developers.cloudflare.com/turnstile/get-started/widget-management/terraform/og.png?v=6441f6cd2d46db97

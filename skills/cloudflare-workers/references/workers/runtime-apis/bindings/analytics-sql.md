@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Review the Analytics SQL binding interface for queries from Cloudflare Workers.
 title: Analytics SQL binding
 image: https://developers.cloudflare.com/workers/runtime-apis/bindings/analytics-sql/og.png?v=dd1ae17ff9c031c9

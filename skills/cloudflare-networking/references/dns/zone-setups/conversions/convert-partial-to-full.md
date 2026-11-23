@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: If you initially set up a partial domain on Cloudflare, you can later migrate it to a full setup.
 title: Convert partial setup to full setup
 image: https://developers.cloudflare.com/dns/zone-setups/conversions/convert-partial-to-full/og.png?v=56618a3e9b83dc4c

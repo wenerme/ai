@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Browse examples that show how to build with Basin Pipelines.
 title: Examples
 image: https://developers.cloudflare.com/basin-pipelines/examples/og.png?v=c70f891a6084fb4d

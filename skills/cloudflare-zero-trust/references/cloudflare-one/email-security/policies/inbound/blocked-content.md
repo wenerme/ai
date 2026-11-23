@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Blocked content policies in Email Security.
 title: Blocked content
 image: https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-content/og.png?v=0ba89d670994bba6

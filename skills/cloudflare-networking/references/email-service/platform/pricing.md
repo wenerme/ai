@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Email Service pricing for outbound sending and inbound routing across Workers Free and Paid plans.
 title: Pricing
 image: https://developers.cloudflare.com/email-service/platform/pricing/og.png?v=36248b01a1557d58

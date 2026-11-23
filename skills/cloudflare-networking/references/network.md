@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Manage network settings for your Cloudflare website.
 title: Network settings
 image: https://developers.cloudflare.com/network/og.png?v=a96e666ece42def9

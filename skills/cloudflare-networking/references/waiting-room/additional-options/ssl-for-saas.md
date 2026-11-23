@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Waiting Room with Cloudflare for SaaS custom hostnames.
 title: Combine with Cloudflare for SaaS
 image: https://developers.cloudflare.com/waiting-room/additional-options/ssl-for-saas/og.png?v=e53fe0dd2ad9a7fe

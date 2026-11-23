@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example Snippets for headers, redirects, caching, and more.
 title: Snippets examples
 image: https://developers.cloudflare.com/rules/snippets/examples/og.png?v=b41739047ff38810

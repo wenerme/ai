@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create Cloud Connector rules using the Terraform Cloudflare provider.
 title: Configure Cloud Connector rules using Terraform
 image: https://developers.cloudflare.com/rules/cloud-connector/create-terraform/og.png?v=d753769ca14ea0ea

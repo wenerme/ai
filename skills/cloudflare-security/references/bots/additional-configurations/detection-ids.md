@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Static rules that identify predictable bot behavior and configurable heuristics.
 title: Detection IDs
 image: https://developers.cloudflare.com/bots/additional-configurations/detection-ids/og.png?v=288e9c0e7f3468f2

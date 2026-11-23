@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure an agent preset, add the agent to a RealtimeKit meeting, connect to the Agent's WebSocket URL, and run the agent in a Durable Object.
 title: Build an agent
 image: https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/og.png?v=c4851f25d2c6bd78
@@ -267,7 +270,7 @@ A Durable Object fits the agent: one instance per meeting, a long-lived outbound
    	"name": "meeting-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-11-18",
+   	"compatibility_date": "2026-11-23",
    	"vars": {
    		"ACCOUNT_ID": "<ACCOUNT_ID>",
    		"APP_ID": "<APP_ID>",
@@ -289,7 +292,7 @@ A Durable Object fits the agent: one instance per meeting, a long-lived outbound
    name = "meeting-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
 
    [vars]
    ACCOUNT_ID = "<ACCOUNT_ID>"

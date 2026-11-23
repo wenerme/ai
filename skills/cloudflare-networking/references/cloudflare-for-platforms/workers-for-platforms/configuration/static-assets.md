@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Host static assets on Cloudflare's global network and deliver faster load times worldwide with Workers for Platforms.
 title: Static assets
 image: https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/static-assets/og.png?v=b813047aea49bf67
@@ -243,7 +246,7 @@ Create or update your [Wrangler configuration file](https://developers.cloudflar
 	"main": "./src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"assets": {
 		"directory": "./public",
 		"binding": "ASSETS",
@@ -257,7 +260,7 @@ name = "my-static-site"
 main = "./src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 
 [assets]
 directory = "./public"

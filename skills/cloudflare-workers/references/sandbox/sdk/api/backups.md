@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create and restore point-in-time snapshots of sandbox directories with the Sandbox SDK 0.x.
 title: Backups
 image: https://developers.cloudflare.com/sandbox/sdk/api/backups/og.png?v=931f259941cef1e9

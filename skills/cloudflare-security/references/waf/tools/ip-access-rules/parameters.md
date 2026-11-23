@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configurable parameters for IP Access rules.
 title: IP Access rules parameters
 image: https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/og.png?v=7af807c4b5f360d4

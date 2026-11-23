@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Apply Cloudflare security and performance settings to your Web3 gateway.
 title: Customize Cloudflare settings
 image: https://developers.cloudflare.com/web3/how-to/customize-cloudflare-settings/og.png?v=81c68a90f866871b

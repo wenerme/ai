@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Copy objects from other cloud providers to R2 in a one-off bulk migration job.
 title: Super Slurper
 image: https://developers.cloudflare.com/r2/data-migration/super-slurper/og.png?v=bcd79da83de1d645

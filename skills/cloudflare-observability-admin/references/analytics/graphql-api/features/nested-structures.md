@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query arrays and maps in GraphQL Analytics API.
 title: Nested Structures
 image: https://developers.cloudflare.com/analytics/graphql-api/features/nested-structures/og.png?v=35565c21075c7332

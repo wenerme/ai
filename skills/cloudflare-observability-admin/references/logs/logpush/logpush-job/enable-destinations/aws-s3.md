@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Push Cloudflare logs to Amazon S3.
 title: Enable Amazon S3
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/og.png?v=919663589b56b43b

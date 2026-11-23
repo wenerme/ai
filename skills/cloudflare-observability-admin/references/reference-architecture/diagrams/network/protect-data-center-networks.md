@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: This document focuses on the reference architecture of using Cloudflare WAN, Cloudflare Network Firewall, and Cloudflare Gateway services.
 title: Protect data center networks
 image: https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/og.png?v=d158fff8b9e1fd36

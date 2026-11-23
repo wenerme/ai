@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to change your email address or password associated with your account.
 title: Email address and password
 image: https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/og.png?v=50335e1cf071167b

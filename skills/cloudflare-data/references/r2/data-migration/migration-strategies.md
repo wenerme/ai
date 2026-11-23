@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Combine Super Slurper and Sippy to migrate objects to R2 with minimal downtime.
 title: Migration Strategies
 image: https://developers.cloudflare.com/r2/data-migration/migration-strategies/og.png?v=8782bffc14c6a8d5

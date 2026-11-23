@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Enable leaked credentials detection and configure custom or managed detections.
 title: Get started
 image: https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/og.png?v=c1fc951010425434

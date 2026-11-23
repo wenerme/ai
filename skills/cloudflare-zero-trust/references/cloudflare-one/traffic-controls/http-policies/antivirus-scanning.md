@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How AV scanning works in Gateway.
 title: AV scanning
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/antivirus-scanning/og.png?v=2446fa6d6b26fb14

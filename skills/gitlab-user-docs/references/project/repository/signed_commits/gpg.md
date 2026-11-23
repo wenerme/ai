@@ -248,6 +248,11 @@ you can sign your tags:
 ## Update a GPG key
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/296977) in GitLab 19.7.
+- Email about an updated key [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/296977) in GitLab 19.7 [with a feature flag](../../../../administration/feature_flags/_index.md) named `updated_gpg_key_email`. Disabled by default.
+
+> [!flag]
+> The availability of the email about an updated key is controlled by a feature flag.
+> For more information, see the history.
 
 Update your GPG key in GitLab after you use GnuPG to:
 
@@ -268,6 +273,8 @@ You cannot update a key if the new version revokes the key itself, or if the key
 still expired after the update.
 To stop GitLab from verifying commits signed with a key,
 [revoke the key](#revoke-a-gpg-key) in GitLab.
+
+When an update adds a subkey or a user ID, GitLab sends you an email.
 
 To update a GPG key:
 

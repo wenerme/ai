@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query tunnel bandwidth analytics with the GraphQL API.
 title: Query Magic Transit tunnel bandwidth analytics with GraphQL
 image: https://developers.cloudflare.com/magic-transit/analytics/query-bandwidth/og.png?v=d9c74dd9eb04da1f

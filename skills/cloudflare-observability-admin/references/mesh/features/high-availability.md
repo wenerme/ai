@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure active-passive replicas to provide high availability for routed Cloudflare Mesh networks.
 title: High availability
 image: https://developers.cloudflare.com/mesh/features/high-availability/og.png?v=78b4108b2a8cfc72

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the 13 comparison operators available in Flagship targeting rule conditions, including equality, comparison, string, and array operators.
 title: Operators
 image: https://developers.cloudflare.com/flagship/targeting/operators/og.png?v=8faf75cc8c4cacf3

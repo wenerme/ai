@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Request, monitor, and download packet captures to diagnose network issues.
 title: Packet captures
 image: https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/og.png?v=33f7f9f2cb22b410

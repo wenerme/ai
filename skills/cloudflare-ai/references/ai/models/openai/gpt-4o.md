@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: GPT-4o is OpenAI’s multimodal flagship, accepting text and images and responding quickly across a wide range of tasks.
 title: GPT-4o
 image: https://developers.cloudflare.com/og-docs.png

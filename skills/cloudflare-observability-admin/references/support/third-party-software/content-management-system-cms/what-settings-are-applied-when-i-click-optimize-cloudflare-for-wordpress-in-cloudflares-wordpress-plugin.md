@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot what settings are applied when i click optimize cloudflare for wordpress issues with Cloudflare.
 title: What settings are applied when I click Optimize Cloudflare for WordPress in Cloudflare's WordPress plugin
 image: https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/what-settings-are-applied-when-i-click-optimize-cloudflare-for-wordpress-in-cloudflares-wordpress-plugin/og.png?v=e9c712435d286185

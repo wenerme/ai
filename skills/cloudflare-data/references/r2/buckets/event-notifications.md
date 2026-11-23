@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Send messages to Cloudflare Queues when objects in your R2 bucket change.
 title: Event notifications
 image: https://developers.cloudflare.com/r2/buckets/event-notifications/og.png?v=1e5b6563416107fe

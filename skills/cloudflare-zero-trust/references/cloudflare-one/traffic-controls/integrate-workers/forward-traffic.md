@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure the Gateway Forward action to run a Worker on permitted HTTP requests and responses.
 title: Forward traffic
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/og.png?v=8ed88a14e05ed330
@@ -93,7 +96,7 @@ A normal Workers `fetch()` is an independent subrequest. Use `next()` to continu
      "name": "gateway-worker",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-11-18",
+     "compatibility_date": "2026-11-23",
      "workers_dev": false,
      "preview_urls": false
    }
@@ -103,7 +106,7 @@ A normal Workers `fetch()` is an independent subrequest. Use `next()` to continu
    name = "gateway-worker"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-11-18"
+   compatibility_date = "2026-11-23"
    workers_dev = false
    preview_urls = false
    ```

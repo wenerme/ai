@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Restrict where Cloudflare Queues stores and processes messages by setting a jurisdiction.
 title: Data location
 image: https://developers.cloudflare.com/queues/configuration/data-location/og.png?v=cd5a7d27e28a9f6a

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route Claude Desktop through AI Gateway using a gateway token or a Cloudflare Access helper script.
 title: Claude Desktop
 image: https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-desktop/og.png?v=f18a1a6c012ea5f8

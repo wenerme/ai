@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Standardized APIs for use by Workers running on Cloudflare's global network.
 title: Web standards
 image: https://developers.cloudflare.com/workers/runtime-apis/web-standards/og.png?v=be37c9dac9250fd5

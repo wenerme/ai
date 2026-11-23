@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Parse and transform large JSON request and response bodies using streaming.
 title: Stream large JSON
 image: https://developers.cloudflare.com/workers/examples/streaming-json/og.png?v=d97d758d7964ddc5

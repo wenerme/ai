@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Browse Cloudflare reference architecture documents.
 title: Reference Architectures
 image: https://developers.cloudflare.com/reference-architecture/architectures/og.png?v=83e2c6021bd4bb39

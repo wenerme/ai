@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step D1 tutorials for building applications, importing data, and using read replication.
 title: Tutorials
 image: https://developers.cloudflare.com/d1/tutorials/og.png?v=d0efc620e0c9a78f

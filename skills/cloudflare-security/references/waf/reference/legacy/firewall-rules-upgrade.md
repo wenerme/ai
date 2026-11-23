@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upgrade deprecated Firewall Rules to WAF custom rules.
 title: Firewall rules upgrade
 image: https://developers.cloudflare.com/waf/reference/legacy/firewall-rules-upgrade/og.png?v=617596f28f797261

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Handle transient D1 errors by retrying write queries with exponential backoff.
 title: Retry queries
 image: https://developers.cloudflare.com/d1/best-practices/retry-queries/og.png?v=54ea4630efa72657

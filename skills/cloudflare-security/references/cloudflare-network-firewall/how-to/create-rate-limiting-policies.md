@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create rate limiting policies for network traffic.
 title: Create Rate Limiting policies (beta)
 image: https://developers.cloudflare.com/cloudflare-network-firewall/how-to/create-rate-limiting-policies/og.png?v=81ca8f16b33b1549

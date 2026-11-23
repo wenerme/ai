@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow traffic from search engine and verified bots.
 title: Allow traffic from search engine bots
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-verified-bots/og.png?v=e38f9bd010e48e03

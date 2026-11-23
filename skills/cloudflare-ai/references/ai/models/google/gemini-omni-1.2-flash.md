@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Gemini Omni 1.2 Flash is Google's video generation and editing model with native audio. It turns text, images or video into 3 to 15 second clips at up to 4K, and supports conversational editing, video extension and first and last frame interpolation.
 title: Gemini Omni 1.2 Flash
 image: https://developers.cloudflare.com/og-docs.png

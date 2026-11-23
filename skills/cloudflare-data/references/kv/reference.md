@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Workers KV reference information including Wrangler commands, environments, FAQ, and data security.
 title: Reference
 image: https://developers.cloudflare.com/kv/reference/og.png?v=a64d9693207c7a7d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build audio-only experiences like voice rooms and support lines with RealtimeKit.
 title: Audio Only Calls
 image: https://developers.cloudflare.com/realtime/realtimekit/audio-calls/og.png?v=0eaf41aa01bc7c11

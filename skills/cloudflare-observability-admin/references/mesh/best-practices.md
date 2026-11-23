@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Recommended practices for reliable Cloudflare Mesh deployments.
 title: Best practices
 image: https://developers.cloudflare.com/mesh/best-practices/og.png?v=af0dc09d7e0c29fc

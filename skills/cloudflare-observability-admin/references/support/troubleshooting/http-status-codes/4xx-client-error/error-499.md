@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot HTTP 499 error responses.
 title: Error 499
 image: https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-499/og.png?v=f50e877984b20e8e

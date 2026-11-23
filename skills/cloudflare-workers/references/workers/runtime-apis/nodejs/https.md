@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use the Node.js https module in Cloudflare Workers for TLS-encrypted HTTP client and server functionality.
 title: https
 image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/og.png?v=5539299955afe94d

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Imagine your request is a letter you are trying to send to a friend across the country. Instead of going through the slow, traditional postal service, Cloudflare acts as a hyper-efficient courier company with a fleet of delivery hubs all over the world.
 title: "Life of a Request: The First Hop - Into the Smart Network"
 image: https://developers.cloudflare.com/og-docs.png

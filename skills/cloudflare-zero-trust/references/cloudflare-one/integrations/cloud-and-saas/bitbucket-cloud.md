@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference information for Bitbucket Cloud in Zero Trust integrations.
 title: Bitbucket Cloud
 image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/og.png?v=c00be84b5908fe5c

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Identify why a Browser Run session closed and review common close reason codes in the dashboard.
 title: Browser close reasons
 image: https://developers.cloudflare.com/browser-run/reference/browser-close-reasons/og.png?v=f7ac133ccb7e0df0

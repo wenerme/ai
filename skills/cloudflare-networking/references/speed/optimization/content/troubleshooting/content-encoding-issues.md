@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Fix content encoding mismatches with compression settings.
 title: Content encoding issues
 image: https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/og.png?v=2424d2463e6a4f85

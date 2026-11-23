@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare tracks and calculates request rates using rule characteristics.
 title: Request rate calculation
 image: https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/og.png?v=64d7fa99a8b21367

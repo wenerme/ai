@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View token validation metrics for your Turnstile widgets.
 title: Token validation
 image: https://developers.cloudflare.com/turnstile/turnstile-analytics/token-validation/og.png?v=7cb070c193b1d33f

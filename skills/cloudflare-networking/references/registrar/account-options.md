@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore Cloudflare Registrar account options.
 title: Registration options
 image: https://developers.cloudflare.com/registrar/account-options/og.png?v=f1746cf2535a6cc7

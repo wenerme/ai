@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Discover available GraphQL Analytics API nodes and limits.
 title: Discovery
 image: https://developers.cloudflare.com/analytics/graphql-api/features/discovery/og.png?v=31f73636db1c8c47

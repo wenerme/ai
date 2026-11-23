@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy a Blazor WebAssembly application to Cloudflare Pages.
 title: Blazor
 image: https://developers.cloudflare.com/pages/framework-guides/deploy-a-blazor-site/og.png?v=234c34f757e67e37

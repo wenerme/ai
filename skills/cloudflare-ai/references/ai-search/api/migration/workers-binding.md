@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.
 title: Workers binding migration
 image: https://developers.cloudflare.com/ai-search/api/migration/workers-binding/og.png?v=34f8dca91cf8dd1b

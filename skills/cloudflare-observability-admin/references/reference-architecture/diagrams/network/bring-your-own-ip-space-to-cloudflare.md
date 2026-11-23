@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare allows enterprises to bring their IP space to the Cloudflare network. This allows them to gain the security and performance of the platform while still appearing to the rest of the world via their own public IP space.
 title: Bring your own IP space to Cloudflare
 image: https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/og.png?v=ffdcb37b51c5e3b7

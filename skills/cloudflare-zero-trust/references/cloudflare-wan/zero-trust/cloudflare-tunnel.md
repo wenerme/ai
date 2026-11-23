@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Connect WAN sites with Cloudflare Tunnel.
 title: Cloudflare Tunnel
 image: https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/og.png?v=9e539675b1b50461

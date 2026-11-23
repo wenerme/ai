@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure your operating system or browser to use a Proxy Auto-Configuration (PAC) file with Cloudflare Gateway. Includes steps for Windows, macOS, Linux, iOS, Android, ChromeOS, and enterprise deployment.
 title: Configure a PAC file on your device
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/configure-pac-file-on-device/og.png?v=bf86d95cefbe2261

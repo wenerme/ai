@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare Radar classifies traffic as likely automated or likely human based on bot score ranges.
 title: Bot classes
 image: https://developers.cloudflare.com/radar/concepts/bot-classes/og.png?v=9345bf05b18f61cf

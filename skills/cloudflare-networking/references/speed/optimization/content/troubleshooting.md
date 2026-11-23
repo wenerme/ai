@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot content optimization issues.
 title: Troubleshooting
 image: https://developers.cloudflare.com/speed/optimization/content/troubleshooting/og.png?v=2f44e8b3c655ebc8

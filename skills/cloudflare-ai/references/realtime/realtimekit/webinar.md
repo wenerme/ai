@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up a RealtimeKit webinar with presenters and viewers, then manage requests to join the stage.
 title: Set up a webinar
 image: https://developers.cloudflare.com/realtime/realtimekit/webinar/og.png?v=c39debd7a18c6de6

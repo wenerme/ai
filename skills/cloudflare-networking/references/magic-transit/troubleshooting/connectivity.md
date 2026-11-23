@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot Magic Transit connectivity issues.
 title: Troubleshoot connectivity
 image: https://developers.cloudflare.com/magic-transit/troubleshooting/connectivity/og.png?v=bdd2ec83f303aac9

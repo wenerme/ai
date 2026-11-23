@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Wrangler CLI commands for creating and managing Hyperdrive configurations.
 title: Wrangler commands
 image: https://developers.cloudflare.com/hyperdrive/reference/wrangler-commands/og.png?v=3c560ce1e4f80fb0

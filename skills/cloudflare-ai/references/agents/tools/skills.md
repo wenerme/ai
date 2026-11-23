@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Give your agent Agent Skills tools to discover, load, and read skills on demand. Use Think, Pi Durable, AI SDK, or your own harness.
 title: Skills
 image: https://developers.cloudflare.com/agents/tools/skills/og.png?v=8c5679605e7a5dab

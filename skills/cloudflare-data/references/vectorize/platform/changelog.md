@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track recent changes, updates, and new features in Vectorize.
 title: Changelog
 image: https://developers.cloudflare.com/vectorize/platform/changelog/og.png?v=c092aa79f8c1714f

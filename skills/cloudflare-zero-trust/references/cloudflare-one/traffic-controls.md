@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Filter DNS, network, and HTTP traffic with Cloudflare Gateway traffic policies.
 title: Traffic controls
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/og.png?v=851a06665e6efad7

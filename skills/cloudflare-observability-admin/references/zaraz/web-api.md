@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Interact with Zaraz from client-side JavaScript.
 title: Web API
 image: https://developers.cloudflare.com/zaraz/web-api/og.png?v=595bc6b33c8c7648

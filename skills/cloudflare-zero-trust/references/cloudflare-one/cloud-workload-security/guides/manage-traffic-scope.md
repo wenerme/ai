@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control domain access for Cloud Workload Security deployments and create or rotate Basic Auth credential secrets.
 title: Manage traffic scope
 image: https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/guides/manage-traffic-scope/og.png?v=23e090d53d1bde2e

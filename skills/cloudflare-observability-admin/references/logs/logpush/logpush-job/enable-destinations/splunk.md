@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Push Cloudflare logs to Splunk via HEC.
 title: Enable Splunk
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/og.png?v=9b86bccf36bcf8b2

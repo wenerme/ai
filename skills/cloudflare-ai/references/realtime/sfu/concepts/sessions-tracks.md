@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand Realtime SFU applications, PeerConnection sessions, track names, and publication and subscription.
 title: Sessions and tracks
 image: https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/og.png?v=3dcf0ce2ac231f0d

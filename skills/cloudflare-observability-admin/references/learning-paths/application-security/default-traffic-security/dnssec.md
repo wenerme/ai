@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Sign your zone with DNSSEC for DNS security.
 title: DNSSEC
 image: https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/dnssec/og.png?v=d173ef1a2e5d5411

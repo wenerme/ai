@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Supported TURN protocols, RFCs, and STUN features on Cloudflare Realtime TURN.
 title: TURN Feature Matrix
 image: https://developers.cloudflare.com/realtime/turn/rfc-matrix/og.png?v=e47c30924d81f1a5

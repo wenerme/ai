@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Store one validated value in a Durable Object with the State capability, and sync it to useAgent clients in real time with WebSockets.
 title: State
 image: https://developers.cloudflare.com/agents/runtime/capabilities/state/og.png?v=549cf73d1f6fc698

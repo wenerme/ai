@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Cloudflare Radar aggregation intervals to control the frequency of returned data, from 15 minutes to one week.
 title: Aggregation intervals
 image: https://developers.cloudflare.com/radar/concepts/aggregation-intervals/og.png?v=bd17560e6be6aff3

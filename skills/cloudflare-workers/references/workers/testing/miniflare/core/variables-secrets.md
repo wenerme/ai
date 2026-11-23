@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: "Variables and secrets are bound as follows:"
 title: Variables and Secrets
 image: https://developers.cloudflare.com/workers/testing/miniflare/core/variables-secrets/og.png?v=49c16967ef519ea4

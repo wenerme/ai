@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Deploy Workers before authentication, then claim the temporary account to keep its deployments and resources.
 title: Claim deployments (temporary accounts)
 image: https://developers.cloudflare.com/workers/platform/claim-deployments/og.png?v=a809402ad4ebb6d2

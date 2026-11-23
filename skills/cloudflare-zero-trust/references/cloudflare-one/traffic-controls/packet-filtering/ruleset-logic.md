@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Ruleset logic works in Gateway.
 title: Ruleset logic
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/ruleset-logic/og.png?v=36c59671ed774e56

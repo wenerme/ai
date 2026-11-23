@@ -63,10 +63,10 @@ Expand table
 
 Expand table
 
-| Setting             | Description                                                                                                                                          |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Assume Role ARN** | *Optional.* Specify the ARN of an IAM role to assume. This ensures the selected authentication method is used to assume the role, not used directly. |
-| **External ID**     | If you’re assuming a role in another AWS account that requires an external ID, specify it here.                                                      |
+| Setting             | Description                                                                                                                                                                                                                                      |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Assume Role ARN** | Specify the ARN of an IAM role to assume. This ensures the selected authentication method is used to assume the role, not used directly. *Required* for the **Grafana Assume Role** authentication provider; *optional* for all other providers. |
+| **External ID**     | If you’re assuming a role in another AWS account that requires an external ID, specify it here.                                                                                                                                                  |
 
 **Additional Settings:**
 

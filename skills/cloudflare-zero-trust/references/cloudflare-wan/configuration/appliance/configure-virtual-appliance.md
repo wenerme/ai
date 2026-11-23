@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment
 title: Configure Virtual Appliance
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/og.png?v=15655f7ee3651792

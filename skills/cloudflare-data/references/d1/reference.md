@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Technical reference documentation for D1, including migrations, Time Travel backups, generated columns, and data security.
 title: Reference
 image: https://developers.cloudflare.com/d1/reference/og.png?v=0883d662b8c32e8b

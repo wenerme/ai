@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Serve and manage images stored in Cloudflare Images with variants and custom domains.
 title: Hosted images
 image: https://developers.cloudflare.com/images/optimization/hosted-images/og.png?v=5b9e74a974480927
@@ -17,7 +20,6 @@ image: https://developers.cloudflare.com/images/optimization/hosted-images/og.pn
 - [Enable flexible variants](https://developers.cloudflare.com/images/optimization/hosted-images/enable-flexible-variants/)
 - [Apply blur](https://developers.cloudflare.com/images/optimization/hosted-images/blur-variants/)
 - [Delete variants](https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/)
-- [Preserve Content Credentials](https://developers.cloudflare.com/images/optimization/hosted-images/preserve-content-credentials/)
 - [Browser TTL](https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/)
 - [Serve images from custom domains](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/)
 - [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/)

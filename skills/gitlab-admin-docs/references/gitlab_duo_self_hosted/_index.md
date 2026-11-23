@@ -25,7 +25,7 @@ You can use self-hosted models with different deployment options.
 
 ### GitLab Duo Agent Platform
 
-Use GitLab Duo Agent Platform Self-Hosted for on-premise models or private cloud-hosted models in the GitLab Duo Agent Platform.
+Use GitLab Duo Agent Platform Self-Hosted for on-premises models or private cloud-hosted models in the GitLab Duo Agent Platform.
 
 For customers with an offline license, billing uses an Enterprise License Agreement for GitLab Duo, and you must have the [GitLab Duo Agent Platform Self-Hosted](../../subscriptions/subscription-add-ons.md#gitlab-duo-agent-platform-self-hosted) add-on.
 
@@ -36,7 +36,7 @@ For customers with an online license, billing is [usage based](../../subscriptio
 GitLab Duo Self-Hosted is for customers with GitLab Duo Enterprise who are using GitLab Duo
 features. You can use:
 
-- On-premise models or private cloud-hosted models
+- On-premises models or private cloud-hosted models
 - GitLab-managed models in a hybrid deployment
 
 This option uses seat-based pricing.
@@ -202,7 +202,7 @@ integrates with external vendor LLM providers, including:
 - [Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform)
 
 These LLMs communicate through the GitLab Cloud Connector,
-offering a ready-to-use AI solution without the need for on-premise infrastructure.
+offering a ready-to-use AI solution without the need for on-premises infrastructure.
 
 For more information, see the [GitLab.com AI Gateway configuration diagram](configuration_types.md#gitlabcom-ai-gateway).
 

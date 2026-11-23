@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Handle exceptions from Durable Objects, including retryable and overloaded errors, with recommended patterns.
 title: Error handling
 image: https://developers.cloudflare.com/durable-objects/best-practices/error-handling/og.png?v=0f317caa41cf83e0

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Provision users and groups into your Cloudflare account using the SCIM protocol with Okta, Microsoft Entra, or Authentik.
 title: SCIM provisioning
 image: https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/og.png?v=4af81253b20f6c45

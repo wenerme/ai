@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: You can secure access to R2 buckets using Cloudflare Access, which allows you to only allow specific users, groups or applications within your organization to access objects within a bucket.
 title: Protect an R2 Bucket with Cloudflare Access
 image: https://developers.cloudflare.com/r2/tutorials/cloudflare-access/og.png?v=a6141bc5f2029ad9

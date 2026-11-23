@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare Workers or an external service to monitor for notifications about data changes and then handle them appropriately.
 title: Event notifications for storage
 image: https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/og.png?v=2851800f7bfc1d34

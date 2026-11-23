@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Step-by-step guides for common Cloudflare Terraform tasks like creating zones.
 title: How-to guides
 image: https://developers.cloudflare.com/terraform/how-to/og.png?v=1342d5f29cd75758

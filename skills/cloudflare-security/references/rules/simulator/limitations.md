@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Known limitations when using Rules simulator.
 title: Rules simulator limitations
 image: https://developers.cloudflare.com/rules/simulator/limitations/og.png?v=0ad15ab2b5a796d0

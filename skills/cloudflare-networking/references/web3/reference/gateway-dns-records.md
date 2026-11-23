@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: DNS records created for Web3 gateways.
 title: Gateway DNS records
 image: https://developers.cloudflare.com/web3/reference/gateway-dns-records/og.png?v=77da0e23649ef614

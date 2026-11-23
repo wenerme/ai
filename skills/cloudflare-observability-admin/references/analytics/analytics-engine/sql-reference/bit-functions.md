@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Bitwise SQL functions for Analytics Engine.
 title: Bit functions
 image: https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/bit-functions/og.png?v=d3ca9f693050a388

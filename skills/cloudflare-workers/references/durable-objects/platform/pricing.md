@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Durable Objects compute and storage billing, including pricing examples and free tier limits.
 title: Pricing
 image: https://developers.cloudflare.com/durable-objects/platform/pricing/og.png?v=692e099f34a1b330

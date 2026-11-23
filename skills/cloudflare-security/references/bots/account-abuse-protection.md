@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect and investigate account abuse on login and registration endpoints.
 title: Account Abuse Protection (Early Access)
 image: https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=9d30dd9cfa06989c

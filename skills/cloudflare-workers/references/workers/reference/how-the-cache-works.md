@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Workers interacts with the Cloudflare cache.
 title: How the Cache works
 image: https://developers.cloudflare.com/workers/reference/how-the-cache-works/og.png?v=cd96dcb739653f56

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.
 title: Configure Queues
 image: https://developers.cloudflare.com/queues/configuration/configure-queues/og.png?v=f1d801231b835a0b

@@ -1229,6 +1229,12 @@ engineering, autonomous agents, and complex enterprise workflows.
 
 {% /tabs %}
 
+{% sup %}*{% /sup %} A customer-submitted request to Gemini may result in one or
+more queries to Google Search. You will be charged for each individual search
+query performed.
+
+{% sup %}**{% /sup %} Can be tested in Google AI Studio.
+
 ## Gemini 3.6 Flash  {% id="gemini-3.6-flash" %}
 
 {% two-column-layout %}
@@ -1992,8 +1998,10 @@ tokens/s; and $0.209/s for 4K with upsampling at 17,376 tokens/s).
 
 {% hr /%}
 
-Previous generation video generation and editing model. Effective December 3,
-2026, all API requests to `gemini-omni-1.1-flash` automatically route to
+Previous generation video generation and editing model.
+
+Effective December 3, 2026, all API requests to `gemini-omni-1.1-flash`
+automatically route to
 [`gemini-omni-1.2-flash`](/docs/models/gemini-omni-flash#gemini-omni-1.2-flash)
 and are billed at `gemini-omni-1.2-flash` rates.
 
@@ -2807,7 +2815,7 @@ is effective for quick, interactive responses and high throughput.
   ---
 
   * Grounding with Google Web and Image Search{% sup %}**{% /sup %}
-  * Not available{% sup %}**{% /sup %}
+  * Not available{% sup %}***{% /sup %}
   * 5,000 free search requests per month (shared across all Gemini 3 and newer models),
   then $14 per 1,000 requests for text and image-based grounding (subject to a [daily cap](/docs/pricing#pricing-for-tools) of 1,500 requests per day).
 
@@ -2828,6 +2836,13 @@ image. Output images at 1K (1024x1024px) consume 1120 tokens and are equivalent
 to $0.067 per image. Output images at 2K (2048x2048px) consume 1680 tokens and
 are equivalent to $0.101 per image. Output images at 4K (4096x4096px) consume
 2520 tokens and are equivalent to $0.151 per image.
+
+{% sup %}**{% /sup %} A customer-submitted request to Gemini may result in one
+or more queries to Google Search. You will be charged for each individual search
+query performed. Retrieved context (text or images) provided by Grounding with
+Google Search is not charged as input tokens.
+
+{% sup %}***{% /sup %} Can be tested in Google AI Studio.
 
 ## Gemini 3.1 Flash Lite Image (Nano Banana 2 Lite) 🍌  {% id="gemini-3.1-flash-lite-image" %}
 
@@ -3299,8 +3314,6 @@ low-latency, controllable speech generation.
   {% /tab %}
 
 {% /tabs %}
-
-{% sup %}*{% /sup %} Audio tokens correspond to 25 tokens per second of audio.
 
 ## Gemini 3 Flash Preview  {% id="gemini-3-flash-preview" %}
 
@@ -4349,7 +4362,9 @@ audio outputs with better pacing, voice naturalness, verbosity, and mood.
 {% /callout %}
 
 A native image generation model, optimized for speed, flexibility, and
-contextual understanding. Text input and output is priced the same as [2.5
+contextual understanding.
+
+Text input and output is priced the same as [Gemini 2.5
 Flash](/docs/pricing#gemini-2.5-flash).
 
 {% tabs %}
@@ -5262,7 +5277,7 @@ usage of the tools.
   * All model inference is charged at standard Gemini list rates, including
     input,    
     output, and intermediate input / reasoning tokens generated during agentic    
-    loops. (See [pricing details](/docs/agents#pricing)).
+    loops.
   * Environment compute (CPU, memory, sandbox execution) is not billed during
     the preview period.
 
@@ -5272,7 +5287,7 @@ usage of the tools.
   * All model inference is charged at standard Gemini list rates, including
     input,    
     output, and intermediate input / reasoning tokens generated during agentic    
-    loops. (See [pricing details](/docs/agents#pricing)).
+    loops.
   * Environment compute (CPU, memory, sandbox execution) is not billed during
     the    
     preview period.

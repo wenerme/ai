@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn to configure Salesforce as a SAML app in Cloudflare One. Follow step-by-step instructions for adding SaaS apps and enabling SSO.
 title: Salesforce (SAML)
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/salesforce-saas-saml/og.png?v=8e26a6de1240e4e5

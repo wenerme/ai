@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: In this video, Jess Liu discusses Cloudflares CDN Global Acceleration (formerly China Express), including solutions for high latency on dynamic content, accelerating API calls, accessing Cloudflare One services like WARP and Magic WAN from within mainland China, and securely connecting private enterprise networks.
 title: China network - CDN global acceleration for Mainland China
 image: https://developers.cloudflare.com/og-docs.png

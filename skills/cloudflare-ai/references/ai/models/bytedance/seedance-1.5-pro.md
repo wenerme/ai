@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: ByteDance's joint audio-video model. A dual-branch diffusion transformer generates synchronized native audio and video in a single pass, giving millisecond-precision lip-sync across English, Mandarin, Japanese, Korean, Spanish, Portuguese, Indonesian, and Chinese dialects, plus cinematic camera control and character consistency at up to 1080p.
 title: Seedance 1.5 Pro
 image: https://developers.cloudflare.com/og-docs.png

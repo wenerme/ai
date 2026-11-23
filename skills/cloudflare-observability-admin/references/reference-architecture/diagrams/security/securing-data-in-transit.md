@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Data in transit is often considered vulnerable to interception or tampering during transmission. Data Loss Prevention (DLP) technologies can be used to inspect the contents of network traffic and block sensitive data from going to a risky destination.
 title: Securing data in transit
 image: https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-in-transit/og.png?v=0b1c8eb5985ffac3

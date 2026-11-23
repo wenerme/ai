@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Run the Pi Durable harness on Cloudflare with the Agents SDK. PiHarness keeps your agent's work durable inside a Durable Object, even if it is interrupted mid-turn.
 title: Pi
 image: https://developers.cloudflare.com/agents/harnesses/pi/og.png?v=6a341e286a3bfbc9
@@ -65,7 +68,7 @@ The `agents/models/pi-ai` entry point supports AI Gateway and Workers AI models,
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-21",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -82,7 +85,7 @@ name = "pi-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-21"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

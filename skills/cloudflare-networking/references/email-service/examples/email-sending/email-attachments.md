@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Handle different types of email attachments including PDFs, inline images, and file uploads with validation and encoding.
 title: Email attachments
 image: https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/og.png?v=55b81084399408df

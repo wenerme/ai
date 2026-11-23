@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to profile CPU usage and ensure CPU-time per request stays under Workers limits
 title: Profiling CPU usage
 image: https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/og.png?v=ce3aba175909ab87

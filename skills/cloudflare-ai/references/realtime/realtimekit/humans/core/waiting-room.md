@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Control meeting access with a waiting room that requires host approval in RealtimeKit.
 title: Waiting Room
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/waiting-room/og.png?v=fb3d90a373c096ed

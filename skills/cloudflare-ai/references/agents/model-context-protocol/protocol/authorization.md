@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect an MCP server with OAuth 2.1 using an authorization server and a resource server built with Workers OAuth Provider.
 title: Authorization
 image: https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/og.png?v=e8544827107a947e
@@ -196,7 +199,7 @@ The authorization server stores grants and tokens in a KV namespace bound as `OA
 	"name": "auth-server",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
 	"vars": {
 		"ISSUER": "https://auth-server.<your-subdomain>.workers.dev",
@@ -210,7 +213,7 @@ The authorization server stores grants and tokens in a KV namespace bound as `OA
 name = "auth-server"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat", "global_fetch_strictly_public" ]
 
 [vars]
@@ -340,7 +343,7 @@ The MCP server reaches the authorization server through a Service Binding, so to
 	"name": "mcp-server",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"vars": {
 		"AUTH_SERVER_URL": "https://auth-server.<your-subdomain>.workers.dev",
@@ -354,7 +357,7 @@ The MCP server reaches the authorization server through a Service Binding, so to
 name = "mcp-server"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]

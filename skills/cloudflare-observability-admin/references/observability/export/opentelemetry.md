@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Export Cloudflare logs and traces to OpenTelemetry destinations.
 title: OpenTelemetry export
 image: https://developers.cloudflare.com/observability/export/opentelemetry/og.png?v=2a6205b4ded568cd

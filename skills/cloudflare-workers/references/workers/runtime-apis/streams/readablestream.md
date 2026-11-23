@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about the ReadableStream API for reading streamed data in Cloudflare Workers.
 title: ReadableStream
 image: https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/og.png?v=37efd281a5c52d37

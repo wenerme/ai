@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Guides for managing accounts, subscriptions, and tenant details with the Cloudflare Tenant API.
 title: How to
 image: https://developers.cloudflare.com/tenant/how-to/og.png?v=6ceb987cfbb353a9

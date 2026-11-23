@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Test firewall rule impact before deployment.
 title: Preview rules
 image: https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/og.png?v=051caf3c5f0a0f48

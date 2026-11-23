@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn about clientless web isolation in this guide.
 title: Clientless Web Isolation
 image: https://developers.cloudflare.com/learning-paths/clientless-access/alternative-onramps/clientless-rbi/og.png?v=d78bc829f88e848c

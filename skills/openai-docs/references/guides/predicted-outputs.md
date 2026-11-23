@@ -20,18 +20,6 @@ class User {
 export default User;
 ```
 
-```ruby
-class User
-  attr_accessor :first_name, :last_name, :username
-
-  def initialize
-    @first_name = ""
-    @last_name = ""
-    @username = ""
-  end
-end
-```
-
 
 Most of the file will be unchanged, except for line 4 above. If you use the current text of the code file as your prediction, you can regenerate the entire file with lower latency. These time savings add up quickly for larger files.
 
@@ -613,33 +601,6 @@ serve({
 });
 ```
 
-```ruby
-require "webrick"
-
-server = WEBrick::HTTPServer.new(Port: Integer(ENV.fetch("PORT", "3000")), BindAddress: "127.0.0.1")
-# Build your client first and place its static files in dist/.
-static_files = WEBrick::HTTPServlet::FileHandler.new(server, File.expand_path("dist"))
-server.mount_proc("/") do |request, response|
-  response["Content-Type"] = "text/plain"
-  if !%w[GET HEAD].include?(request.request_method)
-    response.status = 404
-    response.body = "404 Not Found"
-  elsif request.path == "/api"
-    response.body = "Hello Hono!"
-  else
-    begin
-      static_files.service(request, response)
-    rescue WEBrick::HTTPStatus::NotFound
-      response.status = 404
-      response.body = "404 Not Found"
-    end
-  end
-end
-trap("INT") { server.shutdown }
-trap("TERM") { server.shutdown }
-server.start
-```
-
 
 You could prompt the model to regenerate the file with a prompt like:
 
@@ -682,35 +643,6 @@ serve({
   fetch: app.fetch,
   port,
 });
-```
-
-```ruby
-require "webrick"
-
-server = WEBrick::HTTPServer.new(Port: Integer(ENV.fetch("PORT", "3000")), BindAddress: "127.0.0.1")
-# Build your client first and place its static files in dist/.
-static_files = WEBrick::HTTPServlet::FileHandler.new(server, File.expand_path("dist"))
-server.mount_proc("/") do |request, response|
-  response["Content-Type"] = "text/plain"
-  if !%w[GET HEAD].include?(request.request_method)
-    response.status = 404
-    response.body = "404 Not Found"
-  elsif request.path == "/api"
-    response.body = "Hello Hono!"
-  elsif request.path == "/hello"
-    response.body = "hello world"
-  else
-    begin
-      static_files.service(request, response)
-    rescue WEBrick::HTTPStatus::NotFound
-      response.status = 404
-      response.body = "404 Not Found"
-    end
-  end
-end
-trap("INT") { server.shutdown }
-trap("TERM") { server.shutdown }
-server.start
 ```
 
 

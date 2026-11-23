@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Scale Container instances with named Durable Objects and route stateless requests across a fixed pool.
 title: Scaling and Routing
 image: https://developers.cloudflare.com/containers/configuration/scaling-and-routing/og.png?v=d0d420b171f18fca

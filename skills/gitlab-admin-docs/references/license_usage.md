@@ -81,6 +81,8 @@ GitLab records each day once, so days you've already uploaded are not counted tw
 When the usage report is available, **Export usage report** replaces
 **Export license usage file** on the **Subscription** page.
 
+The export page shows only the report period and seat usage.
+
 ### Export a usage report
 
 Prerequisites:
@@ -95,7 +97,7 @@ To export a usage report:
 1. In the upper-right corner, select **Export usage report**.
 1. Optional. If your subscription has renewed, from the **Subscription term** dropdown list,
    select the term to export. Export the previous term if you did not upload its last month.
-1. Review the report contents, then select **Export JSON**.
+1. Review the report period and seat usage, then select **Export JSON**.
 1. Upload the downloaded file to the Customers Portal.
 
 ## Upload a usage report
@@ -111,5 +113,6 @@ To upload a usage report:
 1. Add the license usage CSV file or the usage report JSON file.
 1. Select **Submit report**.
 
-After you upload a usage report, the **Usage reported** table shows the summary on monthly splits,
-even though the uploaded file covers multiple or partial months.
+After you upload a usage report, the subscription shows that the report was received,
+with the file name and the period the file covers.
+The subscription does not show seat or consumption feature usage totals.

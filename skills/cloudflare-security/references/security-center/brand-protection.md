@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Detect phishing domains and impersonation attempts targeting your brand.
 title: Brand Protection
 image: https://developers.cloudflare.com/security-center/brand-protection/og.png?v=ef2c07f22f21b525

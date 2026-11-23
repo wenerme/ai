@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example API requests for managing Advanced DNS Protection rules and settings.
 title: Common API calls
 image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/dns-protection/examples/og.png?v=ed25b9329656ba65

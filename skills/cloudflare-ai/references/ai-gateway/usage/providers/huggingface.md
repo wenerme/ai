@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route HuggingFace Inference API requests through AI Gateway for observability and control.
 title: HuggingFace
 image: https://developers.cloudflare.com/ai-gateway/usage/providers/huggingface/og.png?v=57da7c1cda8f4024

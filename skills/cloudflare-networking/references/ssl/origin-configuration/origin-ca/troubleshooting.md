@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot issues like NET::ERR_CERT_AUTHORITY_INVALID when using Cloudflare origin CA.
 title: Troubleshooting Cloudflare origin CA
 image: https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/troubleshooting/og.png?v=dad6a0244060f38d

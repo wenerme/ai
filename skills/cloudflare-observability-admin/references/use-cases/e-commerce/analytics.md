@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand your traffic, identify issues, and optimize your store with Cloudflare analytics.
 title: Observe traffic patterns and analytics
 image: https://developers.cloudflare.com/use-cases/e-commerce/analytics/og.png?v=d4db1a3a420088e8

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How Cloudflare issues challenges through WAF rules, Bot Management, and Bot Fight Mode.
 title: How Challenges work
 image: https://developers.cloudflare.com/cloudflare-challenges/concepts/how-challenges-work/og.png?v=5b45a1d3f447f416

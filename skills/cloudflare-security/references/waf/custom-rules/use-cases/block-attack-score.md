@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Block requests with high WAF attack scores.
 title: Block requests by attack score
 image: https://developers.cloudflare.com/waf/custom-rules/use-cases/block-attack-score/og.png?v=8c9007ba90dd09aa

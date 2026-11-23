@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Reference for the Python Workflows SDK, including WorkflowEntrypoint, step methods, and configuration options.
 title: Python Workers API
 image: https://developers.cloudflare.com/workflows/python/python-workers-api/og.png?v=d0b1a3bf9f71000c

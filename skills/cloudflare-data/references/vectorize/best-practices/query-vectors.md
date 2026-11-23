@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Search a Vectorize index for similar vectors using queries, metadata filters, and namespaces.
 title: Query vectors
 image: https://developers.cloudflare.com/vectorize/best-practices/query-vectors/og.png?v=65dc26582428bb0f

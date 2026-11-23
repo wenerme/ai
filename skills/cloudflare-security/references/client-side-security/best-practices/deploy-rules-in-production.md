@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Safe practices for deploying and updating content security rules.
 title: Deploy content security rules in production
 image: https://developers.cloudflare.com/client-side-security/best-practices/deploy-rules-in-production/og.png?v=24e0d9da84e17e98

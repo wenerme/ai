@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Edit, export, and delete images stored in Cloudflare Images.
 title: Manage hosted images
 image: https://developers.cloudflare.com/images/storage/manage-images/og.png?v=04299c4dc7063d95

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand edge pathing status fields in logs.
 title: Pathing status
 image: https://developers.cloudflare.com/logs/reference/pathing-status/og.png?v=1d1e3cfdf1f7b2e5

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how Cloudflare Mesh connects participants, assigns private IPs, routes traffic, and differs from Cloudflare Tunnel.
 title: How Cloudflare Mesh works
 image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/concepts/og.png?v=2a359dd570f8095e

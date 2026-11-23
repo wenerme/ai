@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Dynamically rewrite links in HTML responses. This is useful for site migrations and branding updates.
 title: Rewrite links on HTML pages
 image: https://developers.cloudflare.com/rules/snippets/examples/rewrite-site-links/og.png?v=d4a384f2e38c40eb

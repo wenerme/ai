@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Example of how to use Queues and Browser Run to power a web crawler.
 title: Build a web crawler with Queues and Browser Run
 image: https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/og.png?v=fc7a3d9b98f261c7
@@ -275,7 +278,7 @@ Your final Wrangler file should look similar to the one below.
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-11-18",
+	"compatibility_date": "2026-11-23",
 	"compatibility_flags": ["nodejs_compat"],
 	"kv_namespaces": [
 		{
@@ -313,7 +316,7 @@ name = "web-crawler"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-11-18"
+compatibility_date = "2026-11-23"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]

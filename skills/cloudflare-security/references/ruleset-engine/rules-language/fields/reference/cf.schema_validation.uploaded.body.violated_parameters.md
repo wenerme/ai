@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The JSON path of a detected request body [violation of the uploaded schema](/waf/detections/application-profiles/fields/#violated-parameters).
 title: cf.schema_validation.uploaded.body.violated_parameters
 image: https://developers.cloudflare.com/og-docs.png

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to use a GraphiQL client to compose and execute a GraphQL query. This guide covers setting up a query, selecting the dataset, and configuring parameters and fields.
 title: Compose a query in GraphiQL
 image: https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/og.png?v=5bec0e950a04fec8

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Diagnose and resolve buffering, freezing, latency, and other Cloudflare Stream Live issues.
 title: Troubleshooting a live stream
 image: https://developers.cloudflare.com/stream/stream-live/troubleshooting/og.png?v=98bf71f19fd0a9de

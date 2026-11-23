@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how public and private traffic on-ramps to and off-ramps from Cloudflare's global network for security and performance.
 title: Traffic flow through Cloudflare
 image: https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/og.png?v=1a4233e998cfb6d7

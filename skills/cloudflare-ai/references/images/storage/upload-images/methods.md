@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upload images through the dashboard, API, Workers, or S3.
 title: Methods
 image: https://developers.cloudflare.com/images/storage/upload-images/methods/og.png?v=7fc03da995559ee6

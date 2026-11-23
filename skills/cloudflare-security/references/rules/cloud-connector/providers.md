@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloud providers and storage services supported by Cloud Connector.
 title: Supported cloud providers in Cloud Connector
 image: https://developers.cloudflare.com/rules/cloud-connector/providers/og.png?v=4e32e2c482a4183c

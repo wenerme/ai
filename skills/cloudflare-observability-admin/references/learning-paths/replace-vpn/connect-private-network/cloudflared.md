@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a tunnel to your private network.
 title: Connect with Cloudflare Tunnel
 image: https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflared/og.png?v=7ea5b0840616b97a

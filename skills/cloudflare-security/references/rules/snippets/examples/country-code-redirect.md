@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Redirect a response based on the country code in the header of a visitor.
 title: Country code redirect
 image: https://developers.cloudflare.com/rules/snippets/examples/country-code-redirect/og.png?v=59e4cb9f41a7e592

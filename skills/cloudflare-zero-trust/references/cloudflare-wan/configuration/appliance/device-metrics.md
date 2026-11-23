@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View hardware Appliance performance metrics.
 title: Device metrics
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/device-metrics/og.png?v=f722a24bd39cd37f

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare allows users to use their Cloudflare prefix to route traffic to a different service. Service bindings must be created on the parent account of the prefix.
 title: Use BYOIP with CDN and Spectrum
 image: https://developers.cloudflare.com/byoip/service-bindings/cdn-and-spectrum/og.png?v=5802cf6385249cbf

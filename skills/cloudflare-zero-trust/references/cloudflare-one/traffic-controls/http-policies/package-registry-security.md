@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Gateway HTTP policies to detect and control software package downloads across seven major package ecosystems.
 title: Package registry security
 image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/package-registry-security/og.png?v=90b500a5b45f441f

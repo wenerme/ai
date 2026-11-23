@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build RealtimeKit meetings for people using the web and mobile SDKs, with the prebuilt UI Kit or the Core SDK.
 title: Build for humans
 image: https://developers.cloudflare.com/realtime/realtimekit/humans/og.png?v=cb0a46c7cb9b4df3

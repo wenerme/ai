@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure Python boto3 to work with Cloudflare R2 via the S3-compatible API.
 title: boto3
 image: https://developers.cloudflare.com/r2/examples/aws/boto3/og.png?v=8260585a8957b265

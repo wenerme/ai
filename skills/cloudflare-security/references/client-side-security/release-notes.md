@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Track the latest updates and changes to client-side security features.
 title: Release notes
 image: https://developers.cloudflare.com/client-side-security/release-notes/og.png?v=ff0a85ea7341006b

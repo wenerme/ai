@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure custom actions and triggers for third-party tools.
 title: Custom actions
 image: https://developers.cloudflare.com/zaraz/custom-actions/og.png?v=f5de4454c190cbac

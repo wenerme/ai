@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Follow browser and backend recipes to publish media, receive tracks, exchange messages, or receive media and send controls.
 title: Connection patterns
 image: https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/og.png?v=627d452af49868dc

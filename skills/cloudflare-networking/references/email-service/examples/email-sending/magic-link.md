@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Generate and email a login link from a Worker.
 title: Email a login link
 image: https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/og.png?v=a014a614113a81d9

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn what stays the same and what changes when you move from Wrangler to cf, and decide when to migrate a project.
 title: cf for Wrangler users
 image: https://developers.cloudflare.com/cf/wrangler/og.png?v=ddbb6038a85893fe

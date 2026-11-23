@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Modify image settings in Cloudflare Images, including signed URL requirements and variant URLs.
 title: Edit images
 image: https://developers.cloudflare.com/images/storage/manage-images/edit-images/og.png?v=2523eeb7955676ae

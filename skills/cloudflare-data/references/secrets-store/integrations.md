@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Secrets Store with Workers, AI Gateway, and other Cloudflare products.
 title: Secrets Store integrations
 image: https://developers.cloudflare.com/secrets-store/integrations/og.png?v=e5efcb8bbc1b8189

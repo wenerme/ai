@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure CNAME flattening for your zone.
 title: Setup
 image: https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/og.png?v=96bb1374ef08a9cd

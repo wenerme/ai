@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Customize the Cloudflare Stream player with branding, logos, and share links.
 title: Add player enhancements
 image: https://developers.cloudflare.com/stream/edit-videos/player-enhancements/og.png?v=258caf47c7367680

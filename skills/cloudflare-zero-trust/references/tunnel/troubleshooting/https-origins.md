@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot Cloudflare Tunnel HTTPS origins, including Let's Encrypt certificates, service URLs, SSL/TLS modes, and redirect loops.
 title: Troubleshoot HTTPS origins with Cloudflare Tunnel
 image: https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/og.png?v=375252adae432ee7

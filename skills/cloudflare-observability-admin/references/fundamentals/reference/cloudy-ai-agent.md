@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudy is Cloudflare's AI agent that helps you understand and optimize your Cloudflare configurations across multiple products.
 title: Cloudy AI agent (beta)
 image: https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/og.png?v=96829c0c8332a634

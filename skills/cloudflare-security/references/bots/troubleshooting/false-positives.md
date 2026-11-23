@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Resolve false positives where legitimate traffic is blocked by bot protection.
 title: Handle False Positives from Bot Fight Mode or Super Bot Fight Mode
 image: https://developers.cloudflare.com/bots/troubleshooting/false-positives/og.png?v=3b318a5c025734b0

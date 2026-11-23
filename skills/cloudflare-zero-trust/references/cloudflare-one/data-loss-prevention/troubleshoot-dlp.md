@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Troubleshoot common DLP issues in Cloudflare One.
 title: Troubleshoot DLP
 image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/og.png?v=242d0fdd979668c9

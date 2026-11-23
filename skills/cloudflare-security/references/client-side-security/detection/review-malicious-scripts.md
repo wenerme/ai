@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn how to review scripts and connections that Cloudflare's client-side security considered malicious.
 title: Review resources considered malicious
 image: https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/og.png?v=c9d0ba7b176296e3

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Understand how Cloudflare uses sampling for analytics.
 title: Understanding sampling in Cloudflare Analytics
 image: https://developers.cloudflare.com/analytics/sampling/og.png?v=242840609cb3b2e7

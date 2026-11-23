@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.
 title: Devin + Cloudflare
 image: https://developers.cloudflare.com/agent-setup/devin/og.png?v=561c22db409a0d78

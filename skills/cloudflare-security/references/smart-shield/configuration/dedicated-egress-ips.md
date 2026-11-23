@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use reserved egress IP addresses for origin allowlisting and increased security.
 title: Dedicated CDN Egress IPs
 image: https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/og.png?v=1e083de7492f370d

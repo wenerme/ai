@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Make your website temporarily unavailable during large changes using Cloudflare Workers, Waiting Room, or Access.
 title: Maintenance mode
 image: https://developers.cloudflare.com/fundamentals/performance/maintenance-mode/og.png?v=e0a220861f558387

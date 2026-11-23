@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cancel Cloudflare plans, add-ons, or subscriptions before the next billing period.
 title: Cancel Cloudflare subscriptions
 image: https://developers.cloudflare.com/billing/manage/cancel-subscription/og.png?v=e33fbe1e07f7a3e3

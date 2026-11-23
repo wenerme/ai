@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure 1.1.1.1 on PlayStation and Xbox.
 title: Gaming consoles
 image: https://developers.cloudflare.com/1.1.1.1/setup/gaming-consoles/og.png?v=0a9befc3162978fa

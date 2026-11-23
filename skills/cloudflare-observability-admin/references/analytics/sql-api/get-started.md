@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Authenticate and run your first SQL API query.
 title: Get started
 image: https://developers.cloudflare.com/analytics/sql-api/get-started/og.png?v=bc12057ae3200e6d

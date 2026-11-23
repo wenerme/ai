@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn more about client-side security's detection features.
 title: Detection
 image: https://developers.cloudflare.com/client-side-security/detection/og.png?v=4b5d7a4c2afeff39

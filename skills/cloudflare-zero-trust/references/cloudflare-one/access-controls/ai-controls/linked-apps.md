@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Allow MCP servers to access self-hosted applications in Access.
 title: Allow MCP servers to access self-hosted applications
 image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/linked-apps/og.png?v=41bbffc6ac46c299

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Migrate health monitor notifications.
 title: Health monitor notifications
 image: https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/og.png?v=3bc24d0d940cc1cb

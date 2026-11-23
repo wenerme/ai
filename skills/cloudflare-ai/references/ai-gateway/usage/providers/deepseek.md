@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Route DeepSeek API requests through AI Gateway for observability and control.
 title: DeepSeek
 image: https://developers.cloudflare.com/ai-gateway/usage/providers/deepseek/og.png?v=450c9f9ae7710409

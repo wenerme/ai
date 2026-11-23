@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Learn a few ways to tell if your application is under a DDoS attack.
 title: Under a DDoS attack?
 image: https://developers.cloudflare.com/fundamentals/security/under-ddos-attack/og.png?v=fbd5f52efed70e5a

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure your Cloudflare zone for PCI DSS compliance — set minimum TLS version, configure approved cipher suites, and understand how Cloudflare interacts with PCI ASV scans.
 title: PCI DSS compliance
 image: https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/og.png?v=2adf2a4063ff583b

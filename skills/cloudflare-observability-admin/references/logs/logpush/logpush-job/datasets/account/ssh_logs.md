@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: The descriptions below detail the fields available for ssh_logs.
 title: SSH Logs
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ssh_logs/og.png?v=d33917f09b9f6153

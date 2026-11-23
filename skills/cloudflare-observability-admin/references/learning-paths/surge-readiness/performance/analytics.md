@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Monitor traffic with Cloudflare analytics.
 title: Analytics
 image: https://developers.cloudflare.com/learning-paths/surge-readiness/performance/analytics/og.png?v=acfe1fe768a445e7

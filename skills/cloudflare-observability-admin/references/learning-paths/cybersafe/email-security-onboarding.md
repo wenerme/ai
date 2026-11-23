@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set up DNS filtering and email security.
 title: Onboarding Email security
 image: https://developers.cloudflare.com/learning-paths/cybersafe/email-security-onboarding/og.png?v=3b19537f714f8169

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Respond with information about the incoming request provided by Cloudflare’s global network.
 title: Return information about the incoming request
 image: https://developers.cloudflare.com/rules/snippets/examples/return-incoming-request-properties/og.png?v=52322837e99f79a3

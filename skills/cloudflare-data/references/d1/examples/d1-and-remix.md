@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Query your D1 database from a Remix application.
 title: Query D1 from Remix
 image: https://developers.cloudflare.com/d1/examples/d1-and-remix/og.png?v=a5309d5e3d74dccb

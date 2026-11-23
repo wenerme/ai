@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: React framework for building full-stack web applications.
 title: Next.js
 image: https://developers.cloudflare.com/pages/framework-guides/nextjs/og.png?v=f2220596896d1f40

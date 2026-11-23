@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Upgrade or downgrade a domain's Cloudflare plan.
 title: Change domain plan
 image: https://developers.cloudflare.com/billing/manage/change-plan/og.png?v=1c299a9d858806e0

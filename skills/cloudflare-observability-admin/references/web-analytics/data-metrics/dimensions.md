@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Dimensions available for filtering and grouping Web Analytics data.
 title: Dimensions
 image: https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/og.png?v=5057354275f15320

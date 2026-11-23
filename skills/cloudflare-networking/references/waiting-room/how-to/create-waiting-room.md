@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a new waiting room in the dashboard or via API.
 title: Create a waiting room
 image: https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/og.png?v=75ae89fb0f3629cd

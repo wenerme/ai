@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Optimize caching to reduce origin load.
 title: Optimize caching
 image: https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/advanced/optimize-caching/og.png?v=00d30a247589d80c

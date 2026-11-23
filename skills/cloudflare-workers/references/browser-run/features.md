@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Explore additional Browser Run features including session reuse, custom fonts, live view, session recording, and more.
 title: Additional features
 image: https://developers.cloudflare.com/browser-run/features/og.png?v=85155a1e841e09ca

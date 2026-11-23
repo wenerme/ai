@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Create a redirect rule to redirect all URLs for a domain to point to the root of a new domain, including any subdomains of the old domain.
 title: Redirect requests for a domain to a new domain
 image: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-domain-root/og.png?v=9505264070c109e3

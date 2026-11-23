@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Available Container instance types and limits for memory, vCPU, disk, image storage, and snapshots.
 title: Limits and Instance Types
 image: https://developers.cloudflare.com/containers/platform/limits/og.png?v=976edb39343c58ee

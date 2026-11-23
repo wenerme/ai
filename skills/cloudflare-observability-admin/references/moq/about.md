@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How the IETF MoQ working group developed a standardized protocol for efficient, low-latency media delivery over QUIC.
 title: Background
 image: https://developers.cloudflare.com/moq/about/og.png?v=1288e994c8cef9d7

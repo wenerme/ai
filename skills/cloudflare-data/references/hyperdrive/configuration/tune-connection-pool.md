@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Configure the maximum number of database connections in your Hyperdrive connection pool.
 title: Tune connection pooling
 image: https://developers.cloudflare.com/hyperdrive/configuration/tune-connection-pool/og.png?v=20047b41f285306b

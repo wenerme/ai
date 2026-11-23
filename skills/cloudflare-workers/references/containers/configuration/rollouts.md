@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: How container instances update after a deploy, including step percentages, grace periods, and rollout modes.
 title: Rollouts
 image: https://developers.cloudflare.com/containers/configuration/rollouts/og.png?v=3d0c4ea5b7db40b1

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Build a WebSocket server using WebSocket Hibernation on Durable Objects and Workers.
 title: Build a WebSocket server with WebSocket Hibernation
 image: https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/og.png?v=7877994f4d9ae82b

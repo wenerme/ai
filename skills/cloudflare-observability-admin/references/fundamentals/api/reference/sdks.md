@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Use Cloudflare API SDKs for Go, TypeScript, and Python to integrate Cloudflare services into your applications.
 title: SDKs
 image: https://developers.cloudflare.com/fundamentals/api/reference/sdks/og.png?v=68b001cf37e16c73

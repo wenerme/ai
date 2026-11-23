@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. You can also use BGP peering to exchange routes dynamically. Learn how to configure routing.
 title: Configure routes
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/og.png?v=03c6dce35e8aa24d

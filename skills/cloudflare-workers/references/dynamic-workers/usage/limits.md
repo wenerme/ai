@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Set CPU time and subrequest limits.
 title: Custom resource limits
 image: https://developers.cloudflare.com/dynamic-workers/usage/limits/og.png?v=c25998cda17dd5c5

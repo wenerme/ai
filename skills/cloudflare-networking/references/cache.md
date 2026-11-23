@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Cache and serve static and dynamic content from Cloudflare edge servers.
 title: Cloudflare Cache
 image: https://developers.cloudflare.com/cache/og.png?v=16c3e61cbdbb3268

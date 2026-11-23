@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: View Health Checks status history and response time analytics.
 title: Health Checks Analytics
 image: https://developers.cloudflare.com/health-checks/health-checks-analytics/og.png?v=ca5c10ffb8ef0649

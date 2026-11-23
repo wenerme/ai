@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Protect sensitive data in AI Gateway prompts and responses using Cloudflare DLP detection engines.
 title: Data Loss Prevention (DLP)
 image: https://developers.cloudflare.com/ai-gateway/features/dlp/og.png?v=c5df2456ce43f200

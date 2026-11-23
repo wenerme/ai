@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: A Pages Functions for appending CORS headers.
 title: Adding CORS headers
 image: https://developers.cloudflare.com/pages/functions/examples/cors-headers/og.png?v=b97a60e1ac436b01

@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Network session logs are generated for all traffic proxied through Cloudflare Gateway across all supported on-ramps, such as the Cloudflare One Client (WARP), proxy endpoints (PAC files), Browser Isolation, and Cloudflare Tunnel.
 title: Zero Trust Network Session Logs
 image: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/og.png?v=b09322a08e948e19

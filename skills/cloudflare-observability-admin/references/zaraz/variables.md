@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://developers.cloudflare.com/.well-known/search?q={query}"
 description: Define reusable variables for Zaraz tools and actions.
 title: Variables
 image: https://developers.cloudflare.com/zaraz/variables/og.png?v=3e0d7c0cafb8c720
